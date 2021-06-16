@@ -408,7 +408,7 @@ $$
 定义**几何间隔**：
 
 $$
-\gamma\_i = y\_i\left(\frac{\boldsymbol w^T}{\|\boldsymbol w\|}\boldsymbol x\_i + \frac{b}{\|\boldsymbol w\|}\right)
+\gamma\_i = y\_i\left(\frac{\boldsymbol w^T}{\\|\boldsymbol w\\|}\boldsymbol x\_i + \frac{b}{\\|\boldsymbol w\\|}\right)
 $$
 
 上述定义是针对单个样本点的，所以对于整个训练集 $T$ ，定义：
@@ -420,16 +420,16 @@ $$
 \\end{cases}
 $$
 
-这也就是训练集和超平面的函数间隔以及几何间隔。这两种间隔之间相差 $\|\boldsymbol w\|$ 倍。
+这也就是训练集和超平面的函数间隔以及几何间隔。这两种间隔之间相差 $\\|\boldsymbol w\\|$ 倍。
 
-我们选择超平面的标准就是**最大化超平面和训练集的间隔**，也就是求取 $\max\_{\boldsymbol w, b}\gamma$ 。由于 $\boldsymbol w, b$ 可以成比例缩放，所以说我们完全可以假设 $\hat\gamma = 1$ ，从而最优化问题转化为最大化 $1 / \|\boldsymbol w\|$ ，等价于最小化 $1 / 2\|\boldsymbol w\|^2$ 。所以说问题就是求解 $\min\_{\boldsymbol w, b} 1 / 2\|\boldsymbol w\|^2$ 。
+我们选择超平面的标准就是**最大化超平面和训练集的间隔**，也就是求取 $\max\_{\boldsymbol w, b}\gamma$ 。由于 $\boldsymbol w, b$ 可以成比例缩放，所以说我们完全可以假设 $\hat\gamma = 1$ ，从而最优化问题转化为最大化 $1 / \\|\boldsymbol w\\|$ ，等价于最小化 $1 / 2\\|\boldsymbol w\\|^2$ 。所以说问题就是求解 $\min\_{\boldsymbol w, b} 1 / 2\\|\boldsymbol w\\|^2$ 。
 
 这里由于 $\hat\gamma = 1$ ，所以说总是存在 $(\boldsymbol x\_i, y\_i)$ 满足 $y\_i(\boldsymbol w^T\boldsymbol x\_i + b) = \hat\gamma = 1$ ，这个向量就是**支持向量**。
 
 SVM 的学习过程，可以先定义 Lagrange 函数：
 
 $$
-L(\boldsymbol w, b, \boldsymbol\alpha) = \frac{1}{2}\|\boldsymbol w\|^2 + \sum\_{i = 1}^N \alpha\_i[1 - y\_i(\boldsymbol w^T\boldsymbol x\_i + b)]
+L(\boldsymbol w, b, \boldsymbol\alpha) = \frac{1}{2}\\|\boldsymbol w\\|^2 + \sum\_{i = 1}^N \alpha\_i[1 - y\_i(\boldsymbol w^T\boldsymbol x\_i + b)]
 $$
 
 这里 $\alpha\_i \geq 0$ ，并且 $\boldsymbol\alpha = (\alpha\_1, \alpha\_2, \cdots, \alpha\_N)^T$ 为 Lagrange 乘子向量。
@@ -439,7 +439,7 @@ $$
 $$
 \max\_\boldsymbol\alpha L(\boldsymbol w, b, \boldsymbol\alpha) =
 \\begin{cases}
-	\dfrac{1}{2}\|\boldsymbol w\|^2 & {\rm when\ some\ requirements\ are\ satisfied} \\\\
+	\dfrac{1}{2}\\|\boldsymbol w\\|^2 & {\rm when\ some\ requirements\ are\ satisfied} \\\\
 	\infty & {\rm otherwise}
 \\end{cases}
 $$
@@ -490,7 +490,7 @@ $$
 为了尽量减小 $\xi\_i$ 的影响，所以我们可以把优化目标改为：
 
 $$
-\min\_{\boldsymbol w, b, \xi}\left(\frac{1}{2}\|\boldsymbol w\|^2 + C\sum\_{i = 1}^N \xi\_i\right)
+\min\_{\boldsymbol w, b, \xi}\left(\frac{1}{2}\\|\boldsymbol w\\|^2 + C\sum\_{i = 1}^N \xi\_i\right)
 $$
 
 这种处理方式称为**软间隔最大化**，这里 $C > 0$ 为惩罚参数， $C$ 越大惩罚力度越大。
@@ -525,7 +525,7 @@ $\alpha\_i^\* > 0$ 对应的 $\boldsymbol x\_i$ 是支持向量。
   - 若 $\xi\_i = 1$ ，则在超平面上（对应在实线上的点）
   - 若 $\xi\_i > 1$ ，则被误分（对应在实线和对方虚线之间的点）
 
-这里给出一个结论，也就是样本点到软间隔边界（虚线边界）的距离为 $\xi\_i / \|\boldsymbol w\|$ 。
+这里给出一个结论，也就是样本点到软间隔边界（虚线边界）的距离为 $\xi\_i / \\|\boldsymbol w\\|$ 。
 
 另外一方面，我们考虑使用非线性的方式分割数据点。事实上就是尝试建立一个非线性映射将原空间的数据点映射到新空间上，这些数据点在新空间上线性可分。
 
@@ -564,7 +564,7 @@ $$
 以及**高斯核函数**：
 
 $$
-K(\boldsymbol x, \boldsymbol y) = \exp\left(-\frac{\|\boldsymbol x - \boldsymbol y\|^2}{2\sigma^2}\right)
+K(\boldsymbol x, \boldsymbol y) = \exp\left(-\frac{\\|\boldsymbol x - \boldsymbol y\\|^2}{2\sigma^2}\right)
 $$
 
 ### 决策树
@@ -711,7 +711,7 @@ $$
 过拟合问题在之前有过说明，在深度学习之中减少过拟合的一个方法就是在损失函数之中加入正则项：
 
 $$
-E\_d(\boldsymbol w) = \frac{1}{2}\sum\_k(t\_k - o\_k)^2 + \|\boldsymbol w\|
+E\_d(\boldsymbol w) = \frac{1}{2}\sum\_k(t\_k - o\_k)^2 + \\|\boldsymbol w\\|
 $$
 
 另外还有引入 Dropout 以及引入验证集的方式，这里均不展开。
