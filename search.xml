@@ -36,6 +36,9 @@
 
 </blockquote>
 
+<p>这里还似乎提供了用于查询浏览器支持方法的插件。</p>
+<iframe data-feature="fetch" src="https://caniuse.bitsofco.de/embed/index.html?feat=fetch&periods=current&accessible-colours=false" frameborder="0" width="100%" height="400px"></iframe>
+
 <p>暂且玩到这里吧，目前的话想要做的一些事情包括：</p>
 <ul>
 <li><p>写（搬运）点有点价值的东西</p>
@@ -47,8 +50,8 @@
 </ul>
 <p>当然我们知道明天下午就考数电了，所以 Holder 该滚去复习了。</p>
 ]]></content>
-      <tags>
-        <tag>闲聊</tag>
-      </tags>
+      <categories>
+        <category>闲聊</category>
+      </categories>
   </entry>
 </search>
