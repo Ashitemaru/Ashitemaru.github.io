@@ -11,7 +11,7 @@ mathjax: true
 
 首先玩玩代码块，自然首先试试 cpp 。
 
-{% codeblock lang:cpp %}
+{% codeblock lang:cpp C++ %}
 #include <iostream>
 
 int main() {
@@ -22,14 +22,14 @@ int main() {
 
 再来试一下 Python 。
 
-{% codeblock lang:python %}
+{% codeblock lang:python Python %}
 if __name__ == '__main__':
     print('Hello world!')
 {% endcodeblock %}
 
 不如玩一下 JavaScript 。
 
-{% codeblock lang:js %}
+{% codeblock lang:js JavaScript %}
 console.log("Hello world!");
 {% endcodeblock %}
 
@@ -40,3 +40,27 @@ console.log("Hello world!");
 $$
 \boldsymbol{w}^*=\mathop{\arg\min}_{\boldsymbol{w} \in \Omega}\sum_{x_i \in X, y_i \in Y} L(f_\boldsymbol{w}(x_i), y_i)
 $$
+
+再来试一下它自带的一些引用块。
+
+{% blockquote %}
+你成功建好了自己的第一个 hexo 站点！
+{% endblockquote %}
+
+hexo 文档里面还提到了一种奇怪的东西，来试一下。
+
+{% pullquote %}
+这个东西被称为 Pull Quote 。
+{% endpullquote %}
+
+暂且玩到这里吧，目前的话想要做的一些事情包括：
+
+- 换一个适合自己的主题
+
+- 给数学公式的渲染搞个好一点的引擎
+
+- 链接上友情链接
+
+- 写点有点价值的东西
+
+当然我们知道明天下午就考数电了，所以 Holder 该滚去复习了。
