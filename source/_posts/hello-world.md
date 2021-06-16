@@ -3,7 +3,7 @@ title: Hello world
 date: 2021-06-16 13:34:10
 comments: true
 mathjax: true
-tags:
+category:
     - 闲聊
 ---
 
@@ -66,6 +66,10 @@ hexo 文档里面还提到了一种奇怪的东西，来试一下。
 {% cq %}
 这里我们居中一定的文本。
 {% endcq %}
+
+这里还似乎提供了用于查询浏览器支持方法的插件。
+
+{% can fetch %}
 
 暂且玩到这里吧，目前的话想要做的一些事情包括：
 
