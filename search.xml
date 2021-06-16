@@ -248,17 +248,17 @@
 <p>为了评估一个超平面 $\boldsymbol w^T\boldsymbol x + b = 0$ ，我们给定 $T$ 之中的一个样本点 $(x_i, y_i)$ ，定义<strong>函数间隔</strong>：</p>
 <p>$$<br>\hat\gamma_i = y_i(\boldsymbol w^T\boldsymbol x_i + b)<br>$$</p>
 <p>定义<strong>几何间隔</strong>：</p>
-<p>$$<br>\gamma_i = y_i\left(\frac{\boldsymbol w^T}{|\boldsymbol w|}\boldsymbol x_i + \frac{b}{|\boldsymbol w|}\right)<br>$$</p>
+<p>$$<br>\gamma_i = y_i\left(\frac{\boldsymbol w^T}{\|\boldsymbol w\|}\boldsymbol x_i + \frac{b}{\|\boldsymbol w\|}\right)<br>$$</p>
 <p>上述定义是针对单个样本点的，所以对于整个训练集 $T$ ，定义：</p>
 <p>$$<br>\begin{cases}<br>    \hat\gamma = \min_i \hat\gamma_i \\<br>    \gamma = \min_i \gamma_i \\<br>\end{cases}<br>$$</p>
-<p>这也就是训练集和超平面的函数间隔以及几何间隔。这两种间隔之间相差 $|\boldsymbol w|$ 倍。</p>
-<p>我们选择超平面的标准就是<strong>最大化超平面和训练集的间隔</strong>，也就是求取 $\max_{\boldsymbol w, b}\gamma$ 。由于 $\boldsymbol w, b$ 可以成比例缩放，所以说我们完全可以假设 $\hat\gamma = 1$ ，从而最优化问题转化为最大化 $1 / |\boldsymbol w|$ ，等价于最小化 $1 / 2|\boldsymbol w|^2$ 。所以说问题就是求解 $\min_{\boldsymbol w, b} 1 / 2|\boldsymbol w|^2$ 。</p>
+<p>这也就是训练集和超平面的函数间隔以及几何间隔。这两种间隔之间相差 $\|\boldsymbol w\|$ 倍。</p>
+<p>我们选择超平面的标准就是<strong>最大化超平面和训练集的间隔</strong>，也就是求取 $\max_{\boldsymbol w, b}\gamma$ 。由于 $\boldsymbol w, b$ 可以成比例缩放，所以说我们完全可以假设 $\hat\gamma = 1$ ，从而最优化问题转化为最大化 $1 / \|\boldsymbol w\|$ ，等价于最小化 $1 / 2\|\boldsymbol w\|^2$ 。所以说问题就是求解 $\min_{\boldsymbol w, b} 1 / 2\|\boldsymbol w\|^2$ 。</p>
 <p>这里由于 $\hat\gamma = 1$ ，所以说总是存在 $(\boldsymbol x_i, y_i)$ 满足 $y_i(\boldsymbol w^T\boldsymbol x_i + b) = \hat\gamma = 1$ ，这个向量就是<strong>支持向量</strong>。</p>
 <p>SVM 的学习过程，可以先定义 Lagrange 函数：</p>
-<p>$$<br>L(\boldsymbol w, b, \boldsymbol\alpha) = \frac{1}{2}|\boldsymbol w|^2 + \sum_{i = 1}^N \alpha_i[1 - y_i(\boldsymbol w^T\boldsymbol x_i + b)]<br>$$</p>
+<p>$$<br>L(\boldsymbol w, b, \boldsymbol\alpha) = \frac{1}{2}\|\boldsymbol w\|^2 + \sum_{i = 1}^N \alpha_i[1 - y_i(\boldsymbol w^T\boldsymbol x_i + b)]<br>$$</p>
 <p>这里 $\alpha_i \geq 0$ ，并且 $\boldsymbol\alpha = (\alpha_1, \alpha_2, \cdots, \alpha_N)^T$ 为 Lagrange 乘子向量。</p>
 <p>我们知道：</p>
-<p>$$<br>\max_\boldsymbol\alpha L(\boldsymbol w, b, \boldsymbol\alpha) =<br>\begin{cases}<br>    \dfrac{1}{2}|\boldsymbol w|^2 &amp; {\rm when\ some\ requirements\ are\ satisfied} \\<br>    \infty &amp; {\rm otherwise}<br>\end{cases}<br>$$</p>
+<p>$$<br>\max_\boldsymbol\alpha L(\boldsymbol w, b, \boldsymbol\alpha) =<br>\begin{cases}<br>    \dfrac{1}{2}\|\boldsymbol w\|^2 &amp; {\rm when\ some\ requirements\ are\ satisfied} \\<br>    \infty &amp; {\rm otherwise}<br>\end{cases}<br>$$</p>
 <p>所以说 $\min_{\boldsymbol w, b}\max_\alpha L(\boldsymbol w, b, \boldsymbol\alpha)$ 与原问题等价。</p>
 <p>另外，我们断定：</p>
 <p>$$<br>\min_{\boldsymbol w, b} L(\boldsymbol w, b, \boldsymbol\alpha) \leq L(\boldsymbol w, b, \boldsymbol\alpha) \leq \max_\boldsymbol\alpha L(\boldsymbol w, b, \boldsymbol\alpha)<br>$$</p>
@@ -274,7 +274,7 @@
 <p>但是有的时候这些点并不能被线性超平面完全分隔，所以说 $y_i(\boldsymbol w^T\boldsymbol x_i + b) \geq 1$ 并不能处处满足，所以需要引入<strong>松弛变量</strong>：</p>
 <p>$$<br>y_i(\boldsymbol w^T\boldsymbol x_i + b) \geq 1 - \xi_i<br>$$</p>
 <p>为了尽量减小 $\xi_i$ 的影响，所以我们可以把优化目标改为：</p>
-<p>$$<br>\min_{\boldsymbol w, b, \xi}\left(\frac{1}{2}|\boldsymbol w|^2 + C\sum_{i = 1}^N \xi_i\right)<br>$$</p>
+<p>$$<br>\min_{\boldsymbol w, b, \xi}\left(\frac{1}{2}\|\boldsymbol w\|^2 + C\sum_{i = 1}^N \xi_i\right)<br>$$</p>
 <p>这种处理方式称为<strong>软间隔最大化</strong>，这里 $C &gt; 0$ 为惩罚参数， $C$ 越大惩罚力度越大。</p>
 <p>按照线性可分 SVM 的方法，问题转化为：</p>
 <p>$$<br>\max_\alpha\left[-\frac{1}{2}\sum_{i = 1}^N \sum_{j = 1}^N \alpha_i\alpha_jy_iy_j(\boldsymbol x_i^T\boldsymbol x_j) + \sum_{i = 1}^N \alpha_i\right]<br>$$</p>
@@ -293,7 +293,7 @@
 </ul>
 </li>
 </ul>
-<p>这里给出一个结论，也就是样本点到软间隔边界（虚线边界）的距离为 $\xi_i / |\boldsymbol w|$ 。</p>
+<p>这里给出一个结论，也就是样本点到软间隔边界（虚线边界）的距离为 $\xi_i / \|\boldsymbol w\|$ 。</p>
 <p>另外一方面，我们考虑使用非线性的方式分割数据点。事实上就是尝试建立一个非线性映射将原空间的数据点映射到新空间上，这些数据点在新空间上线性可分。</p>
 <p>考虑使用映射 $\phi: X \rightarrow H$ 将输入 $\boldsymbol x \in X$ 映射到新空间 $H$ 上，这里把 $K(\boldsymbol x, \boldsymbol y) := \phi(\boldsymbol x)^T\phi(\boldsymbol y)$ 称为<strong>核函数</strong>。这个时候所有的与内积相关的运算均应该使用核函数进行。</p>
 <p>按照线性可分 SVM 的方法，问题转化为：</p>
@@ -307,7 +307,7 @@
 <p>常用的核函数包括<strong>多项式核函数</strong>：</p>
 <p>$$<br>K(\boldsymbol x, \boldsymbol y) = (\boldsymbol x^T\boldsymbol y + 1)^p<br>$$</p>
 <p>以及<strong>高斯核函数</strong>：</p>
-<p>$$<br>K(\boldsymbol x, \boldsymbol y) = \exp\left(-\frac{|\boldsymbol x - \boldsymbol y|^2}{2\sigma^2}\right)<br>$$</p>
+<p>$$<br>K(\boldsymbol x, \boldsymbol y) = \exp\left(-\frac{\|\boldsymbol x - \boldsymbol y\|^2}{2\sigma^2}\right)<br>$$</p>
 <h3 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h3><p>我们定义随机变量 $X$ 的熵为：</p>
 <p>$$<br>H(X) = -\sum_{i = 1}^n p_i\log p_i<br>$$</p>
 <p>当概率由训练集 $D$ 给出，该熵可以标记为 $H(D)$ 。</p>
@@ -359,7 +359,7 @@
 <p>这里额外提一下，均方误差只是一个选择，在分类问题中，更常用的是<strong>交叉熵误差</strong>：</p>
 <p>$$<br>H_\boldsymbol t(\boldsymbol o) = -\sum_i t_i\log(o_i)<br>$$</p>
 <h3 id="过拟合问题与正则化"><a href="#过拟合问题与正则化" class="headerlink" title="过拟合问题与正则化"></a>过拟合问题与正则化</h3><p>过拟合问题在之前有过说明，在深度学习之中减少过拟合的一个方法就是在损失函数之中加入正则项：</p>
-<p>$$<br>E_d(\boldsymbol w) = \frac{1}{2}\sum_k(t_k - o_k)^2 + |\boldsymbol w|<br>$$</p>
+<p>$$<br>E_d(\boldsymbol w) = \frac{1}{2}\sum_k(t_k - o_k)^2 + \|\boldsymbol w\|<br>$$</p>
 <p>另外还有引入 Dropout 以及引入验证集的方式，这里均不展开。</p>
 <h3 id="卷积神经网络（-CNN-）"><a href="#卷积神经网络（-CNN-）" class="headerlink" title="卷积神经网络（ CNN ）"></a>卷积神经网络（ CNN ）</h3><p><code>TODO</code></p>
 <h3 id="循环神经网络（-RNN-）"><a href="#循环神经网络（-RNN-）" class="headerlink" title="循环神经网络（ RNN ）"></a>循环神经网络（ RNN ）</h3><p><code>TODO</code></p>
