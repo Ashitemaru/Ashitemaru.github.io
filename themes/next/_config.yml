@@ -105,7 +105,7 @@ menu_settings:
 sidebar:
   # Sidebar Position.
   position: left
-  #position: right
+  # position: right
 
   # Manual define the sidebar width. If commented, will be default for:
   # Muse | Mist: 320
@@ -117,7 +117,7 @@ sidebar:
   #  - always  expand for all pages automatically.
   #  - hide    expand only when click on the sidebar toggle icon.
   #  - remove  totally remove sidebar including sidebar toggle.
-  display: post
+  display: always
 
   # Sidebar padding in pixels.
   padding: 18
@@ -127,9 +127,9 @@ sidebar:
 # Sidebar Avatar
 avatar:
   # Replace the default image and set the url here.
-  url: #/images/avatar.gif
+  url: /uploads/avatar.png
   # If true, the avatar will be dispalyed in circle.
-  rounded: false
+  rounded: true
   # If true, the avatar will be rotated with the cursor.
   rotated: false
 
@@ -141,8 +141,8 @@ site_state: true
 # Key is the link label showing to end users.
 # Value before `||` delimiter is the target permalink, value after `||` delimiter is the name of Font Awesome icon.
 social:
-  #GitHub: https://github.com/yourname || fab fa-github
-  #E-Mail: mailto:yourname@gmail.com || fa fa-envelope
+  GitHub: https://github.com/Ashitemaru || fab fa-github
+  E-Mail: mailto:qhd@mails.tsinghua.edu.cn || fa fa-envelope
   #Weibo: https://weibo.com/yourname || fab fa-weibo
   #Google: https://plus.google.com/yourname || fab fa-google
   #Twitter: https://twitter.com/yourname || fab fa-twitter
@@ -160,12 +160,13 @@ social_icons:
 # Blog rolls
 links_settings:
   icon: fa fa-globe
-  title: Links
+  title: Friends
   # Available values: block | inline
   layout: block
 
 links:
-  #Title: https://example.com
+  UNIDY: https://www.unidy.cn
+  Dilant: https://www.dilant.cn
 
 # Table of Contents in the Sidebar
 # Front-matter variable (unsupport wrap expand_all).
@@ -238,7 +239,6 @@ post_meta:
   created_at: true
   updated_at:
     enable: true
-    another_day: true
   categories: true
 
 # Post wordcount display settings
@@ -376,18 +376,18 @@ back2top:
 
 # Reading progress bar
 reading_progress:
-  enable: false
+  enable: true
   # Available values: left | right
   start_at: left
   # Available values: top | bottom
-  position: top
+  position: bottom
   reversed: false
   color: "#37c6c0"
   height: 3px
 
 # Bookmark Support
 bookmark:
-  enable: false
+  enable: true
   # Customize the color of the bookmark.
   color: "#222"
   # If auto, save the reading progress when closing the page or clicking the bookmark-icon.
@@ -396,9 +396,9 @@ bookmark:
 
 # `Follow me on GitHub` banner in the top-right corner.
 github_banner:
-  enable: false
-  permalink: https://github.com/yourname
-  title: Follow me on GitHub
+  enable: true
+  permalink: https://github.com/Ashitemaru
+  title: Come here for fun.
 
 
 # ---------------------------------------------------------------
@@ -414,7 +414,7 @@ github_banner:
 # ---------------------------------------------------------------
 
 font:
-  enable: false
+  enable: true
 
   # Uri of fonts host, e.g. https://fonts.googleapis.com (Default).
   host:
@@ -450,7 +450,7 @@ font:
   # Font settings for <code> and code blocks.
   codes:
     external: true
-    family:
+    family: Monaco
 
 
 # ---------------------------------------------------------------
