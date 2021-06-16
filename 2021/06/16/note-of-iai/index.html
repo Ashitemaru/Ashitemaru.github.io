@@ -1,81 +1,301 @@
-<?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title>Hello world</title>
-    <url>/2021/06/16/hello-world/</url>
-    <content><![CDATA[<p>刚刚建立好这个地方，暂且也没什么特别想说的，不如就来玩一下 hexo 的各个语法吧。</p>
-<span id="more"></span>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
 
-<p>首先玩玩代码块，自然首先试试 cpp 。</p>
-<figure class="highlight cpp"><figcaption><span>C++</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Hello world!&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>再来试一下 Python 。</p>
-<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Hello world!&#x27;</span>)</span><br></pre></td></tr></table></figure>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-<p>不如玩一下 JavaScript 。</p>
-<figure class="highlight js"><figcaption><span>JavaScript</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;Hello world!&quot;</span>);</span><br></pre></td></tr></table></figure>
+<link rel="stylesheet" href="/css/main.css">
 
-<p>然后玩一下数学公式。</p>
-<p>我们可以把机器学习抽象描述为以下过程，这里$X$表示输入集合，$Y$表示输出集合，$L$表示损失函数，$\boldsymbol{w}$表示模型参数，$f_\boldsymbol{w}$表示在某一系列参数之下的模型函数。</p>
-<p>$$<br>\boldsymbol{w}^*=\mathop{\arg\min}_{\boldsymbol{w} \in \Omega}\sum_{x_i \in X, y_i \in Y} L(f_\boldsymbol{w}(x_i), y_i)<br>$$</p>
-<p>再来试一下它自带的一些引用块。</p>
-<blockquote><p>你成功建好了自己的第一个 hexo 站点！</p>
-</blockquote>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic%7CMonaco:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
-<p>hexo 文档里面还提到了一种奇怪的东西，来试一下。</p>
-<blockquote class="pullquote"><p>这个东西被称为 Pull Quote 。</p>
-</blockquote>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<p>似乎还有奇怪的东西。</p>
-<div class="note success"><p>这个是提示成功的引用块。</p>
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;ashitemaru.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Gemini&quot;,&quot;version&quot;:&quot;8.5.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;always&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:true,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;},&quot;path&quot;:&quot;&#x2F;search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;manual&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="这个文档就是一时兴起想要好好学学人工智能背后的玩意创建的。主要还是记录《人工智能导论》课程的笔记。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《人工智能导论》学习笔记">
+<meta property="og:url" content="https://ashitemaru.github.io/2021/06/16/note-of-iai/index.html">
+<meta property="og:site_name" content="Ashitemaru">
+<meta property="og:description" content="这个文档就是一时兴起想要好好学学人工智能背后的玩意创建的。主要还是记录《人工智能导论》课程的笔记。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-06-16T20:27:16.000Z">
+<meta property="article:modified_time" content="2021-06-16T20:27:16.000Z">
+<meta property="article:author" content="Ashitemaru">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://ashitemaru.github.io/2021/06/16/note-of-iai/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;ashitemaru.github.io&#x2F;2021&#x2F;06&#x2F;16&#x2F;note-of-iai&#x2F;&quot;,&quot;path&quot;:&quot;2021&#x2F;06&#x2F;16&#x2F;note-of-iai&#x2F;&quot;,&quot;title&quot;:&quot;《人工智能导论》学习笔记&quot;}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
+<title>《人工智能导论》学习笔记 | Ashitemaru</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Ashitemaru</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
 </div>
 
-<p>下面是一个居中引用。</p>
-<blockquote class="blockquote-center">
-<p>这里我们居中一定的文本。</p>
 
-</blockquote>
 
-<p>这里还似乎提供了用于查询浏览器支持方法的插件。</p>
-<iframe data-feature="fetch" src="https://caniuse.bitsofco.de/embed/index.html?feat=fetch&periods=current&accessible-colours=false" frameborder="0" width="100%" height="400px"></iframe>
+<nav class="site-nav">
+  <ul class="main-menu menu">
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
 
-<p>暂且玩到这里吧，目前的话想要做的一些事情包括：</p>
-<ul>
-<li><p>写（搬运）点有点价值的东西</p>
-</li>
-<li><p>有没有可能做一些类似于管理员才可访问的东西呢</p>
-</li>
-<li><p>搞一下评论系统、浏览计数之类的</p>
-</li>
-</ul>
-<p>当然我们知道明天下午就考数电了，所以 Holder 该滚去复习了。</p>
-]]></content>
-      <categories>
-        <category>闲聊</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>回忆一下我的大学</title>
-    <url>/2021/06/16/look-back/</url>
-    <content><![CDATA[<p>在搭好这个网站之前，我也已经上了两年大学，走过了一半的本科时光。</p>
-<span id="more"></span>
 
-<p>我总是愿意将自己的身份定位为数学竞赛失败的高考生，从初三开始学习一些基本的数竞，高中数竞奋斗两年，结果是化竞考出所有竞赛中最好成绩然后高考混进了你清计算机系。估计你也看出来了，我在学什么上面一直是迷茫的，高中纠结主攻哪一门竞赛，于是数理化三面都搞。高考出分选专业，甚至是选清北也让我着实过了一个折磨的七月初。最后，还是随着大流，进了计算机系。</p>
-<p>我的大一，刚开始的时候野心很大，想着好好搞成绩然后还毅然决然选上了班长。但是大学这片地方的宽阔程度完全超越了我作为一个县高学生的想象，再加上本身就有些不敢与生人交流的个性，所以大一的时候实则还是比较畏畏缩缩的。当时的话，几乎所有课程都靠着自己单打独斗，当时不知道计算机系的 <a href="https://github.com/PKUanonym/REKCARC-TSC-UHT">CRACKER</a> ，不知道大学的考试很屑，所以第一学期下来成绩就很一般般。</p>
-<p>大一上学期刚结束的我还是有点高考生的“追求”的，于是下定决心下学期认真卷绩点。这种除了绩点什么都不管的心态大概持续了半年，直到加入了 <a href="https://www.unidy.cn/">xge</a> 的 <a href="https://github.com/UNIDY2002/THUInfo">THUInfo</a> 项目。或许就是从那个时候开始，才感觉大学不是像高中那样仅仅是为了成绩学习，而是有一些其他的路径的。</p>
-<p>大一另外一个印象深刻的事情就是，学年末的甲团评比活动我们班的团支书居然缺席了，最后我不得不顶替他。当时离我们班展示还有不到半小时，而我还在边听着 91 班的展示边做 PPT 。这件事之后，我对社工算是很寒心，随后决定不再干社工。</p>
-<p>大二的上学期过得很平凡，也没有给我留下很深刻的印象。但是这个学期，尤其是五月份，我明显感觉到自己的心态发生了很大的转变。首先就是自己突然感觉到对前三个学期的生活有种厌恶感，不想让自己继续在 GPA 主导之下生活。其次是突然重燃了对社工的一些热情，主要的缘故是跟着 xge 在科协里面参加了一些活动，比如嘉年华以及智能体决赛，在这期间也算是认识了不少人（比如大恶人安頔）。最后就是敢于正面自己对 Sakana 的一些感情了，大概这里不会太详细展开说。</p>
-<p>2021 年 5 月，这一个月完全是值得铭记的。</p>
-<p>所以这一篇流水账一般的记录就差不多该结束了。我记得刚刚进入大学的时候有人和我说，适应大学生活是需要很长时间的。我现在在想，或许我现在才算是真的找到了自己想要的生活。回忆着前两年自己近乎碌碌无为的生活，还是暂且从“内卷”“竞争”这些话题之中脱身，想象一下之后的我的大学。</p>
-]]></content>
-      <categories>
-        <category>闲聊</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>《人工智能导论》学习笔记</title>
-    <url>/2021/06/16/note-of-iai/</url>
-    <content><![CDATA[<p>这个文档就是一时兴起想要好好学学人工智能背后的玩意创建的。主要还是记录《人工智能导论》课程的笔记。</p>
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%90%9C%E7%B4%A2%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">搜索问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B2%E7%9B%AE%E6%90%9C%E7%B4%A2%EF%BC%88BFS-DFS%EF%BC%89"><span class="nav-number">1.1.</span> <span class="nav-text">盲目搜索（BFS &#x2F; DFS）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E5%8F%91%E5%BC%8F%E6%90%9C%E7%B4%A2%EF%BC%88A-A-%EF%BC%89"><span class="nav-number">1.2.</span> <span class="nav-text">启发式搜索（A &#x2F; A*）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%B9%E8%BF%9B-A-%E7%AE%97%E6%B3%95"><span class="nav-number">1.3.</span> <span class="nav-text">改进 A* 算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%9A%E5%BC%88%E9%97%AE%E9%A2%98%EF%BC%88%E5%AF%B9%E6%8A%97%E6%90%9C%E7%B4%A2%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">博弈问题（对抗搜索）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#alpha-beta-%E5%89%AA%E6%9E%9D"><span class="nav-number">2.1.</span> <span class="nav-text">$\alpha-\beta$ 剪枝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%92%99%E7%89%B9%E5%8D%A1%E7%BD%97%E6%96%B9%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">蒙特卡罗方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%AB%98%E7%BA%A7%E6%90%9C%E7%B4%A2"><span class="nav-number">3.</span> <span class="nav-text">高级搜索</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B1%80%E9%83%A8%E6%90%9C%E7%B4%A2"><span class="nav-number">3.1.</span> <span class="nav-text">局部搜索</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E6%8B%9F%E9%80%80%E7%81%AB%E7%AE%97%E6%B3%95"><span class="nav-number">3.2.</span> <span class="nav-text">模拟退火算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95"><span class="nav-number">3.3.</span> <span class="nav-text">遗传算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%9F%E8%AE%A1%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0"><span class="nav-number">4.</span> <span class="nav-text">统计机器学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">4.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%B4%E7%B4%A0-Bayes-%E6%B3%95"><span class="nav-number">4.2.</span> <span class="nav-text">朴素 Bayes 法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA%EF%BC%88-SVM-%EF%BC%89"><span class="nav-number">4.3.</span> <span class="nav-text">支持向量机（ SVM ）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%B3%E7%AD%96%E6%A0%91"><span class="nav-number">4.4.</span> <span class="nav-text">决策树</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0"><span class="nav-number">5.</span> <span class="nav-text">神经网络与深度学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%A5%9E%E7%BB%8F%E5%85%83%E7%BB%93%E6%9E%84"><span class="nav-number">5.1.</span> <span class="nav-text">基本神经元结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E7%AE%97%E6%B3%95%EF%BC%88-BP-%EF%BC%89"><span class="nav-number">5.2.</span> <span class="nav-text">反向传播算法（ BP ）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%87%E6%8B%9F%E5%90%88%E9%97%AE%E9%A2%98%E4%B8%8E%E6%AD%A3%E5%88%99%E5%8C%96"><span class="nav-number">5.3.</span> <span class="nav-text">过拟合问题与正则化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%EF%BC%88-CNN-%EF%BC%89"><span class="nav-number">5.4.</span> <span class="nav-text">卷积神经网络（ CNN ）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%EF%BC%88-RNN-%EF%BC%89"><span class="nav-number">5.5.</span> <span class="nav-text">循环神经网络（ RNN ）</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Ashitemaru"
+      src="/uploads/avatar.png">
+  <p class="site-author-name" itemprop="name">Ashitemaru</p>
+  <div class="site-description" itemprop="description">This site is built to share my life.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Ashitemaru" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Ashitemaru" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:qhd@mails.tsinghua.edu.cn" title="E-Mail → mailto:qhd@mails.tsinghua.edu.cn" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Friends
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.unidy.cn/" title="https:&#x2F;&#x2F;www.unidy.cn" rel="noopener" target="_blank">UNIDY</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.dilant.cn/" title="https:&#x2F;&#x2F;www.dilant.cn" rel="noopener" target="_blank">Dilant</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://zcy.moe/" title="https:&#x2F;&#x2F;zcy.moe" rel="noopener" target="_blank">猫猫</a>
+        </li>
+    </ul>
+  </div>
+
+          </div>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/Ashitemaru" class="github-corner" title="Come here for fun." aria-label="Come here for fun." rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ashitemaru.github.io/2021/06/16/note-of-iai/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="Ashitemaru">
+      <meta itemprop="description" content="This site is built to share my life.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ashitemaru">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          《人工智能导论》学习笔记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-06-16 20:27:16" itemprop="dateCreated datePublished" datetime="2021-06-16T20:27:16+00:00">2021-06-16</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-06-16 20:27:16" itemprop="dateModified" datetime="2021-06-16T20:27:16+00:00">2021-06-16</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
+        </span>
+    </span>
+
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>15k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>14 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>这个文档就是一时兴起想要好好学学人工智能背后的玩意创建的。主要还是记录《人工智能导论》课程的笔记。</p>
 <span id="more"></span>
 
 <p>大概随着这个文档越来越饱满，我应该就能看懂<code>paper.md</code>这个诡异的超纲文档了。</p>
@@ -89,7 +309,7 @@
 <p>上述函数均为<strong>估计值</strong>。我们把相应的实际值（也就是最短路所对应的）分别标记为 $f^*(n), g^*(n), h^*(n)$ 。</p>
 <p>A 算法的核心为，优先扩展 $f(n)$ 最小的节点。</p>
 <p>在算法的具体实现过程之中，定义了<code>OPEN</code>表以及<code>CLOSE</code>表，分别代表<strong>当前考虑扩展的节点</strong>以及<strong>当前暂时不考虑扩展的节点</strong>。一份伪代码实现为：</p>
-<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line">OPEN = [<span class="string">&#x27;s&#x27;</span>] <span class="comment"># &#x27;s&#x27; is the starting node</span></span><br><span class="line">CLOSE = []</span><br><span class="line"><span class="keyword">while</span> <span class="keyword">not</span> OPEN.empty():</span><br><span class="line">    <span class="comment"># Select the node with minimum f value</span></span><br><span class="line">    n = OPEN.node_with_min_f()</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># n is the expected node</span></span><br><span class="line">    <span class="keyword">if</span> expected(n):</span><br><span class="line">        <span class="keyword">return</span> n</span><br><span class="line">    </span><br><span class="line">    OPEN.remove(n)</span><br><span class="line">    CLOSE.add(n)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Traverse the neighbors</span></span><br><span class="line">    <span class="keyword">for</span> m <span class="keyword">in</span> n.neighbor():</span><br><span class="line">        path_len = g(n) + distance(n, m)</span><br><span class="line">        <span class="comment"># Expand the list</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">not</span> m <span class="keyword">in</span> OPEN) <span class="keyword">and</span> (<span class="keyword">not</span> m <span class="keyword">in</span> CLOSE):</span><br><span class="line">            OPEN.add(m)</span><br><span class="line">            n.<span class="built_in">next</span> = m</span><br><span class="line">        <span class="comment"># m has been explored before, but it needs update</span></span><br><span class="line">        <span class="keyword">elif</span> (m <span class="keyword">in</span> OPEN) <span class="keyword">and</span> (path_len &lt; g(m)):</span><br><span class="line">            g(m) = path_len</span><br><span class="line">            n.<span class="built_in">next</span> = m</span><br><span class="line">        <span class="comment"># m has been discarded, but it can be reused now</span></span><br><span class="line">        <span class="keyword">elif</span> (m <span class="keyword">in</span> CLOSE) <span class="keyword">and</span> (path_len &lt; g(m)):</span><br><span class="line">            CLOSE.remove(m)</span><br><span class="line">            OPEN.add(m)</span><br><span class="line">            n.<span class="built_in">next</span> = m</span><br><span class="line"><span class="comment"># Fail</span></span><br><span class="line"><span class="keyword">return</span> FAIL</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">OPEN = [<span class="string">&#x27;s&#x27;</span>] <span class="comment"># &#x27;s&#x27; is the starting node</span></span><br><span class="line">CLOSE = []</span><br><span class="line"><span class="keyword">while</span> <span class="keyword">not</span> OPEN.empty():</span><br><span class="line">    <span class="comment"># Select the node with minimum f value</span></span><br><span class="line">    n = OPEN.node_with_min_f()</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># n is the expected node</span></span><br><span class="line">    <span class="keyword">if</span> expected(n):</span><br><span class="line">        <span class="keyword">return</span> n</span><br><span class="line">    </span><br><span class="line">    OPEN.remove(n)</span><br><span class="line">    CLOSE.add(n)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Traverse the neighbors</span></span><br><span class="line">    <span class="keyword">for</span> m <span class="keyword">in</span> n.neighbor():</span><br><span class="line">        path_len = g(n) + distance(n, m)</span><br><span class="line">        <span class="comment"># Expand the list</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">not</span> m <span class="keyword">in</span> OPEN) <span class="keyword">and</span> (<span class="keyword">not</span> m <span class="keyword">in</span> CLOSE):</span><br><span class="line">            OPEN.add(m)</span><br><span class="line">            n.<span class="built_in">next</span> = m</span><br><span class="line">        <span class="comment"># m has been explored before, but it needs update</span></span><br><span class="line">        <span class="keyword">elif</span> (m <span class="keyword">in</span> OPEN) <span class="keyword">and</span> (path_len &lt; g(m)):</span><br><span class="line">            g(m) = path_len</span><br><span class="line">            n.<span class="built_in">next</span> = m</span><br><span class="line">        <span class="comment"># m has been discarded, but it can be reused now</span></span><br><span class="line">        <span class="keyword">elif</span> (m <span class="keyword">in</span> CLOSE) <span class="keyword">and</span> (path_len &lt; g(m)):</span><br><span class="line">            CLOSE.remove(m)</span><br><span class="line">            OPEN.add(m)</span><br><span class="line">            n.<span class="built_in">next</span> = m</span><br><span class="line"><span class="comment"># Fail</span></span><br><span class="line"><span class="keyword">return</span> FAIL</span><br></pre></td></tr></table></figure>
 
 <p>在 A 算法之中，如果满足：</p>
 <p>$$<br>h(n) \leq h^*(n)<br>$$</p>
@@ -107,7 +327,7 @@
 <p>我们可以证明如果 $h$ 是单调的，那么使用这个启发函数的 A* 算法一旦扩展到了某一个节点 $n$ ，就已经找到了从起点到这个节点的最短路，也就是说 $g(n) = g^*(n)$ 。</p>
 <p>实际上还有一个结论，就是满足单调性的 $h$ 必然满足 A* 条件。</p>
 <p>基于此改进 A* 算法如下（伪代码表示）：</p>
-<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line">OPEN = [<span class="string">&#x27;s&#x27;</span>] <span class="comment"># &#x27;s&#x27; is the starting node</span></span><br><span class="line">CLOSE = []</span><br><span class="line">f_max = <span class="number">0</span> <span class="comment"># The maximum f value that has been found till now</span></span><br><span class="line"><span class="keyword">while</span> <span class="keyword">not</span> OPEN.empty():</span><br><span class="line">    <span class="comment"># Find the nodes in OPEN with f value less than f_max</span></span><br><span class="line">    NEST = OPEN.with_f_less_than(f_max)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Select the node</span></span><br><span class="line">    <span class="comment"># When the f value has been small enough to be selected into NEST</span></span><br><span class="line">    <span class="comment"># We just need to select the minimum g value now</span></span><br><span class="line">    n = <span class="literal">None</span></span><br><span class="line">    <span class="keyword">if</span> NEST.empty():</span><br><span class="line">        n = OPEN.node_with_min_f()</span><br><span class="line">        f_max = f(n)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        n = NEST.node_with_min_g()</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># n is the expected node</span></span><br><span class="line">    <span class="keyword">if</span> expected(n):</span><br><span class="line">        <span class="keyword">return</span> n</span><br><span class="line">    </span><br><span class="line">    OPEN.remove(n)</span><br><span class="line">    CLOSE.add(n)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Traverse the neighbors</span></span><br><span class="line">    <span class="keyword">for</span> m <span class="keyword">in</span> n.neighbor():</span><br><span class="line">        path_len = g(n) + distance(n, m)</span><br><span class="line">        <span class="comment"># Expand the list</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">not</span> m <span class="keyword">in</span> OPEN) <span class="keyword">and</span> (<span class="keyword">not</span> m <span class="keyword">in</span> CLOSE):</span><br><span class="line">            OPEN.add(m)</span><br><span class="line">            n.<span class="built_in">next</span> = m</span><br><span class="line">        <span class="comment"># m has been explored before, but it needs update</span></span><br><span class="line">        <span class="keyword">elif</span> (m <span class="keyword">in</span> OPEN) <span class="keyword">and</span> (path_len &lt; g(m)):</span><br><span class="line">            g(m) = path_len</span><br><span class="line">            n.<span class="built_in">next</span> = m</span><br><span class="line">        <span class="comment"># m has been discarded, but it can be reused now</span></span><br><span class="line">        <span class="keyword">elif</span> (m <span class="keyword">in</span> CLOSE) <span class="keyword">and</span> (path_len &lt; g(m)):</span><br><span class="line">            CLOSE.remove(m)</span><br><span class="line">            OPEN.add(m)</span><br><span class="line">            n.<span class="built_in">next</span> = m</span><br><span class="line"><span class="comment"># Fail</span></span><br><span class="line"><span class="keyword">return</span> FAIL</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">OPEN = [<span class="string">&#x27;s&#x27;</span>] <span class="comment"># &#x27;s&#x27; is the starting node</span></span><br><span class="line">CLOSE = []</span><br><span class="line">f_max = <span class="number">0</span> <span class="comment"># The maximum f value that has been found till now</span></span><br><span class="line"><span class="keyword">while</span> <span class="keyword">not</span> OPEN.empty():</span><br><span class="line">    <span class="comment"># Find the nodes in OPEN with f value less than f_max</span></span><br><span class="line">    NEST = OPEN.with_f_less_than(f_max)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Select the node</span></span><br><span class="line">    <span class="comment"># When the f value has been small enough to be selected into NEST</span></span><br><span class="line">    <span class="comment"># We just need to select the minimum g value now</span></span><br><span class="line">    n = <span class="literal">None</span></span><br><span class="line">    <span class="keyword">if</span> NEST.empty():</span><br><span class="line">        n = OPEN.node_with_min_f()</span><br><span class="line">        f_max = f(n)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        n = NEST.node_with_min_g()</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># n is the expected node</span></span><br><span class="line">    <span class="keyword">if</span> expected(n):</span><br><span class="line">        <span class="keyword">return</span> n</span><br><span class="line">    </span><br><span class="line">    OPEN.remove(n)</span><br><span class="line">    CLOSE.add(n)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Traverse the neighbors</span></span><br><span class="line">    <span class="keyword">for</span> m <span class="keyword">in</span> n.neighbor():</span><br><span class="line">        path_len = g(n) + distance(n, m)</span><br><span class="line">        <span class="comment"># Expand the list</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">not</span> m <span class="keyword">in</span> OPEN) <span class="keyword">and</span> (<span class="keyword">not</span> m <span class="keyword">in</span> CLOSE):</span><br><span class="line">            OPEN.add(m)</span><br><span class="line">            n.<span class="built_in">next</span> = m</span><br><span class="line">        <span class="comment"># m has been explored before, but it needs update</span></span><br><span class="line">        <span class="keyword">elif</span> (m <span class="keyword">in</span> OPEN) <span class="keyword">and</span> (path_len &lt; g(m)):</span><br><span class="line">            g(m) = path_len</span><br><span class="line">            n.<span class="built_in">next</span> = m</span><br><span class="line">        <span class="comment"># m has been discarded, but it can be reused now</span></span><br><span class="line">        <span class="keyword">elif</span> (m <span class="keyword">in</span> CLOSE) <span class="keyword">and</span> (path_len &lt; g(m)):</span><br><span class="line">            CLOSE.remove(m)</span><br><span class="line">            OPEN.add(m)</span><br><span class="line">            n.<span class="built_in">next</span> = m</span><br><span class="line"><span class="comment"># Fail</span></span><br><span class="line"><span class="keyword">return</span> FAIL</span><br></pre></td></tr></table></figure>
 
 <h2 id="博弈问题（对抗搜索）"><a href="#博弈问题（对抗搜索）" class="headerlink" title="博弈问题（对抗搜索）"></a>博弈问题（对抗搜索）</h2><h3 id="alpha-beta-剪枝"><a href="#alpha-beta-剪枝" class="headerlink" title="$\alpha-\beta$ 剪枝"></a>$\alpha-\beta$ 剪枝</h3><p>我们在面临双方博弈，需要我方决策的时候，我们可以先搜索一遍所有可能的双方情况并使用专家知识对局面进行评估。由于对方有利就是我方不利，所以在搜索到最底部回溯得到估值的时候，要注意并不是始终取孩子节点的最大值，而是按层数交替取最大值和最小值。</p>
 <p>一般而言，根节点要取最大的儿子节点（一般用方形节点代表<strong>极大过程</strong>），下一层要取最小的儿子节点（一般用圆形节点代表<strong>极小过程</strong>），以此类推。</p>
@@ -363,9 +583,91 @@
 <p>另外还有引入 Dropout 以及引入验证集的方式，这里均不展开。</p>
 <h3 id="卷积神经网络（-CNN-）"><a href="#卷积神经网络（-CNN-）" class="headerlink" title="卷积神经网络（ CNN ）"></a>卷积神经网络（ CNN ）</h3><p><code>TODO</code></p>
 <h3 id="循环神经网络（-RNN-）"><a href="#循环神经网络（-RNN-）" class="headerlink" title="循环神经网络（ RNN ）"></a>循环神经网络（ RNN ）</h3><p><code>TODO</code></p>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-  </entry>
-</search>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/06/16/look-back/" rel="prev" title="回忆一下我的大学">
+                  <i class="fa fa-chevron-left"></i> 回忆一下我的大学
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ashitemaru</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">17k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">15 分钟</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;tags&quot;:&quot;none&quot;,&quot;js&quot;:{&quot;url&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mathjax@3.1.4&#x2F;es5&#x2F;tex-mml-chtml.js&quot;,&quot;integrity&quot;:&quot;sha256-ncNI9OXOS5Ek4tzVYiOMmN&#x2F;KKCPZ6V0Cpv2P&#x2F;zHntiA&#x3D;&quot;}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>
