@@ -1,3 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
+  <entry>
+    <title>Hello world</title>
+    <url>/2021/06/16/hello-world/</url>
+    <content><![CDATA[<p>刚刚建立好这个地方，暂且也没什么特别想说的，不如就来玩一下 hexo 的各个语法吧。</p>
+<span id="more"></span>
+
+<p>首先玩玩代码块，自然首先试试 cpp 。</p>
+<figure class="highlight cpp"><figcaption><span>C++</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Hello world!&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>再来试一下 Python 。</p>
+<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Hello world!&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>不如玩一下 JavaScript 。</p>
+<figure class="highlight js"><figcaption><span>JavaScript</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;Hello world!&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>然后玩一下数学公式。</p>
+<p>我们可以把机器学习抽象描述为以下过程，这里$X$表示输入集合，$Y$表示输出集合，$L$表示损失函数，$\boldsymbol{w}$表示模型参数，$f_\boldsymbol{w}$表示在某一系列参数之下的模型函数。</p>
+<p>$$<br>\boldsymbol{w}^*=\mathop{\arg\min}<em>{\boldsymbol{w} \in \Omega}\sum</em>{x_i \in X, y_i \in Y} L(f_\boldsymbol{w}(x_i), y_i)<br>$$</p>
+<p>再来试一下它自带的一些引用块。</p>
+<blockquote><p>你成功建好了自己的第一个 hexo 站点！</p>
+</blockquote>
+
+<p>hexo 文档里面还提到了一种奇怪的东西，来试一下。</p>
+<blockquote class="pullquote"><p>这个东西被称为 Pull Quote 。</p>
+</blockquote>
+
+<p>暂且玩到这里吧，目前的话想要做的一些事情包括：</p>
+<ul>
+<li><p>换一个适合自己的主题</p>
+</li>
+<li><p>给数学公式的渲染搞个好一点的引擎</p>
+</li>
+<li><p>链接上友情链接</p>
+</li>
+<li><p>写点有点价值的东西</p>
+</li>
+</ul>
+<p>当然我们知道明天下午就考数电了，所以 Holder 该滚去复习了。</p>
+]]></content>
+  </entry>
 </search>
