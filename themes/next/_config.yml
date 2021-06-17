@@ -564,7 +564,7 @@ comments:
   style: tabs
   # Choose a comment system to be displayed by default.
   # Available values: disqus | disqusjs | changyan | livere | gitalk | utterances
-  active:
+  active: valine
   # Setting `true` means remembering the comment system selected by the visitor.
   storage: true
   # Lazyload all comment systems.
@@ -576,6 +576,15 @@ comments:
     #  order: -1
     #gitalk:
     #  order: -2
+
+valine:
+  enable: true
+  appid: TEiq6LSCOHMgxWwXlkesd75Y-gzGzoHsz
+  appkey: 8vOzt0KlPiApRy3I4B4I8lYA
+  notify: false
+  verify: false
+  placeholder: 都看到这里了，确定不写点什么么？
+  language: zh-cn
 
 # Disqus
 # For more information: https://disqus.com

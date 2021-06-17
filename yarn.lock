@@ -2,6 +2,14 @@
 # yarn lockfile v1
 
 
+"@next-theme/utils@^1.1.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@next-theme/utils/-/utils-1.2.0.tgz#b062f56d768c7722ab878bf93afd0172d89d76b0"
+  integrity sha512-SQcN24NC+aRSA+Lx3iw5kBjJrGhBUy922tkB8IcMGtzxwvRJmTNSqt+tknFpdV8bHLBav0UGU8HuXgCui05RNg==
+  dependencies:
+    js-yaml "4.0.0"
+    lodash "4.17.20"
+
 JSONStream@^1.0.7:
   version "1.3.5"
   resolved "https://registry.yarnpkg.com/JSONStream/-/JSONStream-1.3.5.tgz#3208c1f08d3a4d99261ab64f92302bc15e111ca0"
@@ -556,6 +564,13 @@ hexo-log@^2.0.0:
   dependencies:
     chalk "^4.0.0"
 
+hexo-next-valine@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/hexo-next-valine/-/hexo-next-valine-1.0.0.tgz#9e3fa3cf6c7c59bd4b09486fce523ca24312f9ff"
+  integrity sha512-xno6f41+A7RyF8tNFZAHx4KJyp0Dck4rajwWsRmSdus/GF56t2z1q0NwFcDAIhijS/Bw9TfpzRdxDUBN/op9ew==
+  dependencies:
+    "@next-theme/utils" "^1.1.0"
+
 hexo-pagination@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/hexo-pagination/-/hexo-pagination-1.0.0.tgz#c9c0ca3665267b9e9d0a89fc3edcaf3276907dc1"
@@ -597,6 +612,11 @@ hexo-server@^2.0.0:
     morgan "^1.9.1"
     open "^7.0.0"
     serve-static "^1.14.1"
+
+hexo-theme-next@^8.5.0:
+  version "8.5.0"
+  resolved "https://registry.yarnpkg.com/hexo-theme-next/-/hexo-theme-next-8.5.0.tgz#74bb34c3d2481d36bc5b1877bfc6104f4ac3484c"
+  integrity sha512-QqUiOiz+z2PbxL+f0Osgwd0BH7FkSb3F7QoSTS+IE+SIhXlJgW4gjlvfjYkZDC0/n4lGb7n7skco9vgMJTtxeQ==
 
 hexo-util@2.4.0:
   version "2.4.0"
@@ -764,6 +784,13 @@ isexe@^2.0.0:
   resolved "https://registry.yarnpkg.com/isexe/-/isexe-2.0.0.tgz#e8fbf374dc556ff8947a10dcb0572d633f2cfa10"
   integrity sha1-6PvzdNxVb/iUehDcsFctYz8s+hA=
 
+js-yaml@4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-4.0.0.tgz#f426bc0ff4b4051926cd588c71113183409a121f"
+  integrity sha512-pqon0s+4ScYUvX30wxQi3PogGFAlUyH0awepWvwkj4jD4v+ova3RiYw8bmA6x2rDrEaj8i/oWKoRxpVNW+Re8Q==
+  dependencies:
+    argparse "^2.0.1"
+
 js-yaml@^3.13.1:
   version "3.14.1"
   resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.14.1.tgz#dae812fdb3825fa306609a8717383c50c36a0537"
@@ -784,6 +811,11 @@ jsonparse@^1.2.0:
   resolved "https://registry.yarnpkg.com/jsonparse/-/jsonparse-1.3.1.tgz#3f4dae4a91fac315f71062f8521cc239f1366280"
   integrity sha1-P02uSpH6wxX3EGL4UhzCOfE2YoA=
 
+lodash@4.17.20:
+  version "4.17.20"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
+  integrity sha512-PlhdFcillOINfeV7Ni6oF1TAEayyZBoZ8bcshTHqOYJYlrqzRK5hagpagky5o4HfCzzd1TRkXPMFq6cKk9rGmA==
+
 lower-case@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/lower-case/-/lower-case-2.0.2.tgz#6fa237c63dbdc4a82ca0fd882e4722dc5e634e28"
@@ -792,9 +824,9 @@ lower-case@^2.0.2:
     tslib "^2.0.3"
 
 marked@^2.0.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/marked/-/marked-2.1.0.tgz#289924c0613f1505a6c2b20b41cd75db96a50efe"
-  integrity sha512-KSdOTs1I/+hrQrFB+e7O/r+AorwdD4XzAi9caoRrbbkRLUS6txr1MZCZQhimm1N5Pg7A/WazC9VrYgqnwGiXMg==
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/marked/-/marked-2.1.1.tgz#b7c27f520fc4de0ddd049d9b4be3b04e06314923"
+  integrity sha512-5XFS69o9CzDpQDSpUYC+AN2xvq8yl1EGa5SG/GI1hP78/uTeo3PDfiDNmsUyiahpyhToDDJhQk7fNtJsga+KVw==
 
 micromatch@^4.0.2:
   version "4.0.4"
