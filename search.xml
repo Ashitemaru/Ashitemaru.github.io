@@ -593,6 +593,60 @@
       </categories>
   </entry>
   <entry>
+    <title>CSAPP 学习笔记</title>
+    <url>/2021/06/29/note-of-csapp/</url>
+    <content><![CDATA[<p>这个笔记基本基于 Computer System: A Programmer Perspective 这本书，学习的动机就是想要摸索一下计算机的结构，估计对汇编、计组、 OS 这些课有点帮助吧。</p>
+<span id="more"></span>
+
+
+]]></content>
+      <categories>
+        <category>计算机科学</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>《编译原理》学习笔记</title>
+    <url>/2021/06/29/note-of-dc/</url>
+    <content><![CDATA[<p>想要提前学习这一门课主要是因为自动机学得确实太不行了，而编译原理与之强相关，为了防止编译原理也起飞，所以还是学一点点。这个笔记基本基于 Compiler: Principles, Techniques &amp; Tools 这本书以及校内的一些 Lecture 资料。</p>
+<span id="more"></span>
+]]></content>
+      <categories>
+        <category>计算机科学</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>《计算机网络原理》学习笔记</title>
+    <url>/2021/06/29/note-of-dcn/</url>
+    <content><![CDATA[<p>这门课听各种上过的同学介绍，是需要大量的记忆工作的，所以一个学习笔记必然是需要的。这个笔记大概都是基于 2021 春季学期崔勇的 PPT 以及 Computer Networking: A Top-Down Approach 这本书。</p>
+<span id="more"></span>
+]]></content>
+      <categories>
+        <category>计算机科学</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>《信号处理原理》学习笔记</title>
+    <url>/2021/06/29/note-of-dsp/</url>
+    <content><![CDATA[<p>这个笔记从 2021 年暑假开始编写，估计会在学期中继续编写。暑期编写基本基于 Introduction to Signal Processing 这本书，学期中的编写应该会基于课程内容。</p>
+<span id="more"></span>
+
+
+]]></content>
+      <categories>
+        <category>计算机科学</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>GAMES101 课程学习笔记</title>
+    <url>/2021/06/29/note-of-fcg/</url>
+    <content><![CDATA[<p>因为安主席的安利，所以打算看看 GAMES101 这个课程入坑图形学，这个笔记也是长期更新。</p>
+<span id="more"></span>
+]]></content>
+      <categories>
+        <category>计算机科学</category>
+      </categories>
+  </entry>
+  <entry>
     <title>《人工智能导论》学习笔记</title>
     <url>/2021/06/16/note-of-iai/</url>
     <content><![CDATA[<p>这个文档就是一时兴起想要好好学学人工智能背后的玩意创建的。主要还是记录《人工智能导论》课程的笔记。</p>
@@ -931,7 +985,7 @@
 </ul>
 <p>此外还有一些杂事，包括买一个新电脑、预定 GRE 考试、选大三的课、重办身份证、回高中讲竞赛、和高中东方同好会线下聚会、陪 Sakana 玩等各种。</p>
 <p>因为想做的事情很多，所以想着不如就在这里开一个日记贴，就每天写一下想干什么，最后干了什么之类的。没啥价值，目标就是让自己做点事情，别划水了。</p>
-<h2 id="2021-06-29"><a href="#2021-06-29" class="headerlink" title="2021.06.29"></a>2021.06.29</h2><p>今天想要做的事情：</p>
+<h2 id="2021-06-29"><a href="#2021-06-29" class="headerlink" title="2021.06.29"></a>2021.06.29</h2><p><strong>今天想要做的事情：</strong></p>
 <ul>
 <li><p>去驾校办理科目二入学手续</p>
 </li>
@@ -945,6 +999,15 @@
 </li>
 </ul>
 <p>其实想做的多，最后能做完的，凭运气吧。睡大觉去了，祝自己好梦，祝自己暑假顺利。也祝 Sakana 军训平稳度过。</p>
+<p><strong>今天汇报：</strong></p>
+<p>基本上弄完了网络部招新的通知工作，飞书还没有完全摸完，这个晚上慢慢来。后面应该要去问一下技术顾问团他们的情况，好准备做点事情。不过考虑到零字班的新生估计还要等他们军训完了才能安排工作，所以初始化应该暂且由老人完成。</p>
+<p>给韩旭发了微信消息，等他安排吧。</p>
+<p>目前下学期应该是四大原理 + 人机交互 + 计算机网络安全 + 台球 / 网球，所以也可以开始做点准备了。</p>
+<p>之后就是逛 CRACKER 。目前的一个打算是汇编和计组应该就通过 CSAPP 先摸一下。计组可能还需要一些 Verilog 什么的东西，这个以后等买了 Windows 电脑再来搞一搞，造 CPU 的那本书也已经拿到手了。 Java 相关是不打算弄多少，总之和 xge 他们组队搬砖，所以就打算把一些算法代码改成 Java 的，熟悉一下语法算了。</p>
+<p>编原那就是纯纯的逆天，因为我自动机学不明白，所以编译原理需要先看一些 Compiler 那本书。</p>
+<p>信号据说是数学课，所以找个课本随便学应该也就应付过去了。网原看起来属于巨大背诵的一门课，找了个《计算机网络：自顶而下》，然后要到了所有的课件，就打算看着玩玩算了。</p>
+<p>至于那些限选课，网络安全技术看起来和网原巨大相关，懒得搞。然后就是人机交互没啥经验，就算了。</p>
+<p>最后是打算学习图形学，问安主席要到了整本书的电子版，然后找到了网课链接，总之打算干活。</p>
 ]]></content>
       <categories>
         <category>闲聊</category>
