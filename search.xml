@@ -598,7 +598,27 @@
     <content><![CDATA[<p>这个笔记基本基于 Computer System: A Programmer Perspective 这本书，学习的动机就是想要摸索一下计算机的结构，估计对汇编、计组、 OS 这些课有点帮助吧。</p>
 <span id="more"></span>
 
+<h2 id="计算机系统简介"><a href="#计算机系统简介" class="headerlink" title="计算机系统简介"></a>计算机系统简介</h2><h3 id="源代码的编译"><a href="#源代码的编译" class="headerlink" title="源代码的编译"></a>源代码的编译</h3><p>首先明晰两个概念，只通过 ASCII 字符构成的文件称为<strong>文本文件</strong>，其余的文件称为<strong>二进制文件</strong>。</p>
+<p>之后明晰一个基本约定，也就是无论是整数、浮点数、字符串、机器指令，它们都是<strong>比特串</strong>。区分它们的方式是根据<strong>上下文</strong>按照不同的方式解析比特串。</p>
+<p>基于此我们探讨源代码到可执行文件的过程。</p>
+<hr>
+<p>对于一个 C 语言的文件 <code>hello.c</code> ，计算机将其转化为可以被计算机执行的二进制文件的过程称为<strong>编译</strong>。编译过程又可以分为预处理、编译、汇编、链接四个过程。注意作为四个过程之一的编译和代指整体过程的编译之间是有区别的，并非一个概念。考虑下面的程序：</p>
+<figure class="highlight c"><figcaption><span>C</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Hello, world!&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p><strong>预处理</strong>指的是将程序中的 <code>#</code> 开头的语句进行替换。这里我们引用了头文件 <code>stdio.h</code> ，则预处理过程中这个语句将会被替换为头文件 <code>stdio.h</code> 之中的内容。</p>
+<p><strong>编译</strong>指的是将预处理过后的源代码转化为汇编代码，比如说上述 C 语言代码就会被转化为：</p>
+<figure class="highlight plaintext"><figcaption><span>Assembly</span></figcaption><table><tr><td class="code"><pre><span class="line">main:</span><br><span class="line">    subq $8, %rsp</span><br><span class="line">    movl $.LCO, %edi</span><br><span class="line">    call puts</span><br><span class="line">    movl $0, %edx</span><br><span class="line">    addq $8, %rsp</span><br><span class="line">    ret</span><br></pre></td></tr></table></figure>
+
+<p><strong>汇编</strong>指的是将汇编语言程序转化为<strong>可重定位目标程序（ relocatable object program ）</strong>。</p>
+<p><strong>链接</strong>就是将各个需要的可重定位目标程序链接为一个可执行目标文件，这样就完成了整个工作。</p>
+<p>当然上面的描述实际上还是很粗糙，所以后续我们会继续细节化这里面的过程。</p>
+<h3 id="系统执行可执行文件"><a href="#系统执行可执行文件" class="headerlink" title="系统执行可执行文件"></a>系统执行可执行文件</h3><h4 id="系统的架构"><a href="#系统的架构" class="headerlink" title="系统的架构"></a>系统的架构</h4><p>在讲述系统是如何执行可执行文件之前，我们需要了解计算机系统的架构。一个常见的硬件体系可以是：</p>
+<p><img src="/uploads/note-of-csapp/chap1-hardware-system.png" title="常见的硬件体系"></p>
+<p>这里我们分别简单说明一下这些组成部分。</p>
+<p><strong>总线</strong>是负责在各个组件之间传递信息的管道，一般情况下其会被设计为一个固定长度的字节块，被称为<strong>字（ word ）</strong>。字中的字节数被称为<strong>字长</strong>，不同系统中的字长会不同，比如说 64 位系统的字长就是 8 ， 32 位系统的字长则是 4 。</p>
+<p><strong>主存</strong>也被叫做内存，是一个临时存储设备。从逻辑上来说，主存是一个字节数组，每个字节都有其唯一的索引。</p>
+<p><strong>处理器（ CPU ）</strong>的职责是运行机器指令，其核心是<strong>程序计数器（ Program counter / PC）</strong>，程序计数器记录当前所执行的指令在主存之中的地址。在任何时候，处理器永远都在执行 PC 所指向的指令并相应操作后更新 PC ，之后继续执行。</p>
+<p>处理器内部一般包含寄存器以及算术逻辑单元（ ALU ）。寄存器是一个较小的存储设备，而 ALU 负责较为具体的计算工作。</p>
 ]]></content>
       <categories>
         <category>计算机科学</category>
@@ -1052,6 +1072,13 @@
 <p>这两天除了科目二看起来什么都没有做呢，所以说下面还是要准备开工吧。之前似乎还说过要买新电脑的，似乎也给我搞忘了。</p>
 <p>想到一年前的自己还宣称着一个人孤独地走下去反而好，现在却苦于这里找不到人一起做事，莫名有点可笑。</p>
 <p>七月份，下半年的开始，要准备拾起自己了。</p>
+<p><strong>今天汇报：</strong></p>
+<p>很平凡地过了一天，晚上想回姜堰找人吃饭，结果因为下雨没去得了。学习也没学多少，看了一点点 CSAPP ，但是也是很肤浅。</p>
+<p>话说直到现在才猛然发现自己似乎没有什么兴趣爱好，这个时候又突然想到自己之前小学的时候填兴趣爱好，永远都是大众化的“读书”。思来想去，觉得自己可能不太喜欢一直呆着，自己还是比较喜欢在路上的感觉。于是就有了一个还在萌芽的想法，就是只用公交或者地铁，去很远的地方，比如说从家到北京、到广州。也正如我自己感觉的那样，我自己还算喜欢折磨自己。这个规划算是很远期很远期的了。然后问了一下 Sakana 有没有兴趣，但是她也没有给出明确答复。</p>
+<p>学习？那是不可能学习的。在闷热的天气底下随时准备被教练喊去练车，这种情况下那是不可能学习的。于是我是真的把贴吧、知乎刷到推荐都开始循环，然后就开始戳 Sakana 等她回复，要么就是水群。但哪里有闲人像我这样一整天啥事没有呢，或多或少都要去做点什么事，打游戏也算。</p>
+<p>自己还是很不擅长应对无聊这个问题啊。其实只要有一个聊得来的人在，但是我能聊得来的都有事情，这就尴尬了。</p>
+<h2 id="2021-07-03"><a href="#2021-07-03" class="headerlink" title="2021.07.03"></a>2021.07.03</h2><p>想做的事情和之前差不多，觉得也没有必要再写一遍了。</p>
+<p>大概还有一些感慨吧，感慨自己怎么很容易变得惆怅起来，会有那种莫名其妙的伤感。</p>
 ]]></content>
       <categories>
         <category>闲聊</category>
