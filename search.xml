@@ -593,92 +593,6 @@
       </categories>
   </entry>
   <entry>
-    <title>CSAPP 学习笔记</title>
-    <url>/2021/06/29/note-of-csapp/</url>
-    <content><![CDATA[<p>这个笔记基本基于 Computer System: A Programmer Perspective 这本书，学习的动机就是想要摸索一下计算机的结构，估计对汇编、计组、 OS 这些课有点帮助吧。</p>
-<span id="more"></span>
-
-<h2 id="计算机系统简介"><a href="#计算机系统简介" class="headerlink" title="计算机系统简介"></a>计算机系统简介</h2><h3 id="源代码的编译"><a href="#源代码的编译" class="headerlink" title="源代码的编译"></a>源代码的编译</h3><p>首先明晰两个概念，只通过 ASCII 字符构成的文件称为<strong>文本文件</strong>，其余的文件称为<strong>二进制文件</strong>。</p>
-<p>之后明晰一个基本约定，也就是无论是整数、浮点数、字符串、机器指令，它们都是<strong>比特串</strong>。区分它们的方式是根据<strong>上下文</strong>按照不同的方式解析比特串。</p>
-<p>基于此我们探讨源代码到可执行文件的过程。</p>
-<hr>
-<p>对于一个 C 语言的文件 <code>hello.c</code> ，计算机将其转化为可以被计算机执行的二进制文件的过程称为<strong>编译</strong>。编译过程又可以分为预处理、编译、汇编、链接四个过程。注意作为四个过程之一的编译和代指整体过程的编译之间是有区别的，并非一个概念。考虑下面的程序：</p>
-<figure class="highlight c"><figcaption><span>C</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Hello, world!&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>预处理</strong>指的是将程序中的 <code>#</code> 开头的语句进行替换。这里我们引用了头文件 <code>stdio.h</code> ，则预处理过程中这个语句将会被替换为头文件 <code>stdio.h</code> 之中的内容。</p>
-<p><strong>编译</strong>指的是将预处理过后的源代码转化为汇编代码，比如说上述 C 语言代码就会被转化为：</p>
-<figure class="highlight plaintext"><figcaption><span>Assembly</span></figcaption><table><tr><td class="code"><pre><span class="line">main:</span><br><span class="line">    subq $8, %rsp</span><br><span class="line">    movl $.LCO, %edi</span><br><span class="line">    call puts</span><br><span class="line">    movl $0, %edx</span><br><span class="line">    addq $8, %rsp</span><br><span class="line">    ret</span><br></pre></td></tr></table></figure>
-
-<p><strong>汇编</strong>指的是将汇编语言程序转化为<strong>可重定位目标程序（ relocatable object program ）</strong>。</p>
-<p><strong>链接</strong>就是将各个需要的可重定位目标程序链接为一个可执行目标文件，这样就完成了整个工作。</p>
-<p>当然上面的描述实际上还是很粗糙，所以后续我们会继续细节化这里面的过程。</p>
-<h3 id="系统执行可执行文件"><a href="#系统执行可执行文件" class="headerlink" title="系统执行可执行文件"></a>系统执行可执行文件</h3><h4 id="系统的架构"><a href="#系统的架构" class="headerlink" title="系统的架构"></a>系统的架构</h4><p>在讲述系统是如何执行可执行文件之前，我们需要了解计算机系统的架构。一个常见的硬件体系可以是：</p>
-<p><img src="/uploads/note-of-csapp/chap1-hardware-system.png" title="常见的硬件体系"></p>
-<p>这里我们分别简单说明一下这些组成部分。</p>
-<p><strong>总线</strong>是负责在各个组件之间传递信息的管道，一般情况下其会被设计为一个固定长度的字节块，被称为<strong>字（ word ）</strong>。字中的字节数被称为<strong>字长</strong>，不同系统中的字长会不同，比如说 64 位系统的字长就是 8 ， 32 位系统的字长则是 4 。</p>
-<p><strong>主存</strong>也被叫做内存，是一个临时存储设备。从逻辑上来说，主存是一个字节数组，每个字节都有其唯一的索引。</p>
-<p><strong>处理器（ CPU ）</strong>的职责是运行机器指令，其核心是<strong>程序计数器（ Program counter / PC）</strong>，程序计数器记录当前所执行的指令在主存之中的地址。在任何时候，处理器永远都在执行 PC 所指向的指令并相应操作后更新 PC ，之后继续执行。</p>
-<p>处理器内部一般包含寄存器以及算术逻辑单元（ ALU ）。寄存器是一个较小的存储设备，而 ALU 负责较为具体的计算工作。</p>
-]]></content>
-      <categories>
-        <category>计算机科学</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>《编译原理》学习笔记</title>
-    <url>/2021/06/29/note-of-dc/</url>
-    <content><![CDATA[<p>想要提前学习这一门课主要是因为自动机学得确实太不行了，而编译原理与之强相关，为了防止编译原理也起飞，所以还是学一点点。这个笔记基本基于 Compiler: Principles, Techniques &amp; Tools 这本书以及校内的一些 Lecture 资料。</p>
-<span id="more"></span>
-
-<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>编译指的是将某一语言（源语言）的程序转换为另一种语言（目标语言）的、与源程序等价的程序的过程。编译过程可以产生可执行的二进制文件。如果如此，那么可执行文件可以被用户执行，接受输入并产生输出。</p>
-<div class="note no-icon"><p>与编译不同，<strong>解释过程</strong>会同时接受源代码以及输入，并直接生成程序运行输出。这一过程之中不会产生中间的可执行文件。</p>
-<p>与编译产生的可执行文件相比，解释的速度会更慢，但是其更容易探测源代码的一些运行时的错误，这是编译所做不到的。</p>
-<p>另外需要注意的是，一些语言，如 Java ，可能会融合编译和解释两种模式。 Java 语言的源代码需要经过编译变为 Bytecode ，而 Bytecode 可以在 Java 虚拟机上和程序输入一起经过解释直接得到程序运行输出。</p>
-</div>
-
-<p>事实上，在处理真正的较大的工程源代码文件的时候，源代码并不一定仅仅经过编译这一个过程。一般而言，源代码需要经过预处理、编译、汇编、链接四个过程。源代码首先会在预处理过程中按照一定规则稍作改变，之后被编译为汇编语言，汇编语言文件会被汇编为可重定位目标程序，最后经过链接得到真正的可执行文件。</p>
-<p>我们把这四个过程依然笼统地总称编译过程，但是《编译原理》本身依然注重探讨作为四大过程之一的编译过程的原理。</p>
-<h3 id="编译过程简介"><a href="#编译过程简介" class="headerlink" title="编译过程简介"></a>编译过程简介</h3><p>编译过程可以大致分为两个部分，首先是<strong>分析（ analysis ）</strong>，之后是<strong>综合（ synthesis ）</strong>。分析过程会拆解源代码的结构，分析源代码之中各个标识符的含义，产生中间分析结果。之后综合过程会基于分析过程的结果，生成与源代码等价的目标语言代码。</p>
-<p>这里，执行分析过程的部分一般称为<strong>编译前端</strong>，执行综合过程的部分一般称为<strong>编译后端</strong>。另外，现代编译器可能还具有<strong>编译中端</strong>，其一般用于执行一定的代码优化工作。</p>
-<p>比较经典的编译过程可以分为词法分析、语法分析、语义分析、中间代码生成、中间代码优化、目标代码生成、目标代码优化这些过程。</p>
-<h4 id="词法分析"><a href="#词法分析" class="headerlink" title="词法分析"></a>词法分析</h4><p>词法分析过程会逐个读入源程序字符，将其分割为若干的<strong>词位（ lexeme ）</strong>，每一个词位都是有意义的。之后每一个词位会被转化为一个<strong>令牌（ token ）</strong>，令牌的格式类似于：</p>
-<p>$$<br>\langle \text{token name}, \text{attribute value} \rangle<br>$$</p>
-]]></content>
-      <categories>
-        <category>计算机科学</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>《计算机网络原理》学习笔记</title>
-    <url>/2021/06/29/note-of-dcn/</url>
-    <content><![CDATA[<p>这门课听各种上过的同学介绍，是需要大量的记忆工作的，所以一个学习笔记必然是需要的。这个笔记大概都是基于 2021 春季学期崔勇的 PPT 以及 Computer Networking: A Top-Down Approach 这本书。</p>
-<span id="more"></span>
-]]></content>
-      <categories>
-        <category>计算机科学</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>《信号处理原理》学习笔记</title>
-    <url>/2021/06/29/note-of-dsp/</url>
-    <content><![CDATA[<p>这个笔记从 2021 年暑假开始编写，估计会在学期中继续编写。暑期编写基本基于 Signals and Systems 这本书，学期中的编写应该会基于课程内容。</p>
-<span id="more"></span>
-]]></content>
-      <categories>
-        <category>计算机科学</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>GAMES101 课程学习笔记</title>
-    <url>/2021/06/29/note-of-fcg/</url>
-    <content><![CDATA[<p>因为安主席的安利，所以打算看看 GAMES101 这个课程入坑图形学，这个笔记也是长期更新。</p>
-<span id="more"></span>
-]]></content>
-      <categories>
-        <category>计算机科学</category>
-      </categories>
-  </entry>
-  <entry>
     <title>《人工智能导论》学习笔记</title>
     <url>/2021/06/16/note-of-iai/</url>
     <content><![CDATA[<p>这个文档就是一时兴起想要好好学学人工智能背后的玩意创建的。主要还是记录《人工智能导论》课程的笔记。</p>
@@ -1123,6 +1037,20 @@
 <p>目前老师的意思是想让我带一下几个有机会去清华夏令营的同学，自己也要开始复习一些自主招生题了。</p>
 <h2 id="2021-07-08"><a href="#2021-07-08" class="headerlink" title="2021.07.08"></a>2021.07.08</h2><p><strong>今天想要做的事情：</strong></p>
 <p>回家拿一些当时的自主招生参考资料，然后准备码点字吧。自己的事的话，可能就学习一些基本的东西，然后 THUInfo 开一些工。</p>
+<p><strong>今天汇报：</strong></p>
+<p>出卷子真的是好累啊，到处翻找资料，然后还要想尽办法保证我是站在一个中学生的角度来思考问题。磨了一整天还熬了一夜，基本上把一份数理化的试卷全都出完了，大概准备 10 号来考这一份卷子，以筛选出适合去清北夏令营的同学。</p>
+<p>我现在比较担心的是，大家都考得不高，最后还是拉不开差距。</p>
+<h2 id="2021-07-09"><a href="#2021-07-09" class="headerlink" title="2021.07.09"></a>2021.07.09</h2><p><strong>今天想要做的事情：</strong></p>
+<p>学车，然后有什么事情就做什么事情。现在是越来越不太想把自己逼得太紧。</p>
+<p><strong>今天汇报：</strong></p>
+<p>下午把昨天出的卷子的答案给搞出来了，结果发现这份卷子应该是比较困难的，可能会把他们搞得很惨。</p>
+<p>THUInfo 说要开工到现在都没有动静，实验室没干活，科协现在还在筹划。总之就是除了正事之外的事情都在做。</p>
+<p>今晚回家的时候突然想起来 GRE 还没有报名，可能都快没有考位了，还是赶快把坑填上。身份证也已经做好了，要找个时间去拿。眼镜有点刮花了，其实要去重配，但是也一直在拖。头发也要去剪一下了，现在还是得注意下形象？</p>
+<p>明天早上回学校与那些考试的同学见一下面，监考一下之类的。明天下午尽快把卷子批改好成绩公布。</p>
+<p>另外，我仔细思考了一下，暑假还是不要预习下学期的内容为好，暑假应该做一些其他的事情。</p>
+<p>所以说这个暑假的主线就变成了 THUInfo 、科协、实验室、高中竞赛、 GRE 。至于新电脑、身份证、眼镜、头发之类的也就是支线任务了，科目二也将会在 12 号迎来终结。</p>
+<h2 id="2021-07-10"><a href="#2021-07-10" class="headerlink" title="2021.07.10"></a>2021.07.10</h2><p><strong>今天想要做的事情：</strong></p>
+<p>上午回去监考，下午批改试卷并且和老师交流一下。然后尽可能能开工的东西就得开工，目前比较急的就是实验室和技能引导文档了。</p>
 ]]></content>
       <categories>
         <category>闲聊</category>
