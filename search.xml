@@ -889,6 +889,18 @@
       </categories>
   </entry>
   <entry>
+    <title>《Making Pre-trained Language Models Better Few-shot Learners》阅读笔记</title>
+    <url>/2021/07/10/paper-nlp-01/</url>
+    <content><![CDATA[<p>咕了很长时间实验室那边，今天一定要开始做一点真正的事情。科研，先从读论文开始。</p>
+<span id="more"></span>
+
+<p>GPT-3 是很强大的，因为其只要通过一定的 prompt ，甚至不需要修改模型参数就可以给出相当优越的预测。但是 GPT-3 的参数量太大，实际应用可能因此受限。</p>
+]]></content>
+      <categories>
+        <category>计算机科学</category>
+      </categories>
+  </entry>
+  <entry>
     <title>2021 暑假生活记录</title>
     <url>/2021/06/29/summer-record/</url>
     <content><![CDATA[<p>经过 6 月 22 日到 28 日这几天的折腾，大概和高中的老师、驾校教练等人商量了一些后续的安排。现在终于可以安定下来，准备做一些学习、开发、摸鱼的事情了。</p>
@@ -1051,6 +1063,13 @@
 <p>所以说这个暑假的主线就变成了 THUInfo 、科协、实验室、高中竞赛、 GRE 。至于新电脑、身份证、眼镜、头发之类的也就是支线任务了，科目二也将会在 12 号迎来终结。</p>
 <h2 id="2021-07-10"><a href="#2021-07-10" class="headerlink" title="2021.07.10"></a>2021.07.10</h2><p><strong>今天想要做的事情：</strong></p>
 <p>上午回去监考，下午批改试卷并且和老师交流一下。然后尽可能能开工的东西就得开工，目前比较急的就是实验室和技能引导文档了。</p>
+<p><strong>今天汇报：</strong></p>
+<p>去监了个考，然后尽快把试卷给批改好了给老师。整体而言学弟们做得还是不错，但是细节上属于是真的需要很大的工夫去训练。</p>
+<p>然后就是平凡的学车和练习。</p>
+<p>另外就是，盼望 Sakana 回来。</p>
+<h2 id="2021-07-11"><a href="#2021-07-11" class="headerlink" title="2021.07.11"></a>2021.07.11</h2><p><strong>今天想要做的事情：</strong></p>
+<p>去高港模考科目二，期间要开始阅读论文，至于能看多少，能领悟多少就是另外一回事情了。</p>
+<p>然后就是尽快考虑新电脑的事情，并且尽快制定后面的讲课计划吧。</p>
 ]]></content>
       <categories>
         <category>闲聊</category>
