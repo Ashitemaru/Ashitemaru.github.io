@@ -131,7 +131,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -144,6 +144,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98-amp-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">问题 &amp; 解决方案概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E5%B7%A5%E4%BD%9C"><span class="nav-number">2.</span> <span class="nav-text">相关工作</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -283,7 +284,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>116</span>
+      <span>624</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -304,7 +305,15 @@
         <p>咕了很长时间实验室那边，今天一定要开始做一点真正的事情。科研，先从读论文开始。</p>
 <span id="more"></span>
 
-<p>GPT-3 是很强大的，因为其只要通过一定的 prompt ，甚至不需要修改模型参数就可以给出相当优越的预测。但是 GPT-3 的参数量太大，实际应用可能因此受限。</p>
+<h2 id="问题-amp-解决方案概述"><a href="#问题-amp-解决方案概述" class="headerlink" title="问题 &amp; 解决方案概述"></a>问题 &amp; 解决方案概述</h2><p>GPT-3 是很强大的，因为其只要通过一定的 prompt ，甚至不需要修改模型参数就可以给出相当优越的预测。但是 GPT-3 的参数量太大，实际应用可能因此受限。</p>
+<p>这个文章之中的工作就是使用一些中等体量的模型（比如说 BERT 或者 RoBERTa ），然后使用少量数据（比如 few-shot ）做一下 finetune 来获得最终的模型。这样的模型可以在常用的硬件上进行训练，并且 few-shot 也贴合实际的应用场合。</p>
+<p>文章里在阐述他们的解决方案的时候，叙述了他们会继续采用 <strong>prompt-based</strong> 的预测方法，不过他们引入了自动生成 prompt 的模型（ automatic prompt generation ）。这样的方法生成的 prompt 能和人工编写的 prompt 类似，甚至可能表现更好。</p>
+<p>其次，他们改进了 GPT-3 的 in-context learning 范式。相较于原先较为随机地将补充内容和输入直接连接，文章中提出了一个较为有逻辑的新方法。</p>
+<p>使用这些简单有效的方法可以让 finetuning 更为高效，文章中将这一套方法称为 LM-BFF （ better few-shot finetuning of language models ）。</p>
+<h2 id="相关工作"><a href="#相关工作" class="headerlink" title="相关工作"></a>相关工作</h2><p>这里介绍了他们的工作的基础和他们所做的改进。</p>
+<ul>
+<li>【语言模型的 prompt 】文章的工作基于 GPT-3 和 PET 的有关半监督学习的工作，但是同时改进了他们的</li>
+</ul>
 
     </div>
 
@@ -354,13 +363,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">31k</span>
+    <span title="站点总字数">33k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">28 分钟</span>
+    <span title="站点阅读时长">30 分钟</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
