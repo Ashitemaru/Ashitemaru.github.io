@@ -587,7 +587,7 @@ disqus:
 # DisqusJS
 # For more information: https://disqusjs.skk.moe
 disqusjs:
-  enable: true
+  enable: false
   # API Endpoint of Disqus API (https://disqus.com/api/docs/).
   # Leave api empty if you are able to connect to Disqus API. Otherwise you need a reverse proxy for it.
   # For example:
@@ -595,6 +595,11 @@ disqusjs:
   api: Df5leslGi6imKtHIXyMgy1Lo0CYhE24YTtr9LXLosNBK4Elo4UA3gb6iiTgk5e0X
   apikey: GHzPuu4LJXVZaCXu0pS3BeAb80s2sxy0zWwYgTocDZFAWDADc2tpYLxZxuTVZfA3 # Register new application from https://disqus.com/api/applications/
   shortname: Ashitemaru # See: https://disqus.com/admin/settings/general/
+
+twikoo:
+  enable: true
+  visitor: true
+  envId: https://vercel-deploy-two.vercel.app
 
 # Changyan
 # For more information: https://changyan.kuaizhan.com
