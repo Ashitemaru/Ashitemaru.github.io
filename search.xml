@@ -593,6 +593,118 @@
       </categories>
   </entry>
   <entry>
+    <title>《汇编语言程序设计》学习笔记</title>
+    <url>/2021/08/09/note-of-asm/</url>
+    <content><![CDATA[<p>这门课是 2021 年暑期学期开设的计算机系专业课，应该也算是为下学期的《计算机组成原理》课程做预备，所以还打算好好学一下。</p>
+<span id="more"></span>
+
+<h1 id="课程基本介绍"><a href="#课程基本介绍" class="headerlink" title="课程基本介绍"></a>课程基本介绍</h1><h2 id="汇编语言介绍"><a href="#汇编语言介绍" class="headerlink" title="汇编语言介绍"></a>汇编语言介绍</h2><p>汇编语言可以认为是机器指令的一种表记方式，其表述了计算机硬件系统对外开放的主要接口和规格，是计算机系统之中的软硬件的分界。所以说要了解汇编语言，就首先需要了解机器指令。</p>
+<p>机器指令系统一般分为两类：</p>
+<ul>
+<li><p>CLSC ，即<strong>复杂指令系统</strong>。一般而言具有多种指令，寻址方式复杂，单条指令的功能较为复杂。较为经典的代表是 X86 。</p>
+</li>
+<li><p>RISC ，即<strong>精简指令系统</strong>。考虑到实际使用的指令大多都是简要指令，故该系统只具有常用的精简指令。在这样的条件下，该指令系统依赖于编译器产生高效的代码（依赖编译器优化）。较为经典的代表为 MIPS 。</p>
+</li>
+</ul>
+<p>目前， CLSC 和 RISC 之间的差别渐渐缩小。但是还是具有明显的区分方式的，即：</p>
+<div class="note info no-icon"><p>It loads / stores [with / without] other operations.</p>
+</div>
+
+<p>借助于连接软硬件的机器指令集，计算机系统实现了软硬件解耦合。这样软硬件可以独立编写，从而促进了计算机的发展。</p>
+<p><strong>注解：</strong>软硬件的分离的一个重要基石是<strong>图灵完备性</strong>。也就是说软件使用的高级语言是图灵完备的，硬件的指令序列也是图灵完备的，这两者完全等价。这样才保证了分离的可行性。</p>
+<h2 id="X86-指令集介绍"><a href="#X86-指令集介绍" class="headerlink" title="X86 指令集介绍"></a>X86 指令集介绍</h2><p>X86 指令集具有以下的基本特征：</p>
+<ul>
+<li><p>向下兼容、变长指令、多种寻址方式</p>
+</li>
+<li><p>通用寄存器个数有限（ X86-32 具有 8 个通用寄存器， X86-64 具有 16 个通用寄存器）</p>
+</li>
+<li><p>至多允许一个操作数在内存中，另外一个操作数需要在寄存器中或者是立即数</p>
+</li>
+</ul>
+<div class="note info no-icon"><p>这里提到了寄存器。 X86 之中的寄存器命名为：</p>
+<table>
+<thead>
+<tr>
+<th align="center">寄存器名称【 X86-64 名称】</th>
+<th align="center">X86-32 名称</th>
+<th align="center">寄存器名称【 X86-64 名称】</th>
+<th align="center">X86-32 名称</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">%rax</td>
+<td align="center">%eax</td>
+<td align="center">%r8</td>
+<td align="center">%r8d</td>
+</tr>
+<tr>
+<td align="center">%rdx</td>
+<td align="center">%edx</td>
+<td align="center">%r9</td>
+<td align="center">%r9d</td>
+</tr>
+<tr>
+<td align="center">%rcx</td>
+<td align="center">%ecx</td>
+<td align="center">%r10</td>
+<td align="center">%r10d</td>
+</tr>
+<tr>
+<td align="center">%rbx</td>
+<td align="center">%ebx</td>
+<td align="center">%r11</td>
+<td align="center">%r11d</td>
+</tr>
+<tr>
+<td align="center">%rsi</td>
+<td align="center">%esi</td>
+<td align="center">%r12</td>
+<td align="center">%r12d</td>
+</tr>
+<tr>
+<td align="center">%rdi</td>
+<td align="center">%edi</td>
+<td align="center">%r13</td>
+<td align="center">%r13d</td>
+</tr>
+<tr>
+<td align="center">%rsp</td>
+<td align="center">%esp</td>
+<td align="center">%r14</td>
+<td align="center">%r14d</td>
+</tr>
+<tr>
+<td align="center">%rbp</td>
+<td align="center">%ebp</td>
+<td align="center">%r15</td>
+<td align="center">%r15d</td>
+</tr>
+</tbody></table>
+</div>
+
+<p>由于 X86 重视向下兼容，所以其指令集越来越趋向于庞杂，所以其一个缺点就是资源利用率低。</p>
+<h2 id="MIPS-指令集介绍"><a href="#MIPS-指令集介绍" class="headerlink" title="MIPS 指令集介绍"></a>MIPS 指令集介绍</h2><p>MIPS 的设计思想是充分利用处理器的流水线结构，目标是让流水线各段负载均匀，这样可以让处理器频率得到提高。其特征包括：</p>
+<ul>
+<li><p>以寄存器为中心，只有 Load 以及 Store 命令可以访问内存</p>
+</li>
+<li><p>所有计算操作均是从寄存器堆之中读取数据并将结果保存到寄存器堆</p>
+</li>
+<li><p>指令格式规整、定长，且操作码位置固定，指令类型少（ MIPS32 的指令只有 register / immediate / jump 三类）</p>
+</li>
+<li><p>寻址方式简单，每一条指令的操作过程简单</p>
+</li>
+</ul>
+<p>当然， MIPS 也具有一些被扩展过的扩展指令集，如 MIPS16e 等等。</p>
+<p>此外， RISC-V 也是一种常用指令集。但其几乎和 MIPS 同源，故这里不作详细介绍。</p>
+<h1 id="整数的表示"><a href="#整数的表示" class="headerlink" title="整数的表示"></a>整数的表示</h1><p>首先我们介绍一些简要表记，即 K / M / G / T / P / E 。符号 K 表示 $2^{10}$ ，之后有 $M = 2^{10} K$ 以及 $G = 2^{10} M$ ，依此类推。</p>
+<p>同时我们将一个二进制位称为<strong>比特（ bit ）</strong>，将八个比特称为<strong>字节（ byte ）</strong>。在 X86 架构下，两个字节称为一个<strong>字（ word ）</strong>，而在 MIPS 架构下则是四个字节。</p>
+<p>对于数的进制、二进制数的逻辑运算，这里不进行介绍。</p>
+<h2 id="字节序"><a href="#字节序" class="headerlink" title="字节序"></a>字节序</h2>]]></content>
+      <categories>
+        <category>计算机科学</category>
+      </categories>
+  </entry>
+  <entry>
     <title>《人工智能导论》学习笔记</title>
     <url>/2021/06/16/note-of-iai/</url>
     <content><![CDATA[<p>这个文档就是一时兴起想要好好学学人工智能背后的玩意创建的。主要还是记录《人工智能导论》课程的笔记。</p>

@@ -20,25 +20,27 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;ashitemaru.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Gemini&quot;,&quot;version&quot;:&quot;8.5.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;width&quot;:280,&quot;display&quot;:&quot;always&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:&quot;disqusjs&quot;,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;},&quot;path&quot;:&quot;&#x2F;search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;manual&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="A cat that likes Sakana.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Ashitemaru">
-<meta property="og:url" content="https://ashitemaru.github.io/categories/%E9%97%B2%E8%81%8A/index.html">
+<meta name="description" content="这门课是 2021 年暑期学期开设的计算机系专业课，应该也算是为下学期的《计算机组成原理》课程做预备，所以还打算好好学一下。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《汇编语言程序设计》学习笔记">
+<meta property="og:url" content="https://ashitemaru.github.io/2021/08/09/note-of-asm/index.html">
 <meta property="og:site_name" content="Ashitemaru">
-<meta property="og:description" content="A cat that likes Sakana.">
+<meta property="og:description" content="这门课是 2021 年暑期学期开设的计算机系专业课，应该也算是为下学期的《计算机组成原理》课程做预备，所以还打算好好学一下。">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-08-09T14:22:58.000Z">
+<meta property="article:modified_time" content="2021-08-09T14:22:58.000Z">
 <meta property="article:author" content="Ashitemaru">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://ashitemaru.github.io/categories/%E9%97%B2%E8%81%8A/">
+<link rel="canonical" href="https://ashitemaru.github.io/2021/08/09/note-of-asm/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:false,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:&quot;&quot;,&quot;permalink&quot;:&quot;&quot;,&quot;path&quot;:&quot;categories&#x2F;闲聊&#x2F;index.html&quot;,&quot;title&quot;:&quot;&quot;}</script>
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;ashitemaru.github.io&#x2F;2021&#x2F;08&#x2F;09&#x2F;note-of-asm&#x2F;&quot;,&quot;path&quot;:&quot;2021&#x2F;08&#x2F;09&#x2F;note-of-asm&#x2F;&quot;,&quot;title&quot;:&quot;《汇编语言程序设计》学习笔记&quot;}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
-<title>分类: 闲聊 | Ashitemaru</title>
+<title>《汇编语言程序设计》学习笔记 | Ashitemaru</title>
   
 
 
@@ -193,7 +195,7 @@ $(function () {
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -206,6 +208,7 @@ $(function () {
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%BE%E7%A8%8B%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">课程基本介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.1.</span> <span class="nav-text">汇编语言介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#X86-%E6%8C%87%E4%BB%A4%E9%9B%86%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.2.</span> <span class="nav-text">X86 指令集介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MIPS-%E6%8C%87%E4%BB%A4%E9%9B%86%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.3.</span> <span class="nav-text">MIPS 指令集介绍</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B4%E6%95%B0%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="nav-number">2.</span> <span class="nav-text">整数的表示</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E8%8A%82%E5%BA%8F"><span class="nav-number">2.1.</span> <span class="nav-text">字节序</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -289,111 +292,228 @@ $(function () {
 </noscript>
 
 
-    <div class="main-inner category posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
+
+
+<div class="post-block">
   
   
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <h2 class="collection-header">闲聊
-          <small>分类</small>
-        </h2>
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ashitemaru.github.io/2021/08/09/note-of-asm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="Ashitemaru">
+      <meta itemprop="description" content="A cat that likes Sakana.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ashitemaru">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          《汇编语言程序设计》学习笔记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-08-09 14:22:58" itemprop="dateCreated datePublished" datetime="2021-08-09T14:22:58+00:00">2021-08-09</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-08-09 14:22:58" itemprop="dateModified" datetime="2021-08-09T14:22:58+00:00">2021-08-09</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">计算机科学</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2021/08/09/note-of-asm/" class="post-meta-item twikoo_visitors" data-flag-title="《汇编语言程序设计》学习笔记" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="twikoo_visitors"></span>
+    </span>
+  
       </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.4k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
 
-      
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>这门课是 2021 年暑期学期开设的计算机系专业课，应该也算是为下学期的《计算机组成原理》课程做预备，所以还打算好好学一下。</p>
+<span id="more"></span>
+
+<h1 id="课程基本介绍"><a href="#课程基本介绍" class="headerlink" title="课程基本介绍"></a>课程基本介绍</h1><h2 id="汇编语言介绍"><a href="#汇编语言介绍" class="headerlink" title="汇编语言介绍"></a>汇编语言介绍</h2><p>汇编语言可以认为是机器指令的一种表记方式，其表述了计算机硬件系统对外开放的主要接口和规格，是计算机系统之中的软硬件的分界。所以说要了解汇编语言，就首先需要了解机器指令。</p>
+<p>机器指令系统一般分为两类：</p>
+<ul>
+<li><p>CLSC ，即<strong>复杂指令系统</strong>。一般而言具有多种指令，寻址方式复杂，单条指令的功能较为复杂。较为经典的代表是 X86 。</p>
+</li>
+<li><p>RISC ，即<strong>精简指令系统</strong>。考虑到实际使用的指令大多都是简要指令，故该系统只具有常用的精简指令。在这样的条件下，该指令系统依赖于编译器产生高效的代码（依赖编译器优化）。较为经典的代表为 MIPS 。</p>
+</li>
+</ul>
+<p>目前， CLSC 和 RISC 之间的差别渐渐缩小。但是还是具有明显的区分方式的，即：</p>
+<div class="note info no-icon"><p>It loads / stores [with / without] other operations.</p>
+</div>
+
+<p>借助于连接软硬件的机器指令集，计算机系统实现了软硬件解耦合。这样软硬件可以独立编写，从而促进了计算机的发展。</p>
+<p><strong>注解：</strong>软硬件的分离的一个重要基石是<strong>图灵完备性</strong>。也就是说软件使用的高级语言是图灵完备的，硬件的指令序列也是图灵完备的，这两者完全等价。这样才保证了分离的可行性。</p>
+<h2 id="X86-指令集介绍"><a href="#X86-指令集介绍" class="headerlink" title="X86 指令集介绍"></a>X86 指令集介绍</h2><p>X86 指令集具有以下的基本特征：</p>
+<ul>
+<li><p>向下兼容、变长指令、多种寻址方式</p>
+</li>
+<li><p>通用寄存器个数有限（ X86-32 具有 8 个通用寄存器， X86-64 具有 16 个通用寄存器）</p>
+</li>
+<li><p>至多允许一个操作数在内存中，另外一个操作数需要在寄存器中或者是立即数</p>
+</li>
+</ul>
+<div class="note info no-icon"><p>这里提到了寄存器。 X86 之中的寄存器命名为：</p>
+<table>
+<thead>
+<tr>
+<th align="center">寄存器名称【 X86-64 名称】</th>
+<th align="center">X86-32 名称</th>
+<th align="center">寄存器名称【 X86-64 名称】</th>
+<th align="center">X86-32 名称</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">%rax</td>
+<td align="center">%eax</td>
+<td align="center">%r8</td>
+<td align="center">%r8d</td>
+</tr>
+<tr>
+<td align="center">%rdx</td>
+<td align="center">%edx</td>
+<td align="center">%r9</td>
+<td align="center">%r9d</td>
+</tr>
+<tr>
+<td align="center">%rcx</td>
+<td align="center">%ecx</td>
+<td align="center">%r10</td>
+<td align="center">%r10d</td>
+</tr>
+<tr>
+<td align="center">%rbx</td>
+<td align="center">%ebx</td>
+<td align="center">%r11</td>
+<td align="center">%r11d</td>
+</tr>
+<tr>
+<td align="center">%rsi</td>
+<td align="center">%esi</td>
+<td align="center">%r12</td>
+<td align="center">%r12d</td>
+</tr>
+<tr>
+<td align="center">%rdi</td>
+<td align="center">%edi</td>
+<td align="center">%r13</td>
+<td align="center">%r13d</td>
+</tr>
+<tr>
+<td align="center">%rsp</td>
+<td align="center">%esp</td>
+<td align="center">%r14</td>
+<td align="center">%r14d</td>
+</tr>
+<tr>
+<td align="center">%rbp</td>
+<td align="center">%ebp</td>
+<td align="center">%r15</td>
+<td align="center">%r15d</td>
+</tr>
+</tbody></table>
+</div>
+
+<p>由于 X86 重视向下兼容，所以其指令集越来越趋向于庞杂，所以其一个缺点就是资源利用率低。</p>
+<h2 id="MIPS-指令集介绍"><a href="#MIPS-指令集介绍" class="headerlink" title="MIPS 指令集介绍"></a>MIPS 指令集介绍</h2><p>MIPS 的设计思想是充分利用处理器的流水线结构，目标是让流水线各段负载均匀，这样可以让处理器频率得到提高。其特征包括：</p>
+<ul>
+<li><p>以寄存器为中心，只有 Load 以及 Store 命令可以访问内存</p>
+</li>
+<li><p>所有计算操作均是从寄存器堆之中读取数据并将结果保存到寄存器堆</p>
+</li>
+<li><p>指令格式规整、定长，且操作码位置固定，指令类型少（ MIPS32 的指令只有 register / immediate / jump 三类）</p>
+</li>
+<li><p>寻址方式简单，每一条指令的操作过程简单</p>
+</li>
+</ul>
+<p>当然， MIPS 也具有一些被扩展过的扩展指令集，如 MIPS16e 等等。</p>
+<p>此外， RISC-V 也是一种常用指令集。但其几乎和 MIPS 同源，故这里不作详细介绍。</p>
+<h1 id="整数的表示"><a href="#整数的表示" class="headerlink" title="整数的表示"></a>整数的表示</h1><p>首先我们介绍一些简要表记，即 K / M / G / T / P / E 。符号 K 表示 $2^{10}$ ，之后有 $M = 2^{10} K$ 以及 $G = 2^{10} M$ ，依此类推。</p>
+<p>同时我们将一个二进制位称为<strong>比特（ bit ）</strong>，将八个比特称为<strong>字节（ byte ）</strong>。在 X86 架构下，两个字节称为一个<strong>字（ word ）</strong>，而在 MIPS 架构下则是四个字节。</p>
+<p>对于数的进制、二进制数的逻辑运算，这里不进行介绍。</p>
+<h2 id="字节序"><a href="#字节序" class="headerlink" title="字节序"></a>字节序</h2>
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-06-29T01:52:57+00:00"
-              content="2021-06-29">
-          06-29
-        </time>
-      </div>
+    
+    
+    
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/06/29/summer-record/" itemprop="url">
-            <span itemprop="name">2021 暑假生活记录</span>
-          </a>
-      </div>
+    <footer class="post-footer">
 
-      
-    </header>
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/07/10/paper-nlp-01/" rel="prev" title="《Making Pre-trained Language Models Better Few-shot Learners》阅读笔记">
+                  <i class="fa fa-chevron-left"></i> 《Making Pre-trained Language Models Better Few-shot Learners》阅读笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
   </article>
+</div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-06-19T10:52:05+00:00"
-              content="2021-06-19">
-          06-19
-        </time>
-      </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/06/19/grade-2-conclusion/" itemprop="url">
-            <span itemprop="name">大二春季学期学期总结</span>
-          </a>
-      </div>
 
-      
-    </header>
-  </article>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-06-16T19:03:39+00:00"
-              content="2021-06-16">
-          06-16
-        </time>
-      </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/06/16/look-back/" itemprop="url">
-            <span itemprop="name">回忆一下我的大学</span>
-          </a>
-      </div>
 
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-06-16T13:34:10+00:00"
-              content="2021-06-16">
-          06-16
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/06/16/hello-world/" itemprop="url">
-            <span itemprop="name">Hello world</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-    </div>
-  </div>
-  
-  
-  
-
+    <div class="comments"><div id="twikoo-comments"></div></div>
 </div>
   </main>
 
