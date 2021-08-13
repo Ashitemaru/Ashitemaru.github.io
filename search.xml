@@ -632,52 +632,52 @@
 </tr>
 </thead>
 <tbody><tr>
-<td align="center">%rax</td>
-<td align="center">%eax</td>
-<td align="center">%r8</td>
-<td align="center">%r8d</td>
+<td align="center"><code>%rax</code></td>
+<td align="center"><code>%eax</code></td>
+<td align="center"><code>%r8</code></td>
+<td align="center"><code>%r8d</code></td>
 </tr>
 <tr>
-<td align="center">%rdx</td>
-<td align="center">%edx</td>
-<td align="center">%r9</td>
-<td align="center">%r9d</td>
+<td align="center"><code>%rdx</code></td>
+<td align="center"><code>%edx</code></td>
+<td align="center"><code>%r9</code></td>
+<td align="center"><code>%r9d</code></td>
 </tr>
 <tr>
-<td align="center">%rcx</td>
-<td align="center">%ecx</td>
-<td align="center">%r10</td>
-<td align="center">%r10d</td>
+<td align="center"><code>%rcx</code></td>
+<td align="center"><code>%ecx</code></td>
+<td align="center"><code>%r10</code></td>
+<td align="center"><code>%r10d</code></td>
 </tr>
 <tr>
-<td align="center">%rbx</td>
-<td align="center">%ebx</td>
-<td align="center">%r11</td>
-<td align="center">%r11d</td>
+<td align="center"><code>%rbx</code></td>
+<td align="center"><code>%ebx</code></td>
+<td align="center"><code>%r11</code></td>
+<td align="center"><code>%r11d</code></td>
 </tr>
 <tr>
-<td align="center">%rsi</td>
-<td align="center">%esi</td>
-<td align="center">%r12</td>
-<td align="center">%r12d</td>
+<td align="center"><code>%rsi</code></td>
+<td align="center"><code>%esi</code></td>
+<td align="center"><code>%r12</code></td>
+<td align="center"><code>%r12d</code></td>
 </tr>
 <tr>
-<td align="center">%rdi</td>
-<td align="center">%edi</td>
-<td align="center">%r13</td>
-<td align="center">%r13d</td>
+<td align="center"><code>%rdi</code></td>
+<td align="center"><code>%edi</code></td>
+<td align="center"><code>%r13</code></td>
+<td align="center"><code>%r13d</code></td>
 </tr>
 <tr>
-<td align="center">%rsp</td>
-<td align="center">%esp</td>
-<td align="center">%r14</td>
-<td align="center">%r14d</td>
+<td align="center"><code>%rsp</code></td>
+<td align="center"><code>%esp</code></td>
+<td align="center"><code>%r14</code></td>
+<td align="center"><code>%r14d</code></td>
 </tr>
 <tr>
-<td align="center">%rbp</td>
-<td align="center">%ebp</td>
-<td align="center">%r15</td>
-<td align="center">%r15d</td>
+<td align="center"><code>%rbp</code></td>
+<td align="center"><code>%ebp</code></td>
+<td align="center"><code>%r15</code></td>
+<td align="center"><code>%r15d</code></td>
 </tr>
 </tbody></table>
 </div>
@@ -696,10 +696,224 @@
 </ul>
 <p>当然， MIPS 也具有一些被扩展过的扩展指令集，如 MIPS16e 等等。</p>
 <p>此外， RISC-V 也是一种常用指令集。但其几乎和 MIPS 同源，故这里不作详细介绍。</p>
-<h1 id="整数的表示"><a href="#整数的表示" class="headerlink" title="整数的表示"></a>整数的表示</h1><p>首先我们介绍一些简要表记，即 K / M / G / T / P / E 。符号 K 表示 $2^{10}$ ，之后有 $M = 2^{10} K$ 以及 $G = 2^{10} M$ ，依此类推。</p>
+<h1 id="整数的表示与计算"><a href="#整数的表示与计算" class="headerlink" title="整数的表示与计算"></a>整数的表示与计算</h1><p>首先我们介绍一些简要表记，即 K / M / G / T / P / E 。符号 K 表示 $2^{10}$ ，之后有 ${\rm M} = 2^{10} \cdot {\rm K}$ 以及 ${\rm G} = 2^{10} \cdot {\rm M}$ ，依此类推。</p>
 <p>同时我们将一个二进制位称为<strong>比特（ bit ）</strong>，将八个比特称为<strong>字节（ byte ）</strong>。在 X86 架构下，两个字节称为一个<strong>字（ word ）</strong>，而在 MIPS 架构下则是四个字节。</p>
 <p>对于数的进制、二进制数的逻辑运算，这里不进行介绍。</p>
-<h2 id="字节序"><a href="#字节序" class="headerlink" title="字节序"></a>字节序</h2>]]></content>
+<h2 id="机器字和字节序"><a href="#机器字和字节序" class="headerlink" title="机器字和字节序"></a>机器字和字节序</h2><p>首先引入<strong>机器字</strong>的概念，机器字指的是计算机进行一次整数运算所能处理的二进制数据组，也可以是一个数据地址。相应的，<strong>机器字长</strong>指的就是一个机器字的位数。对于 32 位字长的计算机，其地址能够表示的空间大小为 4GB 左右。机器字长越大的计算机，其地址的表示空间就越大。</p>
+<p>机器字的定位为这个机器字第一个字节的地址，所以说相邻机器字的地址之差在 32 位系统之中为 4 ，而在 64 位系统之中为 8 。</p>
+<p><strong>字节序</strong>指的就是一个机器字所包含的字节在机器字之中的排列的顺序，分为<strong>大端序（ Big endian ）</strong>以及<strong>小端序（ Little endian ）</strong>。大端序指的是低位字节占据高地址，小端序则相反。</p>
+<p>比如说十六进制数据 <code>0x01234567</code> ，如果这个机器字地址为 <code>0x100</code> 。那么在大端序之下， <code>0x100, 0x101, 0x102, 0x103</code> 的字节内容分别为 <code>01, 23, 45, 67</code>。而在小端序下则是 <code>67, 45, 23, 01</code> 。</p>
+<h2 id="整数的二进制编码"><a href="#整数的二进制编码" class="headerlink" title="整数的二进制编码"></a>整数的二进制编码</h2><p>我们首先复习一下 C 语言之中各个数据类型的大小，这里以字节作为单位：</p>
+<table>
+<thead>
+<tr>
+<th align="center">数据类型</th>
+<th align="center">经典 32 位系统</th>
+<th align="center">X86-32</th>
+<th align="center">X86-64</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>char</code></td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center"><code>short</code></td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center"><code>int</code></td>
+<td align="center">4</td>
+<td align="center">4</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="center"><code>long</code></td>
+<td align="center">4</td>
+<td align="center">4</td>
+<td align="center">8</td>
+</tr>
+<tr>
+<td align="center"><code>long long</code></td>
+<td align="center">8</td>
+<td align="center">8</td>
+<td align="center">8</td>
+</tr>
+<tr>
+<td align="center"><code>float</code></td>
+<td align="center">4</td>
+<td align="center">4</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="center"><code>double</code></td>
+<td align="center">8</td>
+<td align="center">8</td>
+<td align="center">8</td>
+</tr>
+<tr>
+<td align="center"><code>long double</code></td>
+<td align="center">8</td>
+<td align="center">10 / 12</td>
+<td align="center">10 / 16</td>
+</tr>
+<tr>
+<td align="center">指针</td>
+<td align="center">4</td>
+<td align="center">4</td>
+<td align="center">8</td>
+</tr>
+</tbody></table>
+<p>这里我们为了简便，使用 16 位系统来演示整数的编码方式，也就是说机器字长为 16 位，一个整数使用 2 个字节表示。</p>
+<h3 id="有符号数的编码"><a href="#有符号数的编码" class="headerlink" title="有符号数的编码"></a>有符号数的编码</h3><p>对于非负的整数，显然可以直接使用其二进制表示作为其编码。比如说十进制数 <code>12345</code> ，其二进制表示为 <code>00110000 00111001</code> ，那么其编码就是 <code>00110000 00111001</code> 。</p>
+<p>对于负数，一种解决方式是使用最高位表记符号，最高位为 <code>1</code> 的数为负数，为 <code>0</code> 的数为非负数。然而这样会导致加法器在运算的时候需要首先验证符号位，计算出结果后还需要计算符号为，比较繁杂。所以说这里引入了<strong>补码（ two’s complement ）</strong>，用补码表示的整数可以简化有符号整数的计算。</p>
+<p>非负数的补码就是其二进制表示，负数的补码是其绝对值的二进制表示按位取反之后加一。</p>
+<p>比如说十进制数 <code>-12345</code> ，由于 <code>12345</code> 的二进制表示为 <code>00110000 00111001</code> ，首先按位取反得到 <code>11001111 11000110</code> ，最后加一得到其补码为 <code>11001111 11000111</code> 。</p>
+<p>这个时候符号位依然存在，也就是说补码表示下负数最高位为 <code>1</code> ，非负数最高位为 <code>0</code> 。</p>
+<div class="note info no-icon"><p>补码的优越性在于简化了有符号整数的加法计算。如果我们使用 ${\rm TC}_w(x)$ 表示字长为 $w$ 的系统下整数 $x$ 的补码（比如 <code>-12345</code> 的补码为 <code>11001111 11000111</code> ，后者直接转换为十进制表示的是 <code>53191</code> ，那么定义 ${\rm TC}_w(-12345) = 53191$ ）。实际上可以发现对于非负数 ${\rm TC}_w(x)=x$ ，而对于负数：</p>
+<p>$$<br>{\rm TC}_w(x) = 1 + \mathop{\sim}(-x)<br>$$</p>
+<p>而对于字长为 $w$ 的系统， $x + (\mathop{\sim}x) = 2^w - 1$ ，所以说对于负数 $x$ 有：</p>
+<p>$$<br>{\rm TC}_w(x) = 1 + 2^w - 1 - (-x) = 2^w + x<br>$$</p>
+<p>所以无论如何我们都可以断定：</p>
+<p>$$<br>{\rm TC}_w(x) \equiv x\ ({\rm mod}\ 2^w)<br>$$</p>
+<p>在这样的条件下做加法是简单的，因为一个整数和其补码在模 $2^w$ 意义下等价。后面讨论补码条件下的加法的时候，即使出现截断，由于所截断的 <code>1</code> 必然位于不低于 $2^w$ 的位上，所以截断还是不会影响模的结果。</p>
+</div>
+
+<p>对于字长为 $w$ 的系统，按照补码表示的有符号数系统之中，最大的数为 $2^{w - 1} - 1$ ，而最小的数为 $-2^{w - 1}$ 。</p>
+<h3 id="无符号数的编码"><a href="#无符号数的编码" class="headerlink" title="无符号数的编码"></a>无符号数的编码</h3><p>无符号数的编码是简单的，因为其只需要考虑非负数，所以直接使用二进制表示作为编码就可以了。</p>
+<p>这种系统之下，最大的数为 $2^w - 1$ ，而最小的数为 $0$ 。</p>
+<h3 id="有符号数和无符号数的关系和转换"><a href="#有符号数和无符号数的关系和转换" class="headerlink" title="有符号数和无符号数的关系和转换"></a>有符号数和无符号数的关系和转换</h3><p>现在我们已经给出了有符号和无符号整数的表示方式了。现在考虑将一个有符号整数强制类型转换为无符号整数，比如说在机器字长为 4 的时候， <code>-4</code> 的补码为 <code>1010</code> ，而强转为无符号整数的时候， <code>1010</code> 则表示 <code>12</code> 。其实不难证明对于字长为 $w$ 的系统，有这样的关系：</p>
+<p>$$<br>(\text{unsigned})x = \begin{cases}<br>x &amp; x \geq 0 \\<br>x + 2^w &amp; x &lt; 0<br>\end{cases}<br>$$</p>
+<p>这里提一下，在 C 语言的比较运算之中如果同时出现有符号数和无符号数，则会将有符号数强制转换为无符号数。当然，如果两边都是有符号数，则按照有符号数的比较规则进行。</p>
+<p>事实上，由于这样的隐式转换，如果我们给声明为无符号整数的变量赋予一个负数值，就有可能被强制转换为一个大整数，从而导致违反直觉的结果，甚至导致错误。所以说我们应当谨慎使用无符号整数，一般而言，只有涉及到<strong>模运算</strong>或者单纯使用<strong>位运算</strong>的时候无符号整数比较适合。</p>
+<h2 id="整数的计算"><a href="#整数的计算" class="headerlink" title="整数的计算"></a>整数的计算</h2><h3 id="无符号整数的加法"><a href="#无符号整数的加法" class="headerlink" title="无符号整数的加法"></a>无符号整数的加法</h3><p>对于字长为 $w$ 的系统，两个整数的加法可能会需要 $w + 1$ 位才能表示，这个时候就会发生<strong>溢出</strong>。计算机的一般处理方式是舍去最高位，强制仅用 $w$ 位表达计算结果，其实相当于对 $2^w$ 取了模。也就是说，字长为 $w$ 的、带有截断的无符号整数加法为（这里，符号 $+^{\text u}_w$ 表示的是字长为 $w$ 的系统下无符号整数的加法）：</p>
+<p>$$<br>x +^{\text{u}}_w y =\begin{cases}<br>x + y &amp; x + y &lt; 2^w \\<br>x + y - 2^w &amp; x + y \geq 2^w<br>\end{cases}<br>$$</p>
+<h3 id="有符号整数的加法"><a href="#有符号整数的加法" class="headerlink" title="有符号整数的加法"></a>有符号整数的加法</h3><p>在字长为 $w$ 的、使用补码的系统下，对于有符号整数 $x, y$ ，其加法是有可能溢出的。</p>
+<p>一种是两个大正数相加，超越了补码能表示的最大整数。此时补码的符号位承接了较低位溢出的 <code>1</code> ，也就是说补码之和实际上代表一个负数。由于负数 $u$ 的补码 ${\rm TC}_w(u) = u + 2^w$ ，这个负数实际上就是 $x + y - 2^w$ 。这种情况被称为<strong>正溢出</strong>。</p>
+<p>另外一种是两个绝对值很大的负数相加，超越了补码能表示的最小整数。此时补码符号位两个 <code>1</code> 相加得到 <code>10</code> ，溢出为 $w + 1$ 位数，但是最高位的 <code>1</code> 被截断。另外，较低的 $w - 1$ 位不会向上进位（绝对值很大的负数的补码较低位所表示的数实际上会很小）。此时结果的补码符号位为 <code>0</code> ，代表一个正数。由于负数 $u$ 的补码 ${\rm TC}_w(u) = u + 2^w$ ，考虑到截断了一个 <code>1</code> ，所以该正数为：</p>
+<p>$$<br>(x + 2^w) + (y + 2^w) - 2^w = x + y + 2^w<br>$$</p>
+<p>这种情况被称为<strong>负溢出</strong>。</p>
+<p>对于求和结果在表示范围内的，补码的和（截断为 $w$ 位后）就是和的补码。这是因为 $x, y$ 的补码相加后截断，所代表的数与 $x + y$ 模 $2^w$ 同余，而 $x + y$ 位于补码能表示的范围内，所以 $x, y$ 的补码相加后截断得到的就是 $x + y$ 的补码。</p>
+<p>总而言之，字长为 $w$ 的、带有截断的有符号整数加法为（这里，符号 $+^{\text t}_w$ 表示的是字长为 $w$ 的系统下无符号整数的加法）：</p>
+<p>$$<br>x +^{\text{t}}_w y =\begin{cases}<br>x + y - 2^w &amp; x + y \geq 2^{w - 1} \\<br>x + y &amp; -2^{w - 1} \leq x + y &lt; 2^{w - 1} \\<br>x + y + 2^w &amp; x + y &lt; -2^{w - 1}<br>\end{cases}<br>$$</p>
+<h3 id="无符号整数除以-2-的幂"><a href="#无符号整数除以-2-的幂" class="headerlink" title="无符号整数除以 2 的幂"></a>无符号整数除以 2 的幂</h3><p>一般而言在计算机中，除法计算消耗的时间是相当长的。但是对于除数是 2 的幂的情况，我们可以使用移位的方式简化计算。</p>
+<p>左移是很好理解的，溢出的部分会被截断，低位会用 <code>0</code> 补齐。但是右移的时候，低位截断是自然的，但是高位如何补齐则有两种方式。如果高位用 <code>0</code> 补齐，这种移位称为<strong>逻辑右移</strong>。如果用原数的最高位补齐（这里的最高位可以是 <code>0</code> ，比如 16 位系统之中的 <code>00000000 00000001</code> 的最高位为 <code>0</code> ），这种移位称为<strong>算术右移</strong>。</p>
+<p>在字长为 $w$ 的系统下，我们将无符号的逻辑右移标记为 $&gt;^{\text{ul}}_w$ ，无符号的算术右移则标记为 $&gt;^{\text{um}}_w$ 。</p>
+<p><strong>注解：</strong>有符号的右移则将上标的 $\text{u}$ 替换为 $\text{t}$ 。</p>
+<p>其实对于无符号整数 $x$ 不难得到：</p>
+<p>$$<br>x &gt;^{\text{ul}}_w k = \left\lfloor \frac{x}{2^k} \right\rfloor<br>$$</p>
+<h3 id="有符号整数除以-2-的幂"><a href="#有符号整数除以-2-的幂" class="headerlink" title="有符号整数除以 2 的幂"></a>有符号整数除以 2 的幂</h3><p>首先说明，我们希望除法的结果<strong>向 0 舍入</strong>，也就是说 <code>23.6</code> 舍为 <code>23</code> ， <code>-24.6</code> 舍为 <code>-24</code> 。</p>
+<p>这里我们依然使用右移来简化除法计算。但是我们注意到负数除以 2 的幂之后必然还是负数，所以不能使用逻辑右移，只能使用算数右移。这个时候，对于有符号整数 $x$ 我们可以简单地使用 $x &gt;^{\text{tm}}_w k$ 来计算 $x / 2^k$ 。</p>
+<p>对于正数，这样的计算显然是正确的。但是对于负数，比如说 <code>-15213</code> ，其补码为 <code>11000100 10010011</code> 。我们计算其除以 <code>256</code> 的商，按照上面的计算方式即将其补码算术右移 <code>8</code> 位，得到 <code>11111111 11000100</code> ，结果为 <code>-60</code> 。然而我们知道实际的结果应当为 <code>-59.43</code> ，按照舍入应当保留为 <code>-59</code> 。</p>
+<div class="note info no-icon"><p>事实上我们可以说明：</p>
+<p>$$<br>x &gt;^{\text{tm}}_w k = \left\lfloor \frac{x}{2^k} \right\rfloor<br>$$</p>
+<p>也就是说<strong>使用算术右移计算有符号整数的时候永远得到向下舍入的结果</strong>。我们只要说明负数的情况即可，对于负数 $x$ 的补码 $x_{w - 1}x_{w - 2} \cdots x_0$ ，我们设二进制数 $x_{w - 1}x_{w - 2} \cdots x_k$ 表示数 $x’$ ，二进制数 $x_{k - 1}x_{k - 2} \cdots x_0$ 表示数 $x’’ &lt; 2^k$ 。显然：</p>
+<p>$$<br>2^k x’ + x’’ = {\rm TC}_w(x) = 2^w + x<br>$$</p>
+<p>而 $x &gt;^{\text{tm}}_w k$ 得到的是 $x_{w - 1}x_{w - 1} \cdots x_{w - 1}x_{w - 2} \cdots x_k$ ，其表示数：</p>
+<p>$$<br>x’ + \sum_{i = w - k}^{w - 1} 2^i = x’ + 2^{w - k}(2^k - 1)<br>$$</p>
+<p>按照补码去解读这个二进制串的话，其结果为 $x’ + 2^{w - k}(2^k - 1) - 2^w = x’ - 2^{w - k}$ 。也就能够计算得到：</p>
+<p>$$<br>\left\lfloor \frac{x}{2^k} \right\rfloor = \left\lfloor \frac{2^k x’ + x’’ - 2^w}{2^k} \right\rfloor = \left\lfloor x’ - 2^{w - k} + \frac{x’’}{2^k} \right\rfloor = x’ - 2^{w - k} = x &gt;^{\text{tm}}_w k<br>$$</p>
+</div>
+
+<p>为了修正这个舍入问题，我们可以尝试使用这样的一个性质：</p>
+<p>$$<br>\left\lceil \frac{x}{y} \right\rceil = \left\lfloor \frac{x + y - 1}{y} \right\rfloor\ (y &gt; 0)<br>$$</p>
+<p>也就是说我们只要在计算负数 $x$ 的时候改变为：</p>
+<p>$$<br>\left\lfloor \frac{x + 2^k - 1}{2^k} \right\rfloor = [x +^{\text{t}}_w (2^k - 1)] &gt;^{\text{tm}}_w k<br>$$</p>
+<p>即可。</p>
+<h1 id="小数的表示"><a href="#小数的表示" class="headerlink" title="小数的表示"></a>小数的表示</h1><h2 id="IEEE-浮点数标准"><a href="#IEEE-浮点数标准" class="headerlink" title="IEEE 浮点数标准"></a>IEEE 浮点数标准</h2><p>对于一个有小数部分的数 $B$ ，我们总是能找到唯一的 $s \in \{0, 1\}$ 以及实数 $M \in [1, 2)$ 和整数 $E$ 满足：</p>
+<p>$$<br>B = (-1)^s M \cdot 2^E<br>$$</p>
+<p>这里 $s, E, M$ 分别称为<strong>符号</strong>、<strong>阶码</strong>和<strong>尾数</strong>。</p>
+<p>基于这样的性质，我们可以给出小数的表示方式。将一片数据区域的最高位用于放置符号位 $s$ ，然后后面分割为两部分，即 <strong>exp 域</strong>和 <strong>frac 域</strong>，分别放置 $E$ 以及 $M$ 。 exp 域和 frac 域的具体大小有两种常见的制式（即<strong>单精度浮点</strong>和<strong>双精度浮点</strong>）。当然还有一些不太常用的分区方式，具体见表：</p>
+<table>
+<thead>
+<tr>
+<th align="center">标准</th>
+<th align="center">exp 域长度</th>
+<th align="center">frac 域长度</th>
+<th align="center">浮点总长</th>
+<th align="center">备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">单精度浮点</td>
+<td align="center">8 bits</td>
+<td align="center">23 bits</td>
+<td align="center">4 字节</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">双精度浮点</td>
+<td align="center">11 bits</td>
+<td align="center">52 bits</td>
+<td align="center">8 字节</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">扩展精度浮点</td>
+<td align="center">15 bits</td>
+<td align="center">63 bits</td>
+<td align="center">10 字节</td>
+<td align="center">空置 1 bit</td>
+</tr>
+<tr>
+<td align="center">半精度浮点</td>
+<td align="center">5 bits</td>
+<td align="center">10 bits</td>
+<td align="center">2 字节</td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<p>在具体存储的时候，尾数由于整数部分必然为 <code>1</code> ，所以只需要将小数部分按顺序存储即可，而阶码使用无符号整数方法存储。</p>
+<p>这里注意，阶码理应是有可能为负数的，但一般存储的时候会将阶码加上一个固定的偏置变成正数之后存储。如果阶码长度为 $e$ ，那么这个偏置就是 $b = 2^{e - 1} - 1$ 。</p>
+<p>比如说按照单精度浮点的方式存储数 <code>15213.0</code> ，其二进制表示为 $1.1101101101101 \times 2^{13}$ 。所以符号位为 <code>0</code> ，尾数取小数部分前 23 位，即 <code>1101101 10110100 00000000</code> 。阶码为 <code>13</code> ，加上偏置 $2^{7} - 1 = 127$ 得到 <code>140</code> ，即 <code>10001100</code> 。所以最后的存储方式为：</p>
+<figure class="highlight plaintext"><figcaption><span>Assembly</span></figcaption><table><tr><td class="code"><pre><span class="line">01000110 01101101 10110100 00000000</span><br></pre></td></tr></table></figure>
+
+<h2 id="浮点数的非规格化"><a href="#浮点数的非规格化" class="headerlink" title="浮点数的非规格化"></a>浮点数的非规格化</h2><p>事实上，浮点数标准保留一部分阶码用于表示特殊的数字。一般而言，阶码全 <code>1</code> 和全 <code>0</code> 是被保留的。具体而言，阶码全 <code>1</code> 和全 <code>0</code> 的、表述特殊数字的浮点数被称为<strong>非规格化浮点数（ denormalized float point ）</strong>，其余的被称为<strong>规格化浮点数（ normalized float point ）</strong>。</p>
+<p>全 <code>0</code> 的阶码如果按照上述的标准解读的话，表示的是相当接近于零的小数。但是由于默认了尾数的整数部分为 <code>1</code> ，所以说还按照原有解读方式的话，浮点数无法表示 <code>0</code> 。这个时候作出规定，就是<strong>阶码全 <code>0</code> 的时候，尾数的整数部分变为 <code>0</code></strong> 。相应的，为了配合尾数解读方式的调整，<strong>阶码的偏置减去一</strong>。</p>
+<p>假设某浮点数标准之中阶码长为 $e$ ，尾数长为 $m$ 。那么规格化的条件下最小的正浮点数应当是阶码为 <code>00...01</code> ，尾数全 <code>0</code> 。此时表示的数为 $2^{1 - (2^{e - 1} - 1)} = 2^{2 - 2^{e - 1}}$ 。在非规格化条件下，如果将尾数按照无符号整数解析得到的非负整数标记为 $n$ ，那么该浮点数应该为 $2^{2 - 2^{e - 1}} \cdot 2^{-m}n$ 。这里非负整数 $n$ 取值范围为 $0$ 到 $2^m - 1$ 。</p>
+<p>所以说非规格化的浮点数所能表述的非负数序列为：</p>
+<p>$$<br>0, \ 2^{2 - 2^{e - 1}} \cdot 2^{-m} \cdot 1, \ \cdots, \ 2^{2 - 2^{e - 1}} \cdot 2^{-m}(2^m - 1)<br>$$</p>
+<p>这是一个公差为 $2^{2 - 2^{e - 1}} \cdot 2^{-m}$ 的等差数列，而且最后正好可以和规格化浮点数所表述的最小正数 $2^{2 - 2^{e - 1}}$ “无缝衔接”。所以说非规格化浮点数是一个合理的拓展。</p>
+<p>但是，注意非规格化浮点数之中有 <code>+0</code> 和 <code>-0</code> 的区别。</p>
+<p>全 <code>1</code> 的阶码用于表示很大的浮点数。一般而言尾数全 <code>0</code> 的时候该浮点数被保留用于表示无穷。而尾数有非 <code>0</code> 位的时候，该浮点数被保留用于表示 <code>NaN</code> 。</p>
+<hr>
+<p>现在补全了非规格化浮点数之后，可以发现浮点数的大小比较实际上几乎可以按照无符号整数从高位直接比较到低位的逻辑进行。因为阶码大的数一定大，阶码一样的时候尾数大的数一定大，包括无穷大也可以纳入进来。但是要考虑这样的例外：</p>
+<ul>
+<li><p>考虑符号位</p>
+</li>
+<li><p>考虑 <code>+0</code> 和 <code>-0</code> 的特例</p>
+</li>
+<li><p>考虑 <code>NaN</code> 的问题</p>
+</li>
+</ul>
+<h2 id="浮点数的舍入问题"><a href="#浮点数的舍入问题" class="headerlink" title="浮点数的舍入问题"></a>浮点数的舍入问题</h2><p>由于部分数不能表述为有限的二进制小数，所以在转化为浮点数表示的时候需要舍入。一般而言向上舍入、向下舍入、向零舍入都会带来统计误差，而计算机之中常常使用<strong>向偶数舍入</strong>。其舍入的规则是向最接近的数舍入。如果向两边舍入的距离一致，那么优先舍入到偶数。比如说下列数之中，向百分位的舍入为：</p>
+<p>$$<br>\begin{aligned}<br>&amp; 12.324999 \Rightarrow 12.32 \\<br>&amp; 12.325001 \Rightarrow 12.33 \\<br>&amp; 12.325000 \Rightarrow 12.32 \\<br>&amp; 12.335000 \Rightarrow 12.34 \\<br>\end{aligned}<br>$$</p>
+<p>回到二进制上的话，由于十进制的 <code>0.5</code> 相当于二进制的 <code>0.1</code> 。也就是说如果二进制小数之中后面需要舍去的部分大于 <code>100...</code> 则向上舍入，小于 <code>100...</code> 则向下舍入，恰好是 <code>100...</code> 则向偶数舍入（舍入完毕后尾数为 <code>0</code> ）。</p>
+<p>这里要注意一点，舍入是有可能导致溢出。</p>
+<hr>
+<p>至此，小数的计算机编码方式基本就介绍完毕了。其具体过程为：</p>
+<ul>
+<li><p>根据使用的浮点数标准，判定使用规格化的浮点数还是非规格化的浮点数</p>
+</li>
+<li><p>据此判定符号位、阶码和尾数</p>
+</li>
+<li><p>对尾数进行舍入后转化为二进制表示</p>
+</li>
+</ul>
+<h2 id="C-语言的浮点数"><a href="#C-语言的浮点数" class="headerlink" title="C 语言的浮点数"></a>C 语言的浮点数</h2><p>C 语言之中， <code>int</code> 类型以及 <code>float</code> 类型是 4 字节的， <code>double</code> 则是 8 字节。它们之间的互相转换满足这样的规则：</p>
+<ul>
+<li><p><code>int</code> 可以精确转换为 <code>double</code> 类型</p>
+</li>
+<li><p><code>int</code> 转换为 <code>float</code> 类型不会溢出，但有可能被舍入</p>
+</li>
+<li><p><code>float</code> 以及 <code>double</code> 转换为 <code>int</code> 时尾数截断，如果发生溢出则产生 UB</p>
+</li>
+</ul>
+]]></content>
       <categories>
         <category>计算机科学</category>
       </categories>
