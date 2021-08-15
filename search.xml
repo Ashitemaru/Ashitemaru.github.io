@@ -575,6 +575,16 @@
       </categories>
   </entry>
   <entry>
+    <title>日本高中课程《漢文》学习笔记</title>
+    <url>/2021/08/16/ja-2/</url>
+    <content><![CDATA[<p>这门课大致就是讲日本人是如何阅读文言文的。学这个纯属是觉得日语这门语言真的很有意思，借鉴中文的文字，采用了和中文几乎完全不一样的语法。另一方面也是因为好奇中国的典籍传到日本是如何被翻译的。</p>
+<p>虽然自己现代日语都还没学明白，但作为随缘学习人，不如再开新坑。</p>
+<span id="more"></span>]]></content>
+      <categories>
+        <category>日语</category>
+      </categories>
+  </entry>
+  <entry>
     <title>回忆一下我的大学</title>
     <url>/2021/06/16/look-back/</url>
     <content><![CDATA[<p>在搭好这个网站之前，我也已经上了两年大学，走过了一半的本科时光。</p>
@@ -1499,6 +1509,15 @@
 <h3 id="卷积神经网络（-CNN-）"><a href="#卷积神经网络（-CNN-）" class="headerlink" title="卷积神经网络（ CNN ）"></a>卷积神经网络（ CNN ）</h3><p><code>TODO</code></p>
 <h3 id="循环神经网络（-RNN-）"><a href="#循环神经网络（-RNN-）" class="headerlink" title="循环神经网络（ RNN ）"></a>循环神经网络（ RNN ）</h3><p><code>TODO</code></p>
 ]]></content>
+      <categories>
+        <category>计算机科学</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>《量子计算研讨课》学习笔记</title>
+    <url>/2021/08/16/note-of-qi/</url>
+    <content><![CDATA[<p>这门课是今年新开的一门课，根据目前下发的课件来看，应该是一门以数学为主的课。有句古话说得好，一切都是虚张声势的线性代数。</p>
+<span id="more"></span>]]></content>
       <categories>
         <category>计算机科学</category>
       </categories>
