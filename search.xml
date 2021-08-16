@@ -1641,7 +1641,85 @@
     <title>《量子计算研讨课》学习笔记</title>
     <url>/2021/08/16/note-of-qi/</url>
     <content><![CDATA[<p>这门课是今年新开的一门课，根据目前下发的课件来看，应该是一门以数学为主的课。有句古话说得好，一切都是虚张声势的线性代数。</p>
-<span id="more"></span>]]></content>
+<span id="more"></span>
+
+<p>$$<br>\renewcommand{\vec}[1]{<br>    \left| #1 \right\rangle<br>}<br>$$</p>
+<p>$$<br>\newcommand{\pro}[2]{<br>    \left\langle #1 \middle| #2 \right\rangle<br>}<br>$$</p>
+<p>$$<br>\newcommand{\span}{<br>    \mathop{\rm span}<br>}<br>$$</p>
+<p>上面出现的迷之空行是因为我在使用 <code>\newcommand</code> 命令修改 <code>mathjax</code> 。这里也顺便提一下，这个笔记的向量将会用竖线加尖括号的方式写出，如 $\vec{\varphi}$ 。内积则长成 $\pro{\varphi}{\varphi}$ 。共轭复数则在右上角加上星号表示。</p>
+<h1 id="线性代数基础"><a href="#线性代数基础" class="headerlink" title="线性代数基础"></a>线性代数基础</h1><h2 id="向量空间与内积空间"><a href="#向量空间与内积空间" class="headerlink" title="向量空间与内积空间"></a>向量空间与内积空间</h2><p>我们定义<strong>复向量空间（ Complex vector space ）</strong>。考虑一个非空的集合 $\mathcal{H}$ ，其上定义了两个运算：</p>
+<ul>
+<li><p>向量加法， $+: \mathcal{H} \times \mathcal{H} \to \mathcal{H}$ 。</p>
+</li>
+<li><p>标量乘法， $\cdot: \mathbb{C} \times \mathcal{H} \to \mathcal{H}$ 。</p>
+</li>
+</ul>
+<p>这两个运算满足以下条件：</p>
+<ul>
+<li><p>加法交换律， $\vec{\varphi} + \vec{\psi} = \vec{\psi} + \vec{\varphi}$ 。</p>
+</li>
+<li><p>加法结合律， $\vec{\varphi} + (\vec{\psi} + \vec{\chi}) = (\vec{\varphi} + \vec{\psi}) + \vec{\chi}$ 。</p>
+</li>
+<li><p>在集合 $\mathcal{H}$ 之中存在元素 $0$ 满足 $0 + \vec{\varphi} = \vec{\varphi}$ 。</p>
+</li>
+<li><p>对任何 $\vec{\varphi} \in \mathcal{H}$ ，都存在 $-\vec{\varphi} \in \mathcal{H}$ 满足 $\vec{\varphi} + (-\vec{\varphi}) = 0$ 。</p>
+</li>
+<li><p>对于复数 $1$ ，满足 $1 \cdot \vec{\varphi} = \vec{\varphi}$ 。</p>
+</li>
+<li><p>对于复数 $\lambda, \mu$ ，满足 $\lambda \cdot (\mu \cdot \vec{\varphi}) = \lambda\mu \cdot \vec{\varphi}$ 。</p>
+</li>
+<li><p>对于复数 $\lambda, \mu$ ，满足 $(\lambda + \mu) \cdot \vec{\varphi} = \lambda \cdot \vec{\varphi} + \mu \cdot \vec{\varphi}$ 。</p>
+</li>
+<li><p>对于复数 $\lambda, \mu$ ，满足 $\lambda \cdot (\vec{\varphi} + \vec{\psi}) = \lambda \cdot \vec{\varphi} + \lambda \cdot \vec{\psi}$ 。</p>
+</li>
+</ul>
+<p>一个定义了内积运算的向量空间称为<strong>向量空间（ Inner product space ）</strong>。内积 $\pro{\cdot}{\cdot}: \mathcal{H} \times \mathcal{H} \to \mathbb{C}$ 应当满足以下条件：</p>
+<ul>
+<li><p>对于任何 $\vec{\varphi} \in \mathcal{H}$ ，都有 $\pro{\varphi}{\varphi} \geq 0$ ，且等号成立当且仅当 $\vec{\varphi} = 0$ 。</p>
+</li>
+<li><p>对于任何 $\vec{\varphi}, \vec{\psi} \in \mathcal{H}$ ，都有 $\pro{\varphi}{\psi} = \pro{\psi}{\varphi}^*$ 。</p>
+</li>
+<li><p>对于复数 $\lambda_1, \lambda_2$ 和向量 $\varphi, \psi_1, \psi_2$ 有 $\pro{\varphi}{\lambda_1\psi_1 + \lambda_2\psi_2} = \lambda_1\pro{\varphi}{\psi_1} + \lambda_2\pro{\varphi}{\psi_2}$ 。</p>
+</li>
+</ul>
+<p>基于内积，我们可以给出更多的定义。</p>
+<p>两个向量 $\vec{\varphi}, \vec{\psi}$ 如果有 $\pro{\varphi}{\psi} = 0$ ，就称 $\vec{\varphi}, \vec{\psi}$ <strong>正交（ Orthogonal ）</strong>，记作 $\vec{\varphi} \bot \vec{\psi}$ 。</p>
+<p>我们定义一个向量 $\vec{\varphi} \in \mathcal{H}$ 的<strong>长度（ Length ）</strong>或者<strong>范数（ Norm ）</strong>为：</p>
+<p>$$<br>\| \varphi \| = \sqrt{\pro{\varphi}{\varphi}}<br>$$</p>
+<p>定义长度为 $1$ 的向量为<strong>单位向量（ Unit vector ）</strong>。</p>
+<h2 id="Cauchy-极限和-Hilbert-空间"><a href="#Cauchy-极限和-Hilbert-空间" class="headerlink" title="Cauchy 极限和 Hilbert 空间"></a>Cauchy 极限和 Hilbert 空间</h2><p>记 $\{ \vec{\varphi_n} \}$ 是一个在 $\mathcal{H}$ 上的向量序列，且 $\vec{\varphi}$ 是 $\mathcal{H}$ 上的一个向量。</p>
+<p>如果说对于任何的 $\varepsilon &gt; 0$ 都存在一个正整数 $N$ 满足对于任何的 $m, n &gt; N$ 都有 $\| \varphi_m - \varphi_n \| &lt; \varepsilon$ 。就称 $\{ \vec{\varphi_n} \}$ 是一个 <strong>Cauchy 序列</strong>。</p>
+<p>如果说对于任何的 $\varepsilon &gt; 0$ 都存在一个正整数 $N$ 满足对于任何的 $n &gt; N$ 都有 $\| \varphi_n - \varphi \| &lt; \varepsilon$ 。就称 $\vec{\varphi}$ 是序列 $\{ \vec{\varphi_n} \}$ 的极限，记作：</p>
+<p>$$<br>\lim_{n \to \infty} \vec{\varphi_n} = \vec{\varphi}<br>$$</p>
+<p>如果一个内积空间满足任何的 Cauchy 序列都存在极限，那么这个内积空间就称作 <strong>Hilbert 空间</strong>。</p>
+<h2 id="向量空间的基"><a href="#向量空间的基" class="headerlink" title="向量空间的基"></a>向量空间的基</h2><p>一个有穷的或者可数无穷的在 $\mathcal{H}$ 上的单位向量序列 $\{ \vec{\varphi_n} \}$ 是 $\mathcal{H}$ 的<strong>正交基（ Orthonormal basis ）</strong>，如果：</p>
+<ul>
+<li><p>序列 $\{ \vec{\varphi_n} \}$ 中的向量两两正交。即对于任何的 $i \neq j$ 都有 $\vec{\varphi_i} \bot \vec{\varphi_j}$ 。</p>
+</li>
+<li><p>任何 $\vec{\varphi} \in \mathcal{H}$ 都满足存在一个复数序列 $\{ \lambda_n \}$ 满足：</p>
+</li>
+</ul>
+<p>$$<br>\vec{\varphi} = \sum_j \lambda_j\vec{\varphi_j}<br>$$</p>
+<p>我们不加证明地认为，同一个向量空间的两个正交基具有相同数量的向量，一个正交基之中向量的数量称为向量空间的<strong>维数（ Dimension ）</strong>，记作 $\dim\mathcal{H}$ 。</p>
+<p>对于维数有限的向量空间，记 $\dim\mathcal{H} = n$ 。取其一组正交基 $\{ \vec{\varphi_1}, \vec{\varphi_2}, \cdots, \vec{\varphi_n} \}$ ，我们认为对于任何的 $\vec{\varphi} \in \mathcal{H}$ ，其都存在唯一的复数组 $\{ \lambda_1, \lambda_2, \cdots, \lambda_n \}$ 满足 $\vec{\varphi} = \sum_j \lambda_j\vec{\varphi_j}$ 。从而我们可以将 $\mathcal{H}$ 之中的向量用 $\mathbb{C}^n$ 之中的向量表示：</p>
+<p>$$<br>\left[<br>    \begin{matrix}<br>    \lambda_1 \\ \lambda_2 \\ \vdots \\ \lambda_n<br>    \end{matrix}<br>\right]<br>$$</p>
+<h2 id="闭子空间"><a href="#闭子空间" class="headerlink" title="闭子空间"></a>闭子空间</h2><p>对于一个 Hilbert 空间 $\mathcal{H}$ ，称 $X \subset \mathcal{H}$ 为 $\mathcal{H}$ 的一个<strong>子空间（ Subspace ）</strong>，如果对任何的 $\vec{\varphi}, \vec{\psi} \in X$ 和任何复数 $\lambda$ 都有 $\vec{\varphi} + \vec{\psi} \in X$ 以及 $\lambda\vec{\varphi} \in X$ 。</p>
+<p>对于 Hilbert 空间 $\mathcal{H}$ 的子空间 $X$ 定义其<strong>闭包（ Closure ）</strong>为：</p>
+<p>$$<br>\overline X = \left\{ \vec{\varphi}: \exists \{ \vec{\varphi_n} \} \in X, \lim_{n \to \infty} \vec{\varphi_n} = \vec{\varphi} \right\}<br>$$</p>
+<p>子空间的闭包也就是这个子空间之中所有向量序列的极限构成的集合。如果一个子空间的闭包就是其本身，那么这个空间是<strong>闭子空间（ Closed subspace ）</strong>。</p>
+<p>另外，定义由子空间 $X$ 的<strong>张成空间（ Spanned space ）</strong>为：</p>
+<p>$$<br>\span(X) = \left\{ \sum_{j = 1}^n \lambda_j\vec{\varphi_j}: n \geq 0, \lambda_j \in \mathbb{C}, \vec{\varphi_j} \in X \right\}<br>$$</p>
+<p>而子空间 $X$ 的<strong>闭张成空间（ Closed spanned space ）</strong>定义为 $\overline{\span(X)}$ 。</p>
+<h2 id="正交性"><a href="#正交性" class="headerlink" title="正交性"></a>正交性</h2><p>对一个向量空间 $\mathcal{H}$ 的两个子空间 $X, Y$ 。我们称 $X, Y$ 是正交的，如果对于任何的 $\vec{\varphi} \in X, \vec{\psi} \in Y$ 都有 $\vec{\varphi} \bot \vec{\psi}$ 。子空间的正交记作 $X \bot Y$ 。</p>
+<p>另外，我们定义子空间 $X$ 的<strong>正交补（ Orthocomplement ）</strong>为：</p>
+<p>$$<br>X^\bot = \{ \vec{\varphi} \in \mathcal{H}: \vec{\varphi} \bot X \}<br>$$</p>
+<p>我们不加证明地给出，一个子空间的正交补必然是闭子空间，且一个子空间的正交补的正交补是自身（即 $(X^\bot)^\bot = X$ ）。</p>
+<p>最后，我们给出两个子空间<strong>直和</strong>的定义：</p>
+<p>$$<br>X \oplus Y = \{ \vec{\varphi} + \vec{\psi}: \vec{\varphi} \in X, \vec{\psi} \in Y \}<br>$$</p>
+<h1 id="量子机制假设"><a href="#量子机制假设" class="headerlink" title="量子机制假设"></a>量子机制假设</h1><p>我们在研究量子计算之前，首先做这样的假定。一个闭的（比如说孤立的）量子系统的状态空间可以使用 Hilbert 空间描述，此时状态等价于向量，而这个系统中的<strong>纯状态（ Pure state ）</strong>可以使用单位向量进行表述。对于若干个状态 $\vec{\varphi_1}, \cdots, \vec{\varphi_n}$ ，其<strong>叠加（ Superposition ）</strong>定义为向量的线性组合：</p>
+<p>$$<br>\vec{\varphi} = \sum_{j = 1}^n \lambda_j\vec{\varphi_j}<br>$$</p>
+<p>这里复参数 $\lambda_1, \cdots, \lambda_n$ 称为<strong>几率幅度（ Probability amplitudes ）</strong>。</p>
+]]></content>
       <categories>
         <category>计算机科学</category>
       </categories>
