@@ -302,6 +302,38 @@ $$
 
 这里 $P_\lambda$ 是到属于特征值 $\lambda$ 的特征空间上的投影子。
 
+# 张量基础
+
+## Hilbert 空间的张量积
+
+首先我们需要给出 **Kronecker 积**的定义。对于矩阵 $A = (a_{ij})_{n \times m}, B$ ，其 Kronecker 积的定义为：
+
+$$
+A \otimes B = \lv a_{11}B & \cdots & a_{1m}B \\\\ \vdots & \ddots & \vdots \\\\ a_{n1}B & \cdots & a_{nm}B \rv
+$$
+
+那么对于向量 $\vec{\varphi} = (\varphi_1, \varphi_2, \cdots, \varphi_m), \vec{\psi}$ ，其 Kronecker 积为：
+
+$$
+\vec{\varphi} \otimes \vec{\psi} = (\varphi_1\vec{\psi}, \varphi_2\vec{\psi}, \cdots, \varphi_m\vec{\psi})
+$$
+
+接下来就可以定义**张量积（ Tensor product ）**。对于 $n$ 个 Hilbert 空间 $\mathcal{H}\_1, \mathcal{H}\_2, \cdots, \mathcal{H}\_n$ ，其中 $\mathcal{H}\_i$ 有正交基 $\\{ \vec{\psi\_{ij}} \\}\_{1 \leq j \leq \dim \mathcal{H}\_i}$ 。我们构建集合 $\mathcal{B}$ ，其中的元素均符合这样的形式：
+
+$$
+\vec{\psi_{1a_1}, \psi_{2a_2}, \cdots, \psi_{na_n}} := \bigotimes_{k = 1}^n \vec{\psi_{ka_k}} = \vec{\psi_{1a_1}} \otimes \vec{\psi_{2a_2}} \otimes \cdots \otimes \vec{\psi_{na_n}}
+$$
+
+这里 $a_k$ 是满足 $1 \leq a_k \leq \dim \mathcal{H}_k$ 的正整数。
+
+这样构建出来的集合 $\mathcal{B}$ 的元素为向量，且这些向量的维数均为 $\prod\_{k = 1}^n \dim \mathcal{H}\_k$ 。并且集合 $\mathcal{B}$ 的大小也是 $\prod\_{k = 1}^n \dim \mathcal{H}\_k$ 。
+
+定义 $\mathcal{H}\_1, \mathcal{H}\_2, \cdots, \mathcal{H}\_n$ 的张量积就是由集合 $\mathcal{B}$ 中向量张成的空间：
+
+$$
+\bigotimes_{k = 1}^n \mathcal{H}_k := \span(\mathcal{B})
+$$
+
 # 量子力学假设
 
 我们在研究量子计算之前，首先做一些假定。
@@ -360,7 +392,15 @@ $$
 最后一步使用了谱分解的性质。
 {% endnote %}
 
-## 量子比特
+- **第四假设：**若干个量子系统合成的系统的状态空间为这些量子系统的状态空间的张量积。也就是说，如果量子系统 $S$ 由子系统 $S_1, S_2, \cdots, S_n$ 合成，这些子系统的状态空间分别为 $\mathcal{H}_1, \mathcal{H}_2, \cdots, \mathcal{H}_n$ 。那么 $S$ 的状态空间为：
+
+$$
+\bigotimes_{k = 1}^n \mathcal{H}_k
+$$
+
+此外，如果某时刻，子系统的状态分别为 $\vec{\psi_1}, \vec{\psi_2}, \cdots, \vec{\psi_n}$ ，那么 $S$ 的状态为 $\vec{\psi_1, \psi_2, \cdots, \psi_n}$ 。
+
+# 量子比特
 
 考虑下列 Hilbert 空间：
 
