@@ -1645,9 +1645,14 @@
 
 <p>$$<br>\renewcommand{\vec}[1]{<br>    \left| #1 \right\rangle<br>}<br>$$</p>
 <p>$$<br>\newcommand{\pro}[2]{<br>    \left\langle #1 \middle| #2 \right\rangle<br>}<br>$$</p>
+<p>$$<br>\newcommand{\opro}[2]{<br>    \left| #1 \right\rangle\left\langle #2 \right|<br>}<br>$$</p>
+<p>$$<br>\newcommand{\iipro}[3]{<br>    \left\langle #1 \middle| #2 \middle| #3 \right\rangle<br>}<br>$$</p>
 <p>$$<br>\newcommand{\span}{<br>    \mathop{\rm span}<br>}<br>$$</p>
+<p>$$<br>\newcommand{\spec}{<br>    \mathop{\rm spec}<br>}<br>$$</p>
+<p>$$<br>\newcommand{\lv}{<br>    \left[\begin{matrix}<br>}<br>$$</p>
+<p>$$<br>\newcommand{\rv}{<br>    \end{matrix}\right]<br>}<br>$$</p>
 <p>上面出现的迷之空行是因为我在使用 <code>\newcommand</code> 命令修改 <code>mathjax</code> 。这里也顺便提一下，这个笔记的向量将会用竖线加尖括号的方式写出，如 $\vec{\varphi}$ 。内积则长成 $\pro{\varphi}{\varphi}$ 。共轭复数则在右上角加上星号表示。</p>
-<h1 id="线性代数基础"><a href="#线性代数基础" class="headerlink" title="线性代数基础"></a>线性代数基础</h1><h2 id="向量空间与内积空间"><a href="#向量空间与内积空间" class="headerlink" title="向量空间与内积空间"></a>向量空间与内积空间</h2><p>我们定义<strong>复向量空间（ Complex vector space ）</strong>。考虑一个非空的集合 $\mathcal{H}$ ，其上定义了两个运算：</p>
+<h1 id="向量空间基础"><a href="#向量空间基础" class="headerlink" title="向量空间基础"></a>向量空间基础</h1><h2 id="向量空间与内积空间"><a href="#向量空间与内积空间" class="headerlink" title="向量空间与内积空间"></a>向量空间与内积空间</h2><p>我们定义<strong>复向量空间（ Complex vector space ）</strong>。考虑一个非空的集合 $\mathcal{H}$ ，其上定义了两个运算：</p>
 <ul>
 <li><p>向量加法， $+: \mathcal{H} \times \mathcal{H} \to \mathcal{H}$ 。</p>
 </li>
@@ -1716,10 +1721,95 @@
 <p>我们不加证明地给出，一个子空间的正交补必然是闭子空间，且一个子空间的正交补的正交补是自身（即 $(X^\bot)^\bot = X$ ）。</p>
 <p>最后，我们给出两个子空间<strong>直和</strong>的定义：</p>
 <p>$$<br>X \oplus Y = \{ \vec{\varphi} + \vec{\psi}: \vec{\varphi} \in X, \vec{\psi} \in Y \}<br>$$</p>
-<h1 id="量子机制假设"><a href="#量子机制假设" class="headerlink" title="量子机制假设"></a>量子机制假设</h1><p>我们在研究量子计算之前，首先做这样的假定。一个闭的（比如说孤立的）量子系统的状态空间可以使用 Hilbert 空间描述，此时状态等价于向量，而这个系统中的<strong>纯状态（ Pure state ）</strong>可以使用单位向量进行表述。对于若干个状态 $\vec{\varphi_1}, \cdots, \vec{\varphi_n}$ ，其<strong>叠加（ Superposition ）</strong>定义为向量的线性组合：</p>
+<h1 id="线性算子基础"><a href="#线性算子基础" class="headerlink" title="线性算子基础"></a>线性算子基础</h1><p>对于两个 Hilbert 空间 $\mathcal{H}, \mathcal{K}$ 。给定映射 $A: \mathcal{H} \to \mathcal{K}$ ，称其为一个<strong>线性算子（ Linear operator ）</strong>，如果其满足以下条件：</p>
+<ul>
+<li><p>$A(\vec{\varphi} + \vec{\psi}) = A\vec{\varphi} + A\vec{\psi}$</p>
+</li>
+<li><p>$A(\lambda \vec{\varphi}) = \lambda A\vec{\varphi}$</p>
+</li>
+</ul>
+<p>有两个常用的线性算子。<strong>恒等算子（ Identity operator ）</strong>将所有向量映射到自身，其记号为 $I_{\mathcal{H}}$ 。<strong>零算子（ Zero operator ）</strong>将所有向量映射到 $0$ ，其记号为 $0_{\mathcal{H}}$ 。</p>
+<h2 id="外积"><a href="#外积" class="headerlink" title="外积"></a>外积</h2><p>此时可以定义两个向量的<strong>外积（ Outer product ）</strong>，其结果是一个 $\mathcal{H}$ 上的线性算子。对于 $\vec{\varphi}, \vec{\psi} \in \mathcal{H}$ ，外积算子 $\opro{\varphi}{\psi}$ 的定义为：</p>
+<p>$$<br>(\opro{\varphi}{\psi}) \vec{\chi} = \pro{\psi}{\chi}\vec{\varphi}<br>$$</p>
+<h2 id="投影"><a href="#投影" class="headerlink" title="投影"></a>投影</h2><p>对于 Hilbert 空间 $\mathcal{H}$ 的一个闭子空间 $X$ ，我们不加证明地给出，对于 $\mathcal{H}$ 上的任意向量 $\vec{\varphi}$ ，均唯一存在 $\vec{\varphi_1} \in X, \vec{\varphi_2} \in X^\bot$ 满足 $\vec{\varphi} = \vec{\varphi_1} + \vec{\varphi_2}$ 。</p>
+<p>这里 $\vec{\varphi_1}$ 是 $\vec{\varphi}$ 到子空间 $X$ 上的<strong>投影（ Projection ）</strong>。我们不加证明地给出，存在一个线性算子 $P_X: \mathcal{H} \to X$ 满足 $P_X \vec{\varphi} = \vec{\varphi_1}$ ，这个算子称为<strong>投影子（ Projector ）</strong>。</p>
+<h2 id="有界算子和算子范数"><a href="#有界算子和算子范数" class="headerlink" title="有界算子和算子范数"></a>有界算子和算子范数</h2><p>我们称线性算子 $A$ <strong>有界（ Bounded ）</strong>，如果存在 $C \geq 0$ 满足对任何的 $\vec{\varphi} \in \mathcal{H}$ 都有 $\| A\vec{\varphi} \| \leq C\| \varphi \|$ 。空间 $\mathcal{H}$ 上的所有有界算子构成的集合记作 $\mathcal{L}(\mathcal{H})$ 。</p>
+<p>同时我们定义算子的<strong>范数（ Norm ）</strong>为：</p>
+<p>$$<br>\| A \| = \inf \{ C \geq 0: \forall \vec{\varphi} \in \mathcal{H}, \| A\vec{\varphi} \| \leq C\| \varphi \| \}<br>$$</p>
+<p>给定算子范数的同时，我们给出算子之间的距离：</p>
+<p>$$<br>d(A, B) = \sup_{\vec{\varphi}} \| A\vec{\varphi} - B\vec{\varphi} \|<br>$$</p>
+<h2 id="正算子与-Lowner-偏序"><a href="#正算子与-Lowner-偏序" class="headerlink" title="正算子与 Löwner 偏序"></a>正算子与 Löwner 偏序</h2><p>对于有界算子 $A$ ，我们称其为<strong>正的（ Positive ）</strong>，如果对于任何的 $\vec{\varphi} \in \mathcal{H}$ 都有：</p>
+<p>$$<br>\iipro{\varphi}{A}{\varphi} := \pro{\varphi}{A\varphi} \geq 0<br>$$</p>
+<p>而基于此，我们给出算子之间的一个偏序关系，也就是 <strong>Löwner 偏序（Löwner order）</strong>。我们记 $A \sqsubseteq B$ 当且仅当算子 $B - A$ 是正的。</p>
+<h2 id="线性算子的矩阵表示"><a href="#线性算子的矩阵表示" class="headerlink" title="线性算子的矩阵表示"></a>线性算子的矩阵表示</h2><p>我们可以用矩阵表示一个线性算子。这里 $A$ 是 $n$ 维 Hilbert 空间 $\mathcal{H}$ 上的线性算子， $\{ \vec{\varphi_1}, \cdots, \vec{\varphi_n} \}$ 是 $\mathcal{H}$ 的一组正交基：</p>
+<p>$$<br>A = (a_{ij})_{n \times n} = \lv a_{11} &amp; \cdots &amp; a_{1n} \\ \vdots &amp; \ddots &amp; \vdots \\ a_{n1} &amp; \cdots &amp; a_{nn} \rv<br>$$</p>
+<p>矩阵之中的元素定义为：</p>
+<p>$$<br>a_{ij} = \iipro{\varphi_i}{A}{\varphi_j}<br>$$</p>
+<h2 id="酉算子"><a href="#酉算子" class="headerlink" title="酉算子"></a>酉算子</h2><p>我们首先需要引入<strong>伴随算子（ Adjoint operator ）</strong>的概念。对于 $\mathcal{H}$ 上的线性算子 $A$ ，存在唯一的线性算子 $A^\dagger$ 满足对于任何的 $\vec{\varphi}, \vec{\psi} \in \mathcal{H}$ 都有（这里使用 $(\cdot, \cdot)$ 表示内积，防止歧义）：</p>
+<p>$$<br>(A\vec{\varphi}, \psi) = (\varphi, A^\dagger \vec{\psi})<br>$$</p>
+<p>可以证明 $A^\dagger$ 的矩阵是 $A$ 的矩阵的<strong>共轭转置</strong>。</p>
+<p>我们称 $\mathcal{H}$ 上的线性算子 $U$ 是<strong>酉算子（ Unitary operator ）</strong>，如果：</p>
+<p>$$<br>UU^\dagger = U^\dagger U = I_{\mathcal{H}}<br>$$</p>
+<p>酉算子的特性是保内积，也就是对于任何的 $\vec{\varphi}, \vec{\psi} \in \mathcal{H}$ ，都有：</p>
+<p>$$<br>\pro{\varphi}{\psi} = (U\vec{\varphi}, U\vec{\psi})<br>$$</p>
+<h2 id="Hermit-算子"><a href="#Hermit-算子" class="headerlink" title="Hermit 算子"></a>Hermit 算子</h2><p>我们称有界算子 $M$ 是 <strong>Hermit 算子（ Hermitian operator ）</strong>，如果这个算子是自伴随的，即 $M^\dagger = M$ 。在量子力学中，一个 Hermit 算子往往被称为 <strong>可观察量（ Observable ）</strong>。</p>
+<p>不难证明，投影子 $P$ 是 Hermit 算子，且 $P^2 = P$ 。事实上，如果一个 Hermit 算子 $P’$ 满足 $P’^2 = P’$ ，那么 $P’$ 是投影子。</p>
+<h1 id="特征空间基础"><a href="#特征空间基础" class="headerlink" title="特征空间基础"></a>特征空间基础</h1><h2 id="特征值和特征向量"><a href="#特征值和特征向量" class="headerlink" title="特征值和特征向量"></a>特征值和特征向量</h2><p>已知 $A$ 是向量空间 $\mathcal{H}$ 上的线性算子，称 $\vec{\psi}$ 是其<strong>特征向量（ Eigenvector ）</strong>，如果存在复数 $\lambda$ 满足 $A\vec{\psi} = \lambda\vec{\psi}$ 。这里 $\lambda$ 则是<strong>特征值（ Eigenvalue ）</strong>。</p>
+<p>线性算子 $A$ 的特征值构成的集合称为<strong>谱（ Spectrum ）</strong>，一般记作 $\spec(A)$ 。</p>
+<p>对于算子 $A$ 的某个给定的特征值 $\lambda$ ，称集合：</p>
+<p>$$<br>\{ \vec{\psi} \in \mathcal{H}: A\vec{\psi} = \lambda\vec{\psi} \}<br>$$</p>
+<p>为算子 $A$ 属于特征值 $\lambda$ 的<strong>特征空间（Eigenspace）</strong>。可以说明特征空间是一个闭子空间。</p>
+<h2 id="谱分解"><a href="#谱分解" class="headerlink" title="谱分解"></a>谱分解</h2><p>对于任何一个线性算子 $M$ ，我们不加证明地指出可以将其分解为：</p>
+<p>$$<br>M = \sum_{\lambda \in \spec(M)} \lambda P_\lambda<br>$$</p>
+<p>这里 $P_\lambda$ 是到属于特征值 $\lambda$ 的特征空间上的投影子。</p>
+<h1 id="量子力学假设"><a href="#量子力学假设" class="headerlink" title="量子力学假设"></a>量子力学假设</h1><p>我们在研究量子计算之前，首先做一些假定。</p>
+<ul>
+<li><strong>第一假设：</strong>一个闭的（比如说孤立的）量子系统的状态空间可以使用 Hilbert 空间描述，此时状态等价于向量，而这个系统中的<strong>纯状态（ Pure state ）</strong>可以使用单位向量进行表述。</li>
+</ul>
+<p>对于若干个状态 $\vec{\varphi_1}, \cdots, \vec{\varphi_n}$ ，其<strong>叠加（ Superposition ）</strong>定义为向量的线性组合：</p>
 <p>$$<br>\vec{\varphi} = \sum_{j = 1}^n \lambda_j\vec{\varphi_j}<br>$$</p>
 <p>这里复参数 $\lambda_1, \cdots, \lambda_n$ 称为<strong>几率幅度（ Probability amplitudes ）</strong>。</p>
-]]></content>
+<ul>
+<li><p><strong>第二假设：</strong>一个闭的量子系统在时刻 $t_0$ 和 $t$ 的状态分别为 $\vec{\psi_0}$ 和 $\vec{\psi}$ ，那么存在一个仅和 $t_0, t$ 有关的酉算子 $U$ 满足 $\vec{\psi} = U\vec{\psi_0}$ 。</p>
+</li>
+<li><p><strong>第三假设：</strong>对一个闭的量子系统的测量可以被描述为一系列的有界算子 $\{ M_m \} \subseteq \mathcal{L}(\mathcal{H})$ （称为<strong>测量算子</strong>），其中 $\mathcal{H}$ 是这个量子系统的状态空间，且 $\{ M_m \}$ 满足归一化条件：</p>
+</li>
+</ul>
+<p>$$<br>\sum_m M_m^\dagger M_m = I_{\mathcal{H}}<br>$$</p>
+<p>这里每一个测量算子都代表了一个可能的测量结果。</p>
+<p>假定测量前的一瞬间系统的状态为 $\vec{\varphi}$ ，那么测量出第 $j$ 个结果的概率为：</p>
+<p>$$<br>p(j) = \| M_j\vec{\varphi} \|^2 = \iipro{\varphi}{M_j^\dagger M_j}{\varphi}<br>$$</p>
+<p>而当测量出第 $j$ 个结果的时候，测量完毕后的系统状态为：</p>
+<p>$$<br>\vec{\varphi_j} = \frac{M_j\vec{\varphi}}{\sqrt{p(j)}}<br>$$</p>
+<div class="note info no-icon"><p>有一种较为常用的测量，称为<strong>投影测量（ Projection measurement ）</strong>。首先我们有可观测量 $M$ ，定义测量算子为到其各个特征空间上的投影子，也就是 $\{ P_\lambda: \lambda \in \spec(M) \}$ 。当测量一个状态为 $\vec{\psi}$ 的系统的时候，得到结果 $\lambda$ 的可能为（这里用特征值作为各个结果的标号）：</p>
+<p>$$<br>p(\lambda) = \iipro{\psi}{P_\lambda^\dagger P_\lambda}{\psi} = \iipro{\psi}{P_\lambda}{\psi}<br>$$</p>
+<p>得到这个结果后的系统状态为：</p>
+<p>$$<br>\vec{\psi_\lambda} = \frac{P_\lambda\vec{\psi}}{\sqrt{p(\lambda)}}<br>$$</p>
+<p>而测量结果的期望为：</p>
+<p>$$<br>\mathbb{E}(M) = \sum_{\lambda \in \spec(M)} p(\lambda) \cdot \lambda = \sum_{\lambda \in \spec(M)} \iipro{\psi}{P_\lambda}{\psi} \cdot \lambda = \iipro{\psi}{M}{\psi}<br>$$</p>
+<p>最后一步使用了谱分解的性质。</p>
+</div>
+
+<h2 id="量子比特"><a href="#量子比特" class="headerlink" title="量子比特"></a>量子比特</h2><p>考虑下列 Hilbert 空间：</p>
+<p>$$<br>\mathcal{H}_2 = \mathbb{C}^2 = \{ \alpha\vec{0} + \beta\vec{1}: \alpha, \beta \in \mathbb{C} \}<br>$$</p>
+<p>其内积的定义为：</p>
+<p>$$<br>(\alpha\vec{0} + \beta\vec{1}, \alpha’\vec{0} + \beta’\vec{1}) = \alpha^*\alpha’ + \beta^*\beta’<br>$$</p>
+<p>不难得知 $\{ \vec{0}, \vec{1} \}$ 是 $\mathcal{H}_2$ 的一组正交基。</p>
+<hr>
+<p>一般意义的比特具有 <code>0, 1</code> 两种稳定的状态，而<strong>量子比特（ Qubit ）</strong>则处于两种状态的叠加态上。我们可以用 $\vec{0}$ 表述一般的 <code>0</code> 态，用 $\vec{1}$ 表述一般的 <code>1</code> 态，那么 $\mathcal{H}_2$ 实际上就是量子计算所需要讨论的状态空间。</p>
+<p>单个量子比特的状态我们认为是纯的，所以其状态表述为 $\vec{\psi} = \alpha\vec{0} + \beta\vec{1}$ ，这里 $|\alpha|^2 + |\beta|^2 = 1$ 。</p>
+<p>另外，我们引入两个记号：</p>
+<p>$$<br>\vec{+} := \frac{\vec{0} + \vec{1}}{\sqrt{2}} = \frac{1}{\sqrt{2}} \lv 1 \\ 1 \rv, \vec{-} := \frac{\vec{0} - \vec{1}}{\sqrt{2}} = \frac{1}{\sqrt{2}} \lv 1 \\ -1 \rv<br>$$</p>
+<p>利用这两个记号，我们可以引入 Hadamard 变换，其算子的矩阵为（显然这是个酉算子）：</p>
+<p>$$<br>H = \frac{1}{\sqrt{2}} \lv 1 &amp; 1 \\ 1 &amp; -1 \rv<br>$$</p>
+<p>这个算子满足 $H\vec{0} = \vec{+}, H\vec{1} = \vec{-}$ 。</p>
+<div class="note info no-icon"><p>事实上对于可能状态更多的状态空间，比如说有可数无穷多个状态的状态空间，其稳定状态可以用 $\cdots, \vec{-1}, \vec{0}, \vec{1}, \cdots, \vec{n}, \cdots$ 表述，而其状态空间则标记为：</p>
+<p>$$<br>\mathcal{H}_\infty = \left\{ \sum_{j = -\infty}^{+\infty}\alpha_j\vec{j}: \alpha_j \in \mathbb{C}, \sum_{j = -\infty}^{+\infty} |\alpha_j|^2 &lt; \infty \right\}<br>$$</p>
+<p>内积的定义则是：</p>
+<p>$$<br>\left( \sum_{j = -\infty}^{+\infty}\alpha_j\vec{j}, \sum_{j = -\infty}^{+\infty}\alpha’_j\vec{j} \right) = \sum_{j = -\infty}^{+\infty} \alpha_j^*\alpha_j’<br>$$</p>
+<p>此时 $\cdots, \vec{-1}, \vec{0}, \vec{1}, \cdots, \vec{n}, \cdots$ 是一组正交基。</p>
+<p>另外，在 $\mathcal{H}_\infty$ 上也存在着一个常用的酉算子 $T_k$ ，其一般被称作<strong>翻译（ Translation ）</strong>。其性质为 $T_k\vec{n} = \vec{n + k}$ ，这个算子的作用类似将一个粒子平移 $k$ 个状态。</p>
+</div>]]></content>
       <categories>
         <category>计算机科学</category>
       </categories>
