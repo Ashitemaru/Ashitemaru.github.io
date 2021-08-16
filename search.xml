@@ -1762,6 +1762,16 @@
 <h2 id="谱分解"><a href="#谱分解" class="headerlink" title="谱分解"></a>谱分解</h2><p>对于任何一个线性算子 $M$ ，我们不加证明地指出可以将其分解为：</p>
 <p>$$<br>M = \sum_{\lambda \in \spec(M)} \lambda P_\lambda<br>$$</p>
 <p>这里 $P_\lambda$ 是到属于特征值 $\lambda$ 的特征空间上的投影子。</p>
+<h1 id="张量基础"><a href="#张量基础" class="headerlink" title="张量基础"></a>张量基础</h1><h2 id="Hilbert-空间的张量积"><a href="#Hilbert-空间的张量积" class="headerlink" title="Hilbert 空间的张量积"></a>Hilbert 空间的张量积</h2><p>首先我们需要给出 <strong>Kronecker 积</strong>的定义。对于矩阵 $A = (a_{ij})_{n \times m}, B$ ，其 Kronecker 积的定义为：</p>
+<p>$$<br>A \otimes B = \lv a_{11}B &amp; \cdots &amp; a_{1m}B \\ \vdots &amp; \ddots &amp; \vdots \\ a_{n1}B &amp; \cdots &amp; a_{nm}B \rv<br>$$</p>
+<p>那么对于向量 $\vec{\varphi} = (\varphi_1, \varphi_2, \cdots, \varphi_m), \vec{\psi}$ ，其 Kronecker 积为：</p>
+<p>$$<br>\vec{\varphi} \otimes \vec{\psi} = (\varphi_1\vec{\psi}, \varphi_2\vec{\psi}, \cdots, \varphi_m\vec{\psi})<br>$$</p>
+<p>接下来就可以定义<strong>张量积（ Tensor product ）</strong>。对于 $n$ 个 Hilbert 空间 $\mathcal{H}_1, \mathcal{H}_2, \cdots, \mathcal{H}_n$ ，其中 $\mathcal{H}_i$ 有正交基 $\{ \vec{\psi_{ij}} \}_{1 \leq j \leq \dim \mathcal{H}_i}$ 。我们构建集合 $\mathcal{B}$ ，其中的元素均符合这样的形式：</p>
+<p>$$<br>\vec{\psi_{1a_1}, \psi_{2a_2}, \cdots, \psi_{na_n}} := \bigotimes_{k = 1}^n \vec{\psi_{ka_k}} = \vec{\psi_{1a_1}} \otimes \vec{\psi_{2a_2}} \otimes \cdots \otimes \vec{\psi_{na_n}}<br>$$</p>
+<p>这里 $a_k$ 是满足 $1 \leq a_k \leq \dim \mathcal{H}_k$ 的正整数。</p>
+<p>这样构建出来的集合 $\mathcal{B}$ 的元素为向量，且这些向量的维数均为 $\prod_{k = 1}^n \dim \mathcal{H}_k$ 。并且集合 $\mathcal{B}$ 的大小也是 $\prod_{k = 1}^n \dim \mathcal{H}_k$ 。</p>
+<p>定义 $\mathcal{H}_1, \mathcal{H}_2, \cdots, \mathcal{H}_n$ 的张量积就是由集合 $\mathcal{B}$ 中向量张成的空间：</p>
+<p>$$<br>\bigotimes_{k = 1}^n \mathcal{H}_k := \span(\mathcal{B})<br>$$</p>
 <h1 id="量子力学假设"><a href="#量子力学假设" class="headerlink" title="量子力学假设"></a>量子力学假设</h1><p>我们在研究量子计算之前，首先做一些假定。</p>
 <ul>
 <li><strong>第一假设：</strong>一个闭的（比如说孤立的）量子系统的状态空间可以使用 Hilbert 空间描述，此时状态等价于向量，而这个系统中的<strong>纯状态（ Pure state ）</strong>可以使用单位向量进行表述。</li>
@@ -1790,7 +1800,12 @@
 <p>最后一步使用了谱分解的性质。</p>
 </div>
 
-<h2 id="量子比特"><a href="#量子比特" class="headerlink" title="量子比特"></a>量子比特</h2><p>考虑下列 Hilbert 空间：</p>
+<ul>
+<li><strong>第四假设：</strong>若干个量子系统合成的系统的状态空间为这些量子系统的状态空间的张量积。也就是说，如果量子系统 $S$ 由子系统 $S_1, S_2, \cdots, S_n$ 合成，这些子系统的状态空间分别为 $\mathcal{H}_1, \mathcal{H}_2, \cdots, \mathcal{H}_n$ 。那么 $S$ 的状态空间为：</li>
+</ul>
+<p>$$<br>\bigotimes_{k = 1}^n \mathcal{H}_k<br>$$</p>
+<p>此外，如果某时刻，子系统的状态分别为 $\vec{\psi_1}, \vec{\psi_2}, \cdots, \vec{\psi_n}$ ，那么 $S$ 的状态为 $\vec{\psi_1, \psi_2, \cdots, \psi_n}$ 。</p>
+<h1 id="量子比特"><a href="#量子比特" class="headerlink" title="量子比特"></a>量子比特</h1><p>考虑下列 Hilbert 空间：</p>
 <p>$$<br>\mathcal{H}_2 = \mathbb{C}^2 = \{ \alpha\vec{0} + \beta\vec{1}: \alpha, \beta \in \mathbb{C} \}<br>$$</p>
 <p>其内积的定义为：</p>
 <p>$$<br>(\alpha\vec{0} + \beta\vec{1}, \alpha’\vec{0} + \beta’\vec{1}) = \alpha^*\alpha’ + \beta^*\beta’<br>$$</p>
