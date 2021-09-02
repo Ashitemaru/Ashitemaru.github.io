@@ -1,6 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>安卓前端开发杂谈</title>
+    <url>/2021/09/01/android-dev-exp-1/</url>
+    <content><![CDATA[<p>安卓的移动端开发，属实让我血压高了一小段时间。毕竟已经接触过类似于 React Native 那种基于 TypeScript 语言的、优秀的跨平台移动端框架，再去尝试用繁琐的 Java 语言写安卓前端自然是不适应且感到烦躁。</p>
+<p>但是毕竟是 Java 程序设计训练课程，安卓前端开发作为其最大的特色，不得不消受。</p>
+<span id="more"></span>
+
+<h1 id="关于数据绑定"><a href="#关于数据绑定" class="headerlink" title="关于数据绑定"></a>关于数据绑定</h1><p>如果要我说最大的不适应的地方，首先就是数据和图形界面的完全分离。在 React Native 框架之中，数据和图形界面的管理大概是这样的：</p>
+<figure class="highlight typescript"><figcaption><span>TypeScript</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> App = <span class="function">(<span class="params">props: AppProps</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// Set states &amp; initialize</span></span><br><span class="line">    <span class="keyword">const</span> [bar, setBar] = useState&lt;<span class="built_in">number</span>&gt;(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Some functions to update or rewrite data</span></span><br><span class="line">    <span class="keyword">const</span> update = <span class="function">() =&gt;</span> setBar(<span class="function">(<span class="params">o</span>) =&gt;</span> o + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Write UI with TSX, use data freely</span></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="xml"><span class="tag">&lt;<span class="name">View</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Text</span>&gt;</span> Hello world! <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;`The val of bar is $&#123;bar&#125;`&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;`Property foo is $&#123;props.foo&#125;`&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Button</span> <span class="attr">onClick</span>=<span class="string">&#123;update&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但是在安卓之中，图形界面完全定义在 <code>.xml</code> 文件之中，而且一定程度上其定义各个组件摆放方式的语法细节的繁杂程度不低于 HTML 。而如果需要将数据载入图形界面，则首先要根据组件的 ID 获取组件，之后才能调用各种方法设定具体属性。</p>
+<figure class="highlight java"><figcaption><span>Java</span></figcaption><table><tr><td class="code"><pre><span class="line">((TextView) view.findViewById(R.id.entity_name)).setText(data.name);</span><br></pre></td></tr></table></figure>
+
+<p>这里出现的 <code>R</code> 类据说是相当厉害的。但是我第一次接触安卓的时候，这个符号给我带来的感觉就是不安，因为我再也不能像写 React Native 一样至少自认为自己掌握了程序之中的数据流。换一种说法，即使 React Native 可能做了很多背后工作，但它至少做到了让开发者在很多时候能直观引导数据流。</p>
+<p>对于按钮等组件， React Native 框架下可以直接传入回调函数。而众所周知 Java 是纯净的面向对象语言，怎么会有 lambda 这种异端呢（新版本的 Java 已经离经叛道了！）。</p>
+<p>所以你需要写监听器对象，重写其中的方法等等。</p>
+<hr>
+<p>并不是说这样不好，我还记得之前大一小学期的时候写 Qt 很多时候就是各种指针到处乱飞然后到处乱 <code>set</code> 这个那个的，最后一个 <code>draw</code> 函数里面上百行的，成块的各种格式设定、字体设定、内容设定、排列设定，然后这次写安卓让我回忆起了那一段黑暗时光。</p>
+<h1 id="并不适应的适配器模式"><a href="#并不适应的适配器模式" class="headerlink" title="并不适应的适配器模式"></a>并不适应的适配器模式</h1><p>如果只是想给一个 <code>TextView</code> 载入文字，直接几个 <code>set</code> 函数就结束了。但是给一个格式复杂的列表载入数据，则相当繁琐。比如说现在主流的 <code>RecyclerView</code> ，其载入数据，就需要你自己编写一个数据适配器。</p>
+<p>我首先是上网找轮子，随后想了一下，干脆自己包装了个简单的 <code>RecyclerViewAdapter</code> 先勉强用用。</p>
+<p>将数据塞到图形界面上，最重要的三个东西是上下文、使用什么 <code>layout</code> 和数据本身，那么适配器的构造函数就需要接受这三项。然后就是平凡地重写 <code>RecyclerView.Adapter</code> 所要求的三个函数。不过这里我在重写 <code>onBindViewHolder</code> 的时候留了空，因为这里就是定义适配器最重要部分——数据如何映射到 UI 的函数。我将这一个函数设为虚函数，让子类继承重写就可以实现各种映射方式。最后的成果大致这样：</p>
+<figure class="highlight java"><figcaption><span>Java</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">RecyclerViewAdapter</span>&lt;<span class="title">T</span>&gt; <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">Adapter</span>&lt;<span class="title">RecyclerViewAdapter</span>.<span class="title">ViewHolder</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> Context mContext;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">int</span> mLayoutId;</span><br><span class="line">    <span class="keyword">protected</span> List&lt;T&gt; mData;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RecyclerViewAdapter</span><span class="params">(Context context, <span class="keyword">int</span> layoutId, List&lt;T&gt; data)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.mContext = context;</span><br><span class="line">        <span class="keyword">this</span>.mLayoutId = layoutId;</span><br><span class="line">        <span class="keyword">this</span>.mData = data;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="meta">@NonNull</span> <span class="function">ViewHolder <span class="title">onCreateViewHolder</span><span class="params">(<span class="meta">@NonNull</span> ViewGroup parent, <span class="keyword">int</span> viewType)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ViewHolder(</span><br><span class="line">                LayoutInflater.from(mContext).inflate(mLayoutId, parent, <span class="keyword">false</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBindViewHolder</span><span class="params">(<span class="meta">@NonNull</span> ViewHolder holder, <span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// <span class="doctag">TODO:</span> What is this?</span></span><br><span class="line">        <span class="comment">// holder.updatePosition(position);</span></span><br><span class="line">        <span class="keyword">this</span>.convert(holder, mData.get(position));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">convert</span><span class="params">(ViewHolder holder, T data)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getItemCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> mData.size();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ViewHolder</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">ViewHolder</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">private</span> View mConvertView;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">ViewHolder</span><span class="params">(View itemView)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>(itemView);</span><br><span class="line">            <span class="keyword">this</span>.mConvertView = itemView;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> &lt;K extends View&gt; <span class="function">K <span class="title">getViewById</span><span class="params">(<span class="keyword">int</span> viewId)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> (K) mConvertView.findViewById(viewId);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>用起来也简单，传入三个要素，之后重写 <code>convert</code> 方法定义一下数据到 UI 的映射就好了：</p>
+<figure class="highlight java"><figcaption><span>Java</span></figcaption><table><tr><td class="code"><pre><span class="line">binding.entityList.setAdapter(<span class="keyword">new</span> RecyclerViewAdapter&lt;Entity&gt;(</span><br><span class="line">    HomeFragment.<span class="keyword">this</span>.getActivity(), R.layout.home_entity_item, baseEntities</span><br><span class="line">) &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">convert</span><span class="params">(RecyclerViewAdapter.ViewHolder holder, Entity data)</span> </span>&#123;</span><br><span class="line">        ((TextView) holder.getViewById(R.id.entity_name)).setText(data.getLabel());</span><br><span class="line">        ((TextView) holder.getViewById(R.id.entity_category)).setText(data.getCategory());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>你会发现，这比 React Native 要写的东西多太多了。上面这么多需要折腾的， React Native 只需要这样写：</p>
+<figure class="highlight typescript"><figcaption><span>TypeScript</span></figcaption><table><tr><td class="code"><pre><span class="line">&lt;View&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        baseEntities.map(<span class="function">(<span class="params">val, ind</span>) =&gt;</span> (</span><br><span class="line">            <span class="xml"><span class="tag">&lt;<span class="name">View</span> <span class="attr">key</span>=<span class="string">&#123;ind&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;val.name&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;val.category&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span></span><br><span class="line">        ))</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/View&gt;</span><br></pre></td></tr></table></figure>
+
+<p>就可以实现一个列表了。</p>
+<p>Java 我写了一整个类，光数据转成 UI 也写了好几行长代码，这还没有算 <code>.xml</code> 文件。</p>
+]]></content>
+      <categories>
+        <category>计算机科学</category>
+      </categories>
+  </entry>
+  <entry>
     <title>大二春季学期学期总结</title>
     <url>/2021/06/19/grade-2-conclusion/</url>
     <content><![CDATA[<p>魔幻的大二春季学期最终还是随着自动机考试的结束而落幕了，随意写一点东西来总结一下吧。</p>
@@ -1466,7 +1502,7 @@
 
 <p>而函数 <code>foo()</code> 执行的时候是会分配一个栈帧给这个函数存放 <code>buf</code> 这个临时变量的。但是由于 <code>gets()</code> 不限制读入长度，所以我们可以输入相当长的字符串，这样的话就会一直向栈帧的高地址写入，从而会覆写掉返回地址，甚至是上一个函数的栈帧。这样，在 <code>foo()</code> 结束进行返回的时候，就可以控制其跳转到指定的位置执行我们注入的程序。</p>
 <p>防御这种攻击的方法也很多。一种是使用可以限制读入长度的函数，如 <code>fgets()</code> 。一种是给栈内部加入随机长度的无意义数据，让攻击方无法准确预测 PC 应当跳转到何处。还有比如说可以限制执行权限，让这一片区域的内存不能作为机器指令执行。此外还可以让函数在返回之前检查栈帧是否被修改等等。</p>
-]]></content>
+<h1 id="X86-汇编编程基础"><a href="#X86-汇编编程基础" class="headerlink" title="X86 汇编编程基础"></a>X86 汇编编程基础</h1>]]></content>
       <categories>
         <category>计算机科学</category>
       </categories>
@@ -1762,225 +1798,6 @@
 <p>另外还有引入 Dropout 以及引入验证集的方式，这里均不展开。</p>
 <h3 id="卷积神经网络（-CNN-）"><a href="#卷积神经网络（-CNN-）" class="headerlink" title="卷积神经网络（ CNN ）"></a>卷积神经网络（ CNN ）</h3><p><code>TODO</code></p>
 <h3 id="循环神经网络（-RNN-）"><a href="#循环神经网络（-RNN-）" class="headerlink" title="循环神经网络（ RNN ）"></a>循环神经网络（ RNN ）</h3><p><code>TODO</code></p>
-]]></content>
-      <categories>
-        <category>计算机科学</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>《量子计算研讨课》学习笔记</title>
-    <url>/2021/08/16/note-of-qi/</url>
-    <content><![CDATA[<p>这门课是今年新开的一门课，根据目前下发的课件来看，应该是一门以数学为主的课。有句古话说得好，一切都是虚张声势的线性代数。</p>
-<span id="more"></span>
-
-<p>$$<br>\renewcommand{\vec}[1]{<br>    \left| #1 \right\rangle<br>}<br>$$</p>
-<p>$$<br>\newcommand{\pro}[2]{<br>    \left\langle #1 \middle| #2 \right\rangle<br>}<br>$$</p>
-<p>$$<br>\newcommand{\opro}[2]{<br>    \left| #1 \right\rangle\left\langle #2 \right|<br>}<br>$$</p>
-<p>$$<br>\newcommand{\iipro}[3]{<br>    \left\langle #1 \middle| #2 \middle| #3 \right\rangle<br>}<br>$$</p>
-<p>$$<br>\newcommand{\span}{<br>    \mathop{\rm span}<br>}<br>$$</p>
-<p>$$<br>\newcommand{\spec}{<br>    \mathop{\rm spec}<br>}<br>$$</p>
-<p>$$<br>\newcommand{\lv}{<br>    \left[\begin{matrix}<br>}<br>$$</p>
-<p>$$<br>\newcommand{\rv}{<br>    \end{matrix}\right]<br>}<br>$$</p>
-<p>上面出现的迷之空行是因为我在使用 <code>\newcommand</code> 命令修改 <code>mathjax</code> 。这里也顺便提一下，这个笔记的向量将会用竖线加尖括号的方式写出，如 $\vec{\varphi}$ 。内积则长成 $\pro{\varphi}{\varphi}$ 。共轭复数则在右上角加上星号表示。</p>
-<h1 id="向量空间基础"><a href="#向量空间基础" class="headerlink" title="向量空间基础"></a>向量空间基础</h1><h2 id="向量空间与内积空间"><a href="#向量空间与内积空间" class="headerlink" title="向量空间与内积空间"></a>向量空间与内积空间</h2><p>我们定义<strong>复向量空间（ Complex vector space ）</strong>。考虑一个非空的集合 $\mathcal{H}$ ，其上定义了两个运算：</p>
-<ul>
-<li><p>向量加法， $+: \mathcal{H} \times \mathcal{H} \to \mathcal{H}$ 。</p>
-</li>
-<li><p>标量乘法， $\cdot: \mathbb{C} \times \mathcal{H} \to \mathcal{H}$ 。</p>
-</li>
-</ul>
-<p>这两个运算满足以下条件：</p>
-<ul>
-<li><p>加法交换律， $\vec{\varphi} + \vec{\psi} = \vec{\psi} + \vec{\varphi}$ 。</p>
-</li>
-<li><p>加法结合律， $\vec{\varphi} + (\vec{\psi} + \vec{\chi}) = (\vec{\varphi} + \vec{\psi}) + \vec{\chi}$ 。</p>
-</li>
-<li><p>在集合 $\mathcal{H}$ 之中存在元素 $0$ 满足 $0 + \vec{\varphi} = \vec{\varphi}$ 。</p>
-</li>
-<li><p>对任何 $\vec{\varphi} \in \mathcal{H}$ ，都存在 $-\vec{\varphi} \in \mathcal{H}$ 满足 $\vec{\varphi} + (-\vec{\varphi}) = 0$ 。</p>
-</li>
-<li><p>对于复数 $1$ ，满足 $1 \cdot \vec{\varphi} = \vec{\varphi}$ 。</p>
-</li>
-<li><p>对于复数 $\lambda, \mu$ ，满足 $\lambda \cdot (\mu \cdot \vec{\varphi}) = \lambda\mu \cdot \vec{\varphi}$ 。</p>
-</li>
-<li><p>对于复数 $\lambda, \mu$ ，满足 $(\lambda + \mu) \cdot \vec{\varphi} = \lambda \cdot \vec{\varphi} + \mu \cdot \vec{\varphi}$ 。</p>
-</li>
-<li><p>对于复数 $\lambda, \mu$ ，满足 $\lambda \cdot (\vec{\varphi} + \vec{\psi}) = \lambda \cdot \vec{\varphi} + \lambda \cdot \vec{\psi}$ 。</p>
-</li>
-</ul>
-<p>一个定义了内积运算的向量空间称为<strong>向量空间（ Inner product space ）</strong>。内积 $\pro{\cdot}{\cdot}: \mathcal{H} \times \mathcal{H} \to \mathbb{C}$ 应当满足以下条件：</p>
-<ul>
-<li><p>对于任何 $\vec{\varphi} \in \mathcal{H}$ ，都有 $\pro{\varphi}{\varphi} \geq 0$ ，且等号成立当且仅当 $\vec{\varphi} = 0$ 。</p>
-</li>
-<li><p>对于任何 $\vec{\varphi}, \vec{\psi} \in \mathcal{H}$ ，都有 $\pro{\varphi}{\psi} = \pro{\psi}{\varphi}^*$ 。</p>
-</li>
-<li><p>对于复数 $\lambda_1, \lambda_2$ 和向量 $\varphi, \psi_1, \psi_2$ 有 $\pro{\varphi}{\lambda_1\psi_1 + \lambda_2\psi_2} = \lambda_1\pro{\varphi}{\psi_1} + \lambda_2\pro{\varphi}{\psi_2}$ 。</p>
-</li>
-</ul>
-<p>基于内积，我们可以给出更多的定义。</p>
-<p>两个向量 $\vec{\varphi}, \vec{\psi}$ 如果有 $\pro{\varphi}{\psi} = 0$ ，就称 $\vec{\varphi}, \vec{\psi}$ <strong>正交（ Orthogonal ）</strong>，记作 $\vec{\varphi} \bot \vec{\psi}$ 。</p>
-<p>我们定义一个向量 $\vec{\varphi} \in \mathcal{H}$ 的<strong>长度（ Length ）</strong>或者<strong>范数（ Norm ）</strong>为：</p>
-<p>$$<br>\| \varphi \| = \sqrt{\pro{\varphi}{\varphi}}<br>$$</p>
-<p>定义长度为 $1$ 的向量为<strong>单位向量（ Unit vector ）</strong>。</p>
-<h2 id="Cauchy-极限和-Hilbert-空间"><a href="#Cauchy-极限和-Hilbert-空间" class="headerlink" title="Cauchy 极限和 Hilbert 空间"></a>Cauchy 极限和 Hilbert 空间</h2><p>记 $\{ \vec{\varphi_n} \}$ 是一个在 $\mathcal{H}$ 上的向量序列，且 $\vec{\varphi}$ 是 $\mathcal{H}$ 上的一个向量。</p>
-<p>如果说对于任何的 $\varepsilon &gt; 0$ 都存在一个正整数 $N$ 满足对于任何的 $m, n &gt; N$ 都有 $\| \varphi_m - \varphi_n \| &lt; \varepsilon$ 。就称 $\{ \vec{\varphi_n} \}$ 是一个 <strong>Cauchy 序列</strong>。</p>
-<p>如果说对于任何的 $\varepsilon &gt; 0$ 都存在一个正整数 $N$ 满足对于任何的 $n &gt; N$ 都有 $\| \varphi_n - \varphi \| &lt; \varepsilon$ 。就称 $\vec{\varphi}$ 是序列 $\{ \vec{\varphi_n} \}$ 的极限，记作：</p>
-<p>$$<br>\lim_{n \to \infty} \vec{\varphi_n} = \vec{\varphi}<br>$$</p>
-<p>如果一个内积空间满足任何的 Cauchy 序列都存在极限，那么这个内积空间就称作 <strong>Hilbert 空间</strong>。</p>
-<h2 id="向量空间的基"><a href="#向量空间的基" class="headerlink" title="向量空间的基"></a>向量空间的基</h2><p>一个有穷的或者可数无穷的在 $\mathcal{H}$ 上的单位向量序列 $\{ \vec{\varphi_n} \}$ 是 $\mathcal{H}$ 的<strong>正交基（ Orthonormal basis ）</strong>，如果：</p>
-<ul>
-<li><p>序列 $\{ \vec{\varphi_n} \}$ 中的向量两两正交。即对于任何的 $i \neq j$ 都有 $\vec{\varphi_i} \bot \vec{\varphi_j}$ 。</p>
-</li>
-<li><p>任何 $\vec{\varphi} \in \mathcal{H}$ 都满足存在一个复数序列 $\{ \lambda_n \}$ 满足：</p>
-</li>
-</ul>
-<p>$$<br>\vec{\varphi} = \sum_j \lambda_j\vec{\varphi_j}<br>$$</p>
-<p>我们不加证明地认为，同一个向量空间的两个正交基具有相同数量的向量，一个正交基之中向量的数量称为向量空间的<strong>维数（ Dimension ）</strong>，记作 $\dim\mathcal{H}$ 。</p>
-<p>对于维数有限的向量空间，记 $\dim\mathcal{H} = n$ 。取其一组正交基 $\{ \vec{\varphi_1}, \vec{\varphi_2}, \cdots, \vec{\varphi_n} \}$ ，我们认为对于任何的 $\vec{\varphi} \in \mathcal{H}$ ，其都存在唯一的复数组 $\{ \lambda_1, \lambda_2, \cdots, \lambda_n \}$ 满足 $\vec{\varphi} = \sum_j \lambda_j\vec{\varphi_j}$ 。从而我们可以将 $\mathcal{H}$ 之中的向量用 $\mathbb{C}^n$ 之中的向量表示：</p>
-<p>$$<br>\left[<br>    \begin{matrix}<br>    \lambda_1 \\ \lambda_2 \\ \vdots \\ \lambda_n<br>    \end{matrix}<br>\right]<br>$$</p>
-<h2 id="闭子空间"><a href="#闭子空间" class="headerlink" title="闭子空间"></a>闭子空间</h2><p>对于一个 Hilbert 空间 $\mathcal{H}$ ，称 $X \subset \mathcal{H}$ 为 $\mathcal{H}$ 的一个<strong>子空间（ Subspace ）</strong>，如果对任何的 $\vec{\varphi}, \vec{\psi} \in X$ 和任何复数 $\lambda$ 都有 $\vec{\varphi} + \vec{\psi} \in X$ 以及 $\lambda\vec{\varphi} \in X$ 。</p>
-<p>对于 Hilbert 空间 $\mathcal{H}$ 的子空间 $X$ 定义其<strong>闭包（ Closure ）</strong>为：</p>
-<p>$$<br>\overline X = \left\{ \vec{\varphi}: \exists \{ \vec{\varphi_n} \} \in X, \lim_{n \to \infty} \vec{\varphi_n} = \vec{\varphi} \right\}<br>$$</p>
-<p>子空间的闭包也就是这个子空间之中所有向量序列的极限构成的集合。如果一个子空间的闭包就是其本身，那么这个空间是<strong>闭子空间（ Closed subspace ）</strong>。</p>
-<p>另外，定义由子空间 $X$ 的<strong>张成空间（ Spanned space ）</strong>为：</p>
-<p>$$<br>\span(X) = \left\{ \sum_{j = 1}^n \lambda_j\vec{\varphi_j}: n \geq 0, \lambda_j \in \mathbb{C}, \vec{\varphi_j} \in X \right\}<br>$$</p>
-<p>而子空间 $X$ 的<strong>闭张成空间（ Closed spanned space ）</strong>定义为 $\overline{\span(X)}$ 。</p>
-<h2 id="正交性"><a href="#正交性" class="headerlink" title="正交性"></a>正交性</h2><p>对一个向量空间 $\mathcal{H}$ 的两个子空间 $X, Y$ 。我们称 $X, Y$ 是正交的，如果对于任何的 $\vec{\varphi} \in X, \vec{\psi} \in Y$ 都有 $\vec{\varphi} \bot \vec{\psi}$ 。子空间的正交记作 $X \bot Y$ 。</p>
-<p>另外，我们定义子空间 $X$ 的<strong>正交补（ Orthocomplement ）</strong>为：</p>
-<p>$$<br>X^\bot = \{ \vec{\varphi} \in \mathcal{H}: \vec{\varphi} \bot X \}<br>$$</p>
-<p>我们不加证明地给出，一个子空间的正交补必然是闭子空间，且一个子空间的正交补的正交补是自身（即 $(X^\bot)^\bot = X$ ）。</p>
-<p>最后，我们给出两个子空间<strong>直和</strong>的定义：</p>
-<p>$$<br>X \oplus Y = \{ \vec{\varphi} + \vec{\psi}: \vec{\varphi} \in X, \vec{\psi} \in Y \}<br>$$</p>
-<h1 id="线性算子基础"><a href="#线性算子基础" class="headerlink" title="线性算子基础"></a>线性算子基础</h1><p>对于两个 Hilbert 空间 $\mathcal{H}, \mathcal{K}$ 。给定映射 $A: \mathcal{H} \to \mathcal{K}$ ，称其为一个<strong>线性算子（ Linear operator ）</strong>，如果其满足以下条件：</p>
-<ul>
-<li><p>$A(\vec{\varphi} + \vec{\psi}) = A\vec{\varphi} + A\vec{\psi}$</p>
-</li>
-<li><p>$A(\lambda \vec{\varphi}) = \lambda A\vec{\varphi}$</p>
-</li>
-</ul>
-<p>有两个常用的线性算子。<strong>恒等算子（ Identity operator ）</strong>将所有向量映射到自身，其记号为 $I_{\mathcal{H}}$ 。<strong>零算子（ Zero operator ）</strong>将所有向量映射到 $0$ ，其记号为 $0_{\mathcal{H}}$ 。</p>
-<h2 id="外积"><a href="#外积" class="headerlink" title="外积"></a>外积</h2><p>此时可以定义两个向量的<strong>外积（ Outer product ）</strong>，其结果是一个 $\mathcal{H}$ 上的线性算子。对于 $\vec{\varphi}, \vec{\psi} \in \mathcal{H}$ ，外积算子 $\opro{\varphi}{\psi}$ 的定义为：</p>
-<p>$$<br>(\opro{\varphi}{\psi}) \vec{\chi} = \pro{\psi}{\chi}\vec{\varphi}<br>$$</p>
-<h2 id="投影"><a href="#投影" class="headerlink" title="投影"></a>投影</h2><p>对于 Hilbert 空间 $\mathcal{H}$ 的一个闭子空间 $X$ ，我们不加证明地给出，对于 $\mathcal{H}$ 上的任意向量 $\vec{\varphi}$ ，均唯一存在 $\vec{\varphi_1} \in X, \vec{\varphi_2} \in X^\bot$ 满足 $\vec{\varphi} = \vec{\varphi_1} + \vec{\varphi_2}$ 。</p>
-<p>这里 $\vec{\varphi_1}$ 是 $\vec{\varphi}$ 到子空间 $X$ 上的<strong>投影（ Projection ）</strong>。我们不加证明地给出，存在一个线性算子 $P_X: \mathcal{H} \to X$ 满足 $P_X \vec{\varphi} = \vec{\varphi_1}$ ，这个算子称为<strong>投影子（ Projector ）</strong>。</p>
-<h2 id="有界算子和算子范数"><a href="#有界算子和算子范数" class="headerlink" title="有界算子和算子范数"></a>有界算子和算子范数</h2><p>我们称线性算子 $A$ <strong>有界（ Bounded ）</strong>，如果存在 $C \geq 0$ 满足对任何的 $\vec{\varphi} \in \mathcal{H}$ 都有 $\| A\vec{\varphi} \| \leq C\| \varphi \|$ 。空间 $\mathcal{H}$ 上的所有有界算子构成的集合记作 $\mathcal{L}(\mathcal{H})$ 。</p>
-<p>同时我们定义算子的<strong>范数（ Norm ）</strong>为：</p>
-<p>$$<br>\| A \| = \inf \{ C \geq 0: \forall \vec{\varphi} \in \mathcal{H}, \| A\vec{\varphi} \| \leq C\| \varphi \| \}<br>$$</p>
-<p>给定算子范数的同时，我们给出算子之间的距离：</p>
-<p>$$<br>d(A, B) = \sup_{\vec{\varphi}} \| A\vec{\varphi} - B\vec{\varphi} \|<br>$$</p>
-<h2 id="正算子与-Lowner-偏序"><a href="#正算子与-Lowner-偏序" class="headerlink" title="正算子与 Löwner 偏序"></a>正算子与 Löwner 偏序</h2><p>对于有界算子 $A$ ，我们称其为<strong>正的（ Positive ）</strong>，如果对于任何的 $\vec{\varphi} \in \mathcal{H}$ 都有：</p>
-<p>$$<br>\iipro{\varphi}{A}{\varphi} := \pro{\varphi}{A\varphi} \geq 0<br>$$</p>
-<p>而基于此，我们给出算子之间的一个偏序关系，也就是 <strong>Löwner 偏序（Löwner order）</strong>。我们记 $A \sqsubseteq B$ 当且仅当算子 $B - A$ 是正的。</p>
-<h2 id="线性算子的矩阵表示"><a href="#线性算子的矩阵表示" class="headerlink" title="线性算子的矩阵表示"></a>线性算子的矩阵表示</h2><p>我们可以用矩阵表示一个线性算子。这里 $A$ 是 $n$ 维 Hilbert 空间 $\mathcal{H}$ 上的线性算子， $\{ \vec{\varphi_1}, \cdots, \vec{\varphi_n} \}$ 是 $\mathcal{H}$ 的一组正交基：</p>
-<p>$$<br>A = (a_{ij})_{n \times n} = \lv a_{11} &amp; \cdots &amp; a_{1n} \\ \vdots &amp; \ddots &amp; \vdots \\ a_{n1} &amp; \cdots &amp; a_{nn} \rv<br>$$</p>
-<p>矩阵之中的元素定义为：</p>
-<p>$$<br>a_{ij} = \iipro{\varphi_i}{A}{\varphi_j}<br>$$</p>
-<h2 id="酉算子"><a href="#酉算子" class="headerlink" title="酉算子"></a>酉算子</h2><p>我们首先需要引入<strong>伴随算子（ Adjoint operator ）</strong>的概念。对于 $\mathcal{H}$ 上的线性算子 $A$ ，存在唯一的线性算子 $A^\dagger$ 满足对于任何的 $\vec{\varphi}, \vec{\psi} \in \mathcal{H}$ 都有（这里使用 $(\cdot, \cdot)$ 表示内积，防止歧义）：</p>
-<p>$$<br>(A\vec{\varphi}, \psi) = (\varphi, A^\dagger \vec{\psi})<br>$$</p>
-<p>可以证明 $A^\dagger$ 的矩阵是 $A$ 的矩阵的<strong>共轭转置</strong>。</p>
-<p>我们称 $\mathcal{H}$ 上的线性算子 $U$ 是<strong>酉算子（ Unitary operator ）</strong>，如果：</p>
-<p>$$<br>UU^\dagger = U^\dagger U = I_{\mathcal{H}}<br>$$</p>
-<p>酉算子的特性是保内积，也就是对于任何的 $\vec{\varphi}, \vec{\psi} \in \mathcal{H}$ ，都有：</p>
-<p>$$<br>\pro{\varphi}{\psi} = (U\vec{\varphi}, U\vec{\psi})<br>$$</p>
-<h2 id="Hermit-算子"><a href="#Hermit-算子" class="headerlink" title="Hermit 算子"></a>Hermit 算子</h2><p>我们称有界算子 $M$ 是 <strong>Hermit 算子（ Hermitian operator ）</strong>，如果这个算子是自伴随的，即 $M^\dagger = M$ 。在量子力学中，一个 Hermit 算子往往被称为 <strong>可观察量（ Observable ）</strong>。</p>
-<p>不难证明，投影子 $P$ 是 Hermit 算子，且 $P^2 = P$ 。事实上，如果一个 Hermit 算子 $P’$ 满足 $P’^2 = P’$ ，那么 $P’$ 是投影子。</p>
-<h1 id="特征空间基础"><a href="#特征空间基础" class="headerlink" title="特征空间基础"></a>特征空间基础</h1><h2 id="特征值和特征向量"><a href="#特征值和特征向量" class="headerlink" title="特征值和特征向量"></a>特征值和特征向量</h2><p>已知 $A$ 是向量空间 $\mathcal{H}$ 上的线性算子，称 $\vec{\psi}$ 是其<strong>特征向量（ Eigenvector ）</strong>，如果存在复数 $\lambda$ 满足 $A\vec{\psi} = \lambda\vec{\psi}$ 。这里 $\lambda$ 则是<strong>特征值（ Eigenvalue ）</strong>。</p>
-<p>线性算子 $A$ 的特征值构成的集合称为<strong>谱（ Spectrum ）</strong>，一般记作 $\spec(A)$ 。</p>
-<p>对于算子 $A$ 的某个给定的特征值 $\lambda$ ，称集合：</p>
-<p>$$<br>\{ \vec{\psi} \in \mathcal{H}: A\vec{\psi} = \lambda\vec{\psi} \}<br>$$</p>
-<p>为算子 $A$ 属于特征值 $\lambda$ 的<strong>特征空间（Eigenspace）</strong>。可以说明特征空间是一个闭子空间。</p>
-<h2 id="谱分解"><a href="#谱分解" class="headerlink" title="谱分解"></a>谱分解</h2><p>对于任何一个线性算子 $M$ ，我们不加证明地指出可以将其分解为：</p>
-<p>$$<br>M = \sum_{\lambda \in \spec(M)} \lambda P_\lambda<br>$$</p>
-<p>这里 $P_\lambda$ 是到属于特征值 $\lambda$ 的特征空间上的投影子。</p>
-<h1 id="张量基础"><a href="#张量基础" class="headerlink" title="张量基础"></a>张量基础</h1><h2 id="Hilbert-空间的张量积"><a href="#Hilbert-空间的张量积" class="headerlink" title="Hilbert 空间的张量积"></a>Hilbert 空间的张量积</h2><p>首先我们需要给出 <strong>Kronecker 积</strong>的定义。对于矩阵 $A = (a_{ij})_{n \times m}, B$ ，其 Kronecker 积的定义为：</p>
-<p>$$<br>A \otimes B = \lv a_{11}B &amp; \cdots &amp; a_{1m}B \\ \vdots &amp; \ddots &amp; \vdots \\ a_{n1}B &amp; \cdots &amp; a_{nm}B \rv<br>$$</p>
-<p>那么对于向量 $\vec{\varphi} = (\varphi_1, \varphi_2, \cdots, \varphi_m), \vec{\psi}$ ，其 Kronecker 积为：</p>
-<p>$$<br>\vec{\varphi} \otimes \vec{\psi} = (\varphi_1\vec{\psi}, \varphi_2\vec{\psi}, \cdots, \varphi_m\vec{\psi})<br>$$</p>
-<p>接下来就可以定义<strong>张量积（ Tensor product ）</strong>。对于 $n$ 个 Hilbert 空间 $\mathcal{H}_1, \mathcal{H}_2, \cdots, \mathcal{H}_n$ ，其中 $\mathcal{H}_i$ 有正交基 $\{ \vec{\psi_{ij}} \}_{1 \leq j \leq \dim \mathcal{H}_i}$ 。我们构建集合 $\mathcal{B}$ ，其中的元素均符合这样的形式：</p>
-<p>$$<br>\vec{\psi_{1a_1}, \psi_{2a_2}, \cdots, \psi_{na_n}} := \bigotimes_{k = 1}^n \vec{\psi_{ka_k}} = \vec{\psi_{1a_1}} \otimes \vec{\psi_{2a_2}} \otimes \cdots \otimes \vec{\psi_{na_n}}<br>$$</p>
-<p>这里 $a_k$ 是满足 $1 \leq a_k \leq \dim \mathcal{H}_k$ 的正整数。</p>
-<p>这样构建出来的集合 $\mathcal{B}$ 的元素为向量，且这些向量的维数均为 $\prod_{k = 1}^n \dim \mathcal{H}_k$ 。并且集合 $\mathcal{B}$ 的大小也是 $\prod_{k = 1}^n \dim \mathcal{H}_k$ 。</p>
-<p>定义 $\mathcal{H}_1, \mathcal{H}_2, \cdots, \mathcal{H}_n$ 的张量积就是由集合 $\mathcal{B}$ 中向量张成的空间：</p>
-<p>$$<br>\bigotimes_{k = 1}^n \mathcal{H}_k := \span(\mathcal{B})<br>$$</p>
-<h1 id="量子力学假设"><a href="#量子力学假设" class="headerlink" title="量子力学假设"></a>量子力学假设</h1><p>我们在研究量子计算之前，首先做一些假定。</p>
-<ul>
-<li><strong>第一假设：</strong>一个闭的（比如说孤立的）量子系统的状态空间可以使用 Hilbert 空间描述，此时状态等价于向量，而这个系统中的<strong>纯状态（ Pure state ）</strong>可以使用单位向量进行表述。</li>
-</ul>
-<p>对于若干个状态 $\vec{\varphi_1}, \cdots, \vec{\varphi_n}$ ，其<strong>叠加（ Superposition ）</strong>定义为向量的线性组合：</p>
-<p>$$<br>\vec{\varphi} = \sum_{j = 1}^n \lambda_j\vec{\varphi_j}<br>$$</p>
-<p>这里复参数 $\lambda_1, \cdots, \lambda_n$ 称为<strong>几率幅度（ Probability amplitudes ）</strong>。</p>
-<ul>
-<li><p><strong>第二假设：</strong>一个闭的量子系统在时刻 $t_0$ 和 $t$ 的状态分别为 $\vec{\psi_0}$ 和 $\vec{\psi}$ ，那么存在一个仅和 $t_0, t$ 有关的酉算子 $U$ 满足 $\vec{\psi} = U\vec{\psi_0}$ 。</p>
-</li>
-<li><p><strong>第三假设：</strong>对一个闭的量子系统的测量可以被描述为一系列的有界算子 $\{ M_m \} \subseteq \mathcal{L}(\mathcal{H})$ （称为<strong>测量算子</strong>），其中 $\mathcal{H}$ 是这个量子系统的状态空间，且 $\{ M_m \}$ 满足归一化条件：</p>
-</li>
-</ul>
-<p>$$<br>\sum_m M_m^\dagger M_m = I_{\mathcal{H}}<br>$$</p>
-<p>这里每一个测量算子都代表了一个可能的测量结果。</p>
-<p>假定测量前的一瞬间系统的状态为 $\vec{\varphi}$ ，那么测量出第 $j$ 个结果的概率为：</p>
-<p>$$<br>p(j) = \| M_j\vec{\varphi} \|^2 = \iipro{\varphi}{M_j^\dagger M_j}{\varphi}<br>$$</p>
-<p>而当测量出第 $j$ 个结果的时候，测量完毕后的系统状态为：</p>
-<p>$$<br>\vec{\varphi_j} = \frac{M_j\vec{\varphi}}{\sqrt{p(j)}}<br>$$</p>
-<div class="note info no-icon"><p>有一种较为常用的测量，称为<strong>投影测量（ Projection measurement ）</strong>。首先我们有可观测量 $M$ ，定义测量算子为到其各个特征空间上的投影子，也就是 $\{ P_\lambda: \lambda \in \spec(M) \}$ 。当测量一个状态为 $\vec{\psi}$ 的系统的时候，得到结果 $\lambda$ 的可能为（这里用特征值作为各个结果的标号）：</p>
-<p>$$<br>p(\lambda) = \iipro{\psi}{P_\lambda^\dagger P_\lambda}{\psi} = \iipro{\psi}{P_\lambda}{\psi}<br>$$</p>
-<p>得到这个结果后的系统状态为：</p>
-<p>$$<br>\vec{\psi_\lambda} = \frac{P_\lambda\vec{\psi}}{\sqrt{p(\lambda)}}<br>$$</p>
-<p>而测量结果的期望为：</p>
-<p>$$<br>\mathbb{E}(M) = \sum_{\lambda \in \spec(M)} p(\lambda) \cdot \lambda = \sum_{\lambda \in \spec(M)} \iipro{\psi}{P_\lambda}{\psi} \cdot \lambda = \iipro{\psi}{M}{\psi}<br>$$</p>
-<p>最后一步使用了谱分解的性质。</p>
-</div>
-
-<ul>
-<li><strong>第四假设：</strong>若干个量子系统合成的系统的状态空间为这些量子系统的状态空间的张量积。也就是说，如果量子系统 $S$ 由子系统 $S_1, S_2, \cdots, S_n$ 合成，这些子系统的状态空间分别为 $\mathcal{H}_1, \mathcal{H}_2, \cdots, \mathcal{H}_n$ 。那么 $S$ 的状态空间为：</li>
-</ul>
-<p>$$<br>\bigotimes_{k = 1}^n \mathcal{H}_k<br>$$</p>
-<p>此外，如果某时刻，子系统的状态分别为 $\vec{\psi_1}, \vec{\psi_2}, \cdots, \vec{\psi_n}$ ，那么 $S$ 的状态为 $\vec{\psi_1, \psi_2, \cdots, \psi_n}$ 。</p>
-<h1 id="量子比特"><a href="#量子比特" class="headerlink" title="量子比特"></a>量子比特</h1><p>考虑下列 Hilbert 空间：</p>
-<p>$$<br>\mathcal{H}_2 = \mathbb{C}^2 = \{ \alpha\vec{0} + \beta\vec{1}: \alpha, \beta \in \mathbb{C} \}<br>$$</p>
-<p>其内积的定义为：</p>
-<p>$$<br>(\alpha\vec{0} + \beta\vec{1}, \alpha’\vec{0} + \beta’\vec{1}) = \alpha^*\alpha’ + \beta^*\beta’<br>$$</p>
-<p>不难得知 $\{ \vec{0}, \vec{1} \}$ 是 $\mathcal{H}_2$ 的一组正交基。</p>
-<hr>
-<p>一般意义的比特具有 <code>0, 1</code> 两种稳定的状态，而<strong>量子比特（ Qubit ）</strong>则处于两种状态的叠加态上。我们可以用 $\vec{0}$ 表述一般的 <code>0</code> 态，用 $\vec{1}$ 表述一般的 <code>1</code> 态，那么 $\mathcal{H}_2$ 实际上就是量子计算所需要讨论的状态空间。</p>
-<p>单个量子比特的状态我们认为是纯的，所以其状态表述为 $\vec{\psi} = \alpha\vec{0} + \beta\vec{1}$ ，这里 $|\alpha|^2 + |\beta|^2 = 1$ 。</p>
-<p>另外，我们引入两个记号：</p>
-<p>$$<br>\vec{+} := \frac{\vec{0} + \vec{1}}{\sqrt{2}} = \frac{1}{\sqrt{2}} \lv 1 \\ 1 \rv, \vec{-} := \frac{\vec{0} - \vec{1}}{\sqrt{2}} = \frac{1}{\sqrt{2}} \lv 1 \\ -1 \rv<br>$$</p>
-<p>利用这两个记号，我们可以引入 Hadamard 变换，其算子的矩阵为（显然这是个酉算子）：</p>
-<p>$$<br>H = \frac{1}{\sqrt{2}} \lv 1 &amp; 1 \\ 1 &amp; -1 \rv<br>$$</p>
-<p>这个算子满足 $H\vec{0} = \vec{+}, H\vec{1} = \vec{-}$ 。</p>
-<div class="note info no-icon"><p>事实上对于可能状态更多的状态空间，比如说有可数无穷多个状态的状态空间，其稳定状态可以用 $\cdots, \vec{-1}, \vec{0}, \vec{1}, \cdots, \vec{n}, \cdots$ 表述，而其状态空间则标记为：</p>
-<p>$$<br>\mathcal{H}_\infty = \left\{ \sum_{j = -\infty}^{+\infty}\alpha_j\vec{j}: \alpha_j \in \mathbb{C}, \sum_{j = -\infty}^{+\infty} |\alpha_j|^2 &lt; \infty \right\}<br>$$</p>
-<p>内积的定义则是：</p>
-<p>$$<br>\left( \sum_{j = -\infty}^{+\infty}\alpha_j\vec{j}, \sum_{j = -\infty}^{+\infty}\alpha’_j\vec{j} \right) = \sum_{j = -\infty}^{+\infty} \alpha_j^*\alpha_j’<br>$$</p>
-<p>此时 $\cdots, \vec{-1}, \vec{0}, \vec{1}, \cdots, \vec{n}, \cdots$ 是一组正交基。</p>
-<p>另外，在 $\mathcal{H}_\infty$ 上也存在着一个常用的酉算子 $T_k$ ，其一般被称作<strong>翻译（ Translation ）</strong>。其性质为 $T_k\vec{n} = \vec{n + k}$ ，这个算子的作用类似将一个粒子平移 $k$ 个状态。</p>
-</div>]]></content>
-      <categories>
-        <category>计算机科学</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>《Making Pre-trained Language Models Better Few-shot Learners》阅读笔记</title>
-    <url>/2021/07/10/paper-nlp-01/</url>
-    <content><![CDATA[<p>咕了很长时间实验室那边，今天一定要开始做一点真正的事情。科研，先从读论文开始。</p>
-<span id="more"></span>
-
-<h2 id="问题-amp-解决方案概述"><a href="#问题-amp-解决方案概述" class="headerlink" title="问题 &amp; 解决方案概述"></a>问题 &amp; 解决方案概述</h2><p>GPT-3 是很强大的，因为其只要通过一定的 prompt ，甚至不需要修改模型参数就可以给出相当优越的预测。但是 GPT-3 的参数量太大，实际应用可能因此受限。</p>
-<p>这个文章之中的工作就是使用一些中等体量的模型（比如说 BERT 或者 RoBERTa ），然后使用少量数据（比如 few-shot ）做一下 finetune 来获得最终的模型。这样的模型可以在常用的硬件上进行训练，并且 few-shot 也贴合实际的应用场合。</p>
-<p>文章里在阐述他们的解决方案的时候，叙述了他们会继续采用 <strong>prompt-based</strong> 的预测方法，不过他们引入了自动生成 prompt 的模型（ automatic prompt generation ）。这样的方法生成的 prompt 能和人工编写的 prompt 类似，甚至可能表现更好。</p>
-<p>其次，他们改进了 GPT-3 的 in-context learning 范式。相较于原先较为随机地将补充内容和输入直接连接，文章中提出了一个较为有逻辑的新方法。</p>
-<p>使用这些简单有效的方法可以让 finetuning 更为高效，文章中将这一套方法称为 LM-BFF （ better few-shot finetuning of language models ）。</p>
-<h2 id="相关工作"><a href="#相关工作" class="headerlink" title="相关工作"></a>相关工作</h2><p>这里介绍了他们的工作的基础和他们所做的改进。</p>
-<ul>
-<li><p>【语言模型的 prompt 】文章的工作基于 GPT-3 和 PET 的有关半监督学习的工作，但是同时改进了他们的评测系统，引入了一个更为精细的框架。</p>
-</li>
-<li><p>【自动化 prompt 查找】原先已经有部分工作尝试着将寻找 prompt 的流程自动化，但和人工选取的 prompt 相比，这些自动化寻找的 prompt 表现都不太好。但是文章提出了一系列能寻找出和人工选取表现近似的方法。</p>
-</li>
-<li><p>【语言模型的 finetune】现在对语言模型 finetune 的探索基本是在探索<strong>更好的优化方式</strong>和<strong>更好的正则化</strong>以稳定 finetune 过程。但是这篇文章的工作不聚焦于这些，其使用了一般的 finetune 方法。</p>
-</li>
-<li><p>【few-shot 方法】</p>
-</li>
-</ul>
 ]]></content>
       <categories>
         <category>计算机科学</category>
