@@ -877,7 +877,7 @@
 <ul>
 <li><p>以寄存器为中心，只有 Load 以及 Store 命令可以访问内存</p>
 </li>
-<li><p>所有计算操作均是从寄存器堆之中读取数据并将结果保存到寄存器堆</p>
+<li><p>所有计算操作均是从寄存器堆之中读取数据并将结果保存到寄存器堆，一共具有 32 个通用寄存器</p>
 </li>
 <li><p>指令格式规整、定长，且操作码位置固定，指令类型少（ MIPS32 的指令只有 register / immediate / jump 三类）</p>
 </li>
@@ -1060,7 +1060,7 @@
 <p>在具体存储的时候，尾数由于整数部分必然为 <code>1</code> ，所以只需要将小数部分按顺序存储即可，而阶码使用无符号整数方法存储。</p>
 <p>这里注意，阶码理应是有可能为负数的，但一般存储的时候会将阶码加上一个固定的偏置变成正数之后存储。如果阶码长度为 $e$ ，那么这个偏置就是 $b = 2^{e - 1} - 1$ 。</p>
 <p>比如说按照单精度浮点的方式存储数 <code>15213.0</code> ，其二进制表示为 $1.1101101101101 \times 2^{13}$ 。所以符号位为 <code>0</code> ，尾数取小数部分前 23 位，即 <code>1101101 10110100 00000000</code> 。阶码为 <code>13</code> ，加上偏置 $2^{7} - 1 = 127$ 得到 <code>140</code> ，即 <code>10001100</code> 。所以最后的存储方式为：</p>
-<figure class="highlight plaintext"><figcaption><span>Assembly</span></figcaption><table><tr><td class="code"><pre><span class="line">01000110 01101101 10110100 00000000</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><figcaption><span>Bits</span></figcaption><table><tr><td class="code"><pre><span class="line">01000110 01101101 10110100 00000000</span><br></pre></td></tr></table></figure>
 
 <h2 id="浮点数的非规格化"><a href="#浮点数的非规格化" class="headerlink" title="浮点数的非规格化"></a>浮点数的非规格化</h2><p>事实上，浮点数标准保留一部分阶码用于表示特殊的数字。一般而言，阶码全 <code>1</code> 和全 <code>0</code> 是被保留的。具体而言，阶码全 <code>1</code> 和全 <code>0</code> 的、表述特殊数字的浮点数被称为<strong>非规格化浮点数（ denormalized float point ）</strong>，其余的被称为<strong>规格化浮点数（ normalized float point ）</strong>。</p>
 <p>全 <code>0</code> 的阶码如果按照上述的标准解读的话，表示的是相当接近于零的小数。但是由于默认了尾数的整数部分为 <code>1</code> ，所以说还按照原有解读方式的话，浮点数无法表示 <code>0</code> 。这个时候作出规定，就是<strong>阶码全 <code>0</code> 的时候，尾数的整数部分变为 <code>0</code></strong> 。相应的，为了配合尾数解读方式的调整，<strong>阶码的偏置减去一</strong>。</p>
@@ -1227,16 +1227,16 @@
 </ul>
 <hr>
 <p>现在我们就可以尝试解读一些汇编代码了，比如：</p>
-<figure class="highlight plaintext"><figcaption><span>Assembly</span></figcaption><table><tr><td class="code"><pre><span class="line">movq $-147, (%rax)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><figcaption><span>X86-64 Assembly</span></figcaption><table><tr><td class="code"><pre><span class="line">movq $-147, (%rax)</span><br></pre></td></tr></table></figure>
 
 <p>这个指令的意思是按照四字数据转移的方式，将立即数 <code>-147</code> 写入主存，写入地址为寄存器 <code>%rax</code> 的数值。</p>
 <h3 id="利用寻址进行整数计算"><a href="#利用寻址进行整数计算" class="headerlink" title="利用寻址进行整数计算"></a>利用寻址进行整数计算</h3><p>地址实际上也可以被解读为整数，而机器进行寻址的时候实际上就在完成整数计算。根据上面给出的变址寻址方式，我们可以利用寻址命令来计算类似 $x + ky$ 的整数算式。</p>
 <p>首先需要知道指令：</p>
-<figure class="highlight plaintext"><figcaption><span>Assembly</span></figcaption><table><tr><td class="code"><pre><span class="line">leaq [SRC], [DEST]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><figcaption><span>X86-64 Assembly</span></figcaption><table><tr><td class="code"><pre><span class="line">leaq [SRC], [DEST]</span><br></pre></td></tr></table></figure>
 
 <p>这里 <code>[SRC]</code> 是一个寻址表达式，其计算出来的结果将赋给 <code>[DEST]</code> 。比如 <code>leaq (%rdi, %rdi, 2), %rax</code> 会将前面寻址计算出来的地址赋予寄存器 <code>%rax</code> 。</p>
 <p>实际上在编译器优化之中，部分整数运算都会被优化为地址计算。比如说 <code>x * 12</code> 这个代码有可能会被转化为如下的汇编代码：</p>
-<figure class="highlight plaintext"><figcaption><span>Assembly</span></figcaption><table><tr><td class="code"><pre><span class="line">leaq (%rdi, %rdi, 2), %rax</span><br><span class="line">salq $2, %rax</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><figcaption><span>X86-64 Assembly</span></figcaption><table><tr><td class="code"><pre><span class="line">leaq (%rdi, %rdi, 2), %rax</span><br><span class="line">salq $2, %rax</span><br></pre></td></tr></table></figure>
 
 <p>第一步使用地址计算实际上计算了 <code>x + x * 2</code> ，即三倍的 <code>x</code> 。第二步命令为左移，左移两位即再次乘以 <code>4</code> 得到最后结果。</p>
 <h2 id="汇编语言常用的整数计算命令"><a href="#汇编语言常用的整数计算命令" class="headerlink" title="汇编语言常用的整数计算命令"></a>汇编语言常用的整数计算命令</h2><p>汇编语言计算整数运算的时候，会有如下表所列出的常用命令。</p>
@@ -1351,7 +1351,7 @@
 <figure class="highlight cpp"><figcaption><span>C++</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gt</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123; <span class="keyword">return</span> x &gt; y; &#125;</span><br></pre></td></tr></table></figure>
 
 <p>会被汇编为：</p>
-<figure class="highlight plaintext"><figcaption><span>Assembly</span></figcaption><table><tr><td class="code"><pre><span class="line">cmpq   %rsi, %rdi</span><br><span class="line">setg   %al</span><br><span class="line">movzbl %al, %eax</span><br><span class="line">ret</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><figcaption><span>X86-64 Assembly</span></figcaption><table><tr><td class="code"><pre><span class="line">cmpq   %rsi, %rdi</span><br><span class="line">setg   %al</span><br><span class="line">movzbl %al, %eax</span><br><span class="line">ret</span><br></pre></td></tr></table></figure>
 
 <p>其含义为首先使用 <code>cmpq</code> 命令更新条件码，然后使用 <code>setg</code> 命令读取条件码，最后使用 <code>movzbl</code> 将计算结果移动到表示函数返回值的寄存器。</p>
 <h2 id="实现程序跳转"><a href="#实现程序跳转" class="headerlink" title="实现程序跳转"></a>实现程序跳转</h2><p>对于 C 语言之中的 <code>if, goto</code> 等涉及到程序跳转的语句，汇编之中也应当有相应的可以跳转执行的命令，而条件码及其相关运算结果会控制程序是否跳转。与 <code>set</code> 系列命令一致，汇编之中还有 <code>j</code> 系列命令，如 <code>je</code> 。其会读取条件码并计算，结果为真则会触发程序跳转。</p>
@@ -1359,7 +1359,7 @@
 <figure class="highlight cpp"><figcaption><span>C++</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">long</span> <span class="title">absdiff</span><span class="params">(<span class="keyword">long</span> x, <span class="keyword">long</span> y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">long</span> result;</span><br><span class="line">    <span class="keyword">if</span> (x &gt; y) result = x - y;</span><br><span class="line">    <span class="keyword">else</span> result = y - x;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
 
 <p>会被汇编为：</p>
-<figure class="highlight plaintext"><figcaption><span>Assembly</span></figcaption><table><tr><td class="code"><pre><span class="line">absdiff:</span><br><span class="line">    cmpq %rsi, %rdi</span><br><span class="line">    jle  .L4</span><br><span class="line">    movq %rdi, %rax</span><br><span class="line">    subq %rsi, %rax</span><br><span class="line">    ret</span><br><span class="line">.L4:</span><br><span class="line">    movq %rsi, %rax</span><br><span class="line">    subq %rdi, %rax</span><br><span class="line">    ret</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><figcaption><span>X86-64 Assembly</span></figcaption><table><tr><td class="code"><pre><span class="line">absdiff:</span><br><span class="line">    cmpq %rsi, %rdi</span><br><span class="line">    jle  .L4</span><br><span class="line">    movq %rdi, %rax</span><br><span class="line">    subq %rsi, %rax</span><br><span class="line">    ret</span><br><span class="line">.L4:</span><br><span class="line">    movq %rsi, %rax</span><br><span class="line">    subq %rdi, %rax</span><br><span class="line">    ret</span><br></pre></td></tr></table></figure>
 
 <p>这里第三行就会读取 <code>cmpq</code> 命令设置的条件码，如果满足了跳转条件，就会跳转到 <code>.L4</code> 标记处继续执行，否则向下继续执行。</p>
 <p>实际上，汇编代码的跳转基本和 C 语言之中的 <code>goto</code> 类似，所以我们可以将 <code>if</code> 转为等价的 <code>goto</code> 表达式，这样的话就可以得到和汇编代码形式类似的 C 代码。对于以下的 C 代码：</p>
@@ -1502,7 +1502,63 @@
 
 <p>而函数 <code>foo()</code> 执行的时候是会分配一个栈帧给这个函数存放 <code>buf</code> 这个临时变量的。但是由于 <code>gets()</code> 不限制读入长度，所以我们可以输入相当长的字符串，这样的话就会一直向栈帧的高地址写入，从而会覆写掉返回地址，甚至是上一个函数的栈帧。这样，在 <code>foo()</code> 结束进行返回的时候，就可以控制其跳转到指定的位置执行我们注入的程序。</p>
 <p>防御这种攻击的方法也很多。一种是使用可以限制读入长度的函数，如 <code>fgets()</code> 。一种是给栈内部加入随机长度的无意义数据，让攻击方无法准确预测 PC 应当跳转到何处。还有比如说可以限制执行权限，让这一片区域的内存不能作为机器指令执行。此外还可以让函数在返回之前检查栈帧是否被修改等等。</p>
-<h1 id="X86-汇编编程基础"><a href="#X86-汇编编程基础" class="headerlink" title="X86 汇编编程基础"></a>X86 汇编编程基础</h1>]]></content>
+<h1 id="X86-汇编编程基础"><a href="#X86-汇编编程基础" class="headerlink" title="X86 汇编编程基础"></a>X86 汇编编程基础</h1><h1 id="虚拟内存"><a href="#虚拟内存" class="headerlink" title="虚拟内存"></a>虚拟内存</h1><h2 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h2><p>我们先前提到过，每一个进程都会分配到一片内存空间，用于存放数据段、代码段并且分配堆空间。但是我们也会注意到，有的进程用不到如此大的内存空间，很容易出现分配了空间但几乎不可能使用的现象。这个问题的一个解决方案是<strong>虚拟内存（ Virtual memory ）</strong>，其相当类似于懒分配，即真正使用到某一块内存的时候再进行分配。</p>
+<p>虚拟内存的工作原理大致为，对于每一个新进程，会分配连续的虚拟内存空间。进程使用到某一个存储地址的时候，处理器会去虚存地址和物理内存地址对照表之中寻找这个虚拟内存地址所对应的真实地址，如果发现还没有给这个虚存地址分配物理内存空间，则会分配并建立两者之间的映射。</p>
+<p>虚拟内存地址通常简称为<strong>虚址（ Virtual address ）</strong>。上述过程中负责将虚址转换为物理地址的单元称为<strong>内存管理单元（ MMU ）</strong>。</p>
+<h1 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h1><h2 id="基本原理-1"><a href="#基本原理-1" class="headerlink" title="基本原理"></a>基本原理</h2><h1 id="MIPS32-基础"><a href="#MIPS32-基础" class="headerlink" title="MIPS32 基础"></a>MIPS32 基础</h1><p>MIPS 架构的特征可以查看本文最开头的部分，有较为详细的介绍。</p>
+<p>这里补充一些其他的 MIPS 基础知识。这些知识并不是重点，但是会影响对 MIPS 架构细节的理解，故不单独开一个二级标题但还是需要分点一条条列出：</p>
+<ul>
+<li><p>MIPS 架构之中，一个字等于四个字节</p>
+</li>
+<li><p>MIPS 架构下返回地址不保存在栈上，而是保存在 31 号寄存器之中</p>
+</li>
+<li><p>MIPS 架构下 0 号寄存器永远存储常数 <code>0</code></p>
+</li>
+<li><p>MIPS 架构不具有条件码，条件的表示全部使用寄存器</p>
+</li>
+<li><p>MIPS32 架构除去 32 个通用寄存器，还有高位寄存器 <code>%hi</code> 以及低位寄存器 <code>%lo</code> 。这两者都是 32 位寄存器，其出现的原因是需要处理整数的乘除法。另外需要注意， MIPS32 架构的立即数通常只允许 16 位，而寄存器是 32 位的，所以通常会使用这两个寄存器将 32 位数拆开表示。记号上， <code>%hi($1)</code> 这种写法代表 1 号寄存器的 16 位高位</p>
+</li>
+<li><p>MIPS 架构下有四个传参寄存器，即 4 到 7 号寄存器。多余的参数使用栈传递</p>
+</li>
+<li><p>MIPS 架构的命令后缀 <code>i</code> 表示立即数， <code>u</code> 表示不启用溢出检测。比如说 <code>addiu</code> 命令表示将某一个寄存器加上一个立即数，溢出的话取模放入结果寄存器</p>
+</li>
+</ul>
+<h2 id="流水线结构与延迟槽"><a href="#流水线结构与延迟槽" class="headerlink" title="流水线结构与延迟槽"></a>流水线结构与延迟槽</h2><p>在 MIPS 架构之中，任何指令的执行都会分为五个步骤，这五个步骤由不同的硬件完成。这些步骤分别是：</p>
+<ul>
+<li><p>读取指令（IF）</p>
+</li>
+<li><p>读取寄存器（RD）</p>
+</li>
+<li><p>代数或逻辑运算（ALU）</p>
+</li>
+<li><p>访问内存（MEM）</p>
+</li>
+<li><p>回写（WB）</p>
+</li>
+</ul>
+<p>一个指令的五个执行步骤构成一条<strong>流水线</strong>，而不同指令的流水线是可以并发执行的，只要保证它们不会同时调用某一个硬件资源（比如说两条指令不可以同时在 IF 过程中）。</p>
+<p>而这种并行的流水线架构的优越之处就是可以最大程度利用硬件资源。比如说考虑这样的 MIPS 汇编代码：</p>
+<figure class="highlight plaintext"><figcaption><span>MIPS32 Assembly</span></figcaption><table><tr><td class="code"><pre><span class="line">jal  printf</span><br><span class="line">move $4, $6</span><br><span class="line">op</span><br></pre></td></tr></table></figure>
+
+<p>这里 <code>jal</code> 类似于 X86 的 <code>call</code> 命令，用于调用过程。但是，与这条指令间隔一条的 <code>op</code> 指令才是 <code>printf</code> 返回后调用的指令（返回地址）。</p>
+<p>原因是 <code>jal</code> 指令流水线执行到 ALU 阶段的时候才会发生实质跳转，从 <code>jal</code> 的 IF 阶段结束到实质跳转这段时间 IF 硬件是空闲的，这段时间就被称为<strong>延迟槽（ Delay slot ）</strong>。但是我们可以让 IF 硬件立刻执行 <code>move $4, $6</code> 的 IF 阶段，这样在实质跳转发生前的这段延迟槽就被利用了。</p>
+<p>能这样做的原因是 <code>move</code> 指令在 RD 阶段结束后就执行完毕了，后续的阶段可以忽略或者说当成不存在。如果说 <code>jal</code> 命令之后跟随了一些需要实质 ALU 的命令，则可能会因为和 <code>jal</code> 或者所调用的过程发生硬件冲突而导致异常。所以有的时候我们可以填入 <code>nop</code> 回避掉可能的问题。</p>
+<h2 id="MIPS-内存布局"><a href="#MIPS-内存布局" class="headerlink" title="MIPS 内存布局"></a>MIPS 内存布局</h2><p>MIPS 使用虚存机制，其虚址一般按照下述方式分配：</p>
+<ul>
+<li><p>高于 <code>0xC0000000</code> 的虚址为 kseg2 空间，其仅可以由核心态使用，使用的时候需要经过 MMU 转换，也就是说这一部分是 Mapped memory 。</p>
+</li>
+<li><p>介于 <code>0xA0000000</code> 和 <code>0xC0000000</code> 之间的虚址是 kseg1 空间，其不可以在用户态下使用，使用的时候不需要经过 MMU 转换（其虚址最高三位清零就是物理地址）。另外，这一部分不会被缓存，也就是说这一部分是 Unmapped uncached memory 。</p>
+</li>
+<li><p>介于 <code>0x80000000</code> 和 <code>0xA0000000</code> 之间的虚址是 kseg0 空间，其不可以在用户态下使用，使用的时候不需要经过 MMU 转换（其虚址最高一位清零就是物理地址）。另外，这一部分可以被缓存，也就是说这一部分是 Unmapped cached memory 。</p>
+</li>
+<li><p>低于 <code>0x80000000</code> 的虚址为 kuseg 空间，是用户态空间，使用的时候需要经过 MMU 转换，也就是说这一部分是 Mapped memory 。</p>
+</li>
+</ul>
+<h2 id="多线程操作"><a href="#多线程操作" class="headerlink" title="多线程操作"></a>多线程操作</h2><p>在多线程编程之中，我们往往会涉及到多个线程对共享资源的读写操作。在 MIPS 架构中，针对这个场景，有 <code>ll</code> 和 <code>sc</code> 两个命令。</p>
+<p><code>ll</code> 全称为<strong>链接加载（ Load linked ）</strong>，在使用这个命令从内存之中加载数据之后，处理器会记住这一次操作，这一次操作访问的地址也会被暂时保存。</p>
+<p><code>sc</code> 全称为<strong>条件存储（ Store conditional ）</strong>，使用这个命令将寄存器 <code>v</code> 之中的数据存储到内存的时候，处理器会首先检查上一次 <code>ll</code> 命令操作的内存区域有没有被改动。如果没有被改动过，则存储成功， <code>v</code> 之中的值也会被写为 <code>1</code> 表示操作成功。反之，写入失败，内存不会被修改， <code>v</code> 之中的值也会被写为 <code>0</code> 表示操作失败。</p>
+<h2 id="协处理器"><a href="#协处理器" class="headerlink" title="协处理器"></a>协处理器</h2><p>协处理器是用于协助处理器处理类似内存管理、内存映射、异常等工作的硬件，其在可以被认为是一系列拓展寄存器。这里我们主要关注 MIPS 架构下协处理器之中的 Cause 和 Context 寄存器</p>
+]]></content>
       <categories>
         <category>计算机科学</category>
       </categories>
