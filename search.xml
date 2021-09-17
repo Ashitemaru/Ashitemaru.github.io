@@ -826,8 +826,43 @@
       </categories>
   </entry>
   <entry>
+    <title>课内学习笔记导航</title>
+    <url>/2021/09/17/note-navigation/</url>
+    <content><![CDATA[<p>似乎这个站点里面的学习笔记是越来越多了，其他的一些东西几乎都被隐埋了。所以我手动将所有的课内学习笔记的发表时间减去了一千年，让它们位于时间轴末尾，并使用这个置顶的导航贴方便大家查看。这里面应该还会写一些简单的课程测评。</p>
+<span id="more"></span>
+
+<h2 id="大二春季学期"><a href="#大二春季学期" class="headerlink" title="大二春季学期"></a>大二春季学期</h2><ul>
+<li><a href="/1021/06/16/note-of-iai">人工智能导论</a>。课程主要内容是传统 AI 相关，深度学习和神经网络几乎浅尝辄止，想要炼丹看起来还是去学习深度学习概论、人工神经网络这些课程。</li>
+</ul>
+<h2 id="大二夏季学期"><a href="#大二夏季学期" class="headerlink" title="大二夏季学期"></a>大二夏季学期</h2><ul>
+<li><a href="/1021/08/09/note-of-asm">汇编语言程序设计</a>。学得还算明白的课程，但是我是靠 CSAPP 和网上文档自学的，张老师讲课水平我还真没体验，毕竟只去了第一堂课。</li>
+</ul>
+<h2 id="大三秋季学期"><a href="#大三秋季学期" class="headerlink" title="大三秋季学期"></a>大三秋季学期</h2><p>四大原理还是比较难受。</p>
+<ul>
+<li><p><a href="/1021/09/13/note-of-net">计算机网络原理</a>。上课坐牢的课，是我大学到现在第一个第一节课都没听完就绷不住回去睡大觉的课。</p>
+</li>
+<li><p><a href="/1021/09/14/note-of-pcc">计算机组成原理</a>。没选上康总，只能去另外一个老师那边了，不过反正不听课的我，在这种允许跨班大作业且考试统一的课程上，选哪个老师都一样吧。</p>
+</li>
+<li><p><a href="/1021/09/14/note-of-dc">编译原理</a>。今年大作业似乎被削弱了，终于对得起它 2 学分的事实了。</p>
+</li>
+<li><p><a href="/1021/09/14/note-of-dsp">信号处理原理</a>。纯数学课，偶尔写写 Matlab 。</p>
+</li>
+</ul>
+<p>还有两门专业限选课，似乎全是网络相关。</p>
+<ul>
+<li><p><a href="/1021/09/17/note-of-nst">计算机网络安全技术</a>。一个纯 PPT 学习的课，内容不算无聊但也不算有趣。</p>
+</li>
+<li><p><a href="/1021/09/17/note-of-mnt">无线移动网络技术</a>。目前看下来比较有意思，愿意跟进。</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>导航</category>
+      </categories>
+  </entry>
+  <entry>
     <title>《汇编语言程序设计》学习笔记</title>
-    <url>/2021/08/09/note-of-asm/</url>
+    <url>/1021/08/09/note-of-asm/</url>
     <content><![CDATA[<p>这门课是 2021 年暑期学期开设的计算机系专业课，应该也算是为下学期的《计算机组成原理》课程做预备，所以还打算好好学一下。</p>
 <span id="more"></span>
 
@@ -1643,8 +1678,24 @@
       </categories>
   </entry>
   <entry>
+    <title>《编译原理》学习笔记</title>
+    <url>/1021/09/14/note-of-dc/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>计算机科学</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>《信号处理原理》学习笔记</title>
+    <url>/1021/09/14/note-of-dsp/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>计算机科学</category>
+      </categories>
+  </entry>
+  <entry>
     <title>《人工智能导论》学习笔记</title>
-    <url>/2021/06/16/note-of-iai/</url>
+    <url>/1021/06/16/note-of-iai/</url>
     <content><![CDATA[<p>这个文档就是一时兴起想要好好学学人工智能背后的玩意创建的。主要还是记录《人工智能导论》课程的笔记。</p>
 <span id="more"></span>
 
@@ -1934,6 +1985,37 @@
 <h3 id="卷积神经网络（-CNN-）"><a href="#卷积神经网络（-CNN-）" class="headerlink" title="卷积神经网络（ CNN ）"></a>卷积神经网络（ CNN ）</h3><p><code>TODO</code></p>
 <h3 id="循环神经网络（-RNN-）"><a href="#循环神经网络（-RNN-）" class="headerlink" title="循环神经网络（ RNN ）"></a>循环神经网络（ RNN ）</h3><p><code>TODO</code></p>
 ]]></content>
+      <categories>
+        <category>计算机科学</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>《无线移动网络技术》学习笔记</title>
+    <url>/1021/09/17/note-of-mnt/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>计算机科学</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>《计算机网络原理》学习笔记</title>
+    <url>/1021/09/13/note-of-net/</url>
+    <content><![CDATA[<p>网原总之是一个没打算认真学的专业课，因为真的对网络没有很大的兴趣。再加上上学期曾经看着迅哥哥他们被网原折磨，自己也没什么信心能学好这门专业课。</p>
+<p>这个笔记完全基于上一届流传下来的《网原干饭背诵》，在此基础上对重点做一些标记做一些讲解，反正是个背书课，那么就只能一点一点背了。</p>
+<span id="more"></span>]]></content>
+      <categories>
+        <category>计算机科学</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>《计算机网络安全技术》学习笔记</title>
+    <url>/1021/09/17/note-of-nst/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>《计算机组成原理》学习笔记</title>
+    <url>/1021/09/14/note-of-pcc/</url>
+    <content><![CDATA[]]></content>
       <categories>
         <category>计算机科学</category>
       </categories>
