@@ -10,11 +10,12 @@ category:
 
 $$
 \newcommand{\d}{\mathrm{d}}
+\newcommand{\j}{\mathrm{j}}
 $$
 
 <!-- more -->
 
-# 信号处理引言
+# 信号处理基本知识
 
 信号是一种载有信息的物理量，所以可以说信号是信息的表现形式，信息是信号蕴含的内容。我们探测信号的工具称为**传感器（ Sensor ）**，传感器是将一种物理变化转化为另一种物理变化的装置。比如说为了探测声波，我们可以使用传感器将声波转化为电信号。
 
@@ -32,8 +33,8 @@ $$
 
 $$
 \begin{aligned}
-& f(t) = K \sin(\omega t + \theta) \
-& f(t) = K \cos(\omega t + \theta) \
+& f(t) = K \sin(\omega t + \theta) \\
+& f(t) = K \cos(\omega t + \theta) \\
 \end{aligned}
 $$
 
@@ -71,10 +72,22 @@ $$
 
 $$
 \begin{aligned}
-\frac{\d F}{\d t} &= \int_{0}^{+\infty} e^{-tx} \d \cos x = \left. e^{-tx}\cos x \right|_{0}^{+\infty} + t \int_{0}^{+\infty} e^{-tx}\cos x \d x \
-&= -1 + t \int_{0}^{+\infty} e^{-tx} \d \sin x = -1 + t \left( \left. e^{-tx}\sin x \right|_{0}^{+\infty} \right + t \int_{0}^{+\infty} e^{-tx}\sin x \d x \right) \
-&= -1 + t^2 \int_{0}^{+\infty} e^{-tx}\sin x \d x
+\frac{\d F}{\d t} &= \int_{0}^{+\infty} e^{-tx} \d \cos x = \left. e^{-tx}\cos x \right|_{0}^{+\infty} + t \int_{0}^{+\infty} e^{-tx}\cos x \d x \\
+&= -1 + t \int_{0}^{+\infty} e^{-tx} \d \sin x = -1 + t \left( \left. e^{-tx}\sin x \right|_{0}^{+\infty} + t \int_{0}^{+\infty} e^{-tx}\sin x \d x \right) \\
+&= -1 + t^2 \int_{0}^{+\infty} e^{-tx}\sin x \d x = -1 - t^2 \frac{\d F}{\d t}
 \end{aligned}
+$$
+
+也就是说：
+
+$$
+\frac{\d F}{\d t} = -\frac{1}{1 + t^2} \Rightarrow F(t) = -\arctan t + C
+$$
+
+不难得知 $F(+\infty) = 0$ ，这就说明 $C = \pi / 2$ ，从而 Dirichlet 积分的结果为：
+
+$$
+\int_{-\infty}^{+\infty} {\rm Sa}(t) \d t = 2F(0) = \pi
 $$
 
 ---
@@ -87,4 +100,35 @@ $$
 
 指数信号的特征就是，其积分或微分后依然是指数信号。
 
-## Euler 公式
+## 复信号分析
+
+在分析一般的信号的时候，我们可以常常将其看作某一个复信号的实部或者虚部。比如说考虑复指数信号 $f(t) = K e^{st}$ ，这里 $s \in \mathbb C$ 。显然有：
+
+$$
+f(t) = K e^{(\Re s + \j\Im s)t} = K e^{(\Re s)t} (\cos(\Im s)t + \j\sin(\Im s)t)
+$$
+
+这里可以发现，**复指数信号的实部和虚部都是正余弦信号**。
+
+## 函数空间与函数分解
+
+我们继续沿用线性空间的基向量、正交向量组、正交基和标准正交基的概念。现在我们考虑这样的一个线性空间，即定义在 $[t_1, t_2]$ 上的可积复函数空间，定义其内积为：
+
+$$
+\varphi_1 \cdot \varphi_2 = \int_{t_1}^{t_2} \varphi_1(t)\varphi^*_2(t) \d t
+$$
+
+两函数如果内积为零，则称两函数**正交**。
+
+如果函数 $\varphi_1, \varphi_2, \cdots, \varphi_n$ 满足：
+
+$$
+\varphi_i \cdot \varphi_j = \int_{t_1}^{t_2} \varphi_i(t)\varphi^*_j(t) \d t = \begin{cases}
+0 & i \neq j \\
+k_i & i = j
+\end{cases}
+$$
+
+这里 $k_i$ 为非零常数。那么这些函数构成**正交函数集**。
+
+称一个正交函数集是完备的，如果不存在一个这个函数集之外的函数 $\psi$ 满足 $0 < \psi \cdot \psi < +\infty$ 且 $\psi$ 和该函数集之中所有函数正交。实际上完备的正交函数集就说明了这个函数集不能容纳更多的成员。
