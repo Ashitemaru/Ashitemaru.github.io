@@ -8,6 +8,7 @@ branches:
     - master # build master branch only
 script:
   - yarn install
+  - pandoc --version
   - hexo generate # generate static files
 deploy:
   provider: pages
