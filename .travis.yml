@@ -1,4 +1,4 @@
-sudo: false
+sudo: true
 language: node_js
 node_js:
   - 16
@@ -8,6 +8,7 @@ branches:
     - master # build master branch only
 script:
   - yarn install
+  - sudo apt-get install pandoc
   - pandoc --version
   - hexo generate # generate static files
 deploy:
