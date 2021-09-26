@@ -152,6 +152,7 @@ $(function () {
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-skill-docs"><a href="/sast-skill-docs/" rel="section"><i class="fa fa-book fa-fw"></i>技能引导文档</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -361,7 +362,7 @@ $(function () {
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>805</span>
+      <span>815</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -381,48 +382,38 @@ $(function () {
     <div class="post-body" itemprop="articleBody">
         <p>刚刚建立好这个地方，暂且也没什么特别想说的，不如就来玩一下 hexo 的各个语法吧。</p>
 <span id="more"></span>
-
 <p>首先玩玩代码块，自然首先试试 cpp 。</p>
 <figure class="highlight cpp"><figcaption><span>C++</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Hello world!&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>再来试一下 Python 。</p>
 <figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Hello world!&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
 <p>不如玩一下 JavaScript 。</p>
 <figure class="highlight js"><figcaption><span>JavaScript</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;Hello world!&quot;</span>);</span><br></pre></td></tr></table></figure>
-
 <p>然后玩一下数学公式。</p>
-<p>我们可以把机器学习抽象描述为以下过程，这里$X$表示输入集合，$Y$表示输出集合，$L$表示损失函数，$\boldsymbol{w}$表示模型参数，$f_\boldsymbol{w}$表示在某一系列参数之下的模型函数。</p>
-<p>$$<br>\boldsymbol{w}^*=\mathop{\arg\min}_{\boldsymbol{w} \in \Omega}\sum_{x_i \in X, y_i \in Y} L(f_\boldsymbol{w}(x_i), y_i)<br>$$</p>
+<p>我们可以把机器学习抽象描述为以下过程，这里<span class="math inline">\(X\)</span>表示输入集合，<span class="math inline">\(Y\)</span>表示输出集合，<span class="math inline">\(L\)</span>表示损失函数，<span class="math inline">\(\boldsymbol{w}\)</span>表示模型参数，<span class="math inline">\(f_\boldsymbol{w}\)</span>表示在某一系列参数之下的模型函数。</p>
+<p><span class="math display">\[
+\boldsymbol{w}^*=\mathop{\arg\min}_{\boldsymbol{w} \in \Omega}\sum_{x_i \in X, y_i \in Y} L(f_\boldsymbol{w}(x_i), y_i)
+\]</span></p>
 <p>再来试一下它自带的一些引用块。</p>
 <blockquote><p>你成功建好了自己的第一个 hexo 站点！</p>
 </blockquote>
-
 <p>hexo 文档里面还提到了一种奇怪的东西，来试一下。</p>
 <blockquote class="pullquote"><p>这个东西被称为 Pull Quote 。</p>
 </blockquote>
-
 <p>似乎还有奇怪的东西。</p>
 <div class="note success"><p>这个是提示成功的引用块。</p>
 </div>
-
 <p>下面是一个居中引用。</p>
 <blockquote class="blockquote-center">
 <p>这里我们居中一定的文本。</p>
 
 </blockquote>
-
 <p>这里还似乎提供了用于查询浏览器支持方法的插件。</p>
 <iframe data-feature="fetch" src="https://caniuse.bitsofco.de/embed/index.html?feat=fetch&periods=current&accessible-colours=false" frameborder="0" width="100%" height="400px"></iframe>
-
 <p>暂且玩到这里吧，目前的话想要做的一些事情包括：</p>
 <ul>
-<li><p>写（搬运）点有点价值的东西</p>
-</li>
-<li><p>有没有可能做一些类似于管理员才可访问的东西呢</p>
-</li>
-<li><p>搞一下评论系统、浏览计数之类的</p>
-</li>
+<li><p>写（搬运）点有点价值的东西</p></li>
+<li><p>有没有可能做一些类似于管理员才可访问的东西呢</p></li>
+<li><p>搞一下评论系统、浏览计数之类的</p></li>
 </ul>
 <p>当然我们知道明天下午就考数电了，所以 Holder 该滚去复习了。</p>
 
@@ -478,13 +469,13 @@ $(function () {
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">79k</span>
+    <span title="站点总字数">82k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:12</span>
+    <span title="站点阅读时长">1:15</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
