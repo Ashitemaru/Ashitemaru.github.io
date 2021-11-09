@@ -209,7 +209,7 @@ $(function () {
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">计算机系统概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2%E7%AE%80%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">计算机发展历史简述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#von-neumann-%E6%9E%B6%E6%9E%84"><span class="nav-number">1.2.</span> <span class="nav-text">Von Neumann 架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E5%92%8C%E9%AB%98%E7%BA%A7%E8%AF%AD%E8%A8%80"><span class="nav-number">1.3.</span> <span class="nav-text">汇编语言和高级语言</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">计算机系统概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2%E7%AE%80%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">计算机发展历史简述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#von-neumann-%E6%9E%B6%E6%9E%84"><span class="nav-number">1.2.</span> <span class="nav-text">Von Neumann 架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.3.</span> <span class="nav-text">指令系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%84%E4%BB%B7%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%80%A7%E8%83%BD%E7%9A%84%E6%A0%87%E5%87%86"><span class="nav-number">1.4.</span> <span class="nav-text">评价计算机性能的标准</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%BC%96%E7%A0%81"><span class="nav-number">2.</span> <span class="nav-text">数据编码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81"><span class="nav-number">2.1.</span> <span class="nav-text">字符编码</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -363,7 +363,7 @@ $(function () {
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>762</span>
+      <span>1.6k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -403,8 +403,33 @@ $(function () {
 <li><p>程序由指令构成，程序功能通过指令序列表述，指令序列在存储器之中顺序存放</p></li>
 <li><p>程序指针指向需要执行的指令，执行指令的时候首先从存储器之中读取指令，执行完毕后程序指针自增，指向下一条指令</p></li>
 </ul>
-<h3 id="汇编语言和高级语言">汇编语言和高级语言</h3>
-<p>这一部分建议参考 <a href="/1021/08/09/note-of-asm/">汇编课程的笔记</a> 的内容。</p>
+<h3 id="指令系统">指令系统</h3>
+<p>指令可以分为若干类，包括数据运算指令（如算数运算、逻辑运算）、数据传输指令（内存到寄存器、寄存器到寄存器）、控制指令（无条件跳转、条件跳转、子程序的支持、调用和返回）、输入输出指令（与输入输出端口的数据传输）以及其它指令（停机、开关中断、空操作、特权指令、设置条件码）。</p>
+<p>指令的具体一般分为两段，前一段是指明操作功能的<strong>操作码</strong>，后一段是<strong>操作数地址</strong>，其作用是指明操作数所在的地址或者操作数本身。而这样的一条指令的完整的二进制表示就是一个<strong>指令字</strong>，其长度称为<strong>指令字长</strong>。</p>
+<p>指令字长并不一定固定，操作码的长度也不一定固定。</p>
+<hr />
+<p>指令系统的另一重要方面是其<strong>寻址方式</strong>，其定义为确定本条指令的操作数地址及下一条要执行的指令地址的方法，包括了指令系统寻找寄存器、寻找立即数、寻找给定内存地址的数据、寻找输入输出端口的方式。不同的指令集会有不同的寻址方式，有些指令集只支持一种寻址方式，也有一些指令集支持复杂的寻址方式。</p>
+<p>在指令字之中的操作数地址段编写的地址可能并不是所要寻求的数据直接的真实内存地址，这一字段编写的地址称为<strong>形式地址</strong>。形式地址可以是：</p>
+<ul>
+<li><p>运算器中的累加器的编号或专用寄存器名称</p></li>
+<li><p>输入输出指令中用到的 IO 设备的入出端口地址</p></li>
+<li><p>内存储器的一个存储单元的地址</p></li>
+</ul>
+<p>计算机可以按照给定的寻址方式，将这些形式地址转化为数据的真实地址之后进行访问。</p>
+<hr />
+<p>有关复杂指令集 CISC 和精简指令集 RISC 的差别可以查看 <a href="/1021/08/09/note-of-asm/">汇编课程笔记</a> 的内容。</p>
+<p>此外，这里介绍<strong>超长指令字（ Very Long Instruction Word / VLIW ）</strong>，其将简短而长度统一的精简指令组合出超长指令，每次运行一条超长指令，等于并发运行多条短指令。</p>
+<p>本课程的课程实验基于精简指令集 RISC-V ，有关这个指令集的资料可以查看课程文件之中的相关参考文档，有关本次课程中使用的实验平台中内存分布、串口交互规定等内容，则参考 PPT 。</p>
+<h3 id="评价计算机性能的标准">评价计算机性能的标准</h3>
+<p>常见的评价标准包括：</p>
+<ul>
+<li><p>吞吐率，即单位时间内计算机能够完成的指令数量</p></li>
+<li><p>响应时间，即计算机完成任务所需要的时间</p></li>
+<li><p>其他的指标还包括， MIPS 、 CPI 、 CPU Time 、 CPU Clock 等</p></li>
+</ul>
+<p>基于此，我们可以使用各种综合测试程序对计算机进行评测。</p>
+<h2 id="数据编码">数据编码</h2>
+<h3 id="字符编码">字符编码</h3>
 
     </div>
 
@@ -458,13 +483,13 @@ $(function () {
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">111k</span>
+    <span title="站点总字数">113k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:41</span>
+    <span title="站点阅读时长">1:43</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
