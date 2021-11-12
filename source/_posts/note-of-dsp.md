@@ -580,7 +580,7 @@ $$
 
 我们可以断定频谱的一些性质：
 
-- 频谱是离散的，且只会在 $n\omega(n\in \mathbb Z)$ 点处存在值
+- 频谱是离散的，且只会在 $n\omega(n\in \mathbb Z)$ 点处存在值，这些具有值的频率称为**谐波频率（ Harmonic frequency ）**。
 
 - 幅度频谱图是关于纵轴对称的，而相位频谱是关于原点对称的，这是由于 $F_k$ 与 $F_{-k}$ 共轭。
 
@@ -622,6 +622,8 @@ $$
 实际应用中，在失真可忽略的条件下，信号传递可以只传递低频分量（一般而言取频谱包络线最小绝对值的零点以内的分量），这一段区间的长度称为**频带宽度**，简称**带宽**。
 
 ## 非周期信号的正交分解和频谱
+
+### FT 表达式的推理
 
 任何非周期信号 $f$ 实际上都可以看成周期无穷大的周期信号。我们考虑周期为 $T$ 的周期信号 $f_T$ ，其在周期 $[-T / 2, T / 2)$ 上定义为 $f_T(t) = f(t), t \in [-T / 2, T / 2)$ 。实际上可以得到：
 
@@ -706,3 +708,281 @@ $$
 $$
 F = \mathcal{F}[f], f = \mathcal{F}^{-1}[F]
 $$
+
+### FT 的运算性质
+
+FT 显然是线性变换：
+
+$$
+\mathcal{F}\left[\sum_{k = 1}^n \lambda_kf_k\right] = \sum_{k = 1}^n \lambda_k\mathcal{F}[f_k]
+$$
+
+下述论述中，记 $F := \mathcal{F}[f]$ 。
+
+其与反褶变换 $\mathcal{R}$ 具有以下性质：
+
+$$
+\begin{cases}
+\mathcal{F}\mathcal{R}[f] = \mathcal{R}[F] \\
+\mathcal{F}[f^*] = \mathcal{R}^*[F] \\
+\mathcal{F}\mathcal{R}^*[f] = F^* \\
+\end{cases}
+$$
+
+即时域上反褶等价于频域反褶，时域上共轭等价于频域反褶共轭，时域上反褶共轭等价于频域共轭。
+
+而对于压扩变换 $\mathcal{E}_a$ ，这里 $\mathcal{E}_a[f](t) = f(at)$ ，我们有：
+
+$$
+\mathcal{F}\mathcal{E}_a[f] = \frac{1}{|a|}\mathcal{E}_{\frac{1}{a}}[F]
+$$
+
+对于平移变换 $\mathcal{S}_{t_0}$ ，我们有（这里符号 $\mathcal{F}$ 的两个下标分别代表时域和频域使用的自变量符号）：
+
+$$
+\mathcal{F}_{t, \omega}[f(t - t_0)] = F(\omega)e^{-\j\omega t_0}
+$$
+
+综合压扩变换和平移变换：
+
+$$
+\mathcal{F}_{t, \omega}[f(at - t_0)] = \frac{1}{|a|}F\left(\frac{\omega}{a}\right)e^{-\j\omega t_0 / a}
+$$
+
+综合上述可以看出，时域的压扩会导致频域相反的压扩，并且会伴随幅度的变化。而时域的平移不影响幅度频谱，但是相位频谱会发生改变。
+
+{% note info %}
+这里使用 $\mathcal{F}_{t, \omega}$ 实在是折中之举。我自己一向是想要明确函数和函数值的区别的，比如说对函数的变换应该使用花写字体，使用中括号。按照这样的思路， $\mathcal{F}[f(at - t_0)]$ 是错误表达，因为方括号内实际上是函数值而非一个函数。
+
+但是由于通用数学符号很多时候并没有区分两者，所以为了避免使用更多自定义符号导致难以阅读，还是暂且使用 $\mathcal{F}_{t, \omega}$ 这样的折中符号。
+{% endnote %}
+
+实际上我们注意到 FT 和 IFT 具有相同的数学结构，那么如果在时域上乘以复指数，频域则会发生平移：
+
+$$
+\mathcal{F}_{t, \omega}[f(t)e^{\j\omega_0 t}] = F(\omega - \omega_0)
+$$
+
+结合压扩变换得到：
+
+$$
+\mathcal{F}_{t, \omega}\left[\frac{1}{|a|}f\left(\frac{t}{a}\right)e^{\j\omega_0 t / a}\right] = F(a\omega - \omega_0)
+$$
+
+---
+
+FT 和微分积分运算关系大致如下。
+
+考虑时域上的微分：
+
+$$
+\mathcal{F}_{t, \omega}\left[f^{(1)}(t)\right] = \j\omega F(\omega)
+$$
+
+考虑频域上的微分：
+
+$$
+\mathcal{F}^{-1}_{t, \omega}\left[F^{(1)}(\omega)\right] = -\j tf(t)
+$$
+
+考虑时域上的积分：
+
+$$
+\mathcal{F}_{t, \omega}\left[f^{(-1)}(t)\right] = \frac{1}{\j\omega}F(\omega) + \pi F(0)\delta(\omega)
+$$
+
+考虑频域上的积分：
+
+$$
+\mathcal{F}^{-1}_{t, \omega}\left[F^{(-1)}(\omega)\right] = -\frac{1}{\j t}f(t) + \pi f(0)\delta(t)
+$$
+
+---
+
+而 FT 和卷积的关系就很明朗，时域与频域相对，其中一个域上的乘积直接对应另一个域上的卷积。不过需要注意可能出现的常系数：
+
+$$
+\begin{aligned}
+& \mathcal{F}[f_1 * f_2] = \mathcal{F}[f_1] \cdot \mathcal{F}[f_2] \\
+& \mathcal{F}[f_1 \cdot f_2] = \frac{1}{2\pi} \mathcal{F}[f_1] * \mathcal{F}[f_2] \\
+\end{aligned}
+$$
+
+FT 和相关运算的关系为：
+
+$$
+\begin{aligned}
+& \mathcal{F}[R(f_1, f_2)] = F_1F_2^* \\
+& \mathcal{F}[R(f, f)] = \|F\|^2
+\end{aligned}
+$$
+
+{% note info %}
+使用这个数学关系就可以得到矩形窗截取可能导致频域畸形的理论解释。我们提到过矩形脉冲乘以某一个信号可以用于截取信号指定区间的信息。但是截取后的信号在频域上的表现则会畸形，考虑下述关系：
+
+$$
+\mathcal{F}[G_\tau f] = \frac{1}{2\pi} \mathcal{F}[G_\tau] * \mathcal{F}[f]
+$$
+
+而 $\mathcal{F}[G_\tau]$ 是 ${\rm Sa}$ 函数的衍生函数，其和原信号频谱的卷积可能导致频域畸变。
+{% endnote %}
+
+### FS 和 FT 的关系
+
+我们可以这样研究 FS 和 FT 的关系，考虑非周期信号 $f$ ，其在区间 $[-T / 2, T / 2]$ 外取值均为零。定义周期为 $T$ 的周期信号 $\tilde{f}$ ，其在周期 $[-T / 2, T / 2]$ 上有 $\tilde{f} = f$ 。
+
+考虑 $\tilde{f}$ 的 FS 系数（这里 $\omega := 2\pi / T$ ）：
+
+$$
+F_k = \frac{1}{T} \int_{-T / 2}^{T / 2} \tilde{f}(t)e^{-\j k\omega t} \d t = \frac{1}{T} \int_{-\infty}^{+\infty} f(t)e^{-\j k\omega t} \d t = \frac{1}{T} F(k\omega)
+$$
+
+也就是说如果将一个脉冲式的信号（即除了某一个有限区间外取值均为零）扩展为一个周期信号，那么周期信号的离散频谱的包络线和脉冲信号的连续频谱仅仅相差一个常数倍数。
+
+比如说上述求解过的周期矩形脉冲信号，如果我们仅仅关注一个周期内的矩形脉冲，其连续频谱的表达式为（和之前的论证使用相同的变量符号）：
+
+$$
+F(\omega) = E\tau_0{\rm Sa}\left(\frac{\omega\tau_0}{2}\right)
+$$
+
+### 准周期信号
+
+有一些非周期信号可能会具有类似周期信号的时域重复结构，即可以将时域均匀划分为准周期，每一个准周期内信号的结构相互类似，这类信号就是准周期信号，如果其准周期的长度为 $T$ ，一般会将 $f_0 = 1 / T$ 称为准周期信号的**基频（ Pitch ）**。
+
+准周期信号的频谱特征也介于周期信号频谱和非周期信号频谱之间，即其频谱依然连续，但是在谐波频率处具有明显的尖峰。谐波频率处的尖峰就是准周期信号的一大特征。
+
+### 周期信号的 FT
+
+鉴于 FS 和 FT 具有相同的本质，而周期信号的频谱表现是离散的，我们可以预料到对周期信号求解 FT 会得到若干离散的冲激函数之和。
+
+比如说根据：
+
+$$
+\frac{1}{2\pi} \int_{-\infty}^{+\infty} (2\pi\delta(\omega - \omega_0)) e^{\j\omega t} \d\omega = e^{\j\omega_0 t}
+$$
+
+就可以得到复指数信号的 FT 为：
+
+$$
+\mathcal{F}_{t, \omega}[e^{\j\omega_0 t}] = 2\pi\delta(\omega - \omega_0)
+$$
+
+进一步可以推出：
+
+$$
+\begin{aligned}
+& \mathcal{F}_{t, \omega}[\cos\omega_0 t] = \pi(\delta(\omega + \omega_0) + \delta(\omega - \omega_0)) \\
+& \mathcal{F}_{t, \omega}[\sin\omega_0 t] = \j\pi(\delta(\omega + \omega_0) - \delta(\omega - \omega_0)) \\
+\end{aligned}
+$$
+
+### 其他常用函数的 FT
+
+考虑冲激函数的 FT ：
+
+$$
+\mathcal{F}[\delta_{E, 0}](\omega) = \int_{-\infty}^{+\infty} E\delta(t)e^{-\j\omega t} \d t = E
+$$
+
+也就是说冲激函数的傅立叶变换为常函数。这意味着冲激信号的频谱是处处均匀的，这种频谱一般称为**白色谱**或者**均匀谱**。
+
+对冲激函数做 IFT 得到：
+
+$$
+\mathcal{F}^{-1}[\delta_{E, 0}](t) = \frac{1}{2\pi} \int_{-\infty}^{+\infty} E\delta(\omega) e^{\j\omega t} \d\omega = \frac{E}{2\pi}
+$$
+
+也就是说常函数的傅立叶变换是在原点的冲激函数，这是好理解的，因为常函数就是频率为零的三角函数。
+
+上述推理说明了：
+
+$$
+\begin{aligned}
+& \mathcal{F}[\delta] = 1 \\
+& \mathcal{F}[1] = 2\pi\delta \\
+\end{aligned}
+$$
+
+## 信号采样
+
+### 采样的概念
+
+我们使用计算机存储时域上连续的信号的时候，只能存储部分点处的信号幅度，这就要求我们决定存储哪些点的信号值。这类每隔一定的时间间隔，从连续信号上取出该点信号幅度的行为就是**采样**。每次采样之间的时间间隔称为**采样周期**，一般标记为 $T_s$ 。其倒数 $f_s = 1 / T_s$ 即称为**采样频率**， $\omega_s = 2\pi / T_s$ 则是**采样（角）频率**。
+
+理想情况下，我们一般使用冲激串采样，即使用函数：
+
+$$
+p(t) = \sum_{k = -\infty}^{+\infty} \delta(t - kT_s)
+$$
+
+使用 $p(t)$ 乘以需要采样的信号 $f(t)$ 即可得到采样的结果。
+
+### 采样定理
+
+现在考虑理想冲激串采样，我们考虑采样后信号的频谱表现。记：
+
+$$
+f_p(t) := f(t)p(t) = \sum_{k = -\infty}^{+\infty} f(t)\delta(t - kT_s)
+$$
+
+那么根据 FT 和卷积的关系（这里规定 $F := \mathcal{F}[f]$ ）：
+
+$$
+\begin{aligned}
+\mathcal{F}[f_p] &= \frac{1}{2\pi}F * \mathcal{F}[p]
+\end{aligned}
+$$
+
+这里我们需要求解 $\mathcal{F}[p]$ ，即冲激串的傅立叶变换。由于冲激串函数实际上是周期函数，所以可以得知其频谱表现也是冲激串。我们可以求解其 FS 系数（这里 $\omega_s := 2\pi / T_s$ ）：
+
+$$
+F_k = \frac{1}{T_s} \int_{-T_s / 2}^{T_s / 2} p(t)e^{-\j k\omega_s t} \d t = \frac{1}{T_s}
+$$
+
+将 $p(t)$ 写成 FS 得到：
+
+$$
+p(t) = \sum_{k = -\infty}^{+\infty} \frac{1}{T_s}e^{\j k\omega_s t}
+$$
+
+所以说可以有：
+
+$$
+\mathcal{F}[p](\omega) = \mathcal{F}_{t, \omega}\left[\sum_{k = -\infty}^{+\infty} \frac{1}{T_s}e^{\j k\omega_s t}\right] = \frac{1}{T_s} \sum_{k = -\infty}^{+\infty} \mathcal{F}_{t, \omega}[e^{\j k\omega_s t}] = \frac{2\pi}{T_s} \sum_{k = -\infty}^{+\infty} \delta(\omega - k\omega_s)
+$$
+
+也就是说时域的冲激串在频域上也是冲激串。
+
+{% note info %}
+如果你尝试这样求解 $\mathcal{F}[p]$ ：
+
+$$
+\mathcal{F}[p] = \mathcal{F}\left[\sum_{k = -\infty}^{+\infty} \delta_{1, kT_s}\right] = \sum_{k = -\infty}^{+\infty} \mathcal{F}[\delta_{1, kT_s}]
+$$
+
+显然这会得到错误的结果。错误的原因是这里的级数和傅立叶变换这里不能交换（而上面先写成 FS 再 FT 的时候，级数和傅立叶变换又是可以交换的），而更深层次的原因则是冲激串严格上不具有 FT （不满足 Dirichlet 条件）。
+
+实际上如果从更深层的意义上说，我们根本没有严格定义冲激函数，毕竟我们能看出来冲激函数根本不可能使用 Riemann 积分计算，所以还有更深层的数学原理被忽视了。
+
+但一定程度上，这就是工科。想要钻研这些理论内部严格数学原理的读者可以阅读拓扑、泛函、实分析相关内容。
+{% endnote %}
+
+那么就可以计算取样后信号的频谱了：
+
+$$
+\mathcal{F}[f_p] = \frac{1}{2\pi}F * \mathcal{F}[p] = \frac{1}{T_s}F * \left(\sum_{k = -\infty}^{+\infty} \delta_{1, k\omega_s}\right) = \frac{1}{T_s}\sum_{k = -\infty}^{+\infty} \mathcal{S}_{k\omega_s}[F]
+$$
+
+也就是说抽样后的信号的频谱是将原先的频谱以 $\omega_s$ 为周期平移后叠加后得到的。
+
+---
+
+现在我们考虑现实中常见的信号。常见信号往往具有一个**高频截止频率** $\omega_M$ ，其含义为信号的频谱 $F$ 在区间 $[-\omega_M, \omega_M]$ 外均取零。此外，之前也有提到过带宽相关知识，即大多数信号的能量聚集在低频区段，所以往往会截断高频的部分，而这个截断频率，也可以称为高频截止频率。这类信号频谱中位于区间 $[-\omega_M, \omega_M]$ 内的频谱峰称为**主峰**。
+
+对一个高频截止频率为 $\omega_M$ 的信号按照频率 $\omega_s$ 采样，采样后的频谱记为 $F_p$ ，其是周期为 $\omega_s$ 的周期函数，每一个周期都是由原先信号的频谱主峰平移而来。我们现在固定高频截止频率，降低采样频率，考察 $F_p$ 的变化。在 $\omega_s$ 降低的时候， $F_p$ 周期减小，峰与峰之间的距离减小，从而存在一个临界取样频率，让相邻的两个频谱峰恰好相交。如果取样频率低于这个临界频率，就意味着 $F_p$ 的各个相邻的频谱峰会相互重叠，即发生**频谱混叠**。
+
+如果没有发生频谱混叠，我们可以在采样之后使用低通滤波器将 $F_p$ 的主峰过滤出来，从而完美还原原先的信号。但是如果发生混叠，这种完美复原则是不可能的。而这个临界频率是显而易见的，即 $\omega_s = 2\omega_M$ 。
+
+这就是 Nyquist 取样定理，即使用不低于两倍高频截止频率 $\omega_M$ 的采样频率 $\omega_s$ 采样得到的数据点可以完美还原原信号。
+
+综合上述，只有信号满足**频带受限**（即严格具有高频截止频率）并且**取样频率足够高**的时候，取样才能无损表示原有信号。
