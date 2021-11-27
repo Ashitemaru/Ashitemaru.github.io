@@ -11,6 +11,7 @@ category:
 $$
 \newcommand{\d}{\mathrm{d}}
 \newcommand{\j}{\mathrm{j}}
+\newcommand{\b}{\boldsymbol}
 $$
 
 <!-- more -->
@@ -403,7 +404,7 @@ $$
 \int_{-\infty}^{+\infty}f(t)\delta(t - t_0)\d t = f(t_0)
 $$
 
-# 信号分解
+# 一般模拟信号分解
 
 ## 基本分解
 
@@ -903,9 +904,9 @@ $$
 \end{aligned}
 $$
 
-## 信号采样
+# 信号采样
 
-### 采样的概念
+## 采样的概念
 
 我们使用计算机存储时域上连续的信号的时候，只能存储部分点处的信号幅度，这就要求我们决定存储哪些点的信号值。这类每隔一定的时间间隔，从连续信号上取出该点信号幅度的行为就是**采样**。每次采样之间的时间间隔称为**采样周期**，一般标记为 $T_s$ 。其倒数 $f_s = 1 / T_s$ 即称为**采样频率**， $\omega_s = 2\pi / T_s$ 则是**采样（角）频率**。
 
@@ -917,7 +918,7 @@ $$
 
 使用 $p(t)$ 乘以需要采样的信号 $f(t)$ 即可得到采样的结果。
 
-### 采样定理
+## 采样定理
 
 现在考虑理想冲激串采样，我们考虑采样后信号的频谱表现。记：
 
@@ -986,3 +987,274 @@ $$
 这就是 Nyquist 取样定理，即使用不低于两倍高频截止频率 $\omega_M$ 的采样频率 $\omega_s$ 采样得到的数据点可以完美还原原信号。
 
 综合上述，只有信号满足**频带受限**（即严格具有高频截止频率）并且**取样频率足够高**的时候，取样才能无损表示原有信号。
+
+## 信号复原
+
+我们在上述过程中证明了使用低通滤波器可以复原高频率取样后的频带受限信号，下面我们来具体研讨低通滤波器，讨论中 $f$ 表示原有的频带受限信号， $f_p$ 表示使用高频理想冲激串取样后的信号， $F,F_p$ 分别表示两者在频域上的表现。
+
+我们思考矩形脉冲信号的性质。时域上，我们可以使用矩形脉冲信号乘以某一个信号以截取该信号某一个区间上的信息。那么我们考虑频域上的矩形脉冲，其脉冲区间为 $[-\omega_C, \omega_C]$ 。在频域上将该矩形脉冲和另一个信号的频谱相乘则可以截取该信号在低频区间 $[-\omega_C, \omega_C]$ 上的信息而完全过滤高频信息。从而，我们就可以使用这一信号作为低通滤波器。
+
+假设低通滤波器时域表现为 $h$ ，频域表现为 $H$ 。
+
+`TODO`
+
+# 离散信号处理
+
+上述的讨论均是理论的，理论的模拟信号时域连续、时域无限长、数值取值范围无限、精度无限。但是实际使用计算机处理的时候，这三点均无法满足，即计算机能处理的信号时域离散、时域有限长、数值取值范围有限、精度有限。
+
+所以我们需要将上述的理论进行一定的修正才能应用到真实的信号处理场景中。
+
+## 从抽样序列还原原信号时域
+
+这一问题已经在采样部分叙述过，频带有限信号的采样频率足够高的时候，就可以根据抽样序列无损还原原信号。
+
+## 从抽样序列还原原信号频谱
+
+连续时域信号通过抽样可以得到离散时域信号。考虑具有高频截止频率 $\omega_M$ 的频带有限信号 $f$ ，其抽样信号 $f_p$ 定义为下式，这里 $T_s$ 是抽样周期：
+
+$$
+f_p(t) = \sum_{n = -\infty}^{+\infty} f(nT_s)\delta(t - nT_s)
+$$
+
+我们先前计算过抽样信号的 FT ，这里 $\omega_s$ 是抽样频率， $F$ 是 $f$ 的频谱：
+
+$$
+F_p(\omega) = \frac{1}{T_s} \sum_{m = -\infty}^{+\infty} F(\omega - m\omega_s)
+$$
+
+在不发生频谱混叠的时候，抽样信号的频谱的主峰严格和原信号的频谱仅相差常数系数。也就是说在满足抽样定理的时候：
+
+$$
+F_p(\omega) = \frac{1}{T_s} F(\omega), \omega \in \left[-\frac{\omega_s}{2}, \frac{\omega_s}{2}\right] 
+$$
+
+我们形式上根据 FT 的计算公式可以推理得到下述关系，这里形式上将级数和无穷积分认为是可以交换的，所以严格而言是不严谨的推理：
+
+$$
+\begin{aligned}
+F_p(\omega) &= \int_{-\infty}^{+\infty} f_p(t)e^{-\j\omega t} \d t = \int_{-\infty}^{+\infty} \left(\sum_{n = -\infty}^{+\infty} f(nT_s)\delta(t - nT_s)\right)e^{-\j\omega t} \d t \\
+&= \sum_{n = -\infty}^{+\infty} f(nT_s) \left(\int_{-\infty}^{+\infty} \delta(t - nT_s)e^{-\j\omega t} \d t\right) = \sum_{n = -\infty}^{+\infty} f(nT_s) e^{-\j\omega nT_s} \d t
+\end{aligned}
+$$
+
+那么：
+
+$$
+F(\omega) = T_sF_p(\omega) = T_s\sum_{n = -\infty}^{+\infty} f(nT_s) e^{-\j\omega nT_s}, \omega \in \left[-\frac{\omega_s}{2}, \frac{\omega_s}{2}\right] 
+$$
+
+从而我们就有从抽样信号序列复原原信号频谱的方式，这种变换相当于从离散信号作傅立叶变换，称为**离散时间傅立叶变换（ Discrete Time Fourier Transformation / DTFT ）**。
+
+考虑其逆变换，即从原信号的频谱获取抽样信号。事实上 DTFT 的式子可以认为是一个 FS ， $\{f(nT_s)\}_{n \in \mathbb Z}$ 可以认为是频域上的 FS 系数数列，原信号周期为 $\omega_s$ ，不过注意这里指数上是 $-\j\omega nT_s$ ，是有负号的。那么根据 FS 系数的公式：
+
+$$
+f(nT_s) = \frac{1}{\omega_s} \int_{-\omega_s / 2}^{\omega_s / 2} F_p(\omega)e^{\j n\omega T_s} \d\omega
+$$
+
+现在我们尝试进行归一化。由于 $T_s$ 实质上只是作为系数出现，所以可以将其归一化为 $1$ 。而原先的采样序列记作数列 $\{x(n)\}_{n \in \mathbb Z}$ ，这种归一化后的采样序列一般称为**数字信号（ Digital signal ）**。在这样的表示之下考虑 DTFT 和 IDTFT ，我们将 DTFT 的结果记作 $X(\omega)$ ，这也称为数字信号的频谱：
+
+$$
+\begin{aligned}
+& X(\omega) = {\rm DTFT}[x](\omega) = \sum_{n = -\infty}^{+\infty} x(n) e^{-\j\omega n} \\
+& x(n) = \frac{1}{2\pi} \int_{-\pi}^{\pi} X(\omega)e^{\j n\omega} \d\omega
+\end{aligned}
+$$
+
+根据上述推理，很容易知晓数字信号的频谱一定是周期的（根据 FT 和 IFT 的对偶，实际上根据周期信号的频谱离散就不难理解），并且由于进行了归一化处理，所以这个周期一定是 $2\pi$ ：
+
+$$
+X(\omega + 2\pi) = X(\omega)
+$$
+
+DTFT 的运算法则和 FT 有很大类似之处。首先有 DTFT 是线性的：
+
+$$
+{\rm DTFT}\left[\sum_{k = 1}^n \lambda_kx_k\right] = \sum_{k = 1}^n \lambda_k{\rm DTFT}[x_k]
+$$
+
+时域和频域的平移均会导致另外一个域的相位平移：
+
+$$
+\begin{aligned}
+& {\rm DTFT}_{n, \omega}[x(n - n_0)] = X(\omega)e^{-\j\omega n_0} \\
+& {\rm DTFT}_{n, \omega}[x(t)e^{\j\omega_0 n}] = X(\omega - \omega_0)
+\end{aligned}
+$$
+
+其和反褶、共轭的关系也和 FT 类似：
+
+$$
+\begin{cases}
+{\rm DTFT}[\mathcal{R}x] = \mathcal{R}[X] \\
+{\rm DTFT}[x^*] = \mathcal{R}^*[X] \\
+{\rm DTFT}[\mathcal{R}^*x] = X^* \\
+\end{cases}
+$$
+
+压扩变换不能直接应用到数字信号上，所以我们给出时域扩展的定义：
+
+$$
+\mathcal{E}_a[x](n) = \begin{cases}
+x(k) & n = ka, k \in \mathbb Z \\
+0 & {\rm otherwise}
+\end{cases} \ (a \in \mathbb{Z} \backslash \{0\})
+$$
+
+和 FT 类似，时域扩展的 DTFT 满足：
+
+$$
+{\rm DTFT}_{n, \omega}[\mathcal{E}_a[x](n)] = X(a\omega)
+$$
+
+DTFT 我们只探讨频域微分，和 FT 类似，频域微分等价于时域上的加权求和：
+
+$$
+{\rm DTFT}_{n, \omega}[nx(n)] = \j X^{(1)}(\omega)
+$$
+
+讨论卷积的时候，就不得不考虑到 DTFT 得到的频谱是周期的，普通的卷积可能不收敛。所以这里定义**圆卷积**，直观上而言就是指考虑一个周期内的卷积。比如说周期为 $T$ 的两个周期信号 $x, y$ 的圆卷积定义为：
+
+$$
+(x\otimes y)(t) := \int_T x(\tau)y(t - \tau) \d\tau
+$$
+
+那么：
+
+$$
+\begin{aligned}
+& {\rm DTFT}[x_1 * x_2] = {\rm DTFT}[x_1] \cdot {\rm DTFT}[x_2] \\
+& {\rm DTFT}[x_1 \cdot x_2] = \frac{1}{2\pi} {\rm DTFT}[x_1] \otimes {\rm DTFT}[x_2] \\
+\end{aligned}
+$$
+
+Parseval 定律依然类似成立：
+
+$$
+\sum_{n = -\infty}^{+\infty} \|x(n)\|^2 = \frac{1}{2\pi} \int_{-\pi}^{\pi} \|X(\omega)\|^2 \d\omega
+$$
+
+## 从有限抽样序列还原信号频谱
+
+现在我们基本上解决了时域离散的问题，但是我们要考虑到计算机处理信号的时候时域不可能无限。
+
+我们考虑对数字信号加上一个窗函数：
+
+$$
+w(n) := \begin{cases}
+1 & 0 \leq n \leq L - 1 \\
+0 & {\rm otherwise}
+\end{cases}
+$$
+
+那么 $L$ 长的有限长度数字信号就可以表示为：
+
+$$
+x_L = x \cdot w
+$$
+
+那么显然根据 DTFT 的性质得到 $x_L$ 的 DTFT 为：
+
+$$
+X_L(\omega) = \frac{1}{2\pi} ({\rm DTFT}[x] \otimes {\rm DTFT}[w])(\omega)
+$$
+
+显然：
+
+$$
+\begin{aligned}
+{\rm DTFT}[w](\omega) &= \sum_{n = -\infty}^{+\infty} w(n)e^{-\j\omega n} = \sum_{n = 0}^{L - 1} e^{-\j\omega n} \\
+&= \frac{1 - e^{-\j L\omega}}{1 - e^{-\j\omega}}
+\end{aligned}
+$$
+
+这个窗函数的频谱在周期 $[-\pi, \pi]$ 内表现为低频有一个主峰，其余部分有若干指数衰减的副峰。主峰的宽度是绝对值最小两个零点的距离：
+
+$$
+\Delta\omega_L = \frac{2\pi}{L}
+$$
+
+---
+
+现在我们考虑下述数字信号：
+
+$$
+x(n) = A_1e^{\j\omega_1 n} + A_2e^{\j\omega_2 n} (0 < \omega_1, \omega_2 < \pi)
+$$
+
+显然其 DTFT 为：
+
+$$
+X(\omega) = 2\pi(A_1\delta(\omega - \omega_1) + A_2\delta(\omega - \omega_2))
+$$
+
+现在我们将其乘上窗函数得到有限长的数字信号：
+
+$$
+x_L(n) = x(n)w(n)
+$$
+
+其 DTFT 为：
+
+$$
+X_L(\omega) = \frac{1}{2\pi}(X \otimes W)(\omega) = A_1W(\omega - \omega_1) + A_2W(\omega - \omega_2)
+$$
+
+这里我们只考虑 $W$ 的主峰，显然使用窗函数截取之后，频谱上原先是两个冲激的位置变为了两个窗函数频谱主峰。为了保证这两个主峰可以区分，我们要求这两个主峰不重叠。显然这需要 $|\omega_1 - \omega_2|$ 足够大。根据已知的主峰宽度，我们有：
+
+$$
+|\omega_1 - \omega_2| > \frac{2\pi}{L}
+$$
+
+也就是说如果数字信号的最小频率间隔为 $\Delta\omega$ ，那么为了保证截取后频谱上各个频率峰可分辨，必须要求窗函数宽度 $L$ 不小于 $2\pi / \Delta\omega$ 。
+
+---
+
+现在我们回到求解有限长数字信号傅立叶变换的问题上。我们继续延续上述 DTFT 的思路。不过我们现在只考虑在 $\omega_k = 2k\pi / N$ 处频谱的取值，即频域 $[0, 2\pi]$ 区间内的 $N$ 个特征点：
+
+$$
+\begin{aligned}
+X_L(\omega_k) &= \frac{1}{2\pi} ({\rm DTFT}[x] \otimes {\rm DTFT}[w])(\omega) \\
+&= \frac{1}{2\pi} \int_{-\pi}^{\pi} \left(\sum_{m = -\infty}^{+\infty} x(m)e^{-\j\left(\frac{2k\pi}{N} - \mu\right) m}\right)\left(\sum_{n = 0}^{L - 1} e^{-\j\mu n}\right) \d\mu \\
+&= \frac{1}{2\pi} \int_{-\pi}^{\pi} \sum_{n = 0}^{L - 1}\sum_{m = -\infty}^{+\infty} x(m)e^{-\j\frac{2km\pi}{N}}e^{-\j\mu (n - m)} \d\mu \\
+&= \frac{1}{2\pi} \sum_{n = 0}^{L - 1}\sum_{m = -\infty}^{+\infty} x(m)e^{-\j\frac{2km\pi}{N}} \int_{-\pi}^{\pi} e^{-\j\mu (n - m)} \d\mu \\
+&= \sum_{n = 0}^{L - 1} x(n)e^{-\j\frac{2kn\pi}{N}}
+\end{aligned}
+$$
+
+这里最后一个等号是利用指数函数在周期上的积分除非系数为零，否则积分结果均为零，所以最后只有 $m = n$ 的项被保留。
+
+便于表示，我们把 $X_L(\omega_k)$ 简记为 $X(k)$ 。
+
+从而我们就可以做到从有限长的数字信号还原出原信号频谱，这个变换就是**离散傅立叶变换（ Discrete Fourier Transformation / DFT ）**。
+
+我们注意到这样的一点，就是这里有两个参数是可以独立确定的，即窗函数长度 $L$ 和频域特征点数 $N$ 。但实际应用中一般都有 $L = N$ ，这主要是因为这样计算方便且 $L \neq N$ 的情况均可以还原成 $L = N$ 的情况。
+
+---
+
+为了论证这一点，我们可以从另外一个角度推导 DFT 公式。也就是回归傅里叶分析的本质，而傅里叶分析的本质就是将函数分解成若干个指数函数的线性组合。之前论述过的 FT 用于分解时域无限的连续信号，而 DFT 则会用于分析时域有限的离散信号。
+
+考虑信号 $f$ ，我们在区间 $[0, 1]$ 上均匀 $N$ 个样，组成代表这个信号的向量：
+
+$$
+\b{f} = \left[\begin{matrix}
+f(0) & f\left(\frac{1}{N}\right) & \cdots & f\left(\frac{N - 1}{N}\right)
+\end{matrix}\right]
+$$
+
+同样的，我们需要对作为基的函数 $e^{2\pi\j kt}$ 也在这些点取样，函数 $e^{2\pi\j kt}$ 取到的样为：
+
+$$
+\b{e}_k = \left[\begin{matrix}
+\varepsilon_N^0 & \varepsilon_N^k & \cdots & \varepsilon_N^{(N - 1)k}
+\end{matrix}\right]
+$$
+
+这里 $\varepsilon_N$ 表示 $N$ 次单位根。
+
+根据周期性，显然得到：
+
+$$
+\b{e}_k = \b{e}_{k + N}
+$$
+
+所以将 $\b{f}$ 拆分为 $\b{e}_k$ 的线性组合的时候只需要考虑一个周期内的 $\b{e}_k$ 即可，
