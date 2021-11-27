@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic%7CMonaco:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;ashitemaru.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Gemini&quot;,&quot;version&quot;:&quot;8.5.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;width&quot;:280,&quot;display&quot;:&quot;always&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:&quot;disqusjs&quot;,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;},&quot;path&quot;:&quot;&#x2F;search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;manual&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="日语这门语言的文字系统中依然存在着汉字，然而其汉字的读法却往往和我们的理解不一样。最经典的就是，日语的汉字往往具有多个读音，这和汉语中汉字少有多音的特征明显不同。另一方面，某些日语汉字的读音和现代汉语几乎一致，也有一些则完全不相像。所以，作为中国人，阅读汉字较多的日语文本的时候往往能理解，但是我们很难正确将这些汉字读正确。 Holder 初学日语的时候，困顿于完全不知道如何断定日语汉字的读音。不过">
+<meta property="og:type" content="article">
+<meta property="og:title" content="怎么读日语汉字">
+<meta property="og:url" content="https://ashitemaru.github.io/2021/11/27/ja-3/index.html">
+<meta property="og:site_name" content="Ashitemaru">
+<meta property="og:description" content="日语这门语言的文字系统中依然存在着汉字，然而其汉字的读法却往往和我们的理解不一样。最经典的就是，日语的汉字往往具有多个读音，这和汉语中汉字少有多音的特征明显不同。另一方面，某些日语汉字的读音和现代汉语几乎一致，也有一些则完全不相像。所以，作为中国人，阅读汉字较多的日语文本的时候往往能理解，但是我们很难正确将这些汉字读正确。 Holder 初学日语的时候，困顿于完全不知道如何断定日语汉字的读音。不过">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-11-27T01:07:28.000Z">
+<meta property="article:modified_time" content="2021-11-27T01:07:28.000Z">
+<meta property="article:author" content="Ashitemaru">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://ashitemaru.github.io/2021/11/27/ja-3/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;ashitemaru.github.io&#x2F;2021&#x2F;11&#x2F;27&#x2F;ja-3&#x2F;&quot;,&quot;path&quot;:&quot;2021&#x2F;11&#x2F;27&#x2F;ja-3&#x2F;&quot;,&quot;title&quot;:&quot;怎么读日语汉字&quot;}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
+<title>怎么读日语汉字 | Ashitemaru</title>
+  
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/twikoo@1.4.1/dist/twikoo.all.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+<script>
+function getURL(e) {
+    http = e.slice(0,4)
+    https = e.slice(0,5)
+    if (http == "http" || https == "https" ) {
+        return e
+    } else if (e == "" || e == null || e == undefined) {
+        return e
+    } else {
+        e = 'http://' + e
+        return e
+    }
+}
+
+function newcomment() {
+    twikoo.getRecentComments({
+        envId: 'https://vercel-deploy-two.vercel.app',
+        pageSize: 7,
+        includeReply: false
+    }).then(function (res) {
+        var hotComments = $("#hot-comments");
+        for (var i = 0; i < res.length; i++) {
+            var nick = res[i].nick;
+            var content = res[i].commentText;
+            var newcontent = content.substring(0, 50);
+            var url = res[i].url;
+            var avatar = res[i].avatar;
+            var link = getURL(res[i].link);
+            var updatedAt = res[i].relativeTime;
+            var commentId = '#' + res[i].id;
+            hotComments.append(
+                `<li class="px1 pb2 flex items-center">
+                    <img style="width:40px;height:40px" class="circle mx1 listavatar" src="${avatar}">
+                    <div style="display:flex;flex-direction:column;width:100%;">
+                        <div style="display:flex;justify-content:space-between;flex-direction:row;align-items:center;">
+                            <div class="h5 listauthor overflow-hidden" title="${nick}">
+                                <a target="_blank" rel="noopener external nofollow noreferrer" href="${link}">${nick}</a>
+                            </div>
+                            <div class="h6 mr1 listdate wenzi hang1" style="color:#777777;">${updatedAt}</div>
+                        </div>
+                        <div style="display:flex;flex-direction:row;width:100%;">
+                            <a class="h5 list-comcontent" style="overflow:hidden;display:flex;border-bottom:0px;text-overflow:ellipsis;line-height:1.5;text-align:left" href="${url}${commentId}">${newcontent}</a>
+                        </div>
+                    </div>
+                </li>`
+            );
+        }
+    }).catch(function (err) {
+        console.error(err);
+    });
+}
+
+$(function () {
+    newcomment();
+});
+</script>
+
+<!-- CSS -->
+<link href="https://fonts.googleapis.com/css2?family=Mulish&amp;display=swap" rel="stylesheet" media="all" onload="this.media=&quot;all&quot;">
+<link href="https://cdn.jsdelivr.net/gh/heson10/pic@master/css/app.min.css" rel="stylesheet">
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Ashitemaru</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-skill-docs"><a href="https://sast-skill-docers.github.io/sast-skill-docs/" rel="noopener" target="_blank"><i class="fa fa-book fa-fw"></i>技能引导文档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5%E8%AF%AD%E4%B9%A6%E5%86%99%E4%BD%93%E7%B3%BB"><span class="nav-number">1.</span> <span class="nav-text">日语书写体系</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E5%A5%97%E4%B9%A6%E5%86%99%E4%BD%93%E7%B3%BB%E7%9A%84%E5%8E%86%E5%8F%B2"><span class="nav-number">1.1.</span> <span class="nav-text">三套书写体系的历史</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E5%A5%97%E4%B9%A6%E5%86%99%E4%BD%93%E7%B3%BB%E7%9A%84%E4%BD%BF%E7%94%A8%E6%83%AF%E4%BE%8B"><span class="nav-number">1.2.</span> <span class="nav-text">三套书写体系的使用惯例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B1%89%E5%AD%97"><span class="nav-number">1.2.1.</span> <span class="nav-text">汉字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B9%B3%E5%81%87%E5%90%8D"><span class="nav-number">1.2.2.</span> <span class="nav-text">平假名</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%BB%8F%E6%80%A7%E8%AF%8D%E7%BC%80"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">黏性词缀</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%AB%E4%B9%89%E8%99%9A%E5%8C%96%E7%9A%84%E8%AF%8D%E8%AF%AD"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">含义虚化的词语</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B9%A0%E6%83%AF%E4%B8%8E%E7%94%9F%E5%83%BB%E5%AD%97"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">习惯与生僻字</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%87%E5%81%87%E5%90%8D"><span class="nav-number">1.2.3.</span> <span class="nav-text">片假名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%83%AF%E4%BE%8B%E7%9A%84%E4%BE%8B%E5%A4%96"><span class="nav-number">1.2.4.</span> <span class="nav-text">惯例的例外</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%AD%E8%AF%BB%E5%92%8C%E9%9F%B3%E8%AF%BB"><span class="nav-number">2.</span> <span class="nav-text">训读和音读</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%AD%E8%AF%BB"><span class="nav-number">2.1.</span> <span class="nav-text">训读</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E5%AD%97%E8%AE%AD"><span class="nav-number">2.1.1.</span> <span class="nav-text">单字训</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%86%9F%E5%AD%97%E8%AE%AD"><span class="nav-number">2.1.2.</span> <span class="nav-text">熟字训</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%8D%E7%BB%84%E8%AE%AD%E8%AF%BB"><span class="nav-number">2.1.3.</span> <span class="nav-text">词组训读</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9F%B3%E8%AF%BB"><span class="nav-number">2.2.</span> <span class="nav-text">音读</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9F%B3%E8%AE%AD%E6%B7%B7%E5%90%88"><span class="nav-number">2.3.</span> <span class="nav-text">音训混合</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Ashitemaru"
+      src="/uploads/avatar.png">
+  <p class="site-author-name" itemprop="name">Ashitemaru</p>
+  <div class="site-description" itemprop="description">A cat that likes Sakana.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Ashitemaru" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Ashitemaru" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:qhd19@mails.tsinghua.edu.cn" title="E-Mail → mailto:qhd19@mails.tsinghua.edu.cn" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Friends
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.unidy.cn/" title="https:&#x2F;&#x2F;www.unidy.cn" rel="noopener" target="_blank">UNIDY</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.dilant.cn/" title="https:&#x2F;&#x2F;www.dilant.cn" rel="noopener" target="_blank">Dilant</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://zcy.moe/" title="https:&#x2F;&#x2F;zcy.moe" rel="noopener" target="_blank">猫猫</a>
+        </li>
+    </ul>
+  </div>
+<div class="sidebar-1 mybox relative">
+    <div class="p2">
+        <i class="fab fa-facebook-messenger mr1"></i>
+        Latest Comments
+    </div>
+    <div id="hot-comments"></div>
+</div>
+          </div>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/Ashitemaru" class="github-corner" title="Come here for fun." aria-label="Come here for fun." rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ashitemaru.github.io/2021/11/27/ja-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="Ashitemaru">
+      <meta itemprop="description" content="A cat that likes Sakana.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ashitemaru">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          怎么读日语汉字
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-11-27 01:07:28" itemprop="dateCreated datePublished" datetime="2021-11-27T01:07:28+00:00">2021-11-27</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-11-27 01:07:28" itemprop="dateModified" datetime="2021-11-27T01:07:28+00:00">2021-11-27</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%97%A5%E8%AF%AD/" itemprop="url" rel="index"><span itemprop="name">日语</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2021/11/27/ja-3/" class="post-meta-item twikoo_visitors" data-flag-title="怎么读日语汉字" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="twikoo_visitors"></span>
+    </span>
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>5.5k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>日语这门语言的文字系统中依然存在着汉字，然而其汉字的读法却往往和我们的理解不一样。最经典的就是，日语的汉字往往具有多个读音，这和汉语中汉字少有多音的特征明显不同。另一方面，某些日语汉字的读音和现代汉语几乎一致，也有一些则完全不相像。所以，作为中国人，阅读汉字较多的日语文本的时候往往能理解，但是我们很难正确将这些汉字读正确。</p>
+<p>Holder 初学日语的时候，困顿于完全不知道如何断定日语汉字的读音。不过随着词汇量的上升，我似懂非懂地理解了一些日语汉字发音规律，这里也就权且当闲聊，把自己了解到的一些东西写出来。</p>
+<span id="more"></span>
+<h1 id="日语书写体系">日语书写体系</h1>
+<div class="note warning"><p>为了理清楚日语汉字读音，我们最好是日语书写体系开始，最好能完全理解为什么汉字会出现在日语中。这一部分还会讲解很多细致的书面日语习惯，和本文主题并不完全一致，所以如果并不感兴趣，则可以跳过本部分。</p>
+</div>
+<h2 id="三套书写体系的历史">三套书写体系的历史</h2>
+<p>汉语传入日本，为日本带来了两样新事物。一是汉字这一书写系统，二是大量日语中本不具有的词汇。</p>
+<p>汉字传入前的日语不具有书写系统，而汉字的传入让日本人开始尝试使用汉字表记日语。</p>
+<p>表记的思路有两个，一个是把汉字直接当成表音符号，每一个日语音都用一个读音类似的汉字代表。这种表记方式《万叶集》为代表，即为<strong>万叶假名</strong>。比如日语发音为 i ，书面语则使用发音类似的汉字「以」表记。而日语词 iroha 则表记为「以呂波」。</p>
+<p>当然，万叶假名中日语音与表音汉字的对应并不是完全严格的，比如说 i 音除了使用「以」表记，还可以使用「伊」表记。并且，万叶假名也不是一个完全遵守汉字表音的书写系统，其依然具有一些例外。比如说，一个字可以表记多个音节，如「信」可以表记 shina 两个音节。另外，部分情况下可能考虑到汉字的表意性，比如说， i 音在表示数词的时候还可以表记为「五十」。此外还有一些文字游戏，比如说，表达“出”的含义的日语词 ide 可以利用汉字表意性，用单字「出」表记，但是有时可能会因为“出”字的字形原因表记为「山上復有山」这样的词。</p>
+<p>但是万叶假名使用一个笔画繁杂的汉字仅仅是表达一个音节显得冗余且低效，于是人们在传抄万叶假名编写的日语文本的时候，会将高频万叶假名替换为笔画更少的、公认的惯用简体。这些惯用简体在后续的演变中逐步固化成为日语使用者均认可的两套现代假名，即<strong>平假名</strong>和<strong>片假名</strong>。比如说日语 no 音常用汉字「乃」表记，这个表音汉字在后续传抄中逐步简化，形成了平假名「の」。平假名和片假名的诞生保证了书写效率，而且基本上确保了一种假名对应一种音节，减少了一种音节对应多种文字的繁杂情况。</p>
+<p>也就是说<strong>现代日语的假名实际上是古代表音汉字的简化结果</strong>。</p>
+<p>另外一种用汉字表记日语的思路是将汉字当成表意符号，将日语词用与之同义或者意思相近的汉字表记。比如说表示“草”这个事物的日语词 kusa 就可以表记为单字「草」。这里的汉字保留了其原有的含义，与万叶假名的表音汉字不同。</p>
+<p>此外，先前还提到过汉语传入日本为日语带来了很多新词汇，这些直接借自汉语的词汇在书面上自然沿用其原先的汉字表记。</p>
+<h2 id="三套书写体系的使用惯例">三套书写体系的使用惯例</h2>
+<p>现在我们总结一下，日语的书面表记就有三套系统，即平假名、片假名和汉字。之后的讨论基本基于下述现代日语句：</p>
+<div class="note info no-icon"><p>わたしは漢字を書くことができます。</p>
+</div>
+<h3 id="汉字">汉字</h3>
+<p>例句有两个表记为汉字的词汇，即「漢字」和「書」。其中前者表记的是直接从汉语中借用的汉字词“汉字”，后者则是表记的日语固有词 kaku 中读音为 ka 的部分，这个词的含义为“书写”。</p>
+<p>在讲解汉字如何引入日语的时候已经提到过，日语中的汉字往往仅有两种用法，即表记汉语借词和作为表意文字表记日语固有词。</p>
+<p>而实际上汉字还可以表记和制汉语词。和制汉语词指的是近代以来，日本翻译家模仿汉字词创造的一批描述新生事物、概念的词语。这些词语原先不存在于汉语之中，甚至是在创造后回流入汉语的。但是其基本和汉语借词保持类似的读音和构词规则，所以表记上也习惯用汉字。比如说 kyouwa ，这个词回流入汉语称为现代汉语词“共和”，其日语表记为「共和」。</p>
+<p>另外，表音汉字依然在现代日语中有少许残留，其中一部分可以认为是万叶假名的残余。比如说姓名用词 mana ，可以按照万叶假名的写法表记为「麻奈」。而另外一部分比如形容动词 sutekida ，其常常使用汉字表记为「素敵だ」，这里的汉字仅仅关注了其读音，并未考虑其含义。</p>
+<p>最后提一下，日语汉字表记存在一种称为「当て字」的用法，可以理解为“假借”。但这类用法毕竟少见，这里仅举出一例，比如说音译自 romantic 的日语词 romanchikku 既可以按照一般表记方法写为「ロマンチック」，也可以假借汉字，表记为「浪漫的」。</p>
+<p>上述提到的汉字表记用法实际上就对应了后续讲解的如何确定汉字读音的部分。</p>
+<h3 id="平假名">平假名</h3>
+<p>例句除了汉字，其余的部分则全都是平假名，每一种平假名代表一种日语音节，其不表意，仅表音。现代日语中使用假名书写的词汇，往往是各种实词的语法成分（送假名）、含义虚化的词语（助词、助动词及作为补助成分的实词）、不习惯写为汉字的词语（或词语部分）、对应汉字生僻的词语。</p>
+<h4 id="黏性词缀">黏性词缀</h4>
+<p>日语是黏着语，动词、形容词等实词往往是具有语法功能的黏性词缀，这些词缀没有含义，仅仅用于表达语法作用（参见日语语法手册）。习惯上，实词的汉字表记不会涵盖这些词缀，而是使用假名表记（即<strong>送假名</strong>）以凸显词缀的黏性变化。比如说， kaku 这个固有动词中， ku 就是黏性词缀，所以表记为假名， ka 则是词干，使用表意汉字表记。</p>
+<p>此外，送假名表示的词缀并不一定会变形。比如说古日语二段动词固化形成的现代日语一段动词往往具有不少于一个送假名，但是其语法变化仅限于最后一个送假名。如固有动词 ikiru 一般表记为「生きる」，其送假名包括「きる」，但是实际的变形中仅有词尾「る」变化，另一个送假名「き」不参与变形。</p>
+<p>然而，在部分固化的复合单词中黏性词缀有时候也会被涵盖在汉字表记之中。比如说，表达“接待”含义的固有复合名词 uketuke ，严格而言这里两个 ke 音均是黏性词缀，应该使用送假名表记，整个名词表记为「受け付け」。但是忽略送假名，表记为「受付」也是常见的。而这种将词缀收纳入汉字表记中的现象，在动词的第一连用形名词化中相当常见，比如 hikari 等词，本身应该为 hikaru 的第一连用形，用送假名表记为「光り」，而实际上更常见的表记是没有送假名的「光」。</p>
+<h4 id="含义虚化的词语">含义虚化的词语</h4>
+<p>含义虚化的词语一般不使用汉字表记。比如说，上述例句中的格助词 wa 和 wo 只能表记为假名「は、を」，助动词 masu 只能表记为假名「ます」，这些词几乎不表记为汉字。而固有名词 koto 是具有汉字表记「事」的，但是只有在 koto 表达实在的“事情”这一个含义的时候才会使用。上述句子中 koto 是形式体言，仅仅发挥承接动词连体形以完成名词化的语法作用，不具有实在含义，所以使用假名表记「こと」。</p>
+<p>含义虚化是一个比较模糊的概念，实际上上述例句中，即使 koto 使用汉字表记，大多数人依然能正确认读，只是稍显不自然。而对于意义虚化后具有较大含义差别的实词，使用假名还是汉字表记，可能带来并不太一样的语义：</p>
+<div class="note info no-icon"><p>資料を出して<strong>ください</strong>。</p>
+<p>資料を出して<strong>下さい</strong>。</p>
+</div>
+<p>这里，固有动词 kudasaru 的命令形 kudasai 的词干分别使用了假名表记和汉字表记。使用假名表记的时候， kudasaru 往往理解为补助动词，表达“请求”的语气，所以第一句话表达的是“请取出资料”的含义。而使用汉字表记的时候， kudasaru 则作为实词理解为“从他人处获取某物品”，第二句话往往理解为“取出资料后给我”的含义。</p>
+<p>但是这两个含义在口语中则完全不可以分辨，而书面上也往往根据上下文可以断定。另一方面，汉字表记往往占用更少的空间，所以在需要浓缩信息的书面表达场合（新闻标题、告示板、文书），即使严格意义上有歧义的可能，依然更倾向于使用汉字表记。</p>
+<h4 id="习惯与生僻字">习惯与生僻字</h4>
+<p>不习惯写为汉字的词语和对应生僻字的词语一般不使用汉字表记。上述例句中，固有词 watashi 是第一人称代词，其确实具有汉字表记「私」，但是比例并不小的日语使用者会倾向于假名表记「わたし」。而第二人称代词 anata 即使具有汉字表记「貴方」，其假名表记写法「あなた」依然占据上风。此外，汉语借词 kaizan 的汉字表记为「改竄」，但是由于汉字「竄」生僻，更通用的书面表记则是将生僻字部分用假名表记的「改ざん」。</p>
+<h3 id="片假名">片假名</h3>
+<p>现代日语中片假名几乎只用于表记外来语和现代汉语借词，部分时候可能表记拟声词等：</p>
+<div class="note info no-icon"><p>ご覧の<strong>スポンサー</strong>の提供でお送りします。</p>
+<p>彼女は<strong>シクシク</strong>と泣いている。</p>
+</div>
+<p>这里前者借自英语词 sponsor ，而后者是一个拟声词。</p>
+<h3 id="惯例的例外">惯例的例外</h3>
+<p>事实上，上述的规律也只是一种描述性的规律，并不强制。比如说片假名表记还可以用于强调句子的特定部分：</p>
+<div class="note info no-icon"><p>見て見ぬ<strong>フリ</strong>なだけ。</p>
+</div>
+<p>这里的固有词 furi 表达含义“装作”，是一个虚化含义，常常使用平假名表记为「ふり」。这里使用片假名，是因为需要强调“我确实知道，我只是视而不见”这样的语感。</p>
+<p>此外，尽可能多地用汉字表记（即使习惯上不使用），甚至将假名替换为表音汉字的书写方法也是存在的，虽然有可能造成一定的阅读障碍。</p>
+<h1 id="训读和音读">训读和音读</h1>
+<div class="note warning"><p>注意，这里的<strong>训读</strong>概念和语言学中并不完全一致，我们认为<strong>只有在汉字表记的是日本固有词的时候才是训读</strong>，类似「煙草」训读作 tabako 这类的读法，一律归类到假借表记之中。</p>
+</div>
+<p>上面的分析中简要介绍了日语汉字的各种情况，现在我们回顾初学日语的时候就会了解的训读和音读的概念。在此基础上，或许就会对日语汉字的读音有所把握了。</p>
+<p>我们提到过日语汉字可能用于：</p>
+<ul>
+<li>表记汉语借词或和制汉语词</li>
+<li>作为表意文字表记日语词</li>
+<li>作为表音文字表记日语词</li>
+<li>假借表记</li>
+</ul>
+<p>第一个用法中，汉字的读音往往会尽力模仿汉语读音，这也就是一般称作的<strong>音读</strong>，第三个用法则可以认为是一种广义的音读。而第二个用法则是常说的<strong>训读</strong>，此时汉字的读音取决于日语固有词的读音而非这个汉字的汉语音。第四个用法中汉字的读音具有一定规律性，但是依然是经常遇到例外的。</p>
+<h2 id="训读">训读</h2>
+<h3 id="单字训">单字训</h3>
+<p>单字训是训读中最常见的一种方式。所谓单字训，就是找一个和该日语词意思一致或意思类似的汉字，作为这个日语词的表记。此时这个汉字就训读作这个日语词的音。</p>
+<p>比如说表达“山”这一事物的日语词 yama ，就使用汉字「山」表记，所以就称汉字「山」训读作 yama 。</p>
+<p>而动词或者形容词需要注意黏性词缀。比如说动词 yameru ，在表示“停止”的含义的时候，可以用汉字「止」表记，而 meru 是黏性词缀表记为平假名，所以整个动词汉字表记为「止める」。此时就称汉字「止」训读作 ya-meru 。</p>
+<p>注意这里把黏性词缀的读音跟在后面是有必要的，否则多个表记为同一个汉字的动词会导致混乱。比如说动词 oriru 表达“下来”的含义的时候可以用「下」表记，整体汉字表记为「下りる」。而动词 sageru 表达“下降”的时候也用「下」表记，整体汉字表记为「下げる」。所以「下」具有两个不同的训读 o-riru 和 sa-geru 。不接上黏性词缀的话，即直接认为「下」训为 o 或者 sa 均可，则可能将「下げる」误读作 ogeru 。</p>
+<hr />
+<p>上面已经体现出，多义汉字可以用于表记不同的日语词，导致日语汉字的训读多音。同样的还有汉字「生」，其表达“未经加工的”这一含义的时候可以训为 nama ，应用在「生ビール」等词语中。表达“生长”这一含义的时候可以训为 ha-eru ，出现在动词「生える」中。表达“生存”这一含义的时候，则训为 i-kiru ，出现在动词「生きる」中。</p>
+<p>同样的，同一个日语词可以使用多种意义相近但含义稍有差别的汉字表记，以表达微妙的语感差别。比如说动词 warau ，其常常表记为「笑う」。而在表达“嘲笑”这个含义的时候，表记为「嗤う」也是可以的。</p>
+<h3 id="熟字训">熟字训</h3>
+<p>部分日语词不会使用单个汉字表记，而是会使用一个汉语词组表记。此时我们没有办法指出这个汉语词组中具体每个字训读的读音，只能说整个词组训读作这个日语词。熟字训往往出现在表达基本概念或者具有日本文化特色的概念的词语中。</p>
+<p>名词 samidare 表达的含义为“梅雨”，其汉字表记为「梅雨」，这里词组「梅雨」整体训读作 samidare 。类似还有「時雨」训读作 shigure ，「吹雪」训读作 fubuki 等。这些概念是具有日本文化特色的。</p>
+<p>而描述一些基本的概念的词语也会出现熟字训。比如 koko 表达“这里”，其汉字表记为「此処」。 kesa 表达“今早”，其汉字表记为「今朝」。</p>
+<h3 id="词组训读">词组训读</h3>
+<p>词组训读指的是将一组日语词用单字或者汉字词组表记，此时该单字或者词组训成这个日语词组的读音。词组训读和熟字训的差别在，词组训读是表记一组日语词，而熟字训本质上还只是表达一个日语词。</p>
+<p>考虑动词 maturu 和名词 koto ，前者使用第一连用形接续后者后发生音便得到词组 maturigoto ，其直接含义为“祭祀之事”，引申为“政治”。由于 maturu 和 koto 分别具有汉字表记「祭る」和「こと」，该词组可以表记为「祭り事／祭事」。但是也可以整体表记为「政」，此时汉字「政」训读为 maturigoto 共计五个音节。</p>
+<p>同样的还有 yomigaeru 。这里 yomi 是熟字训，汉字表记为「黄泉」，而 kaeru 表记为「帰る」。这个动词直接翻译为“从黄泉归来”，引申为“苏醒”，即可以直接表记为「蘇る」。</p>
+<p>词组训读很多时候是表记为单字的，所以这一部分词组训读甚至就可以认为是一般的单字训。</p>
+<h2 id="音读">音读</h2>
+<p>由于音读几乎是模拟汉字的汉语读音，所以基本遵循一个汉字一到两个音节的对应规则，出现一个汉字对应两个音节大多是因为古汉语的入声被保留为音节。</p>
+<p>汉语借词曾在多个时期借入日语，所以这些词语所模仿的是不同时期、不同地域的汉语读音，所以即使大多数情况下一个汉字仅对应一种音读读音，但依然存在音读多音字。</p>
+<h2 id="音训混合">音训混合</h2>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/11/01/ja-0/" rel="prev" title="日语语法手册（ 2021 年）">
+                  <i class="fa fa-chevron-left"></i> 日语语法手册（ 2021 年）
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments"><div id="twikoo-comments"></div></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ashitemaru</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">132k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">2:01</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;tags&quot;:&quot;none&quot;,&quot;js&quot;:{&quot;url&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mathjax@3.1.4&#x2F;es5&#x2F;tex-mml-chtml.js&quot;,&quot;integrity&quot;:&quot;sha256-ncNI9OXOS5Ek4tzVYiOMmN&#x2F;KKCPZ6V0Cpv2P&#x2F;zHntiA&#x3D;&quot;}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="twikoo" type="application/json">{&quot;enable&quot;:true,&quot;visitor&quot;:true,&quot;envId&quot;:&quot;https:&#x2F;&#x2F;vercel-deploy-two.vercel.app&quot;,&quot;el&quot;:&quot;#twikoo-comments&quot;}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.twikoo.el)
+    .then(() => NexT.utils.getScript(
+      'https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js',
+      { condition: window.twikoo }
+    ))
+    .then(() => {
+      twikoo.init(CONFIG.twikoo);
+    });
+});
+</script>
+
+</body>
+</html>

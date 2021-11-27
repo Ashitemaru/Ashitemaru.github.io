@@ -1918,6 +1918,8 @@
 <p>而使用动词终止形结局，则显得较为直白，故这种用法相对上述较为少见。</p>
 <div class="note info no-icon"><p>春になると，桜が<strong>咲く</strong>。</p>
 </div>
+<h2 id="不视作活用的变形">不视作活用的变形</h2>
+<p>在现代日语中，我们有时还是能看到一些比较规律的变形。比如说形容词词尾变为「さ、み、め」似乎就可以变为名词，某些自动词和他动词存在较为规则的对应关系等等。</p>
 ]]></content>
       <categories>
         <category>日语</category>
@@ -2505,6 +2507,102 @@
 </tbody>
 </table>
 <h1 id="使役动词">使役动词</h1>
+]]></content>
+      <categories>
+        <category>日语</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>怎么读日语汉字</title>
+    <url>/2021/11/27/ja-3/</url>
+    <content><![CDATA[<p>日语这门语言的文字系统中依然存在着汉字，然而其汉字的读法却往往和我们的理解不一样。最经典的就是，日语的汉字往往具有多个读音，这和汉语中汉字少有多音的特征明显不同。另一方面，某些日语汉字的读音和现代汉语几乎一致，也有一些则完全不相像。所以，作为中国人，阅读汉字较多的日语文本的时候往往能理解，但是我们很难正确将这些汉字读正确。</p>
+<p>Holder 初学日语的时候，困顿于完全不知道如何断定日语汉字的读音。不过随着词汇量的上升，我似懂非懂地理解了一些日语汉字发音规律，这里也就权且当闲聊，把自己了解到的一些东西写出来。</p>
+<span id="more"></span>
+<h1 id="日语书写体系">日语书写体系</h1>
+<div class="note warning"><p>为了理清楚日语汉字读音，我们最好是日语书写体系开始，最好能完全理解为什么汉字会出现在日语中。这一部分还会讲解很多细致的书面日语习惯，和本文主题并不完全一致，所以如果并不感兴趣，则可以跳过本部分。</p>
+</div>
+<h2 id="三套书写体系的历史">三套书写体系的历史</h2>
+<p>汉语传入日本，为日本带来了两样新事物。一是汉字这一书写系统，二是大量日语中本不具有的词汇。</p>
+<p>汉字传入前的日语不具有书写系统，而汉字的传入让日本人开始尝试使用汉字表记日语。</p>
+<p>表记的思路有两个，一个是把汉字直接当成表音符号，每一个日语音都用一个读音类似的汉字代表。这种表记方式《万叶集》为代表，即为<strong>万叶假名</strong>。比如日语发音为 i ，书面语则使用发音类似的汉字「以」表记。而日语词 iroha 则表记为「以呂波」。</p>
+<p>当然，万叶假名中日语音与表音汉字的对应并不是完全严格的，比如说 i 音除了使用「以」表记，还可以使用「伊」表记。并且，万叶假名也不是一个完全遵守汉字表音的书写系统，其依然具有一些例外。比如说，一个字可以表记多个音节，如「信」可以表记 shina 两个音节。另外，部分情况下可能考虑到汉字的表意性，比如说， i 音在表示数词的时候还可以表记为「五十」。此外还有一些文字游戏，比如说，表达“出”的含义的日语词 ide 可以利用汉字表意性，用单字「出」表记，但是有时可能会因为“出”字的字形原因表记为「山上復有山」这样的词。</p>
+<p>但是万叶假名使用一个笔画繁杂的汉字仅仅是表达一个音节显得冗余且低效，于是人们在传抄万叶假名编写的日语文本的时候，会将高频万叶假名替换为笔画更少的、公认的惯用简体。这些惯用简体在后续的演变中逐步固化成为日语使用者均认可的两套现代假名，即<strong>平假名</strong>和<strong>片假名</strong>。比如说日语 no 音常用汉字「乃」表记，这个表音汉字在后续传抄中逐步简化，形成了平假名「の」。平假名和片假名的诞生保证了书写效率，而且基本上确保了一种假名对应一种音节，减少了一种音节对应多种文字的繁杂情况。</p>
+<p>也就是说<strong>现代日语的假名实际上是古代表音汉字的简化结果</strong>。</p>
+<p>另外一种用汉字表记日语的思路是将汉字当成表意符号，将日语词用与之同义或者意思相近的汉字表记。比如说表示“草”这个事物的日语词 kusa 就可以表记为单字「草」。这里的汉字保留了其原有的含义，与万叶假名的表音汉字不同。</p>
+<p>此外，先前还提到过汉语传入日本为日语带来了很多新词汇，这些直接借自汉语的词汇在书面上自然沿用其原先的汉字表记。</p>
+<h2 id="三套书写体系的使用惯例">三套书写体系的使用惯例</h2>
+<p>现在我们总结一下，日语的书面表记就有三套系统，即平假名、片假名和汉字。之后的讨论基本基于下述现代日语句：</p>
+<div class="note info no-icon"><p>わたしは漢字を書くことができます。</p>
+</div>
+<h3 id="汉字">汉字</h3>
+<p>例句有两个表记为汉字的词汇，即「漢字」和「書」。其中前者表记的是直接从汉语中借用的汉字词“汉字”，后者则是表记的日语固有词 kaku 中读音为 ka 的部分，这个词的含义为“书写”。</p>
+<p>在讲解汉字如何引入日语的时候已经提到过，日语中的汉字往往仅有两种用法，即表记汉语借词和作为表意文字表记日语固有词。</p>
+<p>而实际上汉字还可以表记和制汉语词。和制汉语词指的是近代以来，日本翻译家模仿汉字词创造的一批描述新生事物、概念的词语。这些词语原先不存在于汉语之中，甚至是在创造后回流入汉语的。但是其基本和汉语借词保持类似的读音和构词规则，所以表记上也习惯用汉字。比如说 kyouwa ，这个词回流入汉语称为现代汉语词“共和”，其日语表记为「共和」。</p>
+<p>另外，表音汉字依然在现代日语中有少许残留，其中一部分可以认为是万叶假名的残余。比如说姓名用词 mana ，可以按照万叶假名的写法表记为「麻奈」。而另外一部分比如形容动词 sutekida ，其常常使用汉字表记为「素敵だ」，这里的汉字仅仅关注了其读音，并未考虑其含义。</p>
+<p>最后提一下，日语汉字表记存在一种称为「当て字」的用法，可以理解为“假借”。但这类用法毕竟少见，这里仅举出一例，比如说音译自 romantic 的日语词 romanchikku 既可以按照一般表记方法写为「ロマンチック」，也可以假借汉字，表记为「浪漫的」。</p>
+<p>上述提到的汉字表记用法实际上就对应了后续讲解的如何确定汉字读音的部分。</p>
+<h3 id="平假名">平假名</h3>
+<p>例句除了汉字，其余的部分则全都是平假名，每一种平假名代表一种日语音节，其不表意，仅表音。现代日语中使用假名书写的词汇，往往是各种实词的语法成分（送假名）、含义虚化的词语（助词、助动词及作为补助成分的实词）、不习惯写为汉字的词语（或词语部分）、对应汉字生僻的词语。</p>
+<h4 id="黏性词缀">黏性词缀</h4>
+<p>日语是黏着语，动词、形容词等实词往往是具有语法功能的黏性词缀，这些词缀没有含义，仅仅用于表达语法作用（参见日语语法手册）。习惯上，实词的汉字表记不会涵盖这些词缀，而是使用假名表记（即<strong>送假名</strong>）以凸显词缀的黏性变化。比如说， kaku 这个固有动词中， ku 就是黏性词缀，所以表记为假名， ka 则是词干，使用表意汉字表记。</p>
+<p>此外，送假名表示的词缀并不一定会变形。比如说古日语二段动词固化形成的现代日语一段动词往往具有不少于一个送假名，但是其语法变化仅限于最后一个送假名。如固有动词 ikiru 一般表记为「生きる」，其送假名包括「きる」，但是实际的变形中仅有词尾「る」变化，另一个送假名「き」不参与变形。</p>
+<p>然而，在部分固化的复合单词中黏性词缀有时候也会被涵盖在汉字表记之中。比如说，表达“接待”含义的固有复合名词 uketuke ，严格而言这里两个 ke 音均是黏性词缀，应该使用送假名表记，整个名词表记为「受け付け」。但是忽略送假名，表记为「受付」也是常见的。而这种将词缀收纳入汉字表记中的现象，在动词的第一连用形名词化中相当常见，比如 hikari 等词，本身应该为 hikaru 的第一连用形，用送假名表记为「光り」，而实际上更常见的表记是没有送假名的「光」。</p>
+<h4 id="含义虚化的词语">含义虚化的词语</h4>
+<p>含义虚化的词语一般不使用汉字表记。比如说，上述例句中的格助词 wa 和 wo 只能表记为假名「は、を」，助动词 masu 只能表记为假名「ます」，这些词几乎不表记为汉字。而固有名词 koto 是具有汉字表记「事」的，但是只有在 koto 表达实在的“事情”这一个含义的时候才会使用。上述句子中 koto 是形式体言，仅仅发挥承接动词连体形以完成名词化的语法作用，不具有实在含义，所以使用假名表记「こと」。</p>
+<p>含义虚化是一个比较模糊的概念，实际上上述例句中，即使 koto 使用汉字表记，大多数人依然能正确认读，只是稍显不自然。而对于意义虚化后具有较大含义差别的实词，使用假名还是汉字表记，可能带来并不太一样的语义：</p>
+<div class="note info no-icon"><p>資料を出して<strong>ください</strong>。</p>
+<p>資料を出して<strong>下さい</strong>。</p>
+</div>
+<p>这里，固有动词 kudasaru 的命令形 kudasai 的词干分别使用了假名表记和汉字表记。使用假名表记的时候， kudasaru 往往理解为补助动词，表达“请求”的语气，所以第一句话表达的是“请取出资料”的含义。而使用汉字表记的时候， kudasaru 则作为实词理解为“从他人处获取某物品”，第二句话往往理解为“取出资料后给我”的含义。</p>
+<p>但是这两个含义在口语中则完全不可以分辨，而书面上也往往根据上下文可以断定。另一方面，汉字表记往往占用更少的空间，所以在需要浓缩信息的书面表达场合（新闻标题、告示板、文书），即使严格意义上有歧义的可能，依然更倾向于使用汉字表记。</p>
+<h4 id="习惯与生僻字">习惯与生僻字</h4>
+<p>不习惯写为汉字的词语和对应生僻字的词语一般不使用汉字表记。上述例句中，固有词 watashi 是第一人称代词，其确实具有汉字表记「私」，但是比例并不小的日语使用者会倾向于假名表记「わたし」。而第二人称代词 anata 即使具有汉字表记「貴方」，其假名表记写法「あなた」依然占据上风。此外，汉语借词 kaizan 的汉字表记为「改竄」，但是由于汉字「竄」生僻，更通用的书面表记则是将生僻字部分用假名表记的「改ざん」。</p>
+<h3 id="片假名">片假名</h3>
+<p>现代日语中片假名几乎只用于表记外来语和现代汉语借词，部分时候可能表记拟声词等：</p>
+<div class="note info no-icon"><p>ご覧の<strong>スポンサー</strong>の提供でお送りします。</p>
+<p>彼女は<strong>シクシク</strong>と泣いている。</p>
+</div>
+<p>这里前者借自英语词 sponsor ，而后者是一个拟声词。</p>
+<h3 id="惯例的例外">惯例的例外</h3>
+<p>事实上，上述的规律也只是一种描述性的规律，并不强制。比如说片假名表记还可以用于强调句子的特定部分：</p>
+<div class="note info no-icon"><p>見て見ぬ<strong>フリ</strong>なだけ。</p>
+</div>
+<p>这里的固有词 furi 表达含义“装作”，是一个虚化含义，常常使用平假名表记为「ふり」。这里使用片假名，是因为需要强调“我确实知道，我只是视而不见”这样的语感。</p>
+<p>此外，尽可能多地用汉字表记（即使习惯上不使用），甚至将假名替换为表音汉字的书写方法也是存在的，虽然有可能造成一定的阅读障碍。</p>
+<h1 id="训读和音读">训读和音读</h1>
+<div class="note warning"><p>注意，这里的<strong>训读</strong>概念和语言学中并不完全一致，我们认为<strong>只有在汉字表记的是日本固有词的时候才是训读</strong>，类似「煙草」训读作 tabako 这类的读法，一律归类到假借表记之中。</p>
+</div>
+<p>上面的分析中简要介绍了日语汉字的各种情况，现在我们回顾初学日语的时候就会了解的训读和音读的概念。在此基础上，或许就会对日语汉字的读音有所把握了。</p>
+<p>我们提到过日语汉字可能用于：</p>
+<ul>
+<li>表记汉语借词或和制汉语词</li>
+<li>作为表意文字表记日语词</li>
+<li>作为表音文字表记日语词</li>
+<li>假借表记</li>
+</ul>
+<p>第一个用法中，汉字的读音往往会尽力模仿汉语读音，这也就是一般称作的<strong>音读</strong>，第三个用法则可以认为是一种广义的音读。而第二个用法则是常说的<strong>训读</strong>，此时汉字的读音取决于日语固有词的读音而非这个汉字的汉语音。第四个用法中汉字的读音具有一定规律性，但是依然是经常遇到例外的。</p>
+<h2 id="训读">训读</h2>
+<h3 id="单字训">单字训</h3>
+<p>单字训是训读中最常见的一种方式。所谓单字训，就是找一个和该日语词意思一致或意思类似的汉字，作为这个日语词的表记。此时这个汉字就训读作这个日语词的音。</p>
+<p>比如说表达“山”这一事物的日语词 yama ，就使用汉字「山」表记，所以就称汉字「山」训读作 yama 。</p>
+<p>而动词或者形容词需要注意黏性词缀。比如说动词 yameru ，在表示“停止”的含义的时候，可以用汉字「止」表记，而 meru 是黏性词缀表记为平假名，所以整个动词汉字表记为「止める」。此时就称汉字「止」训读作 ya-meru 。</p>
+<p>注意这里把黏性词缀的读音跟在后面是有必要的，否则多个表记为同一个汉字的动词会导致混乱。比如说动词 oriru 表达“下来”的含义的时候可以用「下」表记，整体汉字表记为「下りる」。而动词 sageru 表达“下降”的时候也用「下」表记，整体汉字表记为「下げる」。所以「下」具有两个不同的训读 o-riru 和 sa-geru 。不接上黏性词缀的话，即直接认为「下」训为 o 或者 sa 均可，则可能将「下げる」误读作 ogeru 。</p>
+<hr />
+<p>上面已经体现出，多义汉字可以用于表记不同的日语词，导致日语汉字的训读多音。同样的还有汉字「生」，其表达“未经加工的”这一含义的时候可以训为 nama ，应用在「生ビール」等词语中。表达“生长”这一含义的时候可以训为 ha-eru ，出现在动词「生える」中。表达“生存”这一含义的时候，则训为 i-kiru ，出现在动词「生きる」中。</p>
+<p>同样的，同一个日语词可以使用多种意义相近但含义稍有差别的汉字表记，以表达微妙的语感差别。比如说动词 warau ，其常常表记为「笑う」。而在表达“嘲笑”这个含义的时候，表记为「嗤う」也是可以的。</p>
+<h3 id="熟字训">熟字训</h3>
+<p>部分日语词不会使用单个汉字表记，而是会使用一个汉语词组表记。此时我们没有办法指出这个汉语词组中具体每个字训读的读音，只能说整个词组训读作这个日语词。熟字训往往出现在表达基本概念或者具有日本文化特色的概念的词语中。</p>
+<p>名词 samidare 表达的含义为“梅雨”，其汉字表记为「梅雨」，这里词组「梅雨」整体训读作 samidare 。类似还有「時雨」训读作 shigure ，「吹雪」训读作 fubuki 等。这些概念是具有日本文化特色的。</p>
+<p>而描述一些基本的概念的词语也会出现熟字训。比如 koko 表达“这里”，其汉字表记为「此処」。 kesa 表达“今早”，其汉字表记为「今朝」。</p>
+<h3 id="词组训读">词组训读</h3>
+<p>词组训读指的是将一组日语词用单字或者汉字词组表记，此时该单字或者词组训成这个日语词组的读音。词组训读和熟字训的差别在，词组训读是表记一组日语词，而熟字训本质上还只是表达一个日语词。</p>
+<p>考虑动词 maturu 和名词 koto ，前者使用第一连用形接续后者后发生音便得到词组 maturigoto ，其直接含义为“祭祀之事”，引申为“政治”。由于 maturu 和 koto 分别具有汉字表记「祭る」和「こと」，该词组可以表记为「祭り事／祭事」。但是也可以整体表记为「政」，此时汉字「政」训读为 maturigoto 共计五个音节。</p>
+<p>同样的还有 yomigaeru 。这里 yomi 是熟字训，汉字表记为「黄泉」，而 kaeru 表记为「帰る」。这个动词直接翻译为“从黄泉归来”，引申为“苏醒”，即可以直接表记为「蘇る」。</p>
+<p>词组训读很多时候是表记为单字的，所以这一部分词组训读甚至就可以认为是一般的单字训。</p>
+<h2 id="音读">音读</h2>
+<p>由于音读几乎是模拟汉字的汉语读音，所以基本遵循一个汉字一到两个音节的对应规则，出现一个汉字对应两个音节大多是因为古汉语的入声被保留为音节。</p>
+<p>汉语借词曾在多个时期借入日语，所以这些词语所模仿的是不同时期、不同地域的汉语读音，所以即使大多数情况下一个汉字仅对应一种音读读音，但依然存在音读多音字。</p>
+<h2 id="音训混合">音训混合</h2>
 ]]></content>
       <categories>
         <category>日语</category>
@@ -3443,6 +3541,7 @@ B = (-1)^s M \cdot 2^E
 <p><span class="math display">\[
 \newcommand{\d}{\mathrm{d}}
 \newcommand{\j}{\mathrm{j}}
+\newcommand{\b}{\boldsymbol}
 \]</span></p>
 <span id="more"></span>
 <h1 id="信号处理基本知识">信号处理基本知识</h1>
@@ -3709,7 +3808,7 @@ f * \delta_{1, t_0} = \mathcal{S}_{t_0}[f]
 <p><span class="math display">\[
 \int_{-\infty}^{+\infty}f(t)\delta(t - t_0)\d t = f(t_0)
 \]</span></p>
-<h1 id="信号分解">信号分解</h1>
+<h1 id="一般模拟信号分解">一般模拟信号分解</h1>
 <h2 id="基本分解">基本分解</h2>
 <p>对于信号 <span class="math inline">\(f\)</span> ，我们可以将其分解为直流分量和交流分量，我们规定交流分量的积分为零，即：</p>
 <p><span class="math display">\[
@@ -4044,15 +4143,15 @@ F(\omega) = E\tau_0{\rm Sa}\left(\frac{\omega\tau_0}{2}\right)
 &amp; \mathcal{F}[1] = 2\pi\delta \\
 \end{aligned}
 \]</span></p>
-<h2 id="信号采样">信号采样</h2>
-<h3 id="采样的概念">采样的概念</h3>
+<h1 id="信号采样">信号采样</h1>
+<h2 id="采样的概念">采样的概念</h2>
 <p>我们使用计算机存储时域上连续的信号的时候，只能存储部分点处的信号幅度，这就要求我们决定存储哪些点的信号值。这类每隔一定的时间间隔，从连续信号上取出该点信号幅度的行为就是<strong>采样</strong>。每次采样之间的时间间隔称为<strong>采样周期</strong>，一般标记为 <span class="math inline">\(T_s\)</span> 。其倒数 <span class="math inline">\(f_s = 1 / T_s\)</span> 即称为<strong>采样频率</strong>， <span class="math inline">\(\omega_s = 2\pi / T_s\)</span> 则是<strong>采样（角）频率</strong>。</p>
 <p>理想情况下，我们一般使用冲激串采样，即使用函数：</p>
 <p><span class="math display">\[
 p(t) = \sum_{k = -\infty}^{+\infty} \delta(t - kT_s)
 \]</span></p>
 <p>使用 <span class="math inline">\(p(t)\)</span> 乘以需要采样的信号 <span class="math inline">\(f(t)\)</span> 即可得到采样的结果。</p>
-<h3 id="采样定理">采样定理</h3>
+<h2 id="采样定理">采样定理</h2>
 <p>现在考虑理想冲激串采样，我们考虑采样后信号的频谱表现。记：</p>
 <p><span class="math display">\[
 f_p(t) := f(t)p(t) = \sum_{k = -\infty}^{+\infty} f(t)\delta(t - kT_s)
@@ -4095,6 +4194,190 @@ p(t) = \sum_{k = -\infty}^{+\infty} \frac{1}{T_s}e^{\j k\omega_s t}
 <p>如果没有发生频谱混叠，我们可以在采样之后使用低通滤波器将 <span class="math inline">\(F_p\)</span> 的主峰过滤出来，从而完美还原原先的信号。但是如果发生混叠，这种完美复原则是不可能的。而这个临界频率是显而易见的，即 <span class="math inline">\(\omega_s = 2\omega_M\)</span> 。</p>
 <p>这就是 Nyquist 取样定理，即使用不低于两倍高频截止频率 <span class="math inline">\(\omega_M\)</span> 的采样频率 <span class="math inline">\(\omega_s\)</span> 采样得到的数据点可以完美还原原信号。</p>
 <p>综合上述，只有信号满足<strong>频带受限</strong>（即严格具有高频截止频率）并且<strong>取样频率足够高</strong>的时候，取样才能无损表示原有信号。</p>
+<h2 id="信号复原">信号复原</h2>
+<p>我们在上述过程中证明了使用低通滤波器可以复原高频率取样后的频带受限信号，下面我们来具体研讨低通滤波器，讨论中 <span class="math inline">\(f\)</span> 表示原有的频带受限信号， <span class="math inline">\(f_p\)</span> 表示使用高频理想冲激串取样后的信号， <span class="math inline">\(F,F_p\)</span> 分别表示两者在频域上的表现。</p>
+<p>我们思考矩形脉冲信号的性质。时域上，我们可以使用矩形脉冲信号乘以某一个信号以截取该信号某一个区间上的信息。那么我们考虑频域上的矩形脉冲，其脉冲区间为 <span class="math inline">\([-\omega_C, \omega_C]\)</span> 。在频域上将该矩形脉冲和另一个信号的频谱相乘则可以截取该信号在低频区间 <span class="math inline">\([-\omega_C, \omega_C]\)</span> 上的信息而完全过滤高频信息。从而，我们就可以使用这一信号作为低通滤波器。</p>
+<p>假设低通滤波器时域表现为 <span class="math inline">\(h\)</span> ，频域表现为 <span class="math inline">\(H\)</span> 。</p>
+<p><code>TODO</code></p>
+<h1 id="离散信号处理">离散信号处理</h1>
+<p>上述的讨论均是理论的，理论的模拟信号时域连续、时域无限长、数值取值范围无限、精度无限。但是实际使用计算机处理的时候，这三点均无法满足，即计算机能处理的信号时域离散、时域有限长、数值取值范围有限、精度有限。</p>
+<p>所以我们需要将上述的理论进行一定的修正才能应用到真实的信号处理场景中。</p>
+<h2 id="从抽样序列还原原信号时域">从抽样序列还原原信号时域</h2>
+<p>这一问题已经在采样部分叙述过，频带有限信号的采样频率足够高的时候，就可以根据抽样序列无损还原原信号。</p>
+<h2 id="从抽样序列还原原信号频谱">从抽样序列还原原信号频谱</h2>
+<p>连续时域信号通过抽样可以得到离散时域信号。考虑具有高频截止频率 <span class="math inline">\(\omega_M\)</span> 的频带有限信号 <span class="math inline">\(f\)</span> ，其抽样信号 <span class="math inline">\(f_p\)</span> 定义为下式，这里 <span class="math inline">\(T_s\)</span> 是抽样周期：</p>
+<p><span class="math display">\[
+f_p(t) = \sum_{n = -\infty}^{+\infty} f(nT_s)\delta(t - nT_s)
+\]</span></p>
+<p>我们先前计算过抽样信号的 FT ，这里 <span class="math inline">\(\omega_s\)</span> 是抽样频率， <span class="math inline">\(F\)</span> 是 <span class="math inline">\(f\)</span> 的频谱：</p>
+<p><span class="math display">\[
+F_p(\omega) = \frac{1}{T_s} \sum_{m = -\infty}^{+\infty} F(\omega - m\omega_s)
+\]</span></p>
+<p>在不发生频谱混叠的时候，抽样信号的频谱的主峰严格和原信号的频谱仅相差常数系数。也就是说在满足抽样定理的时候：</p>
+<p><span class="math display">\[
+F_p(\omega) = \frac{1}{T_s} F(\omega), \omega \in \left[-\frac{\omega_s}{2}, \frac{\omega_s}{2}\right] 
+\]</span></p>
+<p>我们形式上根据 FT 的计算公式可以推理得到下述关系，这里形式上将级数和无穷积分认为是可以交换的，所以严格而言是不严谨的推理：</p>
+<p><span class="math display">\[
+\begin{aligned}
+F_p(\omega) &amp;= \int_{-\infty}^{+\infty} f_p(t)e^{-\j\omega t} \d t = \int_{-\infty}^{+\infty} \left(\sum_{n = -\infty}^{+\infty} f(nT_s)\delta(t - nT_s)\right)e^{-\j\omega t} \d t \\
+&amp;= \sum_{n = -\infty}^{+\infty} f(nT_s) \left(\int_{-\infty}^{+\infty} \delta(t - nT_s)e^{-\j\omega t} \d t\right) = \sum_{n = -\infty}^{+\infty} f(nT_s) e^{-\j\omega nT_s} \d t
+\end{aligned}
+\]</span></p>
+<p>那么：</p>
+<p><span class="math display">\[
+F(\omega) = T_sF_p(\omega) = T_s\sum_{n = -\infty}^{+\infty} f(nT_s) e^{-\j\omega nT_s}, \omega \in \left[-\frac{\omega_s}{2}, \frac{\omega_s}{2}\right] 
+\]</span></p>
+<p>从而我们就有从抽样信号序列复原原信号频谱的方式，这种变换相当于从离散信号作傅立叶变换，称为<strong>离散时间傅立叶变换（ Discrete Time Fourier Transformation / DTFT ）</strong>。</p>
+<p>考虑其逆变换，即从原信号的频谱获取抽样信号。事实上 DTFT 的式子可以认为是一个 FS ， <span class="math inline">\(\{f(nT_s)\}_{n \in \mathbb Z}\)</span> 可以认为是频域上的 FS 系数数列，原信号周期为 <span class="math inline">\(\omega_s\)</span> ，不过注意这里指数上是 <span class="math inline">\(-\j\omega nT_s\)</span> ，是有负号的。那么根据 FS 系数的公式：</p>
+<p><span class="math display">\[
+f(nT_s) = \frac{1}{\omega_s} \int_{-\omega_s / 2}^{\omega_s / 2} F_p(\omega)e^{\j n\omega T_s} \d\omega
+\]</span></p>
+<p>现在我们尝试进行归一化。由于 <span class="math inline">\(T_s\)</span> 实质上只是作为系数出现，所以可以将其归一化为 <span class="math inline">\(1\)</span> 。而原先的采样序列记作数列 <span class="math inline">\(\{x(n)\}_{n \in \mathbb Z}\)</span> ，这种归一化后的采样序列一般称为<strong>数字信号（ Digital signal ）</strong>。在这样的表示之下考虑 DTFT 和 IDTFT ，我们将 DTFT 的结果记作 <span class="math inline">\(X(\omega)\)</span> ，这也称为数字信号的频谱：</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; X(\omega) = {\rm DTFT}[x](\omega) = \sum_{n = -\infty}^{+\infty} x(n) e^{-\j\omega n} \\
+&amp; x(n) = \frac{1}{2\pi} \int_{-\pi}^{\pi} X(\omega)e^{\j n\omega} \d\omega
+\end{aligned}
+\]</span></p>
+<p>根据上述推理，很容易知晓数字信号的频谱一定是周期的（根据 FT 和 IFT 的对偶，实际上根据周期信号的频谱离散就不难理解），并且由于进行了归一化处理，所以这个周期一定是 <span class="math inline">\(2\pi\)</span> ：</p>
+<p><span class="math display">\[
+X(\omega + 2\pi) = X(\omega)
+\]</span></p>
+<p>DTFT 的运算法则和 FT 有很大类似之处。首先有 DTFT 是线性的：</p>
+<p><span class="math display">\[
+{\rm DTFT}\left[\sum_{k = 1}^n \lambda_kx_k\right] = \sum_{k = 1}^n \lambda_k{\rm DTFT}[x_k]
+\]</span></p>
+<p>时域和频域的平移均会导致另外一个域的相位平移：</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; {\rm DTFT}_{n, \omega}[x(n - n_0)] = X(\omega)e^{-\j\omega n_0} \\
+&amp; {\rm DTFT}_{n, \omega}[x(t)e^{\j\omega_0 n}] = X(\omega - \omega_0)
+\end{aligned}
+\]</span></p>
+<p>其和反褶、共轭的关系也和 FT 类似：</p>
+<p><span class="math display">\[
+\begin{cases}
+{\rm DTFT}[\mathcal{R}x] = \mathcal{R}[X] \\
+{\rm DTFT}[x^*] = \mathcal{R}^*[X] \\
+{\rm DTFT}[\mathcal{R}^*x] = X^* \\
+\end{cases}
+\]</span></p>
+<p>压扩变换不能直接应用到数字信号上，所以我们给出时域扩展的定义：</p>
+<p><span class="math display">\[
+\mathcal{E}_a[x](n) = \begin{cases}
+x(k) &amp; n = ka, k \in \mathbb Z \\
+0 &amp; {\rm otherwise}
+\end{cases} \ (a \in \mathbb{Z} \backslash \{0\})
+\]</span></p>
+<p>和 FT 类似，时域扩展的 DTFT 满足：</p>
+<p><span class="math display">\[
+{\rm DTFT}_{n, \omega}[\mathcal{E}_a[x](n)] = X(a\omega)
+\]</span></p>
+<p>DTFT 我们只探讨频域微分，和 FT 类似，频域微分等价于时域上的加权求和：</p>
+<p><span class="math display">\[
+{\rm DTFT}_{n, \omega}[nx(n)] = \j X^{(1)}(\omega)
+\]</span></p>
+<p>讨论卷积的时候，就不得不考虑到 DTFT 得到的频谱是周期的，普通的卷积可能不收敛。所以这里定义<strong>圆卷积</strong>，直观上而言就是指考虑一个周期内的卷积。比如说周期为 <span class="math inline">\(T\)</span> 的两个周期信号 <span class="math inline">\(x, y\)</span> 的圆卷积定义为：</p>
+<p><span class="math display">\[
+(x\otimes y)(t) := \int_T x(\tau)y(t - \tau) \d\tau
+\]</span></p>
+<p>那么：</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; {\rm DTFT}[x_1 * x_2] = {\rm DTFT}[x_1] \cdot {\rm DTFT}[x_2] \\
+&amp; {\rm DTFT}[x_1 \cdot x_2] = \frac{1}{2\pi} {\rm DTFT}[x_1] \otimes {\rm DTFT}[x_2] \\
+\end{aligned}
+\]</span></p>
+<p>Parseval 定律依然类似成立：</p>
+<p><span class="math display">\[
+\sum_{n = -\infty}^{+\infty} \|x(n)\|^2 = \frac{1}{2\pi} \int_{-\pi}^{\pi} \|X(\omega)\|^2 \d\omega
+\]</span></p>
+<h2 id="从有限抽样序列还原信号频谱">从有限抽样序列还原信号频谱</h2>
+<p>现在我们基本上解决了时域离散的问题，但是我们要考虑到计算机处理信号的时候时域不可能无限。</p>
+<p>我们考虑对数字信号加上一个窗函数：</p>
+<p><span class="math display">\[
+w(n) := \begin{cases}
+1 &amp; 0 \leq n \leq L - 1 \\
+0 &amp; {\rm otherwise}
+\end{cases}
+\]</span></p>
+<p>那么 <span class="math inline">\(L\)</span> 长的有限长度数字信号就可以表示为：</p>
+<p><span class="math display">\[
+x_L = x \cdot w
+\]</span></p>
+<p>那么显然根据 DTFT 的性质得到 <span class="math inline">\(x_L\)</span> 的 DTFT 为：</p>
+<p><span class="math display">\[
+X_L(\omega) = \frac{1}{2\pi} ({\rm DTFT}[x] \otimes {\rm DTFT}[w])(\omega)
+\]</span></p>
+<p>显然：</p>
+<p><span class="math display">\[
+\begin{aligned}
+{\rm DTFT}[w](\omega) &amp;= \sum_{n = -\infty}^{+\infty} w(n)e^{-\j\omega n} = \sum_{n = 0}^{L - 1} e^{-\j\omega n} \\
+&amp;= \frac{1 - e^{-\j L\omega}}{1 - e^{-\j\omega}}
+\end{aligned}
+\]</span></p>
+<p>这个窗函数的频谱在周期 <span class="math inline">\([-\pi, \pi]\)</span> 内表现为低频有一个主峰，其余部分有若干指数衰减的副峰。主峰的宽度是绝对值最小两个零点的距离：</p>
+<p><span class="math display">\[
+\Delta\omega_L = \frac{2\pi}{L}
+\]</span></p>
+<hr />
+<p>现在我们考虑下述数字信号：</p>
+<p><span class="math display">\[
+x(n) = A_1e^{\j\omega_1 n} + A_2e^{\j\omega_2 n} (0 &lt; \omega_1, \omega_2 &lt; \pi)
+\]</span></p>
+<p>显然其 DTFT 为：</p>
+<p><span class="math display">\[
+X(\omega) = 2\pi(A_1\delta(\omega - \omega_1) + A_2\delta(\omega - \omega_2))
+\]</span></p>
+<p>现在我们将其乘上窗函数得到有限长的数字信号：</p>
+<p><span class="math display">\[
+x_L(n) = x(n)w(n)
+\]</span></p>
+<p>其 DTFT 为：</p>
+<p><span class="math display">\[
+X_L(\omega) = \frac{1}{2\pi}(X \otimes W)(\omega) = A_1W(\omega - \omega_1) + A_2W(\omega - \omega_2)
+\]</span></p>
+<p>这里我们只考虑 <span class="math inline">\(W\)</span> 的主峰，显然使用窗函数截取之后，频谱上原先是两个冲激的位置变为了两个窗函数频谱主峰。为了保证这两个主峰可以区分，我们要求这两个主峰不重叠。显然这需要 <span class="math inline">\(|\omega_1 - \omega_2|\)</span> 足够大。根据已知的主峰宽度，我们有：</p>
+<p><span class="math display">\[
+|\omega_1 - \omega_2| &gt; \frac{2\pi}{L}
+\]</span></p>
+<p>也就是说如果数字信号的最小频率间隔为 <span class="math inline">\(\Delta\omega\)</span> ，那么为了保证截取后频谱上各个频率峰可分辨，必须要求窗函数宽度 <span class="math inline">\(L\)</span> 不小于 <span class="math inline">\(2\pi / \Delta\omega\)</span> 。</p>
+<hr />
+<p>现在我们回到求解有限长数字信号傅立叶变换的问题上。我们继续延续上述 DTFT 的思路。不过我们现在只考虑在 <span class="math inline">\(\omega_k = 2k\pi / N\)</span> 处频谱的取值，即频域 <span class="math inline">\([0, 2\pi]\)</span> 区间内的 <span class="math inline">\(N\)</span> 个特征点：</p>
+<p><span class="math display">\[
+\begin{aligned}
+X_L(\omega_k) &amp;= \frac{1}{2\pi} ({\rm DTFT}[x] \otimes {\rm DTFT}[w])(\omega) \\
+&amp;= \frac{1}{2\pi} \int_{-\pi}^{\pi} \left(\sum_{m = -\infty}^{+\infty} x(m)e^{-\j\left(\frac{2k\pi}{N} - \mu\right) m}\right)\left(\sum_{n = 0}^{L - 1} e^{-\j\mu n}\right) \d\mu \\
+&amp;= \frac{1}{2\pi} \int_{-\pi}^{\pi} \sum_{n = 0}^{L - 1}\sum_{m = -\infty}^{+\infty} x(m)e^{-\j\frac{2km\pi}{N}}e^{-\j\mu (n - m)} \d\mu \\
+&amp;= \frac{1}{2\pi} \sum_{n = 0}^{L - 1}\sum_{m = -\infty}^{+\infty} x(m)e^{-\j\frac{2km\pi}{N}} \int_{-\pi}^{\pi} e^{-\j\mu (n - m)} \d\mu \\
+&amp;= \sum_{n = 0}^{L - 1} x(n)e^{-\j\frac{2kn\pi}{N}}
+\end{aligned}
+\]</span></p>
+<p>这里最后一个等号是利用指数函数在周期上的积分除非系数为零，否则积分结果均为零，所以最后只有 <span class="math inline">\(m = n\)</span> 的项被保留。</p>
+<p>便于表示，我们把 <span class="math inline">\(X_L(\omega_k)\)</span> 简记为 <span class="math inline">\(X(k)\)</span> 。</p>
+<p>从而我们就可以做到从有限长的数字信号还原出原信号频谱，这个变换就是<strong>离散傅立叶变换（ Discrete Fourier Transformation / DFT ）</strong>。</p>
+<p>我们注意到这样的一点，就是这里有两个参数是可以独立确定的，即窗函数长度 <span class="math inline">\(L\)</span> 和频域特征点数 <span class="math inline">\(N\)</span> 。但实际应用中一般都有 <span class="math inline">\(L = N\)</span> ，这主要是因为这样计算方便且 <span class="math inline">\(L \neq N\)</span> 的情况均可以还原成 <span class="math inline">\(L = N\)</span> 的情况。</p>
+<hr />
+<p>为了论证这一点，我们可以从另外一个角度推导 DFT 公式。也就是回归傅里叶分析的本质，而傅里叶分析的本质就是将函数分解成若干个指数函数的线性组合。之前论述过的 FT 用于分解时域无限的连续信号，而 DFT 则会用于分析时域有限的离散信号。</p>
+<p>考虑信号 <span class="math inline">\(f\)</span> ，我们在区间 <span class="math inline">\([0, 1]\)</span> 上均匀 <span class="math inline">\(N\)</span> 个样，组成代表这个信号的向量：</p>
+<p><span class="math display">\[
+\b{f} = \left[\begin{matrix}
+f(0) &amp; f\left(\frac{1}{N}\right) &amp; \cdots &amp; f\left(\frac{N - 1}{N}\right)
+\end{matrix}\right]
+\]</span></p>
+<p>同样的，我们需要对作为基的函数 <span class="math inline">\(e^{2\pi\j kt}\)</span> 也在这些点取样，函数 <span class="math inline">\(e^{2\pi\j kt}\)</span> 取到的样为：</p>
+<p><span class="math display">\[
+\b{e}_k = \left[\begin{matrix}
+\varepsilon_N^0 &amp; \varepsilon_N^k &amp; \cdots &amp; \varepsilon_N^{(N - 1)k}
+\end{matrix}\right]
+\]</span></p>
+<p>这里 <span class="math inline">\(\varepsilon_N\)</span> 表示 <span class="math inline">\(N\)</span> 次单位根。</p>
+<p>根据周期性，显然得到：</p>
+<p><span class="math display">\[
+\b{e}_k = \b{e}_{k + N}
+\]</span></p>
+<p>所以将 <span class="math inline">\(\b{f}\)</span> 拆分为 <span class="math inline">\(\b{e}_k\)</span> 的线性组合的时候只需要考虑一个周期内的 <span class="math inline">\(\b{e}_k\)</span> 即可，</p>
 ]]></content>
       <categories>
         <category>计算机科学</category>
