@@ -3190,7 +3190,7 @@
 </div>
 <p>《劣等上等》是 Giga 的代表作，歌很吵，但是词比较有意思。当时的我，在大二上学期取得了很多可以说很好的成就，也在大学中找到了自己的节奏，所以听歌的风格也开始激昂起来了。</p>
 <p>有趣的是，我在大一下学期比较沉闷的时候就已经听过《劣等上等》，但当时觉得很不好听，半年后就觉得这首歌绝对好听。看来听歌口味和境遇确实有很大的关联。</p>
-<h2 id="年-2">2021 年</h2>
+<h1 id="年-2">2021 年</h1>
 <div class="note info no-icon"><p><strong>お願い死なないで，そんなこと言わないで，</strong></p>
 <p>不要去寻死，这样的话语也不要再说，</p>
 <p><strong>少し胸の奥が締め付けられる。</strong></p>
@@ -3390,11 +3390,7 @@
 <li><p><a href="/1021/09/14/note-of-dc">编译原理</a>。今年大作业似乎被削弱了，终于对得起它 2 学分的事实了。</p></li>
 <li><p><a href="/1021/09/14/note-of-dsp">信号处理原理</a>。纯数学课，偶尔写写 Matlab 。</p></li>
 </ul>
-<p>还有两门专业限选课，似乎全是网络相关。</p>
-<ul>
-<li><p><a href="/1021/09/17/note-of-nst">计算机网络安全技术</a>。一个纯 PPT 学习的课，内容不算无聊但也不算有趣。</p></li>
-<li><p><a href="/1021/09/17/note-of-mnt">无线移动网络技术</a>。目前看下来比较有意思，愿意跟进。</p></li>
-</ul>
+<p>还有两门专业限选课，似乎全是网络相关，但都不是什么重要的课，就不写笔记了。</p>
 ]]></content>
       <categories>
         <category>导航</category>
@@ -5695,15 +5691,6 @@ E_d(\boldsymbol w) = \frac{1}{2}\sum_k(t_k - o_k)^2 + \|\boldsymbol w\|
       </categories>
   </entry>
   <entry>
-    <title>《无线移动网络技术》学习笔记</title>
-    <url>/1021/09/17/note-of-mnt/</url>
-    <content><![CDATA[
-]]></content>
-      <categories>
-        <category>计算机科学</category>
-      </categories>
-  </entry>
-  <entry>
     <title>《计算机网络原理》学习笔记</title>
     <url>/1021/09/13/note-of-net/</url>
     <content><![CDATA[<p>网原总之是一个没打算认真学的专业课，因为真的对网络没有很大的兴趣。再加上上学期曾经看着迅哥哥他们被网原折磨，自己也没什么信心能学好这门专业课。</p>
@@ -5985,12 +5972,6 @@ E_d(\boldsymbol w) = \frac{1}{2}\sum_k(t_k - o_k)^2 + \|\boldsymbol w\|
       <categories>
         <category>计算机科学</category>
       </categories>
-  </entry>
-  <entry>
-    <title>《计算机网络安全技术》学习笔记</title>
-    <url>/1021/09/17/note-of-nst/</url>
-    <content><![CDATA[
-]]></content>
   </entry>
   <entry>
     <title>《计算机组成原理》学习笔记</title>
