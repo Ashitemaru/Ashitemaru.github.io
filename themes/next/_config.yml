@@ -169,6 +169,7 @@ links:
   UNIDY: https://www.unidy.cn
   Dilant: https://www.dilant.cn
   猫猫: https://zcy.moe
+  c7w: https://c7w.tech
 
 # Table of Contents in the Sidebar
 # Front-matter variable (unsupport wrap expand_all).
@@ -818,9 +819,9 @@ pdf:
 
 # Mermaid tag
 mermaid:
-  enable: false
+  enable: true
   # Available themes: default | dark | forest | neutral
-  theme: forest
+  theme: default
 
 
 # ---------------------------------------------------------------

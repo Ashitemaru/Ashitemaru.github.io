@@ -12,6 +12,8 @@ $$
 \newcommand{\d}{\mathrm{d}}
 \newcommand{\j}{\mathrm{j}}
 \newcommand{\b}{\boldsymbol}
+\newcommand{\lv}{\left[\begin{matrix}}
+\newcommand{\rv}{\end{matrix}\right]}
 $$
 
 <!-- more -->
@@ -1173,7 +1175,7 @@ $$
 \Delta\omega_L = \frac{2\pi}{L}
 $$
 
----
+### 窗宽的限制
 
 现在我们考虑下述数字信号：
 
@@ -1207,7 +1209,7 @@ $$
 
 也就是说如果数字信号的最小频率间隔为 $\Delta\omega$ ，那么为了保证截取后频谱上各个频率峰可分辨，必须要求窗函数宽度 $L$ 不小于 $2\pi / \Delta\omega$ 。
 
----
+### DFT 的引入和矩阵形式
 
 现在我们回到求解有限长数字信号傅立叶变换的问题上。我们继续延续上述 DTFT 的思路。不过我们现在只考虑在 $\omega_k = 2k\pi / N$ 处频谱的取值，即频域 $[0, 2\pi]$ 区间内的 $N$ 个特征点：
 
@@ -1233,20 +1235,20 @@ $$
 
 为了论证这一点，我们可以从另外一个角度推导 DFT 公式。也就是回归傅里叶分析的本质，而傅里叶分析的本质就是将函数分解成若干个指数函数的线性组合。之前论述过的 FT 用于分解时域无限的连续信号，而 DFT 则会用于分析时域有限的离散信号。
 
-考虑信号 $f$ ，我们在区间 $[0, 1]$ 上均匀 $N$ 个样，组成代表这个信号的向量：
+考虑信号 $f$ ，我们在区间 $[0, 1]$ 上均匀取 $N$ 个样，组成代表这个信号的向量：
 
 $$
-\b{f} = \left[\begin{matrix}
+\b{x} = \lv
 f(0) & f\left(\frac{1}{N}\right) & \cdots & f\left(\frac{N - 1}{N}\right)
-\end{matrix}\right]
+\rv
 $$
 
 同样的，我们需要对作为基的函数 $e^{2\pi\j kt}$ 也在这些点取样，函数 $e^{2\pi\j kt}$ 取到的样为：
 
 $$
-\b{e}_k = \left[\begin{matrix}
+\b{e}_k = \lv
 \varepsilon_N^0 & \varepsilon_N^k & \cdots & \varepsilon_N^{(N - 1)k}
-\end{matrix}\right]
+\rv
 $$
 
 这里 $\varepsilon_N$ 表示 $N$ 次单位根。
@@ -1257,4 +1259,200 @@ $$
 \b{e}_k = \b{e}_{k + N}
 $$
 
-所以将 $\b{f}$ 拆分为 $\b{e}_k$ 的线性组合的时候只需要考虑一个周期内的 $\b{e}_k$ 即可，
+所以将 $\b{x}$ 拆分为 $\b{e}_k$ 的线性组合的时候只需要考虑一个周期内的 $\b{e}_k$ 即可，也就是说我们假设存在这样的一系列系数 $\b{X} = \lv X(0) & X(1) & \cdots & X(N - 1)\rv$ 满足（这里的系数 $1 / N$ 是为了简化后续的讨论）：
+
+$$
+\b{x} = \frac{1}{N}\sum_{k = 0}^{N - 1} X(k)\b{e}_k
+$$
+
+如果我们定义这样的一个矩阵：
+
+$$
+F_N = \lv \b{e}_0 & \b{e}_1 & \cdots & \b{e}_{N - 1}\rv
+$$
+
+上述等式实际上就是 $N\b{x} = F_N\b{x}$。所以要求解系数向量，其实就等价于求解 $F_N$ 的逆矩阵。
+
+考虑这样的数学关系（这里 $\cdot^H$ 表示 Hermit 转置，即共轭转置）：
+
+$$
+\b{e}_i^H\b{e}_j = \sum_{k = 0}^{N - 1} (\varepsilon_N^{ik})^*\varepsilon_N^{jk} = \sum_{k = 0}^{N - 1} \varepsilon_N^{(j - i)k} = \begin{cases}
+N & i = j \\
+\dfrac{1 - \varepsilon_N^{N(j - i)}}{1 - \varepsilon_N^{j - i}} = 0 & i \neq j
+\end{cases}
+$$
+
+这说明 $\dfrac{F_N}{\sqrt{N}}$ 是酉矩阵。即有：
+
+$$
+F_N^{-1} = \frac{1}{\sqrt{N}}\left(\frac{F_N}{\sqrt{N}}\right)^{-1} = \frac{1}{\sqrt{N}}\left(\frac{F_N}{\sqrt{N}}\right)^H = \frac{1}{N} (F_N^T)^* = \frac{1}{N} F_N^*
+$$
+
+所以系数向量就可以表示为：
+
+$$
+\b{X} = F_N^* \b{x}
+$$
+
+对比会发现这个和我们之前推导出来的 DFT 公式是一致的。也就是说我们得到了 $L = N$ 时的 DFT 向量表示。
+
+---
+
+回到先前的问题，我们思考为何 $L \neq N$ 的情况都可以化归为 $L = N$ 。
+
+如果 $L < N$ ，也就是说窗宽（序列长度）不足，我们可以在序列 $x(n)$ 末尾补零至 $N$ 位得到 $x_D(n)$，以此计算 DFT ：
+
+$$
+X_D(k) = \sum_{n = 0}^{N - 1} x_D(n)e^{-\j\frac{2\pi nk}{N}} = \sum_{n = 0}^{L - 1} x_D(n)e^{-\j\frac{2\pi nk}{N}} = \sum_{n = 0}^{L - 1} x(n)e^{-\j\frac{2\pi nk}{N}} = X(k)
+$$
+
+可见通过补零，补零序列的 DFT 就是原序列的 DFT 。所以完全可以认为 $L < N$ 时应化归为 $L = N$ 。
+
+而在 $L > N$ 的时候，我们需要使用**回绕**。即定义这样的新序列：
+
+$$
+\tilde{x}(n) = \sum_{k \mathop{\equiv} n \mathop{\rm mod} N} x(k)
+$$
+
+直观而言，就是将原先的过长序列拆为若干长度为 $N$ 的短序列后对齐相加。为了解释此时依然可以化归，我们使用先前得到矩阵形式的 DFT 即可说明。首先我们取 $F_N$ ，这里 $N$ 即 DFT 点数， $F_N$ 定义与之前相同。取新矩阵：
+
+$$
+F_{N\times L} = \lv F_N & F_N & \cdots \rv
+$$
+
+即使用 $F_N$ 的列按顺序拼接出一个 $N$ 行 $L$ 列的新矩阵，那么：
+
+$$
+{\rm DFT}[x](k) = F_{N\times L}\b{x} = (F_N\lv I_N & I_N & \cdots \rv)\b{x} = F_N\tilde{\b{x}} = {\rm DFT}[\tilde{x}](k)
+$$
+
+所以回绕序列和原序列具有相同的 DFT 。
+
+基于上述讨论，考虑到 $L$ 一般而言是原信号的长度，是一个不能修改的量。而 DFT 的点数 $N$ 则是计算过程中自由选取的参数，是可以随意更改的。为了方便，一般而言直接选定 $N = L$ 以方便计算。
+
+### DFT 的性质
+
+实际上我们可以发现 DFT 就是对 DTFT 频域一个周期内的取样，即时域从无限变为有限的时候，频域就会变成原先频域一个周期内的取样。这一点对连续信号也是成立的，时域从无限（周期无限）变为有限（有限周期信号）的时候，频域也会变为原先频域一个周期内的取样（周期信号的频域是离散的）。
+
+现在考虑实序列的 DFT ，实际上我们考虑 DTFT 即可。令实序列 $x(n)$ 的 DTFT 为 $X(\omega)$ 。根据 DTFT 定义：
+
+$$
+X(\omega) = \sum_{n = -\infty}^{+\infty} x(n)e^{-\j\omega n}
+$$
+
+显然：
+
+$$
+X(-\omega) = X^*(\omega)
+$$
+
+另外一个相当重要的性质是：
+
+$$
+X(\omega) = X^*(2\pi - \omega)
+$$
+
+这说明了在周期 $[0, 2\pi]$ 上，实序列的 DTFT 和自身共轭对称。这个性质的证明也是简单的：
+
+$$
+\begin{aligned}
+X(2\pi - \omega) = \sum_{n = -\infty}^{+\infty} x(n)e^{-\j(2\pi - \omega) n} = \sum_{n = -\infty}^{+\infty} x(n)e^{\j\omega n} = X^*(\omega)
+\end{aligned}
+$$
+
+这个性质反映在 DFT 上就是，实序列的偶数点 DFT 序列自身和自身共轭对称。即长度为 $2N$ 的实序列 $x$ 的 DFT 序列 $X$ 满足：
+
+$$
+X(N + k) = X^*(N - k)
+$$
+
+---
+
+DFT 的其他性质和 FT 类似。比如 DFT 是线性的，和共轭及反褶的关系也和 FT 一致，其余类似时域平移、频域平移等性质则自行推导。
+
+`TODO`
+
+### FFT 算法
+
+直接计算 $N$ 点 DFT 的时间复杂度为 $O(n^2)$ ，但是考虑到 $F_N$ 矩阵的优良性质，应该具有更快速的算法。有一种思路是使用分治，考虑下述数学事实，这里 $X$ 为 $x$ 的 $N$ 点 DFT 序列，$x$ 长度为 $N$，不妨 $N$ 是偶数：
+
+$$
+\begin{aligned}
+{\rm DFT}_{n, k}[x(n)](k) &= \sum_{n = 0}^{N - 1} x(n)e^{-\j\frac{2\pi nk}{N}} \\
+&= \sum_{r = 0}^{N / 2 - 1} x(2r)e^{-\j\frac{2\pi rk}{N / 2}} + \sum_{r = 0}^{N / 2 - 1} x(2r + 1)e^{-\j\frac{2\pi(r + 1 / 2)k}{N / 2}} \\
+&= \sum_{r = 0}^{N / 2 - 1} x(2r)e^{-\j\frac{2\pi rk}{N / 2}} + e^{-\j\frac{2\pi k}{N}}\sum_{r = 0}^{N / 2 - 1} x(2r + 1)e^{-\j\frac{2\pi rk}{N / 2}} \\
+&= {\rm DFT}_{n, k}[x(2n)](k) + e^{-\j\frac{2\pi k}{N}}{\rm DFT}_{n, k}[x(2n + 1)](k)
+\end{aligned}
+$$
+
+也就是说，将原序列按照奇偶拆为两个序列，分别作 DFT 后再合并即得到原序列的 DFT 。按此分治算法即可得到 $O(n\log n)$ 的 FFT 算法。
+
+`TODO: 似乎还有一些和采样相关的东西之后看`
+
+# 傅里叶分析的简单总结
+
+`TODO`
+
+# 系统概念基础
+
+在这门课程内，我们将下述概念称为**系统（ System ）**。对给定的激励给出对应的响应的，具有特定功能的整体称为系统。
+
+本课程主要探讨离散时间的、线性的、时不变的、因果系统。即这类系统仅处理离散时间激励，满足线性，且无论何时接收到相同的激励都会给出相同的响应（时不变性），响应和当前激励之后的激励无关（因果性还可以表述为响应仅和当前激励及先前的激励有关，现实的系统都是因果的）。另外，我们可能还需要附加稳定性要求，即对于有界激励会给出有界响应。
+
+## 系统流图
+
+我们可以使用流图来描述一个系统，流图中常用的单元包括以下。
+
+首先是延时单元，含义为将自变量向过去推迟一个单位。
+
+{% mermaid graph LR %}
+S([Source]) -->|"$x(n)$"| U["$Z^{-1}$"]
+U -->|"$x(n - 1)$"| T([Terminal])
+
+SR([Source]) -->|"$x(n)$"| UR["$D$"]
+UR -->|"$x(n - 1)$"| TR([Terminal])
+{% endmermaid %}
+
+这两个符号都是允许的。
+
+其次是求和单元，含义为多个量求和。
+
+{% mermaid graph LR %}
+SL([Source 1]) -->|"$x_1(n)$"| U(("$+$"))
+SR([Source 2]) -->|"$x_2(n)$"| U
+U -->|"$x_1(n) + x_2(n)$"| T([Terminal])
+{% endmermaid %}
+
+中间的加号换为 $\Sigma$ 也是允许的。
+
+最后是系数单元，含义为乘以常数。
+
+{% mermaid graph LR %}
+S([Source]) -->|"$x(n)$"| U{"$a_0$"}
+U -->|"$a_0x(n)$"| T([Terminal])
+
+SR([Source]) -->|"$a_0$"| TR([Terminal])
+{% endmermaid %}
+
+这两种表达都是可以的。
+
+---
+
+比如说激励为 $x$ ，响应为 $y$ 的系统如果满足：
+
+$$
+y(n) = \frac{1}{b_0}\left[a_0x(n) + a_1x(n - 1) - b_1y(n - 1)\right]
+$$
+
+其流图就可以为：
+
+{% mermaid graph LR %}
+S(["$x(n)$"]) --> Input-split[" "]
+Input-split ---->|"$a_0$"| Sum(("$\Sigma$"))
+Input-split --> Input-shift["$Z^{-1}$"]
+Input-shift -->|"$a_1$"| Sum
+Output-split --> Output-shift["$Z^{-1}$"]
+Sum ---->|"$1 / b_0$"| Output-split[" "]
+Output-shift -->|"$-b_1$"| Sum
+Output-split --> T(["$y(n)$"])
+{% endmermaid %}
