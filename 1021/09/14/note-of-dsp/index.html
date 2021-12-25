@@ -20,12 +20,12 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;ashitemaru.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Gemini&quot;,&quot;version&quot;:&quot;8.5.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;width&quot;:280,&quot;display&quot;:&quot;always&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:&quot;disqusjs&quot;,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;},&quot;path&quot;:&quot;&#x2F;search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;manual&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="一门纯数学课，没有什么特别有意思的地方。但也正因为它是数学课，所以我感觉我学起来会稍微轻松一些，希望是我四大原理之中最舒服的一门课。 \[ \newcommand{\d}{\mathrm{d}} \newcommand{\j}{\mathrm{j}} \newcommand{\b}{\boldsymbol} \]">
+<meta name="description" content="一门纯数学课，没有什么特别有意思的地方。但也正因为它是数学课，所以我感觉我学起来会稍微轻松一些，希望是我四大原理之中最舒服的一门课。 \[ \newcommand{\d}{\mathrm{d}} \newcommand{\j}{\mathrm{j}} \newcommand{\b}{\boldsymbol} \newcommand{\lv}{\left[\begin{matrix}} \newco">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《信号处理原理》学习笔记">
 <meta property="og:url" content="https://ashitemaru.github.io/1021/09/14/note-of-dsp/index.html">
 <meta property="og:site_name" content="Ashitemaru">
-<meta property="og:description" content="一门纯数学课，没有什么特别有意思的地方。但也正因为它是数学课，所以我感觉我学起来会稍微轻松一些，希望是我四大原理之中最舒服的一门课。 \[ \newcommand{\d}{\mathrm{d}} \newcommand{\j}{\mathrm{j}} \newcommand{\b}{\boldsymbol} \]">
+<meta property="og:description" content="一门纯数学课，没有什么特别有意思的地方。但也正因为它是数学课，所以我感觉我学起来会稍微轻松一些，希望是我四大原理之中最舒服的一门课。 \[ \newcommand{\d}{\mathrm{d}} \newcommand{\j}{\mathrm{j}} \newcommand{\b}{\boldsymbol} \newcommand{\lv}{\left[\begin{matrix}} \newco">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="1021-09-14T13:19:01.000Z">
 <meta property="article:modified_time" content="1021-09-14T13:19:01.000Z">
@@ -209,7 +209,7 @@ $(function () {
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86"><span class="nav-number">1.</span> <span class="nav-text">信号处理基本知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E4%BF%A1%E5%8F%B7%E5%BD%A2%E5%BC%8F"><span class="nav-number">1.1.</span> <span class="nav-text">常见信号形式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E4%BF%A1%E5%8F%B7%E5%88%86%E6%9E%90"><span class="nav-number">1.2.</span> <span class="nav-text">复信号分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E7%A9%BA%E9%97%B4%E4%B8%8E%E5%87%BD%E6%95%B0%E5%88%86%E8%A7%A3"><span class="nav-number">1.3.</span> <span class="nav-text">函数空间与函数分解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%A1%E5%8F%B7%E7%9A%84%E8%BF%90%E7%AE%97"><span class="nav-number">2.</span> <span class="nav-text">信号的运算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%84%E8%BF%90%E7%AE%97"><span class="nav-number">2.1.</span> <span class="nav-text">常规运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A7%AF%E5%88%86%E5%BE%AE%E5%88%86%E8%BF%90%E7%AE%97%E4%B8%8E%E8%83%BD%E9%87%8F"><span class="nav-number">2.2.</span> <span class="nav-text">积分微分运算与能量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%B7%E7%A7%AF%E8%BF%90%E7%AE%97"><span class="nav-number">2.3.</span> <span class="nav-text">卷积运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E8%BF%90%E7%AE%97"><span class="nav-number">2.4.</span> <span class="nav-text">相关运算</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%A5%87%E5%BC%82%E4%BF%A1%E5%8F%B7"><span class="nav-number">3.</span> <span class="nav-text">常用奇异信号</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E8%88%AC%E6%A8%A1%E6%8B%9F%E4%BF%A1%E5%8F%B7%E5%88%86%E8%A7%A3"><span class="nav-number">4.</span> <span class="nav-text">一般模拟信号分解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%88%86%E8%A7%A3"><span class="nav-number">4.1.</span> <span class="nav-text">基本分解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E4%BA%A4%E5%88%86%E8%A7%A3%E6%A6%82%E8%BF%B0"><span class="nav-number">4.2.</span> <span class="nav-text">正交分解概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%91%A8%E6%9C%9F%E4%BF%A1%E5%8F%B7%E7%9A%84%E6%AD%A3%E4%BA%A4%E5%88%86%E8%A7%A3"><span class="nav-number">4.3.</span> <span class="nav-text">周期信号的正交分解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%91%E8%B0%B1"><span class="nav-number">4.4.</span> <span class="nav-text">频谱</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%91%E8%B0%B1%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">4.4.1.</span> <span class="nav-text">频谱的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%A6%E5%AE%BD"><span class="nav-number">4.4.2.</span> <span class="nav-text">带宽</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%9E%E5%91%A8%E6%9C%9F%E4%BF%A1%E5%8F%B7%E7%9A%84%E6%AD%A3%E4%BA%A4%E5%88%86%E8%A7%A3%E5%92%8C%E9%A2%91%E8%B0%B1"><span class="nav-number">4.5.</span> <span class="nav-text">非周期信号的正交分解和频谱</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ft-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E6%8E%A8%E7%90%86"><span class="nav-number">4.5.1.</span> <span class="nav-text">FT 表达式的推理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ft-%E7%9A%84%E8%BF%90%E7%AE%97%E6%80%A7%E8%B4%A8"><span class="nav-number">4.5.2.</span> <span class="nav-text">FT 的运算性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fs-%E5%92%8C-ft-%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">4.5.3.</span> <span class="nav-text">FS 和 FT 的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%86%E5%91%A8%E6%9C%9F%E4%BF%A1%E5%8F%B7"><span class="nav-number">4.5.4.</span> <span class="nav-text">准周期信号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%A8%E6%9C%9F%E4%BF%A1%E5%8F%B7%E7%9A%84-ft"><span class="nav-number">4.5.5.</span> <span class="nav-text">周期信号的 FT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E7%9A%84-ft"><span class="nav-number">4.5.6.</span> <span class="nav-text">其他常用函数的 FT</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%A1%E5%8F%B7%E9%87%87%E6%A0%B7"><span class="nav-number">5.</span> <span class="nav-text">信号采样</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%87%E6%A0%B7%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="nav-number">5.1.</span> <span class="nav-text">采样的概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%87%E6%A0%B7%E5%AE%9A%E7%90%86"><span class="nav-number">5.2.</span> <span class="nav-text">采样定理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%A1%E5%8F%B7%E5%A4%8D%E5%8E%9F"><span class="nav-number">5.3.</span> <span class="nav-text">信号复原</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A6%BB%E6%95%A3%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86"><span class="nav-number">6.</span> <span class="nav-text">离散信号处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8E%E6%8A%BD%E6%A0%B7%E5%BA%8F%E5%88%97%E8%BF%98%E5%8E%9F%E5%8E%9F%E4%BF%A1%E5%8F%B7%E6%97%B6%E5%9F%9F"><span class="nav-number">6.1.</span> <span class="nav-text">从抽样序列还原原信号时域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8E%E6%8A%BD%E6%A0%B7%E5%BA%8F%E5%88%97%E8%BF%98%E5%8E%9F%E5%8E%9F%E4%BF%A1%E5%8F%B7%E9%A2%91%E8%B0%B1"><span class="nav-number">6.2.</span> <span class="nav-text">从抽样序列还原原信号频谱</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8E%E6%9C%89%E9%99%90%E6%8A%BD%E6%A0%B7%E5%BA%8F%E5%88%97%E8%BF%98%E5%8E%9F%E4%BF%A1%E5%8F%B7%E9%A2%91%E8%B0%B1"><span class="nav-number">6.3.</span> <span class="nav-text">从有限抽样序列还原信号频谱</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86"><span class="nav-number">1.</span> <span class="nav-text">信号处理基本知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E4%BF%A1%E5%8F%B7%E5%BD%A2%E5%BC%8F"><span class="nav-number">1.1.</span> <span class="nav-text">常见信号形式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E4%BF%A1%E5%8F%B7%E5%88%86%E6%9E%90"><span class="nav-number">1.2.</span> <span class="nav-text">复信号分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E7%A9%BA%E9%97%B4%E4%B8%8E%E5%87%BD%E6%95%B0%E5%88%86%E8%A7%A3"><span class="nav-number">1.3.</span> <span class="nav-text">函数空间与函数分解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%A1%E5%8F%B7%E7%9A%84%E8%BF%90%E7%AE%97"><span class="nav-number">2.</span> <span class="nav-text">信号的运算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%84%E8%BF%90%E7%AE%97"><span class="nav-number">2.1.</span> <span class="nav-text">常规运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A7%AF%E5%88%86%E5%BE%AE%E5%88%86%E8%BF%90%E7%AE%97%E4%B8%8E%E8%83%BD%E9%87%8F"><span class="nav-number">2.2.</span> <span class="nav-text">积分微分运算与能量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%B7%E7%A7%AF%E8%BF%90%E7%AE%97"><span class="nav-number">2.3.</span> <span class="nav-text">卷积运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E8%BF%90%E7%AE%97"><span class="nav-number">2.4.</span> <span class="nav-text">相关运算</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%A5%87%E5%BC%82%E4%BF%A1%E5%8F%B7"><span class="nav-number">3.</span> <span class="nav-text">常用奇异信号</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E8%88%AC%E6%A8%A1%E6%8B%9F%E4%BF%A1%E5%8F%B7%E5%88%86%E8%A7%A3"><span class="nav-number">4.</span> <span class="nav-text">一般模拟信号分解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%88%86%E8%A7%A3"><span class="nav-number">4.1.</span> <span class="nav-text">基本分解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E4%BA%A4%E5%88%86%E8%A7%A3%E6%A6%82%E8%BF%B0"><span class="nav-number">4.2.</span> <span class="nav-text">正交分解概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%91%A8%E6%9C%9F%E4%BF%A1%E5%8F%B7%E7%9A%84%E6%AD%A3%E4%BA%A4%E5%88%86%E8%A7%A3"><span class="nav-number">4.3.</span> <span class="nav-text">周期信号的正交分解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%91%E8%B0%B1"><span class="nav-number">4.4.</span> <span class="nav-text">频谱</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%91%E8%B0%B1%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">4.4.1.</span> <span class="nav-text">频谱的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%A6%E5%AE%BD"><span class="nav-number">4.4.2.</span> <span class="nav-text">带宽</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%9E%E5%91%A8%E6%9C%9F%E4%BF%A1%E5%8F%B7%E7%9A%84%E6%AD%A3%E4%BA%A4%E5%88%86%E8%A7%A3%E5%92%8C%E9%A2%91%E8%B0%B1"><span class="nav-number">4.5.</span> <span class="nav-text">非周期信号的正交分解和频谱</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ft-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E6%8E%A8%E7%90%86"><span class="nav-number">4.5.1.</span> <span class="nav-text">FT 表达式的推理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ft-%E7%9A%84%E8%BF%90%E7%AE%97%E6%80%A7%E8%B4%A8"><span class="nav-number">4.5.2.</span> <span class="nav-text">FT 的运算性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fs-%E5%92%8C-ft-%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">4.5.3.</span> <span class="nav-text">FS 和 FT 的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%86%E5%91%A8%E6%9C%9F%E4%BF%A1%E5%8F%B7"><span class="nav-number">4.5.4.</span> <span class="nav-text">准周期信号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%A8%E6%9C%9F%E4%BF%A1%E5%8F%B7%E7%9A%84-ft"><span class="nav-number">4.5.5.</span> <span class="nav-text">周期信号的 FT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E7%9A%84-ft"><span class="nav-number">4.5.6.</span> <span class="nav-text">其他常用函数的 FT</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%A1%E5%8F%B7%E9%87%87%E6%A0%B7"><span class="nav-number">5.</span> <span class="nav-text">信号采样</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%87%E6%A0%B7%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="nav-number">5.1.</span> <span class="nav-text">采样的概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%87%E6%A0%B7%E5%AE%9A%E7%90%86"><span class="nav-number">5.2.</span> <span class="nav-text">采样定理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%A1%E5%8F%B7%E5%A4%8D%E5%8E%9F"><span class="nav-number">5.3.</span> <span class="nav-text">信号复原</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A6%BB%E6%95%A3%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86"><span class="nav-number">6.</span> <span class="nav-text">离散信号处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8E%E6%8A%BD%E6%A0%B7%E5%BA%8F%E5%88%97%E8%BF%98%E5%8E%9F%E5%8E%9F%E4%BF%A1%E5%8F%B7%E6%97%B6%E5%9F%9F"><span class="nav-number">6.1.</span> <span class="nav-text">从抽样序列还原原信号时域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8E%E6%8A%BD%E6%A0%B7%E5%BA%8F%E5%88%97%E8%BF%98%E5%8E%9F%E5%8E%9F%E4%BF%A1%E5%8F%B7%E9%A2%91%E8%B0%B1"><span class="nav-number">6.2.</span> <span class="nav-text">从抽样序列还原原信号频谱</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8E%E6%9C%89%E9%99%90%E6%8A%BD%E6%A0%B7%E5%BA%8F%E5%88%97%E8%BF%98%E5%8E%9F%E4%BF%A1%E5%8F%B7%E9%A2%91%E8%B0%B1"><span class="nav-number">6.3.</span> <span class="nav-text">从有限抽样序列还原信号频谱</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AA%97%E5%AE%BD%E7%9A%84%E9%99%90%E5%88%B6"><span class="nav-number">6.3.1.</span> <span class="nav-text">窗宽的限制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dft-%E7%9A%84%E5%BC%95%E5%85%A5%E5%92%8C%E7%9F%A9%E9%98%B5%E5%BD%A2%E5%BC%8F"><span class="nav-number">6.3.2.</span> <span class="nav-text">DFT 的引入和矩阵形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dft-%E7%9A%84%E6%80%A7%E8%B4%A8"><span class="nav-number">6.3.3.</span> <span class="nav-text">DFT 的性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fft-%E7%AE%97%E6%B3%95"><span class="nav-number">6.3.4.</span> <span class="nav-text">FFT 算法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90%E7%9A%84%E7%AE%80%E5%8D%95%E6%80%BB%E7%BB%93"><span class="nav-number">7.</span> <span class="nav-text">傅里叶分析的简单总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E6%A6%82%E5%BF%B5%E5%9F%BA%E7%A1%80"><span class="nav-number">8.</span> <span class="nav-text">系统概念基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E6%B5%81%E5%9B%BE"><span class="nav-number">8.1.</span> <span class="nav-text">系统流图</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -225,7 +225,7 @@ $(function () {
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">20</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -260,6 +260,9 @@ $(function () {
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://zcy.moe/" title="https:&#x2F;&#x2F;zcy.moe" rel="noopener" target="_blank">猫猫</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://c7w.tech/" title="https:&#x2F;&#x2F;c7w.tech" rel="noopener" target="_blank">c7w</a>
         </li>
     </ul>
   </div>
@@ -363,14 +366,14 @@ $(function () {
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>26k</span>
+      <span>31k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>24 分钟</span>
+      <span>28 分钟</span>
     </span>
 </div>
 
@@ -386,6 +389,8 @@ $(function () {
 \newcommand{\d}{\mathrm{d}}
 \newcommand{\j}{\mathrm{j}}
 \newcommand{\b}{\boldsymbol}
+\newcommand{\lv}{\left[\begin{matrix}}
+\newcommand{\rv}{\end{matrix}\right]}
 \]</span></p>
 <span id="more"></span>
 <h1 id="信号处理基本知识">信号处理基本知识</h1>
@@ -1165,7 +1170,7 @@ X_L(\omega) = \frac{1}{2\pi} ({\rm DTFT}[x] \otimes {\rm DTFT}[w])(\omega)
 <p><span class="math display">\[
 \Delta\omega_L = \frac{2\pi}{L}
 \]</span></p>
-<hr />
+<h3 id="窗宽的限制">窗宽的限制</h3>
 <p>现在我们考虑下述数字信号：</p>
 <p><span class="math display">\[
 x(n) = A_1e^{\j\omega_1 n} + A_2e^{\j\omega_2 n} (0 &lt; \omega_1, \omega_2 &lt; \pi)
@@ -1187,7 +1192,7 @@ X_L(\omega) = \frac{1}{2\pi}(X \otimes W)(\omega) = A_1W(\omega - \omega_1) + A_
 |\omega_1 - \omega_2| &gt; \frac{2\pi}{L}
 \]</span></p>
 <p>也就是说如果数字信号的最小频率间隔为 <span class="math inline">\(\Delta\omega\)</span> ，那么为了保证截取后频谱上各个频率峰可分辨，必须要求窗函数宽度 <span class="math inline">\(L\)</span> 不小于 <span class="math inline">\(2\pi / \Delta\omega\)</span> 。</p>
-<hr />
+<h3 id="dft-的引入和矩阵形式">DFT 的引入和矩阵形式</h3>
 <p>现在我们回到求解有限长数字信号傅立叶变换的问题上。我们继续延续上述 DTFT 的思路。不过我们现在只考虑在 <span class="math inline">\(\omega_k = 2k\pi / N\)</span> 处频谱的取值，即频域 <span class="math inline">\([0, 2\pi]\)</span> 区间内的 <span class="math inline">\(N\)</span> 个特征点：</p>
 <p><span class="math display">\[
 \begin{aligned}
@@ -1204,24 +1209,159 @@ X_L(\omega_k) &amp;= \frac{1}{2\pi} ({\rm DTFT}[x] \otimes {\rm DTFT}[w])(\omega
 <p>我们注意到这样的一点，就是这里有两个参数是可以独立确定的，即窗函数长度 <span class="math inline">\(L\)</span> 和频域特征点数 <span class="math inline">\(N\)</span> 。但实际应用中一般都有 <span class="math inline">\(L = N\)</span> ，这主要是因为这样计算方便且 <span class="math inline">\(L \neq N\)</span> 的情况均可以还原成 <span class="math inline">\(L = N\)</span> 的情况。</p>
 <hr />
 <p>为了论证这一点，我们可以从另外一个角度推导 DFT 公式。也就是回归傅里叶分析的本质，而傅里叶分析的本质就是将函数分解成若干个指数函数的线性组合。之前论述过的 FT 用于分解时域无限的连续信号，而 DFT 则会用于分析时域有限的离散信号。</p>
-<p>考虑信号 <span class="math inline">\(f\)</span> ，我们在区间 <span class="math inline">\([0, 1]\)</span> 上均匀 <span class="math inline">\(N\)</span> 个样，组成代表这个信号的向量：</p>
+<p>考虑信号 <span class="math inline">\(f\)</span> ，我们在区间 <span class="math inline">\([0, 1]\)</span> 上均匀取 <span class="math inline">\(N\)</span> 个样，组成代表这个信号的向量：</p>
 <p><span class="math display">\[
-\b{f} = \left[\begin{matrix}
+\b{x} = \lv
 f(0) &amp; f\left(\frac{1}{N}\right) &amp; \cdots &amp; f\left(\frac{N - 1}{N}\right)
-\end{matrix}\right]
+\rv
 \]</span></p>
 <p>同样的，我们需要对作为基的函数 <span class="math inline">\(e^{2\pi\j kt}\)</span> 也在这些点取样，函数 <span class="math inline">\(e^{2\pi\j kt}\)</span> 取到的样为：</p>
 <p><span class="math display">\[
-\b{e}_k = \left[\begin{matrix}
+\b{e}_k = \lv
 \varepsilon_N^0 &amp; \varepsilon_N^k &amp; \cdots &amp; \varepsilon_N^{(N - 1)k}
-\end{matrix}\right]
+\rv
 \]</span></p>
 <p>这里 <span class="math inline">\(\varepsilon_N\)</span> 表示 <span class="math inline">\(N\)</span> 次单位根。</p>
 <p>根据周期性，显然得到：</p>
 <p><span class="math display">\[
 \b{e}_k = \b{e}_{k + N}
 \]</span></p>
-<p>所以将 <span class="math inline">\(\b{f}\)</span> 拆分为 <span class="math inline">\(\b{e}_k\)</span> 的线性组合的时候只需要考虑一个周期内的 <span class="math inline">\(\b{e}_k\)</span> 即可，</p>
+<p>所以将 <span class="math inline">\(\b{x}\)</span> 拆分为 <span class="math inline">\(\b{e}_k\)</span> 的线性组合的时候只需要考虑一个周期内的 <span class="math inline">\(\b{e}_k\)</span> 即可，也就是说我们假设存在这样的一系列系数 <span class="math inline">\(\b{X} = \lv X(0) &amp; X(1) &amp; \cdots &amp; X(N - 1)\rv\)</span> 满足（这里的系数 <span class="math inline">\(1 / N\)</span> 是为了简化后续的讨论）：</p>
+<p><span class="math display">\[
+\b{x} = \frac{1}{N}\sum_{k = 0}^{N - 1} X(k)\b{e}_k
+\]</span></p>
+<p>如果我们定义这样的一个矩阵：</p>
+<p><span class="math display">\[
+F_N = \lv \b{e}_0 &amp; \b{e}_1 &amp; \cdots &amp; \b{e}_{N - 1}\rv
+\]</span></p>
+<p>上述等式实际上就是 <span class="math inline">\(N\b{x} = F_N\b{x}\)</span>。所以要求解系数向量，其实就等价于求解 <span class="math inline">\(F_N\)</span> 的逆矩阵。</p>
+<p>考虑这样的数学关系（这里 <span class="math inline">\(\cdot^H\)</span> 表示 Hermit 转置，即共轭转置）：</p>
+<p><span class="math display">\[
+\b{e}_i^H\b{e}_j = \sum_{k = 0}^{N - 1} (\varepsilon_N^{ik})^*\varepsilon_N^{jk} = \sum_{k = 0}^{N - 1} \varepsilon_N^{(j - i)k} = \begin{cases}
+N &amp; i = j \\
+\dfrac{1 - \varepsilon_N^{N(j - i)}}{1 - \varepsilon_N^{j - i}} = 0 &amp; i \neq j
+\end{cases}
+\]</span></p>
+<p>这说明 <span class="math inline">\(\dfrac{F_N}{\sqrt{N}}\)</span> 是酉矩阵。即有：</p>
+<p><span class="math display">\[
+F_N^{-1} = \frac{1}{\sqrt{N}}\left(\frac{F_N}{\sqrt{N}}\right)^{-1} = \frac{1}{\sqrt{N}}\left(\frac{F_N}{\sqrt{N}}\right)^H = \frac{1}{N} (F_N^T)^* = \frac{1}{N} F_N^*
+\]</span></p>
+<p>所以系数向量就可以表示为：</p>
+<p><span class="math display">\[
+\b{X} = F_N^* \b{x}
+\]</span></p>
+<p>对比会发现这个和我们之前推导出来的 DFT 公式是一致的。也就是说我们得到了 <span class="math inline">\(L = N\)</span> 时的 DFT 向量表示。</p>
+<hr />
+<p>回到先前的问题，我们思考为何 <span class="math inline">\(L \neq N\)</span> 的情况都可以化归为 <span class="math inline">\(L = N\)</span> 。</p>
+<p>如果 <span class="math inline">\(L &lt; N\)</span> ，也就是说窗宽（序列长度）不足，我们可以在序列 <span class="math inline">\(x(n)\)</span> 末尾补零至 <span class="math inline">\(N\)</span> 位得到 <span class="math inline">\(x_D(n)\)</span>，以此计算 DFT ：</p>
+<p><span class="math display">\[
+X_D(k) = \sum_{n = 0}^{N - 1} x_D(n)e^{-\j\frac{2\pi nk}{N}} = \sum_{n = 0}^{L - 1} x_D(n)e^{-\j\frac{2\pi nk}{N}} = \sum_{n = 0}^{L - 1} x(n)e^{-\j\frac{2\pi nk}{N}} = X(k)
+\]</span></p>
+<p>可见通过补零，补零序列的 DFT 就是原序列的 DFT 。所以完全可以认为 <span class="math inline">\(L &lt; N\)</span> 时应化归为 <span class="math inline">\(L = N\)</span> 。</p>
+<p>而在 <span class="math inline">\(L &gt; N\)</span> 的时候，我们需要使用<strong>回绕</strong>。即定义这样的新序列：</p>
+<p><span class="math display">\[
+\tilde{x}(n) = \sum_{k \mathop{\equiv} n \mathop{\rm mod} N} x(k)
+\]</span></p>
+<p>直观而言，就是将原先的过长序列拆为若干长度为 <span class="math inline">\(N\)</span> 的短序列后对齐相加。为了解释此时依然可以化归，我们使用先前得到矩阵形式的 DFT 即可说明。首先我们取 <span class="math inline">\(F_N\)</span> ，这里 <span class="math inline">\(N\)</span> 即 DFT 点数， <span class="math inline">\(F_N\)</span> 定义与之前相同。取新矩阵：</p>
+<p><span class="math display">\[
+F_{N\times L} = \lv F_N &amp; F_N &amp; \cdots \rv
+\]</span></p>
+<p>即使用 <span class="math inline">\(F_N\)</span> 的列按顺序拼接出一个 <span class="math inline">\(N\)</span> 行 <span class="math inline">\(L\)</span> 列的新矩阵，那么：</p>
+<p><span class="math display">\[
+{\rm DFT}[x](k) = F_{N\times L}\b{x} = (F_N\lv I_N &amp; I_N &amp; \cdots \rv)\b{x} = F_N\tilde{\b{x}} = {\rm DFT}[\tilde{x}](k)
+\]</span></p>
+<p>所以回绕序列和原序列具有相同的 DFT 。</p>
+<p>基于上述讨论，考虑到 <span class="math inline">\(L\)</span> 一般而言是原信号的长度，是一个不能修改的量。而 DFT 的点数 <span class="math inline">\(N\)</span> 则是计算过程中自由选取的参数，是可以随意更改的。为了方便，一般而言直接选定 <span class="math inline">\(N = L\)</span> 以方便计算。</p>
+<h3 id="dft-的性质">DFT 的性质</h3>
+<p>实际上我们可以发现 DFT 就是对 DTFT 频域一个周期内的取样，即时域从无限变为有限的时候，频域就会变成原先频域一个周期内的取样。这一点对连续信号也是成立的，时域从无限（周期无限）变为有限（有限周期信号）的时候，频域也会变为原先频域一个周期内的取样（周期信号的频域是离散的）。</p>
+<p>现在考虑实序列的 DFT ，实际上我们考虑 DTFT 即可。令实序列 <span class="math inline">\(x(n)\)</span> 的 DTFT 为 <span class="math inline">\(X(\omega)\)</span> 。根据 DTFT 定义：</p>
+<p><span class="math display">\[
+X(\omega) = \sum_{n = -\infty}^{+\infty} x(n)e^{-\j\omega n}
+\]</span></p>
+<p>显然：</p>
+<p><span class="math display">\[
+X(-\omega) = X^*(\omega)
+\]</span></p>
+<p>另外一个相当重要的性质是：</p>
+<p><span class="math display">\[
+X(\omega) = X^*(2\pi - \omega)
+\]</span></p>
+<p>这说明了在周期 <span class="math inline">\([0, 2\pi]\)</span> 上，实序列的 DTFT 和自身共轭对称。这个性质的证明也是简单的：</p>
+<p><span class="math display">\[
+\begin{aligned}
+X(2\pi - \omega) = \sum_{n = -\infty}^{+\infty} x(n)e^{-\j(2\pi - \omega) n} = \sum_{n = -\infty}^{+\infty} x(n)e^{\j\omega n} = X^*(\omega)
+\end{aligned}
+\]</span></p>
+<p>这个性质反映在 DFT 上就是，实序列的偶数点 DFT 序列自身和自身共轭对称。即长度为 <span class="math inline">\(2N\)</span> 的实序列 <span class="math inline">\(x\)</span> 的 DFT 序列 <span class="math inline">\(X\)</span> 满足：</p>
+<p><span class="math display">\[
+X(N + k) = X^*(N - k)
+\]</span></p>
+<hr />
+<p>DFT 的其他性质和 FT 类似。比如 DFT 是线性的，和共轭及反褶的关系也和 FT 一致，其余类似时域平移、频域平移等性质则自行推导。</p>
+<p><code>TODO</code></p>
+<h3 id="fft-算法">FFT 算法</h3>
+<p>直接计算 <span class="math inline">\(N\)</span> 点 DFT 的时间复杂度为 <span class="math inline">\(O(n^2)\)</span> ，但是考虑到 <span class="math inline">\(F_N\)</span> 矩阵的优良性质，应该具有更快速的算法。有一种思路是使用分治，考虑下述数学事实，这里 <span class="math inline">\(X\)</span> 为 <span class="math inline">\(x\)</span> 的 <span class="math inline">\(N\)</span> 点 DFT 序列，<span class="math inline">\(x\)</span> 长度为 <span class="math inline">\(N\)</span>，不妨 <span class="math inline">\(N\)</span> 是偶数：</p>
+<p><span class="math display">\[
+\begin{aligned}
+{\rm DFT}_{n, k}[x(n)](k) &amp;= \sum_{n = 0}^{N - 1} x(n)e^{-\j\frac{2\pi nk}{N}} \\
+&amp;= \sum_{r = 0}^{N / 2 - 1} x(2r)e^{-\j\frac{2\pi rk}{N / 2}} + \sum_{r = 0}^{N / 2 - 1} x(2r + 1)e^{-\j\frac{2\pi(r + 1 / 2)k}{N / 2}} \\
+&amp;= \sum_{r = 0}^{N / 2 - 1} x(2r)e^{-\j\frac{2\pi rk}{N / 2}} + e^{-\j\frac{2\pi k}{N}}\sum_{r = 0}^{N / 2 - 1} x(2r + 1)e^{-\j\frac{2\pi rk}{N / 2}} \\
+&amp;= {\rm DFT}_{n, k}[x(2n)](k) + e^{-\j\frac{2\pi k}{N}}{\rm DFT}_{n, k}[x(2n + 1)](k)
+\end{aligned}
+\]</span></p>
+<p>也就是说，将原序列按照奇偶拆为两个序列，分别作 DFT 后再合并即得到原序列的 DFT 。按此分治算法即可得到 <span class="math inline">\(O(n\log n)\)</span> 的 FFT 算法。</p>
+<p><code>TODO: 似乎还有一些和采样相关的东西之后看</code></p>
+<h1 id="傅里叶分析的简单总结">傅里叶分析的简单总结</h1>
+<p><code>TODO</code></p>
+<h1 id="系统概念基础">系统概念基础</h1>
+<p>在这门课程内，我们将下述概念称为<strong>系统（ System ）</strong>。对给定的激励给出对应的响应的，具有特定功能的整体称为系统。</p>
+<p>本课程主要探讨离散时间的、线性的、时不变的、因果系统。即这类系统仅处理离散时间激励，满足线性，且无论何时接收到相同的激励都会给出相同的响应（时不变性），响应和当前激励之后的激励无关（因果性还可以表述为响应仅和当前激励及先前的激励有关，现实的系统都是因果的）。另外，我们可能还需要附加稳定性要求，即对于有界激励会给出有界响应。</p>
+<h2 id="系统流图">系统流图</h2>
+<p>我们可以使用流图来描述一个系统，流图中常用的单元包括以下。</p>
+<p>首先是延时单元，含义为将自变量向过去推迟一个单位。</p>
+<pre class="mermaid">
+graph LR
+S([Source]) --&gt;|&quot;$x(n)$&quot;| U[&quot;$Z^{-1}$&quot;]
+U --&gt;|&quot;$x(n - 1)$&quot;| T([Terminal])
+
+SR([Source]) --&gt;|&quot;$x(n)$&quot;| UR[&quot;$D$&quot;]
+UR --&gt;|&quot;$x(n - 1)$&quot;| TR([Terminal])
+</pre>
+<p>这两个符号都是允许的。</p>
+<p>其次是求和单元，含义为多个量求和。</p>
+<pre class="mermaid">
+graph LR
+SL([Source 1]) --&gt;|&quot;$x_1(n)$&quot;| U((&quot;$+$&quot;))
+SR([Source 2]) --&gt;|&quot;$x_2(n)$&quot;| U
+U --&gt;|&quot;$x_1(n) + x_2(n)$&quot;| T([Terminal])
+</pre>
+<p>中间的加号换为 <span class="math inline">\(\Sigma\)</span> 也是允许的。</p>
+<p>最后是系数单元，含义为乘以常数。</p>
+<pre class="mermaid">
+graph LR
+S([Source]) --&gt;|&quot;$x(n)$&quot;| U{&quot;$a_0$&quot;}
+U --&gt;|&quot;$a_0x(n)$&quot;| T([Terminal])
+
+SR([Source]) --&gt;|&quot;$a_0$&quot;| TR([Terminal])
+</pre>
+<p>这两种表达都是可以的。</p>
+<hr />
+<p>比如说激励为 <span class="math inline">\(x\)</span> ，响应为 <span class="math inline">\(y\)</span> 的系统如果满足：</p>
+<p><span class="math display">\[
+y(n) = \frac{1}{b_0}\left[a_0x(n) + a_1x(n - 1) - b_1y(n - 1)\right]
+\]</span></p>
+<p>其流图就可以为：</p>
+<pre class="mermaid">
+graph LR
+S([&quot;$x(n)$&quot;]) --&gt; Input-split[&quot; &quot;]
+Input-split ----&gt;|&quot;$a_0$&quot;| Sum((&quot;$\Sigma$&quot;))
+Input-split --&gt; Input-shift[&quot;$Z^{-1}$&quot;]
+Input-shift --&gt;|&quot;$a_1$&quot;| Sum
+Output-split --&gt; Output-shift[&quot;$Z^{-1}$&quot;]
+Sum ----&gt;|&quot;$1 &#x2F; b_0$&quot;| Output-split[&quot; &quot;]
+Output-shift --&gt;|&quot;$-b_1$&quot;| Sum
+Output-split --&gt; T([&quot;$y(n)$&quot;])
+</pre>
 
     </div>
 
@@ -1235,13 +1375,13 @@ f(0) &amp; f\left(\frac{1}{N}\right) &amp; \cdots &amp; f\left(\frac{N - 1}{N}\r
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/1021/09/14/note-of-pcc/" rel="prev" title="《计算机组成原理》学习笔记">
-                  <i class="fa fa-chevron-left"></i> 《计算机组成原理》学习笔记
+                <a href="/1021/09/13/note-of-net/" rel="prev" title="《计算机网络原理》学习笔记">
+                  <i class="fa fa-chevron-left"></i> 《计算机网络原理》学习笔记
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/1021/09/14/note-of-dc/" rel="next" title="《编译原理》学习笔记">
-                  《编译原理》学习笔记 <i class="fa fa-chevron-right"></i>
+                <a href="/2021/06/16/hello-world/" rel="next" title="Hello world">
+                  Hello world <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -1275,13 +1415,13 @@ f(0) &amp; f\left(\frac{1}{N}\right) &amp; \cdots &amp; f\left(\frac{N - 1}{N}\r
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">145k</span>
+    <span title="站点总字数">149k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:11</span>
+    <span title="站点阅读时长">2:16</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
@@ -1298,6 +1438,8 @@ f(0) &amp; f\left(\frac{1}{N}\right) &amp; \cdots &amp; f\left(\frac{N - 1}{N}\r
 <script src="/js/third-party/search/local-search.js"></script>
 
 
+  <script class="next-config" data-name="mermaid" type="application/json">{&quot;enable&quot;:true,&quot;theme&quot;:&quot;default&quot;,&quot;js&quot;:{&quot;url&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mermaid@8.9.3&#x2F;dist&#x2F;mermaid.min.js&quot;,&quot;integrity&quot;:&quot;sha256-OyJHvRcZHaRR6Ig73ppxF4QXk8HzvfgTprRWkulCkfY&#x3D;&quot;}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
 
 
   
