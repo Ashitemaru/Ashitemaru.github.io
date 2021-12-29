@@ -4946,11 +4946,47 @@ p(t) = \sum_{k = -\infty}^{+\infty} \frac{1}{T_s}e^{\j k\omega_s t}
 <p>如果没有发生频谱混叠，我们可以在采样之后使用低通滤波器将 <span class="math inline">\(F_p\)</span> 的主峰过滤出来，从而完美还原原先的信号。但是如果发生混叠，这种完美复原则是不可能的。而这个临界频率是显而易见的，即 <span class="math inline">\(\omega_s = 2\omega_M\)</span> 。</p>
 <p>这就是 Nyquist 取样定理，即使用不低于两倍高频截止频率 <span class="math inline">\(\omega_M\)</span> 的采样频率 <span class="math inline">\(\omega_s\)</span> 采样得到的数据点可以完美还原原信号。</p>
 <p>综合上述，只有信号满足<strong>频带受限</strong>（即严格具有高频截止频率）并且<strong>取样频率足够高</strong>的时候，取样才能无损表示原有信号。</p>
-<h2 id="信号复原">信号复原</h2>
-<p>我们在上述过程中证明了使用低通滤波器可以复原高频率取样后的频带受限信号，下面我们来具体研讨低通滤波器，讨论中 <span class="math inline">\(f\)</span> 表示原有的频带受限信号， <span class="math inline">\(f_p\)</span> 表示使用高频理想冲激串取样后的信号， <span class="math inline">\(F,F_p\)</span> 分别表示两者在频域上的表现。</p>
-<p>我们思考矩形脉冲信号的性质。时域上，我们可以使用矩形脉冲信号乘以某一个信号以截取该信号某一个区间上的信息。那么我们考虑频域上的矩形脉冲，其脉冲区间为 <span class="math inline">\([-\omega_C, \omega_C]\)</span> 。在频域上将该矩形脉冲和另一个信号的频谱相乘则可以截取该信号在低频区间 <span class="math inline">\([-\omega_C, \omega_C]\)</span> 上的信息而完全过滤高频信息。从而，我们就可以使用这一信号作为低通滤波器。</p>
-<p>假设低通滤波器时域表现为 <span class="math inline">\(h\)</span> ，频域表现为 <span class="math inline">\(H\)</span> 。</p>
-<p><code>TODO</code></p>
+<h2 id="信号复原内插">信号复原（内插）</h2>
+<p>思考从采样序列恢复原先连续信号的方法，这其实就是<strong>插值法</strong>的应用，只不过在信号处理原理中我们将之称为内插法。</p>
+<p>现在我们有信号 <span class="math inline">\(x(t)\)</span> 以抽样周期 <span class="math inline">\(T\)</span> 抽样得到的抽样序列 <span class="math inline">\(\{x(nT)\}_{n \in \mathbb Z}\)</span> 。进行内插之前，我们需要确定内插函数 <span class="math inline">\(h(t)\)</span> ，而内插函数一般就是我们使用的滤波器的单位冲激响应函数。随后用下述方法计算出内插后的连续信号 <span class="math inline">\(\tilde x(t)\)</span> ：</p>
+<p><span class="math display">\[
+\tilde x(t) := \sum_{n = -\infty}^{+\infty} x(nT)h(t - nT) \approx x(t)
+\]</span></p>
+<p>使用不同的滤波器对应的内插函数 <span class="math inline">\(h(t)\)</span> ，我们能获取到不同效果的复原信号 <span class="math inline">\(x(t)\)</span> 。</p>
+<div class="note info"><p>这里需要尝试解释一下滤波器、单位冲激响应、内插这些概念。</p>
+<p>首先简单理解一下<strong>系统（ System ）</strong>的概念。系统可以简单理解为对给定输入（称之为<strong>激励</strong>）给出给定输出（称之为<strong>响应</strong>）的，具有特定功能的整体。</p>
+<p>滤波器本质上就是一个对信号函数的变换，也是一种系统。只不过这个变换很多时候是用于过滤信号频谱之中的低频（或高频）成分的，所以才会有低通滤波器（或高通滤波器）之类的名称。其激励就是要过滤的信号，响应就是过滤后的信号。根据我们对滤波器性质的要求，我们至少需要滤波器是线性系统，满足激励叠加等于响应叠加以及激励倍增等于响应倍增。</p>
+<p>而单位冲激响应就是一种特殊的响应。如果某一个滤波器的激励为单位冲激信号，其在这个条件下的响应就是单位冲激响应。</p>
+<p>现在考虑一个滤波器，其对应的函数变换为 <span class="math inline">\(\mathcal{P}\)</span> ，其单位冲激响应为 <span class="math inline">\(h\)</span> ，即 <span class="math inline">\(\mathcal{P}[\delta] = h\)</span> 。滤波器的线性保证了下述的性质：</p>
+<p><span class="math display">\[
+\begin{cases}
+\mathcal{P}[f + g] = \mathcal{P}[f] + \mathcal{P}[g] \\
+\mathcal{P}[\lambda f] = \lambda\mathcal{P}[f]
+\end{cases}
+\]</span></p>
+<p>接下来我们证明<strong>任何激励和单位冲激响应的卷积就是该激励下滤波器的响应</strong>。这个结论说明了单位冲激响应携带了一个线性系统所有的信息，即只需要知晓一个线性系统的单位冲激响应就可以计算任何激励下的系统响应。本证明完全不理会系统函数变换和极限、级数是否可交换，工科生不管这些：</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathcal{P}[x] &amp;= \mathcal{P}[x * \delta] = \mathcal{P}\left[\int_{-\infty}^{+\infty} x(\tau)\delta(\cdot - \tau) \d\tau\right] = \mathcal{P}\left[\lim_{\Delta \to 0} \sum_{k = -\infty}^{+\infty} x(k\Delta)\delta(\cdot - k\Delta) \Delta\right] \\
+&amp;= \lim_{\Delta \to 0} \sum_{k = -\infty}^{+\infty} x(k\Delta) \mathcal{P}[\delta_{1, k\Delta}]\Delta = \lim_{\Delta \to 0} \sum_{k = -\infty}^{+\infty} x(k\Delta) h(\cdot - k\Delta)\Delta \\
+&amp;= \int_{-\infty}^{+\infty} x(\tau)h(\cdot - \tau) \d\tau = x * h
+\end{aligned}
+\]</span></p>
+<p>这里第一行到第二行直接默认系统函数变换和极限可交换且无穷求和下系统线性依然可以保证。</p>
+<p>现在我们讨论上述说明的这些和信号复原（内插）是什么关系。我们已经说明了在符合取样定理的条件下，时域取样等价于频域周期延拓，所以我们要复原信号，只需要在频域上过滤出主峰即可。这个时候就需要使用到低通滤波器，我们假设使用的低通滤波器具有单位冲激响应 <span class="math inline">\(h(t)\)</span> 。而这个滤波器的输入信号就是取样周期为 <span class="math inline">\(T\)</span> 的理想冲激串对原信号 <span class="math inline">\(x(t)\)</span> 取样得到的取样信号：</p>
+<p><span class="math display">\[
+x_p(t) = \sum_{k = -\infty}^{+\infty} x(kT)\delta(t - kT)
+\]</span></p>
+<p>我们考虑 <span class="math inline">\(x_p(t)\)</span> 通过滤波器处理后的输出，根据上述结论，该输出就是 <span class="math inline">\(x_p\)</span> 与 <span class="math inline">\(h\)</span> 的卷积，这里证明依然默认级数和无穷积分可交换：</p>
+<p><span class="math display">\[
+\begin{aligned}
+(x_p * h)(t) &amp;= \int_{-\infty}^{+\infty} x_p(\tau)h(t - \tau) \d\tau = \int_{-\infty}^{+\infty} \left(\sum_{k = -\infty}^{+\infty} x(kT)\delta(\tau - kT)\right) h(t - \tau) \d\tau \\
+&amp;= \sum_{k = -\infty}^{+\infty} x(kT) \int_{-\infty}^{+\infty} h(t - \tau)\delta(\tau - kT) \d\tau = \sum_{k = -\infty}^{+\infty} x(kT)h(t - kT)
+\end{aligned}
+\]</span></p>
+<p>这个结果和我们介绍的使用内插函数 <span class="math inline">\(h\)</span> 对 <span class="math inline">\(x\)</span> 的取样序列进行内插法得到 <span class="math inline">\(\tilde x\)</span> 的公式一致。</p>
+<p>其实内插法和使用滤波器滤波本质上在叙说同样的概念，只不过内插法是从时域的角度观察，即这样操作之后时域上缺失的数值点就会被插入回来，从而复原信号。而滤波是从频域的角度观察，即这样的操作本质上是在频域上过滤出低频峰。内插和滤波其实就是信号复原这个操作两个角度下观察的结果。</p>
+</div>
 <h1 id="离散信号处理">离散信号处理</h1>
 <p>上述的讨论均是理论的，理论的模拟信号时域连续、时域无限长、数值取值范围无限、精度无限。但是实际使用计算机处理的时候，这三点均无法满足，即计算机能处理的信号时域离散、时域有限长、数值取值范围有限、精度有限。</p>
 <p>所以我们需要将上述的理论进行一定的修正才能应用到真实的信号处理场景中。</p>
