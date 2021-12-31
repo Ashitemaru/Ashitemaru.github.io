@@ -29,6 +29,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://ashitemaru.github.io/uploads/note-of-dsp/1.png">
 <meta property="og:image" content="https://ashitemaru.github.io/uploads/note-of-dsp/2.png">
+<meta property="og:image" content="https://ashitemaru.github.io/uploads/note-of-dsp/3.png">
 <meta property="article:published_time" content="1021-09-14T13:19:01.000Z">
 <meta property="article:modified_time" content="1021-09-14T13:19:01.000Z">
 <meta property="article:author" content="Ashitemaru">
@@ -212,7 +213,7 @@ $(function () {
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86"><span class="nav-number">1.</span> <span class="nav-text">信号处理基本知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E4%BF%A1%E5%8F%B7%E5%BD%A2%E5%BC%8F"><span class="nav-number">1.1.</span> <span class="nav-text">常见信号形式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E4%BF%A1%E5%8F%B7%E5%88%86%E6%9E%90"><span class="nav-number">1.2.</span> <span class="nav-text">复信号分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E7%A9%BA%E9%97%B4%E4%B8%8E%E5%87%BD%E6%95%B0%E5%88%86%E8%A7%A3"><span class="nav-number">1.3.</span> <span class="nav-text">函数空间与函数分解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%A1%E5%8F%B7%E7%9A%84%E8%BF%90%E7%AE%97"><span class="nav-number">2.</span> <span class="nav-text">信号的运算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%84%E8%BF%90%E7%AE%97"><span class="nav-number">2.1.</span> <span class="nav-text">常规运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A7%AF%E5%88%86%E5%BE%AE%E5%88%86%E8%BF%90%E7%AE%97%E4%B8%8E%E8%83%BD%E9%87%8F"><span class="nav-number">2.2.</span> <span class="nav-text">积分微分运算与能量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%B7%E7%A7%AF%E8%BF%90%E7%AE%97"><span class="nav-number">2.3.</span> <span class="nav-text">卷积运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E8%BF%90%E7%AE%97"><span class="nav-number">2.4.</span> <span class="nav-text">相关运算</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%A5%87%E5%BC%82%E4%BF%A1%E5%8F%B7"><span class="nav-number">3.</span> <span class="nav-text">常用奇异信号</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E8%88%AC%E6%A8%A1%E6%8B%9F%E4%BF%A1%E5%8F%B7%E5%88%86%E8%A7%A3"><span class="nav-number">4.</span> <span class="nav-text">一般模拟信号分解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%88%86%E8%A7%A3"><span class="nav-number">4.1.</span> <span class="nav-text">基本分解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E4%BA%A4%E5%88%86%E8%A7%A3%E6%A6%82%E8%BF%B0"><span class="nav-number">4.2.</span> <span class="nav-text">正交分解概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%91%A8%E6%9C%9F%E4%BF%A1%E5%8F%B7%E7%9A%84%E6%AD%A3%E4%BA%A4%E5%88%86%E8%A7%A3"><span class="nav-number">4.3.</span> <span class="nav-text">周期信号的正交分解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%91%E8%B0%B1"><span class="nav-number">4.4.</span> <span class="nav-text">频谱</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%91%E8%B0%B1%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">4.4.1.</span> <span class="nav-text">频谱的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%A6%E5%AE%BD"><span class="nav-number">4.4.2.</span> <span class="nav-text">带宽</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%9E%E5%91%A8%E6%9C%9F%E4%BF%A1%E5%8F%B7%E7%9A%84%E6%AD%A3%E4%BA%A4%E5%88%86%E8%A7%A3%E5%92%8C%E9%A2%91%E8%B0%B1"><span class="nav-number">4.5.</span> <span class="nav-text">非周期信号的正交分解和频谱</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ft-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E6%8E%A8%E7%90%86"><span class="nav-number">4.5.1.</span> <span class="nav-text">FT 表达式的推理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ft-%E7%9A%84%E8%BF%90%E7%AE%97%E6%80%A7%E8%B4%A8"><span class="nav-number">4.5.2.</span> <span class="nav-text">FT 的运算性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fs-%E5%92%8C-ft-%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">4.5.3.</span> <span class="nav-text">FS 和 FT 的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%86%E5%91%A8%E6%9C%9F%E4%BF%A1%E5%8F%B7"><span class="nav-number">4.5.4.</span> <span class="nav-text">准周期信号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%A8%E6%9C%9F%E4%BF%A1%E5%8F%B7%E7%9A%84-ft"><span class="nav-number">4.5.5.</span> <span class="nav-text">周期信号的 FT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E7%9A%84-ft"><span class="nav-number">4.5.6.</span> <span class="nav-text">其他常用函数的 FT</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%A1%E5%8F%B7%E9%87%87%E6%A0%B7"><span class="nav-number">5.</span> <span class="nav-text">信号采样</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%87%E6%A0%B7%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="nav-number">5.1.</span> <span class="nav-text">采样的概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%87%E6%A0%B7%E5%AE%9A%E7%90%86"><span class="nav-number">5.2.</span> <span class="nav-text">采样定理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%A1%E5%8F%B7%E5%A4%8D%E5%8E%9F%E5%86%85%E6%8F%92"><span class="nav-number">5.3.</span> <span class="nav-text">信号复原（内插）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A6%BB%E6%95%A3%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86"><span class="nav-number">6.</span> <span class="nav-text">离散信号处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8E%E6%8A%BD%E6%A0%B7%E5%BA%8F%E5%88%97%E8%BF%98%E5%8E%9F%E5%8E%9F%E4%BF%A1%E5%8F%B7%E6%97%B6%E5%9F%9F"><span class="nav-number">6.1.</span> <span class="nav-text">从抽样序列还原原信号时域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8E%E6%8A%BD%E6%A0%B7%E5%BA%8F%E5%88%97%E8%BF%98%E5%8E%9F%E5%8E%9F%E4%BF%A1%E5%8F%B7%E9%A2%91%E8%B0%B1"><span class="nav-number">6.2.</span> <span class="nav-text">从抽样序列还原原信号频谱</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8E%E6%9C%89%E9%99%90%E6%8A%BD%E6%A0%B7%E5%BA%8F%E5%88%97%E8%BF%98%E5%8E%9F%E4%BF%A1%E5%8F%B7%E9%A2%91%E8%B0%B1"><span class="nav-number">6.3.</span> <span class="nav-text">从有限抽样序列还原信号频谱</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AA%97%E5%AE%BD%E7%9A%84%E9%99%90%E5%88%B6"><span class="nav-number">6.3.1.</span> <span class="nav-text">窗宽的限制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dft-%E7%9A%84%E5%BC%95%E5%85%A5%E5%92%8C%E7%9F%A9%E9%98%B5%E5%BD%A2%E5%BC%8F"><span class="nav-number">6.3.2.</span> <span class="nav-text">DFT 的引入和矩阵形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dft-%E7%9A%84%E6%80%A7%E8%B4%A8"><span class="nav-number">6.3.3.</span> <span class="nav-text">DFT 的性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fft-%E7%AE%97%E6%B3%95"><span class="nav-number">6.3.4.</span> <span class="nav-text">FFT 算法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%82%85%E9%87%8C%E5%8F%B6%E5%88%86%E6%9E%90%E7%9A%84%E7%AE%80%E5%8D%95%E6%80%BB%E7%BB%93"><span class="nav-number">7.</span> <span class="nav-text">傅里叶分析的简单总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E6%A6%82%E5%BF%B5%E5%9F%BA%E7%A1%80"><span class="nav-number">8.</span> <span class="nav-text">系统概念基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E6%B5%81%E5%9B%BE"><span class="nav-number">8.1.</span> <span class="nav-text">系统流图</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86"><span class="nav-number">1.</span> <span class="nav-text">信号处理基本知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E4%BF%A1%E5%8F%B7%E5%BD%A2%E5%BC%8F"><span class="nav-number">1.1.</span> <span class="nav-text">常见信号形式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E4%BF%A1%E5%8F%B7%E5%88%86%E6%9E%90"><span class="nav-number">1.2.</span> <span class="nav-text">复信号分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E7%A9%BA%E9%97%B4%E4%B8%8E%E5%87%BD%E6%95%B0%E5%88%86%E8%A7%A3"><span class="nav-number">1.3.</span> <span class="nav-text">函数空间与函数分解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%A1%E5%8F%B7%E7%9A%84%E8%BF%90%E7%AE%97"><span class="nav-number">2.</span> <span class="nav-text">信号的运算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%84%E8%BF%90%E7%AE%97"><span class="nav-number">2.1.</span> <span class="nav-text">常规运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A7%AF%E5%88%86%E5%BE%AE%E5%88%86%E8%BF%90%E7%AE%97%E4%B8%8E%E8%83%BD%E9%87%8F"><span class="nav-number">2.2.</span> <span class="nav-text">积分微分运算与能量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%B7%E7%A7%AF%E8%BF%90%E7%AE%97"><span class="nav-number">2.3.</span> <span class="nav-text">卷积运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E8%BF%90%E7%AE%97"><span class="nav-number">2.4.</span> <span class="nav-text">相关运算</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%A5%87%E5%BC%82%E4%BF%A1%E5%8F%B7"><span class="nav-number">3.</span> <span class="nav-text">常用奇异信号</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E8%88%AC%E6%A8%A1%E6%8B%9F%E4%BF%A1%E5%8F%B7%E5%88%86%E8%A7%A3"><span class="nav-number">4.</span> <span class="nav-text">一般模拟信号分解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%88%86%E8%A7%A3"><span class="nav-number">4.1.</span> <span class="nav-text">基本分解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E4%BA%A4%E5%88%86%E8%A7%A3%E6%A6%82%E8%BF%B0"><span class="nav-number">4.2.</span> <span class="nav-text">正交分解概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%91%A8%E6%9C%9F%E4%BF%A1%E5%8F%B7%E7%9A%84%E6%AD%A3%E4%BA%A4%E5%88%86%E8%A7%A3"><span class="nav-number">4.3.</span> <span class="nav-text">周期信号的正交分解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%91%E8%B0%B1"><span class="nav-number">4.4.</span> <span class="nav-text">频谱</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%91%E8%B0%B1%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">4.4.1.</span> <span class="nav-text">频谱的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%A6%E5%AE%BD"><span class="nav-number">4.4.2.</span> <span class="nav-text">带宽</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%9E%E5%91%A8%E6%9C%9F%E4%BF%A1%E5%8F%B7%E7%9A%84%E6%AD%A3%E4%BA%A4%E5%88%86%E8%A7%A3%E5%92%8C%E9%A2%91%E8%B0%B1"><span class="nav-number">4.5.</span> <span class="nav-text">非周期信号的正交分解和频谱</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ft-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E6%8E%A8%E7%90%86"><span class="nav-number">4.5.1.</span> <span class="nav-text">FT 表达式的推理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ft-%E7%9A%84%E8%BF%90%E7%AE%97%E6%80%A7%E8%B4%A8"><span class="nav-number">4.5.2.</span> <span class="nav-text">FT 的运算性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fs-%E5%92%8C-ft-%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">4.5.3.</span> <span class="nav-text">FS 和 FT 的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%86%E5%91%A8%E6%9C%9F%E4%BF%A1%E5%8F%B7"><span class="nav-number">4.5.4.</span> <span class="nav-text">准周期信号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%A8%E6%9C%9F%E4%BF%A1%E5%8F%B7%E7%9A%84-ft"><span class="nav-number">4.5.5.</span> <span class="nav-text">周期信号的 FT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E7%9A%84-ft"><span class="nav-number">4.5.6.</span> <span class="nav-text">其他常用函数的 FT</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%A1%E5%8F%B7%E9%87%87%E6%A0%B7"><span class="nav-number">5.</span> <span class="nav-text">信号采样</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%87%E6%A0%B7%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="nav-number">5.1.</span> <span class="nav-text">采样的概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%87%E6%A0%B7%E5%AE%9A%E7%90%86"><span class="nav-number">5.2.</span> <span class="nav-text">采样定理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%A1%E5%8F%B7%E5%A4%8D%E5%8E%9F%E5%86%85%E6%8F%92"><span class="nav-number">5.3.</span> <span class="nav-text">信号复原（内插）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A6%BB%E6%95%A3%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86"><span class="nav-number">6.</span> <span class="nav-text">离散信号处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8E%E6%8A%BD%E6%A0%B7%E5%BA%8F%E5%88%97%E8%BF%98%E5%8E%9F%E5%8E%9F%E4%BF%A1%E5%8F%B7%E6%97%B6%E5%9F%9F"><span class="nav-number">6.1.</span> <span class="nav-text">从抽样序列还原原信号时域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8E%E6%8A%BD%E6%A0%B7%E5%BA%8F%E5%88%97%E8%BF%98%E5%8E%9F%E5%8E%9F%E4%BF%A1%E5%8F%B7%E9%A2%91%E8%B0%B1"><span class="nav-number">6.2.</span> <span class="nav-text">从抽样序列还原原信号频谱</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8E%E6%9C%89%E9%99%90%E6%8A%BD%E6%A0%B7%E5%BA%8F%E5%88%97%E8%BF%98%E5%8E%9F%E4%BF%A1%E5%8F%B7%E9%A2%91%E8%B0%B1"><span class="nav-number">6.3.</span> <span class="nav-text">从有限抽样序列还原信号频谱</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AA%97%E5%AE%BD%E7%9A%84%E9%99%90%E5%88%B6"><span class="nav-number">6.3.1.</span> <span class="nav-text">窗宽的限制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dft-%E7%9A%84%E5%BC%95%E5%85%A5%E5%92%8C%E7%9F%A9%E9%98%B5%E5%BD%A2%E5%BC%8F"><span class="nav-number">6.3.2.</span> <span class="nav-text">DFT 的引入和矩阵形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dft-%E7%9A%84%E6%80%A7%E8%B4%A8"><span class="nav-number">6.3.3.</span> <span class="nav-text">DFT 的性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fft-%E7%AE%97%E6%B3%95"><span class="nav-number">6.3.4.</span> <span class="nav-text">FFT 算法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#laplace-%E5%8F%98%E6%8D%A2%E4%B8%8E-z-%E5%8F%98%E6%8D%A2"><span class="nav-number">7.</span> <span class="nav-text">Laplace 变换与 Z 变换</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#z-%E5%8F%98%E6%8D%A2%E6%80%A7%E8%B4%A8%E7%AE%80%E4%BB%8B"><span class="nav-number">7.1.</span> <span class="nav-text">Z 变换性质简介</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E6%BB%A4%E6%B3%A2%E5%99%A8"><span class="nav-number">8.</span> <span class="nav-text">数字滤波器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E6%BB%A4%E6%B3%A2%E5%99%A8%E7%9A%84%E5%B7%AE%E5%88%86%E6%96%B9%E7%A8%8B"><span class="nav-number">8.1.</span> <span class="nav-text">数字滤波器的差分方程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E6%BB%A4%E6%B3%A2%E5%99%A8%E7%9A%84%E6%B5%81%E5%9B%BE"><span class="nav-number">8.2.</span> <span class="nav-text">数字滤波器的流图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E6%BB%A4%E6%B3%A2%E5%99%A8%E7%9A%84%E9%A2%91%E7%8E%87%E5%93%8D%E5%BA%94"><span class="nav-number">8.3.</span> <span class="nav-text">数字滤波器的频率响应</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%A8%A1%E8%BD%AC%E6%8D%A2"><span class="nav-number">9.</span> <span class="nav-text">数模转换</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%97%E6%B7%B7%E5%8F%A0%E6%BB%A4%E6%B3%A2%E5%99%A8"><span class="nav-number">9.1.</span> <span class="nav-text">抗混叠滤波器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%87%E9%87%87%E6%A0%B7%E4%B8%8E%E4%BA%8C%E6%AC%A1%E9%87%87%E6%A0%B7"><span class="nav-number">9.2.</span> <span class="nav-text">过采样与二次采样</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -369,14 +370,14 @@ $(function () {
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>34k</span>
+      <span>37k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>31 分钟</span>
+      <span>33 分钟</span>
     </span>
 </div>
 
@@ -1382,58 +1383,93 @@ X(N + k) = X^*(N - k)
 \end{aligned}
 \]</span></p>
 <p>也就是说，将原序列按照奇偶拆为两个序列，分别作 DFT 后再合并即得到原序列的 DFT 。按此分治算法即可得到 <span class="math inline">\(O(n\log n)\)</span> 的 FFT 算法。</p>
-<p><code>TODO: 似乎还有一些和采样相关的东西之后看</code></p>
-<h1 id="傅里叶分析的简单总结">傅里叶分析的简单总结</h1>
-<p><code>TODO</code></p>
-<h1 id="系统概念基础">系统概念基础</h1>
-<p>在这门课程内，我们将下述概念称为<strong>系统（ System ）</strong>。对给定的激励给出对应的响应的，具有特定功能的整体称为系统。</p>
-<p>本课程主要探讨离散时间的、线性的、时不变的、因果系统。即这类系统仅处理离散时间激励，满足线性，且无论何时接收到相同的激励都会给出相同的响应（时不变性），响应和当前激励之后的激励无关（因果性还可以表述为响应仅和当前激励及先前的激励有关，现实的系统都是因果的）。另外，我们可能还需要附加稳定性要求，即对于有界激励会给出有界响应。</p>
-<h2 id="系统流图">系统流图</h2>
-<p>我们可以使用流图来描述一个系统，流图中常用的单元包括以下。</p>
-<p>首先是延时单元，含义为将自变量向过去推迟一个单位。</p>
-<pre class="mermaid">
-graph LR
-S([Source]) --&gt;|&quot;$x(n)$&quot;| U[&quot;$Z^{-1}$&quot;]
-U --&gt;|&quot;$x(n - 1)$&quot;| T([Terminal])
-
-SR([Source]) --&gt;|&quot;$x(n)$&quot;| UR[&quot;$D$&quot;]
-UR --&gt;|&quot;$x(n - 1)$&quot;| TR([Terminal])
-</pre>
-<p>这两个符号都是允许的。</p>
-<p>其次是求和单元，含义为多个量求和。</p>
-<pre class="mermaid">
-graph LR
-SL([Source 1]) --&gt;|&quot;$x_1(n)$&quot;| U((&quot;$+$&quot;))
-SR([Source 2]) --&gt;|&quot;$x_2(n)$&quot;| U
-U --&gt;|&quot;$x_1(n) + x_2(n)$&quot;| T([Terminal])
-</pre>
-<p>中间的加号换为 <span class="math inline">\(\Sigma\)</span> 也是允许的。</p>
-<p>最后是系数单元，含义为乘以常数。</p>
-<pre class="mermaid">
-graph LR
-S([Source]) --&gt;|&quot;$x(n)$&quot;| U{&quot;$a_0$&quot;}
-U --&gt;|&quot;$a_0x(n)$&quot;| T([Terminal])
-
-SR([Source]) --&gt;|&quot;$a_0$&quot;| TR([Terminal])
-</pre>
-<p>这两种表达都是可以的。</p>
-<hr />
-<p>比如说激励为 <span class="math inline">\(x\)</span> ，响应为 <span class="math inline">\(y\)</span> 的系统如果满足：</p>
+<h1 id="laplace-变换与-z-变换">Laplace 变换与 Z 变换</h1>
+<p>首先给出两个感性认识， Laplace 变换是拓展的 Fourier 变换， Z 变换是拓展的离散时间 Fourier 变换。</p>
+<p>Fourier 变换显然要求连续信号平方可积，但是对于平方积分发散的信号，其进行 FT 后是不收敛的。最简单的让信号 <span class="math inline">\(f\)</span> 平方积分收敛的方式是乘以一个指数衰减 <span class="math inline">\(e^{-\sigma t}(\sigma \in \mathbb R)\)</span> 。感性理解就是，大部分信号总是可以用指数信号迫敛的。</p>
+<p>此时我们对迫敛后的信号进行 Fourier 变换：</p>
 <p><span class="math display">\[
-y(n) = \frac{1}{b_0}\left[a_0x(n) + a_1x(n - 1) - b_1y(n - 1)\right]
+\mathcal{F}_{t, \omega}[f(t)e^{-\sigma t}] = \int_{-\infty}^{+\infty} f(t)e^{-\sigma t}e^{-\j\omega t} \d t = \int_{-\infty}^{+\infty} f(t)e^{-(\sigma + \j\omega) t} \d t
 \]</span></p>
-<p>其流图就可以为：</p>
-<pre class="mermaid">
-graph LR
-S([&quot;$x(n)$&quot;]) --&gt; Input-split[&quot; &quot;]
-Input-split ----&gt;|&quot;$a_0$&quot;| Sum((&quot;$\Sigma$&quot;))
-Input-split --&gt; Input-shift[&quot;$Z^{-1}$&quot;]
-Input-shift --&gt;|&quot;$a_1$&quot;| Sum
-Output-split --&gt; Output-shift[&quot;$Z^{-1}$&quot;]
-Sum ----&gt;|&quot;$1 &#x2F; b_0$&quot;| Output-split[&quot; &quot;]
-Output-shift --&gt;|&quot;$-b_1$&quot;| Sum
-Output-split --&gt; T([&quot;$y(n)$&quot;])
-</pre>
+<p>此时考虑到 <span class="math inline">\(\sigma\)</span> 的不确定性和 <span class="math inline">\(\omega\)</span> 的任意性，我们取 <span class="math inline">\(s := \sigma + \j\omega \in \mathbb C\)</span> ，定义新的变换：</p>
+<p><span class="math display">\[
+\mathcal{L}[f](s) := \int_{-\infty}^{+\infty} f(t)e^{-st} \d t
+\]</span></p>
+<p>这就是 Laplace 变换，其为拓展后的 Fourier 变换。 Laplace 变换中 <span class="math inline">\(s\)</span> 可以取全复数集，而如果沿用 <span class="math inline">\(\omega\)</span> 是角频率的物理意义， Laplace 变换本质上引入了复频率空间。而如果一个信号 Laplace 变换后的复频率空间的虚轴上全收敛，就说明其 Fourier 变换收敛，此时其频域就是负频率空间虚轴截面。</p>
+<hr />
+<p>而同样的， DTFT 要求序列平方求和收敛。如果不收敛，我们同样模仿 Laplace 变换的引入，将序列乘以一个指数衰减 <span class="math inline">\(a^{-n}(a &gt; 0)\)</span> ，对此时的序列进行 DTFT ：</p>
+<p><span class="math display">\[
+{\rm DTFT}_{n, \omega}[x(n)a^{-n}] = \sum_{n = -\infty}^{+\infty} x(n)a^{-n}e^{-\j\omega n} = \sum_{n = -\infty}^{+\infty} x(n)(ae^{\j\omega})^{-n}
+\]</span></p>
+<p>同样发现 <span class="math inline">\(z = ae^{\j\omega}\)</span> 取遍全复平面，则不妨定义新变换：</p>
+<p><span class="math display">\[
+\mathcal{Z}[x](z) := \sum_{n = -\infty}^{+\infty} x(n)z^{-n}
+\]</span></p>
+<p>此时类似的， Z 变换将变换结果拓展到了整个复平面上。但是和 Laplace 变换后原先 FT 的残余是虚轴不同， Z 变换下 DTFT 的残余是单位圆（即 <span class="math inline">\(a = 1\)</span>）。也就是说，如果 Z 变换下，单位圆上处处收敛，就说明原先信号 DTFT 收敛，此时信号的 DTFT 后频域的一个周期就是单位圆截面。</p>
+<h2 id="z-变换性质简介">Z 变换性质简介</h2>
+<h1 id="数字滤波器">数字滤波器</h1>
+<p>滤波器我们已经讲解过很多次，但是在理解了离散信号处理的基础上，我们需要说明一下<strong>数字滤波器</strong>和<strong>模拟滤波器</strong>的差别。不过我们首先建立这样的认同，即滤波器可以使用其单位冲激响应唯一代表。</p>
+<p>我们在采样部分一直采用的是模拟滤波器的概念，其工作在连续的时域上，具有连续的单位冲激响应，其接受的激励也是连续的模拟信号。从频域上观察其单位冲激响应，显然其单位冲激响应的频域并非周期（这个和非周期信号的频域连续类似，根据时域频域的对偶，时域上连续的单位冲激响应在频域上就不周期）。比如说理想（模拟）低通滤波器在频域上就是一个低频区域的矩形窗，其余部分频域均为零。</p>
+<p>接下来我们需要引入新的概念，即数字滤波器。在具体讲解之前，我们先根据我们对模拟滤波器的了解给出一些感性理解。</p>
+<ul>
+<li><p>数字滤波器是工作在离散时域上的，接受离散激励，具有离散的单位冲激响应</p></li>
+<li><p>频域上，其单位冲激响应是周期的，且周期是该滤波器单位冲激响应的采样频率</p></li>
+</ul>
+<h2 id="数字滤波器的差分方程">数字滤波器的差分方程</h2>
+<p>约定这样的记号， <span class="math inline">\(x(n)\)</span> 表示数字滤波器接收到的激励， <span class="math inline">\(y(n)\)</span> 表示数字滤波器作出的响应。</p>
+<p>首先我们说明，我们要求滤波器是线性时不变因果系统。线性系统定义先前已经阐述，时不变的含义是无论何时系统接收到相同的激励，其永远给出相同的响应。因果系统则要求系统响应仅依赖于现在及先前的激励，而不依赖于未来未知的激励。所有实际系统都是因果系统。</p>
+<p>有时我们要求系统稳定性，即对于任何有界激励都给出有界响应。</p>
+<p>基于此，我们考虑数字滤波器。根据其线性时不变及因果性，我们给出数字滤波器需要满足的一般规律，这一般称为滤波器的<strong>差分方程</strong>：</p>
+<p><span class="math display">\[
+\sum_{k = 0}^N b_ky(n - k) = \sum_{r = 0}^M a_rx(n - r)
+\]</span></p>
+<p>这里 <span class="math inline">\(N\)</span> 表示滤波器需要的过去输出的个数，一般也称为滤波器的<strong>阶数</strong>。</p>
+<p>我们考虑该滤波器的单位冲激响应。不过注意，此时单位冲激函数也需要离散化，其定义为：</p>
+<p><span class="math display">\[
+\delta(n) = \begin{cases}
+1 &amp; n = 0 \\
+0 &amp; n \neq 0
+\end{cases}
+\]</span></p>
+<p>如果 <span class="math inline">\(N = 1\)</span> ，我们可以注意到在足够大的 <span class="math inline">\(n\)</span> 下， <span class="math inline">\(x(n - r) = \delta(n - r)\)</span> 总是会全部变为零，此时响应为零。也就是说在有限长时间内，滤波器响应总会衰变为零，此时的滤波器称为<strong>有限脉冲响应滤波器</strong>，简称 <strong>FIR 滤波器</strong>。</p>
+<p>对应的，如果 <span class="math inline">\(N &gt; 1\)</span> ，由于每一个响应都依赖于先前的非零响应，其响应始终不消失，该滤波器则为<strong>无限脉冲响应滤波器</strong>，简称 <strong>IIR 滤波器</strong>。</p>
+<h2 id="数字滤波器的流图">数字滤波器的流图</h2>
+<p>流图是系统的一种表示方式，没有很深刻的理论需要讲解，这里不赘述。该课程基本仅要求掌握根据差分方程绘制滤波器的 I 型直接实现和 II 型直接实现，根据 PPT 即可很快掌握。</p>
+<h2 id="数字滤波器的频率响应">数字滤波器的频率响应</h2>
+<p>假设数字滤波器具有单位冲激响应 <span class="math inline">\(h(n)\)</span> ，我们先前证明过：</p>
+<p><span class="math display">\[
+y(n) = (x * h)(n) = \sum_{k = -\infty}^{+\infty} h(k)x(n - k)
+\]</span></p>
+<p>考虑对两边同时 DTFT ，如果将 <span class="math inline">\(x, y, h\)</span> 的 DTFT 分别记作 <span class="math inline">\(X, Y, H\)</span> ，则显然有 <span class="math inline">\(Y = XH\)</span> 。定义：</p>
+<p><span class="math display">\[
+H(\omega) = \frac{Y(\omega)}{X(\omega)}
+\]</span></p>
+<p>为数字滤波器的<strong>频率响应</strong>，频率响应是单位冲激响应的 DTFT 。根据 DTFT 可逆，我们实际上也可以说明频率响应唯一代表了一个数字滤波器。然而差分方程的系数理论上也唯一代表了一个数字滤波器。实际上，我们可以使用差分方程系数推导频率响应，即这两者实际等价。</p>
+<p>对差分方程两边 DTFT ：</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; \sum_{k = 0}^N b_ky(n - k) = \sum_{r = 0}^M a_rx(n - r) \\
+\iff&amp; {\rm DTFT}_{n, \omega}\left[\sum_{k = 0}^N b_ky(n - k)\right] = {\rm DTFT}_{n, \omega}\left[\sum_{r = 0}^M a_rx(n - r)\right] \\
+\iff&amp; \sum_{k = 0}^N b_k{\rm DTFT}_{n, \omega}[y(n - k)] = \sum_{r = 0}^M a_r{\rm DTFT}_{n, \omega}[x(n - r)] \\
+\iff&amp; Y(\omega)\sum_{k = 0}^N b_ke^{-\j k\omega} = X(\omega)\sum_{r = 0}^M a_re^{-\j r\omega} \\
+\iff&amp; H(\omega) = \frac{Y(\omega)}{X(\omega)} = \frac{\sum_{r = 0}^M a_re^{-\j r\omega}}{\sum_{k = 0}^N b_ke^{-\j k\omega}}
+\end{aligned}
+\]</span></p>
+<h1 id="数模转换">数模转换</h1>
+<p>之前讲解的采样与信号复原实际上就已经简单引入了数模转换这个话题。但是当时我们并没有讲解如何处理数字信号（时域离散信号），所以完全采用了模拟信号的视角。现在我们希望能够在理解了数字信号处理的基础上对数模转换进行更深刻的理解。</p>
+<p>这里需要提一下，模拟滤波器一般而言成本高，截止频率低的模拟低通滤波器成本则相当高。这一因素决定了实际信号处理往往会<strong>使用高质量的数字信号处理来弥补低成本的模拟抗混叠滤波器</strong>。</p>
+<h2 id="抗混叠滤波器">抗混叠滤波器</h2>
+<p>我们先前提到过，如果取样频率达不到信号的高频截止频率的两倍则会发生频谱混叠导致无法通过理想低通滤波还原信号。然而现实中的信号的高频截止频率可以很高也可以很低，无法通过统一的采样频率进行采样。面对这种情况，有一种解决方式是引入<strong>抗混叠滤波器</strong>，其作用是滤去信号中过高频率的部分，这样就可以保证后续取样一定不会发生混叠。</p>
+<p>抗混叠滤波器是低通滤波器，但是不一定是理想的矩形窗低通滤波器，其频谱表现一般为从低频到高频逐步下降，而非理想矩形窗滤波器的突变。这样做的原因是尽可能保留原信号的所有信息：</p>
+<p><img src="/uploads/note-of-dsp/3.png" /></p>
+<p>上述图中灰色实线是某信号的频谱，红色虚线是抗混叠滤波器的频谱。</p>
+<p>抗混叠滤波器需要和后续的采样器配合使用以保证频谱不混叠。如果后续使用的采样频率过低，则要求抗混叠滤波器的频谱在较低的频段就需要降低到零，这对滤波器设计提出了较高要求，实现成本高。所以即使有抗混叠滤波器，采样频率也不能很低。</p>
+<h2 id="过采样与二次采样">过采样与二次采样</h2>
+<p>过采样与二次采样就是一种使用高质量数字信号处理弥补低成本模拟抗混叠滤波器的方法。我们考虑这样的实际场景，即需要对某模拟信号以 <span class="math inline">\(2\omega\)</span> 频率进行采样，该信号的重要信息分布于频谱的 <span class="math inline">\([0, \omega)\)</span> 频段。</p>
+<p>按照先抗混叠再直接 <span class="math inline">\(2\omega\)</span> 采样的思路，模拟抗混叠滤波器的截止频率必须至多为 <span class="math inline">\(\omega\)</span> ，否则会发生频谱混叠，但是这会导致成本过高。</p>
+<p>有一种这样的思路，也就是使用很高的采样频率，降低对模拟抗混叠滤波器的截止频率要求，最后再二次取样，将实际的采样频率降回需求值。</p>
+<p>比如说我们可以实际使用 <span class="math inline">\(8\omega\)</span> 的采样频率，此时模拟抗混叠滤波器的最高截止频率就放松到了 <span class="math inline">\(4\omega\)</span> 。经过模拟抗混叠滤波器和 <span class="math inline">\(8\omega\)</span> 采样后，信号的频谱的 <span class="math inline">\([\omega + 8k\omega, 7\omega + 8k\omega](k \in \mathbb Z)\)</span> 频段实际上混杂着不需要的高频信息，需要过滤。但是注意，此时信号已经是数字信号，所以可以使用数字滤波器处理。</p>
+<p>此时使用截止频率为 <span class="math inline">\(\omega\)</span> 的数字滤波器过滤出原信号在低频段的重要信息，再使用 <span class="math inline">\(2\omega\)</span> 频率取样。这样，我们就既做到了抗混叠，也做到了过滤不必要的高频信息。</p>
+<p>这里使用远高于二倍高频截止频率的采样频率进行采样的方式称为<strong>过采样</strong>，而二次滤波之后进行的第二次采样就是<strong>二次采样</strong>。这样的方法可以放松对模拟滤波器的要求以降低成本。</p>
 
     </div>
 
@@ -1487,13 +1523,13 @@ Output-split --&gt; T([&quot;$y(n)$&quot;])
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">152k</span>
+    <span title="站点总字数">155k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:18</span>
+    <span title="站点阅读时长">2:21</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
