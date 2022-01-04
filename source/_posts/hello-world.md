@@ -37,7 +37,7 @@ console.log("Hello world!");
 
 然后玩一下数学公式。
 
-我们可以把机器学习抽象描述为以下过程，这里$X$表示输入集合，$Y$表示输出集合，$L$表示损失函数，$\boldsymbol{w}$表示模型参数，$f_\boldsymbol{w}$表示在某一系列参数之下的模型函数。
+我们可以把机器学习抽象描述为以下过程，这里 $X$ 表示输入集合， $Y$ 表示输出集合， $L$ 表示损失函数， $\boldsymbol{w}$ 表示模型参数， $f_\boldsymbol{w}$ 表示在某一系列参数之下的模型函数。
 
 $$
 \boldsymbol{w}^*=\mathop{\arg\min}_{\boldsymbol{w} \in \Omega}\sum_{x_i \in X, y_i \in Y} L(f_\boldsymbol{w}(x_i), y_i)
