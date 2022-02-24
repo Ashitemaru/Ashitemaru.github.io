@@ -29,7 +29,7 @@
 <p>Java 我写了一整个类，光数据转成 UI 也写了好几行长代码，这还没有算 <code>.xml</code> 文件。</p>
 ]]></content>
       <categories>
-        <category>计算机科学</category>
+        <category>开发杂谈</category>
       </categories>
   </entry>
   <entry>
@@ -3420,6 +3420,9 @@
 </div>
 <p>《甜甜圈洞》是八爷相当著名的作品，用欢快的语调歌唱感情的绝望。即使 V 家发展了这么多年，八爷这首歌论硬实力依然是相当上乘的，不愧是顶尖音乐人。</p>
 ]]></content>
+      <categories>
+        <category>闲聊</category>
+      </categories>
   </entry>
   <entry>
     <title>小学期深夜的废话</title>
@@ -4313,7 +4316,7 @@ B = (-1)^s M \cdot 2^E
 <p>这个时候的转换需要将虚页码先去掉末位进行查表，最后如果命中，则需要根据虚页码末位选取最终的映射项。</p>
 ]]></content>
       <categories>
-        <category>计算机科学</category>
+        <category>课程笔记</category>
       </categories>
   </entry>
   <entry>
@@ -5503,7 +5506,7 @@ H(z) = \frac{Y(z)}{X(z)} = \frac{\sum_{r = 0}^M a_rz^{-r}}{\sum_{k = 0}^N b_kz^{
 <p>这里使用远高于二倍高频截止频率的采样频率进行采样的方式称为<strong>过采样</strong>，而二次滤波之后进行的第二次采样就是<strong>二次采样</strong>。这样的方法可以放松对模拟滤波器的要求以降低成本。</p>
 ]]></content>
       <categories>
-        <category>计算机科学</category>
+        <category>课程笔记</category>
       </categories>
   </entry>
   <entry>
@@ -5634,7 +5637,7 @@ A = \lv x \\ y \\ 1 \rv
 <p>正交投影基于模型视图变换，此时相机朝向 <span class="math inline">\(-z\)</span> ，所以投影之后投影图像应当在 <span class="math inline">\(xy\)</span> 平面上。随后，为了正规化，需要将 <span class="math inline">\(xy\)</span> 平面上的图像平移缩放到正方形 <span class="math inline">\([-1, 1]\times[-1, 1]\)</span> 内。</p>
 ]]></content>
       <categories>
-        <category>计算机科学</category>
+        <category>科研杂谈</category>
       </categories>
   </entry>
   <entry>
@@ -6089,7 +6092,7 @@ E_d(\boldsymbol w) = \frac{1}{2}\sum_k(t_k - o_k)^2 + \|\boldsymbol w\|
 <p><code>TODO</code></p>
 ]]></content>
       <categories>
-        <category>计算机科学</category>
+        <category>课程笔记</category>
       </categories>
   </entry>
   <entry>
@@ -6780,7 +6783,7 @@ v = H\log_2\left(1 + \frac{S}{N}\right)({\rm bps})
 </div>
 ]]></content>
       <categories>
-        <category>计算机科学</category>
+        <category>课程笔记</category>
       </categories>
   </entry>
   <entry>
@@ -6959,7 +6962,22 @@ I_{i, S} = \mathcal{A}_O(\{\mathcal{D}_j\}) := 1 - \prod_j (1 - \mathcal{D}_{i, 
 <h3 id="概率分布对视图空间坐标的梯度">概率分布对视图空间坐标的梯度</h3>
 ]]></content>
       <categories>
-        <category>计算机科学</category>
+        <category>科研杂谈</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Pytorch3D 框架摸索实录</title>
+    <url>/2022/02/13/pytorch3d-exp/</url>
+    <content><![CDATA[<p>可微渲染还是会和机器学习或多或少有一些关联的，但是由于其涉及到三维数据，所以不能直接使用 Pytorch 框架而是使用可以处理三维数据的 Pytorch3D 框架。</p>
+<p>这个框架用的人比较少，网上可以参考的资料也鲜有中文的。这篇文章基于 Pytorch3D 的官方 API 文档以及 <a href="https://www.youtube.com/watch?v=MOBAJb5nJRI">YouTube 的相关教程视频</a>，也算是记录自己摸索这个被称为有许多坑的框架的过程。</p>
+<span id="more"></span>
+<h2 id="cuda-的问题">CUDA 的问题</h2>
+<p>我的笔记本显卡是 RTX 3050 ，使用不了 CUDA 10 ，但是 Pytorch3D 官方给出的安装指引是基于 CUDA 10 的，所以我们要自己安装合适版本的 Pytorch 以及 Pytorch3D 。</p>
+<p>主要需要注意的就是要装 CUDA 11 ，然后 Pytorch 一定不能是 CPU only 的，最好是 <code>0.10.1+cu113</code> 这种明确显示支持 CUDA 的版本。最后就是，根据 StackOverflow 的一些回答，从 pip 或者 Anaconda 安装的 Pytorch3D 似乎是支持不了 GPU 的，要自己 clone 下来然后 build from source ，然后在 Windows 上安装的话一定要有 MSVC 。</p>
+<p>总之这个配环境是真的折磨，而且其实到现在我也没有敢说后面就一定不会在环境上出问题。</p>
+]]></content>
+      <categories>
+        <category>科研杂谈</category>
       </categories>
   </entry>
   <entry>
