@@ -393,14 +393,14 @@ $(function () {
 \]</span></p>
 <h2 id="课程简介">课程简介</h2>
 <p>本课程主要分为四个部分，即光栅化、曲线与曲面、光线追踪、动画仿真。</p>
-<p><strong>光栅化（ Rasterization ）</strong>指的是将三维图形实时显示在二维平面上。在图形学中， 30 FPS 就可以认为是实时的，低于这个帧率的则认为是离线渲染。</p>
-<p><strong>光线追踪（ Ray tracing ）</strong>指的是像每一个像素发射光，令光线不断反射。这样的技术能够让渲染更加真实，但是效率会更低。使用光线追踪是效果和效率的 Trade-off 。</p>
+<p><strong>光栅化（Rasterization）</strong>指的是将三维图形实时显示在二维平面上。在图形学中，30 FPS 就可以认为是实时的，低于这个帧率的则认为是离线渲染。</p>
+<p><strong>光线追踪（Ray tracing）</strong>指的是像每一个像素发射光，令光线不断反射。这样的技术能够让渲染更加真实，但是效率会更低。使用光线追踪是效果和效率的 Trade-off。</p>
 <h3 id="图形学与计算机视觉">图形学与计算机视觉</h3>
-<p>从二维图像和三维模型的角度出发，我们认为一切以三维模型为起点的都是<strong>计算机图形学（ Computer graphics ）</strong>的范畴，而所有从二维图像为起点的都是<strong>计算机视觉（ Computer vision ）</strong>。特别的，从三维模型出发获得二维图像的称为<strong>渲染（ Rendering ）</strong>，从三维模型出发获得新的三维模型的可以是<strong>模拟（ Simulation ）</strong>。但是上述的分类也是粗糙而模糊的。</p>
+<p>从二维图像和三维模型的角度出发，我们认为一切以三维模型为起点的都是<strong>计算机图形学（Computer graphics）</strong>的范畴，而所有从二维图像为起点的都是<strong>计算机视觉（Computer vision）</strong>。特别的，从三维模型出发获得二维图像的称为<strong>渲染（Rendering）</strong>，从三维模型出发获得新的三维模型的可以是<strong>模拟（Simulation）</strong>。但是上述的分类也是粗糙而模糊的。</p>
 <h2 id="线性代数回顾">线性代数回顾</h2>
 <div class="note success"><p>这里我们默认大家线性代数都挺好的。</p>
 </div>
-<p>首先明确记号，向量 <span class="math inline">\(\b{a}\)</span> 的长度标记为 <span class="math inline">\(\|\b{a}\|\)</span> 。与向量 <span class="math inline">\(\b{a}\)</span> 同方向的单位向量标记为 <span class="math inline">\(\hat{\b{a}}\)</span> ，其满足：</p>
+<p>首先明确记号，向量 <span class="math inline">\(\b{a}\)</span> 的长度标记为 <span class="math inline">\(\|\b{a}\|\)</span>。与向量 <span class="math inline">\(\b{a}\)</span> 同方向的单位向量标记为 <span class="math inline">\(\hat{\b{a}}\)</span>，其满足：</p>
 <p><span class="math display">\[
 \hat{\b{a}} = \frac{\b{a}}{\|\b{a}\|}
 \]</span></p>
@@ -443,10 +443,10 @@ A = \lv x \\ y \\ 1 \rv
 <p><span class="math display">\[
 \lv x&#39; \\ y&#39; \\ 1 \rv = \lv a &amp; b &amp; \b{t}_x \\ c &amp; d &amp; \b{t}_y \\ 0 &amp; 0 &amp; 1 \rv \lv x \\ y \\ 1 \rv
 \]</span></p>
-<p>这些变换统称<strong>仿射变换（ Affine transformation ）</strong>，仿射变换即对某一个点先进行线性变换后再平移的一类变换（考虑到变换复合没有交换律，注意顺序不能变）。仿射变换的矩阵具有一定的结构，即左上角的子阵表示除去平移之外的变换对应的矩阵，右侧的一列则代表平移量。</p>
+<p>这些变换统称<strong>仿射变换（Affine transformation）</strong>，仿射变换即对某一个点先进行线性变换后再平移的一类变换（考虑到变换复合没有交换律，注意顺序不能变）。仿射变换的矩阵具有一定的结构，即左上角的子阵表示除去平移之外的变换对应的矩阵，右侧的一列则代表平移量。</p>
 <p>这种添加维度以表示平移的坐标系统为<strong>齐次坐标</strong>。</p>
 <h3 id="三维旋转">三维旋转</h3>
-<p>这里着重介绍 Rodrigue 旋转公式，考虑绕轴 <span class="math inline">\(\b{n}\)</span> 逆时针旋转 <span class="math inline">\(\alpha\)</span> ，这个变换的矩阵可以表示为：</p>
+<p>这里着重介绍 Rodrigue 旋转公式，考虑绕轴 <span class="math inline">\(\b{n}\)</span> 逆时针旋转 <span class="math inline">\(\alpha\)</span>，这个变换的矩阵可以表示为：</p>
 <p><span class="math display">\[
 \b{R}(\b{n}, \alpha) = \cos\alpha \b{I} + (1 - \cos\alpha) \b{n}\b{n}^T + \sin\alpha\lv
 0 &amp; -\b{n}_z &amp; \b{n}_y \\
@@ -459,19 +459,19 @@ A = \lv x \\ y \\ 1 \rv
 <p>我们的渲染过程一般分为三个部分，即模型变换、视图变换和投影，这一整个变换过程就是 MVP 变换。</p>
 <p>模型变换和视图变换一般可以认为是定义相机的位置的过程，定义相机需要三个量：</p>
 <ul>
-<li><p>位置矢量（ Position ） <span class="math inline">\(\b{e}\)</span></p></li>
-<li><p>相机朝向（ Gaze direction ） <span class="math inline">\(\hat{\b{g}}\)</span></p></li>
-<li><p>向上方向（ Up direction ） <span class="math inline">\(\hat{\b{t}}\)</span></p></li>
+<li><p>位置矢量（Position）<span class="math inline">\(\b{e}\)</span></p></li>
+<li><p>相机朝向（Gaze direction）<span class="math inline">\(\hat{\b{g}}\)</span></p></li>
+<li><p>向上方向（Up direction）<span class="math inline">\(\hat{\b{t}}\)</span></p></li>
 </ul>
 <p>位置矢量定义了相机的位置，之后需要使用相机朝向定义观测方向，但是除此之外，我们需要使用向上方向定义相机最后的旋转形态（同一位置且朝向相同的相机依然有一个旋转自由度）。</p>
 <p>另外，我们考虑到如果相机和物体进行了完全一致的变换，那么最后渲染结果不应当变化。所以说我们默认模型变换和视图变换最后的结果为：</p>
 <ul>
 <li><p>相机在原点</p></li>
-<li><p>相机朝向 <span class="math inline">\(-z\)</span> ，向上方向为 <span class="math inline">\(y\)</span></p></li>
+<li><p>相机朝向 <span class="math inline">\(-z\)</span>，向上方向为 <span class="math inline">\(y\)</span></p></li>
 </ul>
 <p>为了保证渲染结果不变，该变换需要对物体和相机同时作变换。</p>
 <hr />
-<p>现在推导模型视图变换的矩阵，考虑原先的相机形态为 <span class="math inline">\((\b{e}, \hat{\b{g}}, \hat{\b{t}})\)</span> 。</p>
+<p>现在推导模型视图变换的矩阵，考虑原先的相机形态为 <span class="math inline">\((\b{e}, \hat{\b{g}}, \hat{\b{t}})\)</span>。</p>
 <p>模型视图变换过程可以这样考虑，即首先将相机平移到原点，随后旋转调整相机。平移的矩阵显然是：</p>
 <p><span class="math display">\[
 \b{T}_v = \lv
@@ -505,8 +505,8 @@ A = \lv x \\ y \\ 1 \rv
 \]</span></p>
 <p>从实际意义上而言，模型视图变换的作用是将世界坐标系转换为以相机为基准的相机坐标系。</p>
 <hr />
-<p>随后发生投影，投影可以分为<strong>正交投影（ Orthographic projection ）</strong>和<strong>透视投影（ Perspective projection ）</strong>，分别表示平行光投影和点光源投影。</p>
-<p>正交投影基于模型视图变换，此时相机朝向 <span class="math inline">\(-z\)</span> ，所以投影之后投影图像应当在 <span class="math inline">\(xy\)</span> 平面上。随后，为了正规化，需要将 <span class="math inline">\(xy\)</span> 平面上的图像平移缩放到正方形 <span class="math inline">\([-1, 1]\times[-1, 1]\)</span> 内。</p>
+<p>随后发生投影，投影可以分为<strong>正交投影（Orthographic projection）</strong>和<strong>透视投影（Perspective projection）</strong>，分别表示平行光投影和点光源投影。</p>
+<p>正交投影基于模型视图变换，此时相机朝向 <span class="math inline">\(-z\)</span>，所以投影之后投影图像应当在 <span class="math inline">\(xy\)</span> 平面上。随后，为了正规化，需要将 <span class="math inline">\(xy\)</span> 平面上的图像平移缩放到正方形 <span class="math inline">\([-1, 1]\times[-1, 1]\)</span> 内。</p>
 
     </div>
 
@@ -525,8 +525,8 @@ A = \lv x \\ y \\ 1 \rv
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/11/01/ja-0/" rel="next" title="日语语法手册（ 2021 年）">
-                  日语语法手册（ 2021 年） <i class="fa fa-chevron-right"></i>
+                <a href="/2021/11/01/ja-0/" rel="next" title="日语语法手册（2021 年）">
+                  日语语法手册（2021 年） <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>

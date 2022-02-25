@@ -399,7 +399,7 @@ $(function () {
 \]</span></p>
 <span id="more"></span>
 <h1 id="信号处理基本知识">信号处理基本知识</h1>
-<p>信号是一种载有信息的物理量，所以可以说信号是信息的表现形式，信息是信号蕴含的内容。我们探测信号的工具称为<strong>传感器（ Sensor ）</strong>，传感器是将一种物理变化转化为另一种物理变化的装置。比如说为了探测声波，我们可以使用传感器将声波转化为电信号。</p>
+<p>信号是一种载有信息的物理量，所以可以说信号是信息的表现形式，信息是信号蕴含的内容。我们探测信号的工具称为<strong>传感器（Sensor）</strong>，传感器是将一种物理变化转化为另一种物理变化的装置。比如说为了探测声波，我们可以使用传感器将声波转化为电信号。</p>
 <p>通过传感器我们可以将某些难以处理的信号转化为我们易于处理的信号。对信号的处理大致可以分为三类，即<strong>降噪</strong>、<strong>特征抽取</strong>以及<strong>编码解码</strong>。</p>
 <p>信号常常使用函数或者序列进行描述，而函数具有图像，所以有的时候信号也会使用具体的图像进行描述。</p>
 <hr />
@@ -412,13 +412,13 @@ $(function () {
 &amp; f(t) = K \cos(\omega t + \theta) \\
 \end{aligned}
 \]</span></p>
-<p>这里 <span class="math inline">\(K\)</span> 表示<strong>振幅</strong>， <span class="math inline">\(\omega\)</span> 表示<strong>角频率</strong>， <span class="math inline">\(\theta\)</span> 表示<strong>初相位</strong>。</p>
+<p>这里 <span class="math inline">\(K\)</span> 表示<strong>振幅</strong>，<span class="math inline">\(\omega\)</span> 表示<strong>角频率</strong>，<span class="math inline">\(\theta\)</span> 表示<strong>初相位</strong>。</p>
 <hr />
-<p>除去正弦余弦信号， <strong>Sa 信号</strong>也是常见的一种信号形式，其数学表达式为：</p>
+<p>除去正弦余弦信号，<strong>Sa 信号</strong>也是常见的一种信号形式，其数学表达式为：</p>
 <p><span class="math display">\[
 {\rm Sa}(t) = \frac{\sin t}{t}
 \]</span></p>
-<p>这个信号是一个偶函数，其零点构成的集合为 <span class="math inline">\(\{ k\pi \mid k \in \mathbb Z, k \neq 0 \}\)</span> 。这个信号的积分性质为：</p>
+<p>这个信号是一个偶函数，其零点构成的集合为 <span class="math inline">\(\{ k\pi \mid k \in \mathbb Z, k \neq 0 \}\)</span>。这个信号的积分性质为：</p>
 <p><span class="math display">\[
 \int_{-\infty}^{+\infty} {\rm Sa}(t) \d t = \pi
 \]</span></p>
@@ -443,7 +443,7 @@ F(t) = \int_{0}^{+\infty} \frac{\sin x}{x} e^{-tx} \d x
 <p><span class="math display">\[
 \frac{\d F}{\d t} = -\frac{1}{1 + t^2} \Rightarrow F(t) = -\arctan t + C
 \]</span></p>
-<p>不难得知 <span class="math inline">\(F(+\infty) = 0\)</span> ，这就说明 <span class="math inline">\(C = \pi / 2\)</span> ，从而 Dirichlet 积分的结果为：</p>
+<p>不难得知 <span class="math inline">\(F(+\infty) = 0\)</span>，这就说明 <span class="math inline">\(C = \pi / 2\)</span>，从而 Dirichlet 积分的结果为：</p>
 <p><span class="math display">\[
 \int_{-\infty}^{+\infty} {\rm Sa}(t) \d t = 2F(0) = \pi
 \]</span></p>
@@ -454,7 +454,7 @@ f(t) = K e^{\alpha t}
 \]</span></p>
 <p>指数信号的特征就是，其积分或微分后依然是指数信号。</p>
 <h2 id="复信号分析">复信号分析</h2>
-<p>在分析一般的信号的时候，我们可以常常将其看作某一个复信号的实部或者虚部。比如说考虑复指数信号 <span class="math inline">\(f(t) = K e^{st}\)</span> ，这里 <span class="math inline">\(s \in \mathbb C\)</span> 。显然有：</p>
+<p>在分析一般的信号的时候，我们可以常常将其看作某一个复信号的实部或者虚部。比如说考虑复指数信号 <span class="math inline">\(f(t) = K e^{st}\)</span>，这里 <span class="math inline">\(s \in \mathbb C\)</span>。显然有：</p>
 <p><span class="math display">\[
 f(t) = K e^{[\Re(s) + \j\Im(s)]t} = K e^{(\Re s)t} (\cos(t\Im(s)) + \j\sin(t\Im(s)))
 \]</span></p>
@@ -476,7 +476,7 @@ k_i &amp; i = j
 <p>称一个正交函数集是完备的，如果不存在一个这个函数集之外的函数 <span class="math inline">\(\psi\)</span> 满足 <span class="math inline">\(0 &lt; \psi \cdot \psi &lt; +\infty\)</span> 且 <span class="math inline">\(\psi\)</span> 和该函数集之中所有函数正交。实际上完备的正交函数集就说明了这个函数集不能容纳更多的成员。</p>
 <h1 id="信号的运算">信号的运算</h1>
 <h2 id="常规运算">常规运算</h2>
-<p>对于信号 <span class="math inline">\(f_1, f_2\)</span> ，我们可以仿照函数四则运算的规定来规定其四则运算方式：</p>
+<p>对于信号 <span class="math inline">\(f_1, f_2\)</span>，我们可以仿照函数四则运算的规定来规定其四则运算方式：</p>
 <p><span class="math display">\[
 \begin{aligned}
 &amp; (f_1 + f_2)(t) = f_1(t) + f_2(t) \\
@@ -509,7 +509,7 @@ f &amp;\mapsto f&#39; \\
 f(t) &amp;\to f(at)\\
 \end{aligned}
 \]</span></p>
-<p>参数 <span class="math inline">\(a\)</span> 控制了压扩的形式。如果 <span class="math inline">\(a &gt; 0\)</span> ，则压扩的时候不需要反褶。如果 <span class="math inline">\(a &lt; 0\)</span> ，则压扩的时候需要反褶。如果 <span class="math inline">\(|a| &gt; 1\)</span> ，则变换是压缩。如果 <span class="math inline">\(|a| &lt; 1\)</span> ，则变换是扩张。</p>
+<p>参数 <span class="math inline">\(a\)</span> 控制了压扩的形式。如果 <span class="math inline">\(a &gt; 0\)</span>，则压扩的时候不需要反褶。如果 <span class="math inline">\(a &lt; 0\)</span>，则压扩的时候需要反褶。如果 <span class="math inline">\(|a| &gt; 1\)</span>，则变换是压缩。如果 <span class="math inline">\(|a| &lt; 1\)</span>，则变换是扩张。</p>
 <h2 id="积分微分运算与能量">积分微分运算与能量</h2>
 <p>对于符合一定条件的信号，我们可以进行微分积分运算，记号为：</p>
 <p><span class="math display">\[
@@ -518,7 +518,7 @@ f(t) &amp;\to f(at)\\
 &amp; \left(\int_{-\infty} f \d t\right)(t_0) = \int_{-\infty}^{t_0} f(t) \d t
 \end{aligned}
 \]</span></p>
-<p>基于积分微分运算，我们可以给定信号能量和信号功率的定义。对于连续空间（即定义在全实数上）的信号 <span class="math inline">\(f(t)\)</span> ，能量定义为：</p>
+<p>基于积分微分运算，我们可以给定信号能量和信号功率的定义。对于连续空间（即定义在全实数上）的信号 <span class="math inline">\(f(t)\)</span>，能量定义为：</p>
 <p><span class="math display">\[
 E(f) = \int_{-\infty}^{+\infty} \|f(t)\|^2 \d t
 \]</span></p>
@@ -526,7 +526,7 @@ E(f) = \int_{-\infty}^{+\infty} \|f(t)\|^2 \d t
 <p><span class="math display">\[
 P(f) = \lim_{T\to+\infty}\frac{1}{T}\int_{-T / 2}^{T / 2} \|f(t)\|^2 \d t
 \]</span></p>
-<p>对于离散空间定义的信号 <span class="math inline">\(f\)</span> ，表达类似：</p>
+<p>对于离散空间定义的信号 <span class="math inline">\(f\)</span>，表达类似：</p>
 <p><span class="math display">\[
 \begin{aligned}
 &amp; E(f) = \sum_{n = -\infty}^{+\infty} \|f(n)\|^2 \\
@@ -535,12 +535,12 @@ P(f) = \lim_{T\to+\infty}\frac{1}{T}\int_{-T / 2}^{T / 2} \|f(t)\|^2 \d t
 \]</span></p>
 <p>能量有限的信号称为能量有限信号，或在不引起混淆的时候简称<strong>能量信号</strong>。功率有限的信号称为功率有限信号，或在不引起混淆的时候简称<strong>功率信号</strong>。</p>
 <h2 id="卷积运算">卷积运算</h2>
-<p>对于两个连续时间信号 <span class="math inline">\(f, g\)</span> ，定义两者的卷积为：</p>
+<p>对于两个连续时间信号 <span class="math inline">\(f, g\)</span>，定义两者的卷积为：</p>
 <p><span class="math display">\[
 (f * g)(t) = \int_{-\infty}^{+\infty} f(t - \tau)g(\tau) \d\tau
 \]</span></p>
 <p>卷积的存在性取决于上述积分是否存在，并且要求积分结果是有限的。</p>
-<p>而对于离散的时间信号 <span class="math inline">\(f, g\)</span> ，卷积定义为：</p>
+<p>而对于离散的时间信号 <span class="math inline">\(f, g\)</span>，卷积定义为：</p>
 <p><span class="math display">\[
 (f * g)(n) = \sum_{m = -\infty}^{+\infty} f(n - m)g(m)
 \]</span></p>
@@ -578,7 +578,7 @@ R(f_1, f_2) = \mathcal{R}[R^*(f_2, f_1)] \\
 R(f_1, f_2) = f_1 * \mathcal{R}^*[f_2]
 \end{cases}
 \]</span></p>
-<p>这里 <span class="math inline">\(\mathcal{R}\)</span> 表示反褶变换，即 <span class="math inline">\(\mathcal{R}[f](t) = f(-t)\)</span> 。</p>
+<p>这里 <span class="math inline">\(\mathcal{R}\)</span> 表示反褶变换，即 <span class="math inline">\(\mathcal{R}[f](t) = f(-t)\)</span>。</p>
 <p>第一条定律说明了相关运算并不是交换的。</p>
 <h1 id="常用奇异信号">常用奇异信号</h1>
 <p>我们已经介绍过正弦余弦信号、指数信号等常用信号，另外还有一些形式较为特殊的信号称为奇异信号。这些信号的价值一般在于具有一些较为优越的运算特性。</p>
@@ -615,7 +615,7 @@ G_\tau(t) := \begin{cases}
 <p><span class="math display">\[
 G_\tau(t) = u\left(t + \frac{\tau}{2}\right) - u\left(t - \frac{\tau}{2}\right)
 \]</span></p>
-<p>单位矩形脉冲信号的一个重要作用是作<strong>窗函数</strong>以截取某信号的某一段信息。对于信号 <span class="math inline">\(f\)</span> ，将其与单位矩形脉冲信号作乘法得到 <span class="math inline">\(G_\tau f\)</span> 。该信号仅有 <span class="math inline">\([-\tau / 2, \tau / 2]\)</span> 上的信息被保留，其余均为零。也就是说单位矩形脉冲信号进行了信息截取。</p>
+<p>单位矩形脉冲信号的一个重要作用是作<strong>窗函数</strong>以截取某信号的某一段信息。对于信号 <span class="math inline">\(f\)</span>，将其与单位矩形脉冲信号作乘法得到 <span class="math inline">\(G_\tau f\)</span>。该信号仅有 <span class="math inline">\([-\tau / 2, \tau / 2]\)</span> 上的信息被保留，其余均为零。也就是说单位矩形脉冲信号进行了信息截取。</p>
 <hr />
 <p>单位阶跃信号另外一种衍生是<strong>符号函数信号</strong>：</p>
 <p><span class="math display">\[
@@ -629,7 +629,7 @@ G_\tau(t) = u\left(t + \frac{\tau}{2}\right) - u\left(t - \frac{\tau}{2}\right)
 {\rm sgn}(t) = 2u(t) - 1
 \]</span></p>
 <hr />
-<p>对单位阶跃信号求导即可得到<strong>单位冲激信号</strong> <span class="math inline">\(\delta\)</span> ，其定义为：</p>
+<p>对单位阶跃信号求导即可得到<strong>单位冲激信号</strong> <span class="math inline">\(\delta\)</span>，其定义为：</p>
 <p><span class="math display">\[
 \begin{aligned}
 &amp; \int_{-\infty}^{+\infty} \delta(t) \d t = 1 \\
@@ -652,7 +652,7 @@ G_\tau(t) = u\left(t + \frac{\tau}{2}\right) - u\left(t - \frac{\tau}{2}\right)
 <p><span class="math display">\[
 f * \delta_{1, t_0} = \mathcal{S}_{t_0}[f]
 \]</span></p>
-<p>这里 <span class="math inline">\(\mathcal{S}_{t_0}\)</span> 表示平移变换，即 <span class="math inline">\(\mathcal{S}_{t_0}[f](t) = f(t - t_0)\)</span> 。</p>
+<p>这里 <span class="math inline">\(\mathcal{S}_{t_0}\)</span> 表示平移变换，即 <span class="math inline">\(\mathcal{S}_{t_0}[f](t) = f(t - t_0)\)</span>。</p>
 <p>上述的平移会将 <span class="math inline">\(f\)</span> 原先的原点平移到冲激信号的冲激点处。</p>
 <p>证明则可以直接根据卷积的定义：</p>
 <p><span class="math display">\[
@@ -664,7 +664,7 @@ f * \delta_{1, t_0} = \mathcal{S}_{t_0}[f]
 \]</span></p>
 <h1 id="一般模拟信号分解">一般模拟信号分解</h1>
 <h2 id="基本分解">基本分解</h2>
-<p>对于信号 <span class="math inline">\(f\)</span> ，我们可以将其分解为直流分量和交流分量，我们规定交流分量的积分为零，即：</p>
+<p>对于信号 <span class="math inline">\(f\)</span>，我们可以将其分解为直流分量和交流分量，我们规定交流分量的积分为零，即：</p>
 <p><span class="math display">\[
 \begin{aligned}
 &amp; f_{\rm DC}(t) = \lim_{T\to+\infty}\frac{1}{T}\int_{-T / 2}^{T / 2}f(t)\d t \\
@@ -695,10 +695,10 @@ f(t) \approx f(t_0)[u(t - t_0) - u(t - t_0 - \Delta t)]
 <p><span class="math display">\[
 \int_{-\infty}^{+\infty} f^2(t) \d t &lt; +\infty
 \]</span></p>
-<p>那么函数 <span class="math inline">\(f\)</span> 平方可积。所有的平方可积函数构成函数空间 <span class="math inline">\(\mathcal{L}^2(\mathbb{R})\)</span> 。</p>
+<p>那么函数 <span class="math inline">\(f\)</span> 平方可积。所有的平方可积函数构成函数空间 <span class="math inline">\(\mathcal{L}^2(\mathbb{R})\)</span>。</p>
 <p>此外，依然沿用先前的函数内积、正交、完备正交函数集等定义。</p>
 <hr />
-<p>我们考虑 <span class="math inline">\([t_1, t_2]\)</span> 上的完备正交函数集 <span class="math inline">\(\{\varphi_i\}\)</span> 以及函数 <span class="math inline">\(f\)</span> ，其正交分解为：</p>
+<p>我们考虑 <span class="math inline">\([t_1, t_2]\)</span> 上的完备正交函数集 <span class="math inline">\(\{\varphi_i\}\)</span> 以及函数 <span class="math inline">\(f\)</span>，其正交分解为：</p>
 <p><span class="math display">\[
 f = \sum_{k = 1}^{+\infty} c_k\varphi_k
 \]</span></p>
@@ -723,18 +723,18 @@ E(f) = \int_{t_1}^{t_2} \|f(t)\|^2 \d t = \sum_{k = 1}^{+\infty} \langle \varphi
 </div>
 <p>将信号展开为完全正交函数集的线性组合的过程即函数正交分解，求解线性组合系数的过程为<strong>信号变换</strong>。</p>
 <h2 id="周期信号的正交分解">周期信号的正交分解</h2>
-<p>现在考虑满足 Dirichlet 条件的周期信号 <span class="math inline">\(f\)</span> 。 Dirichlet 条件指的是：</p>
+<p>现在考虑满足 Dirichlet 条件的周期信号 <span class="math inline">\(f\)</span>。Dirichlet 条件指的是：</p>
 <ul>
 <li><p>在一个周期内间断点有限</p></li>
 <li><p>在一个周期内极值点有限</p></li>
 <li><p>在一个周期内绝对值积分有限</p></li>
 </ul>
-<p>我们考虑下述两个常见的完备正交函数集，这里 <span class="math inline">\(\omega = 2\pi / T\)</span> ， <span class="math inline">\(T\)</span> 是 <span class="math inline">\(f\)</span> 的周期，下述函数集在任意的长度为 <span class="math inline">\(T\)</span> 的闭区间上正交完备：</p>
+<p>我们考虑下述两个常见的完备正交函数集，这里 <span class="math inline">\(\omega = 2\pi / T\)</span>，<span class="math inline">\(T\)</span> 是 <span class="math inline">\(f\)</span> 的周期，下述函数集在任意的长度为 <span class="math inline">\(T\)</span> 的闭区间上正交完备：</p>
 <ul>
 <li><p>三角函数集 <span class="math inline">\(\{1, \cos(n\omega t), \sin(n\omega t): n \in \mathbb{N}^+\}\)</span></p></li>
 <li><p>指数函数集 <span class="math inline">\(\{e^{\j n\omega t}: n \in \mathbb{Z}\}\)</span></p></li>
 </ul>
-<p>在这两个基底下展开得到的线性组合式可以理解为一个无穷级数，这个无穷级数就是<strong>傅里叶级数（ Fourier series ）</strong>。两个函数集得到的傅里叶级数分别称为三角形式的傅里叶级数和指数形式的傅里叶级数。</p>
+<p>在这两个基底下展开得到的线性组合式可以理解为一个无穷级数，这个无穷级数就是<strong>傅里叶级数（Fourier series）</strong>。两个函数集得到的傅里叶级数分别称为三角形式的傅里叶级数和指数形式的傅里叶级数。</p>
 <p>三角形式的傅里叶级数表示为：</p>
 <p><span class="math display">\[
 f(t) = a_0 + \sum_{k = 1}^{+\infty} (a_n\cos(n\omega t) + b_n\sin(n\omega t))
@@ -777,23 +777,23 @@ P(f) = \sum_{k = -\infty}^{+\infty} \|F_k\|^2 = \|a_0\|^2 + \frac12 \sum_{k = 1}
 \]</span></p>
 <h2 id="频谱">频谱</h2>
 <h3 id="频谱的定义">频谱的定义</h3>
-<p>现在默认 FS 使用指数形式的。考虑系数序列 <span class="math inline">\(\{F_n \in \mathbb C\}_{-\infty &lt; n &lt; +\infty}\)</span> 。以频率为横轴，将频率所对应的 FS 系数的模为该处的频谱值，即可做出信号的幅度频谱。如果以 FS 系数的辐角作为该处的频谱值，则得到相位频谱。两个频谱合并就可以表现出该信号所有的 FS 系数的信息。</p>
+<p>现在默认 FS 使用指数形式的。考虑系数序列 <span class="math inline">\(\{F_n \in \mathbb C\}_{-\infty &lt; n &lt; +\infty}\)</span>。以频率为横轴，将频率所对应的 FS 系数的模为该处的频谱值，即可做出信号的幅度频谱。如果以 FS 系数的辐角作为该处的频谱值，则得到相位频谱。两个频谱合并就可以表现出该信号所有的 FS 系数的信息。</p>
 <p>我们思考 FS 系数的意义，事实上 FS 系数作为线性组合的系数，代表了被分解信号中某一个频率的成分的多少。从而这就意味着，频谱表现的是信号在频率意义上的构成。</p>
-<p>不过注意，由于指数形式的 FS 之中包含 <span class="math inline">\(e^{-\j n\omega t}(n\in \mathbb{N}^+)\)</span> 项，其频率为负数 <span class="math inline">\(-n\omega\)</span> ，所以信号的频谱图上会出现负频率。</p>
+<p>不过注意，由于指数形式的 FS 之中包含 <span class="math inline">\(e^{-\j n\omega t}(n\in \mathbb{N}^+)\)</span> 项，其频率为负数 <span class="math inline">\(-n\omega\)</span>，所以信号的频谱图上会出现负频率。</p>
 <p>我们可以断定频谱的一些性质：</p>
 <ul>
-<li><p>频谱是离散的，且只会在 <span class="math inline">\(n\omega(n\in \mathbb Z)\)</span> 点处存在值，这些具有值的频率称为<strong>谐波频率（ Harmonic frequency ）</strong>。</p></li>
+<li><p>频谱是离散的，且只会在 <span class="math inline">\(n\omega(n\in \mathbb Z)\)</span> 点处存在值，这些具有值的频率称为<strong>谐波频率（Harmonic frequency）</strong>。</p></li>
 <li><p>幅度频谱图是关于纵轴对称的，而相位频谱是关于原点对称的，这是由于 <span class="math inline">\(F_k\)</span> 与 <span class="math inline">\(F_{-k}\)</span> 共轭。</p></li>
 </ul>
 <p>现在我们考虑一个重要周期信号的频谱，即周期矩形脉冲。</p>
-<p>假设某一周期矩形脉冲信号 <span class="math inline">\(f\)</span> 周期为 <span class="math inline">\(T_0 = 2\pi / \omega_0\)</span> ，在区间 <span class="math inline">\([-T_0 / 2, T_0 / 2]\)</span> 上定义为：</p>
+<p>假设某一周期矩形脉冲信号 <span class="math inline">\(f\)</span> 周期为 <span class="math inline">\(T_0 = 2\pi / \omega_0\)</span>，在区间 <span class="math inline">\([-T_0 / 2, T_0 / 2]\)</span> 上定义为：</p>
 <p><span class="math display">\[
 f(t) = \begin{cases}
 E &amp; |t| \leq \tau_0 / 2 \\
 0 &amp; |t| &gt; \tau_0 / 2
 \end{cases}
 \]</span></p>
-<p>这里 <span class="math inline">\(E &gt; 0\)</span> 且 <span class="math inline">\(\tau_0 &lt; T_0\)</span> 。</p>
+<p>这里 <span class="math inline">\(E &gt; 0\)</span> 且 <span class="math inline">\(\tau_0 &lt; T_0\)</span>。</p>
 <p>其 FS 系数是显然的：</p>
 <p><span class="math display">\[
 F_k = \frac{\omega_0}{2\pi} \int_{-\pi / \omega_0}^{\pi / \omega_0} f(t)e^{-\j k\omega_0 t} \d t = \frac{E\omega_0}{2\pi} \int_{-\tau_0 / 2}^{\tau_0 / 2} e^{-\j k\omega_0 t} \d t = \frac{E\omega_0\tau_0}{2\pi}\frac{\sin(\omega_0 k\tau_0 / 2)}{\omega_0 k\tau_0 / 2}
@@ -811,20 +811,20 @@ F(\omega) = \frac{E\omega_0\tau_0}{2\pi}{\rm Sa}\left(\frac{\omega\tau_0}{2}\rig
 <p>实际应用中，在失真可忽略的条件下，信号传递可以只传递低频分量（一般而言取频谱包络线最小绝对值的零点以内的分量），这一段区间的长度称为<strong>频带宽度</strong>，简称<strong>带宽</strong>。</p>
 <h2 id="非周期信号的正交分解和频谱">非周期信号的正交分解和频谱</h2>
 <h3 id="ft-表达式的推理">FT 表达式的推理</h3>
-<p>任何非周期信号 <span class="math inline">\(f\)</span> 实际上都可以看成周期无穷大的周期信号。我们考虑周期为 <span class="math inline">\(T\)</span> 的周期信号 <span class="math inline">\(f_T\)</span> ，其在周期 <span class="math inline">\([-T / 2, T / 2)\)</span> 上定义为 <span class="math inline">\(f_T(t) = f(t), t \in [-T / 2, T / 2)\)</span> 。实际上可以得到：</p>
+<p>任何非周期信号 <span class="math inline">\(f\)</span> 实际上都可以看成周期无穷大的周期信号。我们考虑周期为 <span class="math inline">\(T\)</span> 的周期信号 <span class="math inline">\(f_T\)</span>，其在周期 <span class="math inline">\([-T / 2, T / 2)\)</span> 上定义为 <span class="math inline">\(f_T(t) = f(t), t \in [-T / 2, T / 2)\)</span>。实际上可以得到：</p>
 <p><span class="math display">\[
 \lim_{T \to +\infty} f_T = f
 \]</span></p>
 <div class="note info"><p>我们没有定义过一个函数列如何收敛为一个函数，故这样的表述并非严谨。</p>
 <p>后续很多证明也仅仅是形式化的，其作用仅仅是形成对定律的直观理解，请不要将这些推导用于严谨的证明之中。</p>
 </div>
-<p>考虑 <span class="math inline">\(f_T\)</span> 的傅里叶级数，如果令 <span class="math inline">\(\omega = 2\pi / T\)</span> ，显然有：</p>
+<p>考虑 <span class="math inline">\(f_T\)</span> 的傅里叶级数，如果令 <span class="math inline">\(\omega = 2\pi / T\)</span>，显然有：</p>
 <p><span class="math display">\[
 \begin{aligned}
 f_T(t) &amp;= \sum_{k = -\infty}^{+\infty} F_k e^{\j k\omega t} = \sum_{k = -\infty}^{+\infty} \left(\frac{1}{T}\int_{-T / 2}^{T / 2} f_T(\tau)e^{-\j k\omega\tau} \d\tau\right)e^{\j k\omega t}
 \end{aligned}
 \]</span></p>
-<p>考虑离散频谱中相邻谱线之间的间隔，即 <span class="math inline">\(\Delta\omega = \omega = \dfrac{2\pi}{T}\)</span> ，在 <span class="math inline">\(T \to +\infty\)</span> 的时候谱线间隔 <span class="math inline">\(\Delta\omega \to 0\)</span> ，那么我们有：</p>
+<p>考虑离散频谱中相邻谱线之间的间隔，即 <span class="math inline">\(\Delta\omega = \omega = \dfrac{2\pi}{T}\)</span>，在 <span class="math inline">\(T \to +\infty\)</span> 的时候谱线间隔 <span class="math inline">\(\Delta\omega \to 0\)</span>，那么我们有：</p>
 <p><span class="math display">\[
 \begin{aligned}
 f(t) &amp;= \lim_{T \to +\infty} f_T(t) = \lim_{T \to +\infty} \sum_{k = -\infty}^{+\infty} \left(\frac{1}{T}\int_{-T / 2}^{T / 2} f_T(\tau)e^{-\j k\omega\tau} \d\tau\right)e^{\j k\omega t} \\
@@ -866,7 +866,7 @@ f(t) &amp;= \frac{1}{2\pi} \int_{-\infty}^{+\infty} F(\omega) e^{\j\omega t} \d\
 \end{aligned}
 \]</span></p>
 <p>可以发现上述用 <span class="math inline">\(F(\omega)\)</span> 推出 <span class="math inline">\(f(t)\)</span> 的公式实际上类似于将 <span class="math inline">\(f\)</span> 表达为正交函数的线性组合，只不过这里的正交函数集是无穷集。这里 <span class="math inline">\(F(\omega)\)</span> 实际上相当于信号 <span class="math inline">\(f(t)\)</span> 的频谱，即其频域表现。</p>
-<p>由 <span class="math inline">\(f\)</span> 推出 <span class="math inline">\(F\)</span> 的过程就称为<strong>傅立叶变换（ Fourier transformation ）</strong>，简称 FT 。反过来由 <span class="math inline">\(F\)</span> 推出 <span class="math inline">\(f\)</span> 则称为<strong>傅立叶逆变换</strong>，简称 IFT 。标记为：</p>
+<p>由 <span class="math inline">\(f\)</span> 推出 <span class="math inline">\(F\)</span> 的过程就称为<strong>傅立叶变换（Fourier transformation）</strong>，简称 FT。反过来由 <span class="math inline">\(F\)</span> 推出 <span class="math inline">\(f\)</span> 则称为<strong>傅立叶逆变换</strong>，简称 IFT。标记为：</p>
 <p><span class="math display">\[
 F = \mathcal{F}[f], f = \mathcal{F}^{-1}[F]
 \]</span></p>
@@ -875,7 +875,7 @@ F = \mathcal{F}[f], f = \mathcal{F}^{-1}[F]
 <p><span class="math display">\[
 \mathcal{F}\left[\sum_{k = 1}^n \lambda_kf_k\right] = \sum_{k = 1}^n \lambda_k\mathcal{F}[f_k]
 \]</span></p>
-<p>下述论述中，记 <span class="math inline">\(F := \mathcal{F}[f]\)</span> 。</p>
+<p>下述论述中，记 <span class="math inline">\(F := \mathcal{F}[f]\)</span>。</p>
 <p>其与反褶变换 <span class="math inline">\(\mathcal{R}\)</span> 具有以下性质：</p>
 <p><span class="math display">\[
 \begin{cases}
@@ -885,11 +885,11 @@ F = \mathcal{F}[f], f = \mathcal{F}^{-1}[F]
 \end{cases}
 \]</span></p>
 <p>即时域上反褶等价于频域反褶，时域上共轭等价于频域反褶共轭，时域上反褶共轭等价于频域共轭。</p>
-<p>而对于压扩变换 <span class="math inline">\(\mathcal{E}_a\)</span> ，这里 <span class="math inline">\(\mathcal{E}_a[f](t) = f(at)\)</span> ，我们有：</p>
+<p>而对于压扩变换 <span class="math inline">\(\mathcal{E}_a\)</span>，这里 <span class="math inline">\(\mathcal{E}_a[f](t) = f(at)\)</span>，我们有：</p>
 <p><span class="math display">\[
 \mathcal{F}\mathcal{E}_a[f] = \frac{1}{|a|}\mathcal{E}_{\frac{1}{a}}[F]
 \]</span></p>
-<p>对于平移变换 <span class="math inline">\(\mathcal{S}_{t_0}\)</span> ，我们有（这里符号 <span class="math inline">\(\mathcal{F}\)</span> 的两个下标分别代表时域和频域使用的自变量符号）：</p>
+<p>对于平移变换 <span class="math inline">\(\mathcal{S}_{t_0}\)</span>，我们有（这里符号 <span class="math inline">\(\mathcal{F}\)</span> 的两个下标分别代表时域和频域使用的自变量符号）：</p>
 <p><span class="math display">\[
 \mathcal{F}_{t, \omega}[f(t - t_0)] = F(\omega)e^{-\j\omega t_0}
 \]</span></p>
@@ -898,7 +898,7 @@ F = \mathcal{F}[f], f = \mathcal{F}^{-1}[F]
 \mathcal{F}_{t, \omega}[f(at - t_0)] = \frac{1}{|a|}F\left(\frac{\omega}{a}\right)e^{-\j\omega t_0 / a}
 \]</span></p>
 <p>综合上述可以看出，时域的压扩会导致频域相反的压扩，并且会伴随幅度的变化。而时域的平移不影响幅度频谱，但是相位频谱会发生改变。</p>
-<div class="note info"><p>这里使用 <span class="math inline">\(\mathcal{F}_{t, \omega}\)</span> 实在是折中之举。我自己一向是想要明确函数和函数值的区别的，比如说对函数的变换应该使用花写字体，使用中括号。按照这样的思路， <span class="math inline">\(\mathcal{F}[f(at - t_0)]\)</span> 是错误表达，因为方括号内实际上是函数值而非一个函数。</p>
+<div class="note info"><p>这里使用 <span class="math inline">\(\mathcal{F}_{t, \omega}\)</span> 实在是折中之举。我自己一向是想要明确函数和函数值的区别的，比如说对函数的变换应该使用花写字体，使用中括号。按照这样的思路，<span class="math inline">\(\mathcal{F}[f(at - t_0)]\)</span> 是错误表达，因为方括号内实际上是函数值而非一个函数。</p>
 <p>但是由于通用数学符号很多时候并没有区分两者，所以为了避免使用更多自定义符号导致难以阅读，还是暂且使用 <span class="math inline">\(\mathcal{F}_{t, \omega}\)</span> 这样的折中符号。</p>
 </div>
 <p>实际上我们注意到 FT 和 IFT 具有相同的数学结构，那么如果在时域上乘以复指数，频域则会发生平移：</p>
@@ -949,8 +949,8 @@ F = \mathcal{F}[f], f = \mathcal{F}^{-1}[F]
 <p>而 <span class="math inline">\(\mathcal{F}[G_\tau]\)</span> 是 <span class="math inline">\({\rm Sa}\)</span> 函数的衍生函数，其和原信号频谱的卷积可能导致频域畸变。</p>
 </div>
 <h3 id="fs-和-ft-的关系">FS 和 FT 的关系</h3>
-<p>我们可以这样研究 FS 和 FT 的关系，考虑非周期信号 <span class="math inline">\(f\)</span> ，其在区间 <span class="math inline">\([-T / 2, T / 2]\)</span> 外取值均为零。定义周期为 <span class="math inline">\(T\)</span> 的周期信号 <span class="math inline">\(\tilde{f}\)</span> ，其在周期 <span class="math inline">\([-T / 2, T / 2]\)</span> 上有 <span class="math inline">\(\tilde{f} = f\)</span> 。</p>
-<p>考虑 <span class="math inline">\(\tilde{f}\)</span> 的 FS 系数（这里 <span class="math inline">\(\omega := 2\pi / T\)</span> ）：</p>
+<p>我们可以这样研究 FS 和 FT 的关系，考虑非周期信号 <span class="math inline">\(f\)</span>，其在区间 <span class="math inline">\([-T / 2, T / 2]\)</span> 外取值均为零。定义周期为 <span class="math inline">\(T\)</span> 的周期信号 <span class="math inline">\(\tilde{f}\)</span>，其在周期 <span class="math inline">\([-T / 2, T / 2]\)</span> 上有 <span class="math inline">\(\tilde{f} = f\)</span>。</p>
+<p>考虑 <span class="math inline">\(\tilde{f}\)</span> 的 FS 系数（这里 <span class="math inline">\(\omega := 2\pi / T\)</span>）：</p>
 <p><span class="math display">\[
 F_k = \frac{1}{T} \int_{-T / 2}^{T / 2} \tilde{f}(t)e^{-\j k\omega t} \d t = \frac{1}{T} \int_{-\infty}^{+\infty} f(t)e^{-\j k\omega t} \d t = \frac{1}{T} F(k\omega)
 \]</span></p>
@@ -960,7 +960,7 @@ F_k = \frac{1}{T} \int_{-T / 2}^{T / 2} \tilde{f}(t)e^{-\j k\omega t} \d t = \fr
 F(\omega) = E\tau_0{\rm Sa}\left(\frac{\omega\tau_0}{2}\right)
 \]</span></p>
 <h3 id="准周期信号">准周期信号</h3>
-<p>有一些非周期信号可能会具有类似周期信号的时域重复结构，即可以将时域均匀划分为准周期，每一个准周期内信号的结构相互类似，这类信号就是准周期信号，如果其准周期的长度为 <span class="math inline">\(T\)</span> ，一般会将 <span class="math inline">\(f_0 = 1 / T\)</span> 称为准周期信号的<strong>基频（ Pitch ）</strong>。</p>
+<p>有一些非周期信号可能会具有类似周期信号的时域重复结构，即可以将时域均匀划分为准周期，每一个准周期内信号的结构相互类似，这类信号就是准周期信号，如果其准周期的长度为 <span class="math inline">\(T\)</span>，一般会将 <span class="math inline">\(f_0 = 1 / T\)</span> 称为准周期信号的<strong>基频（Pitch）</strong>。</p>
 <p>准周期信号的频谱特征也介于周期信号频谱和非周期信号频谱之间，即其频谱依然连续，但是在谐波频率处具有明显的尖峰。谐波频率处的尖峰就是准周期信号的一大特征。</p>
 <h3 id="周期信号的-ft">周期信号的 FT</h3>
 <p>鉴于 FS 和 FT 具有相同的本质，而周期信号的频谱表现是离散的，我们可以预料到对周期信号求解 FT 会得到若干离散的冲激函数之和。</p>
@@ -980,7 +980,7 @@ F(\omega) = E\tau_0{\rm Sa}\left(\frac{\omega\tau_0}{2}\right)
 \end{aligned}
 \]</span></p>
 <h3 id="其他常用函数的-ft">其他常用函数的 FT</h3>
-<p>考虑冲激函数的 FT ：</p>
+<p>考虑冲激函数的 FT：</p>
 <p><span class="math display">\[
 \mathcal{F}[\delta_{E, 0}](\omega) = \int_{-\infty}^{+\infty} E\delta(t)e^{-\j\omega t} \d t = E
 \]</span></p>
@@ -999,7 +999,7 @@ F(\omega) = E\tau_0{\rm Sa}\left(\frac{\omega\tau_0}{2}\right)
 \]</span></p>
 <h1 id="信号采样">信号采样</h1>
 <h2 id="采样的概念">采样的概念</h2>
-<p>我们使用计算机存储时域上连续的信号的时候，只能存储部分点处的信号幅度，这就要求我们决定存储哪些点的信号值。这类每隔一定的时间间隔，从连续信号上取出该点信号幅度的行为就是<strong>采样</strong>。每次采样之间的时间间隔称为<strong>采样周期</strong>，一般标记为 <span class="math inline">\(T_s\)</span> 。其倒数 <span class="math inline">\(f_s = 1 / T_s\)</span> 即称为<strong>采样频率</strong>， <span class="math inline">\(\omega_s = 2\pi / T_s\)</span> 则是<strong>采样（角）频率</strong>。</p>
+<p>我们使用计算机存储时域上连续的信号的时候，只能存储部分点处的信号幅度，这就要求我们决定存储哪些点的信号值。这类每隔一定的时间间隔，从连续信号上取出该点信号幅度的行为就是<strong>采样</strong>。每次采样之间的时间间隔称为<strong>采样周期</strong>，一般标记为 <span class="math inline">\(T_s\)</span>。其倒数 <span class="math inline">\(f_s = 1 / T_s\)</span> 即称为<strong>采样频率</strong>，<span class="math inline">\(\omega_s = 2\pi / T_s\)</span> 则是<strong>采样（角）频率</strong>。</p>
 <p>理想情况下，我们一般使用冲激串采样，即使用函数：</p>
 <p><span class="math display">\[
 p(t) = \sum_{k = -\infty}^{+\infty} \delta(t - kT_s)
@@ -1010,13 +1010,13 @@ p(t) = \sum_{k = -\infty}^{+\infty} \delta(t - kT_s)
 <p><span class="math display">\[
 f_p(t) := f(t)p(t) = \sum_{k = -\infty}^{+\infty} f(t)\delta(t - kT_s)
 \]</span></p>
-<p>那么根据 FT 和卷积的关系（这里规定 <span class="math inline">\(F := \mathcal{F}[f]\)</span> ）：</p>
+<p>那么根据 FT 和卷积的关系（这里规定 <span class="math inline">\(F := \mathcal{F}[f]\)</span>）：</p>
 <p><span class="math display">\[
 \begin{aligned}
 \mathcal{F}[f_p] &amp;= \frac{1}{2\pi}F * \mathcal{F}[p]
 \end{aligned}
 \]</span></p>
-<p>这里我们需要求解 <span class="math inline">\(\mathcal{F}[p]\)</span> ，即冲激串的傅立叶变换。由于冲激串函数实际上是周期函数，所以可以得知其频谱表现也是冲激串。我们可以求解其 FS 系数（这里 <span class="math inline">\(\omega_s := 2\pi / T_s\)</span> ）：</p>
+<p>这里我们需要求解 <span class="math inline">\(\mathcal{F}[p]\)</span>，即冲激串的傅立叶变换。由于冲激串函数实际上是周期函数，所以可以得知其频谱表现也是冲激串。我们可以求解其 FS 系数（这里 <span class="math inline">\(\omega_s := 2\pi / T_s\)</span>）：</p>
 <p><span class="math display">\[
 F_k = \frac{1}{T_s} \int_{-T_s / 2}^{T_s / 2} p(t)e^{-\j k\omega_s t} \d t = \frac{1}{T_s}
 \]</span></p>
@@ -1029,11 +1029,11 @@ p(t) = \sum_{k = -\infty}^{+\infty} \frac{1}{T_s}e^{\j k\omega_s t}
 \mathcal{F}[p](\omega) = \mathcal{F}_{t, \omega}\left[\sum_{k = -\infty}^{+\infty} \frac{1}{T_s}e^{\j k\omega_s t}\right] = \frac{1}{T_s} \sum_{k = -\infty}^{+\infty} \mathcal{F}_{t, \omega}[e^{\j k\omega_s t}] = \frac{2\pi}{T_s} \sum_{k = -\infty}^{+\infty} \delta(\omega - k\omega_s)
 \]</span></p>
 <p>也就是说时域的冲激串在频域上也是冲激串。</p>
-<div class="note info"><p>如果你尝试这样求解 <span class="math inline">\(\mathcal{F}[p]\)</span> ：</p>
+<div class="note info"><p>如果你尝试这样求解 <span class="math inline">\(\mathcal{F}[p]\)</span>：</p>
 <p><span class="math display">\[
 \mathcal{F}[p] = \mathcal{F}\left[\sum_{k = -\infty}^{+\infty} \delta_{1, kT_s}\right] = \sum_{k = -\infty}^{+\infty} \mathcal{F}[\delta_{1, kT_s}]
 \]</span></p>
-<p>显然这会得到错误的结果。错误的原因是这里的级数和傅立叶变换这里不能交换（而上面先写成 FS 再 FT 的时候，级数和傅立叶变换又是可以交换的），而更深层次的原因则是冲激串严格上不具有 FT （不满足 Dirichlet 条件）。</p>
+<p>显然这会得到错误的结果。错误的原因是这里的级数和傅立叶变换这里不能交换（而上面先写成 FS 再 FT 的时候，级数和傅立叶变换又是可以交换的），而更深层次的原因则是冲激串严格上不具有 FT（不满足 Dirichlet 条件）。</p>
 <p>实际上如果从更深层的意义上说，我们根本没有严格定义冲激函数，毕竟我们能看出来冲激函数根本不可能使用 Riemann 积分计算，所以还有更深层的数学原理被忽视了。</p>
 <p>但一定程度上，这就是工科。想要钻研这些理论内部严格数学原理的读者可以阅读拓扑、泛函、实分析相关内容。</p>
 </div>
@@ -1043,23 +1043,23 @@ p(t) = \sum_{k = -\infty}^{+\infty} \frac{1}{T_s}e^{\j k\omega_s t}
 \]</span></p>
 <p>也就是说抽样后的信号的频谱是将原先的频谱以 <span class="math inline">\(\omega_s\)</span> 为周期平移后叠加后得到的。</p>
 <hr />
-<p>现在我们考虑现实中常见的信号。常见信号往往具有一个<strong>高频截止频率</strong> <span class="math inline">\(\omega_M\)</span> ，其含义为信号的频谱 <span class="math inline">\(F\)</span> 在区间 <span class="math inline">\([-\omega_M, \omega_M]\)</span> 外均取零。此外，之前也有提到过带宽相关知识，即大多数信号的能量聚集在低频区段，所以往往会截断高频的部分，而这个截断频率，也可以称为高频截止频率。这类信号频谱中位于区间 <span class="math inline">\([-\omega_M, \omega_M]\)</span> 内的频谱峰称为<strong>主峰</strong>。</p>
-<p>对一个高频截止频率为 <span class="math inline">\(\omega_M\)</span> 的信号按照频率 <span class="math inline">\(\omega_s\)</span> 采样，采样后的频谱记为 <span class="math inline">\(F_p\)</span> ，其是周期为 <span class="math inline">\(\omega_s\)</span> 的周期函数，每一个周期都是由原先信号的频谱主峰平移而来。我们现在固定高频截止频率，降低采样频率，考察 <span class="math inline">\(F_p\)</span> 的变化。在 <span class="math inline">\(\omega_s\)</span> 降低的时候， <span class="math inline">\(F_p\)</span> 周期减小，峰与峰之间的距离减小，从而存在一个临界取样频率，让相邻的两个频谱峰恰好相交。如果取样频率低于这个临界频率，就意味着 <span class="math inline">\(F_p\)</span> 的各个相邻的频谱峰会相互重叠，即发生<strong>频谱混叠</strong>。</p>
-<p>如果没有发生频谱混叠，我们可以在采样之后使用低通滤波器将 <span class="math inline">\(F_p\)</span> 的主峰过滤出来，从而完美还原原先的信号。但是如果发生混叠，这种完美复原则是不可能的。而这个临界频率是显而易见的，即 <span class="math inline">\(\omega_s = 2\omega_M\)</span> 。</p>
+<p>现在我们考虑现实中常见的信号。常见信号往往具有一个<strong>高频截止频率</strong> <span class="math inline">\(\omega_M\)</span>，其含义为信号的频谱 <span class="math inline">\(F\)</span> 在区间 <span class="math inline">\([-\omega_M, \omega_M]\)</span> 外均取零。此外，之前也有提到过带宽相关知识，即大多数信号的能量聚集在低频区段，所以往往会截断高频的部分，而这个截断频率，也可以称为高频截止频率。这类信号频谱中位于区间 <span class="math inline">\([-\omega_M, \omega_M]\)</span> 内的频谱峰称为<strong>主峰</strong>。</p>
+<p>对一个高频截止频率为 <span class="math inline">\(\omega_M\)</span> 的信号按照频率 <span class="math inline">\(\omega_s\)</span> 采样，采样后的频谱记为 <span class="math inline">\(F_p\)</span>，其是周期为 <span class="math inline">\(\omega_s\)</span> 的周期函数，每一个周期都是由原先信号的频谱主峰平移而来。我们现在固定高频截止频率，降低采样频率，考察 <span class="math inline">\(F_p\)</span> 的变化。在 <span class="math inline">\(\omega_s\)</span> 降低的时候，<span class="math inline">\(F_p\)</span> 周期减小，峰与峰之间的距离减小，从而存在一个临界取样频率，让相邻的两个频谱峰恰好相交。如果取样频率低于这个临界频率，就意味着 <span class="math inline">\(F_p\)</span> 的各个相邻的频谱峰会相互重叠，即发生<strong>频谱混叠</strong>。</p>
+<p>如果没有发生频谱混叠，我们可以在采样之后使用低通滤波器将 <span class="math inline">\(F_p\)</span> 的主峰过滤出来，从而完美还原原先的信号。但是如果发生混叠，这种完美复原则是不可能的。而这个临界频率是显而易见的，即 <span class="math inline">\(\omega_s = 2\omega_M\)</span>。</p>
 <p>这就是 Nyquist 取样定理，即使用不低于两倍高频截止频率 <span class="math inline">\(\omega_M\)</span> 的采样频率 <span class="math inline">\(\omega_s\)</span> 采样得到的数据点可以完美还原原信号。</p>
 <p>综合上述，只有信号满足<strong>频带受限</strong>（即严格具有高频截止频率）并且<strong>取样频率足够高</strong>的时候，取样才能无损表示原有信号。</p>
 <h2 id="信号复原内插">信号复原（内插）</h2>
 <p>思考从采样序列恢复原先连续信号的方法，这其实就是<strong>插值法</strong>的应用，只不过在信号处理原理中我们将之称为内插法。</p>
-<p>现在我们有信号 <span class="math inline">\(x(t)\)</span> 以抽样周期 <span class="math inline">\(T\)</span> 抽样得到的抽样序列 <span class="math inline">\(\{x(nT)\}_{n \in \mathbb Z}\)</span> 。进行内插之前，我们需要确定内插函数 <span class="math inline">\(h(t)\)</span> ，而内插函数一般就是我们使用的滤波器的单位冲激响应函数。随后用下述方法计算出内插后的连续信号 <span class="math inline">\(\tilde x(t)\)</span> ：</p>
+<p>现在我们有信号 <span class="math inline">\(x(t)\)</span> 以抽样周期 <span class="math inline">\(T\)</span> 抽样得到的抽样序列 <span class="math inline">\(\{x(nT)\}_{n \in \mathbb Z}\)</span>。进行内插之前，我们需要确定内插函数 <span class="math inline">\(h(t)\)</span>，而内插函数一般就是我们使用的滤波器的单位冲激响应函数。随后用下述方法计算出内插后的连续信号 <span class="math inline">\(\tilde x(t)\)</span>：</p>
 <p><span class="math display">\[
 \tilde x(t) := \sum_{n = -\infty}^{+\infty} x(nT)h(t - nT) \approx x(t)
 \]</span></p>
-<p>使用不同的滤波器对应的内插函数 <span class="math inline">\(h(t)\)</span> ，我们能获取到不同效果的复原信号 <span class="math inline">\(x(t)\)</span> 。</p>
+<p>使用不同的滤波器对应的内插函数 <span class="math inline">\(h(t)\)</span>，我们能获取到不同效果的复原信号 <span class="math inline">\(x(t)\)</span>。</p>
 <div class="note info"><p>这里需要尝试解释一下滤波器、单位冲激响应、内插这些概念。</p>
-<p>首先简单理解一下<strong>系统（ System ）</strong>的概念。系统可以简单理解为对给定输入（称之为<strong>激励</strong>）给出给定输出（称之为<strong>响应</strong>）的，具有特定功能的整体。</p>
+<p>首先简单理解一下<strong>系统（System）</strong>的概念。系统可以简单理解为对给定输入（称之为<strong>激励</strong>）给出给定输出（称之为<strong>响应</strong>）的，具有特定功能的整体。</p>
 <p>滤波器本质上就是一个对信号函数的变换，也是一种系统。只不过这个变换很多时候是用于过滤信号频谱之中的低频（或高频）成分的，所以才会有低通滤波器（或高通滤波器）之类的名称。其激励就是要过滤的信号，响应就是过滤后的信号。根据我们对滤波器性质的要求，我们至少需要滤波器是线性系统，满足激励叠加等于响应叠加以及激励倍增等于响应倍增。</p>
 <p>而单位冲激响应就是一种特殊的响应。如果某一个滤波器的激励为单位冲激信号，其在这个条件下的响应就是单位冲激响应。</p>
-<p>现在考虑一个滤波器，其对应的函数变换为 <span class="math inline">\(\mathcal{P}\)</span> ，其单位冲激响应为 <span class="math inline">\(h\)</span> ，即 <span class="math inline">\(\mathcal{P}[\delta] = h\)</span> 。滤波器的线性保证了下述的性质：</p>
+<p>现在考虑一个滤波器，其对应的函数变换为 <span class="math inline">\(\mathcal{P}\)</span>，其单位冲激响应为 <span class="math inline">\(h\)</span>，即 <span class="math inline">\(\mathcal{P}[\delta] = h\)</span>。滤波器的线性保证了下述的性质：</p>
 <p><span class="math display">\[
 \begin{cases}
 \mathcal{P}[f + g] = \mathcal{P}[f] + \mathcal{P}[g] \\
@@ -1075,7 +1075,7 @@ p(t) = \sum_{k = -\infty}^{+\infty} \frac{1}{T_s}e^{\j k\omega_s t}
 \end{aligned}
 \]</span></p>
 <p>这里第一行到第二行直接默认系统函数变换和极限可交换且无穷求和下系统线性依然可以保证。</p>
-<p>现在我们讨论上述说明的这些和信号复原（内插）是什么关系。我们已经说明了在符合取样定理的条件下，时域取样等价于频域周期延拓，所以我们要复原信号，只需要在频域上过滤出主峰即可。这个时候就需要使用到低通滤波器，我们假设使用的低通滤波器具有单位冲激响应 <span class="math inline">\(h(t)\)</span> 。而这个滤波器的输入信号就是取样周期为 <span class="math inline">\(T\)</span> 的理想冲激串对原信号 <span class="math inline">\(x(t)\)</span> 取样得到的取样信号：</p>
+<p>现在我们讨论上述说明的这些和信号复原（内插）是什么关系。我们已经说明了在符合取样定理的条件下，时域取样等价于频域周期延拓，所以我们要复原信号，只需要在频域上过滤出主峰即可。这个时候就需要使用到低通滤波器，我们假设使用的低通滤波器具有单位冲激响应 <span class="math inline">\(h(t)\)</span>。而这个滤波器的输入信号就是取样周期为 <span class="math inline">\(T\)</span> 的理想冲激串对原信号 <span class="math inline">\(x(t)\)</span> 取样得到的取样信号：</p>
 <p><span class="math display">\[
 x_p(t) = \sum_{k = -\infty}^{+\infty} x(kT)\delta(t - kT)
 \]</span></p>
@@ -1099,7 +1099,7 @@ h(t) = \begin{cases}
 \]</span></p>
 <p>这里 <span class="math inline">\(T\)</span> 是取样周期。可以发现，内插函数是时域上的矩形窗，将其代入 <span class="math inline">\(\tilde x\)</span> 的公式会发现其复原出的信号大致为：</p>
 <p><img src="/uploads/note-of-dsp/1.png" /></p>
-<p>这里灰色线是原先的信号 <span class="math inline">\(x\)</span> ，红色线则是内插后得到的 <span class="math inline">\(\tilde x\)</span> 。这样的内插在每一个抽样周期内保持了抽样值本身，最终复原得到了类似阶跃的信号。</p>
+<p>这里灰色线是原先的信号 <span class="math inline">\(x\)</span>，红色线则是内插后得到的 <span class="math inline">\(\tilde x\)</span>。这样的内插在每一个抽样周期内保持了抽样值本身，最终复原得到了类似阶跃的信号。</p>
 <p>而一阶保持内插则是使用线性的方式插值，其内插函数为三角窗：</p>
 <p><span class="math display">\[
 h(t) = \begin{cases}
@@ -1112,7 +1112,7 @@ h(t) = \begin{cases}
 <p><img src="/uploads/note-of-dsp/2.png" /></p>
 <p>可见其效果为直接使用线段连接各取样值以近似原信号。</p>
 <hr />
-<p>上述讨论完全基于采样满足采样定理，现在讨论采样频率过低导致频谱混叠的<strong>欠采样</strong>情况。此时即使采用理想低通滤波也无法获取原信号，但是我们可以说明，无论如何内插，采样点处的值保持。即无论采用何种内插函数 <span class="math inline">\(h\)</span> ，得到的 <span class="math inline">\(\tilde x\)</span> 都保证 <span class="math inline">\(\tilde x(kT) = x(kT)(k \in \mathbb Z)\)</span> 。</p>
+<p>上述讨论完全基于采样满足采样定理，现在讨论采样频率过低导致频谱混叠的<strong>欠采样</strong>情况。此时即使采用理想低通滤波也无法获取原信号，但是我们可以说明，无论如何内插，采样点处的值保持。即无论采用何种内插函数 <span class="math inline">\(h\)</span>，得到的 <span class="math inline">\(\tilde x\)</span> 都保证 <span class="math inline">\(\tilde x(kT) = x(kT)(k \in \mathbb Z)\)</span>。</p>
 <div class="note warning"><p>事实上这个性质要求内插函数 <span class="math inline">\(h\)</span> 满足这样的条件：</p>
 <p><span class="math display">\[
 \begin{cases}
@@ -1120,7 +1120,7 @@ h(0) = 1 \\
 h(kT) = 0, k \in \mathbb Z \backslash \{0\}
 \end{cases}
 \]</span></p>
-<p>事实上我们上面的叙述也只能为大家建立内插和滤波之间的一个直观感受，但是严格而言内插和滤波并非是一对完全严格对应的概念。内插法，或者说插值，天然要求插值后采样点处的函数值不改变，但是滤波并不严格保证这一点，比如说令滤波器的单位脉冲响应为 <span class="math inline">\(h(t) \equiv 1\)</span> ，就不能保证采样点处函数值不变了。</p>
+<p>事实上我们上面的叙述也只能为大家建立内插和滤波之间的一个直观感受，但是严格而言内插和滤波并非是一对完全严格对应的概念。内插法，或者说插值，天然要求插值后采样点处的函数值不改变，但是滤波并不严格保证这一点，比如说令滤波器的单位脉冲响应为 <span class="math inline">\(h(t) \equiv 1\)</span>，就不能保证采样点处函数值不变了。</p>
 </div>
 <h1 id="离散信号处理">离散信号处理</h1>
 <p>上述的讨论均是理论的，理论的模拟信号时域连续、时域无限长、数值取值范围无限、精度无限。但是实际使用计算机处理的时候，这三点均无法满足，即计算机能处理的信号时域离散、时域有限长、数值取值范围有限、精度有限。</p>
@@ -1128,11 +1128,11 @@ h(kT) = 0, k \in \mathbb Z \backslash \{0\}
 <h2 id="从抽样序列还原原信号时域">从抽样序列还原原信号时域</h2>
 <p>这一问题已经在采样部分叙述过，频带有限信号的采样频率足够高的时候，就可以根据抽样序列无损还原原信号。</p>
 <h2 id="从抽样序列还原原信号频谱">从抽样序列还原原信号频谱</h2>
-<p>连续时域信号通过抽样可以得到离散时域信号。考虑具有高频截止频率 <span class="math inline">\(\omega_M\)</span> 的频带有限信号 <span class="math inline">\(f\)</span> ，其抽样信号 <span class="math inline">\(f_p\)</span> 定义为下式，这里 <span class="math inline">\(T_s\)</span> 是抽样周期：</p>
+<p>连续时域信号通过抽样可以得到离散时域信号。考虑具有高频截止频率 <span class="math inline">\(\omega_M\)</span> 的频带有限信号 <span class="math inline">\(f\)</span>，其抽样信号 <span class="math inline">\(f_p\)</span> 定义为下式，这里 <span class="math inline">\(T_s\)</span> 是抽样周期：</p>
 <p><span class="math display">\[
 f_p(t) = \sum_{n = -\infty}^{+\infty} f(nT_s)\delta(t - nT_s)
 \]</span></p>
-<p>我们先前计算过抽样信号的 FT ，这里 <span class="math inline">\(\omega_s\)</span> 是抽样频率， <span class="math inline">\(F\)</span> 是 <span class="math inline">\(f\)</span> 的频谱：</p>
+<p>我们先前计算过抽样信号的 FT，这里 <span class="math inline">\(\omega_s\)</span> 是抽样频率，<span class="math inline">\(F\)</span> 是 <span class="math inline">\(f\)</span> 的频谱：</p>
 <p><span class="math display">\[
 F_p(\omega) = \frac{1}{T_s} \sum_{m = -\infty}^{+\infty} F(\omega - m\omega_s)
 \]</span></p>
@@ -1151,19 +1151,19 @@ F_p(\omega) &amp;= \int_{-\infty}^{+\infty} f_p(t)e^{-\j\omega t} \d t = \int_{-
 <p><span class="math display">\[
 F(\omega) = T_sF_p(\omega) = T_s\sum_{n = -\infty}^{+\infty} f(nT_s) e^{-\j\omega nT_s}, \omega \in \left[-\frac{\omega_s}{2}, \frac{\omega_s}{2}\right] 
 \]</span></p>
-<p>从而我们就有从抽样信号序列复原原信号频谱的方式，这种变换相当于从离散信号作傅立叶变换，称为<strong>离散时间傅立叶变换（ Discrete Time Fourier Transformation / DTFT ）</strong>。</p>
-<p>考虑其逆变换，即从原信号的频谱获取抽样信号。事实上 DTFT 的式子可以认为是一个 FS ， <span class="math inline">\(\{f(nT_s)\}_{n \in \mathbb Z}\)</span> 可以认为是频域上的 FS 系数数列，原信号周期为 <span class="math inline">\(\omega_s\)</span> ，不过注意这里指数上是 <span class="math inline">\(-\j\omega nT_s\)</span> ，是有负号的。那么根据 FS 系数的公式：</p>
+<p>从而我们就有从抽样信号序列复原原信号频谱的方式，这种变换相当于从离散信号作傅立叶变换，称为<strong>离散时间傅立叶变换（Discrete Time Fourier Transformation / DTFT）</strong>。</p>
+<p>考虑其逆变换，即从原信号的频谱获取抽样信号。事实上 DTFT 的式子可以认为是一个 FS，<span class="math inline">\(\{f(nT_s)\}_{n \in \mathbb Z}\)</span> 可以认为是频域上的 FS 系数数列，原信号周期为 <span class="math inline">\(\omega_s\)</span>，不过注意这里指数上是 <span class="math inline">\(-\j\omega nT_s\)</span>，是有负号的。那么根据 FS 系数的公式：</p>
 <p><span class="math display">\[
 f(nT_s) = \frac{1}{\omega_s} \int_{-\omega_s / 2}^{\omega_s / 2} F_p(\omega)e^{\j n\omega T_s} \d\omega
 \]</span></p>
-<p>现在我们尝试进行归一化。由于 <span class="math inline">\(T_s\)</span> 实质上只是作为系数出现，所以可以将其归一化为 <span class="math inline">\(1\)</span> 。而原先的采样序列记作数列 <span class="math inline">\(\{x(n)\}_{n \in \mathbb Z}\)</span> ，这种归一化后的采样序列一般称为<strong>数字信号（ Digital signal ）</strong>。在这样的表示之下考虑 DTFT 和 IDTFT ，我们将 DTFT 的结果记作 <span class="math inline">\(X(\omega)\)</span> ，这也称为数字信号的频谱：</p>
+<p>现在我们尝试进行归一化。由于 <span class="math inline">\(T_s\)</span> 实质上只是作为系数出现，所以可以将其归一化为 <span class="math inline">\(1\)</span>。而原先的采样序列记作数列 <span class="math inline">\(\{x(n)\}_{n \in \mathbb Z}\)</span>，这种归一化后的采样序列一般称为<strong>数字信号（Digital signal）</strong>。在这样的表示之下考虑 DTFT 和 IDTFT，我们将 DTFT 的结果记作 <span class="math inline">\(X(\omega)\)</span>，这也称为数字信号的频谱：</p>
 <p><span class="math display">\[
 \begin{aligned}
 &amp; X(\omega) = {\rm DTFT}[x](\omega) = \sum_{n = -\infty}^{+\infty} x(n) e^{-\j\omega n} \\
 &amp; x(n) = \frac{1}{2\pi} \int_{-\pi}^{\pi} X(\omega)e^{\j n\omega} \d\omega
 \end{aligned}
 \]</span></p>
-<p>根据上述推理，很容易知晓数字信号的频谱一定是周期的（根据 FT 和 IFT 的对偶，实际上根据周期信号的频谱离散就不难理解），并且由于进行了归一化处理，所以这个周期一定是 <span class="math inline">\(2\pi\)</span> ：</p>
+<p>根据上述推理，很容易知晓数字信号的频谱一定是周期的（根据 FT 和 IFT 的对偶，实际上根据周期信号的频谱离散就不难理解），并且由于进行了归一化处理，所以这个周期一定是 <span class="math inline">\(2\pi\)</span>：</p>
 <p><span class="math display">\[
 X(\omega + 2\pi) = X(\omega)
 \]</span></p>
@@ -1265,7 +1265,7 @@ X_L(\omega) = \frac{1}{2\pi}(X \otimes W)(\omega) = A_1W(\omega - \omega_1) + A_
 <p><span class="math display">\[
 |\omega_1 - \omega_2| &gt; \frac{2\pi}{L}
 \]</span></p>
-<p>也就是说如果数字信号的最小频率间隔为 <span class="math inline">\(\Delta\omega\)</span> ，那么为了保证截取后频谱上各个频率峰可分辨，必须要求窗函数宽度 <span class="math inline">\(L\)</span> 不小于 <span class="math inline">\(2\pi / \Delta\omega\)</span> 。</p>
+<p>也就是说如果数字信号的最小频率间隔为 <span class="math inline">\(\Delta\omega\)</span>，那么为了保证截取后频谱上各个频率峰可分辨，必须要求窗函数宽度 <span class="math inline">\(L\)</span> 不小于 <span class="math inline">\(2\pi / \Delta\omega\)</span>。</p>
 <h3 id="dft-的引入和矩阵形式">DFT 的引入和矩阵形式</h3>
 <p>现在我们回到求解有限长数字信号傅立叶变换的问题上。我们继续延续上述 DTFT 的思路。不过我们现在只考虑在 <span class="math inline">\(\omega_k = 2k\pi / N\)</span> 处频谱的取值，即频域 <span class="math inline">\([0, 2\pi]\)</span> 区间内的 <span class="math inline">\(N\)</span> 个特征点：</p>
 <p><span class="math display">\[
@@ -1278,12 +1278,12 @@ X_L(\omega_k) &amp;= \frac{1}{2\pi} ({\rm DTFT}[x] \otimes {\rm DTFT}[w])(\omega
 \end{aligned}
 \]</span></p>
 <p>这里最后一个等号是利用指数函数在周期上的积分除非系数为零，否则积分结果均为零，所以最后只有 <span class="math inline">\(m = n\)</span> 的项被保留。</p>
-<p>便于表示，我们把 <span class="math inline">\(X_L(\omega_k)\)</span> 简记为 <span class="math inline">\(X(k)\)</span> 。</p>
-<p>从而我们就可以做到从有限长的数字信号还原出原信号频谱，这个变换就是<strong>离散傅立叶变换（ Discrete Fourier Transformation / DFT ）</strong>。</p>
-<p>我们注意到这样的一点，就是这里有两个参数是可以独立确定的，即窗函数长度 <span class="math inline">\(L\)</span> 和频域特征点数 <span class="math inline">\(N\)</span> 。但实际应用中一般都有 <span class="math inline">\(L = N\)</span> ，这主要是因为这样计算方便且 <span class="math inline">\(L \neq N\)</span> 的情况均可以还原成 <span class="math inline">\(L = N\)</span> 的情况。</p>
+<p>便于表示，我们把 <span class="math inline">\(X_L(\omega_k)\)</span> 简记为 <span class="math inline">\(X(k)\)</span>。</p>
+<p>从而我们就可以做到从有限长的数字信号还原出原信号频谱，这个变换就是<strong>离散傅立叶变换（Discrete Fourier Transformation / DFT）</strong>。</p>
+<p>我们注意到这样的一点，就是这里有两个参数是可以独立确定的，即窗函数长度 <span class="math inline">\(L\)</span> 和频域特征点数 <span class="math inline">\(N\)</span>。但实际应用中一般都有 <span class="math inline">\(L = N\)</span>，这主要是因为这样计算方便且 <span class="math inline">\(L \neq N\)</span> 的情况均可以还原成 <span class="math inline">\(L = N\)</span> 的情况。</p>
 <hr />
 <p>为了论证这一点，我们可以从另外一个角度推导 DFT 公式。也就是回归傅里叶分析的本质，而傅里叶分析的本质就是将函数分解成若干个指数函数的线性组合。之前论述过的 FT 用于分解时域无限的连续信号，而 DFT 则会用于分析时域有限的离散信号。</p>
-<p>考虑信号 <span class="math inline">\(f\)</span> ，我们在区间 <span class="math inline">\([0, 1]\)</span> 上均匀取 <span class="math inline">\(N\)</span> 个样，组成代表这个信号的向量：</p>
+<p>考虑信号 <span class="math inline">\(f\)</span>，我们在区间 <span class="math inline">\([0, 1]\)</span> 上均匀取 <span class="math inline">\(N\)</span> 个样，组成代表这个信号的向量：</p>
 <p><span class="math display">\[
 \b{x} = \lv
 f(0) &amp; f\left(\frac{1}{N}\right) &amp; \cdots &amp; f\left(\frac{N - 1}{N}\right)
@@ -1326,17 +1326,17 @@ F_N^{-1} = \frac{1}{\sqrt{N}}\left(\frac{F_N}{\sqrt{N}}\right)^{-1} = \frac{1}{\
 \]</span></p>
 <p>对比会发现这个和我们之前推导出来的 DFT 公式是一致的。也就是说我们得到了 <span class="math inline">\(L = N\)</span> 时的 DFT 向量表示。</p>
 <hr />
-<p>回到先前的问题，我们思考为何 <span class="math inline">\(L \neq N\)</span> 的情况都可以化归为 <span class="math inline">\(L = N\)</span> 。</p>
-<p>如果 <span class="math inline">\(L &lt; N\)</span> ，也就是说窗宽（序列长度）不足，我们可以在序列 <span class="math inline">\(x(n)\)</span> 末尾补零至 <span class="math inline">\(N\)</span> 位得到 <span class="math inline">\(x_D(n)\)</span>，以此计算 DFT ：</p>
+<p>回到先前的问题，我们思考为何 <span class="math inline">\(L \neq N\)</span> 的情况都可以化归为 <span class="math inline">\(L = N\)</span>。</p>
+<p>如果 <span class="math inline">\(L &lt; N\)</span>，也就是说窗宽（序列长度）不足，我们可以在序列 <span class="math inline">\(x(n)\)</span> 末尾补零至 <span class="math inline">\(N\)</span> 位得到 <span class="math inline">\(x_D(n)\)</span>，以此计算 DFT：</p>
 <p><span class="math display">\[
 X_D(k) = \sum_{n = 0}^{N - 1} x_D(n)e^{-\j\frac{2\pi nk}{N}} = \sum_{n = 0}^{L - 1} x_D(n)e^{-\j\frac{2\pi nk}{N}} = \sum_{n = 0}^{L - 1} x(n)e^{-\j\frac{2\pi nk}{N}} = X(k)
 \]</span></p>
-<p>可见通过补零，补零序列的 DFT 就是原序列的 DFT 。所以完全可以认为 <span class="math inline">\(L &lt; N\)</span> 时应化归为 <span class="math inline">\(L = N\)</span> 。</p>
+<p>可见通过补零，补零序列的 DFT 就是原序列的 DFT。所以完全可以认为 <span class="math inline">\(L &lt; N\)</span> 时应化归为 <span class="math inline">\(L = N\)</span>。</p>
 <p>而在 <span class="math inline">\(L &gt; N\)</span> 的时候，我们需要使用<strong>回绕</strong>。即定义这样的新序列：</p>
 <p><span class="math display">\[
 \tilde{x}(n) = \sum_{k \mathop{\equiv} n \mathop{\rm mod} N} x(k)
 \]</span></p>
-<p>直观而言，就是将原先的过长序列拆为若干长度为 <span class="math inline">\(N\)</span> 的短序列后对齐相加。为了解释此时依然可以化归，我们使用先前得到矩阵形式的 DFT 即可说明。首先我们取 <span class="math inline">\(F_N\)</span> ，这里 <span class="math inline">\(N\)</span> 即 DFT 点数， <span class="math inline">\(F_N\)</span> 定义与之前相同。取新矩阵：</p>
+<p>直观而言，就是将原先的过长序列拆为若干长度为 <span class="math inline">\(N\)</span> 的短序列后对齐相加。为了解释此时依然可以化归，我们使用先前得到矩阵形式的 DFT 即可说明。首先我们取 <span class="math inline">\(F_N\)</span>，这里 <span class="math inline">\(N\)</span> 即 DFT 点数，<span class="math inline">\(F_N\)</span> 定义与之前相同。取新矩阵：</p>
 <p><span class="math display">\[
 F_{N\times L} = \lv F_N &amp; F_N &amp; \cdots \rv
 \]</span></p>
@@ -1344,11 +1344,11 @@ F_{N\times L} = \lv F_N &amp; F_N &amp; \cdots \rv
 <p><span class="math display">\[
 {\rm DFT}[x](k) = F_{N\times L}\b{x} = (F_N\lv I_N &amp; I_N &amp; \cdots \rv)\b{x} = F_N\tilde{\b{x}} = {\rm DFT}[\tilde{x}](k)
 \]</span></p>
-<p>所以回绕序列和原序列具有相同的 DFT 。</p>
+<p>所以回绕序列和原序列具有相同的 DFT。</p>
 <p>基于上述讨论，考虑到 <span class="math inline">\(L\)</span> 一般而言是原信号的长度，是一个不能修改的量。而 DFT 的点数 <span class="math inline">\(N\)</span> 则是计算过程中自由选取的参数，是可以随意更改的。为了方便，一般而言直接选定 <span class="math inline">\(N = L\)</span> 以方便计算。</p>
 <h3 id="dft-的性质">DFT 的性质</h3>
 <p>实际上我们可以发现 DFT 就是对 DTFT 频域一个周期内的取样，即时域从无限变为有限的时候，频域就会变成原先频域一个周期内的取样。这一点对连续信号也是成立的，时域从无限（周期无限）变为有限（有限周期信号）的时候，频域也会变为原先频域一个周期内的取样（周期信号的频域是离散的）。</p>
-<p>现在考虑实序列的 DFT ，实际上我们考虑 DTFT 即可。令实序列 <span class="math inline">\(x(n)\)</span> 的 DTFT 为 <span class="math inline">\(X(\omega)\)</span> 。根据 DTFT 定义：</p>
+<p>现在考虑实序列的 DFT，实际上我们考虑 DTFT 即可。令实序列 <span class="math inline">\(x(n)\)</span> 的 DTFT 为 <span class="math inline">\(X(\omega)\)</span>。根据 DTFT 定义：</p>
 <p><span class="math display">\[
 X(\omega) = \sum_{n = -\infty}^{+\infty} x(n)e^{-\j\omega n}
 \]</span></p>
@@ -1374,7 +1374,7 @@ X(N + k) = X^*(N - k)
 <p>DFT 的其他性质和 FT 类似。比如 DFT 是线性的，和共轭及反褶的关系也和 FT 一致，其余类似时域平移、频域平移等性质则自行推导。</p>
 <p><code>TODO</code></p>
 <h3 id="fft-算法">FFT 算法</h3>
-<p>直接计算 <span class="math inline">\(N\)</span> 点 DFT 的时间复杂度为 <span class="math inline">\(O(n^2)\)</span> ，但是考虑到 <span class="math inline">\(F_N\)</span> 矩阵的优良性质，应该具有更快速的算法。有一种思路是使用分治，考虑下述数学事实，这里 <span class="math inline">\(X\)</span> 为 <span class="math inline">\(x\)</span> 的 <span class="math inline">\(N\)</span> 点 DFT 序列，<span class="math inline">\(x\)</span> 长度为 <span class="math inline">\(N\)</span>，不妨 <span class="math inline">\(N\)</span> 是偶数：</p>
+<p>直接计算 <span class="math inline">\(N\)</span> 点 DFT 的时间复杂度为 <span class="math inline">\(O(n^2)\)</span>，但是考虑到 <span class="math inline">\(F_N\)</span> 矩阵的优良性质，应该具有更快速的算法。有一种思路是使用分治，考虑下述数学事实，这里 <span class="math inline">\(X\)</span> 为 <span class="math inline">\(x\)</span> 的 <span class="math inline">\(N\)</span> 点 DFT 序列，<span class="math inline">\(x\)</span> 长度为 <span class="math inline">\(N\)</span>，不妨 <span class="math inline">\(N\)</span> 是偶数：</p>
 <p><span class="math display">\[
 \begin{aligned}
 {\rm DFT}_{n, k}[x(n)](k) &amp;= \sum_{n = 0}^{N - 1} x(n)e^{-\j\frac{2\pi nk}{N}} \\
@@ -1383,21 +1383,21 @@ X(N + k) = X^*(N - k)
 &amp;= {\rm DFT}_{n, k}[x(2n)](k) + e^{-\j\frac{2\pi k}{N}}{\rm DFT}_{n, k}[x(2n + 1)](k)
 \end{aligned}
 \]</span></p>
-<p>也就是说，将原序列按照奇偶拆为两个序列，分别作 DFT 后再合并即得到原序列的 DFT 。按此分治算法即可得到 <span class="math inline">\(O(n\log n)\)</span> 的 FFT 算法。</p>
+<p>也就是说，将原序列按照奇偶拆为两个序列，分别作 DFT 后再合并即得到原序列的 DFT。按此分治算法即可得到 <span class="math inline">\(O(n\log n)\)</span> 的 FFT 算法。</p>
 <h1 id="laplace-变换与-z-变换">Laplace 变换与 Z 变换</h1>
-<p>首先给出两个感性认识， Laplace 变换是拓展的 Fourier 变换， Z 变换是拓展的离散时间 Fourier 变换。</p>
-<p>Fourier 变换显然要求连续信号平方可积，但是对于平方积分发散的信号，其进行 FT 后是不收敛的。最简单的让信号 <span class="math inline">\(f\)</span> 平方积分收敛的方式是乘以一个指数衰减 <span class="math inline">\(e^{-\sigma t}(\sigma \in \mathbb R)\)</span> 。感性理解就是，大部分信号总是可以用指数信号迫敛的。</p>
+<p>首先给出两个感性认识，Laplace 变换是拓展的 Fourier 变换，Z 变换是拓展的离散时间 Fourier 变换。</p>
+<p>Fourier 变换显然要求连续信号平方可积，但是对于平方积分发散的信号，其进行 FT 后是不收敛的。最简单的让信号 <span class="math inline">\(f\)</span> 平方积分收敛的方式是乘以一个指数衰减 <span class="math inline">\(e^{-\sigma t}(\sigma \in \mathbb R)\)</span>。感性理解就是，大部分信号总是可以用指数信号迫敛的。</p>
 <p>此时我们对迫敛后的信号进行 Fourier 变换：</p>
 <p><span class="math display">\[
 \mathcal{F}_{t, \omega}[f(t)e^{-\sigma t}] = \int_{-\infty}^{+\infty} f(t)e^{-\sigma t}e^{-\j\omega t} \d t = \int_{-\infty}^{+\infty} f(t)e^{-(\sigma + \j\omega) t} \d t
 \]</span></p>
-<p>此时考虑到 <span class="math inline">\(\sigma\)</span> 的不确定性和 <span class="math inline">\(\omega\)</span> 的任意性，我们取 <span class="math inline">\(s := \sigma + \j\omega \in \mathbb C\)</span> ，定义新的变换：</p>
+<p>此时考虑到 <span class="math inline">\(\sigma\)</span> 的不确定性和 <span class="math inline">\(\omega\)</span> 的任意性，我们取 <span class="math inline">\(s := \sigma + \j\omega \in \mathbb C\)</span>，定义新的变换：</p>
 <p><span class="math display">\[
 \mathcal{L}[f](s) := \int_{-\infty}^{+\infty} f(t)e^{-st} \d t
 \]</span></p>
-<p>这就是 Laplace 变换，其为拓展后的 Fourier 变换。 Laplace 变换中 <span class="math inline">\(s\)</span> 可以取全复数集，而如果沿用 <span class="math inline">\(\omega\)</span> 是角频率的物理意义， Laplace 变换本质上引入了复频率空间。而如果一个信号 Laplace 变换后的复频率空间的虚轴上全收敛，就说明其 Fourier 变换收敛，此时其频域就是负频率空间虚轴截面。</p>
+<p>这就是 Laplace 变换，其为拓展后的 Fourier 变换。Laplace 变换中 <span class="math inline">\(s\)</span> 可以取全复数集，而如果沿用 <span class="math inline">\(\omega\)</span> 是角频率的物理意义，Laplace 变换本质上引入了复频率空间。而如果一个信号 Laplace 变换后的复频率空间的虚轴上全收敛，就说明其 Fourier 变换收敛，此时其频域就是负频率空间虚轴截面。</p>
 <hr />
-<p>而同样的， DTFT 要求序列之模求和收敛。如果不收敛，我们同样模仿 Laplace 变换的引入，将序列乘以一个指数衰减 <span class="math inline">\(a^{-n}(a &gt; 0)\)</span> ，对此时的序列进行 DTFT ：</p>
+<p>而同样的，DTFT 要求序列之模求和收敛。如果不收敛，我们同样模仿 Laplace 变换的引入，将序列乘以一个指数衰减 <span class="math inline">\(a^{-n}(a &gt; 0)\)</span>，对此时的序列进行 DTFT：</p>
 <p><span class="math display">\[
 {\rm DTFT}_{n, \omega}[x(n)a^{-n}] = \sum_{n = -\infty}^{+\infty} x(n)a^{-n}e^{-\j\omega n} = \sum_{n = -\infty}^{+\infty} x(n)(ae^{\j\omega})^{-n}
 \]</span></p>
@@ -1405,9 +1405,9 @@ X(N + k) = X^*(N - k)
 <p><span class="math display">\[
 \mathcal{Z}[x](z) := \sum_{n = -\infty}^{+\infty} x(n)z^{-n}
 \]</span></p>
-<p>此时类似的， Z 变换将变换结果拓展到了整个复平面上。但是和 Laplace 变换后原先 FT 的残余是虚轴不同， Z 变换下 DTFT 的残余是单位圆（即 <span class="math inline">\(a = 1\)</span>）。也就是说，如果 Z 变换下，单位圆上处处收敛，就说明原先信号 DTFT 收敛，此时信号的 DTFT 后频域的一个周期就是单位圆截面。</p>
+<p>此时类似的，Z 变换将变换结果拓展到了整个复平面上。但是和 Laplace 变换后原先 FT 的残余是虚轴不同，Z 变换下 DTFT 的残余是单位圆（即 <span class="math inline">\(a = 1\)</span>）。也就是说，如果 Z 变换下，单位圆上处处收敛，就说明原先信号 DTFT 收敛，此时信号的 DTFT 后频域的一个周期就是单位圆截面。</p>
 <hr />
-<p>上述讲解的 ZT 是双边 ZT ，事实上在应用的时候可能会使用单边 ZT 。比如左边 ZT 的表达为：</p>
+<p>上述讲解的 ZT 是双边 ZT，事实上在应用的时候可能会使用单边 ZT。比如左边 ZT 的表达为：</p>
 <p><span class="math display">\[
 \mathcal{Z}_L[x](z) := \sum_{n = -\infty}^{0} x(n)z^{-n}
 \]</span></p>
@@ -1415,15 +1415,15 @@ X(N + k) = X^*(N - k)
 <p><span class="math display">\[
 \mathcal{Z}_R[x](z) := \sum_{n = 0}^{+\infty} x(n)z^{-n}
 \]</span></p>
-<p>一般而言，单边 ZT 中使用最多的是右边 ZT ，所以在不引起混淆的时候，可以用单边 ZT 代表右边 ZT 。</p>
+<p>一般而言，单边 ZT 中使用最多的是右边 ZT，所以在不引起混淆的时候，可以用单边 ZT 代表右边 ZT。</p>
 <h2 id="z-变换的收敛域">Z 变换的收敛域</h2>
-<p>Z 变换实际上是一个复平面上的幂级数，所以其具有收敛域（ ROC ）。</p>
-<p>思考两个单边 ZT 的 ROC ，这里考虑两个特殊点，即复平面零点 <span class="math inline">\(0\)</span> 与复平面无穷点 <span class="math inline">\(\infty\)</span> 。显然左边 ZT 中 <span class="math inline">\(z = 0\)</span> 的时候幂级数收敛至 <span class="math inline">\(0\)</span> ，而右边 ZT 中 <span class="math inline">\(z = \infty\)</span> 的时候幂级数收敛至 <span class="math inline">\(0\)</span> 。所以左边 ZT 的 ROC 永远包含零点，而右边 ZT 的 ROC 永远包含无穷远点。</p>
-<p>此外，考虑这样显然的结论（ Abel 定理）。如果幂级数 <span class="math inline">\(\sum_{n = 0}^{+\infty} x(n)z^n\)</span> 在 <span class="math inline">\(z_0\)</span> 处绝对收敛，那么该级数在 <span class="math inline">\(|z| &lt; z_0\)</span> 处均收敛。如果在 <span class="math inline">\(z_0\)</span> 处发散，那么该级数在 <span class="math inline">\(|z| &gt; z_0\)</span> 处发散。那么左边 ZT 的 ROC 的表现为一个圆的内部，右边 ZT 的 ROC 的表现为一个圆的外部。</p>
-<p>考虑双边 ZT ，其显然可以认为是一个左边 ZT 和右边 ZT 的和，所以其 ROC 只能为两个单边 ZT 的交。考虑到左边 ZT 的 ROC 为圆的内部，右边 ZT 的 ROC 为圆的外部，所以双边 ZT 的 ROC 可以为空集，也可以为某一个圆环。</p>
+<p>Z 变换实际上是一个复平面上的幂级数，所以其具有收敛域（ROC）。</p>
+<p>思考两个单边 ZT 的 ROC，这里考虑两个特殊点，即复平面零点 <span class="math inline">\(0\)</span> 与复平面无穷点 <span class="math inline">\(\infty\)</span>。显然左边 ZT 中 <span class="math inline">\(z = 0\)</span> 的时候幂级数收敛至 <span class="math inline">\(0\)</span>，而右边 ZT 中 <span class="math inline">\(z = \infty\)</span> 的时候幂级数收敛至 <span class="math inline">\(0\)</span>。所以左边 ZT 的 ROC 永远包含零点，而右边 ZT 的 ROC 永远包含无穷远点。</p>
+<p>此外，考虑这样显然的结论（Abel 定理）。如果幂级数 <span class="math inline">\(\sum_{n = 0}^{+\infty} x(n)z^n\)</span> 在 <span class="math inline">\(z_0\)</span> 处绝对收敛，那么该级数在 <span class="math inline">\(|z| &lt; z_0\)</span> 处均收敛。如果在 <span class="math inline">\(z_0\)</span> 处发散，那么该级数在 <span class="math inline">\(|z| &gt; z_0\)</span> 处发散。那么左边 ZT 的 ROC 的表现为一个圆的内部，右边 ZT 的 ROC 的表现为一个圆的外部。</p>
+<p>考虑双边 ZT，其显然可以认为是一个左边 ZT 和右边 ZT 的和，所以其 ROC 只能为两个单边 ZT 的交。考虑到左边 ZT 的 ROC 为圆的内部，右边 ZT 的 ROC 为圆的外部，所以双边 ZT 的 ROC 可以为空集，也可以为某一个圆环。</p>
 <hr />
 <p>我们需要指出的是，对于同一个 ZT 的结果，只有在指定 ROC 之后才能唯一确定 IZT 的结果。也就是说，必须要指定 ZT 结果和相应的 ROC 才能确定变换前的序列。</p>
-<p>考虑某一个 ZT 的结果，假设其极点构成有限集 <span class="math inline">\(\{z_1, z_2, \cdots, z_n\}(|z_i| \leq |z_{i + 1}|)\)</span> 。数学上可以证明，所有可能的 ROC 仅可以是 <span class="math inline">\(\{z: |z_i| \leq |z| \leq |z_{i + 1}|\}(0 \leq i \leq n)\)</span> ，这里 <span class="math inline">\(z_0 = 0, z_{n + 1} = \infty\)</span> 。</p>
+<p>考虑某一个 ZT 的结果，假设其极点构成有限集 <span class="math inline">\(\{z_1, z_2, \cdots, z_n\}(|z_i| \leq |z_{i + 1}|)\)</span>。数学上可以证明，所有可能的 ROC 仅可以是 <span class="math inline">\(\{z: |z_i| \leq |z| \leq |z_{i + 1}|\}(0 \leq i \leq n)\)</span>，这里 <span class="math inline">\(z_0 = 0, z_{n + 1} = \infty\)</span>。</p>
 <h2 id="z-变换的性质简介">Z 变换的性质简介</h2>
 <p>首先简单介绍一些特殊信号的 Z 变换。先考虑单位阶跃信号：</p>
 <p><span class="math display">\[
@@ -1461,7 +1461,7 @@ G_N(n) := \begin{cases}
 \end{cases}, {\rm ROC} = \{z: |z| &lt; |a|\}
 \]</span></p>
 <hr />
-<p>接下来的讨论默认 <span class="math inline">\(X := \mathcal{Z}[x]\)</span> 。</p>
+<p>接下来的讨论默认 <span class="math inline">\(X := \mathcal{Z}[x]\)</span>。</p>
 <p>ZT 显然是线性的。其时域平移对复频域影响为：</p>
 <p><span class="math display">\[
 \mathcal{Z}_{n, z}[x(n + m)] = z^mX(z)
@@ -1475,7 +1475,7 @@ G_N(n) := \begin{cases}
 <li><p>频域上，其单位冲激响应是周期的，且周期是该滤波器单位冲激响应的采样频率</p></li>
 </ul>
 <h2 id="数字滤波器的差分方程">数字滤波器的差分方程</h2>
-<p>约定这样的记号， <span class="math inline">\(x(n)\)</span> 表示数字滤波器接收到的激励， <span class="math inline">\(y(n)\)</span> 表示数字滤波器作出的响应。</p>
+<p>约定这样的记号，<span class="math inline">\(x(n)\)</span> 表示数字滤波器接收到的激励，<span class="math inline">\(y(n)\)</span> 表示数字滤波器作出的响应。</p>
 <p>首先我们说明，我们要求滤波器是线性时不变因果系统。线性系统定义先前已经阐述，时不变的含义是无论何时系统接收到相同的激励，其永远给出相同的响应。因果系统则要求系统响应仅依赖于现在及先前的激励，而不依赖于未来未知的激励。所有实际系统都是因果系统。</p>
 <p>有时我们要求系统稳定性，即对于任何有界激励都给出有界响应。</p>
 <p>基于此，我们考虑数字滤波器。根据其线性时不变及因果性，我们给出数字滤波器需要满足的一般规律，这一般称为滤波器的<strong>差分方程</strong>：</p>
@@ -1483,21 +1483,21 @@ G_N(n) := \begin{cases}
 \sum_{k = 0}^N b_ky(n - k) = \sum_{r = 0}^M a_rx(n - r)
 \]</span></p>
 <p>这里 <span class="math inline">\(N\)</span> 表示滤波器需要的过去输出的个数，一般也称为滤波器的<strong>阶数</strong>。</p>
-<p>我们考虑该滤波器的单位冲激响应。如果 <span class="math inline">\(N = 1\)</span> ，我们可以注意到在足够大的 <span class="math inline">\(n\)</span> 下， <span class="math inline">\(x(n - r) = \delta(n - r)\)</span> 总是会全部变为零，此时响应为零。也就是说在有限长时间内，滤波器响应总会衰变为零，此时的滤波器称为<strong>有限脉冲响应滤波器</strong>，简称 <strong>FIR 滤波器</strong>。</p>
-<p>对应的，如果 <span class="math inline">\(N &gt; 1\)</span> ，由于每一个响应都依赖于先前的非零响应，其响应始终不消失，该滤波器则为<strong>无限脉冲响应滤波器</strong>，简称 <strong>IIR 滤波器</strong>。</p>
+<p>我们考虑该滤波器的单位冲激响应。如果 <span class="math inline">\(N = 1\)</span>，我们可以注意到在足够大的 <span class="math inline">\(n\)</span> 下，<span class="math inline">\(x(n - r) = \delta(n - r)\)</span> 总是会全部变为零，此时响应为零。也就是说在有限长时间内，滤波器响应总会衰变为零，此时的滤波器称为<strong>有限脉冲响应滤波器</strong>，简称 <strong>FIR 滤波器</strong>。</p>
+<p>对应的，如果 <span class="math inline">\(N &gt; 1\)</span>，由于每一个响应都依赖于先前的非零响应，其响应始终不消失，该滤波器则为<strong>无限脉冲响应滤波器</strong>，简称 <strong>IIR 滤波器</strong>。</p>
 <h2 id="数字滤波器的流图">数字滤波器的流图</h2>
 <p>流图是系统的一种表示方式，没有很深刻的理论需要讲解，这里不赘述。该课程基本仅要求掌握根据差分方程绘制滤波器的 I 型直接实现和 II 型直接实现，根据 PPT 即可很快掌握。</p>
 <h2 id="数字滤波器的频率响应">数字滤波器的频率响应</h2>
-<p>假设数字滤波器具有单位冲激响应 <span class="math inline">\(h(n)\)</span> ，我们先前证明过：</p>
+<p>假设数字滤波器具有单位冲激响应 <span class="math inline">\(h(n)\)</span>，我们先前证明过：</p>
 <p><span class="math display">\[
 y(n) = (x * h)(n) = \sum_{k = -\infty}^{+\infty} h(k)x(n - k)
 \]</span></p>
-<p>考虑对两边同时 DTFT ，如果将 <span class="math inline">\(x, y, h\)</span> 的 DTFT 分别记作 <span class="math inline">\(X, Y, H\)</span> ，则显然有 <span class="math inline">\(Y = XH\)</span> 。定义：</p>
+<p>考虑对两边同时 DTFT，如果将 <span class="math inline">\(x, y, h\)</span> 的 DTFT 分别记作 <span class="math inline">\(X, Y, H\)</span>，则显然有 <span class="math inline">\(Y = XH\)</span>。定义：</p>
 <p><span class="math display">\[
 H(\omega) = \frac{Y(\omega)}{X(\omega)}
 \]</span></p>
-<p>为数字滤波器的<strong>频率响应</strong>，频率响应是单位冲激响应的 DTFT 。根据 DTFT 可逆，我们实际上也可以说明频率响应唯一代表了一个数字滤波器。然而差分方程的系数理论上也唯一代表了一个数字滤波器。实际上，我们可以使用差分方程系数推导频率响应，即这两者实际等价。</p>
-<p>对差分方程两边 DTFT ：</p>
+<p>为数字滤波器的<strong>频率响应</strong>，频率响应是单位冲激响应的 DTFT。根据 DTFT 可逆，我们实际上也可以说明频率响应唯一代表了一个数字滤波器。然而差分方程的系数理论上也唯一代表了一个数字滤波器。实际上，我们可以使用差分方程系数推导频率响应，即这两者实际等价。</p>
+<p>对差分方程两边 DTFT：</p>
 <p><span class="math display">\[
 \begin{aligned}
 &amp; \sum_{k = 0}^N b_ky(n - k) = \sum_{r = 0}^M a_rx(n - r) \\
@@ -1522,14 +1522,14 @@ H(\omega) = \frac{\sum_{r = 0}^M a_re^{-\j r\omega}}{\sum_{k = 0}^N b_ke^{-\j k\
 <p>其在区间 <span class="math inline">\([-\pi, \pi]\)</span> 上的图像为：</p>
 <p><img src="/uploads/note-of-dsp/4.png" /></p>
 <p>其对低频段给出高响应，所以该数字滤波器为低通滤波器。</p>
-<div class="note info"><p>显然可以看出频率响应作为单位冲激响应的 DTFT ，其是以 <span class="math inline">\(2\pi\)</span> 为周期的函数。所以我们只需要关注一个周期内的函数表现即可，一般选用 <span class="math inline">\([-\pi, \pi]\)</span> 。</p>
+<div class="note info"><p>显然可以看出频率响应作为单位冲激响应的 DTFT，其是以 <span class="math inline">\(2\pi\)</span> 为周期的函数。所以我们只需要关注一个周期内的函数表现即可，一般选用 <span class="math inline">\([-\pi, \pi]\)</span>。</p>
 </div>
 <h2 id="数字滤波器的传递函数与零极点图">数字滤波器的传递函数与零极点图</h2>
 <p>我们现在研究系统的稳定性，我们给出下述定理。线性时不变系统稳定的充分必要条件为其单位冲激响应 <span class="math inline">\(h(n)\)</span> 满足：</p>
 <p><span class="math display">\[
 \sum_{k = -\infty}^{+\infty} |h(k)| &lt; +\infty
 \]</span></p>
-<p>如果单位冲激响应的模之和收敛，假设其收敛为 <span class="math inline">\(A &lt; +\infty\)</span> ，考虑一个有界输入 <span class="math inline">\(x(n)\)</span> ，其满足 <span class="math inline">\(|x(n)| &lt; B &lt; +\infty\)</span> 。那么系统的响应为：</p>
+<p>如果单位冲激响应的模之和收敛，假设其收敛为 <span class="math inline">\(A &lt; +\infty\)</span>，考虑一个有界输入 <span class="math inline">\(x(n)\)</span>，其满足 <span class="math inline">\(|x(n)| &lt; B &lt; +\infty\)</span>。那么系统的响应为：</p>
 <p><span class="math display">\[
 |y(n)| = \left|\sum_{k = -\infty}^{+\infty} h(k)x(n - k)\right| \leq \sum_{k = -\infty}^{+\infty} |h(k)|\cdot|x(n - k)| &lt; B\sum_{k = -\infty}^{+\infty} h(k) = AB
 \]</span></p>
@@ -1544,17 +1544,17 @@ x(n) = {\rm sgn}(h(-n))
 \]</span></p>
 <p>得到了系统不稳定的结论。</p>
 <hr />
-<p>这样思考，如果系统的单位冲激响应之模的和不收敛，就意味着我们不能对其进行 DTFT 。而我们先前已经介绍过作为 DTFT 拓展的 Z 变换，不妨对用 ZT 代替 DTFT ，我们对差分方程两边取 ZT 。如果假设 <span class="math inline">\(x, y, h\)</span> 的 ZT 分别为 <span class="math inline">\(X, Y, H\)</span> ，仿照之前推导频率响应的方法，不难说明：</p>
+<p>这样思考，如果系统的单位冲激响应之模的和不收敛，就意味着我们不能对其进行 DTFT。而我们先前已经介绍过作为 DTFT 拓展的 Z 变换，不妨对用 ZT 代替 DTFT，我们对差分方程两边取 ZT。如果假设 <span class="math inline">\(x, y, h\)</span> 的 ZT 分别为 <span class="math inline">\(X, Y, H\)</span>，仿照之前推导频率响应的方法，不难说明：</p>
 <p><span class="math display">\[
 H(z) = \frac{Y(z)}{X(z)} = \frac{\sum_{r = 0}^M a_rz^{-r}}{\sum_{k = 0}^N b_kz^{-k}}
 \]</span></p>
-<p>此时的 <span class="math inline">\(H\)</span> 称为<strong>传递函数</strong>，其为单位冲激响应的 ZT 。如果滤波器的传递函数的 ROC 包含了单位圆，意味着其单位冲激响应可以进行 DTFT ，也意味着单位冲激响应模之和收敛，这就意味着系统稳定。</p>
+<p>此时的 <span class="math inline">\(H\)</span> 称为<strong>传递函数</strong>，其为单位冲激响应的 ZT。如果滤波器的传递函数的 ROC 包含了单位圆，意味着其单位冲激响应可以进行 DTFT，也意味着单位冲激响应模之和收敛，这就意味着系统稳定。</p>
 <p>从这个角度观察，一个数字滤波器的稳定性等价于其传递函数的 ROC 包含单位圆。</p>
-<p>现在我们考虑因果性。显然一个因果数字滤波器的单位冲激响应必然在负数上取零，所以其 ZT 最终退化为右边 ZT ，这意味着其 ROC 必然是一个圆的外部。换言之，非因果数字滤波器的单位冲激响应会在负数上取非零，非退化的双边 ZT 的 ROC 不包含无穷远点。从这个角度观察，数字滤波器的因果性等价于 ROC 为某一圆的外部，包含无穷远点。</p>
+<p>现在我们考虑因果性。显然一个因果数字滤波器的单位冲激响应必然在负数上取零，所以其 ZT 最终退化为右边 ZT，这意味着其 ROC 必然是一个圆的外部。换言之，非因果数字滤波器的单位冲激响应会在负数上取非零，非退化的双边 ZT 的 ROC 不包含无穷远点。从这个角度观察，数字滤波器的因果性等价于 ROC 为某一圆的外部，包含无穷远点。</p>
 <hr />
-<p>现在考虑 <span class="math inline">\(H(z)\)</span> 的形式，显然其是一个有理分式，其分子为 <span class="math inline">\(z^{-1}\)</span> 的 <span class="math inline">\(M\)</span> 次多项式，分母则是 <span class="math inline">\(N\)</span> 次。那么根据代数基本定理， <span class="math inline">\(H(z)\)</span> 具有 <span class="math inline">\(M\)</span> 个零点和 <span class="math inline">\(N\)</span> 个极点。另外， <span class="math inline">\(0, \infty\)</span> 也可能是零点或者极点。将这些零点和极点绘制在复平面上，则得到了传递函数的零极点图。</p>
+<p>现在考虑 <span class="math inline">\(H(z)\)</span> 的形式，显然其是一个有理分式，其分子为 <span class="math inline">\(z^{-1}\)</span> 的 <span class="math inline">\(M\)</span> 次多项式，分母则是 <span class="math inline">\(N\)</span> 次。那么根据代数基本定理，<span class="math inline">\(H(z)\)</span> 具有 <span class="math inline">\(M\)</span> 个零点和 <span class="math inline">\(N\)</span> 个极点。另外，<span class="math inline">\(0, \infty\)</span> 也可能是零点或者极点。将这些零点和极点绘制在复平面上，则得到了传递函数的零极点图。</p>
 <h2 id="由传递函数推算单位冲激响应">由传递函数推算单位冲激响应</h2>
-<p>通过传递函数可以推算数字滤波器的差分方程，之后我们可以通过令输入为单位冲激信号的方式求解单位冲激响应。但实际上，我们考虑到传递函数是单位冲激响应的 ZT ，而我们已经知道，在给定 ZT 结果和 ROC 之后可以唯一确定 IZT 的结果，而 ROC 可以通过极点来确定。</p>
+<p>通过传递函数可以推算数字滤波器的差分方程，之后我们可以通过令输入为单位冲激信号的方式求解单位冲激响应。但实际上，我们考虑到传递函数是单位冲激响应的 ZT，而我们已经知道，在给定 ZT 结果和 ROC 之后可以唯一确定 IZT 的结果，而 ROC 可以通过极点来确定。</p>
 <h1 id="数模转换">数模转换</h1>
 <p>之前讲解的采样与信号复原实际上就已经简单引入了数模转换这个话题。但是当时我们并没有讲解如何处理数字信号（时域离散信号），所以完全采用了模拟信号的视角。现在我们希望能够在理解了数字信号处理的基础上对数模转换进行更深刻的理解。</p>
 <p>这里需要提一下，模拟滤波器一般而言成本高，截止频率低的模拟低通滤波器成本则相当高。这一因素决定了实际信号处理往往会<strong>使用高质量的数字信号处理来弥补低成本的模拟抗混叠滤波器</strong>。</p>
@@ -1566,9 +1566,9 @@ H(z) = \frac{Y(z)}{X(z)} = \frac{\sum_{r = 0}^M a_rz^{-r}}{\sum_{k = 0}^N b_kz^{
 <p>抗混叠滤波器需要和后续的采样器配合使用以保证频谱不混叠。如果后续使用的采样频率过低，则要求抗混叠滤波器的频谱在较低的频段就需要降低到零，这对滤波器设计提出了较高要求，实现成本高。所以即使有抗混叠滤波器，采样频率也不能很低。</p>
 <h2 id="过采样与二次采样">过采样与二次采样</h2>
 <p>过采样与二次采样就是一种使用高质量数字信号处理弥补低成本模拟抗混叠滤波器的方法。我们考虑这样的实际场景，即需要对某模拟信号以 <span class="math inline">\(2\omega\)</span> 频率进行采样，该信号的重要信息分布于频谱的 <span class="math inline">\([0, \omega)\)</span> 频段。</p>
-<p>按照先抗混叠再直接 <span class="math inline">\(2\omega\)</span> 采样的思路，模拟抗混叠滤波器的截止频率必须至多为 <span class="math inline">\(\omega\)</span> ，否则会发生频谱混叠，但是这会导致成本过高。</p>
+<p>按照先抗混叠再直接 <span class="math inline">\(2\omega\)</span> 采样的思路，模拟抗混叠滤波器的截止频率必须至多为 <span class="math inline">\(\omega\)</span>，否则会发生频谱混叠，但是这会导致成本过高。</p>
 <p>有一种这样的思路，也就是使用很高的采样频率，降低对模拟抗混叠滤波器的截止频率要求，最后再二次取样，将实际的采样频率降回需求值。</p>
-<p>比如说我们可以实际使用 <span class="math inline">\(8\omega\)</span> 的采样频率，此时模拟抗混叠滤波器的最高截止频率就放松到了 <span class="math inline">\(4\omega\)</span> 。经过模拟抗混叠滤波器和 <span class="math inline">\(8\omega\)</span> 采样后，信号的频谱的 <span class="math inline">\([\omega + 8k\omega, 7\omega + 8k\omega](k \in \mathbb Z)\)</span> 频段实际上混杂着不需要的高频信息，需要过滤。但是注意，此时信号已经是数字信号，所以可以使用数字滤波器处理。</p>
+<p>比如说我们可以实际使用 <span class="math inline">\(8\omega\)</span> 的采样频率，此时模拟抗混叠滤波器的最高截止频率就放松到了 <span class="math inline">\(4\omega\)</span>。经过模拟抗混叠滤波器和 <span class="math inline">\(8\omega\)</span> 采样后，信号的频谱的 <span class="math inline">\([\omega + 8k\omega, 7\omega + 8k\omega](k \in \mathbb Z)\)</span> 频段实际上混杂着不需要的高频信息，需要过滤。但是注意，此时信号已经是数字信号，所以可以使用数字滤波器处理。</p>
 <p>此时使用截止频率为 <span class="math inline">\(\omega\)</span> 的数字滤波器过滤出原信号在低频段的重要信息，再使用 <span class="math inline">\(2\omega\)</span> 频率取样。这样，我们就既做到了抗混叠，也做到了过滤不必要的高频信息。</p>
 <p>这里使用远高于二倍高频截止频率的采样频率进行采样的方式称为<strong>过采样</strong>，而二次滤波之后进行的第二次采样就是<strong>二次采样</strong>。这样的方法可以放松对模拟滤波器的要求以降低成本。</p>
 
