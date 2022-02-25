@@ -35,7 +35,7 @@
 
 ## 我们的标准
 
-作为 GitHub 上的一个项目，本项目受到 [GitHub 社区准则](https://help.github.com/articles/github-community-guidelines/)的约束。 此外，作为 npm 托管的项目，[npm 公司的行为准则](https://www.npmjs.com/policies/conduct)也涵盖了本项目。
+作为 GitHub 上的一个项目，本项目受到 [GitHub 社区准则](https://help.github.com/articles/github-community-guidelines/)的约束。此外，作为 npm 托管的项目，[npm 公司的行为准则](https://www.npmjs.com/policies/conduct)也涵盖了本项目。
 
 有助于创造正面环境的行为包括但不限于：
 

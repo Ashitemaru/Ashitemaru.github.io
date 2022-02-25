@@ -11,7 +11,7 @@ category:
 
 <!-- more -->
 
-首先玩玩代码块，自然首先试试 cpp 。
+首先玩玩代码块，自然首先试试 cpp。
 
 {% codeblock lang:cpp C++ %}
 #include <iostream>
@@ -22,14 +22,14 @@ int main() {
 }
 {% endcodeblock %}
 
-再来试一下 Python 。
+再来试一下 Python。
 
 {% codeblock lang:python Python %}
 if __name__ == '__main__':
     print('Hello world!')
 {% endcodeblock %}
 
-不如玩一下 JavaScript 。
+不如玩一下 JavaScript。
 
 {% codeblock lang:js JavaScript %}
 console.log("Hello world!");
@@ -37,7 +37,7 @@ console.log("Hello world!");
 
 然后玩一下数学公式。
 
-我们可以把机器学习抽象描述为以下过程，这里 $X$ 表示输入集合， $Y$ 表示输出集合， $L$ 表示损失函数， $\boldsymbol{w}$ 表示模型参数， $f_\boldsymbol{w}$ 表示在某一系列参数之下的模型函数。
+我们可以把机器学习抽象描述为以下过程，这里 $X$ 表示输入集合，$Y$ 表示输出集合，$L$ 表示损失函数，$\boldsymbol{w}$ 表示模型参数，$f_\boldsymbol{w}$ 表示在某一系列参数之下的模型函数。
 
 $$
 \boldsymbol{w}^*=\mathop{\arg\min}_{\boldsymbol{w} \in \Omega}\sum_{x_i \in X, y_i \in Y} L(f_\boldsymbol{w}(x_i), y_i)
@@ -52,7 +52,7 @@ $$
 hexo 文档里面还提到了一种奇怪的东西，来试一下。
 
 {% pullquote %}
-这个东西被称为 Pull Quote 。
+这个东西被称为 Pull Quote。
 {% endpullquote %}
 
 似乎还有奇怪的东西。

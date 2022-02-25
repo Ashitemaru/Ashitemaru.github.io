@@ -13,8 +13,8 @@ category:
 
 ## CUDA 的问题
 
-我的笔记本显卡是 RTX 3050 ，使用不了 CUDA 10 ，但是 Pytorch3D 官方给出的安装指引是基于 CUDA 10 的，所以我们要自己安装合适版本的 Pytorch 以及 Pytorch3D 。
+我的笔记本显卡是 RTX 3050，使用不了 CUDA 10，但是 Pytorch3D 官方给出的安装指引是基于 CUDA 10 的，所以我们要自己安装合适版本的 Pytorch 以及 Pytorch3D。
 
-主要需要注意的就是要装 CUDA 11 ，然后 Pytorch 一定不能是 CPU only 的，最好是 `0.10.1+cu113` 这种明确显示支持 CUDA 的版本。最后就是，根据 StackOverflow 的一些回答，从 pip 或者 Anaconda 安装的 Pytorch3D 似乎是支持不了 GPU 的，要自己 clone 下来然后 build from source ，然后在 Windows 上安装的话一定要有 MSVC 。
+主要需要注意的就是要装 CUDA 11，然后 Pytorch 一定不能是 CPU only 的，最好是 `0.10.1+cu113` 这种明确显示支持 CUDA 的版本。最后就是，根据 StackOverflow 的一些回答，从 pip 或者 Anaconda 安装的 Pytorch3D 似乎是支持不了 GPU 的，要自己 clone 下来然后 build from source，然后在 Windows 上安装的话一定要有 MSVC。
 
 总之这个配环境是真的折磨，而且其实到现在我也没有敢说后面就一定不会在环境上出问题。

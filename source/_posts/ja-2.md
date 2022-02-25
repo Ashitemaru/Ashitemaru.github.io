@@ -24,7 +24,7 @@ category:
 
 $$
 \begin{aligned}
-& \text{陳康粛公善}_{\text{レ}}^{\text{クス}} \text{射}^{\text{ヲ}}。 \\
+& \text{陳康粛公善}_{\text{レ}}^{\text{クス}} \text{射}^{\text{ヲ}}。\\
 & \text{項梁乃}^{\text{チ}}\text{教}^{\text{フ}}_{\text{一}}\text{籍}^{\text{ニ}}\text{兵法}^{\text{ヲ}}_{\text{二}}。　\\
 \end{aligned}
 $$

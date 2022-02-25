@@ -35,7 +35,7 @@ const App = (props: AppProps) => {
 }
 {% endcodeblock %}
 
-但是在安卓之中，图形界面完全定义在 `.xml` 文件之中，而且一定程度上其定义各个组件摆放方式的语法细节的繁杂程度不低于 HTML 。而如果需要将数据载入图形界面，则首先要根据组件的 ID 获取组件，之后才能调用各种方法设定具体属性。
+但是在安卓之中，图形界面完全定义在 `.xml` 文件之中，而且一定程度上其定义各个组件摆放方式的语法细节的繁杂程度不低于 HTML。而如果需要将数据载入图形界面，则首先要根据组件的 ID 获取组件，之后才能调用各种方法设定具体属性。
 
 {% codeblock lang:java Java %}
 ((TextView) view.findViewById(R.id.entity_name)).setText(data.name);
@@ -43,7 +43,7 @@ const App = (props: AppProps) => {
 
 这里出现的 `R` 类据说是相当厉害的。但是我第一次接触安卓的时候，这个符号给我带来的感觉就是不安，因为我再也不能像写 React Native 一样至少自认为自己掌握了程序之中的数据流。换一种说法，即使 React Native 可能做了很多背后工作，但它至少做到了让开发者在很多时候能直观引导数据流。
 
-对于按钮等组件， React Native 框架下可以直接传入回调函数。而众所周知 Java 是纯净的面向对象语言，怎么会有 lambda 这种异端呢（新版本的 Java 已经离经叛道了！）。
+对于按钮等组件，React Native 框架下可以直接传入回调函数。而众所周知 Java 是纯净的面向对象语言，怎么会有 lambda 这种异端呢（新版本的 Java 已经离经叛道了！）。
 
 所以你需要写监听器对象，重写其中的方法等等。
 
@@ -53,7 +53,7 @@ const App = (props: AppProps) => {
 
 # 并不适应的适配器模式
 
-如果只是想给一个 `TextView` 载入文字，直接几个 `set` 函数就结束了。但是给一个格式复杂的列表载入数据，则相当繁琐。比如说现在主流的 `RecyclerView` ，其载入数据，就需要你自己编写一个数据适配器。
+如果只是想给一个 `TextView` 载入文字，直接几个 `set` 函数就结束了。但是给一个格式复杂的列表载入数据，则相当繁琐。比如说现在主流的 `RecyclerView`，其载入数据，就需要你自己编写一个数据适配器。
 
 我首先是上网找轮子，随后想了一下，干脆自己包装了个简单的 `RecyclerViewAdapter` 先勉强用用。
 
@@ -120,7 +120,7 @@ binding.entityList.setAdapter(new RecyclerViewAdapter<Entity>(
 });
 {% endcodeblock %}
 
-你会发现，这比 React Native 要写的东西多太多了。上面这么多需要折腾的， React Native 只需要这样写：
+你会发现，这比 React Native 要写的东西多太多了。上面这么多需要折腾的，React Native 只需要这样写：
 
 {% codeblock lang:typescript TypeScript %}
 <View>

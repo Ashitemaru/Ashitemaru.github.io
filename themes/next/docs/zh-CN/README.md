@@ -119,7 +119,7 @@ $ git pull
 
 ## 贡献你的代码
 
-我们欢迎你加入 NexT 的开发，贡献出你的一份力量。请看[开源贡献指南][contributing-document-url]。 🤗
+我们欢迎你加入 NexT 的开发，贡献出你的一份力量。请看[开源贡献指南][contributing-document-url]。🤗
 
 你也可以随时向我们的[官方插件][official-plugins-url]提交 Issue 或 Pull Request。
 

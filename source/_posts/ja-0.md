@@ -1,5 +1,5 @@
 ---
-title: 日语语法手册（ 2021 年）
+title: 日语语法手册（2021 年）
 date: 2021-11-01 03:15:12
 mathjax: true
 category:

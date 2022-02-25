@@ -17,7 +17,7 @@ category:
 - 直接用可微函数渲染染色的网格
 - 能从轮廓、阴影等各种二维图像信息有效反向传递为网格顶点参数
 
-这个工作的重点是把渲染过程的部分看作**聚合函数（ Aggregation function ）**，该函数联系了三维模型的网格三角形的概率分布以及其渲染出来的像素。
+这个工作的重点是把渲染过程的部分看作**聚合函数（Aggregation function）**，该函数联系了三维模型的网格三角形的概率分布以及其渲染出来的像素。
 
 {% note info no-icon %}
 看起来标题中的 Soft 的含义就是使用概率分布的方式来把离散的光栅化变成可微的，最初始的光栅化一般会涉及到离散采样（即确定每一个离散的像素是否要显示网格上的某一个三角形），这也是不可微性的来源。
@@ -35,7 +35,7 @@ SoftRas 在将模型投影到平面上的时候，会将模型转换为投影平
 
 ### 可微渲染
 
-主要关注如何描述二维图像变化和三维模型操作的关系，主要解决如何从二维图像重建三维场景。考虑给定的二维图片 $A$ ，首先粗略初始化一个三维场景 $B'$ ，然后通过渲染管线渲染得到二维图片 $B$ 。计算 $A$ 和 $B$ 的 loss ，将其梯度反向传播给三维场景 $B'$ 的参数，更新之。这里反向传播就是可微渲染最重要的步骤，即如何计算梯度，因为三维场景参数更新量取决于 loss 对参数的偏导数。
+主要关注如何描述二维图像变化和三维模型操作的关系，主要解决如何从二维图像重建三维场景。考虑给定的二维图片 $A$，首先粗略初始化一个三维场景 $B'$，然后通过渲染管线渲染得到二维图片 $B$。计算 $A$ 和 $B$ 的 loss，将其梯度反向传播给三维场景 $B'$ 的参数，更新之。这里反向传播就是可微渲染最重要的步骤，即如何计算梯度，因为三维场景参数更新量取决于 loss 对参数的偏导数。
 
 先前提到，这里获取梯度有困难。有些工作使用估计梯度的方式进行，有些工作可以精确计算梯度但是不具有泛用性。
 
@@ -51,25 +51,25 @@ SoftRas 在将模型投影到平面上的时候，会将模型转换为投影平
 
 ![](/uploads/paper-1/1.png)
 
-这里外部因素包含相机参数 $\boldsymbol{P}$ 和环境光照 $\boldsymbol{L}$ ，内部因素包括网格信息 $\boldsymbol{M}$ 以及各个顶点的信息（如颜色、材质） $\boldsymbol{A}$ 。
+这里外部因素包含相机参数 $\boldsymbol{P}$ 和环境光照 $\boldsymbol{L}$，内部因素包括网格信息 $\boldsymbol{M}$ 以及各个顶点的信息（如颜色、材质）$\boldsymbol{A}$。
 
-这里第一步要做的是获取三个中间信息，即网格法向量 $\boldsymbol{N}$ 、视图空间（投影后的空间）各点坐标 $\boldsymbol{U}$ 以及 View dependent depths $\boldsymbol{Z}$ 。这三个量只需要使用相机参数和网格信息即可得到。
+这里第一步要做的是获取三个中间信息，即网格法向量 $\boldsymbol{N}$、视图空间（投影后的空间）各点坐标 $\boldsymbol{U}$ 以及 View dependent depths $\boldsymbol{Z}$。这三个量只需要使用相机参数和网格信息即可得到。
 
-之后可以使用例如 Phong 模型等着色模型计算出颜色 $\boldsymbol{C}$ 。
+之后可以使用例如 Phong 模型等着色模型计算出颜色 $\boldsymbol{C}$。
 
 进行到这一步，上述这些操作都是可微的。但是如果按照传统的渲染管线，下一步应该分别确定每一个网格三角形与每一个像素的对应（即光栅化），之后还要用 z-buffer 处理遮挡，这两步都因为离散采样从而是不可微的。
 
-SoftRas 软化光栅化和 z-buffer 的方式是引入 probability maps $\{\mathcal{D}_j\}$ 和聚合函数 $\mathcal{A}(\cdot)$ 分别代替光栅化和 z-buffer 。这里 $\mathcal{D}_j$ 表示的是每一个像素在网格三角形 $f_j$ 内部的概率在平面上的分布。而聚合函数 $\mathcal{A}(\cdot)$ 联系起了 probability maps 以及深度信息，作为整个后续渲染流程的代表。
+SoftRas 软化光栅化和 z-buffer 的方式是引入 probability maps $\{\mathcal{D}_j\}$ 和聚合函数 $\mathcal{A}(\cdot)$ 分别代替光栅化和 z-buffer。这里 $\mathcal{D}_j$ 表示的是每一个像素在网格三角形 $f_j$ 内部的概率在平面上的分布。而聚合函数 $\mathcal{A}(\cdot)$ 联系起了 probability maps 以及深度信息，作为整个后续渲染流程的代表。
 
 ### probability maps 计算
 
-考虑网格三角形在屏幕上的投影 $f_j$ 和屏幕上的像素 $p_i$ ，记在屏幕上 $p_i$ 到 $f_j$ 的边最近距离为 $d(i, j)$ 。显然，这个距离越小的像素点，出现在内部的概率越大。由于其可以反映三角形对屏幕的影响，并且其可微，所以可以用此作为 probability maps 的代表。随后通过添加控制常数、符号标记并归一化到 $(0, 1)$ 内之后，我们得到了 probability maps 的公式：
+考虑网格三角形在屏幕上的投影 $f_j$ 和屏幕上的像素 $p_i$，记在屏幕上 $p_i$ 到 $f_j$ 的边最近距离为 $d(i, j)$。显然，这个距离越小的像素点，出现在内部的概率越大。由于其可以反映三角形对屏幕的影响，并且其可微，所以可以用此作为 probability maps 的代表。随后通过添加控制常数、符号标记并归一化到 $(0, 1)$ 内之后，我们得到了 probability maps 的公式：
 
 $$
 \mathcal{D}_{i, j} = \mathrm{sigmoid}\left(\delta_{i, j}\cdot\frac{d^2(i, j)}{\sigma}\right)
 $$
 
-这里 $\sigma$ 是一个正常数，一般默认为 $1\times 10^{-4}$ 。而 $\delta_{i, j}$ 标记了 $p_i$ 是否在 $f_j$ 之中。若在，则 $\delta_{i, j} = 1$ ，否则 $\delta_{i, j} = -1$ 。
+这里 $\sigma$ 是一个正常数，一般默认为 $1\times 10^{-4}$。而 $\delta_{i, j}$ 标记了 $p_i$ 是否在 $f_j$ 之中。若在，则 $\delta_{i, j} = 1$，否则 $\delta_{i, j} = -1$。
 
 下图展示了 $d(i, j)$ 的定义以及 $\sigma$ 常数对概率分布的影响：
 
@@ -77,7 +77,7 @@ $$
 
 显然看出 $\sigma$ 越大，概率分布就越模糊。
 
-另外一个显然的点是 $\sigma \to 0$ 的时候概率分布中三角形外的点概率密度为 $0$ ，而三角形内的点为 $1$ 。此时 SoftRas 退化为一般的光栅化。
+另外一个显然的点是 $\sigma \to 0$ 的时候概率分布中三角形外的点概率密度为 $0$，而三角形内的点为 $1$。此时 SoftRas 退化为一般的光栅化。
 
 ### 聚合函数
 
@@ -89,7 +89,7 @@ $$
 I_i = \mathcal{A}_S(\{C_j\}) := \sum_j w_{i, j}C_{i, j} + w_{i, b}C_b
 $$
 
-这里渲染结果定义为一系列颜色信息的加权求和，颜色构成的集合为 $\{C_j\}$ ，符号 $C_{i, j}$ 表示三角形 $f_j$ 在像素 $p_i$ 处的颜色。而 $C_b$ 表示背景颜色。
+这里渲染结果定义为一系列颜色信息的加权求和，颜色构成的集合为 $\{C_j\}$，符号 $C_{i, j}$ 表示三角形 $f_j$ 在像素 $p_i$ 处的颜色。而 $C_b$ 表示背景颜色。
 
 权重 $w_{i, j}$ 至少满足归一化条件：
 
@@ -97,7 +97,7 @@ $$
 w_{i, b} + \sum_j w_{i, j} = 1
 $$
 
-而权重的具体值取决于先前得到的 probability maps 以及深度信息。我们将三角形 $f_j$ 中投影到 $p_i$ 像素的点的逆深度记为 $z_{i, j}$ 。概率分布沿用先前的符号。定义：
+而权重的具体值取决于先前得到的 probability maps 以及深度信息。我们将三角形 $f_j$ 中投影到 $p_i$ 像素的点的逆深度记为 $z_{i, j}$。概率分布沿用先前的符号。定义：
 
 $$
 w_{i, j} := \frac{\mathcal{D}_{i, j}\exp(z_{i, j} / \gamma)}{\sum_k \mathcal{D}_{i, k}\exp(z_{i, k} / \gamma) + \exp(\varepsilon / \gamma)}
@@ -117,13 +117,13 @@ $$
 $$
 {% endnote %}
 
-这里可以看出 $\varepsilon$ 是一个小正常数，其作用是将背景颜色纳入计算。 $\gamma$ 是一个调节清晰度的正常数，与计算 probability maps 的 $\sigma$ 类似，默认值一般是 $1 \times 10^{-4}$ 。
+这里可以看出 $\varepsilon$ 是一个小正常数，其作用是将背景颜色纳入计算。$\gamma$ 是一个调节清晰度的正常数，与计算 probability maps 的 $\sigma$ 类似，默认值一般是 $1 \times 10^{-4}$。
 
 可以看出，具有更大概率密度的，且离投影平面更近的（即具有更大逆深度的）三角形会获得更大的权重，这符合直觉。
 
 ---
 
-现在考虑退化。针对像素 $p_i$ ，假设 $z_{i, 1} < z_{i, 2} < \cdots < z_{i, N}$ ，考虑 $\gamma\to 0$ 。首先考察 $j = N$ ：
+现在考虑退化。针对像素 $p_i$，假设 $z_{i, 1} < z_{i, 2} < \cdots < z_{i, N}$，考虑 $\gamma\to 0$。首先考察 $j = N$：
 
 $$
 \begin{aligned}
@@ -134,7 +134,7 @@ w_{i, N} &= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}\exp(z_{i, N} / \gamma)}{\
 \end{aligned}
 $$
 
-最后一步注意到 $z_{i, N}$ 大于任何 $z_{i, k}(k < N)$ ，故有这样的结果。而对于 $j < N$ ：
+最后一步注意到 $z_{i, N}$ 大于任何 $z_{i, k}(k < N)$，故有这样的结果。而对于 $j < N$：
 
 $$
 \begin{aligned}
@@ -145,7 +145,7 @@ w_{i, j} &= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, j}\exp(z_{i, j} / \gamma)}{\
 \end{aligned}
 $$
 
-这里要注意到分母上 $\sum_{k = j + 1}^{N}$ 的部分最终会趋向于正无穷，整体极限为 $0$ 。最后根据归一化条件也有 $w_{i, b} = 0$ 。
+这里要注意到分母上 $\sum_{k = j + 1}^{N}$ 的部分最终会趋向于正无穷，整体极限为 $0$。最后根据归一化条件也有 $w_{i, b} = 0$。
 
 结合这样的推理，可以看出：
 
@@ -173,23 +173,23 @@ $$
 
 ![](/uploads/paper-1/3.png)
 
-这里固定了渲染管线中的外部变量，即固定了相机位置和环境光照。每一个输入图片都会进入 color generator 和 shape generator 生成三维模型参数 $\boldsymbol{C}$ 和 $\boldsymbol{M}$ 。随后后续接入 SoftRas ，渲染得到带颜色的图像 $I_C$ 和轮廓 $I_S$ ，最后和原先图像比较计算 loss 。
+这里固定了渲染管线中的外部变量，即固定了相机位置和环境光照。每一个输入图片都会进入 color generator 和 shape generator 生成三维模型参数 $\boldsymbol{C}$ 和 $\boldsymbol{M}$。随后后续接入 SoftRas，渲染得到带颜色的图像 $I_C$ 和轮廓 $I_S$，最后和原先图像比较计算 loss。
 
 最后定义的 loss 分为三部分。在叙述定义之前，我们将原始图像的颜色和轮廓定义为 $\hat I_C$ 以及 $\hat I_S$：
 
-- color loss 。定义为颜色之差的 1- 范数：
+- color loss。定义为颜色之差的 1- 范数：
 
 $$
 \mathcal{L}_C := \|I_C - \hat I_C\|_1
 $$
 
-- silhouette loss 。定义为，这里使用 $\otimes$ 表示逐元素求积， $\oplus$ 表示逐元素求和：
+- silhouette loss。定义为，这里使用 $\otimes$ 表示逐元素求积，$\oplus$ 表示逐元素求和：
 
 $$
 \mathcal{L}_S := 1 - \frac{\|I_S \otimes \hat I_S\|_1}{\|I_S \oplus \hat I_S - I_S \otimes \hat I_S\|_1}
 $$
 
-- geometry loss 。作用是对 loss 进行 L1 正则化。
+- geometry loss。作用是对 loss 进行 L1 正则化。
 
 最后定义的 loss 是这三部分的加权求和：
 
@@ -223,7 +223,7 @@ $$
 \{\rho, \theta, t\} = \mathop{\mathrm{argmin}}_{\rho, \theta, t}\|R(M(\rho, \theta, t)) - I_t\|_2
 $$
 
-这里 $\rho, \theta, t$ 是三维模型的参数，分别是非刚体形变参数、姿态角度、转换参数（或许就是视图转换的参数）， $M(\cdot)$ 将这些参数转换为网格， $R(\cdot)$ 是渲染函数， $I_t$ 则是目标图像。这个训练方式也就是机器学习的通式。
+这里 $\rho, \theta, t$ 是三维模型的参数，分别是非刚体形变参数、姿态角度、转换参数（或许就是视图转换的参数），$M(\cdot)$ 将这些参数转换为网格，$R(\cdot)$ 是渲染函数，$I_t$ 则是目标图像。这个训练方式也就是机器学习的通式。
 
 ## 实验结果
 
@@ -237,7 +237,7 @@ $$
 
 <img src="/uploads/paper-1/6.png" height="50%" width="50%" />
 
-使用的评价方法是 3D IoU ，即 3D Intersection over Union 。这是一种物体检测领域的评价函数。二维情况下的 IoU 定义如下图所示。这里的矩形均指代物体的包围盒，分别为实际的包围盒和模型预测的包围盒：
+使用的评价方法是 3D IoU，即 3D Intersection over Union。这是一种物体检测领域的评价函数。二维情况下的 IoU 定义如下图所示。这里的矩形均指代物体的包围盒，分别为实际的包围盒和模型预测的包围盒：
 
 <img src="/uploads/paper-1/7.png" height="50%" width="50%" />
 
@@ -247,7 +247,7 @@ SoftRas 的平均 3D IoU 超出了 state-of-art 的 NMR 的 3D IoU 约 4.5 点�
 
 ### Image-based Shape Fitting
 
-首先实验刚体结构预测，这里采用六面着不同色的正方体。给定渲染后图像，要求给出正方体应当旋转的角度。 SoftRas 和 NMR 的实验结果如下：
+首先实验刚体结构预测，这里采用六面着不同色的正方体。给定渲染后图像，要求给出正方体应当旋转的角度。SoftRas 和 NMR 的实验结果如下：
 
 ![](/uploads/paper-1/8.png)
 
@@ -255,7 +255,7 @@ SoftRas 的平均 3D IoU 超出了 state-of-art 的 NMR 的 3D IoU 约 4.5 点�
 
 论文认为 NMR 失败的原因正是因为六个面的相互遮挡，这导致了 NMR 无法越过局部最小值。
 
-另外其也做了大量实验，表明 SoftRas 预测的旋转角度误差严格优于 NMR ，在不优化的情况下， SoftRas 的角度误差平均比 NMR 低 $10.60^\circ$ 。
+另外其也做了大量实验，表明 SoftRas 预测的旋转角度误差严格优于 NMR，在不优化的情况下，SoftRas 的角度误差平均比 NMR 低 $10.60^\circ$。
 
 这里似乎涉及到 ${\rm SO}(3)$ 旋转群的一些东西，后面再来研究吧。
 
@@ -275,9 +275,9 @@ $$
 
 这里显然可以看出 $\dfrac{\partial\boldsymbol{U}}{\partial\boldsymbol{M}}, \dfrac{\partial\boldsymbol{Z}}{\partial\boldsymbol{M}}, \dfrac{\partial\boldsymbol{N}}{\partial\boldsymbol{M}}$ 是可以简单计算的，因为 $\boldsymbol{U}, \boldsymbol{Z}, \boldsymbol{N}$ 都可以由 $\boldsymbol{M}$ 通过简单的视图变换得到，由变换矩阵即可推算偏导数。
 
-而根据着色模型， $\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{N}}$ 也是可以计算的。
+而根据着色模型，$\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{N}}$ 也是可以计算的。
 
-剩余的两个梯度中， $\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{Z}}$ 直接和聚合函数相关，而 $\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{U}}$ 经过了两层，分别是概率分布计算和聚合函数，所以我们需要拆解：
+剩余的两个梯度中，$\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{Z}}$ 直接和聚合函数相关，而 $\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{U}}$ 经过了两层，分别是概率分布计算和聚合函数，所以我们需要拆解：
 
 $$
 \dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{U}} = \dfrac{\partial\boldsymbol{I}}{\partial\mathcal{D}}\dfrac{\partial\mathcal{D}}{\partial\boldsymbol{U}}
