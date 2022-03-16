@@ -384,7 +384,7 @@ Sakana 不急着 18 号就直接回去了，打算 20 号左右回去，于是�
 
 和姜东会玩了一个下午一个晚上，先去麦当劳吃饭搓音游，然后星巴克打雀、掼蛋、闲聊，之后定番小菜园聚餐和舞立方手痒打机，最后 KTV。
 
-KTV 上我唱了不少歌，但最满意的还是《太阳系 DISCO 》。作为自己很喜欢和大家都能参与（指鼓掌和参与オーオオー以及ナナナナナナナー环节）的一首歌，整体气氛还是很好的，比那些大部分人看不懂歌词也不熟悉的比较冷的 V 曲要好一些。当然唱完这首歌我嗓子就明显不行了，中途的一段几乎就是在纯靠喊。
+KTV 上我唱了不少歌，但最满意的还是《太阳系 DISCO》。作为自己很喜欢和大家都能参与（指鼓掌和参与オーオオー以及ナナナナナナナー环节）的一首歌，整体气氛还是很好的，比那些大部分人看不懂歌词也不熟悉的比较冷的 V 曲要好一些。当然唱完这首歌我嗓子就明显不行了，中途的一段几乎就是在纯靠喊。
 
 {% note info no-icon %}
 あの一等星のさんざめく光で，あなたとダンスを踊ろうか。
@@ -467,7 +467,7 @@ Holder 一个人要好好地过好自己的生活。
 
 于是今天上午的 Holder 起床之后就在 Riddle Joker，现在应该只剩下茉优线没有完全结束了（年上系真的不在我的 XP 上，最后推自然没有任何的问题）。
 
-中午的 Holder 开始到处看 V 曲的 live，真的突然想去一次 V 家演唱会。要说现场感比较好的歌的话，[《 Unknown Mother Goose 》](https://www.bilibili.com/video/BV1Nf4y1U7z1?t=279)是首推（众人おおおーおおー的那个场面真的是很震撼的），之后就是[《劣等上等》](https://www.bilibili.com/video/BV11W411C7io?t=295)（Giga 的专业炸场子歌），[《号哭》](https://www.bilibili.com/video/BV16s411h7eE)和[《东京泰迪熊》](https://www.bilibili.com/video/BV1As411B7J8)也算是很有感觉的。然后就似乎沿着推荐来到了几个网络合唱视频，首先是 2017 年的[《砂之惑星》](https://www.bilibili.com/video/BV1Nx411u7YT)（八爷 yyds，可惜出道娱乐圈了，当个 P 主不好么），然后是 2011 年的[《千本樱》](https://www.bilibili.com/video/BV1Ax411w7Sh)，也算是猛然回忆起高中的一些时光了。
+中午的 Holder 开始到处看 V 曲的 live，真的突然想去一次 V 家演唱会。要说现场感比较好的歌的话，[《Unknown Mother Goose》](https://www.bilibili.com/video/BV1Nf4y1U7z1?t=279)是首推（众人おおおーおおー的那个场面真的是很震撼的），之后就是[《劣等上等》](https://www.bilibili.com/video/BV11W411C7io?t=295)（Giga 的专业炸场子歌），[《号哭》](https://www.bilibili.com/video/BV16s411h7eE)和[《东京泰迪熊》](https://www.bilibili.com/video/BV1As411B7J8)也算是很有感觉的。然后就似乎沿着推荐来到了几个网络合唱视频，首先是 2017 年的[《砂之惑星》](https://www.bilibili.com/video/BV1Nx411u7YT)（八爷 yyds，可惜出道娱乐圈了，当个 P 主不好么），然后是 2011 年的[《千本樱》](https://www.bilibili.com/video/BV1Ax411w7Sh)，也算是猛然回忆起高中的一些时光了。
 
 之前在[关于页](/about)提到我最喜欢《无梦之梦》，但是这首歌适合一个人在难过的时候自己听，用来做安慰用的。其实春卷饭的歌基本都是这个特征，很温柔，适合一个人独自欣赏，很难在演唱会上表演得好。同理还有新曲[《第三心脏》](https://www.bilibili.com/video/BV1hA411g7mt?from=search&seid=51222177324975189)，也是最近很喜欢的。
 

@@ -1,5 +1,5 @@
 ---
-title: 《 Soft Rasterizer - A Differentiable Renderer for Image-based 3D Reasoning 》论文笔记
+title: 《Soft Rasterizer - A Differentiable Renderer for Image-based 3D Reasoning》论文笔记
 date: 2022-01-18 11:12:41
 mathjax: true
 category:

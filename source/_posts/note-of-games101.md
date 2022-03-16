@@ -1,5 +1,5 @@
 ---
-title: 《 GAMES101 》学习笔记
+title: 《GAMES101》学习笔记
 date: 2021-10-16 19:16:35
 mathjax: true
 category:
