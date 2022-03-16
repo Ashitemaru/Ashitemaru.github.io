@@ -222,7 +222,7 @@ $(function () {
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-count">27</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -365,7 +365,7 @@ $(function () {
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>464</span>
+      <span>717</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -417,7 +417,7 @@ $(function () {
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://ashitemaru.github.io/2022/02/13/pytorch3d-exp/">
+    <link itemprop="mainEntityOfPage" href="https://ashitemaru.github.io/2022/03/09/static-var-in-rust/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.png">
@@ -430,7 +430,7 @@ $(function () {
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/02/13/pytorch3d-exp/" class="post-title-link" itemprop="url">Pytorch3D 框架摸索实录</a>
+          <a href="/2022/03/09/static-var-in-rust/" class="post-title-link" itemprop="url">Rust 中的静态变量</a>
         </h2>
 
         <div class="post-meta-container">
@@ -441,14 +441,14 @@ $(function () {
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2022-02-13 21:57:35" itemprop="dateCreated datePublished" datetime="2022-02-13T21:57:35+00:00">2022-02-13</time>
+      <time title="创建时间：2022-03-09 01:01:50" itemprop="dateCreated datePublished" datetime="2022-03-09T01:01:50+00:00">2022-03-09</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-02-13 21:57:35" itemprop="dateModified" datetime="2022-02-13T21:57:35+00:00">2022-02-13</time>
+        <time title="修改时间：2022-03-09 01:01:50" itemprop="dateModified" datetime="2022-03-09T01:01:50+00:00">2022-03-09</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -456,12 +456,12 @@ $(function () {
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%A7%91%E7%A0%94%E6%9D%82%E8%B0%88/" itemprop="url" rel="index"><span itemprop="name">科研杂谈</span></a>
+          <a href="/categories/%E5%BC%80%E5%8F%91%E6%9D%82%E8%B0%88/" itemprop="url" rel="index"><span itemprop="name">开发杂谈</span></a>
         </span>
     </span>
 
   
-    <span id="/2022/02/13/pytorch3d-exp/" class="post-meta-item twikoo_visitors" data-flag-title="Pytorch3D 框架摸索实录" title="阅读次数">
+    <span id="/2022/03/09/static-var-in-rust/" class="post-meta-item twikoo_visitors" data-flag-title="Rust 中的静态变量" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -476,7 +476,7 @@ $(function () {
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>497</span>
+      <span>830</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -494,11 +494,233 @@ $(function () {
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>可微渲染还是会和机器学习或多或少有一些关联的，但是由于其涉及到三维数据，所以不能直接使用 Pytorch 框架而是使用可以处理三维数据的 Pytorch3D 框架。</p>
-<p>这个框架用的人比较少，网上可以参考的资料也鲜有中文的。这篇文章基于 Pytorch3D 的官方 API 文档以及 <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=MOBAJb5nJRI">YouTube 的相关教程视频</a>，也算是记录自己摸索这个被称为有许多坑的框架的过程。</p>
+          <p>摸索 rCore 的用户栈实现的时候发现的一些好玩东西。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2022/02/13/pytorch3d-exp/#more" rel="contents">
+              <a class="btn" href="/2022/03/09/static-var-in-rust/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://ashitemaru.github.io/2022/02/28/os-exp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="Ashitemaru">
+      <meta itemprop="description" content="A cat that likes Sakana.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ashitemaru">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/02/28/os-exp/" class="post-title-link" itemprop="url">操作系统课程大实验摸索实录</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-02-28 17:35:28" itemprop="dateCreated datePublished" datetime="2022-02-28T17:35:28+00:00">2022-02-28</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-02-28 17:35:28" itemprop="dateModified" datetime="2022-02-28T17:35:28+00:00">2022-02-28</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91%E6%9D%82%E8%B0%88/" itemprop="url" rel="index"><span itemprop="name">开发杂谈</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2022/02/28/os-exp/" class="post-meta-item twikoo_visitors" data-flag-title="操作系统课程大实验摸索实录" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="twikoo_visitors"></span>
+    </span>
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>6.7k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>6 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>本来就是为了躲避考试来做的大实验，感觉也会是挺有意思的一段经历，不妨记录一下。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/02/28/os-exp/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://ashitemaru.github.io/2022/02/25/paper-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="Ashitemaru">
+      <meta itemprop="description" content="A cat that likes Sakana.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ashitemaru">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/02/25/paper-2/" class="post-title-link" itemprop="url">《SMPL - A Skinned Multi-Person Linear Model》论文笔记</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-02-25 14:14:08" itemprop="dateCreated datePublished" datetime="2022-02-25T14:14:08+00:00">2022-02-25</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-02-25 14:14:08" itemprop="dateModified" datetime="2022-02-25T14:14:08+00:00">2022-02-25</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%A7%91%E7%A0%94%E6%9D%82%E8%B0%88/" itemprop="url" rel="index"><span itemprop="name">科研杂谈</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2022/02/25/paper-2/" class="post-meta-item twikoo_visitors" data-flag-title="《SMPL - A Skinned Multi-Person Linear Model》论文笔记" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="twikoo_visitors"></span>
+    </span>
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>28</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>这个论文我打开后，第一眼就是这个非常奇妙而神奇的模型图：</p>
+<p><img src="/uploads/paper-2/1.png" /></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/02/25/paper-2/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -654,7 +876,7 @@ $(function () {
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/01/18/paper-1/" class="post-title-link" itemprop="url">《 Soft Rasterizer - A Differentiable Renderer for Image-based 3D Reasoning 》论文笔记</a>
+          <a href="/2022/01/18/paper-1/" class="post-title-link" itemprop="url">《Soft Rasterizer - A Differentiable Renderer for Image-based 3D Reasoning》论文笔记</a>
         </h2>
 
         <div class="post-meta-container">
@@ -685,7 +907,7 @@ $(function () {
     </span>
 
   
-    <span id="/2022/01/18/paper-1/" class="post-meta-item twikoo_visitors" data-flag-title="《 Soft Rasterizer - A Differentiable Renderer for Image-based 3D Reasoning 》论文笔记" title="阅读次数">
+    <span id="/2022/01/18/paper-1/" class="post-meta-item twikoo_visitors" data-flag-title="《Soft Rasterizer - A Differentiable Renderer for Image-based 3D Reasoning》论文笔记" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -1191,229 +1413,6 @@ $(function () {
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://ashitemaru.github.io/2021/10/16/note-of-games101/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="Ashitemaru">
-      <meta itemprop="description" content="A cat that likes Sakana.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ashitemaru">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/16/note-of-games101/" class="post-title-link" itemprop="url">《 GAMES101 》学习笔记</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-10-16 19:16:35" itemprop="dateCreated datePublished" datetime="2021-10-16T19:16:35+00:00">2021-10-16</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-10-16 19:16:35" itemprop="dateModified" datetime="2021-10-16T19:16:35+00:00">2021-10-16</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%A7%91%E7%A0%94%E6%9D%82%E8%B0%88/" itemprop="url" rel="index"><span itemprop="name">科研杂谈</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2021/10/16/note-of-games101/" class="post-meta-item twikoo_visitors" data-flag-title="《 GAMES101 》学习笔记" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span id="twikoo_visitors"></span>
-    </span>
-  
-      </div>
-      <div class="post-meta">
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>3.7k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>3 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>这门课是万恶的安主席推荐的，但毕竟已经进入渲染这个计算机方向，这门课必然是首先需要学明白的课程。总之现在这个笔记，既可以是我自己的学习笔记，也是图形学兴趣小组的整理笔记，也可以是技能引导文档，同时也是目前实验室的工作。属于是真的赢麻了。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/10/16/note-of-games101/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://ashitemaru.github.io/2021/09/12/grade-3-preview/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="Ashitemaru">
-      <meta itemprop="description" content="A cat that likes Sakana.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ashitemaru">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/12/grade-3-preview/" class="post-title-link" itemprop="url">大三秋季学期前的一些碎话</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-09-12 04:56:33" itemprop="dateCreated datePublished" datetime="2021-09-12T04:56:33+00:00">2021-09-12</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-09-12 04:56:33" itemprop="dateModified" datetime="2021-09-12T04:56:33+00:00">2021-09-12</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E9%97%B2%E8%81%8A/" itemprop="url" rel="index"><span itemprop="name">闲聊</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2021/09/12/grade-3-preview/" class="post-meta-item twikoo_visitors" data-flag-title="大三秋季学期前的一些碎话" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span id="twikoo_visitors"></span>
-    </span>
-  
-      </div>
-      <div class="post-meta">
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>2.3k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>自己似乎就这样莫名其妙成为了一个大三学生，其实还隐隐约约记得一年前刚进实验室的时候刘知远的一句“没想到这么快八字班也要造机了啊”。现在想来，九字班这个词语从原先的代指新生，渐渐地变成了代指一群大三老油条，而自己的一字班学弟也正在憧憬着四年的本科时光，一时间竟觉得大学原来也快结束了。</p>
-<p>今夜突然接到 Sakana 的一句“我还是好焦虑”，唐突地自己也开始陷入了一种窘迫的心理。自己，真的准备好去迎接之后的生活了么。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/09/12/grade-3-preview/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
@@ -1438,13 +1437,13 @@ $(function () {
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">177k</span>
+    <span title="站点总字数">185k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:41</span>
+    <span title="站点阅读时长">2:48</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
