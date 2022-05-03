@@ -3320,6 +3320,114 @@
       </categories>
   </entry>
   <entry>
+    <title>可微渲染项目记录</title>
+    <url>/2022/04/14/lab-exp/</url>
+    <content><![CDATA[<p>进入图形学方向的第一个项目，就简简单单记录点东西。</p>
+<p>比如说学到了一些零零散散的东西之类，论文笔记之类的自然还是单开。</p>
+<span id="more"></span>
+<p><span class="math display">\[
+\newcommand{\lm}{\left[\begin{matrix}}
+\newcommand{\rm}{\end{matrix}\right]}
+\newcommand{\b}{\boldsymbol}
+\]</span></p>
+<h1 id="配置服务器">配置服务器</h1>
+<p>大约是从学长那里捡到了一个已经近乎报废的电脑主机，主板是已经停产的 Intel E8，倒是显卡是有 8G 显存的 GTX 1080Ti，要不是看上这点显存可能都不打算把这个主机修好。</p>
+<p>首先是买了 SSD，一开始是打算装 Windows 系统的。但几经周折，即使装完了 Windows 系统，系统启动后的系统中断居然就能把 CPU 跑到 100%，这着实令人诧异。不过想想这个电脑的惨状，倒也能理解了。</p>
+<p>一星期后又花了点时间装了个 Ubuntu，这下子跑起来了，还算是能带的起来这个系统。然后就是无尽的装显卡驱动、装 CUDA、装 CudNN、装 Pytorch、装 Pytorch3d 还有一堆基础工具链，这些东西整好了都已经快四月了。</p>
+<p>然后为了保证我能在宿舍里用这台机子，就给它插了网线、配置了静态 IP，开放 ssh 服务。到三月底，总算是让这个机子变成一个服务器了，虽然性能不好说。</p>
+<hr />
+<p>好玩的是，现在我每从远程拉取最新的项目代码，大约有 50% 的几率跑不起来，而且都是炸在各种不能理解的地方。这个时候一般就是重装显卡驱动、重装 CUDA、重装 Pytorch、重装 Pytorch3d 一把梭了。</p>
+<h1 id="tensorboard-服务器配置">Tensorboard 服务器配置</h1>
+<p>由于是在做图形学，训练结果是包括图片乃至视频的，不能单单用终端看，所以大约是需要写一个小后端的。比较好的是 Tensorboard 已经是比较成熟的了，所以只需要在程序里面用 tmux 开一个 Tensorboard 在 8000 端口上，之后 ssh 设置一下静态转发：</p>
+<figure class="highlight bash"><figcaption><span>Bash</span></figcaption><table><tr><td class="code"><pre><span class="line">ssh -L 16006:127.0.0.1:8000 holder@166.111.69.73</span><br></pre></td></tr></table></figure>
+<p>这样也就可以在浏览器里面通过 <code>127.0.0.1:16006</code> 来访问 Tensorboard 服务器了。</p>
+<p>但问题就在，Tensorboard 至多允许每 30 秒刷新一次数据，其实不太满足实时性的需求。但考虑到 Tensorboard 生成数据是实时的，只不过它的后端拉取太慢，似乎我的学长自己摸索了一套解析 Tensorboard 数据的东西来实时观测，那可能就暂时没我事情了。</p>
+<h1 id="lcuda-的问题"><code>-lcuda</code> 的问题</h1>
+<p>在某一次更新项目代码之后，完全无法运行，报的错大约是链接器不理解 <code>-lcuda</code>。这个错是好理解的，基本上就是缺失了 <code>libcuda.so</code> 动态库文件，但是问题就在于，我明明在 <code>LD_LIBRARY_PATH</code> 下找到了这份文件，但是链接器就是找不到。</p>
+<p>之后我直接一波 <code>sudo find / -name 'libcuda.**'</code> 扫了一遍文件树，似乎是在 <code>**/stub/</code> 之类的什么地方找到了一份链接库，本以为万事大吉的时候，发现用这个库是无法链接的。</p>
+<p>上网找了一波，似乎是 <code>**/stub</code> 是一个临时目录，其不能用于链接之类的。</p>
+<p>然而在这期间，我也找到一个说法，说 <code>-lcudart</code> 和 <code>-lcuda</code> 作用是一样的。但现在问题是，链接器脚本是构建过程中生成在 cache 里面的，而项目构建脚本里面也设置不了用 <code>-lcudart</code> 替代 <code>-lcuda</code>。</p>
+<p>但 Holder 还真找到了方法，我直接翻到 Pytorch 的源码库，根据报错信息一路翻，终于翻到了它配置链接器设置的源码，手动用 <code>-lcudart</code> 换掉了 <code>-lcuda</code>，结果还真行了，但是后续会出现一些问题，我想大概是 <code>libcudart.so</code> 和 <code>libcuda.so</code> 对一些方法实现不太一样。</p>
+<p>然后怎么解决的？直接把显卡驱动重装了，问题圆满解决。</p>
+<h1 id="opengl-的一些函数">OpenGL 的一些函数</h1>
+<p>OpenGL 应该是很常用的一个库，内部包含了大量辅助运算的函数，但是怎么用还是需要自己慢慢摸索。这里使用的是 Python 中的 OpenGL，包名称为 <code>glm</code>。</p>
+<h2 id="坐标系变换函数">坐标系变换函数</h2>
+<p>考虑模型坐标系、世界坐标系、视图坐标系之间的关系，这三者分别指代以某个模型的某一点为原点的坐标系、绝对坐标系和以观察者（相机）为原点的坐标系。我们考虑这三者之间的转换。</p>
+<h3 id="视图转换与-glm.lookat">视图转换与 <code>glm.lookAt</code></h3>
+<p>假设相机位于 <span class="math inline">\(\b{p}(p_1, p_2, p_3)\)</span> 点处，相机正上方指向 <span class="math inline">\(\b{u}(u_1, u_2, u_3)\)</span>，相机朝向的<strong>反方向</strong>为 <span class="math inline">\(\b{l}(l_1, l_2, l_3)\)</span>，那么相机的右侧可以通过叉积得到：</p>
+<p><span class="math display">\[
+\b{r}(r_1, r_2, r_3) = \b{p} \times \b{l}
+\]</span></p>
+<p>这里我们令 <span class="math inline">\(\b{u}, \b{r}, \b{l}\)</span> 都是单位矩阵。</p>
+<p>假设将相机平移到世界坐标系原点的矩阵为 <span class="math inline">\(T\)</span>，将相机旋转到看向世界坐标系 <span class="math inline">\(-z\)</span> 方向、向上方向为世界坐标系 <span class="math inline">\(+y\)</span> 方向的旋转矩阵为 <span class="math inline">\(R\)</span>，那么我们调整相机的矩阵就是 <span class="math inline">\(RT\)</span>，而这也就是视图坐标系转换为世界坐标系的转换矩阵。我们所谓的<strong>视图转换</strong>是将世界坐标系转入视图坐标系，所以视图转换矩阵 <span class="math inline">\(V = (RT)^{-1}\)</span>。</p>
+<p>显然：</p>
+<p><span class="math display">\[
+T = \lm
+I_3 &amp; -\b{p} \\
+\b{0}_3^T &amp; 1 \\
+\rm = \lm
+1 &amp; 0 &amp; 0 &amp; -p_1 \\
+0 &amp; 1 &amp; 0 &amp; -p_2 \\
+0 &amp; 0 &amp; 1 &amp; -p_3 \\
+0 &amp; 0 &amp; 0 &amp; 1 \\
+\rm
+\]</span></p>
+<p>并且可以显然得到 <span class="math inline">\(R\)</span> 的逆矩阵：</p>
+<p><span class="math display">\[
+R^{-1} = \lm
+\b{r} &amp; \b{u} &amp; \b{l} &amp; \b{0}_3 \\
+0 &amp; 0 &amp; 0 &amp; 1 \\
+\rm = \lm
+r_1 &amp; u_1 &amp; l_1 &amp; 0 \\
+r_2 &amp; u_2 &amp; l_2 &amp; 0 \\
+r_3 &amp; u_3 &amp; l_3 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 1 \\
+\rm
+\]</span></p>
+<p>所以视图转换矩阵的逆为：</p>
+<p><span class="math display">\[
+V^{-1} = RT = (R^{-1})^TT = \lm
+r_1 &amp; r_2 &amp; r_3 &amp; -\b{r} \cdot \b{p} \\
+u_1 &amp; u_2 &amp; u_3 &amp; -\b{u} \cdot \b{p} \\
+l_1 &amp; l_2 &amp; l_3 &amp; -\b{l} \cdot \b{p} \\
+0 &amp; 0 &amp; 0 &amp; 1 \\
+\rm
+\]</span></p>
+<div class="note info"><p>对于仿射变换的矩阵：</p>
+<p><span class="math display">\[
+T = \lm
+A &amp; \b{t} \\
+\b{0}_3^T &amp; 1 \\
+\rm
+\]</span></p>
+<p>我们很容易验证其逆矩阵为：</p>
+<p><span class="math display">\[
+T^{-1} = \lm
+A^{-1} &amp; -A^{-1}\b{t} \\
+\b{0}_3^T &amp; 1 \\
+\rm
+\]</span></p>
+</div>
+<p>所以 <span class="math inline">\(V\)</span> 此时也是显然的了。只要清楚对于两两正交的单位向量 <span class="math inline">\(\b{l}, \b{r}, \b{u}\)</span> 有：</p>
+<p><span class="math display">\[
+(\b{l} \cdot \b{p})\b{l} + (\b{r} \cdot \b{p})\b{r} + (\b{u} \cdot \b{p})\b{u} = \b{p}
+\]</span></p>
+<p>即可知道：</p>
+<p><span class="math display">\[
+V = \lm
+r_1 &amp; u_1 &amp; l_1 &amp; p_1 \\
+r_2 &amp; u_2 &amp; l_2 &amp; p_2 \\
+r_3 &amp; u_3 &amp; l_3 &amp; p_3 \\
+0 &amp; 0 &amp; 0 &amp; 1 \\
+\rm
+\]</span></p>
+<p>而 <code>glm.lookAt</code> 则是根据相机参数构建了矩阵 <span class="math inline">\(V^{-1}\)</span>。</p>
+]]></content>
+      <categories>
+        <category>科研杂谈</category>
+      </categories>
+  </entry>
+  <entry>
     <title>回忆一下我的大学</title>
     <url>/2021/06/16/look-back/</url>
     <content><![CDATA[<p>在搭好这个网站之前，我也已经上了两年大学，走过了一半的本科时光。</p>
@@ -3720,7 +3828,7 @@
 <h2 id="大三春季学期">大三春季学期</h2>
 <p>有好多好多的限选课，但是考试的没多少。</p>
 <ul>
-<li><p><a href="/2022/02/28/os-exp">操作系统</a>。不太打算考试，所以这个是大实验摸索记录。主要是 rCore 源码阅读笔记和后续自己实验的一些体会。</p></li>
+<li><p><a href="/1022/04/14/note-of-os">操作系统</a>。本来想参加大实验的，最后还是屈服于考试了。</p></li>
 <li><p><a href="/1022/03/09/note-of-csys">计算机系统结构</a>。考试课，不得不记笔记好好学。</p></li>
 <li><p><a href="/2021/10/16/note-of-games101">计算机图形学基础</a>。这门课基本就是照着 GAMES101 一把梭子下来的，所以就 link 到 GAMES101 笔记算了。</p></li>
 <li><p><a href="/1022/03/09/note-of-cyp">现代密码学</a>。中规中矩的限选课吧，因为要考试所以还是写写笔记。</p></li>
@@ -3729,26 +3837,6 @@
 ]]></content>
       <categories>
         <category>导航</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>《计算机系统结构》学习笔记</title>
-    <url>/1022/03/09/note-of-csys/</url>
-    <content><![CDATA[<p>这门课似乎一直风评不是很好，但还是不得不学。按照学长的说法，这门课就是把四大原理糅合一下，混一点操作系统相关进去，就算完事了。</p>
-<span id="more"></span>
-]]></content>
-      <categories>
-        <category>课程笔记</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>《现代密码学》学习笔记</title>
-    <url>/1022/03/09/note-of-cyp/</url>
-    <content><![CDATA[<p>一门中规中矩的要考试的限选课，可能会好好学学吧。</p>
-<span id="more"></span>
-]]></content>
-      <categories>
-        <category>课程笔记</category>
       </categories>
   </entry>
   <entry>
@@ -4596,6 +4684,26 @@ B = (-1)^s M \cdot 2^E
 <hr />
 <p>MIPS 架构支持一种特殊的快表，即 JTLB。其内部记录的是<strong>虚页码除以 2</strong> 之后的结果和<strong>两个</strong>物理页码之间的关系，两个映射项都标注了是否 valid 以及是否允许写入（一般称为是否 dirty，如果一个页面不是 dirty 的，则会禁止写入）。</p>
 <p>这个时候的转换需要将虚页码先去掉末位进行查表，最后如果命中，则需要根据虚页码末位选取最终的映射项。</p>
+]]></content>
+      <categories>
+        <category>课程笔记</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>《计算机系统结构》学习笔记</title>
+    <url>/1022/03/09/note-of-csys/</url>
+    <content><![CDATA[<p>这门课似乎一直风评不是很好，但还是不得不学。按照学长的说法，这门课就是把四大原理糅合一下，混一点操作系统相关进去，就算完事了。</p>
+<span id="more"></span>
+]]></content>
+      <categories>
+        <category>课程笔记</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>《现代密码学》学习笔记</title>
+    <url>/1022/03/09/note-of-cyp/</url>
+    <content><![CDATA[<p>一门中规中矩的要考试的限选课，可能会好好学学吧。</p>
+<span id="more"></span>
 ]]></content>
       <categories>
         <category>课程笔记</category>
@@ -7068,98 +7176,14 @@ v = H\log_2\left(1 + \frac{S}{N}\right)({\rm bps})
       </categories>
   </entry>
   <entry>
-    <title>操作系统课程大实验摸索实录</title>
-    <url>/2022/02/28/os-exp/</url>
-    <content><![CDATA[<p>本来就是为了躲避考试来做的大实验，感觉也会是挺有意思的一段经历，不妨记录一下。</p>
+    <title>《操作系统》学习笔记</title>
+    <url>/1022/04/14/note-of-os/</url>
+    <content><![CDATA[<p>本来是打算做大实验不想考试的，结果因为事情太多还是选择了退掉大实验，然后考试也没考好，就比较神奇。</p>
+<p>不过总之是要学的，笔记这一块还是得准备好，到底写多少那可不知道。</p>
 <span id="more"></span>
-<h1 id="配置-rcore-环境2022.02.28">配置 rCore 环境【2022.02.28】</h1>
-<p>在做大实验之前，需要先把五次小实验做完，那么第一件事就是去配置 rCore 环境。Rust 之前就配置好了，所以主要是配置 qemu。按照正常的流程，就是下载打包的 5.0.0 版本的 qemu 源码，并编译，但是很快就炸了个错：</p>
-<figure class="highlight bash"><figcaption><span>Bash</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># ashitemaru @ LAPTOP-VQNVF4EV in ~/qemu-5.0.0 [17:38:32]</span></span><br><span class="line">$ make -j$(nproc)</span><br><span class="line">make[1]: Entering directory <span class="string">&#x27;/home/ashitemaru/qemu-5.0.0/slirp&#x27;</span></span><br><span class="line">make[1]: Nothing to be <span class="keyword">done</span> <span class="keyword">for</span> <span class="string">&#x27;all&#x27;</span>.</span><br><span class="line">make[1]: Leaving directory <span class="string">&#x27;/home/ashitemaru/qemu-5.0.0/slirp&#x27;</span></span><br><span class="line">        CHK version_gen.h</span><br><span class="line">  LINK    riscv32-softmmu/qemu-system-riscv32</span><br><span class="line">  LINK    riscv64-softmmu/qemu-system-riscv64</span><br><span class="line">/usr/bin/ld: /home/ashitemaru/qemu-5.0.0/slirp/libslirp.a(misc.o): <span class="keyword">in</span> <span class="keyword">function</span> `g_spawn_async_with_fds_slirp<span class="string">&#x27;:</span></span><br><span class="line"><span class="string">/home/ashitemaru/qemu-5.0.0/slirp/src/misc.c:173: undefined reference to `g_spawn_async_with_fds&#x27;</span></span><br><span class="line">/usr/bin/ld: /home/ashitemaru/qemu-5.0.0/slirp/libslirp.a(misc.o): <span class="keyword">in</span> <span class="keyword">function</span> `g_spawn_async_with_fds_slirp<span class="string">&#x27;:</span></span><br><span class="line"><span class="string">/home/ashitemaru/qemu-5.0.0/slirp/src/misc.c:173: undefined reference to `g_spawn_async_with_fds&#x27;</span></span><br><span class="line">collect2: error: ld returned 1 <span class="built_in">exit</span> status</span><br><span class="line">collect2: error: ld returned 1 <span class="built_in">exit</span> status</span><br><span class="line">make[1]: *** [Makefile:208: qemu-system-riscv64] Error 1</span><br><span class="line">make[1]: *** [Makefile:208: qemu-system-riscv32] Error 1</span><br><span class="line">make: *** [Makefile:527: riscv32-softmmu/all] Error 2</span><br><span class="line">make: *** Waiting <span class="keyword">for</span> unfinished <span class="built_in">jobs</span>....</span><br><span class="line">make: *** [Makefile:527: riscv64-softmmu/all] Error 2</span><br></pre></td></tr></table></figure>
-<p>链接器找不到一个函数符号，找了一下各路文档，这个函数是 GNU libc 导出的一个符号。遇到这种 undefined 的问题，第一反应就是去重装一遍这个动态库，于是就去了 GNU libc 的官网，clone 了一份源码，并且开始编译。</p>
-<p>但是这里构建的时候又炸了一个错，是找不到 <code>libiconv</code> 符号。</p>
-<p>这里就开始感到不对了，因为他不是报找不到动态库，而是找不到符号。而且我当时还特意去 <code>/usr/local/lib</code> 底下用下述命令确认了这个符号确实导出了：</p>
-<figure class="highlight bash"><figcaption><span>Bash</span></figcaption><table><tr><td class="code"><pre><span class="line">nm -C libiconv-2.0.so | grep libiconv</span><br></pre></td></tr></table></figure>
-<p>这个时候我想起来之前做计组的时候实际上是在 WSL 里装过一个低版本的 qemu 的，当时安装的时候报错找不到 libiconv 的库（不是找不到符号，而是找不到动态库），于是我自己 clone 了一份源码，在 <code>/usr/local/lib</code> 底下装了一份 libiconv。</p>
-<p>这个时候我已经差不多反应过来了，因为 libiconv 应该是系统自己有的一个动态库，如果我再装一份的话，很有可能因为冲突出现问题。</p>
-<p>随后就去翻 GNU libc 的构建 config 文件，发现其找寻 libiconv 是先搜寻系统自带的动态库目录，随后去 <code>/usr/local/lib</code> 下找。那这样的话，其很有可能是定位到了系统自带的 libiconv 库。然而计组的 qemu 似乎是先寻找他自带的一个动态库目录和 <code>/usr/local/lib</code>，并且不去寻找系统自带的动态库目录。然而这也是合理的，因为当时计组推荐的就是无论在什么系统上，只要下载他的一个压缩包，一切东西都不要配。但是可能是打包失误之类，libiconv 意外没有打包进来。</p>
-<p>那这样这个问题就已经差不多明白了，就是系统的 libiconv 出现了问题（我猜测是 C 和 C++ 函数签名的问题，C++ 编译出来的函数签名会有前缀）。而计组当时没有出问题的原因是他在构建的时候就没有去找系统自带的动态库目录，所以缺失了库文件。但是 OS 装 qemu 的时候找到了系统的 libiconv，但是这是有问题的一个动态库，用不了，连带着 GNU libc 没法用，所以最后就炸了。</p>
-<p>解决方式，就是重装 WSL。系统出问题还不重装系统？</p>
-<p>结果从重装，配置 C 环境，配置 Python 环境，配置终端美化插件，配置 Vim 到最后装完 qemu 跑起来 rCore，一共没有用到两小时。</p>
-<h1 id="分时多任务2022.03.07">分时多任务【2022.03.07】</h1>
-<p>第一个小作业，目标是实现基于 stride 算法的进程调度。不过在具体工作之前，我们还是需要弄明白框架里一部分功能是如何实现的。</p>
-<h2 id="特权级切换">特权级切换</h2>
-<p>目前我们只考虑在 U 态下出发 Trap 到 S 态，那么在处理这个 Trap 的时候，硬件需要分别完成：</p>
-<ul>
-<li>修改相应的 CSR 寄存器相关字段
-<ul>
-<li><code>sstatus</code> 的 <code>SPP</code> 字段置为 CPU 当前特权级</li>
-<li><code>sepc</code> 置为处理完 Trap 后接着要处理的指令位置</li>
-<li><code>scause</code> 和 <code>stval</code> 存储 Trap 的原因和相关信息</li>
-</ul></li>
-<li>CPU 跳转到 <code>stvec</code> 指定的 Trap 处理程序入口地址并切换特权级</li>
-<li>切换到内核栈，在此处保存原先上下文
-<ul>
-<li>上下文一般包括此处所有的通用寄存器以及 <code>sstatus</code> 和 <code>sepc</code> 寄存器</li>
-</ul></li>
-<li>处理 Trap</li>
-<li>恢复上下文，释放分配的内核栈空间并切换到用户栈</li>
-<li>执行 <code>sret</code> 命令回到原先环境
-<ul>
-<li>根据 <code>sstatus</code> 的 <code>SPP</code> 字段重置特权级</li>
-<li>跳转到 <code>sepc</code> 指向的地址继续执行</li>
-</ul></li>
-</ul>
-<p>这个实验之中为了简化，<code>stvec</code> 寄存器处于 Direct 模式，该模式下 Trap 处理程序入口地址计算较为简单。</p>
-<p>基于这样的处理流程，我们需要在 OS 启动初始化的时候就将标记 Trap 处理程序起始地址的符号 <code>__alltraps</code> 事先引入到 <code>stvec</code> 寄存器中：</p>
-<figure class="highlight rust"><figcaption><span>Rust</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">// ch2 /trap/mod.rs</span></span><br><span class="line">core::arch::global_asm!(<span class="built_in">include_str!</span>(<span class="string">&quot;trap.S&quot;</span>));</span><br><span class="line"></span><br><span class="line"><span class="keyword">pub</span> <span class="function"><span class="keyword">fn</span> <span class="title">init</span></span>() &#123;</span><br><span class="line">    <span class="keyword">extern</span> <span class="string">&quot;C&quot;</span> &#123;</span><br><span class="line">        <span class="function"><span class="keyword">fn</span> <span class="title">__alltraps</span></span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">unsafe</span> &#123;</span><br><span class="line">        stvec::write(__alltraps <span class="keyword">as</span> <span class="built_in">usize</span>, TrapMode::Direct);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><code>__alltrap</code> 使用汇编代码实现，其负责了保存上下文并切换到 Trap 处理程序的任务。这段汇编代码中唯一要注意的是 <code>sscratch</code> 寄存器的含义，该寄存器在 U 态下保存的是内核栈栈顶位置，我们可以利用该寄存器实现换栈。</p>
-<hr />
-<p><code>__alltrap</code> 的最后会 <code>call trap_handler</code> 触发 Rust 编写的 Trap 处理程序。</p>
-<p>Trap 处理程序会分情况处理：</p>
-<ul>
-<li>如果仅仅是触发了系统调用，那么 Trap 处理程序申请系统调用后返回到 <code>__alltrap</code> 下面一行，即 <code>__restore</code> 对应的代码段</li>
-<li>如果是当前用户应用有不可恢复的错误，则打印提示信息，调用 <code>run_next_app</code> 切换到下一个用户应用</li>
-<li>如果是未知错误，OS 立刻停止</li>
-</ul>
-<p>这里 <code>__restore</code> 负责的任务则是恢复上下文，换回用户栈并在最后调用 <code>sret</code> 回到 U 态。</p>
-<p>在第一种情况下，Trap 处理程序会直接调用 <code>__restore</code>。第二种情况下，其会调用 <code>run_next_app</code>，该函数会间接调用 <code>__restore</code>：</p>
-<figure class="highlight rust"><figcaption><span>Rust</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">// ch2 /batch.rs</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">pub</span> <span class="function"><span class="keyword">fn</span> <span class="title">run_next_app</span></span>() -&gt; ! &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut</span> app_manager = APP_MANAGER.exclusive_access();</span><br><span class="line">    <span class="keyword">let</span> current_app = app_manager.get_current_app();</span><br><span class="line">    <span class="keyword">unsafe</span> &#123;</span><br><span class="line">        app_manager.load_app(current_app);</span><br><span class="line">    &#125;</span><br><span class="line">    app_manager.move_to_next_app();</span><br><span class="line">    <span class="built_in">drop</span>(app_manager);</span><br><span class="line">    <span class="comment">// before this we have to drop local variables related to resources manually</span></span><br><span class="line">    <span class="comment">// and release the resources</span></span><br><span class="line">    <span class="keyword">extern</span> <span class="string">&quot;C&quot;</span> &#123;</span><br><span class="line">        <span class="function"><span class="keyword">fn</span> <span class="title">__restore</span></span>(cx_addr: <span class="built_in">usize</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">unsafe</span> &#123;</span><br><span class="line">        __restore(KERNEL_STACK.push_context(TrapContext::app_init_context(</span><br><span class="line">            APP_BASE_ADDRESS,</span><br><span class="line">            USER_STACK.get_sp(),</span><br><span class="line">        )) <span class="keyword">as</span> *<span class="keyword">const</span> _ <span class="keyword">as</span> <span class="built_in">usize</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">panic!</span>(<span class="string">&quot;Unreachable in batch::run_current_app!&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>前面一段就是加载下一个用户应用的代码，最主要关注其如何调用 <code>__restore</code>。显然其在内核栈中压入了新的 Trap 上下文，并且将压入后的内核栈顶地址交给了 <code>__restore</code>（使用 <code>a0</code> 寄存器传递）。那这样就需要关注 <code>app_init_context</code> 的实现：</p>
-<figure class="highlight rust"><figcaption><span>Rust</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">// ch2 /trap/context.rs</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">pub</span> <span class="function"><span class="keyword">fn</span> <span class="title">app_init_context</span></span>(entry: <span class="built_in">usize</span>, sp: <span class="built_in">usize</span>) -&gt; <span class="keyword">Self</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut</span> sstatus = sstatus::read();</span><br><span class="line">    sstatus.set_spp(SPP::User);</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut</span> cx = <span class="keyword">Self</span> &#123;</span><br><span class="line">        x: [<span class="number">0</span>; <span class="number">32</span>],</span><br><span class="line">        sstatus,</span><br><span class="line">        sepc: entry,</span><br><span class="line">    &#125;;</span><br><span class="line">    cx.set_sp(sp);</span><br><span class="line">    cx</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这个函数接受程序入口地址和栈顶指针作为参数，构造了一个用于初始化用户程序运行的 Trap 上下文。</p>
-<p>将这个上下文压入内核栈并调用 <code>__restore</code>，就可以完成用户程序的初始化。尽管异常处理后的恢复和用户程序初始化并不是同一种需求，但是其处理逻辑类似，所以完全可以复用同一份代码。</p>
-<h2 id="任务间切换">任务间切换</h2>
-<p>现在我们需要实现多个用户程序之间的切换。虽然 Trap 处理也会涉及到用户程序间切换，但是一般的任务间切换不涉及到特权级切换，这是与 Trap 处理不同的。</p>
-<p>这里使用汇编编写了任务切换需要的代码，入口符号为 <code>__switch</code>。处理逻辑为：</p>
-<ul>
-<li>保存其实环境运行上下文，不过这里只需要保存 12 个调用者保存寄存器和 <code>ra</code> 及 <code>sp</code> 寄存器即可</li>
-<li>恢复目标环境运行上下文，并且调用 <code>ret</code> 以返回到指定的地址运行目标环境</li>
-</ul>
-<p>这里就可以注意到保存 <code>ra</code> 寄存器的必要性了，其作用就是让 <code>__switch</code> 返回的时候能正确跳转到目标环境的地址。</p>
-<h2 id="多任务管理">多任务管理</h2>
-<p>我们时常会遇到需要等待外设才能继续执行的任务，这种时候如果保持等待则可能导致资源浪费，因为我们完全可以在等待的时候将 CPU 资源交给其他任务。为了实现灵活的多任务切换，我们需要了解两个系统调用。</p>
-<p>在 U 态下触发 <code>sys_yield</code> 系统调用就会将 CPU 运行权限交出，由 OS 授予另外一个应用占用 CPU。而如果触发 <code>sys_exit</code> 系统调用也会交出 CPU 运行权限，但是 <code>sys_yield</code> 表示该任务暂未结束，只不过为了避免浪费暂且停止，<code>sys_exit</code> 则表明任务结束，将来也不会取回运行权限。</p>
-<p>同样，OS 有权限将 CPU 运行权限交予一个暂停的任务。</p>
-<p>每一个任务都有未初始化、准备运行、运行中和终结四种状态。在上述的管理原则下，这些状态的转移图为：</p>
-<p><img src="/uploads/os-exp/1.png" /></p>
-<h2 id="初始化运行环境">初始化运行环境</h2>
-<p>初始化流程中最重要的就是任务管理器 <code>TASK_MANAGER</code> 的初始化：</p>
-<figure class="highlight rust"><figcaption><span>Rust</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">// ch3 /task/mod.rs</span></span><br><span class="line"></span><br><span class="line">lazy_static! &#123;</span><br><span class="line">    <span class="keyword">pub</span> <span class="keyword">static</span> <span class="keyword">ref</span> TASK_MANAGER: TaskManager = &#123;</span><br><span class="line">        <span class="keyword">let</span> num_app = get_num_app();</span><br><span class="line">        <span class="keyword">let</span> <span class="keyword">mut</span> tasks = [TaskControlBlock &#123;</span><br><span class="line">            task_cx: TaskContext::zero_init(),</span><br><span class="line">            task_status: TaskStatus::UnInit,</span><br><span class="line">        &#125;; MAX_APP_NUM];</span><br><span class="line">        <span class="keyword">for</span> (i, t) <span class="keyword">in</span> tasks.iter_mut().enumerate().take(num_app) &#123;</span><br><span class="line">            t.task_cx = TaskContext::goto_restore(init_app_cx(i));</span><br><span class="line">            t.task_status = TaskStatus::Ready;</span><br><span class="line">        &#125;</span><br><span class="line">        TaskManager &#123;</span><br><span class="line">            num_app,</span><br><span class="line">            inner: <span class="keyword">unsafe</span> &#123;</span><br><span class="line">                UPSafeCell::new(TaskManagerInner &#123;</span><br><span class="line">                    tasks,</span><br><span class="line">                    current_task: <span class="number">0</span>,</span><br><span class="line">                &#125;)</span><br><span class="line">            &#125;,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这里主要注意各个 <code>TaskControlBlock</code> 的 <code>task_cx</code> 属性是如何初始化的。首先调用 <code>init_app_cx</code> 来创建用户程序上下文，其作用是在对应用户程序的内核栈内压入一个初始化的 Trap 上下文并返回此时的内核栈栈顶。</p>
-<p>之后 <code>goto_restore</code> 构建 Task 上下文，该上下文中 12 个通用寄存器暂时置零，<code>ra</code> 置 <code>__restore</code> 的地址，<code>sp</code> 置刚刚得到的内核栈栈顶地址。</p>
-<hr />
-<p>这样完成所有的初始化后，OS 通过 <code>run_first_task</code> 开始运行用户程序。其最主要的代码是这样的一段：</p>
-<figure class="highlight rust"><figcaption><span>Rust</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">// ch3 /task/mod.rs</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> <span class="keyword">mut</span> _unused = TaskContext::zero_init();</span><br><span class="line"><span class="comment">// before this, we should drop local variables that must be dropped manually</span></span><br><span class="line"><span class="keyword">unsafe</span> &#123;</span><br><span class="line">    __switch(&amp;<span class="keyword">mut</span> _unused <span class="keyword">as</span> *<span class="keyword">mut</span> TaskContext, next_task_cx_ptr);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">panic!</span>(<span class="string">&quot;unreachable in run_first_task!&quot;</span>);</span><br></pre></td></tr></table></figure>
-<p>可以看到我们这里手动调用了 <code>__switch</code>，并且将第一个任务的 Task 上下文作为目标地址传入。由于目前所有任务的 Task 上下文中保存的 <code>ra</code> 均为 <code>__restore</code> 的地址，这样就保证了最后 <code>__switch</code> 返回到 <code>__restore</code> 处，完成任务的初始化后通过 <code>sret</code> 跳转到用户代码处开始执行任务。</p>
-<h2 id="时钟中断">时钟中断</h2>
-<p>现代的 OS 在面对很少主动触发 <code>sys_yield</code> 的用户程序的时候，往往是强制收回 CPU 使用权以保证硬件利用率。这意味着，在这样的条件下，所有应用随时都有可能被强制停止，这样的调度方式就是<strong>抢占式调度</strong>。</p>
-<p>实现 OS 强制收回使用权的方式就是，设置一个计时器，每间隔一个固定的时间（比如 10 毫秒）就强制暂停当前任务并开启下一个任务。</p>
-<p>我们可以通过 <code>time::read()</code> 方法来获取 <code>mtime</code> 寄存器的值，该寄存器保存了 OS 从上电到现在一共经过了多少个 <strong>OS 时钟周期</strong>（和 CPU 主频时钟不同）。当其大于 <code>mtimecmp</code> 寄存器的时候触发时钟中断，重置 <code>mtimecmp</code> 开始下一轮计时。</p>
-<h2 id="rust-的静态变量">Rust 的静态变量</h2>
-<p>大概是在摸索 rCore 里面用户栈实现的时候，将其中一部分代码写了一个简化版，结果无意中触发了段错误。后面大致摸索明白了原因，这里也就写一个简单的记录，见 <a href="/2022/03/09/static-var-in-rust">这篇博客</a>。</p>
 ]]></content>
       <categories>
-        <category>开发杂谈</category>
+        <category>课程笔记</category>
       </categories>
   </entry>
   <entry>
@@ -7342,17 +7366,6 @@ I_{i, S} = \mathcal{A}_O(\{\mathcal{D}_j\}) := 1 - \prod_j (1 - \mathcal{D}_{i, 
       </categories>
   </entry>
   <entry>
-    <title>《SMPL - A Skinned Multi-Person Linear Model》论文笔记</title>
-    <url>/2022/02/25/paper-2/</url>
-    <content><![CDATA[<p>这个论文我打开后，第一眼就是这个非常奇妙而神奇的模型图：</p>
-<p><img src="/uploads/paper-2/1.png" /></p>
-<span id="more"></span>
-]]></content>
-      <categories>
-        <category>科研杂谈</category>
-      </categories>
-  </entry>
-  <entry>
     <title>《美少女万华镜 5 ——理与迷宫的少女》游戏测评</title>
     <url>/2021/08/18/renge-5/</url>
     <content><![CDATA[<p>Holder 不是一个玩 GAL 的人，能想到的 GAL 除了万华镜就是柚子社这种。但是 Holder 想了想，决定把万华镜 5 这个宣称中的最终章认真通一下，也算对我几乎唯一知晓的 GAL 致以敬意。</p>
@@ -7430,21 +7443,6 @@ I_{i, S} = \mathcal{A}_O(\{\mathcal{D}_j\}) := 1 - \prod_j (1 - \mathcal{D}_{i, 
 ]]></content>
       <categories>
         <category>游戏</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Rust 中的静态变量</title>
-    <url>/2022/03/09/static-var-in-rust/</url>
-    <content><![CDATA[<p>摸索 rCore 的用户栈实现的时候发现的一些好玩东西。</p>
-<span id="more"></span>
-<h1 id="会莫名段错误的内存写入">会莫名段错误的内存写入</h1>
-<p>用户栈本身不难实现：</p>
-<figure class="highlight rust"><figcaption><span>Rust</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> STACK_SIZE: <span class="built_in">usize</span> = <span class="number">1024</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Stack</span></span> &#123;</span><br><span class="line">    data: [<span class="built_in">usize</span>; STACK_SIZE],</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> STACK: Stack = Stack &#123;</span><br><span class="line">    data: [<span class="number">0</span>; STACK_SIZE],</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">impl</span> Stack &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">get_sp</span></span>(&amp;<span class="keyword">self</span>) -&gt; <span class="built_in">usize</span> &#123;</span><br><span class="line">        <span class="keyword">self</span>.data.as_ptr() <span class="keyword">as</span> <span class="built_in">usize</span> + STACK_SIZE</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">push_context</span></span>(&amp;<span class="keyword">self</span>, cx: <span class="built_in">usize</span>) -&gt; <span class="built_in">usize</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> cx_ptr = (<span class="keyword">self</span>.get_sp() - core::mem::size_of::&lt;<span class="built_in">usize</span>&gt;()) <span class="keyword">as</span> *<span class="keyword">mut</span> <span class="built_in">usize</span>;</span><br><span class="line">        <span class="keyword">unsafe</span> &#123;</span><br><span class="line">            *cx_ptr = cx;</span><br><span class="line">        &#125;</span><br><span class="line">        cx_ptr <span class="keyword">as</span> <span class="built_in">usize</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;origin sp: &#123;&#125;&quot;</span>, STACK.get_sp());</span><br><span class="line">    <span class="keyword">let</span> cx: <span class="built_in">usize</span> = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;context: &#123;&#125;&quot;</span>, cx);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;returned sp: &#123;&#125;&quot;</span>, STACK.push_context(cx));</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;processed sp: &#123;&#125;&quot;</span>, STACK.get_sp());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这段代码是会报错的，而且很容易定位到是 <code>push_context</code> 方法中 <code>unsafe</code> 块触发了段错误。</p>
-<h1 id="静态变量的不可变性">静态变量的不可变性</h1>
-]]></content>
-      <categories>
-        <category>开发杂谈</category>
       </categories>
   </entry>
   <entry>

@@ -20,27 +20,27 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;ashitemaru.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Gemini&quot;,&quot;version&quot;:&quot;8.5.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;width&quot;:280,&quot;display&quot;:&quot;always&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:&quot;disqusjs&quot;,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;},&quot;path&quot;:&quot;&#x2F;search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;manual&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="摸索 rCore 的用户栈实现的时候发现的一些好玩东西。">
+<meta name="description" content="进入图形学方向的第一个项目，就简简单单记录点东西。 比如说学到了一些零零散散的东西之类，论文笔记之类的自然还是单开。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Rust 中的静态变量">
-<meta property="og:url" content="https://ashitemaru.github.io/2022/03/09/static-var-in-rust/index.html">
+<meta property="og:title" content="可微渲染项目记录">
+<meta property="og:url" content="https://ashitemaru.github.io/2022/04/14/lab-exp/index.html">
 <meta property="og:site_name" content="Ashitemaru">
-<meta property="og:description" content="摸索 rCore 的用户栈实现的时候发现的一些好玩东西。">
+<meta property="og:description" content="进入图形学方向的第一个项目，就简简单单记录点东西。 比如说学到了一些零零散散的东西之类，论文笔记之类的自然还是单开。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-03-09T01:01:50.000Z">
-<meta property="article:modified_time" content="2022-03-09T01:01:50.000Z">
+<meta property="article:published_time" content="2022-04-14T10:56:37.000Z">
+<meta property="article:modified_time" content="2022-04-14T10:56:37.000Z">
 <meta property="article:author" content="Ashitemaru">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://ashitemaru.github.io/2022/03/09/static-var-in-rust/">
+<link rel="canonical" href="https://ashitemaru.github.io/2022/04/14/lab-exp/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;ashitemaru.github.io&#x2F;2022&#x2F;03&#x2F;09&#x2F;static-var-in-rust&#x2F;&quot;,&quot;path&quot;:&quot;2022&#x2F;03&#x2F;09&#x2F;static-var-in-rust&#x2F;&quot;,&quot;title&quot;:&quot;Rust 中的静态变量&quot;}</script>
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;ashitemaru.github.io&#x2F;2022&#x2F;04&#x2F;14&#x2F;lab-exp&#x2F;&quot;,&quot;path&quot;:&quot;2022&#x2F;04&#x2F;14&#x2F;lab-exp&#x2F;&quot;,&quot;title&quot;:&quot;可微渲染项目记录&quot;}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
-<title>Rust 中的静态变量 | Ashitemaru</title>
+<title>可微渲染项目记录 | Ashitemaru</title>
   
 
 
@@ -209,7 +209,7 @@ $(function () {
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BC%9A%E8%8E%AB%E5%90%8D%E6%AE%B5%E9%94%99%E8%AF%AF%E7%9A%84%E5%86%85%E5%AD%98%E5%86%99%E5%85%A5"><span class="nav-number">1.</span> <span class="nav-text">会莫名段错误的内存写入</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F%E7%9A%84%E4%B8%8D%E5%8F%AF%E5%8F%98%E6%80%A7"><span class="nav-number">2.</span> <span class="nav-text">静态变量的不可变性</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">1.</span> <span class="nav-text">配置服务器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tensorboard-%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">Tensorboard 服务器配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lcuda-%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">3.</span> <span class="nav-text">-lcuda 的问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#opengl-%E7%9A%84%E4%B8%80%E4%BA%9B%E5%87%BD%E6%95%B0"><span class="nav-number">4.</span> <span class="nav-text">OpenGL 的一些函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9D%90%E6%A0%87%E7%B3%BB%E5%8F%98%E6%8D%A2%E5%87%BD%E6%95%B0"><span class="nav-number">4.1.</span> <span class="nav-text">坐标系变换函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%86%E5%9B%BE%E8%BD%AC%E6%8D%A2%E4%B8%8E-glm.lookat"><span class="nav-number">4.1.1.</span> <span class="nav-text">视图转换与 glm.lookAt</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -225,7 +225,7 @@ $(function () {
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -307,7 +307,7 @@ $(function () {
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://ashitemaru.github.io/2022/03/09/static-var-in-rust/">
+    <link itemprop="mainEntityOfPage" href="https://ashitemaru.github.io/2022/04/14/lab-exp/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.png">
@@ -320,7 +320,7 @@ $(function () {
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Rust 中的静态变量
+          可微渲染项目记录
         </h1>
 
         <div class="post-meta-container">
@@ -331,14 +331,14 @@ $(function () {
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2022-03-09 01:01:50" itemprop="dateCreated datePublished" datetime="2022-03-09T01:01:50+00:00">2022-03-09</time>
+      <time title="创建时间：2022-04-14 10:56:37" itemprop="dateCreated datePublished" datetime="2022-04-14T10:56:37+00:00">2022-04-14</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-03-09 01:01:50" itemprop="dateModified" datetime="2022-03-09T01:01:50+00:00">2022-03-09</time>
+        <time title="修改时间：2022-04-14 10:56:37" itemprop="dateModified" datetime="2022-04-14T10:56:37+00:00">2022-04-14</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -346,12 +346,12 @@ $(function () {
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%BC%80%E5%8F%91%E6%9D%82%E8%B0%88/" itemprop="url" rel="index"><span itemprop="name">开发杂谈</span></a>
+          <a href="/categories/%E7%A7%91%E7%A0%94%E6%9D%82%E8%B0%88/" itemprop="url" rel="index"><span itemprop="name">科研杂谈</span></a>
         </span>
     </span>
 
   
-    <span id="/2022/03/09/static-var-in-rust/" class="post-meta-item twikoo_visitors" data-flag-title="Rust 中的静态变量" title="阅读次数">
+    <span id="/2022/04/14/lab-exp/" class="post-meta-item twikoo_visitors" data-flag-title="可微渲染项目记录" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -366,14 +366,14 @@ $(function () {
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>830</span>
+      <span>3k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
+      <span>3 分钟</span>
     </span>
 </div>
 
@@ -384,13 +384,106 @@ $(function () {
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>摸索 rCore 的用户栈实现的时候发现的一些好玩东西。</p>
+        <p>进入图形学方向的第一个项目，就简简单单记录点东西。</p>
+<p>比如说学到了一些零零散散的东西之类，论文笔记之类的自然还是单开。</p>
 <span id="more"></span>
-<h1 id="会莫名段错误的内存写入">会莫名段错误的内存写入</h1>
-<p>用户栈本身不难实现：</p>
-<figure class="highlight rust"><figcaption><span>Rust</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> STACK_SIZE: <span class="built_in">usize</span> = <span class="number">1024</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Stack</span></span> &#123;</span><br><span class="line">    data: [<span class="built_in">usize</span>; STACK_SIZE],</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> STACK: Stack = Stack &#123;</span><br><span class="line">    data: [<span class="number">0</span>; STACK_SIZE],</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">impl</span> Stack &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">get_sp</span></span>(&amp;<span class="keyword">self</span>) -&gt; <span class="built_in">usize</span> &#123;</span><br><span class="line">        <span class="keyword">self</span>.data.as_ptr() <span class="keyword">as</span> <span class="built_in">usize</span> + STACK_SIZE</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">push_context</span></span>(&amp;<span class="keyword">self</span>, cx: <span class="built_in">usize</span>) -&gt; <span class="built_in">usize</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> cx_ptr = (<span class="keyword">self</span>.get_sp() - core::mem::size_of::&lt;<span class="built_in">usize</span>&gt;()) <span class="keyword">as</span> *<span class="keyword">mut</span> <span class="built_in">usize</span>;</span><br><span class="line">        <span class="keyword">unsafe</span> &#123;</span><br><span class="line">            *cx_ptr = cx;</span><br><span class="line">        &#125;</span><br><span class="line">        cx_ptr <span class="keyword">as</span> <span class="built_in">usize</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;origin sp: &#123;&#125;&quot;</span>, STACK.get_sp());</span><br><span class="line">    <span class="keyword">let</span> cx: <span class="built_in">usize</span> = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;context: &#123;&#125;&quot;</span>, cx);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;returned sp: &#123;&#125;&quot;</span>, STACK.push_context(cx));</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;processed sp: &#123;&#125;&quot;</span>, STACK.get_sp());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这段代码是会报错的，而且很容易定位到是 <code>push_context</code> 方法中 <code>unsafe</code> 块触发了段错误。</p>
-<h1 id="静态变量的不可变性">静态变量的不可变性</h1>
+<p><span class="math display">\[
+\newcommand{\lm}{\left[\begin{matrix}}
+\newcommand{\rm}{\end{matrix}\right]}
+\newcommand{\b}{\boldsymbol}
+\]</span></p>
+<h1 id="配置服务器">配置服务器</h1>
+<p>大约是从学长那里捡到了一个已经近乎报废的电脑主机，主板是已经停产的 Intel E8，倒是显卡是有 8G 显存的 GTX 1080Ti，要不是看上这点显存可能都不打算把这个主机修好。</p>
+<p>首先是买了 SSD，一开始是打算装 Windows 系统的。但几经周折，即使装完了 Windows 系统，系统启动后的系统中断居然就能把 CPU 跑到 100%，这着实令人诧异。不过想想这个电脑的惨状，倒也能理解了。</p>
+<p>一星期后又花了点时间装了个 Ubuntu，这下子跑起来了，还算是能带的起来这个系统。然后就是无尽的装显卡驱动、装 CUDA、装 CudNN、装 Pytorch、装 Pytorch3d 还有一堆基础工具链，这些东西整好了都已经快四月了。</p>
+<p>然后为了保证我能在宿舍里用这台机子，就给它插了网线、配置了静态 IP，开放 ssh 服务。到三月底，总算是让这个机子变成一个服务器了，虽然性能不好说。</p>
+<hr />
+<p>好玩的是，现在我每从远程拉取最新的项目代码，大约有 50% 的几率跑不起来，而且都是炸在各种不能理解的地方。这个时候一般就是重装显卡驱动、重装 CUDA、重装 Pytorch、重装 Pytorch3d 一把梭了。</p>
+<h1 id="tensorboard-服务器配置">Tensorboard 服务器配置</h1>
+<p>由于是在做图形学，训练结果是包括图片乃至视频的，不能单单用终端看，所以大约是需要写一个小后端的。比较好的是 Tensorboard 已经是比较成熟的了，所以只需要在程序里面用 tmux 开一个 Tensorboard 在 8000 端口上，之后 ssh 设置一下静态转发：</p>
+<figure class="highlight bash"><figcaption><span>Bash</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -L 16006:127.0.0.1:8000 holder@166.111.69.73</span><br></pre></td></tr></table></figure>
+<p>这样也就可以在浏览器里面通过 <code>127.0.0.1:16006</code> 来访问 Tensorboard 服务器了。</p>
+<p>但问题就在，Tensorboard 至多允许每 30 秒刷新一次数据，其实不太满足实时性的需求。但考虑到 Tensorboard 生成数据是实时的，只不过它的后端拉取太慢，似乎我的学长自己摸索了一套解析 Tensorboard 数据的东西来实时观测，那可能就暂时没我事情了。</p>
+<h1 id="lcuda-的问题"><code>-lcuda</code> 的问题</h1>
+<p>在某一次更新项目代码之后，完全无法运行，报的错大约是链接器不理解 <code>-lcuda</code>。这个错是好理解的，基本上就是缺失了 <code>libcuda.so</code> 动态库文件，但是问题就在于，我明明在 <code>LD_LIBRARY_PATH</code> 下找到了这份文件，但是链接器就是找不到。</p>
+<p>之后我直接一波 <code>sudo find / -name 'libcuda.**'</code> 扫了一遍文件树，似乎是在 <code>**/stub/</code> 之类的什么地方找到了一份链接库，本以为万事大吉的时候，发现用这个库是无法链接的。</p>
+<p>上网找了一波，似乎是 <code>**/stub</code> 是一个临时目录，其不能用于链接之类的。</p>
+<p>然而在这期间，我也找到一个说法，说 <code>-lcudart</code> 和 <code>-lcuda</code> 作用是一样的。但现在问题是，链接器脚本是构建过程中生成在 cache 里面的，而项目构建脚本里面也设置不了用 <code>-lcudart</code> 替代 <code>-lcuda</code>。</p>
+<p>但 Holder 还真找到了方法，我直接翻到 Pytorch 的源码库，根据报错信息一路翻，终于翻到了它配置链接器设置的源码，手动用 <code>-lcudart</code> 换掉了 <code>-lcuda</code>，结果还真行了，但是后续会出现一些问题，我想大概是 <code>libcudart.so</code> 和 <code>libcuda.so</code> 对一些方法实现不太一样。</p>
+<p>然后怎么解决的？直接把显卡驱动重装了，问题圆满解决。</p>
+<h1 id="opengl-的一些函数">OpenGL 的一些函数</h1>
+<p>OpenGL 应该是很常用的一个库，内部包含了大量辅助运算的函数，但是怎么用还是需要自己慢慢摸索。这里使用的是 Python 中的 OpenGL，包名称为 <code>glm</code>。</p>
+<h2 id="坐标系变换函数">坐标系变换函数</h2>
+<p>考虑模型坐标系、世界坐标系、视图坐标系之间的关系，这三者分别指代以某个模型的某一点为原点的坐标系、绝对坐标系和以观察者（相机）为原点的坐标系。我们考虑这三者之间的转换。</p>
+<h3 id="视图转换与-glm.lookat">视图转换与 <code>glm.lookAt</code></h3>
+<p>假设相机位于 <span class="math inline">\(\b{p}(p_1, p_2, p_3)\)</span> 点处，相机正上方指向 <span class="math inline">\(\b{u}(u_1, u_2, u_3)\)</span>，相机朝向的<strong>反方向</strong>为 <span class="math inline">\(\b{l}(l_1, l_2, l_3)\)</span>，那么相机的右侧可以通过叉积得到：</p>
+<p><span class="math display">\[
+\b{r}(r_1, r_2, r_3) = \b{p} \times \b{l}
+\]</span></p>
+<p>这里我们令 <span class="math inline">\(\b{u}, \b{r}, \b{l}\)</span> 都是单位矩阵。</p>
+<p>假设将相机平移到世界坐标系原点的矩阵为 <span class="math inline">\(T\)</span>，将相机旋转到看向世界坐标系 <span class="math inline">\(-z\)</span> 方向、向上方向为世界坐标系 <span class="math inline">\(+y\)</span> 方向的旋转矩阵为 <span class="math inline">\(R\)</span>，那么我们调整相机的矩阵就是 <span class="math inline">\(RT\)</span>，而这也就是视图坐标系转换为世界坐标系的转换矩阵。我们所谓的<strong>视图转换</strong>是将世界坐标系转入视图坐标系，所以视图转换矩阵 <span class="math inline">\(V = (RT)^{-1}\)</span>。</p>
+<p>显然：</p>
+<p><span class="math display">\[
+T = \lm
+I_3 &amp; -\b{p} \\
+\b{0}_3^T &amp; 1 \\
+\rm = \lm
+1 &amp; 0 &amp; 0 &amp; -p_1 \\
+0 &amp; 1 &amp; 0 &amp; -p_2 \\
+0 &amp; 0 &amp; 1 &amp; -p_3 \\
+0 &amp; 0 &amp; 0 &amp; 1 \\
+\rm
+\]</span></p>
+<p>并且可以显然得到 <span class="math inline">\(R\)</span> 的逆矩阵：</p>
+<p><span class="math display">\[
+R^{-1} = \lm
+\b{r} &amp; \b{u} &amp; \b{l} &amp; \b{0}_3 \\
+0 &amp; 0 &amp; 0 &amp; 1 \\
+\rm = \lm
+r_1 &amp; u_1 &amp; l_1 &amp; 0 \\
+r_2 &amp; u_2 &amp; l_2 &amp; 0 \\
+r_3 &amp; u_3 &amp; l_3 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 1 \\
+\rm
+\]</span></p>
+<p>所以视图转换矩阵的逆为：</p>
+<p><span class="math display">\[
+V^{-1} = RT = (R^{-1})^TT = \lm
+r_1 &amp; r_2 &amp; r_3 &amp; -\b{r} \cdot \b{p} \\
+u_1 &amp; u_2 &amp; u_3 &amp; -\b{u} \cdot \b{p} \\
+l_1 &amp; l_2 &amp; l_3 &amp; -\b{l} \cdot \b{p} \\
+0 &amp; 0 &amp; 0 &amp; 1 \\
+\rm
+\]</span></p>
+<div class="note info"><p>对于仿射变换的矩阵：</p>
+<p><span class="math display">\[
+T = \lm
+A &amp; \b{t} \\
+\b{0}_3^T &amp; 1 \\
+\rm
+\]</span></p>
+<p>我们很容易验证其逆矩阵为：</p>
+<p><span class="math display">\[
+T^{-1} = \lm
+A^{-1} &amp; -A^{-1}\b{t} \\
+\b{0}_3^T &amp; 1 \\
+\rm
+\]</span></p>
+</div>
+<p>所以 <span class="math inline">\(V\)</span> 此时也是显然的了。只要清楚对于两两正交的单位向量 <span class="math inline">\(\b{l}, \b{r}, \b{u}\)</span> 有：</p>
+<p><span class="math display">\[
+(\b{l} \cdot \b{p})\b{l} + (\b{r} \cdot \b{p})\b{r} + (\b{u} \cdot \b{p})\b{u} = \b{p}
+\]</span></p>
+<p>即可知道：</p>
+<p><span class="math display">\[
+V = \lm
+r_1 &amp; u_1 &amp; l_1 &amp; p_1 \\
+r_2 &amp; u_2 &amp; l_2 &amp; p_2 \\
+r_3 &amp; u_3 &amp; l_3 &amp; p_3 \\
+0 &amp; 0 &amp; 0 &amp; 1 \\
+\rm
+\]</span></p>
+<p>而 <code>glm.lookAt</code> 则是根据相机参数构建了矩阵 <span class="math inline">\(V^{-1}\)</span>。</p>
 
     </div>
 
@@ -404,8 +497,8 @@ $(function () {
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/02/28/os-exp/" rel="prev" title="操作系统课程大实验摸索实录">
-                  <i class="fa fa-chevron-left"></i> 操作系统课程大实验摸索实录
+                <a href="/2022/02/13/winter-conclusion/" rel="prev" title="2022 年寒假总结">
+                  <i class="fa fa-chevron-left"></i> 2022 年寒假总结
                 </a>
             </div>
             <div class="post-nav-item">
@@ -441,13 +534,13 @@ $(function () {
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">190k</span>
+    <span title="站点总字数">186k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:53</span>
+    <span title="站点阅读时长">2:49</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
@@ -475,7 +568,7 @@ $(function () {
 
   
 
-  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;tags&quot;:&quot;none&quot;,&quot;js&quot;:{&quot;url&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mathjax@3.1.4&#x2F;es5&#x2F;tex-mml-chtml.js&quot;,&quot;integrity&quot;:&quot;sha256-ncNI9OXOS5Ek4tzVYiOMmN&#x2F;KKCPZ6V0Cpv2P&#x2F;zHntiA&#x3D;&quot;}}</script>
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;tags&quot;:&quot;none&quot;,&quot;js&quot;:{&quot;url&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mathjax@3.1.4&#x2F;es5&#x2F;tex-mml-chtml.js&quot;,&quot;integrity&quot;:&quot;sha256-ncNI9OXOS5Ek4tzVYiOMmN&#x2F;KKCPZ6V0Cpv2P&#x2F;zHntiA&#x3D;&quot;}}</script>
 <script src="/js/third-party/math/mathjax.js"></script>
 
 
