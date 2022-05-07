@@ -3320,111 +3320,49 @@
       </categories>
   </entry>
   <entry>
-    <title>可微渲染项目记录</title>
-    <url>/2022/04/14/lab-exp/</url>
-    <content><![CDATA[<p>进入图形学方向的第一个项目，就简简单单记录点东西。</p>
-<p>比如说学到了一些零零散散的东西之类，论文笔记之类的自然还是单开。</p>
+    <title>又一年五月</title>
+    <url>/2022/05/08/lab-quit/</url>
+    <content><![CDATA[<p>是不是每年的五月都会有些不太顺遂的事情发生。</p>
 <span id="more"></span>
-<p><span class="math display">\[
-\newcommand{\lm}{\left[\begin{matrix}}
-\newcommand{\rm}{\end{matrix}\right]}
-\newcommand{\b}{\boldsymbol}
-\]</span></p>
-<h1 id="配置服务器">配置服务器</h1>
-<p>大约是从学长那里捡到了一个已经近乎报废的电脑主机，主板是已经停产的 Intel E8，倒是显卡是有 8G 显存的 GTX 1080Ti，要不是看上这点显存可能都不打算把这个主机修好。</p>
-<p>首先是买了 SSD，一开始是打算装 Windows 系统的。但几经周折，即使装完了 Windows 系统，系统启动后的系统中断居然就能把 CPU 跑到 100%，这着实令人诧异。不过想想这个电脑的惨状，倒也能理解了。</p>
-<p>一星期后又花了点时间装了个 Ubuntu，这下子跑起来了，还算是能带的起来这个系统。然后就是无尽的装显卡驱动、装 CUDA、装 CudNN、装 Pytorch、装 Pytorch3d 还有一堆基础工具链，这些东西整好了都已经快四月了。</p>
-<p>然后为了保证我能在宿舍里用这台机子，就给它插了网线、配置了静态 IP，开放 ssh 服务。到三月底，总算是让这个机子变成一个服务器了，虽然性能不好说。</p>
+<p>昨晚通宵写了一些密码学的作业，然后就睡昏过去，一路睡到了下午四点，醒来之后导师发了微信消息说想聊聊。</p>
+<p>虽然有一点不太妙的预感，但在做完核酸之后还是接了导师的电话，导师自然还是弯弯绕绕地回忆了一下我在实验室的几个月，然后也就直白地说出了“我觉得你还是不太适合我们实验室”。</p>
+<p>其实还是有所预料的，毕竟自己因为期中课内一堆事情咕咕咕了科协咕咕咕了实验室工作，而这个项目五月底是要投的，所以交给我的任务也是无限期拖延，即使只是一个 Toy example。然后半路有一位茶园的同年级同学也加入了这个项目，虽然没和他直接交流，但是可以看出他一个星期内将项目推进了很多。</p>
+<p>所以导师不把名额给我其实也是很正常的一件事情。</p>
+<p>但毕竟现在是大三下学期，都快进入正常的推免流程了，这个时候作出这样的定论，毕竟还是杀了我一个措手不及。</p>
+<p>一看时间，又是五月初。去年五月初的狼狈已经不堪回首，前年五月的混沌早已淡出了记忆，今年的五月又是这样的变故。再这样下去，怕不是每年五月，即使我相当喜欢初夏，我也得下意识地恐惧这段时光。</p>
 <hr />
-<p>好玩的是，现在我每从远程拉取最新的项目代码，大约有 50% 的几率跑不起来，而且都是炸在各种不能理解的地方。这个时候一般就是重装显卡驱动、重装 CUDA、重装 Pytorch、重装 Pytorch3d 一把梭了。</p>
-<h1 id="tensorboard-服务器配置">Tensorboard 服务器配置</h1>
-<p>由于是在做图形学，训练结果是包括图片乃至视频的，不能单单用终端看，所以大约是需要写一个小后端的。比较好的是 Tensorboard 已经是比较成熟的了，所以只需要在程序里面用 tmux 开一个 Tensorboard 在 8000 端口上，之后 ssh 设置一下静态转发：</p>
-<figure class="highlight bash"><figcaption><span>Bash</span></figcaption><table><tr><td class="code"><pre><span class="line">ssh -L 16006:127.0.0.1:8000 holder@166.111.69.73</span><br></pre></td></tr></table></figure>
-<p>这样也就可以在浏览器里面通过 <code>127.0.0.1:16006</code> 来访问 Tensorboard 服务器了。</p>
-<p>但问题就在，Tensorboard 至多允许每 30 秒刷新一次数据，其实不太满足实时性的需求。但考虑到 Tensorboard 生成数据是实时的，只不过它的后端拉取太慢，似乎我的学长自己摸索了一套解析 Tensorboard 数据的东西来实时观测，那可能就暂时没我事情了。</p>
-<h1 id="lcuda-的问题"><code>-lcuda</code> 的问题</h1>
-<p>在某一次更新项目代码之后，完全无法运行，报的错大约是链接器不理解 <code>-lcuda</code>。这个错是好理解的，基本上就是缺失了 <code>libcuda.so</code> 动态库文件，但是问题就在于，我明明在 <code>LD_LIBRARY_PATH</code> 下找到了这份文件，但是链接器就是找不到。</p>
-<p>之后我直接一波 <code>sudo find / -name 'libcuda.**'</code> 扫了一遍文件树，似乎是在 <code>**/stub/</code> 之类的什么地方找到了一份链接库，本以为万事大吉的时候，发现用这个库是无法链接的。</p>
-<p>上网找了一波，似乎是 <code>**/stub</code> 是一个临时目录，其不能用于链接之类的。</p>
-<p>然而在这期间，我也找到一个说法，说 <code>-lcudart</code> 和 <code>-lcuda</code> 作用是一样的。但现在问题是，链接器脚本是构建过程中生成在 cache 里面的，而项目构建脚本里面也设置不了用 <code>-lcudart</code> 替代 <code>-lcuda</code>。</p>
-<p>但 Holder 还真找到了方法，我直接翻到 Pytorch 的源码库，根据报错信息一路翻，终于翻到了它配置链接器设置的源码，手动用 <code>-lcudart</code> 换掉了 <code>-lcuda</code>，结果还真行了，但是后续会出现一些问题，我想大概是 <code>libcudart.so</code> 和 <code>libcuda.so</code> 对一些方法实现不太一样。</p>
-<p>然后怎么解决的？直接把显卡驱动重装了，问题圆满解决。</p>
-<h1 id="opengl-的一些函数">OpenGL 的一些函数</h1>
-<p>OpenGL 应该是很常用的一个库，内部包含了大量辅助运算的函数，但是怎么用还是需要自己慢慢摸索。这里使用的是 Python 中的 OpenGL，包名称为 <code>glm</code>。</p>
-<h2 id="坐标系变换函数">坐标系变换函数</h2>
-<p>考虑模型坐标系、世界坐标系、视图坐标系之间的关系，这三者分别指代以某个模型的某一点为原点的坐标系、绝对坐标系和以观察者（相机）为原点的坐标系。我们考虑这三者之间的转换。</p>
-<h3 id="视图转换与-glm.lookat">视图转换与 <code>glm.lookAt</code></h3>
-<p>假设相机位于 <span class="math inline">\(\b{p}(p_1, p_2, p_3)\)</span> 点处，相机正上方指向 <span class="math inline">\(\b{u}(u_1, u_2, u_3)\)</span>，相机朝向的<strong>反方向</strong>为 <span class="math inline">\(\b{l}(l_1, l_2, l_3)\)</span>，那么相机的右侧可以通过叉积得到：</p>
-<p><span class="math display">\[
-\b{r}(r_1, r_2, r_3) = \b{p} \times \b{l}
-\]</span></p>
-<p>这里我们令 <span class="math inline">\(\b{u}, \b{r}, \b{l}\)</span> 都是单位矩阵。</p>
-<p>假设将相机平移到世界坐标系原点的矩阵为 <span class="math inline">\(T\)</span>，将相机旋转到看向世界坐标系 <span class="math inline">\(-z\)</span> 方向、向上方向为世界坐标系 <span class="math inline">\(+y\)</span> 方向的旋转矩阵为 <span class="math inline">\(R\)</span>，那么我们调整相机的矩阵就是 <span class="math inline">\(RT\)</span>，而这也就是视图坐标系转换为世界坐标系的转换矩阵。我们所谓的<strong>视图转换</strong>是将世界坐标系转入视图坐标系，所以视图转换矩阵 <span class="math inline">\(V = (RT)^{-1}\)</span>。</p>
-<p>显然：</p>
-<p><span class="math display">\[
-T = \lm
-I_3 &amp; -\b{p} \\
-\b{0}_3^T &amp; 1 \\
-\rm = \lm
-1 &amp; 0 &amp; 0 &amp; -p_1 \\
-0 &amp; 1 &amp; 0 &amp; -p_2 \\
-0 &amp; 0 &amp; 1 &amp; -p_3 \\
-0 &amp; 0 &amp; 0 &amp; 1 \\
-\rm
-\]</span></p>
-<p>并且可以显然得到 <span class="math inline">\(R\)</span> 的逆矩阵：</p>
-<p><span class="math display">\[
-R^{-1} = \lm
-\b{r} &amp; \b{u} &amp; \b{l} &amp; \b{0}_3 \\
-0 &amp; 0 &amp; 0 &amp; 1 \\
-\rm = \lm
-r_1 &amp; u_1 &amp; l_1 &amp; 0 \\
-r_2 &amp; u_2 &amp; l_2 &amp; 0 \\
-r_3 &amp; u_3 &amp; l_3 &amp; 0 \\
-0 &amp; 0 &amp; 0 &amp; 1 \\
-\rm
-\]</span></p>
-<p>所以视图转换矩阵的逆为：</p>
-<p><span class="math display">\[
-V^{-1} = RT = (R^{-1})^TT = \lm
-r_1 &amp; r_2 &amp; r_3 &amp; -\b{r} \cdot \b{p} \\
-u_1 &amp; u_2 &amp; u_3 &amp; -\b{u} \cdot \b{p} \\
-l_1 &amp; l_2 &amp; l_3 &amp; -\b{l} \cdot \b{p} \\
-0 &amp; 0 &amp; 0 &amp; 1 \\
-\rm
-\]</span></p>
-<div class="note info"><p>对于仿射变换的矩阵：</p>
-<p><span class="math display">\[
-T = \lm
-A &amp; \b{t} \\
-\b{0}_3^T &amp; 1 \\
-\rm
-\]</span></p>
-<p>我们很容易验证其逆矩阵为：</p>
-<p><span class="math display">\[
-T^{-1} = \lm
-A^{-1} &amp; -A^{-1}\b{t} \\
-\b{0}_3^T &amp; 1 \\
-\rm
-\]</span></p>
-</div>
-<p>所以 <span class="math inline">\(V\)</span> 此时也是显然的了。只要清楚对于两两正交的单位向量 <span class="math inline">\(\b{l}, \b{r}, \b{u}\)</span> 有：</p>
-<p><span class="math display">\[
-(\b{l} \cdot \b{p})\b{l} + (\b{r} \cdot \b{p})\b{r} + (\b{u} \cdot \b{p})\b{u} = \b{p}
-\]</span></p>
-<p>即可知道：</p>
-<p><span class="math display">\[
-V = \lm
-r_1 &amp; u_1 &amp; l_1 &amp; p_1 \\
-r_2 &amp; u_2 &amp; l_2 &amp; p_2 \\
-r_3 &amp; u_3 &amp; l_3 &amp; p_3 \\
-0 &amp; 0 &amp; 0 &amp; 1 \\
-\rm
-\]</span></p>
-<p>而 <code>glm.lookAt</code> 则是根据相机参数构建了矩阵 <span class="math inline">\(V^{-1}\)</span>。</p>
+<p>其实我一直是选择困难症的，选专业、选导师啥的。选图形学也是因为安老板推荐，加上 GAMES101 看着还不错，也就直接这么选了。但面临这样的境遇，也只能再去审视自己到底想去学什么。</p>
+<p>最后经过和若干位学长和同学交流了一番，我给季铮锋老师发出了邮件，想着去做量子计算之类的方向。</p>
+<hr />
+<p>其实打心底而言，我一直没有动现在实验室的项目也是有一定原因的。我想的是来实验室做一些渲染工作，然而我打开项目工程代码，我看到的是 Pytorch。虽然这也并不奇怪，毕竟有名言“Neural network rapes everything”。</p>
+<p>但我在想，导师把我安排来这个项目也是有原因的，毕竟我的简历上写着刘知远实验室的经历。但他可能并不了解的是，我从那里退出并不是因为我抢不到他的名额，而是我不想做人工智能。</p>
+<p>所以在面对项目代码的时候，我还是有点不大愿意动手。</p>
+<hr />
+<p>选量子，我也不是那么清楚为什么，可能是因为没人去做量子，所以名额比较充裕，也有可能是一种病急乱投医。</p>
+<p>时而会感叹自己，从人工智能到图形学再到量子，完全是从热门到冷门，从就业面宽到没有就业面。</p>
+<hr />
+<p>我到底想做什么，其实要我说，我也说不明白，我能明确说明的，只有我绝对不想做什么。我厌恶人工智能，厌恶计算机网络，高性能和计算机系统也不太想触碰（不是反感，而是自己太菜了）。</p>
+<p>如果需要给出一点模糊的答案，那可能是做开发，软件开发。我严重怀疑我自己的代码强迫症，看到什么都想重构，喜欢写那些别人看来是炫技的代码。</p>
+<p>但是软件开发又何必读博士呢。</p>
+<p>我也不太清楚我为何想继续读书，可能只是不想那么早就去接触职场。但毕竟这是逃避。</p>
+<hr />
+<p>谁知道呢，更何况我们的 Prof. Ji 也可以拒绝我，那我只能拿着 GPA 到时候随机挑导师了。</p>
+<p>出国没考 GRE，就业没实习，推免还被导师因为摸鱼拒绝了。</p>
+<hr />
+<p>但其实我现在也说不上难过，说不上有什么负面情绪，我大概看了几篇量子方向的论文，重新拿起 Artin，似乎又对可能的研究方向起了兴趣。</p>
+<p>然而我自己也是清楚的，我之前对图形学也有着这样的幻想，直到我打开了项目代码。</p>
+<p>Holder 真没有什么持久的爱好，慨叹。于是又要担心这种三分钟的热度何时会被消磨殆尽。</p>
+<hr />
+<p>哎，为了学位读书好烦啊，我好想就顺着自己的爱好随便乱学东西，今天学日语明天看几何大后天说不定在敲 Haskell。</p>
+<p>然而不为了学位读书没饭吃，没饭吃就没我这个人了。</p>
+<hr />
+<p>其实也算不上什么挫折，但是 Holder 莫名其妙想了好多。有那种积沙成塔但是倾覆于一旦的感觉，就是这种一点点的失落感。</p>
+<p>Whatever，明天照样起床，去做核酸，写密码学作业，等 Prof. Ji 的回信。</p>
+<p>其实现在内心还有一点点，说不定又可以名正言顺学 Artin 的兴奋。</p>
+<p>晚安哦。</p>
 ]]></content>
       <categories>
-        <category>科研杂谈</category>
+        <category>闲聊</category>
       </categories>
   </entry>
   <entry>
