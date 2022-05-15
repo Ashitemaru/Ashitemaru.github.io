@@ -7125,6 +7125,118 @@ v = H\log_2\left(1 + \frac{S}{N}\right)({\rm bps})
       </categories>
   </entry>
   <entry>
+    <title>《Foundations of Probabilistic Proofs》学习笔记</title>
+    <url>/2022/05/13/note-of-prob-proof/</url>
+    <content><![CDATA[<p>大概是打算去做量子计算方向需要学习的一些东西，这门课是 Berkeley 的 CS294 课程，是理论计算机的一个重要课程，和量子计算关系还是挺大的。</p>
+<p>但这门课也太难了，我就听了 Lecture 1 就学到了一堆不会的东西，听两分钟查半小时维基百科和各路资料，太折磨了。</p>
+<span id="more"></span>
+<p><span class="math display">\[
+\newcommand{\s}{\mathsf}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\pr}{\mathop{\mathrm{Pr}}}
+\]</span></p>
+<h1 id="lecture-1-graph-non-isomorphism-ip-upper-bound">Lecture 1 Graph Non-isomorphism &amp; IP Upper Bound</h1>
+<h2 id="classical-mathematical-proofs">Classical Mathematical Proofs</h2>
+<p>首先回忆一下 NP 语言的定义：</p>
+<p>We call language <span class="math inline">\(L\)</span> an <span class="math inline">\(\s{NP}\)</span> if and only if <span class="math inline">\(\exists\)</span> polynomial decider <span class="math inline">\(D\)</span> s.t.</p>
+<ul>
+<li><p><span class="math inline">\(\forall\)</span> instance <span class="math inline">\(x \in L\)</span>, <span class="math inline">\(\exists\)</span> witness <span class="math inline">\(w\)</span> s.t. <span class="math inline">\(D(x, w) = 1\)</span>.</p></li>
+<li><p><span class="math inline">\(\forall\)</span> instance <span class="math inline">\(x \notin L\)</span>, <span class="math inline">\(\forall\)</span> witness <span class="math inline">\(w\)</span> s.t. <span class="math inline">\(D(x, w) = 0\)</span>.</p></li>
+</ul>
+<p>NP 语言指的是能够在多项式时间内验证的语言，其全称应当为 <strong>N</strong>on-deterministic <strong>P</strong>olynomial，即非确定性多项式时间，而非 <strong>N</strong>on-<strong>P</strong>olynomial，即非多项式时间。</p>
+<p>一个 NP 语言的例子为 <span class="math inline">\(L = \#\s{SAT}\)</span>。</p>
+<p>对于 <span class="math inline">\(x \in L\)</span>，<span class="math inline">\(x\)</span> 均为 <span class="math inline">\(n\)</span> 元布尔表达式 <span class="math inline">\(x = \phi(x_1, x_2, x_3, \cdots, x_n)\)</span>。这里我们取 witness 为一个赋值 <span class="math inline">\((a_1, a_2, a_3, \cdots, a_n) \in \{0, 1\}^n\)</span>，而 decider 判定 <span class="math inline">\(\phi(a_1, a_2, a_3, \cdots, a_n)\)</span> 是否为真。</p>
+<hr />
+<p>我们改动上述定义中的名称，用 verifier <span class="math inline">\(V\)</span> 代替 decider <span class="math inline">\(D\)</span>，用 theorem <span class="math inline">\(x\)</span> 代替 instance <span class="math inline">\(x\)</span>，用 proof <span class="math inline">\(\pi\)</span> 代替 witness <span class="math inline">\(w\)</span>。那么 NP 语言的两条约束就是说明：</p>
+<ul>
+<li><p>(Completeness) <span class="math inline">\(\forall\)</span> theorem <span class="math inline">\(x \in L\)</span>, <span class="math inline">\(\exists\)</span> proof <span class="math inline">\(\pi\)</span> s.t. <span class="math inline">\(V(x, \pi) = 1\)</span>, which means every true theorem has a proof.</p></li>
+<li><p>(Soundness) <span class="math inline">\(\forall\)</span> theorem <span class="math inline">\(x \notin L\)</span>, <span class="math inline">\(\forall\)</span> proof <span class="math inline">\(\pi\)</span> s.t. <span class="math inline">\(V(x, \pi) = 0\)</span>, which means every false theorem has no proof to convince the verifier.</p></li>
+</ul>
+<p>这就说明当下的 NP 语言实际上描述了 classical mathematical proofs。</p>
+<p>经典的数学证明器包含一个 prover <span class="math inline">\(P\)</span> 和一个 verifier <span class="math inline">\(V\)</span>，prover 接受 theorem <span class="math inline">\(x\)</span>，生成一个 proof <span class="math inline">\(\pi\)</span> 传递给 verifier，而 verifier 根据 <span class="math inline">\(\pi\)</span> 输出一个 bit 表示其是否认同该证明。</p>
+<p>而本课程需要做的，是为这个系统引入下述新特征：</p>
+<p>The verifier <span class="math inline">\(V\)</span> may</p>
+<ul>
+<li><p>use randomness</p></li>
+<li><p>interact with prover <span class="math inline">\(P\)</span></p></li>
+</ul>
+<h2 id="interactive-proofs">Interactive Proofs</h2>
+<p>交互证明中的 prover 和 verifier 可以交互，即两者之间可以进行若干次的通信，相互交换信息。同时，verifier 可能会使用 randomness 来决定最后的输出。</p>
+<p>交互式证明的定义为：</p>
+<p>An interactive proof for language <span class="math inline">\(L\)</span> is a pair <span class="math inline">\((P, V)\)</span>, where <span class="math inline">\(P\)</span> is a prover and <span class="math inline">\(V\)</span> is an honest probilistic polynomial verifier, s.t.</p>
+<ul>
+<li><p>(Completeness) <span class="math inline">\(\forall\)</span> theorem <span class="math inline">\(x \in L\)</span>, <span class="math inline">\(\pr_r[\la P(x), V(x; r) \ra = 1] = 1\)</span>, which means the probability that every true theorem has a proof (there exists an honst prover) to convince the verifier is <span class="math inline">\(1\)</span>.</p></li>
+<li><p>(Soundness) <span class="math inline">\(\forall\)</span> theorem <span class="math inline">\(x \notin L\)</span>, <span class="math inline">\(\forall \tilde{P}\)</span>, <span class="math inline">\(\pr_r[\la \tilde{P}, V(x; r) \ra = 1] \leq \dfrac 12\)</span>, which means for every possible prover, the probability that the proof it gives for a false theorem can convince the verifier will not exceed half.</p></li>
+</ul>
+<p>注意，这里我们不对 honest prover 引入 randomness。</p>
+<hr />
+<p>这里我们引入了两个新概念，即 interaction 和 randomness。我们关注下表：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">With interaction</th>
+<th style="text-align: center;">Without interaction</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">With randomness</td>
+<td style="text-align: center;"><span class="math inline">\(\s{IP}\)</span> (Interaction Proof)</td>
+<td style="text-align: center;"><span class="math inline">\(\s{MA}\)</span> (Merlin Arthur Protocol)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Without randomness</td>
+<td style="text-align: center;"><span class="math inline">\(\s{NP}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\s{NP}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>如果 interaction 和 randomness 都没有引入 NP，那么 NP 还是 NP。</p>
+<p>如果仅仅引入 interaction，得到的系统依然等价于 NP（证明留做习题）。</p>
+<p>如果仅仅引入 randomness，我们得到了 MA 协议。The MA Protocol is believed to be equal to <span class="math inline">\(\s{NP}\)</span>.</p>
+<p>如果两者都引入，就得到了交互证明 IP。</p>
+<h2 id="ip-for-graph-non-isomorphism">IP for Graph Non-isomorphism</h2>
+<p>首先给出图同构的定义。对于图 <span class="math inline">\(G_0 = (V, E_0)\)</span> 以及 <span class="math inline">\(G_1 = (V, E_1)\)</span>，称两图同构（isomorphism）当且仅当存在 <span class="math inline">\(V\)</span> 上的置换 <span class="math inline">\(\pi: V \to V\)</span> 令 <span class="math inline">\((u, v) \in E_0\)</span> 等价于 <span class="math inline">\((\pi(u), \pi(v)) \in E_1\)</span>。此时记 <span class="math inline">\(G_1 = \pi(G_0)\)</span>。</p>
+<p>两图同构的记号为 <span class="math inline">\(G_0 \equiv G_1\)</span>。</p>
+<p>那么定义语言：</p>
+<p><span class="math display">\[
+\begin{aligned}
+\s{GI} &amp;:= \{(G_0, G_1) : G_0 \equiv G_1\} \\
+\s{GNI} &amp;:= \{(G_0, G_1) : G_0 \not\equiv G_1\} \\
+\end{aligned}
+\]</span></p>
+<p>显然对同构的两个图只要给出 <span class="math inline">\(V\)</span> 上的置换 <span class="math inline">\(\pi\)</span> 作为 proof 即可判定图是否同构，故我们有 <span class="math inline">\(\s{GI} \in \s{NP}\)</span>，那么 <span class="math inline">\(\s{GNI} \in \s{coNP}\)</span>。这里：</p>
+<p><span class="math display">\[
+\s{coNP} := \{L^c : L \in \s{NP}\}
+\]</span></p>
+<hr />
+<p>下面我们证明 <span class="math inline">\(\s{GNI} \in \s{IP}\)</span>。</p>
+<p>事实上我们可以给出这样的 prover 和 verifier，其工作流程为：</p>
+<ul>
+<li>verifier 随机令 <span class="math inline">\(b \leftarrow \{0, 1\}\)</span></li>
+<li>verifier 随机获取 <span class="math inline">\(V\)</span> 上的一个置换 <span class="math inline">\(\pi: V \to V\)</span></li>
+<li>verifier 令 <span class="math inline">\(H := \pi(G_b)\)</span>，并将 <span class="math inline">\(H\)</span> 传递给 prover</li>
+<li>prover 计算 <span class="math inline">\(\tilde{b}\)</span>，令 <span class="math inline">\(G_{\tilde{b}} \equiv H\)</span>，并将 <span class="math inline">\(\tilde{b}\)</span> 传递给 verifier</li>
+<li>verifier 判定 <span class="math inline">\(\tilde{b}\)</span> 是否等于 <span class="math inline">\(b\)</span>，若相等，则输出 <span class="math inline">\(1\)</span>，否则输出 <span class="math inline">\(0\)</span></li>
+</ul>
+<p>我们证明这个系统满足 Completeness 和 Soundness 的要求。</p>
+<p>考虑到图同构关系为等价关系，所以可以构建图同构关系对应的等价类集合。</p>
+<p>首先如果 <span class="math inline">\((G_0, G_1) \in \s{GNI}\)</span>，则说明 <span class="math inline">\(G_0, G_1\)</span> 位于不同的等价类 <span class="math inline">\(P_0, P_1\)</span>。verifier 通过随机获取置换的方式，可以得到一个与 <span class="math inline">\(G_b\)</span> 位于同一个等价类的图 <span class="math inline">\(H\)</span>。而 prover 总是能够分辨 <span class="math inline">\(H\)</span> 和 <span class="math inline">\(G_0, G_1\)</span> 中的哪个位于同一等价类，所以总是能够使得 <span class="math inline">\(\tilde{b} = b\)</span>，Completeness 得证。</p>
+<p>其次如果 <span class="math inline">\((G_0, G_1) \notin \s{GNI}\)</span>，则说明 <span class="math inline">\(G_0, G_1\)</span> 位于同一个等价类，并且 <span class="math inline">\(H\)</span> 也位于这个等价类。此时考虑到 <span class="math inline">\(H, b\)</span> 相互独立，得到 prover 令 <span class="math inline">\(\tilde{b} := b\)</span> 和 <span class="math inline">\(\tilde{b} := 1 - b\)</span> 的概率等同，所以错判概率不超过一半，Soundness 得证。</p>
+<p>从而得知 <span class="math inline">\(\s{GNI} \in \s{IP}\)</span>。</p>
+<div class="note info"><p>现在我们暂且忽略 prover 的计算复杂度。</p>
+</div>
+<p>这个证明的核心思想在于<strong>图同构关系为等价关系</strong>。</p>
+<h2 id="an-upper-bound-on-ip">An Upper Bound on IP</h2>
+<p>我们下面证明 <span class="math inline">\(\s{IP} \subseteq \s{PSPACE}\)</span>。</p>
+]]></content>
+      <categories>
+        <category>科研杂谈</category>
+      </categories>
+  </entry>
+  <entry>
     <title>《Soft Rasterizer - A Differentiable Renderer for Image-based 3D Reasoning》论文笔记</title>
     <url>/2022/01/18/paper-1/</url>
     <content><![CDATA[<p>进可微渲染项目之后要求阅读的第一篇论文，就当作一种入门论文吧。</p>
