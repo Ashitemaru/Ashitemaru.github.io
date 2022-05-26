@@ -20,27 +20,27 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;ashitemaru.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Gemini&quot;,&quot;version&quot;:&quot;8.5.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;width&quot;:280,&quot;display&quot;:&quot;always&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:&quot;disqusjs&quot;,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;},&quot;path&quot;:&quot;&#x2F;search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;manual&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="大概是打算去做量子计算方向需要学习的一些东西，这门课是 Berkeley 的 CS294 课程，是理论计算机的一个重要课程，和量子计算关系还是挺大的。 但这门课也太难了，我就听了 Lecture 1 就学到了一堆不会的东西，听两分钟查半小时维基百科和各路资料，太折磨了。">
+<meta name="description" content="2022 年的暑假，将会来得意外地早，因为我提前回家了。 或许是抑制不住灵魂对自由的向往，或者是想要回到高中见见曾经带过的学弟学妹们，或者是想要见见 Sakana，都可以是我提早回家的理由。 总之面对着可能有三个月的暑假，还是稍微记录点东西省的虚度。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《Foundations of Probabilistic Proofs》学习笔记">
-<meta property="og:url" content="https://ashitemaru.github.io/2022/05/13/note-of-prob-proof/index.html">
+<meta property="og:title" content="2022 暑假生活记录">
+<meta property="og:url" content="https://ashitemaru.github.io/2022/05/27/summer-record-2/index.html">
 <meta property="og:site_name" content="Ashitemaru">
-<meta property="og:description" content="大概是打算去做量子计算方向需要学习的一些东西，这门课是 Berkeley 的 CS294 课程，是理论计算机的一个重要课程，和量子计算关系还是挺大的。 但这门课也太难了，我就听了 Lecture 1 就学到了一堆不会的东西，听两分钟查半小时维基百科和各路资料，太折磨了。">
+<meta property="og:description" content="2022 年的暑假，将会来得意外地早，因为我提前回家了。 或许是抑制不住灵魂对自由的向往，或者是想要回到高中见见曾经带过的学弟学妹们，或者是想要见见 Sakana，都可以是我提早回家的理由。 总之面对着可能有三个月的暑假，还是稍微记录点东西省的虚度。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-05-13T00:29:19.000Z">
-<meta property="article:modified_time" content="2022-05-13T00:29:19.000Z">
+<meta property="article:published_time" content="2022-05-27T04:55:28.000Z">
+<meta property="article:modified_time" content="2022-05-27T04:55:28.000Z">
 <meta property="article:author" content="Ashitemaru">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://ashitemaru.github.io/2022/05/13/note-of-prob-proof/">
+<link rel="canonical" href="https://ashitemaru.github.io/2022/05/27/summer-record-2/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;ashitemaru.github.io&#x2F;2022&#x2F;05&#x2F;13&#x2F;note-of-prob-proof&#x2F;&quot;,&quot;path&quot;:&quot;2022&#x2F;05&#x2F;13&#x2F;note-of-prob-proof&#x2F;&quot;,&quot;title&quot;:&quot;《Foundations of Probabilistic Proofs》学习笔记&quot;}</script>
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;ashitemaru.github.io&#x2F;2022&#x2F;05&#x2F;27&#x2F;summer-record-2&#x2F;&quot;,&quot;path&quot;:&quot;2022&#x2F;05&#x2F;27&#x2F;summer-record-2&#x2F;&quot;,&quot;title&quot;:&quot;2022 暑假生活记录&quot;}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
-<title>《Foundations of Probabilistic Proofs》学习笔记 | Ashitemaru</title>
+<title>2022 暑假生活记录 | Ashitemaru</title>
   
 
 
@@ -209,7 +209,7 @@ $(function () {
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-1-graph-non-isomorphism-ip-upper-bound"><span class="nav-number">1.</span> <span class="nav-text">Lecture 1 Graph Non-isomorphism &amp; IP Upper Bound</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#classical-mathematical-proofs"><span class="nav-number">1.1.</span> <span class="nav-text">Classical Mathematical Proofs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#interactive-proofs"><span class="nav-number">1.2.</span> <span class="nav-text">Interactive Proofs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ip-for-graph-non-isomorphism"><span class="nav-number">1.3.</span> <span class="nav-text">IP for Graph Non-isomorphism</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#an-upper-bound-on-ip"><span class="nav-number">1.4.</span> <span class="nav-text">An Upper Bound on IP</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#section"><span class="nav-number">1.</span> <span class="nav-text">2022.05.27</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -225,7 +225,7 @@ $(function () {
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -307,7 +307,7 @@ $(function () {
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://ashitemaru.github.io/2022/05/13/note-of-prob-proof/">
+    <link itemprop="mainEntityOfPage" href="https://ashitemaru.github.io/2022/05/27/summer-record-2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.png">
@@ -320,7 +320,7 @@ $(function () {
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          《Foundations of Probabilistic Proofs》学习笔记
+          2022 暑假生活记录
         </h1>
 
         <div class="post-meta-container">
@@ -331,14 +331,14 @@ $(function () {
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2022-05-13 00:29:19" itemprop="dateCreated datePublished" datetime="2022-05-13T00:29:19+00:00">2022-05-13</time>
+      <time title="创建时间：2022-05-27 04:55:28" itemprop="dateCreated datePublished" datetime="2022-05-27T04:55:28+00:00">2022-05-27</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-05-13 00:29:19" itemprop="dateModified" datetime="2022-05-13T00:29:19+00:00">2022-05-13</time>
+        <time title="修改时间：2022-05-27 04:55:28" itemprop="dateModified" datetime="2022-05-27T04:55:28+00:00">2022-05-27</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -346,12 +346,12 @@ $(function () {
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%A7%91%E7%A0%94%E6%9D%82%E8%B0%88/" itemprop="url" rel="index"><span itemprop="name">科研杂谈</span></a>
+          <a href="/categories/%E9%97%B2%E8%81%8A/" itemprop="url" rel="index"><span itemprop="name">闲聊</span></a>
         </span>
     </span>
 
   
-    <span id="/2022/05/13/note-of-prob-proof/" class="post-meta-item twikoo_visitors" data-flag-title="《Foundations of Probabilistic Proofs》学习笔记" title="阅读次数">
+    <span id="/2022/05/27/summer-record-2/" class="post-meta-item twikoo_visitors" data-flag-title="2022 暑假生活记录" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -366,14 +366,14 @@ $(function () {
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>3.8k</span>
+      <span>853</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>3 分钟</span>
+      <span>1 分钟</span>
     </span>
 </div>
 
@@ -384,110 +384,92 @@ $(function () {
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>大概是打算去做量子计算方向需要学习的一些东西，这门课是 Berkeley 的 CS294 课程，是理论计算机的一个重要课程，和量子计算关系还是挺大的。</p>
-<p>但这门课也太难了，我就听了 Lecture 1 就学到了一堆不会的东西，听两分钟查半小时维基百科和各路资料，太折磨了。</p>
+        <p>2022 年的暑假，将会来得意外地早，因为我提前回家了。</p>
+<p>或许是抑制不住灵魂对自由的向往，或者是想要回到高中见见曾经带过的学弟学妹们，或者是想要见见 Sakana，都可以是我提早回家的理由。</p>
+<p>总之面对着可能有三个月的暑假，还是稍微记录点东西省的虚度。</p>
 <span id="more"></span>
-<p><span class="math display">\[
-\newcommand{\s}{\mathsf}
-\newcommand{\la}{\langle}
-\newcommand{\ra}{\rangle}
-\newcommand{\pr}{\mathop{\mathrm{Pr}}}
-\]</span></p>
-<h1 id="lecture-1-graph-non-isomorphism-ip-upper-bound">Lecture 1 Graph Non-isomorphism &amp; IP Upper Bound</h1>
-<h2 id="classical-mathematical-proofs">Classical Mathematical Proofs</h2>
-<p>首先回忆一下 NP 语言的定义：</p>
-<p>We call language <span class="math inline">\(L\)</span> an <span class="math inline">\(\s{NP}\)</span> if and only if <span class="math inline">\(\exists\)</span> polynomial decider <span class="math inline">\(D\)</span> s.t.</p>
+<h1 id="section">2022.05.27</h1>
+<p>先回想一下自己需要完成什么事情吧：</p>
 <ul>
-<li><p><span class="math inline">\(\forall\)</span> instance <span class="math inline">\(x \in L\)</span>, <span class="math inline">\(\exists\)</span> witness <span class="math inline">\(w\)</span> s.t. <span class="math inline">\(D(x, w) = 1\)</span>.</p></li>
-<li><p><span class="math inline">\(\forall\)</span> instance <span class="math inline">\(x \notin L\)</span>, <span class="math inline">\(\forall\)</span> witness <span class="math inline">\(w\)</span> s.t. <span class="math inline">\(D(x, w) = 0\)</span>.</p></li>
+<li>大三春季学期课内任务
+<ul>
+<li>操作系统【登记为 PF】
+<ul>
+<li>【6.12】LAB 5 并发实验</li>
+<li>【6.14】期末考试</li>
+</ul></li>
+<li>计算机系统结构【登记为 PF】
+<ul>
+<li>【6.2 / 6.9】随堂小测若干</li>
+<li>【5.27】第四次书面作业</li>
+<li>【6.19】LAB 2 Tomasulo 算法实验</li>
+<li>【6.15】期末考试</li>
+</ul></li>
+<li>数学实验
+<ul>
+<li>【5.27】第九次实验</li>
+<li>【6.3】第十次实验</li>
+<li>【6.20】期末考试</li>
+</ul></li>
+<li>现代密码学
+<ul>
+<li>【6.1】课程签到</li>
+<li>【6.12】LAB 3 Hash 函数评价实验</li>
+<li>【6.8】期末考试</li>
+</ul></li>
+<li>搜索引擎技术基础
+<ul>
+<li>【5.31 / 6.7】课程签到</li>
+<li>【6.7】课程大作业</li>
+</ul></li>
+<li>计算机图形学基础
+<ul>
+<li>【5.31 / 6.7】随堂小测若干</li>
+<li>【6.1】PA 3 Conditional GAN 实验</li>
+<li>【6.30】课程大作业</li>
+</ul></li>
+<li>数据挖掘
+<ul>
+<li>【6.3 / 6.10】课程签到</li>
+<li>【6.4】HW 6 数据图作业</li>
+<li>【6.19】课程大作业</li>
+</ul></li>
+<li>三年级男生棒球
+<ul>
+<li>【5.29】阳光锻炼</li>
+<li>【5.29】期末视频</li>
+</ul></li>
+</ul></li>
+<li>科协
+<ul>
+<li>副主席竞选面试</li>
+<li>科协新人面试</li>
+<li>308 权限系统</li>
+<li>年度工作总结</li>
+<li>与软工课程的对接安排</li>
+</ul></li>
+<li>THUInfo
+<ul>
+<li>准备 Testflight，最近多开工</li>
+</ul></li>
+<li>升学相关【这个最没有头绪了 OTZ】</li>
+<li>下学期预备工作
+<ul>
+<li>继续编写日语语法手册</li>
+<li>学习抽象代数 Artin</li>
+</ul></li>
+<li>一些杂杂的东西
+<ul>
+<li>冲雀圣【至少打回雀豪三吧 OTZ】</li>
+<li>去高中招生</li>
+<li>去南京陪陪妹妹 etc.</li>
+</ul></li>
 </ul>
-<p>NP 语言指的是能够在多项式时间内验证的语言，其全称应当为 <strong>N</strong>on-deterministic <strong>P</strong>olynomial，即非确定性多项式时间，而非 <strong>N</strong>on-<strong>P</strong>olynomial，即非多项式时间。</p>
-<p>一个 NP 语言的例子为 <span class="math inline">\(L = \#\s{SAT}\)</span>。</p>
-<p>对于 <span class="math inline">\(x \in L\)</span>，<span class="math inline">\(x\)</span> 均为 <span class="math inline">\(n\)</span> 元布尔表达式 <span class="math inline">\(x = \phi(x_1, x_2, x_3, \cdots, x_n)\)</span>。这里我们取 witness 为一个赋值 <span class="math inline">\((a_1, a_2, a_3, \cdots, a_n) \in \{0, 1\}^n\)</span>，而 decider 判定 <span class="math inline">\(\phi(a_1, a_2, a_3, \cdots, a_n)\)</span> 是否为真。</p>
+<p>基本上而言，课内实际上压力并不大，所以升学相关一定是要重点考虑的，目前的 Target 是孙立峰教授或者艾海舟教授，还是稍微多去做点准备。</p>
+<p>总之是回去之前把体育相关全都清理掉。回去之后在期末结束之前都是课内为主，同时升学相关内容也得做做，估计期末结束后也就隔离结束了。之后就可以暑期干实习、做实验室的事情、做自己想做的事情。</p>
+<p>看起来还是前途一片光明的。</p>
 <hr />
-<p>我们改动上述定义中的名称，用 verifier <span class="math inline">\(V\)</span> 代替 decider <span class="math inline">\(D\)</span>，用 theorem <span class="math inline">\(x\)</span> 代替 instance <span class="math inline">\(x\)</span>，用 proof <span class="math inline">\(\pi\)</span> 代替 witness <span class="math inline">\(w\)</span>。那么 NP 语言的两条约束就是说明：</p>
-<ul>
-<li><p>(Completeness) <span class="math inline">\(\forall\)</span> theorem <span class="math inline">\(x \in L\)</span>, <span class="math inline">\(\exists\)</span> proof <span class="math inline">\(\pi\)</span> s.t. <span class="math inline">\(V(x, \pi) = 1\)</span>, which means every true theorem has a proof.</p></li>
-<li><p>(Soundness) <span class="math inline">\(\forall\)</span> theorem <span class="math inline">\(x \notin L\)</span>, <span class="math inline">\(\forall\)</span> proof <span class="math inline">\(\pi\)</span> s.t. <span class="math inline">\(V(x, \pi) = 0\)</span>, which means every false theorem has no proof to convince the verifier.</p></li>
-</ul>
-<p>这就说明当下的 NP 语言实际上描述了 classical mathematical proofs。</p>
-<p>经典的数学证明器包含一个 prover <span class="math inline">\(P\)</span> 和一个 verifier <span class="math inline">\(V\)</span>，prover 接受 theorem <span class="math inline">\(x\)</span>，生成一个 proof <span class="math inline">\(\pi\)</span> 传递给 verifier，而 verifier 根据 <span class="math inline">\(\pi\)</span> 输出一个 bit 表示其是否认同该证明。</p>
-<p>而本课程需要做的，是为这个系统引入下述新特征：</p>
-<p>The verifier <span class="math inline">\(V\)</span> may</p>
-<ul>
-<li><p>use randomness</p></li>
-<li><p>interact with prover <span class="math inline">\(P\)</span></p></li>
-</ul>
-<h2 id="interactive-proofs">Interactive Proofs</h2>
-<p>交互证明中的 prover 和 verifier 可以交互，即两者之间可以进行若干次的通信，相互交换信息。同时，verifier 可能会使用 randomness 来决定最后的输出。</p>
-<p>交互式证明的定义为：</p>
-<p>An interactive proof for language <span class="math inline">\(L\)</span> is a pair <span class="math inline">\((P, V)\)</span>, where <span class="math inline">\(P\)</span> is a prover and <span class="math inline">\(V\)</span> is an honest probilistic polynomial verifier, s.t.</p>
-<ul>
-<li><p>(Completeness) <span class="math inline">\(\forall\)</span> theorem <span class="math inline">\(x \in L\)</span>, <span class="math inline">\(\pr_r[\la P(x), V(x; r) \ra = 1] = 1\)</span>, which means the probability that every true theorem has a proof (there exists an honst prover) to convince the verifier is <span class="math inline">\(1\)</span>.</p></li>
-<li><p>(Soundness) <span class="math inline">\(\forall\)</span> theorem <span class="math inline">\(x \notin L\)</span>, <span class="math inline">\(\forall \tilde{P}\)</span>, <span class="math inline">\(\pr_r[\la \tilde{P}, V(x; r) \ra = 1] \leq \dfrac 12\)</span>, which means for every possible prover, the probability that the proof it gives for a false theorem can convince the verifier will not exceed half.</p></li>
-</ul>
-<p>注意，这里我们不对 honest prover 引入 randomness。</p>
-<hr />
-<p>这里我们引入了两个新概念，即 interaction 和 randomness。我们关注下表：</p>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;"></th>
-<th style="text-align: center;">With interaction</th>
-<th style="text-align: center;">Without interaction</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">With randomness</td>
-<td style="text-align: center;"><span class="math inline">\(\s{IP}\)</span> (Interaction Proof)</td>
-<td style="text-align: center;"><span class="math inline">\(\s{MA}\)</span> (Merlin Arthur Protocol)</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Without randomness</td>
-<td style="text-align: center;"><span class="math inline">\(\s{NP}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\s{NP}\)</span></td>
-</tr>
-</tbody>
-</table>
-<p>如果 interaction 和 randomness 都没有引入 NP，那么 NP 还是 NP。</p>
-<p>如果仅仅引入 interaction，得到的系统依然等价于 NP（证明留做习题）。</p>
-<p>如果仅仅引入 randomness，我们得到了 MA 协议。The MA Protocol is believed to be equal to <span class="math inline">\(\s{NP}\)</span>.</p>
-<p>如果两者都引入，就得到了交互证明 IP。</p>
-<h2 id="ip-for-graph-non-isomorphism">IP for Graph Non-isomorphism</h2>
-<p>首先给出图同构的定义。对于图 <span class="math inline">\(G_0 = (V, E_0)\)</span> 以及 <span class="math inline">\(G_1 = (V, E_1)\)</span>，称两图同构（isomorphism）当且仅当存在 <span class="math inline">\(V\)</span> 上的置换 <span class="math inline">\(\pi: V \to V\)</span> 令 <span class="math inline">\((u, v) \in E_0\)</span> 等价于 <span class="math inline">\((\pi(u), \pi(v)) \in E_1\)</span>。此时记 <span class="math inline">\(G_1 = \pi(G_0)\)</span>。</p>
-<p>两图同构的记号为 <span class="math inline">\(G_0 \equiv G_1\)</span>。</p>
-<p>那么定义语言：</p>
-<p><span class="math display">\[
-\begin{aligned}
-\s{GI} &amp;:= \{(G_0, G_1) : G_0 \equiv G_1\} \\
-\s{GNI} &amp;:= \{(G_0, G_1) : G_0 \not\equiv G_1\} \\
-\end{aligned}
-\]</span></p>
-<p>显然对同构的两个图只要给出 <span class="math inline">\(V\)</span> 上的置换 <span class="math inline">\(\pi\)</span> 作为 proof 即可判定图是否同构，故我们有 <span class="math inline">\(\s{GI} \in \s{NP}\)</span>，那么 <span class="math inline">\(\s{GNI} \in \s{coNP}\)</span>。这里：</p>
-<p><span class="math display">\[
-\s{coNP} := \{L^c : L \in \s{NP}\}
-\]</span></p>
-<hr />
-<p>下面我们证明 <span class="math inline">\(\s{GNI} \in \s{IP}\)</span>。</p>
-<p>事实上我们可以给出这样的 prover 和 verifier，其工作流程为：</p>
-<ul>
-<li>verifier 随机令 <span class="math inline">\(b \leftarrow \{0, 1\}\)</span></li>
-<li>verifier 随机获取 <span class="math inline">\(V\)</span> 上的一个置换 <span class="math inline">\(\pi: V \to V\)</span></li>
-<li>verifier 令 <span class="math inline">\(H := \pi(G_b)\)</span>，并将 <span class="math inline">\(H\)</span> 传递给 prover</li>
-<li>prover 计算 <span class="math inline">\(\tilde{b}\)</span>，令 <span class="math inline">\(G_{\tilde{b}} \equiv H\)</span>，并将 <span class="math inline">\(\tilde{b}\)</span> 传递给 verifier</li>
-<li>verifier 判定 <span class="math inline">\(\tilde{b}\)</span> 是否等于 <span class="math inline">\(b\)</span>，若相等，则输出 <span class="math inline">\(1\)</span>，否则输出 <span class="math inline">\(0\)</span></li>
-</ul>
-<p>我们证明这个系统满足 Completeness 和 Soundness 的要求。</p>
-<p>考虑到图同构关系为等价关系，所以可以构建图同构关系对应的等价类集合。</p>
-<p>首先如果 <span class="math inline">\((G_0, G_1) \in \s{GNI}\)</span>，则说明 <span class="math inline">\(G_0, G_1\)</span> 位于不同的等价类 <span class="math inline">\(P_0, P_1\)</span>。verifier 通过随机获取置换的方式，可以得到一个与 <span class="math inline">\(G_b\)</span> 位于同一个等价类的图 <span class="math inline">\(H\)</span>。而 prover 总是能够分辨 <span class="math inline">\(H\)</span> 和 <span class="math inline">\(G_0, G_1\)</span> 中的哪个位于同一等价类，所以总是能够使得 <span class="math inline">\(\tilde{b} = b\)</span>，Completeness 得证。</p>
-<p>其次如果 <span class="math inline">\((G_0, G_1) \notin \s{GNI}\)</span>，则说明 <span class="math inline">\(G_0, G_1\)</span> 位于同一个等价类，并且 <span class="math inline">\(H\)</span> 也位于这个等价类。此时考虑到 <span class="math inline">\(H, b\)</span> 相互独立，得到 prover 令 <span class="math inline">\(\tilde{b} := b\)</span> 和 <span class="math inline">\(\tilde{b} := 1 - b\)</span> 的概率等同，所以错判概率不超过一半，Soundness 得证。</p>
-<p>从而得知 <span class="math inline">\(\s{GNI} \in \s{IP}\)</span>。</p>
-<div class="note info"><p>现在我们暂且忽略 prover 的计算复杂度。</p>
-</div>
-<p>这个证明的核心思想在于<strong>图同构关系为等价关系</strong>。</p>
-<h2 id="an-upper-bound-on-ip">An Upper Bound on IP</h2>
-<p>我们下面证明 <span class="math inline">\(\s{IP} \subseteq \s{PSPACE}\)</span>。</p>
+<p>今天总之是补做核酸检测，骑小车，赶了两个 DDL 的枯燥生活。</p>
 
     </div>
 
@@ -538,13 +520,13 @@ $(function () {
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">188k</span>
+    <span title="站点总字数">184k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:51</span>
+    <span title="站点阅读时长">2:47</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
@@ -572,7 +554,7 @@ $(function () {
 
   
 
-  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;tags&quot;:&quot;none&quot;,&quot;js&quot;:{&quot;url&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mathjax@3.1.4&#x2F;es5&#x2F;tex-mml-chtml.js&quot;,&quot;integrity&quot;:&quot;sha256-ncNI9OXOS5Ek4tzVYiOMmN&#x2F;KKCPZ6V0Cpv2P&#x2F;zHntiA&#x3D;&quot;}}</script>
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;tags&quot;:&quot;none&quot;,&quot;js&quot;:{&quot;url&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mathjax@3.1.4&#x2F;es5&#x2F;tex-mml-chtml.js&quot;,&quot;integrity&quot;:&quot;sha256-ncNI9OXOS5Ek4tzVYiOMmN&#x2F;KKCPZ6V0Cpv2P&#x2F;zHntiA&#x3D;&quot;}}</script>
 <script src="/js/third-party/math/mathjax.js"></script>
 
 
