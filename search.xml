@@ -3777,16 +3777,6 @@
       </categories>
   </entry>
   <entry>
-    <title>《现代密码学》学习笔记</title>
-    <url>/1022/03/09/note-of-cyp/</url>
-    <content><![CDATA[<p>一门中规中矩的要考试的限选课，可能会好好学学吧。</p>
-<span id="more"></span>
-]]></content>
-      <categories>
-        <category>课程笔记</category>
-      </categories>
-  </entry>
-  <entry>
     <title>《汇编语言程序设计》学习笔记</title>
     <url>/1021/08/09/note-of-asm/</url>
     <content><![CDATA[<p>这门课是 2021 年暑期学期开设的计算机系专业课，应该也算是为下学期的《计算机组成原理》课程做预备，所以还打算好好学一下。</p>
@@ -4631,6 +4621,16 @@ B = (-1)^s M \cdot 2^E
 <hr />
 <p>MIPS 架构支持一种特殊的快表，即 JTLB。其内部记录的是<strong>虚页码除以 2</strong> 之后的结果和<strong>两个</strong>物理页码之间的关系，两个映射项都标注了是否 valid 以及是否允许写入（一般称为是否 dirty，如果一个页面不是 dirty 的，则会禁止写入）。</p>
 <p>这个时候的转换需要将虚页码先去掉末位进行查表，最后如果命中，则需要根据虚页码末位选取最终的映射项。</p>
+]]></content>
+      <categories>
+        <category>课程笔记</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>《现代密码学》学习笔记</title>
+    <url>/1022/03/09/note-of-cyp/</url>
+    <content><![CDATA[<p>一门中规中矩的要考试的限选课，可能会好好学学吧。</p>
+<span id="more"></span>
 ]]></content>
       <categories>
         <category>课程笔记</category>
@@ -7510,6 +7510,13 @@ I_{i, S} = \mathcal{A}_O(\{\mathcal{D}_j\}) := 1 - \prod_j (1 - \mathcal{D}_{i, 
 <p>所以实际上我依然是不安的，没有斩钉截铁的口头肯定或者直接认定，说实话，我不敢保证这次不会和上次一样突然跌落。</p>
 <hr />
 <p>下午被镇里要求去做了核酸，回来想起来体育打卡还没有做，草草拿手机拍了视频交了上去，就算完成任务了。</p>
+<p>晚上突然告知数学实验取消期末考试仅考虑平时实验报告分数，虽然少了一门考试很高兴，但是说实话我也有点害怕因为大家拉不开分差突然吃一个 3.6，我的 GPA 挂在 30% 的边缘摇摇欲坠，希望不要在我想要 KEEP GPA 的时候来意外。</p>
+<hr />
+<p>晚上和 Sakana 打了三四个小时的电话，先是打 Escape Simulator，然后她因为电脑过烫就不想玩了。之后就在闲聊，聊游戏，聊未来的打算，聊最近有意思的事情。</p>
+<p>其实是挺快乐的，很平凡很平凡的快乐。</p>
+<hr />
+<p>从今天开始突然打算早睡了，因为确实最近身体也感觉到了有点不堪重负，可能熬夜的伤害也在慢慢显现。</p>
+<p>年轻人还是对自己的身子稍微好一点点吧，先从能两点睡觉开始。</p>
 ]]></content>
       <categories>
         <category>闲聊</category>
