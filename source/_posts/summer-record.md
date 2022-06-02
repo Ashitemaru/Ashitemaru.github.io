@@ -611,7 +611,9 @@ Holder 通过这个暑假，大概是缓慢地将自己的心态平稳下来了�
 
 {% note info no-icon %}
 あたしが愛を語るのなら，そのすべてはこの歌だ。
+
 誰も知らないこの物語，また口ずさんでしまったみたいだ。
+
 「 Unknown Mother Goose 」
 {% endnote %}
 
