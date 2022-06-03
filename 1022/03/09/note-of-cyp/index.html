@@ -196,7 +196,7 @@ $(function () {
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -209,6 +209,7 @@ $(function () {
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81%E4%BD%93%E5%88%B6"><span class="nav-number">2.</span> <span class="nav-text">古典密码体制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%AE%E6%8D%A2%E5%AF%86%E7%A0%81"><span class="nav-number">2.1.</span> <span class="nav-text">置换密码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A7%BB%E4%BD%8D%E5%AF%86%E7%A0%81%E5%87%AF%E6%92%92%E5%AF%86%E7%A0%81"><span class="nav-number">2.2.</span> <span class="nav-text">移位密码（凯撒密码）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E6%8D%A2%E5%AF%86%E7%A0%81"><span class="nav-number">2.3.</span> <span class="nav-text">代换密码</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -365,7 +366,7 @@ $(function () {
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>24</span>
+      <span>1.4k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -385,6 +386,71 @@ $(function () {
     <div class="post-body" itemprop="articleBody">
         <p>一门中规中矩的要考试的限选课，可能会好好学学吧。</p>
 <span id="more"></span>
+<h1 id="基本概念">基本概念</h1>
+<p>我们把密码体制中需要被加密的消息 <span class="math inline">\(c\)</span> 称为<strong>明文</strong>，而加密之后得到的消息 <span class="math inline">\(p\)</span> 称为<strong>密文</strong>，而在这一过程中用于加密解密的、需要保密的消息 <span class="math inline">\(k\)</span> 则是<strong>密钥</strong>。</p>
+<p>加密过程可以表述为下述函数：</p>
+<p><span class="math display">\[
+p = f(c, k)
+\]</span></p>
+<p>即根据明文和密钥获得密文。解密过程则是解密的逆过程，表示为：</p>
+<p><span class="math display">\[
+c = g(p, k)
+\]</span></p>
+<p>加解密函数根据解密出的明文应当和原先明文一致的原则有下述约束关系：</p>
+<p><span class="math display">\[
+c = g(f(c, k), k)
+\]</span></p>
+<hr />
+<p>对密码体制的攻击可以根据攻击者可以掌握的信息分为下述若干类别：</p>
+<ul>
+<li>唯密文攻击。攻击者只能掌握若干密文。</li>
+<li>已知明文攻击。攻击者只能掌握某密钥下若干对应的明文和密文。</li>
+<li>选择明文攻击。攻击者能掌握某密钥下若干特定的明文对应的密文。</li>
+<li>选择密文攻击。攻击者能掌握某密钥下若干特定的密文对应的明文。</li>
+</ul>
+<h1 id="古典密码体制">古典密码体制</h1>
+<h2 id="置换密码">置换密码</h2>
+<p>置换密码（Permutation Cipher）会保持明文字母本身不变，仅交换其在消息中的位置，其密钥即为某个置换函数。</p>
+<p>假设我们将明文分为 <span class="math inline">\(m\)</span> 个一组（明文长度不整除 <span class="math inline">\(m\)</span> 时，可以 pad 到整除），那么密钥可以定义为一个 <span class="math inline">\(m\)</span> 元置换：</p>
+<p><span class="math display">\[
+k = \pi: \{1, 2, \cdots, m\} \to \{1, 2, \cdots, m\}
+\]</span></p>
+<p>加密过程即为将每一个分组使用密钥置换后得到对应分组的密文。</p>
+<p>解密过程则为，首先获取置换的逆变换 <span class="math inline">\(k&#39; := \pi^{-1}\)</span>，之后将 <span class="math inline">\(k&#39;\)</span> 作用于密文各个分组上，即可得到最后的明文。</p>
+<hr />
+<p>置换密码的缺点：</p>
+<ul>
+<li>明文字母本身不变化，可以据此推算密钥的信息</li>
+<li>密文的字符频率完全等于明文的字符频率</li>
+</ul>
+<p>可以使用的攻击方式：</p>
+<ul>
+<li>已知明文攻击。可以直接推算出密钥，从而破译</li>
+<li>唯密文攻击。可以根据语法、单词结构推算可能的密钥</li>
+</ul>
+<h2 id="移位密码凯撒密码">移位密码（凯撒密码）</h2>
+<p>工作于英语文本上的移位密码的密钥为一个整数 <span class="math inline">\(k, 1\leq k\leq 25\)</span>。其加密函数为：</p>
+<p><span class="math display">\[
+p_i = f(c_i, k) := (c_i + k) \mathop{\rm mod} 26
+\]</span></p>
+<p>显然其加密就是将明文的字母沿着字母表平移 <span class="math inline">\(k\)</span> 个字母，那么其解密函数就是：</p>
+<p><span class="math display">\[
+c_i = g(p_i, k) := (p_i - k) \mathop{\rm mod} 26
+\]</span></p>
+<p>历史上实际使用过的移位密码的密钥为 <span class="math inline">\(k = 3\)</span>。</p>
+<p>安全性上，由于密钥空间过小，完全可以枚举所有密钥完成破解。</p>
+<h2 id="代换密码">代换密码</h2>
+<p>工作于英语文本上的代换密码（Substitution Cipher）的密钥可以标记为 <span class="math inline">\(\{1, 2, \cdots, 26\}\)</span> 上的一个置换 <span class="math inline">\(k = S\)</span>。</p>
+<p>其加密函数显然为：</p>
+<p><span class="math display">\[
+p_i = f(c_i, k) := S(c_i)
+\]</span></p>
+<p>而解密函数就是其逆变换：</p>
+<p><span class="math display">\[
+c_i = g(p_i, k) := S^{-1}(c_i)
+\]</span></p>
+<p>由于代换密码的密钥空间较大，在算力并不充足的条件下很难使用暴力破解。现在破解代换密码的一种常用方式为 al Kindi 发明的词频统计法。</p>
+<p>由于代换密码没有隐藏密文字符频率的工序，所以可以统计密文中各个字符的频率，对照英文字母频率表即可推算出部分代换映射项。对于英文文本，最需要注意的是英文中出现频率最高的字母 A、E、T，同时也需要注意高频的两个连续的字母组合（Diagram）TH、HE、IN、ER、AN，以及高频的三个连续字母组合 THE、ING、AND、HER、ERE、ENT 等。</p>
 
     </div>
 
@@ -438,13 +504,13 @@ $(function () {
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">187k</span>
+    <span title="站点总字数">188k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:50</span>
+    <span title="站点阅读时长">2:51</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
