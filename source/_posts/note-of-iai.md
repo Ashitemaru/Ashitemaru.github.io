@@ -460,7 +460,7 @@ $$
 
 这个等号成立的条件为 **KKT 条件**。所以我们将问题转化为求 $\max_\boldsymbol\alpha\min_{\boldsymbol w, b} L(\boldsymbol w, b, \boldsymbol\alpha)$。
 
-我们令 $L(\boldsymbol w, b, \boldsymbol\alpha)$ 对 $\boldsymbol w, b$ 偏导为 $0$ 并带入就将问题转化为：
+我们令 $L(\boldsymbol w, b, \boldsymbol\alpha)$ 对 $\boldsymbol w, b$ 偏导为 $0$ 并代入就将问题转化为：
 
 $$
 \max_\boldsymbol\alpha\left[-\frac{1}{2}\sum_{i = 1}^N \sum_{j = 1}^N \alpha_i\alpha_jy_iy_j(\boldsymbol x_i^T\boldsymbol x_j) + \sum_{i = 1}^N \alpha_i\right]
