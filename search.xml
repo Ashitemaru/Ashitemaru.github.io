@@ -603,7 +603,64 @@ x_1 + y_1 + z_1 = 0 \\
 \sin\theta = \sqrt{1 - |\cos\theta|^2} = \frac{\sqrt 3}{2}
 \]</span></p>
 <h2 id="problem-20">Problem 20</h2>
-<p>一条概率统计相关题，后续做。</p>
+<p>概率统计相关问题。医疗团队针对某一种疾病和个人卫生的关系做调查，抽样 <span class="math inline">\(100\)</span> 名该病患者构成病例组和 <span class="math inline">\(100\)</span> 名未患有该病的健康人构成对照组，调查他们的个人卫生，得到下述数据：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">个人卫生不够良好</th>
+<th style="text-align: center;">个人卫生良好</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">病例组</td>
+<td style="text-align: center;"><span class="math inline">\(40\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(60\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">对照组</td>
+<td style="text-align: center;"><span class="math inline">\(10\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(90\)</span></td>
+</tr>
+</tbody>
+</table>
+<ol type="1">
+<li><p>能否有 <span class="math inline">\(99\%\)</span> 的把握认为患该病的群体和未患该病的群体个人卫生情况有差异</p></li>
+<li><p>从该地区人群中任选一人，记 <span class="math inline">\(A\)</span> 表示事件“选到的人卫生习惯不够良好”，<span class="math inline">\(B\)</span> 表示事件“选到的人患有该疾病”。记指标 <span class="math inline">\(R\)</span> 为：</p></li>
+</ol>
+<p><span class="math display">\[
+R = \frac{P(B \mid A)}{P(\overline B \mid A)} \cdot \frac{P(\overline B | \overline A)}{P(B \mid \overline A)}
+\]</span></p>
+<ol type="i">
+<li>证明：</li>
+</ol>
+<p><span class="math display">\[
+R = \frac{P(A \mid B)}{P(\overline A \mid B)} \cdot \frac{P(\overline A | \overline B)}{P(A \mid \overline B)}
+\]</span></p>
+<ol start="2" type="i">
+<li>利用调查数据估计 <span class="math inline">\(P(A \mid B), P(A \mid \overline B)\)</span>，并根据上述结论估计 <span class="math inline">\(R\)</span> 值。</li>
+</ol>
+<hr />
+<p>【第一问】直接使用卡方检验：</p>
+<p><span class="math display">\[
+K^2 = \frac{n(ad - bc)^2}{(a + b)(c + d)(a + c)(b + d)} = \frac{200 \times (40 \times 90 - 10 \times 60)^2}{100 \times 100 \times 50 \times 150} = 24 &gt; 6.635
+\]</span></p>
+<p>可知我们有 <span class="math inline">\(99\%\)</span> 的把握认为患该病的群体和未患该病的群体个人卫生情况有差异。</p>
+<p>【第二问】我们首先证明第一小问的等式：</p>
+<p>根据 <span class="math inline">\(R\)</span> 的定义和条件概率的定义：</p>
+<p><span class="math display">\[
+\begin{aligned}
+R &amp;= \frac{P(B \mid A)}{P(\overline B \mid A)} \cdot \frac{P(\overline B | \overline A)}{P(B \mid \overline A)} = \frac{\dfrac{P(AB)}{P(A)} \cdot \dfrac{P(\overline A\overline B)}{P(\overline A)}}{\dfrac{P(A\overline B)}{P(A)} \cdot \dfrac{P(\overline AB)}{P(\overline A)}} \\
+&amp;= \frac{P(AB)P(\overline A\overline B)}{P(A\overline B)P(\overline AB)} \\
+&amp;= \frac{\dfrac{P(AB)}{P(B)} \cdot \dfrac{P(\overline A\overline B)}{P(\overline B)}}{\dfrac{P(A\overline B)}{P(\overline B)} \cdot \dfrac{P(\overline AB)}{P(B)}} = \frac{P(A \mid B)}{P(\overline A \mid B)} \cdot \frac{P(\overline A | \overline B)}{P(A \mid \overline B)}
+\end{aligned}
+\]</span></p>
+<p>容易根据调查数据估计出：</p>
+<p><span class="math display">\[
+P(A \mid B) = 0.4, P(\overline A \mid B) = 0.6, P(\overline A | \overline B) = 0.9, P(A \mid \overline B) = 0.1
+\]</span></p>
+<p>此时 <span class="math inline">\(R = 6\)</span>。</p>
 <h2 id="problem-21">Problem 21</h2>
 <p>已知点 <span class="math inline">\(A(2, 1)\)</span> 在双曲线 <span class="math inline">\(C: \dfrac{x^2}{a^2} - \dfrac{y^2}{a^2 - 1} = 1(a &gt; 1)\)</span> 上，直线 <span class="math inline">\(l\)</span> 交 <span class="math inline">\(C\)</span> 于 <span class="math inline">\(P, Q\)</span> 两点，直线 <span class="math inline">\(AP, AQ\)</span> 的斜率之和为 <span class="math inline">\(0\)</span>。</p>
 <ol type="1">
@@ -724,6 +781,15 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <p>这说明 <span class="math inline">\(\ln x_0, e^{x_0}\)</span> 也是直线 <span class="math inline">\(y = b\)</span> 和曲线 <span class="math inline">\(y = f(x), y = g(x)\)</span> 交点的横坐标，但我们已经证明了一共仅有三个焦点，这只能说明 <span class="math inline">\(x_1 = \ln x_0, x_2 = e^{x_0}\)</span>。</p>
 <p>由于 <span class="math inline">\(f(x_0) = g(x_0)\)</span>，所以 <span class="math inline">\(e^{x_0} + \ln x_0 = x_1 + x_2 = 2x_0\)</span>。</p>
 <p>所以这三个横坐标从小到大排列为等差数列，证明完毕。</p>
+<h1 id="后记">后记</h1>
+<p>卷子做完了，Holder 也已经明白了我已经没有高中时候那种手算能力了。</p>
+<p>不少人说这份卷子很难，其实我看真正算得上是难题的几乎没有，几乎每道题都有很自然的思考角度和解决方式。</p>
+<p>但问题就是现在大部分的高考备考流于做模板题，练死思路，结果就是这次高考连稍微难点的解三角形、立体几何都做不出来。</p>
+<p>复习不够全面，可能连条件概率的定义、棱台的体积公式都会忘记。</p>
+<hr />
+<p>这份卷子只不过是把平时用来送分的解答题前几条，数列、解三角形、立体几何稍微出得有了点新意，稍微加了点门槛。卷子其他地方平心而论，概率与统计只要记得条件概率定义五分钟就能写完，解析几何是考烂了的二级结论，选择填空也乏善可陈。但就是这样，就能把平时的中档生直接卡住。</p>
+<p>而且这份卷子的特征就是，思路的高下直接影响分数。想到了妙手，就能一分钟内看出答案，想不到，那就和我做填空题最后一问一样算到起飞还得不到答案。一旦陷入了这种状况，如果不及时调整思路，可能影响的是后面的解题状态。</p>
+<p>说明死方法没用了，脑子要灵活。总而言之，是一份好卷子，但是被骂也是理所应当。</p>
 ]]></content>
       <categories>
         <category>数学</category>
@@ -4474,81 +4540,6 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
       </categories>
   </entry>
   <entry>
-    <title>《现代密码学》学习笔记</title>
-    <url>/1022/03/09/note-of-cyp/</url>
-    <content><![CDATA[<p>一门中规中矩的要考试的限选课，可能会好好学学吧。</p>
-<span id="more"></span>
-<h1 id="基本概念">基本概念</h1>
-<p>我们把密码体制中需要被加密的消息 <span class="math inline">\(c\)</span> 称为<strong>明文</strong>，而加密之后得到的消息 <span class="math inline">\(p\)</span> 称为<strong>密文</strong>，而在这一过程中用于加密解密的、需要保密的消息 <span class="math inline">\(k\)</span> 则是<strong>密钥</strong>。</p>
-<p>加密过程可以表述为下述函数：</p>
-<p><span class="math display">\[
-p = f(c, k)
-\]</span></p>
-<p>即根据明文和密钥获得密文。解密过程则是解密的逆过程，表示为：</p>
-<p><span class="math display">\[
-c = g(p, k)
-\]</span></p>
-<p>加解密函数根据解密出的明文应当和原先明文一致的原则有下述约束关系：</p>
-<p><span class="math display">\[
-c = g(f(c, k), k)
-\]</span></p>
-<hr />
-<p>对密码体制的攻击可以根据攻击者可以掌握的信息分为下述若干类别：</p>
-<ul>
-<li>唯密文攻击。攻击者只能掌握若干密文。</li>
-<li>已知明文攻击。攻击者只能掌握某密钥下若干对应的明文和密文。</li>
-<li>选择明文攻击。攻击者能掌握某密钥下若干特定的明文对应的密文。</li>
-<li>选择密文攻击。攻击者能掌握某密钥下若干特定的密文对应的明文。</li>
-</ul>
-<h1 id="古典密码体制">古典密码体制</h1>
-<h2 id="置换密码">置换密码</h2>
-<p>置换密码（Permutation Cipher）会保持明文字母本身不变，仅交换其在消息中的位置，其密钥即为某个置换函数。</p>
-<p>假设我们将明文分为 <span class="math inline">\(m\)</span> 个一组（明文长度不整除 <span class="math inline">\(m\)</span> 时，可以 pad 到整除），那么密钥可以定义为一个 <span class="math inline">\(m\)</span> 元置换：</p>
-<p><span class="math display">\[
-k = \pi: \{1, 2, \cdots, m\} \to \{1, 2, \cdots, m\}
-\]</span></p>
-<p>加密过程即为将每一个分组使用密钥置换后得到对应分组的密文。</p>
-<p>解密过程则为，首先获取置换的逆变换 <span class="math inline">\(k&#39; := \pi^{-1}\)</span>，之后将 <span class="math inline">\(k&#39;\)</span> 作用于密文各个分组上，即可得到最后的明文。</p>
-<hr />
-<p>置换密码的缺点：</p>
-<ul>
-<li>明文字母本身不变化，可以据此推算密钥的信息</li>
-<li>密文的字符频率完全等于明文的字符频率</li>
-</ul>
-<p>可以使用的攻击方式：</p>
-<ul>
-<li>已知明文攻击。可以直接推算出密钥，从而破译</li>
-<li>唯密文攻击。可以根据语法、单词结构推算可能的密钥</li>
-</ul>
-<h2 id="移位密码凯撒密码">移位密码（凯撒密码）</h2>
-<p>工作于英语文本上的移位密码的密钥为一个整数 <span class="math inline">\(k, 1\leq k\leq 25\)</span>。其加密函数为：</p>
-<p><span class="math display">\[
-p_i = f(c_i, k) := (c_i + k) \mathop{\rm mod} 26
-\]</span></p>
-<p>显然其加密就是将明文的字母沿着字母表平移 <span class="math inline">\(k\)</span> 个字母，那么其解密函数就是：</p>
-<p><span class="math display">\[
-c_i = g(p_i, k) := (p_i - k) \mathop{\rm mod} 26
-\]</span></p>
-<p>历史上实际使用过的移位密码的密钥为 <span class="math inline">\(k = 3\)</span>。</p>
-<p>安全性上，由于密钥空间过小，完全可以枚举所有密钥完成破解。</p>
-<h2 id="代换密码">代换密码</h2>
-<p>工作于英语文本上的代换密码（Substitution Cipher）的密钥可以标记为 <span class="math inline">\(\{1, 2, \cdots, 26\}\)</span> 上的一个置换 <span class="math inline">\(k = S\)</span>。</p>
-<p>其加密函数显然为：</p>
-<p><span class="math display">\[
-p_i = f(c_i, k) := S(c_i)
-\]</span></p>
-<p>而解密函数就是其逆变换：</p>
-<p><span class="math display">\[
-c_i = g(p_i, k) := S^{-1}(c_i)
-\]</span></p>
-<p>由于代换密码的密钥空间较大，在算力并不充足的条件下很难使用暴力破解。现在破解代换密码的一种常用方式为 al Kindi 发明的词频统计法。</p>
-<p>由于代换密码没有隐藏密文字符频率的工序，所以可以统计密文中各个字符的频率，对照英文字母频率表即可推算出部分代换映射项。对于英文文本，最需要注意的是英文中出现频率最高的字母 A、E、T，同时也需要注意高频的两个连续的字母组合（Diagram）TH、HE、IN、ER、AN，以及高频的三个连续字母组合 THE、ING、AND、HER、ERE、ENT 等。</p>
-]]></content>
-      <categories>
-        <category>课程笔记</category>
-      </categories>
-  </entry>
-  <entry>
     <title>《汇编语言程序设计》学习笔记</title>
     <url>/1021/08/09/note-of-asm/</url>
     <content><![CDATA[<p>这门课是 2021 年暑期学期开设的计算机系专业课，应该也算是为下学期的《计算机组成原理》课程做预备，所以还打算好好学一下。</p>
@@ -5393,6 +5384,81 @@ B = (-1)^s M \cdot 2^E
 <hr />
 <p>MIPS 架构支持一种特殊的快表，即 JTLB。其内部记录的是<strong>虚页码除以 2</strong> 之后的结果和<strong>两个</strong>物理页码之间的关系，两个映射项都标注了是否 valid 以及是否允许写入（一般称为是否 dirty，如果一个页面不是 dirty 的，则会禁止写入）。</p>
 <p>这个时候的转换需要将虚页码先去掉末位进行查表，最后如果命中，则需要根据虚页码末位选取最终的映射项。</p>
+]]></content>
+      <categories>
+        <category>课程笔记</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>《现代密码学》学习笔记</title>
+    <url>/1022/03/09/note-of-cyp/</url>
+    <content><![CDATA[<p>一门中规中矩的要考试的限选课，可能会好好学学吧。</p>
+<span id="more"></span>
+<h1 id="基本概念">基本概念</h1>
+<p>我们把密码体制中需要被加密的消息 <span class="math inline">\(c\)</span> 称为<strong>明文</strong>，而加密之后得到的消息 <span class="math inline">\(p\)</span> 称为<strong>密文</strong>，而在这一过程中用于加密解密的、需要保密的消息 <span class="math inline">\(k\)</span> 则是<strong>密钥</strong>。</p>
+<p>加密过程可以表述为下述函数：</p>
+<p><span class="math display">\[
+p = f(c, k)
+\]</span></p>
+<p>即根据明文和密钥获得密文。解密过程则是解密的逆过程，表示为：</p>
+<p><span class="math display">\[
+c = g(p, k)
+\]</span></p>
+<p>加解密函数根据解密出的明文应当和原先明文一致的原则有下述约束关系：</p>
+<p><span class="math display">\[
+c = g(f(c, k), k)
+\]</span></p>
+<hr />
+<p>对密码体制的攻击可以根据攻击者可以掌握的信息分为下述若干类别：</p>
+<ul>
+<li>唯密文攻击。攻击者只能掌握若干密文。</li>
+<li>已知明文攻击。攻击者只能掌握某密钥下若干对应的明文和密文。</li>
+<li>选择明文攻击。攻击者能掌握某密钥下若干特定的明文对应的密文。</li>
+<li>选择密文攻击。攻击者能掌握某密钥下若干特定的密文对应的明文。</li>
+</ul>
+<h1 id="古典密码体制">古典密码体制</h1>
+<h2 id="置换密码">置换密码</h2>
+<p>置换密码（Permutation Cipher）会保持明文字母本身不变，仅交换其在消息中的位置，其密钥即为某个置换函数。</p>
+<p>假设我们将明文分为 <span class="math inline">\(m\)</span> 个一组（明文长度不整除 <span class="math inline">\(m\)</span> 时，可以 pad 到整除），那么密钥可以定义为一个 <span class="math inline">\(m\)</span> 元置换：</p>
+<p><span class="math display">\[
+k = \pi: \{1, 2, \cdots, m\} \to \{1, 2, \cdots, m\}
+\]</span></p>
+<p>加密过程即为将每一个分组使用密钥置换后得到对应分组的密文。</p>
+<p>解密过程则为，首先获取置换的逆变换 <span class="math inline">\(k&#39; := \pi^{-1}\)</span>，之后将 <span class="math inline">\(k&#39;\)</span> 作用于密文各个分组上，即可得到最后的明文。</p>
+<hr />
+<p>置换密码的缺点：</p>
+<ul>
+<li>明文字母本身不变化，可以据此推算密钥的信息</li>
+<li>密文的字符频率完全等于明文的字符频率</li>
+</ul>
+<p>可以使用的攻击方式：</p>
+<ul>
+<li>已知明文攻击。可以直接推算出密钥，从而破译</li>
+<li>唯密文攻击。可以根据语法、单词结构推算可能的密钥</li>
+</ul>
+<h2 id="移位密码凯撒密码">移位密码（凯撒密码）</h2>
+<p>工作于英语文本上的移位密码的密钥为一个整数 <span class="math inline">\(k, 1\leq k\leq 25\)</span>。其加密函数为：</p>
+<p><span class="math display">\[
+p_i = f(c_i, k) := (c_i + k) \mathop{\rm mod} 26
+\]</span></p>
+<p>显然其加密就是将明文的字母沿着字母表平移 <span class="math inline">\(k\)</span> 个字母，那么其解密函数就是：</p>
+<p><span class="math display">\[
+c_i = g(p_i, k) := (p_i - k) \mathop{\rm mod} 26
+\]</span></p>
+<p>历史上实际使用过的移位密码的密钥为 <span class="math inline">\(k = 3\)</span>。</p>
+<p>安全性上，由于密钥空间过小，完全可以枚举所有密钥完成破解。</p>
+<h2 id="代换密码">代换密码</h2>
+<p>工作于英语文本上的代换密码（Substitution Cipher）的密钥可以标记为 <span class="math inline">\(\{1, 2, \cdots, 26\}\)</span> 上的一个置换 <span class="math inline">\(k = S\)</span>。</p>
+<p>其加密函数显然为：</p>
+<p><span class="math display">\[
+p_i = f(c_i, k) := S(c_i)
+\]</span></p>
+<p>而解密函数就是其逆变换：</p>
+<p><span class="math display">\[
+c_i = g(p_i, k) := S^{-1}(c_i)
+\]</span></p>
+<p>由于代换密码的密钥空间较大，在算力并不充足的条件下很难使用暴力破解。现在破解代换密码的一种常用方式为 al Kindi 发明的词频统计法。</p>
+<p>由于代换密码没有隐藏密文字符频率的工序，所以可以统计密文中各个字符的频率，对照英文字母频率表即可推算出部分代换映射项。对于英文文本，最需要注意的是英文中出现频率最高的字母 A、E、T，同时也需要注意高频的两个连续的字母组合（Diagram）TH、HE、IN、ER、AN，以及高频的三个连续字母组合 THE、ING、AND、HER、ERE、ENT 等。</p>
 ]]></content>
       <categories>
         <category>课程笔记</category>
