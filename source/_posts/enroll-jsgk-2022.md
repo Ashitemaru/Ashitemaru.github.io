@@ -837,7 +837,58 @@ $$
 
 ## Problem 20
 
-一条概率统计相关题，后续做。
+概率统计相关问题。医疗团队针对某一种疾病和个人卫生的关系做调查，抽样 $100$ 名该病患者构成病例组和 $100$ 名未患有该病的健康人构成对照组，调查他们的个人卫生，得到下述数据：
+
+|  | 个人卫生不够良好 | 个人卫生良好 |
+| :-: | :-: | :-: |
+| 病例组 | $40$ | $60$ |
+| 对照组 | $10$ | $90$ |
+
+(1) 能否有 $99\%$ 的把握认为患该病的群体和未患该病的群体个人卫生情况有差异
+
+(2) 从该地区人群中任选一人，记 $A$ 表示事件“选到的人卫生习惯不够良好”，$B$ 表示事件“选到的人患有该疾病”。记指标 $R$ 为：
+
+$$
+R = \frac{P(B \mid A)}{P(\overline B \mid A)} \cdot \frac{P(\overline B | \overline A)}{P(B \mid \overline A)}
+$$
+
+(i) 证明：
+
+$$
+R = \frac{P(A \mid B)}{P(\overline A \mid B)} \cdot \frac{P(\overline A | \overline B)}{P(A \mid \overline B)}
+$$
+
+(ii) 利用调查数据估计 $P(A \mid B), P(A \mid \overline B)$，并根据上述结论估计 $R$ 值。
+
+---
+
+【第一问】直接使用卡方检验：
+
+$$
+K^2 = \frac{n(ad - bc)^2}{(a + b)(c + d)(a + c)(b + d)} = \frac{200 \times (40 \times 90 - 10 \times 60)^2}{100 \times 100 \times 50 \times 150} = 24 > 6.635
+$$
+
+可知我们有 $99\%$ 的把握认为患该病的群体和未患该病的群体个人卫生情况有差异。
+
+【第二问】我们首先证明第一小问的等式：
+
+根据 $R$ 的定义和条件概率的定义：
+
+$$
+\begin{aligned}
+R &= \frac{P(B \mid A)}{P(\overline B \mid A)} \cdot \frac{P(\overline B | \overline A)}{P(B \mid \overline A)} = \frac{\dfrac{P(AB)}{P(A)} \cdot \dfrac{P(\overline A\overline B)}{P(\overline A)}}{\dfrac{P(A\overline B)}{P(A)} \cdot \dfrac{P(\overline AB)}{P(\overline A)}} \\
+&= \frac{P(AB)P(\overline A\overline B)}{P(A\overline B)P(\overline AB)} \\
+&= \frac{\dfrac{P(AB)}{P(B)} \cdot \dfrac{P(\overline A\overline B)}{P(\overline B)}}{\dfrac{P(A\overline B)}{P(\overline B)} \cdot \dfrac{P(\overline AB)}{P(B)}} = \frac{P(A \mid B)}{P(\overline A \mid B)} \cdot \frac{P(\overline A | \overline B)}{P(A \mid \overline B)}
+\end{aligned}
+$$
+
+容易根据调查数据估计出：
+
+$$
+P(A \mid B) = 0.4, P(\overline A \mid B) = 0.6, P(\overline A | \overline B) = 0.9, P(A \mid \overline B) = 0.1
+$$
+
+此时 $R = 6$。
 
 ## Problem 21
 
@@ -1025,3 +1076,21 @@ $$
 由于 $f(x_0) = g(x_0)$，所以 $e^{x_0} + \ln x_0 = x_1 + x_2 = 2x_0$。
 
 所以这三个横坐标从小到大排列为等差数列，证明完毕。
+
+# 后记
+
+卷子做完了，Holder 也已经明白了我已经没有高中时候那种手算能力了。
+
+不少人说这份卷子很难，其实我看真正算得上是难题的几乎没有，几乎每道题都有很自然的思考角度和解决方式。
+
+但问题就是现在大部分的高考备考流于做模板题，练死思路，结果就是这次高考连稍微难点的解三角形、立体几何都做不出来。
+
+复习不够全面，可能连条件概率的定义、棱台的体积公式都会忘记。
+
+---
+
+这份卷子只不过是把平时用来送分的解答题前几条，数列、解三角形、立体几何稍微出得有了点新意，稍微加了点门槛。卷子其他地方平心而论，概率与统计只要记得条件概率定义五分钟就能写完，解析几何是考烂了的二级结论，选择填空也乏善可陈。但就是这样，就能把平时的中档生直接卡住。
+
+而且这份卷子的特征就是，思路的高下直接影响分数。想到了妙手，就能一分钟内看出答案，想不到，那就和我做填空题最后一问一样算到起飞还得不到答案。一旦陷入了这种状况，如果不及时调整思路，可能影响的是后面的解题状态。
+
+说明死方法没用了，脑子要灵活。总而言之，是一份好卷子，但是被骂也是理所应当。
