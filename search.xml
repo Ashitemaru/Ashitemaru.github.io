@@ -8035,6 +8035,78 @@ I_{i, S} = \mathcal{A}_O(\{\mathcal{D}_j\}) := 1 - \prod_j (1 - \mathcal{D}_{i, 
       </categories>
   </entry>
   <entry>
+    <title>《Stick - A Harmonious Fusion of Buffer-based and Learning-based Approach for Adaptive Streaming》论文笔记</title>
+    <url>/2022/06/10/paper-2/</url>
+    <content><![CDATA[<p>看起来是一个有关结合两种已有方法的一种创想。</p>
+<p>虽然可能暂且对这个领域了解不是特别深入，总之尝试着去阅读了解一下。</p>
+<span id="more"></span>
+<h1 id="introduction">Introduction</h1>
+<p>首先考虑到现实应用背景，视频流传输已经占据了大部分的网络传输带宽。但视频传输的问题在于视频内容的多样性和可能的网络波动。一种可能的解决方案是使用 Adaptive bitrate (ABR) 算法，这些算法已经被证实可以提供高 QoE 的传输服务。</p>
+<p>传统的 ABR 算法往往是 buffer-based 的（例如 BBA 和 BOLA），这些算法通过固定的 buffer 和参数来选定下一个视频块的码率，这可能难以在波动网络环境下保证 QoE。</p>
+<p>另一方面，基于深度强化学习（DRL）的 ABR 算法 Pensieve 却给出了 state-of-the-art 的表现。在实践上，这类算法也常常部署在服务器侧以避免客户端的高计算开销。但是考虑到 ABR 算法往往需要部署在前端以避免连接后端的网络延迟，这使得这类算法理论可用但是并不实际。</p>
+<p>那么我们可以将这两种方法结合起来，使用 DRL 来强化 buffer-based 的方法，同时使用固定的缓冲区限制来限制计算开销。从而该论文提出了 Stick 框架，该框架将 QoE 参数、网络状态、视频特征作为输入参数，而缓冲区限制（连续的标量）作为其输出。</p>
+<p>考虑到连续的动作空间，我们计划使用 Deep deterministic policy gradient (DDPG) 来从头开始训练模型。此外，Stick 在无假设条件下通过和 ABR 环境交互来学习策略。</p>
+<p>为了保证计算效率，我们进一步提出了 Trigger。Trigger 会观测当前和先前的缓冲区限制，只在必要的时候激活 Stick 来更新缓冲区限制。Trigger 使用 imitation learing 方法来学习专家行为。同时，为了克服数据的无偏分布【Question #1】，我们使用了 prioritized experience replay 来存储专家策略。同时，该论文还提出了一种可以让其他 ABR 算法框架接入 Trigger 的方法。</p>
+<p>这篇论文的重点在于：</p>
+<ul>
+<li>首次提出结合 buffer-based 方法和 learning-based 方法</li>
+<li>通过 Stick，可以使用更小的模型实现比已有方法更好的效果</li>
+<li>通过 Trigger，证明轻量级模型可以有效降低计算开销</li>
+</ul>
+<h1 id="buffer-based-learning-based-abr-algorithm">Buffer-based &amp; learning-based ABR algorithm</h1>
+<p>BBA 只根据当前缓冲区限制来选定下一个视频块的码率。具体而言，其将对吞吐量的估计固定为启动态额吞吐量以克服吞吐量的波动，之后在稳定态时，使用缓冲区限制 <span class="math inline">\(\{B_{\rm min}, B_{\rm max}\}\)</span> 来获取块映射，块映射的作用是将缓冲区占用情况映射为码率。</p>
+<p>而这个映射也是简单的分块线性映射，缓冲区占用低于 <span class="math inline">\(B_{\rm min}\)</span> 时下一个视频块码率为低码率 <span class="math inline">\(R_{\rm min}\)</span>，缓冲区占用高于 <span class="math inline">\(B_{\rm max}\)</span> 时下一个视频块码率为高码率 <span class="math inline">\(R_{\rm max}\)</span>，位于这两者之间的时候使用线性函数决定。</p>
+<p>这个方法大部分情况下简单且有效，但是也在许多条件下效果不理想。原因是 BBA 使用的固定参数应当根据应用环境做出相应的调整。</p>
+<p>而 learning-based ABR，例如 Pensieve 则给出了较好的理论结果，但是该方案并不容易应用到现实中。此外，Pensieve 也在部分应用环境下效果不理想。</p>
+<h1 id="key-ideas">Key ideas</h1>
+<p>总结起来是这样的几点：</p>
+<ul>
+<li>使用 DRL 的方法调整 ABR 的参数，避免使用查表或者预训练模型造成的过大存储和计算成本</li>
+<li>模型的状态空间需要考虑全面，不仅包括当前缓冲区限制，还要包括网络状况和视频特征
+<ul>
+<li>此外，实验发现 Stick 可以仅使用一个参数控制缓冲区，而非两个参数</li>
+</ul></li>
+<li>QoE 要求会被作为 goal 输入模型，该参数会随机初始化，这会让模型意识到 QoE 参数和 feedback reward 之间的关系</li>
+<li>使用轻量级的 Trigger 来决定是否需要通过 Stick 更新缓冲区限制，以降低计算成本</li>
+</ul>
+<h1 id="system-overview">System overview</h1>
+<p>整体的框架可以表现为：</p>
+<p><img src="/uploads/paper-2/1.png" /></p>
+<h2 id="stick-mechanism">Stick mechanism</h2>
+<p>Stick 的结构图可以表示为：</p>
+<p><img src="/uploads/paper-2/2.png" /></p>
+<h3 id="design">Design</h3>
+<p>首先叙述状态空间的构造：</p>
+<ul>
+<li><span class="math inline">\(T\)</span> 为由客户端测量的前 <span class="math inline">\(k\)</span> 个序列的吞吐量</li>
+<li><span class="math inline">\(d\)</span> 为前 <span class="math inline">\(k\)</span> 个序列的下载时间</li>
+<li><span class="math inline">\(q\)</span> 为上一个视频块选定的码率</li>
+<li><span class="math inline">\(r\)</span> 为视频剩余播放时间</li>
+<li><span class="math inline">\(b\)</span> 为当前缓冲区占有情况</li>
+<li><span class="math inline">\(S\)</span> 为表示下一个视频块大小的向量</li>
+<li><span class="math inline">\(g\)</span> 为 QoE goal 参数，由 <span class="math inline">\(\mu, \tau\)</span> 构成</li>
+</ul>
+<p>动作空间则是一个连续标量 <span class="math inline">\(B \in [0, {\rm buffer}_{\rm max}]\)</span>，用于控制缓冲区限制。</p>
+<p>奖励函数则根据不同的 <span class="math inline">\(g\)</span>，使用经典的线性 QoE 指标来构造。</p>
+<h3 id="training-methodology-implementation">Training methodology &amp; Implementation</h3>
+<p>【这一部分在阅读完 DPG 相关论文之后再具体展开】</p>
+<h2 id="trigger">Trigger</h2>
+<p>Trigger 的一个核心思想在于，如果 Stick 在连续两个视频块上给出相同的结果，那么其第二次计算是无用的。而实验证明，无用操作可能占比达到 30%，所以我们的目标就是用 Trigger 去判别哪些操作是无用的。</p>
+<p>现在考量 Trigger 的状态空间。根据 Related work，网络吞吐量是我们需要考虑的重要参数。但是我们也发现了，先前的缓冲区占用情况也是一个重要特征，其可以揭示网络环境状态和视频块大小之间的隐藏关系。</p>
+<p>所以我们最终令 Trigger 的输入是先前的网络吞吐量、缓冲区大小和现在的缓冲区限制。而输出是一个二维向量，表示 Stick 保持或者改变当前缓冲区限制的概率。</p>
+<hr />
+<p>使用 imitation learning 来训练 Trigger，这种方法能够根据 expert demonstration 给出预期的结果。训练的算法可以表示为：</p>
+<p><img src="/uploads/paper-2/3.png" /></p>
+<hr />
+<p>另外，我们需要关注训练数据集分布的问题。论文使用的数据集中有 83% 的操作是无用操作，这种分布不均匀的数据集和理想的 50%-50% 数据集差距过大，可能导致特征训练不均衡。所以这里使用了 Prioritized experience replay 方法来重新平衡数据集。</p>
+<p>关于这个方法的介绍可以参考 <a href="https://paperswithcode.com/method/prioritized-experience-replay">这篇文章</a>。</p>
+<p>之后讨论如何将 Trigger 应用到其他的 ABR 算法上。</p>
+]]></content>
+      <categories>
+        <category>科研杂谈</category>
+      </categories>
+  </entry>
+  <entry>
     <title>《美少女万华镜 5 ——理与迷宫的少女》游戏测评</title>
     <url>/2021/08/18/renge-5/</url>
     <content><![CDATA[<p>Holder 不是一个玩 GAL 的人，能想到的 GAL 除了万华镜就是柚子社这种。但是 Holder 想了想，决定把万华镜 5 这个宣称中的最终章认真通一下，也算对我几乎唯一知晓的 GAL 致以敬意。</p>
@@ -8297,6 +8369,23 @@ I_{i, S} = \mathcal{A}_O(\{\mathcal{D}_j\}) := 1 - \prod_j (1 - \mathcal{D}_{i, 
 <hr />
 <p>实际上 7 号晚上虽然说我在复习密码学，但实际上我主要在做今年的高考数学试卷。我自己做的答案和一些评价写在另外一篇文章了，这里就不说什么，</p>
 <p>近期打算清掉一些任务之后，去姜堰住十天半个月的。暑假也打算南京、无锡到处走走，总之不太想闲着。</p>
+<h2 id="section-7">2022.06.09</h2>
+<p>今天主要是回去参加一些家里的白事仪式，确实也挺没什么意思的，除了一不小心跌倒扭到了脚，现在还疼着。</p>
+<p>不过今天零零散散做了不少小事，摸了一下家里的钢琴、下载好了孙立峰老师给我的论文列表里的论文、被 return 拉到了日本友人的 Discord 服务器、找到了许久之前就想玩的游戏的资源等等。</p>
+<p>不过倒也是荒废的一天，没有做什么特别有价值的事情。</p>
+<p>想起来自己还没有给密码学第三次作业作出什么贡献，不如明天稍微找点时间看看，而且 OS 也得开始动手，系统结构也得开始复习了。</p>
+<p>但是，明天去吃一顿 KFC 才是重中之重。</p>
+<h2 id="section-8">2022.06.10</h2>
+<p>今天其实整体都有点阴郁的感觉，因为数学实验按照老师的意思是有可能把考勤分放大到五十分，这意味着一堂课都没有去的我有可能会被挂科。</p>
+<p>我确实也是有这种情感倾向，就是容易滑坡。当遇到挂科风险的时候，我就会想到我的 GPA 可能没办法 keep，想到可能达不到导师的要求，就想到可能没有书读，总之这样一连串下去，我就瞬间觉得没什么动力去做事情了。</p>
+<p>然后今天就有这种奇妙的焦虑感，在此基础上于是赶快去看论文，和孙立峰老师包括他的学生去交流。</p>
+<p>不过其实按照安老板所说，如果真的老师决定招收，那么其实只要成绩达到国家政策硬性要求就行，而这个要求是很低的。</p>
+<p>但是在和安老板交流的时候，我对孙立峰老师这边的不确定性的焦虑也是愈发严重。总之这些事情叠加起来，就会让我非常的不知所措，所以一整天都过的并不安分。</p>
+<hr />
+<p>不过现在回头来看，按照我这里光认识的就有四五个数学实验一堂课没有去过，签到一次没有去过的，可能最后真给挂科的可能性也不大。</p>
+<p>孙立峰老师似乎也还在跟进我这边。</p>
+<p>实际上总之就是什么都吊着胃口，这种处境是最为难受的。</p>
+<p>不过后面就要开始糊弄 OS Lab 和 OS、系统结构的考试了，论文一定得好好看，但是现在课内该糊弄还是得糊弄。</p>
 ]]></content>
       <categories>
         <category>闲聊</category>
