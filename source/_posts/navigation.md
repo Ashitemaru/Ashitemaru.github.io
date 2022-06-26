@@ -36,6 +36,7 @@ Sakana 单推 ❤。
         - Soft Rasterizer - A Differentiable Renderer for Image-based 3D Reasoning
     - 流媒体传输
         - Stick - A Harmonious Fusion of Buffer-based and Learning-based Approach for Adaptive Streaming
+        - Comyco - Quality-Aware Adaptive Video Streaming via Imitation Learning
 - 日语笔记
     - 语法手册
     - 汉文、汉字读法相关笔记

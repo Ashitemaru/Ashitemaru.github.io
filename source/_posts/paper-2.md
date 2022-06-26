@@ -105,3 +105,23 @@ Trigger 的一个核心思想在于，如果 Stick 在连续两个视频块上�
 关于这个方法的介绍可以参考 [这篇文章](https://paperswithcode.com/method/prioritized-experience-replay)。
 
 之后讨论如何将 Trigger 应用到其他的 ABR 算法上。
+
+【这一部分在阅读完 DPG 相关论文之后再具体展开】
+
+# Evaluation
+
+介绍了使用的实验环境、数据集、训练方式、Baseline 的选取、QoE 指标的计算公式等等。
+
+首先在一个数据集上，实验证明了 Stick 输出单参数的表现并不比双参数差很多，甚至在一些条件下能得到更好的 QoE 指标。
+
+之后通过实验说明了 Stick 在各种数据集上都表现出了比 buffer-based 方法更为优秀的性能。
+
+有关比较性能，论文里面有这样一句被强调的话：
+
+{% note success %}
+Note that Stick only utilize onequarter number of neurons that of Pensieve.
+
+感觉是一种简单的强大。
+{% endnote %}
+
+之后还探讨了不同 QoE 指标下 Stick 的表现，探讨了 Trigger 的网络结构（全连接、LSTM 还是 CNN），做了一些进一步的 Evaluation，这里就不具体展开了。
