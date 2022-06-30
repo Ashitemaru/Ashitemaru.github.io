@@ -3,7 +3,7 @@ title: 《Soft Rasterizer - A Differentiable Renderer for Image-based 3D Reasoni
 date: 2022-01-18 11:12:41
 mathjax: true
 category:
-    - 科研杂谈
+    - 【论文笔记】计算机
 ---
 
 进可微渲染项目之后要求阅读的第一篇论文，就当作一种入门论文吧。

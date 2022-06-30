@@ -2,7 +2,7 @@
 title: 《Comyco - Quality-Aware Adaptive Video Streaming via Imitation Learning》论文笔记
 date: 2022-06-22 15:27:15
 category:
-    - 科研杂谈
+    - 【论文笔记】计算机
 mathjax: true
 ---
 

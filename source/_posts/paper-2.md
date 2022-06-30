@@ -2,7 +2,7 @@
 title: 《Stick - A Harmonious Fusion of Buffer-based and Learning-based Approach for Adaptive Streaming》论文笔记
 date: 2022-06-10 13:28:15
 category:
-    - 科研杂谈
+    - 【论文笔记】计算机
 mathjax: true
 ---
 

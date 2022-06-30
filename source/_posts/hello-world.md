@@ -4,7 +4,7 @@ date: 2021-06-16 13:34:10
 comments: true
 mathjax: true
 category:
-    - 闲聊
+    - 【导航】
 ---
 
 刚刚建立好这个地方，暂且也没什么特别想说的，不如就来玩一下 hexo 的各个语法吧。
