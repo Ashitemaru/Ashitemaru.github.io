@@ -351,6 +351,7 @@ Sakana 说大夏天的不想出门，但这也算是没办法吧。我俩的暑�
 
 {% note info no-icon %}
 有时治愈，常常帮助，总是安慰。
+
 To cure sometimes, to relieve often, to comfort always.
 {% endnote %}
 
@@ -614,7 +615,7 @@ Holder 通过这个暑假，大概是缓慢地将自己的心态平稳下来了�
 
 誰も知らないこの物語，また口ずさんでしまったみたいだ。
 
-「 Unknown Mother Goose 」
+「Unknown Mother Goose」
 {% endnote %}
 
 总而言之，或许还有许多的困难，还有许多的考验，还有很多我们需要去做的事情，但我依然坚信未来可期。
