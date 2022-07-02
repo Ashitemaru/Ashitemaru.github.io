@@ -191,7 +191,8 @@
 <p><strong>今天汇报：</strong></p>
 <p>实际情况是，高中突然出现了电力故障导致学校全部停课，但是参与清北夏令营的同学由于在小教室里没有被电力故障波及所以电力一切正常。但是可以想见的是，看见同学们放假了，他们也完全没有心思学习。所以我就和他们玩狼人杀，聊了聊他们现在的焦虑和压力。</p>
 <p>他们不是不想学习，但是高中这个体系给他们的限制实在是比较多，我作为学长也只能劝说他们做一些适应和牺牲。其实有的时候，也真的是毫无方法。</p>
-<div class="note info no-icon"><p>有时治愈，常常帮助，总是安慰。 To cure sometimes, to relieve often, to comfort always.</p>
+<div class="note info no-icon"><p>有时治愈，常常帮助，总是安慰。</p>
+<p>To cure sometimes, to relieve often, to comfort always.</p>
 </div>
 <p>这是特鲁多的名言，本来是形容医生的。但现在看起来我有的时候也像是这样，我帮不了他们实现他们理想中的高中生活，我最多只能做到帮助他们去理解这个可能有些扭曲的体系，让他们稍微以一种平稳的心态度过高中。</p>
 <p>高中这边结束之后就去忙自己的事情了。明天去见 Sakana，18 号还有一小波聚会。</p>
@@ -322,7 +323,7 @@
 <p>Holder 通过这个暑假，大概是缓慢地将自己的心态平稳下来了，或许还有一些不能言说的不舍、迷惘、辛酸等等，但暂且都埋藏起来吧。不过相较于一个自闭的 Holder，虽然现在的我或许不如以往那样沉稳专注，但可能更像一个正常的人吧。</p>
 <div class="note info no-icon"><p>あたしが愛を語るのなら，そのすべてはこの歌だ。</p>
 <p>誰も知らないこの物語，また口ずさんでしまったみたいだ。</p>
-<p>「 Unknown Mother Goose 」</p>
+<p>「Unknown Mother Goose」</p>
 </div>
 <p>总而言之，或许还有许多的困难，还有许多的考验，还有很多我们需要去做的事情，但我依然坚信未来可期。</p>
 <p>我是 Holder，我们继续走下去吧。</p>
@@ -651,11 +652,15 @@
 <div class="note info no-icon"><p>随着自己暗示着自己一年前的混乱并没有解决的时候，那种熟悉但令人恐惧的不安再一次席卷全身。</p>
 <p>先尝试着自己挣扎吧。</p>
 </div>
-<h1 id="section-21">2020.06.30</h1>
+<h1 id="section-21">2022.06.30</h1>
 <p>今天因为组会暂停，于是拉着 Sakana 和我的同学们打了两个小时左右的牌，我被她吊着打（确信）。</p>
 <p>然后快速干完了图形学的报告，于是大三下学期的所有课程我都完成了，下面就是等待出成绩，只要没有什么很明显的大问题，我这个学期总之是平稳地过去了。</p>
 <p>下面就是白天做实习的事情，晚上看实验室的事情，两边都是每周开会，所以还是需要稍微注意注意。</p>
 <p>七月份了，可以开始迎接新的自己了。</p>
+<h1 id="section-22">2022.07.01</h1>
+<p>今天开始干实习和实验室的锅了。</p>
+<p>然后顺理成章地摸了一天的鱼。</p>
+<h1 id="section-23">2022.07.02</h1>
 ]]></content>
       <categories>
         <category>【生活记录】假期日记</category>
@@ -1439,7 +1444,7 @@ f(\ln x_0) = e^{\ln x_0} - \ln x_0 = x_0 - \ln x_0 = g(x_0) = b \\
 g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 \end{cases}
 \]</span></p>
-<p>这说明 <span class="math inline">\(\ln x_0, e^{x_0}\)</span> 也是直线 <span class="math inline">\(y = b\)</span> 和曲线 <span class="math inline">\(y = f(x), y = g(x)\)</span> 交点的横坐标，但我们已经证明了一共仅有三个焦点，这只能说明 <span class="math inline">\(x_1 = \ln x_0, x_2 = e^{x_0}\)</span>。</p>
+<p>这说明 <span class="math inline">\(\ln x_0, e^{x_0}\)</span> 也是直线 <span class="math inline">\(y = b\)</span> 和曲线 <span class="math inline">\(y = f(x), y = g(x)\)</span> 交点的横坐标，但我们已经证明了一共仅有三个交点，这只能说明 <span class="math inline">\(x_1 = \ln x_0, x_2 = e^{x_0}\)</span>。</p>
 <p>由于 <span class="math inline">\(f(x_0) = g(x_0)\)</span>，所以 <span class="math inline">\(e^{x_0} + \ln x_0 = x_1 + x_2 = 2x_0\)</span>。</p>
 <p>所以这三个横坐标从小到大排列为等差数列，证明完毕。</p>
 <h1 id="后记">后记</h1>
@@ -4427,7 +4432,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <div class="note warning"><p>这种假借字几乎是并不明白日语的中国人尝试阅读日语的最大障碍，因为这些字确实常见但却根本不表意，甚至连起来显得莫名其妙。比如说：</p>
 <div class="note info no-icon">
 <p>
-夢ならば<strong>何程</strong>良かったでしょう。ーー「 Lemon 」
+夢ならば<strong>何程</strong>良かったでしょう。ーー「Lemon」
 </p>
 </div>
 <p>
@@ -4478,7 +4483,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <p>下面来探讨文艺领域使用的假借字，这些假借字往往具有其特殊的表达效果。比如说著名的「五月蝿い」，其表记的是固有形容词 urusai，含义为“烦躁的”。这种假借仅仅考虑了汉字含义，侧重于表达汉字所表达的含义，然后将其读作某一个固有词的音。另外还有用「生命」表记固有词 inochi（含义为“生命”，常用汉字表记为「命」），用「光明」表记固有词 hikari（含义为“光明”，常用汉字表记为「光」），用「運命」表记固有词 sadame（含义为“确定之事”，常用汉字表记为「定め」）等假借字用法。这些假借字虽然和常用汉字表记含义类似，却常常出现在文艺作品形成特殊的表达效果。</p>
 <p>比如：</p>
 <div class="note info no-icon"><p>夢覚めてゆく，<strong>光明「ひかり」</strong>が目を刺す。ーー「朧月」</p>
-<p>この血の<strong>運命「さだめ」</strong>。ーー「ジョジョの奇妙な冒険 OP 」</p>
+<p>この血の<strong>運命「さだめ」</strong>。ーー「ジョジョの奇妙な冒険 OP」</p>
 </div>
 <p>这种假借字实际上可以理解为广义的训读，只不过和通行的训读不一致而已。</p>
 <p>另外，有时选取的汉字表记会故意和词语含义相反以表达看似如此实则不然的含义，达到特殊的表达效果：</p>
@@ -5262,6 +5267,15 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
     <url>/2022/05/31/note-of-aa-1/</url>
     <content><![CDATA[<p>大约是由于还是想学一点数学，所以大四趁着没有培养方案要求了选了《抽象代数 (2)》。但是平心而论自己的抽象代数水平不过是翻过一点点 Artin 而已，于是问同学要来了这位老师《抽象代数 (1)》的课件，自己先学着一点吧。</p>
 <span id="more"></span>
+<h1 id="抽象代数引论">抽象代数引论</h1>
+<p>我们现在关注几何体的对称性，不妨先考虑下述定义：</p>
+<div class="note info"><p><strong>Definition 1.01</strong> 我们定义标准欧氏空间 <span class="math inline">\(\mathbb R^n\)</span> 上的<strong>等距（Isometry）</strong>变换 <span class="math inline">\(f: \mathbb R^n \to \mathbb R^n\)</span> 是满足对于任何的 <span class="math inline">\(x, y \in \mathbb R^n\)</span> 都有：</p>
+<p><span class="math display">\[
+d(x, y) = d(f(x), f(y))
+\]</span></p>
+<p>的变换。</p>
+<p>这里 <span class="math inline">\(d(x, y)\)</span> 表示欧氏空间 <span class="math inline">\(\mathbb R^n\)</span> 上两点 <span class="math inline">\(x, y\)</span> 的欧氏距离。</p>
+</div>
 ]]></content>
       <categories>
         <category>【学习笔记】数学</category>
@@ -5270,7 +5284,26 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
   <entry>
     <title>自动驾驶入门学习笔记</title>
     <url>/2022/06/30/note-of-ad/</url>
-    <content><![CDATA[
+    <content><![CDATA[<p>暑期实习最终选了美团的自动驾驶部门，参与一个和计算几何关系较大的项目。</p>
+<p>自动驾驶自己是没怎么接触过的，所以还是好好先学学基础。</p>
+<span id="more"></span>
+<h1 id="自动驾驶基本框架">自动驾驶基本框架</h1>
+<p>首先我们需要了解<strong>行为决策</strong>的含义。</p>
+<p>行为决策指的是对无人车作出宏观决策指令的过程，通常包括综合决策和个体决策。综合决策一般指的是主车的综合决策行为，包括换道意图、借道意图等。个体决策一般指的是主车对单个障碍物做出的决策。</p>
+<p>行为决策模块的上游模块往往是地图、定位、感知、预测、全局规划模块，其下游一般是运动规划模块。</p>
+<p>行为决策的重要职能是将交规等人可以阅读的行为规则、约束转化为可以被运动规划模块理解的语义信息。另外，为了保证运动规划模块可解和求解的高效和稳定，行为决策模块需要完成限定解空间等转化任务。</p>
+<p>具体使用的行为决策模块细节这里略去，可以参考公司内部下发的模块规划图。</p>
+<hr />
+<p>自动驾驶之中有一些概念这里需要明确：</p>
+<ul>
+<li><p>Routing。即全局规划，表示基于地图给出车道级的导航路线的任务</p></li>
+<li><p>Planning。表示规划一条安全的可行驶轨迹的任务</p></li>
+<li><p>Behavior Decider。即行为决策，表示给出宏观的指令的任务</p></li>
+<li><p>Path。即路径，用于描述位置形状等信息</p></li>
+<li><p>Trajectory。即轨迹，不仅包含位置 Path，还需要包含沿着路径的时间速度信息</p></li>
+<li><p>Reference Line。即引线，表示基于全局规划的一条平滑且能保证控制可执行的，能够引导无人车的曲线</p></li>
+<li><p>Frenet Frame。即给定参考线的条件下，令 S 方向为车辆沿着参考线的纵向方向，L 方向为车辆垂直于参考线的横向方向的一个参考系</p></li>
+</ul>
 ]]></content>
       <categories>
         <category>【学习笔记】计算机</category>
@@ -8595,7 +8628,94 @@ v = H\log_2\left(1 + \frac{S}{N}\right)({\rm bps})
   <entry>
     <title>强化学习入门学习笔记</title>
     <url>/2022/06/30/note-of-rl/</url>
-    <content><![CDATA[
+    <content><![CDATA[<p>目前实验室的项目和强化学习关系比较大，然而自己确实没有什么强化学习的基础。</p>
+<p>实验室的学长似乎有一个不错的强化学习入门学习仓库，感觉可以照着这个慢慢学来。</p>
+<span id="more"></span>
+<p>本笔记也有参考代码 Repo，虽然大部分是从别人那边搬过来的，但是我自己还是稍微做了一些调整，增加了一些可读性然后修复了一些 deprecated 的问题。</p>
+<p>代码 Repo 的地址：<a href="https://github.com/Ashitemaru/RL-tutorial">Reinforce learning code repository</a>。</p>
+<h1 id="强化学习的基本概念">强化学习的基本概念</h1>
+<p>强化学习和常见的监督学习有一定的类似，但是也有区别。监督学习我们给出的监督往往是数据集上的标签，但是强化学习我们能给出的提示是给机器的行为作出评分。即，在强化学习中，我们会有一个不断给机器的行为评分的监督者，我们希望机器能够通过这个评分监督者学习到如何作出高分行为。</p>
+<p>监督学习的标签往往需要事先由人类标注出来，也就是说监督学习学习的是人类标签的模式，但是强化学习不一定需要事先标注，他需要学习我们给出的评分策略的模式。</p>
+<h2 id="强化学习方法的分类">强化学习方法的分类</h2>
+<p>根据强化学习方法是否需要理解环境，可以将强化学习算法分为 model-based 和 model-free 两类。</p>
+<p>model-free 方法不需要机器去理解环境，他每一步决策都需要等待真实环境的反馈才能进行下一步。而 model-based 方法可以通过 model 来模拟现实环境，这样机器可以通过这个模拟现实环境的 model 来预测自己的行为对环境的影响，甚至分析行为不同分支的影响，从而做到对现实环境的理解。</p>
+<p>model-free 方法包括 Q learning、Sarsa、Policy gradients。</p>
+<hr />
+<p>根据强化学习方法最后选择行为的依据，可以将强化学习算法分为基于概率（policy-based）和基于价值（value-based）两类。</p>
+<p>基于概率的强化学习算法是最自然的，其会根据其感官接收到的信息，给出其下一步各个行为的概率，然后根据这个概率随机选择下一步的行为。这些算法包括 Policy gradients。</p>
+<p>基于价值的强化学习算法则会测算各个行动的价值，并且选择价值最高的作为自己下一步的行为。这类算法包括 Sarsa、Q learning。</p>
+<p>基于概率的方法的一个优势在于能够根据概率分布作出连续动作的选择，而基于价值的方法不得不在选择一步动作后才能作出下一步动作的价值评估。</p>
+<p>当然现在也有将两者结合起来的算法，即 Actor-Critic 方法，这个方法内 Actor 会基于概率给出动作，而 Critic 会给出价值评估，这样的话能够在 Policy gradients 的基础上加快训练速度。</p>
+<hr />
+<p>根据其更新参数的策略，可以将强化学习算法分为回合制更新（Monte-Carlo update）和单步更新（temporal difference update）。</p>
+<p>Monte-Carlo learning 和基础版本的 Policy gradients 方法都是回合制更新的，然而 Q learning、Sarsa 和升级版本的 Policy gradients 都会基于更为现实和有效的单步更新。</p>
+<hr />
+<p>另外还有在线算法（on policy）和离线算法（off policy）的区别。离线算法的优势就是我可以在脱离交互环境的条件下，学习先前的交互记录。而在线算法必须要在交互环境内更新参数。</p>
+<p>最典型的在线算法是 Sarsa 和强化过后的 Sarsa lambda。而典型的离线算法为 Q learning 和强化过的 Deep Q network。</p>
+<h1 id="q-learning">Q learning</h1>
+<p>首先引入 Q 表这个概念，Q 表可以看作一个函数 <span class="math inline">\(Q(s, a)\)</span>，这个函数值的含义为在状态 <span class="math inline">\(s\)</span> 的条件下，作出行为 <span class="math inline">\(a\)</span> 的潜在收益。而决策过程就是选择当前状态的所有可选行为中潜在收益最高的行为。</p>
+<p>Q 表的更新是在进行决策之后开始的，如果我们原先在状态 <span class="math inline">\(s\)</span>，并且我们通过行为 <span class="math inline">\(a\)</span> 到达新状态 <span class="math inline">\(s&#39;\)</span>，这个时候我们需要重新估算 <span class="math inline">\(Q(s, a)\)</span> 的值。这个估计值新增的部分应当包含两个部分，即我们采取这个行为立刻能得到的奖励和我们在 <span class="math inline">\(s&#39;\)</span> 状态处能够达到的最大可能收益。</p>
+<p>我们的更新策略如下：</p>
+<p><span class="math display">\[
+Q&#39;(s, a) := Q(s, a) + \alpha\left[r + \gamma\max_{a&#39; \in \Gamma(s&#39;)} Q(s&#39;, a&#39;) - Q(s, a)\right]
+\]</span></p>
+<p>这里 <span class="math inline">\(\Gamma(s&#39;)\)</span> 表示在状态 <span class="math inline">\(s&#39;\)</span> 处能够选择的所有行为构成的集合，<span class="math inline">\(\alpha\)</span> 表示<strong>学习率</strong>。</p>
+<p>这样我们就能看到调整估计值的逻辑。我们首先获取在新状态 <span class="math inline">\(s&#39;\)</span> 处所有行为可能得到的最大收益 <span class="math inline">\(\max_{a&#39; \in \Gamma(s&#39;)} Q(s&#39;, a&#39;)\)</span>，乘以一个衰减 <span class="math inline">\(\gamma\)</span>，之后加上采取行为 <span class="math inline">\(a\)</span> 后立刻能得到的收益 <span class="math inline">\(r\)</span> 计算出行为 <span class="math inline">\(a\)</span> 的潜在收益。之后我们将这个估计值和原先的值作差得到差距，乘以学习率 <span class="math inline">\(\alpha\)</span> 之后就得到了我们需要更新到 <span class="math inline">\(Q(s, a)\)</span> 上的增量。</p>
+<p>实际上的 Q learning 在作出决策的时候其实也不一定完全按照最高价值选择，而是可能通过 epsilon greedy 的策略。即提前设定一个 <span class="math inline">\(\varepsilon \in (0, 1)\)</span>，以 <span class="math inline">\(\varepsilon\)</span> 概率按照 Q 表最优价值选择行为，以 <span class="math inline">\(1 - \varepsilon\)</span> 概率随机选择行为。这里 <span class="math inline">\(\varepsilon\)</span> 也被称为<strong>贪婪度</strong>。</p>
+<p>在学习过程的初期，我们希望机器能够随机探索环境，所以此时 <span class="math inline">\(\varepsilon\)</span> 参数会设定较小。而后期我们在已经具有较为可靠的 Q 表并且希望得到最优解的时候，就可以适当调整到较高的 <span class="math inline">\(\varepsilon\)</span>。</p>
+<hr />
+<p>如果我们分析参数 <span class="math inline">\(\gamma\)</span> 在这个学习过程中的作用，我们注意到第一步的奖励会以 <span class="math inline">\(\gamma\)</span> 衰减，而第二步的奖励会以 <span class="math inline">\(\gamma^2\)</span> 衰减，以此类推，越远的奖励衰减的次数越高。</p>
+<p>这就说明，如果令 <span class="math inline">\(\gamma = 0\)</span>，就意味着除了最近的直接奖励，其余奖励均会清空，此时机器只会关注最近的直接奖励。而如果令 <span class="math inline">\(\gamma = 1\)</span>，则意味着机器会平等地对待所有可能的奖励。而一般条件下 <span class="math inline">\(0 &lt; \gamma &lt; 1\)</span>，此时机器会按照指数衰减的方式对待从近到远的奖励。所以 <span class="math inline">\(\gamma\)</span> 也被称为<strong>奖励衰减指数</strong>。</p>
+<h2 id="代码示例">代码示例</h2>
+<p>这里在 <code>$&#123;repo&#125;/Q-learning</code> 下写了一个简单的通过 Q learning 学习走迷宫的小程序，这里稍微介绍一下。</p>
+<p>其实主要关注主函数之中的主循环就可以知道 Q learning 是如何进行的了：</p>
+<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># $&#123;repo&#125;/Q-learning/main.py</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">update</span>():</span></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">100</span>):</span><br><span class="line">        <span class="comment"># Initial state</span></span><br><span class="line">        state = env.reset()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            <span class="comment"># Refresh the canvas</span></span><br><span class="line">            env.render()</span><br><span class="line"></span><br><span class="line">            <span class="comment"># RL choose action based on state</span></span><br><span class="line">            action = RL.choose_action(<span class="built_in">str</span>(state))</span><br><span class="line"></span><br><span class="line">            <span class="comment"># RL take action and get next state and reward</span></span><br><span class="line">            next_state, reward, done = env.step(action)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># RL learn from this transition</span></span><br><span class="line">            RL.learn(<span class="built_in">str</span>(state), action, reward, <span class="built_in">str</span>(next_state))</span><br><span class="line"></span><br><span class="line">            <span class="comment"># Swap state, move ahead</span></span><br><span class="line">            state = next_state</span><br><span class="line"></span><br><span class="line">            <span class="comment"># Break while loop when end of this episode</span></span><br><span class="line">            <span class="keyword">if</span> done:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># End of game</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Game over&quot;</span>)</span><br><span class="line">    env.destroy()</span><br></pre></td></tr></table></figure>
+<p>这里的 <code>RL</code> 相当于我们学习认识环境的机器，其具备的接口包括选择下一步行动（即 <code>RL.choose_action</code>）和根据环境的反馈做出学习（即 <code>RL.learn</code>）。而 <code>env</code> 则模拟了机器需要去认识的环境，其实质上是一个方形地图，地图上有两个地狱和一个代表最终结果的天堂，机器应该尝试着去学习一个绕过地狱到达天堂的路径。</p>
+<p>其实主逻辑十分简单。我们需要训练 100 个 epoch，对于每个 epoch 我们首先初始化环境和机器所在的位置，然后在主循环中重复进行下述动作：</p>
+<ul>
+<li>令机器选择一个行为</li>
+<li>将这个行为传递给环境，令环境给出反馈（包括奖励函数、是否终止、机器即将转到的状态）</li>
+<li>机器通过环境的反馈进行学习</li>
+<li>令机器采取该行为</li>
+</ul>
+<p>这里机器选择一个行为即我们提到的 epsilon greedy 策略，而其学习方式就是 Q 表的更新策略也已经叙述过。环境给出反馈则是简单判定机器是否走到了地狱或者天堂，并给出相应的结果。</p>
+<p>只需要这样简单的代码，我们就可以看见一个红色方块仅依靠着环境的反馈学习到了如何登上天堂。</p>
+<h1 id="sarsa">Sarsa</h1>
+<p>Sarsa 和 Q learning 的策略选择方面是一致的，也就是使用 epsilon greedy 策略选择自己下一步实际的路径，但是 Sarsa 在更新 Q 表的策略上和 Q learning 是不同的。</p>
+<p>我们观察 Q learning 的更新策略：</p>
+<p><span class="math display">\[
+Q&#39;_{\rm QL}(s, a) := Q(s, a) + \alpha\left[r + \gamma{\color{red} \max_{a&#39; \in \Gamma(s&#39;)} Q(s&#39;, a&#39;)} - Q(s, a)\right]
+\]</span></p>
+<p>而 Sarsa 的更新策略为：</p>
+<p><span class="math display">\[
+Q&#39;_{\rm Sarsa}(s, a) := Q(s, a) + \alpha\left[r + \gamma{\color{red} Q(s&#39;, {\rm EG}(s&#39;))} - Q(s, a)\right]
+\]</span></p>
+<p>这里 <span class="math inline">\(a = {\rm EG}(s)\)</span> 表示的是在状态 <span class="math inline">\(s\)</span> 处使用 epsilon greedy 策略选择行为 <span class="math inline">\(a\)</span>。</p>
+<p>除去这里更新策略的不同之外，Sarsa 在到达新状态 <span class="math inline">\(s&#39;\)</span> 后决定此时需要采取的行动的时候，就会采取之前更新策略中的 <span class="math inline">\({\rm EG}(s&#39;)\)</span> 直接作为下一步。</p>
+<hr />
+<p>Sarsa 的策略意味着，其在评估新状态 <span class="math inline">\(s&#39;\)</span> 的潜在收益的时候，并不会像 Q learning 一样贪心选择最大的可能收益，而是更为现实地选择下一步行为，并且一定会采取这一步行为。</p>
+<p>而 Q learning 这里使用最大值贪心的更新策略也意味着其会完全沿着局部最优的路径前行，而无视可能造成的负面效果。Sarsa 则相对而言较为实际且保守。</p>
+<p>另外，Q learning 由于可以脱离环境，所以是 off policy 的。而 Sarsa 需要边转移状态边更新 Q 表，所以是 on policy 的。</p>
+<h2 id="代码示例-1">代码示例</h2>
+<p>这里不具体展示代码了，代码位于 <code>$&#123;repo&#125;/Sarsa</code> 目录之下。</p>
+<p>需要注意和 Q learning 算法不同的地方在于，在主循环里面我们除了需要保存一个 <code>state</code> 变量，我们还需要一个 <code>action</code> 变量保存即将需要采取的动作。</p>
+<p>如果比对两种算法的效率，其实可以发现 Sarsa 算法的收敛速度明显慢于 Q learning 算法。</p>
+<h1 id="sarsa-lambda">Sarsa lambda</h1>
+<p>Sarsa lambda 相对于 Sarsa 的优化点在于，机器最初探索环境的时候所采取的那些行为很有可能和最终结果无关，但是在经典的 Sarsa 算法中，每一步都会以同等的权重更新 Q 表，这很有可能导致后续真正导致较高奖励函数的行为没有匹配到较高权重。</p>
+<p>所以我们可以采取近似于回合制更新的方式取代经典的 Sarsa 单步更新策略。我们令到达最终结果的最后一步以原始权重更新 Q 表，倒数第二步需要乘以常数 <span class="math inline">\(\lambda\)</span> 再更新到 Q 表，以此类推，倒数第 <span class="math inline">\(n\)</span> 步需要以权重 <span class="math inline">\(\lambda^{n - 1}\)</span> 更新到 Q 表。</p>
+<p>我们可以注意到 <span class="math inline">\(\lambda = 0\)</span> 的时候，只有最后一步被更新到 Q 表，这就是最经典的回合更新。而 <span class="math inline">\(\lambda = 1\)</span> 的时候就是经典的 Sarsa 单步更新。</p>
+<p>这里的 <span class="math inline">\(\lambda\)</span> 就被称为<strong>路径衰减指数</strong>。</p>
+<h2 id="代码示例-2">代码示例</h2>
+<p>这里只需要在 Sarsa 的基础上加上一个 E 表来累计每一步的 Q 表更新值即可，每走一步就需要将 E 表以 <span class="math inline">\(\lambda\)</span> 权重衰减一次。</p>
+<p>主要观察 E 表在模型学习过程中的作用：</p>
+<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># $&#123;repo&#125;/Sarsa/model.py - class SarsaLambdaTable</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">learn</span>(<span class="params">self, state, action, reward, next_state, next_action</span>):</span></span><br><span class="line">    self.check_state_exist(next_state)</span><br><span class="line"></span><br><span class="line">    q_predict = self.q_table.loc[state, action]</span><br><span class="line">    <span class="keyword">if</span> next_state != <span class="string">&quot;terminal&quot;</span>:</span><br><span class="line">        q_target = reward + self.gamma * self.q_table.loc[next_state, next_action]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        q_target = reward</span><br><span class="line">        </span><br><span class="line">    error = q_target - q_predict</span><br><span class="line"></span><br><span class="line">    self.e_table.loc[state, :] *= <span class="number">0</span></span><br><span class="line">    self.e_table.loc[state, action] = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    self.q_table += self.lr * error * self.e_table</span><br><span class="line">    self.e_table *= self.gamma * self.lambda_ <span class="comment"># Decay</span></span><br></pre></td></tr></table></figure>
+<p>前半部分和经典 Sarsa 是完全一致的，但是注意后续的两个更新。在说明具体更新之前，我们可以说明 E 表的含义，E 表实际上就是将具体值更新到 Q 表时的权重表。</p>
+<p>首先是将当前状态对应的 E 表行清零并将当前动作对应的列设为 <code>1</code>，即更新 E 表。之后以当前权重将误差更新到 Q 表，最后对权重作出衰减。</p>
+<div class="note info"><p>我觉得他这个代码框架存在一个问题，就是当机器走到角落的时候，实际上它的决策空间会变小，但是代码里面没有体现这一点，只是简单的让机器不动。比如机器在左上角选择向左走，那么只是简单地让机器停在左上角。</p>
+<p>这是一个并不好的处理，因为如果此时机器还没有碰巧到达天堂产生正向激励的话，机器完全会缩在角落里来避免地狱的反向激励。</p>
+<p>有时间给他代码改改吧。</p>
+</div>
+<h1 id="deep-q-network-dqn">Deep Q Network (DQN)</h1>
 ]]></content>
       <categories>
         <category>【学习笔记】计算机</category>

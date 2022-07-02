@@ -20,10 +20,12 @@
   <link rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;ashitemaru.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Gemini&quot;,&quot;version&quot;:&quot;8.5.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;width&quot;:280,&quot;display&quot;:&quot;always&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:&quot;disqusjs&quot;,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;},&quot;path&quot;:&quot;&#x2F;search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;manual&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="目前实验室的项目和强化学习关系比较大，然而自己确实没有什么强化学习的基础。 实验室的学长似乎有一个不错的强化学习入门学习仓库，感觉可以照着这个慢慢学来。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="强化学习入门学习笔记">
 <meta property="og:url" content="https://ashitemaru.github.io/2022/06/30/note-of-rl/index.html">
 <meta property="og:site_name" content="Ashitemaru">
+<meta property="og:description" content="目前实验室的项目和强化学习关系比较大，然而自己确实没有什么强化学习的基础。 实验室的学长似乎有一个不错的强化学习入门学习仓库，感觉可以照着这个慢慢学来。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-06-30T20:44:56.000Z">
 <meta property="article:modified_time" content="2022-06-30T20:44:56.000Z">
@@ -196,7 +198,7 @@ $(function () {
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -209,6 +211,7 @@ $(function () {
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">强化学习的基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E7%9A%84%E5%88%86%E7%B1%BB"><span class="nav-number">1.1.</span> <span class="nav-text">强化学习方法的分类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#q-learning"><span class="nav-number">2.</span> <span class="nav-text">Q learning</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B"><span class="nav-number">2.1.</span> <span class="nav-text">代码示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sarsa"><span class="nav-number">3.</span> <span class="nav-text">Sarsa</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B-1"><span class="nav-number">3.1.</span> <span class="nav-text">代码示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sarsa-lambda"><span class="nav-number">4.</span> <span class="nav-text">Sarsa lambda</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B-2"><span class="nav-number">4.1.</span> <span class="nav-text">代码示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#deep-q-network-dqn"><span class="nav-number">5.</span> <span class="nav-text">Deep Q Network (DQN)</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -366,14 +369,14 @@ $(function () {
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>0</span>
+      <span>5.9k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
+      <span>5 分钟</span>
     </span>
 </div>
 
@@ -384,7 +387,94 @@ $(function () {
     
     
     <div class="post-body" itemprop="articleBody">
-        
+        <p>目前实验室的项目和强化学习关系比较大，然而自己确实没有什么强化学习的基础。</p>
+<p>实验室的学长似乎有一个不错的强化学习入门学习仓库，感觉可以照着这个慢慢学来。</p>
+<span id="more"></span>
+<p>本笔记也有参考代码 Repo，虽然大部分是从别人那边搬过来的，但是我自己还是稍微做了一些调整，增加了一些可读性然后修复了一些 deprecated 的问题。</p>
+<p>代码 Repo 的地址：<a target="_blank" rel="noopener" href="https://github.com/Ashitemaru/RL-tutorial">Reinforce learning code repository</a>。</p>
+<h1 id="强化学习的基本概念">强化学习的基本概念</h1>
+<p>强化学习和常见的监督学习有一定的类似，但是也有区别。监督学习我们给出的监督往往是数据集上的标签，但是强化学习我们能给出的提示是给机器的行为作出评分。即，在强化学习中，我们会有一个不断给机器的行为评分的监督者，我们希望机器能够通过这个评分监督者学习到如何作出高分行为。</p>
+<p>监督学习的标签往往需要事先由人类标注出来，也就是说监督学习学习的是人类标签的模式，但是强化学习不一定需要事先标注，他需要学习我们给出的评分策略的模式。</p>
+<h2 id="强化学习方法的分类">强化学习方法的分类</h2>
+<p>根据强化学习方法是否需要理解环境，可以将强化学习算法分为 model-based 和 model-free 两类。</p>
+<p>model-free 方法不需要机器去理解环境，他每一步决策都需要等待真实环境的反馈才能进行下一步。而 model-based 方法可以通过 model 来模拟现实环境，这样机器可以通过这个模拟现实环境的 model 来预测自己的行为对环境的影响，甚至分析行为不同分支的影响，从而做到对现实环境的理解。</p>
+<p>model-free 方法包括 Q learning、Sarsa、Policy gradients。</p>
+<hr />
+<p>根据强化学习方法最后选择行为的依据，可以将强化学习算法分为基于概率（policy-based）和基于价值（value-based）两类。</p>
+<p>基于概率的强化学习算法是最自然的，其会根据其感官接收到的信息，给出其下一步各个行为的概率，然后根据这个概率随机选择下一步的行为。这些算法包括 Policy gradients。</p>
+<p>基于价值的强化学习算法则会测算各个行动的价值，并且选择价值最高的作为自己下一步的行为。这类算法包括 Sarsa、Q learning。</p>
+<p>基于概率的方法的一个优势在于能够根据概率分布作出连续动作的选择，而基于价值的方法不得不在选择一步动作后才能作出下一步动作的价值评估。</p>
+<p>当然现在也有将两者结合起来的算法，即 Actor-Critic 方法，这个方法内 Actor 会基于概率给出动作，而 Critic 会给出价值评估，这样的话能够在 Policy gradients 的基础上加快训练速度。</p>
+<hr />
+<p>根据其更新参数的策略，可以将强化学习算法分为回合制更新（Monte-Carlo update）和单步更新（temporal difference update）。</p>
+<p>Monte-Carlo learning 和基础版本的 Policy gradients 方法都是回合制更新的，然而 Q learning、Sarsa 和升级版本的 Policy gradients 都会基于更为现实和有效的单步更新。</p>
+<hr />
+<p>另外还有在线算法（on policy）和离线算法（off policy）的区别。离线算法的优势就是我可以在脱离交互环境的条件下，学习先前的交互记录。而在线算法必须要在交互环境内更新参数。</p>
+<p>最典型的在线算法是 Sarsa 和强化过后的 Sarsa lambda。而典型的离线算法为 Q learning 和强化过的 Deep Q network。</p>
+<h1 id="q-learning">Q learning</h1>
+<p>首先引入 Q 表这个概念，Q 表可以看作一个函数 <span class="math inline">\(Q(s, a)\)</span>，这个函数值的含义为在状态 <span class="math inline">\(s\)</span> 的条件下，作出行为 <span class="math inline">\(a\)</span> 的潜在收益。而决策过程就是选择当前状态的所有可选行为中潜在收益最高的行为。</p>
+<p>Q 表的更新是在进行决策之后开始的，如果我们原先在状态 <span class="math inline">\(s\)</span>，并且我们通过行为 <span class="math inline">\(a\)</span> 到达新状态 <span class="math inline">\(s&#39;\)</span>，这个时候我们需要重新估算 <span class="math inline">\(Q(s, a)\)</span> 的值。这个估计值新增的部分应当包含两个部分，即我们采取这个行为立刻能得到的奖励和我们在 <span class="math inline">\(s&#39;\)</span> 状态处能够达到的最大可能收益。</p>
+<p>我们的更新策略如下：</p>
+<p><span class="math display">\[
+Q&#39;(s, a) := Q(s, a) + \alpha\left[r + \gamma\max_{a&#39; \in \Gamma(s&#39;)} Q(s&#39;, a&#39;) - Q(s, a)\right]
+\]</span></p>
+<p>这里 <span class="math inline">\(\Gamma(s&#39;)\)</span> 表示在状态 <span class="math inline">\(s&#39;\)</span> 处能够选择的所有行为构成的集合，<span class="math inline">\(\alpha\)</span> 表示<strong>学习率</strong>。</p>
+<p>这样我们就能看到调整估计值的逻辑。我们首先获取在新状态 <span class="math inline">\(s&#39;\)</span> 处所有行为可能得到的最大收益 <span class="math inline">\(\max_{a&#39; \in \Gamma(s&#39;)} Q(s&#39;, a&#39;)\)</span>，乘以一个衰减 <span class="math inline">\(\gamma\)</span>，之后加上采取行为 <span class="math inline">\(a\)</span> 后立刻能得到的收益 <span class="math inline">\(r\)</span> 计算出行为 <span class="math inline">\(a\)</span> 的潜在收益。之后我们将这个估计值和原先的值作差得到差距，乘以学习率 <span class="math inline">\(\alpha\)</span> 之后就得到了我们需要更新到 <span class="math inline">\(Q(s, a)\)</span> 上的增量。</p>
+<p>实际上的 Q learning 在作出决策的时候其实也不一定完全按照最高价值选择，而是可能通过 epsilon greedy 的策略。即提前设定一个 <span class="math inline">\(\varepsilon \in (0, 1)\)</span>，以 <span class="math inline">\(\varepsilon\)</span> 概率按照 Q 表最优价值选择行为，以 <span class="math inline">\(1 - \varepsilon\)</span> 概率随机选择行为。这里 <span class="math inline">\(\varepsilon\)</span> 也被称为<strong>贪婪度</strong>。</p>
+<p>在学习过程的初期，我们希望机器能够随机探索环境，所以此时 <span class="math inline">\(\varepsilon\)</span> 参数会设定较小。而后期我们在已经具有较为可靠的 Q 表并且希望得到最优解的时候，就可以适当调整到较高的 <span class="math inline">\(\varepsilon\)</span>。</p>
+<hr />
+<p>如果我们分析参数 <span class="math inline">\(\gamma\)</span> 在这个学习过程中的作用，我们注意到第一步的奖励会以 <span class="math inline">\(\gamma\)</span> 衰减，而第二步的奖励会以 <span class="math inline">\(\gamma^2\)</span> 衰减，以此类推，越远的奖励衰减的次数越高。</p>
+<p>这就说明，如果令 <span class="math inline">\(\gamma = 0\)</span>，就意味着除了最近的直接奖励，其余奖励均会清空，此时机器只会关注最近的直接奖励。而如果令 <span class="math inline">\(\gamma = 1\)</span>，则意味着机器会平等地对待所有可能的奖励。而一般条件下 <span class="math inline">\(0 &lt; \gamma &lt; 1\)</span>，此时机器会按照指数衰减的方式对待从近到远的奖励。所以 <span class="math inline">\(\gamma\)</span> 也被称为<strong>奖励衰减指数</strong>。</p>
+<h2 id="代码示例">代码示例</h2>
+<p>这里在 <code>$&#123;repo&#125;/Q-learning</code> 下写了一个简单的通过 Q learning 学习走迷宫的小程序，这里稍微介绍一下。</p>
+<p>其实主要关注主函数之中的主循环就可以知道 Q learning 是如何进行的了：</p>
+<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># $&#123;repo&#125;/Q-learning/main.py</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">update</span>():</span></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">100</span>):</span><br><span class="line">        <span class="comment"># Initial state</span></span><br><span class="line">        state = env.reset()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            <span class="comment"># Refresh the canvas</span></span><br><span class="line">            env.render()</span><br><span class="line"></span><br><span class="line">            <span class="comment"># RL choose action based on state</span></span><br><span class="line">            action = RL.choose_action(<span class="built_in">str</span>(state))</span><br><span class="line"></span><br><span class="line">            <span class="comment"># RL take action and get next state and reward</span></span><br><span class="line">            next_state, reward, done = env.step(action)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># RL learn from this transition</span></span><br><span class="line">            RL.learn(<span class="built_in">str</span>(state), action, reward, <span class="built_in">str</span>(next_state))</span><br><span class="line"></span><br><span class="line">            <span class="comment"># Swap state, move ahead</span></span><br><span class="line">            state = next_state</span><br><span class="line"></span><br><span class="line">            <span class="comment"># Break while loop when end of this episode</span></span><br><span class="line">            <span class="keyword">if</span> done:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># End of game</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Game over&quot;</span>)</span><br><span class="line">    env.destroy()</span><br></pre></td></tr></table></figure>
+<p>这里的 <code>RL</code> 相当于我们学习认识环境的机器，其具备的接口包括选择下一步行动（即 <code>RL.choose_action</code>）和根据环境的反馈做出学习（即 <code>RL.learn</code>）。而 <code>env</code> 则模拟了机器需要去认识的环境，其实质上是一个方形地图，地图上有两个地狱和一个代表最终结果的天堂，机器应该尝试着去学习一个绕过地狱到达天堂的路径。</p>
+<p>其实主逻辑十分简单。我们需要训练 100 个 epoch，对于每个 epoch 我们首先初始化环境和机器所在的位置，然后在主循环中重复进行下述动作：</p>
+<ul>
+<li>令机器选择一个行为</li>
+<li>将这个行为传递给环境，令环境给出反馈（包括奖励函数、是否终止、机器即将转到的状态）</li>
+<li>机器通过环境的反馈进行学习</li>
+<li>令机器采取该行为</li>
+</ul>
+<p>这里机器选择一个行为即我们提到的 epsilon greedy 策略，而其学习方式就是 Q 表的更新策略也已经叙述过。环境给出反馈则是简单判定机器是否走到了地狱或者天堂，并给出相应的结果。</p>
+<p>只需要这样简单的代码，我们就可以看见一个红色方块仅依靠着环境的反馈学习到了如何登上天堂。</p>
+<h1 id="sarsa">Sarsa</h1>
+<p>Sarsa 和 Q learning 的策略选择方面是一致的，也就是使用 epsilon greedy 策略选择自己下一步实际的路径，但是 Sarsa 在更新 Q 表的策略上和 Q learning 是不同的。</p>
+<p>我们观察 Q learning 的更新策略：</p>
+<p><span class="math display">\[
+Q&#39;_{\rm QL}(s, a) := Q(s, a) + \alpha\left[r + \gamma{\color{red} \max_{a&#39; \in \Gamma(s&#39;)} Q(s&#39;, a&#39;)} - Q(s, a)\right]
+\]</span></p>
+<p>而 Sarsa 的更新策略为：</p>
+<p><span class="math display">\[
+Q&#39;_{\rm Sarsa}(s, a) := Q(s, a) + \alpha\left[r + \gamma{\color{red} Q(s&#39;, {\rm EG}(s&#39;))} - Q(s, a)\right]
+\]</span></p>
+<p>这里 <span class="math inline">\(a = {\rm EG}(s)\)</span> 表示的是在状态 <span class="math inline">\(s\)</span> 处使用 epsilon greedy 策略选择行为 <span class="math inline">\(a\)</span>。</p>
+<p>除去这里更新策略的不同之外，Sarsa 在到达新状态 <span class="math inline">\(s&#39;\)</span> 后决定此时需要采取的行动的时候，就会采取之前更新策略中的 <span class="math inline">\({\rm EG}(s&#39;)\)</span> 直接作为下一步。</p>
+<hr />
+<p>Sarsa 的策略意味着，其在评估新状态 <span class="math inline">\(s&#39;\)</span> 的潜在收益的时候，并不会像 Q learning 一样贪心选择最大的可能收益，而是更为现实地选择下一步行为，并且一定会采取这一步行为。</p>
+<p>而 Q learning 这里使用最大值贪心的更新策略也意味着其会完全沿着局部最优的路径前行，而无视可能造成的负面效果。Sarsa 则相对而言较为实际且保守。</p>
+<p>另外，Q learning 由于可以脱离环境，所以是 off policy 的。而 Sarsa 需要边转移状态边更新 Q 表，所以是 on policy 的。</p>
+<h2 id="代码示例-1">代码示例</h2>
+<p>这里不具体展示代码了，代码位于 <code>$&#123;repo&#125;/Sarsa</code> 目录之下。</p>
+<p>需要注意和 Q learning 算法不同的地方在于，在主循环里面我们除了需要保存一个 <code>state</code> 变量，我们还需要一个 <code>action</code> 变量保存即将需要采取的动作。</p>
+<p>如果比对两种算法的效率，其实可以发现 Sarsa 算法的收敛速度明显慢于 Q learning 算法。</p>
+<h1 id="sarsa-lambda">Sarsa lambda</h1>
+<p>Sarsa lambda 相对于 Sarsa 的优化点在于，机器最初探索环境的时候所采取的那些行为很有可能和最终结果无关，但是在经典的 Sarsa 算法中，每一步都会以同等的权重更新 Q 表，这很有可能导致后续真正导致较高奖励函数的行为没有匹配到较高权重。</p>
+<p>所以我们可以采取近似于回合制更新的方式取代经典的 Sarsa 单步更新策略。我们令到达最终结果的最后一步以原始权重更新 Q 表，倒数第二步需要乘以常数 <span class="math inline">\(\lambda\)</span> 再更新到 Q 表，以此类推，倒数第 <span class="math inline">\(n\)</span> 步需要以权重 <span class="math inline">\(\lambda^{n - 1}\)</span> 更新到 Q 表。</p>
+<p>我们可以注意到 <span class="math inline">\(\lambda = 0\)</span> 的时候，只有最后一步被更新到 Q 表，这就是最经典的回合更新。而 <span class="math inline">\(\lambda = 1\)</span> 的时候就是经典的 Sarsa 单步更新。</p>
+<p>这里的 <span class="math inline">\(\lambda\)</span> 就被称为<strong>路径衰减指数</strong>。</p>
+<h2 id="代码示例-2">代码示例</h2>
+<p>这里只需要在 Sarsa 的基础上加上一个 E 表来累计每一步的 Q 表更新值即可，每走一步就需要将 E 表以 <span class="math inline">\(\lambda\)</span> 权重衰减一次。</p>
+<p>主要观察 E 表在模型学习过程中的作用：</p>
+<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># $&#123;repo&#125;/Sarsa/model.py - class SarsaLambdaTable</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">learn</span>(<span class="params">self, state, action, reward, next_state, next_action</span>):</span></span><br><span class="line">    self.check_state_exist(next_state)</span><br><span class="line"></span><br><span class="line">    q_predict = self.q_table.loc[state, action]</span><br><span class="line">    <span class="keyword">if</span> next_state != <span class="string">&quot;terminal&quot;</span>:</span><br><span class="line">        q_target = reward + self.gamma * self.q_table.loc[next_state, next_action]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        q_target = reward</span><br><span class="line">        </span><br><span class="line">    error = q_target - q_predict</span><br><span class="line"></span><br><span class="line">    self.e_table.loc[state, :] *= <span class="number">0</span></span><br><span class="line">    self.e_table.loc[state, action] = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    self.q_table += self.lr * error * self.e_table</span><br><span class="line">    self.e_table *= self.gamma * self.lambda_ <span class="comment"># Decay</span></span><br></pre></td></tr></table></figure>
+<p>前半部分和经典 Sarsa 是完全一致的，但是注意后续的两个更新。在说明具体更新之前，我们可以说明 E 表的含义，E 表实际上就是将具体值更新到 Q 表时的权重表。</p>
+<p>首先是将当前状态对应的 E 表行清零并将当前动作对应的列设为 <code>1</code>，即更新 E 表。之后以当前权重将误差更新到 Q 表，最后对权重作出衰减。</p>
+<div class="note info"><p>我觉得他这个代码框架存在一个问题，就是当机器走到角落的时候，实际上它的决策空间会变小，但是代码里面没有体现这一点，只是简单的让机器不动。比如机器在左上角选择向左走，那么只是简单地让机器停在左上角。</p>
+<p>这是一个并不好的处理，因为如果此时机器还没有碰巧到达天堂产生正向激励的话，机器完全会缩在角落里来避免地狱的反向激励。</p>
+<p>有时间给他代码改改吧。</p>
+</div>
+<h1 id="deep-q-network-dqn">Deep Q Network (DQN)</h1>
 
     </div>
 
@@ -435,13 +525,13 @@ $(function () {
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">219k</span>
+    <span title="站点总字数">226k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:19</span>
+    <span title="站点阅读时长">3:25</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动

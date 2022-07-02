@@ -20,10 +20,12 @@
   <link rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;ashitemaru.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Gemini&quot;,&quot;version&quot;:&quot;8.5.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;width&quot;:280,&quot;display&quot;:&quot;always&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:&quot;disqusjs&quot;,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;},&quot;path&quot;:&quot;&#x2F;search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;manual&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="暑期实习最终选了美团的自动驾驶部门，参与一个和计算几何关系较大的项目。 自动驾驶自己是没怎么接触过的，所以还是好好先学学基础。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="自动驾驶入门学习笔记">
 <meta property="og:url" content="https://ashitemaru.github.io/2022/06/30/note-of-ad/index.html">
 <meta property="og:site_name" content="Ashitemaru">
+<meta property="og:description" content="暑期实习最终选了美团的自动驾驶部门，参与一个和计算几何关系较大的项目。 自动驾驶自己是没怎么接触过的，所以还是好好先学学基础。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-06-30T20:43:54.000Z">
 <meta property="article:modified_time" content="2022-06-30T20:43:54.000Z">
@@ -196,7 +198,7 @@ $(function () {
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -209,6 +211,7 @@ $(function () {
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6%E5%9F%BA%E6%9C%AC%E6%A1%86%E6%9E%B6"><span class="nav-number">1.</span> <span class="nav-text">自动驾驶基本框架</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -366,7 +369,7 @@ $(function () {
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>0</span>
+      <span>641</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -384,7 +387,26 @@ $(function () {
     
     
     <div class="post-body" itemprop="articleBody">
-        
+        <p>暑期实习最终选了美团的自动驾驶部门，参与一个和计算几何关系较大的项目。</p>
+<p>自动驾驶自己是没怎么接触过的，所以还是好好先学学基础。</p>
+<span id="more"></span>
+<h1 id="自动驾驶基本框架">自动驾驶基本框架</h1>
+<p>首先我们需要了解<strong>行为决策</strong>的含义。</p>
+<p>行为决策指的是对无人车作出宏观决策指令的过程，通常包括综合决策和个体决策。综合决策一般指的是主车的综合决策行为，包括换道意图、借道意图等。个体决策一般指的是主车对单个障碍物做出的决策。</p>
+<p>行为决策模块的上游模块往往是地图、定位、感知、预测、全局规划模块，其下游一般是运动规划模块。</p>
+<p>行为决策的重要职能是将交规等人可以阅读的行为规则、约束转化为可以被运动规划模块理解的语义信息。另外，为了保证运动规划模块可解和求解的高效和稳定，行为决策模块需要完成限定解空间等转化任务。</p>
+<p>具体使用的行为决策模块细节这里略去，可以参考公司内部下发的模块规划图。</p>
+<hr />
+<p>自动驾驶之中有一些概念这里需要明确：</p>
+<ul>
+<li><p>Routing。即全局规划，表示基于地图给出车道级的导航路线的任务</p></li>
+<li><p>Planning。表示规划一条安全的可行驶轨迹的任务</p></li>
+<li><p>Behavior Decider。即行为决策，表示给出宏观的指令的任务</p></li>
+<li><p>Path。即路径，用于描述位置形状等信息</p></li>
+<li><p>Trajectory。即轨迹，不仅包含位置 Path，还需要包含沿着路径的时间速度信息</p></li>
+<li><p>Reference Line。即引线，表示基于全局规划的一条平滑且能保证控制可执行的，能够引导无人车的曲线</p></li>
+<li><p>Frenet Frame。即给定参考线的条件下，令 S 方向为车辆沿着参考线的纵向方向，L 方向为车辆垂直于参考线的横向方向的一个参考系</p></li>
+</ul>
 
     </div>
 
@@ -438,13 +460,13 @@ $(function () {
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">219k</span>
+    <span title="站点总字数">226k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:19</span>
+    <span title="站点阅读时长">3:25</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
