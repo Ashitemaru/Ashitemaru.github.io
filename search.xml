@@ -666,6 +666,36 @@
 <p>那个笑话的意思大约就是作者需要训练一个狼去捉羊，但是那只狼好像不怎么聪明，一直捉不到羊，于是作者加大了捉不到羊的惩罚，结果发现狼一出生就会直接撞死在石头上避免惩罚。所以作者在感叹人工智能都会拒绝内卷。</p>
 <p>而我今天要训练的是一个走迷宫的模型，地图上有两个地狱，遇到就会有惩罚，有一个天堂，遇到就会有奖励。去天堂需要稍微绕路，去地狱出门就是。但是我用的那个教程上他写的代码框架里面，有个问题，就是当模型在角落的时候应该缩小决策空间让模型不至于不动（比如在左上角的时候就不能作出向左走的决策），但是他没有，这就导致训练出来的模型如果没有碰巧在随机走步的时候到达过天堂留下正向反馈，那么他就会直接缩在角落避免进入地狱。</p>
 <p>只能说人工智能还是会帮助我们发现一些奇怪的思维盲区，人工智能还是比我想象的稍微聪明一点啊。</p>
+<h1 id="section-24">2022.07.03</h1>
+<p>今天主要陪 Sakana 去了，简单把之前没有逛过的万象城简单逛了一下。</p>
+<p>不过今天也顺手第一次去玩了舞萌 DX，不过不得不说迪拉熊真的好好玩。</p>
+<h1 id="section-25">2022.07.04</h1>
+<p>今天说实话倒也没有什么很好玩的事情，首先是一大早就要去姜中找孙校长有事情，没有交通工具也只能走路，夏天十点的太阳就已经非常让人难受了。</p>
+<p>中午回来吃饭，想着下午好好看看 DQN 的，然而实际情况是吃完饭想着先打一把牌应该没问题，结果是越打越困，从坐着打牌变成躺在躺椅上打牌，最后直接爬到床上去了，熬到了南四局结束之后，直接手机一扔不省人事睡着了。</p>
+<p>一路睡到了快四点，而晚上本来就约好了和 Sakana 去剧本杀，于是草率看了两眼 DQN，也就要准备去吃晚饭了。</p>
+<hr />
+<p>话说我这个暑期实习真的是让人一言难尽，mentor 一直在奇奇怪怪地摸鱼，我还要绞尽脑汁编日报，一点活都不给我做，我倒也真的一直没干什么事情。</p>
+<p>然而这里就有一个问题，合同上说的挺明白的，实习工资会有 280 一天，总共有八千多的实习工资。但是 HR 也说得挺明白的，如果无法确认考勤，就会以旷工停发工资。现在在北京的同学已经可以去公司打卡上班了，但是我这蹲在家里的就比较难受，毕竟八千块怎么说都是钱，而且自己也有换平板的计划。</p>
+<p>去问我 mentor，他说不知道，去问我 HR，她倒先站在高地说了我一通要讲诚信，考勤这件事我们看得很重。弯弯绕绕说了一堆，我都没明白我这个考勤怎么办。</p>
+<p>虽然最后折腾到了结果，就是走考勤申诉，只要 mentor 认可，就可以按照到班计工资。而我那个 mentor 确实也比较不管我，所以这一关倒是很顺利地给我过了。</p>
+<hr />
+<p>晚上剧本杀挺难说的，先是 DM 就是我姐，然后就是，还没开打呢，又被老孙一通电话叫过去做招生工作去了。</p>
+<div class="note info no-icon"><p>我一个清华的学生，为什么要掺和北大和交大之间的招生问题.jpg</p>
+</div>
+<p>不过反正就是到处找人问政策情况，然后期间老孙老邱都来打听我做工作情况，和学生家长、本人也聊了一些。</p>
+<p>不过最搞我的就是，这人十一点多都没给我准信。他只要给了，我这个工作就能交班结束，但是显然，不能。</p>
+<p>然后这人，我一点半回了个收到，他说他当时睡不着。</p>
+<p>虽然我也很能理解学生这种三小时决定未来七八年的紧张和不安，但是，我着实是，作为编外人员到处玩的个人，比任某这位编内人员都忙的多（没有黑任某的意思，他今年很认真了，确实）。</p>
+<hr />
+<p>晚上挺郁闷的，正事也没做，这就导致我明明第二天约好了去打街机也不安分，晚上也没玩上。</p>
+<p>这下就我没打过线下剧本杀了，人生体验缺失一大块（确信）。</p>
+<hr />
+<p>郁闷就去喝酒呗。</p>
+<h1 id="section-26">2022.07.05</h1>
+<p>反正就是打了一天街机。</p>
+<p>回来还想着好好把 DQN 给看完，不过我倒是，很不能适应 Tensorflow，为什么有人要用 TF 写代码啊，好好用 Pytorch 皆大欢喜了好吧。</p>
+<p>但是牢骚归牢骚，TF 学不会 DQN 学不会，小心学长把你扔出实验室。</p>
+<p>困了。</p>
 ]]></content>
       <categories>
         <category>【生活记录】假期日记</category>
@@ -8635,6 +8665,10 @@ v = H\log_2\left(1 + \frac{S}{N}\right)({\rm bps})
     <url>/2022/06/30/note-of-rl/</url>
     <content><![CDATA[<p>目前实验室的项目和强化学习关系比较大，然而自己确实没有什么强化学习的基础。</p>
 <p>实验室的学长似乎有一个不错的强化学习入门学习仓库，感觉可以照着这个慢慢学来。</p>
+<p><span class="math display">\[
+\newcommand{\b}{\boldsymbol}
+\newcommand{\argmax}{\mathop{\rm argmax}}
+\]</span></p>
 <span id="more"></span>
 <p>本笔记也有参考代码 Repo，虽然大部分是从别人那边搬过来的，但是我自己还是稍微做了一些调整，增加了一些可读性然后修复了一些 deprecated 的问题。</p>
 <p>代码 Repo 的地址：<a href="https://github.com/Ashitemaru/RL-tutorial">Reinforce learning code repository</a>。</p>
@@ -8721,6 +8755,40 @@ Q&#39;_{\rm Sarsa}(s, a) := Q(s, a) + \alpha\left[r + \gamma{\color{red} Q(s&#39
 <p>有时间给他代码改改吧。</p>
 </div>
 <h1 id="deep-q-network-dqn">Deep Q Network (DQN)</h1>
+<p>在我们面对更大的解空间的时候，存储过大的 Q 表会导致内存不够使用，所以此时我们需要令 <span class="math inline">\(Q(s, a)\)</span> 使用其他的方法计算，比如说我们可以引入深度神经网络来计算 <span class="math inline">\(Q(s, a)\)</span>。</p>
+<p>这里我们可以引入这样的一个深度神经网络，该网络接受的输入是当前机器的状态 <span class="math inline">\(s\)</span>，该网络给出的输出则是各种可行的行为以及其评估值，我们只需要按照最基本的 Q learning 原则根据神经网络的输出给出。</p>
+<p>在这个给定的决策过程下，我们需要给出神经网络的训练策略。实际上我们只需要给出网络 loss 的计算方式就可以。我们思考 Q learning 之中的训练策略，我们可以得知，在经典的 Q learning 算法中我们会求出估计的 Q 值，将其与现实的 Q 值做差之后乘以学习率叠加到原先的 Q 表上。</p>
+<p>而如果将这样的策略和神经网络联系起来，我们会发现估计的 Q 值和现实的 Q 值之间的差距实际上就表现出了 loss，我们只需要将这个 loss 对网络各个参数的梯度乘以学习率叠加到网络上就可以。</p>
+<p>基于这样的认识，我们给出下述 loss 计算，使用平方误差的基本思想：</p>
+<p><span class="math display">\[
+\mathcal{L} := \left[r + \gamma\max_{a&#39; \in \Gamma(s&#39;)} Q(s&#39;, a&#39;) - Q(s, a)\right]^2
+\]</span></p>
+<p>这里在状态 <span class="math inline">\(s\)</span> 下选择动作 <span class="math inline">\(a\)</span> 会转移到状态 <span class="math inline">\(s&#39;\)</span>。</p>
+<hr />
+<p>另外，我们可以使用两种方法强化 DQN，这两种方法包括 Experience replay 和 Fixed Q targets。</p>
+<p>前者实际上基于 Q learning 的 off policy 特性，我们可以使用以往的训练数据乃至其他机器的经验数据来训练网络。</p>
+<p>后者的含义是使用两个同样结构但是参数不同的网络，一个使用较早的参数来给出估计的 Q 值，而且这个网络的参数几乎不会在训练过程中更新，这个网络代表了过去的经验。一个使用较新的参数来给出现实的 Q 值，这个网络会在训练过程中更新参数并且会被应用到实际场景之中。这样做的原因是取消数据的相关性和提高训练的稳定性，具体的原因后续研讨。</p>
+<h2 id="代码示例-3">代码示例</h2>
+<p>这里我们使用 Tensorflow 实现 DQN，这里我们使用的 DQN 具体算法描述为：</p>
+<ul>
+<li>首先初始化一个容量为 <span class="math inline">\(N\)</span> 的记忆库 <span class="math inline">\(D\)</span> 用于存放先前的经验，这里 <span class="math inline">\(N\)</span> 是先前设定的超参</li>
+<li>随机初始化两个结构一致的神经网络 <span class="math inline">\(Q, \hat Q\)</span>，其初始化参数分别为 <span class="math inline">\(\b\theta, \b\theta^-\)</span>，初始化的时候保证 <span class="math inline">\(\b\theta = \b\theta^-\)</span></li>
+<li>对模型按照下述流程训练 <span class="math inline">\(M\)</span> 个 epoch，这里 <span class="math inline">\(M\)</span> 为先前设定的超参
+<ul>
+<li>假定初始状态 <span class="math inline">\(s_1\)</span>，初始化 <span class="math inline">\(s = s_1\)</span></li>
+<li>重复下述流程直到需要中断
+<ul>
+<li>以超参 <span class="math inline">\(\varepsilon\)</span> 使用 epsilon greedy 策略选取行为 <span class="math inline">\(a := \argmax_{a&#39;} Q(s, a&#39;; \b\theta)\)</span></li>
+<li>令 <span class="math inline">\(r\)</span> 表示在状态 <span class="math inline">\(s\)</span> 的条件下执行行为 <span class="math inline">\(a\)</span> 得到的直接收益</li>
+<li>令 <span class="math inline">\(s&#39;\)</span> 表示在状态 <span class="math inline">\(s\)</span> 的条件下执行行为 <span class="math inline">\(a\)</span> 转移到的状态</li>
+<li>将描述状态转移的元组 <span class="math inline">\((s, a, r; s&#39;)\)</span> 存入 <span class="math inline">\(D\)</span></li>
+<li>计算 loss 为 <span class="math inline">\(\mathcal{L} := \left[r + \gamma\max_{a&#39; \in \Gamma(s&#39;)} \hat Q(s&#39;, a&#39;; \b\theta^-) - Q(s, a; \b\theta)\right]^2\)</span></li>
+<li>反向传播 loss 的梯度，更新 <span class="math inline">\(\b\theta\)</span></li>
+<li>如果此时 <span class="math inline">\(s&#39;\)</span> 是终止状态，则终止流程</li>
+<li>每经过 <span class="math inline">\(C\)</span> 步，令 <span class="math inline">\(\b\theta^- \leftarrow \b\theta\)</span>，即令 <span class="math inline">\(\hat Q\)</span> 更新至 <span class="math inline">\(Q\)</span>，这里 <span class="math inline">\(C\)</span> 是先前设定的超参</li>
+</ul></li>
+</ul></li>
+</ul>
 ]]></content>
       <categories>
         <category>【学习笔记】计算机</category>

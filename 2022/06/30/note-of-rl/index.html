@@ -20,12 +20,12 @@
   <link rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;ashitemaru.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Gemini&quot;,&quot;version&quot;:&quot;8.5.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;width&quot;:280,&quot;display&quot;:&quot;always&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:&quot;disqusjs&quot;,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;},&quot;path&quot;:&quot;&#x2F;search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;manual&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="目前实验室的项目和强化学习关系比较大，然而自己确实没有什么强化学习的基础。 实验室的学长似乎有一个不错的强化学习入门学习仓库，感觉可以照着这个慢慢学来。">
+<meta name="description" content="目前实验室的项目和强化学习关系比较大，然而自己确实没有什么强化学习的基础。 实验室的学长似乎有一个不错的强化学习入门学习仓库，感觉可以照着这个慢慢学来。 \[ \newcommand{\b}{\boldsymbol} \newcommand{\argmax}{\mathop{\rm argmax}} \]">
 <meta property="og:type" content="article">
 <meta property="og:title" content="强化学习入门学习笔记">
 <meta property="og:url" content="https://ashitemaru.github.io/2022/06/30/note-of-rl/index.html">
 <meta property="og:site_name" content="Ashitemaru">
-<meta property="og:description" content="目前实验室的项目和强化学习关系比较大，然而自己确实没有什么强化学习的基础。 实验室的学长似乎有一个不错的强化学习入门学习仓库，感觉可以照着这个慢慢学来。">
+<meta property="og:description" content="目前实验室的项目和强化学习关系比较大，然而自己确实没有什么强化学习的基础。 实验室的学长似乎有一个不错的强化学习入门学习仓库，感觉可以照着这个慢慢学来。 \[ \newcommand{\b}{\boldsymbol} \newcommand{\argmax}{\mathop{\rm argmax}} \]">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-06-30T20:44:56.000Z">
 <meta property="article:modified_time" content="2022-06-30T20:44:56.000Z">
@@ -211,7 +211,7 @@ $(function () {
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">强化学习的基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E7%9A%84%E5%88%86%E7%B1%BB"><span class="nav-number">1.1.</span> <span class="nav-text">强化学习方法的分类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#q-learning"><span class="nav-number">2.</span> <span class="nav-text">Q learning</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B"><span class="nav-number">2.1.</span> <span class="nav-text">代码示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sarsa"><span class="nav-number">3.</span> <span class="nav-text">Sarsa</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B-1"><span class="nav-number">3.1.</span> <span class="nav-text">代码示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sarsa-lambda"><span class="nav-number">4.</span> <span class="nav-text">Sarsa lambda</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B-2"><span class="nav-number">4.1.</span> <span class="nav-text">代码示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#deep-q-network-dqn"><span class="nav-number">5.</span> <span class="nav-text">Deep Q Network (DQN)</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">强化学习的基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E7%9A%84%E5%88%86%E7%B1%BB"><span class="nav-number">1.1.</span> <span class="nav-text">强化学习方法的分类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#q-learning"><span class="nav-number">2.</span> <span class="nav-text">Q learning</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B"><span class="nav-number">2.1.</span> <span class="nav-text">代码示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sarsa"><span class="nav-number">3.</span> <span class="nav-text">Sarsa</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B-1"><span class="nav-number">3.1.</span> <span class="nav-text">代码示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sarsa-lambda"><span class="nav-number">4.</span> <span class="nav-text">Sarsa lambda</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B-2"><span class="nav-number">4.1.</span> <span class="nav-text">代码示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#deep-q-network-dqn"><span class="nav-number">5.</span> <span class="nav-text">Deep Q Network (DQN)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B-3"><span class="nav-number">5.1.</span> <span class="nav-text">代码示例</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -369,14 +369,14 @@ $(function () {
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>5.9k</span>
+      <span>7.5k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>5 分钟</span>
+      <span>7 分钟</span>
     </span>
 </div>
 
@@ -389,6 +389,10 @@ $(function () {
     <div class="post-body" itemprop="articleBody">
         <p>目前实验室的项目和强化学习关系比较大，然而自己确实没有什么强化学习的基础。</p>
 <p>实验室的学长似乎有一个不错的强化学习入门学习仓库，感觉可以照着这个慢慢学来。</p>
+<p><span class="math display">\[
+\newcommand{\b}{\boldsymbol}
+\newcommand{\argmax}{\mathop{\rm argmax}}
+\]</span></p>
 <span id="more"></span>
 <p>本笔记也有参考代码 Repo，虽然大部分是从别人那边搬过来的，但是我自己还是稍微做了一些调整，增加了一些可读性然后修复了一些 deprecated 的问题。</p>
 <p>代码 Repo 的地址：<a target="_blank" rel="noopener" href="https://github.com/Ashitemaru/RL-tutorial">Reinforce learning code repository</a>。</p>
@@ -475,6 +479,40 @@ Q&#39;_{\rm Sarsa}(s, a) := Q(s, a) + \alpha\left[r + \gamma{\color{red} Q(s&#39
 <p>有时间给他代码改改吧。</p>
 </div>
 <h1 id="deep-q-network-dqn">Deep Q Network (DQN)</h1>
+<p>在我们面对更大的解空间的时候，存储过大的 Q 表会导致内存不够使用，所以此时我们需要令 <span class="math inline">\(Q(s, a)\)</span> 使用其他的方法计算，比如说我们可以引入深度神经网络来计算 <span class="math inline">\(Q(s, a)\)</span>。</p>
+<p>这里我们可以引入这样的一个深度神经网络，该网络接受的输入是当前机器的状态 <span class="math inline">\(s\)</span>，该网络给出的输出则是各种可行的行为以及其评估值，我们只需要按照最基本的 Q learning 原则根据神经网络的输出给出。</p>
+<p>在这个给定的决策过程下，我们需要给出神经网络的训练策略。实际上我们只需要给出网络 loss 的计算方式就可以。我们思考 Q learning 之中的训练策略，我们可以得知，在经典的 Q learning 算法中我们会求出估计的 Q 值，将其与现实的 Q 值做差之后乘以学习率叠加到原先的 Q 表上。</p>
+<p>而如果将这样的策略和神经网络联系起来，我们会发现估计的 Q 值和现实的 Q 值之间的差距实际上就表现出了 loss，我们只需要将这个 loss 对网络各个参数的梯度乘以学习率叠加到网络上就可以。</p>
+<p>基于这样的认识，我们给出下述 loss 计算，使用平方误差的基本思想：</p>
+<p><span class="math display">\[
+\mathcal{L} := \left[r + \gamma\max_{a&#39; \in \Gamma(s&#39;)} Q(s&#39;, a&#39;) - Q(s, a)\right]^2
+\]</span></p>
+<p>这里在状态 <span class="math inline">\(s\)</span> 下选择动作 <span class="math inline">\(a\)</span> 会转移到状态 <span class="math inline">\(s&#39;\)</span>。</p>
+<hr />
+<p>另外，我们可以使用两种方法强化 DQN，这两种方法包括 Experience replay 和 Fixed Q targets。</p>
+<p>前者实际上基于 Q learning 的 off policy 特性，我们可以使用以往的训练数据乃至其他机器的经验数据来训练网络。</p>
+<p>后者的含义是使用两个同样结构但是参数不同的网络，一个使用较早的参数来给出估计的 Q 值，而且这个网络的参数几乎不会在训练过程中更新，这个网络代表了过去的经验。一个使用较新的参数来给出现实的 Q 值，这个网络会在训练过程中更新参数并且会被应用到实际场景之中。这样做的原因是取消数据的相关性和提高训练的稳定性，具体的原因后续研讨。</p>
+<h2 id="代码示例-3">代码示例</h2>
+<p>这里我们使用 Tensorflow 实现 DQN，这里我们使用的 DQN 具体算法描述为：</p>
+<ul>
+<li>首先初始化一个容量为 <span class="math inline">\(N\)</span> 的记忆库 <span class="math inline">\(D\)</span> 用于存放先前的经验，这里 <span class="math inline">\(N\)</span> 是先前设定的超参</li>
+<li>随机初始化两个结构一致的神经网络 <span class="math inline">\(Q, \hat Q\)</span>，其初始化参数分别为 <span class="math inline">\(\b\theta, \b\theta^-\)</span>，初始化的时候保证 <span class="math inline">\(\b\theta = \b\theta^-\)</span></li>
+<li>对模型按照下述流程训练 <span class="math inline">\(M\)</span> 个 epoch，这里 <span class="math inline">\(M\)</span> 为先前设定的超参
+<ul>
+<li>假定初始状态 <span class="math inline">\(s_1\)</span>，初始化 <span class="math inline">\(s = s_1\)</span></li>
+<li>重复下述流程直到需要中断
+<ul>
+<li>以超参 <span class="math inline">\(\varepsilon\)</span> 使用 epsilon greedy 策略选取行为 <span class="math inline">\(a := \argmax_{a&#39;} Q(s, a&#39;; \b\theta)\)</span></li>
+<li>令 <span class="math inline">\(r\)</span> 表示在状态 <span class="math inline">\(s\)</span> 的条件下执行行为 <span class="math inline">\(a\)</span> 得到的直接收益</li>
+<li>令 <span class="math inline">\(s&#39;\)</span> 表示在状态 <span class="math inline">\(s\)</span> 的条件下执行行为 <span class="math inline">\(a\)</span> 转移到的状态</li>
+<li>将描述状态转移的元组 <span class="math inline">\((s, a, r; s&#39;)\)</span> 存入 <span class="math inline">\(D\)</span></li>
+<li>计算 loss 为 <span class="math inline">\(\mathcal{L} := \left[r + \gamma\max_{a&#39; \in \Gamma(s&#39;)} \hat Q(s&#39;, a&#39;; \b\theta^-) - Q(s, a; \b\theta)\right]^2\)</span></li>
+<li>反向传播 loss 的梯度，更新 <span class="math inline">\(\b\theta\)</span></li>
+<li>如果此时 <span class="math inline">\(s&#39;\)</span> 是终止状态，则终止流程</li>
+<li>每经过 <span class="math inline">\(C\)</span> 步，令 <span class="math inline">\(\b\theta^- \leftarrow \b\theta\)</span>，即令 <span class="math inline">\(\hat Q\)</span> 更新至 <span class="math inline">\(Q\)</span>，这里 <span class="math inline">\(C\)</span> 是先前设定的超参</li>
+</ul></li>
+</ul></li>
+</ul>
 
     </div>
 
@@ -525,13 +563,13 @@ Q&#39;_{\rm Sarsa}(s, a) := Q(s, a) + \alpha\left[r + \gamma{\color{red} Q(s&#39
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">226k</span>
+    <span title="站点总字数">229k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:26</span>
+    <span title="站点阅读时长">3:28</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
