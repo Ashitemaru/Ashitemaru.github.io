@@ -27,10 +27,12 @@
 <meta property="og:site_name" content="Ashitemaru">
 <meta property="og:description" content="目前实验室的项目和强化学习关系比较大，然而自己确实没有什么强化学习的基础。 实验室的学长似乎有一个不错的强化学习入门学习仓库，感觉可以照着这个慢慢学来。 \[ \newcommand{\b}{\boldsymbol} \newcommand{\argmax}{\mathop{\rm argmax}} \]">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ashitemaru.github.io/uploads/note-of-rl/1.png">
 <meta property="article:published_time" content="2022-06-30T20:44:56.000Z">
 <meta property="article:modified_time" content="2022-06-30T20:44:56.000Z">
 <meta property="article:author" content="Ashitemaru">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ashitemaru.github.io/uploads/note-of-rl/1.png">
 
 
 <link rel="canonical" href="https://ashitemaru.github.io/2022/06/30/note-of-rl/">
@@ -211,7 +213,7 @@ $(function () {
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">强化学习的基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E7%9A%84%E5%88%86%E7%B1%BB"><span class="nav-number">1.1.</span> <span class="nav-text">强化学习方法的分类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#q-learning"><span class="nav-number">2.</span> <span class="nav-text">Q learning</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B"><span class="nav-number">2.1.</span> <span class="nav-text">代码示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sarsa"><span class="nav-number">3.</span> <span class="nav-text">Sarsa</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B-1"><span class="nav-number">3.1.</span> <span class="nav-text">代码示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sarsa-lambda"><span class="nav-number">4.</span> <span class="nav-text">Sarsa lambda</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B-2"><span class="nav-number">4.1.</span> <span class="nav-text">代码示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#deep-q-network-dqn"><span class="nav-number">5.</span> <span class="nav-text">Deep Q Network (DQN)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B-3"><span class="nav-number">5.1.</span> <span class="nav-text">代码示例</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">强化学习的基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E7%9A%84%E5%88%86%E7%B1%BB"><span class="nav-number">1.1.</span> <span class="nav-text">强化学习方法的分类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#q-learning"><span class="nav-number">2.</span> <span class="nav-text">Q learning</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B"><span class="nav-number">2.1.</span> <span class="nav-text">代码示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sarsa"><span class="nav-number">3.</span> <span class="nav-text">Sarsa</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B-1"><span class="nav-number">3.1.</span> <span class="nav-text">代码示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sarsa-lambda"><span class="nav-number">4.</span> <span class="nav-text">Sarsa lambda</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B-2"><span class="nav-number">4.1.</span> <span class="nav-text">代码示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#deep-q-network-dqn"><span class="nav-number">5.</span> <span class="nav-text">Deep Q Network (DQN)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B-3"><span class="nav-number">5.1.</span> <span class="nav-text">代码示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#double-dqn"><span class="nav-number">6.</span> <span class="nav-text">Double DQN</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -369,14 +371,14 @@ $(function () {
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>7.5k</span>
+      <span>9.4k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>7 分钟</span>
+      <span>9 分钟</span>
     </span>
 </div>
 
@@ -506,13 +508,29 @@ Q&#39;_{\rm Sarsa}(s, a) := Q(s, a) + \alpha\left[r + \gamma{\color{red} Q(s&#39
 <li>令 <span class="math inline">\(r\)</span> 表示在状态 <span class="math inline">\(s\)</span> 的条件下执行行为 <span class="math inline">\(a\)</span> 得到的直接收益</li>
 <li>令 <span class="math inline">\(s&#39;\)</span> 表示在状态 <span class="math inline">\(s\)</span> 的条件下执行行为 <span class="math inline">\(a\)</span> 转移到的状态</li>
 <li>将描述状态转移的元组 <span class="math inline">\((s, a, r; s&#39;)\)</span> 存入 <span class="math inline">\(D\)</span></li>
-<li>计算 loss 为 <span class="math inline">\(\mathcal{L} := \left[r + \gamma\max_{a&#39; \in \Gamma(s&#39;)} \hat Q(s&#39;, a&#39;; \b\theta^-) - Q(s, a; \b\theta)\right]^2\)</span></li>
-<li>反向传播 loss 的梯度，更新 <span class="math inline">\(\b\theta\)</span></li>
-<li>如果此时 <span class="math inline">\(s&#39;\)</span> 是终止状态，则终止流程</li>
+<li>从 <span class="math inline">\(D\)</span> 中抽取 <span class="math inline">\(B\)</span> 组数据回放，更新 <span class="math inline">\(\b\theta\)</span>，具体流程见下述，这里 <span class="math inline">\(B\)</span> 是先前设定的超参</li>
+<li>如果此时 <span class="math inline">\(s&#39;\)</span> 是终止状态，则终止流程，否则令 <span class="math inline">\(s \leftarrow s&#39;\)</span>，转移状态</li>
 <li>每经过 <span class="math inline">\(C\)</span> 步，令 <span class="math inline">\(\b\theta^- \leftarrow \b\theta\)</span>，即令 <span class="math inline">\(\hat Q\)</span> 更新至 <span class="math inline">\(Q\)</span>，这里 <span class="math inline">\(C\)</span> 是先前设定的超参</li>
 </ul></li>
 </ul></li>
 </ul>
+<p>具体的学习流程为：</p>
+<ul>
+<li>从 <span class="math inline">\(D\)</span> 中抽取 <span class="math inline">\(B\)</span> 组转移元组</li>
+<li>对每一个元组 <span class="math inline">\((s, a, r; s&#39;)\)</span> 计算 loss 为 <span class="math inline">\(\mathcal{L} := \left[r + \gamma\max_{a&#39; \in \Gamma(s&#39;)} \hat Q(s&#39;, a&#39;; \b\theta^-) - Q(s, a; \b\theta)\right]^2\)</span></li>
+<li>计算梯度将 loss 反向传播到 <span class="math inline">\(\b\theta\)</span> 参数上，完成一次参数更新</li>
+<li>根据具体情况调整 epsilon greedy 参数 <span class="math inline">\(\varepsilon\)</span></li>
+</ul>
+<p>这里使用的网络的数据依赖关系表现为：</p>
+<p><img src="/uploads/note-of-rl/1.png" /></p>
+<p>现在关注具体的代码实现，我们需要注意到我们采用的网络是两层全连接层：</p>
+<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># $&#123;repo&#125;/DQN/dqn.py - def _build_net</span></span><br><span class="line"></span><br><span class="line">self.state = tf.placeholder(tf.float32, [<span class="literal">None</span>, self.n_features], name = <span class="string">&quot;state&quot;</span>)</span><br><span class="line">...</span><br><span class="line"><span class="keyword">with</span> tf.variable_scope(<span class="string">&quot;eval_net&quot;</span>):</span><br><span class="line">    eval_layer = tf.keras.layers.Dense(</span><br><span class="line">        units = <span class="number">20</span>,</span><br><span class="line">        activation = tf.nn.relu,</span><br><span class="line">        kernel_initializer = w_initializer,</span><br><span class="line">        bias_initializer = b_initializer,</span><br><span class="line">        name = <span class="string">&quot;eval_layer&quot;</span></span><br><span class="line">    )(self.state) <span class="comment"># Output: (None, 20)</span></span><br><span class="line">    self.q_eval = tf.keras.layers.Dense(</span><br><span class="line">        units = self.n_actions,</span><br><span class="line">        kernel_initializer = w_initializer,</span><br><span class="line">        bias_initializer = b_initializer,</span><br><span class="line">        name = <span class="string">&quot;q_eval_layer&quot;</span></span><br><span class="line">    )(eval_layer) <span class="comment"># Output: (None, n_actions)</span></span><br></pre></td></tr></table></figure>
+<p>其逻辑是接受一个 <code>(batch_size, n_features)</code> 形状的输入，产生一个 <code>(batch_size, n_actions)</code> 形状的输出。<code>n_features</code> 表示需要多少个特征描述一个状态 <span class="math inline">\(s\)</span>，即状态空间维数。最后的输出则是各个动作的 Q 值。</p>
+<p>在这样的网络设计之下，我们在求取 loss 的时候需要将 <code>(batch_size, n_actions)</code> 形状的输出中每一行挑出我们实际上选取的行为的 Q 值，压缩为 <code>(batch_size, )</code> 形状的 Q 值向量，再求取平方误差。所以就有下述代码：</p>
+<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># $&#123;repo&#125;/DQN/dqn.py - def _build_net</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.variable_scope(<span class="string">&quot;q_target&quot;</span>):</span><br><span class="line">    q_target = self.reward + self.gamma * tf.reduce_max(self.q_next, axis = <span class="number">1</span>, name = <span class="string">&quot;q_max_next_state&quot;</span>)</span><br><span class="line">    self.q_target = tf.stop_gradient(q_target) <span class="comment"># Shape: (None, )</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.variable_scope(<span class="string">&quot;q_eval&quot;</span>):</span><br><span class="line">    action_indices = tf.stack([</span><br><span class="line">        tf.<span class="built_in">range</span>(tf.shape(self.action)[<span class="number">0</span>], dtype = tf.int32), <span class="comment"># Index</span></span><br><span class="line">        self.action <span class="comment"># The index of action</span></span><br><span class="line">    ], axis = <span class="number">1</span>)</span><br><span class="line">    self.q_eval_wrt_action = tf.gather_nd(params = self.q_eval, indices = action_indices) <span class="comment"># Shape: (None, )</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.variable_scope(<span class="string">&quot;loss&quot;</span>):</span><br><span class="line">    self.loss = tf.reduce_mean(tf.squared_difference(</span><br><span class="line">        self.q_target, self.q_eval_wrt_action,</span><br><span class="line">        name = <span class="string">&quot;error&quot;</span></span><br><span class="line">    ))</span><br></pre></td></tr></table></figure>
+<p>这里 <code>q_target</code> 部分只需要直接求取每一行的最大值就可以，而 <code>q_eval</code> 部分需要根据 <code>self.action</code> 压缩网络的输出，得到 <code>q_eval</code>。最后求取平方误差即可。</p>
+<h1 id="double-dqn">Double DQN</h1>
+<p>上述讨论的 DQN 其实有 overestimate 的问题，因为我们每次都会使用旧参数 <span class="math inline">\(\b\theta^-\)</span> 去预测</p>
 
     </div>
 
@@ -563,13 +581,13 @@ Q&#39;_{\rm Sarsa}(s, a) := Q(s, a) + \alpha\left[r + \gamma{\color{red} Q(s&#39
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">229k</span>
+    <span title="站点总字数">231k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:28</span>
+    <span title="站点阅读时长">3:30</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
