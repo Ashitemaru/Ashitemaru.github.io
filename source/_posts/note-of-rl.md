@@ -261,7 +261,71 @@ $$
         - 令 $r$ 表示在状态 $s$ 的条件下执行行为 $a$ 得到的直接收益
         - 令 $s'$ 表示在状态 $s$ 的条件下执行行为 $a$ 转移到的状态
         - 将描述状态转移的元组 $(s, a, r; s')$ 存入 $D$
-        - 计算 loss 为 $\mathcal{L} := \left[r + \gamma\max_{a' \in \Gamma(s')} \hat Q(s', a'; \b\theta^-) - Q(s, a; \b\theta)\right]^2$
-        - 反向传播 loss 的梯度，更新 $\b\theta$
-        - 如果此时 $s'$ 是终止状态，则终止流程
+        - 从 $D$ 中抽取 $B$ 组数据回放，更新 $\b\theta$，具体流程见下述，这里 $B$ 是先前设定的超参
+        - 如果此时 $s'$ 是终止状态，则终止流程，否则令 $s \leftarrow s'$，转移状态
         - 每经过 $C$ 步，令 $\b\theta^- \leftarrow \b\theta$，即令 $\hat Q$ 更新至 $Q$，这里 $C$ 是先前设定的超参
+
+具体的学习流程为：
+
+- 从 $D$ 中抽取 $B$ 组转移元组
+- 对每一个元组 $(s, a, r; s')$ 计算 loss 为 $\mathcal{L} := \left[r + \gamma\max_{a' \in \Gamma(s')} \hat Q(s', a'; \b\theta^-) - Q(s, a; \b\theta)\right]^2$
+- 计算梯度将 loss 反向传播到 $\b\theta$ 参数上，完成一次参数更新
+- 根据具体情况调整 epsilon greedy 参数 $\varepsilon$
+
+这里使用的网络的数据依赖关系表现为：
+
+![](/uploads/note-of-rl/1.png)
+
+现在关注具体的代码实现，我们需要注意到我们采用的网络是两层全连接层：
+
+{% codeblock lang:python Python %}
+# ${repo}/DQN/dqn.py - def _build_net
+
+self.state = tf.placeholder(tf.float32, [None, self.n_features], name = "state")
+...
+with tf.variable_scope("eval_net"):
+    eval_layer = tf.keras.layers.Dense(
+        units = 20,
+        activation = tf.nn.relu,
+        kernel_initializer = w_initializer,
+        bias_initializer = b_initializer,
+        name = "eval_layer"
+    )(self.state) # Output: (None, 20)
+    self.q_eval = tf.keras.layers.Dense(
+        units = self.n_actions,
+        kernel_initializer = w_initializer,
+        bias_initializer = b_initializer,
+        name = "q_eval_layer"
+    )(eval_layer) # Output: (None, n_actions)
+{% endcodeblock %}
+
+其逻辑是接受一个 `(batch_size, n_features)` 形状的输入，产生一个 `(batch_size, n_actions)` 形状的输出。`n_features` 表示需要多少个特征描述一个状态 $s$，即状态空间维数。最后的输出则是各个动作的 Q 值。
+
+在这样的网络设计之下，我们在求取 loss 的时候需要将 `(batch_size, n_actions)` 形状的输出中每一行挑出我们实际上选取的行为的 Q 值，压缩为 `(batch_size, )` 形状的 Q 值向量，再求取平方误差。所以就有下述代码：
+
+{% codeblock lang:python Python %}
+# ${repo}/DQN/dqn.py - def _build_net
+
+with tf.variable_scope("q_target"):
+    q_target = self.reward + self.gamma * tf.reduce_max(self.q_next, axis = 1, name = "q_max_next_state")
+    self.q_target = tf.stop_gradient(q_target) # Shape: (None, )
+
+with tf.variable_scope("q_eval"):
+    action_indices = tf.stack([
+        tf.range(tf.shape(self.action)[0], dtype = tf.int32), # Index
+        self.action # The index of action
+    ], axis = 1)
+    self.q_eval_wrt_action = tf.gather_nd(params = self.q_eval, indices = action_indices) # Shape: (None, )
+
+with tf.variable_scope("loss"):
+    self.loss = tf.reduce_mean(tf.squared_difference(
+        self.q_target, self.q_eval_wrt_action,
+        name = "error"
+    ))
+{% endcodeblock %}
+
+这里 `q_target` 部分只需要直接求取每一行的最大值就可以，而 `q_eval` 部分需要根据 `self.action` 压缩网络的输出，得到 `q_eval`。最后求取平方误差即可。
+
+# Double DQN
+
+上述讨论的 DQN 其实有 overestimate 的问题，因为我们每次都会使用旧参数 $\b\theta^-$ 去预测
