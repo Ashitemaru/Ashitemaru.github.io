@@ -31,7 +31,6 @@ Sakana 单推 ❤。
     - 大三秋季学期《计算机网络原理》
     - 大四秋季学期《抽象代数 (1)》《抽象代数 (2)》
     - 《GAMES101》笔记
-    - 【暑期实习】自动驾驶入门笔记
     - 【实验室】强化学习入门笔记
 - 论文笔记
     - CG
@@ -39,6 +38,7 @@ Sakana 单推 ❤。
     - 流媒体传输
         - Stick - A Harmonious Fusion of Buffer-based and Learning-based Approach for Adaptive Streaming
         - Comyco - Quality-Aware Adaptive Video Streaming via Imitation Learning
+        - Neural Adaptive Video Streaming with Pensieve
 - 日语笔记
     - 语法手册
     - 汉文、汉字读法相关笔记
