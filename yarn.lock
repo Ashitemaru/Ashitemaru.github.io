@@ -604,10 +604,10 @@ hexo-renderer-ejs@^1.0.0:
   dependencies:
     ejs "^2.6.1"
 
-hexo-renderer-pandoc@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/hexo-renderer-pandoc/-/hexo-renderer-pandoc-0.3.0.tgz#c8f4006cfdb9f9999eeeb0302e5275fb2f0bf02d"
-  integrity sha512-6O/OsnKy0RFf5Zgxk3lSxbslld7Nmc83vJZs0H+CNKdiTNfJV+ZAB9c/xAFC1XFwgqwtt5kKUoVMqXds4RZwKA==
+hexo-renderer-pandoc@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/hexo-renderer-pandoc/-/hexo-renderer-pandoc-0.3.1.tgz#62d0ec7bed307bfdd626f36914e7f9d93d0cdf58"
+  integrity sha512-ZTUzLkJHFA6OCzk37xR9PWYydLwuv4qV7iJMe5p88gxiIo3d1M/dOwsIXEra/olcA/y9UKw57qASCby1NseNsw==
 
 hexo-renderer-stylus@^2.0.1:
   version "2.0.1"
