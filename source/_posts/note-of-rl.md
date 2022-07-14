@@ -511,3 +511,13 @@ $$
 $$
 \nabla_{\b\theta}\mathcal{J}(\b\theta) = \opE_{(s, a) \sim \pi_{\b\theta}} \left[\nabla_{\b\theta}\ln \pi_{\b\theta}(a \mid s) \cdot \sum_{k = 0}^{+\infty} \gamma^k r_{t + k + 1}\right]
 $$
+
+## 代码示例
+
+这里使用 Reinforce 方法实现 Policy Gradients，这是最为基本的一种实现方式，是一种回合制更新策略。
+
+首先我们需要在随机策略 $\pi_{\b\theta}$ 指导下得到的一整个回合信息：
+
+$$
+s_1, a_1, r_2; s_2, a_2, r_3; s_3, \cdots; s_{T - 1}, a_{T - 1}, r_T; {\rm terminal}
+$$
