@@ -5349,6 +5349,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <li>杂七杂八
 <ul>
 <li>2022 年新高考 I 卷（江苏）数学答案</li>
+<li>一些原创数学题</li>
 <li>安卓开发感想</li>
 <li>还有一些混乱感想、游戏笔记、歌词记录本</li>
 </ul></li>
@@ -8976,9 +8977,71 @@ Q^{\pi_{\b\theta}}(s, a) = \sum_{s&#39; \in \mathcal{S}} \P_{\pi_{\b\theta}}(s&#
 <p><span class="math display">\[
 \nabla_{\b\theta}\mathcal{J}(\b\theta) = \opE_{(s, a) \sim \pi_{\b\theta}} \left[\nabla_{\b\theta}\ln \pi_{\b\theta}(a \mid s) \cdot \sum_{k = 0}^{+\infty} \gamma^k r_{t + k + 1}\right]
 \]</span></p>
+<h2 id="代码示例-4">代码示例</h2>
+<p>这里使用 Reinforce 方法实现 Policy Gradients，这是最为基本的一种实现方式，是一种回合制更新策略。</p>
+<p>首先我们需要在随机策略 <span class="math inline">\(\pi_{\b\theta}\)</span> 指导下得到的一整个回合信息：</p>
+<p><span class="math display">\[
+s_1, a_1, r_2; s_2, a_2, r_3; s_3, \cdots; s_{T - 1}, a_{T - 1}, r_T; {\rm terminal}
+\]</span></p>
 ]]></content>
       <categories>
         <category>【学习笔记】计算机</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>原创数学题集</title>
+    <url>/2022/07/12/orginal-problems/</url>
+    <content><![CDATA[<p>一些奇妙的数学想法而已，可能是初中、高中、大学题，反正是弄着玩的。</p>
+<span id="more"></span>
+<h1 id="problem-1">Problem 1</h1>
+<p>已知函数 <span class="math inline">\(f(x) = [x](x - [x]), x \geq 0\)</span>，这里 <span class="math inline">\([x]\)</span> 表示不大于 <span class="math inline">\(x\)</span> 的最大整数。</p>
+<p>另外定义函数迭代符号 <span class="math inline">\(f^{(n)}\)</span> 如下：</p>
+<p><span class="math display">\[
+\begin{cases}
+f^{(1)}(x) = f(x) \\
+f^{(k + 1)}(x) = f(f^{(k)}(x)), k \in \mathbb{N}^*
+\end{cases}
+\]</span></p>
+<p>证明：对于任何 <span class="math inline">\(x \geq 0\)</span>，都有：</p>
+<p><span class="math display">\[
+\lim_{n \to \infty} f^{(n)}(x) = 0
+\]</span></p>
+<h2 id="solution">Solution</h2>
+<p>首先证明，<span class="math inline">\(x \geq 1\)</span> 时 <span class="math inline">\(f(x) \leq x - 1\)</span>。</p>
+<p>我们不妨记 <span class="math inline">\(\{x\} := x - [x]\)</span>，显然有 <span class="math inline">\(0 \leq \{x\} &lt; 1\)</span>。进一步，根据 <span class="math inline">\(x \geq 1\)</span> 得知 <span class="math inline">\([x] \geq 1\)</span>，那么显然：</p>
+<p><span class="math display">\[
+([x] - 1)(\{x\} - 1) \leq 0
+\]</span></p>
+<p>展开得到：</p>
+<p><span class="math display">\[
+f(x) = [x]\{x\} \leq [x] + \{x\} - 1 = x - 1
+\]</span></p>
+<p>引理证明完毕，回到原题。</p>
+<p>此外，我们需要了解，若 <span class="math inline">\(x \in [0, 1)\)</span>，则有 <span class="math inline">\([x] = 0\)</span>，即 <span class="math inline">\(f(x) = 0\)</span>。</p>
+<p>那么我们考虑下述数列，我们即需要证明下述数列极限为零：</p>
+<p><span class="math display">\[
+x, f(x), f^{(2)}(x), \cdots, f^{(n)}(x), \cdots
+\]</span></p>
+<p>若 <span class="math inline">\(x \in [0, 1)\)</span>，显然 <span class="math inline">\(f(x) = 0\)</span>，且根据 <span class="math inline">\(f(0) = 0\)</span> 得到 <span class="math inline">\(\forall n \in \mathbb{N}^*\)</span> 有 <span class="math inline">\(f^{(n)}(x) = 0\)</span>，上述数列极限显然为零。</p>
+<p>若 <span class="math inline">\(x \geq 1\)</span>，我们只需要证明必然存在 <span class="math inline">\(k \in \mathbb{N}^*\)</span> 使得 <span class="math inline">\(f^{(k)}(x) &lt; 1\)</span> 即可，因为只要该结论成立，就说明 <span class="math inline">\(f^{(k + 1)}(x) = 0\)</span>，从而之后的所有项均为零，结论成立。</p>
+<p>使用反证法，如果结论不成立，即 <span class="math inline">\(\forall k \in \mathbb{N}^*\)</span> 有 <span class="math inline">\(f^{(k)}(x) \geq 1\)</span>。那么根据引理：</p>
+<p><span class="math display">\[
+f^{(k + 1)}(x) \leq f^{(k)}(x) - 1, k \in \mathbb{N}^*
+\]</span></p>
+<p>所以：</p>
+<p><span class="math display">\[
+f^{([x])}(x) \leq f^{([x] - 1)}(x) - 1 \leq \cdots \leq f^{(0)}(x) - [x] = x - [x] \in [0, 1)
+\]</span></p>
+<p>和假设矛盾，故原结论成立。</p>
+<p>至此，结论证明完毕。</p>
+<h1 id="problem-2">Problem 2</h1>
+<p>已知凸多边形 <span class="math inline">\(\mathcal{A}, \mathcal{B}\)</span> 没有公共点，且 <span class="math inline">\(\mathcal{A}\)</span> 的任何一边不平行于 <span class="math inline">\(\mathcal{B}\)</span> 的任何一边。</p>
+<p>已知点 <span class="math inline">\(A \in \mathcal{A}, B \in \mathcal{B}\)</span>。给出已知向量 <span class="math inline">\(\boldsymbol t\)</span>，且已知 <span class="math inline">\(\vec{AB} \parallel \boldsymbol{t}\)</span>。</p>
+<p>证明：当 <span class="math inline">\(\vec{AB}\)</span> 的长度最小的时候，点 <span class="math inline">\(A, B\)</span> 中必有一个为其所在凸多边形的顶点。</p>
+<h2 id="solution-1">Solution</h2>
+]]></content>
+      <categories>
+        <category>【杂谈】数学</category>
       </categories>
   </entry>
   <entry>
