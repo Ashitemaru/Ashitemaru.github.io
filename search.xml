@@ -341,14 +341,14 @@
 <span id="more"></span>
 <h1 id="section">2022.05.27 - 2022.05.29</h1>
 <p>先回想一下自己需要完成什么事情吧：</p>
-<p>【下述事务列表更新于 7.9，删除、调整部分事务】</p>
+<p>【下述事务列表更新于 7.17，删除、调整部分事务】</p>
 <ul>
 <li>科协
 <ul>
-<li>308 权限系统</li>
-<li>与软工课程的对接安排</li>
+<li>【半搁置状态】308 权限系统</li>
+<li>【半搁置状态】与软工课程的对接安排</li>
 <li>图形学文档编写</li>
-<li>前期文档补助核发</li>
+<li>【半搁置状态】前期文档补助核发</li>
 </ul></li>
 <li>THUInfo
 <ul>
@@ -705,6 +705,14 @@
 <p>实习那边交掉了一份 demo 代码，得到了认可，还算不错。但是实验室这边的进展一直缓慢，正在考虑到底怎么做比较好了。</p>
 <p>妹妹从南京回来快一个星期了，除了 14 号带着去了一趟万象城看看电脑和 iPad，我自己打了一小会滴蜡熊之外，好像也没有什么可以叙说的事情了。</p>
 <p>Sakana 这几天一直在练车，完全没有什么可以交流的时间。所以我自己要不还是好好干活吧。</p>
+<h1 id="section-30">2022.07.15 - 2022.07.17</h1>
+<p>现在有点不太想写日记了，日记已经好几天没好好写了，但其实也和这几天没有发生什么大事有关系吧。</p>
+<p>15 号是东方群的聚会，还是日常的麦当劳自闭角见面，下午打麻将，顺手还打了剧本杀，晚上小菜园吃完饭，去唱 K。</p>
+<p>16 号没有发生什么事情，单纯在睡觉，非常无趣，晚上去了中骏世界城转了一圈，打了打舞立方和台球，然后步行四公里回家。</p>
+<p>17 号上午去练科目三了，结果回来巨困，睡了一天。</p>
+<p>这一周因为无穷无尽的应酬其实折磨得有点难受，不过现在已经答应了不会轻易出门吃晚饭，这样还是不错的。然后自己也应下来了科目三的事情，尽量七月底能拿到驾照，解决掉一件事情还是不错的。之后和黄天驰学长交流还算顺利。</p>
+<p>下周还是赶快做事情，实习的事情，实验室的事情，抽象代数和日语再咕咕咕一下应该也没有什么事情。</p>
+<p>八月，空出来享受一下暑假。</p>
 ]]></content>
       <categories>
         <category>【生活记录】假期日记</category>
@@ -5309,7 +5317,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
     <url>/2021/09/17/navigation/</url>
     <content><![CDATA[<p>这里是 Ashitemaru，清华大学计算机科学与技术系本科、预计本系直博。做过 NLP，干过 CG，现在做流媒体传输。对数学，尤其是代数比较有兴趣。</p>
 <p>开发过 THUInfo，负责其 iOS 版本维护。大二任系学生科协网络部副主席，负责技能引导文档维护。两个项目的链接均在网页侧边栏。</p>
-<p>打日麻，打音游，主修 osu! mania 和 Project Sekai 等下落式音游，街机音游均不擅长。雀魂账号和 osu! mania 账号名均为 Ashitemaru。</p>
+<p>打日麻，打音游，主修 osu! mania 和 Project Sekai 等下落式音游，街机音游均不擅长。正在尝试舞萌 DX 即 maimai。雀魂账号和 osu! mania 账号名均为 Ashitemaru。</p>
 <p>V+ 人，推 Giga、utsu-P 等曲风激烈的 P 主，没有歌姬倾向，抒情曲也会听。</p>
 <p>Sakana 单推 ❤。</p>
 <hr />
@@ -5392,13 +5400,73 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <span id="more"></span>
 <h1 id="抽象代数引论">抽象代数引论</h1>
 <p>我们现在关注几何体的对称性，不妨先考虑下述定义：</p>
-<div class="note info"><p><strong>Definition 1.01</strong> 我们定义标准欧氏空间 <span class="math inline">\(\mathbb R^n\)</span> 上的<strong>等距（Isometry）</strong>变换 <span class="math inline">\(f: \mathbb R^n \to \mathbb R^n\)</span> 是满足对于任何的 <span class="math inline">\(x, y \in \mathbb R^n\)</span> 都有：</p>
+<div class="note info no-icon"><p><strong>Definition 1.01</strong> 我们定义标准欧氏空间 <span class="math inline">\(\mathbb R^n\)</span> 上的<strong>等距（Isometry）</strong>变换 <span class="math inline">\(f: \mathbb R^n \to \mathbb R^n\)</span> 是满足对于任何的 <span class="math inline">\(x, y \in \mathbb R^n\)</span> 都有：</p>
 <p><span class="math display">\[
 d(x, y) = d(f(x), f(y))
 \]</span></p>
 <p>的变换。</p>
 <p>这里 <span class="math inline">\(d(x, y)\)</span> 表示欧氏空间 <span class="math inline">\(\mathbb R^n\)</span> 上两点 <span class="math inline">\(x, y\)</span> 的欧氏距离。</p>
 </div>
+<p>此外，我们沿用下述定义：</p>
+<div class="note info no-icon"><p><strong>Definition 1.02</strong> 已知内积空间 <span class="math inline">\(V\)</span> 上的线性变换 <span class="math inline">\(\mathcal{A}: V \to V\)</span>，我们称 <span class="math inline">\(\mathcal{A}\)</span> 是<strong>正交变换</strong>，如果其保持内积，即对于任何的 <span class="math inline">\(x, y \in V\)</span>，都有：</p>
+<p><span class="math display">\[
+x \cdot y = \mathcal{A}(x) \cdot \mathcal{A}(y)
+\]</span></p>
+<p>这里 <span class="math inline">\(\cdot\)</span> 表示线性空间 <span class="math inline">\(V\)</span> 上的内积。</p>
+</div>
+<p>我们可以证明下述定理：</p>
+<div class="note success no-icon"><p><strong>Theorem 1.01</strong> 任何的等距变换均可以唯一分解为一个正交变换和平移变换的复合。</p>
+</div>
+<p>不妨假设我们我们现在讨论的是 <span class="math inline">\(\mathbb{R}^n\)</span> 上的等距变换 <span class="math inline">\(f\)</span>，不妨定义 <span class="math inline">\(a := f(\boldsymbol{0}_n)\)</span>，定义平移变换：</p>
+<p><span class="math display">\[
+g: x \mapsto x - a
+\]</span></p>
+<p>我们下面只需要证明 <span class="math inline">\(h := g \circ f\)</span> 是一个正交变换即可说明该分解的存在性，因为如果该断言成立就说明 <span class="math inline">\(f = g^{-1} \circ h\)</span>，这样就构造出了 <span class="math inline">\(f\)</span> 的分解。</p>
+<p>首先显然能够得到 <span class="math inline">\(h\)</span> 也是等距变换，这里省略证明。同时我们还得知 <span class="math inline">\(h\)</span> 保原点，即 <span class="math inline">\(h(\boldsymbol{0}_n) = \boldsymbol{0}_n\)</span>。</p>
+<p>现在我们讨论的内积空间是 <span class="math inline">\(\mathbb{R}^n\)</span>。基于此，根据 <span class="math inline">\(h\)</span> 的等距性质得到对于任何的 <span class="math inline">\(x, y \in \mathbb{R}^n\)</span> 都有：</p>
+<p><span class="math display">\[
+[h(x) - h(y)]^T[h(x) - h(y)] = (x - y)^T(x - y)
+\]</span></p>
+<p>令 <span class="math inline">\(y = \boldsymbol{0}_n\)</span> 得到对于任何的 <span class="math inline">\(x \in \mathbb{R}^n\)</span> 都有：</p>
+<p><span class="math display">\[
+h(x)^Th(x) = x^Tx
+\]</span></p>
+<p>展开上述根据等距变换得到的式子：</p>
+<p><span class="math display">\[
+h(x)^Th(x) + h(y)^Th(y) - 2h(x)^Th(y) = x^Tx + y^Ty - 2x^Ty
+\]</span></p>
+<p>根据推论即可知道 <span class="math inline">\(h(x)^Th(x) = x^Tx, h(y)^Th(y) = y^Ty\)</span>，即可得到对于任何的 <span class="math inline">\(x, y \in \mathbb{R}^n\)</span> 都有：</p>
+<p><span class="math display">\[
+h(x)^Th(y) = x^Ty
+\]</span></p>
+<p>这说明了 <span class="math inline">\(h\)</span> 是保内积的。</p>
+<p>那么任意取 <span class="math inline">\(x_1 \neq x_2, y_1, y_2 \in \mathbb{R}^n\)</span>，显然有：</p>
+<p><span class="math display">\[
+h(x_i)^Th(y_1 + y_2) = x_i^T(y_1 + y_2) = x_i^Ty_1 + x_i^Ty_2 = h(x_i)^Th(y_1) + h(x_i)^Th(y_2) 
+\]</span></p>
+<p>这里 <span class="math inline">\(i \in \{1, 2\}\)</span>，从而：</p>
+<p><span class="math display">\[
+h(x_i)^T[h(y_1 + y_2) - h(y_1) - h(y_2)] = 0，i \in \{1, 2\}
+\]</span></p>
+<p>两式作差：</p>
+<p><span class="math display">\[
+[h(x_1) - h(x_2)]^T[h(y_1 + y_2) - h(y_1) - h(y_2)] = 0
+\]</span></p>
+<p>显然 <span class="math inline">\(h(x_1) \neq h(x_2)\)</span>，否则 <span class="math inline">\(|h(x_1) - h(x_2)| = 0 \neq |x_1 - x_2|\)</span>。所以只能得到：</p>
+<p><span class="math display">\[
+h(y_1 + y_2) = h(y_1) + h(y_2)
+\]</span></p>
+<p>同样，任意取 <span class="math inline">\(x_1 \neq x_2, y \in \mathbb{R}^n\)</span> 以及 <span class="math inline">\(a \in \mathbb{R}\)</span>，也能同理推出下述：</p>
+<p><span class="math display">\[
+[h(x_1) - h(x_2)]^T[h(ay) - ah(y)] = 0
+\]</span></p>
+<p>最后得到：</p>
+<p><span class="math display">\[
+h(ay) = ah(y)
+\]</span></p>
+<p>这就说明了 <span class="math inline">\(h\)</span> 是线性的，结合其保内积的性质得知 <span class="math inline">\(h\)</span> 是正交变换。</p>
+<hr />
+<p>下面说明这样的分解唯一。事实上我们只需要考虑正交变换保原点即可得知分解出的平移变换仅有可能是 <span class="math inline">\(g: x \mapsto x + f(\boldsymbol{0}_n)\)</span>。而根据平移变换的可逆性，显然不可能具有多个正交变换 <span class="math inline">\(h\)</span> 令 <span class="math inline">\(f = h \circ g\)</span>，即仅有可能令 <span class="math inline">\(h := f \circ g^{-1}\)</span>，唯一性证明完毕。</p>
 ]]></content>
       <categories>
         <category>【学习笔记】数学</category>
