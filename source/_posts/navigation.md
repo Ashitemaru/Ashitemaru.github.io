@@ -10,7 +10,7 @@ category:
 
 开发过 THUInfo，负责其 iOS 版本维护。大二任系学生科协网络部副主席，负责技能引导文档维护。两个项目的链接均在网页侧边栏。
 
-打日麻，打音游，主修 osu! mania 和 Project Sekai 等下落式音游，街机音游均不擅长。雀魂账号和 osu! mania 账号名均为 Ashitemaru。
+打日麻，打音游，主修 osu! mania 和 Project Sekai 等下落式音游，街机音游均不擅长。正在尝试舞萌 DX 即 maimai。雀魂账号和 osu! mania 账号名均为 Ashitemaru。
 
 V+ 人，推 Giga、utsu-P 等曲风激烈的 P 主，没有歌姬倾向，抒情曲也会听。
 
