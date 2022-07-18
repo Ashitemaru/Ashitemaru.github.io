@@ -388,18 +388,26 @@ Policy Gradients 基于随机策略，也就是我们需要给出在某个状态
 
 显然这样的 $\pi_{\b\theta}$ 代表了一个行为决策空间 $\mathcal{A}$ 上的一个分布。
 
-那么我们可以类似地定义出一个行为评估函数（这里由于 MathJAX 的渲染问题，使用冒号代替表示条件概率的竖线）：
+我们首先定义累计收益：
 
 $$
-Q^{\pi_{\b\theta}}(s, a) := \opE_{a \sim \pi_{\b\theta}} \left[\sum_{k = 0}^{+\infty} \gamma^k r_{t + k + 1}: s_t = s, a_t = a\right]
+G_t(\b\tau) := \sum_{k = 0}^{+\infty} \gamma^k r_{t + k + 1}
 $$
 
-定义的含义也是直观的，这个评估函数的值就是在第 $t$ 时刻，状态和行为分别为 $s, a$ 的时候，后续能获取的收益的期望。这里 $\gamma$ 是先前介绍过的奖励衰减指数，我们将未来所有的收益全部相加作为总收益。
+这里 $\b\tau$ 是一个已知的转移过程，$G_t(\b\tau)$ 就表示沿着已知的转移过程 $\b\tau$，从时刻 $t$ 开始能获得的累计收益。$\gamma$ 则是先前介绍过的奖励衰减指数，我们将未来所有的收益全部相加作为总收益。
 
-另外，由于我们知道给定状态 $s$ 的时候行为 $a$ 的分布，所以我们可以定义一个不需要给定具体行为的，仅针对状态进行评估的状态函数：
+那么我们可以基于此定义出一个行为评估函数：
 
 $$
-V^{\pi_{\b\theta}}(s) := \sum_{a \in \mathcal{A}} \pi_{\b\theta}(a \mid s)Q^{\pi_{\b\theta}}(s, a) = \opE_{a \sim \pi_{\b\theta}} \left[\sum_{k = 0}^{+\infty} \gamma^k r_{t + k + 1}: s_t = s\right]
+Q^{\pi_{\b\theta}}(s, a) := \opE_{\b\tau \sim \pi_{\b\theta}} \left[G_t(\b\tau) \mid s_t = s, a_t = a\right]
+$$
+
+定义的含义也是直观的，这个评估函数的值就是随机取出一个在第 $t$ 时刻，状态和行为分别为 $s, a$ 的转移过程 $\b\tau$，求取后续能获取的收益的期望。
+
+另外，由于我们知道给定状态 $s$ 的时候行为 $a$ 的分布就是随机策略 $\pi_{\b\theta}$ 指定的，所以我们可以定义一个不需要给定具体行为的，仅针对状态进行评估的状态函数：
+
+$$
+V^{\pi_{\b\theta}}(s) := \sum_{a \in \mathcal{A}} \pi_{\b\theta}(a \mid s)Q^{\pi_{\b\theta}}(s, a) = \opE_{\b\tau \sim \pi_{\b\theta}} \left[G_t(\b\tau) \mid s_t = s\right]
 $$
 
 此外，我们可以注意到这个随机策略实际上定义了一个在状态空间 $\mathcal{S}$ 上的 Markov chain，那么我们就有下述稳态概率的定义：
@@ -500,24 +508,187 @@ $$
 \nabla_{\b\theta}\mathcal{J}(\b\theta) = \opE_{(s, a) \sim \pi_{\b\theta}} [Q^{\pi_{\b\theta}}(s, a)\nabla_{\b\theta}\ln \pi_{\b\theta}(a \mid s)]
 $$
 
-当然，我们还可以继续展开评估函数：
+为了计算这个期望，我们可以通过 $\pi_{\b\theta}$ 确定转移过程 $\b\tau$，之后将转移过程上的所有 $(s, a)$ 代入：
 
 $$
-\nabla_{\b\theta}\mathcal{J}(\b\theta) = \opE_{(s, a) \sim \pi_{\b\theta}} \left[\nabla_{\b\theta}\ln \pi_{\b\theta}(a \mid s) \cdot \E\left[\sum_{k = 0}^{+\infty} \gamma^k r_{t + k + 1}: s_t = s, a_t = a\right]\right]
+\nabla_{\b\theta}\mathcal{J}(\b\theta) = \opE_{\b\tau \sim \pi_{\b\theta}} \frac{1}{|\b\tau|} \sum_{(s, a) \in \b\tau} [Q^{\pi_{\b\theta}}(s, a)\nabla_{\b\theta}\ln \pi_{\b\theta}(a \mid s)]
 $$
 
-也就是：
+将之前定义的评估函数代入：
 
 $$
-\nabla_{\b\theta}\mathcal{J}(\b\theta) = \opE_{(s, a) \sim \pi_{\b\theta}} \left[\nabla_{\b\theta}\ln \pi_{\b\theta}(a \mid s) \cdot \sum_{k = 0}^{+\infty} \gamma^k r_{t + k + 1}\right]
+\nabla_{\b\theta}\mathcal{J}(\b\theta) = \opE_{\b\tau \sim \pi_{\b\theta}} \frac{1}{|\b\tau|} \sum_{(s, a) \in \b\tau} [G_t\nabla_{\b\theta}\ln \pi_{\b\theta}(a \mid s)]
 $$
 
 ## 代码示例
 
 这里使用 Reinforce 方法实现 Policy Gradients，这是最为基本的一种实现方式，是一种回合制更新策略。
 
-首先我们需要在随机策略 $\pi_{\b\theta}$ 指导下得到的一整个回合信息：
+首先我们使用两层全连接层作为随机策略，其参数为 $\b\theta$，网络整体结构为：
+
+![](/uploads/note-of-rl/2.png)
+
+之后我们需要在随机策略 $\pi_{\b\theta}$ 指导下得到的一整个回合信息：
 
 $$
-s_1, a_1, r_2; s_2, a_2, r_3; s_3, \cdots; s_{T - 1}, a_{T - 1}, r_T; {\rm terminal}
+s_1, a_1, r_2; s_2, a_2, r_3; s_3, \cdots; s_T, a_T, r_{T + 1}; {\rm terminal}
 $$
+
+在将状态、行为、奖励列表传入网络之前，我们需要对奖励列表根据参数 $\gamma$ 作出衰减并累计，同时将其均值归零标准差归一，这样就完成了 reward 的规范化。
+
+下面考虑我们之前计算的梯度：
+
+$$
+\nabla_{\b\theta}\mathcal{J}(\b\theta) = \opE_{\b\tau \sim \pi_{\b\theta}} \frac{1}{|\b\tau|} \sum_{(s, a) \in \b\tau} [G_t\nabla_{\b\theta}\ln \pi_{\b\theta}(a \mid s)]
+$$
+
+这里上述序列就是一个简单的抽样，我们用该抽样近似表示期望，这样就能够得到更新为：
+
+$$
+\nabla_{\b\theta}\mathcal{J}(\b\theta) = \frac{1}{T}\sum_{i = 1}^T [G_i \nabla_{\b\theta}\ln \pi_{\b\theta}(a_i \mid s_i)] = \frac{1}{T}\sum_{i = 1}^T [r_{i + 1}\nabla_{\b\theta}\ln \pi_{\b\theta}(a_i \mid s_i)]
+$$
+
+考虑到 $r_{i + 1}$ 对 $\b\theta$ 是常数，那么：
+
+$$
+\nabla_{\b\theta}\mathcal{J}(\b\theta) = \nabla_{\b\theta}\frac{1}{T}\sum_{i = 1}^T [r_{i + 1}\ln \pi_{\b\theta}(a_i \mid s_i)]
+$$
+
+梯度是容易实现的，我们只需要计算出下述式子（即目标式）：
+
+$$
+\frac{1}{T}\sum_{i = 1}^T [r_{i + 1}\ln \pi_{\b\theta}(a_i \mid s_i)]
+$$
+
+然后将其传入优化器，交由优化器推算其梯度并附加到 $\b\theta$ 上即可。
+
+基于这个式子，我们观察代码中 loss 的计算：
+
+{% codeblock lang:python Python %}
+# ${repo}/Policy-gradients/pg.py - def _build_net
+
+all_action = tf.keras.layers.Dense(...)
+
+with tf.name_scope("loss"):
+    # To maximize total reward (log_p * R) is to minimize -(log_p * R)
+    # And the tf only have minimize(loss)
+    neg_log_prob = tf.nn.sparse_softmax_cross_entropy_with_logits(
+        logits = all_action,
+        labels = self.tf_action_list) # This is negative log of chosen action
+
+    loss = tf.reduce_mean(neg_log_prob * self.tf_reward_list) # Reward guided loss
+{% endcodeblock %}
+
+这里用到了 `tf.nn.sparse_softmax_cross_entropy_with_logits` 函数，这个函数接受的参数中 `logits` 形状为 `[batch_size, n_action]`，`labels` 形状为 `[n_action]`，`labels` 参数中的项代表该 batch 给出的分类结果。返回值的形状则为 `[n_action]`。
+
+对于每一个 batch，该函数首先将 `logits` 对应行取 softmax，并取出序号为 `labels` 参数指定的项，取其负对数作为该 batch 的结果。
+
+比如对于某 batch，其 `logits` 为 $\{L_j\}_{1 \leq j \leq N}$，这里 $N$ 为 `n_action`，而该 batch 的 `labels` 为 $M(1 \leq M \leq N)$，那么最后对该 batch，该函数返回：
+
+$$
+R = -\ln\left(\frac{e^{L_M}}{\sum_{j = 1}^N e^{L_j}}\right)
+$$
+
+而我们也发现我们也是通过 softmax 来定义动作的概率：
+
+{% codeblock lang:python Python %}
+# ${repo}/Policy-gradients/pg.py - def _build_net
+
+self.all_action_prob = tf.nn.softmax(all_action, name = "action_prob")
+{% endcodeblock %}
+
+也就是说：
+
+$$
+\pi_{\b\theta}(a_i \mid s_i) = \frac{e^{L_{a_i}}}{\sum_{j = 1}^N e^{L_j}}
+$$
+
+所以 `tf.nn.sparse_softmax_cross_entropy_with_logits` 的返回值实际上就是下述数列构成的向量：
+
+$$
+-\ln\pi_{\b\theta}(a_1 \mid s_1), -\ln\pi_{\b\theta}(a_2 \mid s_2), \cdots, -\ln\pi_{\b\theta}(a_i \mid s_i), \cdots, -\ln\pi_{\b\theta}(a_T \mid s_T)
+$$
+
+将这个数列和规范化后的 reward 数组逐项相乘，求取所有积的平均值就得到了目标式的相反数。这里求出其相反数的目的是通过优化器最小化负梯度，得到最大化梯度从而实现梯度上升。
+
+这样我们就给出了 Policy gradients 的基本实现。
+
+# Actor Critic
+
+我们注意到 Q Learning 无法处理决策空间无限的问题，而 Policy Gradients 又仅能完成回合更新，效率低。为了结合这两者的优点，这里介绍 Actor Critic 网络。
+
+Actor Critic 的基本思路是，利用一个基于概率的 Actor 网络随机给出行为，利用一个基于价值的 Critic 网络给出 Actor 网络行为的评价。具体而言，Actor 网络不断进行梯度上升，而 Critic 网络会判定本次上升是否合理，其会根据其学习到的规则来衰减本次 Actor 的梯度上升。
+
+## 数学推理
+
+这里我们聚焦于 Actor Critic 的基本数学原理，我们思考 Policy Gradients 的梯度计算：
+
+$$
+\nabla_{\b\theta}\mathcal{J}(\b\theta) = \opE_{\b\tau \sim \pi_{\b\theta}} \frac{1}{|\b\tau|} \sum_{(s, a) \in \b\tau} [Q^{\pi_{\b\theta}}(s, a)\nabla_{\b\theta}\ln \pi_{\b\theta}(a \mid s)]
+$$
+
+我们下面将其扩展为 Actor 网络的行为。
+
+现在由于引入了 Critic 网络，所以 Actor 的更新也变成了在线单步更新。也就是说我们在逐探索转移过程，在某一时刻到达状态 $s$，并且根据 Actor 网络 $\pi_{\b\theta}$ 选择了行为 $a$，那么此时只需要完成下述单步更新即可：
+
+$$
+\b\theta \leftarrow \b\theta + \alpha_{\b\theta}Q^{\b w}(s, a)\nabla_{\b\theta}\ln \pi_{\b\theta}(a \mid s)
+$$
+
+这里 $\alpha_{\b\theta}$ 为 Actor 网络 $\pi_{\b\theta}$ 的学习率，这里 $\b w$ 是 Critic 网络的参数。
+
+注意到这里 $Q$ 的参数是 $\b w$ 而非 $\b\theta$，这是因为我们需要将 Actor 的评价权力交给 Critic 网络，用 Critic 的输出来控制 Actor 参数的更新。
+
+而 Critic 的数学原理就是 Q Learning 的 TD Error 思想。观察我们对一个状态的价值评估函数：
+
+$$
+V^{\b w}(s) = \opE_{\b\tau \sim \b w} \left[G_t(\b\tau) \mid s_t = s\right]
+$$
+
+而另外一方面：
+
+$$
+G_t(\b\tau) = \sum_{k = 0}^{+\infty} \gamma^k r_{t + k + 1} = r_{t + 1} + \gamma\sum_{k = 0}^{+\infty} \gamma^k r_{t + k + 2} = r_{t + 1} + \gamma G_{t + 1}(\b\tau)
+$$
+
+所以：
+
+$$
+\begin{aligned}
+V^{\b w}(s) &= \opE_{\b\tau \sim \b w} \left[G_t(\b\tau) \mid s_t = s\right] \\
+&= \opE_{\b\tau \sim \b w} \left[r_{t + 1} + \gamma G_{t + 1}(\b\tau) \mid s_t = s\right] \\
+&= r_{t + 1} + \gamma\opE_{\b\tau \sim \b w}\left[G_{t + 1}(\b\tau) \mid s_t = s\right] \\
+&= r_{t + 1} + \gamma\opE_{\b\tau \sim \b w}\left[G_{t + 1}(\b\tau) \mid s_{t + 1} = s'\right] \\
+&= r_{t + 1} + \gamma V^{\b w}(s')
+\end{aligned}
+$$
+
+这里 $s'$ 为转移过程中 $s$ 的下一个状态。这说明了 $r_{t + 1} + \gamma V^{\b w}(s') - V^{\b w}(s)$ 构成了一个无偏估计，从而可以用此修正对 $V^{\b w}$ 的估计。而这里 $r_{t + 1} + \gamma V^{\b w}(s') - V^{\b w}(s)$ 就被称为 TD Error。
+
+上述推理对 $Q^{\b w}$ 依然有效，与之对应的 $r_{t + 1} + \gamma Q^{\b w}(s', a') - Q^{\b w}(s, a)$ 也可以称为 TD Error。
+
+从而 Critic 网络的更新策略为首先计算 TD Error：
+
+$$
+\delta_t \leftarrow r_{t + 1} + \gamma Q^{\b w}(s', a') - Q^{\b w}(s, a)
+$$
+
+之后用 TD Error 更新 Critic 网络参数：
+
+$$
+\b w \leftarrow \b w + \alpha_{\b w}\delta_t\nabla_{\b w}Q^{\b w}(s, a)
+$$
+
+这也就是最经典的 Actor Critic 算法。
+
+## 代码示例
+
+这里采用这样的网络结构：
+
+![](/uploads/note-of-rl/3.png)
+
+Critic 网络的结构很简单，其接受一个状态，输出这个状态的价值。而其 loss 的计算即为 TD Error 的平方，而 TD Error 的计算为直接奖励加上下一个状态的价值预估减去当前状态的价值。
+
+这样我们训练 Critic 的方法就很明确，只需要不断在状态转移过程中计算 TD Error 后平方并将其反向传播即可。
+
+Critic 引导 Actor 的方式为将 TD Error 传递给 Actor
