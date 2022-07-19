@@ -391,7 +391,7 @@ Policy Gradients 基于随机策略，也就是我们需要给出在某个状态
 我们首先定义累计收益：
 
 $$
-G_t(\b\tau) := \sum_{k = 0}^{+\infty} \gamma^k r_{t + k + 1}
+G_t(\b\tau) := \sum_{k = 0}^{+\infty} \gamma^k r_{t + k}
 $$
 
 这里 $\b\tau$ 是一个已知的转移过程，$G_t(\b\tau)$ 就表示沿着已知的转移过程 $\b\tau$，从时刻 $t$ 开始能获得的累计收益。$\gamma$ 则是先前介绍过的奖励衰减指数，我们将未来所有的收益全部相加作为总收益。
@@ -531,7 +531,7 @@ $$
 之后我们需要在随机策略 $\pi_{\b\theta}$ 指导下得到的一整个回合信息：
 
 $$
-s_1, a_1, r_2; s_2, a_2, r_3; s_3, \cdots; s_T, a_T, r_{T + 1}; {\rm terminal}
+s_1, a_1, r_1; s_2, a_2, r_2; s_3, \cdots; s_T, a_T, r_T; {\rm terminal}
 $$
 
 在将状态、行为、奖励列表传入网络之前，我们需要对奖励列表根据参数 $\gamma$ 作出衰减并累计，同时将其均值归零标准差归一，这样就完成了 reward 的规范化。
@@ -545,19 +545,19 @@ $$
 这里上述序列就是一个简单的抽样，我们用该抽样近似表示期望，这样就能够得到更新为：
 
 $$
-\nabla_{\b\theta}\mathcal{J}(\b\theta) = \frac{1}{T}\sum_{i = 1}^T [G_i \nabla_{\b\theta}\ln \pi_{\b\theta}(a_i \mid s_i)] = \frac{1}{T}\sum_{i = 1}^T [r_{i + 1}\nabla_{\b\theta}\ln \pi_{\b\theta}(a_i \mid s_i)]
+\nabla_{\b\theta}\mathcal{J}(\b\theta) = \frac{1}{T}\sum_{i = 1}^T [G_i \nabla_{\b\theta}\ln \pi_{\b\theta}(a_i \mid s_i)]
 $$
 
-考虑到 $r_{i + 1}$ 对 $\b\theta$ 是常数，那么：
+考虑到 $G_{i}$ 对 $\b\theta$ 是常数，那么：
 
 $$
-\nabla_{\b\theta}\mathcal{J}(\b\theta) = \nabla_{\b\theta}\frac{1}{T}\sum_{i = 1}^T [r_{i + 1}\ln \pi_{\b\theta}(a_i \mid s_i)]
+\nabla_{\b\theta}\mathcal{J}(\b\theta) = \nabla_{\b\theta}\frac{1}{T}\sum_{i = 1}^T [G_{i}\ln \pi_{\b\theta}(a_i \mid s_i)]
 $$
 
 梯度是容易实现的，我们只需要计算出下述式子（即目标式）：
 
 $$
-\frac{1}{T}\sum_{i = 1}^T [r_{i + 1}\ln \pi_{\b\theta}(a_i \mid s_i)]
+\frac{1}{T}\sum_{i = 1}^T [G_{i}\ln \pi_{\b\theta}(a_i \mid s_i)]
 $$
 
 然后将其传入优化器，交由优化器推算其梯度并附加到 $\b\theta$ 上即可。
@@ -618,6 +618,8 @@ $$
 我们注意到 Q Learning 无法处理决策空间无限的问题，而 Policy Gradients 又仅能完成回合更新，效率低。为了结合这两者的优点，这里介绍 Actor Critic 网络。
 
 Actor Critic 的基本思路是，利用一个基于概率的 Actor 网络随机给出行为，利用一个基于价值的 Critic 网络给出 Actor 网络行为的评价。具体而言，Actor 网络不断进行梯度上升，而 Critic 网络会判定本次上升是否合理，其会根据其学习到的规则来衰减本次 Actor 的梯度上升。
+
+单步更新还有一个好处，如果一个完整的转移过程 $\b\tau$ 中既需要上升参数，又需要下降参数，这两个都需要细节学习的内容会因为沿着路径累计而消失，从而两者均没有学习到。
 
 ## 数学推理
 
@@ -681,14 +683,209 @@ $$
 
 这也就是最经典的 Actor Critic 算法。
 
+# Advantage Actor Critic (A2C)
+
+我们注意到直接让 Critic 学习 Q 值存在一个问题，那就是 Q 值均值很大，但是波动很小。在均值很大的背景下，较小的波动的分布可能被网络忽略，所以相比较于直接使用 Q 值，我们不妨设立 Baseline 函数，替换为使用 Q 值和 Baseline 的差值。这个差值就是 Advantage 函数。
+
+我们首先需要在数学上论证引入 Baseline 并不影响无偏性，也就是说需要证明：
+
+$$
+\begin{aligned}
+\nabla_{\b\theta}\mathcal{J}(\b\theta) &= \opE_{\b\tau \sim \pi_{\b\theta}} \frac{1}{|\b\tau|} \sum_{(s, a) \in \b\tau} [Q^{\b w}(s, a)\nabla_{\b\theta}\ln \pi_{\b\theta}(a \mid s)] \\
+&= \opE_{\b\tau \sim \pi_{\b\theta}} \frac{1}{|\b\tau|} \sum_{(s, a) \in \b\tau} [(Q^{\b w}(s, a) - b(s)) \nabla_{\b\theta}\ln \pi_{\b\theta}(a \mid s)]
+\end{aligned}
+$$
+
+事实上，我们只需要令 Baseline 函数和行为 $a$ 无关，就可以保证上述关系成立。证明思路为考虑下面的式子，如下，首先展开数学期望：
+
+$$
+\begin{aligned}
+&\opE_{\b\tau \sim \pi_{\b\theta}} \frac{1}{|\b\tau|} \sum_{(s, a) \in \b\tau} [b(s) \nabla_{\b\theta}\ln \pi_{\b\theta}(a \mid s)] \\
+=& \opE_{(s, a) \sim \pi_{\b\theta}} [b(s) \nabla_{\b\theta}\ln \pi_{\b\theta}(a \mid s)] \\
+=& \int_{s \in \mathcal{S}} d^{\pi_{\b\theta}}(s) \int_{a \in \mathcal{A}} \pi_{\b\theta}(a \mid s) [b(s) \nabla_{\b\theta}\ln \pi_{\b\theta}(a \mid s)] {\rm d}a {\rm d}s \\
+\end{aligned}
+$$
+
+根据：
+
+$$
+\pi_{\b\theta}(a \mid s) \cdot \nabla_{\b\theta}\ln \pi_{\b\theta}(a \mid s) = \nabla_{\b\theta}\pi_{\b\theta}(a \mid s)
+$$
+
+得到下述：
+
+$$
+{\rm LHS} = \int_{s \in \mathcal{S}} d^{\pi_{\b\theta}}(s) \int_{a \in \mathcal{A}} b(s) \nabla_{\b\theta} \pi_{\b\theta}(a \mid s) {\rm d}a {\rm d}s \\
+$$
+
+考虑到 $b(s)$ 和 $a$ 的无关性，继续展开得到：
+
+$$
+\begin{aligned}
+{\rm LHS} &= \int_{s \in \mathcal{S}} d^{\pi_{\b\theta}}(s)b(s) \nabla_{\b\theta}\left[\int_{a \in \mathcal{A}} \pi_{\b\theta}(a \mid s) {\rm d}a\right] {\rm d}s \\
+&= \int_{s \in \mathcal{S}} d^{\pi_{\b\theta}}(s)b(s) (\nabla_{\b\theta} 1) {\rm d}s \\
+&= 0
+\end{aligned}
+$$
+
+据此显然就能得到无偏性依然保持。
+
+我们一般选取的 Baseline 函数就是该状态的评价函数 $V^{\b w}(s)$，所以此时我们定义 Advantage 函数：
+
+$$
+A^{\b w}(s, a) := Q^{\b w}(s, a) - V^{\b w}(s)
+$$
+
+之前我们得到过下述结论：
+
+$$
+Q^{\b w}(s, a) = \sum_{s' \in \mathcal{S}} \P_{\b w}(s' \mid s, a)\left[r + V^{\b w}(s')\right] = \opE_{s' \sim \b w} \left[r + V^{\b w}(s')\right]
+$$
+
+那么我们不妨把 Advantage 函数写为：
+
+$$
+A^{\b w}(s, a) := r + V^{\b w}(s') - V^{\b w}(s)
+$$
+
+而 Critic 就需要学习 Advantage 函数，相应的 Actor 的梯度计算更新为：
+
+$$
+\nabla_{\b\theta}\mathcal{J}(\b\theta) = \opE_{(s, a) \sim \pi_{\b\theta}} [A^{\b w}(s, a)\nabla_{\b\theta}\ln \pi_{\b\theta}(a \mid s)]
+$$
+
 ## 代码示例
 
 这里采用这样的网络结构：
 
 ![](/uploads/note-of-rl/3.png)
 
-Critic 网络的结构很简单，其接受一个状态，输出这个状态的价值。而其 loss 的计算即为 TD Error 的平方，而 TD Error 的计算为直接奖励加上下一个状态的价值预估减去当前状态的价值。
+Critic 网络的结构很简单，其接受一个状态，输出这个状态的价值，即 Advantage 函数的作用。而其 loss 的计算即为 TD Error 的平方。这样我们训练 Critic 的方法就很明确，只需要不断在状态转移过程中计算 TD Error 后平方并将其反向传播即可：
 
-这样我们训练 Critic 的方法就很明确，只需要不断在状态转移过程中计算 TD Error 后平方并将其反向传播即可。
+{% codeblock lang:python Python %}
+# ${repo}/Actor-Critic/ac.py - class Critic def __init__
 
-Critic 引导 Actor 的方式为将 TD Error 传递给 Actor
+with tf.variable_scope("critic_squared_td_error"):
+    self.td_error = self.reward + self.gamma * self.next_state_value - self.state_value
+    self.loss = tf.square(self.td_error)
+{% endcodeblock %}
+
+Critic 引导 Actor 的方式为将 TD Error 传递给 Actor，与梯度求积后进行反向传播：
+
+{% codeblock lang:python Python %}
+# ${repo}/Actor-Critic/ac.py - class Actor def __init__
+
+with tf.variable_scope("action_value"):
+    log_prob = tf.log(self.action_prob[0, self.action])
+    # TD Error - scalar
+    self.action_value = tf.reduce_mean(log_prob * self.td_error) # Advantage (TD_error) guided loss
+
+with tf.variable_scope("actor_train"):
+    self.train_op = tf.train.AdamOptimizer(lr).minimize(-self.action_value)
+{% endcodeblock %}
+
+# Deep Deterministic Policy Gradients (DDPG)
+
+DDPG 的主要思想是将 DQN 的双网络思想借鉴到 Actor Critic 结构中。在 DDPG 中，Actor 具有两个相同结构的网络，Critic 也具有两个相同结构的网络。
+
+在具体介绍 DDPG 之前，我们首先简单介绍 Deterministic Policy Gradients，即 DPG。这里 Deterministic 的含义就是区别于一般的 Policy Gradients 最后输出的是行为空间 $\mathcal{A}$ 上的概率分布，DPG 会直接给出某个状态下应当采取何种行为。其决策函数我们标记为：
+
+$$
+a = \mu_{\b\theta}(s)
+$$
+
+我们用符号 $\mu$ 表示确定性策略，与随机策略 $\pi$ 区分。
+
+我们首先观察随机策略 $\pi_{\b\theta}$ 下的评价函数表达：
+
+$$
+\mathcal{J}_{\pi}(\b\theta) = \sum_{s \in \mathcal{S}} d^{\pi_{\b\theta}}(s) \left(\sum_{a \in \mathcal{A}} \pi_{\b\theta}(a \mid s)Q^{\pi_{\b\theta}}(s, a)\right)
+$$
+
+或者还可以用积分表示为：
+
+$$
+\mathcal{J}_{\pi}(\b\theta) = \int_{s \in \mathcal{S}} d^{\pi_{\b\theta}}(s) \int_{a \in \mathcal{A}} \pi_{\b\theta}(a \mid s)Q^{\pi_{\b\theta}}(s, a) {\rm d}a {\rm d}s
+$$
+
+两者实际上都表达出了同样的含义，即策略的评价函数就是 Q 值的数学期望：
+
+$$
+\mathcal{J}_{\pi}(\b\theta) = \opE_{(s, a) \sim \pi_{\b\theta}} Q^{\pi_{\b\theta}}(s, a)
+$$
+
+那么在确定性策略下，策略的评价函数应当定义为：
+
+$$
+\mathcal{J}_{\mu}(\b\theta) := \opE_{s \sim \mu_{\b\theta}} Q^{\mu_{\b\theta}}(s, \mu_{\b\theta}(s))
+$$
+
+其积分表达式为：
+
+$$
+\mathcal{J}_{\mu}(\b\theta) = \int_{s \in \mathcal{S}} d^{\mu_{\b\theta}}(s)Q^{\mu_{\b\theta}}(s, \mu_{\b\theta}(s)) {\rm d}s
+$$
+
+求和表达式类似，这里略去。
+
+这里梯度的推理则较为简单，直接使用复合函数的导数法则即可：
+
+$$
+\begin{aligned}
+\nabla_{\b\theta}\mathcal{J}_{\mu}(\b\theta) &= \int_{s \in \mathcal{S}} d^{\mu_{\b\theta}}(s) \nabla_{\b\theta}Q^{\mu_{\b\theta}}(s, \mu_{\b\theta}(s)) {\rm d}s \\
+&= \int_{s \in \mathcal{S}} d^{\mu_{\b\theta}}(s) \nabla_{a} \left.Q^{\mu_{\b\theta}}(s, a)\right|_{a = \mu_{\b\theta}(s)} \nabla_{\b\theta}\mu_{\b\theta}(s) {\rm d}s \\
+&= \opE_{s \sim \mu_{\b\theta}} \left[\nabla_{a} \left.Q^{\mu_{\b\theta}}(s, a)\right|_{a = \mu_{\b\theta}(s)} \nabla_{\b\theta}\mu_{\b\theta}(s)\right]
+\end{aligned}
+$$
+
+基于此，我们在 DPG 的基础上引入 DQN 的双网络思路。我们记 Actor 网络中在线更新网络的参数为 $\b\theta$，目标网络的参数为 $\b\theta^-$。Critic 网络中在线更新网络的参数为 $\b w$，目标网络的参数为 $\b w^-$。初始化时应当令 $\b\theta = \b\theta^-, \b w = \b w^-$。
+
+DDPG 的算法流程完全基于 DQN 算法，这里简单介绍如下：
+
+- 首先初始化一个容量为 $N$ 的记忆库 $D$ 用于存放先前的经验，这里 $N$ 是先前设定的超参
+- 随机初始化结构一致的 Critic 网络 $Q, \hat Q$，其初始化参数分别为 $\b\theta, \b\theta^-$，初始化的时候保证 $\b\theta = \b\theta^-$
+- 随机初始化结构一致的 Actor 网络 $\mu, \hat\mu$，其初始化参数分别为 $\b w, \b w^-$，初始化的时候保证 $\b w = \b w^-$
+- 对模型按照下述流程训练 $M$ 个 epoch，这里 $M$ 为先前设定的超参
+    - 初始化随机数发生器 $\mathcal{N}$
+    - 假定初始状态 $s_1$，初始化 $s = s_1$
+    - 推演下述状态转移 $T$ 次，这里 $T$ 为先前设定的超参，下述过程的 $t$ 表示目前转移的次数
+        - 使用 Actor 网络选取行为 $a_t := \mu_{\b\theta}(s_t) + \mathcal{N}(t)$
+        - 令 $r_t$ 表示在状态 $s_t$ 的条件下执行行为 $a_t$ 得到的直接收益
+        - 令 $s_{t + 1}$ 表示在状态 $s_t$ 的条件下执行行为 $a_t$ 转移到的状态
+        - 将描述状态转移的元组 $(s_t, a_t, r_t; s_{t + 1})$ 存入 $D$
+        - 从 $D$ 中抽取 $B$ 组数据，更新 $\b\theta, \b w$，具体流程见下述，这里 $B$ 是先前设定的超参
+        - 令 $\b\theta^- \leftarrow \tau\b\theta + (1 - \tau)\b\theta^-$，这里 $\tau$ 是先前设定的超参
+        - 令 $\b w^- \leftarrow \tau\b w + (1 - \tau)\b w^-$，这里 $\tau$ 是先前设定的超参
+
+具体需要说明的是如何更新 $\b\theta, \b w$。首先观察 Critic 网络，其几乎完全就是 DQN 更新方式。下述为 DQN 的 loss 计算：
+
+$$
+\mathcal{L}_{\rm DQN}(\b\theta) := \opE_{(s, a, r; s') \sim U(D)} \left[r + \gamma\max_{a' \in \Gamma(s')} \hat Q(s', a'; \b\theta^-) - Q(s, a; \b\theta)\right]^2
+$$
+
+而 DDPG 中 Critic 的 loss 则为：
+
+$$
+\mathcal{L}_{\rm DDPG(Critic)}(\b w) := \opE_{(s, a, r; s') \sim U(D)} \left[r + \gamma\hat Q(s', \hat\mu_{\b\theta^-}(s'); \b w^-) - Q(s, a; \b w)\right]^2
+$$
+
+显然，仅仅是将通过贪心获取 $s'$ 状态下的下一行为修改为通过 Actor 网络来获取 $s'$ 状态下的下一行为，这样的设计使得 Critic 更为现实化。
+
+Actor 网络的梯度则先前已经证明：
+
+$$
+\nabla_{\b\theta}\mathcal{J}_{\mu}(\b\theta) = \opE_{s \sim \mu_{\b\theta}} \left[\nabla_{a} \left.Q(s, a; \b w)\right|_{a = \mu_{\b\theta}(s)} \nabla_{\b\theta}\mu_{\b\theta}(s)\right]
+$$
+
+这里仅仅将严格的 Q 值函数替换为 Critic 网络给出的估计值。
+
+可以看出 DDPG 和 DQN 不同的地方仅在于：
+
+- 选取行为是通过 Actor 网络完成的，而非使用 epsilon greedy 策略，使用神经网络一定程度上也保证了行为的随机性
+- 选取行为的时候加入了全局随机数发生器增加探索未知状态的可能
+- 每一回合均更新目标网络的参数，但是使用 Soft update，即通过衰减系数 $\tau$ 进行更新，而非 DQN 中完全同步
+- loss 的计算融入了 Policy Gradients 的思路
+
+这种能够打乱学习顺序的方式，很好地解决了传统 Actor Critic 中由于经常抽样到相同的转移路径导致反复学习无用知识的问题。
+
+## 代码示例
