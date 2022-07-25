@@ -341,7 +341,7 @@
 <span id="more"></span>
 <h1 id="section">2022.05.27 - 2022.05.29</h1>
 <p>先回想一下自己需要完成什么事情吧：</p>
-<p>【下述事务列表更新于 7.17，删除、调整部分事务】</p>
+<p>【下述事务列表更新于 7.22，删除、调整部分事务】</p>
 <ul>
 <li>科协
 <ul>
@@ -723,6 +723,17 @@
 <p>说实话我还是不是很明白我自己有的时候的一些思维回路，确实挺奇怪的。</p>
 <p>但是话说回来，好想找 Sakana 玩，然后这个时候就会有点敏感于 Sakana 有的时候的一些玩笑，然后陷入一些很奇怪的郁闷之中。</p>
 <p>想找她，但是这几天我上午练车，她下午晚上练车，这就非常烦。</p>
+<h1 id="section-33">2022.07.20 - 2022.07.22</h1>
+<p>这三天由于没有什么特别的事情想要做，于是就一直在干活。先是推了一下 RL Tutorial，之后推了一下实习那边的 Minkowski Sum Demo，然后今天又回来推 RL Tutorial。</p>
+<p>科目三练得马马虎虎，最大的问题其实是方向感很差，真的不是很清楚应该怎么打方向盘，但总之随便弄弄过了拿本就行，我也不指望近几年内我能用机动车通勤。</p>
+<p>说实话认真干活反倒给了我一种安心感，之前赶期末的时候也是这样，在忙碌的时候感到安心。</p>
+<p>不过现在，已经不知不觉快七月底了，暑假居然也就这样过了快两个月了。想想当时五月底仓皇出逃，到现在这么长的时间里，居然也仅仅是干了这么点事情，反倒有点自嘲的意味在。翻看之前的日记，发现七月份的日记竟然是那么地粗糙，一时间回忆不起来自己的七月在干什么，就好像每天都是同一个模板里翻来覆去而已。</p>
+<p>昨晚看到了原先 Sakana 社团的某人的恋爱一周年纪念说说，想到去年这个时候他们在沙漠确定了关系。</p>
+<p>当时翻看了一些去年的日记，当时自己应该一直在一种混沌之中，日记也总是混沌的心理推论。</p>
+<p>不过去年有小学期，所以日记到七月底也就匆匆结束，其实要是有当时八月那种学业压力和心理压力并存的一些日记就好了，至少我就能更清晰地回忆起那段至暗时刻的一些细节。不过当时的自己确实也没有心情去记录那些烦心事，也算是正常。</p>
+<hr />
+<p>倒是现在想起来自己图形学的技能引导文档没写，现在还想把自己的 RL Tutorial 贡献给技能引导文档。</p>
+<p>也真的是应了 Sakana 的那句话，“总是喜欢在最忙的时候继续揽活折磨自己”。</p>
 ]]></content>
       <categories>
         <category>【生活记录】假期日记</category>
@@ -9295,6 +9306,24 @@ a = \mu_{\b\theta}(s)
 </ul>
 <p>这种能够打乱学习顺序的方式，很好地解决了传统 Actor Critic 中由于经常抽样到相同的转移路径导致反复学习无用知识的问题。</p>
 <h2 id="代码示例-6">代码示例</h2>
+<p>这里的网络结构为：</p>
+<p><img src="/uploads/note-of-rl/4.png" /></p>
+<p>此时的网络结构图并不一定清晰，所以我们基于代码完成分析。</p>
+<p>这里直接把构建网络的代码贴过来：</p>
+<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># $&#123;repo&#125;/DDPG/ddpg.py - class DDPG def __init__</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Placeholders</span></span><br><span class="line">self.state = tf.placeholder(tf.float32, [<span class="literal">None</span>, n_feature], <span class="string">&quot;state&quot;</span>)</span><br><span class="line">self.next_state = tf.placeholder(tf.float32, [<span class="literal">None</span>, n_feature], <span class="string">&quot;next_state&quot;</span>)</span><br><span class="line">self.reward = tf.placeholder(tf.float32, [<span class="literal">None</span>, <span class="number">1</span>], <span class="string">&quot;reward&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.variable_scope(<span class="string">&quot;actor&quot;</span>):</span><br><span class="line">    self.action = self._build_actor(self.state, scope = <span class="string">&quot;eval&quot;</span>, trainable = <span class="literal">True</span>)</span><br><span class="line">    next_action = self._build_actor(self.next_state, scope = <span class="string">&quot;target&quot;</span>, trainable = <span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.variable_scope(<span class="string">&quot;critic&quot;</span>):</span><br><span class="line">    <span class="comment"># Assign self.action = action in memory when calculating Q value for td_error,</span></span><br><span class="line">    <span class="comment"># Otherwise the self.action is from Actor when updating Actor</span></span><br><span class="line">    q_value = self._build_critic(self.state, self.action, scope = <span class="string">&quot;eval&quot;</span>, trainable = <span class="literal">True</span>)</span><br><span class="line">    next_q_value = self._build_critic(self.next_state, next_action, scope = <span class="string">&quot;target&quot;</span>, trainable = <span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Networks parameters</span></span><br><span class="line">self.actor_eval_params = tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES, scope = <span class="string">&quot;actor/eval&quot;</span>)</span><br><span class="line">self.actor_target_params = tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES, scope = <span class="string">&quot;actor/target&quot;</span>)</span><br><span class="line">self.critic_eval_params = tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES, scope = <span class="string">&quot;critic/eval&quot;</span>)</span><br><span class="line">self.critic_target_params = tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES, scope = <span class="string">&quot;critic/target&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Target net replacement</span></span><br><span class="line">self.soft_replace = [</span><br><span class="line">    tf.assign(t, (<span class="number">1</span> - self.tau) * t + self.tau * e)</span><br><span class="line">        <span class="keyword">for</span> t, e <span class="keyword">in</span> <span class="built_in">zip</span>(</span><br><span class="line">            self.actor_target_params + self.critic_target_params,</span><br><span class="line">            self.actor_eval_params + self.critic_eval_params</span><br><span class="line">        )</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">q_target = self.reward + self.gamma * next_q_value</span><br><span class="line">td_error = tf.losses.mean_squared_error(labels = q_target, predictions = q_value)</span><br><span class="line">self.critic_train = tf.train.AdamOptimizer(critic_lr).minimize(td_error, var_list = self.critic_eval_params)</span><br><span class="line"></span><br><span class="line">actor_loss = -tf.reduce_mean(q_value)</span><br><span class="line">self.actor_train = tf.train.AdamOptimizer(actor_lr).minimize(actor_loss, var_list = self.actor_eval_params)</span><br></pre></td></tr></table></figure>
+<p>这里 <code>self._build_actor</code> 以及 <code>self._build_critic</code> 是构建 Actor 和 Critic 网络具体结构的函数，这里省略。</p>
+<p>可以看到，首先需要构建 Tensorflow Placeholder，之后构建 Actor 的 Eval 和 Target 网络，Critic 的 Eval 和 Target 网络。其中 Actor 网络接受的输入是当前状态，给出的输出是行为选择。而 Critic 网络接受的输入是当前状态和 Actor 网络给出的行为选择，给出的输出是行为的评估值。</p>
+<p>之后需要编写软替换算子，直接遍历所有网络参数，对其施以软替换即可。</p>
+<p>最后是 loss 的计算。Critic 网络的 loss 较为简单，公式为：</p>
+<p><span class="math display">\[
+\mathcal{L}_{\rm DDPG(Critic)}(\b w) := \opE_{(s, a, r; s&#39;) \sim U(D)} \left[r + \gamma\hat Q(s&#39;, \hat\mu_{\b\theta^-}(s&#39;); \b w^-) - Q(s, a; \b w)\right]^2
+\]</span></p>
+<p>而代码中也只是简单将这个公式转换为代码。</p>
+<p>之后是 Actor，我们注意到评价函数就是 Q 值的期望，所以只需要把 <code>q_value</code> 求取平均送入优化器求取其梯度即可。</p>
+<p>后面的具体运行学习过程的代码和 DQN 类似，从记忆库中抽样，之后将其送入网络运算即可。</p>
+<p>实际上 DDPG 就是 AC 和 DQN 代码的结合，基本上的原理并没有很大的差别。</p>
+<h1 id="asynchronous-advantage-actor-critic-a3c">Asynchronous Advantage Actor Critic (A3C)</h1>
+<p>A3C 相较于 A2C 多出的特征是 Asynchronous，即异步。其核心思想是让多个网络尝试不同的行为，获得各类反馈传播到主网络。这样主网络由于接收到多个副网络的更新请求，就不会发生连续更新导致连续学习无用知识的问题，这样就可以抛弃 DQN 的记忆库策略解决这个问题。此外，主网络对副网络的指导也能够加速收敛的速度。</p>
 ]]></content>
       <categories>
         <category>【学习笔记】计算机</category>
