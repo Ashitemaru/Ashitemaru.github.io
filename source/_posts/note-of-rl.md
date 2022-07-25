@@ -889,3 +889,76 @@ $$
 这种能够打乱学习顺序的方式，很好地解决了传统 Actor Critic 中由于经常抽样到相同的转移路径导致反复学习无用知识的问题。
 
 ## 代码示例
+
+这里的网络结构为：
+
+![](/uploads/note-of-rl/4.png)
+
+此时的网络结构图并不一定清晰，所以我们基于代码完成分析。
+
+这里直接把构建网络的代码贴过来：
+
+{% codeblock lang:python Python %}
+# ${repo}/DDPG/ddpg.py - class DDPG def __init__
+
+# Placeholders
+self.state = tf.placeholder(tf.float32, [None, n_feature], "state")
+self.next_state = tf.placeholder(tf.float32, [None, n_feature], "next_state")
+self.reward = tf.placeholder(tf.float32, [None, 1], "reward")
+
+with tf.variable_scope("actor"):
+    self.action = self._build_actor(self.state, scope = "eval", trainable = True)
+    next_action = self._build_actor(self.next_state, scope = "target", trainable = False)
+
+with tf.variable_scope("critic"):
+    # Assign self.action = action in memory when calculating Q value for td_error,
+    # Otherwise the self.action is from Actor when updating Actor
+    q_value = self._build_critic(self.state, self.action, scope = "eval", trainable = True)
+    next_q_value = self._build_critic(self.next_state, next_action, scope = "target", trainable = False)
+
+# Networks parameters
+self.actor_eval_params = tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES, scope = "actor/eval")
+self.actor_target_params = tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES, scope = "actor/target")
+self.critic_eval_params = tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES, scope = "critic/eval")
+self.critic_target_params = tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES, scope = "critic/target")
+
+# Target net replacement
+self.soft_replace = [
+    tf.assign(t, (1 - self.tau) * t + self.tau * e)
+        for t, e in zip(
+            self.actor_target_params + self.critic_target_params,
+            self.actor_eval_params + self.critic_eval_params
+        )
+]
+
+q_target = self.reward + self.gamma * next_q_value
+td_error = tf.losses.mean_squared_error(labels = q_target, predictions = q_value)
+self.critic_train = tf.train.AdamOptimizer(critic_lr).minimize(td_error, var_list = self.critic_eval_params)
+
+actor_loss = -tf.reduce_mean(q_value)
+self.actor_train = tf.train.AdamOptimizer(actor_lr).minimize(actor_loss, var_list = self.actor_eval_params)
+{% endcodeblock %}
+
+这里 `self._build_actor` 以及 `self._build_critic` 是构建 Actor 和 Critic 网络具体结构的函数，这里省略。
+
+可以看到，首先需要构建 Tensorflow Placeholder，之后构建 Actor 的 Eval 和 Target 网络，Critic 的 Eval 和 Target 网络。其中 Actor 网络接受的输入是当前状态，给出的输出是行为选择。而 Critic 网络接受的输入是当前状态和 Actor 网络给出的行为选择，给出的输出是行为的评估值。
+
+之后需要编写软替换算子，直接遍历所有网络参数，对其施以软替换即可。
+
+最后是 loss 的计算。Critic 网络的 loss 较为简单，公式为：
+
+$$
+\mathcal{L}_{\rm DDPG(Critic)}(\b w) := \opE_{(s, a, r; s') \sim U(D)} \left[r + \gamma\hat Q(s', \hat\mu_{\b\theta^-}(s'); \b w^-) - Q(s, a; \b w)\right]^2
+$$
+
+而代码中也只是简单将这个公式转换为代码。
+
+之后是 Actor，我们注意到评价函数就是 Q 值的期望，所以只需要把 `q_value` 求取平均送入优化器求取其梯度即可。
+
+后面的具体运行学习过程的代码和 DQN 类似，从记忆库中抽样，之后将其送入网络运算即可。
+
+实际上 DDPG 就是 AC 和 DQN 代码的结合，基本上的原理并没有很大的差别。
+
+# Asynchronous Advantage Actor Critic (A3C)
+
+A3C 相较于 A2C 多出的特征是 Asynchronous，即异步。其核心思想是让多个网络尝试不同的行为，获得各类反馈传播到主网络。这样主网络由于接收到多个副网络的更新请求，就不会发生连续更新导致连续学习无用知识的问题，这样就可以抛弃 DQN 的记忆库策略解决这个问题。此外，主网络对副网络的指导也能够加速收敛的速度。
