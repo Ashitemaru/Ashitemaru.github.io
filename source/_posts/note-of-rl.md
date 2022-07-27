@@ -13,6 +13,7 @@ mathjax: true
 $$
 \newcommand{\b}{\boldsymbol}
 \newcommand{\argmax}{\mathop{\rm argmax}}
+\newcommand{\argmin}{\mathop{\rm argmin}}
 \newcommand{\P}{\mathbb{P}}
 \newcommand{\E}{\mathbb{E}}
 \newcommand{\opE}{\mathop{\mathbb{E}}}
@@ -386,7 +387,7 @@ Policy Gradients 基于随机策略，也就是我们需要给出在某个状态
 
 我们把基于参数为 $\b\theta$ 的随机策略 $\pi_{\b\theta}$，在状态 $s$ 下，我们采取行为 $a$ 的概率表示为 $\pi_{\b\theta}(a \mid s)$。这里 $s_t, a_t$ 表示在第 $t$ 时刻的状态和行为，后续有类似的 $r_t$。
 
-显然这样的 $\pi_{\b\theta}$ 代表了一个行为决策空间 $\mathcal{A}$ 上的一个分布。
+显然这样的 $\pi_{\b\theta}(\cdot\mid s)$ 代表了一个行为决策空间 $\mathcal{A}$ 上的一个分布。
 
 我们首先定义累计收益：
 
@@ -407,7 +408,7 @@ $$
 另外，由于我们知道给定状态 $s$ 的时候行为 $a$ 的分布就是随机策略 $\pi_{\b\theta}$ 指定的，所以我们可以定义一个不需要给定具体行为的，仅针对状态进行评估的状态函数：
 
 $$
-V^{\pi_{\b\theta}}(s) := \sum_{a \in \mathcal{A}} \pi_{\b\theta}(a \mid s)Q^{\pi_{\b\theta}}(s, a) = \opE_{\b\tau \sim \pi_{\b\theta}} \left[G_t(\b\tau) \mid s_t = s\right]
+V^{\pi_{\b\theta}}(s) := \int_{a \in \mathcal{A}} \pi_{\b\theta}(a \mid s)Q^{\pi_{\b\theta}}(s, a) {\rm d}a = \opE_{\b\tau \sim \pi_{\b\theta}} \left[G_t(\b\tau) \mid s_t = s\right]
 $$
 
 此外，我们可以注意到这个随机策略实际上定义了一个在状态空间 $\mathcal{S}$ 上的 Markov chain，那么我们就有下述稳态概率的定义：
@@ -421,7 +422,19 @@ $$
 基于稳态概率，我们就可以给一个策略 $\pi_{\b\theta}$ 定义价值：
 
 $$
-\mathcal{J}(\b\theta) := \sum_{s \in \mathcal{S}} d^{\pi_{\b\theta}}(s)V^{\pi_{\b\theta}}(s) = \sum_{s \in \mathcal{S}} d^{\pi_{\b\theta}}(s) \left(\sum_{a \in \mathcal{A}} \pi_{\b\theta}(a \mid s)Q^{\pi_{\b\theta}}(s, a)\right)
+\mathcal{J}(\b\theta) := \int_{s \in \mathcal{S}} d^{\pi_{\b\theta}}(s)V^{\pi_{\b\theta}}(s) {\rm d}s = \int_{s \in \mathcal{S}} d^{\pi_{\b\theta}}(s) \int_{a \in \mathcal{A}} \pi_{\b\theta}(a \mid s)Q^{\pi_{\b\theta}}(s, a) {\rm d}a{\rm d}s
+$$
+
+容易看出 $d^{\pi_{\b\theta}}(s)\pi_{\b\theta}(a \mid s)$ 给出了 $\mathcal{S} \times \mathcal{A}$ 上的分布：
+
+$$
+\int_{s \in \mathcal{S}}\int_{a \in \mathcal{A}} d^{\pi_{\b\theta}}(s)\pi_{\b\theta}(a \mid s) {\rm d}a{\rm d}s = 1
+$$
+
+那么：
+
+$$
+\mathcal{J}(\b\theta) = \opE_{(s, a) \sim \pi_{\b\theta}} [Q^{\pi_{\b\theta}}(s, a)]
 $$
 
 为了尽可能提高策略的价值，我们采用梯度上升的方式，所以重点就是计算上述价值函数的梯度 $\nabla_{\b\theta}\mathcal{J}(\b\theta)$。
@@ -433,37 +446,81 @@ $$
 我们只需要遍历 $s$ 所有可能的下一步状态 $s'$，得到其发生转移 $s \to s'$ 的概率，而相应的价值评估也会拆分为直接收益 $r$ 和接下来到达状态 $s'$ 的收益（与 Q Learning 具有类似的结构）。基于上述思路，得到下述展开：
 
 $$
-Q^{\pi_{\b\theta}}(s, a) = \sum_{s' \in \mathcal{S}} \P_{\pi_{\b\theta}}(s' \mid s, a)\left[r + V^{\pi_{\b\theta}}(s')\right]
+Q^{\pi_{\b\theta}}(s, a) = \int_{s' \in \mathcal{S}} \P_{\mathcal{E}}(s' \mid s, a)\left[r + V^{\pi_{\b\theta}}(s')\right] {\rm d} s'
 $$
 
-考虑到 $r, \P_{\pi_{\b\theta}}(s' \mid s, a)$ 相对于 $\b\theta$ 都是常数，可以得到：
+这里概率符号带有下标 $\mathcal{E}$，表示这个概率仅仅依赖于环境 $\mathcal{E}$，和随机策略 $\pi_{\b\theta}$ 并无关系。那么考虑到 $r, \P_{\mathcal{E}}(s' \mid s, a)$ 相对于 $\b\theta$ 都是常数，可以得到：
 
 $$
-\nabla_{\b\theta}Q^{\pi_{\b\theta}}(s, a) = \sum_{s' \in \mathcal{S}} \P_{\pi_{\b\theta}}(s' \mid s, a)\nabla_{\b\theta}V^{\pi_{\b\theta}}(s')
+\nabla_{\b\theta}Q^{\pi_{\b\theta}}(s, a) = \int_{s' \in \mathcal{S}} \P_{\mathcal{E}}(s' \mid s, a)\nabla_{\b\theta}V^{\pi_{\b\theta}}(s') {\rm d} s'
 $$
 
 基于此，我们做出如下推理：
 
 $$
 \begin{aligned}
-\nabla_{\b\theta}V^{\pi_{\b\theta}}(s) &= \nabla_{\b\theta}\left[\sum_{a \in \mathcal{A}} \pi_{\b\theta}(a \mid s)Q^{\pi_{\b\theta}}(s, a)\right] \\
-&= \sum_{a \in \mathcal{A}}\left[Q^{\pi_{\b\theta}}(s, a)\nabla_{\b\theta}\pi_{\b\theta}(a \mid s) + \pi_{\b\theta}(a \mid s)\nabla_{\b\theta}Q^{\pi_{\b\theta}}(s, a)\right] \\
-&= \sum_{a \in \mathcal{A}}\left[Q^{\pi_{\b\theta}}(s, a)\nabla_{\b\theta}\pi_{\b\theta}(a \mid s) + \pi_{\b\theta}(a \mid s)\sum_{s' \in \mathcal{S}} \P_{\pi_{\b\theta}}(s' \mid s, a)\nabla_{\b\theta}V^{\pi_{\b\theta}}(s')\right] \\
-&= \sum_{a \in \mathcal{A}}Q^{\pi_{\b\theta}}(s, a)\nabla_{\b\theta}\pi_{\b\theta}(a \mid s) + \sum_{a \in \mathcal{A}}\left[\pi_{\b\theta}(a \mid s)\sum_{s' \in \mathcal{S}} \P_{\pi_{\b\theta}}(s' \mid s, a)\nabla_{\b\theta}V^{\pi_{\b\theta}}(s')\right]
+&{\color{red} \nabla_{\b\theta}V^{\pi_{\b\theta}}(s)} \\
+=& \nabla_{\b\theta}\left[\int_{a \in \mathcal{A}} \pi_{\b\theta}(a \mid s)Q^{\pi_{\b\theta}}(s, a) {\rm d} a\right] \\
+=& \int_{a \in \mathcal{A}}\left[Q^{\pi_{\b\theta}}(s, a)\nabla_{\b\theta}\pi_{\b\theta}(a \mid s) + \pi_{\b\theta}(a \mid s)\nabla_{\b\theta}Q^{\pi_{\b\theta}}(s, a)\right] {\rm d} a \\
+=& \int_{a \in \mathcal{A}}\left[Q^{\pi_{\b\theta}}(s, a)\nabla_{\b\theta}\pi_{\b\theta}(a \mid s) + \pi_{\b\theta}(a \mid s)\int_{s' \in \mathcal{S}} \P_{\mathcal{E}}(s' \mid s, a)\nabla_{\b\theta}V^{\pi_{\b\theta}}(s') {\rm d} s'\right] {\rm d} a \\
+=& \int_{a \in \mathcal{A}}Q^{\pi_{\b\theta}}(s, a)\nabla_{\b\theta}\pi_{\b\theta}(a \mid s) {\rm d} a + \int_{a \in \mathcal{A}}\left[\pi_{\b\theta}(a \mid s)\int_{s' \in \mathcal{S}} \P_{\mathcal{E}}(s' \mid s, a) {\color{red} \nabla_{\b\theta}V^{\pi_{\b\theta}}(s')} {\rm d} s'\right] {\rm d} a
 \end{aligned}
 $$
 
-这里我们观测到了 $\nabla_{\b\theta}V^{\pi_{\b\theta}}(s)$ 结构的重复，我们将其无限展开。这里每次展开留下的常数项为 $\sum_{a \in \mathcal{A}}Q^{\pi_{\b\theta}}(s, a)\nabla_{\b\theta}\pi_{\b\theta}(a \mid s)$。
+这里我们观测到了 $\nabla_{\b\theta}V^{\pi_{\b\theta}}(s)$ 结构的重复，下面思考该递归结构。
 
-而每展开一步需要累计的线性系数为 $\pi_{\b\theta}(a \mid s)\P_{\pi_{\b\theta}}(s' \mid s, a)$，这一系数实际上代表的是在状态 $s$ 下一步转移到 $s'$ 的概率，那么其的累计就是在若干步下到达指定状态的概率。
-
-那么上述式子无限展开后就应当为：
+定义记号：
 
 $$
-\nabla_{\b\theta}V^{\pi_{\b\theta}}(s) = \sum_{s_\bot \in \mathcal{S}}\left[\sum_{k = 0}^{+\infty}\P_{\pi_{\b\theta}}(s \mathop{\to}^k s_\bot) \cdot \sum_{a \in \mathcal{A}}Q^{\pi_{\b\theta}}(s_\bot, a)\nabla_{\b\theta}\pi_{\b\theta}(a \mid s_\bot)\right]
+\P_{\pi_{\b\theta}}(s \mathop{\to}^k s_\bot)
 $$
 
-这里 $\P_{\pi_{\b\theta}}(s \to^k\!\! s_\bot)$ 表示在策略 $\pi_{\b\theta}$ 下，从状态 $s$ 用 $k$ 步到达终态 $s_\bot$ 的概率。
+表示从初态 $s$ 通过随机策略 $\pi_{\b\theta}$ 经过 $k$ 步转移能够到达终态 $s_\bot$ 的概率。这个概率也具有递归的运算特征，即：
+
+$$
+\P_{\pi_{\b\theta}}(s \mathop{\to}^{k + 1} s_\bot) = \int_{s' \in \mathcal{S}} \P_{\pi_{\b\theta}}(s \mathop{\to}^k s') \P_{\pi_{\b\theta}}(s' \mathop{\to}^1 s_\bot) {\rm d}s'
+$$
+
+此外，根据该概率的定义，我们能确定：
+
+$$
+\P_{\pi_{\b\theta}}(s \mathop{\to}^1 s') = \int_{a \in \mathcal{A}} \pi_{\b\theta}(a \mid s)\P_{\mathcal{E}}(s' \mid s, a) {\rm d}a
+$$
+
+另外，为了后续讨论简单，定义记号：
+
+$$
+\phi(s) := \int_{a \in \mathcal{A}}Q^{\pi_{\b\theta}}(s, a)\nabla_{\b\theta}\pi_{\b\theta}(a \mid s) {\rm d} a
+$$
+
+从而观察下述展开：
+
+$$
+\begin{aligned}
+&\nabla_{\b\theta}V^{\pi_{\b\theta}}(s) \\
+=& \phi(s) + \int_{a \in \mathcal{A}}\left[\pi_{\b\theta}(a \mid s)\int_{s' \in \mathcal{S}} \P_{\mathcal{E}}(s' \mid s, a) \nabla_{\b\theta}V^{\pi_{\b\theta}}(s') {\rm d} s'\right] {\rm d} a \\
+=& \phi(s) + \int_{s' \in \mathcal{S}} \left[\int_{a \in \mathcal{A}} \pi_{\b\theta}(a \mid s) \P_{\mathcal{E}}(s' \mid s, a) {\rm d} a\right] \nabla_{\b\theta}V^{\pi_{\b\theta}}(s') {\rm d} s' \\
+=& \phi(s) + {\color{red} \int_{s' \in \mathcal{S}} \P_{\pi_{\b\theta}}(s \mathop{\to}^1 s') \nabla_{\b\theta}V^{\pi_{\b\theta}}(s') {\rm d} s'} \\
+=& \phi(s) + \int_{s' \in \mathcal{S}} \P_{\pi_{\b\theta}}(s \mathop{\to}^1 s') \left[\phi(s') + \int_{s'' \in \mathcal{S}} \P_{\pi_{\b\theta}}(s' \mathop{\to}^1 s'') \nabla_{\b\theta}V^{\pi_{\b\theta}}(s'') {\rm d} s''\right] {\rm d} s' \\
+=& \phi(s) + \int_{s' \in \mathcal{S}} \P_{\pi_{\b\theta}}(s \mathop{\to}^1 s')\phi(s') {\rm d} s' + \int_{s' \in \mathcal{S}} \P_{\pi_{\b\theta}}(s \mathop{\to}^1 s') \left[\int_{s'' \in \mathcal{S}} \P_{\pi_{\b\theta}}(s' \mathop{\to}^1 s'') \nabla_{\b\theta}V^{\pi_{\b\theta}}(s'') {\rm d} s''\right]{\rm d} s' \\
+=& \phi(s) + \int_{s' \in \mathcal{S}} \P_{\pi_{\b\theta}}(s \mathop{\to}^1 s')\phi(s') {\rm d} s' + \int_{s'' \in \mathcal{S}}\left[\int_{s' \in \mathcal{S}} \P_{\pi_{\b\theta}}(s \mathop{\to}^1 s') \P_{\pi_{\b\theta}}(s' \mathop{\to}^1 s''){\rm d} s'\right] \nabla_{\b\theta}V^{\pi_{\b\theta}}(s'') {\rm d} s'' \\
+=& \phi(s) + {\color{green} \int_{s' \in \mathcal{S}} \P_{\pi_{\b\theta}}(s \mathop{\to}^1 s')\phi(s') {\rm d} s'} + {\color{red} \int_{s'' \in \mathcal{S}} \P_{\pi_{\b\theta}}(s \mathop{\to}^2 s'') \nabla_{\b\theta}V^{\pi_{\b\theta}}(s'') {\rm d} s''}
+\end{aligned}
+$$
+
+我们这一次观察到了如上述的递归现象，红色部分始终保持结构一致，并且每展开一次就会得到类似绿色部分的一个常数项。
+
+注意到：
+
+$$
+\P_{\pi_{\b\theta}}(s \mathop{\to}^{+\infty} s_\bot) = 0
+$$
+
+所以上述展开中红色部分在无穷次递归后会变为零，那么上述式子应当在无穷次递归后仅仅留下绿色的常数项的累加：
+
+$$
+\nabla_{\b\theta}V^{\pi_{\b\theta}}(s) = \sum_{k = 0}^{+\infty} \int_{s_\bot \in \mathcal{S}} \P_{\pi_{\b\theta}}(s \mathop{\to}^k s_\bot)\phi(s_\bot) {\rm d} s_\bot
+$$
 
 根据定义，实际上我们有：
 
@@ -476,48 +533,34 @@ $$
 $$
 \begin{aligned}
 \nabla_{\b\theta}\mathcal{J}(\b\theta) &= \nabla_{\b\theta} V^{\pi_{\b\theta}}(s_0) \\
-&= \sum_{s_\bot \in \mathcal{S}}\left[d^{\pi_{\b\theta}}(s_\bot) \sum_{a \in \mathcal{A}}Q^{\pi_{\b\theta}}(s_\bot, a)\nabla_{\b\theta}\pi_{\b\theta}(a \mid s_\bot)\right] \\
+&= \sum_{k = 0}^{+\infty} \int_{s_\bot \in \mathcal{S}} \P_{\pi_{\b\theta}}(s_0 \mathop{\to}^k s_\bot)\phi(s_\bot) {\rm d} s_\bot \\
+&= \int_{s_\bot \in \mathcal{S}} \left[\sum_{k = 0}^{+\infty} \P_{\pi_{\b\theta}}(s_0 \mathop{\to}^k s_\bot)\right] \phi(s_\bot) {\rm d} s_\bot \\
+&= \int_{s_\bot \in \mathcal{S}} d^{\pi_{\b\theta}}(s_\bot) \phi(s_\bot) {\rm d} s_\bot \\
+&= \int_{s_\bot \in \mathcal{S}} d^{\pi_{\b\theta}}(s_\bot) \int_{a \in \mathcal{A}}Q^{\pi_{\b\theta}}(s, a)\nabla_{\b\theta}\pi_{\b\theta}(a \mid s) {\rm d} a {\rm d} s_\bot
 \end{aligned}
 $$
 
 将 $s_\bot$ 替换回 $s$ 就得到 Policy gradient theorem 的公式：
 
 $$
-\nabla_{\b\theta}\mathcal{J}(\b\theta) = \sum_{s \in \mathcal{S}}\left[d^{\pi_{\b\theta}}(s) \sum_{a \in \mathcal{A}}Q^{\pi_{\b\theta}}(s, a)\nabla_{\b\theta}\pi_{\b\theta}(a \mid s)\right]
+\nabla_{\b\theta}\mathcal{J}(\b\theta) = \int_{s \in \mathcal{S}}\left[d^{\pi_{\b\theta}}(s) \int_{a \in \mathcal{A}}Q^{\pi_{\b\theta}}(s, a)\nabla_{\b\theta}\pi_{\b\theta}(a \mid s) {\rm d} a\right] {\rm d} s
 $$
 
 为了让计算机便于计算，我们对上述计算式作出进一步变形：
 
 $$
 \begin{aligned}
-\nabla_{\b\theta}\mathcal{J}(\b\theta) &= \sum_{s \in \mathcal{S}}\left[d^{\pi_{\b\theta}}(s) \sum_{a \in \mathcal{A}}Q^{\pi_{\b\theta}}(s, a)\nabla_{\b\theta}\pi_{\b\theta}(a \mid s)\right] \\
-&= \sum_{s \in \mathcal{S}}\left[d^{\pi_{\b\theta}}(s) \sum_{a \in \mathcal{A}}Q^{\pi_{\b\theta}}(s, a)\pi_{\b\theta}(a \mid s)\frac{\nabla_{\b\theta}\pi_{\b\theta}(a \mid s)}{\pi_{\b\theta}(a \mid s)}\right] \\
-&= \sum_{s \in \mathcal{S}}\sum_{a \in \mathcal{A}} (d^{\pi_{\b\theta}}(s)\pi_{\b\theta}(a \mid s)) \cdot (Q^{\pi_{\b\theta}}(s, a)\nabla_{\b\theta}\ln \pi_{\b\theta}(a \mid s))
+\nabla_{\b\theta}\mathcal{J}(\b\theta) &= \int_{s \in \mathcal{S}}\left[d^{\pi_{\b\theta}}(s) \int_{a \in \mathcal{A}}Q^{\pi_{\b\theta}}(s, a)\nabla_{\b\theta}\pi_{\b\theta}(a \mid s){\rm d} a\right]{\rm d} s \\
+&= \int_{s \in \mathcal{S}}\left[d^{\pi_{\b\theta}}(s) \int_{a \in \mathcal{A}}Q^{\pi_{\b\theta}}(s, a)\pi_{\b\theta}(a \mid s)\frac{\nabla_{\b\theta}\pi_{\b\theta}(a \mid s)}{\pi_{\b\theta}(a \mid s)}{\rm d} a\right]{\rm d} s \\
+&= \int_{s \in \mathcal{S}}\int_{a \in \mathcal{A}} (d^{\pi_{\b\theta}}(s)\pi_{\b\theta}(a \mid s)) \cdot (Q^{\pi_{\b\theta}}(s, a)\nabla_{\b\theta}\ln \pi_{\b\theta}(a \mid s)){\rm d} a {\rm d} s \\
+&= \opE_{(s, a) \sim \pi_{\b\theta}} [Q^{\pi_{\b\theta}}(s, a)\nabla_{\b\theta}\ln \pi_{\b\theta}(a \mid s)]
 \end{aligned}
-$$
-
-容易看出 $d^{\pi_{\b\theta}}(s)\pi_{\b\theta}(a \mid s)$ 给出了 $\mathcal{S} \times \mathcal{A}$ 上的分布：
-
-$$
-\sum_{s \in \mathcal{S}}\sum_{a \in \mathcal{A}} d^{\pi_{\b\theta}}(s)\pi_{\b\theta}(a \mid s) = 1
-$$
-
-那么：
-
-$$
-\nabla_{\b\theta}\mathcal{J}(\b\theta) = \opE_{(s, a) \sim \pi_{\b\theta}} [Q^{\pi_{\b\theta}}(s, a)\nabla_{\b\theta}\ln \pi_{\b\theta}(a \mid s)]
 $$
 
 为了计算这个期望，我们可以通过 $\pi_{\b\theta}$ 确定转移过程 $\b\tau$，之后将转移过程上的所有 $(s, a)$ 代入：
 
 $$
 \nabla_{\b\theta}\mathcal{J}(\b\theta) = \opE_{\b\tau \sim \pi_{\b\theta}} \frac{1}{|\b\tau|} \sum_{(s, a) \in \b\tau} [Q^{\pi_{\b\theta}}(s, a)\nabla_{\b\theta}\ln \pi_{\b\theta}(a \mid s)]
-$$
-
-将之前定义的评估函数代入：
-
-$$
-\nabla_{\b\theta}\mathcal{J}(\b\theta) = \opE_{\b\tau \sim \pi_{\b\theta}} \frac{1}{|\b\tau|} \sum_{(s, a) \in \b\tau} [G_t\nabla_{\b\theta}\ln \pi_{\b\theta}(a \mid s)]
 $$
 
 ## 代码示例
@@ -739,7 +782,7 @@ $$
 之前我们得到过下述结论：
 
 $$
-Q^{\b w}(s, a) = \sum_{s' \in \mathcal{S}} \P_{\b w}(s' \mid s, a)\left[r + V^{\b w}(s')\right] = \opE_{s' \sim \b w} \left[r + V^{\b w}(s')\right]
+Q^{\b w}(s, a) = \int_{s' \in \mathcal{S}} \P_{\mathcal{E}}(s' \mid s, a)\left[r + V^{\b w}(s')\right] {\rm d}s' = \opE_{s' \sim \b w} \left[r + V^{\b w}(s')\right]
 $$
 
 那么我们不妨把 Advantage 函数写为：
@@ -799,12 +842,6 @@ $$
 我们首先观察随机策略 $\pi_{\b\theta}$ 下的评价函数表达：
 
 $$
-\mathcal{J}_{\pi}(\b\theta) = \sum_{s \in \mathcal{S}} d^{\pi_{\b\theta}}(s) \left(\sum_{a \in \mathcal{A}} \pi_{\b\theta}(a \mid s)Q^{\pi_{\b\theta}}(s, a)\right)
-$$
-
-或者还可以用积分表示为：
-
-$$
 \mathcal{J}_{\pi}(\b\theta) = \int_{s \in \mathcal{S}} d^{\pi_{\b\theta}}(s) \int_{a \in \mathcal{A}} \pi_{\b\theta}(a \mid s)Q^{\pi_{\b\theta}}(s, a) {\rm d}a {\rm d}s
 $$
 
@@ -817,16 +854,8 @@ $$
 那么在确定性策略下，策略的评价函数应当定义为：
 
 $$
-\mathcal{J}_{\mu}(\b\theta) := \opE_{s \sim \mu_{\b\theta}} Q^{\mu_{\b\theta}}(s, \mu_{\b\theta}(s))
+\mathcal{J}_{\mu}(\b\theta) := \opE_{s \sim \mu_{\b\theta}} Q^{\mu_{\b\theta}}(s, \mu_{\b\theta}(s)) = \int_{s \in \mathcal{S}} d^{\mu_{\b\theta}}(s)Q^{\mu_{\b\theta}}(s, \mu_{\b\theta}(s)) {\rm d}s
 $$
-
-其积分表达式为：
-
-$$
-\mathcal{J}_{\mu}(\b\theta) = \int_{s \in \mathcal{S}} d^{\mu_{\b\theta}}(s)Q^{\mu_{\b\theta}}(s, \mu_{\b\theta}(s)) {\rm d}s
-$$
-
-求和表达式类似，这里略去。
 
 这里梯度的推理则较为简单，直接使用复合函数的导数法则即可：
 
@@ -959,6 +988,97 @@ $$
 
 实际上 DDPG 就是 AC 和 DQN 代码的结合，基本上的原理并没有很大的差别。
 
+使用上述代码获得的 Reward 曲线为：
+
+![](/uploads/note-of-rl/5.png)
+
 # Asynchronous Advantage Actor Critic (A3C)
 
 A3C 相较于 A2C 多出的特征是 Asynchronous，即异步。其核心思想是让多个网络尝试不同的行为，获得各类反馈传播到主网络。这样主网络由于接收到多个副网络的更新请求，就不会发生连续更新导致连续学习无用知识的问题，这样就可以抛弃 DQN 的记忆库策略解决这个问题。此外，主网络对副网络的指导也能够加速收敛的速度。
+
+这里并不想过多解释 A3C 代码，因为其核心思路并没有发生变化，这里直接给出训练结果：
+
+![](/uploads/note-of-rl/6.png)
+
+# Trust Region Policy Optimization (TRPO)
+
+TRPO 是引入最后的 DPPO 算法之前，我们需要事先了解的一个简单的算法。
+
+## KL 散度
+
+KL 散度是一种度量两个随机分布之间距离的一种方式，对于空间 $X$ 上的概率分布 $P, Q$，其 KL 散度定义为：
+
+$$
+D_{\rm KL}(P \parallel Q) := \opE_{x \sim P}\left[\ln \frac{P(x)}{Q(x)}\right] = \int_{x \in X} P(x)\ln \frac{P(x)}{Q(x)} {\rm d}x
+$$
+
+KL 度量的意义在于，如果我们将 $P$ 认为是标准分布，即需要学习的概率分布。而 $Q$ 是机器给出的预测分布，那么 KL 散度实际上给出了当前机器给出的预测和真实分布的距离，机器应当尽可能缩小 KL 散度来逼近真实分布。
+
+可以证明 $D_{\rm KL}(P \parallel Q) = 0$ 当且仅当 $P \equiv Q$。
+
+这是显然的：
+
+$$
+\begin{aligned}
+D_{\rm KL}(P \parallel Q) &= \int_{x \in X} P(x)\ln \frac{P(x)}{Q(x)} {\rm d}x = -\int_{x \in X} P(x) \ln \frac{Q(x)}{P(x)} {\rm d}x \\
+&\geq -\int_{x \in X} P(x) \left(\frac{Q(x)}{P(x)} - 1\right) {\rm d}x = -\int_{x \in X} (Q(x) - P(x)) {\rm d}x \\
+&= 0
+\end{aligned}
+$$
+
+显然等号仅仅在 $P \equiv Q$ 的时候得到。
+
+另外，我们需要说明 KL 散度并不是对称的，也就是说 KL 散度虽然直观上可以理解为一种度量，但是实际上并不满足数学上度量的定义：
+
+$$
+D_{\rm KL}(P \parallel Q) \neq D_{\rm KL}(Q \parallel P)
+$$
+
+在先前提到的机器学习场合下，往往把 $D_{\rm KL}(P \parallel Q)$ 称为前向 KL 散度，而 $D_{\rm KL}(Q \parallel P)$ 则是后向 KL 散度。
+
+---
+
+此外，我们需要说明的是，如果分布 $Q$ 是参数 $\b\theta$ 建模的，那么最小化前向 KL 散度得到的参数 $\b\theta = \argmin_{\b\theta} D_{\rm KL}(P \parallel Q_{\b\theta})$ 等价于极大似然估计。
+
+在此之前，我们需要对机器学习领域中的极大似然估计作出说明。对于参数 $\b\theta$ 建模的，空间 $X$ 上的随机分布 $A$，我们观测到了样本 $x$，那么似然函数定义为：
+
+$$
+\mathcal{L}(\b\theta) := A_{\b\theta}(x)
+$$
+
+即似然函数描述了在不同的分布参数之下，我们观测到该样本的概率。那么极大似然估计的思想就是最大化似然函数，作为该样本观测下的参数估计值。
+
+而如果我们观测到了样本列 $\{x_n\} \in X^n$，那么似然定义为：
+
+$$
+\mathcal{L}(\b\theta) := \prod_{k = 1}^n A_{\b\theta}(x_k)
+$$
+
+机器学习中为了防止连乘下溢，会使用对数似然：
+
+$$
+\mathcal{L}'(\b\theta) := \sum_{k = 1}^n \ln A_{\b\theta}(x_k)
+$$
+
+在这种条件下最大似然估计就是：
+
+$$
+\b\theta := \argmax_{\b\theta} \sum_{k = 1}^n \ln A_{\b\theta}(x_k) = \argmax_{\b\theta} \frac{1}{n}\sum_{k = 1}^n \ln A_{\b\theta}(x_k) = \argmax_{\b\theta} \opE_{x \sim \mathcal{D}_A}[\ln A_{\b\theta}(x)]
+$$
+
+这里 $\mathcal{D}_A$ 是在分布 $A$ 下采样得到的采样分布。
+
+那么回到原先的问题，我们对 KL 散度作变形：
+
+$$
+\begin{aligned}
+\b\theta &= \argmin_{\b\theta} D_{\rm KL}(P \parallel Q_{\b\theta}) = \argmin_{\b\theta} \opE_{x \sim P}\left[\ln \frac{P(x)}{Q_{\b\theta}(x)}\right] \\
+&= \argmin_{\b\theta} \left(\opE_{x \sim P}\left[\ln P(x)\right] - \opE_{x \sim P}\left[\ln Q_{\b\theta}(x)\right]\right) \\
+&= \argmin_{\b\theta} \left(-\opE_{x \sim P}\left[\ln Q_{\b\theta}(x)\right]\right) = \argmax_{\b\theta} \opE_{x \sim P}\left[\ln Q_{\b\theta}(x)\right] \\
+&\approx \argmax_{\b\theta} \opE_{x \sim \mathcal{D}_P}\left[\ln Q_{\b\theta}(x)\right]
+\end{aligned}
+$$
+
+这里基于 $\mathcal{D}_P \approx P$，即采样分布近似表示原先分布得到了最后的结果。所以我们证明了最小化 KL 散度得到的参数等价于根据真实分布 $P$ 的样本对分布 $Q$ 作极大似然估计。
+
+## Off-policy Policy gradients
