@@ -66,7 +66,7 @@ Monte-Carlo learning 和基础版本的 Policy gradients 方法都是回合制�
 
 # Q Learning
 
-首先引入 Q 表这个概念，Q 表可以看作一个函数 $Q(s, a)$，这个函数值的含义为在状态 $s$ 的条件下，作出行为 $a$ 的潜在收益。而决策过程就是选择当前状态的所有可选行为中潜在收益最高的行为。
+首先引入 Q 表这个概念，Q 表可以看作一个函数 $Q(s, a)$，这个函数值的含义为在状态 $s$ 的条件下，作出行为 $a$ 的潜在收益。而 Q Learning 的决策过程就是选择当前状态的所有可选行为中潜在收益最高的行为。
 
 Q 表的更新是在进行决策之后开始的，如果我们原先在状态 $s$，并且我们通过行为 $a$ 到达新状态 $s'$，这个时候我们需要重新估算 $Q(s, a)$ 的值。这个估计值新增的部分应当包含两个部分，即我们采取这个行为立刻能得到的奖励和我们在 $s'$ 状态处能够达到的最大可能收益。
 
@@ -80,7 +80,7 @@ $$
 
 这样我们就能看到调整估计值的逻辑。我们首先获取在新状态 $s'$ 处所有行为可能得到的最大收益 $\max_{a' \in \Gamma(s')} Q(s', a')$，乘以一个衰减 $\gamma$，之后加上采取行为 $a$ 后立刻能得到的收益 $r$ 计算出行为 $a$ 的潜在收益。之后我们将这个估计值和原先的值作差得到差距，乘以学习率 $\alpha$ 之后就得到了我们需要更新到 $Q(s, a)$ 上的增量。
 
-实际上的 Q Learning 在作出决策的时候其实也不一定完全按照最高价值选择，而是可能通过 epsilon greedy 的策略。即提前设定一个 $\varepsilon \in (0, 1)$，以 $\varepsilon$ 概率按照 Q 表最优价值选择行为，以 $1 - \varepsilon$ 概率随机选择行为。这里 $\varepsilon$ 也被称为**贪婪度**。
+实际使用的 Q Learning 为了防止完全贪心算法导致算法无法充分探索环境，故在作出决策的时候其实也不一定完全按照最高价值选择，而是可能通过 epsilon greedy 的策略。即提前设定一个 $\varepsilon \in (0, 1)$，以 $\varepsilon$ 概率按照 Q 表最优价值选择行为，以 $1 - \varepsilon$ 概率随机选择行为。这里 $\varepsilon$ 也被称为**贪婪度**。
 
 在学习过程的初期，我们希望机器能够随机探索环境，所以此时 $\varepsilon$ 参数会设定较小。而后期我们在已经具有较为可靠的 Q 表并且希望得到最优解的时候，就可以适当调整到较高的 $\varepsilon$。
 
@@ -702,9 +702,9 @@ $$
 \begin{aligned}
 V^{\b w}(s) &= \opE_{\b\tau \sim \b w} \left[G_t(\b\tau) \mid s_t = s\right] \\
 &= \opE_{\b\tau \sim \b w} \left[r_{t + 1} + \gamma G_{t + 1}(\b\tau) \mid s_t = s\right] \\
-&= r_{t + 1} + \gamma\opE_{\b\tau \sim \b w}\left[G_{t + 1}(\b\tau) \mid s_t = s\right] \\
-&= r_{t + 1} + \gamma\opE_{\b\tau \sim \b w}\left[G_{t + 1}(\b\tau) \mid s_{t + 1} = s'\right] \\
-&= r_{t + 1} + \gamma V^{\b w}(s')
+&= \opE_{\b\tau \sim \b w} \left[r_{t + 1} \mid s_t = s\right] + \gamma\opE_{\b\tau \sim \b w}\left[G_{t + 1}(\b\tau) \mid s_t = s\right] \\
+&= \opE_{\b\tau \sim \b w} \left[r_{t + 1} \mid s_t = s\right] + \gamma\opE_{\b\tau \sim \b w}\left[G_{t + 1}(\b\tau) \mid s_{t + 1} = s'\right] \\
+&= \opE_{\b\tau \sim \b w} \left[r_{t + 1} \mid s_t = s\right] + \gamma V^{\b w}(s')
 \end{aligned}
 $$
 
@@ -772,6 +772,10 @@ $$
 $$
 
 据此显然就能得到无偏性依然保持。
+
+## Bellman equation
+
+
 
 我们一般选取的 Baseline 函数就是该状态的评价函数 $V^{\b w}(s)$，所以此时我们定义 Advantage 函数：
 
