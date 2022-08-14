@@ -31,7 +31,7 @@ Sakana 单推 ❤。
     - 大三秋季学期《计算机网络原理》
     - 大四秋季学期《抽象代数 (1)》《抽象代数 (2)》
     - 《GAMES101》笔记
-    - 【实验室】强化学习入门笔记
+    - 【实验室】强化学习入门笔记 & Sutton 书笔记
 - 论文笔记
     - CG
         - Soft Rasterizer - A Differentiable Renderer for Image-based 3D Reasoning
