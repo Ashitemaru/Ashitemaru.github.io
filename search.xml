@@ -341,7 +341,7 @@
 <span id="more"></span>
 <h1 id="section">2022.05.27 - 2022.05.29</h1>
 <p>先回想一下自己需要完成什么事情吧：</p>
-<p>【下述事务列表更新于 8.12，删除、调整部分事务】</p>
+<p>【下述事务列表更新于 8.15，删除、调整部分事务】</p>
 <ul>
 <li>科协
 <ul>
@@ -373,6 +373,8 @@
 <ul>
 <li>冲雀圣【至少打回雀豪三吧 OTZ】</li>
 <li>四系麻将联赛</li>
+<li>处理危险化学品</li>
+<li>取回保险</li>
 </ul></li>
 </ul>
 <p>基本上而言，课内实际上压力并不大，所以升学相关一定是要重点考虑的，目前的 Target 是孙立峰教授或者艾海舟教授，还是稍微多去做点准备。</p>
@@ -813,6 +815,11 @@
 <p>全都在写实习报告，最后写完了。</p>
 <p>这就是，毫无意思的两天，写完了的话后面还有几件事情要做，比如说问问返校政策、去姜堰取回我的保险、处理之前的危险化学品、和 Sakana 贴贴。</p>
 <p>后面实验室的事情，还是得好好推进。</p>
+<h1 id="section-47">2022.08.14</h1>
+<blockquote>
+<p>最近 Sakana 有点冷冷的，感觉是回家开始重度手机游戏，不回我消息了。</p>
+</blockquote>
+<p>今天本来打算好好看 Sutton 的强化学习的，结果是没怎么推进，前面的 Introduction 部分实在是很烦，但是又觉得他会在里面写很多高屋建瓴的观点，又不想直接跳过，所以还是当成英语阅读理解算了。</p>
 ]]></content>
       <categories>
         <category>【生活记录】假期日记</category>
@@ -5433,7 +5440,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <li>大三秋季学期《计算机网络原理》</li>
 <li>大四秋季学期《抽象代数 (1)》《抽象代数 (2)》</li>
 <li>《GAMES101》笔记</li>
-<li>【实验室】强化学习入门笔记</li>
+<li>【实验室】强化学习入门笔记 &amp; Sutton 书笔记</li>
 </ul></li>
 <li>论文笔记
 <ul>
@@ -8889,6 +8896,28 @@ v = H\log_2\left(1 + \frac{S}{N}\right)({\rm bps})
       </categories>
   </entry>
   <entry>
+    <title>《Reinforcement Learning - An Introduction》学习笔记</title>
+    <url>/2022/08/14/note-of-rl-sutton/</url>
+    <content><![CDATA[<p>Sutton 编写的强化学习理论入门书，先前在学完基本的强化学习知识之后和几位学长做了一些交流，结果发现自己的理论还是有很多并不充足的部分，于是想着暑假还有一段时间，不如来深入学习一下强化学习理论，期间同时推进 Pensieve Torch 的项目。</p>
+<span id="more"></span>
+<h1 id="强化学习引论">强化学习引论</h1>
+<p>强化学习是研究 Agent 如何和环境交互的机器学习方式，其重要的两个特征为 <strong>Trial-and-error Search</strong> 与 <strong>Delayed reward</strong>，即我们需要 Agent 通过尝试来探索环境如何响应其动作，并且 Agent 做出的动作不仅会影响当下的收益，还可能影响后续行为的收益。</p>
+<p>强化学习和有监督学习的差别在于，有监督学习的 Agent 会从一个打标签后的数据集中学习，该数据集来源于外部的全知全能的监督，我们希望有监督学习的 Agent 能够学习每一条数据和其标签之间的关系，以此去预测未出现在训练集中的数据的标签。有监督学习并不能在交互之中学习，因为为某一种情况打上固定的标签，并且该标签在任何条件下都表示 Agent 应当采取的最正确的行为，寻找这样的标签并不实际。我们需要让 Agent 在未知的环境中通过自己的经验学习。</p>
+<p>强化学习虽然不依赖于监督数据，但是也并不是无监督学习，因为无监督学习的主要任务是发现无标签数据内部的结构关系。相比较于无监督学习，强化学习的目标是令 Agent 能够最大化 reward signal，即使发现数据集、环境内部的结构逻辑可能辅助完成该目标。</p>
+<p>此外，强化学习具有一个独特的特征，即强化学习方法需要处理 exploration 和 exploitation 的平衡问题。exploration 可以让 Agent 更为了解环境，更能确定何种行为更有利。而 exploitation 则可以让 Agent 根据目前的知识采取能获取最大收益的行为。不充足的 exploration 可能导致 Agent 无法正确判定最佳行为，不充足的 exploitation 则可能收获不到尽可能高的收益。所以强化学习方法需要平衡这两者以达到最佳的学习效果。</p>
+<p>另外一方面，强化学习会整体地考虑问题，思考如何让一个以明确目标为导向的 Agent 和完全不确定的环境交互。而其他的机器学习方法往往仅仅考虑当前问题的某些子问题，并不会论述该子问题该如何嵌入最后的整体问题。</p>
+<p>我们需要注意的是，强化学习中的 Agent 并不仅仅指的是机器人或者类似的独立决策个体，Agent 也可以代指这些系统中的某一个部分，其通过和系统其余部分交互来间接影响这个系统所在的环境。比如机器人的电量监测模块就可以通过告知机器人当前电量状况来影响整个机器人对环境的响应。</p>
+<p>综上所述，强化学习的基本框架大致如下：</p>
+<div class="note info no-icon"><p>强化学习往往包含一个活跃的，和环境产生<strong>交互</strong>的决策 Agent 以及其所处的环境。环境对 Agent 而言是<strong>不确定的</strong>，而 Agent 需要尝试做出能够达到其既定<strong>目标</strong>的行动。Agent 的行为会对环境产生影响，从而会影响下一步 Agent 的决策。所以正确的决策需要考虑到当前行为的延迟影响并且 Agent 需要有一定的前瞻和规划。</p>
+<p>此外，环境对 Agent 的行为的响应并不能精确预测，所以 Agent 需要不断观测环境。但另一方面，Agent 可以通过环境的响应来优化后续的行为决策。</p>
+</div>
+<h2 id="更具体的强化学习定义">更具体的强化学习定义</h2>
+]]></content>
+      <categories>
+        <category>【学习笔记】计算机</category>
+      </categories>
+  </entry>
+  <entry>
     <title>强化学习入门学习笔记</title>
     <url>/2022/06/30/note-of-rl/</url>
     <content><![CDATA[<p>目前实验室的项目和强化学习关系比较大，然而自己确实没有什么强化学习的基础。</p>
@@ -9543,6 +9572,19 @@ f^{([x])}(x) \leq f^{([x] - 1)}(x) - 1 \leq \cdots \leq f^{(0)}(x) - [x] = x - [
 <p>已知点 <span class="math inline">\(A \in \mathcal{A}, B \in \mathcal{B}\)</span>。给出已知向量 <span class="math inline">\(\boldsymbol t\)</span>，且已知 <span class="math inline">\(\vec{AB} \parallel \boldsymbol{t}\)</span>。</p>
 <p>证明：当 <span class="math inline">\(\vec{AB}\)</span> 的长度最小的时候，点 <span class="math inline">\(A, B\)</span> 中必有一个为其所在凸多边形的顶点。</p>
 <h2 id="solution-1">Solution</h2>
+<p>使用反证法。假设当 <span class="math inline">\(\|\vec{AB}\|_2\)</span> 取到最小值的时候 <span class="math inline">\(A, B\)</span> 中至少有一点位于其所在多边形的内部（即不位于其所在多边形的边界），不妨令 <span class="math inline">\(A\)</span> 位于 <span class="math inline">\(\mathcal{A}\)</span> 的内部。由于 <span class="math inline">\(\mathcal{A} \cap \mathcal{B} = \varnothing\)</span> 与 <span class="math inline">\(B \in \mathcal{B}\)</span>，可以得知 <span class="math inline">\(B\)</span> 位于多边形 <span class="math inline">\(\mathcal{A}\)</span> 的外部。那么线段 <span class="math inline">\(AB\)</span> 显然与 <span class="math inline">\(\mathcal{A}\)</span> 的边界 <span class="math inline">\(\partial\mathcal{A}\)</span> 有交点，不妨记为 <span class="math inline">\(A&#39;\)</span>。那么我们显然得到 <span class="math inline">\(\|\vec{A&#39;B}\|_2 &lt; \|\vec{AB}\|_2\)</span>，这与最小性假设矛盾，假设不成立。故当 <span class="math inline">\(\|\vec{AB}\|_2\)</span> 取到最小值的时候 <span class="math inline">\(A, B\)</span> 均应当位于其所在多边形的边界上。</p>
+<p>继续使用反证法。假设当 <span class="math inline">\(\|\vec{AB}\|_2\)</span> 取到最小值的时候 <span class="math inline">\(A, B\)</span> 均不位于其所在多边形的顶点。此时不妨假设 <span class="math inline">\(A\)</span> 所在的 <span class="math inline">\(\mathcal{A}\)</span> 的边为线段 <span class="math inline">\(a\)</span>，<span class="math inline">\(B\)</span> 所在的 <span class="math inline">\(\mathcal{B}\)</span> 的边为线段 <span class="math inline">\(b\)</span>。由 <span class="math inline">\(\mathcal{A}\)</span> 的任何一条边不平行于 <span class="math inline">\(\mathcal{B}\)</span> 的任何一条边知 <span class="math inline">\(a\)</span> 不平行于 <span class="math inline">\(b\)</span>，且据假设知 <span class="math inline">\(A\)</span> 不位于 <span class="math inline">\(a\)</span> 的顶点，<span class="math inline">\(B\)</span> 不位于 <span class="math inline">\(b\)</span> 的顶点。</p>
+<p>由于 <span class="math inline">\(a\)</span> 不平行于 <span class="math inline">\(b\)</span>，记 <span class="math inline">\(a\)</span> 所在直线和 <span class="math inline">\(b\)</span> 所在直线的交点为 <span class="math inline">\(C\)</span>，令点 <span class="math inline">\(A&#39;\)</span> 为线段 <span class="math inline">\(AC\)</span> 上一点，过 <span class="math inline">\(A&#39;\)</span> 作 <span class="math inline">\(A&#39;B&#39; \parallel AB\)</span> 与 <span class="math inline">\(b\)</span> 所在直线相交于 <span class="math inline">\(B&#39;\)</span>。显然无论 <span class="math inline">\(A&#39;\)</span> 如何取，均能够满足 <span class="math inline">\(\|\vec{A&#39;B&#39;}\|_2 &lt; \|\vec{AB}\|_2\)</span>。</p>
+<p>由于 <span class="math inline">\(A, B\)</span> 均不是其所在线段的顶点，那么存在一个 <span class="math inline">\(\delta_A &gt; 0\)</span> 满足 <span class="math inline">\(\|\vec{AA&#39;}\|_2 &lt; \delta_A\)</span> 时即有 <span class="math inline">\(A&#39; \in a\)</span>，即 <span class="math inline">\(A&#39; \in \mathcal{A}\)</span>。同理也存在类似的 <span class="math inline">\(\delta_B &gt; 0\)</span> 满足 <span class="math inline">\(\|\vec{BB&#39;}\|_2 &lt; \delta_B\)</span> 时即有 <span class="math inline">\(B&#39; \in \mathcal{B}\)</span>。</p>
+<p>考虑到 <span class="math inline">\(\triangle CAB \backsim \triangle CA&#39;B&#39;\)</span>，我们有下述关系：</p>
+<p><span class="math display">\[
+\frac{\|\vec{AA&#39;}\|_2}{\|\vec{BB&#39;}\|_2} = \frac{\|\vec{CA}\|_2}{\|\vec{CB}\|_2} \iff\|\vec{AA&#39;}\|_2 = \frac{\|\vec{CA}\|_2 \cdot \|\vec{BB&#39;}\|_2}{\|\vec{CB}\|_2}
+\]</span></p>
+<p>故我们只需要令：</p>
+<p><span class="math display">\[
+0 &lt; \|\vec{AA&#39;}\|_2 &lt; \min\left\{\delta_A, \frac{\|\vec{CA}\|_2 \cdot \delta_B}{\|\vec{CB}\|_2}\right\}
+\]</span></p>
+<p>即可保证 <span class="math inline">\(\|\vec{AA&#39;}\|_2 &lt; \delta_A\)</span> 且 <span class="math inline">\(\|\vec{BB&#39;}\|_2 &lt; \delta_B\)</span>，这就保证了 <span class="math inline">\(A&#39; \in \mathcal{A}, B&#39; \in \mathcal{B}\)</span>，并且有 <span class="math inline">\(\|\vec{A&#39;B&#39;}\|_2 &lt; \|\vec{AB}\|_2\)</span>。这样就与最小性假设矛盾，假设不成立。故当 <span class="math inline">\(\|\vec{AB}\|_2\)</span> 取到最小值的时候 <span class="math inline">\(A, B\)</span> 中至少有一个点为其所在多边形的顶点。</p>
 ]]></content>
       <categories>
         <category>【杂谈】数学</category>
