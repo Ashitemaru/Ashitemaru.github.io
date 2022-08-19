@@ -152,7 +152,7 @@ $(function () {
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">11</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">32</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">33</span></a></li>
         <li class="menu-item menu-item-skill-docs"><a href="https://sast-skill-docers.github.io/sast-skill-docs/" rel="noopener" target="_blank"><i class="fa fa-book fa-fw"></i>技能引导文档</a></li>
         <li class="menu-item menu-item-thuinfo"><a href="https://www.thuinfo.net/" rel="noopener" target="_blank"><i class="fa fa-sitemap fa-fw"></i>THUInfo</a></li>
       <li class="menu-item menu-item-search">
@@ -211,7 +211,7 @@ $(function () {
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%BC%95%E8%AE%BA"><span class="nav-number">1.</span> <span class="nav-text">强化学习引论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B4%E5%85%B7%E4%BD%93%E7%9A%84%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">更具体的强化学习定义</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%BC%95%E8%AE%BA"><span class="nav-number">1.</span> <span class="nav-text">强化学习引论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E7%8B%AC%E7%89%B9%E6%80%A7"><span class="nav-number">1.1.</span> <span class="nav-text">强化学习方法的定义和独特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%9A%84%E8%A6%81%E7%B4%A0"><span class="nav-number">1.2.</span> <span class="nav-text">强化学习的要素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E7%A4%BA%E4%BE%8B"><span class="nav-number">1.3.</span> <span class="nav-text">强化学习方法示例</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -228,7 +228,7 @@ $(function () {
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">33</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -266,6 +266,9 @@ $(function () {
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://c7w.tech/" title="https:&#x2F;&#x2F;c7w.tech" rel="noopener" target="_blank">c7w</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.leenldk.top/" title="http:&#x2F;&#x2F;www.leenldk.top&#x2F;" rel="noopener" target="_blank">leenldk (20)</a>
         </li>
     </ul>
   </div>
@@ -369,14 +372,14 @@ $(function () {
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1.3k</span>
+      <span>3.1k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
+      <span>3 分钟</span>
     </span>
 </div>
 
@@ -390,17 +393,35 @@ $(function () {
         <p>Sutton 编写的强化学习理论入门书，先前在学完基本的强化学习知识之后和几位学长做了一些交流，结果发现自己的理论还是有很多并不充足的部分，于是想着暑假还有一段时间，不如来深入学习一下强化学习理论，期间同时推进 Pensieve Torch 的项目。</p>
 <span id="more"></span>
 <h1 id="强化学习引论">强化学习引论</h1>
-<p>强化学习是研究 Agent 如何和环境交互的机器学习方式，其重要的两个特征为 <strong>Trial-and-error Search</strong> 与 <strong>Delayed reward</strong>，即我们需要 Agent 通过尝试来探索环境如何响应其动作，并且 Agent 做出的动作不仅会影响当下的收益，还可能影响后续行为的收益。</p>
-<p>强化学习和有监督学习的差别在于，有监督学习的 Agent 会从一个打标签后的数据集中学习，该数据集来源于外部的全知全能的监督，我们希望有监督学习的 Agent 能够学习每一条数据和其标签之间的关系，以此去预测未出现在训练集中的数据的标签。有监督学习并不能在交互之中学习，因为为某一种情况打上固定的标签，并且该标签在任何条件下都表示 Agent 应当采取的最正确的行为，寻找这样的标签并不实际。我们需要让 Agent 在未知的环境中通过自己的经验学习。</p>
-<p>强化学习虽然不依赖于监督数据，但是也并不是无监督学习，因为无监督学习的主要任务是发现无标签数据内部的结构关系。相比较于无监督学习，强化学习的目标是令 Agent 能够最大化 reward signal，即使发现数据集、环境内部的结构逻辑可能辅助完成该目标。</p>
-<p>此外，强化学习具有一个独特的特征，即强化学习方法需要处理 exploration 和 exploitation 的平衡问题。exploration 可以让 Agent 更为了解环境，更能确定何种行为更有利。而 exploitation 则可以让 Agent 根据目前的知识采取能获取最大收益的行为。不充足的 exploration 可能导致 Agent 无法正确判定最佳行为，不充足的 exploitation 则可能收获不到尽可能高的收益。所以强化学习方法需要平衡这两者以达到最佳的学习效果。</p>
-<p>另外一方面，强化学习会整体地考虑问题，思考如何让一个以明确目标为导向的 Agent 和完全不确定的环境交互。而其他的机器学习方法往往仅仅考虑当前问题的某些子问题，并不会论述该子问题该如何嵌入最后的整体问题。</p>
-<p>我们需要注意的是，强化学习中的 Agent 并不仅仅指的是机器人或者类似的独立决策个体，Agent 也可以代指这些系统中的某一个部分，其通过和系统其余部分交互来间接影响这个系统所在的环境。比如机器人的电量监测模块就可以通过告知机器人当前电量状况来影响整个机器人对环境的响应。</p>
+<h2 id="强化学习方法的定义和独特性">强化学习方法的定义和独特性</h2>
+<p>强化学习是研究<strong>智能体（Agent）</strong>如何和<strong>环境（Environment）</strong>交互的机器学习方式，其重要的两个特征为 <strong>Trial-and-error Search</strong> 与 <strong>Delayed reward</strong>，即我们需要智能体通过尝试来探索环境如何响应其动作，并且智能体做出的动作不仅会影响当下的收益，还可能影响后续行为的收益。</p>
+<p>强化学习和有监督学习的差别在于，有监督学习的智能体会从一个打标签后的数据集中学习，该数据集来源于外部的全知全能的监督，我们希望有监督学习的智能体能够学习每一条数据和其标签之间的关系，以此去预测未出现在训练集中的数据的标签。有监督学习并不能在交互之中学习，因为为某一种情况打上固定的标签，并且该标签在任何条件下都表示智能体应当采取的最正确的行为，寻找这样的标签并不实际。我们需要让智能体在未知的环境中通过自己的经验学习。</p>
+<p>强化学习虽然不依赖于监督数据，但是也并不是无监督学习，因为无监督学习的主要任务是发现无标签数据内部的结构关系。相比较于无监督学习，强化学习的目标是令智能体能够最大化收益，即使发现数据集、环境内部的结构逻辑可能辅助完成该目标。</p>
+<p>此外，强化学习具有一个独特的特征，即强化学习方法需要处理 exploration 和 exploitation 的平衡问题。exploration 可以让智能体更为了解环境，更能确定何种行为更有利。而 exploitation 则可以让智能体根据目前的知识采取能获取最大收益的行为。不充足的 exploration 可能导致智能体无法正确判定最佳行为，不充足的 exploitation 则可能收获不到尽可能高的收益。所以强化学习方法需要平衡这两者以达到最佳的学习效果。</p>
+<p>另外一方面，强化学习会整体地考虑问题，思考如何让一个以明确目标为导向的智能体和完全不确定的环境交互。而其他的机器学习方法往往仅仅考虑当前问题的某些子问题，并不会论述该子问题该如何嵌入最后的整体问题。</p>
+<p>我们需要注意的是，强化学习中的智能体并不仅仅指的是机器人或者类似的独立决策个体，智能体也可以代指这些系统中的某一个部分，其通过和系统其余部分交互来间接影响这个系统所在的环境。比如机器人的电量监测模块就可以通过告知机器人当前电量状况来影响整个机器人对环境的响应。</p>
 <p>综上所述，强化学习的基本框架大致如下：</p>
-<div class="note info no-icon"><p>强化学习往往包含一个活跃的，和环境产生<strong>交互</strong>的决策 Agent 以及其所处的环境。环境对 Agent 而言是<strong>不确定的</strong>，而 Agent 需要尝试做出能够达到其既定<strong>目标</strong>的行动。Agent 的行为会对环境产生影响，从而会影响下一步 Agent 的决策。所以正确的决策需要考虑到当前行为的延迟影响并且 Agent 需要有一定的前瞻和规划。</p>
-<p>此外，环境对 Agent 的行为的响应并不能精确预测，所以 Agent 需要不断观测环境。但另一方面，Agent 可以通过环境的响应来优化后续的行为决策。</p>
+<div class="note info no-icon"><p>强化学习往往包含一个活跃的，和环境产生<strong>交互</strong>的决策智能体以及其所处的环境。环境对智能体而言是<strong>不确定的</strong>，而智能体需要尝试做出能够达到其既定<strong>目标</strong>的行动。智能体的行为会对环境产生影响，从而会影响下一步智能体的决策。所以正确的决策需要考虑到当前行为的延迟影响并且智能体需要有一定的前瞻和规划。</p>
+<p>此外，环境对智能体的行为的响应并不能精确预测，所以智能体需要不断观测环境。但另一方面，智能体可以通过环境的响应来优化后续的行为决策。</p>
 </div>
-<h2 id="更具体的强化学习定义">更具体的强化学习定义</h2>
+<h2 id="强化学习的要素">强化学习的要素</h2>
+<p>具体而言，强化学习方法往往包含四个子元素，即<strong>策略（Policy）</strong>、<strong>收益信号（Reward signal）</strong>、<strong>价值函数（Value function）</strong>以及表示环境的<strong>模型（Model）</strong>，表示环境的模型可以不具有。</p>
+<p>策略是根据当前状态决定智能体需要做出的行为的函数，其可能是简单的查找表，也可以是涉及重型计算的搜索流程。策略是强化学习方法的核心，我们的目标即为学习最优策略。另外，策略除了直接给出当前需要采取的行为之外，还可以给出智能体作出各种行为的概率分布。</p>
+<p>收益信号则会在每次智能体做出决策后由环境给出，收益信号实际上定义了智能体行为的目标，即最大化整个流程中收益信号的总和。如果智能体在行为过程中收到了较低的收益信号，则其往往会更改其决策以尝试获得更高的收益信号。同样，收益信号也有可能是一个概率分布。</p>
+<p>相比于作为即时收益的收益信号，价值函数会从长远的角度评价一个状态，其代指了从该状态出发在长期的行为下智能体能期望获得的总收益。价值函数是收益总和的期望，但是依然可能发生从高价值状态出发依然收获低收益信号这样的情况。我们在决策的时候一般更为重视价值函数而非即时的收益信号，因为这样能够保证我们在长远上获取更高的收益。但是决定价值函数的取值远困难于决定收益信号，因为收益信号往往可以直接通过环境获取，而价值函数需要通过智能体在整个学习过程中去探索。可以说强化学习方法的核心就是如何高效地估计价值函数。</p>
+<p>此外，部分强化学习系统则包含用于模拟智能体所在的环境的模型，使用模型模拟环境的强化学习方法为 model-based 方法，而不使用模型，直接通过不断尝试进行学习的 model-free 方法。</p>
+<h2 id="强化学习方法示例">强化学习方法示例</h2>
+<p>我们使用基本的井字棋作为例子简单讲解强化学习方法。事实上，训练一个能够在井字棋中尽可能获胜的智能体并非容易。传统方法，例如常见的优化方法需要我们完全了解对手的行为模式，并对此加以学习，但是现实问题中更常见的，是我们并不知晓对手的行为模式，这个时候需要要求智能体通过实际上去和该对手对战以获取经验，并从经验中学习。</p>
+<p>使用强化学习方法时，我们首先需要确定状态空间 <span class="math inline">\(\mathcal{S}\)</span>，该状态空间即井字棋所有可能棋子排布形式构成的集合。之后设立价值函数 <span class="math inline">\(V: \mathcal{S} \to \mathbb{R}\)</span>，对于状态 <span class="math inline">\(s \in \mathcal{S}\)</span>，<span class="math inline">\(V(s)\)</span> 的含义为最近的对状态 <span class="math inline">\(s\)</span> 的价值估计。</p>
+<p>假设我们执 X 子，那么在算法开始之前，我们需要把所有三 X 子连珠的局面 <span class="math inline">\(s_X\)</span> 的价值函数 <span class="math inline">\(V(s_X)\)</span> 定义为 <span class="math inline">\(1\)</span>，相应地我们需要把所有三 O 子连珠的局面 <span class="math inline">\(s_O\)</span> 的价值函数 <span class="math inline">\(V(s_O)\)</span> 定义为 <span class="math inline">\(0\)</span>。而其他的所有状态 <span class="math inline">\(s\)</span>，则设定 <span class="math inline">\(V(s) := 0.5\)</span>，表明在无经验条件下，我们从任何中间状态开始的获胜概率估计为百分之五十。</p>
+<p>那么我们只需要不断按照某一个行为方式对弈，并根据对弈经验修改价值函数 <span class="math inline">\(V\)</span> 的值。这里我们的修改策略为，逆向遍历转移链，对于某一个转移行为，比如说我们在 <span class="math inline">\(t\)</span> 时刻从状态 <span class="math inline">\(s_t\)</span> 转移到状态 <span class="math inline">\(s_{t + 1}\)</span>，我们可以将前者的价值向后者的价值的方向前进一步：</p>
+<p><span class="math display">\[
+V(s_t) \leftarrow V(s_t) + \alpha[V(s_{t + 1}) - V(s_t)]
+\]</span></p>
+<p>这样，我们在获得一整个对局的基础上，就可以从游戏的最终情形倒推回起始，并在这一过程中逐步更新各个状态的评价。这样就实现了将 <span class="math inline">\(V(s_X), V(s_O)\)</span> 两个值传播到整个状态空间上。</p>
+<p>公式里的 <span class="math inline">\(\alpha &gt; 0\)</span> 一般是一个小常数，称为<strong>学习率（Learning rate）</strong>或者<strong>步长参数（Step-size parameter）</strong>。</p>
+<p>上述策略实际上是 <strong>Temporal-difference learning</strong> 的一个示例，因为上述学习依赖于差值 <span class="math inline">\(V(s_{t + 1}) - V(s_t)\)</span>，其是两个在时间上先后关系的状态的价值之差。</p>
+<p>上述策略和基于评价的学习方法有相当大的差别。基于评价的学习方法的原理为，固定一个策略，不断和给定的对手对弈，那么智能体的获胜频率给出了该策略获胜概率的无偏估计，该估计会为下一次策略选取提供指导。但是这种方法仅仅会关注结果，其完全忽视对局内部的每一次行动的具体影响，相比于考虑每个状态价值的强化学习方法，基于评价的学习方法往往会给一些毫无作用甚至反作用的行为给予高评价。</p>
 
     </div>
 
@@ -419,6 +440,9 @@ $(function () {
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2022/08/19/grade-4-autumn-preview/" rel="next" title="大四了，要干什么呢？">
+                  大四了，要干什么呢？ <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>
@@ -451,13 +475,13 @@ $(function () {
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">271k</span>
+    <span title="站点总字数">273k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:06</span>
+    <span title="站点阅读时长">4:08</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
