@@ -14,7 +14,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,300italic,400,400italic,700,700italic%7CMS+PMincho:300,300italic,400,400italic,700,700italic%7CFiraCode+Nerd+Font+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext" referrerpolicy="no-referrer">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,300italic,400,400italic,700,700italic%7CMS+PMincho:300,300italic,400,400italic,700,700italic%7CFira+Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext" referrerpolicy="no-referrer">
 
 <link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
@@ -483,14 +483,14 @@ I_j = \overline{X_j} + c\sqrt{\frac{2\ln n}{T_j(n)}}
 <h3 id="局部搜索">局部搜索</h3>
 <p>局部搜索的意思就是一直往更好的地方走，具体过程为：</p>
 <ul>
-<li>选择初始点 <span class="math inline">\(x_0\)</span>，以及其相邻可考察点集 <span class="math inline">\(P\)</span>；</li>
+<li>选择初始点 <span class="math inline">\(x_0\)</span>，以及其相邻可考察点集 <span class="math inline">\(P\)</span></li>
 <li>只要不满足退出条件，进行下面循环：
 <ul>
-<li>选择 <span class="math inline">\(P&#39; \subset P\)</span>，取 <span class="math inline">\(P&#39;\)</span> 之中最优解 <span class="math inline">\(x_b\)</span>；</li>
-<li>如果 <span class="math inline">\(x_b\)</span> 更优，则切换为考察 <span class="math inline">\(x_b\)</span>，<span class="math inline">\(P\)</span> 修改为 <span class="math inline">\(x_b\)</span> 的相邻考察点集；</li>
-<li>否则 <span class="math inline">\(P = P - P&#39;\)</span>；</li>
+<li>选择 <span class="math inline">\(P&#39; \subset P\)</span>，取 <span class="math inline">\(P&#39;\)</span> 之中最优解 <span class="math inline">\(x_b\)</span></li>
+<li>如果 <span class="math inline">\(x_b\)</span> 更优，则切换为考察 <span class="math inline">\(x_b\)</span>，<span class="math inline">\(P\)</span> 修改为 <span class="math inline">\(x_b\)</span> 的相邻考察点集</li>
+<li>否则 <span class="math inline">\(P = P - P&#39;\)</span></li>
 </ul></li>
-<li>输出结果。</li>
+<li>输出结果</li>
 </ul>
 <h3 id="模拟退火算法">模拟退火算法</h3>
 <p>模拟退火实际上是对局部搜索的一个优化。其基本原理来自于液态金属凝固的时候如果降温过快则有可能由于分子没有充分时间排列为结晶态而导致凝固不工整（没有达到最低能状态），而实际工艺会让温度缓慢下降，并且有回升温度的可能，保证大概率凝固为结晶态。</p>
@@ -504,26 +504,26 @@ P(p \rightarrow q) = \begin{cases}
 <p>这里 <span class="math inline">\(k\)</span> 是一个常量，<span class="math inline">\(T\)</span> 是“温度”，指的是优化问题之中的控制参数。</p>
 <p>根据物理定律（Boltzmann 分布）实际上我们可以给出定律：</p>
 <ul>
-<li>同一温度下，物体处于低能量状态的概率高于高能量状态；</li>
-<li>温度无限高的时候，物体等概率处于任何状态；</li>
-<li>温度无限低的时候，物体等概率处于任何最低能状态；</li>
-<li>温度下降的时候，物体进入低能量状态概率上升，进入高能量状态概率下降。</li>
+<li>同一温度下，物体处于低能量状态的概率高于高能量状态</li>
+<li>温度无限高的时候，物体等概率处于任何状态</li>
+<li>温度无限低的时候，物体等概率处于任何最低能状态</li>
+<li>温度下降的时候，物体进入低能量状态概率上升，进入高能量状态概率下降</li>
 </ul>
 <p>所以我们使用模拟退火方法的时候需要尽可能保证：</p>
 <ul>
-<li>初始能量足够高；</li>
-<li>每个温度下状态交换足够充分；</li>
-<li>温度的下降足够缓慢。</li>
+<li>初始能量足够高</li>
+<li>每个温度下状态交换足够充分</li>
+<li>温度的下降足够缓慢</li>
 </ul>
 <p>所以算法的基本思路就是：</p>
 <ul>
-<li>选定初始状态；</li>
+<li>选定初始状态</li>
 <li>随机选定初始状态的某一个相邻状态，考察它和初始状态的评估函数差：
 <ul>
-<li>如果新状态更优，直接迁移；</li>
-<li>如果原状态更优，则按照概率迁移；</li>
+<li>如果新状态更优，直接迁移</li>
+<li>如果原状态更优，则按照概率迁移</li>
 </ul></li>
-<li>迁移完毕后降温，重复上述迁移步骤直到寻找到满意的状态。</li>
+<li>迁移完毕后降温，重复上述迁移步骤直到寻找到满意的状态</li>
 </ul>
 <p>这里有些细节的问题需要考量。</p>
 <p>首先是<strong>什么是满意的状态</strong>，一般而言最简单的就是设定温度阈值或者降温次数阈值，另外一个是如果多次降温都没有能够让评估函数的变化超过阈值就可以认为稳定了。</p>
@@ -541,8 +541,8 @@ p(x_i) = \frac{F(x_i)}{\sum_{j = 1}^N F(x_j)}
 \]</span></p>
 <p>之后就可以模拟选优，过程为：</p>
 <ul>
-<li>从 <span class="math inline">\(x_1\)</span> 开始，以 <span class="math inline">\(p(x_1)\)</span> 的概率选择 <span class="math inline">\(x_1\)</span>。若选中，结束模拟，否则继续；</li>
-<li>转到 <span class="math inline">\(x_2\)</span>，以 <span class="math inline">\(p(x_1) + p(x_2)\)</span> 的概率选择 <span class="math inline">\(x_2\)</span>。若选中，结束模拟，否则继续；</li>
+<li>从 <span class="math inline">\(x_1\)</span> 开始，以 <span class="math inline">\(p(x_1)\)</span> 的概率选择 <span class="math inline">\(x_1\)</span>。若选中，结束模拟，否则继续</li>
+<li>转到 <span class="math inline">\(x_2\)</span>，以 <span class="math inline">\(p(x_1) + p(x_2)\)</span> 的概率选择 <span class="math inline">\(x_2\)</span>。若选中，结束模拟，否则继续</li>
 <li>......</li>
 <li>结束模拟</li>
 </ul>
@@ -552,26 +552,26 @@ p(x_i) = \frac{F(x_i)}{\sum_{j = 1}^N F(x_j)}
 <p>另外，交叉和变异则是对表示状态的二进制（或者十进制）数字串进行一定处理。</p>
 <p>从而就有了遗传算法的基本框架：</p>
 <ul>
-<li>给定群体规模 <span class="math inline">\(N\)</span>，交叉概率 <span class="math inline">\(p_c\)</span> 以及变异概率 <span class="math inline">\(p_m\)</span>；</li>
-<li>随机生成 <span class="math inline">\(N\)</span> 个染色体作为初始群体，并计算适应值；</li>
+<li>给定群体规模 <span class="math inline">\(N\)</span>，交叉概率 <span class="math inline">\(p_c\)</span> 以及变异概率 <span class="math inline">\(p_m\)</span></li>
+<li>随机生成 <span class="math inline">\(N\)</span> 个染色体作为初始群体，并计算适应值</li>
 <li>下面不断重复循环直到找到合适的解：
 <ul>
-<li>选优出 <span class="math inline">\(N\)</span> 个染色体成为扩展群体；</li>
-<li>按照 <span class="math inline">\(p_c,p_m\)</span> 进行交叉和变异，未变化的染色体保留，形成新群体；</li>
+<li>选优出 <span class="math inline">\(N\)</span> 个染色体成为扩展群体</li>
+<li>按照 <span class="math inline">\(p_c,p_m\)</span> 进行交叉和变异，未变化的染色体保留，形成新群体</li>
 </ul></li>
-<li>选取整个进化过程中最适应的染色体作为最后输出。</li>
+<li>选取整个进化过程中最适应的染色体作为最后输出</li>
 </ul>
 <p>不过我们注意，我们一定要<strong>选取合适的编码方式</strong>，否则可能会因为问题的状态难以描述而导致编码串有过多无用位，从而导致无效变异。</p>
 <p>二进制的交叉和变异是简单的，十进制的交叉可以如此：</p>
 <ul>
-<li>子代 1 的交叉位之后的基因从父代 2 的所有基因之中按顺序取出尚未在子代 1 之中基因；</li>
-<li>指定若干的欠缺位，让父代 2 这些位置留空，之后按照父代1的顺序把原来的数字填回去形成子代 2；</li>
-<li>指定一个一一对应的映射，以生成子代。</li>
+<li>子代 1 的交叉位之后的基因从父代 2 的所有基因之中按顺序取出尚未在子代 1 之中基因</li>
+<li>指定若干的欠缺位，让父代 2 这些位置留空，之后按照父代1的顺序把原来的数字填回去形成子代 2</li>
+<li>指定一个一一对应的映射，以生成子代</li>
 </ul>
 <p>变异则可以：</p>
 <ul>
-<li>指定两个位置，将后面的数字移到前面的指定位置之前；</li>
-<li>指定两个位置，交换两个位置上的基因；</li>
+<li>指定两个位置，将后面的数字移到前面的指定位置之前</li>
+<li>指定两个位置，交换两个位置上的基因</li>
 <li>随意打乱某一区间。</li>
 </ul>
 <h2 id="统计机器学习">统计机器学习</h2>
@@ -777,10 +777,10 @@ g(D, A) = H(D) - H(D \mid A)
 \]</span></p>
 <p>下面介绍 ID3 算法，这个算法可以用于生成决策树：</p>
 <ul>
-<li>如果 <span class="math inline">\(D\)</span> 之中所有例子属于同一类或者没有用于判断的特征，则返回单节点树，类标记为实例数最多的类；</li>
-<li>选择信息增益最大的特征 <span class="math inline">\(A_g\)</span>，其信息增益为 <span class="math inline">\(\delta_A\)</span>；</li>
-<li>如果 <span class="math inline">\(\delta_A\)</span> 小于阈值 <span class="math inline">\(\varepsilon\)</span>，那么置单节点决策树，类标记为实例数最多的类；</li>
-<li>否则按照特征取值分割训练集，如果某个分割后的块为空，那么构建单节点子树，类标记为 <span class="math inline">\(D\)</span> 实例数最多的类。若非空则构建子树，递归上述过程。</li>
+<li>如果 <span class="math inline">\(D\)</span> 之中所有例子属于同一类或者没有用于判断的特征，则返回单节点树，类标记为实例数最多的类</li>
+<li>选择信息增益最大的特征 <span class="math inline">\(A_g\)</span>，其信息增益为 <span class="math inline">\(\delta_A\)</span></li>
+<li>如果 <span class="math inline">\(\delta_A\)</span> 小于阈值 <span class="math inline">\(\varepsilon\)</span>，那么置单节点决策树，类标记为实例数最多的类</li>
+<li>否则按照特征取值分割训练集，如果某个分割后的块为空，那么构建单节点子树，类标记为 <span class="math inline">\(D\)</span> 实例数最多的类。若非空则构建子树，递归上述过程</li>
 </ul>
 <p>这样的算法倾向于选择分支比较多的属性。</p>
 <p>所以定义<strong>信息增益比</strong>：</p>

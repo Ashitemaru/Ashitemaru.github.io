@@ -493,7 +493,7 @@ pre {
 }
 pre,
 code {
-  font-family: FiraCode Nerd Font Mono, consolas, Menlo, monospace, 'Noto Serif SC';
+  font-family: Fira Code, consolas, Menlo, monospace, 'Noto Serif SC';
 }
 code {
   border-radius: 3px;
@@ -2873,7 +2873,7 @@ mjx-container[display="true"] + br {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #b4d5d2;
+  background: #ffff70;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
