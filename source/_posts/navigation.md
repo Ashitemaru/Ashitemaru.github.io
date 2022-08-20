@@ -41,7 +41,7 @@ Sakana 单推 ❤。
         - Neural Adaptive Video Streaming with Pensieve
 - 日语笔记
     - 语法手册
-    - 汉文、汉字读法相关笔记
+    - 汉文相关笔记
 - 一些生活记录和总结
     - 大二春季学期、大三秋季学期、大三春季学期总结
     - 大三寒假总结

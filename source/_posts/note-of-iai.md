@@ -100,8 +100,8 @@ A* 算法面临的一个问题在于**可能会多次扩展同一个节点**，�
 
 $$
 \begin{cases}
-	h(n_i) - h(n_j) \leq {\rm distance}(n_i, n_j) \\
-	h(t) = 0
+    h(n_i) - h(n_j) \leq {\rm distance}(n_i, n_j) \\
+    h(t) = 0
 \end{cases}
 $$
 
@@ -341,9 +341,9 @@ $$
 
 $$
 P(Y = c_k \mid X = x) = \frac{
-	P(X = x \mid Y = c_k)P(Y = c_k)
+    P(X = x \mid Y = c_k)P(Y = c_k)
 } {
-	\sum_k P(X = x \mid Y = c_k)P(Y = c_k)
+    \sum_k P(X = x \mid Y = c_k)P(Y = c_k)
 }
 $$
 
@@ -373,9 +373,9 @@ $$
 
 $$
 P_\lambda\left(X^{(j)} = a_{jl} \ \middle| \ Y = c_k\right) = \frac{
-	\sum_{i = 1}^N {\rm idx}\left(x_i^{(j)} = a_{jl}, y_i = c_k\right) + \lambda
+    \sum_{i = 1}^N {\rm idx}\left(x_i^{(j)} = a_{jl}, y_i = c_k\right) + \lambda
 } {
-	\sum_{i = 1}^N {\rm idx}(y_i = c_k) + S_j\lambda
+    \sum_{i = 1}^N {\rm idx}(y_i = c_k) + S_j\lambda
 }
 $$
 
@@ -415,8 +415,8 @@ $$
 
 $$
 \begin{cases}
-	\hat\gamma = \min_i \hat\gamma_i \\
-	\gamma = \min_i \gamma_i \\
+    \hat\gamma = \min_i \hat\gamma_i \\
+    \gamma = \min_i \gamma_i \\
 \end{cases}
 $$
 
@@ -439,8 +439,8 @@ $$
 $$
 \max_\boldsymbol\alpha L(\boldsymbol w, b, \boldsymbol\alpha) =
 \begin{cases}
-	\dfrac{1}{2}\|\boldsymbol w\|^2 & {\rm when\ some\ requirements\ are\ satisfied} \\
-	\infty & {\rm otherwise}
+    \dfrac{1}{2}\|\boldsymbol w\|^2 & {\rm when\ some\ requirements\ are\ satisfied} \\
+    \infty & {\rm otherwise}
 \end{cases}
 $$
 
@@ -476,8 +476,8 @@ $$
 
 $$
 \begin{cases}
-	\boldsymbol w^* = \sum_{i = 1}^N \alpha_i^*y_i\boldsymbol x_i \\
-	b^* = y_j - \sum_{i = 1}^N \alpha_i^*y_i(\boldsymbol x_i^T\boldsymbol x_j)\ (\alpha_j^* \neq 0)
+    \boldsymbol w^* = \sum_{i = 1}^N \alpha_i^*y_i\boldsymbol x_i \\
+    b^* = y_j - \sum_{i = 1}^N \alpha_i^*y_i(\boldsymbol x_i^T\boldsymbol x_j)\ (\alpha_j^* \neq 0)
 \end{cases}
 $$
 
@@ -511,8 +511,8 @@ $$
 
 $$
 \begin{cases}
-	\boldsymbol w^* = \sum_{i = 1}^N \alpha_i^*y_i\boldsymbol x_i \\
-	b^* = y_j - \sum_{i = 1}^N \alpha_i^*y_i(\boldsymbol x_i^T\boldsymbol x_j)\ (0 < \alpha_j^* < C)
+    \boldsymbol w^* = \sum_{i = 1}^N \alpha_i^*y_i\boldsymbol x_i \\
+    b^* = y_j - \sum_{i = 1}^N \alpha_i^*y_i(\boldsymbol x_i^T\boldsymbol x_j)\ (0 < \alpha_j^* < C)
 \end{cases}
 $$
 
@@ -597,8 +597,8 @@ $$
 
 $$
 \begin{aligned}
-	g(D, A) &= H(D) - H(D \mid A) \\
-	&= -\sum_{k = 1}^K \frac{|C_k|}{|D|}\log\frac{|C_k|}{|D|} + \sum_{i = 1}^n \frac{|D_i|}{|D|}\left(\sum_{k = 1}^K \frac{|D_{ik}|}{|D_i|}\log\frac{|D_{ik}|}{|D_i|}\right)
+    g(D, A) &= H(D) - H(D \mid A) \\
+    &= -\sum_{k = 1}^K \frac{|C_k|}{|D|}\log\frac{|C_k|}{|D|} + \sum_{i = 1}^n \frac{|D_i|}{|D|}\left(\sum_{k = 1}^K \frac{|D_{ik}|}{|D_i|}\log\frac{|D_{ik}|}{|D_i|}\right)
 \end{aligned}
 $$
 
