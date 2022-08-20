@@ -210,7 +210,7 @@
 <p><strong>今天汇报：</strong></p>
 <p>和姜东会玩了一个下午一个晚上，先去麦当劳吃饭搓音游，然后星巴克打雀、掼蛋、闲聊，之后定番小菜园聚餐和舞立方手痒打机，最后 KTV。</p>
 <p>KTV 上我唱了不少歌，但最满意的还是《太阳系 DISCO》。作为自己很喜欢和大家都能参与（指鼓掌和参与オーオオー以及ナナナナナナナー环节）的一首歌，整体气氛还是很好的，比那些大部分人看不懂歌词也不熟悉的比较冷的 V 曲要好一些。当然唱完这首歌我嗓子就明显不行了，中途的一段几乎就是在纯靠喊。</p>
-<div class="note info no-icon"><p>あの一等星のさんざめく光で，あなたとダンスを踊ろうか。 ーー「太陽系ディスコ」</p>
+<div class="note info no-icon"><p>あの一等星のさんざめく光で，あなたとダンスを踊ろうか。 ——「太陽系ディスコ」</p>
 </div>
 <p>回来之后就是和 Sakana 闲聊了一会，然后转头就装了个有补丁的 Riddle Joker 开始推。由于之前认真推过没有补丁的七海线，所以这次就很快地过掉了，看了一下 H 情节怎么搞的就睡觉去了。</p>
 <h2 id="section-20">2021.07.19</h2>
@@ -1687,7 +1687,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <p>我有分享歌词的习惯，这里也来一句吧。但不同于之前我喜欢分享那种长长的，哲学家写散文式的歌词，这个歌词很朴素：</p>
 <blockquote class="blockquote-center">
 <p>ケーキも大好き，君も大好き。</p>
-<p>ーー「とある一家の御茶会議」</p>
+<p>——「とある一家の御茶会議」</p>
 
 </blockquote>
 <p>祝愿我余下的一半本科时光，能过得有意义。这里是 Holder，我们一起接着走下去吧。</p>
@@ -1758,7 +1758,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <p>失うことに慣れてく中で失くさずにいた大事な思いを、</p>
 <p>抱きしめたら不意に涙が落ちたのは、</p>
 <p>この街でまだ生きていたいと思うから。</p>
-<p>ーー「幽霊東京」</p>
+<p>——「幽霊東京」</p>
 
 </blockquote>
 ]]></content>
@@ -4074,6 +4074,173 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
       </categories>
   </entry>
   <entry>
+    <title>日本高中课程《漢文》学习笔记</title>
+    <url>/2021/08/16/ja-2/</url>
+    <content><![CDATA[<p>这门课大致就是讲日本人是如何阅读中文文言文的。学这个纯属是觉得日语这门语言真的很有意思，借鉴中文的文字，却采用了和中文几乎完全不一样的语法。另一方面也是因为好奇中国的典籍传到日本是如何被翻译的。</p>
+<p>虽然自己现代日语都还没学明白，但作为随缘学习人，不如再开新坑。</p>
+<span id="more"></span>
+<h1 id="基本语序">基本语序</h1>
+<p>首先我们需要知道，汉语之中的语序是“主谓宾”，而日语却是“主宾谓”。</p>
+<p>所以说日本人在阅读文言文的时候，第一件事就是要把各种词语的顺序调节成日本人能够用日语思维理解的样子。这个时候，日本人发明了<strong>返点（返り点）</strong>和<strong>送假名（送り仮名）</strong>，将其标注在文言文原文旁，用于辅助阅读。</p>
+<h2 id="送假名">送假名</h2>
+<p>日本人阅读文言文的时候，为了标记出宾语（日本一般称为“目的语”）的位置，常常在表示宾语的汉字右下侧标记「ヲ／ニ／ト」三个假名之一，这就是送假名。这三个假名也是现代日语之中相当重要的三个助词，其表明了三种不同的语法关系。比如说（按理应该使用竖排文字，但是考虑到排版问题，就使用横排文字了。角标位置相应逆时针旋转九十度）：</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; \text{陳康粛公善}_{\text{レ}}^{\text{クス}} \text{射}^{\text{ヲ}}。\\
+&amp; \text{項梁乃}^{\text{チ}}\text{教}^{\text{フ}}_{\text{一}}\text{籍}^{\text{ニ}}\text{兵法}^{\text{ヲ}}_{\text{二}}。 \\
+\end{aligned}
+\]</span></p>
+<p>这里“射”“籍”以及“兵法”右上方（由于改为横排，故旋转到右上方）标注的「ヲ／ニ／ト」就是送假名了，其作用就是标注出宾语的位置。</p>
+<p>除去这三个假名，还有一些送假名的目的是将汉语汉字添加上黏性词尾转化为日语词。比如说这里的“教”标注了「フ」假名，实际上代表了「教ふ」这个日语词（注意这里使用古代假名用法而非现代用法）。</p>
+<h2 id="返点">返点</h2>
+<p>返点指的是用于提示读者调换文字阅读顺序的提示文字，常常标记在汉字左下角（横排的时候位于右下角）。返点常用的三种为「レ点」「一二点」「上下点」，写法就是汉字左下角的「レ」假名、汉字数字「一二三」和汉字「上下」。</p>
+<p>「レ点」的作用是<strong>标记此处返回一个文字</strong>，也就是说位于「レ点」两侧的汉字实际的阅读顺序是反过来的。比如说此句：</p>
+<p><span class="math display">\[
+\text{行}^{\text{ク}}_{\text{レ}}\text{海}^{\text{ニ}}。
+\]</span></p>
+<p>这里「レ点」表明“行”和“海”两个汉字的阅读顺序恰好和印刷顺序是相反的，也就是先读“海”，再读“行”。</p>
+<p>如果返回汉字的数量超过一个，则使用「一二点」标记。阅读顺序是从标有「一」的位置跳转到标有「二」的位置。比如说此句：</p>
+<p><span class="math display">\[
+\text{思}^{\text{フ}}_{\text{二}}\text{君}^{\text{ノ}}\text{事}^{\text{ヲ}}_{\text{一}}。
+\]</span></p>
+<p>此时的阅读顺序是首先跳过“思”，先阅读“君”和“事”，之后跳转去阅读“思”。</p>
+<p>「上下点」用于标记嵌套的跳转。在两个「一二点」嵌套的时候，为了消歧义，将外层的「一二点」变为「上下点」。比如说此句：</p>
+<p><span class="math display">\[
+\text{有}^{\text{リ}}_{\text{下}} \text{観}^{\text{ル}}_{\text{二}} {}^{\text{ばい}}\text{梅} {}^{\text{か}}\text{花}^{\text{ヲ}}_{\text{一}} \text{者}_{\text{上}}。
+\]</span></p>
+<p><strong>注解：</strong>这里在右上方（横排的时候在左上方）标注的平假名是这个汉字的注音。</p>
+<p>此时的阅读顺序是从“梅花”开始，从“花”跳转到“観”，之后向下阅读到“者”，再跳转到“有”。</p>
+<p>如果涉及到更为深层的跳转嵌套，可能会使用到天干地支。但对于大部分的转读，这三类就已经够用了。</p>
+<hr />
+<p>综合这三种返点的话，可以看这一个例句（只保留返点）：</p>
+<p><span class="math display">\[
+\text{無}_{\text{下}} \text{不}_{\text{レ}} \text{知}_{\text{レ}} \text{愛}_{\text{二}} \text{其} \text{親}_{\text{一}} \text{者}_{\text{上}}。
+\]</span></p>
+<p>这一句话首先阅读“其親”，之后根据「一二点」跳转到“愛”，遇到「レ点」则逐个倒着读“知不”，之后向下读到“者”，最后根据「上下点」读到“無”。所以最后的汉字阅读顺序是“其親愛知不者無”，当然这和真正的日语还有距离，但至少汉字顺序已经符合日语思维了，之后就是需要利用送假名填充各种助词和词尾。</p>
+<h2 id="其他的一些概念">其他的一些概念</h2>
+<p>首先需要介绍<strong>置字（置き字）</strong>，其含义是在转读为日语的时候不需要读出的汉字。其不会直接在文章中标出来，基本靠读者自身的文言能力来判定。比如说：</p>
+<p><span class="math display">\[
+\text{念} \text{莫}_{\text{下}} \text{可}_{\text{レ}} \text{使}_{\text{レ}} \text{用}_{\text{二}} \text{於} \text{秦}_{\text{一}} \text{者}_{\text{上}}。
+\]</span></p>
+<p>这里的“於”实际上是不会读出来的，所以说阅读顺序是“念秦用使可者莫”，并不包含汉字“於”。</p>
+<p>置字常常是古汉语之中常见的一些助词，比如说“而”“於”“乎”“矣”“焉”之类的。</p>
+<p>另外，有的时候「レ点」「一二点」或者「レ点」「上下点」会出现在同一个汉字的左下角，这个时候就会发生<strong>合写</strong>。这种合写形式的返点是有专门的 Unicode 字符的，但是这里无法打出来，所以直接分立写出：</p>
+<p><span class="math display">\[
+\text{勿}^{\text{カレ}}_{\text{下}} \text{以}^{\text{テ}}_{\text{二}} \text{悪}^{\text{ノ}} \text{小}^{\text{ナルヲ}}_{\text{一}} \text{為}^{\text{ス}}_{\text{上レ}} \text{之}^{\text{ヲ}}。
+\]</span></p>
+<p>这个时候「レ点」「上下点」虽然合写，但发挥各自作用。</p>
+<p>此外，有些时候文言之中有部分双字或者四字熟语不能拆分理解，这些熟语的汉字之间会用短横连接，表示作为整体处理（这里由于短横渲染问题，使用左右括号标志）。比如：</p>
+<p><span class="math display">\[
+\text{欲}^{\text{ス}}_{\text{三}} (\text{学}_{\text{二}} \text{習}^{\text{セント}}) \text{漢} \text{文}^{\text{ヲ}}_{\text{一}}。
+\]</span></p>
+<h1 id="书下文">书下文</h1>
+<p>书下文（書き下し文）指的是通过返点和送假名，将文言文直接转化成的，符合日语语法习惯但不一定完全通顺的文句。其转写方式是，首先通过返点调转汉字阅读顺序，最后通过送假名填入日语助词和词尾。</p>
+<p>比如说这一句：</p>
+<p><span class="math display">\[
+\text{有}^{\text{リ}}_{\text{下}} \text{観}^{\text{ル}}_{\text{二}} {}^{\text{ばい}}\text{梅} {}^{\text{か}}\text{花}^{\text{ヲ}}_{\text{一}} \text{者}_{\text{上}}。
+\]</span></p>
+<p>首先通过返点得到汉字顺序为“梅花観者有”，之后在各个汉字后补上送假名之后就得到这句话的书下文：</p>
+<p><span class="math display">\[
+\text{梅花を観る者有り。}
+\]</span></p>
+<p>不过在转写书下文的时候，要注意三点：</p>
+<ul>
+<li><p>注意日语助词和助动词不写作汉字。</p></li>
+<li><p>注意置字不写入书下文。</p></li>
+<li><p>注意再读汉字的转写（具体转写方式见后续）。</p></li>
+</ul>
+<p>比如说这一句：</p>
+<p><span class="math display">\[
+\text{子} \text{曰}^{\text{ク}} \text{温}^{\text{メテ}}_{\text{レ}} \text{故}^{\text{キヲ}} \text{而} \text{知}^{\text{ラバ}}_{\text{レ}} \text{新}^{\text{シキヲ}} \text{可}^{\text{シ}}_{\text{二}} \text{以}^{\text{テ}} \text{為}^{\text{ル}}_{\text{一レ}} \text{師} \text{矣}。
+\]</span></p>
+<p>首先得到汉字的阅读顺序为“子曰故温新知以師為可”，这里“而”和“矣”是置字，不需要写入书下文。之后填充假名得到书下文：</p>
+<p><span class="math display">\[
+\text{子曰く故きを温めて新しきを知らば以て師為るべし。}
+\]</span></p>
+<p>这里注意，「可し（べし）」是一个助动词，不应当写为汉字。</p>
+<p>常见的助词包括：</p>
+<div class="note info no-icon"><p>の，か，や，より，と，かな，のみ</p>
+</div>
+<p>这里，「の」常写作“之”，「のみ」常写作“耳”。</p>
+<p>常见的助动词包括：</p>
+<div class="note info no-icon"><p>ず，しむ，る，らる，なり，べし，ごとし</p>
+</div>
+<p>这里，「べし」常写作“可”，「ごとし」常写作“若”，「なり」常写作“也”。</p>
+<h1 id="再读汉字">再读汉字</h1>
+<p>再读汉字指的就是在转写的时候需要读两次的汉字，其往往代表了日语之中的一些固定句式。再读汉字的第一次读的注音用平假名标在汉字右上角（横排的时候在左上方），第二次读的注音用平假名标在汉字左上角（横排的时候在左下方），而第二次的送假名则和返点一样在左下角（横排的时候在右下方），以表区分，这里用空格隔开。</p>
+<p>另外注意，<strong>一般而言，再读汉字第一遍读的时候作实词写成汉字，而第二遍读的时候作虚词不写成汉字</strong>。比如说这样的例句：</p>
+<p><span class="math display">\[
+{}^{\text{まさ}}_{\text{べ}}\text{当}^{\text{ニ}}_{\text{二 シ}} \text{勉} \text{強}^{\text{ス}}_{\text{一}}。
+\]</span></p>
+<p>注意到再读汉字“当”读两次，这句话汉字的阅读顺序应该为“当勉强当”，第二遍读“当”的时候不写为汉字。则书下文为：</p>
+<p><span class="math display">\[
+\text{当に勉強すべし。}
+\]</span></p>
+<p>日本高中要求掌握的再读汉字包括：</p>
+<div class="note info no-icon"><p>宜，当，未，猶，応，将，盍，須，且</p>
+</div>
+<p>这些汉字的读法为（这里平假名标注的是汉字本身的读音，片假名标注的是相应的送假名。而在「」之中标注的，则是紧接在再读汉字第二次读之前的汉字的送假名。「動詞形式」指的是紧接在再读汉字第二次读之前的动词应当采取的变形）：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">再読漢字</th>
+<th style="text-align: center;">読み方</th>
+<th style="text-align: center;">意味</th>
+<th style="text-align: center;">動詞形式</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">未</td>
+<td style="text-align: center;">いまダ〜ず</td>
+<td style="text-align: center;">まだ〜ない</td>
+<td style="text-align: center;">未然形</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">且 &amp; 将</td>
+<td style="text-align: center;">まさニ〜「ント」す</td>
+<td style="text-align: center;">これから〜しようとする</td>
+<td style="text-align: center;">未然形</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">当 &amp; 応</td>
+<td style="text-align: center;">まさニ〜べシ</td>
+<td style="text-align: center;">当然〜すべきだ</td>
+<td style="text-align: center;">終止形／ラ変連体形</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">須</td>
+<td style="text-align: center;">すべかラク〜べシ</td>
+<td style="text-align: center;">ぜひとも〜する必要がある</td>
+<td style="text-align: center;">終止形／ラ変連体形</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">宜</td>
+<td style="text-align: center;">よろシク〜べシ</td>
+<td style="text-align: center;">〜するのがよい</td>
+<td style="text-align: center;">終止形／ラ変連体形</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">猶</td>
+<td style="text-align: center;">なホ〜ごとシ</td>
+<td style="text-align: center;">ちょうど〜のようだ</td>
+<td style="text-align: center;">名詞＋「の」／動詞連体形＋「が」</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">盍</td>
+<td style="text-align: center;">なんゾ〜ざル</td>
+<td style="text-align: center;">どうして〜しないのか</td>
+<td style="text-align: center;">未然形</td>
+</tr>
+</tbody>
+</table>
+<h1 id="使役动词">使役动词</h1>
+]]></content>
+      <categories>
+        <category>【学习笔记】日语</category>
+      </categories>
+  </entry>
+  <entry>
     <title>日语单词变形手册</title>
     <url>/2021/06/18/ja-1/</url>
     <content><![CDATA[<p>这是一个相当长的文档，几乎可以说记录了我对日语单词变形能想到的一切。即使日语有的时候和中文很相似，但是它作为黏着语还是让它的语法成为了汉语母语者学习的巨大障碍。</p>
@@ -4421,9 +4588,9 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <div class="note info no-icon"><p>昨日は新聞を読み<strong>ました</strong>。 昨日は雑誌を読み<strong>ませんでした</strong>。 初め<strong>まして</strong>。</p>
 </div>
 <p>这里稍微说说「ませんでした」这样的形式是怎么样构成的。因为日语构建过去否定都是先否定再过去，在形容词上面就已经有较多体现：</p>
-<p>暑い　<span class="math inline">\(\Rightarrow\)</span>　暑くない　<span class="math inline">\(\Rightarrow\)</span>　暑くなかった</p>
+<p>暑い <span class="math inline">\(\Rightarrow\)</span> 暑くない <span class="math inline">\(\Rightarrow\)</span> 暑くなかった</p>
 <p>那么我们对「ます」的否定形式「ません」该如何处理呢？它不是用言，我们必须用助动词修饰之后才能进行过去化：</p>
-<p>ません　<span class="math inline">\(\Rightarrow\)</span>　ませんです　<span class="math inline">\(\Rightarrow\)</span>　ませんでした</p>
+<p>ません <span class="math inline">\(\Rightarrow\)</span> ませんです <span class="math inline">\(\Rightarrow\)</span> ませんでした</p>
 <p>这里的「ませんです」只是一个变形中间体，不具有任何语言用途，不能在实际用语中出现。</p>
 <ul>
 <li>终止形「ます」</li>
@@ -4494,372 +4661,668 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
       </categories>
   </entry>
   <entry>
-    <title>日本高中课程《漢文》学习笔记</title>
-    <url>/2021/08/16/ja-2/</url>
-    <content><![CDATA[<p>这门课大致就是讲日本人是如何阅读中文文言文的。学这个纯属是觉得日语这门语言真的很有意思，借鉴中文的文字，却采用了和中文几乎完全不一样的语法。另一方面也是因为好奇中国的典籍传到日本是如何被翻译的。</p>
-<p>虽然自己现代日语都还没学明白，但作为随缘学习人，不如再开新坑。</p>
+    <title>简明日语自学手册</title>
+    <url>/2022/08/21/ja-tutorial/</url>
+    <content><![CDATA[<p>本来想用 MS Word 来整理初学手册的，但是现在配置好了振假名相关的语法，还是放到博客里面吧。本手册基本上基于 Holder 自己对日语的理解编写，和市面通行的日语教材的逻辑几乎不同，由于很有可能有错漏，请谨慎使用。</p>
 <span id="more"></span>
-<h1 id="基本语序">基本语序</h1>
-<p>首先我们需要知道，汉语之中的语序是“主谓宾”，而日语却是“主宾谓”。</p>
-<p>所以说日本人在阅读文言文的时候，第一件事就是要把各种词语的顺序调节成日本人能够用日语思维理解的样子。这个时候，日本人发明了<strong>返点（返り点）</strong>和<strong>送假名（送り仮名）</strong>，将其标注在文言文原文旁，用于辅助阅读。</p>
-<h2 id="送假名">送假名</h2>
-<p>日本人阅读文言文的时候，为了标记出宾语（日本一般称为“目的语”）的位置，常常在表示宾语的汉字右下侧标记「ヲ／ニ／ト」三个假名之一，这就是送假名。这三个假名也是现代日语之中相当重要的三个助词，其表明了三种不同的语法关系。比如说（按理应该使用竖排文字，但是考虑到排版问题，就使用横排文字了。角标位置相应逆时针旋转九十度）：</p>
-<p><span class="math display">\[
-\begin{aligned}
-&amp; \text{陳康粛公善}_{\text{レ}}^{\text{クス}} \text{射}^{\text{ヲ}}。\\
-&amp; \text{項梁乃}^{\text{チ}}\text{教}^{\text{フ}}_{\text{一}}\text{籍}^{\text{ニ}}\text{兵法}^{\text{ヲ}}_{\text{二}}。　\\
-\end{aligned}
-\]</span></p>
-<p>这里“射”“籍”以及“兵法”右上方（由于改为横排，故旋转到右上方）标注的「ヲ／ニ／ト」就是送假名了，其作用就是标注出宾语的位置。</p>
-<p>除去这三个假名，还有一些送假名的目的是将汉语汉字添加上黏性词尾转化为日语词。比如说这里的“教”标注了「フ」假名，实际上代表了「教ふ」这个日语词（注意这里使用古代假名用法而非现代用法）。</p>
-<h2 id="返点">返点</h2>
-<p>返点指的是用于提示读者调换文字阅读顺序的提示文字，常常标记在汉字左下角（横排的时候位于右下角）。返点常用的三种为「レ点」「一二点」「上下点」，写法就是汉字左下角的「レ」假名、汉字数字「一二三」和汉字「上下」。</p>
-<p>「レ点」的作用是<strong>标记此处返回一个文字</strong>，也就是说位于「レ点」两侧的汉字实际的阅读顺序是反过来的。比如说此句：</p>
-<p><span class="math display">\[
-\text{行}^{\text{ク}}_{\text{レ}}\text{海}^{\text{ニ}}。
-\]</span></p>
-<p>这里「レ点」表明“行”和“海”两个汉字的阅读顺序恰好和印刷顺序是相反的，也就是先读“海”，再读“行”。</p>
-<p>如果返回汉字的数量超过一个，则使用「一二点」标记。阅读顺序是从标有「一」的位置跳转到标有「二」的位置。比如说此句：</p>
-<p><span class="math display">\[
-\text{思}^{\text{フ}}_{\text{二}}\text{君}^{\text{ノ}}\text{事}^{\text{ヲ}}_{\text{一}}。
-\]</span></p>
-<p>此时的阅读顺序是首先跳过“思”，先阅读“君”和“事”，之后跳转去阅读“思”。</p>
-<p>「上下点」用于标记嵌套的跳转。在两个「一二点」嵌套的时候，为了消歧义，将外层的「一二点」变为「上下点」。比如说此句：</p>
-<p><span class="math display">\[
-\text{有}^{\text{リ}}_{\text{下}} \text{観}^{\text{ル}}_{\text{二}} {}^{\text{ばい}}\text{梅} {}^{\text{か}}\text{花}^{\text{ヲ}}_{\text{一}} \text{者}_{\text{上}}。
-\]</span></p>
-<p><strong>注解：</strong>这里在右上方（横排的时候在左上方）标注的平假名是这个汉字的注音。</p>
-<p>此时的阅读顺序是从“梅花”开始，从“花”跳转到“観”，之后向下阅读到“者”，再跳转到“有”。</p>
-<p>如果涉及到更为深层的跳转嵌套，可能会使用到天干地支。但对于大部分的转读，这三类就已经够用了。</p>
-<hr />
-<p>综合这三种返点的话，可以看这一个例句（只保留返点）：</p>
-<p><span class="math display">\[
-\text{無}_{\text{下}} \text{不}_{\text{レ}} \text{知}_{\text{レ}} \text{愛}_{\text{二}} \text{其} \text{親}_{\text{一}} \text{者}_{\text{上}}。
-\]</span></p>
-<p>这一句话首先阅读“其親”，之后根据「一二点」跳转到“愛”，遇到「レ点」则逐个倒着读“知不”，之后向下读到“者”，最后根据「上下点」读到“無”。所以最后的汉字阅读顺序是“其親愛知不者無”，当然这和真正的日语还有距离，但至少汉字顺序已经符合日语思维了，之后就是需要利用送假名填充各种助词和词尾。</p>
-<h2 id="其他的一些概念">其他的一些概念</h2>
-<p>首先需要介绍<strong>置字（置き字）</strong>，其含义是在转读为日语的时候不需要读出的汉字。其不会直接在文章中标出来，基本靠读者自身的文言能力来判定。比如说：</p>
-<p><span class="math display">\[
-\text{念} \text{莫}_{\text{下}} \text{可}_{\text{レ}} \text{使}_{\text{レ}} \text{用}_{\text{二}} \text{於} \text{秦}_{\text{一}} \text{者}_{\text{上}}。
-\]</span></p>
-<p>这里的“於”实际上是不会读出来的，所以说阅读顺序是“念秦用使可者莫”，并不包含汉字“於”。</p>
-<p>置字常常是古汉语之中常见的一些助词，比如说“而”“於”“乎”“矣”“焉”之类的。</p>
-<p>另外，有的时候「レ点」「一二点」或者「レ点」「上下点」会出现在同一个汉字的左下角，这个时候就会发生<strong>合写</strong>。这种合写形式的返点是有专门的 Unicode 字符的，但是这里无法打出来，所以直接分立写出：</p>
-<p><span class="math display">\[
-\text{勿}^{\text{カレ}}_{\text{下}} \text{以}^{\text{テ}}_{\text{二}} \text{悪}^{\text{ノ}} \text{小}^{\text{ナルヲ}}_{\text{一}} \text{為}^{\text{ス}}_{\text{上レ}} \text{之}^{\text{ヲ}}。
-\]</span></p>
-<p>这个时候「レ点」「上下点」虽然合写，但发挥各自作用。</p>
-<p>此外，有些时候文言之中有部分双字或者四字熟语不能拆分理解，这些熟语的汉字之间会用短横连接，表示作为整体处理（这里由于短横渲染问题，使用左右括号标志）。比如：</p>
-<p><span class="math display">\[
-\text{欲}^{\text{ス}}_{\text{三}} (\text{学}_{\text{二}} \text{習}^{\text{セント}}) \text{漢} \text{文}^{\text{ヲ}}_{\text{一}}。
-\]</span></p>
-<h1 id="书下文">书下文</h1>
-<p>书下文（書き下し文）指的是通过返点和送假名，将文言文直接转化成的，符合日语语法习惯但不一定完全通顺的文句。其转写方式是，首先通过返点调转汉字阅读顺序，最后通过送假名填入日语助词和词尾。</p>
-<p>比如说这一句：</p>
-<p><span class="math display">\[
-\text{有}^{\text{リ}}_{\text{下}} \text{観}^{\text{ル}}_{\text{二}} {}^{\text{ばい}}\text{梅} {}^{\text{か}}\text{花}^{\text{ヲ}}_{\text{一}} \text{者}_{\text{上}}。
-\]</span></p>
-<p>首先通过返点得到汉字顺序为“梅花観者有”，之后在各个汉字后补上送假名之后就得到这句话的书下文：</p>
-<p><span class="math display">\[
-\text{梅花を観る者有り。}
-\]</span></p>
-<p>不过在转写书下文的时候，要注意三点：</p>
-<ul>
-<li><p>注意日语助词和助动词不写作汉字。</p></li>
-<li><p>注意置字不写入书下文。</p></li>
-<li><p>注意再读汉字的转写（具体转写方式见后续）。</p></li>
-</ul>
-<p>比如说这一句：</p>
-<p><span class="math display">\[
-\text{子} \text{曰}^{\text{ク}} \text{温}^{\text{メテ}}_{\text{レ}} \text{故}^{\text{キヲ}} \text{而} \text{知}^{\text{ラバ}}_{\text{レ}} \text{新}^{\text{シキヲ}} \text{可}^{\text{シ}}_{\text{二}} \text{以}^{\text{テ}} \text{為}^{\text{ル}}_{\text{一レ}} \text{師} \text{矣}。
-\]</span></p>
-<p>首先得到汉字的阅读顺序为“子曰故温新知以師為可”，这里“而”和“矣”是置字，不需要写入书下文。之后填充假名得到书下文：</p>
-<p><span class="math display">\[
-\text{子曰く故きを温めて新しきを知らば以て師為るべし。}
-\]</span></p>
-<p>这里注意，「可し（べし）」是一个助动词，不应当写为汉字。</p>
-<p>常见的助词包括：</p>
-<div class="note info no-icon"><p>の，か，や，より，と，かな，のみ</p>
-</div>
-<p>这里，「の」常写作“之”，「のみ」常写作“耳”。</p>
-<p>常见的助动词包括：</p>
-<div class="note info no-icon"><p>ず，しむ，る，らる，なり，べし，ごとし</p>
-</div>
-<p>这里，「べし」常写作“可”，「ごとし」常写作“若”，「なり」常写作“也”。</p>
-<h1 id="再读汉字">再读汉字</h1>
-<p>再读汉字指的就是在转写的时候需要读两次的汉字，其往往代表了日语之中的一些固定句式。再读汉字的第一次读的注音用平假名标在汉字右上角（横排的时候在左上方），第二次读的注音用平假名标在汉字左上角（横排的时候在左下方），而第二次的送假名则和返点一样在左下角（横排的时候在右下方），以表区分，这里用空格隔开。</p>
-<p>另外注意，<strong>一般而言，再读汉字第一遍读的时候作实词写成汉字，而第二遍读的时候作虚词不写成汉字</strong>。比如说这样的例句：</p>
-<p><span class="math display">\[
-{}^{\text{まさ}}_{\text{べ}}\text{当}^{\text{ニ}}_{\text{二 シ}} \text{勉} \text{強}^{\text{ス}}_{\text{一}}。
-\]</span></p>
-<p>注意到再读汉字“当”读两次，这句话汉字的阅读顺序应该为“当勉强当”，第二遍读“当”的时候不写为汉字。则书下文为：</p>
-<p><span class="math display">\[
-\text{当に勉強すべし。}
-\]</span></p>
-<p>日本高中要求掌握的再读汉字包括：</p>
-<div class="note info no-icon"><p>宜，当，未，猶，応，将，盍，須，且</p>
-</div>
-<p>这些汉字的读法为（这里平假名标注的是汉字本身的读音，片假名标注的是相应的送假名。而在「」之中标注的，则是紧接在再读汉字第二次读之前的汉字的送假名。「動詞形式」指的是紧接在再读汉字第二次读之前的动词应当采取的变形）：</p>
+<h1 id="日语文字系统">日语文字系统</h1>
+<h2 id="日语假名与五十音图">日语假名与五十音图</h2>
+<p>说到日语的文字系统，就需要从日语假名，即平假名和片假名开始讲解。几乎所有的日语学习者第一个接触的日语相关知识，就是日语假名表，即五十音图：</p>
 <table>
 <thead>
 <tr class="header">
-<th style="text-align: center;">再読漢字</th>
-<th style="text-align: center;">読み方</th>
-<th style="text-align: center;">意味</th>
-<th style="text-align: center;">動詞形式</th>
+<th style="text-align: center;">五十音図</th>
+<th style="text-align: center;">あ段</th>
+<th style="text-align: center;">い段</th>
+<th style="text-align: center;">う段</th>
+<th style="text-align: center;">え段</th>
+<th style="text-align: center;">お段</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">未</td>
-<td style="text-align: center;">　いまダ〜ず　</td>
-<td style="text-align: center;">まだ〜ない</td>
-<td style="text-align: center;">未然形</td>
+<td style="text-align: center;">あ行</td>
+<td style="text-align: center;">あ ア</td>
+<td style="text-align: center;">い イ</td>
+<td style="text-align: center;">う ウ</td>
+<td style="text-align: center;">え エ</td>
+<td style="text-align: center;">お オ</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">且 &amp; 将</td>
-<td style="text-align: center;">　まさニ〜「ント」す　</td>
-<td style="text-align: center;">これから〜しようとする</td>
-<td style="text-align: center;">未然形</td>
+<td style="text-align: center;">か行</td>
+<td style="text-align: center;">か カ</td>
+<td style="text-align: center;">き キ</td>
+<td style="text-align: center;">く ク</td>
+<td style="text-align: center;">け ケ</td>
+<td style="text-align: center;">こ コ</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">当 &amp; 応</td>
-<td style="text-align: center;">　まさニ〜べシ　</td>
-<td style="text-align: center;">当然〜すべきだ</td>
-<td style="text-align: center;">終止形／ラ変連体形</td>
+<td style="text-align: center;">さ行</td>
+<td style="text-align: center;">さ サ</td>
+<td style="text-align: center;">し シ</td>
+<td style="text-align: center;">す ス</td>
+<td style="text-align: center;">せ セ</td>
+<td style="text-align: center;">そ ソ</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">須</td>
-<td style="text-align: center;">　すべかラク〜べシ　</td>
-<td style="text-align: center;">ぜひとも〜する必要がある</td>
-<td style="text-align: center;">終止形／ラ変連体形</td>
+<td style="text-align: center;">た行</td>
+<td style="text-align: center;">た タ</td>
+<td style="text-align: center;">ち チ</td>
+<td style="text-align: center;">つ ツ</td>
+<td style="text-align: center;">て テ</td>
+<td style="text-align: center;">と ト</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">宜</td>
-<td style="text-align: center;">　よろシク〜べシ　</td>
-<td style="text-align: center;">〜するのがよい</td>
-<td style="text-align: center;">終止形／ラ変連体形</td>
+<td style="text-align: center;">な行</td>
+<td style="text-align: center;">な ナ</td>
+<td style="text-align: center;">に ニ</td>
+<td style="text-align: center;">ぬ ヌ</td>
+<td style="text-align: center;">ね ネ</td>
+<td style="text-align: center;">の ノ</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">猶</td>
-<td style="text-align: center;">　なホ〜ごとシ　</td>
-<td style="text-align: center;">ちょうど〜のようだ</td>
-<td style="text-align: center;">名詞＋「の」／動詞連体形＋「が」</td>
+<td style="text-align: center;">は行</td>
+<td style="text-align: center;">は ハ</td>
+<td style="text-align: center;">ひ ヒ</td>
+<td style="text-align: center;">ふ フ</td>
+<td style="text-align: center;">へ へ</td>
+<td style="text-align: center;">ほ ホ</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">盍</td>
-<td style="text-align: center;">　なんゾ〜ざル　</td>
-<td style="text-align: center;">どうして〜しないのか</td>
-<td style="text-align: center;">未然形</td>
+<td style="text-align: center;">ま行</td>
+<td style="text-align: center;">ま マ</td>
+<td style="text-align: center;">み ミ</td>
+<td style="text-align: center;">む ム</td>
+<td style="text-align: center;">め メ</td>
+<td style="text-align: center;">も モ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">や行</td>
+<td style="text-align: center;">や ヤ</td>
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">ゆ ユ</td>
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">よ ヨ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">ら行</td>
+<td style="text-align: center;">ら ラ</td>
+<td style="text-align: center;">り リ</td>
+<td style="text-align: center;">る ル</td>
+<td style="text-align: center;">れ レ</td>
+<td style="text-align: center;">ろ ロ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">わ行</td>
+<td style="text-align: center;">わ ワ</td>
+<td style="text-align: center;"><strong>ゐ ヰ</strong></td>
+<td style="text-align: center;">―</td>
+<td style="text-align: center;"><strong>ゑ ヱ</strong></td>
+<td style="text-align: center;">を ヲ</td>
 </tr>
 </tbody>
 </table>
-<h1 id="使役动词">使役动词</h1>
-]]></content>
-      <categories>
-        <category>【学习笔记】日语</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>怎么读日语汉字</title>
-    <url>/2021/11/27/ja-3/</url>
-    <content><![CDATA[<p>日语这门语言的文字系统中依然存在着汉字，然而其汉字的读法却往往和我们的理解不一样。最经典的就是，日语的汉字往往具有多个读音，这和汉语中汉字少有多音的特征明显不同。另一方面，某些日语汉字的读音和现代汉语几乎一致，也有一些则完全不相像。所以，作为中国人，阅读汉字较多的日语文本的时候往往能理解，但是我们很难正确将这些汉字读正确。</p>
-<p>Holder 初学日语的时候，困顿于完全不知道如何断定日语汉字的读音。不过随着词汇量的上升，我似懂非懂地理解了一些日语汉字发音规律，这里也就权且当闲聊，把自己了解到的一些东西写出来。</p>
-<span id="more"></span>
-<h1 id="日语书写体系">日语书写体系</h1>
-<div class="note warning"><p>为了理清楚日语汉字读音，我们最好是日语书写体系开始，最好能完全理解为什么汉字会出现在日语中。这一部分还会讲解很多细致的书面日语习惯，和本文主题并不完全一致，所以如果并不感兴趣，则可以跳过本部分。</p>
-</div>
-<h2 id="三套书写体系的历史">三套书写体系的历史</h2>
-<p>汉语传入日本，为日本带来了两样新事物。一是汉字这一书写系统，二是大量日语中本不具有的词汇。</p>
-<p>汉字传入前的日语不具有书写系统，而汉字的传入让日本人开始尝试使用汉字表记日语。</p>
-<p>表记的思路有两个，一个是把汉字直接当成表音符号，每一个日语音都用一个读音类似的汉字代表。这种表记方式《万叶集》为代表，即为<strong>万叶假名</strong>。比如日语发音为 i，书面语则使用发音类似的汉字「以」表记。而日语词 iroha 则表记为「以呂波」。</p>
-<p>当然，万叶假名中日语音与表音汉字的对应并不是完全严格的，比如说 i 音除了使用「以」表记，还可以使用「伊」表记。并且，万叶假名也不是一个完全遵守汉字表音的书写系统，其依然具有一些例外。比如说，一个字可以表记多个音节，如「信」可以表记 shina 两个音节。另外，部分情况下可能考虑到汉字的表意性，比如说，i 音在表示数词的时候还可以表记为「五十」。此外还有一些文字游戏，比如说，表达“出”的含义的日语词 ide 可以利用汉字表意性，用单字「出」表记，但是有时可能会因为“出”字的字形原因表记为「山上復有山」这样的词。</p>
-<p>但是万叶假名使用一个笔画繁杂的汉字仅仅是表达一个音节显得冗余且低效，于是人们在传抄万叶假名编写的日语文本的时候，会将高频万叶假名替换为笔画更少的、公认的惯用简体。这些惯用简体在后续的演变中逐步固化成为日语使用者均认可的两套现代假名，即<strong>平假名</strong>和<strong>片假名</strong>。比如说日语 no 音常用汉字「乃」表记，这个表音汉字在后续传抄中逐步简化，形成了平假名「の」。平假名和片假名的诞生保证了书写效率，而且基本上确保了一种假名对应一种音节，减少了一种音节对应多种文字的繁杂情况。</p>
-<p>也就是说<strong>现代日语的假名实际上是古代表音汉字的简化结果</strong>。</p>
-<p>另外一种用汉字表记日语的思路是将汉字当成表意符号，将日语词用与之同义或者意思相近的汉字表记。比如说表示“草”这个事物的日语词 kusa 就可以表记为单字「草」。这里的汉字保留了其原有的含义，与万叶假名的表音汉字不同。</p>
-<p>此外，先前还提到过汉语传入日本为日语带来了很多新词汇，这些直接借自汉语的词汇在书面上自然沿用其原先的汉字表记。</p>
-<h2 id="三套书写体系的使用惯例">三套书写体系的使用惯例</h2>
-<p>现在我们总结一下，日语的书面表记就有三套系统，即平假名、片假名和汉字。之后的讨论基本基于下述现代日语句：</p>
-<div class="note info no-icon"><p>わたしは漢字を書くことができます。</p>
-</div>
-<h3 id="汉字">汉字</h3>
-<p>例句有两个表记为汉字的词汇，即「漢字」和「書」。其中前者表记的是直接从汉语中借用的汉字词“汉字”，后者则是表记的日语固有词 kaku 中读音为 ka 的部分，这个词的含义为“书写”。</p>
-<p>在讲解汉字如何引入日语的时候已经提到过，日语中的汉字往往仅有两种用法，即表记汉语借词和作为表意文字表记日语固有词。</p>
-<p>而实际上汉字还可以表记和制汉语词。和制汉语词指的是近代以来，日本翻译家模仿汉字词创造的一批描述新生事物、概念的词语。这些词语原先不存在于汉语之中，甚至是在创造后回流入汉语的。但是其基本和汉语借词保持类似的读音和构词规则，所以表记上也习惯用汉字。比如说 kyouwa，这个词回流入汉语称为现代汉语词“共和”，其日语表记为「共和」。</p>
-<p>另外，表音汉字依然在现代日语中有少许残留，其中一部分可以认为是万叶假名的残余。比如说姓名用词 mana，可以按照万叶假名的写法表记为「麻奈」。而另外一部分比如形容动词 sutekida，其常常使用汉字表记为「素敵だ」，这里的汉字仅仅关注了其读音，并未考虑其含义。这种并非是万叶假名残留的表音汉字，一般而言都是一种称为「当て字」的汉字表记法，可以理解为“假借”。</p>
-<p>「当て字」的核心思维就是在没有合适的表意汉字表记词语的时候（一般都是日语固有词、外来语词这些本不具有汉字表记的词汇），假借已有的汉字表其音或者表其意以充当其汉字表记，「素敵だ」是其一例。这里再举出一例，比如说音译自 romantic 的日语词 romanchikku 既可以按照一般表记方法写为「ロマンチック」，也可以假借汉字，表记为「浪漫的」。</p>
-<p>上述提到的汉字表记用法实际上就对应了后续讲解的如何确定汉字读音的部分。</p>
-<h3 id="平假名">平假名</h3>
-<p>例句除了汉字，其余的部分则全都是平假名，每一种平假名代表一种日语音节，其不表意，仅表音。现代日语中使用假名书写的词汇，往往是各种实词的语法成分（送假名）、含义虚化的词语（助词、助动词及作为补助成分的实词）、不习惯写为汉字的词语（或词语部分）、对应汉字生僻的词语。</p>
-<h4 id="黏性词缀">黏性词缀</h4>
-<p>日语是黏着语，动词、形容词等实词往往是具有语法功能的黏性词缀，这些词缀没有含义，仅仅用于表达语法作用（参见日语语法手册）。习惯上，实词的汉字表记不会涵盖这些词缀，而是使用假名表记（即<strong>送假名</strong>）以凸显词缀的黏性变化。比如说，kaku 这个固有动词中，ku 就是黏性词缀，所以表记为假名，ka 则是词干，使用表意汉字表记。</p>
-<p>此外，送假名表示的词缀并不一定会变形。比如说古日语二段动词固化形成的现代日语一段动词往往具有不少于一个送假名，但是其语法变化仅限于最后一个送假名。如固有动词 ikiru 一般表记为「生きる」，其送假名包括「きる」，但是实际的变形中仅有词尾「る」变化，另一个送假名「き」不参与变形。</p>
-<p>然而，在部分固化的复合单词中黏性词缀有时候也会被涵盖在汉字表记之中。比如说，表达“接待”含义的固有复合名词 uketuke，严格而言这里两个 ke 音均是黏性词缀，应该使用送假名表记，整个名词表记为「受け付け」。但是忽略送假名，表记为「受付」也是常见的。而这种将词缀收纳入汉字表记中的现象，在动词的第一连用形名词化中相当常见，比如 hikari 等词，本身应该为 hikaru 的第一连用形，用送假名表记为「光り」，而实际上更常见的表记是没有送假名的「光」。</p>
-<h4 id="含义虚化的词语">含义虚化的词语</h4>
-<p>含义虚化的词语一般不使用汉字表记。比如说，上述例句中的格助词 wa 和 wo 只能表记为假名「は、を」，助动词 masu 只能表记为假名「ます」，这些词几乎不表记为汉字。而固有名词 koto 是具有汉字表记「事」的，但是只有在 koto 表达实在的“事情”这一个含义的时候才会使用。上述句子中 koto 是形式体言，仅仅发挥承接动词连体形以完成名词化的语法作用，不具有实在含义，所以使用假名表记「こと」。</p>
-<p>含义虚化是一个比较模糊的概念，实际上上述例句中，即使 koto 使用汉字表记，大多数人依然能正确认读，只是稍显不自然。而对于意义虚化后具有较大含义差别的实词，使用假名还是汉字表记，可能带来并不太一样的语义：</p>
-<div class="note info no-icon"><p>資料を出して<strong>ください</strong>。</p>
-<p>資料を出して<strong>下さい</strong>。</p>
-</div>
-<p>这里，固有动词 kudasaru 的命令形 kudasai 的词干分别使用了假名表记和汉字表记。使用假名表记的时候，kudasaru 往往理解为补助动词，表达“请求”的语气，所以第一句话表达的是“请取出资料”的含义。而使用汉字表记的时候，kudasaru 则作为实词理解为“从他人处获取某物品”，第二句话往往理解为“取出资料后给我”的含义。</p>
-<p>但是这两个含义在口语中则完全不可以分辨，而书面上也往往根据上下文可以断定。另一方面，汉字表记往往占用更少的空间，所以在需要浓缩信息的书面表达场合（新闻标题、告示板、文书），即使严格意义上有歧义的可能，依然更倾向于使用汉字表记。</p>
-<h4 id="习惯与生僻字">习惯与生僻字</h4>
-<p>不习惯写为汉字的词语和对应生僻字的词语一般不使用汉字表记。上述例句中，固有词 watashi 是第一人称代词，其确实具有汉字表记「私」，但是比例并不小的日语使用者会倾向于假名表记「わたし」。而第二人称代词 anata 即使具有汉字表记「貴方」，其假名表记写法「あなた」依然占据上风。此外，汉语借词 kaizan 的汉字表记为「改竄」，但是由于汉字「竄」生僻，更通用的书面表记则是将生僻字部分用假名表记的「改ざん」。</p>
-<h3 id="片假名">片假名</h3>
-<p>现代日语中片假名几乎只用于表记外来语和现代汉语借词，部分时候可能表记拟声词等：</p>
-<div class="note info no-icon"><p>ご覧の<strong>スポンサー</strong>の提供でお送りします。</p>
-<p>彼女は<strong>シクシク</strong>と泣いている。</p>
-</div>
-<p>这里前者借自英语词 sponsor，而后者是一个拟声词。</p>
-<h3 id="惯例的例外">惯例的例外</h3>
-<p>事实上，上述的规律只是描述性的，并不强制。比如说片假名表记还可以用于强调句子的特定部分：</p>
-<div class="note info no-icon"><p>見て見ぬ<strong>フリ</strong>なだけ。</p>
-</div>
-<p>这里的固有词 furi 表达含义“装作”，是一个虚化含义，常常使用平假名表记为「ふり」。这里使用片假名，是因为需要强调“我确实知道，我只是视而不见”这样的语感。</p>
-<p>此外，尽可能多地用汉字表记（即使习惯上不使用），甚至将假名替换为表音汉字的书写方法也是存在的，虽然有可能造成一定的阅读障碍。</p>
-<hr />
-<p>这里的另外一个例外就是现代汉语借词。这些词汇借自汉语，所以这些词汇在汉语中就有汉字表记。原则上，现代外来语应该使用片假名表记，但是为了方便交流，很多时候还是会保持汉字表记。最经典的就是现代中国城市「上海」，其原则上应该表记为片假名「シャンハイ」，但是其汉字写法还是占据较大比例。为了区分现代汉语借词和古汉语借词，人们往往在给这些现代汉语借词注音（即<strong>振假名</strong>）的时候使用片假名而非平假名。</p>
-<h1 id="训读和音读">训读和音读</h1>
-<div class="note warning"><p>注意，这里的<strong>训读</strong>概念和语言学中并不完全一致，我们认为<strong>只有在汉字表记的是日本固有词的时候才是训读</strong>，类似「煙草」训读作 tabako 这类的读法，一律归类到假借表记之中。</p>
-</div>
-<p>上面的分析中简要介绍了日语汉字的各种情况，现在我们回顾初学日语的时候就会了解的训读和音读的概念。在此基础上，或许就会对日语汉字的读音有所把握了。</p>
-<p>我们提到过日语汉字可能用于：</p>
-<ul>
-<li>表记汉语借词或和制汉语词</li>
-<li>作为表意文字表记日语固有词</li>
-<li>残留的万叶假名作为表音文字表记日语固有词</li>
-<li>假借表记</li>
-</ul>
-<p>第一个用法中，汉字的读音往往会尽力模仿汉语读音，这也就是一般称作的<strong>音读</strong>，第三个用法则可以认为是一种广义的音读。而第二个用法则是常说的<strong>训读</strong>，此时汉字的读音取决于日语固有词的读音而非这个汉字的汉语音。第四个用法中汉字的读音具有一定规律性，但是依然是经常遇到例外的。</p>
-<h2 id="训读">训读</h2>
-<h3 id="单字训">单字训</h3>
-<p>单字训是训读中最常见的一种方式。所谓单字训，就是找一个和该日语词意思一致或意思类似的汉字，作为这个日语词的表记。此时这个汉字就训读作这个日语词的音。</p>
-<p>比如说表达“山”这一事物的日语词 yama，就使用汉字「山」表记，所以就称汉字「山」训读作 yama。</p>
-<p>而动词或者形容词需要注意黏性词缀。比如说动词 yameru，在表示“停止”的含义的时候，可以用汉字「止」表记，而 meru 是黏性词缀表记为平假名，所以整个动词汉字表记为「止める」。此时就称汉字「止」训读作 ya-meru。</p>
-<p>注意这里把黏性词缀的读音跟在后面是有必要的，否则多个表记为同一个汉字的动词会导致混乱。比如说动词 oriru 表达“下来”的含义的时候可以用「下」表记，整体汉字表记为「下りる」。而动词 sageru 表达“下降”的时候也用「下」表记，整体汉字表记为「下げる」。所以「下」具有两个不同的训读 o-riru 和 sa-geru。不接上黏性词缀的话，即直接认为「下」训为 o 或者 sa 均可，则可能将「下げる」误读作 ogeru。</p>
-<hr />
-<p>上面已经体现出，多义汉字可以用于表记不同的日语词，导致日语汉字的训读多音。同样的还有汉字「生」，其表达“未经加工的”这一含义的时候可以训为 nama，应用在「生ビール」等词语中。表达“生长”这一含义的时候可以训为 ha-eru，出现在动词「生える」中。表达“生存”这一含义的时候，则训为 i-kiru，出现在动词「生きる」中。</p>
-<p>同样的，同一个日语词可以使用多种意义相近但含义稍有差别的汉字表记，以表达微妙的语感差别。比如说动词 warau，其常常表记为「笑う」。而在表达“嘲笑”这个含义的时候，表记为「嗤う」也是可以的。</p>
-<h3 id="熟字训">熟字训</h3>
-<p>部分日语词不会使用单个汉字表记，而是会使用一个汉语词组表记。此时我们没有办法指出这个汉语词组中具体每个字训读的读音，只能说整个词组训读作这个日语词。熟字训往往出现在表达基本概念或者具有日本文化特色的概念的词语中。</p>
-<p>名词 samidare 表达的含义为“梅雨”，其汉字表记为「梅雨」，这里词组「梅雨」整体训读作 samidare。类似还有「時雨」训读作 shigure，「吹雪」训读作 fubuki 等。这些概念是具有日本文化特色的。</p>
-<p>而描述一些基本的概念的词语也会出现熟字训。比如 koko 表达“这里”，其汉字表记为「此処」。kesa 表达“今早”，其汉字表记为「今朝」。</p>
-<h3 id="词组训读">词组训读</h3>
-<p>词组训读指的是将一组日语词用单字或者汉字词组表记，此时该单字或者词组训成这个日语词组的读音。词组训读和熟字训的差别在，词组训读是表记一组日语词，而熟字训本质上还只是表达一个日语词。</p>
-<p>考虑动词 maturu 和名词 koto，前者使用第一连用形接续后者后发生音便得到词组 maturigoto，其直接含义为“祭祀之事”，引申为“政治”。由于 maturu 和 koto 分别具有汉字表记「祭る」和「こと」，该词组可以表记为「祭り事／祭事」。但是也可以整体表记为「政」，此时汉字「政」训读为 maturigoto 共计五个音节。</p>
-<p>同样的还有 yomigae-ru。这里 yomi 是熟字训，汉字表记为「黄泉」，而 kae-ru 表记为「帰る」。这个动词直接翻译为“从黄泉归来”，引申为“苏醒”，即可以直接表记为「蘇る」。</p>
-<p>词组训读很多时候是表记为单字的，所以这一部分词组训读甚至就可以认为是一般的单字训。比如说「宿る」训作 yado-ru，其实际上用单字训写出的汉字表记应该为「屋取る」。另外，「雷」训作 kaminari，而这个用单字训应该表记为「神鳴」。</p>
-<h2 id="音读">音读</h2>
-<p>由于音读几乎是模拟汉字的汉语读音，所以基本遵循一个汉字一到两个音节的对应规则，出现一个汉字对应两个音节大多是因为古汉语的入声被保留为音节。</p>
-<p>汉语借词曾在多个时期借入日语，所以这些词语所模仿的是不同时期、不同地域的汉语读音，所以即使大多数情况下一个汉字仅对应一种音读读音，但依然存在音读多音字。比如说目前日语中存在的音读，按照传入时期从先到后可以划分为古音、吴音、汉音、唐音，目前大部分的日语音读均基于汉音，和制汉语词的发音也基本是按照汉音。这些音读体系在语音学上都具有一定的特征，但是我并没有多少语音学知识，所以也没办法讲解。</p>
-<p>一个比较著名的音读词是「老若男女」，其应该按照吴音读作 rounyakunannyo，但实际上这四个字单独发音时，应该按照汉音分别读作 rou、jaku、dan、jo。</p>
-<hr />
-<p>广义的音读还包括万叶假名残留，其与常见的音读不同，这些词语的汉字表记不表意，仅仅表音。这些词语几乎仅存在于专用名词中，所以这里不做介绍。</p>
-<h2 id="音训混合">音训混合</h2>
-<p>日语的部分词汇是将汉语借词和日语本土词拼接形成的，这些词语往往会出现一个汉字使用训读而另一个汉字使用音读的情况。这类词语内部同时出现音读和训读的现象称为音训混合。另外，部分音训混合词语可能起源于误读，而在后续使用中错误读法固化为通用读法。</p>
-<p>音训混合分为两类，前训后音的称为<strong>汤桶读法</strong>，前音后训的称为<strong>重箱读法</strong>。</p>
-<p>汤桶读法源于日语词「湯桶」，其第一个汉字使用训读，读作 yu，而第二个汉字使用音读，读作 tou。此外，汤桶读法词汇还包括「合図」（读作 aizu）、「大勢」（读作 oozei）、「高台」（读作 takadai）等词汇。</p>
-<p>重箱读法则源于「重箱」，其前音后训，读作 jyuubako。重箱读法词汇还包括「馬鹿」（读作 baka）、「残高」（读作 zandaka）、「番組」（读作 bangumi）、「額縁」（读作 gakubuchi）等词汇。重箱读法中，后面的汉字常常浊化。</p>
-<h2 id="假借字">假借字</h2>
-<p>在日语书写系统中，大部分词语的表记遵循这样的规律：</p>
-<ul>
-<li>日语本土词
-<ul>
-<li>词干使用与之同义的汉字单字或汉字组表记，黏性词缀使用平假名表记【训读】</li>
-<li>部分专有名词采用残留的万叶假名表记【广义音读】</li>
-</ul></li>
-<li>汉语借词
-<ul>
-<li>采用和汉语几乎一致的汉字表记【音读】</li>
-</ul></li>
-<li>外来词、现代汉语借词、拟声词
-<ul>
-<li>采用片假名表记，但是现代汉语借词可以采用汉字表记</li>
-</ul></li>
-</ul>
-<p>而这种规律的例外就是假借字。比如说，部分日语本土词难以找到很合适的汉字或者汉字组表示，或者需要给外来词语赋予汉字表记的时候会使用假借字。另外，在文学、文艺领域，有时即使某些词已经有了通用的汉字表记，也往往为了表达效果故意使用其他汉字表记。</p>
-<p>选择假借字的时候，可以从汉字含义的角度选取，也可以单纯考虑汉字发音，如果能做到兼顾音和义，则是假借字运用的顶点。</p>
-<p>这里举出几例假借字。首先是没有合适汉字表记的日语固有词：</p>
-<ul>
-<li><p>sutekida。仅考虑汉字读音，表记为「素敵だ」。含义为“美好的”。</p></li>
-<li><p>shituke。shi 音使用音读汉字「仕」表记，tu 音使用训作 tu 音的汉字「付」表记，ke 为黏性词缀。整体表记为「仕付け」。含义为“管教”。</p></li>
-<li><p>gomakasu。仅考虑汉字读音，表记为「誤魔化す」。含义为“糊弄、搪塞”。</p></li>
-</ul>
-<p>值得一提的是「仕」字是相当常见的假借字，大量以 shi 音开头的日语固有词都会用到这个假借字。比如「仕事、仕方、仕舞う、仕草」，这些词含义分别为“工作”、“方法”、“结束、终结”、“台词、说辞”。</p>
-<div class="note warning"><p>这种假借字几乎是并不明白日语的中国人尝试阅读日语的最大障碍，因为这些字确实常见但却根本不表意，甚至连起来显得莫名其妙。比如说：</p>
-<div class="note info no-icon">
-<p>
-夢ならば<strong>何程</strong>良かったでしょう。ーー「Lemon」
-</p>
-</div>
-<p>
-这里「何程」就是副词 dorehodo 的假借字，这个词的意思是“多么”，整句话的意思是“如果这是梦境的话该多好啊”。显然这里的汉字根本没有为我们理解句子带来积极作用，甚至起到了反作用。
-</p>
-<p>
-另外，之前提到过，含义虚化的实词原则上应该写为假名，如果完全写成汉字，也可以为理解句子提供反面作用：
-</p>
-<div class="note info no-icon">
-<p>
-遣り直す事出来れば遣って見よう。
-</p>
-</div>
-<p>
-这里「遣」是动词 ya-ru 词干的汉字表记，含义为“做、干”。「直す」则是动词 nao-su 的表记，其含义为“重来”，这是经典的单字训，但是词语含义和汉字含义几乎对不上。「出来」是假借字，即借用训为 de 的「出」字和训为 ki 的「来」字来表记日语固有动词 deki-ru，其含义为“能做到”。「見」则是 mi-ru 词干的表记，其作为实义动词的时候含义为“看”，但是这里作为补助动词含义为“尝试”。
-</p>
-<p>
-这句话整体含义为“如果能重来，就试着做吧”，可以发现句子含义和汉字含义可以说没有关系。
-</p>
-<p>
-然而这句话在更多时候并不会用这么多的汉字表记，更常见的写法是：
-</p>
-<div class="note info no-icon">
-<p>
-やり直すことできればやってみよう。
-</p>
-</div>
-<p>
-所以说，正是因为假借字、虚化动词和并不一定直观的训读的存在，并不是说汉字越多就越容易理解日语句子的。
-</p>
-</div>
-<hr />
-<p>外来语的汉字表记则一定会使用假借字，这些假借字可能是纯表音的：</p>
-<ul>
-<li>借自英语 Asia 的 ajia。仅考虑汉字读音表记为「亜細亜」。含义为“亚洲”。</li>
-</ul>
-<p>也可以是纯表意的：</p>
-<ul>
-<li>借自英语 beer 的 biiru。仅考虑汉字含义表记为「麦酒」。含义为“啤酒”。</li>
-</ul>
-<p>当然也有很多音义结合的精妙的假借字：</p>
-<ul>
-<li><p>借自英语 club 的 kurabu。表记为「倶楽部」。含义为“俱乐部”。</p></li>
-<li><p>借自葡萄牙语 jorro 的 jouro。表记为「如雨露」。含义为“洒水器”。</p></li>
-</ul>
-<p>但是由于汉字难以书写，许多的外来语假借字在现代日语中慢慢被片假名表记替代了。</p>
-<hr />
-<p>下面来探讨文艺领域使用的假借字，这些假借字往往具有其特殊的表达效果。比如说著名的「五月蝿い」，其表记的是固有形容词 urusai，含义为“烦躁的”。这种假借仅仅考虑了汉字含义，侧重于表达汉字所表达的含义，然后将其读作某一个固有词的音。另外还有用「生命」表记固有词 inochi（含义为“生命”，常用汉字表记为「命」），用「光明」表记固有词 hikari（含义为“光明”，常用汉字表记为「光」），用「運命」表记固有词 sadame（含义为“确定之事”，常用汉字表记为「定め」）等假借字用法。这些假借字虽然和常用汉字表记含义类似，却常常出现在文艺作品形成特殊的表达效果。</p>
-<p>比如：</p>
-<div class="note info no-icon"><p>夢覚めてゆく，<strong>光明「ひかり」</strong>が目を刺す。ーー「朧月」</p>
-<p>この血の<strong>運命「さだめ」</strong>。ーー「ジョジョの奇妙な冒険 OP」</p>
-</div>
-<p>这种假借字实际上可以理解为广义的训读，只不过和通行的训读不一致而已。</p>
-<p>另外，有时选取的汉字表记会故意和词语含义相反以表达看似如此实则不然的含义，达到特殊的表达效果：</p>
-<div class="note info no-icon"><p>思いもしない<strong>軽い「おもい」</strong>言葉，何度使い古すのか？ーー「カワキヲアメク」</p>
-</div>
-<p>这里用「軽い」表记 omoi 这个形容词，但是其含义为“重的”，与汉字表记恰好相反。从而就表达出了，这样的话语看似轻浮但实际上蕴含深意，这样的含义。</p>
-<p>但是这类假借一般都会把读音注释出来，防止读错。</p>
-<h1 id="日语的数量词的发音">日语的数量词的发音</h1>
-<div class="note info"><p>这一部分使用平假名而非罗马音表记日语词。</p>
-</div>
-<p>在最后讲解如何确定日语汉字读音之前，我们来看一个折磨无数日语学习者的知识点——日语数词和量词。</p>
-<p>日语有两套数词，一套是日语固有的数词，一套是从汉语引入的数词，这两套数词的表记基本上都使用汉字“一二三四”等。而统一的汉字表记的背后，是完全不知道应该读成哪一套数词的迷茫。再加上数词和量词合用时发生的混乱的音便，以及大量的例外情况，所以说确定日语数量词的读音绝对是日语初学者面临的第一个大问题。</p>
-<p>为了后续讲解的方便，我们先行把数词量词读音的确定讲解结束。</p>
+<p>上述就是随处可见的经典的五十音图。这里每一个单元格内，左侧为平假名，右侧为相对应的、读音一致的片假名。另外，表格内以加粗标记的两个单元格，是两个古日语中使用但目前已经停用的历史假名。</p>
+<p>此外，我们需要注意的是，日语的假名除去五十音图内的清音假名之外，还有增加浊化标记的浊音假名、表示鼻音的拨音假名、表示多元音的拗音假名以及促音和长音表记法则等。接下来逐一介绍。</p>
+<p>「か行」「さ行」「た行」「は行」的清音假名可以加上浊点「゛」表示浊化。此外，「は行」的清音假名还能加上半浊点「゜」表示半浊化。所有浊音假名为：</p>
 <table>
 <thead>
 <tr class="header">
-<th style="text-align: center;"></th>
-<th style="text-align: center;">传统数词【训读】</th>
-<th style="text-align: center;">汉语数词【音读】</th>
+<th style="text-align: center;">濁音</th>
+<th style="text-align: center;">あ段</th>
+<th style="text-align: center;">い段</th>
+<th style="text-align: center;">う段</th>
+<th style="text-align: center;">え段</th>
+<th style="text-align: center;">お段</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">が行</td>
+<td style="text-align: center;">が ガ</td>
+<td style="text-align: center;">ぎ ギ</td>
+<td style="text-align: center;">ぐ グ</td>
+<td style="text-align: center;">げ ゲ</td>
+<td style="text-align: center;">ご ゴ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">ざ行</td>
+<td style="text-align: center;">ざ ザ</td>
+<td style="text-align: center;">じ ジ</td>
+<td style="text-align: center;">ず ズ</td>
+<td style="text-align: center;">ぜ ゼ</td>
+<td style="text-align: center;">ぞ ゾ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">だ行</td>
+<td style="text-align: center;">だ ダ</td>
+<td style="text-align: center;">ぢ ヂ</td>
+<td style="text-align: center;">づ ヅ</td>
+<td style="text-align: center;">で デ</td>
+<td style="text-align: center;">ど ド</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">ば行</td>
+<td style="text-align: center;">ば バ</td>
+<td style="text-align: center;">び ビ</td>
+<td style="text-align: center;">ぶ ブ</td>
+<td style="text-align: center;">べ べ</td>
+<td style="text-align: center;">ぼ ボ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">ぱ行</td>
+<td style="text-align: center;">ぱ パ</td>
+<td style="text-align: center;">ぴ ピ</td>
+<td style="text-align: center;">ぷ プ</td>
+<td style="text-align: center;">ぺ ぺ</td>
+<td style="text-align: center;">ぽ ポ</td>
+</tr>
+</tbody>
+</table>
+<p>部分「い段」的假名可以附加小写的「ゃ」「ゅ」「ょ」等构成多元音，即拗音。浊音假名也可以形成拗音，所有的拗音包括：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">拗音</th>
+<th style="text-align: center;">＋「ゃ」</th>
+<th style="text-align: center;">＋「ゅ」</th>
+<th style="text-align: center;">＋「ょ」</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">き</td>
+<td style="text-align: center;">きゃ キャ</td>
+<td style="text-align: center;">きゅ キュ</td>
+<td style="text-align: center;">きょ キョ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">し</td>
+<td style="text-align: center;">しゃ シャ</td>
+<td style="text-align: center;">しゅ シュ</td>
+<td style="text-align: center;">しょ ショ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">ち</td>
+<td style="text-align: center;">ちゃ チャ</td>
+<td style="text-align: center;">ちゅ チュ</td>
+<td style="text-align: center;">ちょ チョ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">に</td>
+<td style="text-align: center;">にゃ ニャ</td>
+<td style="text-align: center;">にゅ ニュ</td>
+<td style="text-align: center;">にょ ニョ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">ひ</td>
+<td style="text-align: center;">ひゃ ヒャ</td>
+<td style="text-align: center;">ひゅ ヒュ</td>
+<td style="text-align: center;">ひょ ヒョ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">み</td>
+<td style="text-align: center;">みゃ ミャ</td>
+<td style="text-align: center;">みゅ ミュ</td>
+<td style="text-align: center;">みょ ミョ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">り</td>
+<td style="text-align: center;">りゃ リャ</td>
+<td style="text-align: center;">りゅ リュ</td>
+<td style="text-align: center;">りょ リョ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">ぎ</td>
+<td style="text-align: center;">ぎゃ ギャ</td>
+<td style="text-align: center;">ぎゅ ギュ</td>
+<td style="text-align: center;">ぎょ ギョ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">じ</td>
+<td style="text-align: center;">じゃ ジャ</td>
+<td style="text-align: center;">じゅ ジュ</td>
+<td style="text-align: center;">じょ ジョ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">ぢ</td>
+<td style="text-align: center;">ぢゃ ヂャ</td>
+<td style="text-align: center;">ぢゅ ヂュ</td>
+<td style="text-align: center;">ぢょ ヂョ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">び</td>
+<td style="text-align: center;">びゃ ビャ</td>
+<td style="text-align: center;">びゅ ビュ</td>
+<td style="text-align: center;">びょ ビョ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">ぴ</td>
+<td style="text-align: center;">ぴゃ ピャ</td>
+<td style="text-align: center;">ぴゅ ピュ</td>
+<td style="text-align: center;">ぴょ ピョ</td>
+</tr>
+</tbody>
+</table>
+<p>此外，拨音假名仅有一个，其平假名形式为「ん」，片假名形式为「ン」，表示鼻音。</p>
+<p>促音的含义是这一个音节不发音，停留一个假名的时长。促音标记是小写的「っ」，片假名形式为「ッ」。</p>
+<p>长音的含义是延长上一个假名的发音一个音节。平假名中使用「あ行」假名标记长音，而片假名有专用的长音记号「ー」。</p>
+<p>平假名的长音标记法则为如下。前一个假名位于「あ段」则使用「あ」标记，位于「い段」则使用「い」标记，位于「う段」则使用「う」标记，位于「え段」则使用「い」标记，位于「お段」则使用「う」标记。例如「かあ」「しい」「むう」「けい」「のう」等。可能出现的例外是「え」和「お」的长音可以标记为「ええ」和「おお」。</p>
+<p>接下来我们需要简单说明罗马字注音系统，而目前大部分日语输入法均是基于罗马字注音系统的，我们可以将其理解为日语版本的拼音。</p>
+<p>首先说明清浊假名的罗马字表记：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">ローマ字</th>
+<th style="text-align: center;">あ段</th>
+<th style="text-align: center;">い段</th>
+<th style="text-align: center;">う段</th>
+<th style="text-align: center;">え段</th>
+<th style="text-align: center;">お段</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">あ行</td>
+<td style="text-align: center;">a</td>
+<td style="text-align: center;">i</td>
+<td style="text-align: center;">u</td>
+<td style="text-align: center;">e</td>
+<td style="text-align: center;">o</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">か行</td>
+<td style="text-align: center;">ka</td>
+<td style="text-align: center;">ki</td>
+<td style="text-align: center;">ku</td>
+<td style="text-align: center;">ke</td>
+<td style="text-align: center;">ko</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">さ行</td>
+<td style="text-align: center;">sa</td>
+<td style="text-align: center;">si / shi</td>
+<td style="text-align: center;">su</td>
+<td style="text-align: center;">se</td>
+<td style="text-align: center;">so</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">た行</td>
+<td style="text-align: center;">ta</td>
+<td style="text-align: center;">ti / chi</td>
+<td style="text-align: center;">tu / tsu</td>
+<td style="text-align: center;">te</td>
+<td style="text-align: center;">to</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">な行</td>
+<td style="text-align: center;">na</td>
+<td style="text-align: center;">ni</td>
+<td style="text-align: center;">nu</td>
+<td style="text-align: center;">ne</td>
+<td style="text-align: center;">no</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">は行</td>
+<td style="text-align: center;">ha</td>
+<td style="text-align: center;">hi</td>
+<td style="text-align: center;">hu / fu</td>
+<td style="text-align: center;">he</td>
+<td style="text-align: center;">ho</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">ま行</td>
+<td style="text-align: center;">ma</td>
+<td style="text-align: center;">mi</td>
+<td style="text-align: center;">mu</td>
+<td style="text-align: center;">me</td>
+<td style="text-align: center;">mo</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">や行</td>
+<td style="text-align: center;">ya</td>
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">yu</td>
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">yo</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">ら行</td>
+<td style="text-align: center;">ra</td>
+<td style="text-align: center;">ri</td>
+<td style="text-align: center;">ru</td>
+<td style="text-align: center;">re</td>
+<td style="text-align: center;">ro</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">わ行</td>
+<td style="text-align: center;">wa</td>
+<td style="text-align: center;">wi</td>
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">we</td>
+<td style="text-align: center;">wo</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">が行</td>
+<td style="text-align: center;">ga</td>
+<td style="text-align: center;">gi</td>
+<td style="text-align: center;">gu</td>
+<td style="text-align: center;">ge</td>
+<td style="text-align: center;">go</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">ざ行</td>
+<td style="text-align: center;">za</td>
+<td style="text-align: center;">zi / ji</td>
+<td style="text-align: center;">zu</td>
+<td style="text-align: center;">ze</td>
+<td style="text-align: center;">zo</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">だ行</td>
+<td style="text-align: center;">da</td>
+<td style="text-align: center;">di / ji</td>
+<td style="text-align: center;">du / zu</td>
+<td style="text-align: center;">de</td>
+<td style="text-align: center;">do</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">ば行</td>
+<td style="text-align: center;">ba</td>
+<td style="text-align: center;">bi</td>
+<td style="text-align: center;">bu</td>
+<td style="text-align: center;">be</td>
+<td style="text-align: center;">bo</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">ぱ行</td>
+<td style="text-align: center;">pa</td>
+<td style="text-align: center;">pi</td>
+<td style="text-align: center;">pu</td>
+<td style="text-align: center;">pe</td>
+<td style="text-align: center;">po</td>
+</tr>
+</tbody>
+</table>
+<p>这里有部分的假名有两种罗马字表记，前者是理论表记，即为了保证同行假名使用同一辅音表记，同段假名使用同一元音表记从而得到的表记，而后者是更为贴近事实发音的表记。根据罗马字表记应当和实际发音贴合的原则，我们一般倾向于使用后者。</p>
+<p>这里需要注意，「じ」和「ぢ」、「ず」和「づ」的实际发音是完全一致的，我们根据罗马字表记应当和实际发音贴合的原则，这两对同音假名也应当使用相同的罗马字表记。例如「<code>@ 気付 きづ</code>く」的罗马字表记应当为「kizuku」，「<code>@ 縮 ちぢ</code>む」的罗马字表记应当为「chijimu」。但是在实际输入法中输入该假名的时候，需要使用前者，即理论的罗马字表记以区别这两对同音假名。</p>
+<p>之后是拗音假名的表记：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">拗音ローマ字</th>
+<th style="text-align: center;">＋「ゃ」</th>
+<th style="text-align: center;">＋「ゅ」</th>
+<th style="text-align: center;">＋「ょ」</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">き</td>
+<td style="text-align: center;">kya</td>
+<td style="text-align: center;">kyu</td>
+<td style="text-align: center;">kyo</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">し</td>
+<td style="text-align: center;">sya / sha</td>
+<td style="text-align: center;">syu / shu</td>
+<td style="text-align: center;">syo / sho</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">ち</td>
+<td style="text-align: center;">cya</td>
+<td style="text-align: center;">cyu</td>
+<td style="text-align: center;">cyo</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">に</td>
+<td style="text-align: center;">nya</td>
+<td style="text-align: center;">nyu</td>
+<td style="text-align: center;">nyo</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">ひ</td>
+<td style="text-align: center;">hya</td>
+<td style="text-align: center;">hyu</td>
+<td style="text-align: center;">hyo</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">み</td>
+<td style="text-align: center;">mya</td>
+<td style="text-align: center;">myu</td>
+<td style="text-align: center;">myo</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">り</td>
+<td style="text-align: center;">rya</td>
+<td style="text-align: center;">ryu</td>
+<td style="text-align: center;">ryo</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">ぎ</td>
+<td style="text-align: center;">gya</td>
+<td style="text-align: center;">gyu</td>
+<td style="text-align: center;">gyo</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">じ</td>
+<td style="text-align: center;">zya / jya / ja</td>
+<td style="text-align: center;">zyu / jyu / ju</td>
+<td style="text-align: center;">zyo / jyo / jo</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">ぢ</td>
+<td style="text-align: center;">dya / jya / ja</td>
+<td style="text-align: center;">dyu / jyu / ju</td>
+<td style="text-align: center;">dyo / jyo / jo</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">び</td>
+<td style="text-align: center;">bya</td>
+<td style="text-align: center;">byu</td>
+<td style="text-align: center;">byo</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">ぴ</td>
+<td style="text-align: center;">pya</td>
+<td style="text-align: center;">pyu</td>
+<td style="text-align: center;">pyo</td>
+</tr>
+</tbody>
+</table>
+<p>同样，这里部分拗音假名有多个表记方式。为了记号统一不引起歧义，我们规定「しゃ」「しゅ」「しょ」使用「sya」「syu」「syo」表记，「じゃ」「じゅ」「じょ」使用「jya」「jyu」「jyo」表记，「ぢゃ」「ぢゅ」「ぢょ」使用「jya」「jyu」「jyo」表记。</p>
+<p>拨音的罗马字则始终为「n」，但是根据实际的发音情况可以表记为「m」「ng」。同样，为了记号统一，我们仅使用「n」表记拨音。</p>
+<p>长音的表记有两种常用体系。一种是在需要长音的音节的元音上加一个短横表示该音节需要长音，例如「<code>@ 大阪 おおさか</code>」表记为「ōsaka」。而我们采用另外一种表记体系，即如实表记所用假名，例如「<code>@ 経済 けいざい</code>」表记为「keizai」。</p>
+<p>促音的表记方式则一般为双写促音后一音节的辅音。例如「しっかり」表记为「shikkari」。</p>
+<p>此外，我们额外规定，如果需要用罗马字表记音译的外来语单词，应当使用原语言的拉丁字表记，而非用罗马字表记日语假名。例如，「フィルム」应当表记为「film」，而非「firumu」。这样规定的目的是回避现代日语中用于音译外来词产生的若干新拗音（例如上述例子中的「フィ」）暂且没有正规的罗马字表记的问题。</p>
+<p>最后需要提醒的是三个日语助词的发音和表记规则。「は」「へ」「を」分别为主题助词、方向助词、宾语助词，这三者若按照五十音图的对应关系，应当发音为「ha」「he」「wo」。但是当它们作为助词的时候，应当发音为「wa」「e」「o」，其罗马字表记也需要相应变化。然而在输入法中输入这三个假名的时候，由于输入法不具有语句结构分析功能，所以依然需要按照五十音图的对应规则输入。</p>
+<h3 id="chapter-1-section-1-练习">Chapter 1 Section 1 练习</h3>
+<p>【第一问】尝试为下述句子给出罗马字表记，语句中的所有汉字已经在其正上方使用假名标记了其读音。考虑到目前还未讲解日语语法，故这里将所有助词均使用加粗标记。</p>
+<ul>
+<li>よろしくお<code>@ 願 ねが</code>いします。</li>
+<li>おれ<strong>は</strong><code>@ 兄弟三人 きょうだいさんにん</code><strong>が</strong>います。</li>
+<li>はやく<code>@ 容疑者 ようぎしゃ</code><strong>の</strong><code>@ 情報 じょうほう</code><strong>を</strong><code>@ 調 しら</code>べ<strong>て</strong>ください。</li>
+<li>ケーキ<strong>を</strong><code>@ 作 つく</code>りすぎた<strong>ので</strong>、これ<strong>を</strong><code>@ 持 も</code>っ<strong>て</strong>おばあさん<strong>に</strong><code>@ 行 い</code>っ<strong>て</strong>あげ<strong>て</strong>。</li>
+</ul>
+<p>【第二问】尝试根据罗马音表记写出句子的平假名表示，暂不要求写汉字或者翻译外来语，罗马音表记已经为词语和词语之间加上空格。考虑到目前还未讲解日语语法，故这里将所有助词均使用加粗标记。</p>
+<ul>
+<li>yat<strong>te</strong> minakere<strong>ba</strong> nande<strong>mo</strong> shiranai<strong>kara</strong> yat<strong>te</strong> miyou.</li>
+<li>tenkiyohou<strong>ni</strong> yot<strong>te</strong>, ashita<strong>wa</strong> ame<strong>ga</strong> furusouni<strong>wa</strong> nai.</li>
+<li>hajimari<strong>ga</strong> are<strong>ba</strong>, itsuka owari<strong>wa</strong> kitto kuru<strong>kara</strong>.</li>
+<li>taihen<strong>ni</strong> moushiwake arimasendeshita.</li>
+</ul>
+<h2 id="日语三大文字体系的历史和使用惯例">日语三大文字体系的历史和使用惯例</h2>
+<p>上一节我们已经讲解了日语中两套假名系统以及罗马字注音系统。平假名、片假名这两套假名，加上从汉语中借鉴的汉字，共同构成了当今日语的文字体系。那么，我们就需要了解，何时使用汉字，何时使用平假名，何时使用片假名。</p>
+<h3 id="表音汉字表意汉字假名的历史">表音汉字、表意汉字、假名的历史</h3>
+<p>在汉语传入日本之前，日语是一个没有文字的语言。汉语传入日本，为日本带来了两样新事物，一是文字，二是原先日语中不具有的新词汇。</p>
+<p>在这后日本人尝试使用汉字表记日语，而由于汉字同时具有音和意两个维度，所以在使用汉字表记日语的时候有两种思路。一是将汉字作为表音文字，用汉字表记与之同音的日语词，二是将汉字作为表意文字，用汉字表记与之同意的日语词。</p>
+<p>作为表音文字的汉字最经典的代表就是万叶假名。而万叶假名中最具代表性的一个词就是「<code>@ 伊呂波 いろは</code>」，其用于表记日语词「iroha」，这显然是直接借用了这三个汉字的读音表记日语词。</p>
+<p>作为表意文字的汉字则多见于各类训读词。比如日语中将“山”这一事物称为「yama」，而汉字中“山”一字恰好表达相同的意思，那么日语就会把“山”这一个汉字训读成「<code>@ 山 やま</code>」。这类字我们称为训读汉字。当然，训读并不仅仅局限于单字，这些我们后续进行说明。</p>
+<p>而表音汉字具有一个缺陷，即使用了笔画繁杂的汉字仅仅表达了一个音节，这造成了书面传抄的极大不便。基于此原因，后续人们传抄的时候，会有意简化笔画来提高传抄效率。而经过足够长的时间，日语形成了两套人们都认可的简体表音汉字，而这就是平假名和片假名。</p>
+<p>我们实际依然可以在现代假名中找到汉字的残余。比如说平假名「ぬ」就是从汉字「奴」简化而来，而片假名「イ」则取自汉字「依」的偏旁。</p>
+<p>另外，上面提到汉语的传入带来了部分新词汇，这些词汇日语本身不具有，故这些词汇自然而然地使用汉字作为书面表记，且读音尽可能模仿当时的汉语读音。那么这里使用的汉字就和汉语中一样，既表音又表意。这类汉字我们成为音读汉字。</p>
+<h3 id="现代日语中的汉字">现代日语中的汉字</h3>
+<p>根据上面的论述，可以注意到现代日语中的汉字有三种情况：</p>
+<ul>
+<li>作为表意汉字表记日语固有词（即训读汉字）</li>
+<li>万叶假名的残留，作为表音汉字表记日语固有词</li>
+<li>同时作为表音汉字和表意汉字表记汉语借词（即音读汉字）</li>
+</ul>
+<p>实际上，现代日语中的汉字还有可能出现在下述情况中：</p>
+<ul>
+<li>作为假借汉字表记各类词语</li>
+</ul>
+<p>就出现频率而言，现代日语中最为常见的两种汉字使用方式是第 1 种情况和第 3 种情况。第 2 种情况目前几乎仅出现在部分专有名词中，比如姓名中。例如女性名「<code>@ 奈美 なみ</code>」，其汉字仅表音，不表意。</p>
+<p>此外，第 3 种情况的音读汉字除去表记汉语借词之外，其实也适用于和制汉语的情形。和制汉语指的是在明治维新时，大量西方语言中的概念传入日本后，日本翻译家模仿汉字词创造的一批汉字词。这些和制汉语和传统汉语借词具有类似的逻辑，其汉字表记同时表音表意，故也可以认为是表音汉字。例如词语「<code>@ 共和 きょうわ</code>」，该词汇后续甚至传入中国，被纳入汉语词汇。</p>
+<p>假借汉字，即日语中所谓的「<code>@ 当 あ</code>て<code>@ 字 じ</code>」，其作用一般是如果某一词语难以找到很合适的汉字表记，那么借用已有的表音汉字或者表意汉字对应关系，为该词语选定汉字表记。</p>
+<p>比如说日语词「suteki」。因为已经有音读汉字「<code>@ 素 す</code>」和音读汉字「<code>@ 敵 てき</code>」，将其拼接即可得到该词语的汉字表记为「<code>@ 素敵 すてき</code>」。而此词语的含义为“美好”，和其汉字表记的汉语含义并无联系。</p>
+<p>另外再举一例，日语词「shikata」。因为已经有音读汉字「<code>@ 仕 し</code>」和训读汉字「<code>@ 方 かた</code>」，将其拼接即可得到该词语的汉字表记为「<code>@ 仕方 しかた</code>」。此词语的含义为“方法、手段”。</p>
+<p>这里需要注意的是，音读汉字「<code>@ 仕 し</code>」是现代日语中相当常见的假借字之一，大量以「shi」音开头的词汇均常常使用该字假借表记。比如「<code>@ 仕付 しつけ</code>」「<code>@ 仕方 しかた</code>」「<code>@ 仕草 しぐさ</code>」「<code>@ 仕事 しごと</code>」「<code>@ 仕舞 しま</code>う」。这些词的含义分别为“管教、约束”“方法、手段”“台词、说辞”“工作”“结束、终结”。</p>
+<p>这里引出了一个问题。上述的情况 2 中的汉字也仅仅表音而不表意，而刚刚提到的部分假借字也是仅仅表音而不表意，这两者的区别是什么呢？</p>
+<div class="note info no-icon"><p>可以这样理解，仅使用表音汉字的假借字拆开来，单个字依然能同时表音表意。比如「<code>@ 素敵 すてき</code>」拆开为「<code>@ 素 す</code>」和「<code>@ 敵 てき</code>」，「<code>@ 素 す</code>」依然表示“本来的、普通的”的含义，「<code>@ 敵 てき</code>」依然表示“敌人”的含义。而情况 2 中的万叶假名残余，其从根本上就没有表意的可能。即使将「<code>@ 奈美 なみ</code>」，拆开为「<code>@ 奈 な</code>」和「<code>@ 美 み</code>」，这两者依然仅仅表音不表意。</p>
+</div>
+<p>另外一种假借字出现的情况是用汉字表记汉语以外的外来语，这些词汇完全外来，没有原有的汉字表记，所以如果需要使用汉字表记，则必须假借。一般而言，假借表记这些词汇的时候，常常使用表音汉字。当然，如果能做到表音和表意相结合，则更能体现语言的艺术。</p>
+<p>例如，来源于英语词 Asia 的日语词「ajia」，其曾用的汉字表记为「<code>@ 亜細亜 アジア</code>」。这里仅仅考虑了汉字的读音，而没有考虑汉字的含义。</p>
+<p>仅表意的假借也是存在的。例如来源于英语词 beer 的日语词「biiru」，其曾用的汉字表记为「<code>@ 麦酒 ビール</code>」。这里显然仅仅考虑了汉字的含义，并未考虑汉字读音。</p>
+<p>而另外一例，来源于英语词 club 的日语词「kurabu」，其曾用的汉字表记为「<code>@ 俱楽部 クラブ</code>」。这里做到了音意结合，是经典的优秀翻译。该汉字表记后续传入中国，成为了汉语对该英语词的翻译。</p>
+<p>此外，假借字还常常出现在文艺作品中产生特别的表达效果。比如说著名的词语「<code>@ 五月蠅 うるさ</code>い」，这类故意不使用常用汉字表记的假借字，一般侧重于表达假借汉字本身的含义。比如说，现在文艺作品中常常会使用「<code>@ 運命 さだめ</code>」而非常用的「<code>@ 定 さだ</code>め」表记固有词「sadame」，这样更能表达出“命运本身就是确定之事”这样的含义。</p>
+<p>而假借字甚至可以用来达到反语的表达效果。比如用「<code>@ 軽 おも</code>い」来表记原本含义为“沉重的”的固有词「omoi」，以达到“看似轻浮实则沉重”的表达效果。该假借字取自歌词：</p>
+<div class="note info no-icon"><p><code>@ 思 おも</code>いもしない<code>@ 軽 おも</code>い<code>@ 言葉 ことば</code>、<code>@ 何度 なんど</code> <code>@ 使 つか</code>い<code>@ 古 ふる</code>すのか。</p>
+<p>——「カワキヲアメク」</p>
+</div>
+<h3 id="现代日语中的平假名">现代日语中的平假名</h3>
+<p>观察现代日语中的动词、形容词、形容动词词例：</p>
+<ul>
+<li><code>@ 動詞 どうし</code>：<code>@ 行 い</code>く、<code>@ 来 く</code>る、<code>@ 話 はな</code>す、<code>@ 飛 と</code>ぶ、<code>@ 立 た</code>つ</li>
+<li><code>@ 形容詞 けいようし</code>：<code>@ 赤 あか</code>い、<code>@ 黒 くろ</code>い、<code>@ 長 なが</code>い、<code>@ 広 ひろ</code>い、<code>@ 美 うつく</code>しい、<code>@ 難 むずか</code>しい</li>
+<li><code>@ 形容動詞 けいようどうし</code>：<code>@ 好 す</code>きだ、<code>@ 嫌 きら</code>いだ、<code>@ 静 しず</code>かだ</li>
+</ul>
+<p>可以注意到这些词语除去表意的训读汉字作为词干之外，还有使用平假名表记的词尾，这些词尾一般称为送假名，即日语「<code>@ 送 おく</code>り<code>@ 仮名 がな</code>」。这些送假名承担的作用是变形以表达语法含义，本身并不表达任何含义。</p>
+<p>这些用言的词尾应当以什么样的形式变化来表达语法含义，则在后续的部分进行具体的讲解。</p>
+<p>另外，在实际的语用环境下，还有省略送假名的情况。这种省略情况需要在简单介绍日语用言词尾变形原则后具体讲解。</p>
+<p>而这也是现代日语文字中平假名的重要作用之一，即表记用言（可以粗略理解为动词、形容词、形容动词的集合）的送假名部分，承担通过变形表达语法含义的作用。</p>
+<p>现代日语文字中平假名的第二个重要作用是在含义虚化的词语中取代表意汉字。一个较为典型的例子是词语「koto」，其具有汉字表记「<code>@ 事 こと</code>」。但是如果这个词作为形式体言以承担动词名词化的语法作用的时候，则一般不使用汉字表记，而是直接使用平假名表记为「こと」。比如说下述例句：</p>
+<div class="note info no-icon"><p>あれはもう<code>@ 去年 きょねん</code>の<strong><code>@ 事 こと</code></strong>だった。</p>
+<p>わたしは<code>@ 日本語 にほんご</code>で<code>@ 手紙 てがみ</code>を<code>@ 書 か</code>く<strong>こと</strong>ができます。</p>
+</div>
+<p>另外，如果某一词语同时具有实词和含义虚化词语的双重属性，并且这两个含义差异较大，则该词语使用汉字还是使用平假名表记甚至可以影响语句的细节含义。比如说词语「kudasaru」，其作为实词，使用汉字表记「<code>@ 下 くだ</code>さる」时，含义一般为“从他人处获取物品”，而其含义虚化，使用平假名表记「くださる」并接续在助词「て」之后时，其作用是表达请求的语气。那么观察下述例句，这里使用该动词的命令形而非原形：</p>
+<div class="note info no-icon"><p><code>@ 資料 しりょう</code>を<code>@ 出 だ</code>して<strong><code>@ 下 くだ</code>さい</strong>。</p>
+<p><code>@ 資料 しりょう</code>を<code>@ 出 だ</code>して<strong>ください</strong>。</p>
+</div>
+<p>前者则更倾向于“把资料取出来给我”的含义，而后者则更倾向于“请取出资料”的含义。补充一点，上述两句话在口语中无法区分，但是可以通过对话情境上下文作出区分。</p>
+<p>而在新闻标题、标识语等需要节省文字空间的书面条件下，这类词语无论表达何种细节含义也倾向于使用汉字表记以节省空间。</p>
+<p>此外，部分日语词语本身不具有汉字表记，这类词语仅能使用假名表记。这类词主要是各类助词和助动词，以及部分本土的副词。例如，表示否定的助词「ない」和含义为“整洁、利落”的副词「さっぱり」。</p>
+<p>而现代日语中，部分原本具有汉字表记的词语由于使用者习惯的变化，逐渐不会使用其汉字表记。例如，含义为“大量、许多”的副词「takusan」，原本具有汉字表记「<code>@ 沢山 たくさん</code>」，而现在大部分时候使用的是其平假名表记「たくさん」。</p>
+<p>这类逐渐丢失汉字表记的词语还包括由于汉字表记过于复杂导致使用者逐步放弃汉字表记的词语。比如词语「<code>@ 改竄 かいざん</code>」，由于汉字过于复杂，目前常见的表记方式为「<code>@ 改 かい</code>ざん」。</p>
+<p>最后需要指出，上述规则也可能是存在例外的。也就是说，实际条件下具体应当选择何种表记，需要视实际环境，或者根据母语者的偏好决定。</p>
+<h3 id="现代日语中的片假名">现代日语中的片假名</h3>
+<p>现代日语中片假名最重要的作用是表记外来语，例如：</p>
+<div class="note info no-icon"><p>この<code>@ 番組 ばんぐみ</code>はご<code>@ 覧 らん</code>の<strong>スポンサー</strong>の<code>@ 提供 ていきょう</code>でお<code>@ 送 おく</code>りします。</p>
+</div>
+<p>这里的片假名即用于表记来自英语的外来词 sponsor。</p>
+<p>此外，即使我们使用假借字表记了外来词，其注音假名（写在汉字上方表明其发音的假名，又称振假名）也应当写为片假名。这一规则常用于来自现代汉语的借词，这类借词往往有汉字表记，但是表记其读音的时候依然需要使用片假名。例如：</p>
+<div class="note info no-icon"><p><code>@ 上海 シャンハイ</code>から<code>@ 東京 とうきょう</code>までの<code>@ 飛行機 ひこうき</code>。</p>
+</div>
+<p>除去表记外来语，片假名还有一个重要作用，即表记需要强调的词语。例如下述歌词：</p>
+<div class="note info no-icon"><p><code>@ 見 み</code>て<code>@ 見 み</code>ぬ<strong>フリ</strong>なだけ。</p>
+<p>——「キュートなカノジョ」</p>
+</div>
+<p>这里「<code>@ 見 み</code>て<code>@ 見 み</code>ぬふり」是日语熟语，含义为“视而不见”。这里将表达“装作”含义的「furi」使用片假名表记，则更为强调“我早已知晓，只不过是装作不知道”这样的含义。</p>
+<h3 id="chapter-1-section-2-练习">Chapter 1 Section 2 练习</h3>
+<p>【第一问】根据我们对日语中汉字的了解，除去假借字外，训读汉字和音读汉字均有表意的作用。所以当日语词的汉字表记难以使用汉字的汉语含义理解的时候，其往往是假借汉字。基于这样的认知，尝试指出下述句子中的假借汉字。下述各个句子均已经给出其汉语翻译：</p>
+<ul>
+<li><code>@ 囚人 しゅうじん</code>は<code>@ 看守 かんしゅ</code>の<code>@ 目 め</code>を<code>@ 誤魔化 ごまか</code>して<code>@ 逃 に</code>げた。（犯人糊弄过看守的监视逃走了。）</li>
+<li><code>@ 彼 かれ</code>は<code>@ 勤勉家 きんべんか</code>だから、<code>@ 成功 せいこう</code>するのは<code>@ 当 あ</code>たり<code>@ 前 まえ</code>だ。（他作为实干家成功是当然的。）</li>
+</ul>
+<p>【第二问】音读汉字和训读汉字的差别在于训读汉字往往不表音，所以其读音往往和汉语读音有所差别。基于这样的认知，首先指出下面句子中的假借字，然后将所有汉字分为音读和训读两类。下述各个句子均已经给出其汉语翻译：</p>
+<ul>
+<li><code>@ 明日 あした</code> <code>@ 七時 しちじ</code>に<code>@ 会社 かいしゃ</code>の<code>@ 受付 うけつけ</code>で<code>@ 会 あ</code>いましょう。（明天七点在公司前台见吧。）</li>
+<li><code>@ 一寸 いっすん</code>の<code>@ 光陰 こういん</code>を<code>@ 軽 かろ</code>んずべからず。（一寸光阴不可轻。）</li>
+<li>この<code>@ 素晴 すば</code>らしい<code>@ 世界 せかい</code>に<code>@ 祝福 しゅくふく</code>を。（为这个美好的世界献上祝福。）</li>
+<li>この<code>@ 橋 はし</code>は<code>@ 石 いし</code>で<code>@ 出来 でき</code>ている。（这座桥是用石头修的。）</li>
+</ul>
+<h2 id="日语汉字的训读和音读">日语汉字的训读和音读</h2>
+<p>我们再次回忆日语中的汉字出现的场合，实际上主要依然是两类，即训读汉字和音读汉字，而假借字也一般从这两类字假借。</p>
+<p>那么这一部分将会深入探讨汉字的训读和音读，讲解区分训读和音读的基本方法，基于此即可简单掌握日语汉字的发音。当然，大量的阅读日语语料开拓词汇量也是学习日语汉字发音的重要步骤。</p>
+<h3 id="单字训熟字训词组训读">单字训、熟字训、词组训读</h3>
+<p>我们最常见的训读形式就是单字训。单字训的逻辑是使用汉字表记与该汉字同义的日语词，从而我们称将这个汉字训读为日语词的读音。比如说我们用汉字“山”表记同义日语词「yama」，我们就称将“山”训读成「やま」。</p>
+<p>此外，我们需要提醒动词等涉及到词尾的词语的训读。比如说表示“消失”的动词「kieru」和表示“使熄灭”的动词「kesu」，它们的常用表记为「<code>@ 消 き</code>える」和「<code>@ 消 け</code>す」。可以注意到他们使用了同样的汉字，但是这个汉字读音并不一致。所以为了区分，我们在提到“消”这个汉字的训读的时候，需要加上词尾，称将“消”训读为「き‐える」和「け‐す」。</p>
+<p>另外，由于汉字多义，导致单个汉字可以用于表记多个日语词，这就带来了训读多音字。比如说“生”这个汉字，其表示“未经加工的”的含义的时候，训读为「なま」，词例为「<code>@ 生 なま</code>ビール」。表示“生长”的含义的时候，训读为「は‐やす」，词例为「<code>@ 芽生 めば</code>える」。表示“生存”的含义的时候，训读为「い‐きる」，词例为「<code>@ 生 い</code>きる」。表示“生产、分娩”的含义的时候，训读为「う‐む」，词例为「<code>@ 生 う</code>まれつく」。</p>
+<p>此外，同一个日语词也可以用多种汉字表记。比如说「warau」，其最常用的表记为「<code>@ 笑 わら</code>う」。而当这个词倾向于表示“嘲笑、嗤笑”的含义的时候，也可以表记为「<code>@ 嗤 わら</code>う」。</p>
+<p>熟字训指的是使用一个汉字词组来表记一个日语词，在这种情况下我们并不能说这个汉字词组里面具体某个汉字训读的读音，只能说这个词组整体训读成某个音。熟字训往往是具有日本文化特色的词语，另外，大量的植物和动物名也使用了熟字训。</p>
+<p>常见的熟字训包括：</p>
+<ul>
+<li><code>@ 五月雨 さみだれ</code>、<code>@ 時雨 しぐれ</code>、<code>@ 村雨 むらさめ</code>、<code>@ 梅雨 つゆ</code></li>
+<li><code>@ 一昨日 おととい</code>、<code>@ 昨日 きのう</code>、<code>@ 今日 きょう</code>、<code>@ 明日 あした</code>、<code>@ 明後日 あさって</code>、<code>@ 今朝 けさ</code>、<code>@ 昨夜 ゆうべ</code></li>
+<li><code>@ 二十日 はつか</code>、<code>@ 二十歳 はたち</code>、<code>@ 一日 ついたち</code>、<code>@ 晦日 みそか</code>、<code>@ 一人 ひとり</code>、<code>@ 二人 ふたり</code></li>
+<li><code>@ 田舎 いなか</code>、<code>@ 玩具 おもちゃ</code>、<code>@ 団扇 うちわ</code>、<code>@ 相撲 すもう</code>、<code>@ 台詞 せりふ</code>、<code>@ 太刀 たち</code>、<code>@ 足袋 たび</code>、<code>@ 土産 みやげ</code></li>
+<li><code>@ 浴衣 ゆかた</code>、<code>@ 吹雪 ふぶき</code>、<code>@ 紅葉 もみじ</code>、<code>@ 芝生 しばふ</code></li>
+</ul>
+<p>词组训读指的是使用一个汉字表达一个日语词组。比如说，日语词「<code>@ 祭 まつ</code>り」和「<code>@ 事 こと</code>」的合成词「<code>@ 祭 まつ</code>り<code>@ 事 ごと</code>」具有衍生含义“政治”，所以可以使用一个字“政”表记，从而“政”单字训读为「まつりごと」。</p>
+<p>这样的例子还包括：</p>
+<ul>
+<li><strong><code>@ 黄泉 よみ</code></strong> ＋ <code>@ 帰 かえ</code>る ＝ <code>@ 黄泉帰 よみがえ</code>る → <code>@ 蘇 よみがえ</code>る</li>
+<li><code>@ 坂 さか</code> ＋ <code>@ 登 のぼ</code>る ＝ <code>@ 坂登 さかのぼ</code>る → <code>@ 遡 さかのぼ</code>る</li>
+<li><code>@ 神 かみ</code> ＋ <code>@ 鳴 な</code>り ＝ <code>@ 神鳴 かみな</code>り → <code>@ 雷 かみなり</code></li>
+<li><code>@ 屋 や</code> ＋ <code>@ 取 と</code>る ＝ <code>@ 屋取 やど</code>る → <code>@ 宿 やど</code>る</li>
+<li><code>@ 日 ひ</code> ＋ <code>@ 回 まわ</code>り ＝ <code>@ 日回 ひまわ</code>り → <strong><code>@ 向日葵 ひまわり</code></strong></li>
+</ul>
+<p>根据上述例子中加粗的部分，可以注意到词组训读可能和熟字训结合。</p>
+<h3 id="音读汉字的规律">音读汉字的规律</h3>
+<p>大部分音读汉字都是一字一音，而且大多都是一个或者两个音节。如果双音节汉字的两个音节不是在模仿一个双音节字，那么第二个音节往往是「く」「き」「つ」等模仿古汉语入声的音节，或者拨音，或者长音。</p>
+<p>一般而言，古汉语中具有入声的字，日语音读中会有模仿入声的音节：</p>
+<ul>
+<li><code>@ 学生 がくせい</code> ＝ が<strong>く</strong>せい</li>
+<li><code>@ 責任 せきにん</code> ＝ せ<strong>き</strong>にん</li>
+<li><code>@ 刹那 せつな</code> ＝ せ<strong>つ</strong>な</li>
+</ul>
+<p>而鼻音可能使用拨音去模仿，也可能是使用长音去模仿：</p>
+<ul>
+<li><code>@ 反対 はんたい</code> ＝ は<strong>ん</strong>たい</li>
+<li><code>@ 形容 けいよう</code> ＝ け<strong>い</strong>よ<strong>う</strong></li>
+</ul>
+<p>这里有一个经验规律，即现代汉语中为前鼻音的字往往在日语音读中是拨音结尾，为后鼻音的字往往在日语音读中是长音结尾。</p>
+<p>在了解单个汉字如何音读的基础上，我们需要简单了解音读汉字连读时可能发生的音便。</p>
+<p>首先，入声字后面接续送气音的时候，往往发生促音便：</p>
+<ul>
+<li><code>@ 学校 がっこう</code> ＝ が<strong>く</strong> ＋ <strong>こ</strong>う → が<strong>っこ</strong>う</li>
+<li><code>@ 察 さっ</code>する ＝ さ<strong>つ</strong> ＋ <strong>す</strong>る → さ<strong>っす</strong>る</li>
+</ul>
+<p>如果后面的字的开头是「は行」假名，往往后者还会发生半浊化：</p>
+<ul>
+<li><code>@ 八百 はっぴゃく</code> ＝ は<strong>ち</strong> ＋ <strong>ひゃ</strong>く → <strong>はっぴ</strong>ゃく</li>
+<li><code>@ 疾風 しっぷう</code> ＝ し<strong>つ</strong> ＋ <strong>ふ</strong>う → <strong>しっぷ</strong>う</li>
+</ul>
+<p>而如果后面的字开头是浊音，往往不会发生促音便：</p>
+<ul>
+<li><code>@ 一撃 いちげき</code> ＝ い<strong>ち</strong> ＋ <strong>げ</strong>き → い<strong>ちげ</strong>き</li>
+</ul>
+<p>其次，如果前一个字以拨音结尾，那么后一个字一般发生浊化，而后面的字的开头是「は行」假名的时候，也有可能发生半浊化：</p>
+<ul>
+<li><code>@ 万歳 ばんざい</code> ＝ ば<strong>ん</strong> ＋ <strong>さ</strong>い → ば<strong>んざ</strong>い</li>
+<li><code>@ 三百 さんびゃく</code> ＝ さ<strong>ん</strong> ＋ <strong>ひゃ</strong>く → さ<strong>んびゃ</strong>く</li>
+<li><code>@ 順風満帆 じゅんぷうまんぱん</code> ＝ じゅ<strong>ん</strong> ＋ <strong>ふ</strong>う ＋ ま<strong>ん</strong> ＋ <strong>は</strong>ん ＝ じゅ<strong>んぷ</strong>うま<strong>んぱ</strong>ん</li>
+</ul>
+<p>当然，这一规律也是存在例外的：</p>
+<ul>
+<li><code>@ 関西 かんさい</code> ＝ か<strong>ん</strong> ＋ <strong>さ</strong>い → か<strong>んさ</strong>い</li>
+</ul>
+<p>另外我们需要注意，由于汉语传入日本是多批次的，所以音读汉字根据传入的时代还会分为吴音、汉音、唐音等等，目前大部分音读汉字遵守汉音规律。但是也会有例外，比如说「<code>@ 老若男女 ろうにゃくなんにょ</code>」一词，并不会按照常用的读音规律读成「<code>@ 老 ろう</code> <code>@ 若 じゃく</code> <code>@ 男 だん</code> <code>@ 女 じょ</code>」。</p>
+<h3 id="音训混读">音训混读</h3>
+<p>部分日语词中可能同时存在训读汉字和音读汉字，这类音训混读词需要特别记忆。音训混读词根据音读和训读出现的顺序分为「<code>@ 湯桶 ゆとう</code> <code>@ 読 よ</code>み」和「<code>@ 重箱 じゅうばこ</code> <code>@ 読 よ</code>み」两类。</p>
+<p>「<code>@ 湯桶 ゆとう</code> <code>@ 読 よ</code>み」指的是类似「<code>@ 湯桶 ゆとう</code>」一样先训读汉字后音读汉字的音训混读词。这类词包括「<code>@ 合図 あいず</code>」「<code>@ 大勢 おおせい</code>」「<code>@ 高台 たかだい</code>」。</p>
+<p>「<code>@ 重箱 じゅうばこ</code> <code>@ 読 よ</code>み」指的是类似「<code>@ 重箱 じゅうばこ</code>」一样先音读汉字后训读汉字的音训混读词。这类词包括「<code>@ 馬 ば</code> <code>@ 鹿 か</code>」「<code>@ 額 がく</code> <code>@ 縁 ぶち</code>」「<code>@ 残 ざん</code> <code>@ 高 だか</code>」「<code>@ 番 ばん</code> <code>@ 組 ぐみ</code>」。注意到，这类词的后一个汉字往往会发生浊化。</p>
+<p>这类词语的产生，可能是因为两个汉字本身是两个词，一个训读一个音读，后来合成为一个词的时候分别保留原先的读音，从而导致词语内部音训混读，这样形成的词语往往能够从汉字中理解词语含义。当然，也有可能源于假借汉字，这些词语就不太能够直接从汉字理解含义。</p>
+<h3 id="日语数量词的读法">日语数量词的读法</h3>
+<p>日语的数量词是不规则读法的集中之处，所以这里需要特别提出。</p>
+<p>在讲解数量词之前，我们需要简单介绍目前日语中通行的两套数字，即传统日语中的训读数词和借自汉语的音读数词：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">漢字</th>
+<th style="text-align: center;">訓読み数字</th>
+<th style="text-align: center;">音読み数字</th>
 </tr>
 </thead>
 <tbody>
@@ -4906,7 +5369,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <tr class="odd">
 <td style="text-align: center;">九</td>
 <td style="text-align: center;">ここの</td>
-<td style="text-align: center;">く／きゅう</td>
+<td style="text-align: center;">きゅう・く</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">十</td>
@@ -4915,238 +5378,648 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 </tr>
 <tr class="odd">
 <td style="text-align: center;">百</td>
-<td style="text-align: center;"></td>
+<td style="text-align: center;">―</td>
 <td style="text-align: center;">ひゃく</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">千</td>
-<td style="text-align: center;"></td>
+<td style="text-align: center;">―</td>
 <td style="text-align: center;">せん</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">万</td>
-<td style="text-align: center;"></td>
+<td style="text-align: center;">―</td>
 <td style="text-align: center;">まん</td>
 </tr>
 </tbody>
 </table>
-<p>首先关注应该读这两套数词之中的哪一套。原则如下：</p>
+<p>基于此，首先说明日本的大数读法。日本的大数读法中，一般而言“四”需要使用训读（其音读「<code>@ 四 し</code>」和「<code>@ 死 し</code>」同音，需要避讳），“七”训读和音读均可（其音读「<code>@ 七 しち</code>」和「<code>@ 死 し</code>」相似，可以避讳）。</p>
+<p>之后，需要注意音读数词直接连接时可能出现的音便。而「<code>@ 四 よん</code>」在这里并不会引发浊音便：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">数字</th>
+<th style="text-align: center;">＋「百」</th>
+<th style="text-align: center;">＋「千」</th>
+<th style="text-align: center;">＋「万」</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">一</td>
+<td style="text-align: center;"><strong>ひゃく</strong></td>
+<td style="text-align: center;"><strong>せん</strong></td>
+<td style="text-align: center;">いちまん</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">二</td>
+<td style="text-align: center;">にひゃく</td>
+<td style="text-align: center;">にせん</td>
+<td style="text-align: center;">にまん</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">三</td>
+<td style="text-align: center;">さ<strong>んびゃ</strong>く</td>
+<td style="text-align: center;">さ<strong>んぜ</strong>ん</td>
+<td style="text-align: center;">さんまん</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">四</td>
+<td style="text-align: center;">よんひゃく</td>
+<td style="text-align: center;">よんせん</td>
+<td style="text-align: center;">よんまん</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">五</td>
+<td style="text-align: center;">ごひゃく</td>
+<td style="text-align: center;">ごせん</td>
+<td style="text-align: center;">ごまん</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">六</td>
+<td style="text-align: center;">ろ<strong>っぴゃ</strong>く</td>
+<td style="text-align: center;">ろくせん</td>
+<td style="text-align: center;">ろくまん</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">七</td>
+<td style="text-align: center;">ななひゃく</td>
+<td style="text-align: center;">ななせん</td>
+<td style="text-align: center;">ななまん</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">八</td>
+<td style="text-align: center;">は<strong>っぴゃ</strong>く</td>
+<td style="text-align: center;">は<strong>っせ</strong>ん</td>
+<td style="text-align: center;">はちまん</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">九</td>
+<td style="text-align: center;">きゅうひゃく</td>
+<td style="text-align: center;">きゅうせん</td>
+<td style="text-align: center;">きゅうまん</td>
+</tr>
+</tbody>
+</table>
+<p>需要注意的是“一百”“一千”不需要表示出“一”这个数量，以及“六千”并没有发生促音便。其余发音均和上述规律以及音读汉字音便规律一致。</p>
+<p>一些大数的示例：</p>
 <ul>
-<li><p>训读数词往往和训读的量词配合使用，音读数词往往和音读的量词配合使用</p></li>
-<li><p>训读数词可能和某些名词一起构成复合名词</p></li>
-<li><p>训读数词中，二十、五十、百等均有一些固定表达，但使用得并不普遍</p></li>
-<li><p>注意音读数词的「四」和「七」的发音和「死」的训读类似，所以很多时候会有意用训读数词的「四」和「七」代替音读数词</p></li>
+<li><code>@ 一万千六百 いちまんせんろっぴゃく</code> (11600)</li>
+<li><code>@ 四万八千 よんまんはっせん</code> (48000)</li>
+<li><code>@ 七千七百 ななせんななひゃく</code> (7700)</li>
 </ul>
-<p>原则四带来了“半训读数词”这个概念，也就是即使是音读的数词，里面的「四」和「七」也是可以替换为训读数词的。比如理论上“十四”没有训读，仅可以音读为 jyuushi，但是其可以把「四」训读，读成 jyuuyon。甚至实际上半训读数词应用得比音读数词更广泛。</p>
-<p>在了解这些原则的情况下，我们先处理一些极其不规则的领域。</p>
-<p>语言学有这样的一个规律，即越是日常用的基础概念，越倾向于不规则。这一般是由于常用词语的用法早已固化，为人熟知，所以很难在后续自然演变和规范化过程中改变，从而这些词语的用法就保持着不规则。比如说英语的不规则动词几乎全都是日常使用频率极高的动词。同样的，日语数量词最不规则的地方就是最日常的两个领域，即个数和日期。</p>
-<p>数个数的时候，经常使用固有量词「つ」，此时数词使用训读数词，且一般仅能表达一到十的数量。而且，即使使用训读数词，这些训读数词也会发生一些不规则的变化：</p>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;"></th>
-<th style="text-align: center;">传统数词【训读】</th>
-<th style="text-align: center;">接续固有量词「つ」</th>
-<th style="text-align: center;">汉字表记</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">一</td>
-<td style="text-align: center;">ひ（と）</td>
-<td style="text-align: center;">ひとつ</td>
-<td style="text-align: center;">一つ</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">二</td>
-<td style="text-align: center;">ふ（た）</td>
-<td style="text-align: center;">ふたつ</td>
-<td style="text-align: center;">二つ</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">三</td>
-<td style="text-align: center;">み</td>
-<td style="text-align: center;">みっつ</td>
-<td style="text-align: center;">三つ</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">四</td>
-<td style="text-align: center;">よ（ん）</td>
-<td style="text-align: center;">よっつ</td>
-<td style="text-align: center;">四つ</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">五</td>
-<td style="text-align: center;">い（つ）</td>
-<td style="text-align: center;">いつつ</td>
-<td style="text-align: center;">五つ</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">六</td>
-<td style="text-align: center;">む</td>
-<td style="text-align: center;">むっつ</td>
-<td style="text-align: center;">六つ</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">七</td>
-<td style="text-align: center;">な（な）</td>
-<td style="text-align: center;">ななつ</td>
-<td style="text-align: center;">七つ</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">八</td>
-<td style="text-align: center;">や</td>
-<td style="text-align: center;">やっつ</td>
-<td style="text-align: center;">八つ</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">九</td>
-<td style="text-align: center;">ここの</td>
-<td style="text-align: center;">ここのつ</td>
-<td style="text-align: center;">九つ</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">十</td>
-<td style="text-align: center;">とお</td>
-<td style="text-align: center;">とお</td>
-<td style="text-align: center;">十</td>
-</tr>
-</tbody>
-</table>
-<p>多于十个则会使用音读量词「個」和音读数词，比如“十二个”就是「じゅうにこ」，汉字表记为「十二個」。另外，询问个数的时候一般使用「いくつ」这个疑问词，而不是常见的「何」接续量词作为疑问词。</p>
-<p>日期则需要注意一到十号、十四号、二十号、二十四号是特殊的。除了这些日期外，其余的日期均是音读数词加上音读量词「日」，此时发音为 nichi。而二到十号、十四号、二十号、二十四号使用的日期量词的汉语表记也是「日」，但是读作 ka。而一号完全相当于熟字训，没有规律。另外注意，十七号、二十七号使用半训读的数词接续音读的「日」也可以。</p>
-<p>这种混杂的情况和上面的四个原则的第三、第四原则有关，即「四」和「七」习惯被替换为训读数词避免不吉利，但是日期的「四」会把量词跟着替换，而「七」则不需要替换量词，甚至使用音读数词也是可以的。另外，日期使用了「二十」的固有表达。</p>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;"></th>
-<th style="text-align: center;">传统数词【训读】</th>
-<th style="text-align: center;">汉语数词【音读】</th>
-<th style="text-align: center;">接续量词「日」</th>
-<th style="text-align: center;">汉字表记</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">一</td>
-<td style="text-align: center;">ひ（と）</td>
-<td style="text-align: center;">いち</td>
-<td style="text-align: center;">ついたち</td>
-<td style="text-align: center;">一日</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">二</td>
-<td style="text-align: center;">ふ（た）</td>
-<td style="text-align: center;">に</td>
-<td style="text-align: center;">ふつか</td>
-<td style="text-align: center;">二日</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">三</td>
-<td style="text-align: center;">み</td>
-<td style="text-align: center;">さん</td>
-<td style="text-align: center;">みっか</td>
-<td style="text-align: center;">三日</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">四</td>
-<td style="text-align: center;">よ（ん）</td>
-<td style="text-align: center;">し</td>
-<td style="text-align: center;">よっか</td>
-<td style="text-align: center;">四日</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">五</td>
-<td style="text-align: center;">い（つ）</td>
-<td style="text-align: center;">ご</td>
-<td style="text-align: center;">いつか</td>
-<td style="text-align: center;">五日</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">六</td>
-<td style="text-align: center;">む</td>
-<td style="text-align: center;">ろく</td>
-<td style="text-align: center;">むいか</td>
-<td style="text-align: center;">六日</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">七</td>
-<td style="text-align: center;">な（な）</td>
-<td style="text-align: center;">しち</td>
-<td style="text-align: center;">なのか</td>
-<td style="text-align: center;">七日</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">八</td>
-<td style="text-align: center;">や</td>
-<td style="text-align: center;">はち</td>
-<td style="text-align: center;">ようか</td>
-<td style="text-align: center;">八日</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">九</td>
-<td style="text-align: center;">ここの</td>
-<td style="text-align: center;">く／きゅう</td>
-<td style="text-align: center;">ここのか</td>
-<td style="text-align: center;">九日</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">十</td>
-<td style="text-align: center;">とお</td>
-<td style="text-align: center;">じゅう</td>
-<td style="text-align: center;">とおか</td>
-<td style="text-align: center;">十日</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">十一</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">じゅういち</td>
-<td style="text-align: center;">じゅういちにち</td>
-<td style="text-align: center;">十一日</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">十四</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">じゅうし</td>
-<td style="text-align: center;">じゅうよっか</td>
-<td style="text-align: center;">十四日</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">十七</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">じゅうしち</td>
-<td style="text-align: center;">じゅうななにち／じゅうしちにち</td>
-<td style="text-align: center;">十七日</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">二十</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">にじゅう</td>
-<td style="text-align: center;">はつか</td>
-<td style="text-align: center;">二十日</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">二十四</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">にじゅうし</td>
-<td style="text-align: center;">にじゅうよっか</td>
-<td style="text-align: center;">二十四日</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">二十七</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">にじゅうしち</td>
-<td style="text-align: center;">にじゅうななにち／にじゅうしちにち</td>
-<td style="text-align: center;">二十七日</td>
-</tr>
-</tbody>
-</table>
-<h1 id="如何确定日语汉字的发音">如何确定日语汉字的发音</h1>
-<p>在文章的最后，我们终于回到了主题，也就是我们到底该如何确定日语汉字的读音。</p>
-<p>为了确定汉字读音，第一件事是拆分句子。这是因为在省略送假名或者不具有送假名的时候，属于不同日语词汇的汉字可能会连接在一起，导致误读。比如说：</p>
-<div class="note warning"><p>出来次第，お届けいたします。</p>
+<p>在具体叙述数量词搭配的时候，我们需要特别指出，下面的讨论不包含表示日期的量词「<code>@ 日 か・にち</code>」、表示个数的量词「つ」、表示人数的量词「<code>@ 人 り・にん</code>」，因为这三个量词的使用方式完全不规则。</p>
+<p>在和具体的量词搭配的时候，具体使用训读数词还是音读数词，大约遵守下面的规律。</p>
+<ul>
+<li>如果数量大于“十”，则无论量词如何，一般使用音读数词：</li>
+</ul>
+<div class="note info no-icon"><p><code>@ 三十個 さんじゅうこ</code>、<code>@ 十三夜 じゅうさんや</code></p>
 </div>
-<p>这里出现的「出来次第」四个汉字，实际上是两个词，应该划分为「出来」和「次第」两个部分。这里，这里是这个动词的第一连用形。而后者就是单纯的音读词，发音为 shidai。</p>
+<p>当然，“二十”“五十”“八百”等可能存在部分类似固定搭配用法的训读形式，然而一般而言这些词语也被认为是熟字训而并非普通的数词和量词的联合使用：</p>
+<div class="note info no-icon"><p><code>@ 五十嶋 いそじま</code>、<code>@ 八百屋 やおや</code>、<code>@ 二十歳 はたち</code></p>
+</div>
+<ul>
+<li>如果数量为“一”或者“二”，并且量词为训读量词，则一般使用训读数词与之搭配：</li>
+</ul>
+<div class="note info no-icon"><p><code>@ 一皿 ひとさら</code>、<code>@ 二組 ふたくみ</code>、<code>@ 一滴 ひとしずく</code></p>
+</div>
+<p>相应的，即使数量为“一”或者“二”，如果量词为音读数词，则一般使用音读数词，此时需要注意汉字连读时的音便（基本只需要注意“一”和音读量词连用且量词以送气音开头时发生促音便）：</p>
+<div class="note info no-icon"><p><code>@ 一匹 いっぴき</code>、<code>@ 二羽 にわ</code>、<code>@ 一番 いちばん</code>、<code>@ 二台 にだい</code></p>
+</div>
+<p>当然，这也是有例外的，比如说音读量词「<code>@ 駅 えき</code>」，在数量为“一”或者“二”的时候，反而使用训读数词：</p>
+<div class="note info no-icon"><p><code>@ 一駅 ひとえき</code>、<code>@ 二駅 ふたえき</code></p>
+</div>
+<ul>
+<li>由于避讳问题，数量为“四”的时候往往使用训读数词，不过需要注意「よん」可能约音为「よ」，并且往往「よん」并不会引发浊音便：</li>
+</ul>
+<div class="note info no-icon"><p><code>@ 四時 よじ</code>、<code>@ 四回 よんかい</code>、<code>@ 四階 よんかい</code></p>
+</div>
+<p>当然，部分量词在数量为“四”的时候依然使用音读数词：</p>
+<div class="note info no-icon"><p><code>@ 四月 しがつ</code>、<code>@ 四角 しかく</code>、<code>@ 四則 しそく</code></p>
+</div>
+<ul>
+<li>而数量为“七”的时候，音读和训读量词几乎可以混用，两种均可：</li>
+</ul>
+<div class="note info no-icon"><p><code>@ 七月 しちがつ</code>、<code>@ 七時 しちじ</code>、<code>@ 七回 ななかい</code>、<code>@ 七本 ななほん</code></p>
+</div>
+<p>总而言之，数量为“四”或者“七”的时候具体使用何种数词需要根据母语者使用习惯决定。经验规律则是“四”大多用训读数词，“七”的两种数词使用频率大体类似。</p>
+<p>对于余下的数量，即“三”“五”“六”“八”“九”“十”，其通常使用音读数词。这里需要可能出现的音便。</p>
+<ul>
+<li>在送气音开头的量词前，「<code>@ 六 ろく</code>」发生促音便变为「<code>@ 六 ろっ</code>」，「<code>@ 八 はち</code>」发生促音便变为「<code>@ 八 はっ</code>」，「<code>@ 十 じゅう</code>」发生促音便变为「<code>@ 十 じゅっ・じっ</code>」：</li>
+</ul>
+<div class="note info no-icon"><p><code>@ 六回 ろっかい</code>、<code>@ 八回 はっかい</code>、<code>@ 十回 じゅっかい</code>、<code>@ 六杯 ろっぱい</code>、<code>@ 八杯 はっぱい</code>、<code>@ 十杯 じゅっぱい</code>、<code>@ 十把 じっぱ</code></p>
+</div>
+<ul>
+<li>数量“三”后续的量词如果以「は行」假名开头，则一般发生浊化，但也可能发生半浊化。另外，以其他可以浊化的假名开头的数词虽然大多不会浊化，但也有浊化的可能：</li>
+</ul>
+<div class="note info no-icon"><p><code>@ 三杯 さんばい</code>、<code>@ 三発 さんぱつ</code>、<code>@ 三回 さんかい</code>、<code>@ 三階 さんがい</code></p>
+</div>
+<p>其余的数量则很少发生音便。</p>
+<p>当然，现代日语甚至可能使用英语音译数词进行计数。而这种情况经常出现在和英语音译量词连用的情况中：</p>
+<div class="note info no-icon"><p><code>@ 二 ツー</code>セット、<code>@ 三 スリー</code>セット</p>
+</div>
+<p>下面举出部分常用量词和十以内的数词连用的读音情况，部分特殊的加粗注明。</p>
+<p>首先是常见的训读数词：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">数字</th>
+<th style="text-align: center;"><code>@ 箱 はこ</code></th>
+<th style="text-align: center;"><code>@ 組 くみ</code></th>
+<th style="text-align: center;"><code>@ 文字目 もじめ</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">一</td>
+<td style="text-align: center;">ひとはこ</td>
+<td style="text-align: center;">ひとくみ</td>
+<td style="text-align: center;">ひともじめ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">二</td>
+<td style="text-align: center;">ふたはこ</td>
+<td style="text-align: center;">ふたくみ</td>
+<td style="text-align: center;">ふたもじめ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">三</td>
+<td style="text-align: center;"><strong>さんはこ</strong></td>
+<td style="text-align: center;">さんくみ</td>
+<td style="text-align: center;">さんもじめ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">四</td>
+<td style="text-align: center;">よんはこ</td>
+<td style="text-align: center;">よんくみ</td>
+<td style="text-align: center;">よんもじめ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">五</td>
+<td style="text-align: center;">ごはこ</td>
+<td style="text-align: center;">ごくみ</td>
+<td style="text-align: center;">ごもじめ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">六</td>
+<td style="text-align: center;">ろっぱこ</td>
+<td style="text-align: center;">ろっくみ</td>
+<td style="text-align: center;">ろくもじめ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">七</td>
+<td style="text-align: center;">ななはこ</td>
+<td style="text-align: center;">ななくみ</td>
+<td style="text-align: center;">ななもじめ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">八</td>
+<td style="text-align: center;">はっぱこ</td>
+<td style="text-align: center;"><strong>はちくみ</strong></td>
+<td style="text-align: center;">はちもじめ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">九</td>
+<td style="text-align: center;">きゅうはこ</td>
+<td style="text-align: center;">きゅうくみ</td>
+<td style="text-align: center;">きゅうもじめ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">十</td>
+<td style="text-align: center;">じっぱこ</td>
+<td style="text-align: center;">じっくみ</td>
+<td style="text-align: center;">じゅうもじめ</td>
+</tr>
+</tbody>
+</table>
+<p>而常见的音读量词中需要着重注意的包括：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">数字</th>
+<th style="text-align: center;"><code>@ 羽 わ</code></th>
+<th style="text-align: center;"><code>@ 話 わ</code></th>
+<th style="text-align: center;"><code>@ 時 じ</code></th>
+<th style="text-align: center;"><code>@ 本 ほん</code></th>
+<th style="text-align: center;"><code>@ 分 ふん</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">一</td>
+<td style="text-align: center;">いちわ</td>
+<td style="text-align: center;">いちわ</td>
+<td style="text-align: center;">いちじ</td>
+<td style="text-align: center;">いっぽん</td>
+<td style="text-align: center;">いっぷん</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">二</td>
+<td style="text-align: center;">にわ</td>
+<td style="text-align: center;">にわ</td>
+<td style="text-align: center;">にじ</td>
+<td style="text-align: center;">にほん</td>
+<td style="text-align: center;">にふん</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">三</td>
+<td style="text-align: center;">さんわ</td>
+<td style="text-align: center;">さんわ</td>
+<td style="text-align: center;">さんじ</td>
+<td style="text-align: center;">さんぼん</td>
+<td style="text-align: center;">さんぶん</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">四</td>
+<td style="text-align: center;">よんわ</td>
+<td style="text-align: center;">よんわ</td>
+<td style="text-align: center;"><strong>よじ</strong></td>
+<td style="text-align: center;">よんほん</td>
+<td style="text-align: center;"><strong>よんぶん</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">五</td>
+<td style="text-align: center;">ごわ</td>
+<td style="text-align: center;">ごわ</td>
+<td style="text-align: center;">ごじ</td>
+<td style="text-align: center;">ごほん</td>
+<td style="text-align: center;">ごふん</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">六</td>
+<td style="text-align: center;">ろくわ</td>
+<td style="text-align: center;">ろくわ</td>
+<td style="text-align: center;">ろくじ</td>
+<td style="text-align: center;">ろっぽん</td>
+<td style="text-align: center;">ろっぷん</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">七</td>
+<td style="text-align: center;">ななわ</td>
+<td style="text-align: center;">ななわ</td>
+<td style="text-align: center;"><strong>しちじ</strong></td>
+<td style="text-align: center;">ななほん</td>
+<td style="text-align: center;">ななふん</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">八</td>
+<td style="text-align: center;">はちわ</td>
+<td style="text-align: center;">はちわ</td>
+<td style="text-align: center;">はちじ</td>
+<td style="text-align: center;">はっぽん</td>
+<td style="text-align: center;">はっぷん</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">九</td>
+<td style="text-align: center;">きゅうわ</td>
+<td style="text-align: center;">きゅうわ</td>
+<td style="text-align: center;"><strong>くじ</strong></td>
+<td style="text-align: center;">きゅうほん</td>
+<td style="text-align: center;">きゅうふん</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">十</td>
+<td style="text-align: center;"><strong>じゅっぱ</strong></td>
+<td style="text-align: center;">じゅうわ</td>
+<td style="text-align: center;">じゅうじ</td>
+<td style="text-align: center;">じゅっぽん</td>
+<td style="text-align: center;">じゅっぷん</td>
+</tr>
+</tbody>
+</table>
+<p>之后就可以介绍三大不规则量词了。首先是较为简单规则的「<code>@ 人 り・にん</code>」，其唯一需要注意的是数量“一”和“二”需要同时改变量词的读音。当然，现在大部分观点认为这两个应该归于熟字训。</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">数字</th>
+<th style="text-align: center;"><code>@ 人 り・にん</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">一</td>
+<td style="text-align: center;"><strong>ひとり</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">二</td>
+<td style="text-align: center;"><strong>ふたり</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">三</td>
+<td style="text-align: center;">さんにん</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">四</td>
+<td style="text-align: center;"><strong>よにん</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">五</td>
+<td style="text-align: center;">ごにん</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">六</td>
+<td style="text-align: center;">ろくにん</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">七</td>
+<td style="text-align: center;">ななにん</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">八</td>
+<td style="text-align: center;">はちにん</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">九</td>
+<td style="text-align: center;">きゅうにん</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">十</td>
+<td style="text-align: center;">じゅうにん</td>
+</tr>
+</tbody>
+</table>
+<p>之后介绍量词「つ」，其仅能用于十以内的数量，大于十的数量需要替换成为同义量词「<code>@ 個 こ</code>」。另外，对这个量词提问也应当使用「いくつ」，而非和大部分量词一样直接加上疑问词「<code>@ 何 なん</code>」（例如「<code>@ 何箱 なんはこ</code>」）。而且其和训读数词的接续几乎完全不规则：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">数字</th>
+<th style="text-align: center;">つ</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">一</td>
+<td style="text-align: center;">ひとつ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">二</td>
+<td style="text-align: center;">ふたつ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">三</td>
+<td style="text-align: center;">みっつ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">四</td>
+<td style="text-align: center;">よっつ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">五</td>
+<td style="text-align: center;">いつつ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">六</td>
+<td style="text-align: center;">むっつ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">七</td>
+<td style="text-align: center;">ななつ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">八</td>
+<td style="text-align: center;">やっつ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">九</td>
+<td style="text-align: center;">ここのつ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">十</td>
+<td style="text-align: center;">とお</td>
+</tr>
+</tbody>
+</table>
+<p>最后介绍日语中目前最不规则的量词「<code>@ 日 か・にち</code>」。该量词在这里用于表示序数的日期，即某月的某一天，而不是表示时间长度的天数。如果用该量词表示用于表明时间长度的天数，则其为规则的音读量词「<code>@ 日 にち</code>」，构成的词组包括「<code>@ 一 いち</code> <code>@ 日 にち</code>」等。</p>
+<p>其不规则的原因在于，十以内需要使用原有的固有表达，甚至对于数量“一”需要使用假借熟字训特殊表达。另外，由于数量“四”和“七”的避讳问题，需要使用训读数词，而且数量为“四”的时候量词需要变音。再者，“二十”具有熟字训表达。综合上述所有的因素，「<code>@ 日 か・にち</code>」变成了目前最为不规则的量词：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">数字</th>
+<th style="text-align: center;"><code>@ 日 か・にち</code></th>
+<th style="text-align: center;">数字</th>
+<th style="text-align: center;"><code>@ 日 か・にち</code></th>
+<th style="text-align: center;">数字</th>
+<th style="text-align: center;"><code>@ 日 か・にち</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">一</td>
+<td style="text-align: center;"><strong>ついたち</strong></td>
+<td style="text-align: center;">十一</td>
+<td style="text-align: center;">じゅういちにち</td>
+<td style="text-align: center;">二十一</td>
+<td style="text-align: center;">にじゅういちにち</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">二</td>
+<td style="text-align: center;"><strong>ふつか</strong></td>
+<td style="text-align: center;">十二</td>
+<td style="text-align: center;">じゅうににち</td>
+<td style="text-align: center;">二十二</td>
+<td style="text-align: center;">にじゅうににち</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">三</td>
+<td style="text-align: center;"><strong>みっか</strong></td>
+<td style="text-align: center;">十三</td>
+<td style="text-align: center;">じゅうさんにち</td>
+<td style="text-align: center;">二十三</td>
+<td style="text-align: center;">にじゅうさんにち</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">四</td>
+<td style="text-align: center;"><strong>よっか</strong></td>
+<td style="text-align: center;">十四</td>
+<td style="text-align: center;"><strong>じゅうよっか</strong></td>
+<td style="text-align: center;">二十四</td>
+<td style="text-align: center;"><strong>にじゅうよっか</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">五</td>
+<td style="text-align: center;"><strong>いつか</strong></td>
+<td style="text-align: center;">十五</td>
+<td style="text-align: center;">じゅうごにち</td>
+<td style="text-align: center;">二十五</td>
+<td style="text-align: center;">にじゅうごにち</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">六</td>
+<td style="text-align: center;"><strong>むいか</strong></td>
+<td style="text-align: center;">十六</td>
+<td style="text-align: center;">じゅうろくにち</td>
+<td style="text-align: center;">二十六</td>
+<td style="text-align: center;">にじゅうろくにち</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">七</td>
+<td style="text-align: center;"><strong>なのか</strong></td>
+<td style="text-align: center;">十七</td>
+<td style="text-align: center;">じゅうななにち</td>
+<td style="text-align: center;">二十七</td>
+<td style="text-align: center;">にじゅうななにち</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">八</td>
+<td style="text-align: center;"><strong>ようか</strong></td>
+<td style="text-align: center;">十八</td>
+<td style="text-align: center;">じゅうはちにち</td>
+<td style="text-align: center;">二十八</td>
+<td style="text-align: center;">にじゅうはちにち</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">九</td>
+<td style="text-align: center;"><strong>ここのか</strong></td>
+<td style="text-align: center;">十九</td>
+<td style="text-align: center;">じゅうきゅうにち</td>
+<td style="text-align: center;">二十九</td>
+<td style="text-align: center;">にじゅうきゅうにち</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">十</td>
+<td style="text-align: center;"><strong>とおか</strong></td>
+<td style="text-align: center;">二十</td>
+<td style="text-align: center;"><strong>はつか</strong></td>
+<td style="text-align: center;">三十</td>
+<td style="text-align: center;">さんじゅうにち</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">三十一</td>
+<td style="text-align: center;">さんじゅういちにち</td>
+</tr>
+</tbody>
+</table>
+<p>这里注意一点，「<code>@ 三十日 みそか</code>」有熟字训，但是该熟字训并不表示“某个月份的第三十天”这个含义，现在多用于表示“某个月的最后一天”，而且多用于在词组「<code>@ 大晦日 おおみそか</code>」中表示“除夕”这个特殊的日期。</p>
+<p>此外，该量词可以和「<code>@ 間 かん</code>」连用来表示时间长度。但是一定需要注意「<code>@ 一日 ついたち</code>」不能直接和「<code>@ 間 かん</code>」连用。这种方式下用于表示“一天”这样的时间长度，需要转换为“二十四小时”表达，表达为「<code>@ 二十四時間 にじゅうよじかん</code>」。</p>
+<h3 id="如何使用日语汉字词典">如何使用日语汉字词典</h3>
+<p>现在我们已经掌握了训读的若干种形态，了解了音读汉字的连读规则，知道了还有音训混读词等例外的存在，且基本上掌握了日语初学者的第一道门槛，日语数量词。那么，现在我们来解决实际问题，即在我们实际阅读日文文本的时候，遇到并不会读的汉字的时候，应当如何查找字典。</p>
+<p>这里推荐使用 <a href="https://kanjitisiki.com/">在线日语汉字词典</a>，其对汉字的介绍相对较为全面，且支持多种查询汉字的方式。</p>
+<p>这里举出一例，这是「親」字在该网站上的读音查询结果：</p>
+<p><code>Picture TODO</code></p>
+<p>其上用片假名书写音读读音，用平假名书写训读读音，训读读音中加粗或者标红表示词干而剩余部分为送假名，且基本上训读读音中名词的读音在前，动词、形容词等读音在后。</p>
+<p>那我们在实际阅读日文文本的时候，首先需要区分训读和音读汉字，如果遇到并不认识的，则可以直接到在线词典上查找相关读音，如果还是不能确定读音，则可以使用更为专业的词典，按词语为单位查找。</p>
+<h3 id="chapter-1-section-3-练习">Chapter 1 Section 3 练习</h3>
+<p>【第一问】尝试为下述句子中的汉字注音。可能使用到的汉字读音表均已附在后面。下述句子已经给出其汉语翻译。这里由于涉及到送假名的变形，所以在后续将句子中的活用形和原形的对应标出：</p>
+<ul>
+<li>虚ろ目の午前四時、迷って辿り着いたそこはハッピー？（眼神空虚的凌晨四点，迷惘着终于抵达的就是所谓的快乐？）</li>
+</ul>
+<p>活用形和原形的对应：</p>
+<ul>
+<li>迷っ → 迷う</li>
+<li>辿り → 辿る</li>
+<li>着い → 着く</li>
+</ul>
+<p>可能用到的汉字读音表：</p>
+<ul>
+<li>虚：キョ・コ・うろ・うつ‐ろ・うつ‐ける・むな‐しい</li>
+<li>目：モク・ボク・め・ま・まなこ・かなめ・さかん</li>
+<li>午：ゴ・うま・ひる</li>
+<li>前：ゼン・セン・まえ・さき</li>
+<li>迷：メイ・まよ‐う・まど‐う</li>
+<li>辿：テン・たど‐る</li>
+<li>着：チャク・ジャク・き‐る・き‐せる・つ‐く・つ‐ける</li>
+</ul>
+<h1 id="日语基本语法">日语基本语法</h1>
+<h2 id="日语语句的基本语序与助词分划准则">日语语句的基本语序与助词分划准则</h2>
+<p>在正式学习日语语句的结构之前，首先需要了解日语的语序。相较于汉语的主谓宾语序，日语采用了主宾谓语序。另外，日语另外一个和汉语差别较大的点在于助词后置。例如下述句子：</p>
+<div class="note info no-icon"><p><code>@ 私 わたし</code><strong>は</strong>（我）<code>@ 今朝七時 けさしちじ</code><strong>に</strong>（在今早七点）<code>@ 朝 あさ</code>ご<code>@ 飯 はん</code><strong>を</strong>（早饭）<code>@ 食 た</code>べました（吃了）</p>
+</div>
+<p>这里为了表述清晰，将句子按照词语分解并把所有助词加粗。这里各个词语的汉语翻译均已经标注在其后。</p>
+<p>显然可以发现，作为谓语的“吃了”位于句子末尾而作为宾语的“早饭”位于谓语之前，这也就是日语的主宾谓语序。</p>
+<p>另外，在状语“在今早七点”中，提示动作发生时间的助词「に」位于该词组的末尾，和汉语的助词“在”位于词组开头恰好相反。</p>
+<p>之后，我们还发现日语中有两个未翻译的助词「は」「を」，这两个助词的作用均为提示其之前的实词在该句子之中的语法作用。比如说在「<code>@ 朝 あさ</code>ご<code>@ 飯 はん</code>を」中，助词「を」的作用是表明实词「<code>@ 朝 あさ</code>ご<code>@ 飯 はん</code>を」是这句话的宾语。这类助词在汉语中并没有对应，所以一般不翻译。</p>
+<p>而正是由于日语中存在这一类助词，所以划分句子的各类成分会较为容易，只需要根据助词将语句拆分为若干的词组，之后根据助词的作用判定各个词组在语句中的作用即可。</p>
+<p>这里简单介绍常用的助词，更为具体的讲解则见后续的部分。</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">助詞</th>
+<th style="text-align: center;">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">は</td>
+<td style="text-align: center;">标注语句的主题</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">が</td>
+<td style="text-align: center;">标注语句的主语</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">を</td>
+<td style="text-align: center;">标注语句的宾语</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">に</td>
+<td style="text-align: center;">标注动作发生的时间、动作的方向等</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">へ</td>
+<td style="text-align: center;">标注动作的方向</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">の</td>
+<td style="text-align: center;">标注从属或者同位关系</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">で</td>
+<td style="text-align: center;">标注动作发生的地点、动作的手段等</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">から</td>
+<td style="text-align: center;">标注时间、地点的起始，标注主观原因</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">まで</td>
+<td style="text-align: center;">标注时间、地点的终止等</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">ので</td>
+<td style="text-align: center;">标注客观原因</td>
+</tr>
+</tbody>
+</table>
+<p>这里需要提示的是“主题”和“主语”的区分。简而言之，我们观察下面的句子：</p>
+<div class="note info no-icon"><p><code>@ 今日 きょう</code><strong>は</strong>（今天）<code>@ 私 わたし</code><strong>が</strong>（我）<code>@ 公園 こうえん</code><strong>へ</strong>（公园）<code>@ 行 い</code>きました（去了）</p>
+</div>
+<p>显然句子真正的主语应当是“我”，并相应地使用助词「が」提示。但是另外，这里使用了助词「は」提示这句话主要在谈论“今天”发生的事情。</p>
+<p>一对具有对比作用的示例句子是：</p>
+<div class="note info no-icon"><p><code>@ 象 ぞう</code><strong>は</strong>（大象）<code>@ 鼻 はな</code><strong>が</strong>（鼻子）<code>@ 長 なが</code>い（长）</p>
+<p><code>@ 象 ぞう</code><strong>の</strong>（大象的）<code>@ 鼻 はな</code><strong>は</strong>（鼻子）<code>@ 長 なが</code>い（长）</p>
+</div>
+<p>这里第一句话使用了助词「は」提示这句话主要在谈论“大象”这类生物，而这类生物的特点是“鼻子长”，这个小句里“鼻子”是主语。而第二句话使用了助词「は」提示这句话主要在谈论“大象的鼻子”这个概念，而“大象的鼻子”的特点是“长”。</p>
+<p>简而言之，第一句话的细节含义大致为“大象这种生物的特点是鼻子长”，而第二句话则为“大象的鼻子的特点是长”。这两句话由于谈论的主题不同，从而具有不同的语感。</p>
+<h3 id="chapter-2-section-1-练习">Chapter 2 Section 1 练习</h3>
+<p>【第一问】尝试根据助词分划下述日语句子，并尝试翻译，部分可能用到的词汇列表标注在后面：</p>
+<ul>
+<li><code>@ 上海 シャンハイ</code>から<code>@ 東京 とうきょう</code>までの<code>@ 飛行機 ひこうき</code>で<code>@ 日本 にほん</code>へ<code>@ 来 き</code>ました。</li>
+<li><code>@ 彼 かれ</code>は<code>@ 優 やさ</code>しいので、<code>@ 付 つ</code>き<code>@ 合 あ</code>いたい。</li>
+</ul>
+<p>可能使用的词汇表：</p>
+<ul>
+<li><code>@ 飛行機 ひこうき</code>（飞机）</li>
+<li><code>@ 来 き</code>ました（来了）</li>
+<li><code>@ 彼 かれ</code>（他）</li>
+<li><code>@ 優 やさ</code>しい（温柔的）</li>
+<li><code>@ 付 つ</code>き<code>@ 合 あ</code>いたい（想交往）</li>
+</ul>
+<h2 id="用言与体言用言体言构成词组的规律">用言与体言、用言体言构成词组的规律</h2>
+<p>日语词语可以大致分为自立词语、附属词语、独立词语、装饰词语几类。</p>
+<ul>
+<li>附属词语一般即代表助词、助动词，其必须附属在其他词语之上才能表达含义。助词和助动词的区别在于，助动词具有活用而助词不具有。</li>
+<li>独立词语包括感叹词等不可附属其他成分的词语。</li>
+<li>装饰词语包括副词等用于修饰其余成分的词语。</li>
+<li>自立词语则包含用言和体言。用言和体验的区别在于，用言具有活用而体言不具有。用言一般包括动词、形容词和形容动词。体言一般包括名词、代词和数词。</li>
+</ul>
+<p>在上一节中，我们提到了日文语句一般以助词为分界划分，而划分出来的每一个词组内部一般就是用言、助动词、体言连缀成的词组。</p>
+<p>用言是日语中最为灵活的一类词语，其可以通过各种活用来表达不同的语法含义（具体的活用形式和相应的作用后续讲解），并且以此在其后接续体言、助动词、助词、另外的用言等等。</p>
+<p>而体言则相对固定，其后续几乎只能接续助词或者助动词。</p>
+<p>例如，上一节的练习题中的词汇表中有一个词语「<code>@ 付 つ</code>き<code>@ 合 あ</code>いたい」。其构成就是动词「<code>@ 付 つ</code>き<code>@ 合 あ</code>う」首先活用为第一连体形「<code>@ 付 つ</code>き<code>@ 合 あ</code>い」后接续表达愿望的助动词「たい」。原型「<code>@ 付 つ</code>き<code>@ 合 あ</code>う」的含义为“交往”，那么接续助动词「たい」后，就表达“想交往”的含义。</p>
 ]]></content>
       <categories>
         <category>【学习笔记】日语</category>
@@ -5208,7 +6081,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <p>2019 年刚刚走进大学，暂且还没有过多的忧虑，整天最大的抱怨只是微积分学不完。饱暖之后就擅长为赋新词强说愁，所以即使经常分享一些莫名其妙的歌词，实际上也只是近乎无病呻吟一般。</p>
 <div class="note info no-icon"><p><strong>いつの間にか雪は雨になりました。</strong></p>
 <p>不知何时，飘雪已然幻化成雨。</p>
-<p>ーー「ハレハレヤ」 2019.10.10</p>
+<p>——「ハレハレヤ」 2019.10.10</p>
 </div>
 <p>《朗朗晴天》这首歌是火出圈的 V 曲，当时刚高考完纠结于志愿的时候，一个玩得比较好的同学推荐给我的。当时确实很纠结，很迷茫，这首歌还是带来了一些安慰的。</p>
 <p>其特征就是描写确实很漂亮，然后遣词造句也比较朴素干净，属于是很中意的类型。</p>
@@ -5218,7 +6091,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <p>深夜空旷寂静的房间，胸口一阵微痛，</p>
 <p><strong>上手に息ができなくなる。</strong></p>
 <p>连呼吸也变得困难。</p>
-<p>ーー「炉心融解」 2019.10.16</p>
+<p>——「炉心融解」 2019.10.16</p>
 </div>
 <p>《炉心融解》是相当老的一首 V 曲了，也是我喜欢上镜音双子的开端。铃的高音确实很惊艳，这首歌里面也体现得很彻底。</p>
 <p>所以，不要在 KTV 里尝试唱《炉心融解》，年轻人对自己嗓子好一点。</p>
@@ -5229,7 +6102,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <p>...</p>
 <p><strong>山をこえて，どこどこへ。</strong></p>
 <p>越过高山，又往何处去？</p>
-<p>ーー「遠く君へ」 2019.12.19</p>
+<p>——「遠く君へ」 2019.12.19</p>
 </div>
 <p>《致远方的你》是略带悲情的一首歌，看这种词大致是能理解其内涵的相思之苦的。这首歌大约是高中随机到的，歌词几乎没有长句子，几乎都是各种意象的堆叠，偶尔会无端责怪两句对方为何远去。</p>
 <p>原唱是那种细细的女声，很能听出来愁苦的滋味。</p>
@@ -5240,7 +6113,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <p>...</p>
 <p><strong>一緒に過ごせた日々をアリガトウ。</strong></p>
 <p>我们一起度过的时光，无比感谢。</p>
-<p>ーー「ココロ」 2019.12.25</p>
+<p>——「ココロ」 2019.12.25</p>
 </div>
 <p>《心》大约是讲述的科学家与其所创造的一个机器人相恋的故事，但是毕竟人有寿限。这类有点类似探讨人生边界的奇妙歌曲，确实很能打动当时的我。</p>
 <p>不过现在也能打动我，因为镜音双子确实好听。</p>
@@ -5251,14 +6124,14 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <p>不足之物，还在不断增加</p>
 <p><strong>物々しく出しゃばる物思い。</strong></p>
 <p>煞有介事，多管闲事的思虑。</p>
-<p>ーー「うみたがり」 2020.01.05</p>
+<p>——「うみたがり」 2020.01.05</p>
 </div>
 <p>《渴望诞生》是严格来说我听的第一首 MARETU 的歌，歌词令人困惑不解，使用的词汇在日常交际中也少见。但是整体的偏低沉的曲风确实很吸引当时的我。</p>
 <div class="note info no-icon"><p><strong>三日月，水玉模様，</strong></p>
 <p>初三的月亮，是水晶的模样，</p>
 <p><strong>破れた障子，甘い飴の味。</strong></p>
 <p>破碎的窗户纸，还有糖的甜味。</p>
-<p>ーー「抑圧錯乱ガール」 2020.02.01</p>
+<p>——「抑圧錯乱ガール」 2020.02.01</p>
 </div>
 <p>这首歌是《地狱型人间动物园》专辑里的一首，整首专辑的立意就是总是有很多人和当代社会无法贴合，最终无法融合的他们只能堕落。《抑压错乱女孩》大致就是讲述的在过大的精神压力下崩溃的女孩的故事，所以莫名其妙和她共鸣了。</p>
 <div class="note info no-icon"><p><strong>僕たちもかつてはいつか素晴らしい人に，</strong></p>
@@ -5268,7 +6141,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <p><strong>いつだって時間はそう，諦めを教えてくれる。</strong></p>
 <p>但是时间一直是那样，教会我们放弃。</p>
 <p>Nice people make the world boring.</p>
-<p>ーー「LOVE SONG」 2020.02.04</p>
+<p>——「LOVE SONG」 2020.02.04</p>
 </div>
 <p>《情歌》是比较冷门的一首歌，在各大平台上都没有很多播放，我也已经忘了什么时候听到的了。整首歌的 MV 也是偏意味不明和压抑的风格，但总之还是表现了正向积极的主题，确实也包含了一些我当时在尝试探求的答案吧。</p>
 <div class="note info no-icon"><p><strong>澄み渡る晴天を昇りゆく白い満月を濡らす。</strong></p>
@@ -5280,13 +6153,13 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <p>忽然迸发而出的雾雨，在凹凸不平的地面上积攒起水洼。</p>
 <p><strong>まるで夜の虹を見るようなふわりさんざめく夜光虫。</strong></p>
 <p>仿佛就像黑夜中的彩虹一般灿烂着的萤火虫们啊。</p>
-<p>ーー「蛍」 2020.02.24</p>
+<p>——「蛍」 2020.02.24</p>
 </div>
 <p>《萤火虫》也不是热门的 V 曲，这首歌是纯纯的写萤火虫的写景抒情曲子，也是当时我学习日语文学的重要歌曲。</p>
 <p>这类歌曲我并不擅长翻译，因为我一直感觉保留着原汁原味的歌词才显得有韵味，一旦我翻译了这些歌词，就难免融入我自己对景物、情感的想象。</p>
 <div class="note info no-icon"><p><strong>その言葉に挟まるカミシオリ。</strong></p>
 <p>夹在那些话语中的纸笺。</p>
-<p>ーー「カゲロウ」 2020.03.12</p>
+<p>——「カゲロウ」 2020.03.12</p>
 </div>
 <p>《蜉蝣》是东方曲的填词，这句词是整首歌的第一句的开头。这首歌是我大一下学期可以说最喜欢的一首歌，曲调很惊艳，演唱者也很有表现力。那种平静的氛围中，很适合让我暂且幻想一下远方和未来。</p>
 <p>不过现在确实不太听了，莫名感觉听多了之后有点厌倦了这种声线。或许只是当时听太多了吧。</p>
@@ -5294,7 +6167,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <p>我就是所谓的失败作吧，是不被人需要的孩子吧，</p>
 <p><strong>何やったって頑張ったって駄目らしいや。</strong></p>
 <p>无论做什么，无论多么努力，也不过虚幻一场吧。</p>
-<p>ーー「失敗作少女」 2020.04.07</p>
+<p>——「失敗作少女」 2020.04.07</p>
 </div>
 <p>《失败作少女》是我听的第一首熊，这首歌其实我更喜欢 MARETU 的 remix。为什么说喜欢这首歌呢，因为这首歌节奏把握得很好，有情绪爆发的副歌，也有沉寂的过渡段，尤其是那一段雨声，能让人想见在雨中漫无目的走着的，失魂落魄的少女。而在雨声过后，也有向神明祈求的最后一段情感爆发，歌曲最后的结局是开放的，也确实留下了很大的想象空间。</p>
 <p>这段词精妙之处就是大量的促音，有一种难以表达的跳跃感，总之就是唱起来特别带感。</p>
@@ -5308,7 +6181,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <p>这并非是你希望的世界啊，</p>
 <p><strong>こんな続きを愛してほしい。</strong></p>
 <p>但也不妨爱上这并不完美的梦的后续吧。</p>
-<p>ーー「ドリームレスドリームス」 2020.04.19</p>
+<p>——「ドリームレスドリームス」 2020.04.19</p>
 </div>
 <p>《无梦之梦》，绝对称得上现在我最喜欢的 V 曲。一样的，歌曲对抒情节奏有着绝对的把握，梦碎的那一瞬间的副歌段相当震撼，随后是 miku 声线无缝切入，安慰着主角的情绪，劝导主角接受梦想和现实的落差。</p>
 <p>可以看得出这段时间我的歌单几乎全都是梦想和现实的矛盾这样的主题，显得很颓丧和没有生机，也确实贴合那段时间的心情。</p>
@@ -5316,23 +6189,23 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <p>神啊，如果我还能重生的话，</p>
 <p><strong>愛される子になれますように。</strong></p>
 <p>我也想成为被人怜爱的孩子啊。</p>
-<p>ーー「失敗作少女」 2020.04.25</p>
+<p>——「失敗作少女」 2020.04.25</p>
 </div>
 <p>这就是之前说的，《失败作少女》最后的一段抒情段，那种对现有生活的悲观和失望，那种渴求他人善意的感觉。</p>
 <p>四月份，当时正准备结束一年的社工生涯，由于团支书当时几乎不做任何事情，整个班级的事务就全在我的肩上。再加上自己还在摸索如何过好大学生活，而且还没有正视自己的一些过往，确实是没有任何人可以倾诉，只能自己默默消化这种逆境。</p>
 <div class="note info no-icon"><p><strong>死に方教えてよ。</strong></p>
 <p>教会我如何去死吧。</p>
-<p>ーー「ヒトサマアレルギー」 2020.05.09</p>
+<p>——「ヒトサマアレルギー」 2020.05.09</p>
 </div>
 <p>《旁人过敏症》也是熊曲，不是那么喜欢。这句词只是因为当时确实相当压抑。</p>
 <div class="note info no-icon"><p><strong>正しさだけで殴り合うならば，勝ち目はないんだよ。</strong></p>
 <p>如果仅仅是因为追求正当就相互殴打，那几乎就没有胜利的可能。</p>
-<p>ーー「ネガティヴ進化論」 2020.06.03</p>
+<p>——「ネガティヴ進化論」 2020.06.03</p>
 </div>
 <p>《消极进化论》似乎是基于一个现有的故事还是小说，所以是具有背景的，然而我至今都没有去了解，所以歌词的含义也是似懂非懂。我听这首歌，只是因为旋律确实好听。</p>
 <div class="note info no-icon"><p><strong>希望の花，繋いだ絆を。</strong></p>
 <p>希望的花，连接起的羁绊。</p>
-<p>ーー「フレジア」 2020.07.26</p>
+<p>——「フレジア」 2020.07.26</p>
 </div>
 <p>单纯的梗曲，不过抛开梗来看，这首歌也还不错。</p>
 <div class="note info no-icon"><p><strong>花で一つ，鳥で二つ，</strong></p>
@@ -5343,17 +6216,17 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <p>第三是风，啊，第四是升起的月亮，</p>
 <p><strong>鳴らす鳴らす。</strong></p>
 <p>轻声唱着。</p>
-<p>ーー「回レ！雪月花！」 2020.08.28</p>
+<p>——「回レ！雪月花！」 2020.08.28</p>
 </div>
 <p>《雪月花》也是经典歌曲了，歌词的特色就是大量的四字成语。这一段是中间的过渡段，没有什么很深刻的含义，只是当时觉得很有意思就放上来了。</p>
 <div class="note info no-icon"><p><strong>誰もいなくなったら意味はないんですか？</strong></p>
 <p>难道万物消逝之后一切都没有意义了吗？</p>
-<p>ーー「ドリームレスドリームス」 2020.11.03</p>
+<p>——「ドリームレスドリームス」 2020.11.03</p>
 </div>
 <p>《无梦之梦》最喜欢的一句词，虽然目前都没有领悟之中的含义，不过这句歌词确实是引入副歌的歌词，也是将全曲拉上最高潮的一句词。这种声嘶力竭的反问，确实能让人感到相当震撼。</p>
 <div class="note info no-icon"><p><strong>まっさらなら，声上げて。</strong></p>
 <p>一尘不染的话，引吭高歌吧。</p>
-<p>ーー「百鬼祭」 2020.11.03</p>
+<p>——「百鬼祭」 2020.11.03</p>
 </div>
 <p>Kanaria 的初投稿，整首歌歌词不是很喜欢，因为完全不明白他想表达的含义。不过 Kanaria 的旋律做得很好，到现在我也一直在听。</p>
 <div class="note info no-icon"><p><strong>「まあまあ」なんて要らない，欲しがります死ぬまでは。</strong></p>
@@ -5363,7 +6236,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <p>你明白吗？我的美学。</p>
 <p><strong>この馬鹿正直な拳一つが切り札。</strong></p>
 <p>这愚蠢正直的一发拳头，就是我最后的王牌。</p>
-<p>ーー「劣等上等」 2020.12.23</p>
+<p>——「劣等上等」 2020.12.23</p>
 </div>
 <p>《劣等上等》是 Giga 的代表作，歌很吵，但是词比较有意思。当时的我，在大二上学期取得了很多可以说很好的成就，也在大学中找到了自己的节奏，所以听歌的风格也开始激昂起来了。</p>
 <p>有趣的是，我在大一下学期比较沉闷的时候就已经听过《劣等上等》，但当时觉得很不好听，半年后就觉得这首歌绝对好听。看来听歌口味和境遇确实有很大的关联。</p>
@@ -5382,40 +6255,40 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <p>那绽放着光芒的景色，</p>
 <p><strong>どこまでも広がればいいと思えるの。</strong></p>
 <p>或许可以充满整个世界。</p>
-<p>ーー「蝶々世界」 2021.04.05</p>
+<p>——「蝶々世界」 2021.04.05</p>
 </div>
 <p>这也是一个较为冷门的 V 曲，分享出来的契机是你清又有人轻生。刚刚步入大二下学期，当时暂且还是处于延续上一学期意气风发的状态。</p>
 <div class="note info no-icon"><p><strong>暗闇の自由より鎖に繋がれた光でいいんだ。</strong></p>
 <p>与其接受自由的黑暗，我宁愿带着锁链沐浴在光芒之下。</p>
-<p>ーー「琥珀の身体」 2021.04.17</p>
+<p>——「琥珀の身体」 2021.04.17</p>
 </div>
 <p>《琥珀的身体》是个好歌，旋律很震撼，然后这一句词绝对是我很喜欢的，也是我第一遍听就确定一定要分享出来的歌词。</p>
 <div class="note info no-icon"><p><strong>太陽になれなかった腐った炎，</strong></p>
 <p>没能成为太阳的腐烂的火焰，</p>
 <p><strong>意味もなく酸素を費やす。</strong></p>
 <p>只是毫无意义地耗费着氧气。</p>
-<p>ーー「映えない」 2021.04.18</p>
+<p>——「映えない」 2021.04.18</p>
 </div>
 <p>《不太上镜》是那段时间我几乎算是最喜欢的歌，这首歌就在探讨那些并没有实质的人，为何需要在人前假装出一副胸有成竹的样子。当时我渐渐发觉自己对学业力不从心，确乎有了一些自卑的心理，于是这首歌也确实让我感受到了一点点的震撼。</p>
 <div class="note info no-icon"><p><strong>美学とかプライドとか語る前に，</strong></p>
 <p>在谈论美学和自尊之前，</p>
 <p><strong>やれることをやっていけ。</strong></p>
 <p>先去做好能做的事。</p>
-<p>ーー「限りなく灰色へ」 2021.05.04</p>
+<p>——「限りなく灰色へ」 2021.05.04</p>
 </div>
 <p>当时刚刚从上海见 Sakana 回来，心态确实有所好转。在回来的火车上，默默下了一定要好好活下去的决心，于是把《向着无尽之灰》的这句歌词分享出来了。</p>
 <div class="note info no-icon"><p><strong>「自分らしく生きて」なんて言わないで，</strong></p>
 <p>不要说那些“活出自我”，</p>
 <p><strong>らしさなんて最初からないから。</strong></p>
 <p>因为根本就没有什么自我。</p>
-<p>ーー「映えない」 2021.05.06</p>
+<p>——「映えない」 2021.05.06</p>
 </div>
 <p>已经忘记了为什么突然要分享这句词了，不过可以知道的是，这段时间往后的一个月，甚至两三个月，我都沉浸在自我否定之中。那段时间我尝试着揭开了很多往事，结果就是相当长时间内都没有缓过来，一直在尝试着建立起自己努力下去的理由。</p>
 <div class="note info no-icon"><p><strong>ここ調子が悪いんだ，いや本気はまだまだ，</strong></p>
 <p>现在状况有些不太好，不对，只是没拿出真本事而已。</p>
 <p><strong>そう言ったのはこれは何度目の台詞だろう？</strong></p>
 <p>这个借口已经用了多少次了？</p>
-<p>ーー「いや〜いや〜」 2021.05.09</p>
+<p>——「いや〜いや〜」 2021.05.09</p>
 </div>
 <p>这首歌高中就听了，但是真正感到理解了一些还是在大二。那段时间开始注意到自己对感情问题的拖延和视而不见已经结出了恶果，也注意到过度的自我封闭让自己完全无法接受现况，于是只能用这段歌词聊以自慰。</p>
 <div class="note info no-icon"><p><strong>芝居し合い化かし合い，みんな灰色なんだ，</strong></p>
@@ -5424,51 +6297,51 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <p>地球不过是笑谈，人类也不过是剧团，</p>
 <p><strong>存在しない神や愛，芝居で表してきた。</strong></p>
 <p>那些本来就不存在的神和爱情，都通过表演展现出来了啊。</p>
-<p>ーー「Hyper Reality Show」 2021.05.25</p>
+<p>——「Hyper Reality Show」 2021.05.25</p>
 </div>
 <p>当时莫名其妙想分享的一句歌词，其实目的只是想让 Sakana 和自己聊聊而已，没有什么特别的含义。</p>
 <div class="note info no-icon"><p><strong>取り出し給え，刃！刃！</strong></p>
 <p>取出来吧！你的利刃！</p>
-<p>ーー「ナミダ」 2021.06.03</p>
+<p>——「ナミダ」 2021.06.03</p>
 </div>
 <p>这句词是在第二次去上海的路上分享的，当时自己尝试着通过这种情感特别激烈的歌来调动自己的情绪，以尝试掩盖心中的不安。</p>
 <div class="note info no-icon"><p><strong>さよならを言わないのは，あなたに見抜かれてしまわないように。</strong></p>
 <p>不和你道别，只是还不想被你看透啊。</p>
-<p>ーー「第三の心臓」 2021.06.15</p>
+<p>——「第三の心臓」 2021.06.15</p>
 </div>
 <p>春卷饭现在的风格是越来越走向温柔向了。《第三心脏》讲述的是朋友之间偶然的矛盾和不快，确实也贴合当时和 Sakana 之间的矛盾。歌曲的最后，两人最终和好，并肩前行，也算是寄托了一些自己的想法吧。</p>
 <div class="note info no-icon"><p><strong>ケーキも大好き，君も大好き。</strong></p>
 <p>喜欢蛋糕，也喜欢你。</p>
-<p>ーー「とある一家の御茶会議」 2021.06.19</p>
+<p>——「とある一家の御茶会議」 2021.06.19</p>
 </div>
 <p>这首歌相当老，是滚苹果 P 的隐退曲，这种欢快的曲调下掩藏的是无可奈何的悲伤。说不出来当时被触动到的心情了，但总之大约是感受到了自己逐渐走向正轨的一些安心，和这些安心之下依然被埋藏着的不安。</p>
 <div class="note info no-icon"><p><strong>くたびれた私が駄目だったんだね，</strong></p>
 <p>颓废的我已然不堪大用。</p>
 <p><strong>まだ役に立つつもりだったけれど。</strong></p>
 <p>本还想着发挥最后的余热的。</p>
-<p>ーー「ハルノ寂寞」 2021.06.24</p>
+<p>——「ハルノ寂寞」 2021.06.24</p>
 </div>
 <p>《春日寂寞》是稻叶昙作品中我最喜欢的，无论是技术上调教相当完美，还是歌词旋律相当优秀。那种空灵的旋律，传达出一种无法和你继续下去的痛苦和无奈。</p>
 <div class="note info no-icon"><p><strong>ゴミ溜めで埋もれたまま，星空を眺めてるよ。</strong></p>
 <p>即使掩埋于垃圾堆之下，也要向上仰望星空。</p>
-<p>ーー「ぼくらみんな意味不明」 2021.07.02</p>
+<p>——「ぼくらみんな意味不明」 2021.07.02</p>
 </div>
 <p>匹老板的代表作之一，旋律不算好听，但是这段歌词确实不错。虽然现在看也并没有讲什么大道理，但确实让我感受到了一点动力。</p>
 <div class="note info no-icon"><p><strong>凍てつく雪の中で，確かな熱を帯びた，</strong></p>
 <p>冻结着的积雪之下，确实还留存着些许温热，</p>
 <p><strong>呼吸をして，声を焼いて，燃えた燃えた禊の火。</strong></p>
 <p>喘着气，声音灼热着，映照着燃烧着的业火。</p>
-<p>ーー「ハレハレヤ」 2021.07.20</p>
+<p>——「ハレハレヤ」 2021.07.20</p>
 </div>
 <p>《朗朗晴天》的副歌段，音调极其之高，但也因此表达出了相当强烈的情感。当时分享的动机就是单纯的好听。</p>
 <div class="note info no-icon"><p><strong>全知全能の言葉をほら聞かせてよ。</strong></p>
 <p>来，让我听听那些全知全能的话语吧。</p>
-<p>ーー「東京テディベア」 2021.08.25</p>
+<p>——「東京テディベア」 2021.08.25</p>
 </div>
 <p>《东京泰迪熊》也是相当经典的歌曲，依然是镜音的绝妙演出。这一段没有什么特殊含义，只是因为好听。这句词每一个重音都会突然拉高音调，有那种直击人心的表现力。</p>
 <div class="note info no-icon"><p><strong>僕は大人にやってなったよママ。</strong></p>
 <p>我终于长成大人了啊妈妈。</p>
-<p>ーー「ビターチョコデコレーション」 2021.09.22</p>
+<p>——「ビターチョコデコレーション」 2021.09.22</p>
 </div>
 <p>《苦巧克力装饰》是我听的第一个 syudou 的歌，这种带一点压抑，带一点深度的歌词很让我着迷。这首歌主要探讨的是放弃童真成长为大人的故事，苦巧克力的含义大致和苦咖啡类似，是成长为社会人的标志，也是小孩子们常常用来假装自己已经长大的一个逞能的用具。</p>
 <p>总体而言，当时我坐在西大操场旁边的长椅上等待 Sakana 的电话，偶然循环到了这一句。</p>
@@ -5478,7 +6351,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <p>偶然将还未丢失的回忆拥入怀中之时，泪水在不意间悄然落下，</p>
 <p><strong>この街でまだ生きていたいと思うから。</strong></p>
 <p>是因为我还想在这城市中生存下去啊。</p>
-<p>ーー「幽霊東京」 2021.10.09</p>
+<p>——「幽霊東京」 2021.10.09</p>
 </div>
 <p>《幽灵东京》大约是在探讨着在大城市中生存的艰难，那种为了生活打拼之后，在一天的疲惫之后突然回想起曾经的美好的悲伤感。现在自己这个乡下出身的人，来到北京上大学，确实是需要一段时间接受的。那段时间和同一个高中的学弟交流也很多，所以也时不时会想起自己在高中的那些无忧无虑的时光。</p>
 <p>虽然不像歌词写的那么夸张，但还是有点共鸣。</p>
@@ -5489,12 +6362,12 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <p>你所在的那个房间，本应该是连接未来的画廊啊，</p>
 <p><strong>だったはず。</strong></p>
 <p>本应该啊。</p>
-<p>ーー「ギャラリア」 2021.10.11</p>
+<p>——「ギャラリア」 2021.10.11</p>
 </div>
 <p>比较喜欢的一个作品，讲述的是家暴类似话题。不过我倒不是因为歌词喜欢上这首歌的，纯属因为调教比较好，旋律也不错。</p>
 <div class="note info no-icon"><p><strong>僕にしかできないことはなんだか？</strong></p>
 <p>只有我能做到的事是什么啊？</p>
-<p>ーー「群青」 2021.10.25</p>
+<p>——「群青」 2021.10.25</p>
 </div>
 <p>《群青》是相当优秀的一个曲子，当时分享这句歌词，也是出于一些不安，觉得自己是可替代的一个人，并不是所谓的独一无二的人。不过其实到现在，我都没有说服自己自己是独一无二的。</p>
 <div class="note info no-icon"><p><strong>なるべく永く一緒にいたいんだよ。</strong></p>
@@ -5502,7 +6375,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <p>...</p>
 <p><strong>少しだけ名残惜しそうにさようなら。</strong></p>
 <p>那就依依不舍地道别吧。</p>
-<p>ーー「ハルノ寂寞」 2021.10.30</p>
+<p>——「ハルノ寂寞」 2021.10.30</p>
 </div>
 <p>《春日寂寞》中相互呼应的两句歌词，结合之前说的那种不得不离去的无奈感，确实很感人吧。</p>
 <div class="note info no-icon"><p><strong>他人の不幸は蜜の味。</strong></p>
@@ -5510,19 +6383,19 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <p>...</p>
 <p><strong>助けを乞う姿を見せておくれ。</strong></p>
 <p>让我看看你乞求我救助的可怜模样。</p>
-<p>ーー「シャーデンフロイデ」 2021.11.11</p>
+<p>——「シャーデンフロイデ」 2021.11.11</p>
 </div>
 <p>这是《雨路女孩》的续作，大致讲述了一个趁人之危的人作恶的故事，似乎也是影射了一些社会事件，但我这个听歌的，就没有管多少了。这首歌论旋律论节奏都算是不错，不至于很惊艳，但也是相当不错的水平。</p>
 <div class="note info no-icon"><p><strong>僕の一等賞を奪いにきて。</strong></p>
 <p>来夺取我的一等奖吧。</p>
-<p>ーー「ホワイトハッピー」 2021.11.12</p>
+<p>——「ホワイトハッピー」 2021.11.12</p>
 </div>
 <p>《白色幸福》也是 MARETU 的作品，这句词常常用于影射性相关话题。那具体影射的是什么呢，其实都说是“一等奖”和“夺取”了，应该不难猜出来。</p>
 <div class="note info no-icon"><p><strong>簡単な感情ばっか数えいたら，</strong></p>
 <p>如果只是清点着简单的感情，</p>
 <p><strong>あなたがくれた体温まで忘れてしまった。</strong></p>
 <p>就连你传递给我的体温都会忘却。</p>
-<p>ーー「DONUT HOLE」 2021.11.29</p>
+<p>——「DONUT HOLE」 2021.11.29</p>
 </div>
 <p>《甜甜圈洞》是八爷相当著名的作品，用欢快的语调歌唱感情的绝望。即使 V 家发展了这么多年，八爷这首歌论硬实力依然是相当上乘的，不愧是顶尖音乐人。</p>
 <h1 id="年-3">2022 年</h1>
@@ -5530,7 +6403,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <p>今年，樱花也如同往常一样凋谢。</p>
 <p><strong>夢みたいに踊る桃色に騙されてしまいそうだ。</strong></p>
 <p>那如梦境一般漫天飞舞的粉红，几乎将我欺骗。</p>
-<p>ーー「地獄に落ちる」 2022.03.16</p>
+<p>——「地獄に落ちる」 2022.03.16</p>
 </div>
 <p>《坠入地狱》大约是我目前可以称得上最喜欢的曲子之一，赶上北京短暂的春天，这首歌就显得尤为切合时宜。</p>
 <p>这首歌歌词充满力量，而且 KAFU 调得确实相当扎实。副歌段的抒情很强烈，这段简单的写景又是柔和，只能说黑柿子确实把一个失魂落魄而又在漫天飞舞的樱花中重拾理想的人描写出来了。</p>
@@ -5578,7 +6451,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <li>日语笔记
 <ul>
 <li>语法手册</li>
-<li>汉文、汉字读法相关笔记</li>
+<li>汉文相关笔记</li>
 </ul></li>
 <li>一些生活记录和总结
 <ul>
@@ -5673,7 +6546,7 @@ h(x_i)^Th(y_1 + y_2) = x_i^T(y_1 + y_2) = x_i^Ty_1 + x_i^Ty_2 = h(x_i)^Th(y_1) +
 \]</span></p>
 <p>这里 <span class="math inline">\(i \in \{1, 2\}\)</span>，从而：</p>
 <p><span class="math display">\[
-h(x_i)^T[h(y_1 + y_2) - h(y_1) - h(y_2)] = 0，i \in \{1, 2\}
+h(x_i)^T[h(y_1 + y_2) - h(y_1) - h(y_2)] = 0, i \in \{1, 2\}
 \]</span></p>
 <p>两式作差：</p>
 <p><span class="math display">\[
