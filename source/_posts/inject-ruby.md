@@ -65,3 +65,7 @@ function replaceRuby() {
 {% endnote %}
 
 总之，这样就可以很方便地写振假名了，之后应该会逐步在涉及到日语的地方把之前的旧写法更换成新写法。
+
+---
+
+另外还有一个小细节，似乎部署后访问字体会出现 403，根据 [相关 Issue 的提示](https://github.com/theme-next/hexo-theme-next/issues/613)，应该是 Referrer 的问题。
