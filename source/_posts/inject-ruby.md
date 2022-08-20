@@ -58,6 +58,8 @@ function replaceRuby() {
 `@ WRITTEN READ`
 {% endcodeblock %}
 
+的语法书写振假名。
+
 效果的话可以看下述歌词的渲染效果：
 
 {% note info no-icon %}
