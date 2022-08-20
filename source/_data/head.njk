@@ -5,9 +5,9 @@
 <script src="/js/jquery.min.js"></script>
 <script>
 function getURL(e) {
-    http = e.slice(0,4)
-    https = e.slice(0,5)
-    if (http == "http" || https == "https" ) {
+    var http = e.slice(0, 4)
+    var https = e.slice(0, 5)
+    if (http == "http" || https == "https") {
         return e
     } else if (e == "" || e == null || e == undefined) {
         return e
@@ -17,10 +17,10 @@ function getURL(e) {
     }
 }
 
-function newcomment() {
+function newComment() {
     twikoo.getRecentComments({
         envId: 'https://vercel-deploy-two.vercel.app',
-        pageSize: 7,
+        pageSize: 10,
         includeReply: false
     }).then(function (res) {
         var hotComments = $("#hot-comments");
@@ -55,8 +55,23 @@ function newcomment() {
     });
 }
 
+function replaceRuby() {
+    $('code')
+        .filter((_, node) => {
+            var list = $(node).text().split(' ');
+            return list.length === 3 && list[0] === "@";
+        })
+        .replaceWith((_, text) => {
+            var list = text.split(' ');
+            var written = list[1];
+            var read = list[2];
+            return $(`<ruby>${written}<rp>(</rp><rt>${read}</rt><rp>)</rp></ruby>`);
+        });
+}
+
 $(function () {
-    newcomment();
+    newComment();
+    replaceRuby();
 });
 </script>
 
