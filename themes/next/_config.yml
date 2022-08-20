@@ -455,7 +455,7 @@ font:
   # Font settings for <code> and code blocks.
   codes:
     external: true
-    family: FiraCode Nerd Font Mono
+    family: Fira Code
 
 
 # ---------------------------------------------------------------
