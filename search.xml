@@ -894,7 +894,7 @@
 <hr />
 <p>显然 <span class="math inline">\(M = (0, 16), N = \left[\dfrac13, +\infty\right)\)</span>，答案为 (D)。</p>
 <h2 id="problem-2">Problem 2</h2>
-<p>如果 <span class="math inline">\({\rm i}(1 - z) = 1\)</span>，求 <span class="math inline">\(z + \overline z\)</span> 的值。</p>
+<p>如果 <span class="math inline">\(\mathop{\rm i}(1 - z) = 1\)</span>，求 <span class="math inline">\(z + \overline z\)</span> 的值。</p>
 <ol type="A">
 <li><span class="math inline">\(-2\)</span></li>
 <li><span class="math inline">\(-1\)</span></li>
@@ -902,11 +902,11 @@
 <li><span class="math inline">\(2\)</span></li>
 </ol>
 <hr />
-<p>假设 <span class="math inline">\(z := a + b{\rm i}(a, b \in \mathbb R)\)</span>，那么：</p>
+<p>假设 <span class="math inline">\(z := a + b\mathop{\rm i}(a, b \in \mathbb R)\)</span>，那么：</p>
 <p><span class="math display">\[
-1 = {\rm i}(1 - z) = {\rm i}((1 - a) - b{\rm i}) = b + (1 - a){\rm i}
+1 = \mathop{\rm i}(1 - z) = \mathop{\rm i}((1 - a) - b\mathop{\rm i}) = b + (1 - a)\mathop{\rm i}
 \]</span></p>
-<p>得到 <span class="math inline">\(z = 1 + {\rm i}\)</span>，所以 <span class="math inline">\(z + \overline z = 2\Re(z) = 2\)</span>，答案为 (D)。</p>
+<p>得到 <span class="math inline">\(z = 1 + \mathop{\rm i}\)</span>，所以 <span class="math inline">\(z + \overline z = 2\Re(z) = 2\)</span>，答案为 (D)。</p>
 <h2 id="problem-3">Problem 3</h2>
 <p>在 <span class="math inline">\(\triangle ABC\)</span> 中，点 <span class="math inline">\(D\)</span> 在边 <span class="math inline">\(AB\)</span> 上，<span class="math inline">\(BD = 2DA\)</span>，记 <span class="math inline">\(\vec{CA} = \boldsymbol{m}, \vec{CD} = \boldsymbol{n}\)</span>，那么：</p>
 <ol type="A">
@@ -9160,7 +9160,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <p>相比之下，形容动词的未然形虽然依然常用，但其使用词干接续「です」的活用形式形成的「好きでしょう」等表达也同时是常用词组。</p>
 <div class="note info no-icon"><p>事实上上述各种词组之间的对照，归根结底是日语两种常用语体之间的对立，即<strong>ですます体</strong>与<strong>简体</strong>（或称<strong>だ体</strong>）之间的对立。</p>
 <p>ですます体已经提到过，是一种面向陌生人、上级等有一定距离的对象的语体，而简体则是面向自己、亲友等关系紧密的对象，或者自己所不尊敬、蔑视的对象的语体。</p>
-<p>事实上日语中还存在<strong>である体</strong>，其基本上仅用于严谨的书面文章中。「である」的语源为判断助动词「だ」的第一连用形接续动词「ある」，其完全继承了动词「ある」的活用方式。另外，「である」在表达尊敬含义的时候也可以使用「であります」</p>
+<p>事实上日语中还存在<strong>である体</strong>，其基本上仅用于严谨的书面文章中。「である」的语源为判断助动词「だ」的第一连用形接续动词「ある」，其完全继承了动词「ある」的活用方式。另外，「である」在表达尊敬含义的时候也可以使用「であります」。</p>
 <p>另外，由于ですます体实际上仅仅是一般尊敬，在公文、商务邮件、与地位相对高的对象交谈等场合中所使用的，更为完整的敬语体系则在后续部分介绍。</p>
 <p>下表列举出了ですます体与简体中相对应的若干词组：</p>
 <table>
@@ -10578,6 +10578,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
     <content><![CDATA[<p>大约是由于还是想学一点数学，所以大四趁着没有培养方案要求了选了《抽象代数 (2)》。但是平心而论自己的抽象代数水平不过是翻过一点点 Artin 而已，于是问同学要来了这位老师《抽象代数 (1)》的课件，自己先学着一点吧。</p>
 <span id="more"></span>
 <h1 id="抽象代数引论">抽象代数引论</h1>
+<h2 id="几何体的对称性">几何体的对称性</h2>
 <p>我们现在关注几何体的对称性，不妨先考虑下述定义：</p>
 <div class="note info no-icon"><p><strong>Definition 1.01</strong> 我们定义标准欧氏空间 <span class="math inline">\(\mathbb R^n\)</span> 上的<strong>等距（Isometry）</strong>变换 <span class="math inline">\(f: \mathbb R^n \to \mathbb R^n\)</span> 是满足对于任何的 <span class="math inline">\(x, y \in \mathbb R^n\)</span> 都有：</p>
 <p><span class="math display">\[
@@ -10646,6 +10647,15 @@ h(ay) = ah(y)
 <p>这就说明了 <span class="math inline">\(h\)</span> 是线性的，结合其保内积的性质得知 <span class="math inline">\(h\)</span> 是正交变换。</p>
 <hr />
 <p>下面说明这样的分解唯一。事实上我们只需要考虑正交变换保原点即可得知分解出的平移变换仅有可能是 <span class="math inline">\(g: x \mapsto x + f(\boldsymbol{0}_n)\)</span>。而根据平移变换的可逆性，显然不可能具有多个正交变换 <span class="math inline">\(h\)</span> 令 <span class="math inline">\(f = h \circ g\)</span>，即仅有可能令 <span class="math inline">\(h := f \circ g^{-1}\)</span>，唯一性证明完毕。</p>
+<p>基于上述论述，我们可以得到下述推论：</p>
+<div class="note success no-icon"><p><strong>Theorem 1.02</strong> 等距变换是可逆变换。</p>
+</div>
+<p>我们记 <span class="math inline">\({\rm Iso}(\mathbb{R}^n)\)</span> 为空间 <span class="math inline">\(\mathbb{R}^n\)</span> 上的所有等距变换构成的群，即<strong>等距群（Isometry group）</strong>。另外，我们将 <span class="math inline">\(\mathbb{R}^n\)</span> 的子集 <span class="math inline">\(X\)</span> 称为<strong>几何体</strong>，称满足 <span class="math inline">\(f(X) = X\)</span> 的 <span class="math inline">\(f \in {\rm Iso}(\mathbb{R}^n)\)</span> 为 <span class="math inline">\(X\)</span> 的一个<strong>对称（Symmetry）</strong>。几何体 <span class="math inline">\(X\)</span> 的所有对称构成的群记为 <span class="math inline">\(\mathcal{S}(X)\)</span>，几何体的对称群刻画了该几何体的对称性质。</p>
+<h2 id="多项式根的对称性">多项式根的对称性</h2>
+<p>考虑定义：</p>
+<div class="note info no-icon"><p><strong>Definition 1.03</strong> 如果复数集的子集 <span class="math inline">\(A \subseteq \mathbb{C}\)</span> 包含 <span class="math inline">\(0, 1\)</span>，并且对于复数的四则运算（除数非零）封闭，那么 <span class="math inline">\(A\)</span> 是复数集上的一个<strong>数域</strong>。</p>
+<p>特别地，我们知道任何复数集上的数域均必然包含有理数域 <span class="math inline">\(\mathbb{Q}\)</span>。</p>
+</div>
 ]]></content>
       <categories>
         <category>【学习笔记】数学</category>
@@ -11507,7 +11517,7 @@ B = (-1)^s M \cdot 2^E
     <content><![CDATA[<p>一门纯数学课，没有什么特别有意思的地方。但也正因为它是数学课，所以我感觉我学起来会稍微轻松一些，希望是我四大原理之中最舒服的一门课。</p>
 <p><span class="math display">\[
 \newcommand{\d}{\mathrm{d}}
-\newcommand{\j}{\mathrm{j}}
+\newcommand{\j}{\mathop{\mathrm{j}}}
 \newcommand{\b}{\boldsymbol}
 \newcommand{\lv}{\left[\begin{matrix}}
 \newcommand{\rv}{\end{matrix}\right]}
@@ -14616,6 +14626,9 @@ D_{\rm KL}(P \parallel Q) \neq D_{\rm KL}(Q \parallel P)
     <url>/2022/07/12/orginal-problems/</url>
     <content><![CDATA[<p>一些奇妙的数学想法而已，可能是初中、高中、大学题，反正是弄着玩的。</p>
 <span id="more"></span>
+<p><span class="math display">\[
+\newcommand{\i}{\mathop{\rm i}}
+\]</span></p>
 <h1 id="problem-1">Problem 1</h1>
 <p>已知函数 <span class="math inline">\(f(x) = [x](x - [x]), x \geq 0\)</span>，这里 <span class="math inline">\([x]\)</span> 表示不大于 <span class="math inline">\(x\)</span> 的最大整数。</p>
 <p>另外定义函数迭代符号 <span class="math inline">\(f^{(n)}\)</span> 如下：</p>
@@ -14675,6 +14688,219 @@ f^{([x])}(x) \leq f^{([x] - 1)}(x) - 1 \leq \cdots \leq f^{(0)}(x) - [x] = x - [
 0 &lt; \|\vec{AA&#39;}\|_2 &lt; \min\left\{\delta_A, \frac{\|\vec{CA}\|_2 \cdot \delta_B}{\|\vec{CB}\|_2}\right\}
 \]</span></p>
 <p>即可保证 <span class="math inline">\(\|\vec{AA&#39;}\|_2 &lt; \delta_A\)</span> 且 <span class="math inline">\(\|\vec{BB&#39;}\|_2 &lt; \delta_B\)</span>，这就保证了 <span class="math inline">\(A&#39; \in \mathcal{A}, B&#39; \in \mathcal{B}\)</span>，并且有 <span class="math inline">\(\|\vec{A&#39;B&#39;}\|_2 &lt; \|\vec{AB}\|_2\)</span>。这样就与最小性假设矛盾，假设不成立。故当 <span class="math inline">\(\|\vec{AB}\|_2\)</span> 取到最小值的时候 <span class="math inline">\(A, B\)</span> 中至少有一个点为其所在多边形的顶点。</p>
+<h1 id="problem-3">Problem 3</h1>
+<p>(Credit to PKU 零之审判)</p>
+<p>边长为 <span class="math inline">\(2\)</span> 的正方形 <span class="math inline">\(ABCD\)</span> 内有四条长度为 <span class="math inline">\(1\)</span> 的线段 <span class="math inline">\(l_{1, 2, 3, 4}\)</span>，这四条线段满足：</p>
+<ul>
+<li><span class="math inline">\(l_i\)</span> 与 <span class="math inline">\(l_{i + 1}\)</span> 相交但其内部不相交（即交点为 <span class="math inline">\(l_i\)</span> 或 <span class="math inline">\(l_{i + 1}\)</span> 的端点）</li>
+<li><span class="math inline">\(l_1, l_3\)</span> 没有公共点且 <span class="math inline">\(l_2, l_4\)</span> 没有公共点</li>
+<li><span class="math inline">\(l_i\)</span> 垂直于 <span class="math inline">\(l_{i + 1}\)</span></li>
+</ul>
+<p>上述陈述中 <span class="math inline">\(i \in \{1, 2, 3, 4\}\)</span>，并且定义 <span class="math inline">\(l_5 := l_1\)</span>。</p>
+<p>记 <span class="math inline">\(S = l_1 \cup l_2 \cup l_3 \cup l_4\)</span>，<span class="math inline">\(V\)</span> 为正方形 <span class="math inline">\(ABCD\)</span> 四边中点构成的集合，定义：</p>
+<p><span class="math display">\[
+d := \max_{v \in V, s \in S} |v - s|
+\]</span></p>
+<p>求 <span class="math inline">\(d\)</span> 的最小值。</p>
+<h2 id="solution-2">Solution</h2>
+<p>考虑如下图所示的 <span class="math inline">\(l_{1, 2, 3, 4}\)</span>：</p>
+<p><img src="/uploads/original-problems/1.png" height="20%" width="20%" /></p>
+<p>这里 <span class="math inline">\(l_{1, 2, 3, 4}\)</span> 构成边长为 <span class="math inline">\(1\)</span> 的正方形，该正方形与正方形 <span class="math inline">\(ABCD\)</span> 有共同中心且 <span class="math inline">\(l_1 \parallel AD\)</span>。不难看出若令 <span class="math inline">\(M\)</span> 为 <span class="math inline">\(CD\)</span> 中点，<span class="math inline">\(N\)</span> 为 <span class="math inline">\(l_1, l_2\)</span> 交点，则 <span class="math inline">\(d = MN = \dfrac{\sqrt{10}}{2}\)</span>。</p>
+<p>下面我们证明 <span class="math inline">\(d \geq \dfrac{\sqrt{10}}{2}\)</span>。为了证明该结论，我们考虑下述圆 <span class="math inline">\(P\)</span>：</p>
+<p><img src="/uploads/original-problems/3.png" height="20%" width="20%" /></p>
+<p>圆 <span class="math inline">\(P\)</span> 以正方形 <span class="math inline">\(ABCD\)</span> 的中心 <span class="math inline">\(O\)</span> 为圆心，半径为 <span class="math inline">\(\dfrac{\sqrt{2}}{2}\)</span>。</p>
+<p>我们首先证明下述引理，即如果 <span class="math inline">\(l_{1, 2, 3, 4}\)</span> 上有点 <span class="math inline">\(X\)</span> 在圆 <span class="math inline">\(P\)</span> 外或者在圆 <span class="math inline">\(P\)</span> 边界上，那么 <span class="math inline">\(d \geq \dfrac{\sqrt{10}}{2}\)</span>。</p>
+<p>我们考虑下述图形：</p>
+<p><img src="/uploads/original-problems/4.png" height="35%" width="35%" /></p>
+<p>这里的四个虚线圆为以正方形 <span class="math inline">\(ABCD\)</span> 各边中点为圆心，以 <span class="math inline">\(\dfrac{\sqrt{10}}{2}\)</span> 为半径所作的。注意到由于这四个圆的内部（不包含边界）的交集完全位于圆 <span class="math inline">\(P\)</span> 的内部，这说明 <span class="math inline">\(X\)</span> 必然在这四个虚线圆中的某个之外或者这四个虚线圆中的某个的边界上。也就是说必然存在某个 <span class="math inline">\(M \in V\)</span> 使得 <span class="math inline">\(MX \geq \dfrac{\sqrt{10}}{2}\)</span>，从而：</p>
+<p><span class="math display">\[
+d \geq MX \geq \dfrac{\sqrt{10}}{2}
+\]</span></p>
+<p>引理证明完毕，回到原题。</p>
+<p>根据引理我们得知，如果 <span class="math inline">\(l_{1, 2, 3, 4}\)</span> 上有点在圆 <span class="math inline">\(P\)</span> 外，则欲证命题成立，所以现在只需要考虑 <span class="math inline">\(S \subseteq P\)</span>。</p>
+<p>根据题设对四条线段的约束，我们可以得知这四条线段仅有下述两种可能：</p>
+<p><img src="/uploads/original-problems/2.png" height="50%" width="50%" /></p>
+<p>上述两种情况的旋转、镜面对称等视为同种情况。</p>
+<p>首先考虑左边的情况，这里记 <span class="math inline">\(A&#39;D&#39; = B&#39;C&#39; =: a, A&#39;B&#39; = C&#39;D&#39; =: b\)</span>，我们有 <span class="math inline">\(0 &lt; a, b \leq 1\)</span>。根据 <span class="math inline">\(S \subseteq P\)</span> 此时必然有下述两条虚线段长度不大于 <span class="math inline">\(\sqrt{2}\)</span>：</p>
+<p><img src="/uploads/original-problems/5.png" height="25%" width="25%" /></p>
+<p>从而有下述约束：</p>
+<p><span class="math display">\[
+\begin{cases}
+a^2 + (2 - b)^2 \leq 2 \Rightarrow a^2 + b^2 - 4b + 2 \leq 0 \\
+b^2 + (2 - a)^2 \leq 2 \Rightarrow a^2 + b^2 - 4a + 2 \leq 0 \\
+\end{cases}
+\]</span></p>
+<p>两式相加并整理得到：</p>
+<p><span class="math display">\[
+(a - 1)^2 + (b - 1)^2 \leq 0
+\]</span></p>
+<p>可知 <span class="math inline">\(a = b = 1\)</span>，此时 <span class="math inline">\(A&#39;, B&#39;, C&#39;, D&#39;\)</span> 构成边长为 <span class="math inline">\(1\)</span> 的正方形。考虑到边长为 <span class="math inline">\(1\)</span> 的正方形的外接圆半径为 <span class="math inline">\(\dfrac{\sqrt{2}}{2}\)</span>，所以为了 <span class="math inline">\(S \subseteq P\)</span>，只能有该正方形内接于圆 <span class="math inline">\(P\)</span>。</p>
+<p>之后考虑右边的情况，根据 <span class="math inline">\(S \subseteq P\)</span> 此时必然有下述两条虚线段长度不大于 <span class="math inline">\(\sqrt{2}\)</span>。</p>
+<p>这里记 <span class="math inline">\(A&#39;B&#39; = C&#39;D&#39; =: a, A&#39;A&#39;&#39; =: b, D&#39;D&#39;&#39; =: c\)</span>，我们有 <span class="math inline">\(0 &lt; a \leq 1\)</span> 以及 <span class="math inline">\(0 \leq b, c \leq 1 - a\)</span>：</p>
+<p><img src="/uploads/original-problems/6.png" height="20%" width="20%" /></p>
+<p>从而有下述约束：</p>
+<p><span class="math display">\[
+\begin{cases}
+D&#39;&#39;C&#39; + B&#39;B&#39;&#39; \leq 1 \Rightarrow b - c + 1 \leq 1 \\
+A&#39;&#39;B&#39; + C&#39;C&#39;&#39; \leq 1 \Rightarrow c - b + 1 \leq 1 \\
+\end{cases}
+\]</span></p>
+<p>可知 <span class="math inline">\(b = c\)</span>，此时 <span class="math inline">\(A&#39;&#39;, B&#39;&#39;, C&#39;&#39;, D&#39;&#39;\)</span> 构成边长为 <span class="math inline">\(1\)</span> 的正方形。考虑到边长为 <span class="math inline">\(1\)</span> 的正方形的外接圆半径为 <span class="math inline">\(\dfrac{\sqrt{2}}{2}\)</span>，所以为了 <span class="math inline">\(S \subseteq P\)</span>，只能有该正方形内接于圆 <span class="math inline">\(P\)</span>。</p>
+<p>综上所述，此时无论如何均存在四个 <span class="math inline">\(S\)</span> 内的点构成内接于圆 <span class="math inline">\(P\)</span> 的正方形，至少说明 <span class="math inline">\(S\)</span> 中存在某一个点 <span class="math inline">\(X\)</span> 在圆 <span class="math inline">\(P\)</span> 边界上。根据引理，原命题证明完毕。</p>
+<p>综上所述，<span class="math inline">\(d\)</span> 的最小值为 <span class="math inline">\(\dfrac{\sqrt{10}}{2}\)</span>。</p>
+<h1 id="problem-4">Problem 4</h1>
+<p>记 <span class="math inline">\(\theta_{n, k} := \dfrac{(2k + 1)\pi}{2^n}\)</span>，证明：</p>
+<p><span class="math display">\[
+\sum_{k = 0}^{2^n - 1} \frac{1}{1 - \cos\theta_{n, k}} = 2^{2n - 1}
+\]</span></p>
+<h2 id="solution-3">Solution</h2>
+<p>我们注意到下述恒等式：</p>
+<p><span class="math display">\[
+\frac{4}{1 - \cos 2\theta} = \frac{1}{1 - \cos\theta} + \frac{1}{1 + \cos\theta}
+\]</span></p>
+<p>证明如下：</p>
+<p><span class="math display">\[
+\frac{1}{1 - \cos\theta} + \frac{1}{1 + \cos\theta} = \frac{2}{1 - \cos^2\theta} = \frac{4}{1 - (2\cos^2\theta - 1)} = \frac{4}{1 - \cos 2\theta}
+\]</span></p>
+<p>基于上述恒等式，我们令：</p>
+<p><span class="math display">\[
+S_n := \sum_{k = 0}^{2^n - 1} \frac{1}{1 - \cos\theta_{n, k}}
+\]</span></p>
+<p>我们即可得到：</p>
+<p><span class="math display">\[
+S_{n + 1} = \sum_{k = 0}^{2^{n + 1} - 1} \frac{1}{1 - \cos\theta_{n + 1, k}} = \sum_{k = 0}^{2^n - 1} \left(\frac{1}{1 - \cos\theta_{n + 1, k}} + \frac{1}{1 - \cos\theta_{n + 1, 2^n + k}}\right) \\
+\]</span></p>
+<p>这里注意到：</p>
+<p><span class="math display">\[
+\cos\theta_{n + 1, 2^n + k} = \cos\dfrac{[2(2^n + k) + 1]\pi}{2^{n + 1}} = \cos\left(1 + \frac{2k + 1}{2^{n + 1}}\right)\pi = -\cos\theta_{n + 1, k}
+\]</span></p>
+<p>另外注意到：</p>
+<p><span class="math display">\[
+\theta_{n, k} = \dfrac{(2k + 1)\pi}{2^n} = 2\theta_{n + 1, k}
+\]</span></p>
+<p>那么：</p>
+<p><span class="math display">\[
+\begin{aligned}
+S_{n + 1} &amp;= \sum_{k = 0}^{2^n - 1} \left(\frac{1}{1 - \cos\theta_{n + 1, k}} + \frac{1}{1 - \cos\theta_{n + 1, 2^n + k}}\right) \\
+&amp;= \sum_{k = 0}^{2^n - 1} \left(\frac{1}{1 - \cos\theta_{n + 1, k}} + \frac{1}{1 + \cos\theta_{n + 1, k}}\right) \\
+&amp;= \sum_{k = 0}^{2^n - 1} \frac{4}{1 - \cos2\theta_{n + 1, k}} \\
+&amp;= 4\sum_{k = 0}^{2^n - 1} \frac{1}{1 - \cos\theta_{n, k}} \\
+&amp;= 4S_n
+\end{aligned}
+\]</span></p>
+<p>而显然有 <span class="math inline">\(S_1 = 2\)</span>，从而命题证明完毕。</p>
+<h1 id="problem-5">Problem 5</h1>
+<p>已知正整数 <span class="math inline">\(n\)</span> 与实数 <span class="math inline">\(x\)</span>，证明：</p>
+<p><span class="math display">\[
+\sum_{k = 0}^n C_n^k\sin kx = 2^n\cos^n\frac{x}{2}\sin\frac{nx}{2}
+\]</span></p>
+<h2 id="solution-4">Solution</h2>
+<p>考虑 <span class="math inline">\((\cos x + \i\sin x + 1)^n \in \mathbb{C}\)</span> 的虚部。</p>
+<p>一方面：</p>
+<p><span class="math display">\[
+\begin{aligned}
+(\cos x + \i\sin x + 1)^n &amp;= \left[\left(2\cos^2\frac{x}{2} - 1\right) + 2\i\sin\frac{x}{2}\cos\frac{x}{2} + 1\right]^n \\
+&amp;= 2^n\cos^n\frac{x}{2}\left(\cos\frac{x}{2} + \i\sin\frac{x}{2}\right)^n \\
+&amp;= 2^n\cos^n\frac{x}{2}\cos\frac{nx}{2} + \i2^n\cos^n\frac{x}{2}\sin\frac{nx}{2}
+\end{aligned}
+\]</span></p>
+<p>可知该复数的虚部即为欲证等式的右侧。</p>
+<p>另一方面：</p>
+<p><span class="math display">\[
+\begin{aligned}
+(\cos x + \i\sin x + 1)^n &amp;= \sum_{k = 0}^n C_n^k(\cos x + \i\sin x)^k \\
+&amp;= \sum_{k = 0}^n C_n^k(\cos kx + \i\sin kx) \\
+&amp;= \sum_{k = 0}^n C_n^k\cos kx + \i\sum_{k = 0}^n C_n^k\sin kx
+\end{aligned}
+\]</span></p>
+<p>可知该复数的虚部即为欲证等式的左侧。</p>
+<p>综上所述，证明完毕。</p>
+<h1 id="problem-6">Problem 6</h1>
+<p>已知数列 <span class="math inline">\(\{a_n\}_{n \geq 0}\)</span> 满足 <span class="math inline">\(a_0 = 1, a_1 = 0\)</span> 且 <span class="math inline">\(a_{n + 2} = (n + 1)(a_{n + 1} + a_n)\)</span>。证明：</p>
+<p><span class="math display">\[
+\sum_{k = 0}^n C_n^ka_k = n!
+\]</span></p>
+<h2 id="solution-5">Solution</h2>
+<p>定义命题 <span class="math inline">\(A_n\)</span> 表示下述等式成立：</p>
+<p><span class="math display">\[
+\sum_{k = 0}^{n + 1} C_{n + 1}^ka_k = (n + 1)\sum_{k = 0}^n C_n^ka_k
+\]</span></p>
+<p>命题 <span class="math inline">\(B_n\)</span> 表示下述等式成立：</p>
+<p><span class="math display">\[
+\sum_{k = 0}^n C_n^ka_{k + 1} = n\sum_{k = 0}^n C_n^ka_k
+\]</span></p>
+<p>首先我们证明由 <span class="math inline">\(B_n\)</span> 能推出 <span class="math inline">\(A_n\)</span>。现在在 <span class="math inline">\(B_n\)</span> 成立的基础上，考虑下述计算：</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;(n + 1)\sum_{k = 0}^n C_n^ka_k = n\sum_{k = 0}^n C_n^ka_k + \sum_{k = 0}^n C_n^ka_k = \sum_{k = 0}^n C_n^ka_{k + 1} + \sum_{k = 0}^n C_n^ka_k \\
+=&amp; C_n^na_{n + 1} + \left(\sum_{k = 1}^n C_n^{k - 1}a_k + \sum_{k = 1}^n C_n^ka_k\right) + C_n^0a_0 = C_n^na_{n + 1} + \sum_{k = 1}^n (C_n^{k - 1} + C_n^k)a_k + C_n^0a_0 \\
+=&amp; C_{n + 1}^{n + 1}a_{n + 1} + \sum_{k = 1}^n C_{n + 1}^ka_k + C_{n + 1}^0a_0 = \sum_{k = 0}^{n + 1} C_{n + 1}^ka_k
+\end{aligned}
+\]</span></p>
+<p>这就说明了在 <span class="math inline">\(B_n\)</span> 成立的基础上 <span class="math inline">\(A_n\)</span> 成立，其中第二个等号的依据为 <span class="math inline">\(B_n\)</span> 成立。</p>
+<p>之后我们证明 <span class="math inline">\(A_n, B_n\)</span> 能推出 <span class="math inline">\(B_{n + 1}\)</span>。现在在 <span class="math inline">\(A_n, B_n\)</span> 均成立的基础上，考虑下述计算：</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;\sum_{k = 0}^{n + 1} C_{n + 1}^ka_{k + 1} = C_{n + 1}^0a_1 + \sum_{k = 1}^{n + 1} C_{n + 1}^ka_{k + 1} = \sum_{k = 1}^{n + 1} \frac{n + 1}{k}C_{n}^{k - 1}a_{k + 1} \\
+=&amp; (n + 1)\sum_{k = 0}^{n} \frac{1}{k + 1}C_{n}^{k} \cdot (k + 1)(a_{k + 1} + a_k) = (n + 1)\left(\sum_{k = 0}^{n} C_{n}^{k}a_{k + 1} + \sum_{k = 0}^{n} C_{n}^{k}a_k\right) \\
+=&amp; (n + 1)\left(n\sum_{k = 0}^{n} C_{n}^{k}a_k + \sum_{k = 0}^{n} C_{n}^{k}a_k\right) = (n + 1)\left[(n + 1)\sum_{k = 0}^{n} C_{n}^{k}a_k\right] = (n + 1)\sum_{k = 0}^{n + 1} C_{n + 1}^ka_k\\
+\end{aligned}
+\]</span></p>
+<p>这就说明了在 <span class="math inline">\(A_n, B_n\)</span> 成立的基础上 <span class="math inline">\(B_{n + 1}\)</span> 成立，其中倒数第二个等号的依据为 <span class="math inline">\(B_n\)</span> 成立，倒数第一个等号的依据为 <span class="math inline">\(A_n\)</span> 成立。</p>
+<p>而我们显然可以计算出 <span class="math inline">\(a_2 = 1\)</span>，从而得知命题 <span class="math inline">\(B_1\)</span> 成立，进而据归纳法得到对任何的正整数 <span class="math inline">\(n\)</span>，都有命题 <span class="math inline">\(A_n\)</span> 成立。据命题 <span class="math inline">\(A_n\)</span> 成立即可得到本问题欲证命题成立。</p>
+<h1 id="problem-7">Problem 7</h1>
+<p>已知正数数列 <span class="math inline">\(\{x_k\}_{0 \leq k \leq n}\)</span> 满足：</p>
+<p><span class="math display">\[
+x_0 = \sum_{k = 1}^n x_k
+\]</span></p>
+<p>定义数列 <span class="math inline">\(\{y_k\}_{1 \leq k \leq n}\)</span> 为：</p>
+<p><span class="math display">\[
+y_k := \sqrt{\sum_{i = 0}^{k - 1} x_i} \sqrt{\sum_{i = k}^n x_i}
+\]</span></p>
+<p>证明：</p>
+<p><span class="math display">\[
+1 &lt; \sum_{k = 1}^n \frac{x_k}{y_k} &lt; \frac{\pi}{2}
+\]</span></p>
+<h2 id="solution-6">Solution</h2>
+<p>根据均值不等式显然有：</p>
+<p><span class="math display">\[
+y_k = \sqrt{\sum_{i = 0}^{k - 1} x_i} \sqrt{\sum_{i = k}^n x_i} \leq \frac{1}{2}\left(\sum_{i = 0}^{k - 1} x_i + \sum_{i = k}^n x_i\right) = \frac{1}{2}\left(x_0 + \sum_{i = 1}^n x_i\right) = x_0
+\]</span></p>
+<p>并且由于：</p>
+<p><span class="math display">\[
+\sum_{i = 0}^{k - 1} x_i &gt; x_0 = \sum_{i = 1}^n x_i &gt; \sum_{i = k}^n x_i
+\]</span></p>
+<p>得知上述等号无法取到，那么：</p>
+<p><span class="math display">\[
+\sum_{k = 1}^n \frac{x_k}{y_k} &gt; \sum_{k = 1}^n \frac{x_k}{x_0} = 1
+\]</span></p>
+<p>从而不等式左侧得证。</p>
+<p>为了证明不等式右侧，我们考虑下述数列 <span class="math inline">\(\{S_k\}_{0 \leq k \leq n}\)</span>，其在 <span class="math inline">\(k = 0\)</span> 的时候定义为 <span class="math inline">\(S_0 := 0\)</span>，在 <span class="math inline">\(k &gt; 0\)</span> 的时候定义为：</p>
+<p><span class="math display">\[
+S_k := \sum_{i = 1}^k \frac{x_k}{x_0}
+\]</span></p>
+<p>考虑到 <span class="math inline">\(\{x_k\}_{0 \leq k \leq n}\)</span> 是正数数列，可以得知 <span class="math inline">\(\{S_k\}_{0 \leq k \leq n}\)</span> 是递增数列。另一方面，我们可以得知 <span class="math inline">\(S_n = 1\)</span>。综合上述条件我们可以得知 <span class="math inline">\(\{S_k\}_{0 \leq k \leq n}\)</span> 各项均落在区间 <span class="math inline">\([0, 1]\)</span> 上。</p>
+<p>那么即存在所有项均落在区间 <span class="math inline">\(\left[0, \dfrac{\pi}{2}\right]\)</span> 上的数列 <span class="math inline">\(\{\theta_k\}_{0 \leq k \leq n}\)</span> 使得 <span class="math inline">\(\sin\theta_k = S_k\)</span> 对所有 <span class="math inline">\(0 \leq k \leq n\)</span> 成立。此时 <span class="math inline">\(\theta_0 = 0\)</span> 并且 <span class="math inline">\(\theta_n = \dfrac{\pi}{2}\)</span>。另一方面，据 <span class="math inline">\(\{S_k\}_{0 \leq k \leq n}\)</span> 是递增数列得知 <span class="math inline">\(\{\theta_k\}_{0 \leq k \leq n}\)</span> 是递增数列。</p>
+<p>从而我们得知：</p>
+<p><span class="math display">\[
+\begin{aligned}
+y_k &amp;= \sqrt{\sum_{i = 0}^{k - 1} x_i} \sqrt{\sum_{i = k}^n x_i} = x_0 \sqrt{\sum_{i = 0}^{k - 1} \frac{x_i}{x_0}} \sqrt{\sum_{i = k}^n \frac{x_i}{x_0}} = x_0 \sqrt{1 + S_{k - 1}} \sqrt{S_n - S_{k - 1}} \\
+&amp;= x_0 \sqrt{1 - S^2_{k - 1}} = x_0 \sqrt{1 - \sin^2\theta_{k - 1}} = x_0\cos\theta_{k - 1}
+\end{aligned}
+\]</span></p>
+<p>从而：</p>
+<p><span class="math display">\[
+\begin{aligned}
+\sum_{k = 1}^n \frac{x_k}{y_k} &amp;= \sum_{k = 1}^n \frac{x_k}{x_0\cos\theta_{k - 1}} = \sum_{k = 1}^n \frac{S_k - S_{k - 1}}{\cos\theta_{k - 1}} = \sum_{k = 1}^n \frac{\sin\theta_k - \sin\theta_{k - 1}}{\cos\theta_{k - 1}} \\
+&amp;= \sum_{k = 1}^n \frac{2\cos\dfrac{\theta_k + \theta_{k - 1}}{2}\sin\dfrac{\theta_k - \theta_{k - 1}}{2}}{\cos\theta_{k - 1}} &lt; 2\sum_{k = 1}^n\sin\dfrac{\theta_k - \theta_{k - 1}}{2}
+\end{aligned}
+\]</span></p>
+<p>这里的不等号考虑到 <span class="math inline">\(\{\theta_k\}_{0 \leq k \leq n}\)</span> 是递增数列，从而 <span class="math inline">\(\theta_k &gt; \theta_{k - 1}\)</span>。</p>
+<p>应用不等式 <span class="math inline">\(\sin x &lt; x, x &gt; 0\)</span> 得到：</p>
+<p><span class="math display">\[
+\sum_{k = 1}^n \frac{x_k}{y_k} &lt; 2\sum_{k = 1}^n\sin\dfrac{\theta_k - \theta_{k - 1}}{2} &lt; \sum_{k = 1}^n \theta_k - \theta_{k - 1} = \theta_n - \theta_0 = \frac{\pi}{2}
+\]</span></p>
+<p>综上所述，证明完毕。</p>
 ]]></content>
       <categories>
         <category>【杂谈】数学</category>
