@@ -10,6 +10,10 @@ mathjax: true
 
 <!-- more -->
 
+$$
+\newcommand{\i}{\mathop{\rm i}}
+$$
+
 # Problem 1
 
 已知函数 $f(x) = [x](x - [x]), x \geq 0$，这里 $[x]$ 表示不大于 $x$ 的最大整数。
@@ -106,3 +110,327 @@ $$
 $$
 
 即可保证 $\|\vec{AA'}\|_2 < \delta_A$ 且 $\|\vec{BB'}\|_2 < \delta_B$，这就保证了 $A' \in \mathcal{A}, B' \in \mathcal{B}$，并且有 $\|\vec{A'B'}\|_2 < \|\vec{AB}\|_2$。这样就与最小性假设矛盾，假设不成立。故当 $\|\vec{AB}\|_2$ 取到最小值的时候 $A, B$ 中至少有一个点为其所在多边形的顶点。
+
+# Problem 3
+
+(Credit to PKU 零之审判)
+
+边长为 $2$ 的正方形 $ABCD$ 内有四条长度为 $1$ 的线段 $l_{1, 2, 3, 4}$，这四条线段满足：
+
+- $l_i$ 与 $l_{i + 1}$ 相交但其内部不相交（即交点为 $l_i$ 或 $l_{i + 1}$ 的端点）
+- $l_1, l_3$ 没有公共点且 $l_2, l_4$ 没有公共点
+- $l_i$ 垂直于 $l_{i + 1}$
+
+上述陈述中 $i \in \{1, 2, 3, 4\}$，并且定义 $l_5 := l_1$。
+
+记 $S = l_1 \cup l_2 \cup l_3 \cup l_4$，$V$ 为正方形 $ABCD$ 四边中点构成的集合，定义：
+
+$$
+d := \max_{v \in V, s \in S} |v - s|
+$$
+
+求 $d$ 的最小值。
+
+## Solution
+
+考虑如下图所示的 $l_{1, 2, 3, 4}$：
+
+<img src="/uploads/original-problems/1.png" height="20%" width="20%" />
+
+这里 $l_{1, 2, 3, 4}$ 构成边长为 $1$ 的正方形，该正方形与正方形 $ABCD$ 有共同中心且 $l_1 \parallel AD$。不难看出若令 $M$ 为 $CD$ 中点，$N$ 为 $l_1, l_2$ 交点，则 $d = MN = \dfrac{\sqrt{10}}{2}$。
+
+下面我们证明 $d \geq \dfrac{\sqrt{10}}{2}$。为了证明该结论，我们考虑下述圆 $P$：
+
+<img src="/uploads/original-problems/3.png" height="20%" width="20%" />
+
+圆 $P$ 以正方形 $ABCD$ 的中心 $O$ 为圆心，半径为 $\dfrac{\sqrt{2}}{2}$。
+
+我们首先证明下述引理，即如果 $l_{1, 2, 3, 4}$ 上有点 $X$ 在圆 $P$ 外或者在圆 $P$ 边界上，那么 $d \geq \dfrac{\sqrt{10}}{2}$。
+
+我们考虑下述图形：
+
+<img src="/uploads/original-problems/4.png" height="35%" width="35%" />
+
+这里的四个虚线圆为以正方形 $ABCD$ 各边中点为圆心，以 $\dfrac{\sqrt{10}}{2}$ 为半径所作的。注意到由于这四个圆的内部（不包含边界）的交集完全位于圆 $P$ 的内部，这说明 $X$ 必然在这四个虚线圆中的某个之外或者这四个虚线圆中的某个的边界上。也就是说必然存在某个 $M \in V$ 使得 $MX \geq \dfrac{\sqrt{10}}{2}$，从而：
+
+$$
+d \geq MX \geq \dfrac{\sqrt{10}}{2}
+$$
+
+引理证明完毕，回到原题。
+
+根据引理我们得知，如果 $l_{1, 2, 3, 4}$ 上有点在圆 $P$ 外，则欲证命题成立，所以现在只需要考虑 $S \subseteq P$。
+
+根据题设对四条线段的约束，我们可以得知这四条线段仅有下述两种可能：
+
+<img src="/uploads/original-problems/2.png" height="50%" width="50%" />
+
+上述两种情况的旋转、镜面对称等视为同种情况。
+
+首先考虑左边的情况，这里记 $A'D' = B'C' =: a, A'B' = C'D' =: b$，我们有 $0 < a, b \leq 1$。根据 $S \subseteq P$ 此时必然有下述两条虚线段长度不大于 $\sqrt{2}$：
+
+<img src="/uploads/original-problems/5.png" height="25%" width="25%" />
+
+从而有下述约束：
+
+$$
+\begin{cases}
+a^2 + (2 - b)^2 \leq 2 \Rightarrow a^2 + b^2 - 4b + 2 \leq 0 \\
+b^2 + (2 - a)^2 \leq 2 \Rightarrow a^2 + b^2 - 4a + 2 \leq 0 \\
+\end{cases}
+$$
+
+两式相加并整理得到：
+
+$$
+(a - 1)^2 + (b - 1)^2 \leq 0
+$$
+
+可知 $a = b = 1$，此时 $A', B', C', D'$ 构成边长为 $1$ 的正方形。考虑到边长为 $1$ 的正方形的外接圆半径为 $\dfrac{\sqrt{2}}{2}$，所以为了 $S \subseteq P$，只能有该正方形内接于圆 $P$。
+
+之后考虑右边的情况，根据 $S \subseteq P$ 此时必然有下述两条虚线段长度不大于 $\sqrt{2}$。
+
+这里记 $A'B' = C'D' =: a, A'A'' =: b, D'D'' =: c$，我们有 $0 < a \leq 1$ 以及 $0 \leq b, c \leq 1 - a$：
+
+<img src="/uploads/original-problems/6.png" height="20%" width="20%" />
+
+从而有下述约束：
+
+$$
+\begin{cases}
+D''C' + B'B'' \leq 1 \Rightarrow b - c + 1 \leq 1 \\
+A''B' + C'C'' \leq 1 \Rightarrow c - b + 1 \leq 1 \\
+\end{cases}
+$$
+
+可知 $b = c$，此时 $A'', B'', C'', D''$ 构成边长为 $1$ 的正方形。考虑到边长为 $1$ 的正方形的外接圆半径为 $\dfrac{\sqrt{2}}{2}$，所以为了 $S \subseteq P$，只能有该正方形内接于圆 $P$。
+
+综上所述，此时无论如何均存在四个 $S$ 内的点构成内接于圆 $P$ 的正方形，至少说明 $S$ 中存在某一个点 $X$ 在圆 $P$ 边界上。根据引理，原命题证明完毕。
+
+综上所述，$d$ 的最小值为 $\dfrac{\sqrt{10}}{2}$。
+
+# Problem 4
+
+记 $\theta_{n, k} := \dfrac{(2k + 1)\pi}{2^n}$，证明：
+
+$$
+\sum_{k = 0}^{2^n - 1} \frac{1}{1 - \cos\theta_{n, k}} = 2^{2n - 1}
+$$
+
+## Solution
+
+我们注意到下述恒等式：
+
+$$
+\frac{4}{1 - \cos 2\theta} = \frac{1}{1 - \cos\theta} + \frac{1}{1 + \cos\theta}
+$$
+
+证明如下：
+
+$$
+\frac{1}{1 - \cos\theta} + \frac{1}{1 + \cos\theta} = \frac{2}{1 - \cos^2\theta} = \frac{4}{1 - (2\cos^2\theta - 1)} = \frac{4}{1 - \cos 2\theta}
+$$
+
+基于上述恒等式，我们令：
+
+$$
+S_n := \sum_{k = 0}^{2^n - 1} \frac{1}{1 - \cos\theta_{n, k}}
+$$
+
+我们即可得到：
+
+$$
+S_{n + 1} = \sum_{k = 0}^{2^{n + 1} - 1} \frac{1}{1 - \cos\theta_{n + 1, k}} = \sum_{k = 0}^{2^n - 1} \left(\frac{1}{1 - \cos\theta_{n + 1, k}} + \frac{1}{1 - \cos\theta_{n + 1, 2^n + k}}\right) \\
+$$
+
+这里注意到：
+
+$$
+\cos\theta_{n + 1, 2^n + k} = \cos\dfrac{[2(2^n + k) + 1]\pi}{2^{n + 1}} = \cos\left(1 + \frac{2k + 1}{2^{n + 1}}\right)\pi = -\cos\theta_{n + 1, k}
+$$
+
+另外注意到：
+
+$$
+\theta_{n, k} = \dfrac{(2k + 1)\pi}{2^n} = 2\theta_{n + 1, k}
+$$
+
+那么：
+
+$$
+\begin{aligned}
+S_{n + 1} &= \sum_{k = 0}^{2^n - 1} \left(\frac{1}{1 - \cos\theta_{n + 1, k}} + \frac{1}{1 - \cos\theta_{n + 1, 2^n + k}}\right) \\
+&= \sum_{k = 0}^{2^n - 1} \left(\frac{1}{1 - \cos\theta_{n + 1, k}} + \frac{1}{1 + \cos\theta_{n + 1, k}}\right) \\
+&= \sum_{k = 0}^{2^n - 1} \frac{4}{1 - \cos2\theta_{n + 1, k}} \\
+&= 4\sum_{k = 0}^{2^n - 1} \frac{1}{1 - \cos\theta_{n, k}} \\
+&= 4S_n
+\end{aligned}
+$$
+
+而显然有 $S_1 = 2$，从而命题证明完毕。
+
+# Problem 5
+
+已知正整数 $n$ 与实数 $x$，证明：
+
+$$
+\sum_{k = 0}^n C_n^k\sin kx = 2^n\cos^n\frac{x}{2}\sin\frac{nx}{2}
+$$
+
+## Solution
+
+考虑 $(\cos x + \i\sin x + 1)^n \in \mathbb{C}$ 的虚部。
+
+一方面：
+
+$$
+\begin{aligned}
+(\cos x + \i\sin x + 1)^n &= \left[\left(2\cos^2\frac{x}{2} - 1\right) + 2\i\sin\frac{x}{2}\cos\frac{x}{2} + 1\right]^n \\
+&= 2^n\cos^n\frac{x}{2}\left(\cos\frac{x}{2} + \i\sin\frac{x}{2}\right)^n \\
+&= 2^n\cos^n\frac{x}{2}\cos\frac{nx}{2} + \i2^n\cos^n\frac{x}{2}\sin\frac{nx}{2}
+\end{aligned}
+$$
+
+可知该复数的虚部即为欲证等式的右侧。
+
+另一方面：
+
+$$
+\begin{aligned}
+(\cos x + \i\sin x + 1)^n &= \sum_{k = 0}^n C_n^k(\cos x + \i\sin x)^k \\
+&= \sum_{k = 0}^n C_n^k(\cos kx + \i\sin kx) \\
+&= \sum_{k = 0}^n C_n^k\cos kx + \i\sum_{k = 0}^n C_n^k\sin kx
+\end{aligned}
+$$
+
+可知该复数的虚部即为欲证等式的左侧。
+
+综上所述，证明完毕。
+
+# Problem 6
+
+已知数列 $\{a_n\}_{n \geq 0}$ 满足 $a_0 = 1, a_1 = 0$ 且 $a_{n + 2} = (n + 1)(a_{n + 1} + a_n)$。证明：
+
+$$
+\sum_{k = 0}^n C_n^ka_k = n!
+$$
+
+## Solution
+
+定义命题 $A_n$ 表示下述等式成立：
+
+$$
+\sum_{k = 0}^{n + 1} C_{n + 1}^ka_k = (n + 1)\sum_{k = 0}^n C_n^ka_k
+$$
+
+命题 $B_n$ 表示下述等式成立：
+
+$$
+\sum_{k = 0}^n C_n^ka_{k + 1} = n\sum_{k = 0}^n C_n^ka_k
+$$
+
+首先我们证明由 $B_n$ 能推出 $A_n$。现在在 $B_n$ 成立的基础上，考虑下述计算：
+
+$$
+\begin{aligned}
+&(n + 1)\sum_{k = 0}^n C_n^ka_k = n\sum_{k = 0}^n C_n^ka_k + \sum_{k = 0}^n C_n^ka_k = \sum_{k = 0}^n C_n^ka_{k + 1} + \sum_{k = 0}^n C_n^ka_k \\
+=& C_n^na_{n + 1} + \left(\sum_{k = 1}^n C_n^{k - 1}a_k + \sum_{k = 1}^n C_n^ka_k\right) + C_n^0a_0 = C_n^na_{n + 1} + \sum_{k = 1}^n (C_n^{k - 1} + C_n^k)a_k + C_n^0a_0 \\
+=& C_{n + 1}^{n + 1}a_{n + 1} + \sum_{k = 1}^n C_{n + 1}^ka_k + C_{n + 1}^0a_0 = \sum_{k = 0}^{n + 1} C_{n + 1}^ka_k
+\end{aligned}
+$$
+
+这就说明了在 $B_n$ 成立的基础上 $A_n$ 成立，其中第二个等号的依据为 $B_n$ 成立。
+
+之后我们证明 $A_n, B_n$ 能推出 $B_{n + 1}$。现在在 $A_n, B_n$ 均成立的基础上，考虑下述计算：
+
+$$
+\begin{aligned}
+&\sum_{k = 0}^{n + 1} C_{n + 1}^ka_{k + 1} = C_{n + 1}^0a_1 + \sum_{k = 1}^{n + 1} C_{n + 1}^ka_{k + 1} = \sum_{k = 1}^{n + 1} \frac{n + 1}{k}C_{n}^{k - 1}a_{k + 1} \\
+=& (n + 1)\sum_{k = 0}^{n} \frac{1}{k + 1}C_{n}^{k} \cdot (k + 1)(a_{k + 1} + a_k) = (n + 1)\left(\sum_{k = 0}^{n} C_{n}^{k}a_{k + 1} + \sum_{k = 0}^{n} C_{n}^{k}a_k\right) \\
+=& (n + 1)\left(n\sum_{k = 0}^{n} C_{n}^{k}a_k + \sum_{k = 0}^{n} C_{n}^{k}a_k\right) = (n + 1)\left[(n + 1)\sum_{k = 0}^{n} C_{n}^{k}a_k\right] = (n + 1)\sum_{k = 0}^{n + 1} C_{n + 1}^ka_k\\
+\end{aligned}
+$$
+
+这就说明了在 $A_n, B_n$ 成立的基础上 $B_{n + 1}$ 成立，其中倒数第二个等号的依据为 $B_n$ 成立，倒数第一个等号的依据为 $A_n$ 成立。
+
+而我们显然可以计算出 $a_2 = 1$，从而得知命题 $B_1$ 成立，进而据归纳法得到对任何的正整数 $n$，都有命题 $A_n$ 成立。据命题 $A_n$ 成立即可得到本问题欲证命题成立。
+
+# Problem 7
+
+已知正数数列 $\{x_k\}_{0 \leq k \leq n}$ 满足：
+
+$$
+x_0 = \sum_{k = 1}^n x_k
+$$
+
+定义数列 $\{y_k\}_{1 \leq k \leq n}$ 为：
+
+$$
+y_k := \sqrt{\sum_{i = 0}^{k - 1} x_i} \sqrt{\sum_{i = k}^n x_i}
+$$
+
+证明：
+
+$$
+1 < \sum_{k = 1}^n \frac{x_k}{y_k} < \frac{\pi}{2}
+$$
+
+## Solution
+
+根据均值不等式显然有：
+
+$$
+y_k = \sqrt{\sum_{i = 0}^{k - 1} x_i} \sqrt{\sum_{i = k}^n x_i} \leq \frac{1}{2}\left(\sum_{i = 0}^{k - 1} x_i + \sum_{i = k}^n x_i\right) = \frac{1}{2}\left(x_0 + \sum_{i = 1}^n x_i\right) = x_0
+$$
+
+并且由于：
+
+$$
+\sum_{i = 0}^{k - 1} x_i > x_0 = \sum_{i = 1}^n x_i > \sum_{i = k}^n x_i
+$$
+
+得知上述等号无法取到，那么：
+
+$$
+\sum_{k = 1}^n \frac{x_k}{y_k} > \sum_{k = 1}^n \frac{x_k}{x_0} = 1
+$$
+
+从而不等式左侧得证。
+
+为了证明不等式右侧，我们考虑下述数列 $\{S_k\}_{0 \leq k \leq n}$，其在 $k = 0$ 的时候定义为 $S_0 := 0$，在 $k > 0$ 的时候定义为：
+
+$$
+S_k := \sum_{i = 1}^k \frac{x_k}{x_0}
+$$
+
+考虑到 $\{x_k\}_{0 \leq k \leq n}$ 是正数数列，可以得知 $\{S_k\}_{0 \leq k \leq n}$ 是递增数列。另一方面，我们可以得知 $S_n = 1$。综合上述条件我们可以得知 $\{S_k\}_{0 \leq k \leq n}$ 各项均落在区间 $[0, 1]$ 上。
+
+那么即存在所有项均落在区间 $\left[0, \dfrac{\pi}{2}\right]$ 上的数列 $\{\theta_k\}_{0 \leq k \leq n}$ 使得 $\sin\theta_k = S_k$ 对所有 $0 \leq k \leq n$ 成立。此时 $\theta_0 = 0$ 并且 $\theta_n = \dfrac{\pi}{2}$。另一方面，据 $\{S_k\}_{0 \leq k \leq n}$ 是递增数列得知 $\{\theta_k\}_{0 \leq k \leq n}$ 是递增数列。
+
+从而我们得知：
+
+$$
+\begin{aligned}
+y_k &= \sqrt{\sum_{i = 0}^{k - 1} x_i} \sqrt{\sum_{i = k}^n x_i} = x_0 \sqrt{\sum_{i = 0}^{k - 1} \frac{x_i}{x_0}} \sqrt{\sum_{i = k}^n \frac{x_i}{x_0}} = x_0 \sqrt{1 + S_{k - 1}} \sqrt{S_n - S_{k - 1}} \\
+&= x_0 \sqrt{1 - S^2_{k - 1}} = x_0 \sqrt{1 - \sin^2\theta_{k - 1}} = x_0\cos\theta_{k - 1}
+\end{aligned}
+$$
+
+从而：
+
+$$
+\begin{aligned}
+\sum_{k = 1}^n \frac{x_k}{y_k} &= \sum_{k = 1}^n \frac{x_k}{x_0\cos\theta_{k - 1}} = \sum_{k = 1}^n \frac{S_k - S_{k - 1}}{\cos\theta_{k - 1}} = \sum_{k = 1}^n \frac{\sin\theta_k - \sin\theta_{k - 1}}{\cos\theta_{k - 1}} \\
+&= \sum_{k = 1}^n \frac{2\cos\dfrac{\theta_k + \theta_{k - 1}}{2}\sin\dfrac{\theta_k - \theta_{k - 1}}{2}}{\cos\theta_{k - 1}} < 2\sum_{k = 1}^n\sin\dfrac{\theta_k - \theta_{k - 1}}{2}
+\end{aligned}
+$$
+
+这里的不等号考虑到 $\{\theta_k\}_{0 \leq k \leq n}$ 是递增数列，从而 $\theta_k > \theta_{k - 1}$。
+
+应用不等式 $\sin x < x, x > 0$ 得到：
+
+$$
+\sum_{k = 1}^n \frac{x_k}{y_k} < 2\sum_{k = 1}^n\sin\dfrac{\theta_k - \theta_{k - 1}}{2} < \sum_{k = 1}^n \theta_k - \theta_{k - 1} = \theta_n - \theta_0 = \frac{\pi}{2}
+$$
+
+综上所述，证明完毕。

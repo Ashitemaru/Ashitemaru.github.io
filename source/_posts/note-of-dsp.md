@@ -10,7 +10,7 @@ category:
 
 $$
 \newcommand{\d}{\mathrm{d}}
-\newcommand{\j}{\mathrm{j}}
+\newcommand{\j}{\mathop{\mathrm{j}}}
 \newcommand{\b}{\boldsymbol}
 \newcommand{\lv}{\left[\begin{matrix}}
 \newcommand{\rv}{\end{matrix}\right]}

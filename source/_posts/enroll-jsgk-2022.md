@@ -31,7 +31,7 @@ category:
 
 ## Problem 2
 
-如果 ${\rm i}(1 - z) = 1$，求 $z + \overline z$ 的值。
+如果 $\mathop{\rm i}(1 - z) = 1$，求 $z + \overline z$ 的值。
 
 (A) $-2$
 (B) $-1$
@@ -40,13 +40,13 @@ category:
 
 ---
 
-假设 $z := a + b{\rm i}(a, b \in \mathbb R)$，那么：
+假设 $z := a + b\mathop{\rm i}(a, b \in \mathbb R)$，那么：
 
 $$
-1 = {\rm i}(1 - z) = {\rm i}((1 - a) - b{\rm i}) = b + (1 - a){\rm i}
+1 = \mathop{\rm i}(1 - z) = \mathop{\rm i}((1 - a) - b\mathop{\rm i}) = b + (1 - a)\mathop{\rm i}
 $$
 
-得到 $z = 1 + {\rm i}$，所以 $z + \overline z = 2\Re(z) = 2$，答案为 (D)。
+得到 $z = 1 + \mathop{\rm i}$，所以 $z + \overline z = 2\Re(z) = 2$，答案为 (D)。
 
 ## Problem 3
 
