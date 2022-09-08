@@ -7484,6 +7484,834 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
       </categories>
   </entry>
   <entry>
+    <title>简明日语自学手册 Chapter 2.5 古日语基本语法</title>
+    <url>/2022/08/21/ja-tutorial-ch2.5/</url>
+    <content><![CDATA[<p>本章主要介绍古代日语的基本语法，并据此分析现代日语中的古日语语法残余。</p>
+<span id="more"></span>
+<div class="note warning no-icon"><p>初学日语的读者可以暂且不用学习该部分，这一部分知识在大多数日语场景下均没有实际使用可能。本部分仅用于拓展性质学习。</p>
+</div>
+<h1 id="历史假名遣">历史假名遣</h1>
+<p>历史假名遣指的是在现代日语推行假名表音化（即假名严格和发音一一对应）之前所使用的假名表记法。相较于现代假名遣的五十音图，历史假名遣的五十音图的や行和わ行有所不同，其不同之处标注在下表：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">あ段</th>
+<th style="text-align: center;">い段</th>
+<th style="text-align: center;">う段</th>
+<th style="text-align: center;">え段</th>
+<th style="text-align: center;">お段</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">や行「現代仮名遣い」</td>
+<td style="text-align: center;">や ヤ</td>
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">ゆ ユ</td>
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">よ ヨ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">や行「歴史仮名遣い」</td>
+<td style="text-align: center;">や ヤ</td>
+<td style="text-align: center;"><strong>い イ</strong></td>
+<td style="text-align: center;">ゆ ユ</td>
+<td style="text-align: center;"><strong>え エ</strong></td>
+<td style="text-align: center;">よ ヨ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">わ行「現代仮名遣い」</td>
+<td style="text-align: center;">わ ワ</td>
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">を ヲ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">わ行「歴史仮名遣い」</td>
+<td style="text-align: center;">わ ワ</td>
+<td style="text-align: center;"><strong>ゐ ヰ</strong></td>
+<td style="text-align: center;"><strong>う ウ</strong></td>
+<td style="text-align: center;"><strong>ゑ ヱ</strong></td>
+<td style="text-align: center;">を ヲ</td>
+</tr>
+</tbody>
+</table>
+<p>由于历史假名遣并不一定满足假名和读音一一严格对应，所以仅使用五十音图是不能完全确定使用历史假名遣书写的文句的。但实际上，历史假名遣中需要注意的读音规则基本上仅有下述条目：</p>
+<ul>
+<li><p>は行假名不在词头的时候，发音应当为「ワ・イ・ウ・エ・オ」。这是因为著名的语音流变ハ行转呼，其基本含义为不在词头的は行假名在语音流变过程中辅音丢失（あ段则是辅音转变），而书写表记并未随着语音流变更改。例如写作「いはひ」实则读作「イウイ」，写作「いへ」实则读作「イエ」，但写作「はな」依然读作「ハナ」。</p></li>
+<li><p>元音重叠组合「あう・いう・えう・おう」的发音应当为「オー・ユー・ヨー・オー」。例如写作「あうむ」实则读作「オーム」，写作「いうなり」实则读作「ユーナリ」，写作「えうじ」实则读作「ヨージ」，写作「おうな」实则读作「オーナ」。</p></li>
+<li><p>上述两个规则可以联合使用。如写作「てふ」，首先根据第一条规则得到ハ行转呼后其发音为「てう」，再根据第二条元音重叠规则即可得到其实际的发音为「テヨー」，而这个音在现代的表记法中应当使用拗音标记，即「チョー」。同理，写作「けふ」实则读作「キョー」。</p></li>
+<li><p>「ゐ・ゑ・を」的发音分别为「イ・エ・オ」。这也是ハ行转呼中这三个假名丢失辅音的结果。例如写作「ゐる」实则读作「イル」，写作「こゑ」实则读作「コエ」，写作「をる」实则读作「オル」。</p></li>
+<li><p>「ぢ・づ」的发音分别为「ジ・ズ」。</p></li>
+<li><p>部分「む」的发音为「ン」，包括不在词头的「む」、助动词「む、らむ」以及助词「なむ」中的「む」。例如写作「ひむがし」实则读作「ヒンガシ」，写作「いくらむ」实则读作「イクラン」。</p></li>
+</ul>
+<h1 id="古日语活用形式与助动词">古日语活用形式与助动词</h1>
+<p>相较于现代日语的七种活用形式，古日语仅有六种活用形式，缺失的活用形式为意志形。另外，现代日语中的假定形在古日语中称为已然形。</p>
+<p>此外，古日语中常见的助动词与其和用言的接续要求均已经列在下表：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">助動詞</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">未然形</td>
+<td style="text-align: center;">る、らる、す、さす、しむ、ず、む、むず、じ、まし、まほし、り</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">連用形</td>
+<td style="text-align: center;">き、けり、つ、ぬ、たり①、けむ、たし</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">終止形</td>
+<td style="text-align: center;">らむ、らし、めり、べし、まじ、なり①</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">連体形</td>
+<td style="text-align: center;">なり②、たり②、ごとし</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">已然形</td>
+<td style="text-align: center;">り</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">命令形</td>
+<td style="text-align: center;">―</td>
+</tr>
+</tbody>
+</table>
+<p>需要注意的是，正常应当接续在用言终止形之后的助动词「らむ、らし、めり、べし、まじ、なり①」应用在在ラ变形（ラ变动词以及遵守ラ变动词变化规则的用言与助动词）之后时，ラ变形应当使用连体形。ラ变形、ラ变动词等概念后续具体阐释。</p>
+<p>另外，助动词「り」应用在四段动词之后时，四段动词应当使用已然形。应用在サ变动词之后时，サ变动词应当使用未然形。四段动词、サ变动词等概念后续具体阐释。</p>
+<p>常用助词则后续进行补充。</p>
+<h1 id="古日语的动词分类与活用">古日语的动词分类与活用</h1>
+<p>古日语的动词分为五个正格类型和四个变格类型。</p>
+<ul>
+<li><strong>四段动词</strong>。古语的四段动词基本上演化成为了现代的五段动词，新增加的一段即现代语之中的意志形。四段动词合法的词尾包括「く、ぐ、ふ、つ、る、ぶ、む、す」。这里与现代语相比缺失「ぬ」，这是因为古语中「死ぬ」并非四段动词。</li>
+<li><strong>上一段动词</strong>。古语的上一段动词基本上演化成为了现代的上一段动词。</li>
+<li><strong>下一段动词</strong>。这类动词包括「蹴る」，该动词演化为现代的五段动词。</li>
+<li><strong>上二段动词</strong>。古语的上二段动词基本上通过将词尾固化为イ段后添加新词尾「る」的方式演化成为了现代的上一段动词。</li>
+<li><strong>下二段动词</strong>。古语的下二段动词基本上通过将词尾固化为エ段后添加新词尾「る」的方式演化成为了现代的下一段动词。</li>
+<li><strong>ラ变动词</strong>。这类动词包括「あり、をり、はべり、いまそかり」，其中「あり」演化为现代的五段动词，而「をり、はべり、いまそかり」被废弃不使用。</li>
+<li><strong>ナ变动词</strong>。这类动词包括「死ぬ、往ぬ」，其中「死ぬ」演化为现代的五段动词，而「往ぬ」被废弃不使用。</li>
+<li><strong>カ变动词</strong>。这类动词包括「く」，该动词演化为现代的カ变动词。</li>
+<li><strong>サ变动词</strong>。这类动词包括「す、おはす」，其中「す」演化为现代的サ变动词，而「おはす」被废弃不使用。</li>
+</ul>
+<p>这些动词的六种活用形式如下所示：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">動詞類型</th>
+<th style="text-align: center;">終止形</th>
+<th style="text-align: center;">未然形</th>
+<th style="text-align: center;">連用形</th>
+<th style="text-align: center;">連体形</th>
+<th style="text-align: center;">已然形</th>
+<th style="text-align: center;">命令形</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">四段動詞「か行」</td>
+<td style="text-align: center;">書く</td>
+<td style="text-align: center;">書か</td>
+<td style="text-align: center;">書き</td>
+<td style="text-align: center;">書く</td>
+<td style="text-align: center;">書け</td>
+<td style="text-align: center;">書け</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">四段動詞「が行」</td>
+<td style="text-align: center;">泳ぐ</td>
+<td style="text-align: center;">泳が</td>
+<td style="text-align: center;">泳ぎ</td>
+<td style="text-align: center;">泳ぐ</td>
+<td style="text-align: center;">泳げ</td>
+<td style="text-align: center;">泳げ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">四段動詞「ば行」</td>
+<td style="text-align: center;">飛ぶ</td>
+<td style="text-align: center;">飛ば</td>
+<td style="text-align: center;">飛び</td>
+<td style="text-align: center;">飛ぶ</td>
+<td style="text-align: center;">飛べ</td>
+<td style="text-align: center;">飛べ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">四段動詞「ま行」</td>
+<td style="text-align: center;">読む</td>
+<td style="text-align: center;">読ま</td>
+<td style="text-align: center;">読み</td>
+<td style="text-align: center;">読む</td>
+<td style="text-align: center;">読め</td>
+<td style="text-align: center;">読め</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">四段動詞「は行」</td>
+<td style="text-align: center;">歌ふ</td>
+<td style="text-align: center;">歌は</td>
+<td style="text-align: center;">歌ひ</td>
+<td style="text-align: center;">歌ふ</td>
+<td style="text-align: center;">歌へ</td>
+<td style="text-align: center;">歌へ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">四段動詞「た行」</td>
+<td style="text-align: center;">立つ</td>
+<td style="text-align: center;">立た</td>
+<td style="text-align: center;">立ち</td>
+<td style="text-align: center;">立つ</td>
+<td style="text-align: center;">立て</td>
+<td style="text-align: center;">立て</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">四段動詞「ら行」</td>
+<td style="text-align: center;">降る</td>
+<td style="text-align: center;">降ら</td>
+<td style="text-align: center;">降り</td>
+<td style="text-align: center;">降る</td>
+<td style="text-align: center;">降れ</td>
+<td style="text-align: center;">降れ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">四段動詞「さ行」</td>
+<td style="text-align: center;">話す</td>
+<td style="text-align: center;">話さ</td>
+<td style="text-align: center;">話し</td>
+<td style="text-align: center;">話す</td>
+<td style="text-align: center;">話せ</td>
+<td style="text-align: center;">話せ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">上一段動詞「か行」</td>
+<td style="text-align: center;">着る</td>
+<td style="text-align: center;">き</td>
+<td style="text-align: center;">き</td>
+<td style="text-align: center;">きる</td>
+<td style="text-align: center;">きれ</td>
+<td style="text-align: center;">きよ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">上一段動詞「な行」</td>
+<td style="text-align: center;">似る</td>
+<td style="text-align: center;">に</td>
+<td style="text-align: center;">に</td>
+<td style="text-align: center;">にる</td>
+<td style="text-align: center;">にれ</td>
+<td style="text-align: center;">によ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">上一段動詞「は行」</td>
+<td style="text-align: center;">干る</td>
+<td style="text-align: center;">ひ</td>
+<td style="text-align: center;">ひ</td>
+<td style="text-align: center;">ひる</td>
+<td style="text-align: center;">ひれ</td>
+<td style="text-align: center;">ひよ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">上一段動詞「ま行」</td>
+<td style="text-align: center;">見る</td>
+<td style="text-align: center;">み</td>
+<td style="text-align: center;">み</td>
+<td style="text-align: center;">みる</td>
+<td style="text-align: center;">みれ</td>
+<td style="text-align: center;">みよ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">上一段動詞「や行」</td>
+<td style="text-align: center;">射る</td>
+<td style="text-align: center;">い</td>
+<td style="text-align: center;">い</td>
+<td style="text-align: center;">いる</td>
+<td style="text-align: center;">いれ</td>
+<td style="text-align: center;">いよ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">上一段動詞「わ行」</td>
+<td style="text-align: center;">居る</td>
+<td style="text-align: center;">ゐ</td>
+<td style="text-align: center;">ゐ</td>
+<td style="text-align: center;">ゐる</td>
+<td style="text-align: center;">ゐれ</td>
+<td style="text-align: center;">ゐよ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">下一段動詞</td>
+<td style="text-align: center;">蹴る</td>
+<td style="text-align: center;">け</td>
+<td style="text-align: center;">け</td>
+<td style="text-align: center;">ける</td>
+<td style="text-align: center;">けれ</td>
+<td style="text-align: center;">けよ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">上二段動詞「か行」</td>
+<td style="text-align: center;">生く</td>
+<td style="text-align: center;">生き</td>
+<td style="text-align: center;">生き</td>
+<td style="text-align: center;">生くる</td>
+<td style="text-align: center;">生くれ</td>
+<td style="text-align: center;">生きよ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">上二段動詞「が行」</td>
+<td style="text-align: center;">過ぐ</td>
+<td style="text-align: center;">過ぎ</td>
+<td style="text-align: center;">過ぎ</td>
+<td style="text-align: center;">過ぐる</td>
+<td style="text-align: center;">過ぐれ</td>
+<td style="text-align: center;">過ぎよ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">上二段動詞「た行」</td>
+<td style="text-align: center;">落つ</td>
+<td style="text-align: center;">落ち</td>
+<td style="text-align: center;">落ち</td>
+<td style="text-align: center;">落つる</td>
+<td style="text-align: center;">落つれ</td>
+<td style="text-align: center;">落ちよ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">上二段動詞「だ行」</td>
+<td style="text-align: center;">閉づ</td>
+<td style="text-align: center;">閉ぢ</td>
+<td style="text-align: center;">閉ぢ</td>
+<td style="text-align: center;">閉づる</td>
+<td style="text-align: center;">閉づれ</td>
+<td style="text-align: center;">閉ぢよ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">上二段動詞「は行」</td>
+<td style="text-align: center;">恋ふ</td>
+<td style="text-align: center;">恋ひ</td>
+<td style="text-align: center;">恋ひ</td>
+<td style="text-align: center;">恋ふる</td>
+<td style="text-align: center;">恋ふれ</td>
+<td style="text-align: center;">恋ひよ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">上二段動詞「ば行」</td>
+<td style="text-align: center;">詫ぶ</td>
+<td style="text-align: center;">詫び</td>
+<td style="text-align: center;">詫び</td>
+<td style="text-align: center;">詫ぶる</td>
+<td style="text-align: center;">詫ぶれ</td>
+<td style="text-align: center;">詫びよ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">上二段動詞「ま行」</td>
+<td style="text-align: center;">恨む</td>
+<td style="text-align: center;">恨み</td>
+<td style="text-align: center;">恨み</td>
+<td style="text-align: center;">恨むる</td>
+<td style="text-align: center;">恨むれ</td>
+<td style="text-align: center;">恨みよ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">上二段動詞「や行」</td>
+<td style="text-align: center;">老ゆ</td>
+<td style="text-align: center;">老い</td>
+<td style="text-align: center;">老い</td>
+<td style="text-align: center;">老ゆる</td>
+<td style="text-align: center;">老ゆれ</td>
+<td style="text-align: center;">老いよ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">上二段動詞「ら行」</td>
+<td style="text-align: center;">懲る</td>
+<td style="text-align: center;">懲り</td>
+<td style="text-align: center;">懲り</td>
+<td style="text-align: center;">懲るる</td>
+<td style="text-align: center;">懲るれ</td>
+<td style="text-align: center;">懲りよ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">下二段動詞「か行」</td>
+<td style="text-align: center;">受く</td>
+<td style="text-align: center;">受け</td>
+<td style="text-align: center;">受け</td>
+<td style="text-align: center;">受くる</td>
+<td style="text-align: center;">受くれ</td>
+<td style="text-align: center;">受けよ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">下二段動詞「が行」</td>
+<td style="text-align: center;">告ぐ</td>
+<td style="text-align: center;">告げ</td>
+<td style="text-align: center;">告げ</td>
+<td style="text-align: center;">告ぐる</td>
+<td style="text-align: center;">告ぐれ</td>
+<td style="text-align: center;">告げよ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">下二段動詞「た行」</td>
+<td style="text-align: center;">捨つ</td>
+<td style="text-align: center;">捨て</td>
+<td style="text-align: center;">捨て</td>
+<td style="text-align: center;">捨つる</td>
+<td style="text-align: center;">捨つれ</td>
+<td style="text-align: center;">捨てよ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">下二段動詞「だ行」</td>
+<td style="text-align: center;">出づ</td>
+<td style="text-align: center;">出で</td>
+<td style="text-align: center;">出で</td>
+<td style="text-align: center;">出づる</td>
+<td style="text-align: center;">出づれ</td>
+<td style="text-align: center;">出でよ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">下二段動詞「は行」</td>
+<td style="text-align: center;">答ふ</td>
+<td style="text-align: center;">答へ</td>
+<td style="text-align: center;">答へ</td>
+<td style="text-align: center;">答ふる</td>
+<td style="text-align: center;">答ふれ</td>
+<td style="text-align: center;">答へよ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">下二段動詞「ば行」</td>
+<td style="text-align: center;">並ぶ</td>
+<td style="text-align: center;">並べ</td>
+<td style="text-align: center;">並べ</td>
+<td style="text-align: center;">並ぶる</td>
+<td style="text-align: center;">並ぶれ</td>
+<td style="text-align: center;">並べよ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">下二段動詞「さ行」</td>
+<td style="text-align: center;">失す</td>
+<td style="text-align: center;">失せ</td>
+<td style="text-align: center;">失せ</td>
+<td style="text-align: center;">失する</td>
+<td style="text-align: center;">失すれ</td>
+<td style="text-align: center;">失せよ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">下二段動詞「ざ行」</td>
+<td style="text-align: center;">混ず</td>
+<td style="text-align: center;">混ぜ</td>
+<td style="text-align: center;">混ぜ</td>
+<td style="text-align: center;">混ずる</td>
+<td style="text-align: center;">混ずれ</td>
+<td style="text-align: center;">混ぜよ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">下二段動詞「ま行」</td>
+<td style="text-align: center;">求む</td>
+<td style="text-align: center;">求め</td>
+<td style="text-align: center;">求め</td>
+<td style="text-align: center;">求むる</td>
+<td style="text-align: center;">求むれ</td>
+<td style="text-align: center;">求めよ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">下二段動詞「や行」</td>
+<td style="text-align: center;">見ゆ</td>
+<td style="text-align: center;">見え</td>
+<td style="text-align: center;">見え</td>
+<td style="text-align: center;">見ゆる</td>
+<td style="text-align: center;">見ゆれ</td>
+<td style="text-align: center;">見えよ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">下二段動詞「ら行」</td>
+<td style="text-align: center;">入る</td>
+<td style="text-align: center;">入れ</td>
+<td style="text-align: center;">入れ</td>
+<td style="text-align: center;">入るる</td>
+<td style="text-align: center;">入るれ</td>
+<td style="text-align: center;">入れよ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">下二段動詞「わ行」</td>
+<td style="text-align: center;">植う</td>
+<td style="text-align: center;">植ゑ</td>
+<td style="text-align: center;">植ゑ</td>
+<td style="text-align: center;">植うる</td>
+<td style="text-align: center;">植うれ</td>
+<td style="text-align: center;">植ゑよ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">下二段動詞「あ行単字」</td>
+<td style="text-align: center;"><code>@ 得 う</code></td>
+<td style="text-align: center;">え</td>
+<td style="text-align: center;">え</td>
+<td style="text-align: center;">うる</td>
+<td style="text-align: center;">うれ</td>
+<td style="text-align: center;">えよ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">下二段動詞「な行単字」</td>
+<td style="text-align: center;"><code>@ 寝 ぬ</code></td>
+<td style="text-align: center;">ね</td>
+<td style="text-align: center;">ね</td>
+<td style="text-align: center;">ぬる</td>
+<td style="text-align: center;">ぬれ</td>
+<td style="text-align: center;">ねよ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">下二段動詞「は行単字」</td>
+<td style="text-align: center;"><code>@ 経 ふ</code></td>
+<td style="text-align: center;">へ</td>
+<td style="text-align: center;">へ</td>
+<td style="text-align: center;">ふる</td>
+<td style="text-align: center;">ふれ</td>
+<td style="text-align: center;">へよ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">ラ変動詞</td>
+<td style="text-align: center;">有り</td>
+<td style="text-align: center;">有ら</td>
+<td style="text-align: center;">有り</td>
+<td style="text-align: center;">有る</td>
+<td style="text-align: center;">有れ</td>
+<td style="text-align: center;">有れ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">ナ変動詞</td>
+<td style="text-align: center;">死ぬ</td>
+<td style="text-align: center;">死な</td>
+<td style="text-align: center;">死に</td>
+<td style="text-align: center;">死ぬる</td>
+<td style="text-align: center;">死ぬれ</td>
+<td style="text-align: center;">死ね</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">サ変動詞</td>
+<td style="text-align: center;">す</td>
+<td style="text-align: center;">せ</td>
+<td style="text-align: center;">し</td>
+<td style="text-align: center;">する</td>
+<td style="text-align: center;">すれ</td>
+<td style="text-align: center;">せよ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">カ変動詞</td>
+<td style="text-align: center;">く</td>
+<td style="text-align: center;">こ</td>
+<td style="text-align: center;">き</td>
+<td style="text-align: center;">くる</td>
+<td style="text-align: center;">くれ</td>
+<td style="text-align: center;">こ・こよ</td>
+</tr>
+</tbody>
+</table>
+<p>和现代语对比，可以基本归纳出下述动词演变规律：</p>
+<ul>
+<li><p>古语的四段动词几乎完全演化为现代语五段动词，且除了某一行假名标记发生变动（即「ふ」转写为「う」）和增加意志形之外，其余保持规则。当然，该规则存在例外，类似「借る、足る、飽く」等四段动词则演化为了现代的上一段动词「借りる、足りる、飽きる」。</p></li>
+<li><p>古语的二段动词在现代语之中的残留痕迹较为明显。特征是除去词干外，有类似「きる、ける」的以イ段或者エ段假名加上「る」结尾的双假名词尾。这里的イ段或者エ段假名是古语残留的词尾，但是已经固化，而「る」则是现代语的词尾。另外，由于古语下一段动词完全合并入现代语五段动词，所以现代的下一段动词几乎全部都是古语下二段动词的演变产物。</p></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">終止形</th>
+<th style="text-align: center;">未然形</th>
+<th style="text-align: center;">連用形</th>
+<th style="text-align: center;">連体形</th>
+<th style="text-align: center;">已然形</th>
+<th style="text-align: center;">命令形</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">文語</td>
+<td style="text-align: center;">捨つ</td>
+<td style="text-align: center;">捨て</td>
+<td style="text-align: center;">捨て</td>
+<td style="text-align: center;">捨つる</td>
+<td style="text-align: center;">捨つれ</td>
+<td style="text-align: center;">捨てよ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">現代語</td>
+<td style="text-align: center;">捨てる</td>
+<td style="text-align: center;">捨て</td>
+<td style="text-align: center;">捨て</td>
+<td style="text-align: center;"><strong>捨てる</strong></td>
+<td style="text-align: center;"><strong>捨てれ</strong></td>
+<td style="text-align: center;"><strong>捨てろ・捨てよ</strong></td>
+</tr>
+</tbody>
+</table>
+<p>但是在合流过程中，三个单音节的下二段动词「う、ぬ、ふ」演化路径有差别。「ぬ、ふ」类似一般的下二段动词，演化为现代的下一段动词「寝る、経る」。但是「う」则一定程度上保留了下二段动词的痕迹，演化出了两个动词「うる、える」，汉字表记均为「得る」。一般而言，使用较多的是「える」读音，但是「うる」音依然可能会出现，这也就是一种演化残留。</p>
+<p>当然，该规则存在例外，类似「恨む」等上二段动词则演化为了现代的五段动词「恨む」。</p>
+<ul>
+<li>古语的上一段动词几乎完全演化为现代的上一段动词，且几乎没有发生活用规则变动。而古语唯一的下一段动词则直接变为现代的五段动词。</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">終止形</th>
+<th style="text-align: center;">未然形</th>
+<th style="text-align: center;">連用形</th>
+<th style="text-align: center;">連体形</th>
+<th style="text-align: center;">已然形</th>
+<th style="text-align: center;">命令形</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">文語</td>
+<td style="text-align: center;">着る</td>
+<td style="text-align: center;">き</td>
+<td style="text-align: center;">き</td>
+<td style="text-align: center;">きる</td>
+<td style="text-align: center;">きれ</td>
+<td style="text-align: center;">きよ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">現代語</td>
+<td style="text-align: center;">着る</td>
+<td style="text-align: center;">き</td>
+<td style="text-align: center;">き</td>
+<td style="text-align: center;">きる</td>
+<td style="text-align: center;">きれ</td>
+<td style="text-align: center;"><strong>きろ・きよ</strong></td>
+</tr>
+</tbody>
+</table>
+<p>可以发现现代语中结构简单的上一段动词大部分为古语上一段动词的残余。事实上古语中的上一段动词也极少，大约仅有二十个左右。</p>
+<ul>
+<li>古语的ラ变动词以及ナ变动词除了部分不常用词语外完全合并进现代语五段动词，而カ变动词以及サ变动词除了部分不常用词语外在现代语中保持变格活用。</li>
+</ul>
+<h1 id="古日语的形容词分类与活用">古日语的形容词分类与活用</h1>
+<p>古语形容词分为两类，即ク活用形容词和シク活用形容词，活用规则见下。</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">形容詞類型</th>
+<th style="text-align: center;">終止形</th>
+<th style="text-align: center;">未然形</th>
+<th style="text-align: center;">連用形</th>
+<th style="text-align: center;">連体形</th>
+<th style="text-align: center;">已然形</th>
+<th style="text-align: center;">命令形</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">ク活用「第一」</td>
+<td style="text-align: center;">無し</td>
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">無く</td>
+<td style="text-align: center;">無き</td>
+<td style="text-align: center;">無けれ</td>
+<td style="text-align: center;">―</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">ク活用「第二」</td>
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">無から</td>
+<td style="text-align: center;">無かり</td>
+<td style="text-align: center;">無かる</td>
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">無かれ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">シク活用「第一」</td>
+<td style="text-align: center;">美し</td>
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">美しく</td>
+<td style="text-align: center;">美しき</td>
+<td style="text-align: center;">美しけれ</td>
+<td style="text-align: center;">―</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">シク活用「第二」</td>
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">美しから</td>
+<td style="text-align: center;">美しかり</td>
+<td style="text-align: center;">美しかる</td>
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">美しかれ</td>
+</tr>
+</tbody>
+</table>
+<p>这里的第二活用则是一种特殊的使用方法，也就是将形容词连用形「○く」加上「あり」后用「あり」的活用来弥补原先形容词规则中缺失的未然形和命令形。在演变过程中，「○くあり」逐渐连读为「○かり」，从而可以认为这是形容词的一种特殊活用，不将其认为是「あり」的活用。由于形容词第二活用继承自ラ变动词的活用，所以第二活用的形容词是一种ラ变形。</p>
+<p>一般而言，第一活用也称为主活用，第二活用也称为辅助活用。第二活用的主要使用场景为接续各类助动词以及利用命令形表达命令，其余场景下形容词多采用第一活用。当然，该规则存在例外，形容词接续打消接续助词「で」的时候使用第二活用，而接续断定助动词「なり」的时候使用第一活用。</p>
+<p>古语形容词演变为现代语形容词的时候，两种活用合流，并且黏性词尾从「し」变为「い」。具体演变为，ク活用形容词直接将「し」变为「い」，而シク活用形容词直接加上新词尾「い」。而各种活用中，加「あり」词尾产生的活用逐步消失或进一步演变，而现代语中形容词规则占主流的依然是形容词的第一活用规则。对比表如下。</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">形容詞類型</th>
+<th style="text-align: center;">終止形</th>
+<th style="text-align: center;">未然形</th>
+<th style="text-align: center;">連用形</th>
+<th style="text-align: center;">連体形</th>
+<th style="text-align: center;">已然形</th>
+<th style="text-align: center;">命令形</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">ク活用「第一」</td>
+<td style="text-align: center;">無し</td>
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">無く</td>
+<td style="text-align: center;">無き</td>
+<td style="text-align: center;">無けれ</td>
+<td style="text-align: center;">―</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">ク活用「第二」</td>
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">無から</td>
+<td style="text-align: center;">無かり</td>
+<td style="text-align: center;">無かる</td>
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">無かれ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">現代語</td>
+<td style="text-align: center;">無い</td>
+<td style="text-align: center;">無かろ</td>
+<td style="text-align: center;">無く・無かっ</td>
+<td style="text-align: center;">無い</td>
+<td style="text-align: center;">無けれ</td>
+<td style="text-align: center;">―</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">シク活用「第一」</td>
+<td style="text-align: center;">美し</td>
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">美しく</td>
+<td style="text-align: center;">美しき</td>
+<td style="text-align: center;">美しけれ</td>
+<td style="text-align: center;">―</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">シク活用「第二」</td>
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">美しから</td>
+<td style="text-align: center;">美しかり</td>
+<td style="text-align: center;">美しかる</td>
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">美しかれ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">現代語</td>
+<td style="text-align: center;">美しい</td>
+<td style="text-align: center;">美しかろ</td>
+<td style="text-align: center;">美しく・美しかっ</td>
+<td style="text-align: center;">美しい</td>
+<td style="text-align: center;">美しけれ</td>
+<td style="text-align: center;">―</td>
+</tr>
+</tbody>
+</table>
+<p>这种演变解释了一个语言现象，即现代语中有大量的「しい」结尾的形容词，这些形容词几乎全部是古语シク活用形容词演变的遗留。另外，现代语的形容词依然保留了部分古语用法，比如以「し」作词尾的形容词依然存留于口语中，比如「なし、よし」等惯用语。</p>
+<h1 id="古日语的形容动词分类与活用">古日语的形容动词分类与活用</h1>
+<p>古语形容动词分为两类，即ナリ活用形容词和タリ活用形容词，活用规则见下。</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">形容動詞類型</th>
+<th style="text-align: center;">終止形</th>
+<th style="text-align: center;">未然形</th>
+<th style="text-align: center;">連用形</th>
+<th style="text-align: center;">連体形</th>
+<th style="text-align: center;">已然形</th>
+<th style="text-align: center;">命令形</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">ナリ活用</td>
+<td style="text-align: center;">静かなり</td>
+<td style="text-align: center;">静かなら</td>
+<td style="text-align: center;">静かなり・静かに</td>
+<td style="text-align: center;">静かなる</td>
+<td style="text-align: center;">静かなれ</td>
+<td style="text-align: center;">静かなれ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">タリ活用</td>
+<td style="text-align: center;">平然たり</td>
+<td style="text-align: center;">平然たら</td>
+<td style="text-align: center;">平然たり・平然と</td>
+<td style="text-align: center;">平然たる</td>
+<td style="text-align: center;">平然たれ</td>
+<td style="text-align: center;">平然たれ</td>
+</tr>
+</tbody>
+</table>
+<p>这里所有的活用和ラ变动词很类似。有一种看法是，形容动词活用本身就是词干连用形接续「あり」后用「あり」的活用表达的。而和形容词第二活用发生连读类似，「○にあり・○とあり」随后连读为「○なり・○たり」，从而形成了形容动词活用规则。基于此，由于形容动词活用继承自ラ变动词的活用，所以形容动词是一种ラ变形。</p>
+<p>一般而言，形容动词接续一般动词、接续助词「て、して」的时候使用「○に・○と」连用形，其余场景下使用「○なり・○たり」连用形。</p>
+<p>古语形容动词演变为现代语形容词的时候，两种活用并未合流，并且活用词尾发生了较大的变化。</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">形容動詞類型</th>
+<th style="text-align: center;">終止形</th>
+<th style="text-align: center;">未然形</th>
+<th style="text-align: center;">連用形</th>
+<th style="text-align: center;">連体形</th>
+<th style="text-align: center;">已然形</th>
+<th style="text-align: center;">命令形</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">ナリ活用</td>
+<td style="text-align: center;">静かなり</td>
+<td style="text-align: center;">静かなら</td>
+<td style="text-align: center;">静かなり・静かに</td>
+<td style="text-align: center;">静かなる</td>
+<td style="text-align: center;">静かなれ</td>
+<td style="text-align: center;">静かなれ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">現代語ダ活用</td>
+<td style="text-align: center;">静かだ</td>
+<td style="text-align: center;">静かだろ</td>
+<td style="text-align: center;">静かで・静かだっ・静かに</td>
+<td style="text-align: center;">静かな</td>
+<td style="text-align: center;">静かなら</td>
+<td style="text-align: center;">―</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">タリ活用</td>
+<td style="text-align: center;">平然たり</td>
+<td style="text-align: center;">平然たら</td>
+<td style="text-align: center;">平然たり・平然と</td>
+<td style="text-align: center;">平然たる</td>
+<td style="text-align: center;">平然たれ</td>
+<td style="text-align: center;">平然たれ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">現代語タルト活用</td>
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">平然と</td>
+<td style="text-align: center;">平然たる</td>
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">―</td>
+</tr>
+</tbody>
+</table>
+<p>目前来看，形容动词的演变是相当不规则的。</p>
+<div class="note info no-icon"><p>目前我正使用的古日语课程之中，是这样介绍ナリ活用形容动词演变的。</p>
+<p>首先是「○で」连用形的产生。在使用ナリ活用形容动词修饰的时候常常需要使用连用形接续助词「て」，也就是ナリ活用形容动词常常具有词尾「○にて」。最后「に」音脱落并发生浊化，将助词「て」吸收产生现代语第一连用形「○で」。</p>
+<p>室町时代，ナリ活用形容动词已经出现了尾音「る」脱落的现象，即连体形已经逐步以「な」音结尾，并且在部分情况下，终止形也开始使用「な」结尾的形式。另一方面，新产生的连用形「○で」接续动词「ある」产生了新的连体和终止形「○である」，这种形式之后又发生了尾音「る」脱落，演变为「○であ」。而这个形式在关西演化为「○ぢゃ」，在关东演化为「○だ」。此时这些形式均处于混用状态，最后「○だ」使用频率压过其余形式变为现代语的终止形，「○な」则压过其他形式变为现代语的连体形。</p>
+<p>上述演化中的连体（终止）形「○ぢゃ」开始用于接续「う、た」两个助词，分别表示意识和过去，这分别是未然形和连用形的作用。也就是说未然形接续「う」开始出现「○ぢゃらう」的形式，连用形接续「た」开始出现「○ぢゃった」的形式。随后「ぢゃら」和「ぢゃっ」音便为「だろ」和「だっ」，形成了现代语的未然形和第二连用形。</p>
+<p>现代语假定形「○なら」则是由古语已然形「○なれ」接续助词「ば」得到「○なれば」后约音产生。</p>
+<p>命令形则在演化的时候由于可以使用动词命令形代替表示而逐步丢失。</p>
+</div>
+]]></content>
+      <categories>
+        <category>【学习笔记】日语</category>
+      </categories>
+  </entry>
+  <entry>
     <title>简明日语自学手册 Chapter 2 日语基础语法与用言活用规则</title>
     <url>/2022/08/21/ja-tutorial-ch2/</url>
     <content><![CDATA[<p>本章主要介绍日语的基本语法和基本的语句结构，并且简单介绍日语用言活用系统。本章节的作用为为下一章节的助动词、助词接续规则做铺垫。</p>
