@@ -11338,7 +11338,6 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <li>大二夏季学期《汇编语言程序设计》</li>
 <li>大三秋季学期《信号处理原理》</li>
 <li>大三秋季学期《计算机网络原理》</li>
-<li>大四秋季学期《抽象代数 (1)》《抽象代数 (2)》</li>
 <li>《GAMES101》笔记</li>
 <li>【实验室】强化学习入门笔记 &amp; Sutton 书笔记</li>
 </ul></li>
@@ -11398,95 +11397,6 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 ]]></content>
       <categories>
         <category>【杂谈】碎碎念</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>《抽象代数 (1)》学习笔记</title>
-    <url>/2022/05/31/note-of-aa-1/</url>
-    <content><![CDATA[<p>大约是由于还是想学一点数学，所以大四趁着没有培养方案要求了选了《抽象代数 (2)》。但是平心而论自己的抽象代数水平不过是翻过一点点 Artin 而已，于是问同学要来了这位老师《抽象代数 (1)》的课件，自己先学着一点吧。</p>
-<span id="more"></span>
-<h1 id="抽象代数引论">抽象代数引论</h1>
-<h2 id="几何体的对称性">几何体的对称性</h2>
-<p>我们现在关注几何体的对称性，不妨先考虑下述定义：</p>
-<div class="note info no-icon"><p><strong>Definition 1.01</strong> 我们定义标准欧氏空间 <span class="math inline">\(\mathbb R^n\)</span> 上的<strong>等距（Isometry）</strong>变换 <span class="math inline">\(f: \mathbb R^n \to \mathbb R^n\)</span> 是满足对于任何的 <span class="math inline">\(x, y \in \mathbb R^n\)</span> 都有：</p>
-<p><span class="math display">\[
-d(x, y) = d(f(x), f(y))
-\]</span></p>
-<p>的变换。</p>
-<p>这里 <span class="math inline">\(d(x, y)\)</span> 表示欧氏空间 <span class="math inline">\(\mathbb R^n\)</span> 上两点 <span class="math inline">\(x, y\)</span> 的欧氏距离。</p>
-</div>
-<p>此外，我们沿用下述定义：</p>
-<div class="note info no-icon"><p><strong>Definition 1.02</strong> 已知内积空间 <span class="math inline">\(V\)</span> 上的线性变换 <span class="math inline">\(\mathcal{A}: V \to V\)</span>，我们称 <span class="math inline">\(\mathcal{A}\)</span> 是<strong>正交变换</strong>，如果其保持内积，即对于任何的 <span class="math inline">\(x, y \in V\)</span>，都有：</p>
-<p><span class="math display">\[
-x \cdot y = \mathcal{A}(x) \cdot \mathcal{A}(y)
-\]</span></p>
-<p>这里 <span class="math inline">\(\cdot\)</span> 表示线性空间 <span class="math inline">\(V\)</span> 上的内积。</p>
-</div>
-<p>我们可以证明下述定理：</p>
-<div class="note success no-icon"><p><strong>Theorem 1.01</strong> 任何的等距变换均可以唯一分解为一个正交变换和平移变换的复合。</p>
-</div>
-<p>不妨假设我们我们现在讨论的是 <span class="math inline">\(\mathbb{R}^n\)</span> 上的等距变换 <span class="math inline">\(f\)</span>，不妨定义 <span class="math inline">\(a := f(\boldsymbol{0}_n)\)</span>，定义平移变换：</p>
-<p><span class="math display">\[
-g: x \mapsto x - a
-\]</span></p>
-<p>我们下面只需要证明 <span class="math inline">\(h := g \circ f\)</span> 是一个正交变换即可说明该分解的存在性，因为如果该断言成立就说明 <span class="math inline">\(f = g^{-1} \circ h\)</span>，这样就构造出了 <span class="math inline">\(f\)</span> 的分解。</p>
-<p>首先显然能够得到 <span class="math inline">\(h\)</span> 也是等距变换，这里省略证明。同时我们还得知 <span class="math inline">\(h\)</span> 保原点，即 <span class="math inline">\(h(\boldsymbol{0}_n) = \boldsymbol{0}_n\)</span>。</p>
-<p>现在我们讨论的内积空间是 <span class="math inline">\(\mathbb{R}^n\)</span>。基于此，根据 <span class="math inline">\(h\)</span> 的等距性质得到对于任何的 <span class="math inline">\(x, y \in \mathbb{R}^n\)</span> 都有：</p>
-<p><span class="math display">\[
-[h(x) - h(y)]^T[h(x) - h(y)] = (x - y)^T(x - y)
-\]</span></p>
-<p>令 <span class="math inline">\(y = \boldsymbol{0}_n\)</span> 得到对于任何的 <span class="math inline">\(x \in \mathbb{R}^n\)</span> 都有：</p>
-<p><span class="math display">\[
-h(x)^Th(x) = x^Tx
-\]</span></p>
-<p>展开上述根据等距变换得到的式子：</p>
-<p><span class="math display">\[
-h(x)^Th(x) + h(y)^Th(y) - 2h(x)^Th(y) = x^Tx + y^Ty - 2x^Ty
-\]</span></p>
-<p>根据推论即可知道 <span class="math inline">\(h(x)^Th(x) = x^Tx, h(y)^Th(y) = y^Ty\)</span>，即可得到对于任何的 <span class="math inline">\(x, y \in \mathbb{R}^n\)</span> 都有：</p>
-<p><span class="math display">\[
-h(x)^Th(y) = x^Ty
-\]</span></p>
-<p>这说明了 <span class="math inline">\(h\)</span> 是保内积的。</p>
-<p>那么任意取 <span class="math inline">\(x_1 \neq x_2, y_1, y_2 \in \mathbb{R}^n\)</span>，显然有：</p>
-<p><span class="math display">\[
-h(x_i)^Th(y_1 + y_2) = x_i^T(y_1 + y_2) = x_i^Ty_1 + x_i^Ty_2 = h(x_i)^Th(y_1) + h(x_i)^Th(y_2) 
-\]</span></p>
-<p>这里 <span class="math inline">\(i \in \{1, 2\}\)</span>，从而：</p>
-<p><span class="math display">\[
-h(x_i)^T[h(y_1 + y_2) - h(y_1) - h(y_2)] = 0, i \in \{1, 2\}
-\]</span></p>
-<p>两式作差：</p>
-<p><span class="math display">\[
-[h(x_1) - h(x_2)]^T[h(y_1 + y_2) - h(y_1) - h(y_2)] = 0
-\]</span></p>
-<p>显然 <span class="math inline">\(h(x_1) \neq h(x_2)\)</span>，否则 <span class="math inline">\(|h(x_1) - h(x_2)| = 0 \neq |x_1 - x_2|\)</span>。所以只能得到：</p>
-<p><span class="math display">\[
-h(y_1 + y_2) = h(y_1) + h(y_2)
-\]</span></p>
-<p>同样，任意取 <span class="math inline">\(x_1 \neq x_2, y \in \mathbb{R}^n\)</span> 以及 <span class="math inline">\(a \in \mathbb{R}\)</span>，也能同理推出下述：</p>
-<p><span class="math display">\[
-[h(x_1) - h(x_2)]^T[h(ay) - ah(y)] = 0
-\]</span></p>
-<p>最后得到：</p>
-<p><span class="math display">\[
-h(ay) = ah(y)
-\]</span></p>
-<p>这就说明了 <span class="math inline">\(h\)</span> 是线性的，结合其保内积的性质得知 <span class="math inline">\(h\)</span> 是正交变换。</p>
-<hr />
-<p>下面说明这样的分解唯一。事实上我们只需要考虑正交变换保原点即可得知分解出的平移变换仅有可能是 <span class="math inline">\(g: x \mapsto x + f(\boldsymbol{0}_n)\)</span>。而根据平移变换的可逆性，显然不可能具有多个正交变换 <span class="math inline">\(h\)</span> 令 <span class="math inline">\(f = h \circ g\)</span>，即仅有可能令 <span class="math inline">\(h := f \circ g^{-1}\)</span>，唯一性证明完毕。</p>
-<p>基于上述论述，我们可以得到下述推论：</p>
-<div class="note success no-icon"><p><strong>Theorem 1.02</strong> 等距变换是可逆变换。</p>
-</div>
-<p>我们记 <span class="math inline">\({\rm Iso}(\mathbb{R}^n)\)</span> 为空间 <span class="math inline">\(\mathbb{R}^n\)</span> 上的所有等距变换构成的群，即<strong>等距群（Isometry group）</strong>。另外，我们将 <span class="math inline">\(\mathbb{R}^n\)</span> 的子集 <span class="math inline">\(X\)</span> 称为<strong>几何体</strong>，称满足 <span class="math inline">\(f(X) = X\)</span> 的 <span class="math inline">\(f \in {\rm Iso}(\mathbb{R}^n)\)</span> 为 <span class="math inline">\(X\)</span> 的一个<strong>对称（Symmetry）</strong>。几何体 <span class="math inline">\(X\)</span> 的所有对称构成的群记为 <span class="math inline">\(\mathcal{S}(X)\)</span>，几何体的对称群刻画了该几何体的对称性质。</p>
-<h2 id="多项式根的对称性">多项式根的对称性</h2>
-<p>考虑定义：</p>
-<div class="note info no-icon"><p><strong>Definition 1.03</strong> 如果复数集的子集 <span class="math inline">\(A \subseteq \mathbb{C}\)</span> 包含 <span class="math inline">\(0, 1\)</span>，并且对于复数的四则运算（除数非零）封闭，那么 <span class="math inline">\(A\)</span> 是复数集上的一个<strong>数域</strong>。</p>
-<p>特别地，我们知道任何复数集上的数域均必然包含有理数域 <span class="math inline">\(\mathbb{Q}\)</span>。</p>
-</div>
-]]></content>
-      <categories>
-        <category>【学习笔记】数学</category>
       </categories>
   </entry>
   <entry>
