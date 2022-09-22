@@ -32,12 +32,9 @@ Sakana 单推 ❤。
     - 《GAMES101》笔记
     - 【实验室】强化学习入门笔记 & Sutton 书笔记
 - 论文笔记
-    - CG
-        - Soft Rasterizer - A Differentiable Renderer for Image-based 3D Reasoning
-    - 流媒体传输
-        - Stick - A Harmonious Fusion of Buffer-based and Learning-based Approach for Adaptive Streaming
-        - Comyco - Quality-Aware Adaptive Video Streaming via Imitation Learning
-        - Neural Adaptive Video Streaming with Pensieve
+    - 2022 年 2 月论文合集
+    - 2022 年 8 月论文合集
+    - 2022 年 9 月论文合集
 - 日语笔记
     - 语法手册
     - 汉文相关笔记
