@@ -6191,7 +6191,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 </div>
 <p>前者则更倾向于“把资料取出来给我”的含义，而后者则更倾向于“请取出资料”的含义。补充一点，上述两句话在口语中无法区分，但是可以通过对话情境上下文作出区分。</p>
 <p>而在新闻标题、标识语等需要节省文字空间的书面条件下，这类词语无论表达何种细节含义也倾向于使用汉字表记以节省空间。</p>
-<p>此外，部分日语词语本身不具有汉字表记，这类词语仅能使用假名表记。这类词主要是各类助词和助动词，以及部分本土的副词。例如，表示否定的助词「ない」和含义为“整洁、利落”的副词「さっぱり」。</p>
+<p>此外，部分日语词语本身不具有汉字表记，这类词语仅能使用假名表记。这类词主要是各类助词和助动词，以及部分本土的副词。例如，表示否定的助动词「ない」和含义为“整洁、利落”的副词「さっぱり」。</p>
 <p>而现代日语中，部分原本具有汉字表记的词语由于使用者习惯的变化，逐渐不会使用其汉字表记。例如，含义为“大量、许多”的副词「takusan」，原本具有汉字表记「<code>@ 沢山 たくさん</code>」，而现在大部分时候使用的是其平假名表记「たくさん」。</p>
 <p>这类逐渐丢失汉字表记的词语还包括由于汉字表记过于复杂导致使用者逐步放弃汉字表记的词语。比如词语「<code>@ 改竄 かいざん</code>」，由于汉字过于复杂，目前常见的表记方式为「<code>@ 改 かい</code>ざん」。</p>
 <p>最后需要指出，上述规则也可能是存在例外的。也就是说，实际条件下具体应当选择何种表记，需要视实际环境，或者根据母语者的偏好决定。</p>
@@ -6290,7 +6290,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <p>另外我们需要注意，由于汉语传入日本是多批次的，所以音读汉字根据传入的时代还会分为吴音、汉音、唐音等等，目前大部分音读汉字遵守汉音规律。但是也会有例外，比如说「<code>@ 老若男女 ろうにゃくなんにょ</code>」一词，并不会按照常用的读音规律读成「<code>@ 老 ろう</code> <code>@ 若 じゃく</code> <code>@ 男 だん</code> <code>@ 女 じょ</code>」。</p>
 <h2 id="音训混读">音训混读</h2>
 <p>部分日语词中可能同时存在训读汉字和音读汉字，这类音训混读词需要特别记忆。音训混读词根据音读和训读出现的顺序分为「<code>@ 湯桶 ゆとう</code> <code>@ 読 よ</code>み」和「<code>@ 重箱 じゅうばこ</code> <code>@ 読 よ</code>み」两类。</p>
-<p>「<code>@ 湯桶 ゆとう</code> <code>@ 読 よ</code>み」指的是类似「<code>@ 湯桶 ゆとう</code>」一样先训读汉字后音读汉字的音训混读词。这类词包括「<code>@ 合図 あいず</code>」「<code>@ 大勢 おおせい</code>」「<code>@ 高台 たかだい</code>」。</p>
+<p>「<code>@ 湯桶 ゆとう</code> <code>@ 読 よ</code>み」指的是类似「<code>@ 湯桶 ゆとう</code>」一样先训读汉字后音读汉字的音训混读词。这类词包括「<code>@ 合図 あいず</code>」「<code>@ 大勢 おおぜい</code>」「<code>@ 高台 たかだい</code>」。</p>
 <p>「<code>@ 重箱 じゅうばこ</code> <code>@ 読 よ</code>み」指的是类似「<code>@ 重箱 じゅうばこ</code>」一样先音读汉字后训读汉字的音训混读词。这类词包括「<code>@ 馬 ば</code> <code>@ 鹿 か</code>」「<code>@ 額 がく</code> <code>@ 縁 ぶち</code>」「<code>@ 残 ざん</code> <code>@ 高 だか</code>」「<code>@ 番 ばん</code> <code>@ 組 ぐみ</code>」。注意到，这类词的后一个汉字往往会发生浊化。</p>
 <p>这类词语的产生，可能是因为两个汉字本身是两个词，一个训读一个音读，后来合成为一个词的时候分别保留原先的读音，从而导致词语内部音训混读，这样形成的词语往往能够从汉字中理解词语含义。当然，也有可能源于假借汉字，这些词语就不太能够直接从汉字理解含义。</p>
 <h2 id="日语数量词的读法">日语数量词的读法</h2>
@@ -7540,7 +7540,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 </table>
 <p>由于历史假名遣并不一定满足假名和读音一一严格对应，所以仅使用五十音图是不能完全确定使用历史假名遣书写的文句的。但实际上，历史假名遣中需要注意的读音规则基本上仅有下述条目：</p>
 <ul>
-<li><p>は行假名不在词头的时候，发音应当为「ワ・イ・ウ・エ・オ」。这是因为著名的语音流变ハ行转呼，其基本含义为不在词头的は行假名在语音流变过程中辅音丢失（あ段则是辅音转变），而书写表记并未随着语音流变更改。例如写作「いはひ」实则读作「イウイ」，写作「いへ」实则读作「イエ」，但写作「はな」依然读作「ハナ」。</p></li>
+<li><p>は行假名不在词头的时候，发音应当为「ワ・イ・ウ・エ・オ」。这是因为著名的语音流变ハ行转呼，其基本含义为不在词头的は行假名在语音流变过程中辅音丢失（あ段则是辅音转变），而书写表记并未随着语音流变更改。例如写作「いはひ」实则读作「イワイ」，写作「いへ」实则读作「イエ」，但写作「はな」依然读作「ハナ」。</p></li>
 <li><p>元音重叠组合「あう・いう・えう・おう」的发音应当为「オー・ユー・ヨー・オー」。例如写作「あうむ」实则读作「オーム」，写作「いうなり」实则读作「ユーナリ」，写作「えうじ」实则读作「ヨージ」，写作「おうな」实则读作「オーナ」。</p></li>
 <li><p>上述两个规则可以联合使用。如写作「てふ」，首先根据第一条规则得到ハ行转呼后其发音为「てう」，再根据第二条元音重叠规则即可得到其实际的发音为「テヨー」，而这个音在现代的表记法中应当使用拗音标记，即「チョー」。同理，写作「けふ」实则读作「キョー」。</p></li>
 <li><p>「ゐ・ゑ・を」的发音分别为「イ・エ・オ」。这也是ハ行转呼中这三个假名丢失辅音的结果。例如写作「ゐる」实则读作「イル」，写作「こゑ」实则读作「コエ」，写作「をる」实则读作「オル」。</p></li>
@@ -12747,6 +12747,199 @@ B = (-1)^s M \cdot 2^E
 <hr />
 <p>MIPS 架构支持一种特殊的快表，即 JTLB。其内部记录的是<strong>虚页码除以 2</strong> 之后的结果和<strong>两个</strong>物理页码之间的关系，两个映射项都标注了是否 valid 以及是否允许写入（一般称为是否 dirty，如果一个页面不是 dirty 的，则会禁止写入）。</p>
 <p>这个时候的转换需要将虚页码先去掉末位进行查表，最后如果命中，则需要根据虚页码末位选取最终的映射项。</p>
+]]></content>
+      <categories>
+        <category>【学习笔记】计算机</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>《现代控制技术》学习笔记</title>
+    <url>/2022/09/25/note-of-ctrl/</url>
+    <content><![CDATA[<p>一门数学课。因为之前退了存储技术基础，所以只能暂且选一门限选课来填充一下空荡荡的大四课程表，不过本来自己也就对控制论有一点点兴趣在的。</p>
+<p><span class="math display">\[
+\newcommand{\d}{\mathrm{d}}
+\newcommand{\lv}{\left[\begin{matrix}}
+\newcommand{\rv}{\end{matrix}\right]}
+\]</span></p>
+<span id="more"></span>
+<h1 id="描述系统的基本概念">描述系统的基本概念</h1>
+<h2 id="状态空间">状态空间</h2>
+<p>考虑电阻 <span class="math inline">\(R\)</span>，电容 <span class="math inline">\(C\)</span>，电感 <span class="math inline">\(L\)</span> 串联形成的系统，上述串联系统通过恒压源控制两端电压为 <span class="math inline">\(u\)</span>。假设电容的电压为 <span class="math inline">\(u_C\)</span>，串联系统中电流为 <span class="math inline">\(i\)</span>，显然有下述关系成立：</p>
+<p><span class="math display">\[
+\begin{aligned}
+i &amp;= C\frac{\d u_C}{\d t} \\
+u_C &amp;= u - Ri - L\frac{\d i}{\d t} \\
+\end{aligned}
+\]</span></p>
+<p>据此，我们可以看出，仅依靠 <span class="math inline">\(i\)</span> 并不能确定系统状态，仅依靠 <span class="math inline">\(u_C\)</span> 也不能。但是如果同时确定了 <span class="math inline">\(i, u_C\)</span> 实际上就确定了整个系统的状态。</p>
+<p>我们将一组能够完全表征系统状态的最少独立变量称为系统的<strong>状态变量</strong>，以这些状态变量为分量的向量称为<strong>状态向量</strong>，将状态向量所在的 <span class="math inline">\(n\)</span> 维向量空间 <span class="math inline">\(\mathbb{R}^n\)</span> 称为<strong>状态空间</strong>，这里 <span class="math inline">\(n\)</span> 为状态向量的维数。</p>
+<p>而如果我们将系统的输入记作 <span class="math inline">\(u(t)\)</span>，输出记作 <span class="math inline">\(y(t)\)</span>。描述系统的方程可以分为两个，其一是<strong>状态方程</strong>，一般是描述系统状态的微分与系统状态、系统输入、时间之间的关系的微分方程：</p>
+<p><span class="math display">\[
+\dot x(t) = f(x(t), u(t), t)
+\]</span></p>
+<p>其二是<strong>输出方程</strong>，一般是描述系统输出与系统状态、系统输入、时间之间的关系的方程：</p>
+<p><span class="math display">\[
+y(t) = g(x(t), u(t), t)
+\]</span></p>
+<p>而上述两个方程合称<strong>状态空间表达式</strong>。</p>
+<p>在最开始的例子中，我们将 <span class="math inline">\(u\)</span> 视为输入，那么上述例子中两个方程实际上可以整理为计算 <span class="math inline">\(i, u_C\)</span> 的一阶微分的表达式，从而构成了系统的状态方程。而由于我们没有具体指出何种物理量为输出，所以无法给定输出方程。</p>
+<p>此外，如果状态空间表达式可以使用矩阵的形式改写为：</p>
+<p><span class="math display">\[
+\begin{aligned}
+\dot x(t) &amp;= Ax(t) + Bu(t) \\
+y(t) &amp;= Cx(t) + Du(t) \\
+\end{aligned}
+\]</span></p>
+<p>那么这个系统就是<strong>线性系统</strong>。这里矩阵 <span class="math inline">\(A, B, C, D\)</span> 分别称为系统矩阵、控制矩阵、输出矩阵、直接传递矩阵。</p>
+<h2 id="建立状态空间表达">建立状态空间表达</h2>
+<h3 id="简单系统的状态空间">简单系统的状态空间</h3>
+<p>对于简单系统，我们完全可以简单列出系统中的约束，确定状态变量后改写出状态空间表达式。例如，我们将电阻 <span class="math inline">\(R\)</span>，电感 <span class="math inline">\(L\)</span>，电机 <span class="math inline">\(M\)</span> 串联于恒压源 <span class="math inline">\(u\)</span> 上，恒压源电压作为该系统的输入。电机驱动转动惯量为 <span class="math inline">\(J\)</span> 的物体。电机阻尼系数为 <span class="math inline">\(f\)</span>，反电势系数为 <span class="math inline">\(C_e\)</span>，电磁转矩系数为 <span class="math inline">\(C_m\)</span>。</p>
+<p>记串联系统中电流为 <span class="math inline">\(i\)</span>，电机转动角度为 <span class="math inline">\(\theta\)</span>。那么根据串联分压首先得到约束：</p>
+<p><span class="math display">\[
+u = iR + L\frac{\d i}{\d t} + C_e\frac{\d \theta}{\d t}
+\]</span></p>
+<p>考虑电机的约束，能够得到：</p>
+<p><span class="math display">\[
+C_mi = J\frac{\d^2 \theta}{\d t^2} + f\frac{\d \theta}{\d t}
+\]</span></p>
+<p>考虑将状态变量设定为 <span class="math inline">\(x_1 := \theta, x_2 := \dot\theta, x_3 := i\)</span>，定义系统的输出为 <span class="math inline">\(y := \theta\)</span>。整理上述式子得到状态方程：</p>
+<p><span class="math display">\[
+\begin{aligned}
+\dot x_1 &amp;= x_2 \\
+\dot x_2 &amp;= \frac{1}{J}(-fx_2 + C_mx_3) \\
+\dot x_3 &amp;= \frac{1}{L}(-C_ex_2 - Rx_3 + u) \\
+\end{aligned}
+\]</span></p>
+<p>输出方程则为：</p>
+<p><span class="math display">\[
+y = x_1
+\]</span></p>
+<p>上述方程可以改写为矩阵形式：</p>
+<p><span class="math display">\[
+\lv \dot x_1 \\ \dot x_2 \\ \dot x_3 \rv =
+\lv
+0 &amp; 1 &amp; 0 \\
+0 &amp; -f / J &amp; C_m / J \\
+0 &amp; -C_e / L &amp; -R / L \\
+\rv
+\lv x_1 \\ x_2 \\ x_3 \rv +
+\lv 0 \\ 0 \\ 1 / L \rv u
+\]</span></p>
+<p>以及：</p>
+<p><span class="math display">\[
+y = \lv 1 &amp; 0 &amp; 0 \rv \lv x_1 \\ x_2 \\ x_3 \rv
+\]</span></p>
+<h3 id="高阶微分方程描述的系统的状态空间">高阶微分方程描述的系统的状态空间</h3>
+<p>对于较为复杂的线性系统，我们可以考虑这样的一个通用表达。即如果，系统的输入输出满足下述的高阶微分方程：</p>
+<p><span class="math display">\[
+\sum_{k = 0}^n a_ky^{(n - k)} = \sum_{k = 0}^n b_ku^{(n - k)}
+\]</span></p>
+<p>这里 <span class="math inline">\(a_0 = 1\)</span>。</p>
+<p>我们现在考虑一个退化情况，即所有的 <span class="math inline">\(k &lt; n\)</span> 都有 <span class="math inline">\(b_k = 0\)</span>。此时上述微分方程退化为：</p>
+<p><span class="math display">\[
+\sum_{k = 0}^n a_ky^{(n - k)} = bu
+\]</span></p>
+<p>此时不妨令状态变量为 <span class="math inline">\(x_1 := y, x_2 := \dot y, x_3 := \ddot y, \cdots, x_n := y^{(n - 1)}\)</span>，显然输出为 <span class="math inline">\(y = x_1\)</span>。那么显然我们可以注意到状态方程为：</p>
+<p><span class="math display">\[
+\lv \dot x_1 \\ \dot x_2 \\ \dot x_3 \\ \vdots \\ \dot x_n \rv =
+\lv
+&amp; 1 &amp; \\
+&amp;&amp; 1 &amp; \\
+&amp;&amp;&amp; \ddots &amp; \\
+&amp;&amp;&amp;&amp; 1 \\
+-a_n &amp; -a_{n - 1} &amp; -a_{n - 2} &amp; \cdots &amp; -a_1 \\
+\rv
+\lv x_1 \\ x_2 \\ x_3 \\ \vdots \\ x_n \rv +
+\lv 0 \\ 0 \\ \vdots \\ 0 \\ b \rv u
+\]</span></p>
+<p>输出方程是平凡的，这里不再具体写出其矩阵形式。</p>
+<p>上述例子中定义的状态变量所引出的状态空间表达式，一般称为<strong>能控标准型</strong>。</p>
+<p>此外，我们还能按照下述方式定义状态变量：</p>
+<p><span class="math display">\[
+\begin{cases}
+x_1 := y^{(n - 1)} + a_1y^{(n - 2)} + \cdots + a_{n - 3}\ddot y + a_{n - 2}\dot y + a_{n - 1}y \\
+x_2 := y^{(n - 2)} + a_1y^{(n - 3)} + \cdots + a_{n - 3}\dot y + a_{n - 2}y \\
+x_3 := y^{(n - 3)} + a_1y^{(n - 4)} + \cdots + a_{n - 3}y \\
+\vdots \\
+x_{n - 1} := \dot y + a_1y \\
+x_n := y \\
+\end{cases}
+\]</span></p>
+<p>显然得到：</p>
+<p><span class="math display">\[
+\begin{cases}
+\dot x_1 = -a_nx_n + bu \\
+\dot x_2 = x_1 - a_{n - 1}x_n \\
+\dot x_3 = x_2 - a_{n - 2}x_n \\
+\vdots \\
+\dot x_{n - 1} = x_{n - 2} - a_2x_n \\
+\dot x_n = x_{n - 1} - a_1x_n \\
+\end{cases}
+\]</span></p>
+<p>从而就能得到在这样的状态变量定义之下的状态方程：</p>
+<p><span class="math display">\[
+\lv \dot x_1 \\ \dot x_2 \\ \dot x_3 \\ \vdots \\ \dot x_n \rv =
+\lv
+&amp;&amp;&amp;&amp; -a_n \\
+1 &amp;&amp;&amp;&amp; -a_{n - 1} \\
+&amp; 1 &amp;&amp;&amp; -a_{n - 2} \\
+&amp;&amp; \ddots &amp;&amp; \vdots \\
+&amp;&amp;&amp; 1 &amp; -a_1 \\
+\rv
+\lv x_1 \\ x_2 \\ x_3 \\ \vdots \\ x_n \rv +
+\lv b \\ 0 \\ 0 \\ \vdots \\ 0 \rv u
+\]</span></p>
+<p>输出方程是平凡的，这里不再具体写出其矩阵形式。</p>
+<p>上述例子中定义的状态变量所引出的状态空间表达式，一般称为<strong>能观标准型</strong>。</p>
+<hr />
+<p>现在回到一般情况。为了更好地设定状态变量，我们首先定义下述中间变量：</p>
+<p><span class="math display">\[
+\begin{cases}
+\beta_0 := b_0 \\
+\beta_1 := b_1 - a_1\beta_0 \\
+\beta_2 := b_2 - a_1\beta_1 - a_2\beta_0 \\
+\vdots \\
+\beta_n := b_n - a_1\beta_{n - 1} - \cdots - a_{n - 1}\beta_1 - \beta_0 \\
+\end{cases}
+\]</span></p>
+<p>从而定义出下述状态变量：</p>
+<p><span class="math display">\[
+\begin{cases}
+x_1 := y - \beta_0 u \\
+x_2 := \dot y - \beta_0 \dot u - \beta_1 u \\
+x_3 := \ddot y - \beta_0 \ddot u - \beta_1 \dot u - \beta_2 u \\
+\vdots \\
+x_n := y^{(n - 1)} - \beta_0 u^{(n - 1)} - \beta_1 u^{(n - 2)} - \beta_2 u^{(n - 3)} - \cdots - \beta_{n - 1} u \\
+\end{cases}
+\]</span></p>
+<p>从而就能得到在这样的状态变量定义之下的状态方程：</p>
+<p><span class="math display">\[
+\lv \dot x_1 \\ \dot x_2 \\ \dot x_3 \\ \vdots \\ \dot x_n \rv =
+\lv
+&amp; 1 &amp; \\
+&amp;&amp; 1 &amp; \\
+&amp;&amp;&amp; \ddots &amp; \\
+&amp;&amp;&amp;&amp; 1 \\
+-a_n &amp; -a_{n - 1} &amp; -a_{n - 2} &amp; \cdots &amp; -a_1 \\
+\rv
+\lv x_1 \\ x_2 \\ x_3 \\ \vdots \\ x_n \rv +
+\lv \beta_1 \\ \beta_2 \\ \beta_3 \\ \vdots \\ \beta_n \rv u
+\]</span></p>
+<p>输出方程显然为 <span class="math inline">\(y = x_1 + \beta_0 u\)</span>，这里不再具体写出其矩阵形式。</p>
+<h3 id="传递函数">传递函数</h3>
+<p>在讲述传递函数之前，我们简单介绍系统的零状态响应和零输入响应。零状态响应指的是一个系统在系统所有状态变量为零时，对给定输入所给出的响应。相应的，零输入响应则是一个系统在所有输入为零的时候所给出的响应。而所谓的全响应，则是在状态变量不一定为零，输入也不一定为零的条件下系统的响应。事实上，全响应是零状态响应和零输入相应的组合。</p>
+<p>而考虑用线性常微分方程描述的系统，线性常微分方程的解均是通解和特解的组合。这里零状态响应实际上对应了特解，因为零状态事实上仅改变了系统状态的起始值，将其强制设定为零，所得到的响应是零初始值下微分方程的一个特殊解。</p>
+<p>实际上，零状态响应在很多条件下给出了系统的完全信息。大部分系统在零输入的条件下，零输入响应最终会衰减至可忽略，而最后表现系统结构的是零状态响应。基于这样的理解，很多时候我们仅需要了解零状态响应即可基本分析系统的结构。</p>
+<hr />
+<p>分析零状态响应的一个重要方法为分析零状态响应下的系统传递函数。在零状态条件下，我们能够建立输入 <span class="math inline">\(u\)</span> 到输出 <span class="math inline">\(y\)</span> 的映射，而如果将该系统的单位冲激响应记为 <span class="math inline">\(h\)</span>，我们显然得知 <span class="math inline">\(y\)</span> 为 <span class="math inline">\(u\)</span> 与 <span class="math inline">\(h\)</span> 的卷积：</p>
+<p><span class="math display">\[
+y = u * h
+\]</span></p>
+<p>对上述两边做 Laplace 变换：</p>
+<p><span class="math display">\[
+Y = HU
+\]</span></p>
+<p>而这里我们就将 <span class="math inline">\(H(s)\)</span> 称为系统的（零状态）<strong>传递函数</strong>，其定义即零状态下输出的 Laplace 变换与输入的 Laplace 变换的商。我们可以证明，系统的零状态传递函数为零状态单位冲激响应的 Laplace 变换。</p>
 ]]></content>
       <categories>
         <category>【学习笔记】计算机</category>
