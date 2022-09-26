@@ -389,14 +389,14 @@ $(function () {
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>4.6k</span>
+      <span>6.5k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>4 分钟</span>
+      <span>6 分钟</span>
     </span>
 </div>
 
@@ -495,10 +495,10 @@ y = \lv 1 &amp; 0 &amp; 0 \rv \lv x_1 \\ x_2 \\ x_3 \rv
 <p><span class="math display">\[
 \lv \dot x_1 \\ \dot x_2 \\ \dot x_3 \\ \vdots \\ \dot x_n \rv =
 \lv
-&amp; 1 &amp; \\
-&amp;&amp; 1 &amp; \\
-&amp;&amp;&amp; \ddots &amp; \\
-&amp;&amp;&amp;&amp; 1 \\
+0 &amp; 1 &amp; 0 &amp; \cdots &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; \cdots &amp; 0 \\
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; 0 &amp; \cdots &amp; 1 \\
 -a_n &amp; -a_{n - 1} &amp; -a_{n - 2} &amp; \cdots &amp; -a_1 \\
 \rv
 \lv x_1 \\ x_2 \\ x_3 \\ \vdots \\ x_n \rv +
@@ -532,11 +532,11 @@ x_n := y \\
 <p><span class="math display">\[
 \lv \dot x_1 \\ \dot x_2 \\ \dot x_3 \\ \vdots \\ \dot x_n \rv =
 \lv
-&amp;&amp;&amp;&amp; -a_n \\
-1 &amp;&amp;&amp;&amp; -a_{n - 1} \\
-&amp; 1 &amp;&amp;&amp; -a_{n - 2} \\
-&amp;&amp; \ddots &amp;&amp; \vdots \\
-&amp;&amp;&amp; 1 &amp; -a_1 \\
+0 &amp; 0 &amp; \cdots &amp; 0 &amp; -a_n \\
+1 &amp; 0 &amp; \cdots &amp; 0 &amp; -a_{n - 1} \\
+0 &amp; 1 &amp; \cdots &amp; 0 &amp; -a_{n - 2} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots \\
+0 &amp; 0 &amp; \cdots &amp; 1 &amp; -a_1 \\
 \rv
 \lv x_1 \\ x_2 \\ x_3 \\ \vdots \\ x_n \rv +
 \lv b \\ 0 \\ 0 \\ \vdots \\ 0 \rv u
@@ -568,10 +568,10 @@ x_n := y^{(n - 1)} - \beta_0 u^{(n - 1)} - \beta_1 u^{(n - 2)} - \beta_2 u^{(n -
 <p><span class="math display">\[
 \lv \dot x_1 \\ \dot x_2 \\ \dot x_3 \\ \vdots \\ \dot x_n \rv =
 \lv
-&amp; 1 &amp; \\
-&amp;&amp; 1 &amp; \\
-&amp;&amp;&amp; \ddots &amp; \\
-&amp;&amp;&amp;&amp; 1 \\
+0 &amp; 1 &amp; 0 &amp; \cdots &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; \cdots &amp; 0 \\
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; 0 &amp; \cdots &amp; 1 \\
 -a_n &amp; -a_{n - 1} &amp; -a_{n - 2} &amp; \cdots &amp; -a_1 \\
 \rv
 \lv x_1 \\ x_2 \\ x_3 \\ \vdots \\ x_n \rv +
@@ -583,15 +583,103 @@ x_n := y^{(n - 1)} - \beta_0 u^{(n - 1)} - \beta_1 u^{(n - 2)} - \beta_2 u^{(n -
 <p>而考虑用线性常微分方程描述的系统，线性常微分方程的解均是通解和特解的组合。这里零状态响应实际上对应了特解，因为零状态事实上仅改变了系统状态的起始值，将其强制设定为零，所得到的响应是零初始值下微分方程的一个特殊解。</p>
 <p>实际上，零状态响应在很多条件下给出了系统的完全信息。大部分系统在零输入的条件下，零输入响应最终会衰减至可忽略，而最后表现系统结构的是零状态响应。基于这样的理解，很多时候我们仅需要了解零状态响应即可基本分析系统的结构。</p>
 <hr />
-<p>分析零状态响应的一个重要方法为分析零状态响应下的系统传递函数。在零状态条件下，我们能够建立输入 <span class="math inline">\(u\)</span> 到输出 <span class="math inline">\(y\)</span> 的映射，而如果将该系统的单位冲激响应记为 <span class="math inline">\(h\)</span>，我们显然得知 <span class="math inline">\(y\)</span> 为 <span class="math inline">\(u\)</span> 与 <span class="math inline">\(h\)</span> 的卷积：</p>
+<p>分析零状态响应的一个重要方法为分析零状态响应下的系统传递函数。在零状态条件下，我们能够建立输入 <span class="math inline">\(u\)</span> 到输出 <span class="math inline">\(y\)</span> 的映射，而如果将该系统的单位冲激响应记为 <span class="math inline">\(g\)</span>，我们显然得知 <span class="math inline">\(y\)</span> 为 <span class="math inline">\(u\)</span> 与 <span class="math inline">\(g\)</span> 的卷积：</p>
 <p><span class="math display">\[
-y = u * h
+y = u * g
 \]</span></p>
 <p>对上述两边做 Laplace 变换：</p>
 <p><span class="math display">\[
-Y = HU
+Y = GU
 \]</span></p>
-<p>而这里我们就将 <span class="math inline">\(H(s)\)</span> 称为系统的（零状态）<strong>传递函数</strong>，其定义即零状态下输出的 Laplace 变换与输入的 Laplace 变换的商。我们可以证明，系统的零状态传递函数为零状态单位冲激响应的 Laplace 变换。</p>
+<p>而这里我们就将 <span class="math inline">\(G(s)\)</span> 称为系统的（零状态）<strong>传递函数</strong>，其定义即零状态下输出的 Laplace 变换与输入的 Laplace 变换的商。我们可以证明，系统的零状态传递函数为零状态单位冲激响应的 Laplace 变换。</p>
+<hr />
+<p>现在我们考虑状态空间方程式和传递函数之间的互相转换。</p>
+<p>【从传递函数推导状态空间方程式见 PPT #1，未整理】</p>
+<p>我们已知一个线性系统的状态空间方程式如下：</p>
+<p><span class="math display">\[
+\begin{cases}
+\dot x = Ax + Bu \\
+y = Cx + Du \\
+\end{cases}
+\]</span></p>
+<p>对状态方程两边作 Laplace 变换得到：</p>
+<p><span class="math display">\[
+sX(s) = AX(s) + BU(s)
+\]</span></p>
+<p>这里 <span class="math inline">\(X := \mathcal{L}[x], U := \mathcal{L}[u]\)</span>，其余函数的 Laplace 变换符号以此类推。</p>
+<p>那么我们就能够得到：</p>
+<p><span class="math display">\[
+X(s) = (sI - A)^{-1}BU(s)
+\]</span></p>
+<p>从而得到：</p>
+<p><span class="math display">\[
+Y(s) = CX(s) + DU(s) = [C(sI - A)^{-1}B + D]U(s)
+\]</span></p>
+<p>这显然给出了传递函数的表达：</p>
+<p><span class="math display">\[
+G(s) = \frac{Y(s)}{U(s)} = C(sI - A)^{-1}B + D
+\]</span></p>
+<p>基于这一结论我们可以分析串联和并联系统的传递函数。</p>
+<p>现在假设有两个系统，下述为其状态空间方程式：</p>
+<p><span class="math display">\[
+\Sigma_1: \begin{cases}
+\dot x_1 = A_1x_1 + B_1u_1 \\
+y_1 = C_1x_1 + D_1u_1 \\
+\end{cases}, \Sigma_2: \begin{cases}
+\dot x_2 = A_2x_2 + B_2u_2 \\
+y_2 = C_2x_2 + D_2u_2 \\
+\end{cases}
+\]</span></p>
+<p>如果两个系统串联，那么新系统的输入 <span class="math inline">\(u := u_1\)</span>，新系统的输出 <span class="math inline">\(y := y_2\)</span>，并且我们有 <span class="math inline">\(u_2 = y_1\)</span>。而这个系统的状态变量就视作原先两个系统的状态变量的拼接。从而我们得到：</p>
+<p><span class="math display">\[
+\dot x_2 = A_2x_2 + B_2u_2 = A_2x_2 + B_2(C_1x_1 + D_1u_1) = A_2x_2 + B_2C_1x_2 + B_2D_1u_1
+\]</span></p>
+<p>从而得到串联系统的状态方程：</p>
+<p><span class="math display">\[
+\lv \dot x_1 \\ \dot x_2 \rv =
+\lv
+A_1 &amp; 0 \\
+B_2C_1 &amp; A_2
+\rv
+\lv x_1 \\ x_2 \rv +
+\lv B_1 \\ B_2D_1 \rv u
+\]</span></p>
+<p>输出则有：</p>
+<p><span class="math display">\[
+y = y_2 = C_2x_2 + D_2u_2 = C_2x_2 + D_2(C_1x_1 + D_1u_1) = C_2x_2 + D_2C_1x_1 + D_2D_1u_1
+\]</span></p>
+<p>从而输出输出方程为：</p>
+<p><span class="math display">\[
+y = \lv D_2C_1 &amp; C_2 \rv \lv x_1 \\ x_2 \rv + D_2D_1u
+\]</span></p>
+<p>根据先前推出的传递函数和状态空间方程式之间的关系，我们可以写出串联系统的传递函数为：</p>
+<p><span class="math display">\[
+\begin{aligned}
+G(s) &amp;= \lv D_2C_1 &amp; C_2 \rv
+\lv
+sI_1 - A_1 &amp; 0 \\
+-B_2C_1 &amp; sI_2 - A_2 \\
+\rv^{-1}
+\lv B_1 \\ B_2D_1 \rv + D_2D_1 \\
+&amp;= \lv D_2C_1 &amp; C_2 \rv
+\lv
+(sI_1 - A_1)^{-1} &amp; 0 \\
+(sI_2 - A_2)^{-1}B_2C_1(sI_1 - A_1)^{-1} &amp; (sI_2 - A_2)^{-1} \\
+\rv
+\lv B_1 \\ B_2D_1 \rv + D_2D_1 \\
+&amp;= \lv D_2C_1 &amp; C_2 \rv
+\lv
+(sI_1 - A_1)^{-1}B_1 \\
+(sI_2 - A_2)^{-1}B_2C_1(sI_1 - A_1)^{-1}B_1 + (sI_2 - A_2)^{-1}B_2D_1 \\
+\rv + D_2D_1 \\
+&amp;= D_2C_1(sI_1 - A_1)^{-1}B_1 + C_2(sI_2 - A_2)^{-1}B_2C_1(sI_1 - A_1)^{-1}B_1 + C_2(sI_2 - A_2)^{-1}B_2D_1 + D_2D_1 \\
+&amp;= [C_1(sI_1 - A_1)^{-1}B_1 + D_1][C_2(sI_2 - A_2)^{-1}B_2 + D_2] \\
+&amp;= G_1(s)G_2(s)
+\end{aligned}
+\]</span></p>
+<p>也就是说串联系统的传递函数为各个子系统的传递函数之积。</p>
+<p>对于并联系统，显然有 <span class="math inline">\(u_1 = u_2 = u\)</span>，而输出有 <span class="math inline">\(y = y_1 + y_2\)</span>。使用上述方法很容易推出 <span class="math inline">\(G(s) = G_1(s) + G_2(s)\)</span>。</p>
+<p>也就是说并联系统的传递函数为各个子系统的传递函数之和。</p>
 
     </div>
 
@@ -642,13 +730,13 @@ Y = HU
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">339k</span>
+    <span title="站点总字数">341k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">5:08</span>
+    <span title="站点阅读时长">5:10</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
