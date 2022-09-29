@@ -32,6 +32,9 @@
 <meta property="og:image" content="https://ashitemaru.github.io/uploads/paper-2022-09/3.png">
 <meta property="og:image" content="https://ashitemaru.github.io/uploads/paper-2022-09/4.png">
 <meta property="og:image" content="https://ashitemaru.github.io/uploads/paper-2022-09/5.png">
+<meta property="og:image" content="https://ashitemaru.github.io/uploads/paper-2022-09/6.png">
+<meta property="og:image" content="https://ashitemaru.github.io/uploads/paper-2022-09/7.png">
+<meta property="og:image" content="https://ashitemaru.github.io/uploads/paper-2022-09/8.png">
 <meta property="article:published_time" content="2022-09-20T20:48:35.000Z">
 <meta property="article:modified_time" content="2022-09-20T20:48:35.000Z">
 <meta property="article:author" content="Ashitemaru">
@@ -231,7 +234,7 @@ $(function () {
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#causalsim---unbiased-trace-driven-network-simulation"><span class="nav-number">1.</span> <span class="nav-text">CausalSim - Unbiased Trace-Driven Network Simulation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#abstract-introduction"><span class="nav-number">1.1.</span> <span class="nav-text">Abstract &amp; Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#motivation"><span class="nav-number">1.2.</span> <span class="nav-text">Motivation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#the-problem-of-trace-driven-network-simulation"><span class="nav-number">1.2.1.</span> <span class="nav-text">The problem of trace-driven network simulation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#causal-inference-to-the-rescue"><span class="nav-number">1.2.2.</span> <span class="nav-text">Causal inference to the rescue</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#model"><span class="nav-number">1.3.</span> <span class="nav-text">Model</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#causal-dynamics"><span class="nav-number">1.3.1.</span> <span class="nav-text">Causal dynamics</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#trace-driven-simulation-is-counterfactual-estimation"><span class="nav-number">1.3.2.</span> <span class="nav-text">Trace-driven simulation is counterfactual estimation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#causalsim---key-insights"><span class="nav-number">1.4.</span> <span class="nav-text">CausalSim - Key insights</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#counterfactual-estimation-as-matrix-completion"><span class="nav-number">1.4.1.</span> <span class="nav-text">Counterfactual estimation as matrix completion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#exploiting-the-policy-invarience-of-latent-factors"><span class="nav-number">1.4.2.</span> <span class="nav-text">Exploiting the policy invarience of latent factors</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#causalsim---details"><span class="nav-number">1.5.</span> <span class="nav-text">CausalSim - Details</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#evaluation"><span class="nav-number">1.6.</span> <span class="nav-text">Evaluation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#a-real-world-abr-experiment"><span class="nav-number">1.6.1.</span> <span class="nav-text">A real-world ABR experiment</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#learning-abr-policies-with-causalsim"><span class="nav-number">1.6.2.</span> <span class="nav-text">Learning ABR policies with CausalSim</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#server-load-balancing"><span class="nav-number">1.6.3.</span> <span class="nav-text">Server load balancing</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#final-analysis"><span class="nav-number">1.7.</span> <span class="nav-text">Final analysis</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#veritas---answering-causal-queries-from-video-streaming-traces"><span class="nav-number">2.</span> <span class="nav-text">Veritas - Answering Causal Queries from Video Streaming Traces</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#causalsim---unbiased-trace-driven-network-simulation"><span class="nav-number">1.</span> <span class="nav-text">CausalSim - Unbiased Trace-Driven Network Simulation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#abstract-introduction"><span class="nav-number">1.1.</span> <span class="nav-text">Abstract &amp; Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#motivation"><span class="nav-number">1.2.</span> <span class="nav-text">Motivation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#the-problem-of-trace-driven-network-simulation"><span class="nav-number">1.2.1.</span> <span class="nav-text">The problem of trace-driven network simulation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#causal-inference-to-the-rescue"><span class="nav-number">1.2.2.</span> <span class="nav-text">Causal inference to the rescue</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#model"><span class="nav-number">1.3.</span> <span class="nav-text">Model</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#causal-dynamics"><span class="nav-number">1.3.1.</span> <span class="nav-text">Causal dynamics</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#trace-driven-simulation-is-counterfactual-estimation"><span class="nav-number">1.3.2.</span> <span class="nav-text">Trace-driven simulation is counterfactual estimation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#causalsim---key-insights"><span class="nav-number">1.4.</span> <span class="nav-text">CausalSim - Key insights</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#counterfactual-estimation-as-matrix-completion"><span class="nav-number">1.4.1.</span> <span class="nav-text">Counterfactual estimation as matrix completion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#exploiting-the-policy-invarience-of-latent-factors"><span class="nav-number">1.4.2.</span> <span class="nav-text">Exploiting the policy invarience of latent factors</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#causalsim---details"><span class="nav-number">1.5.</span> <span class="nav-text">CausalSim - Details</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#evaluation"><span class="nav-number">1.6.</span> <span class="nav-text">Evaluation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#a-real-world-abr-experiment"><span class="nav-number">1.6.1.</span> <span class="nav-text">A real-world ABR experiment</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#learning-abr-policies-with-causalsim"><span class="nav-number">1.6.2.</span> <span class="nav-text">Learning ABR policies with CausalSim</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#server-load-balancing"><span class="nav-number">1.6.3.</span> <span class="nav-text">Server load balancing</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#final-analysis"><span class="nav-number">1.7.</span> <span class="nav-text">Final analysis</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#off-policy-deep-reinforcement-learning-without-exploration"><span class="nav-number">2.</span> <span class="nav-text">Off-Policy Deep Reinforcement Learning without Exploration</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#abstract-introduction-1"><span class="nav-number">2.1.</span> <span class="nav-text">Abstract &amp; Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#background"><span class="nav-number">2.2.</span> <span class="nav-text">Background</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#deployment-efficient-reinforcement-learning-via-model-based-offline-optimization"><span class="nav-number">3.</span> <span class="nav-text">Deployment-Efficient Reinforcement Learning via Model-Based Offline Optimization</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#abstract-introduction-2"><span class="nav-number">3.1.</span> <span class="nav-text">Abstract &amp; Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#preliminaries"><span class="nav-number">3.2.</span> <span class="nav-text">Preliminaries</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#deployment-efficiency"><span class="nav-number">3.3.</span> <span class="nav-text">Deployment efficiency</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#behavior-regularized-model-ensemble"><span class="nav-number">3.4.</span> <span class="nav-text">Behavior regularized model ensemble</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#imaginary-rollout-from-model-ensemble"><span class="nav-number">3.4.1.</span> <span class="nav-text">Imaginary rollout from model ensemble</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#policy-update-with-behavior-regularization"><span class="nav-number">3.4.2.</span> <span class="nav-text">Policy update with behavior regularization</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#experiments"><span class="nav-number">3.5.</span> <span class="nav-text">Experiments</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#final-analysis-1"><span class="nav-number">3.6.</span> <span class="nav-text">Final analysis</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -395,14 +398,14 @@ $(function () {
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>5.9k</span>
+      <span>14k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>5 分钟</span>
+      <span>13 分钟</span>
     </span>
 </div>
 
@@ -529,7 +532,170 @@ U := \sum_{i = 1}^NH_i
 <h2 id="final-analysis">Final analysis</h2>
 <p>读这一篇论文目的是为了研究怎么离线评测算法，也就是训练一个合理的环境模拟器出来。但感觉本文的一个核心思想为将网络吞吐率等因素视作和 ABR 决策有关的变量，将其纳入考虑。严格而言就是更新了对环境内部逻辑的建模，使之更为贴近真实环境。而如果不把网络吞吐率纳入考虑，则前一时刻无论做出什么选择，下一时刻环境都会要求算法实现同样的吞吐率，从而导致算法趋近于保守，在高 RTT Agent 上表现出仅选择较低码率。</p>
 <p>方法上的话，感觉 Policy Discriminator 没有太见过，是一个训练无关性的好方法。</p>
-<h1 id="veritas---answering-causal-queries-from-video-streaming-traces">Veritas - Answering Causal Queries from Video Streaming Traces</h1>
+<h1 id="off-policy-deep-reinforcement-learning-without-exploration">Off-Policy Deep Reinforcement Learning without Exploration</h1>
+<h2 id="abstract-introduction-1">Abstract &amp; Introduction</h2>
+<p>这篇论文对现在的 Off-policy RL 有着这样的评价：</p>
+<div class="note info no-icon"><p>Our most surprising result shows that off-policy agents perform dramatically worse than the behavioral agent when trained with the same algorithm on the same dataset.</p>
+</div>
+<p>具体展开的话，现在基于将数据收集为一个 dataset 并进行 replay 的训练方式不仅在收集数据的策略上有很大的困难并且开销极大，甚至这种方法的训练结果都是极其不佳的。</p>
+<p>论文里面把这种问题出现的根本原因称为 extrapolation error，指的是实际上未经历过的状态行为对被赋予了并不实际的价值估计。论文将这个问题出现的原因归结为 batch 的分布和真实的数据分布并不匹配。</p>
+<p>而本文提出的 Batch Constrained deep Q-learning，简称 BCQ，则在最大化 reward signal 的时候，同时最小化已经探索过的状态行为对和 batch 之中的状态行为对之间的不匹配程度。</p>
+<p>而评估 BCQ 时使用了 MuJuCo 环境，该环境的行为决策空间是连续高维的，造成 extrapolation error 现象十分明显。</p>
+<p>论文的野心也是挺大的：</p>
+<div class="note info no-icon"><p>We remark that BCQ is <strong>only one way</strong> to approach batch-constrained reinforcement learning in a deep setting, and we hope that it will be serve as a <strong>foundation</strong> for future algorithms.</p>
+</div>
+<h2 id="background">Background</h2>
+<p>总结了 RL 的进化史，其实感觉更适合学完了 RL 基础之后来过一遍。</p>
+<p>首先是 Markov 决策过程，即 MDP <span class="math inline">\((\mathcal{S}, \mathcal{A}, p_M(s&#39; \mid s, a), r, \gamma)\)</span>。MDP 包含一个状态空间 <span class="math inline">\(\mathcal{S}\)</span>，行为决策空间 <span class="math inline">\(\mathcal{A}\)</span>，以及一个转移概率函数 <span class="math inline">\(p_M(s&#39; \mid s, a)\)</span>。每一个时间步，agent 都会接收到 reward signal <span class="math inline">\(r(s, a, s&#39;) \in \mathbb{R}\)</span>，表示在状态 <span class="math inline">\(s\)</span> 下选择行为 <span class="math inline">\(a\)</span> 并到达新状态 <span class="math inline">\(s&#39;\)</span> 时能够获得的收益。agent 的目的是令下述累积收益最大化：</p>
+<p><span class="math display">\[
+R_t := \sum_{i = t + 1}^{+\infty} \gamma^i r(s_i, a_i, s_{i + 1})
+\]</span></p>
+<p>这里 <span class="math inline">\(\gamma \in [0, 1)\)</span> 是收益衰减系数。</p>
+<p>而 agent 需要学习的是一个决策函数 <span class="math inline">\(\pi: \mathcal{S} \to \mathcal{A}\)</span>，指示 agent 在给定状态 <span class="math inline">\(s\)</span> 下应当做出决策 <span class="math inline">\(a = \mu^\pi(s)\)</span>【Note #1：这里的 policy 是确定性 policy，不确定性 policy 的策略表达应当是 <span class="math inline">\(\pi: \mathcal{S} \times \mathcal{A} \to [0, 1]\)</span>，以表达做出某种决策的概率】。</p>
+<p>可以定义给定 policy 下的状态行为价值函数，表达在该 policy 下在给定状态下做出给定行为期望获取的累积收益：</p>
+<p><span class="math display">\[
+Q^\pi(s, a) := \mathbb{E}_\pi [R_t \mid s, a]
+\]</span></p>
+<p>而 Bellman equation 指出价值函数可以按下述方式计算：</p>
+<p><span class="math display">\[
+\mathcal{T}^\pi Q(s, a) := \mathbb{E}_{s&#39;} [r + \gamma Q(s&#39;, \pi(s&#39;))]
+\]</span></p>
+<div class="note info no-icon"><p>简单记一下 Bellman operator 的笔记。考虑 Bellman equation 的常见写法：</p>
+<p><span class="math display">\[
+V^\pi(s) = \sum_{a \in \mathcal{A}} \pi(a \mid s) \left(r(s, a) + \gamma\sum_{s&#39; \in \mathcal{S}} p(s&#39; \mid s, a)V^\pi(s&#39;)\right)
+\]</span></p>
+<p>令：</p>
+<p><span class="math display">\[
+p^\pi(s&#39; \mid s) := \sum_{a \in \mathcal{A}} \pi(a \mid s)p(s&#39; \mid s, a)
+\]</span></p>
+<p>以及：</p>
+<p><span class="math display">\[
+r^\pi(s) := \sum_{a \in \mathcal{A}} \pi(a \mid s)r(s, a)
+\]</span></p>
+<p>注意这里定义的新记号有 <span class="math inline">\(\pi\)</span> 的上标，表明这里的新记号和 policy 有关。</p>
+<p>那么方程可以写为【Note #2：这一步相当于消除了不确定 policy 决策的影响，即对决策空间积分】：</p>
+<p><span class="math display">\[
+V^\pi(s) = r^\pi(s) + \gamma\sum_{s&#39; \in \mathcal{S}} p(s&#39; \mid s)V^\pi(s&#39;)
+\]</span></p>
+<p>如果我们枚举状态空间，则可以将上述方程进一步写为矩阵形式，这里 <span class="math inline">\(n := |\mathcal{S}|\)</span>：</p>
+<p><span class="math display">\[
+\begin{bmatrix}
+V^\pi(s_1) \\ V^\pi(s_2) \\ \vdots \\ V^\pi(s_n) \\
+\end{bmatrix} =
+\begin{bmatrix}
+r^\pi(s_1) \\ r^\pi(s_2) \\ \vdots \\ r^\pi(s_n) \\
+\end{bmatrix} + \gamma
+\begin{bmatrix}
+p^\pi(s_1 \mid s_1) &amp; p^\pi(s_2 \mid s_1) &amp; \cdots &amp; p^\pi(s_n \mid s_1) \\
+p^\pi(s_1 \mid s_2) &amp; p^\pi(s_2 \mid s_2) &amp; \cdots &amp; p^\pi(s_n \mid s_2) \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+p^\pi(s_1 \mid s_n) &amp; p^\pi(s_2 \mid s_n) &amp; \cdots &amp; p^\pi(s_n \mid s_n) \\
+\end{bmatrix}
+\begin{bmatrix}
+V^\pi(s_1) \\ V^\pi(s_2) \\ \vdots \\ V^\pi(s_n) \\
+\end{bmatrix}
+\]</span></p>
+<p>做一些合适的记号简写即可得到：</p>
+<p><span class="math display">\[
+V^\pi = r^\pi + \gamma p^\pi V^\pi
+\]</span></p>
+<p>而 Bellman operator <span class="math inline">\(\mathcal{T}^\pi: \mathbb{R}^n \to \mathbb{R}^n\)</span> 就定义为：</p>
+<p><span class="math display">\[
+\mathcal{T}^\pi(v) := r^\pi + \gamma p^\pi v
+\]</span></p>
+<p>也就是说 Bellman operator 是基于 Bellman equation 衍生出来的一个算子。</p>
+</div>
+<p>我们的目标是拟合下述价值函数，即最优状态行为价值函数：</p>
+<p><span class="math display">\[
+Q^*(s, a) := \max_\pi Q^\pi(s, a)
+\]</span></p>
+<p>DQN 方法中，我们使用神经网络进行拟合。DQN 中更新网络 <span class="math inline">\(\theta\)</span> 所估计的价值函数 <span class="math inline">\(Q_\theta\)</span> 时，使用下述式子作为目标：</p>
+<p><span class="math display">\[
+r + \gamma Q_{\theta&#39;}(s&#39;, \mathop{\rm argmax}_a Q_{\theta&#39;}(s&#39;, a))
+\]</span></p>
+<p>DQN，包括其基于的 Q-learning 都是 off-policy 的，也就是说可以忽略是如何和环境交互产生训练数据的。</p>
+<p>对于连续决策空间，由于上述目标中的最大值难以求取，所以常用 Actor-Critic 方法，即令 Actor 做出决策，Critic 根据自身的价值评估选定衰减或放大 Actor 更新网络参数的系数。而如果在此基础上再将 DQN 的双网络思想借鉴到 Critic 网络的构建中，即可得到 DDPG 方法。</p>
+<div class="note warning no-icon"><p>BCQ 感觉都可以纳入入门笔记里面了，其已经是一种常见的方法，还是不把它放在论文笔记里面比较好。</p>
+</div>
+<h1 id="deployment-efficient-reinforcement-learning-via-model-based-offline-optimization">Deployment-Efficient Reinforcement Learning via Model-Based Offline Optimization</h1>
+<h2 id="abstract-introduction-2">Abstract &amp; Introduction</h2>
+<p>离线 RL 的问题在于在线和环境交互可能导致较大开销，为了解决这一问题，主要的策略分为：</p>
+<ul>
+<li>限制 agent 的行为，防止其做出错误举动。这里 BCQ 就采用了这样的做法（但是 BCQ 论文实在是需要慢慢看）</li>
+<li>强化 agent 的 exploitation 能力，令其最大化利用有限的数据</li>
+</ul>
+<p>本文的成果是提出了衡量 RL 算法的一个指标，即 deployment efficiency，其基于了 RL 学习过程中数据采集策略发生变化的次数（因为策略发生变化意味着需要一次新的部署）。完全离线的 RL 算法如 BCQ、BRAC 具有很高的 deployment efficiency，而完全在线的 RL 算法如 DDPG、SAC 则较低。</p>
+<p>论文特别指出，deployment efficiency 和已有的 data efficiency 并不完全类似，这里后者衡量了 RL 学习过程中采集数据的次数。这意味着，即使 data efficiency 很低（数据采样次数极大），只要收集数据的策略没变，那么 deployment efficiency 依然较高。</p>
+<p>目前大部分的离线 RL 算法都在大数据集上进行训练和评测，以保证 deployment efficiency 和 data efficiency 都很高。但实际上我们注意到由于 extrapolation error，这种简单直接的算法其实并不优越。而对于在线算法，虽然可以克服数据集数据分布不符合真实数据分布的问题，但实际上会限制 policy 的表达能力【Question #1：这里没有特别明白】。</p>
+<p>此外，本文还提出了 BREMEN，即 Behavior Regularized Model ENsemble。</p>
+<div class="note info no-icon"><p>We propose Behavior-Regularized Model-ENsemble (BREMEN), which learns an ensemble of dynamics models in conjunction with a policy using imaginary rollouts while implicitly regularizing the learned policy via appropriate parameter initialization and conservative trust-region learning updates.</p>
+</div>
+<p>自然，BREMEN 在高维连续决策空间上也表现很好。</p>
+<h2 id="preliminaries">Preliminaries</h2>
+<p>首先定义 MDP <span class="math inline">\((\mathcal{S}, \mathcal{A}, p, r, \gamma)\)</span>，而 policy <span class="math inline">\(\pi\)</span> 定义了 agent 的行为，<span class="math inline">\(\pi\)</span> 接受一个状态，输出一个状态空间 <span class="math inline">\(\mathcal{A}\)</span> 上的概率分布，表示 agent 做出给定行为的概率。我们的目标是获取下述最优 policy：</p>
+<p><span class="math display">\[
+\pi^* = \mathop{\rm argmax}_\pi \eta[\pi] = \mathop{\rm argmax}_\pi \mathbb{E}_\pi\left[\sum_{t = 0}^{+\infty} \gamma^tr(s_t)\right]
+\]</span></p>
+<p>而所谓 model-based 的 RL 方法，就需要对 MDP 中的 <span class="math inline">\(p(s&#39; \mid s, a)\)</span> 建模估计。</p>
+<p>RL 的学习过程中包含两种行为，分别为获取 MDP 转移对（即 deployment）与更新 policy 参数（即 learning）。如果学习过程中每次更新参数后均将收集到的数据舍弃，那么该学习就是 on-policy 的。反之，如果不断积累数据形成 replay dataset <span class="math inline">\(\mathcal{D}\)</span>，那么该学习就是 off-policy 的，因为用于更新 policy 的数据并不一定通过当前 policy 收集。</p>
+<p>但是上述的学习过程都是 online 的，因为其 deployment 和 learning 是混合进行的，而纯 offline 算法中 agent 不会直接与环境进行任何的交互，agent 只能从固定的数据集之中学习。当然，介于 online 和 offline 之间有 semi-batch RL，其实现了较高的 deployment efficiency，当然这种方法并没有完全研究过。</p>
+<h2 id="deployment-efficiency">Deployment efficiency</h2>
+<p>这里主要阐述这样的观点，即对于 online RL，无论其是 on-policy 还是 off-policy，在一次迭代之后，必然会部署新的 policy 并获取数据，这显然是 deployment unefficient 的。相反，纯 offline RL 只会学习一次部署得到的数据。而一个理想的平衡算法应当位于这两个极端之间。</p>
+<p>论文认为现在的 RL 算法忽视了 deployment efficiency，并且现行的部分 SOTA 算法甚至需要百万量级的部署次数（如 SAC）。本文提出了只需要五次到十次部署即可有效学习的算法。</p>
+<h2 id="behavior-regularized-model-ensemble">Behavior regularized model ensemble</h2>
+<h3 id="imaginary-rollout-from-model-ensemble">Imaginary rollout from model ensemble</h3>
+<p>为了解决 model bias 的问题，BREMEN 使用了包含 <span class="math inline">\(K\)</span> 个 deterministic dynamic model 的 <span class="math inline">\(\hat f_\phi := \left\{\hat f_{\phi_1}, \cdots, \hat f_{\phi_K}\right\}\)</span>，其中 <span class="math inline">\(\phi_i\)</span> 表示模型参数。这些模型的训练方式都是最小化下述均方误差，即 model 预测的后续状态和数据集 <span class="math inline">\(\mathcal{D}\)</span> 指示的后续状态：</p>
+<p><span class="math display">\[
+\min_{\phi_i} \frac{1}{|\mathcal{D}|} \sum_{(s_t, a_t; s_{t + 1}) \in \mathcal{D}} \frac{1}{2} \left\|s_{t + 1} - \hat f_{\phi_i}(s_t, a_t)\right\|_2^2
+\]</span></p>
+<p>在实际训练 policy <span class="math inline">\(\pi_\theta\)</span> 的时候，会从这 <span class="math inline">\(K\)</span> 个 model 中随机选择一个来提供下一状态：</p>
+<p><span class="math display">\[
+a_t \sim \pi_\theta(\cdot \mid \hat s_t), \hat s_{t + 1} = \hat f_{\phi_t}(\hat s_t, a_t), i \sim \{1, 2, \cdots, K\}
+\]</span></p>
+<h3 id="policy-update-with-behavior-regularization">Policy update with behavior regularization</h3>
+<p>这里训练具体的 policy 的时候，需要使用置信区间约束来解决 distribution shift 的问题，即在每一次部署之后都使用 behavior clone 得到的 policy <span class="math inline">\(\hat\pi_\beta\)</span> 对 <span class="math inline">\(\pi_\theta\)</span> 重新初始化。具体而言，在每一次部署之后我们都能得到一个更新过的数据集 <span class="math inline">\(\mathcal{D}\)</span>，从而我们使用 BC 对真实的 policy <span class="math inline">\(\pi_b\)</span> 进行估计。具体的训练方式为下述，这里论文作了 fixed variance 假设：</p>
+<p><span class="math display">\[
+\min_\beta \frac{1}{|\mathcal{D}|} \sum_{(s_t, a_t) \in \mathcal{D}} \frac{1}{2} \left\|a_t - \hat\pi_\beta(s_t)\right\|_2^2
+\]</span></p>
+<div class="note info no-icon"><p>好像 behavior clone 和 distribution shift 都是模仿学习的东西，这里还真的不太会，后面补。</p>
+<p>一个可能有用的 <a target="_blank" rel="noopener" href="https://wensun.github.io/CS4789_data/Imitation_Learning_April_8_annotated.pdf">slide</a>。</p>
+<hr />
+<p>似乎学明白了一点东西，模仿学习是一种改进的 RL，其面对的是无法合理得到 reward signal 的 RL 环境，但是其可以获得部分专家数据，那么我们就可以模仿专家数据进行学习，这就是 behavior clone。</p>
+<p>behavior clone 的基本思想借鉴了监督学习。例如我们获得了专家数据集 <span class="math inline">\(\mathcal{D}\)</span>，那么我们的训练方式就是：</p>
+<p><span class="math display">\[
+\theta^* := \mathop{\rm argmin}_\theta \mathbb{E}_{(s, a) \sim \mathcal{D}} \mathcal{L}(\pi_\theta(s), a)
+\]</span></p>
+<p>这里 <span class="math inline">\(\mathcal{L}\)</span> 是 loss，可以设定为负 reward 等。</p>
+<p>但这个方法有很多问题，包括在数据集较小的时候学习效率极低、无法分辨真正导致 reward 上升的行为等，但是更为致命的问题是 distribution shift。</p>
+<p>这个问题指的是专家数据和实际数据分布不一致，尤其指训练集和测试集分布之间有偏差。由于我们参考了监督学习的思想，behavior clone 实际上也继承了监督学习的一个假设，即数据集分布和真实数据分布一致。但是，即使这个假设并不严格成立，监督学习也是可以忽略的，因为监督学习的各个数据之间独立，可以忽略。然而 RL 是逐步决策的，某一步的偏差可能导致后续误差的累积导致后续决策的极大偏移。</p>
+<p>有一种解决方式是数据聚合，这里就和论文无关了，故不做讨论。</p>
+</div>
+<p>而通过 <span class="math inline">\(\hat\pi_\beta\)</span> 重新初始化 <span class="math inline">\(\pi_\theta\)</span> 的方式为正态分布初始化，均值设定为 <span class="math inline">\(\hat\pi_\beta\)</span> 而标准差置 <span class="math inline">\(1\)</span>。论文认为在这里将 BC 和普通的梯度下降相结合可以使得 <span class="math inline">\(\pi_\theta\)</span> 趋向于新数据集 <span class="math inline">\(\mathcal{D}\)</span> 代表的 policy，可以认为是一种 distribution shift 问题的补救措施。</p>
+<p>为了进一步补救，其进一步使用 KL-based trust region optimization。总体上 BREMEN 的 policy 更新策略就是：</p>
+<p><span class="math display">\[
+\theta_{k + 1} = \mathop{\rm argmax}_\theta \mathbb{E}_{(s, a) \sim (\pi_{\theta_k}, \hat f_{\phi_i})} \left[\frac{\pi_\theta(a \mid s)}{\pi_{\theta_k}(a \mid s)} A^{\pi_{\theta_k}}(s, a)\right]
+\]</span></p>
+<p>这里要求：</p>
+<p><span class="math display">\[
+\mathbb{E}_{s \sim (\pi_{\theta_k}, \hat f_{\phi_i})} D_{\rm KL}(\pi_\theta(\cdot \mid s) \parallel \pi_{\theta_k}(\cdot \mid s)) \leq \delta
+\]</span></p>
+<p>此外定义初始值：</p>
+<p><span class="math display">\[
+\pi_{\theta_0} := \mathcal{N}(\hat\pi_\beta, 1)
+\]</span></p>
+<p>得到的 BREMEN 算法流程为：</p>
+<p><img src="/uploads/paper-2022-09/6.png" /></p>
+<p>总体来看，简化了部署的过程，然后使用类似 TRPO 中信任域的方式约束了 agent 的行为。</p>
+<h2 id="experiments">Experiments</h2>
+<p>既然 BREMEN 的优势在于少量部署条件下能高效学习，其第一个实验就是和其余 RL 在约束部署次数的条件下比较 reward，效果是明显的：</p>
+<p><img src="/uploads/paper-2022-09/7.png" /></p>
+<p>这里每一条竖直虚线都代表一次部署，部署次数约束在五次到十次之间，每次 batch size 约束在 200k 到 100k。可见 BREMEN 明显优于大部分算法，而几乎仅劣于完全在线的 SAC，但是 SAC 可能需要近百万量级的部署次数。</p>
+<p>此外，为了测试 data efficiency，论文采用的方法是训练一个 SAC 后用该 policy 采集一个 dataset 并用该 dataset 训练各种离线算法，根据下述结果可以看出 BREMEN 能在很小的数据集下就能超越 BC 的 baseline，而其余类似 BCQ 等的方法甚至无法超越 baseline，这说明了 BREMEN 不仅 deployment efficient 而且是 data efficient 的：</p>
+<p><img src="/uploads/paper-2022-09/8.png" /></p>
+<h2 id="final-analysis-1">Final analysis</h2>
+<p>说实话由于 RL 基础还是有点欠缺，自己不是很了解信任域相关方法的数学基础，所以对其数学论证也没看很细致，尤其是涉及到 implicit KL regularization 的部分。</p>
+<p>但总体而言这篇文章提出的核心思想是需要考虑部署带来的开销，并且提出了利用 BC 等方法来强化模型的 exploitation 能力并且尝试使用信任域的想法约束 agent 的行为，总体上依然符合离线 RL 的两大思路。</p>
+<p>数学证明之类的可能真的要等到补补 TRPO 之类 RL 方法之后写，目前打算基于 Sutton 把博客里面这些有关 RL 的一些东西串起来。</p>
 
     </div>
 
@@ -583,13 +749,13 @@ U := \sum_{i = 1}^NH_i
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">341k</span>
+    <span title="站点总字数">349k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">5:10</span>
+    <span title="站点阅读时长">5:17</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
