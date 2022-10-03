@@ -25,7 +25,7 @@
     "hexo-renderer-pandoc": "^0.3.1",
     "hexo-renderer-stylus": "^2.0.1",
     "hexo-server": "^2.0.0",
-    "hexo-theme-next": "^8.5.0",
+    "hexo-theme-next": "^8.13.1",
     "hexo-word-counter": "^0.0.3",
     "pandoc": "^0.2.0"
   }
