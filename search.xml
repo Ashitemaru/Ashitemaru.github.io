@@ -15500,51 +15500,6 @@ v = H\log_2\left(1 + \frac{S}{N}\right)({\rm bps})
       </categories>
   </entry>
   <entry>
-    <title>《Reinforcement Learning - An Introduction》学习笔记</title>
-    <url>/2022/08/14/note-of-rl-sutton/</url>
-    <content><![CDATA[<p>Sutton 编写的强化学习理论入门书，先前在学完基本的强化学习知识之后和几位学长做了一些交流，结果发现自己的理论还是有很多并不充足的部分，于是想着暑假还有一段时间，不如来深入学习一下强化学习理论，期间同时推进 Pensieve Torch 的项目。</p>
-<span id="more"></span>
-<h1 id="强化学习引论">强化学习引论</h1>
-<h2 id="强化学习方法的定义和独特性">强化学习方法的定义和独特性</h2>
-<p>强化学习是研究<strong>智能体（Agent）</strong>如何和<strong>环境（Environment）</strong>交互的机器学习方式，其重要的两个特征为 <strong>Trial-and-error Search</strong> 与 <strong>Delayed reward</strong>，即我们需要智能体通过尝试来探索环境如何响应其动作，并且智能体做出的动作不仅会影响当下的收益，还可能影响后续行为的收益。</p>
-<p>强化学习和有监督学习的差别在于，有监督学习的智能体会从一个打标签后的数据集中学习，该数据集来源于外部的全知全能的监督，我们希望有监督学习的智能体能够学习每一条数据和其标签之间的关系，以此去预测未出现在训练集中的数据的标签。有监督学习并不能在交互之中学习，因为为某一种情况打上固定的标签，并且该标签在任何条件下都表示智能体应当采取的最正确的行为，寻找这样的标签并不实际。我们需要让智能体在未知的环境中通过自己的经验学习。</p>
-<p>强化学习虽然不依赖于监督数据，但是也并不是无监督学习，因为无监督学习的主要任务是发现无标签数据内部的结构关系。相比较于无监督学习，强化学习的目标是令智能体能够最大化收益，即使发现数据集、环境内部的结构逻辑可能辅助完成该目标。</p>
-<p>此外，强化学习具有一个独特的特征，即强化学习方法需要处理 exploration 和 exploitation 的平衡问题。exploration 可以让智能体更为了解环境，更能确定何种行为更有利。而 exploitation 则可以让智能体根据目前的知识采取能获取最大收益的行为。不充足的 exploration 可能导致智能体无法正确判定最佳行为，不充足的 exploitation 则可能收获不到尽可能高的收益。所以强化学习方法需要平衡这两者以达到最佳的学习效果。</p>
-<p>另外一方面，强化学习会整体地考虑问题，思考如何让一个以明确目标为导向的智能体和完全不确定的环境交互。而其他的机器学习方法往往仅仅考虑当前问题的某些子问题，并不会论述该子问题该如何嵌入最后的整体问题。</p>
-<p>我们需要注意的是，强化学习中的智能体并不仅仅指的是机器人或者类似的独立决策个体，智能体也可以代指这些系统中的某一个部分，其通过和系统其余部分交互来间接影响这个系统所在的环境。比如机器人的电量监测模块就可以通过告知机器人当前电量状况来影响整个机器人对环境的响应。</p>
-<p>综上所述，强化学习的基本框架大致如下：</p>
-<div class="note info no-icon"><p>强化学习往往包含一个活跃的，和环境产生<strong>交互</strong>的决策智能体以及其所处的环境。环境对智能体而言是<strong>不确定的</strong>，而智能体需要尝试做出能够达到其既定<strong>目标</strong>的行动。智能体的行为会对环境产生影响，从而会影响下一步智能体的决策。所以正确的决策需要考虑到当前行为的延迟影响并且智能体需要有一定的前瞻和规划。</p>
-<p>此外，环境对智能体的行为的响应并不能精确预测，所以智能体需要不断观测环境。但另一方面，智能体可以通过环境的响应来优化后续的行为决策。</p>
-</div>
-<h2 id="强化学习的要素">强化学习的要素</h2>
-<p>具体而言，强化学习方法往往包含四个子元素，即<strong>策略（Policy）</strong>、<strong>收益信号（Reward signal）</strong>、<strong>价值函数（Value function）</strong>以及表示环境的<strong>模型（Model）</strong>，表示环境的模型可以不具有。</p>
-<p>策略是根据当前状态决定智能体需要做出的行为的函数，其可能是简单的查找表，也可以是涉及重型计算的搜索流程。策略是强化学习方法的核心，我们的目标即为学习最优策略。另外，策略除了直接给出当前需要采取的行为之外，还可以给出智能体作出各种行为的概率分布。</p>
-<p>收益信号则会在每次智能体做出决策后由环境给出，收益信号实际上定义了智能体行为的目标，即最大化整个流程中收益信号的总和。如果智能体在行为过程中收到了较低的收益信号，则其往往会更改其决策以尝试获得更高的收益信号。同样，收益信号也有可能是一个概率分布。</p>
-<p>相比于作为即时收益的收益信号，价值函数会从长远的角度评价一个状态，其代指了从该状态出发在长期的行为下智能体能期望获得的总收益。价值函数是收益总和的期望，但是依然可能发生从高价值状态出发依然收获低收益信号这样的情况。我们在决策的时候一般更为重视价值函数而非即时的收益信号，因为这样能够保证我们在长远上获取更高的收益。但是决定价值函数的取值远困难于决定收益信号，因为收益信号往往可以直接通过环境获取，而价值函数需要通过智能体在整个学习过程中去探索。可以说强化学习方法的核心就是如何高效地估计价值函数。</p>
-<p>此外，部分强化学习系统则包含用于模拟智能体所在的环境的模型，使用模型模拟环境的强化学习方法为 model-based 方法，而不使用模型，直接通过不断尝试进行学习的 model-free 方法。</p>
-<h2 id="强化学习方法示例">强化学习方法示例</h2>
-<p>我们使用基本的井字棋作为例子简单讲解强化学习方法。事实上，训练一个能够在井字棋中尽可能获胜的智能体并非容易。传统方法，例如常见的优化方法需要我们完全了解对手的行为模式，并对此加以学习，但是现实问题中更常见的，是我们并不知晓对手的行为模式，这个时候需要要求智能体通过实际上去和该对手对战以获取经验，并从经验中学习。</p>
-<p>使用强化学习方法时，我们首先需要确定状态空间 <span class="math inline">\(\mathcal{S}\)</span>，该状态空间即井字棋所有可能棋子排布形式构成的集合。之后设立价值函数 <span class="math inline">\(V: \mathcal{S} \to \mathbb{R}\)</span>，对于状态 <span class="math inline">\(s \in \mathcal{S}\)</span>，<span class="math inline">\(V(s)\)</span> 的含义为最近的对状态 <span class="math inline">\(s\)</span> 的价值估计。</p>
-<p>假设我们执 X 子，那么在算法开始之前，我们需要把所有三 X 子连珠的局面 <span class="math inline">\(s_X\)</span> 的价值函数 <span class="math inline">\(V(s_X)\)</span> 定义为 <span class="math inline">\(1\)</span>，相应地我们需要把所有三 O 子连珠的局面 <span class="math inline">\(s_O\)</span> 的价值函数 <span class="math inline">\(V(s_O)\)</span> 定义为 <span class="math inline">\(0\)</span>。而其他的所有状态 <span class="math inline">\(s\)</span>，则设定 <span class="math inline">\(V(s) := 0.5\)</span>，表明在无经验条件下，我们从任何中间状态开始的获胜概率估计为百分之五十。</p>
-<p>那么我们只需要不断按照某一个行为方式对弈，并根据对弈经验修改价值函数 <span class="math inline">\(V\)</span> 的值。这里我们的修改策略为，逆向遍历转移链，对于某一个转移行为，比如说我们在 <span class="math inline">\(t\)</span> 时刻从状态 <span class="math inline">\(s_t\)</span> 转移到状态 <span class="math inline">\(s_{t + 1}\)</span>，我们可以将前者的价值向后者的价值的方向前进一步：</p>
-<p><span class="math display">\[
-V(s_t) \leftarrow V(s_t) + \alpha[V(s_{t + 1}) - V(s_t)]
-\]</span></p>
-<p>这样，我们在获得一整个对局的基础上，就可以从游戏的最终情形倒推回起始，并在这一过程中逐步更新各个状态的评价。这样就实现了将 <span class="math inline">\(V(s_X), V(s_O)\)</span> 两个值传播到整个状态空间上。</p>
-<p>公式里的 <span class="math inline">\(\alpha &gt; 0\)</span> 一般是一个小常数，称为<strong>学习率（Learning rate）</strong>或者<strong>步长参数（Step-size parameter）</strong>。</p>
-<p>上述策略实际上是 <strong>Temporal-difference learning</strong> 的一个示例，因为上述学习依赖于差值 <span class="math inline">\(V(s_{t + 1}) - V(s_t)\)</span>，其是两个在时间上先后关系的状态的价值之差。</p>
-<p>上述策略和基于评价的学习方法有相当大的差别。基于评价的学习方法的原理为，固定一个策略，不断和给定的对手对弈，那么智能体的获胜频率给出了该策略获胜概率的无偏估计，该估计会为下一次策略选取提供指导。但是这种方法仅仅会关注结果，其完全忽视对局内部的每一次行动的具体影响，相比于考虑每个状态价值的强化学习方法，基于评价的学习方法往往会给一些毫无作用甚至反作用的行为给予高评价。</p>
-<h1 id="多臂老虎机问题">多臂老虎机问题</h1>
-<p>首先需要明确我们能提供给智能体的两种反馈形式，一种是评价式反馈，一种是指令式反馈。评价式反馈完全依赖于智能体当前做出了何种决策，在此基础上我们给出其决策的评分。与此相反，指令式反馈完全独立于智能体决策，我们只会给出当下智能体最应当选择何种决策。</p>
-<p>现在我们研究一个状态空间大小为 <span class="math inline">\(1\)</span> 的强化学习问题，即多臂老虎机问题。基于此我们讨论若干种强化学习方法的简化版本，之后再将这些方法拓展到真实的强化学习环境中。</p>
-<h2 id="问题定义">问题定义</h2>
-<p>考虑这样的问题，智能体面对一台有 <span class="math inline">\(k\)</span> 个臂的老虎机，每个臂对应着一个固定的概率分布，每次我们选定一个臂，老虎机就会根据这个臂所对应的概率分布提供给我们一个收益信号。我们的目标是在给定次数的尝试之中，最大化最终获取的总收益。</p>
-]]></content>
-      <categories>
-        <category>【学习笔记】计算机</category>
-      </categories>
-  </entry>
-  <entry>
     <title>强化学习入门学习笔记</title>
     <url>/2022/06/30/note-of-rl/</url>
     <content><![CDATA[<p>目前实验室的项目和强化学习关系比较大，然而自己确实没有什么强化学习的基础。</p>
@@ -16856,93 +16811,8 @@ U := \sum_{i = 1}^NH_i
 <h2 id="final-analysis">Final analysis</h2>
 <p>读这一篇论文目的是为了研究怎么离线评测算法，也就是训练一个合理的环境模拟器出来。但感觉本文的一个核心思想为将网络吞吐率等因素视作和 ABR 决策有关的变量，将其纳入考虑。严格而言就是更新了对环境内部逻辑的建模，使之更为贴近真实环境。而如果不把网络吞吐率纳入考虑，则前一时刻无论做出什么选择，下一时刻环境都会要求算法实现同样的吞吐率，从而导致算法趋近于保守，在高 RTT Agent 上表现出仅选择较低码率。</p>
 <p>方法上的话，感觉 Policy Discriminator 没有太见过，是一个训练无关性的好方法。</p>
-<h1 id="off-policy-deep-reinforcement-learning-without-exploration">Off-Policy Deep Reinforcement Learning without Exploration</h1>
-<h2 id="abstract-introduction-1">Abstract &amp; Introduction</h2>
-<p>这篇论文对现在的 Off-policy RL 有着这样的评价：</p>
-<div class="note info no-icon"><p>Our most surprising result shows that off-policy agents perform dramatically worse than the behavioral agent when trained with the same algorithm on the same dataset.</p>
-</div>
-<p>具体展开的话，现在基于将数据收集为一个 dataset 并进行 replay 的训练方式不仅在收集数据的策略上有很大的困难并且开销极大，甚至这种方法的训练结果都是极其不佳的。</p>
-<p>论文里面把这种问题出现的根本原因称为 extrapolation error，指的是实际上未经历过的状态行为对被赋予了并不实际的价值估计。论文将这个问题出现的原因归结为 batch 的分布和真实的数据分布并不匹配。</p>
-<p>而本文提出的 Batch Constrained deep Q-learning，简称 BCQ，则在最大化 reward signal 的时候，同时最小化已经探索过的状态行为对和 batch 之中的状态行为对之间的不匹配程度。</p>
-<p>而评估 BCQ 时使用了 MuJuCo 环境，该环境的行为决策空间是连续高维的，造成 extrapolation error 现象十分明显。</p>
-<p>论文的野心也是挺大的：</p>
-<div class="note info no-icon"><p>We remark that BCQ is <strong>only one way</strong> to approach batch-constrained reinforcement learning in a deep setting, and we hope that it will be serve as a <strong>foundation</strong> for future algorithms.</p>
-</div>
-<h2 id="background">Background</h2>
-<p>总结了 RL 的进化史，其实感觉更适合学完了 RL 基础之后来过一遍。</p>
-<p>首先是 Markov 决策过程，即 MDP <span class="math inline">\((\mathcal{S}, \mathcal{A}, p_M(s&#39; \mid s, a), r, \gamma)\)</span>。MDP 包含一个状态空间 <span class="math inline">\(\mathcal{S}\)</span>，行为决策空间 <span class="math inline">\(\mathcal{A}\)</span>，以及一个转移概率函数 <span class="math inline">\(p_M(s&#39; \mid s, a)\)</span>。每一个时间步，agent 都会接收到 reward signal <span class="math inline">\(r(s, a, s&#39;) \in \mathbb{R}\)</span>，表示在状态 <span class="math inline">\(s\)</span> 下选择行为 <span class="math inline">\(a\)</span> 并到达新状态 <span class="math inline">\(s&#39;\)</span> 时能够获得的收益。agent 的目的是令下述累积收益最大化：</p>
-<p><span class="math display">\[
-R_t := \sum_{i = t + 1}^{+\infty} \gamma^i r(s_i, a_i, s_{i + 1})
-\]</span></p>
-<p>这里 <span class="math inline">\(\gamma \in [0, 1)\)</span> 是收益衰减系数。</p>
-<p>而 agent 需要学习的是一个决策函数 <span class="math inline">\(\pi: \mathcal{S} \to \mathcal{A}\)</span>，指示 agent 在给定状态 <span class="math inline">\(s\)</span> 下应当做出决策 <span class="math inline">\(a = \mu^\pi(s)\)</span>【Note #1：这里的 policy 是确定性 policy，不确定性 policy 的策略表达应当是 <span class="math inline">\(\pi: \mathcal{S} \times \mathcal{A} \to [0, 1]\)</span>，以表达做出某种决策的概率】。</p>
-<p>可以定义给定 policy 下的状态行为价值函数，表达在该 policy 下在给定状态下做出给定行为期望获取的累积收益：</p>
-<p><span class="math display">\[
-Q^\pi(s, a) := \mathbb{E}_\pi [R_t \mid s, a]
-\]</span></p>
-<p>而 Bellman equation 指出价值函数可以按下述方式计算：</p>
-<p><span class="math display">\[
-\mathcal{T}^\pi Q(s, a) := \mathbb{E}_{s&#39;} [r + \gamma Q(s&#39;, \pi(s&#39;))]
-\]</span></p>
-<div class="note info no-icon"><p>简单记一下 Bellman operator 的笔记。考虑 Bellman equation 的常见写法：</p>
-<p><span class="math display">\[
-V^\pi(s) = \sum_{a \in \mathcal{A}} \pi(a \mid s) \left(r(s, a) + \gamma\sum_{s&#39; \in \mathcal{S}} p(s&#39; \mid s, a)V^\pi(s&#39;)\right)
-\]</span></p>
-<p>令：</p>
-<p><span class="math display">\[
-p^\pi(s&#39; \mid s) := \sum_{a \in \mathcal{A}} \pi(a \mid s)p(s&#39; \mid s, a)
-\]</span></p>
-<p>以及：</p>
-<p><span class="math display">\[
-r^\pi(s) := \sum_{a \in \mathcal{A}} \pi(a \mid s)r(s, a)
-\]</span></p>
-<p>注意这里定义的新记号有 <span class="math inline">\(\pi\)</span> 的上标，表明这里的新记号和 policy 有关。</p>
-<p>那么方程可以写为【Note #2：这一步相当于消除了不确定 policy 决策的影响，即对决策空间积分】：</p>
-<p><span class="math display">\[
-V^\pi(s) = r^\pi(s) + \gamma\sum_{s&#39; \in \mathcal{S}} p(s&#39; \mid s)V^\pi(s&#39;)
-\]</span></p>
-<p>如果我们枚举状态空间，则可以将上述方程进一步写为矩阵形式，这里 <span class="math inline">\(n := |\mathcal{S}|\)</span>：</p>
-<p><span class="math display">\[
-\begin{bmatrix}
-V^\pi(s_1) \\ V^\pi(s_2) \\ \vdots \\ V^\pi(s_n) \\
-\end{bmatrix} =
-\begin{bmatrix}
-r^\pi(s_1) \\ r^\pi(s_2) \\ \vdots \\ r^\pi(s_n) \\
-\end{bmatrix} + \gamma
-\begin{bmatrix}
-p^\pi(s_1 \mid s_1) &amp; p^\pi(s_2 \mid s_1) &amp; \cdots &amp; p^\pi(s_n \mid s_1) \\
-p^\pi(s_1 \mid s_2) &amp; p^\pi(s_2 \mid s_2) &amp; \cdots &amp; p^\pi(s_n \mid s_2) \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-p^\pi(s_1 \mid s_n) &amp; p^\pi(s_2 \mid s_n) &amp; \cdots &amp; p^\pi(s_n \mid s_n) \\
-\end{bmatrix}
-\begin{bmatrix}
-V^\pi(s_1) \\ V^\pi(s_2) \\ \vdots \\ V^\pi(s_n) \\
-\end{bmatrix}
-\]</span></p>
-<p>做一些合适的记号简写即可得到：</p>
-<p><span class="math display">\[
-V^\pi = r^\pi + \gamma p^\pi V^\pi
-\]</span></p>
-<p>而 Bellman operator <span class="math inline">\(\mathcal{T}^\pi: \mathbb{R}^n \to \mathbb{R}^n\)</span> 就定义为：</p>
-<p><span class="math display">\[
-\mathcal{T}^\pi(v) := r^\pi + \gamma p^\pi v
-\]</span></p>
-<p>也就是说 Bellman operator 是基于 Bellman equation 衍生出来的一个算子。</p>
-</div>
-<p>我们的目标是拟合下述价值函数，即最优状态行为价值函数：</p>
-<p><span class="math display">\[
-Q^*(s, a) := \max_\pi Q^\pi(s, a)
-\]</span></p>
-<p>DQN 方法中，我们使用神经网络进行拟合。DQN 中更新网络 <span class="math inline">\(\theta\)</span> 所估计的价值函数 <span class="math inline">\(Q_\theta\)</span> 时，使用下述式子作为目标：</p>
-<p><span class="math display">\[
-r + \gamma Q_{\theta&#39;}(s&#39;, \mathop{\rm argmax}_a Q_{\theta&#39;}(s&#39;, a))
-\]</span></p>
-<p>DQN，包括其基于的 Q-learning 都是 off-policy 的，也就是说可以忽略是如何和环境交互产生训练数据的。</p>
-<p>对于连续决策空间，由于上述目标中的最大值难以求取，所以常用 Actor-Critic 方法，即令 Actor 做出决策，Critic 根据自身的价值评估选定衰减或放大 Actor 更新网络参数的系数。而如果在此基础上再将 DQN 的双网络思想借鉴到 Critic 网络的构建中，即可得到 DDPG 方法。</p>
-<div class="note warning no-icon"><p>BCQ 感觉都可以纳入入门笔记里面了，其已经是一种常见的方法，还是不把它放在论文笔记里面比较好。</p>
-</div>
 <h1 id="deployment-efficient-reinforcement-learning-via-model-based-offline-optimization">Deployment-Efficient Reinforcement Learning via Model-Based Offline Optimization</h1>
-<h2 id="abstract-introduction-2">Abstract &amp; Introduction</h2>
+<h2 id="abstract-introduction-1">Abstract &amp; Introduction</h2>
 <p>离线 RL 的问题在于在线和环境交互可能导致较大开销，为了解决这一问题，主要的策略分为：</p>
 <ul>
 <li>限制 agent 的行为，防止其做出错误举动。这里 BCQ 就采用了这样的做法（但是 BCQ 论文实在是需要慢慢看）</li>
@@ -17123,7 +16993,159 @@ a_t \sim \pi_\theta(\cdot \mid \hat s_t), \hat s_{t + 1} = \hat f_{\phi_t}(\hat 
     <url>/2022/10/01/rl-algorithm-list/</url>
     <content><![CDATA[<p>本文基本基于原先的强化学习入门笔记，但是增加了不少东西，代码也从 Tensorflow 改成 Pytorch。</p>
 <p>这篇文章大概会忽略掉不少基础部分的讲解，会更为侧重于说明各个算法的 motivation 和 implementation，可能会涉及到部分数学推理。</p>
+<span id="more"></span>
+<p><span class="math display">\[
+\newcommand{\Pe}{\mathbb{P}_{\mathcal{E}}}
+\newcommand{\P}{\mathbb{P}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\S}{\mathcal{S}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\Eop}{\mathop{\mathbb{E}}}
+\newcommand{\b}{\boldsymbol}
+\newcommand{\argmax}{\mathop{\rm argmax}}
+\]</span></p>
+<h1 id="强化学习的基本概念与基本优化理论">强化学习的基本概念与基本优化理论</h1>
+<h2 id="环境与策略">环境与策略</h2>
+<p>强化学习的基本框架为一个智能体和环境交互，环境对智能体的决策给出反馈，即收益信号并转移到下一状态，智能体需要学会在不同的状态下应该做出何种决策以收获最高总收益。</p>
+<p>这里环境常常建模为 Markov 决策过程，即 MDP <span class="math inline">\((\S, \A, \Pe, r, \gamma)\)</span>。所谓 Markov 过程，指的是状态转移和历史状态无关，仅仅和当前状态有关，可以简单描述为 <span class="math inline">\(\P(s_{t + 1} \mid s_t) = \P(s_{t + 1} \mid s_t, s_{t - 1}, \cdots, s_1)\)</span>。MDP 中各项指的是：</p>
+<ul>
+<li>状态空间 <span class="math inline">\(\S\)</span>。即环境可以表现出的所有状态构成的集合。</li>
+<li>决策空间 <span class="math inline">\(\A\)</span>。即环境允许智能体做出的所有决策构成的集合。</li>
+<li>状态转移概率函数 <span class="math inline">\(\Pe\)</span>。<span class="math inline">\(\Pe(s&#39; \mid s, a)\)</span> 表示环境在状态 <span class="math inline">\(s \in \S\)</span> 且智能体做出决策 <span class="math inline">\(a \in \A\)</span> 的时候环境下一步转移到状态 <span class="math inline">\(s&#39; \in \S\)</span> 的概率。这里下标 <span class="math inline">\(\mathcal{E}\)</span> 表示该概率仅与环境 <span class="math inline">\(\mathcal{E}\)</span> 本身有关。</li>
+<li>收益函数 <span class="math inline">\(r\)</span>。收益函数为从 <span class="math inline">\(\S \times \A \times \S\)</span> 到 <span class="math inline">\(\R\)</span> 的映射。<span class="math inline">\(r(s, a, s&#39;)\)</span> 表示环境在状态 <span class="math inline">\(s \in \S\)</span> 且智能体做出决策 <span class="math inline">\(a \in \A\)</span> 并转移到新状态 <span class="math inline">\(s&#39; \in \S\)</span> 的时候环境给予智能体的收益。</li>
+<li>收益衰减系数 <span class="math inline">\(\gamma\)</span>。这里 <span class="math inline">\(\gamma \in [0, 1]\)</span>。该参数代表收益随着时间步衰减的系数，具体含义将会在后续定义累计收益的时候展开。</li>
+</ul>
+<p>而智能体内部所使用的策略一般表现为 <span class="math inline">\(\pi_{\b\theta}(a \mid s)\)</span>。这里策略 <span class="math inline">\(\pi_{\b\theta}\)</span> 的下标 <span class="math inline">\(\b\theta\)</span> 表示该策略由参数 <span class="math inline">\(\b\theta \in \R^n\)</span> 建模。另外 <span class="math inline">\(\pi_{\b\theta}(a \mid s)\)</span> 表示了智能体在该策略条件下，在状态 <span class="math inline">\(s\)</span> 时做出决策 <span class="math inline">\(a\)</span> 的概率。</p>
+<p>上述的策略往往称为<strong>非确定性策略</strong>，因为其对于某个状态给出的是做出某一种决策的概率，是不确定的。而另外一类策略，即<strong>确定性策略</strong>，会对于某个状态给出具体的某一种决策。确定性策略的记号，为了和非确定性策略的 <span class="math inline">\(\pi_{\b\theta}\)</span> 区别，往往使用 <span class="math inline">\(\mu_{\b\theta}\)</span>。而 <span class="math inline">\(a := \mu_{\b\theta}(s)\)</span> 就表示了智能体在该策略条件下，在状态 <span class="math inline">\(s\)</span> 时会做出决策 <span class="math inline">\(a\)</span>。</p>
+<p>一条<strong>轨迹</strong>，或者 <strong>trajectory</strong>，指的是智能体和环境不断交互的过程的记录。具体而言，环境首先位于状态 <span class="math inline">\(s_0\)</span>，智能体做出决策 <span class="math inline">\(a_0\)</span>，环境返回收益 <span class="math inline">\(r_1\)</span> 后转入新状态 <span class="math inline">\(s_1\)</span>。以此类推形成 <span class="math inline">\(s_0, a_0, r_1; s_1, a_1, r_2; \cdots\)</span>。轨迹常常使用记号 <span class="math inline">\(\tau\)</span> 表示。</p>
+<p>显然根据 Markov 的特性，我们可以得到在策略 <span class="math inline">\(\pi_{\b\theta}\)</span> 的条件下某一条轨迹 <span class="math inline">\(\tau = (s_0, a_0, r_1; s_1, a_1, r_2; \cdots)\)</span> 出现的概率为：</p>
+<p><span class="math display">\[
+\P_{\b\theta}(\tau) = \Pe(s_0)\prod_{t = 0}^{+\infty} \pi_{\b\theta}(a_t \mid s_t)\Pe(s_{t + 1} \mid s_t, a_t)
+\]</span></p>
+<p>这里 <span class="math inline">\(\Pe(s_0)\)</span> 表示环境初始状态为 <span class="math inline">\(s_0\)</span> 的概率。</p>
+<p>我们表示轨迹 <span class="math inline">\(\tau\)</span> 服从上述概率分布的时候，可以写成多种符号，包括 <span class="math inline">\(\tau \sim \P_{\b\theta}(\tau)\)</span> 或者 <span class="math inline">\(\tau \sim \pi_{\b\theta}\)</span> 等等，本文会使用第二种表达。</p>
+<h2 id="累计收益与价值函数">累计收益与价值函数</h2>
+<p>对一条轨迹，<strong>累计收益</strong>的定义为：</p>
+<p><span class="math display">\[
+R_t(\tau) := \sum_{k = 0}^{+\infty} \gamma^k r_{t + k + 1}
+\]</span></p>
+<p>这里注意到我们累加收益的时候需要不断使用衰减因子进行衰减，这一操作主要是为了拟合现实中距离现在越远的行为对当前决策的影响越小的特征。</p>
+<p>之后，我们进一步定义<strong>价值函数</strong>。首先需要定义<strong>状态行为价值函数</strong>：</p>
+<p><span class="math display">\[
+Q^{\pi_{\b\theta}}(s, a) := \Eop_{\tau \sim \pi_{\b\theta}}[R_t(\tau) \mid s_t = s, a_t = a]
+\]</span></p>
+<p>可以注意到上述期望中 <span class="math inline">\(t\)</span> 的分布并没有指定，这里一般认为是等概率地选择一个自然数即可。</p>
+<p>进一步即可有<strong>状态价值函数</strong>：</p>
+<p><span class="math display">\[
+V^{\pi_{\b\theta}}(s) := \Eop_{\tau \sim \pi_{\b\theta}}[R_t(\tau) \mid s_t = s]
+\]</span></p>
+<p>我们可以发现状态行为价值函数描述了在状态 <span class="math inline">\(s\)</span> 下做出决策 <span class="math inline">\(a\)</span> 后期望的累计收益，也就是说该价值函数评价了给定状态下的某个决策的期望收益，所以我们常常使用状态行为价值函数辅助决策。而状态价值函数则和具体的决策无关，是衡量从某一个状态出发，能够获得的期望收益。</p>
+<p>显然这两个价值函数之间存在相互推出关系，而这种关系描述如下：</p>
+<div class="note info no-icon"><p><strong>Theorem 1.01</strong> 对于任何 MDP 与其上的策略 <span class="math inline">\(\pi\)</span>，该策略的状态价值函数与状态行为价值函数满足：</p>
+<p><span class="math display">\[
+\begin{aligned}
+{\color{red} V^\pi(s)} &amp;= \sum_{a \in \mathcal{A}} \pi(a \mid s){\color{red} Q^\pi(s, a)} \\
+{\color{red} Q^\pi(s, a)} &amp;= \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a)[r(s, a, s&#39;) + \gamma {\color{red} V^\pi(s&#39;)}] \\
+\end{aligned}
+\]</span></p>
+</div>
+<p>第一个等式是由 <span class="math inline">\(Q^\pi\)</span> 推出 <span class="math inline">\(V^\pi\)</span> 的路径，证明也是简单的：</p>
+<p><span class="math display">\[
+\begin{aligned}
+V^\pi(s) &amp;= \Eop_{\tau \sim \pi}[R_t(\tau) \mid s_t = s] \\
+&amp;= \sum_{\tau} \P_{\b\theta}(\tau \mid s_t = s)R_t(\tau) \\
+&amp;= \sum_{\tau} \left(\sum_{a \in \mathcal{A}} \P_{\b\theta}(\tau, a_t = a \mid s_t = s)\right)R_t(\tau) \\
+&amp;= \sum_{\tau} \left(\sum_{a \in \mathcal{A}} \P_{\b\theta}(\tau \mid s_t = s, a_t = a)\P_{\b\theta}(a_t = a \mid s_t = s)\right)R_t(\tau) \\
+&amp;= \sum_{a \in \mathcal{A}} \P_{\b\theta}(a_t = a \mid s_t = s) \left(\sum_{\tau} \P_{\b\theta}(\tau \mid s_t = s, a_t = a) R_t(\tau)\right) \\
+&amp;= \sum_{a \in \mathcal{A}} \pi(a \mid s)\Eop_{\tau \sim \pi}[R_t(\tau) \mid s_t = s, a_t = a] \\
+&amp;= \sum_{a \in \mathcal{A}} \pi(a \mid s)Q^\pi(s, a) \\
+\end{aligned}
+\]</span></p>
+<p>第二个等式是由 <span class="math inline">\(V^\pi\)</span> 推出 <span class="math inline">\(Q^\pi\)</span> 的路径，其涉及到了后续状态，从而实际上描述出了价值函数之间的递推关系。</p>
+<p>我们考虑其证明，首先我们显然有这个等式：</p>
+<p><span class="math display">\[
+r(s, a, s&#39;) = \Eop_{\tau \sim \pi}[r_{t + 1} \mid s_t = s, a_t = a, s_{t + 1} = s&#39;]
+\]</span></p>
+<p>之后考虑对状态行为价值函数的单步展开：</p>
+<p><span class="math display">\[
+\begin{aligned}
+Q^\pi(s) &amp;= \Eop_{\tau \sim \pi}[R_t(\tau) \mid s_t = s, a_t = a] \\
+&amp;= \Eop_{\tau \sim \pi}\left[\sum_{k = 0}^{+\infty} \gamma^k r_{t + k + 1} \middle| s_t = s, a_t = a\right] \\
+&amp;= \Eop_{\tau \sim \pi}\left[r_{t + 1} + \sum_{k = 1}^{+\infty} \gamma^k r_{t + k + 1} \middle| s_t = s, a_t = a\right] \\
+&amp;= \Eop_{\tau \sim \pi}\left[r_{t + 1} + \gamma\sum_{k = 0}^{+\infty} \gamma^k r_{t + k + 2} \middle| s_t = s, a_t = a\right] \\
+&amp;= \Eop_{\tau \sim \pi}[r_{t + 1} \mid s_t = s, a_t = a] + \Eop_{\tau \sim \pi}\left[\gamma\sum_{k = 0}^{+\infty} \gamma^k r_{(t + 1) + k + 1} \middle| s_t = s, a_t = a\right] \\
+&amp;= \Eop_{\tau \sim \pi}[r_{t + 1} \mid s_t = s, a_t = a] + \gamma\Eop_{\tau \sim \pi}[R_{t + 1}(\tau) \mid s_t = s, a_t = a] \\
+\end{aligned}
+\]</span></p>
+<p>之后我们使用全期望公式处理条件期望中的条件：</p>
+<p><span class="math display">\[
+\begin{aligned}
+\Eop_{\tau \sim \pi}[r_{t + 1} \mid s_t = s, a_t = a] &amp;= \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a) \Eop_{\tau \sim \pi}[r_{t + 1} \mid s_t = s, a_t = a, s_{t + 1} = s&#39;] \\
+&amp;= \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a)r(s, a, s&#39;) \\
+\Eop_{\tau \sim \pi}[R_{t + 1}(\tau) \mid s_t = s, a_t = a] &amp;= \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a) \Eop_{\tau \sim \pi}[R_{t + 1}(\tau) \mid s_t = s, a_t = a, s_{t + 1} = s&#39;] \\
+&amp;= \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a) \Eop_{\tau \sim \pi}[R_{t + 1}(\tau) \mid s_{t + 1} = s&#39;] \\
+&amp;= \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a)V^\pi(s&#39;) \\
+\end{aligned}
+\]</span></p>
+<p>这里注意到处理第二个条件期望的时候，直接删去了 <span class="math inline">\(s_t = s\)</span> 和 <span class="math inline">\(a_t = a\)</span> 两个条件，这是因为 <span class="math inline">\(R_{t + 1}(\tau)\)</span> 与 <span class="math inline">\(s_t, a_t\)</span> 无关，可以直接删去而不影响最后的期望。</p>
+<p>将此代入原有展开式即可证明完毕。</p>
+<p>事实上，基于这两个价值函数的互相推出，我们可以得到 <span class="math inline">\(Q^\pi\)</span> 推出 <span class="math inline">\(Q^\pi\)</span> 的公式：</p>
+<p><span class="math display">\[
+{\color{red} Q^\pi(s, a)} = \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a) \left[r(s, a, s&#39;) + \gamma\sum_{a&#39; \in \A} \pi(a&#39; \mid s&#39;){\color{red} Q^\pi(s&#39;, a&#39;)}\right]
+\]</span></p>
+<p>以及 <span class="math inline">\(V^\pi\)</span> 推出 <span class="math inline">\(V^\pi\)</span> 的公式：</p>
+<p><span class="math display">\[
+{\color{red} V^\pi(s)} = \sum_{a \in \A} \pi(a \mid s) \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a)[r(s, a, s&#39;) + \gamma {\color{red} V^\pi(s&#39;)}]
+\]</span></p>
+<p>这两个公式直接表现出了价值函数自身具有的迭代结构，也就是当前强化学习中最为重要的方程之一，目前大部分强化学习方法的核心就是拟合该方程。该方程即 <strong>Bellman 方程（Bellman Equation）</strong>。</p>
+<h2 id="基本优化理论">基本优化理论</h2>
+<p>现在我们讨论如何获取一个最有价值的策略。</p>
+<p>首先，我们定义<strong>最优状态行为价值函数</strong>和<strong>最优状态价值函数</strong>：</p>
+<p><span class="math display">\[
+\begin{aligned}
+Q^\star(s, a) &amp;:= \max_\pi Q^\pi(s, a) \\
+V^\star(s) &amp;:= \max_\pi V^\pi(s) \\
+\end{aligned}
+\]</span></p>
+<p>基于最优性，我们可以定义策略之间的序。我们称策略 <span class="math inline">\(\pi\)</span> 优于 <span class="math inline">\(\pi&#39;\)</span>，记作 <span class="math inline">\(\pi \geq \pi&#39;\)</span>，当且仅当对于所有 <span class="math inline">\(s \in \S\)</span> 都满足 <span class="math inline">\(\pi\)</span> 的状态函数优于 <span class="math inline">\(\pi&#39;\)</span>，即 <span class="math inline">\(V^\pi(s) \geq V^{\pi&#39;}(s)\)</span>。</p>
+<p>我们有下述基本优化理论：</p>
+<div class="note info no-icon"><p><strong>Theorem 1.02</strong> 对于任何 MDP，都存在一个最优策略 <span class="math inline">\(\pi^\star\)</span> 满足对于任何 <span class="math inline">\(\pi\)</span> 都有 <span class="math inline">\(\pi^\star \geq \pi\)</span>。并且该最优策略 <span class="math inline">\(\pi^\star\)</span> 在在任何状态与任何决策下均实现了最优价值，即对于任何 <span class="math inline">\(s \in \S, a \in \A\)</span> 都有 <span class="math inline">\(V^{\pi^\star}(s) = V^\star(s), Q^{\pi^\star}(s, a) = Q^\star(s, a)\)</span>。</p>
+</div>
+<p>本文不加证明地认为该理论成立。另外，这里给出最优策略的构造。可见最优策略是确定性策略：</p>
+<p><span class="math display">\[
+\pi^\star(a \mid s) := \begin{cases}
+1 &amp; a = \argmax_{a \in \A} Q^\star(s, a) \\
+0 &amp; \text{otherwise}
+\end{cases}
+\]</span></p>
+<p>基于该定理我们能够得到两个最优价值函数之间存在的关系：</p>
+<div class="note info no-icon"><p><strong>Theorem 1.03</strong> 对于任何 MDP，其最优状态价值函数与最优状态行为价值函数满足：</p>
+<p><span class="math display">\[
+\begin{aligned}
+{\color{red} V^\star(s)} &amp;= \max_{a \in \mathcal{A}} {\color{red} Q^\star(s, a)} \\
+{\color{red} Q^\star(s, a)} &amp;= \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a)[r(s, a, s&#39;) + \gamma {\color{red} V^\star(s&#39;)}] \\
+\end{aligned}
+\]</span></p>
+</div>
+<p>第一个等式是简单的：</p>
+<p><span class="math display">\[
+V^\star(s) = V^{\pi^\star}(s) = \sum_{a \in \A} \pi^\star(a \mid s)Q^{\pi^\star}(s, a) = \max_{a \in \A} Q^{\pi^\star}(s, a) = \max_{a \in \A} Q^\star(s, a)
+\]</span></p>
+<p>第二个等式直接对 <span class="math inline">\(\pi^\star\)</span> 应用一般的 Bellman 方程即可得到。</p>
+<p>从而还有下述<strong>最优 Bellman 方程（Bellman Optimality Equation）</strong>：</p>
+<p><span class="math display">\[
+{\color{red} Q^\star(s, a)} = \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a) \left[r(s, a, s&#39;) + \gamma\max_{a&#39; \in \A} {\color{red} Q^\star(s&#39;, a&#39;)}\right]
+\]</span></p>
+<p>以及：</p>
+<p><span class="math display">\[
+{\color{red} V^\star(s)} = \max_{a \in \A} \left[\sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a)[r(s, a, s&#39;) + \gamma {\color{red} V^\star(s&#39;)}]\right]
+\]</span></p>
+<p>理论上我们可以求解最优 Bellman 方程得到 <span class="math inline">\(V^\star\)</span>，从而就能够反推出 <span class="math inline">\(\pi^\star\)</span>。然而求解最优 Bellman 方程是计算困难的，现行的强化学习方法就是在尝试近似求解最优 Bellman 方程。</p>
 ]]></content>
+      <categories>
+        <category>【学习笔记】计算机</category>
+      </categories>
   </entry>
   <entry>
     <title>Holder 与 Vocaloid</title>
