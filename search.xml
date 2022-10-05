@@ -17142,6 +17142,78 @@ V^\star(s) = V^{\pi^\star}(s) = \sum_{a \in \A} \pi^\star(a \mid s)Q^{\pi^\star}
 {\color{red} V^\star(s)} = \max_{a \in \A} \left[\sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a)[r(s, a, s&#39;) + \gamma {\color{red} V^\star(s&#39;)}]\right]
 \]</span></p>
 <p>理论上我们可以求解最优 Bellman 方程得到 <span class="math inline">\(V^\star\)</span>，从而就能够反推出 <span class="math inline">\(\pi^\star\)</span>。然而求解最优 Bellman 方程是计算困难的，现行的强化学习方法就是在尝试近似求解最优 Bellman 方程。</p>
+<h1 id="dynamic-programming-dp">Dynamic Programming (DP)</h1>
+<h2 id="policy-iteration-pi">Policy Iteration (PI)</h2>
+<p>如果我们已经对环境有了完整的建模，我们完全可以使用迭代的方式求解最优 Bellman 方程。</p>
+<p>具体的迭代过程分为两步，分别为<strong>策略评估（Policy Evaluation）</strong>和<strong>策略提升（Policy Improvement）</strong>，这两步会交替进行。具体而言，策略评估是在已知 <span class="math inline">\(\pi\)</span> 的条件下迭代计算其状态价值函数 <span class="math inline">\(V^\pi\)</span>。而策略提升为在得知状态价值函数的基础上优化策略 <span class="math inline">\(\pi\)</span>。</p>
+<p>首先阐述策略评估的迭代过程。</p>
+<p>我们记 <span class="math inline">\(V_k\)</span> 是第 <span class="math inline">\(k\)</span> 轮迭代的时候的状态价值函数，那么我们在初始化 <span class="math inline">\(V_0\)</span> 之后不断进行下述迭代直到状态价值函数收敛：</p>
+<p><span class="math display">\[
+V_{k + 1}(s) \leftarrow \sum_{a \in \A} \pi(a \mid s) \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a)[r(s, a, s&#39;) + \gamma V_k(s&#39;)]
+\]</span></p>
+<p>收敛后，应当有 <span class="math inline">\(V_{+\infty} = V^\pi\)</span>，此时我们就得到了策略 <span class="math inline">\(\pi\)</span> 所对应的价值函数。</p>
+<p>之后阐述策略提升的方法。</p>
+<p>我们在得知了策略 <span class="math inline">\(\pi\)</span> 的状态价值函数 <span class="math inline">\(V^\pi\)</span> 之后，我们可以贪心地构造一个确定性策略 <span class="math inline">\(\pi&#39;\)</span>，保证策略更优。保证这一点能够成立的是下述定理：</p>
+<div class="note info no-icon"><p><strong>Theorem 2.01 (Policy Improvement Theorem)</strong> 对于已知的策略 <span class="math inline">\(\pi\)</span>，定义确定性策略 <span class="math inline">\(\pi&#39;\)</span>：</p>
+<p><span class="math display">\[
+\pi&#39;(a \mid s) := \begin{cases}
+1 &amp; a = \argmax_{a \in \A} Q^\pi(s, a) \\
+0 &amp; \text{otherwise}
+\end{cases}
+\]</span></p>
+<p>那么 <span class="math inline">\(\pi&#39; \geq \pi\)</span>，并且等号成立当且仅当 <span class="math inline">\(\pi = \pi&#39; = \pi^\star\)</span>。</p>
+</div>
+<p>证明是简单的，首先我们可以注意到：</p>
+<p><span class="math display">\[
+Q^\pi(s, \pi&#39;(s)) = \max_{a \in \A} Q^\pi(s, a) \geq \sum_{a \in \A} \pi(a \mid s)Q^\pi(s, a) = V^\pi(s)
+\]</span></p>
+<p>我们从而能得到下述不等式。这里事实上进行了单步展开，进一步就可以尝试利用迭代结构构造不等式链，具体细节则在后续证明中说明：</p>
+<p><span class="math display">\[
+\begin{aligned}
+V^\pi(s) &amp;\leq Q^\pi(s, \pi&#39;(s)) \\
+&amp;= \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, \pi&#39;(s))[r(s, \pi&#39;(s), s&#39;) + \gamma V^\pi(s&#39;)] \\
+&amp;= \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, \pi&#39;(s))r(s, \pi&#39;(s), s&#39;) + \gamma\sum_{s&#39; \in \S} \Pe(s&#39; \mid s, \pi&#39;(s)) V^\pi(s&#39;) \\
+\end{aligned}
+\]</span></p>
+<p>另外，我们可以证明：</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;\sum_{s&#39; \in \S} \Pe(s&#39; \mid s, \pi&#39;(s))r(s, \pi&#39;(s), s&#39;) \\
+=&amp; \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, \pi&#39;(s))\Eop_{\tau \sim \pi&#39;}[r_{t + 1} \mid s_t = s, a_t = \pi&#39;(s), s_{t + 1} = s&#39;] \\
+=&amp; \sum_{a \in \A} \pi&#39;(a \mid s)\sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a)\Eop_{\tau \sim \pi&#39;}[r_{t + 1} \mid s_t = s, a_t = a, s_{t + 1} = s&#39;] \\
+=&amp; \Eop_{\tau \sim \pi&#39;}[r_{t + 1} \mid s_t = s]
+\end{aligned}
+\]</span></p>
+<p>即得到：</p>
+<p><span class="math display">\[
+V^\pi(s) \leq \Eop_{\tau \sim \pi&#39;}[r_{t + 1} \mid s_t = s] + \gamma\sum_{s&#39; \in \S} \Pe(s&#39; \mid s, \pi&#39;(s)) V^\pi(s&#39;)
+\]</span></p>
+<p>对这个不等式迭代展开：</p>
+<p><span class="math display">\[
+\begin{aligned}
+V^\pi(s) &amp;\leq \Eop_{\tau \sim \pi&#39;}[r_{t + 1} \mid s_t = s] + \gamma\sum_{s&#39; \in \S} \Pe(s&#39; \mid s, \pi&#39;(s)) V^\pi(s&#39;) \\
+&amp;\leq \Eop_{\tau \sim \pi&#39;}[r_{t + 1} \mid s_t = s] + \gamma\sum_{s&#39; \in \S} \Pe(s&#39; \mid s, \pi&#39;(s)) \left[\Eop_{\tau \sim \pi&#39;}[r_{t + 2} \mid s_{t + 1} = s&#39;] + \gamma\sum_{s&#39;&#39; \in \S} \Pe(s&#39;&#39; \mid s&#39;, \pi&#39;(s&#39;)) V^\pi(s&#39;&#39;)\right] \\
+&amp;= \Eop_{\tau \sim \pi&#39;}[r_{t + 1} \mid s_t = s] + \gamma{\color{red} \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, \pi&#39;(s))\Eop_{\tau \sim \pi&#39;}[r_{t + 2} \mid s_{t + 1} = s&#39;]} + \gamma^2\sum_{s&#39; \in \S}\sum_{s&#39;&#39; \in \S}\Pe(s&#39;&#39; \mid s&#39;, \pi&#39;(s&#39;)) V^\pi(s&#39;&#39;) \\
+\end{aligned}
+\]</span></p>
+<p>对于红色部分，我们容易发现 <span class="math inline">\(s_t = s\)</span> 对于 <span class="math inline">\(r_{t + 2}\)</span> 的期望是无效条件，所以：</p>
+<p><span class="math display">\[
+\sum_{s&#39; \in \S} \Pe(s&#39; \mid s, \pi&#39;(s))\Eop_{\tau \sim \pi&#39;}[r_{t + 2} \mid s_{t + 1} = s&#39;] = \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, \pi&#39;(s))\Eop_{\tau \sim \pi&#39;}[r_{t + 2} \mid s_t = s, s_{t + 1} = s&#39;] = \Eop_{\tau \sim \pi&#39;}[r_{t + 2} \mid s_t = s]
+\]</span></p>
+<p>所以：</p>
+<p><span class="math display">\[
+V^\pi(s) \leq \Eop_{\tau \sim \pi&#39;}[{\color{red} r_{t + 1} + \gamma r^{t + 2}} \mid s_t = s] + {\color{green} \gamma^2\sum_{s&#39; \in \S}\sum_{s&#39;&#39; \in \S}\Pe(s&#39;&#39; \mid s&#39;, \pi&#39;(s&#39;)) V^\pi(s&#39;&#39;)}
+\]</span></p>
+<p>我们接下来展开绿色部分的时候，可以注意到我们需要为 <span class="math inline">\(r_{t + 3}\)</span> 的条件期望补上 <span class="math inline">\(s_t = s\)</span> 和 <span class="math inline">\(s_{t + 1} = s&#39;\)</span> 两个无效条件，然后两个求和号通过全期望公式消去 <span class="math inline">\(s_{t + 1} = s&#39;\)</span> 以及 <span class="math inline">\(s_{t + 2} = s&#39;&#39;\)</span> 两个条件，故剩余的条件仅有 <span class="math inline">\(s_t = s\)</span>，从而可以进一步合并到红色部分。以此类推，我们就能够说明该不等式的迭代展开是可行的，从而得到：</p>
+<p><span class="math display">\[
+V^\pi(s) \leq \Eop_{\tau \sim \pi&#39;}[{\color{red} r_{t + 1} + \gamma r^{t + 2} + \gamma^2r_{t + 3} + \cdots} \mid s_t = s] = V^{\pi&#39;}(s)
+\]</span></p>
+<p>从而欲证明的不等式成立。</p>
+<p>而根据证明过程，该不等式取等当且仅当满足 <span class="math inline">\(V^\pi(s) = Q^\pi(s, \pi&#39;(s)) = \max_{a \in \A}Q^\pi(s, a)\)</span>，而这正是最优 Bellman 方程。也就是说我们使得 <span class="math inline">\(V^\pi = V^\star\)</span>。此外，<span class="math inline">\(\pi\)</span> 目前也必须是一个确定性策略，从而也就保证了 <span class="math inline">\(\pi = \pi^\star\)</span>。</p>
+<p>综合策略评估和策略提升，交替进行两者我们就可以保证能够获取到最优策略。然而这个方法并不现实，因为理论上我们需要对环境有完全把握，至少我们需要得到整个环境状态转移矩阵才能进行。</p>
+<h2 id="value-iteration-vi">Value Iteration (VI)</h2>
+<h1 id="q-learning">Q-learning</h1>
+<p>Q-learning 是 off-policy 的、value-based 的、</p>
 ]]></content>
       <categories>
         <category>【学习笔记】计算机</category>
