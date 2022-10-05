@@ -84,7 +84,7 @@ $$
 显然这两个价值函数之间存在相互推出关系，而这种关系描述如下：
 
 {% note info no-icon %}
-**Theorem 1.01**  对于任何 MDP 与其上的策略 $\pi$，该策略的状态价值函数与状态行为价值函数满足：
+**Theorem 1.01** 对于任何 MDP 与其上的策略 $\pi$，该策略的状态价值函数与状态行为价值函数满足：
 
 $$
 \begin{aligned}
@@ -192,7 +192,7 @@ $$
 基于该定理我们能够得到两个最优价值函数之间存在的关系：
 
 {% note info no-icon %}
-**Theorem 1.03**  对于任何 MDP，其最优状态价值函数与最优状态行为价值函数满足：
+**Theorem 1.03** 对于任何 MDP，其最优状态价值函数与最优状态行为价值函数满足：
 
 $$
 \begin{aligned}
@@ -223,3 +223,113 @@ $$
 $$
 
 理论上我们可以求解最优 Bellman 方程得到 $V^\star$，从而就能够反推出 $\pi^\star$。然而求解最优 Bellman 方程是计算困难的，现行的强化学习方法就是在尝试近似求解最优 Bellman 方程。
+
+# Dynamic Programming (DP)
+
+## Policy Iteration (PI)
+
+如果我们已经对环境有了完整的建模，我们完全可以使用迭代的方式求解最优 Bellman 方程。
+
+具体的迭代过程分为两步，分别为**策略评估（Policy Evaluation）**和**策略提升（Policy Improvement）**，这两步会交替进行。具体而言，策略评估是在已知 $\pi$ 的条件下迭代计算其状态价值函数 $V^\pi$。而策略提升为在得知状态价值函数的基础上优化策略 $\pi$。
+
+首先阐述策略评估的迭代过程。
+
+我们记 $V_k$ 是第 $k$ 轮迭代的时候的状态价值函数，那么我们在初始化 $V_0$ 之后不断进行下述迭代直到状态价值函数收敛：
+
+$$
+V_{k + 1}(s) \leftarrow \sum_{a \in \A} \pi(a \mid s) \sum_{s' \in \S} \Pe(s' \mid s, a)[r(s, a, s') + \gamma V_k(s')]
+$$
+
+收敛后，应当有 $V_{+\infty} = V^\pi$，此时我们就得到了策略 $\pi$ 所对应的价值函数。
+
+之后阐述策略提升的方法。
+
+我们在得知了策略 $\pi$ 的状态价值函数 $V^\pi$ 之后，我们可以贪心地构造一个确定性策略 $\pi'$，保证策略更优。保证这一点能够成立的是下述定理：
+
+{% note info no-icon %}
+**Theorem 2.01 (Policy Improvement Theorem)** 对于已知的策略 $\pi$，定义确定性策略 $\pi'$：
+
+$$
+\pi'(a \mid s) := \begin{cases}
+1 & a = \argmax_{a \in \A} Q^\pi(s, a) \\
+0 & \text{otherwise}
+\end{cases}
+$$
+
+那么 $\pi' \geq \pi$，并且等号成立当且仅当 $\pi = \pi' = \pi^\star$。
+{% endnote %}
+
+证明是简单的，首先我们可以注意到：
+
+$$
+Q^\pi(s, \pi'(s)) = \max_{a \in \A} Q^\pi(s, a) \geq \sum_{a \in \A} \pi(a \mid s)Q^\pi(s, a) = V^\pi(s)
+$$
+
+我们从而能得到下述不等式。这里事实上进行了单步展开，进一步就可以尝试利用迭代结构构造不等式链，具体细节则在后续证明中说明：
+
+$$
+\begin{aligned}
+V^\pi(s) &\leq Q^\pi(s, \pi'(s)) \\
+&= \sum_{s' \in \S} \Pe(s' \mid s, \pi'(s))[r(s, \pi'(s), s') + \gamma V^\pi(s')] \\
+&= \sum_{s' \in \S} \Pe(s' \mid s, \pi'(s))r(s, \pi'(s), s') + \gamma\sum_{s' \in \S} \Pe(s' \mid s, \pi'(s)) V^\pi(s') \\
+\end{aligned}
+$$
+
+另外，我们可以证明：
+
+$$
+\begin{aligned}
+&\sum_{s' \in \S} \Pe(s' \mid s, \pi'(s))r(s, \pi'(s), s') \\
+=& \sum_{s' \in \S} \Pe(s' \mid s, \pi'(s))\Eop_{\tau \sim \pi'}[r_{t + 1} \mid s_t = s, a_t = \pi'(s), s_{t + 1} = s'] \\
+=& \sum_{a \in \A} \pi'(a \mid s)\sum_{s' \in \S} \Pe(s' \mid s, a)\Eop_{\tau \sim \pi'}[r_{t + 1} \mid s_t = s, a_t = a, s_{t + 1} = s'] \\
+=& \Eop_{\tau \sim \pi'}[r_{t + 1} \mid s_t = s]
+\end{aligned}
+$$
+
+即得到：
+
+$$
+V^\pi(s) \leq \Eop_{\tau \sim \pi'}[r_{t + 1} \mid s_t = s] + \gamma\sum_{s' \in \S} \Pe(s' \mid s, \pi'(s)) V^\pi(s')
+$$
+
+对这个不等式迭代展开：
+
+$$
+\begin{aligned}
+V^\pi(s) &\leq \Eop_{\tau \sim \pi'}[r_{t + 1} \mid s_t = s] + \gamma\sum_{s' \in \S} \Pe(s' \mid s, \pi'(s)) V^\pi(s') \\
+&\leq \Eop_{\tau \sim \pi'}[r_{t + 1} \mid s_t = s] + \gamma\sum_{s' \in \S} \Pe(s' \mid s, \pi'(s)) \left[\Eop_{\tau \sim \pi'}[r_{t + 2} \mid s_{t + 1} = s'] + \gamma\sum_{s'' \in \S} \Pe(s'' \mid s', \pi'(s')) V^\pi(s'')\right] \\
+&= \Eop_{\tau \sim \pi'}[r_{t + 1} \mid s_t = s] + \gamma{\color{red} \sum_{s' \in \S} \Pe(s' \mid s, \pi'(s))\Eop_{\tau \sim \pi'}[r_{t + 2} \mid s_{t + 1} = s']} + \gamma^2\sum_{s' \in \S}\sum_{s'' \in \S}\Pe(s'' \mid s', \pi'(s')) V^\pi(s'') \\
+\end{aligned}
+$$
+
+对于红色部分，我们容易发现 $s_t = s$ 对于 $r_{t + 2}$ 的期望是无效条件，所以：
+
+$$
+\sum_{s' \in \S} \Pe(s' \mid s, \pi'(s))\Eop_{\tau \sim \pi'}[r_{t + 2} \mid s_{t + 1} = s'] = \sum_{s' \in \S} \Pe(s' \mid s, \pi'(s))\Eop_{\tau \sim \pi'}[r_{t + 2} \mid s_t = s, s_{t + 1} = s'] = \Eop_{\tau \sim \pi'}[r_{t + 2} \mid s_t = s]
+$$
+
+所以：
+
+$$
+V^\pi(s) \leq \Eop_{\tau \sim \pi'}[{\color{red} r_{t + 1} + \gamma r^{t + 2}} \mid s_t = s] + {\color{green} \gamma^2\sum_{s' \in \S}\sum_{s'' \in \S}\Pe(s'' \mid s', \pi'(s')) V^\pi(s'')}
+$$
+
+我们接下来展开绿色部分的时候，可以注意到我们需要为 $r_{t + 3}$ 的条件期望补上 $s_t = s$ 和 $s_{t + 1} = s'$ 两个无效条件，然后两个求和号通过全期望公式消去 $s_{t + 1} = s'$ 以及 $s_{t + 2} = s''$ 两个条件，故剩余的条件仅有 $s_t = s$，从而可以进一步合并到红色部分。以此类推，我们就能够说明该不等式的迭代展开是可行的，从而得到：
+
+$$
+V^\pi(s) \leq \Eop_{\tau \sim \pi'}[{\color{red} r_{t + 1} + \gamma r^{t + 2} + \gamma^2r_{t + 3} + \cdots} \mid s_t = s] = V^{\pi'}(s)
+$$
+
+从而欲证明的不等式成立。
+
+而根据证明过程，该不等式取等当且仅当满足 $V^\pi(s) = Q^\pi(s, \pi'(s)) = \max_{a \in \A}Q^\pi(s, a)$，而这正是最优 Bellman 方程。也就是说我们使得 $V^\pi = V^\star$。此外，$\pi$ 目前也必须是一个确定性策略，从而也就保证了 $\pi = \pi^\star$。
+
+综合策略评估和策略提升，交替进行两者我们就可以保证能够获取到最优策略。然而这个方法并不现实，因为理论上我们需要对环境有完全把握，至少我们需要得到整个环境状态转移矩阵才能进行。
+
+## Value Iteration (VI)
+
+
+
+# Q-learning
+
+Q-learning 是 off-policy 的、value-based 的、
