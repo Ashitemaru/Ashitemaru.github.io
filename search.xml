@@ -5239,7 +5239,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <tr class="even">
 <td style="text-align: center;">これ</td>
 <td style="text-align: center;">代</td>
-<td style="text-align: center;">（名词性近称）这个、这些</td>
+<td style="text-align: center;">（名词性事物近称）这个、这些</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">お<code>@ 婆 ばあ</code>さん</td>
@@ -5334,7 +5334,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <tr class="odd">
 <td style="text-align: center;">あれ</td>
 <td style="text-align: center;">代</td>
-<td style="text-align: center;">（名词性远称）那个、那些</td>
+<td style="text-align: center;">（名词性事物远称）那个、那些</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>@ 去年 きょねん</code></td>
@@ -5369,7 +5369,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <tr class="even">
 <td style="text-align: center;">この</td>
 <td style="text-align: center;">代</td>
-<td style="text-align: center;">（形容词性近称）这个</td>
+<td style="text-align: center;">（连体性近称）这个</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>@ 番組 ばんぐみ</code></td>
@@ -5579,7 +5579,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <tr class="even">
 <td style="text-align: center;">そこ</td>
 <td style="text-align: center;">代</td>
-<td style="text-align: center;">（地点中称）那里</td>
+<td style="text-align: center;">（名词性地点中称）那里</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">ハッピー</td>
@@ -6993,7 +6993,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <span id="more"></span>
 <p>对于动词、形容词、形容动词，方括号括出的为该词语在古日语中的形式与词性，若没有方括号标记，则表明古日语中该词语和现代形式或词性一致。</p>
 <p>另外补充说明，由于动词的第一连用形可以用于将动词名词化。如果名词化后形成的名词和原先动词的含义类似，我们就将动词形式纳入生词表，其名词形式作为其衍生。而若含义差别较大，则其动词和名词形式分别纳入生词表。</p>
-<p>本章生词表不录入助动词与助词。</p>
+<p>本章生词表不录入代词、助动词与助词。</p>
 <h1 id="动词生词表">动词生词表</h1>
 <table>
 <thead>
@@ -7437,7 +7437,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 </tr>
 </tbody>
 </table>
-<h1 id="名词代词数词生词表">名词、代词、数词生词表</h1>
+<h1 id="名词数词生词表">名词、数词生词表</h1>
 <table>
 <thead>
 <tr class="header">
@@ -8563,6 +8563,102 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <li>優しい（温柔的）</li>
 <li>付き合いたい（想交往）</li>
 </ul>
+<h1 id="日语指示词">日语指示词</h1>
+<p>日语的指示词指的是一系列代词，主要分为近称、中称、远称、不定称四类，这四类代词的开头假名分别为「こ、そ、あ、ど」。这四种代称的含义为：</p>
+<ul>
+<li><strong>近称</strong>表示需要指代的事物距离说话人较近，对应汉语的“这”</li>
+<li><strong>中称</strong>表示需要指代的事物距离听话人较近，可以对应汉语的“这”，也可以对应汉语的“那”，视具体语境确定</li>
+<li><strong>远称</strong>表示需要指代的事物距离说话人和听话人都较远，对应汉语的“那”</li>
+<li><strong>不定称</strong>表示不知道需要指代的事物的远近，常用于疑问，对应汉语的“哪”</li>
+</ul>
+<p>每一种代称的代词包含指代事物、地点、方位的名词性代词、指代从属的连体性代词、指代状态的副词性代词以及形容动词性代词共四类，这些代词如下：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">近称</th>
+<th style="text-align: center;">中称</th>
+<th style="text-align: center;">远称</th>
+<th style="text-align: center;">不定称</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">名词性（事物）</td>
+<td style="text-align: center;">これ</td>
+<td style="text-align: center;">それ</td>
+<td style="text-align: center;">あれ</td>
+<td style="text-align: center;">どれ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">名词性（地点）</td>
+<td style="text-align: center;">ここ</td>
+<td style="text-align: center;">そこ</td>
+<td style="text-align: center;">あそこ</td>
+<td style="text-align: center;">どこ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">名词性（方位）</td>
+<td style="text-align: center;">こちら・こっち</td>
+<td style="text-align: center;">そちら・そっち</td>
+<td style="text-align: center;">あちら・あっち</td>
+<td style="text-align: center;">どちら・どっち</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">连体性</td>
+<td style="text-align: center;">この</td>
+<td style="text-align: center;">その</td>
+<td style="text-align: center;">あの</td>
+<td style="text-align: center;">どの</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">副词性</td>
+<td style="text-align: center;">こう</td>
+<td style="text-align: center;">そう</td>
+<td style="text-align: center;">ああ</td>
+<td style="text-align: center;">どう</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">形容动词性</td>
+<td style="text-align: center;">こんなだ</td>
+<td style="text-align: center;">そんなだ</td>
+<td style="text-align: center;">あんなだ</td>
+<td style="text-align: center;">どんなだ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">形容动词性（连体形式）</td>
+<td style="text-align: center;">こんな</td>
+<td style="text-align: center;">そんな</td>
+<td style="text-align: center;">あんな</td>
+<td style="text-align: center;">どんな</td>
+</tr>
+</tbody>
+</table>
+<p>这里给出近称代词的汉语翻译，可以作为理解这些代词的参考：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">日语</th>
+<th style="text-align: center;">これ</th>
+<th style="text-align: center;">ここ</th>
+<th style="text-align: center;">こちら</th>
+<th style="text-align: center;">この</th>
+<th style="text-align: center;">こう</th>
+<th style="text-align: center;">こんな</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">汉语</td>
+<td style="text-align: center;">这个（名词性）</td>
+<td style="text-align: center;">这里</td>
+<td style="text-align: center;">这边</td>
+<td style="text-align: center;">这个（连体性）</td>
+<td style="text-align: center;">这样</td>
+<td style="text-align: center;">这样的、这种</td>
+</tr>
+</tbody>
+</table>
 <h1 id="日语用言与助动词的活用规则">日语用言与助动词的活用规则</h1>
 <p>现代日语中，具有活用的词语仅有用言和助动词两类。而现代日语中，这些词语一共有七种活用类型。下述为七种活用类型的基本用法介绍：</p>
 <ul>
@@ -9130,6 +9226,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <p>形容动词活用规则中存在下述例外情况：</p>
 <ul>
 <li>古日语形容词退化得到的形容动词「同じだ」有两种连体形，除去规则变化的「同じな」，还具有另外一种继承自古日语形容词的「同じ」形式。规则变化的连体形用于接续「ので、のに」等助词，例如「同じなので」。而修饰一般体言的时候使用特殊变化的连体形，例如「同じ人」。</li>
+<li>形容动词性代词「こんなだ、そんなだ、あんなだ、どんなだ」有两种连体形，除去规则变化的「◯んなな」，还具有另外一种常用的「◯んな」形式。规则变化的连体形用于接续「ので、のに」等助词，例如「こんななので」。而修饰一般体言的时候使用特殊变化的连体形，例如「そんなこと」。</li>
 <li>部分古日语中的ナリ活用形容动词在现代日语中退化，仅保留了连体形，而丢失了所有其他活用形式。这些形容动词包括「大きな、小さな、おかしな」等。</li>
 </ul>
 <h2 id="类古语形容词助动词与不规则助动词的活用规则">类古语形容词助动词与不规则助动词的活用规则</h2>
@@ -9247,7 +9344,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 </tr>
 </tbody>
 </table>
-<h2 id="chapter-2-section-3-练习">Chapter 2 Section 3 练习</h2>
+<h2 id="chapter-2-section-4-练习">Chapter 2 Section 4 练习</h2>
 <p>【第一问】给定下述用言（助动词）的原形，写出这些用言（助动词）的未然形。</p>
 <ul>
 <li>しまう、入る、黄色い、好きだ、話す</li>
@@ -9326,7 +9423,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <li>因为他很温柔，所以我想和他交往。</li>
 </ul>
 <p>这里需要注意翻译后的句子需要补全部分汉语成分，尤其对于一些日语习惯省略主语但是汉语不习惯省略的句子，需要将主语补全。</p>
-<h2 id="chapter-2-section-3-练习答案">Chapter 2 Section 3 练习答案</h2>
+<h2 id="chapter-2-section-4-练习答案">Chapter 2 Section 4 练习答案</h2>
 <p>【第一问】直接根据活用规则表即可得到这些用言（助动词）的未然形：</p>
 <ul>
 <li>しまわ、入ら、黄色かろ、好きだろ、話さ</li>
@@ -9364,22 +9461,106 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
       </categories>
   </entry>
   <entry>
-    <title>简明日语自学手册 Chapter 3 生词表</title>
-    <url>/2022/08/22/ja-tutorial-ch3-vocab/</url>
-    <content><![CDATA[<p>本文章为自学手册 Chapter 3 生词表。</p>
+    <title>简明日语自学手册 Chapter 3 用言活用形与体言的基本应用</title>
+    <url>/2022/08/22/ja-tutorial-ch3/</url>
+    <content><![CDATA[<p>本章主要承接在上一章之后，讲解用言（助动词）各种活用形以及体言的基本应用场景。本章并不会展开讲解涉及到助动词、助词的用法，这些用法将会在后续的章节具体展开说明。对于不涉及到助动词、助词的用法，本文将详细讲解。</p>
 <span id="more"></span>
-<p>对于动词、形容词、形容动词，方括号括出的为该词语在古日语中的形式与词性，若没有方括号标记，则表明古日语中该词语和现代形式或词性一致。</p>
-<p>另外补充说明，由于动词的第一连用形可以用于将动词名词化。如果名词化后形成的名词和原先动词的含义类似，我们就将动词形式纳入生词表，其名词形式作为其衍生。而若含义差别较大，则其动词和名词形式分别纳入生词表。</p>
-<p>本章生词表不录入助动词与助词。</p>
+<h1 id="用言名词化">用言名词化</h1>
+<p>部分用言的活用形可以直接将该用言名词化：</p>
+<ul>
+<li>动词的第一连用形</li>
+<li>形容词的第一连用形或者词干或者词干接续「さ、み」等接尾词</li>
+<li>形容动词的词干或者词干接续「さ、み」等接尾词</li>
+</ul>
+<p>先前我们在第一章提到了送假名的规则，其中就涉及到了动词使用第一连用形名词化的例子。一般而言，动词在使用第一连用形名词化后，是否需要写出送假名的判定标准是较为模糊的。</p>
+<ul>
+<li><code>@ 光 ひか</code>る → <code>@ 光 ひかり</code></li>
+<li><code>@ 畳 たた</code>む → <code>@ 畳 たたみ</code></li>
+<li><code>@ 受 う</code>け<code>@ 付 つ</code>ける → <code>@ 受付 うけつけ</code></li>
+<li><code>@ 踊 おど</code>る → <code>@ 踊 おどり</code>・<code>@ 踊 おど</code>り</li>
+<li><code>@ 定 さだ</code>める → <code>@ 定 さだめ</code>・<code>@ 定 さだ</code>め</li>
+<li><code>@ 迎 むか</code>える → <code>@ 迎 むか</code>え</li>
+<li><code>@ 始 はじ</code>まる → <code>@ 始 はじまり</code>・<code>@ 始 はじ</code>まり</li>
+<li><code>@ 終 お</code>わる → <code>@ 終 おわり</code>・<code>@ 終 お</code>わり</li>
+</ul>
+<p>一个大体的规律是，如果其名词形式应用更为广泛，甚至可以认为单独成词（如名词化后的含义和原先动词有所差别），如「<code>@ 光 ひかり</code>、<code>@ 畳 たたみ</code>、<code>@ 受付 うけつけ</code>」等，则送假名不需要写出，否则推荐写明和动词相对照的送假名方便读音。</p>
+<p>另外，形容词、形容动词的名词化是需要根据词语的不同来确定的，不同的词语可能有不同的名词化方法，同一个词语也可以有多个名词化方法，且不同的名词化方法可能有不同的含义：</p>
+<ul>
+<li>赤い → 赤</li>
+<li>強い → 強さ</li>
+<li>遠い → 遠く</li>
+<li>清潔だ → 清潔</li>
+<li>静かだ → 静かさ</li>
+<li>便利だ → 便利・便利さ</li>
+</ul>
+<p>这些差别将会在后续讲解接尾词的时候具体说明。</p>
+<h2 id="chapter-3-section-1-练习">Chapter 3 Section 1 练习</h2>
+<p>【第一问】尝试查阅通过查阅词典等资料，名词化下述用言：</p>
+<ul>
+<li>扱う、読み込む、深い、厳格だ</li>
+</ul>
+<h1 id="复合词语的构成">复合词语的构成</h1>
+<p>复合词语指的是两个词语通过某种规则连接成为的新的单词。拼接成为复合词语的两个词语中，位置在前的称为<strong>前项</strong>，位置在后的称为<strong>后项</strong>。一般而言，后项决定了复合词语的词性，例如说后项为动词则复合词语一般为动词。而复合词语中一般对前项有活用形的要求，基本要求如下：</p>
+<ul>
+<li>前项为动词时，前项动词用第一连用形</li>
+<li>前项为形容词时，前项形容词用词干</li>
+<li>前项为形容动词时，前项形容动词用词干</li>
+<li>前项为体言时，前项体言用原形</li>
+</ul>
+<p>复合词语例子可以参见下述表格（涉及到形容动词的复合词较少，故部分例子缺失）：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">动词前项</th>
+<th style="text-align: center;">形容词前项</th>
+<th style="text-align: center;">形容动词前项</th>
+<th style="text-align: center;">体言前项</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">动词后项</td>
+<td style="text-align: center;">見送る <br /> （見る ＋ 送る）</td>
+<td style="text-align: center;">近寄る <br /> （近い ＋ 寄る）</td>
+<td style="text-align: center;">好き好む <br /> （好きだ ＋ 好む）</td>
+<td style="text-align: center;">旅立つ <br /> （旅 ＋ 立つ）</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">形容词后项</td>
+<td style="text-align: center;">粘り強い <br /> （粘る ＋ 強い）</td>
+<td style="text-align: center;">細長い <br /> （細い ＋ 長い）</td>
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">心細い <br /> （心 ＋ 細い）</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">形容动词后项</td>
+<td style="text-align: center;">話し上手だ <br /> （話す ＋ 上手だ）</td>
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">好き勝手だ <br /> （好きだ ＋ 勝手だ）</td>
+<td style="text-align: center;">口下手だ <br /> （口 ＋ 下手だ）</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">体言后项</td>
+<td style="text-align: center;">借り物 <br /> （借りる ＋ 物）</td>
+<td style="text-align: center;">浅瀬 <br /> （浅い ＋ 瀬）</td>
+<td style="text-align: center;">得意顔 <br /> （得意だ ＋ 顔）</td>
+<td style="text-align: center;">春風 <br /> （春 ＋ 風）</td>
+</tr>
+</tbody>
+</table>
+<p>当然，部分助动词甚至也可以参与到构成复合词语中，例如「負け<strong>ず</strong>嫌いだ」，但是这类例子极少，故认为是一类例外而并非广泛使用的用法。</p>
+<h1 id="练习参考答案">练习参考答案</h1>
+<p>本章节没有练习问题。</p>
 ]]></content>
       <categories>
         <category>【学习笔记】日语</category>
       </categories>
   </entry>
   <entry>
-    <title>简明日语自学手册 Chapter 3 助动词的接续与使用例</title>
-    <url>/2022/08/22/ja-tutorial-ch3/</url>
-    <content><![CDATA[<p>本文将主要讲解上一章提到的各个助动词的基本使用法则，并举出若干例句进行分析。本章例句尽量避免出现上一章中没有提到的助词，句子结构也尽力简化，以方便读者自行分析句子结构。</p>
+    <title>简明日语自学手册 Chapter 4 助动词接续规则</title>
+    <url>/2022/08/22/ja-tutorial-ch4/</url>
+    <content><![CDATA[<p>本文将主要讲解各个助动词的基本使用法则，并举出若干例句进行分析。本章例句尽量避免出现没有提到的助词，句子结构也尽力简化，以方便读者自行分析句子结构。</p>
 <span id="more"></span>
 <p>本章为了讲解各类词语如何接续给定助动词，选取的用言词例为「読む、起きる、来る、する、高い、好きだ」，选取的体言词例为「花」，选取的助动词词例为「たがる、られる、ない、ようだ、です、ます、た、そうだ①、まい、う、ず・ぬ・ん、べし」，助动词中后八个词例会单独列表，因为其活用不规则。下面以助动词「ない」为例，将这些例词与「ない」接续的要求整理为表格，而本章将会多次使用类似该格式的表格整理助动词对其之前的词语的活用形式要求：</p>
 <table style="width:100%;">
@@ -9442,6 +9623,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 </tbody>
 </table>
 <p>后续如果有特殊说明会在表后列出。</p>
+<p>该表有一项并未覆盖到，即助词之后接续助动词。事实上，能够接续在助词之后的助动词较少，并且能够接续助动词的助词也较少。如果即将讲解的助动词可以接续在助词之后，会另附表举出若干例子。</p>
 <p>此外，一定注意，本表仅显示接续要求，并不一定代表接续后形成的词组真实存在。</p>
 <h1 id="否定助动词ない">否定助动词「ない」</h1>
 <p>该助动词的接续表为：</p>
@@ -9730,7 +9912,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <td style="text-align: center;">第二连用形 <br /> <strong>し</strong>た</td>
 <td style="text-align: center;">第二连用形 <br /> <strong>高かっ</strong>た <br /> <strong>なかっ</strong>た</td>
 <td style="text-align: center;">第二连用形 <br /> <strong>好きだっ</strong>た <br /> <strong>ようだっ</strong>た</td>
-<td style="text-align: center;">（助动词） <br /> <strong>花</strong><em>だっ</em>た</td>
+<td style="text-align: center;">（助动词） <br /> <strong>花</strong><em>だっ</em>た <br /> <strong>花</strong><em>でし</em>た</td>
 </tr>
 </tbody>
 </table>
@@ -9770,7 +9952,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <li>あのことならもうわかり<strong>まし<u>た</u></strong>。</li>
 <li>あのときわたしは会社員ではありませ<strong>ん<em>でし</em><u>た</u></strong>。</li>
 </ul>
-<p>这里需要注意的是在动词第二连用形以「ん」结尾的时候接续「た」，应当发生浊音便形成「○んだ」的形式。</p>
+<p>这里需要注意的是动词终止形如果以「ぐ、む、ぬ、ぶ」结尾，在活用为第二连用形后接续助动词「た」的时候，应当发生浊音便形成「○だ」的形式。</p>
 <p>此外，我们需要额外讲解过去否定式。日语中过去式和否定式连用的时候，应当先进行否定，之后表达过去时态。对动词而言，其首先使用助动词「ない」否定，之后使用助动词「ない」接续助动词「た」表达过去否定：</p>
 <ul>
 <li>読む → 読まない → 読まなかった</li>
@@ -9808,7 +9990,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 </ul>
 </div>
 <div class="note info no-icon"><p>助动词「た」的假定形「たら」实际上已经基本不具有表达过去时态的含义，而更多地作为一种表达假定含义的助动词存在。</p>
-<p>表达假定含义的助动词与助动词之间更为详细的使用方式区别，之后再讲解。</p>
+<p>表达假定含义的助动词与助词之间更为详细的使用方式区别，之后再讲解。</p>
 </div>
 <h1 id="尊敬语气助动词ます">尊敬语气助动词「ます」</h1>
 <p>该助动词的接续表为：</p>
@@ -9946,6 +10128,18 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 </tr>
 </tbody>
 </table>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">助词接续例</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>から</strong>です、<strong>の</strong>です</td>
+</tr>
+</tbody>
+</table>
 <p>相比较于动词之后常常接续「ます」，体言之后常常接续「です」。该助动词的作用为表达判断，与汉语的“是”作用类似。</p>
 <p>在表达的语气方面，助动词「です」同时也提示了一般尊敬语气，其与「ます」的尊敬程度相当，常常应用在与陌生人对话、公共场合演讲、与上级者对话时。</p>
 <p>这里需要提示的是，形容动词和体言接续「です」是自然且广泛使用的，但是形容词使用终止形接续「です」则是有一定争议的，而动词以及助动词「た」等使用终止形接续「です」则更多时候被视为不正确的日语。但是由于口语中动词接续「です」的使用方法依然存在，这里也将其列出。</p>
@@ -10013,13 +10207,25 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">―</td>
-<td style="text-align: center;">―</td>
+<td style="text-align: center;">（终止形） <br /> <strong>ます</strong>だ</td>
 <td style="text-align: center;">（终止形） <br /> <strong>た</strong>だ</td>
 <td style="text-align: center;">―</td>
 <td style="text-align: center;">―</td>
 <td style="text-align: center;">―</td>
 <td style="text-align: center;">―</td>
 <td style="text-align: center;">―</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">助词接续例</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>から</strong>だ、<strong>の</strong>だ</td>
 </tr>
 </tbody>
 </table>
@@ -10528,14 +10734,14 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <p>本手册并不倾向于两者中的任何一方，读者可以自行采用自己更能接受的解释以构建自己的语法体系。</p>
 </div>
 <div class="note info no-icon"><p>口语中，为了防止可能语义和其他语义（尤其是被动语义）混淆，存在着「ら抜き言葉」的用法。其具体含义为一段动词接续「られる」并表可能语义的时候，可以删去「られる」之中的「ら」来表示区分。</p>
-<p>比如下述句子就存在一定的歧义（基于口语中格助词区分不明确）：</p>
+<p>比如下述句子就存在一定的歧义：</p>
 <ul>
-<li>虎が食べられます。</li>
+<li>虎は食べられます。</li>
 </ul>
 <p>该句可以表达“老虎可以吃”和“被老虎吃”两种含义，而口语中为了区分，可以表达为：</p>
 <ul>
-<li>（可能）虎が食べれます。</li>
-<li>（受け身）虎が食べ<strong>ら</strong>れます。</li>
+<li>（可能）虎は食べれます。</li>
+<li>（受け身）虎は食べ<strong>ら</strong>れます。</li>
 </ul>
 <p>但是需要注意，书面语必须遵守日语语法，即使表达可能语义也不能省略「ら」。</p>
 </div>
@@ -10866,6 +11072,18 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 </tr>
 </tbody>
 </table>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">助词接续例</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>から</strong>らしい、<strong>の</strong>らしい</td>
+</tr>
+</tbody>
+</table>
 <p>该助动词的主要用法为描述说话人根据所听闻到的信息作出的推测：</p>
 <ul>
 <li>天気予報によると、明日は雨が<strong>降るらしい</strong>。</li>
@@ -10879,564 +11097,126 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <li>彼は落第し<strong>たらしい</strong>。</li>
 </ul>
 <p>在描述此类负面的信息的时候，即使已经完全确定事件的真实性，也可以使用该助动词的推测含义来表达委婉的断定，从而软化语气。</p>
-<p>而该助动词还具有</p>
-]]></content>
-      <categories>
-        <category>【学习笔记】日语</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>简明日语自学手册 Chapter 4 用言、体言与附属词语的接续法则</title>
-    <url>/2022/08/25/ja-tutorial-ch4/</url>
-    <content><![CDATA[<p>本章主要介绍用言（助动词）应当通过何种活用形式接续指定的用言、体言、助动词及助词。通过本章，读者可以学会如何通过合适的活用形式以连接词语形成词组。</p>
-<span id="more"></span>
-<h1 id="前向视角的接续规则">前向视角的接续规则</h1>
-<p>接续规则可以从两个视角看。我们先讨论先固定前者，研讨其某种活用形式之后可以接续哪些词语的<strong>前向视角接续</strong>。而固定后者，研讨前者应当使用何种活用形式的<strong>后向视角接续</strong>，我们后续在细致讲解每一个助动词、助词的具体含义的时候给出。</p>
-<h2 id="动词的前向视角接续">动词的前向视角接续</h2>
-<p>四类动词仅仅是活用规则上有所差距，但实际上在后续接续词语的规则上几乎保持一致，所以我们这里不区分四类动词，仅以「読む」为例词探讨动词各个活用形之后可以接续的词语。</p>
-<p>这里用小括号标记的是本手册不深入探讨但会简单讲解的助词，用花括号标记的是本手册不讨论的助词，用星号标记的是可能的争议用法。另外，部分情况下可能出现动词必须先接续指定助动词、助词等后才能接续指定词语的三词接续情况，这里会将这种情况中的中间助动词、助词等用斜体标出。</p>
-<p>这里最右边一列表示动词该活用形是否能用于终止句子（即「言い切り」）或者中顿句子（即「中止」）。</p>
-<p>另外，为了简化表格，我们将下面的助词简称为<strong>「助詞①」</strong>：</p>
+<p>而该助动词还具有另外一种用途，即接续在体言之后表示具有该体言特色和性质的含义（很少接续在动词、形容词、形容动词、助动词之后）。比如下述例句：</p>
 <ul>
-<li>だけ、くらい、の②、ので、のに、のみ、ほど、まで②、ものか、ものの、ものを、より</li>
+<li><strong>男らしい</strong>男になりたい。</li>
 </ul>
-<p>将下面的助词简称为<strong>「助詞②」</strong>：</p>
+<p>这两种用法在语法上的差别在于，表示推测的用法没有否定式「らしくない」、假定形「らしけれ」以及未然形「らしかろ」，而表示样态的用法具有全部形容词的活用。如果需要在表示推测的用法里表示否定，则需要使用「ないらしい」的形式：</p>
 <ul>
-<li>か①、かしら、こと、さ、ぜ、ぞ、とも、な②、ね、もの、よ、わ、が②、けれど、し、と②、か③、とか、など、なり</li>
+<li>日本語は難しく<strong>ないらしい</strong>。</li>
 </ul>
-<p>将下面的助词简称为<strong>「助詞③」</strong>：</p>
+<p>但是表示样态的用法可以按照形容词的活用方式表示否定：</p>
 <ul>
-<li>こそ、すら、しか、さえ、も、や、は</li>
+<li>そんなやり方は<strong>あなたらしくない</strong>ね。</li>
 </ul>
-<p>注意，上述三类助词的定义仅仅是为了简化下述表格，并不是严格的语法定义，请不要在本章节之外的场合使用该概念。</p>
-<div class="note info no-icon"><p>虽然仅仅是临时定义的概念，但实际上在这个分类下同一类的助词是有一定的内在联系的。</p>
+<p>该助动词表示推测的用法的各类活用形式的例句如下：</p>
 <ul>
-<li>「助詞①」的语法作用类似体言，或者直接就是从体言（形式体言）派生得到。</li>
-<li>「助詞②」基本上为终止助词以及用于终止小句的接续助词，往往标志着小句的结束。</li>
-<li>「助詞③」中的副助词虽不是格助词，但是在部分条件下具有类似格助词的使用方法。</li>
+<li>（終止形）隣のあの子は勉強する<strong>らしい</strong>。</li>
+<li>（連用形①）彼は疲れている<strong>らしく</strong>、無言に立ち去った。</li>
+<li>（連用形②）謎を解き明かしたい<strong>らしかっ</strong>た。</li>
+<li>（連体形）結婚した<strong>らしき</strong>話を聞いた。</li>
+</ul>
+<p>该助动词表示样态的用法的各类活用形式的例句如下：</p>
+<ul>
+<li>（終止形）彼はとても男<strong>らしい</strong>。</li>
+<li>（未然形）子供<strong>らしかろ</strong>う。</li>
+<li>（連用形①）学生は学生<strong>らしく</strong>しなさい。</li>
+<li>（連用形②）涙なんか流しちゃって、あほ<strong>らしかっ</strong>た。</li>
+<li>（連体形）練習<strong>らしい</strong>練習もできないまま本番を迎えた。</li>
+<li>（仮定形）たとえ平凡でも自分<strong>らしけれ</strong>ばいい。</li>
+</ul>
+<div class="note info no-icon"><p>「らしい」的词性实际上是较为复杂的，这里介绍本文所采纳的一种观点。</p>
+<ul>
+<li>表示推测的「らしい」是助动词，且活用受限（如不存在否定式等）</li>
+<li>表示样态的「らしい」是助动词，且具有形容词全部活用</li>
+<li>部分表示样态的「らしい」已经固化成为单词的一部分（如「見窄らしい、愛らしい」），这里的「らしい」不看作助动词</li>
+<li>「らしい」本身可以作为独立的形容词使用，但是仅限口语</li>
+</ul>
+<p>部分观点将部分表示样态的「らしい」看作接尾词，从而固化为单词的一部分的「らしい」就是构成复合词的接尾词。</p>
+<p>此外，「らしい」作为独立形容词使用的例句包括：</p>
+<ul>
+<li><strong>らしさ</strong>なんて最初からないから。</li>
+<li>どうした、いつもと違って<strong>らしくない</strong>ぞ。</li>
 </ul>
 </div>
-<table>
+<div class="note info no-icon"><p>表示推测的「らしい」的过去式存在两种可能，即对「らしい」用过去时和对「らしい」之前的词语用过去时，但是其语感上有一定的差别。</p>
+<ul>
+<li>彼は来<strong>た</strong>らしい。</li>
+<li>彼は来るらしかっ<strong>た</strong>。</li>
+</ul>
+<p>前者是自然的，其表明了说话者站在现在的角度，根据各种信息推断他之前来过这个动作。</p>
+<p>而后者过去时的逻辑是对「来るらしい」这个整体表达过去。「来るらしい」表示根据各种信息推断他就要过来，而这个的整体的过去时就表示根据各种信息推断他过去就该来过了，实际上就蕴含了他并没有来这样的事实。</p>
+<p>一定程度上，后者与英语的 should have come 所表达的语意类似。</p>
+</div>
+<div class="note info no-icon"><p>表示样态的「らしい」的假定形「らしけれ」并不常用，现在常常用助动词「ようだ」的假定形「ようなら」替代：</p>
+<ul>
+<li>たとえ平凡でも自分<strong>らしけれ</strong>ばいい。</li>
+<li>たとえ平凡でも自分の<strong>ようなら</strong>いい。</li>
+</ul>
+</div>
+<div class="note info no-icon"><p>表示推测的和表示样态的「らしい」的连体形一般而言为了做出区分，表示推测的「らしい」的连体形会使用古语连体形「らしき」。</p>
+</div>
+<h1 id="推量样态助动词ようだ">推量、样态助动词「ようだ」</h1>
+<p>该助动词的接续表为：</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+</colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: center;">活用形式</th>
+<th style="text-align: center;">五段动词</th>
+<th style="text-align: center;">一段动词</th>
+<th style="text-align: center;">カ变动词</th>
+<th style="text-align: center;">サ变动词</th>
+<th style="text-align: center;">形容词</th>
+<th style="text-align: center;">形容动词</th>
 <th style="text-align: center;">体言</th>
-<th style="text-align: center;">用言</th>
-<th style="text-align: center;">助動詞</th>
-<th style="text-align: center;">助詞</th>
-<th style="text-align: center;">言い切り</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">未然形</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>読ま</strong>ない</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">―</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>読ま</strong>れる</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>読ま</strong>せる</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>読ま</strong>ず・<strong>読ま</strong>ん・<strong>読ま</strong>ぬ</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">連用形①</td>
-<td style="text-align: center;"><strong>読み</strong>方</td>
-<td style="text-align: center;"><strong>読み</strong>取る</td>
-<td style="text-align: center;"><strong>読み</strong>ます</td>
-<td style="text-align: center;"><strong>読み</strong>ながら①</td>
-<td style="text-align: center;">（中止）</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>読み</strong>やすい</td>
-<td style="text-align: center;"><strong>読み</strong>たい</td>
-<td style="text-align: center;">（<strong>読み</strong>っきり）</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>読み</strong><em>に</em>行く</td>
-<td style="text-align: center;"><strong>読み</strong>たがる</td>
-<td style="text-align: center;">（<strong>読み</strong>つつ）</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>読み</strong>そうだ②</td>
-<td style="text-align: center;">（<strong>読み</strong>しだい）</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">｛<strong>読み</strong>つ｝</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">連用形②</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>読ん</strong>だ</td>
-<td style="text-align: center;"><strong>読ん</strong>だり</td>
-<td style="text-align: center;">―</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>読ん</strong>で</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>読ん</strong>でも</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>読ん</strong><em>だ</em>きり</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>読ん</strong><em>だ</em>ばかり</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">連体形</td>
-<td style="text-align: center;"><strong>読む</strong>こと</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>読む</strong>ようだ</td>
-<td style="text-align: center;"><strong>読む</strong>ばかり</td>
-<td style="text-align: center;">―</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>読む</strong> ＋「助詞①」</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">仮定形</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>読め</strong>ば</td>
-<td style="text-align: center;">―</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">終止形</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>読む</strong>そうだ①</td>
-<td style="text-align: center;"><strong>読む</strong>な①</td>
-<td style="text-align: center;">（言い切り）</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>読む</strong>らしい</td>
-<td style="text-align: center;"><strong>読む</strong> ＋「助詞②」</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>読む</strong>べし</td>
-<td style="text-align: center;">*<strong>読む</strong> ＋「助詞③」</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>読む</strong>まい</td>
-<td style="text-align: center;"><strong>読む</strong> ＋「格助詞」</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">*<strong>読む</strong>だ</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">命令形</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>読め</strong>よ</td>
-<td style="text-align: center;">（言い切り）</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">意志形</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>読も</strong>う</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">―</td>
+<td style="text-align: center;">连体形 <br /> <strong>読む</strong>ようだ <br /> <strong>たがる</strong>ようだ</td>
+<td style="text-align: center;">连体形 <br /> <strong>起きる</strong>ようだ <br /> <strong>られる</strong>ようだ</td>
+<td style="text-align: center;">连体形 <br /> <strong><code>@ 来 く</code>る</strong>ようだ</td>
+<td style="text-align: center;">连体形 <br /> <strong>する</strong>ようだ</td>
+<td style="text-align: center;">连体形 <br /> <strong>高い</strong>ようだ <br /> <strong>ない</strong>ようだ</td>
+<td style="text-align: center;">连体形 <br /> <strong>好きな</strong>ようだ <br /> <strong>ような</strong>ようだ</td>
+<td style="text-align: center;">（助词） <br /> <strong>花</strong><em>の</em>ようだ</td>
 </tr>
 </tbody>
 </table>
-<p>此外还有一些较为特殊的用法列举如下：</p>
-<ul>
-<li>部分动词的第一连用形可以作为动词的名词形式使用，在「踊りが上手」等句子中充当体言成分。</li>
-</ul>
-<p>关于该表的部分补充说明如下：</p>
-<ul>
-<li>动词使用第一连用形接续体言形成复合体言仅仅适用于部分已经约定俗成的复合用语之中，如「読み方、飲み物、買い物、行き先」等，而使用动词修饰一般体言应当使用连体形。</li>
-<li>动词使用第一连用形接续「に」后所能接续的动词，仅可以是表现行动的动词，如「行く、来る」等，该用法用于表现这些行动的目的。</li>
-<li>动词使用连体形除了接续实意体言外，还可以接续含义虚化但暂未归纳为助词的形式体言，有关形式体言的内容我们后续讲解。</li>
-<li>动词终止形还可以与「にしたがって、に違いない、にしろ」等接续形成惯用语，如「試験が近づくにしたがって」。</li>
-<li>动词终止形接续格助词这种说法有一定的偏差，更精确的说法应当是小句、词组接续格助词，而终止形在这里起到的作用是标记小句、词组的结束。</li>
-</ul>
-<p>类动词助动词的接续方式基本和上表类似，具体差别在后向视角接续章节介绍。</p>
-<h2 id="形容词的前向视角接续">形容词的前向视角接续</h2>
-<p>下述表格与动词的前向视角接续表格格式和约定一致，形容词选用的词例为「高い」。</p>
 <table>
 <thead>
 <tr class="header">
-<th style="text-align: center;">活用形式</th>
-<th style="text-align: center;">体言</th>
-<th style="text-align: center;">用言</th>
-<th style="text-align: center;">助動詞</th>
-<th style="text-align: center;">助詞</th>
-<th style="text-align: center;">言い切り</th>
+<th style="text-align: center;">です</th>
+<th style="text-align: center;">ます</th>
+<th style="text-align: center;">た</th>
+<th style="text-align: center;">そうだ①</th>
+<th style="text-align: center;">まい</th>
+<th style="text-align: center;">う</th>
+<th style="text-align: center;">ず・ぬ・ん</th>
+<th style="text-align: center;">べし</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">未然形</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>高かろ</strong>う</td>
-<td style="text-align: center;"></td>
 <td style="text-align: center;">―</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">連用形①</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>高く</strong>なる</td>
-<td style="text-align: center;"><strong>高く</strong>ない</td>
-<td style="text-align: center;"><strong>高く</strong>て</td>
-<td style="text-align: center;">（中止）</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>高く</strong>ても</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">連用形②</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>高かっ</strong>た</td>
-<td style="text-align: center;"></td>
+<td style="text-align: center;">连体形 <br /> <strong>ます</strong>ようだ</td>
+<td style="text-align: center;">连体形 <br /> <strong>た</strong>ようだ</td>
 <td style="text-align: center;">―</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">連体形</td>
-<td style="text-align: center;"><strong>高い</strong>ところ</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>高い</strong>ようだ</td>
-<td style="text-align: center;"><strong>高い</strong> ＋「助詞①」</td>
 <td style="text-align: center;">―</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">仮定形</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>高けれ</strong>ば</td>
 <td style="text-align: center;">―</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">終止形</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">*<strong>高い</strong>だ</td>
-<td style="text-align: center;"><strong>高い</strong>ながら②</td>
-<td style="text-align: center;">（言い切り）</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">*<strong>高い</strong>です</td>
-<td style="text-align: center;"><strong>高い</strong> ＋「助詞②」</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>高い</strong>そうだ①</td>
-<td style="text-align: center;">*<strong>高い</strong> ＋「助詞③」</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>高い</strong>らしい</td>
-<td style="text-align: center;">*<strong>高い</strong> ＋「格助詞」</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">語幹</td>
-<td style="text-align: center;"><strong>高</strong>台</td>
-<td style="text-align: center;"><strong>高</strong>望み</td>
-<td style="text-align: center;"><strong>高</strong>そうだ②</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">（言い切り）</td>
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">―</td>
 </tr>
 </tbody>
 </table>
-<p>关于该表的部分补充说明如下：</p>
-<ul>
-<li>形容词使用词干接续体言形成复合体言仅仅适用于部分已经约定俗成的复合用语之中，而使用形容词修饰一般体言应当使用连体形。使用词干接续用言类似，修饰一般用言应当使用第一连用形。</li>
-<li>形容词使用连体形除了接续实意体言外，还可以接续含义虚化但暂未归纳为助词的形式体言，有关形式体言的内容我们后续讲解。</li>
-<li>形容词终止形接续格助词这种说法有一定的偏差，更精确的说法应当是小句、词组接续格助词，而终止形在这里起到的作用是标记小句、词组的结束。</li>
-</ul>
-<p>类形容词助动词的接续方式基本和上表类似，具体差别在后向视角接续章节介绍。</p>
-<h2 id="形容动词的前向视角接续">形容动词的前向视角接续</h2>
-<p>下述表格与动词的前向视角接续表格格式和约定一致，形容动词选用的词例为「好きだ」。</p>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;">活用形式</th>
-<th style="text-align: center;">体言</th>
-<th style="text-align: center;">用言</th>
-<th style="text-align: center;">助動詞</th>
-<th style="text-align: center;">助詞</th>
-<th style="text-align: center;">言い切り</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">未然形</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>好きだろ</strong>う</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">―</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">連用形①</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>好きで</strong>ない</td>
-<td style="text-align: center;"><strong>好きで</strong>も</td>
-<td style="text-align: center;">（中止）</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">連用形②</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>好きだっ</strong>た</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">―</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">連用形③</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>好きに</strong>なる</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">―</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">連体形</td>
-<td style="text-align: center;"><strong>好きな</strong>こと</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>好きな</strong>ようだ</td>
-<td style="text-align: center;"><strong>好きな</strong> ＋「助詞①」</td>
-<td style="text-align: center;">―</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">仮定形</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>好きなら</strong>ば</td>
-<td style="text-align: center;">―</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">終止形</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>好きだ</strong>そうだ①</td>
-<td style="text-align: center;"><strong>好きだ</strong>ながら②</td>
-<td style="text-align: center;">（言い切り）</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>好きだ</strong> ＋「助詞②」</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>好きだ</strong> ＋「助詞③」</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>好きだ</strong> ＋「格助詞」</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">語幹</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>好き</strong>です</td>
-<td style="text-align: center;"><strong>好き</strong>か①③</td>
-<td style="text-align: center;">（言い切り）</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>好き</strong>そうだ②</td>
-<td style="text-align: center;"><strong>好き</strong>かしら</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>好き</strong>らしい</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-</tbody>
-</table>
-<p>关于该表的部分补充说明如下：</p>
-<ul>
-<li>对于形容动词，「助詞②」需要删去「か①③、かしら」。</li>
-<li>形容动词使用连体形除了接续实意体言外，还可以接续含义虚化但暂未归纳为助词的形式体言，有关形式体言的内容我们后续讲解。</li>
-<li>形容动词终止形接续格助词这种说法有一定的偏差，更精确的说法应当是小句、词组接续格助词，而终止形在这里起到的作用是标记小句、词组的结束。</li>
-</ul>
-<p>类形容动词助动词的接续方式基本和上表类似，具体差别在后向视角接续章节介绍。</p>
-<h2 id="体言的前向视角接续">体言的前向视角接续</h2>
-<p>体言没有活用的说法，但是其基本上可以通过接续助动词「だ」之后通过该助动词的活用来接续各类词语。</p>
-<p>首先我们简单介绍体言与除了助词的词语的接续情况，体言选用的词例为「花」：</p>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;"></th>
-<th style="text-align: center;">体言</th>
-<th style="text-align: center;">用言</th>
-<th style="text-align: center;">助動詞</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">原形</td>
-<td style="text-align: center;"><strong>花</strong>道</td>
-<td style="text-align: center;"><strong>花</strong>見る</td>
-<td style="text-align: center;"><strong>花</strong>だ</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>花</strong>です</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>花</strong>らしい</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">＋「の」</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>花の</strong>ようだ</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">＋「だ」</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>花だ</strong>そうだ①</td>
-</tr>
-</tbody>
-</table>
-<p>之后介绍体言与助词的接续情况。可以和体言原形直接接续的助词包括：</p>
-<ul>
-<li>格助词</li>
-<li>だけ、くらい、まで②、ほど、より</li>
-<li>か①、かしら、さ、ぜ、ぞ、ね、*な②、よ、わ、か③、とか、など、なり</li>
-<li>こそ、すら、しか、さえ、も、や、は</li>
-</ul>
-<p>需要先添上「な」之后再接续的助词包括：</p>
-<ul>
-<li>の②、ので、のに、のみ、*ものか、*ものの、*ものを</li>
-</ul>
-<p>需要先添上「だ」之后再接续的助词包括：</p>
-<ul>
-<li>*もの</li>
-<li>が②、けれど、し、*と②、こと、とも、な②</li>
-</ul>
-<p>事实上体言和助词的连用规则较为模糊，本手册这里也只是给出了我们推荐的连用方法。</p>
-<h1 id="练习参考答案">练习参考答案</h1>
-<p>本章节没有练习问题。</p>
 ]]></content>
       <categories>
         <category>【学习笔记】日语</category>
