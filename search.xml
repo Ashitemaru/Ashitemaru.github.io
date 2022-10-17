@@ -8571,7 +8571,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <li><strong>远称</strong>表示需要指代的事物距离说话人和听话人都较远，对应汉语的“那”</li>
 <li><strong>不定称</strong>表示不知道需要指代的事物的远近，常用于疑问，对应汉语的“哪”</li>
 </ul>
-<p>每一种代称的代词包含指代事物、地点、方位的名词性代词、指代从属的连体性代词、指代状态的副词性代词以及形容动词性代词共四类，这些代词如下：</p>
+<p>每一种代称的代词包含指代事物、地点、方位、人物等的名词性代词、指代从属的连体性代词、指代状态的副词性代词以及形容动词性代词共四类，这些代词如下：</p>
 <table>
 <thead>
 <tr class="header">
@@ -8605,27 +8605,34 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <td style="text-align: center;">どちら・どっち</td>
 </tr>
 <tr class="even">
+<td style="text-align: center;">名词性（人物）</td>
+<td style="text-align: center;">こいつ</td>
+<td style="text-align: center;">そいつ</td>
+<td style="text-align: center;">あいつ</td>
+<td style="text-align: center;">どいつ</td>
+</tr>
+<tr class="odd">
 <td style="text-align: center;">连体性</td>
 <td style="text-align: center;">この</td>
 <td style="text-align: center;">その</td>
 <td style="text-align: center;">あの</td>
 <td style="text-align: center;">どの</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: center;">副词性</td>
 <td style="text-align: center;">こう</td>
 <td style="text-align: center;">そう</td>
 <td style="text-align: center;">ああ</td>
 <td style="text-align: center;">どう</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: center;">形容动词性</td>
 <td style="text-align: center;">こんなだ</td>
 <td style="text-align: center;">そんなだ</td>
 <td style="text-align: center;">あんなだ</td>
 <td style="text-align: center;">どんなだ</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: center;">形容动词性（连体形式）</td>
 <td style="text-align: center;">こんな</td>
 <td style="text-align: center;">そんな</td>
@@ -9495,7 +9502,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 </ul>
 <p>这些差别将会在后续讲解接尾词的时候具体说明。</p>
 <h2 id="chapter-3-section-1-练习">Chapter 3 Section 1 练习</h2>
-<p>【第一问】尝试查阅通过查阅词典等资料，名词化下述用言：</p>
+<p>【第一问】尝试通过查阅词典等资料，名词化下述用言：</p>
 <ul>
 <li>扱う、読み込む、深い、厳格だ</li>
 </ul>
@@ -9616,7 +9623,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <td style="text-align: center;">―</td>
 <td style="text-align: center;">―</td>
 <td style="text-align: center;">―</td>
-<td style="text-align: center;">―</td>
+<td style="text-align: center;">（助动词） <br /> <strong>う</strong><em>では</em>ない</td>
 <td style="text-align: center;">―</td>
 <td style="text-align: center;">―</td>
 </tr>
@@ -11091,6 +11098,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <li>田中さんは村上さんが<strong>嫌いらしい</strong>。</li>
 <li>あそこに立っているのは<strong>木村さんらしい</strong>。</li>
 <li>彼はもうサッカーをやめ<strong>たらしい</strong>。</li>
+<li>あいつらはまったくあのことを知ら<strong>んらしい</strong>。</li>
 </ul>
 <p>而这种推测实际上引申出了委婉的断定的含义：</p>
 <ul>
