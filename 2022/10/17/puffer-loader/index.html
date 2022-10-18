@@ -20,25 +20,27 @@
   <link rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;ashitemaru.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Muse&quot;,&quot;version&quot;:&quot;8.5.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;width&quot;:320,&quot;display&quot;:&quot;always&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:&quot;disqusjs&quot;,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;},&quot;path&quot;:&quot;&#x2F;search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;manual&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="A cat that likes Sakana.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Ashitemaru">
-<meta property="og:url" content="https://ashitemaru.github.io/archives/2022/index.html">
+<meta name="description" content="需要写一个 Puffer 数据集的 data loader 来把数据集洗成适合 RL 模型学习的格式，有些小东西打算写在这里备忘。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Puffer 数据集加载器备忘录">
+<meta property="og:url" content="https://ashitemaru.github.io/2022/10/17/puffer-loader/index.html">
 <meta property="og:site_name" content="Ashitemaru">
-<meta property="og:description" content="A cat that likes Sakana.">
+<meta property="og:description" content="需要写一个 Puffer 数据集的 data loader 来把数据集洗成适合 RL 模型学习的格式，有些小东西打算写在这里备忘。">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-10-17T18:31:12.000Z">
+<meta property="article:modified_time" content="2022-10-17T18:31:12.000Z">
 <meta property="article:author" content="Ashitemaru">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://ashitemaru.github.io/archives/2022/">
+<link rel="canonical" href="https://ashitemaru.github.io/2022/10/17/puffer-loader/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:false,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:&quot;&quot;,&quot;permalink&quot;:&quot;&quot;,&quot;path&quot;:&quot;archives&#x2F;2022&#x2F;index.html&quot;,&quot;title&quot;:&quot;&quot;}</script>
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;ashitemaru.github.io&#x2F;2022&#x2F;10&#x2F;17&#x2F;puffer-loader&#x2F;&quot;,&quot;path&quot;:&quot;2022&#x2F;10&#x2F;17&#x2F;puffer-loader&#x2F;&quot;,&quot;title&quot;:&quot;Puffer 数据集加载器备忘录&quot;}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
-<title>归档 | Ashitemaru</title>
+<title>Puffer 数据集加载器备忘录 | Ashitemaru</title>
   
 
 
@@ -210,7 +212,7 @@ $(function () {
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -223,6 +225,7 @@ $(function () {
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">一些常见概念</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -316,234 +319,131 @@ $(function () {
 </noscript>
 
 
-    <div class="main-inner archive posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
+
+
+<div class="post-block">
   
   
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ashitemaru.github.io/2022/10/17/puffer-loader/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="Ashitemaru">
+      <meta itemprop="description" content="A cat that likes Sakana.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ashitemaru">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Puffer 数据集加载器备忘录
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-10-17 18:31:12" itemprop="dateCreated datePublished" datetime="2022-10-17T18:31:12+00:00">2022-10-17</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-10-17 18:31:12" itemprop="dateModified" datetime="2022-10-17T18:31:12+00:00">2022-10-17</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E3%80%90%E6%9D%82%E8%B0%88%E3%80%91%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">【杂谈】开发</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2022/10/17/puffer-loader/" class="post-meta-item twikoo_visitors" data-flag-title="Puffer 数据集加载器备忘录" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="twikoo_visitors"></span>
+    </span>
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>486</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>需要写一个 Puffer 数据集的 data loader 来把数据集洗成适合 RL 模型学习的格式，有些小东西打算写在这里备忘。</p>
+<span id="more"></span>
+<h1 id="一些常见概念">一些常见概念</h1>
+<p>流媒体领域还有一些概念看起来我还是得稍微认识一下。</p>
+<p>首先是 H.264 标准中采用的<strong>即时解码刷新（Instantaneous Decoding Refreshing）</strong>，简称 <strong>IDR</strong>。IDR 中的 I 帧与 IDR 帧都是自带全部信息的帧，其不需要参考任何其他图像就能够独立解码。I 帧和 IDR 帧的差别在于 IDR 帧会直接触发刷新，从而阻断错误传递。也就是说从 IDR 帧开始，之前的所有信息全部清空，这些信息中最主要的是<strong>参考帧列表（Decoded Picture Buffer）</strong>，简称 <strong>DPB</strong>。而 I 帧不具有清空 DPB 的能力。</p>
+<p>基于此，一个视频序列中可以有若干个 I 帧，且某一个 I 帧之后的图像可以引用这个 I 帧之前的图像作参考。但是相应地，某一个 IDR 帧之后的图像是不可以引用这个 IDR 帧之前的图像作为参考的。这就造成视频播放器总是能够足够信任地从 IDR 帧开始播放，因为不可能出现引用帧不存在的现象，所以一般而言视频的首个 I 帧都是 IDR 帧。</p>
+<p>P 帧和 B 帧则是基于 I 帧或者 IDR 帧预测得到的帧。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
         
-        <span class="collection-header">还行! 目前共计 43 篇日志。 继续努力。</span>
-      </div>
 
-      
-    <div class="collection-year">
-      <span class="collection-header">2022</span>
-    </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-10-17T18:31:12+00:00"
-              content="2022-10-17">
-          10-17
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/10/17/puffer-loader/" itemprop="url">
-            <span itemprop="name">Puffer 数据集加载器备忘录</span>
-          </a>
-      </div>
-
-      
-    </header>
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/10/02/vocaloid-and-me/" rel="prev" title="Holder 与 Vocaloid">
+                  <i class="fa fa-chevron-left"></i> Holder 与 Vocaloid
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
   </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-10-02T23:47:11+00:00"
-              content="2022-10-02">
-          10-02
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/10/02/vocaloid-and-me/" itemprop="url">
-            <span itemprop="name">Holder 与 Vocaloid</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-10-01T02:45:34+00:00"
-              content="2022-10-01">
-          10-01
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/10/01/rl-algorithm-list/" itemprop="url">
-            <span itemprop="name">强化学习算法与 demo 代码</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-09-25T17:05:37+00:00"
-              content="2022-09-25">
-          09-25
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/09/25/note-of-ctrl/" itemprop="url">
-            <span itemprop="name">《现代控制技术》学习笔记</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-09-20T20:48:35+00:00"
-              content="2022-09-20">
-          09-20
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/09/20/paper-2022-09/" itemprop="url">
-            <span itemprop="name">2022 年 9 月论文笔记</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-09-14T13:32:34+00:00"
-              content="2022-09-14">
-          09-14
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/09/14/phd-interview/" itemprop="url">
-            <span itemprop="name">直博招生专业面试的一些</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-08-22T12:28:22+00:00"
-              content="2022-08-22">
-          08-22
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/08/22/ja-tutorial-ch4/" itemprop="url">
-            <span itemprop="name">简明日语自学手册 Chapter 4 助动词接续规则</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-08-22T12:28:21+00:00"
-              content="2022-08-22">
-          08-22
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/08/22/ja-tutorial-ch3/" itemprop="url">
-            <span itemprop="name">简明日语自学手册 Chapter 3 用言活用形与体言的基本应用</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-08-21T15:46:31+00:00"
-              content="2022-08-21">
-          08-21
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/08/21/ja-tutorial-ch2.5/" itemprop="url">
-            <span itemprop="name">简明日语自学手册 Chapter 2.5 古日语基本语法</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-08-21T15:46:29+00:00"
-              content="2022-08-21">
-          08-21
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/08/21/ja-tutorial-ch2-vocab/" itemprop="url">
-            <span itemprop="name">简明日语自学手册 Chapter 2 生词表</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
+</div>
 
 
-    </div>
-  </div>
-  
-  
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2022/page/2/">2</a><a class="page-number" href="/archives/2022/page/3/">3</a><a class="extend next" rel="next" href="/archives/2022/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
 
+
+
+
+    <div class="comments"><div id="twikoo-comments"></div></div>
 </div>
   </main>
 
