@@ -6768,7 +6768,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 </tr>
 </tbody>
 </table>
-<p>最后介绍日语中目前最不规则的量词「<code>@ 日 か・にち</code>」。该量词在这里用于表示序数的日期，即某月的某一天，而不是表示时间长度的天数。如果用该量词表示用于表明时间长度的天数，则其为规则的音读量词「<code>@ 日 にち</code>」，构成的词组包括「<code>@ 一 いち</code> <code>@ 日 にち</code>」等。</p>
+<p>最后介绍日语中目前最不规则的量词「<code>@ 日 か・にち</code>」。该量词在这里用于表示序数的日期，即某月的某一天，而不是表示时间长度的天数。如果用该量词表示用于表明时间长度的天数，则其为规则的音读量词「<code>@ 日 にち</code>」，构成的词组包括「<code>@ 一日 いちにち</code>」等。</p>
 <p>其不规则的原因在于，十以内需要使用原有的固有表达，甚至对于数量“一”需要使用熟字训特殊表达。另外，由于数量“四”和“七”的避讳问题，需要使用训读数词，而且数量为“四”的时候量词需要变音。再者，“二十”具有熟字训表达。综合上述所有的因素，「<code>@ 日 か・にち</code>」变成了目前最为不规则的量词：</p>
 <table>
 <thead>
@@ -6879,6 +6879,287 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 </div>
 <p>这里注意一点，「<code>@ 三十日 みそか</code>」有熟字训，但是该熟字训并不表示“某个月份的第三十天”这个含义，现在多用于表示“某个月的最后一天”，而且多用于在词组「<code>@ 大晦日 おおみそか</code>」中表示“除夕”这个特殊的日期。</p>
 <p>此外，该量词可以和「<code>@ 間 かん</code>」连用来表示时间长度。但是一定需要注意「<code>@ 一日 ついたち</code>」不能直接和「<code>@ 間 かん</code>」连用。这种方式下用于表示“一天”这样的时间长度，可以使用固定短语「<code>@ 一日中 いちにちじゅう</code>」，或者转换为“二十四小时”表达，表达为「<code>@ 二十四時間 にじゅうよじかん</code>」。</p>
+<div class="note info no-icon"><p>实际上，古日语在接收汉语数字之前也有完整的数量词体系，但是在演变过程中逐步被汉语数量词体系替换。这里简单讲解一部分古日语数量词体系，基于此我们可以得知现代日语数量词体系的演变脉络。本部分采用历史假名遣，关于历史假名遣可以阅读本系列 Chapter 2.5 古日语语法简介。</p>
+<p>首先，一到九的数字在古日语中表现为：</p>
+<ul>
+<li>ひと、ふた、み、よ、いつ、む、なな、や、ここの</li>
+</ul>
+<p>其次，作为词根的十、百、千、万分别表现为：</p>
+<ul>
+<li>そ、ほ、ち、よろづ</li>
+</ul>
+<p>所以我们可以得到部分整十数的表现：</p>
+<ul>
+<li>みそ (30)、むほ (600)、やち (8000)、ここのよろづ (90000)</li>
+</ul>
+<p>例外情况包括，数字五在接续十、百、千、万的时候会简略为「い」：</p>
+<ul>
+<li>いそ (50)、いほ (500)、いち (5000)、いよろづ (50000)</li>
+</ul>
+<p>一千、一万的表现中会忽略数字一：</p>
+<ul>
+<li>ち (1000)、よろづ (10000)</li>
+</ul>
+<p>十、二十、一百有固定表达：</p>
+<ul>
+<li>と (10)、はた (20)、もも (100)</li>
+</ul>
+<p>上述规则可以总结为下述表格：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">数字</th>
+<th style="text-align: center;">表现</th>
+<th style="text-align: center;">数字</th>
+<th style="text-align: center;">表现</th>
+<th style="text-align: center;">数字</th>
+<th style="text-align: center;">表现</th>
+<th style="text-align: center;">数字</th>
+<th style="text-align: center;">表现</th>
+<th style="text-align: center;">数字</th>
+<th style="text-align: center;">表现</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">ひと</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;"><strong>と</strong></td>
+<td style="text-align: center;">100</td>
+<td style="text-align: center;"><strong>もも</strong></td>
+<td style="text-align: center;">1000</td>
+<td style="text-align: center;"><strong>ち</strong></td>
+<td style="text-align: center;">10000</td>
+<td style="text-align: center;"><strong>よろづ</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">ふた</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;"><strong>はた</strong></td>
+<td style="text-align: center;">200</td>
+<td style="text-align: center;">ふたほ</td>
+<td style="text-align: center;">2000</td>
+<td style="text-align: center;">ふたち</td>
+<td style="text-align: center;">20000</td>
+<td style="text-align: center;">ふたよろづ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">み</td>
+<td style="text-align: center;">30</td>
+<td style="text-align: center;">みそ</td>
+<td style="text-align: center;">300</td>
+<td style="text-align: center;">みほ</td>
+<td style="text-align: center;">3000</td>
+<td style="text-align: center;">みち</td>
+<td style="text-align: center;">30000</td>
+<td style="text-align: center;">みよろづ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">よ</td>
+<td style="text-align: center;">40</td>
+<td style="text-align: center;">よそ</td>
+<td style="text-align: center;">400</td>
+<td style="text-align: center;">よほ</td>
+<td style="text-align: center;">4000</td>
+<td style="text-align: center;">よち</td>
+<td style="text-align: center;">40000</td>
+<td style="text-align: center;">よよろづ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">いつ</td>
+<td style="text-align: center;">50</td>
+<td style="text-align: center;"><strong>いそ</strong></td>
+<td style="text-align: center;">500</td>
+<td style="text-align: center;"><strong>いほ</strong></td>
+<td style="text-align: center;">5000</td>
+<td style="text-align: center;"><strong>いち</strong></td>
+<td style="text-align: center;">50000</td>
+<td style="text-align: center;"><strong>いよろづ</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">む</td>
+<td style="text-align: center;">60</td>
+<td style="text-align: center;">むそ</td>
+<td style="text-align: center;">600</td>
+<td style="text-align: center;">むほ</td>
+<td style="text-align: center;">6000</td>
+<td style="text-align: center;">むち</td>
+<td style="text-align: center;">60000</td>
+<td style="text-align: center;">むよろづ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">なな</td>
+<td style="text-align: center;">70</td>
+<td style="text-align: center;">ななそ</td>
+<td style="text-align: center;">700</td>
+<td style="text-align: center;">ななほ</td>
+<td style="text-align: center;">7000</td>
+<td style="text-align: center;">ななち</td>
+<td style="text-align: center;">70000</td>
+<td style="text-align: center;">ななよろづ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">や</td>
+<td style="text-align: center;">80</td>
+<td style="text-align: center;">やそ</td>
+<td style="text-align: center;">800</td>
+<td style="text-align: center;">やほ</td>
+<td style="text-align: center;">8000</td>
+<td style="text-align: center;">やち</td>
+<td style="text-align: center;">80000</td>
+<td style="text-align: center;">やよろづ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">ここの</td>
+<td style="text-align: center;">90</td>
+<td style="text-align: center;">ここのそ</td>
+<td style="text-align: center;">900</td>
+<td style="text-align: center;">ここのほ</td>
+<td style="text-align: center;">9000</td>
+<td style="text-align: center;">ここのち</td>
+<td style="text-align: center;">90000</td>
+<td style="text-align: center;">ここのよろづ</td>
+</tr>
+</tbody>
+</table>
+<p>下面介绍助数词，这是因为非整十数并不能单独使用，必须辅以助数词表现。助数词包括「つ、ち、ぢ」，其中「つ」用于个位，「ち」用于二十位，「ぢ」用于三十及以上的十位。另外，一十位应当使用「とを」。</p>
+<p>添加助数词后上述表格应当表现为：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">数字</th>
+<th style="text-align: center;">表现</th>
+<th style="text-align: center;">数字</th>
+<th style="text-align: center;">表现</th>
+<th style="text-align: center;">数字</th>
+<th style="text-align: center;">表现</th>
+<th style="text-align: center;">数字</th>
+<th style="text-align: center;">表现</th>
+<th style="text-align: center;">数字</th>
+<th style="text-align: center;">表现</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">ひと<strong>つ</strong></td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;"><strong>とを</strong></td>
+<td style="text-align: center;">100</td>
+<td style="text-align: center;"><strong>もも</strong></td>
+<td style="text-align: center;">1000</td>
+<td style="text-align: center;"><strong>ち</strong></td>
+<td style="text-align: center;">10000</td>
+<td style="text-align: center;"><strong>よろづ</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">ふた<strong>つ</strong></td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;"><strong>はたち</strong></td>
+<td style="text-align: center;">200</td>
+<td style="text-align: center;">ふたほ</td>
+<td style="text-align: center;">2000</td>
+<td style="text-align: center;">ふたち</td>
+<td style="text-align: center;">20000</td>
+<td style="text-align: center;">ふたよろづ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">み<strong>つ</strong></td>
+<td style="text-align: center;">30</td>
+<td style="text-align: center;">みそ<strong>ぢ</strong></td>
+<td style="text-align: center;">300</td>
+<td style="text-align: center;">みほ</td>
+<td style="text-align: center;">3000</td>
+<td style="text-align: center;">みち</td>
+<td style="text-align: center;">30000</td>
+<td style="text-align: center;">みよろづ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">よ<strong>つ</strong></td>
+<td style="text-align: center;">40</td>
+<td style="text-align: center;">よそ<strong>ぢ</strong></td>
+<td style="text-align: center;">400</td>
+<td style="text-align: center;">よほ</td>
+<td style="text-align: center;">4000</td>
+<td style="text-align: center;">よち</td>
+<td style="text-align: center;">40000</td>
+<td style="text-align: center;">よよろづ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">いつ<strong>つ</strong></td>
+<td style="text-align: center;">50</td>
+<td style="text-align: center;"><strong>いそぢ</strong></td>
+<td style="text-align: center;">500</td>
+<td style="text-align: center;"><strong>いほ</strong></td>
+<td style="text-align: center;">5000</td>
+<td style="text-align: center;"><strong>いち</strong></td>
+<td style="text-align: center;">50000</td>
+<td style="text-align: center;"><strong>いよろづ</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">む<strong>つ</strong></td>
+<td style="text-align: center;">60</td>
+<td style="text-align: center;">むそ<strong>ぢ</strong></td>
+<td style="text-align: center;">600</td>
+<td style="text-align: center;">むほ</td>
+<td style="text-align: center;">6000</td>
+<td style="text-align: center;">むち</td>
+<td style="text-align: center;">60000</td>
+<td style="text-align: center;">むよろづ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">なな<strong>つ</strong></td>
+<td style="text-align: center;">70</td>
+<td style="text-align: center;">ななそ<strong>ぢ</strong></td>
+<td style="text-align: center;">700</td>
+<td style="text-align: center;">ななほ</td>
+<td style="text-align: center;">7000</td>
+<td style="text-align: center;">ななち</td>
+<td style="text-align: center;">70000</td>
+<td style="text-align: center;">ななよろづ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">や<strong>つ</strong></td>
+<td style="text-align: center;">80</td>
+<td style="text-align: center;">やそ<strong>ぢ</strong></td>
+<td style="text-align: center;">800</td>
+<td style="text-align: center;">やほ</td>
+<td style="text-align: center;">8000</td>
+<td style="text-align: center;">やち</td>
+<td style="text-align: center;">80000</td>
+<td style="text-align: center;">やよろづ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">ここの<strong>つ</strong></td>
+<td style="text-align: center;">90</td>
+<td style="text-align: center;">ここのそ<strong>ぢ</strong></td>
+<td style="text-align: center;">900</td>
+<td style="text-align: center;">ここのほ</td>
+<td style="text-align: center;">9000</td>
+<td style="text-align: center;">ここのち</td>
+<td style="text-align: center;">90000</td>
+<td style="text-align: center;">ここのよろづ</td>
+</tr>
+</tbody>
+</table>
+</div>
 <h2 id="如何使用日语汉字词典">如何使用日语汉字词典</h2>
 <p>现在我们已经掌握了训读的若干种形态，了解了音读汉字的连读规则，知道了还有音训混读词等例外的存在，且基本上掌握了日语初学者的第一道门槛，日语数量词。那么，现在我们来解决实际问题，即在我们实际阅读日文文本的时候，遇到并不会读的汉字的时候，应当如何查找字典。</p>
 <p>这里推荐使用 <a href="https://kanjitisiki.com/">在线日语汉字词典</a>，其对汉字的介绍相对较为全面，且支持多种查询汉字的方式。</p>
@@ -7372,8 +7653,8 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <td style="text-align: center;">高兴的、喜悦的</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><code>@ 黄色 きいろ</code>い[<code>@ 黄色 きいろ</code>し]</td>
-<td style="text-align: center;">形[形ク]</td>
+<td style="text-align: center;"><code>@ 黄色 きいろ</code>い</td>
+<td style="text-align: center;">形</td>
 <td style="text-align: center;">黄色的</td>
 </tr>
 <tr class="odd">
@@ -16694,21 +16975,6 @@ a_t \sim \pi_\theta(\cdot \mid \hat s_t), \hat s_{t + 1} = \hat f_{\phi_t}(\hat 
 ]]></content>
       <categories>
         <category>【杂谈】碎碎念</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Puffer 数据集加载器备忘录</title>
-    <url>/2022/10/17/puffer-loader/</url>
-    <content><![CDATA[<p>需要写一个 Puffer 数据集的 data loader 来把数据集洗成适合 RL 模型学习的格式，有些小东西打算写在这里备忘。</p>
-<span id="more"></span>
-<h1 id="一些常见概念">一些常见概念</h1>
-<p>流媒体领域还有一些概念看起来我还是得稍微认识一下。</p>
-<p>首先是 H.264 标准中采用的<strong>即时解码刷新（Instantaneous Decoding Refreshing）</strong>，简称 <strong>IDR</strong>。IDR 中的 I 帧与 IDR 帧都是自带全部信息的帧，其不需要参考任何其他图像就能够独立解码。I 帧和 IDR 帧的差别在于 IDR 帧会直接触发刷新，从而阻断错误传递。也就是说从 IDR 帧开始，之前的所有信息全部清空，这些信息中最主要的是<strong>参考帧列表（Decoded Picture Buffer）</strong>，简称 <strong>DPB</strong>。而 I 帧不具有清空 DPB 的能力。</p>
-<p>基于此，一个视频序列中可以有若干个 I 帧，且某一个 I 帧之后的图像可以引用这个 I 帧之前的图像作参考。但是相应地，某一个 IDR 帧之后的图像是不可以引用这个 IDR 帧之前的图像作为参考的。这就造成视频播放器总是能够足够信任地从 IDR 帧开始播放，因为不可能出现引用帧不存在的现象，所以一般而言视频的首个 I 帧都是 IDR 帧。</p>
-<p>P 帧和 B 帧则是基于 I 帧或者 IDR 帧预测得到的帧。</p>
-]]></content>
-      <categories>
-        <category>【杂谈】开发</category>
       </categories>
   </entry>
   <entry>
