@@ -377,3 +377,60 @@ $$
 对于并联系统，显然有 $u_1 = u_2 = u$，而输出有 $y = y_1 + y_2$。使用上述方法很容易推出 $G(s) = G_1(s) + G_2(s)$。
 
 也就是说并联系统的传递函数为各个子系统的传递函数之和。
+
+## 状态空间的线性变换
+
+对于下述的线性系统的状态空间表达式：
+
+$$
+\begin{cases}
+\dot x = Ax + Bu \\
+y = Cx + Du \\
+\end{cases}
+$$
+
+取一个可逆矩阵 $P$，定义变换 $x = P\overline x$，得到下述的状态空间表达式：
+
+$$
+\begin{cases}
+P\dot{\overline x} = AP\overline x + Bu \\
+y = CP\overline x + Du \\
+\end{cases}
+\iff
+\begin{cases}
+\dot{\overline x} = P^{-1}AP\overline x + P^{-1}Bu \\
+y = CP\overline x + Du \\
+\end{cases}
+$$
+
+不妨定义：
+
+$$
+\overline A = P^{-1}AP, \overline B = P^{-1}B, \overline C = CP, \overline D = D
+$$
+
+这样我们就得到了线性状态空间上的线性变换。而这样的线性变换事实上能够保证变换前后的传递函数不变：
+
+$$
+\begin{aligned}
+\overline G(s) &= \overline C(sI - \overline A)^{-1}\overline B + \overline D \\
+&= CP(sI - P^{-1}AP)^{-1}P^{-1}B + D \\
+&= C[(P^{-1})^{-1}(sI - P^{-1}AP)^{-1}P^{-1}]B + D \\
+&= C[P(sI - P^{-1}AP)P^{-1}]^{-1}B + D \\
+&= C(sI - A)^{-1}B + D \\
+&= G(s)
+\end{aligned}
+$$
+
+该性质保证了线性系统经过可逆线性变换后系统本质性质不变。而我们可以使用合适的可逆线性变换令 $A$ 对角化或者变为 Jordan 标准型。如果 $A$ 能够对角化为 $\overline A$，事实上就实现了状态变量的变量分离，因为根据 $\dot{\overline x} = \overline A\overline x + \overline Bu$ 可以看出此时某个状态变量的导数仅和其本身有关而和其余状态变量无关。
+
+对于能够对角化的 $A \in M_{n \times n}(\mathbb{R})$，显然其具有 $n$ 个线性无关的特征向量 $p_1, p_2, \cdots, p_n$。这里不妨假设其对应的特征值分别为 $\lambda_1, \lambda_2, \cdots, \lambda_n$。那么我们只需要令 $P := (p_1, p_2, \cdots, p_n)$ 即可，此时：
+
+$$
+\overline A = \lv
+\lambda_1 \\
+& \lambda_2 \\
+&& \ddots \\
+&&& \lambda_n \\
+\rv
+$$
