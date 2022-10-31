@@ -434,3 +434,162 @@ $$
 &&& \lambda_n \\
 \rv
 $$
+
+如果 $A$ 不能对角化，其总能找到与其相似的 Jordan 标准型 $\overline A \sim A$。这里给出求解 Jordan 标准型的步骤。
+
+- 首先求解 $A$ 的特征值 $\lambda_1, \lambda_2, \cdots, \lambda_n$
+- 对于其中几何重数小于代数重数的特征值（即特征向量线性相关的特征值）$\lambda_i$，求取其对应的 Jordan 链
+- 如果 $v_i$ 是特征值 $\lambda_i$ 的特征向量，则不断求取 $(\lambda_i A - I)v_j = -v_{j - 1}, j \geq i + 1$ 得到 Jordan 链
+- 令 $P := (v_1, v_2, \cdots, v_n)$，从而求取完毕
+
+这里举出一例，计算其 Jordan 标准型：
+
+$$
+A = \lv
+1 & -1 & -1 \\
+0 & 1 & 0 \\
+0 & 0 & 2 \\
+\rv
+$$
+
+不难求出其特征值为 $\lambda_1 = \lambda_2 = 1, \lambda_3 = 2$。然而属于特征值 $1$ 的特征向量张成的空间维数为 $1$，该空间为 ${\rm Span}\left(\lv 1 \\ 0 \\ 0 \rv\right)$。
+
+那么令 $v_1 = \lv 1 \\ 0 \\ 0 \rv$，求解 $(A - I)v_2 = -v_1$ 得到 $v_2 = \lv 0 \\ -1 \\ 0 \rv$。
+
+特征值 $\lambda_3 = 2$，对应的特征向量为 $v_3 = \lv -1 \\ 0 \\ 1 \rv$。从而：
+
+$$
+P = \lv
+1 & 0 & -1 \\
+0 & -1 & 0 \\
+0 & 0 & 1 \\
+\rv,
+\overline A = \lv
+1 & 1 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 2 \\
+\rv
+$$
+
+## 离散时间系统
+
+在离散时间系统中，状态向量的导数可以使用差分表示，即 $\dot x(k) := x(k + 1) - x(k)$，那么状态空间表达式可以为：
+
+$$
+\begin{cases}
+\dot x(k) = x(k + 1) - x(k) = Ax(k) + Bu(k) \\
+y(k) = Cx(k) + Du(k) \\
+\end{cases}
+$$
+
+令 $G := A + I, H := B$，离散时间系统的状态空间表达式即为：
+
+$$
+\begin{cases}
+x(k + 1) = Gx(k) + Hu(k) \\
+y(k) = Cx(k) + Du(k) \\
+\end{cases}
+$$
+
+对于一般的离散时间系统，其系统性质是由下述差分方程描述的：
+
+$$
+\sum_{i = 0}^n a_iy(k + n - i) = \sum_{j = 1}^n b_ju(k + n - j), a_0 = 1
+$$
+
+其对应下述传递函数：
+
+$$
+\frac{Y(z)}{U(z)} = \frac{b_1z^{n - 1} + \cdots + b_{n - 1}z + b_n}{z^n + a_1z^{n - 1} + \cdots + a_{n - 1}z + a_n}
+$$
+
+不妨令：
+
+$$
+W(z) := \frac{U(z)}{z^n + a_1z^{n - 1} + \cdots + a_{n - 1}z + a_n}
+$$
+
+那么：
+
+$$
+\begin{aligned}
+U(z) &= (z^n + a_1z^{n - 1} + \cdots + a_{n - 1}z + a_n)W(z) \\
+Y(z) &= (b_1z^{n - 1} + \cdots + b_{n - 1}z + b_n)W(z) \\
+\end{aligned}
+$$
+
+对两边作逆 Laplace 变换得到：
+
+$$
+\begin{aligned}
+u(k) &= w(k + n) + a_1w(k + n - 1) + \cdots + a_{n - 1}w(k + 1) + a_nw(k) \\
+y(k) &= b_1w(k + n - 1) + \cdots + b_nw(k) \\
+\end{aligned}
+$$
+
+从而可以定义状态向量：
+
+$$
+x(k) := \lv
+w(k) \\ w(k + 1) \\ \vdots \\ w(k + n - 1)
+\rv
+$$
+
+那么显然有该定义下的状态空间表达式：
+
+$$
+\begin{aligned}
+x(k + 1) &= \lv
+& 1 \\
+&& 1 \\
+&&& \ddots \\
+&&&& 1 \\
+-a_n & -a_{n - 1} & -a_{n - 2} & \cdots & -a_1
+\rv x(k) + \lv
+0 \\ 0 \\ \vdots \\ 0 \\ 1
+\rv u(k) \\
+y(k) &= \lv b_n & b_{n - 1} & \cdots & b_1 \rv x(t) \\
+\end{aligned}
+$$
+
+# 系统的运动与其离散化
+
+## 线性系统的零输入响应
+
+我们现在考虑线性系统 $\dot x(t) = Ax(t) + Bu(t)$。我们先前提到过系统的全响应是零状态响应和零输入响应的组合，现在我们来分析线性系统的零输入响应。
+
+在零输入条件下，线性系统事实上退化为 $\dot x(t) = Ax(t)$。假定系统初始状态为 $x(0) =: x_0$，对状态空间表达式两边取 Laplace 变换得到：
+
+$$
+sX(s) - x_0 = AX(s) \iff X(s) = (sI - A)^{-1}x_0 \iff x(t) = \mathcal{L}^{-1}[(sI - A)^{-1}]x_0
+$$
+
+这里尝试使用级数展开的方式处理上述逆 Laplace 变换：
+
+$$
+\begin{aligned}
+\mathcal{L}^{-1}[(sI - A)^{-1}] &= \mathcal{L}^{-1}\left[\sum_{i = 0}^{+\infty} \frac{A^i}{s^{i + 1}}\right] = \sum_{i = 0}^{+\infty} \mathcal{L}^{-1}\left[\frac{A^i}{s^{i + 1}}\right] = \sum_{i = 0}^{+\infty} \frac{A^it^i}{i!} = e^{At}
+\end{aligned}
+$$
+
+从而我们得到了这个系统的解：
+
+$$
+x(t) = e^{At}x_0
+$$
+
+需要注意的是，我们这里默认了 $x(t)$ 仅在 $t \geq 0$ 时才具有意义，此时才可以直接运用下述定理：
+
+$$
+\mathcal{L}[t^nu(t)] = \frac{n!}{s^{n + 1}}
+$$
+
+这里 $u(t)$ 为单位阶跃函数。
+
+如果我们得知的并非是系统初始态的状态向量，而是时刻 $t_0$ 时的状态向量 $x(t_0)$，通过时域平移可以得到系统的解为：
+
+$$
+x(t) = e^{A(t - t_0)}x(t_0), t \geq t_0
+$$
+
+总而言之，这个结果说明了零输入条件下，$e^{At}$ 完全决定了系统状态在后续时间中的推演。
