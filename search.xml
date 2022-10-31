@@ -13185,6 +13185,125 @@ y = CP\overline x + Du \\
 &amp;&amp;&amp; \lambda_n \\
 \rv
 \]</span></p>
+<p>如果 <span class="math inline">\(A\)</span> 不能对角化，其总能找到与其相似的 Jordan 标准型 <span class="math inline">\(\overline A \sim A\)</span>。这里给出求解 Jordan 标准型的步骤。</p>
+<ul>
+<li>首先求解 <span class="math inline">\(A\)</span> 的特征值 <span class="math inline">\(\lambda_1, \lambda_2, \cdots, \lambda_n\)</span></li>
+<li>对于其中几何重数小于代数重数的特征值（即特征向量线性相关的特征值）<span class="math inline">\(\lambda_i\)</span>，求取其对应的 Jordan 链</li>
+<li>如果 <span class="math inline">\(v_i\)</span> 是特征值 <span class="math inline">\(\lambda_i\)</span> 的特征向量，则不断求取 <span class="math inline">\((\lambda_i A - I)v_j = -v_{j - 1}, j \geq i + 1\)</span> 得到 Jordan 链</li>
+<li>令 <span class="math inline">\(P := (v_1, v_2, \cdots, v_n)\)</span>，从而求取完毕</li>
+</ul>
+<p>这里举出一例，计算其 Jordan 标准型：</p>
+<p><span class="math display">\[
+A = \lv
+1 &amp; -1 &amp; -1 \\
+0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 2 \\
+\rv
+\]</span></p>
+<p>不难求出其特征值为 <span class="math inline">\(\lambda_1 = \lambda_2 = 1, \lambda_3 = 2\)</span>。然而属于特征值 <span class="math inline">\(1\)</span> 的特征向量张成的空间维数为 <span class="math inline">\(1\)</span>，该空间为 <span class="math inline">\({\rm Span}\left(\lv 1 \\ 0 \\ 0 \rv\right)\)</span>。</p>
+<p>那么令 <span class="math inline">\(v_1 = \lv 1 \\ 0 \\ 0 \rv\)</span>，求解 <span class="math inline">\((A - I)v_2 = -v_1\)</span> 得到 <span class="math inline">\(v_2 = \lv 0 \\ -1 \\ 0 \rv\)</span>。</p>
+<p>特征值 <span class="math inline">\(\lambda_3 = 2\)</span>，对应的特征向量为 <span class="math inline">\(v_3 = \lv -1 \\ 0 \\ 1 \rv\)</span>。从而：</p>
+<p><span class="math display">\[
+P = \lv
+1 &amp; 0 &amp; -1 \\
+0 &amp; -1 &amp; 0 \\
+0 &amp; 0 &amp; 1 \\
+\rv,
+\overline A = \lv
+1 &amp; 1 &amp; 0 \\
+0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 2 \\
+\rv
+\]</span></p>
+<h2 id="离散时间系统">离散时间系统</h2>
+<p>在离散时间系统中，状态向量的导数可以使用差分表示，即 <span class="math inline">\(\dot x(k) := x(k + 1) - x(k)\)</span>，那么状态空间表达式可以为：</p>
+<p><span class="math display">\[
+\begin{cases}
+\dot x(k) = x(k + 1) - x(k) = Ax(k) + Bu(k) \\
+y(k) = Cx(k) + Du(k) \\
+\end{cases}
+\]</span></p>
+<p>令 <span class="math inline">\(G := A + I, H := B\)</span>，离散时间系统的状态空间表达式即为：</p>
+<p><span class="math display">\[
+\begin{cases}
+x(k + 1) = Gx(k) + Hu(k) \\
+y(k) = Cx(k) + Du(k) \\
+\end{cases}
+\]</span></p>
+<p>对于一般的离散时间系统，其系统性质是由下述差分方程描述的：</p>
+<p><span class="math display">\[
+\sum_{i = 0}^n a_iy(k + n - i) = \sum_{j = 1}^n b_ju(k + n - j), a_0 = 1
+\]</span></p>
+<p>其对应下述传递函数：</p>
+<p><span class="math display">\[
+\frac{Y(z)}{U(z)} = \frac{b_1z^{n - 1} + \cdots + b_{n - 1}z + b_n}{z^n + a_1z^{n - 1} + \cdots + a_{n - 1}z + a_n}
+\]</span></p>
+<p>不妨令：</p>
+<p><span class="math display">\[
+W(z) := \frac{U(z)}{z^n + a_1z^{n - 1} + \cdots + a_{n - 1}z + a_n}
+\]</span></p>
+<p>那么：</p>
+<p><span class="math display">\[
+\begin{aligned}
+U(z) &amp;= (z^n + a_1z^{n - 1} + \cdots + a_{n - 1}z + a_n)W(z) \\
+Y(z) &amp;= (b_1z^{n - 1} + \cdots + b_{n - 1}z + b_n)W(z) \\
+\end{aligned}
+\]</span></p>
+<p>对两边作逆 Laplace 变换得到：</p>
+<p><span class="math display">\[
+\begin{aligned}
+u(k) &amp;= w(k + n) + a_1w(k + n - 1) + \cdots + a_{n - 1}w(k + 1) + a_nw(k) \\
+y(k) &amp;= b_1w(k + n - 1) + \cdots + b_nw(k) \\
+\end{aligned}
+\]</span></p>
+<p>从而可以定义状态向量：</p>
+<p><span class="math display">\[
+x(k) := \lv
+w(k) \\ w(k + 1) \\ \vdots \\ w(k + n - 1)
+\rv
+\]</span></p>
+<p>那么显然有该定义下的状态空间表达式：</p>
+<p><span class="math display">\[
+\begin{aligned}
+x(k + 1) &amp;= \lv
+&amp; 1 \\
+&amp;&amp; 1 \\
+&amp;&amp;&amp; \ddots \\
+&amp;&amp;&amp;&amp; 1 \\
+-a_n &amp; -a_{n - 1} &amp; -a_{n - 2} &amp; \cdots &amp; -a_1
+\rv x(k) + \lv
+0 \\ 0 \\ \vdots \\ 0 \\ 1
+\rv u(k) \\
+y(k) &amp;= \lv b_n &amp; b_{n - 1} &amp; \cdots &amp; b_1 \rv x(t) \\
+\end{aligned}
+\]</span></p>
+<h1 id="系统的运动与其离散化">系统的运动与其离散化</h1>
+<h2 id="线性系统的零输入响应">线性系统的零输入响应</h2>
+<p>我们现在考虑线性系统 <span class="math inline">\(\dot x(t) = Ax(t) + Bu(t)\)</span>。我们先前提到过系统的全响应是零状态响应和零输入响应的组合，现在我们来分析线性系统的零输入响应。</p>
+<p>在零输入条件下，线性系统事实上退化为 <span class="math inline">\(\dot x(t) = Ax(t)\)</span>。假定系统初始状态为 <span class="math inline">\(x(0) =: x_0\)</span>，对状态空间表达式两边取 Laplace 变换得到：</p>
+<p><span class="math display">\[
+sX(s) - x_0 = AX(s) \iff X(s) = (sI - A)^{-1}x_0 \iff x(t) = \mathcal{L}^{-1}[(sI - A)^{-1}]x_0
+\]</span></p>
+<p>这里尝试使用级数展开的方式处理上述逆 Laplace 变换：</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathcal{L}^{-1}[(sI - A)^{-1}] &amp;= \mathcal{L}^{-1}\left[\sum_{i = 0}^{+\infty} \frac{A^i}{s^{i + 1}}\right] = \sum_{i = 0}^{+\infty} \mathcal{L}^{-1}\left[\frac{A^i}{s^{i + 1}}\right] = \sum_{i = 0}^{+\infty} \frac{A^it^i}{i!} = e^{At}
+\end{aligned}
+\]</span></p>
+<p>从而我们得到了这个系统的解：</p>
+<p><span class="math display">\[
+x(t) = e^{At}x_0
+\]</span></p>
+<p>需要注意的是，我们这里默认了 <span class="math inline">\(x(t)\)</span> 仅在 <span class="math inline">\(t \geq 0\)</span> 时才具有意义，此时才可以直接运用下述定理：</p>
+<p><span class="math display">\[
+\mathcal{L}[t^nu(t)] = \frac{n!}{s^{n + 1}}
+\]</span></p>
+<p>这里 <span class="math inline">\(u(t)\)</span> 为单位阶跃函数。</p>
+<p>如果我们得知的并非是系统初始态的状态向量，而是时刻 <span class="math inline">\(t_0\)</span> 时的状态向量 <span class="math inline">\(x(t_0)\)</span>，通过时域平移可以得到系统的解为：</p>
+<p><span class="math display">\[
+x(t) = e^{A(t - t_0)}x(t_0), t \geq t_0
+\]</span></p>
+<p>总而言之，这个结果说明了零输入条件下，<span class="math inline">\(e^{At}\)</span> 完全决定了系统状态在后续时间中的推演。</p>
 ]]></content>
       <categories>
         <category>【学习笔记】计算机</category>
