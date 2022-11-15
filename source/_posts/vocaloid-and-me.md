@@ -2,6 +2,7 @@
 title: Holder 与 Vocaloid
 date: 2022-10-02 23:47:11
 category:
+    - 【杂谈】碎碎念
 ---
 
 和 V+ 群群友度过了一天快乐的国庆假期，这次的 V+ Next 推曲活动中，又一次提及了我的“自传”——即我和 Vocaloid 的一些故事。
