@@ -92,7 +92,7 @@ menu:
   #commonweal: /404/ || fa fa-heartbeat
   skill-docs: https://SAST-skill-docers.github.io/sast-skill-docs/ || fa fa-book
   thuinfo: https://www.thuinfo.net || fa fa-sitemap
-  se-index: https://Ashitemaru.github.io/SE-course-index/ || fa fa-calendar
+  se-index: https://thuse-course.github.io/course-index/ || fa fa-calendar
 
 # Enable / Disable menu icons / item badges.
 menu_settings:
