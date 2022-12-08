@@ -975,6 +975,21 @@
 <li>南京、浙江、山东宣布公共交通不再查验核酸阴性证明以及健康码</li>
 </ul>
 <p>不过由于明天是江泽民同志的悼念日，公众娱乐活动需要停止一天，所以打算 7 号再去出勤。</p>
+<h1 id="section-6">2022.12.06 - 2022.12.08</h1>
+<p>这几天说实话变动还是比较大的。</p>
+<p>首先是机厅开门了，打了整整一整天的 maimai，回来之后腰酸背痛。之后是雀魂不断上分，终于回到了豪三。</p>
+<p>如果说正事的话，首先是本周组会取消，得以苟延残喘，再之后则是 THUInfo 的 Fastlane CI 总算是稍微修出来了点头绪。</p>
+<p>不过这几天说实话没什么好记录的东西。</p>
+<h2 id="新闻选录-5">新闻选录</h2>
+<p>要说最为重磅的新闻还得是这几天。</p>
+<ul>
+<li>“新十条”发布，除中小学、医院等重点场所，取消查验核酸阴性证明以及健康码，包括跨省旅行亦不查验</li>
+<li>清华大学不再公布校内疫情信息</li>
+<li>（未经证实）部分大学撤销疫情防控小组或类似组织</li>
+<li>（未经证实）北京大学恢复自由出入校</li>
+</ul>
+<p>不过我之前提到的 first impact 终究来了，我宿舍楼的所有保洁人员和保安全部阳性，现在处于“无政府状态”。</p>
+<p>另外在新十条和二十条共同作用下，出现了奇怪的局面，那就是不做核酸就不会阳性。这是因为阳性虽然可以居家，但是也有可能导致划出高风险地区并导致楼栋封控五天，而实际上你只要不做核酸，就不可能导致封控。</p>
 ]]></content>
       <categories>
         <category>【生活记录】假期日记</category>
@@ -17714,6 +17729,57 @@ a_t \sim \pi_\theta(\cdot \mid \hat s_t), \hat s_{t + 1} = \hat f_{\phi_t}(\hat 
 <p>说实话由于 RL 基础还是有点欠缺，自己不是很了解信任域相关方法的数学基础，所以对其数学论证也没看很细致，尤其是涉及到 implicit KL regularization 的部分。</p>
 <p>但总体而言这篇文章提出的核心思想是需要考虑部署带来的开销，并且提出了利用 BC 等方法来强化模型的 exploitation 能力并且尝试使用信任域的想法约束 agent 的行为，总体上依然符合离线 RL 的两大思路。</p>
 <p>数学证明之类的可能真的要等到补补 TRPO 之类 RL 方法之后写，目前打算基于 Sutton 把博客里面这些有关 RL 的一些东西串起来。</p>
+]]></content>
+      <categories>
+        <category>【论文笔记】计算机</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>2022 年 12 月论文笔记</title>
+    <url>/2022/12/06/paper-2022-12/</url>
+    <content><![CDATA[<p>12 月开始就得准备做毕设了，先要充分阅读文献，确定自己要做的方向有什么要解决的问题，以及目前已经有的探索和目前还存在的困难。</p>
+<span id="more"></span>
+<h1 id="learning-tailored-adaptive-bitrate-algorithms-to-heterogeneous-network-conditions---a-domain-specific-priors-and-meta-reinforcement-learning-approach">Learning Tailored Adaptive Bitrate Algorithms to Heterogeneous Network Conditions - A Domain-Specific Priors and Meta-Reinforcement Learning Approach</h1>
+<p>黄老师的文章，作为起手还是需要好好看看的。</p>
+<p>这篇文章的基本概念是，基于学习的 ABR 已经能够实现一个平均而言优秀的 ABR 算法，但是对于部分特殊的网络环境其依然表现不佳，而这也就是所谓的个性化。然后这篇文章使用了 meta RL 的方式实现了 AABR（其实应当是 <span class="math inline">\(A^2BR\)</span>，但是我真的不想打公式了，AABR 表示 Adaptation of ABR）。</p>
+<p>AABR 首先离线学习一个元算法，之后再在在线的个性化环境下学习一个针对当前网络环境的个性化算法。另外，还需要不断优化离线学习来保证元算法的优势。</p>
+<h2 id="introduction">Introduction</h2>
+<p>首先对 ABR 算法做了总结，启发式算法根据当前网络情况和一部分状态变量给出决策，但是只有在选定较好的算法参数的时候这种算法才能表现较好。基于学习的算法则根据网络情况学习这些参数。然而总而言之，这些算法都不会自动调节自己的算法参数，尤其在面对变化较多的网络环境下时，这些算法表现较差。</p>
+<p>之后是通过实验说明了现在的网络状况不仅是多样性（diverse）的，更多的是独一无二（unique）的。基于这一点，这篇文章认为做用户个性化是一个重要的提升。</p>
+<p>所以基于 Input-driven Markov Decision Process (IMDP)，本文提出了 AABR。分为离线和在线两步，具体的训练方式见后续。</p>
+<p>总结一下这篇文章的工作就是确认了当今网络环境的独特性，并通过 meta RL 解决了 ABR 的个性化问题。</p>
+<h2 id="background-motivation">Background &amp; Motivation</h2>
+<p>关于 ABR 之类的介绍这里忽略，主要看这篇文章如何论证当今网络的多样性。</p>
+<p>多样性分为三个方向去论证，即不同用户间差异、不同场景间差异以及已有的部分 ABR 算法在这些网络环境下的表现。</p>
+<p>用户间差异和场景间差异可以关注下图：</p>
+<p><img src="/uploads/paper-2022-12/1.png" /></p>
+<p>可以首先注意到网络吞吐率和 RTT 的变动是相当大的，而如果观察具体的用户，也可以发现用户之间的网络状况差异也很大，部分用户网络稳定（整体带宽 CDF 陡峭）而部分用户的网络波动较大，而且各个用户的网络指标平均值也差异较大。</p>
+<p>对于场景，也可以注意到步行、地铁、公交、汽车的网络情况也各有不同，并不能一概而论。</p>
+<p>如果从 ABR 的角度出发，这篇文章在两个不同环境下测试了若干个 ABR 算法的性能，得到的结果是：</p>
+<p><img src="/uploads/paper-2022-12/2.png" /></p>
+<p>显然可以注意到已有的算法都很难兼顾两种情况，常常顾此失彼。这就意味着不稳定的网络情况很容易导致这些算法失效，从而也难以实现用户个性化。</p>
+<h2 id="methods">Methods</h2>
+<h3 id="input-driven-markov-decision-process">Input-driven Markov Decision Process</h3>
+<p>基本而言是在正常的 MDP 中引入了 input process <span class="math inline">\(\mathcal{Z}\)</span>，这个时候环境的转移概率定义为：</p>
+<p><span class="math display">\[
+\mathbb{T}[s&#39; \mid s, a, z] := \mathbb{P}[s_{t + 1} = s&#39; \mid s_t = s, a_t = a, z_t = z]
+\]</span></p>
+<p>此外，决策依然仅仅和 <span class="math inline">\(s_t \in \mathcal{S}\)</span> 有关，也就是说具体行为 <span class="math inline">\(a_t \in \mathcal{A}\)</span> 与 <span class="math inline">\(z_t \in \mathcal{Z}\)</span> 是独立的。</p>
+<p>进一步的价值函数定义为：</p>
+<p><span class="math display">\[
+Q(s, a, z) := \sum_{s&#39; \in \mathcal{S}} \mathbb{T}[s&#39; \mid s, a, z](r(s, a, z) + \gamma V(s&#39;, z&#39;))
+\]</span></p>
+<p>在 IMDP 下，最优策略也就定义为：</p>
+<p><span class="math display">\[
+\pi^*(s, z) := \mathop{\rm argmax}_{a \in \mathcal{A}} \sum_{s&#39; \in \mathcal{S}} \mathbb{T}[s&#39;, z&#39; \mid s, a, z]\left[r(s, a, z) + \gamma \max_{a&#39; \in \mathcal{A}} Q(s&#39;, a&#39;, z&#39;)\right]
+\]</span></p>
+<p>可以注意到，如果两个 agent 运行相同的 policy <span class="math inline">\(\pi\)</span>，其不同之处仅仅是 input process <span class="math inline">\(\mathcal{Z}_{1, 2}\)</span> 不同。可以注意到这两个 agent 将会始终保持相同的决策，所以其价值函数相同当且仅当 <span class="math inline">\(\mathcal{Z}_1 = \mathcal{Z}_2\)</span>。</p>
+<p>如果在完全得知 input process <span class="math inline">\(\mathcal{Z}\)</span> 的条件下，求解最优策略相当于一般的强化学习问题，可以通过大量的强化学习方法完成。但是我们现在需要假定 input process 是完全不可感知的，在这种条件下，一般强化学习方法学习到的最优策略 <span class="math inline">\(\hat\pi^*\)</span> 的价值函数实际上是与 input process 无关的，其价值函数用 <span class="math inline">\(Q(s&#39;, a&#39;)\)</span> 表示，其满足：</p>
+<p><span class="math display">\[
+\max_{a&#39; \in \mathcal{A}} Q(s&#39;, a&#39;) = \mathbb{E}_{z&#39;} \max_{a&#39; \in \mathcal{A}} Q(s&#39;, a&#39;, z&#39;)
+\]</span></p>
+<p>所以现在解决 input process 未知条件下的最优策略求解问题就是最重要的。</p>
+<h3 id="meta-rl-with-domain-knowledge">Meta RL with Domain Knowledge</h3>
 ]]></content>
       <categories>
         <category>【论文笔记】计算机</category>
