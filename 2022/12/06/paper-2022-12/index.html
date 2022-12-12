@@ -29,6 +29,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://ashitemaru.github.io/uploads/paper-2022-12/1.png">
 <meta property="og:image" content="https://ashitemaru.github.io/uploads/paper-2022-12/2.png">
+<meta property="og:image" content="https://ashitemaru.github.io/uploads/paper-2022-12/3.png">
 <meta property="article:published_time" content="2022-12-06T13:17:26.000Z">
 <meta property="article:modified_time" content="2022-12-06T13:17:26.000Z">
 <meta property="article:author" content="Ashitemaru">
@@ -229,7 +230,7 @@ $(function () {
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#learning-tailored-adaptive-bitrate-algorithms-to-heterogeneous-network-conditions---a-domain-specific-priors-and-meta-reinforcement-learning-approach"><span class="nav-number">1.</span> <span class="nav-text">Learning Tailored Adaptive Bitrate Algorithms to Heterogeneous Network Conditions - A Domain-Specific Priors and Meta-Reinforcement Learning Approach</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction"><span class="nav-number">1.1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#background-motivation"><span class="nav-number">1.2.</span> <span class="nav-text">Background &amp; Motivation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#methods"><span class="nav-number">1.3.</span> <span class="nav-text">Methods</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#input-driven-markov-decision-process"><span class="nav-number">1.3.1.</span> <span class="nav-text">Input-driven Markov Decision Process</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#meta-rl-with-domain-knowledge"><span class="nav-number">1.3.2.</span> <span class="nav-text">Meta RL with Domain Knowledge</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#learning-tailored-adaptive-bitrate-algorithms-to-heterogeneous-network-conditions---a-domain-specific-priors-and-meta-reinforcement-learning-approach"><span class="nav-number">1.</span> <span class="nav-text">Learning Tailored Adaptive Bitrate Algorithms to Heterogeneous Network Conditions - A Domain-Specific Priors and Meta-Reinforcement Learning Approach</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction"><span class="nav-number">1.1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#background-motivation"><span class="nav-number">1.2.</span> <span class="nav-text">Background &amp; Motivation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#methods"><span class="nav-number">1.3.</span> <span class="nav-text">Methods</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#input-driven-markov-decision-process"><span class="nav-number">1.3.1.</span> <span class="nav-text">Input-driven Markov Decision Process</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#meta-rl-with-domain-knowledge"><span class="nav-number">1.3.2.</span> <span class="nav-text">Meta RL with Domain Knowledge</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#model-agnostic-meta-learning"><span class="nav-number">1.3.3.</span> <span class="nav-text">Model Agnostic Meta-Learning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leveraging-domain-knowledge"><span class="nav-number">1.3.4.</span> <span class="nav-text">Leveraging Domain Knowledge</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#aabr-overview"><span class="nav-number">1.4.</span> <span class="nav-text">AABR Overview</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#basic-training-algorithm"><span class="nav-number">1.4.1.</span> <span class="nav-text">Basic Training Algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#maximum-entropy-ppo-me-ppo"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">Maximum Entropy PPO (ME-PPO)</span></a></li></ol></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -399,14 +400,14 @@ $(function () {
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>2.3k</span>
+      <span>3.6k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
+      <span>3 分钟</span>
     </span>
 </div>
 
@@ -460,6 +461,43 @@ Q(s, a, z) := \sum_{s&#39; \in \mathcal{S}} \mathbb{T}[s&#39; \mid s, a, z](r(s,
 \]</span></p>
 <p>所以现在解决 input process 未知条件下的最优策略求解问题就是最重要的。</p>
 <h3 id="meta-rl-with-domain-knowledge">Meta RL with Domain Knowledge</h3>
+<p>总之就是又阐述了一边 AABR 分为离线和在线两个训练过程，离线训练一个元算法之后在线训练一个个性化 ABR 算法。那么两个问题就是：</p>
+<div class="note info no-icon"><ol type="i">
+<li><p>How to obtain a good parameter initialization for fast-learning?</p></li>
+<li><p>How to efficiently learn tailor-made ABR algorithms online?</p></li>
+</ol>
+</div>
+<h3 id="model-agnostic-meta-learning">Model Agnostic Meta-Learning</h3>
+<p>总之就是选定了 MAML 作为 AABR 的核心算法，MAML 的论文后面慢慢推着看。</p>
+<p>不过这一部分也阐释了为何 MAML 适合用于这个场景，原文是：</p>
+<div class="note info no-icon"><p>We find that model agnostic meta learning (MAML) is quite suitable in personalized ABR scenarios where the network traces on each user are quite limited.</p>
+<p>Specifically, MAML consists of an inner loop and an outer loop.</p>
+</div>
+<p>也就是说从数据集的角度和训练流程的角度上说，MAML 和这个实验场景的契合度比较高。</p>
+<h3 id="leveraging-domain-knowledge">Leveraging Domain Knowledge</h3>
+<p>总体的含义是设计了一个模拟器用于生成数据以及相关的启发式算法，一方面补充了现实世界中数据量不足的问题，另外一方面其代表的启发式算法可以在 policy 无法处理某些状态的时候作为 backup 使用。</p>
+<p><strong>注：</strong>这一部分可能需要结合下面的 overview 仔细学一下，然后对这里做一些扩充，因为这里模拟器的细节应该是做数据扩充的重要部分。</p>
+<h2 id="aabr-overview">AABR Overview</h2>
+<p>系统的大致结构为：</p>
+<p><img src="/uploads/paper-2022-12/3.png" /></p>
+<h3 id="basic-training-algorithm">Basic Training Algorithm</h3>
+<p>在设计网络的输入的时候首先需要考虑的是什么才是真正需要考虑的状态，这篇文章采用的方式是首先将所有可以使用的状态都作为输入以训练一个 teacher network，之后采用类似模仿学习的方式，采用类似决策树等较为轻量级的模型去模仿神经网络的策略，之后再使用决策树剪枝的方式去获取真正有意义的非平凡状态。</p>
+<div class="note success no-icon"><p>这个方法似乎是比较好玩的一个方法，用于筛选真正有用的输入状态。</p>
+</div>
+<p>这里剪枝的目的也是为了压缩最后的成本。</p>
+<p>最后筛选出来的状态包括：</p>
+<ul>
+<li>上一次选定的视频块质量 <span class="math inline">\(q_t\)</span></li>
+<li>目前的缓冲区占用率 <span class="math inline">\(b_t\)</span></li>
+<li>前 <span class="math inline">\(k\)</span> 个视频块传输时网络吞吐率 <span class="math inline">\(C_t\)</span></li>
+<li>前 <span class="math inline">\(k\)</span> 个视频块的下载时间 <span class="math inline">\(D_t\)</span></li>
+<li>前 <span class="math inline">\(k\)</span> 个视频块的应答时间 <span class="math inline">\(P_t\)</span></li>
+</ul>
+<p>这里为了控制成本，实验中选取 <span class="math inline">\(k = 5\)</span>。</p>
+<p>另外，为了保证模型的泛化性，这里需要将参数正则化，这样至少能保证模型面对完全没有经历过的网络环境不至于将其认为非法输入。</p>
+<p>模型的输出和正常的 AC 网络没有很大的差别，都是 Actor 网络输出一个 softmax 后的概率张量表示各个行为的决策概率，而 Critic 网络输出一个标量表示对当前状态的价值评估。</p>
+<h4 id="maximum-entropy-ppo-me-ppo">Maximum Entropy PPO (ME-PPO)</h4>
+<p>这里的训练策略是 ME-PPO，其与 PPO 的差别在于最优行为的定义里纳入了熵。</p>
 
     </div>
 
@@ -510,13 +548,13 @@ Q(s, a, z) := \sum_{s&#39; \in \mathcal{S}} \mathbb{T}[s&#39; \mid s, a, z](r(s,
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">399k</span>
+    <span title="站点总字数">400k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">6:02</span>
+    <span title="站点阅读时长">6:04</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动

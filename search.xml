@@ -1,338 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>2021 暑假生活记录</title>
-    <url>/2021/06/29/2021-summer-record/</url>
-    <content><![CDATA[<p>经过 6 月 22 日到 28 日这几天的折腾，大概和高中的老师、驾校教练等人商量了一些后续的安排。现在终于可以安定下来，准备做一些学习、开发、摸鱼的事情了。</p>
-<span id="more"></span>
-<p>总体而言，这个暑假想要做的事情其实还是很多的。</p>
-<ul>
-<li><p>学习一些新东西</p>
-<ul>
-<li><p>Java / Android 开发相关（或许最终的结果是随便看了看 Java 的语法，装好 IDE 就不做事了）</p></li>
-<li><p>汇编语言和量子计算（这属于完全不知道干啥，写在这里是因为小学期）</p></li>
-<li><p>Verilog 相关（但是这个属于想想而已，因为对这东西没有兴趣，下学期 xge 带我就好）</p></li>
-<li><p>编译原理相关（这个也属于想想而已，写这个是因为自动机学得惨不忍睹，要补一点）</p></li>
-<li><p>图形学相关（纯纯因为安主席的安利）</p></li>
-</ul></li>
-<li><p>跟进一些东西</p>
-<ul>
-<li><p>实验室项目（主要是最近划了，要跟上）</p></li>
-<li><p>THUInfo 的 UI 翻新以及培养计划 / 课程表功能翻新</p></li>
-<li><p>科协技能引导文档的结构初始化</p></li>
-</ul></li>
-<li><p>考试相关</p>
-<ul>
-<li><p>科目二（再不考是来不及了，大三不计划回家）</p></li>
-<li><p>GRE（属于想考一下试一下）</p></li>
-</ul></li>
-</ul>
-<p>此外还有一些杂事，包括买一个新电脑、预定 GRE 考试、选大三的课、重办身份证、回高中讲竞赛、和高中东方同好会线下聚会、陪 Sakana 玩等各种。</p>
-<p>因为想做的事情很多，所以想着不如就在这里开一个日记贴，就每天写一下想干什么，最后干了什么之类的。没啥价值，目标就是让自己做点事情，别划水了。</p>
-<h2 id="section">2021.06.29</h2>
-<p><strong>今天想要做的事情：</strong></p>
-<ul>
-<li><p>去驾校办理科目二入学手续</p></li>
-<li><p>公布科协网络部招新结果，准备一下文档初始化</p></li>
-<li><p>CRACKER 一日游，就到处看看有什么资料</p></li>
-<li><p>准备 THUInfo 主页 UI 翻新</p></li>
-<li><p>问一下韩旭下一步可以做什么</p></li>
-</ul>
-<p>其实想做的多，最后能做完的，凭运气吧。睡大觉去了，祝自己好梦，祝自己暑假顺利。也祝 Sakana 军训平稳度过。</p>
-<p><strong>今天汇报：</strong></p>
-<p>基本上弄完了网络部招新的通知工作，飞书还没有完全摸完，这个晚上慢慢来。后面应该要去问一下技术顾问团他们的情况，好准备做点事情。不过考虑到零字班的新生估计还要等他们军训完了才能安排工作，所以初始化应该暂且由老人完成。</p>
-<p>给韩旭发了微信消息，等他安排吧。</p>
-<p>目前下学期应该是四大原理 + 人机交互 + 计算机网络安全 + 台球 / 网球，所以也可以开始做点准备了。</p>
-<p>之后就是逛 CRACKER。目前的一个打算是汇编和计组应该就通过 CSAPP 先摸一下。计组可能还需要一些 Verilog 什么的东西，这个以后等买了 Windows 电脑再来搞一搞，造 CPU 的那本书也已经拿到手了，也可以拿 PPT 做一些补充。Java 相关是不打算弄多少，总之和 xge 他们组队搬砖，所以就打算把一些算法代码改成 Java 的，熟悉一下语法算了。</p>
-<p>编原那就是纯纯的逆天，因为我自动机学不明白，所以编译原理需要先看一些讲义和 Compiler 那本书。</p>
-<p>信号据说是数学课，所以找个课本随便学应该也就应付过去了。网原看起来属于巨大背诵的一门课，找了个《计算机网络：自顶而下》，然后要到了所有的课件，就打算看着玩玩算了。</p>
-<p>至于那些限选课，网络安全技术看起来和网原巨大相关，懒得搞。然后就是人机交互没啥经验，就算了。</p>
-<p>最后是打算学习图形学，问安主席要到了整本书的电子版，然后找到了网课链接，总之打算干活。</p>
-<h2 id="section-1">2021.06.30</h2>
-<p><strong>今天想要做的事情：</strong></p>
-<ul>
-<li><p>去驾校办理科目二入学手续，开始练车</p></li>
-<li><p>还有一位网络部新人没有联系上，需要补联系，并且需要搞一下飞书</p></li>
-<li><p>推一点点 CSAPP、图形学什么的</p></li>
-<li><p>准备 THUInfo 主页 UI 翻新</p></li>
-</ul>
-<p>其实也没什么好说的，就是学点新知识之后做一点之前就有的锅。明天要早起所以赶快睡大觉吧。</p>
-<p><strong>今天汇报：</strong></p>
-<p>以为去报名的，结果刚进去就被拉上车开始练了，估计以后就是早上八点下午两点，一整个白天都要在驾校了，所以推活、上课这些事情都得是晚上来做了。</p>
-<p>那个还没联系上的新人联系上了，所以招新基本上就结束了，可以开始具体规划下面一步要做的事情了。然后对下面的工作做了一点点的推进。</p>
-<p>然后就是 THUInfo 还在消极怠工，不过最近会开工的，会开工的。</p>
-<h2 id="section-2">2021.07.01</h2>
-<p><strong>今天想要做的事情：</strong></p>
-<ul>
-<li><p>科目二学侧方停车、倒车入库、坡道起步</p></li>
-<li><p>推一点点 CSAPP 之类的</p></li>
-<li><p>准备 THUInfo 主页 UI 翻新</p></li>
-</ul>
-<p>主要是晚上和家里人聊了比较多，所以说实际上今天晚上也没有认真学一些东西。</p>
-<p><strong>今天汇报：</strong></p>
-<p>学车真的是比较无聊，就开车十分钟等待两小时，于是其实天气热什么的都不是最大的问题，无聊是最需要解决的。</p>
-<p>然后，看了一点信号处理原理和编译原理，然后就发现自己的数学全忘完了，还是得回来再学一点点。</p>
-<p>没什么好说的，以后估计就是这样的重复的生活了。</p>
-<h2 id="section-3">2021.07.02</h2>
-<p><strong>今天想要做的事情：</strong></p>
-<ul>
-<li><p>科目二继续练习，但是要问清楚考试时间这些东西</p></li>
-<li><p>推一点点 CSAPP 之类的（这个真的要赶快了）</p></li>
-<li><p>准备 THUInfo 主页 UI 翻新（栋栋跑起来 THUInfo 了，工期来了）</p></li>
-<li><p>网络部工作规划再稍微写详细一点，准备主席团会议</p></li>
-</ul>
-<p>这两天除了科目二看起来什么都没有做呢，所以说下面还是要准备开工吧。之前似乎还说过要买新电脑的，似乎也给我搞忘了。</p>
-<p>想到一年前的自己还宣称着一个人孤独地走下去反而好，现在却苦于这里找不到人一起做事，莫名有点可笑。</p>
-<p>七月份，下半年的开始，要准备拾起自己了。</p>
-<p><strong>今天汇报：</strong></p>
-<p>很平凡地过了一天，晚上想回姜堰找人吃饭，结果因为下雨没去得了。学习也没学多少，看了一点点 CSAPP，但是也是很肤浅。</p>
-<p>话说直到现在才猛然发现自己似乎没有什么兴趣爱好，这个时候又突然想到自己之前小学的时候填兴趣爱好，永远都是大众化的“读书”。思来想去，觉得自己可能不太喜欢一直呆着，自己还是比较喜欢在路上的感觉。于是就有了一个还在萌芽的想法，就是只用公交或者地铁，去很远的地方，比如说从家到北京、到广州。也正如我自己感觉的那样，我自己还算喜欢折磨自己。这个规划算是很远期很远期的了。然后问了一下 Sakana 有没有兴趣，但是她也没有给出明确答复。</p>
-<p>学习？那是不可能学习的。在闷热的天气底下随时准备被教练喊去练车，这种情况下那是不可能学习的。于是我是真的把贴吧、知乎刷到推荐都开始循环，然后就开始戳 Sakana 等她回复，要么就是水群。但哪里有闲人像我这样一整天啥事没有呢，或多或少都要去做点什么事，打游戏也算。</p>
-<p>自己还是很不擅长应对无聊这个问题啊。其实只要有一个聊得来的人在，但是我能聊得来的都有事情，这就尴尬了。</p>
-<h2 id="section-4">2021.07.03</h2>
-<p><strong>今天想要做的事情：</strong></p>
-<p>想做的事情和之前差不多，觉得也没有必要再写一遍了。</p>
-<p>大概还有一些感慨吧，感慨自己怎么很容易变得惆怅起来，会有那种莫名其妙的伤感。</p>
-<p><strong>今天汇报：</strong></p>
-<p>今天下午和明天都不用去练车了，还算比较开心。但是相应的，我需要在这段时间内，把之前剩下来的事情处理好，包括之前自学内容要整理成文字，网络部的工作规划还是要继续细化一下，韩旭那边还要继续跟进。</p>
-<p>下午先写一些工作规划，然后等韩旭那边的回复，然后就是写博客了。</p>
-<p>然后目前实验室下一步要做的事情就是先调教好 T5 以保证能够做 prompt。具体的东西会在实验室周报上写，这里就不会写了，毕竟也不是什么太适合公开的东西。</p>
-<h2 id="section-5">2021.07.04</h2>
-<p><strong>今天想要做的事情：</strong></p>
-<p>从驾校休息了一天，计划就是什么事情不做，好好放松一下</p>
-<p><strong>今天汇报：</strong></p>
-<p>发现自己最大的问题实际上是，闲下来的时候很容易胡思乱想，进而就是情绪容易不稳定。最近身边也没什么了解情况的人可以好好聊聊，所以就比较尴尬了。</p>
-<p>今晚似乎喝得有点多，又对 Sakana 说了一堆胡话，大概自己到现在还没学会控制情绪。</p>
-<h2 id="section-6">2021.07.05</h2>
-<p><strong>今天想要做的事情：</strong></p>
-<p>暑期回校的计划最终安定下来了，6 号开始讲课到 22 号，我主要负责答疑。由于 12 号科目二才能考完，所以打算到时候再回去，这前面的一个星期就晚上线上答疑吧。</p>
-<p>要做的事情，大概就是继续看看论文，晚上回学校协商一下后面的安排。至于 THUInfo 和科协那边，真的有点过意不去了快要。</p>
-<p>本来想今晚找 Sakana 聊聊的，但看来落空了，所以还是自己调节吧。Holder 能做到的，或许吧。</p>
-<p><strong>今天汇报：</strong></p>
-<p>回高中和 FFF 遇了一下，商量了后面的安排。</p>
-<p>当然还有一些和 Sakana 那边的事情，这里不多说，但是至少我现在，真的感到很安心很快乐就是了。</p>
-<h2 id="section-7">2021.07.06</h2>
-<p><strong>今天想要做的事情：</strong></p>
-<p>没有什么很想做的，就是很平凡地看书学习、写写 THUInfo、写写实验室代码、写写科协文档。</p>
-<p><strong>今天汇报：</strong></p>
-<p>选课掉了康总的计组和人机交互，可能打算去搞 VLSI 来混学分。出乎意料的是台球上了。</p>
-<p>自从昨天开始，Holder 就变得似乎没那么难受了，或许也与梅雨渐渐离开有关。今天上午看了一点点 CSAPP，也预约好了 12 号的科目二考试，之后就是每天去练一练就好。</p>
-<p>晚上主要在安排暑培和技能引导文档那边，夏老板突然提到了可以和企业 / 实验室 / 其他学生组织做双向链接，这样的话既解决了文档来源比较单一的问题，也一定程度上提高了文档的实用价值。</p>
-<p>【和 Sakana 约了见面再聊，默默期待，还有一些误解，需要慢慢解开】</p>
-<h2 id="section-8">2021.07.07</h2>
-<p><strong>今天想要做的事情：</strong></p>
-<p>因为上午不去驾校，所以睡大觉放松一下。晚上的话照常工作，不过比较紧急的事情是编写竞赛习题解答以及和猫猫准备一下文档的部署。</p>
-<p><strong>今天汇报：</strong></p>
-<p>回学校了，旁听了 FFF 的一节课。</p>
-<p>大概是觉得这一届的基础有点问题吧，很基础的解析几何都没有把握很快给出正解，这就比较困难了。</p>
-<p>目前老师的意思是想让我带一下几个有机会去清华夏令营的同学，自己也要开始复习一些自主招生题了。</p>
-<h2 id="section-9">2021.07.08</h2>
-<p><strong>今天想要做的事情：</strong></p>
-<p>回家拿一些当时的自主招生参考资料，然后准备码点字吧。自己的事的话，可能就学习一些基本的东西，然后 THUInfo 开一些工。</p>
-<p><strong>今天汇报：</strong></p>
-<p>出卷子真的是好累啊，到处翻找资料，然后还要想尽办法保证我是站在一个中学生的角度来思考问题。磨了一整天还熬了一夜，基本上把一份数理化的试卷全都出完了，大概准备 10 号来考这一份卷子，以筛选出适合去清北夏令营的同学。</p>
-<p>我现在比较担心的是，大家都考得不高，最后还是拉不开差距。</p>
-<h2 id="section-10">2021.07.09</h2>
-<p><strong>今天想要做的事情：</strong></p>
-<p>学车，然后有什么事情就做什么事情。现在是越来越不太想把自己逼得太紧。</p>
-<p><strong>今天汇报：</strong></p>
-<p>下午把昨天出的卷子的答案给搞出来了，结果发现这份卷子应该是比较困难的，可能会把他们搞得很惨。</p>
-<p>THUInfo 说要开工到现在都没有动静，实验室没干活，科协现在还在筹划。总之就是除了正事之外的事情都在做。</p>
-<p>今晚回家的时候突然想起来 GRE 还没有报名，可能都快没有考位了，还是赶快把坑填上。身份证也已经做好了，要找个时间去拿。眼镜有点刮花了，其实要去重配，但是也一直在拖。头发也要去剪一下了，现在还是得注意下形象？</p>
-<p>明天早上回学校与那些考试的同学见一下面，监考一下之类的。明天下午尽快把卷子批改好成绩公布。</p>
-<p>另外，我仔细思考了一下，暑假还是不要预习下学期的内容为好，暑假应该做一些其他的事情。</p>
-<p>所以说这个暑假的主线就变成了 THUInfo、科协、实验室、高中竞赛、 GRE。至于新电脑、身份证、眼镜、头发之类的也就是支线任务了，科目二也将会在 12 号迎来终结。</p>
-<h2 id="section-11">2021.07.10</h2>
-<p><strong>今天想要做的事情：</strong></p>
-<p>上午回去监考，下午批改试卷并且和老师交流一下。然后尽可能能开工的东西就得开工，目前比较急的就是实验室和技能引导文档了。</p>
-<p><strong>今天汇报：</strong></p>
-<p>去监了个考，然后尽快把试卷给批改好了给老师。整体而言学弟们做得还是不错，但是细节上属于是真的需要很大的工夫去训练。</p>
-<p>然后就是平凡的学车和练习。</p>
-<p>另外就是，盼望 Sakana 回来。</p>
-<h2 id="section-12">2021.07.11</h2>
-<p><strong>今天想要做的事情：</strong></p>
-<p>去高港模考科目二，期间要开始阅读论文，至于能看多少，能领悟多少就是另外一回事情了。</p>
-<p>然后就是尽快考虑新电脑的事情，并且尽快制定后面的讲课计划吧。</p>
-<p><strong>今天汇报：</strong></p>
-<p>高港练车真的是好累好累，一整天就在那里站着看各个考试位的点位，很没意思还很折磨。</p>
-<p>当天也没别的什么事情了，出去参加了一个饭局，平平凡凡地结束了一天。</p>
-<h2 id="section-13">2021.07.12</h2>
-<p><strong>今天想要做的事情：</strong></p>
-<p>考科目二，然后回去准备和参加清北夏令营的各位见一个面。顺便安排之后的课程。</p>
-<p><strong>今天汇报：</strong></p>
-<p>科目二让我整整坐在那里等了六个小时，几乎是最后一个才考的。</p>
-<p>于是顺理成章地没有赶得上下午回学校，晚上才和学弟学妹们见了个面，稍微聊了一些没有什么含金量的话题。</p>
-<p>Sakana 从上海回来了，但我以后白天就似乎没有什么时间去找她玩了。</p>
-<h2 id="section-14">2021.07.13</h2>
-<p><strong>今天想要做的事情：</strong></p>
-<p>给他们讲一点很简单的东西。</p>
-<p>自己也要开始干各种的活了，包括看论文，写 THUInfo。其实最主要的是科协那边似乎真的拖不下去了。</p>
-<p><strong>今天汇报：</strong></p>
-<p>上课是真的很累，站很长时间会让自己很累很难受，然后还要说很多话，口干舌燥。</p>
-<p>其他倒是没有什么特别的感受，总体而言就是觉得过了很平凡的一天。</p>
-<h2 id="section-15">2021.07.14</h2>
-<p><strong>今天想要做的事情：</strong></p>
-<p>做一些平凡的事情，讲讲课。晚上被提前安排了饭局，所以还是得去。</p>
-<p><strong>今天汇报：</strong></p>
-<p>照样是讲了很平凡的一些课，没有涉及到很深层次的东西。给他们做了一个限时训练，估计效果不会很好吧。</p>
-<p>晚上饭局结束，去了一趟宾馆取回东西。和 Sakana 连麦闲聊了一段时间，约了明天出来玩。然后确定买了一个新电脑，联想拯救者 Y7000，显卡只是 RTX3050，处理器是 i5 的。买这个电脑是为了混一下大作业，顺便尝试一下一些只有 Windows 有的小游戏。</p>
-<p>也是很平凡地结束了一整天。</p>
-<h2 id="section-16">2021.07.15</h2>
-<p><strong>今天想要做的事情：</strong></p>
-<p>和 Sakana 约了去猫咖看看，然后吃烧烤打电动。</p>
-<p>本来上午打算睡懒觉的，结果接到消息说清北夏令营同学不放假，所以还得去一趟。</p>
-<p><strong>今天汇报：</strong></p>
-<p>玩得算是很开心？撸猫很好玩，但是猫毛真的是很烦人，到现在我背后都是微微发痒。撸完猫吃了甜品之后去找 FFF 吃烧烤。随后就去时代广场打电动了。</p>
-<p>Sakana 说大夏天的不想出门，但这也算是没办法吧。我俩的暑假完美错开，相交的时间几乎只有一个星期左右，所以要见面的话也就只有这一点时间。不过我的新电脑到货了，以后可以找 Sakana 连麦打游戏。</p>
-<p>明天被家里人安排了，后天和 Sakana 约了晚上看 1921，大后天就得送她走了。于是这个暑假就这样等价于结束了。</p>
-<h2 id="section-17">2021.07.16</h2>
-<p><strong>今天想要做的事情：</strong></p>
-<p>蹲在学校正常讲讲课，晚上已经有了安排所以就没啥了。</p>
-<p><strong>今天汇报：</strong></p>
-<p>实际情况是，高中突然出现了电力故障导致学校全部停课，但是参与清北夏令营的同学由于在小教室里没有被电力故障波及所以电力一切正常。但是可以想见的是，看见同学们放假了，他们也完全没有心思学习。所以我就和他们玩狼人杀，聊了聊他们现在的焦虑和压力。</p>
-<p>他们不是不想学习，但是高中这个体系给他们的限制实在是比较多，我作为学长也只能劝说他们做一些适应和牺牲。其实有的时候，也真的是毫无方法。</p>
-<div class="note info no-icon"><p>有时治愈，常常帮助，总是安慰。</p>
-<p>To cure sometimes, to relieve often, to comfort always.</p>
-</div>
-<p>这是特鲁多的名言，本来是形容医生的。但现在看起来我有的时候也像是这样，我帮不了他们实现他们理想中的高中生活，我最多只能做到帮助他们去理解这个可能有些扭曲的体系，让他们稍微以一种平稳的心态度过高中。</p>
-<p>高中这边结束之后就去忙自己的事情了。明天去见 Sakana，18 号还有一小波聚会。</p>
-<h2 id="section-18">2021.07.17</h2>
-<p><strong>今天想要做的事情：</strong></p>
-<p>正常地活下去。重要的事情是开工技能引导文档。</p>
-<p><strong>今天汇报：</strong></p>
-<p>结果上午翘班了，在配置新电脑的 C 语言编译器和装 Python。结果就这两件事硬生生让我一个上午耗费完了。下午平凡地来高中简单讲了些东西，也顺便做了一些小事情。</p>
-<p>晚上陪 Sakana 看了 1921，虽然对题材没有特别的兴趣，对演员无感，但感觉看下来还算是一部不错的电影，除了叙事线很多很杂，要不是了解一些历史可能就会错乱吧。</p>
-<p>Sakana 不急着 18 号就直接回去了，打算 20 号左右回去，于是就默默约了 19 号再出来玩。</p>
-<p>总之就是，一切都在慢慢变好。</p>
-<h2 id="section-19">2021.07.18</h2>
-<p><strong>今天想要做的事情：</strong></p>
-<p>今天约了同学聚会，所以重点会在出去玩上。不过高中这边也应该好好干活。</p>
-<p><strong>今天汇报：</strong></p>
-<p>和姜东会玩了一个下午一个晚上，先去麦当劳吃饭搓音游，然后星巴克打雀、掼蛋、闲聊，之后定番小菜园聚餐和舞立方手痒打机，最后 KTV。</p>
-<p>KTV 上我唱了不少歌，但最满意的还是《太阳系 DISCO》。作为自己很喜欢和大家都能参与（指鼓掌和参与オーオオー以及ナナナナナナナー环节）的一首歌，整体气氛还是很好的，比那些大部分人看不懂歌词也不熟悉的比较冷的 V 曲要好一些。当然唱完这首歌我嗓子就明显不行了，中途的一段几乎就是在纯靠喊。</p>
-<div class="note info no-icon"><p>あの一等星のさんざめく光で，あなたとダンスを踊ろうか。 ——「太陽系ディスコ」</p>
-</div>
-<p>回来之后就是和 Sakana 闲聊了一会，然后转头就装了个有补丁的 Riddle Joker 开始推。由于之前认真推过没有补丁的七海线，所以这次就很快地过掉了，看了一下 H 情节怎么搞的就睡觉去了。</p>
-<h2 id="section-20">2021.07.19</h2>
-<p><strong>今天想要做的事情：</strong></p>
-<p>今天 Sakana 家里有一些事情不能出门了，所以今天见不了面了。有一些话不如连麦的时候随便扯一下吧，晚上陪她打打游戏什么的也不是不行。</p>
-<p>其他事情就正常慢慢推进就好。</p>
-<p>【我自己依然在为一些虚无缥缈的东西而伤心，Holder 还是需要花一些时间来恢复理性】</p>
-<p><strong>今天汇报：</strong></p>
-<p>用了点时间给自己的网站加了个评论系统，本来是想用 Valine 的，结果现在较高版本的 NexT 不支持了，所以退而求其次装了 DisqusJS，他的缺点就是需要翻墙的账号。</p>
-<p>之后听从了栋栋的建议换了 <a href="https://twikoo.js.org">Twikoo</a>，发现是真的好用而且还不用翻墙，现在我直接安利这个评论系统。</p>
-<h2 id="section-21">2021.07.20</h2>
-<p><strong>今天想要做的事情：</strong></p>
-<p>今天 Sakana 回上海了，所以估计是不能去找她了。</p>
-<p>Holder 一个人要好好地过好自己的生活。</p>
-<p><strong>今天汇报：</strong></p>
-<p>大概就是接着修了一下评论系统，然后出去吃了个饭，结果又喝多了（Holder 从来没有信守过自己的 flag）。回来之后和 Sakana 连麦闲聊了一点点，似乎一直在说胡话，语无伦次。</p>
-<p>之后就是和 LCR 两个人联机打 Minecraft，但说是一起玩，实际上就是两个人在已经建好的一个挡里面骑马。</p>
-<div class="note info no-icon"><p>【 LCR 】芜湖，上次骑马出去忘了把第二只马骑回来，Holder 你没马了。</p>
-</div>
-<p>大概就这样平凡地过去了一整天。</p>
-<h2 id="section-22">2021.07.21</h2>
-<p><strong>今天想要做的事情：</strong></p>
-<p>今天和高中的老师一起吃饭讨论这几天讲课的情况，实际上 Holder 并没有做出什么很突出的贡献。</p>
-<p>接着过下去就好了。</p>
-<p><strong>今天汇报：</strong></p>
-<p>听闻 LCR 那边可以提供他们宿舍给我住，突然有点想要去上海玩一圈，也正好送一下 Sakana。但是南京突如其来的疫情让家里人对此很担心，我自己还算是不太认为会影响到什么，但也因此搞得很不愉快就是了。</p>
-<p>上海不去就算了吧，反正也只是去见个面，最多晚上陪 Sakana 在交大转转圈，再陪 LCR 打一白天加一晚上游戏。</p>
-<h2 id="section-23">2021.07.22</h2>
-<p><strong>今天想要做的事情：</strong></p>
-<p>好好生活。</p>
-<p><strong>今天汇报：</strong></p>
-<p>最近一直比较烦躁，不知道是因为无聊还是因为什么。其实能隐隐约约感到实际上就是因为当下各种事情都不顺遂（科协事情没做，实验室那边也在咕咕咕，高中这边还是感觉自己没做到什么有用的事情）加上后面还要和 Sakana 失联，一下子又没有了倾诉的人，FFF 不久出去旅游，这下子是真的没有谁出来一起玩了。还是那句话，想到一年前的自己甘愿一个人闭锁在黑暗的房间里，独自对着屏幕无论是欢笑还是难过，都不愿意和其他人过多交流，现在的我无疑是对过去的讽刺。</p>
-<p>不过稍微好一些的是，我可能解开了一些心结。概括来说大概就是，我以往认为自己伤感的来源是别人变得特立独行而怪异，但是自己认认真真享受过生活之后，我才认识到，以往昏暗的我才是最为特立独行的。</p>
-<div class="note info no-icon"><p>从一个本就不合群还自认为合群的人的眼光之中看去，那一切的平凡和正常，反倒是怪异。</p>
-</div>
-<p>所以 Holder 重新立起 flag，从今开始好好生活。</p>
-<p>【箴言：Holder 的 flag 没有不倒的】</p>
-<hr />
-<p>于是今天上午的 Holder 起床之后就在 Riddle Joker，现在应该只剩下茉优线没有完全结束了（年上系真的不在我的 XP 上，最后推自然没有任何的问题）。</p>
-<p>中午的 Holder 开始到处看 V 曲的 live，真的突然想去一次 V 家演唱会。要说现场感比较好的歌的话，<a href="https://www.bilibili.com/video/BV1Nf4y1U7z1?t=279">《Unknown Mother Goose》</a>是首推（众人おおおーおおー的那个场面真的是很震撼的），之后就是<a href="https://www.bilibili.com/video/BV11W411C7io?t=295">《劣等上等》</a>（Giga 的专业炸场子歌），<a href="https://www.bilibili.com/video/BV16s411h7eE">《号哭》</a>和<a href="https://www.bilibili.com/video/BV1As411B7J8">《东京泰迪熊》</a>也算是很有感觉的。然后就似乎沿着推荐来到了几个网络合唱视频，首先是 2017 年的<a href="https://www.bilibili.com/video/BV1Nx411u7YT">《砂之惑星》</a>（八爷 yyds，可惜出道娱乐圈了，当个 P 主不好么），然后是 2011 年的<a href="https://www.bilibili.com/video/BV1Ax411w7Sh">《千本樱》</a>，也算是猛然回忆起高中的一些时光了。</p>
-<p>之前在<a href="/about">关于页</a>提到我最喜欢《无梦之梦》，但是这首歌适合一个人在难过的时候自己听，用来做安慰用的。其实春卷饭的歌基本都是这个特征，很温柔，适合一个人独自欣赏，很难在演唱会上表演得好。同理还有新曲<a href="https://www.bilibili.com/video/BV1hA411g7mt?from=search&amp;seid=51222177324975189">《第三心脏》</a>，也是最近很喜欢的。</p>
-<hr />
-<p>最终通过一番协商，还是决定去上海了。自己的一时冲动把 Sakana 还有家里人的安排搞得一团乱，说实话现在还是有一点愧疚。然后在安排在上海的行程的时候，发现竟然想不到可以去哪里玩。</p>
-<p>所以说，Holder 的脑子一热带来的是无数若干的混乱，让 Sakana 落单还拉着她一起不知道干什么，一时间不知道说什么好。</p>
-<p>今天 Sakana 应该是和同学们出去玩去了，Holder 一个人默默地去未来极越把卡里的钱给用掉了，之后骑车绕县城转了一圈。</p>
-<p>一个人真的很无聊，无聊的时候就喜欢胡思乱想，然后可能就会做出很没有理由的事情。</p>
-<p>惋惜我自己的高中没有发展若干的朋友，导致现在回到家乡竟然是四处无人。还不如早点回北京，至少我的舍友可以一起打牌，一起出去找地方看个电影或者是到处找点吃的。或者就是找北大的几个熟人出去转转，要么也可以和迅哥哥等 308 闲聊。</p>
-<p>于是 Holder 又开始莫名难过起来，Holder 自以为值得夸耀的，竟然是一片荒芜。</p>
-<p>Holder 嫉妒且憎恨着那些现实生活充实的人们，虽然这种无名火显得幼稚且没有道理。Holder 似乎就像是对着并不存在的敌人宣战一般，对着自己幻想中的困境，对着不存在的挫折精神低落而恍惚。</p>
-<p>那个好好生活的 flag 突然显得可笑。</p>
-<hr />
-<p>我一直在思索着，现在的我的生活多么像我先前的追求。和同学彻夜聚会，和 Sakana 看电影、逛街、撸猫，即使一地鸡毛但依然决定去上海，那种自由挥洒情感，自由表达自己，不计成本地为了简单的目标而大闹一番的生活。然而我却似乎不像是之前那样无忧无虑，我每天都被一种不能明状的忧伤所萦绕。即使某天我说我释怀了，我看开了，我似乎找到了生活的乐趣。即使我这么说，我的心中实际上从未解开过这种难过的感情，只不过是因为当下的愉悦而暂且麻痹。</p>
-<p>在房间里自说自话地走了几圈，尝试理清楚自己这个情感的来源。结果还是不太弄得明白，所以暂且作罢。</p>
-<h2 id="section-24">2021.07.23</h2>
-<p><strong>今天想要做的事情：</strong></p>
-<p>逃到上海，然后不知道干什么。</p>
-<p><strong>今天汇报：</strong></p>
-<p>单纯地溜来上海了，Sakana 因为绿格那边的政策一直没有很能确定下来比较低落，于是也就很单纯地一起吃了饭，去了私影玩了一圈而已。</p>
-<p>晚上打算玩冬日计划，结果因为网络原因一直没有能够一起玩得了，只能作罢。</p>
-<h2 id="section-25">2021.07.24</h2>
-<p><strong>今天想要做的事情：</strong></p>
-<p>和 LCR 混一天。</p>
-<p><strong>今天汇报：</strong></p>
-<p>大概就是中午先和 Sakana 吃了一顿饭然后就和 LCR 一起到处瞎跑了。</p>
-<p>本来的预定是去外滩，沿着江边随便走走，结果 LCR 在地铁半路上突然提到想要去海边，但是已经出发一段路了，就决定去黄浦江入长江口转一圈。地铁坐了整整两个小时到双江路下，然后就是沿着黄浦江骑车十几公里。本来以为沿着江边能看到什么的，结果全是造船厂，能看到的就是一堆重型机械和工人们。值得一提的是本来今天是台风来的日子，结果雨是真的没有下下来，倒是风是相当的大，大到我骑车下坡不蹬的话，风会把我吹上坡。</p>
-<p>然后就是沿着一条路一路骑到了入江口，那里的风已经是相当大了，但依然没有能阻挡钓鱼佬们翻越围墙站到江边的防波堤上钓鱼。自己胆子小，就没翻过去看看，所以也就站在墙外拍了照片，打了个车回去了。</p>
-<p>至于今晚发生的一些并不太愉悦的事情，还是暂且不提吧。只能说现在的 Holder 不太振作得起来。</p>
-<h2 id="section-26">2021.07.25</h2>
-<p><strong>今天想要做的事情：</strong></p>
-<p>活着。</p>
-<p><strong>今天汇报：</strong></p>
-<p>台风终于登陆上海了，整个天都是漆黑的那种，狂风大作暴雨如注。然而我还是和 LCR 两个人出了门在上交里面转了好长一段时间，跑去下院瞎窜，去思源湖边上看台风，去宿舍楼的风口看被吹倒的树。</p>
-<p>反正就是两个不要命的人在台风天的无聊之举，和昨天顶着台风去江边上差不多。结果是误了回去的火车，不得不立刻改签第二天的。</p>
-<p>Sakana 自然在台风天不愿意出来，所以一整天都没有见到，晚上喊她打游戏也没有理我，说是没有兴致。</p>
-<h2 id="section-27">2021.07.26</h2>
-<p><strong>今天想要做的事情：</strong></p>
-<p>继续活着。</p>
-<p><strong>今天汇报：</strong></p>
-<p>早上爬起来就接到了火车取消的消息，于是不得不接着留一天。</p>
-<p>早上和 LCR 就一直在打 Minecraft 消磨时间，生存档从零开始真的是很耗时间的一种玩法。玩好了之后和 Sakana 说了下午陪她去做核酸，最后是自己任性地拉着她冒着还算不小的雨去了天街。</p>
-<p>晚上没事做，于是合计了一下和 LCR 又出门了，结果是一天去了两次天街（这个时候就得说交大旁边真的是没啥玩的，除了两个商场、一个桌游店、一个 KTV、若干小饭馆之外似乎什么都没有了，喊 Sakana 出门最终的归宿永远是找一个吃饭的地方闲聊，最多去看电影）。</p>
-<h2 id="section-28">2021.07.27</h2>
-<p><strong>今天想要做的事情：</strong></p>
-<p>回家，然后活着。</p>
-<p><strong>今天汇报：</strong></p>
-<p>早上 Sakana 突然说打算送我去火车站，但实际上我知道她出远门的东西还没收拾好，但还是答应了。</p>
-<p>然后就没有什么特别的事情了，在火车站拥抱后分别，自己一个人坐火车然后兜兜转转回到了家，冒着雨赶去高中。</p>
-<p>一整天都过得比较累，回来之后又不得不通宵清掉了一些任务。</p>
-<h2 id="section-29">2021.07.28</h2>
-<p><strong>今天想要做的事情：</strong></p>
-<p>清闲地活着。</p>
-<p><strong>今天汇报：</strong></p>
-<p>今天是给高中的学弟学妹们考试的日子，自己是出题人也是监考。监考这个活是真的令人烦躁，无聊至极，甚至愿意出点事情让自己不至于无聊。</p>
-<p>Sakana 最终踏上了旅程，坐了十个小时的火车前往兰州，她也在经受着无聊的时光。两个人一起听歌了一个小时，她到达兰州之后需要办理一系列的事务，便暂且失联了。</p>
-<hr />
-<p>不过 Holder 似乎算是慢慢理清楚自己到底在担忧什么了，异地造成的交流不畅和误解真的是相当折磨。不多说吧，总之就是意识到了我和 Sakana 处境其实类似，而我潜意识里深刻地误解了很多的事情而已。所以现在应该心态平稳很多了，Holder 也已经下定决心要保证自己生活乐趣的多元化了。</p>
-<h2 id="section-30">2021.07.29</h2>
-<p><strong>今天想要做的事情：</strong></p>
-<p>一个人活着。</p>
-<p><strong>今天汇报：</strong></p>
-<p>今天什么都没有发生，起床吃饭，一个人躺在床上刷手机。就是典型的一个无聊的人应该有的样子。</p>
-<p>现在 Sakana 应该到达了最终的目的地，可能以后就会是几乎完全失联了。大概如此。</p>
-<h2 id="section-31">2021.07.30</h2>
-<p><strong>今天想要做的事情：</strong></p>
-<p>把科协暑培好好弄好。</p>
-<p><strong>今天汇报：</strong></p>
-<p>Sakana 现在彻底处于失联状态了，多半是不到晚上联系不上了。虽然有点消沉，而且为生日怎么办的事情有点烦躁，但是自己的事情还是得好好做下去。</p>
-<hr />
-<p>就这样吧，这个纪录就此结束，新的生活渐渐就要开始了。</p>
-<p>Holder 通过这个暑假，大概是缓慢地将自己的心态平稳下来了，或许还有一些不能言说的不舍、迷惘、辛酸等等，但暂且都埋藏起来吧。不过相较于一个自闭的 Holder，虽然现在的我或许不如以往那样沉稳专注，但可能更像一个正常的人吧。</p>
-<div class="note info no-icon"><p>あたしが愛を語るのなら，そのすべてはこの歌だ。</p>
-<p>誰も知らないこの物語，また口ずさんでしまったみたいだ。</p>
-<p>「Unknown Mother Goose」</p>
-</div>
-<p>总而言之，或许还有许多的困难，还有许多的考验，还有很多我们需要去做的事情，但我依然坚信未来可期。</p>
-<p>我是 Holder，我们继续走下去吧。</p>
-]]></content>
-      <categories>
-        <category>【生活记录】假期日记</category>
-      </categories>
-  </entry>
-  <entry>
     <title>2022 暑假生活记录</title>
     <url>/2022/05/27/2022-summer-record/</url>
     <content><![CDATA[<p>2022 年的暑假，将会来得意外地早，因为我提前回家了。</p>
@@ -851,10 +519,6 @@
 <ul>
 <li>THUInfo 3.0.0 正式发布</li>
 </ul></li>
-<li>科协
-<ul>
-<li>强化学习 &amp; 图形学技能引导文档</li>
-</ul></li>
 <li>课咨委
 <ul>
 <li>软工小作业文档 &amp; 软工小作业试题</li>
@@ -1003,41 +667,13 @@
 <li>清华大学恢复四大原因自动审批出校</li>
 </ul>
 <p>不过说实话，行程卡停止服务这个新闻，还算是比较大的，因为这个和健康码强绑定的东西停止了，就代表健康码停止运营也不是那么遥远了。</p>
+<h1 id="section-8">2022.12.12</h1>
+<p>直接把王博文的大作业公开作为模板</p>
+<p>出好小作业 草案中界定好科协作为过渡政策 push 取消考试 近期联系助教对接 idea</p>
+<p>lambda 下一学期调研大作业给分 可能的方案是小组互评</p>
 ]]></content>
       <categories>
         <category>【生活记录】假期日记</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>安卓前端开发杂谈</title>
-    <url>/2021/09/01/android-dev-exp-1/</url>
-    <content><![CDATA[<p>安卓的移动端开发，属实让我血压高了一小段时间。毕竟已经接触过类似于 React Native 那种基于 TypeScript 语言的、优秀的跨平台移动端框架，再去尝试用繁琐的 Java 语言写安卓前端自然是不适应且感到烦躁。</p>
-<p>但是毕竟是 Java 程序设计训练课程，安卓前端开发作为其最大的特色，不得不消受。</p>
-<span id="more"></span>
-<h1 id="关于数据绑定">关于数据绑定</h1>
-<p>如果要我说最大的不适应的地方，首先就是数据和图形界面的完全分离。在 React Native 框架之中，数据和图形界面的管理大概是这样的：</p>
-<figure class="highlight typescript"><figcaption><span>TypeScript</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> App = <span class="function">(<span class="params">props: AppProps</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// Set states &amp; initialize</span></span><br><span class="line">    <span class="keyword">const</span> [bar, setBar] = useState&lt;<span class="built_in">number</span>&gt;(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Some functions to update or rewrite data</span></span><br><span class="line">    <span class="keyword">const</span> update = <span class="function">() =&gt;</span> setBar(<span class="function">(<span class="params">o</span>) =&gt;</span> o + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Write UI with TSX, use data freely</span></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="xml"><span class="tag">&lt;<span class="name">View</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Text</span>&gt;</span> Hello world! <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;`The val of bar is $&#123;bar&#125;`&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;`Property foo is $&#123;props.foo&#125;`&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Button</span> <span class="attr">onClick</span>=<span class="string">&#123;update&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>但是在安卓之中，图形界面完全定义在 <code>.xml</code> 文件之中，而且一定程度上其定义各个组件摆放方式的语法细节的繁杂程度不低于 HTML。而如果需要将数据载入图形界面，则首先要根据组件的 ID 获取组件，之后才能调用各种方法设定具体属性。</p>
-<figure class="highlight java"><figcaption><span>Java</span></figcaption><table><tr><td class="code"><pre><span class="line">((TextView) view.findViewById(R.id.entity_name)).setText(data.name);</span><br></pre></td></tr></table></figure>
-<p>这里出现的 <code>R</code> 类据说是相当厉害的。但是我第一次接触安卓的时候，这个符号给我带来的感觉就是不安，因为我再也不能像写 React Native 一样至少自认为自己掌握了程序之中的数据流。换一种说法，即使 React Native 可能做了很多背后工作，但它至少做到了让开发者在很多时候能直观引导数据流。</p>
-<p>对于按钮等组件，React Native 框架下可以直接传入回调函数。而众所周知 Java 是纯净的面向对象语言，怎么会有 lambda 这种异端呢（新版本的 Java 已经离经叛道了！）。</p>
-<p>所以你需要写监听器对象，重写其中的方法等等。</p>
-<hr />
-<p>并不是说这样不好，我还记得之前大一小学期的时候写 Qt 很多时候就是各种指针到处乱飞然后到处乱 <code>set</code> 这个那个的，最后一个 <code>draw</code> 函数里面上百行的，成块的各种格式设定、字体设定、内容设定、排列设定，然后这次写安卓让我回忆起了那一段黑暗时光。</p>
-<h1 id="并不适应的适配器模式">并不适应的适配器模式</h1>
-<p>如果只是想给一个 <code>TextView</code> 载入文字，直接几个 <code>set</code> 函数就结束了。但是给一个格式复杂的列表载入数据，则相当繁琐。比如说现在主流的 <code>RecyclerView</code>，其载入数据，就需要你自己编写一个数据适配器。</p>
-<p>我首先是上网找轮子，随后想了一下，干脆自己包装了个简单的 <code>RecyclerViewAdapter</code> 先勉强用用。</p>
-<p>将数据塞到图形界面上，最重要的三个东西是上下文、使用什么 <code>layout</code> 和数据本身，那么适配器的构造函数就需要接受这三项。然后就是平凡地重写 <code>RecyclerView.Adapter</code> 所要求的三个函数。不过这里我在重写 <code>onBindViewHolder</code> 的时候留了空，因为这里就是定义适配器最重要部分——数据如何映射到 UI 的函数。我将这一个函数设为虚函数，让子类继承重写就可以实现各种映射方式。最后的成果大致这样：</p>
-<figure class="highlight java"><figcaption><span>Java</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">RecyclerViewAdapter</span>&lt;<span class="title">T</span>&gt; <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">Adapter</span>&lt;<span class="title">RecyclerViewAdapter</span>.<span class="title">ViewHolder</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> Context mContext;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">int</span> mLayoutId;</span><br><span class="line">    <span class="keyword">protected</span> List&lt;T&gt; mData;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RecyclerViewAdapter</span><span class="params">(Context context, <span class="keyword">int</span> layoutId, List&lt;T&gt; data)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.mContext = context;</span><br><span class="line">        <span class="keyword">this</span>.mLayoutId = layoutId;</span><br><span class="line">        <span class="keyword">this</span>.mData = data;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="meta">@NonNull</span> <span class="function">ViewHolder <span class="title">onCreateViewHolder</span><span class="params">(<span class="meta">@NonNull</span> ViewGroup parent, <span class="keyword">int</span> viewType)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ViewHolder(</span><br><span class="line">                LayoutInflater.from(mContext).inflate(mLayoutId, parent, <span class="keyword">false</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBindViewHolder</span><span class="params">(<span class="meta">@NonNull</span> ViewHolder holder, <span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// <span class="doctag">TODO:</span> What is this?</span></span><br><span class="line">        <span class="comment">// holder.updatePosition(position);</span></span><br><span class="line">        <span class="keyword">this</span>.convert(holder, mData.get(position));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">convert</span><span class="params">(ViewHolder holder, T data)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getItemCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> mData.size();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ViewHolder</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">ViewHolder</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">private</span> View mConvertView;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">ViewHolder</span><span class="params">(View itemView)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>(itemView);</span><br><span class="line">            <span class="keyword">this</span>.mConvertView = itemView;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> &lt;K extends View&gt; <span class="function">K <span class="title">getViewById</span><span class="params">(<span class="keyword">int</span> viewId)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> (K) mConvertView.findViewById(viewId);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>用起来也简单，传入三个要素，之后重写 <code>convert</code> 方法定义一下数据到 UI 的映射就好了：</p>
-<figure class="highlight java"><figcaption><span>Java</span></figcaption><table><tr><td class="code"><pre><span class="line">binding.entityList.setAdapter(<span class="keyword">new</span> RecyclerViewAdapter&lt;Entity&gt;(</span><br><span class="line">    HomeFragment.<span class="keyword">this</span>.getActivity(), R.layout.home_entity_item, baseEntities</span><br><span class="line">) &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">convert</span><span class="params">(RecyclerViewAdapter.ViewHolder holder, Entity data)</span> </span>&#123;</span><br><span class="line">        ((TextView) holder.getViewById(R.id.entity_name)).setText(data.getLabel());</span><br><span class="line">        ((TextView) holder.getViewById(R.id.entity_category)).setText(data.getCategory());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>你会发现，这比 React Native 要写的东西多太多了。上面这么多需要折腾的，React Native 只需要这样写：</p>
-<figure class="highlight typescript"><figcaption><span>TypeScript</span></figcaption><table><tr><td class="code"><pre><span class="line">&lt;View&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        baseEntities.map(<span class="function">(<span class="params">val, ind</span>) =&gt;</span> (</span><br><span class="line">            <span class="xml"><span class="tag">&lt;<span class="name">View</span> <span class="attr">key</span>=<span class="string">&#123;ind&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;val.name&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;val.category&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span></span><br><span class="line">        ))</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/View&gt;</span><br></pre></td></tr></table></figure>
-<p>就可以实现一个列表了。</p>
-<p>Java 我写了一整个类，光数据转成 UI 也写了好几行长代码，这还没有算 <code>.xml</code> 文件。</p>
-]]></content>
-      <categories>
-        <category>【杂谈】开发</category>
       </categories>
   </entry>
   <entry>
@@ -16352,6 +15988,610 @@ v = H\log_2\left(1 + \frac{S}{N}\right)({\rm bps})
       </categories>
   </entry>
   <entry>
+    <title>强化学习入门学习笔记</title>
+    <url>/2022/06/30/note-of-rl/</url>
+    <content><![CDATA[<p>目前实验室的项目和强化学习关系比较大，然而自己确实没有什么强化学习的基础。</p>
+<p>实验室的学长似乎有一个不错的强化学习入门学习仓库，感觉可以照着这个慢慢学来。</p>
+<p><span class="math display">\[
+\newcommand{\b}{\boldsymbol}
+\newcommand{\argmax}{\mathop{\rm argmax}}
+\newcommand{\argmin}{\mathop{\rm argmin}}
+\newcommand{\P}{\mathbb{P}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\opE}{\mathop{\mathbb{E}}}
+\newcommand{\relmiddle}[1]{\mathrel{}\middle#1\mathrel{}}
+\]</span></p>
+<span id="more"></span>
+<p>本笔记也有参考代码 Repo，虽然大部分是从别人那边搬过来的，但是我自己还是稍微做了一些调整，增加了一些可读性然后修复了一些 deprecated 的问题。</p>
+<p>代码 Repo 的地址：<a href="https://github.com/Ashitemaru/RL-tutorial">Reinforce learning code repository</a>。</p>
+<h1 id="强化学习的基本概念">强化学习的基本概念</h1>
+<p>强化学习和常见的监督学习有一定的类似，但是也有区别。监督学习我们给出的监督往往是数据集上的标签，但是强化学习我们能给出的提示是给机器的行为作出评分。即，在强化学习中，我们会有一个不断给机器的行为评分的监督者，我们希望机器能够通过这个评分监督者学习到如何作出高分行为。</p>
+<p>监督学习的标签往往需要事先由人类标注出来，也就是说监督学习学习的是人类标签的模式，但是强化学习不一定需要事先标注，他需要学习我们给出的评分策略的模式。</p>
+<h2 id="强化学习方法的分类">强化学习方法的分类</h2>
+<p>根据强化学习方法是否需要理解环境，可以将强化学习算法分为 model-based 和 model-free 两类。</p>
+<p>model-free 方法不需要机器去理解环境，他每一步决策都需要等待真实环境的反馈才能进行下一步。而 model-based 方法可以通过 model 来模拟现实环境，这样机器可以通过这个模拟现实环境的 model 来预测自己的行为对环境的影响，甚至分析行为不同分支的影响，从而做到对现实环境的理解。</p>
+<p>model-free 方法包括 Q Learning、Sarsa、Policy gradients。</p>
+<hr />
+<p>根据强化学习方法最后选择行为的依据，可以将强化学习算法分为基于概率（policy-based）和基于价值（value-based）两类。</p>
+<p>基于概率的强化学习算法是最自然的，其会根据其感官接收到的信息，给出其下一步各个行为的概率，然后根据这个概率随机选择下一步的行为。这些算法包括 Policy gradients。</p>
+<p>基于价值的强化学习算法则会测算各个行动的价值，并且选择价值最高的作为自己下一步的行为。这类算法包括 Sarsa、Q Learning。</p>
+<p>基于概率的方法的一个优势在于能够根据概率分布作出连续动作的选择，而基于价值的方法不得不在选择一步动作后才能作出下一步动作的价值评估。</p>
+<p>当然现在也有将两者结合起来的算法，即 Actor-Critic 方法，这个方法内 Actor 会基于概率给出动作，而 Critic 会给出价值评估，这样的话能够在 Policy gradients 的基础上加快训练速度。</p>
+<hr />
+<p>根据其更新参数的策略，可以将强化学习算法分为回合制更新（Monte-Carlo update）和单步更新（temporal difference update）。</p>
+<p>Monte-Carlo learning 和基础版本的 Policy gradients 方法都是回合制更新的，然而 Q Learning、Sarsa 和升级版本的 Policy gradients 都会基于更为现实和有效的单步更新。</p>
+<hr />
+<p>另外还有在线算法（on policy）和离线算法（off policy）的区别。离线算法的优势就是我可以在脱离交互环境的条件下，学习先前的交互记录。而在线算法必须要在交互环境内更新参数。</p>
+<p>最典型的在线算法是 Sarsa 和强化过后的 Sarsa lambda。而典型的离线算法为 Q Learning 和强化过的 Deep Q network。</p>
+<h1 id="q-learning">Q Learning</h1>
+<p>首先引入 Q 表这个概念，Q 表可以看作一个函数 <span class="math inline">\(Q(s, a)\)</span>，这个函数值的含义为在状态 <span class="math inline">\(s\)</span> 的条件下，作出行为 <span class="math inline">\(a\)</span> 的潜在收益。而 Q Learning 的决策过程就是选择当前状态的所有可选行为中潜在收益最高的行为。</p>
+<p>Q 表的更新是在进行决策之后开始的，如果我们原先在状态 <span class="math inline">\(s\)</span>，并且我们通过行为 <span class="math inline">\(a\)</span> 到达新状态 <span class="math inline">\(s&#39;\)</span>，这个时候我们需要重新估算 <span class="math inline">\(Q(s, a)\)</span> 的值。这个估计值新增的部分应当包含两个部分，即我们采取这个行为立刻能得到的奖励和我们在 <span class="math inline">\(s&#39;\)</span> 状态处能够达到的最大可能收益。</p>
+<p>我们的更新策略如下：</p>
+<p><span class="math display">\[
+Q&#39;(s, a) := Q(s, a) + \alpha\left[r + \gamma\max_{a&#39; \in \Gamma(s&#39;)} Q(s&#39;, a&#39;) - Q(s, a)\right]
+\]</span></p>
+<p>这里 <span class="math inline">\(\Gamma(s&#39;)\)</span> 表示在状态 <span class="math inline">\(s&#39;\)</span> 处能够选择的所有行为构成的集合，<span class="math inline">\(\alpha\)</span> 表示<strong>学习率</strong>。</p>
+<p>这样我们就能看到调整估计值的逻辑。我们首先获取在新状态 <span class="math inline">\(s&#39;\)</span> 处所有行为可能得到的最大收益 <span class="math inline">\(\max_{a&#39; \in \Gamma(s&#39;)} Q(s&#39;, a&#39;)\)</span>，乘以一个衰减 <span class="math inline">\(\gamma\)</span>，之后加上采取行为 <span class="math inline">\(a\)</span> 后立刻能得到的收益 <span class="math inline">\(r\)</span> 计算出行为 <span class="math inline">\(a\)</span> 的潜在收益。之后我们将这个估计值和原先的值作差得到差距，乘以学习率 <span class="math inline">\(\alpha\)</span> 之后就得到了我们需要更新到 <span class="math inline">\(Q(s, a)\)</span> 上的增量。</p>
+<p>实际使用的 Q Learning 为了防止完全贪心算法导致算法无法充分探索环境，故在作出决策的时候其实也不一定完全按照最高价值选择，而是可能通过 epsilon greedy 的策略。即提前设定一个 <span class="math inline">\(\varepsilon \in (0, 1)\)</span>，以 <span class="math inline">\(\varepsilon\)</span> 概率按照 Q 表最优价值选择行为，以 <span class="math inline">\(1 - \varepsilon\)</span> 概率随机选择行为。这里 <span class="math inline">\(\varepsilon\)</span> 也被称为<strong>贪婪度</strong>。</p>
+<p>在学习过程的初期，我们希望机器能够随机探索环境，所以此时 <span class="math inline">\(\varepsilon\)</span> 参数会设定较小。而后期我们在已经具有较为可靠的 Q 表并且希望得到最优解的时候，就可以适当调整到较高的 <span class="math inline">\(\varepsilon\)</span>。</p>
+<hr />
+<p>如果我们分析参数 <span class="math inline">\(\gamma\)</span> 在这个学习过程中的作用，我们注意到第一步的奖励会以 <span class="math inline">\(\gamma\)</span> 衰减，而第二步的奖励会以 <span class="math inline">\(\gamma^2\)</span> 衰减，以此类推，越远的奖励衰减的次数越高。</p>
+<p>这就说明，如果令 <span class="math inline">\(\gamma = 0\)</span>，就意味着除了最近的直接奖励，其余奖励均会清空，此时机器只会关注最近的直接奖励。而如果令 <span class="math inline">\(\gamma = 1\)</span>，则意味着机器会平等地对待所有可能的奖励。而一般条件下 <span class="math inline">\(0 &lt; \gamma &lt; 1\)</span>，此时机器会按照指数衰减的方式对待从近到远的奖励。所以 <span class="math inline">\(\gamma\)</span> 也被称为<strong>奖励衰减指数</strong>。</p>
+<h2 id="代码示例">代码示例</h2>
+<p>这里在 <code>$&#123;repo&#125;/Q-learning</code> 下写了一个简单的通过 Q Learning 学习走迷宫的小程序，这里稍微介绍一下。</p>
+<p>其实主要关注主函数之中的主循环就可以知道 Q Learning 是如何进行的了：</p>
+<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># $&#123;repo&#125;/Q-learning/main.py</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">update</span>():</span></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">100</span>):</span><br><span class="line">        <span class="comment"># Initial state</span></span><br><span class="line">        state = env.reset()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            <span class="comment"># Refresh the canvas</span></span><br><span class="line">            env.render()</span><br><span class="line"></span><br><span class="line">            <span class="comment"># RL choose action based on state</span></span><br><span class="line">            action = RL.choose_action(<span class="built_in">str</span>(state))</span><br><span class="line"></span><br><span class="line">            <span class="comment"># RL take action and get next state and reward</span></span><br><span class="line">            next_state, reward, done = env.step(action)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># RL learn from this transition</span></span><br><span class="line">            RL.learn(<span class="built_in">str</span>(state), action, reward, <span class="built_in">str</span>(next_state))</span><br><span class="line"></span><br><span class="line">            <span class="comment"># Swap state, move ahead</span></span><br><span class="line">            state = next_state</span><br><span class="line"></span><br><span class="line">            <span class="comment"># Break while loop when end of this episode</span></span><br><span class="line">            <span class="keyword">if</span> done:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># End of game</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Game over&quot;</span>)</span><br><span class="line">    env.destroy()</span><br></pre></td></tr></table></figure>
+<p>这里的 <code>RL</code> 相当于我们学习认识环境的机器，其具备的接口包括选择下一步行动（即 <code>RL.choose_action</code>）和根据环境的反馈做出学习（即 <code>RL.learn</code>）。而 <code>env</code> 则模拟了机器需要去认识的环境，其实质上是一个方形地图，地图上有两个地狱和一个代表最终结果的天堂，机器应该尝试着去学习一个绕过地狱到达天堂的路径。</p>
+<p>其实主逻辑十分简单。我们需要训练 100 个 epoch，对于每个 epoch 我们首先初始化环境和机器所在的位置，然后在主循环中重复进行下述动作：</p>
+<ul>
+<li>令机器选择一个行为</li>
+<li>将这个行为传递给环境，令环境给出反馈（包括奖励函数、是否终止、机器即将转到的状态）</li>
+<li>机器通过环境的反馈进行学习</li>
+<li>令机器采取该行为</li>
+</ul>
+<p>这里机器选择一个行为即我们提到的 epsilon greedy 策略，而其学习方式就是 Q 表的更新策略也已经叙述过。环境给出反馈则是简单判定机器是否走到了地狱或者天堂，并给出相应的结果。</p>
+<p>只需要这样简单的代码，我们就可以看见一个红色方块仅依靠着环境的反馈学习到了如何登上天堂。</p>
+<h1 id="sarsa">Sarsa</h1>
+<p>Sarsa 和 Q Learning 的策略选择方面是一致的，也就是使用 epsilon greedy 策略选择自己下一步实际的路径，但是 Sarsa 在更新 Q 表的策略上和 Q Learning 是不同的。</p>
+<p>我们观察 Q Learning 的更新策略：</p>
+<p><span class="math display">\[
+Q&#39;_{\rm QL}(s, a) := Q(s, a) + \alpha\left[r + \gamma{\color{red} \max_{a&#39; \in \Gamma(s&#39;)} Q(s&#39;, a&#39;)} - Q(s, a)\right]
+\]</span></p>
+<p>而 Sarsa 的更新策略为：</p>
+<p><span class="math display">\[
+Q&#39;_{\rm Sarsa}(s, a) := Q(s, a) + \alpha\left[r + \gamma{\color{red} Q(s&#39;, {\rm EG}(s&#39;))} - Q(s, a)\right]
+\]</span></p>
+<p>这里 <span class="math inline">\(a = {\rm EG}(s)\)</span> 表示的是在状态 <span class="math inline">\(s\)</span> 处使用 epsilon greedy 策略选择行为 <span class="math inline">\(a\)</span>。</p>
+<p>除去这里更新策略的不同之外，Sarsa 在到达新状态 <span class="math inline">\(s&#39;\)</span> 后决定此时需要采取的行动的时候，就会采取之前更新策略中的 <span class="math inline">\({\rm EG}(s&#39;)\)</span> 直接作为下一步。</p>
+<hr />
+<p>Sarsa 的策略意味着，其在评估新状态 <span class="math inline">\(s&#39;\)</span> 的潜在收益的时候，并不会像 Q Learning 一样贪心选择最大的可能收益，而是更为现实地选择下一步行为，并且一定会采取这一步行为。</p>
+<p>而 Q Learning 这里使用最大值贪心的更新策略也意味着其会完全沿着局部最优的路径前行，而无视可能造成的负面效果。Sarsa 则相对而言较为实际且保守。</p>
+<p>另外，Q Learning 由于可以脱离环境，所以是 off policy 的。而 Sarsa 需要边转移状态边更新 Q 表，所以是 on policy 的。</p>
+<h2 id="代码示例-1">代码示例</h2>
+<p>这里不具体展示代码了，代码位于 <code>$&#123;repo&#125;/Sarsa</code> 目录之下。</p>
+<p>需要注意和 Q Learning 算法不同的地方在于，在主循环里面我们除了需要保存一个 <code>state</code> 变量，我们还需要一个 <code>action</code> 变量保存即将需要采取的动作。</p>
+<p>如果比对两种算法的效率，其实可以发现 Sarsa 算法的收敛速度明显慢于 Q Learning 算法。</p>
+<h1 id="sarsa-lambda">Sarsa lambda</h1>
+<p>Sarsa lambda 相对于 Sarsa 的优化点在于，机器最初探索环境的时候所采取的那些行为很有可能和最终结果无关，但是在经典的 Sarsa 算法中，每一步都会以同等的权重更新 Q 表，这很有可能导致后续真正导致较高奖励函数的行为没有匹配到较高权重。</p>
+<p>所以我们可以采取近似于回合制更新的方式取代经典的 Sarsa 单步更新策略。我们令到达最终结果的最后一步以原始权重更新 Q 表，倒数第二步需要乘以常数 <span class="math inline">\(\lambda\)</span> 再更新到 Q 表，以此类推，倒数第 <span class="math inline">\(n\)</span> 步需要以权重 <span class="math inline">\(\lambda^{n - 1}\)</span> 更新到 Q 表。</p>
+<p>我们可以注意到 <span class="math inline">\(\lambda = 0\)</span> 的时候，只有最后一步被更新到 Q 表，这就是最经典的回合更新。而 <span class="math inline">\(\lambda = 1\)</span> 的时候就是经典的 Sarsa 单步更新。</p>
+<p>这里的 <span class="math inline">\(\lambda\)</span> 就被称为<strong>路径衰减指数</strong>。</p>
+<h2 id="代码示例-2">代码示例</h2>
+<p>这里只需要在 Sarsa 的基础上加上一个 E 表来累计每一步的 Q 表更新值即可，每走一步就需要将 E 表以 <span class="math inline">\(\lambda\)</span> 权重衰减一次。</p>
+<p>主要观察 E 表在模型学习过程中的作用：</p>
+<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># $&#123;repo&#125;/Sarsa/model.py - class SarsaLambdaTable</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">learn</span>(<span class="params">self, state, action, reward, next_state, next_action</span>):</span></span><br><span class="line">    self.check_state_exist(next_state)</span><br><span class="line"></span><br><span class="line">    q_predict = self.q_table.loc[state, action]</span><br><span class="line">    <span class="keyword">if</span> next_state != <span class="string">&quot;terminal&quot;</span>:</span><br><span class="line">        q_target = reward + self.gamma * self.q_table.loc[next_state, next_action]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        q_target = reward</span><br><span class="line">        </span><br><span class="line">    error = q_target - q_predict</span><br><span class="line"></span><br><span class="line">    self.e_table.loc[state, :] *= <span class="number">0</span></span><br><span class="line">    self.e_table.loc[state, action] = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    self.q_table += self.lr * error * self.e_table</span><br><span class="line">    self.e_table *= self.gamma * self.lambda_ <span class="comment"># Decay</span></span><br></pre></td></tr></table></figure>
+<p>前半部分和经典 Sarsa 是完全一致的，但是注意后续的两个更新。在说明具体更新之前，我们可以说明 E 表的含义，E 表实际上就是将具体值更新到 Q 表时的权重表。</p>
+<p>首先是将当前状态对应的 E 表行清零并将当前动作对应的列设为 <code>1</code>，即更新 E 表。之后以当前权重将误差更新到 Q 表，最后对权重作出衰减。</p>
+<div class="note info"><p>我觉得他这个代码框架存在一个问题，就是当机器走到角落的时候，实际上它的决策空间会变小，但是代码里面没有体现这一点，只是简单的让机器不动。比如机器在左上角选择向左走，那么只是简单地让机器停在左上角。</p>
+<p>这是一个并不好的处理，因为如果此时机器还没有碰巧到达天堂产生正向激励的话，机器完全会缩在角落里来避免地狱的反向激励。</p>
+<p>有时间给他代码改改吧。</p>
+</div>
+<h1 id="deep-q-network-dqn">Deep Q Network (DQN)</h1>
+<p>在我们面对更大的解空间的时候，存储过大的 Q 表会导致内存不够使用，所以此时我们需要令 <span class="math inline">\(Q(s, a)\)</span> 使用其他的方法计算，比如说我们可以引入深度神经网络来计算 <span class="math inline">\(Q(s, a)\)</span>。</p>
+<p>这里我们可以引入这样的一个深度神经网络，该网络接受的输入是当前机器的状态 <span class="math inline">\(s\)</span>，该网络给出的输出则是各种可行的行为以及其评估值，我们只需要按照最基本的 Q Learning 原则根据神经网络的输出给出。</p>
+<p>在这个给定的决策过程下，我们需要给出神经网络的训练策略。实际上我们只需要给出网络 loss 的计算方式就可以。我们思考 Q Learning 之中的训练策略，我们可以得知，在经典的 Q Learning 算法中我们会求出估计的 Q 值，将其与现实的 Q 值做差之后乘以学习率叠加到原先的 Q 表上。</p>
+<p>而如果将这样的策略和神经网络联系起来，我们会发现估计的 Q 值和现实的 Q 值之间的差距实际上就表现出了 loss，我们只需要将这个 loss 对网络各个参数的梯度乘以学习率叠加到网络上就可以。</p>
+<p>基于这样的认识，我们给出下述 loss 计算，使用平方误差的基本思想：</p>
+<p><span class="math display">\[
+\mathcal{L} := \left[r + \gamma\max_{a&#39; \in \Gamma(s&#39;)} Q(s&#39;, a&#39;) - Q(s, a)\right]^2
+\]</span></p>
+<p>这里在状态 <span class="math inline">\(s\)</span> 下选择动作 <span class="math inline">\(a\)</span> 会转移到状态 <span class="math inline">\(s&#39;\)</span>。</p>
+<hr />
+<p>另外，我们可以使用两种方法强化 DQN，这两种方法包括 Experience replay 和 Fixed Q targets。</p>
+<p>前者实际上基于 Q Learning 的 off policy 特性，我们可以使用以往的训练数据乃至其他机器的经验数据来训练网络。</p>
+<p>后者的含义是使用两个同样结构但是参数不同的网络，一个使用较早的参数来给出估计的 Q 值，而且这个网络的参数几乎不会在训练过程中更新，这个网络代表了过去的经验。一个使用较新的参数来给出现实的 Q 值，这个网络会在训练过程中更新参数并且会被应用到实际场景之中。这样做的原因是取消数据的相关性和提高训练的稳定性，具体的原因后续研讨。</p>
+<p>在引入了这两个强化方法之后，loss 的具体计算方式会有所不同，具体的讨论见下方。</p>
+<h2 id="代码示例-3">代码示例</h2>
+<p>这里我们使用 Tensorflow 实现 DQN，这里我们使用的 DQN 具体算法描述为：</p>
+<ul>
+<li>首先初始化一个容量为 <span class="math inline">\(N\)</span> 的记忆库 <span class="math inline">\(D\)</span> 用于存放先前的经验，这里 <span class="math inline">\(N\)</span> 是先前设定的超参</li>
+<li>随机初始化两个结构一致的神经网络 <span class="math inline">\(Q, \hat Q\)</span>，其初始化参数分别为 <span class="math inline">\(\b\theta, \b\theta^-\)</span>，初始化的时候保证 <span class="math inline">\(\b\theta = \b\theta^-\)</span></li>
+<li>对模型按照下述流程训练 <span class="math inline">\(M\)</span> 个 epoch，这里 <span class="math inline">\(M\)</span> 为先前设定的超参
+<ul>
+<li>假定初始状态 <span class="math inline">\(s_1\)</span>，初始化 <span class="math inline">\(s = s_1\)</span></li>
+<li>重复下述流程直到需要中断
+<ul>
+<li>以超参 <span class="math inline">\(\varepsilon\)</span> 使用 epsilon greedy 策略选取行为 <span class="math inline">\(a := \argmax_{a&#39;} Q(s, a&#39;; \b\theta)\)</span></li>
+<li>令 <span class="math inline">\(r\)</span> 表示在状态 <span class="math inline">\(s\)</span> 的条件下执行行为 <span class="math inline">\(a\)</span> 得到的直接收益</li>
+<li>令 <span class="math inline">\(s&#39;\)</span> 表示在状态 <span class="math inline">\(s\)</span> 的条件下执行行为 <span class="math inline">\(a\)</span> 转移到的状态</li>
+<li>将描述状态转移的元组 <span class="math inline">\((s, a, r; s&#39;)\)</span> 存入 <span class="math inline">\(D\)</span></li>
+<li>从 <span class="math inline">\(D\)</span> 中抽取 <span class="math inline">\(B\)</span> 组数据回放，更新 <span class="math inline">\(\b\theta\)</span>，具体流程见下述，这里 <span class="math inline">\(B\)</span> 是先前设定的超参</li>
+<li>如果此时 <span class="math inline">\(s&#39;\)</span> 是终止状态，则终止流程，否则令 <span class="math inline">\(s \leftarrow s&#39;\)</span>，转移状态</li>
+<li>每经过 <span class="math inline">\(C\)</span> 步，令 <span class="math inline">\(\b\theta^- \leftarrow \b\theta\)</span>，即令 <span class="math inline">\(\hat Q\)</span> 更新至 <span class="math inline">\(Q\)</span>，这里 <span class="math inline">\(C\)</span> 是先前设定的超参</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>阐述具体学习过程之前，我们研讨一下引入了 Experience replay 和 Fixed Q targets 之后 loss 的计算。首先由于引入了两个神经网络，计算估计 Q 值和现实 Q 值的网络参数不一致，上述已经通过 <span class="math inline">\(\b\theta, \b\theta^-\)</span> 作出区分。</p>
+<p>另外，由于引入了记忆库 <span class="math inline">\(D\)</span> 并且需要从中随机抽取转移对，那么最后的 loss 应该是基于 <span class="math inline">\(D\)</span> 上的均匀分布的期望，所以最后的 loss 为：</p>
+<p><span class="math display">\[
+\mathcal{L}_{\rm DQN}(\b\theta) := \opE_{(s, a, r; s&#39;) \sim U(D)} \left[r + \gamma\max_{a&#39; \in \Gamma(s&#39;)} \hat Q(s&#39;, a&#39;; \b\theta^-) - Q(s, a; \b\theta)\right]^2
+\]</span></p>
+<p>具体的学习流程为：</p>
+<ul>
+<li>从 <span class="math inline">\(D\)</span> 中抽取 <span class="math inline">\(B\)</span> 组转移元组</li>
+<li>对每一个元组 <span class="math inline">\((s, a, r; s&#39;)\)</span> 计算 loss</li>
+<li>计算梯度将 loss 反向传播到 <span class="math inline">\(\b\theta\)</span> 参数上，完成一次参数更新</li>
+<li>根据具体情况调整 epsilon greedy 参数 <span class="math inline">\(\varepsilon\)</span></li>
+</ul>
+<p>这里使用的网络的数据依赖关系表现为：</p>
+<p><img src="/uploads/note-of-rl/1.png" /></p>
+<p>现在关注具体的代码实现，我们需要注意到我们采用的网络是两层全连接层：</p>
+<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># $&#123;repo&#125;/DQN/dqn.py - def _build_net</span></span><br><span class="line"></span><br><span class="line">self.state = tf.placeholder(tf.float32, [<span class="literal">None</span>, self.n_features], name = <span class="string">&quot;state&quot;</span>)</span><br><span class="line">...</span><br><span class="line"><span class="keyword">with</span> tf.variable_scope(<span class="string">&quot;eval_net&quot;</span>):</span><br><span class="line">    eval_layer = tf.keras.layers.Dense(</span><br><span class="line">        units = <span class="number">20</span>,</span><br><span class="line">        activation = tf.nn.relu,</span><br><span class="line">        kernel_initializer = w_initializer,</span><br><span class="line">        bias_initializer = b_initializer,</span><br><span class="line">        name = <span class="string">&quot;eval_layer&quot;</span></span><br><span class="line">    )(self.state) <span class="comment"># Output: (None, 20)</span></span><br><span class="line">    self.q_eval = tf.keras.layers.Dense(</span><br><span class="line">        units = self.n_actions,</span><br><span class="line">        kernel_initializer = w_initializer,</span><br><span class="line">        bias_initializer = b_initializer,</span><br><span class="line">        name = <span class="string">&quot;q_eval_layer&quot;</span></span><br><span class="line">    )(eval_layer) <span class="comment"># Output: (None, n_actions)</span></span><br></pre></td></tr></table></figure>
+<p>其逻辑是接受一个 <code>(batch_size, n_features)</code> 形状的输入，产生一个 <code>(batch_size, n_actions)</code> 形状的输出。<code>n_features</code> 表示需要多少个特征描述一个状态 <span class="math inline">\(s\)</span>，即状态空间维数。最后的输出则是各个动作的 Q 值。</p>
+<p>在这样的网络设计之下，我们在求取 loss 的时候需要将 <code>(batch_size, n_actions)</code> 形状的输出中每一行挑出我们实际上选取的行为的 Q 值，压缩为 <code>(batch_size, )</code> 形状的 Q 值向量，再求取平方误差。所以就有下述代码：</p>
+<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># $&#123;repo&#125;/DQN/dqn.py - def _build_net</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.variable_scope(<span class="string">&quot;q_target&quot;</span>):</span><br><span class="line">    q_target = self.reward + self.gamma * tf.reduce_max(self.q_next, axis = <span class="number">1</span>, name = <span class="string">&quot;q_max_next_state&quot;</span>)</span><br><span class="line">    self.q_target = tf.stop_gradient(q_target) <span class="comment"># Shape: (None, )</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.variable_scope(<span class="string">&quot;q_eval&quot;</span>):</span><br><span class="line">    action_indices = tf.stack([</span><br><span class="line">        tf.<span class="built_in">range</span>(tf.shape(self.action)[<span class="number">0</span>], dtype = tf.int32), <span class="comment"># Index</span></span><br><span class="line">        self.action <span class="comment"># The index of action</span></span><br><span class="line">    ], axis = <span class="number">1</span>)</span><br><span class="line">    self.q_eval_wrt_action = tf.gather_nd(params = self.q_eval, indices = action_indices) <span class="comment"># Shape: (None, )</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.variable_scope(<span class="string">&quot;loss&quot;</span>):</span><br><span class="line">    self.loss = tf.reduce_mean(tf.squared_difference(</span><br><span class="line">        self.q_target, self.q_eval_wrt_action,</span><br><span class="line">        name = <span class="string">&quot;error&quot;</span></span><br><span class="line">    ))</span><br></pre></td></tr></table></figure>
+<p>这里 <code>q_target</code> 部分只需要直接求取每一行的最大值就可以，而 <code>q_eval</code> 部分需要根据 <code>self.action</code> 压缩网络的输出，得到 <code>q_eval</code>。最后求取平方误差即可。</p>
+<h2 id="dqn-enhancement">DQN Enhancement</h2>
+<h3 id="double-dqn">Double DQN</h3>
+<p>上述讨论的 DQN 其实有 overestimate 的问题，因为我们每次都会使用旧参数 <span class="math inline">\(\b\theta^-\)</span>，采用最大值函数去估计 evaluated Q value。为了解决这个问题，我们需要利用另外一个网络，即参数及时更新的网络来平衡旧参数网络的估计。</p>
+<p>传统 DQN 的 loss 计算为：</p>
+<p><span class="math display">\[
+\mathcal{L}_{\rm DQN} := \left[r + \gamma{\color{red} \max_{a&#39; \in \Gamma(s&#39;)} \hat Q(s&#39;, a&#39;; \b\theta^-)} - Q(s, a; \b\theta)\right]^2
+\]</span></p>
+<p>这里 <span class="math inline">\(a&#39;\)</span> 的选择仅仅依赖于 <span class="math inline">\(\hat Q\)</span> 网络的情况，我们在 Double DQN 中可以使用 <span class="math inline">\(Q\)</span> 网络来选择 <span class="math inline">\(a&#39;\)</span> 以控制 Q 值的估计：</p>
+<p><span class="math display">\[
+\mathcal{L}_{\rm DDQN} := \left[r + \gamma{\color{red} \hat Q\left(s&#39;, \argmax_{a&#39; \in \Gamma(s&#39;)} Q(s&#39;, a&#39;; \b\theta); \b\theta^-\right)} - Q(s, a; \b\theta)\right]^2
+\]</span></p>
+<p>也就是说这里令 <span class="math inline">\(a&#39;\)</span> 是 <span class="math inline">\(Q\)</span> 网络选取出的在 <span class="math inline">\(s&#39;\)</span> 状态下的最佳行为，而非仅通过 <span class="math inline">\(\hat Q\)</span> 网络选择，这样做的平衡就可以防止 <span class="math inline">\(\hat Q\)</span> 给出过高的 Q 值。</p>
+<hr />
+<p>这里就不给出具体的代码实现了。</p>
+<p><code>UPDATE TODO</code></p>
+<h3 id="prioritized-experience-replay">Prioritized Experience Replay</h3>
+<p>如果我们的环境的 reward 分配比较不均匀，正向反馈较难获取，但是却需要要求机器重点学习正向反馈，我们原先的 replay 策略就会失效，因为在原先的策略内，我们令各个回忆的权重是一致的，这个分配并不符合实际。</p>
+<p>我们可以这样估计每个回忆的优先级，和 loss 的计算类似，我们用估计的 Q 值直接减去现实的 Q 值，如果这个值越大，就说明还能提升的空间就越大，从而说明这个回忆的优先级越高。上述 Q 值的差值一般称为 TD error。</p>
+<hr />
+<p>每次选取回忆的时候，我们都需要根据 TD error 给出的优先级排序各个回忆，但如果每次都排序的话显然会浪费算力，所以我们需要使用 Sum tree 数据结构组织各个回忆。</p>
+<p><code>TODO</code></p>
+<h1 id="policy-gradients">Policy Gradients</h1>
+<p>Policy Gradients 的特点在于其直接输出下一步行为本身，而不是行为的某种评分。这个特点使得 Policy Gradients 可以应对决策空间无限的情况，而 Q Learning 则无法应对无限决策空间。</p>
+<p>Policy Gradients 基于随机策略，也就是我们需要给出在某个状态 <span class="math inline">\(s\)</span> 下我们采取行为 <span class="math inline">\(a\)</span> 的概率，这种随机策略一般用参数 <span class="math inline">\(\b\theta\)</span> 建模。</p>
+<p>我们把基于参数为 <span class="math inline">\(\b\theta\)</span> 的随机策略 <span class="math inline">\(\pi_{\b\theta}\)</span>，在状态 <span class="math inline">\(s\)</span> 下，我们采取行为 <span class="math inline">\(a\)</span> 的概率表示为 <span class="math inline">\(\pi_{\b\theta}(a \mid s)\)</span>。这里 <span class="math inline">\(s_t, a_t\)</span> 表示在第 <span class="math inline">\(t\)</span> 时刻的状态和行为，后续有类似的 <span class="math inline">\(r_t\)</span>。</p>
+<p>显然这样的 <span class="math inline">\(\pi_{\b\theta}(\cdot\mid s)\)</span> 代表了一个行为决策空间 <span class="math inline">\(\mathcal{A}\)</span> 上的一个分布。</p>
+<p>我们首先定义累计收益：</p>
+<p><span class="math display">\[
+G_t(\b\tau) := \sum_{k = 0}^{+\infty} \gamma^k r_{t + k}
+\]</span></p>
+<p>这里 <span class="math inline">\(\b\tau\)</span> 是一个已知的转移过程，<span class="math inline">\(G_t(\b\tau)\)</span> 就表示沿着已知的转移过程 <span class="math inline">\(\b\tau\)</span>，从时刻 <span class="math inline">\(t\)</span> 开始能获得的累计收益。<span class="math inline">\(\gamma\)</span> 则是先前介绍过的奖励衰减指数，我们将未来所有的收益全部相加作为总收益。</p>
+<p>那么我们可以基于此定义出一个行为评估函数：</p>
+<p><span class="math display">\[
+Q^{\pi_{\b\theta}}(s, a) := \opE_{\b\tau \sim \pi_{\b\theta}} \left[G_t(\b\tau) \mid s_t = s, a_t = a\right]
+\]</span></p>
+<p>定义的含义也是直观的，这个评估函数的值就是随机取出一个在第 <span class="math inline">\(t\)</span> 时刻，状态和行为分别为 <span class="math inline">\(s, a\)</span> 的转移过程 <span class="math inline">\(\b\tau\)</span>，求取后续能获取的收益的期望。</p>
+<p>另外，由于我们知道给定状态 <span class="math inline">\(s\)</span> 的时候行为 <span class="math inline">\(a\)</span> 的分布就是随机策略 <span class="math inline">\(\pi_{\b\theta}\)</span> 指定的，所以我们可以定义一个不需要给定具体行为的，仅针对状态进行评估的状态函数：</p>
+<p><span class="math display">\[
+V^{\pi_{\b\theta}}(s) := \int_{a \in \mathcal{A}} \pi_{\b\theta}(a \mid s)Q^{\pi_{\b\theta}}(s, a) {\rm d}a = \opE_{\b\tau \sim \pi_{\b\theta}} \left[G_t(\b\tau) \mid s_t = s\right]
+\]</span></p>
+<p>此外，我们可以注意到这个随机策略实际上定义了一个在状态空间 <span class="math inline">\(\mathcal{S}\)</span> 上的 Markov chain，那么我们就有下述稳态概率的定义：</p>
+<p><span class="math display">\[
+d^{\pi_{\b\theta}}(s) := \lim_{t \to +\infty} \P_{\pi_{\b\theta}}(s_t = s \mid s_0)
+\]</span></p>
+<p>稳态概率实际上描述了在给定初始状态 <span class="math inline">\(s_0\)</span> 的条件下，使用随机策略 <span class="math inline">\(\pi_{\b\theta}\)</span> 在状态空间 <span class="math inline">\(\mathcal{S}\)</span> 上随机转移，最终到达稳定状态的时候，位于状态 <span class="math inline">\(s\)</span> 的概率。</p>
+<p>基于稳态概率，我们就可以给一个策略 <span class="math inline">\(\pi_{\b\theta}\)</span> 定义价值：</p>
+<p><span class="math display">\[
+\mathcal{J}(\b\theta) := \int_{s \in \mathcal{S}} d^{\pi_{\b\theta}}(s)V^{\pi_{\b\theta}}(s) {\rm d}s = \int_{s \in \mathcal{S}} d^{\pi_{\b\theta}}(s) \int_{a \in \mathcal{A}} \pi_{\b\theta}(a \mid s)Q^{\pi_{\b\theta}}(s, a) {\rm d}a{\rm d}s
+\]</span></p>
+<p>容易看出 <span class="math inline">\(d^{\pi_{\b\theta}}(s)\pi_{\b\theta}(a \mid s)\)</span> 给出了 <span class="math inline">\(\mathcal{S} \times \mathcal{A}\)</span> 上的分布：</p>
+<p><span class="math display">\[
+\int_{s \in \mathcal{S}}\int_{a \in \mathcal{A}} d^{\pi_{\b\theta}}(s)\pi_{\b\theta}(a \mid s) {\rm d}a{\rm d}s = 1
+\]</span></p>
+<p>那么：</p>
+<p><span class="math display">\[
+\mathcal{J}(\b\theta) = \opE_{(s, a) \sim \pi_{\b\theta}} [Q^{\pi_{\b\theta}}(s, a)]
+\]</span></p>
+<p>为了尽可能提高策略的价值，我们采用梯度上升的方式，所以重点就是计算上述价值函数的梯度 <span class="math inline">\(\nabla_{\b\theta}\mathcal{J}(\b\theta)\)</span>。</p>
+<hr />
+<p>首先我们对 <span class="math inline">\(Q^{\pi_{\b\theta}}(s, a)\)</span> 做一些简单的展开。</p>
+<p>我们只需要遍历 <span class="math inline">\(s\)</span> 所有可能的下一步状态 <span class="math inline">\(s&#39;\)</span>，得到其发生转移 <span class="math inline">\(s \to s&#39;\)</span> 的概率，而相应的价值评估也会拆分为直接收益 <span class="math inline">\(r\)</span> 和接下来到达状态 <span class="math inline">\(s&#39;\)</span> 的收益（与 Q Learning 具有类似的结构）。基于上述思路，得到下述展开：</p>
+<p><span class="math display">\[
+Q^{\pi_{\b\theta}}(s, a) = \int_{s&#39; \in \mathcal{S}} \P_{\mathcal{E}}(s&#39; \mid s, a)\left[r + V^{\pi_{\b\theta}}(s&#39;)\right] {\rm d} s&#39;
+\]</span></p>
+<p>这里概率符号带有下标 <span class="math inline">\(\mathcal{E}\)</span>，表示这个概率仅仅依赖于环境 <span class="math inline">\(\mathcal{E}\)</span>，和随机策略 <span class="math inline">\(\pi_{\b\theta}\)</span> 并无关系。那么考虑到 <span class="math inline">\(r, \P_{\mathcal{E}}(s&#39; \mid s, a)\)</span> 相对于 <span class="math inline">\(\b\theta\)</span> 都是常数，可以得到：</p>
+<p><span class="math display">\[
+\nabla_{\b\theta}Q^{\pi_{\b\theta}}(s, a) = \int_{s&#39; \in \mathcal{S}} \P_{\mathcal{E}}(s&#39; \mid s, a)\nabla_{\b\theta}V^{\pi_{\b\theta}}(s&#39;) {\rm d} s&#39;
+\]</span></p>
+<p>基于此，我们做出如下推理：</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;{\color{red} \nabla_{\b\theta}V^{\pi_{\b\theta}}(s)} \\
+=&amp; \nabla_{\b\theta}\left[\int_{a \in \mathcal{A}} \pi_{\b\theta}(a \mid s)Q^{\pi_{\b\theta}}(s, a) {\rm d} a\right] \\
+=&amp; \int_{a \in \mathcal{A}}\left[Q^{\pi_{\b\theta}}(s, a)\nabla_{\b\theta}\pi_{\b\theta}(a \mid s) + \pi_{\b\theta}(a \mid s)\nabla_{\b\theta}Q^{\pi_{\b\theta}}(s, a)\right] {\rm d} a \\
+=&amp; \int_{a \in \mathcal{A}}\left[Q^{\pi_{\b\theta}}(s, a)\nabla_{\b\theta}\pi_{\b\theta}(a \mid s) + \pi_{\b\theta}(a \mid s)\int_{s&#39; \in \mathcal{S}} \P_{\mathcal{E}}(s&#39; \mid s, a)\nabla_{\b\theta}V^{\pi_{\b\theta}}(s&#39;) {\rm d} s&#39;\right] {\rm d} a \\
+=&amp; \int_{a \in \mathcal{A}}Q^{\pi_{\b\theta}}(s, a)\nabla_{\b\theta}\pi_{\b\theta}(a \mid s) {\rm d} a + \int_{a \in \mathcal{A}}\left[\pi_{\b\theta}(a \mid s)\int_{s&#39; \in \mathcal{S}} \P_{\mathcal{E}}(s&#39; \mid s, a) {\color{red} \nabla_{\b\theta}V^{\pi_{\b\theta}}(s&#39;)} {\rm d} s&#39;\right] {\rm d} a
+\end{aligned}
+\]</span></p>
+<p>这里我们观测到了 <span class="math inline">\(\nabla_{\b\theta}V^{\pi_{\b\theta}}(s)\)</span> 结构的重复，下面思考该递归结构。</p>
+<p>定义记号：</p>
+<p><span class="math display">\[
+\P_{\pi_{\b\theta}}(s \mathop{\to}^k s_\bot)
+\]</span></p>
+<p>表示从初态 <span class="math inline">\(s\)</span> 通过随机策略 <span class="math inline">\(\pi_{\b\theta}\)</span> 经过 <span class="math inline">\(k\)</span> 步转移能够到达终态 <span class="math inline">\(s_\bot\)</span> 的概率。这个概率也具有递归的运算特征，即：</p>
+<p><span class="math display">\[
+\P_{\pi_{\b\theta}}(s \mathop{\to}^{k + 1} s_\bot) = \int_{s&#39; \in \mathcal{S}} \P_{\pi_{\b\theta}}(s \mathop{\to}^k s&#39;) \P_{\pi_{\b\theta}}(s&#39; \mathop{\to}^1 s_\bot) {\rm d}s&#39;
+\]</span></p>
+<p>此外，根据该概率的定义，我们能确定：</p>
+<p><span class="math display">\[
+\P_{\pi_{\b\theta}}(s \mathop{\to}^1 s&#39;) = \int_{a \in \mathcal{A}} \pi_{\b\theta}(a \mid s)\P_{\mathcal{E}}(s&#39; \mid s, a) {\rm d}a
+\]</span></p>
+<p>另外，为了后续讨论简单，定义记号：</p>
+<p><span class="math display">\[
+\phi(s) := \int_{a \in \mathcal{A}}Q^{\pi_{\b\theta}}(s, a)\nabla_{\b\theta}\pi_{\b\theta}(a \mid s) {\rm d} a
+\]</span></p>
+<p>从而观察下述展开：</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;\nabla_{\b\theta}V^{\pi_{\b\theta}}(s) \\
+=&amp; \phi(s) + \int_{a \in \mathcal{A}}\left[\pi_{\b\theta}(a \mid s)\int_{s&#39; \in \mathcal{S}} \P_{\mathcal{E}}(s&#39; \mid s, a) \nabla_{\b\theta}V^{\pi_{\b\theta}}(s&#39;) {\rm d} s&#39;\right] {\rm d} a \\
+=&amp; \phi(s) + \int_{s&#39; \in \mathcal{S}} \left[\int_{a \in \mathcal{A}} \pi_{\b\theta}(a \mid s) \P_{\mathcal{E}}(s&#39; \mid s, a) {\rm d} a\right] \nabla_{\b\theta}V^{\pi_{\b\theta}}(s&#39;) {\rm d} s&#39; \\
+=&amp; \phi(s) + {\color{red} \int_{s&#39; \in \mathcal{S}} \P_{\pi_{\b\theta}}(s \mathop{\to}^1 s&#39;) \nabla_{\b\theta}V^{\pi_{\b\theta}}(s&#39;) {\rm d} s&#39;} \\
+=&amp; \phi(s) + \int_{s&#39; \in \mathcal{S}} \P_{\pi_{\b\theta}}(s \mathop{\to}^1 s&#39;) \left[\phi(s&#39;) + \int_{s&#39;&#39; \in \mathcal{S}} \P_{\pi_{\b\theta}}(s&#39; \mathop{\to}^1 s&#39;&#39;) \nabla_{\b\theta}V^{\pi_{\b\theta}}(s&#39;&#39;) {\rm d} s&#39;&#39;\right] {\rm d} s&#39; \\
+=&amp; \phi(s) + \int_{s&#39; \in \mathcal{S}} \P_{\pi_{\b\theta}}(s \mathop{\to}^1 s&#39;)\phi(s&#39;) {\rm d} s&#39; + \int_{s&#39; \in \mathcal{S}} \P_{\pi_{\b\theta}}(s \mathop{\to}^1 s&#39;) \left[\int_{s&#39;&#39; \in \mathcal{S}} \P_{\pi_{\b\theta}}(s&#39; \mathop{\to}^1 s&#39;&#39;) \nabla_{\b\theta}V^{\pi_{\b\theta}}(s&#39;&#39;) {\rm d} s&#39;&#39;\right]{\rm d} s&#39; \\
+=&amp; \phi(s) + \int_{s&#39; \in \mathcal{S}} \P_{\pi_{\b\theta}}(s \mathop{\to}^1 s&#39;)\phi(s&#39;) {\rm d} s&#39; + \int_{s&#39;&#39; \in \mathcal{S}}\left[\int_{s&#39; \in \mathcal{S}} \P_{\pi_{\b\theta}}(s \mathop{\to}^1 s&#39;) \P_{\pi_{\b\theta}}(s&#39; \mathop{\to}^1 s&#39;&#39;){\rm d} s&#39;\right] \nabla_{\b\theta}V^{\pi_{\b\theta}}(s&#39;&#39;) {\rm d} s&#39;&#39; \\
+=&amp; \phi(s) + {\color{green} \int_{s&#39; \in \mathcal{S}} \P_{\pi_{\b\theta}}(s \mathop{\to}^1 s&#39;)\phi(s&#39;) {\rm d} s&#39;} + {\color{red} \int_{s&#39;&#39; \in \mathcal{S}} \P_{\pi_{\b\theta}}(s \mathop{\to}^2 s&#39;&#39;) \nabla_{\b\theta}V^{\pi_{\b\theta}}(s&#39;&#39;) {\rm d} s&#39;&#39;}
+\end{aligned}
+\]</span></p>
+<p>我们这一次观察到了如上述的递归现象，红色部分始终保持结构一致，并且每展开一次就会得到类似绿色部分的一个常数项。</p>
+<p>注意到：</p>
+<p><span class="math display">\[
+\P_{\pi_{\b\theta}}(s \mathop{\to}^{+\infty} s_\bot) = 0
+\]</span></p>
+<p>所以上述展开中红色部分在无穷次递归后会变为零，那么上述式子应当在无穷次递归后仅仅留下绿色的常数项的累加：</p>
+<p><span class="math display">\[
+\nabla_{\b\theta}V^{\pi_{\b\theta}}(s) = \sum_{k = 0}^{+\infty} \int_{s_\bot \in \mathcal{S}} \P_{\pi_{\b\theta}}(s \mathop{\to}^k s_\bot)\phi(s_\bot) {\rm d} s_\bot
+\]</span></p>
+<p>根据定义，实际上我们有：</p>
+<p><span class="math display">\[
+\sum_{k = 0}^{+\infty}\P_{\pi_{\b\theta}}(s \mathop{\to}^k s_\bot) = d^{\pi_{\b\theta}}(s_\bot)
+\]</span></p>
+<p>那么，考虑到对策略的评估实际上就是对该策略下初态价值的评估，我们得到：</p>
+<p><span class="math display">\[
+\begin{aligned}
+\nabla_{\b\theta}\mathcal{J}(\b\theta) &amp;= \nabla_{\b\theta} V^{\pi_{\b\theta}}(s_0) \\
+&amp;= \sum_{k = 0}^{+\infty} \int_{s_\bot \in \mathcal{S}} \P_{\pi_{\b\theta}}(s_0 \mathop{\to}^k s_\bot)\phi(s_\bot) {\rm d} s_\bot \\
+&amp;= \int_{s_\bot \in \mathcal{S}} \left[\sum_{k = 0}^{+\infty} \P_{\pi_{\b\theta}}(s_0 \mathop{\to}^k s_\bot)\right] \phi(s_\bot) {\rm d} s_\bot \\
+&amp;= \int_{s_\bot \in \mathcal{S}} d^{\pi_{\b\theta}}(s_\bot) \phi(s_\bot) {\rm d} s_\bot \\
+&amp;= \int_{s_\bot \in \mathcal{S}} d^{\pi_{\b\theta}}(s_\bot) \int_{a \in \mathcal{A}}Q^{\pi_{\b\theta}}(s, a)\nabla_{\b\theta}\pi_{\b\theta}(a \mid s) {\rm d} a {\rm d} s_\bot
+\end{aligned}
+\]</span></p>
+<p>将 <span class="math inline">\(s_\bot\)</span> 替换回 <span class="math inline">\(s\)</span> 就得到 Policy gradient theorem 的公式：</p>
+<p><span class="math display">\[
+\nabla_{\b\theta}\mathcal{J}(\b\theta) = \int_{s \in \mathcal{S}}\left[d^{\pi_{\b\theta}}(s) \int_{a \in \mathcal{A}}Q^{\pi_{\b\theta}}(s, a)\nabla_{\b\theta}\pi_{\b\theta}(a \mid s) {\rm d} a\right] {\rm d} s
+\]</span></p>
+<p>为了让计算机便于计算，我们对上述计算式作出进一步变形：</p>
+<p><span class="math display">\[
+\begin{aligned}
+\nabla_{\b\theta}\mathcal{J}(\b\theta) &amp;= \int_{s \in \mathcal{S}}\left[d^{\pi_{\b\theta}}(s) \int_{a \in \mathcal{A}}Q^{\pi_{\b\theta}}(s, a)\nabla_{\b\theta}\pi_{\b\theta}(a \mid s){\rm d} a\right]{\rm d} s \\
+&amp;= \int_{s \in \mathcal{S}}\left[d^{\pi_{\b\theta}}(s) \int_{a \in \mathcal{A}}Q^{\pi_{\b\theta}}(s, a)\pi_{\b\theta}(a \mid s)\frac{\nabla_{\b\theta}\pi_{\b\theta}(a \mid s)}{\pi_{\b\theta}(a \mid s)}{\rm d} a\right]{\rm d} s \\
+&amp;= \int_{s \in \mathcal{S}}\int_{a \in \mathcal{A}} (d^{\pi_{\b\theta}}(s)\pi_{\b\theta}(a \mid s)) \cdot (Q^{\pi_{\b\theta}}(s, a)\nabla_{\b\theta}\ln \pi_{\b\theta}(a \mid s)){\rm d} a {\rm d} s \\
+&amp;= \opE_{(s, a) \sim \pi_{\b\theta}} [Q^{\pi_{\b\theta}}(s, a)\nabla_{\b\theta}\ln \pi_{\b\theta}(a \mid s)]
+\end{aligned}
+\]</span></p>
+<p>为了计算这个期望，我们可以通过 <span class="math inline">\(\pi_{\b\theta}\)</span> 确定转移过程 <span class="math inline">\(\b\tau\)</span>，之后将转移过程上的所有 <span class="math inline">\((s, a)\)</span> 代入：</p>
+<p><span class="math display">\[
+\nabla_{\b\theta}\mathcal{J}(\b\theta) = \opE_{\b\tau \sim \pi_{\b\theta}} \frac{1}{|\b\tau|} \sum_{(s, a) \in \b\tau} [Q^{\pi_{\b\theta}}(s, a)\nabla_{\b\theta}\ln \pi_{\b\theta}(a \mid s)]
+\]</span></p>
+<h2 id="代码示例-4">代码示例</h2>
+<p>这里使用 Reinforce 方法实现 Policy Gradients，这是最为基本的一种实现方式，是一种回合制更新策略。</p>
+<p>首先我们使用两层全连接层作为随机策略，其参数为 <span class="math inline">\(\b\theta\)</span>，网络整体结构为：</p>
+<p><img src="/uploads/note-of-rl/2.png" /></p>
+<p>之后我们需要在随机策略 <span class="math inline">\(\pi_{\b\theta}\)</span> 指导下得到的一整个回合信息：</p>
+<p><span class="math display">\[
+s_1, a_1, r_1; s_2, a_2, r_2; s_3, \cdots; s_T, a_T, r_T; {\rm terminal}
+\]</span></p>
+<p>在将状态、行为、奖励列表传入网络之前，我们需要对奖励列表根据参数 <span class="math inline">\(\gamma\)</span> 作出衰减并累计，同时将其均值归零标准差归一，这样就完成了 reward 的规范化。</p>
+<p>下面考虑我们之前计算的梯度：</p>
+<p><span class="math display">\[
+\nabla_{\b\theta}\mathcal{J}(\b\theta) = \opE_{\b\tau \sim \pi_{\b\theta}} \frac{1}{|\b\tau|} \sum_{(s, a) \in \b\tau} [G_t\nabla_{\b\theta}\ln \pi_{\b\theta}(a \mid s)]
+\]</span></p>
+<p>这里上述序列就是一个简单的抽样，我们用该抽样近似表示期望，这样就能够得到更新为：</p>
+<p><span class="math display">\[
+\nabla_{\b\theta}\mathcal{J}(\b\theta) = \frac{1}{T}\sum_{i = 1}^T [G_i \nabla_{\b\theta}\ln \pi_{\b\theta}(a_i \mid s_i)]
+\]</span></p>
+<p>考虑到 <span class="math inline">\(G_{i}\)</span> 对 <span class="math inline">\(\b\theta\)</span> 是常数，那么：</p>
+<p><span class="math display">\[
+\nabla_{\b\theta}\mathcal{J}(\b\theta) = \nabla_{\b\theta}\frac{1}{T}\sum_{i = 1}^T [G_{i}\ln \pi_{\b\theta}(a_i \mid s_i)]
+\]</span></p>
+<p>梯度是容易实现的，我们只需要计算出下述式子（即目标式）：</p>
+<p><span class="math display">\[
+\frac{1}{T}\sum_{i = 1}^T [G_{i}\ln \pi_{\b\theta}(a_i \mid s_i)]
+\]</span></p>
+<p>然后将其传入优化器，交由优化器推算其梯度并附加到 <span class="math inline">\(\b\theta\)</span> 上即可。</p>
+<p>基于这个式子，我们观察代码中 loss 的计算：</p>
+<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># $&#123;repo&#125;/Policy-gradients/pg.py - def _build_net</span></span><br><span class="line"></span><br><span class="line">all_action = tf.keras.layers.Dense(...)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.name_scope(<span class="string">&quot;loss&quot;</span>):</span><br><span class="line">    <span class="comment"># To maximize total reward (log_p * R) is to minimize -(log_p * R)</span></span><br><span class="line">    <span class="comment"># And the tf only have minimize(loss)</span></span><br><span class="line">    neg_log_prob = tf.nn.sparse_softmax_cross_entropy_with_logits(</span><br><span class="line">        logits = all_action,</span><br><span class="line">        labels = self.tf_action_list) <span class="comment"># This is negative log of chosen action</span></span><br><span class="line"></span><br><span class="line">    loss = tf.reduce_mean(neg_log_prob * self.tf_reward_list) <span class="comment"># Reward guided loss</span></span><br></pre></td></tr></table></figure>
+<p>这里用到了 <code>tf.nn.sparse_softmax_cross_entropy_with_logits</code> 函数，这个函数接受的参数中 <code>logits</code> 形状为 <code>[batch_size, n_action]</code>，<code>labels</code> 形状为 <code>[n_action]</code>，<code>labels</code> 参数中的项代表该 batch 给出的分类结果。返回值的形状则为 <code>[n_action]</code>。</p>
+<p>对于每一个 batch，该函数首先将 <code>logits</code> 对应行取 softmax，并取出序号为 <code>labels</code> 参数指定的项，取其负对数作为该 batch 的结果。</p>
+<p>比如对于某 batch，其 <code>logits</code> 为 <span class="math inline">\(\{L_j\}_{1 \leq j \leq N}\)</span>，这里 <span class="math inline">\(N\)</span> 为 <code>n_action</code>，而该 batch 的 <code>labels</code> 为 <span class="math inline">\(M(1 \leq M \leq N)\)</span>，那么最后对该 batch，该函数返回：</p>
+<p><span class="math display">\[
+R = -\ln\left(\frac{e^{L_M}}{\sum_{j = 1}^N e^{L_j}}\right)
+\]</span></p>
+<p>而我们也发现我们也是通过 softmax 来定义动作的概率：</p>
+<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># $&#123;repo&#125;/Policy-gradients/pg.py - def _build_net</span></span><br><span class="line"></span><br><span class="line">self.all_action_prob = tf.nn.softmax(all_action, name = <span class="string">&quot;action_prob&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>也就是说：</p>
+<p><span class="math display">\[
+\pi_{\b\theta}(a_i \mid s_i) = \frac{e^{L_{a_i}}}{\sum_{j = 1}^N e^{L_j}}
+\]</span></p>
+<p>所以 <code>tf.nn.sparse_softmax_cross_entropy_with_logits</code> 的返回值实际上就是下述数列构成的向量：</p>
+<p><span class="math display">\[
+-\ln\pi_{\b\theta}(a_1 \mid s_1), -\ln\pi_{\b\theta}(a_2 \mid s_2), \cdots, -\ln\pi_{\b\theta}(a_i \mid s_i), \cdots, -\ln\pi_{\b\theta}(a_T \mid s_T)
+\]</span></p>
+<p>将这个数列和规范化后的 reward 数组逐项相乘，求取所有积的平均值就得到了目标式的相反数。这里求出其相反数的目的是通过优化器最小化负梯度，得到最大化梯度从而实现梯度上升。</p>
+<p>这样我们就给出了 Policy gradients 的基本实现。</p>
+<h1 id="actor-critic">Actor Critic</h1>
+<p>我们注意到 Q Learning 无法处理决策空间无限的问题，而 Policy Gradients 又仅能完成回合更新，效率低。为了结合这两者的优点，这里介绍 Actor Critic 网络。</p>
+<p>Actor Critic 的基本思路是，利用一个基于概率的 Actor 网络随机给出行为，利用一个基于价值的 Critic 网络给出 Actor 网络行为的评价。具体而言，Actor 网络不断进行梯度上升，而 Critic 网络会判定本次上升是否合理，其会根据其学习到的规则来衰减本次 Actor 的梯度上升。</p>
+<p>单步更新还有一个好处，如果一个完整的转移过程 <span class="math inline">\(\b\tau\)</span> 中既需要上升参数，又需要下降参数，这两个都需要细节学习的内容会因为沿着路径累计而消失，从而两者均没有学习到。</p>
+<h2 id="数学推理">数学推理</h2>
+<p>这里我们聚焦于 Actor Critic 的基本数学原理，我们思考 Policy Gradients 的梯度计算：</p>
+<p><span class="math display">\[
+\nabla_{\b\theta}\mathcal{J}(\b\theta) = \opE_{\b\tau \sim \pi_{\b\theta}} \frac{1}{|\b\tau|} \sum_{(s, a) \in \b\tau} [Q^{\pi_{\b\theta}}(s, a)\nabla_{\b\theta}\ln \pi_{\b\theta}(a \mid s)]
+\]</span></p>
+<p>我们下面将其扩展为 Actor 网络的行为。</p>
+<p>现在由于引入了 Critic 网络，所以 Actor 的更新也变成了在线单步更新。也就是说我们在逐探索转移过程，在某一时刻到达状态 <span class="math inline">\(s\)</span>，并且根据 Actor 网络 <span class="math inline">\(\pi_{\b\theta}\)</span> 选择了行为 <span class="math inline">\(a\)</span>，那么此时只需要完成下述单步更新即可：</p>
+<p><span class="math display">\[
+\b\theta \leftarrow \b\theta + \alpha_{\b\theta}Q^{\b w}(s, a)\nabla_{\b\theta}\ln \pi_{\b\theta}(a \mid s)
+\]</span></p>
+<p>这里 <span class="math inline">\(\alpha_{\b\theta}\)</span> 为 Actor 网络 <span class="math inline">\(\pi_{\b\theta}\)</span> 的学习率，这里 <span class="math inline">\(\b w\)</span> 是 Critic 网络的参数。</p>
+<p>注意到这里 <span class="math inline">\(Q\)</span> 的参数是 <span class="math inline">\(\b w\)</span> 而非 <span class="math inline">\(\b\theta\)</span>，这是因为我们需要将 Actor 的评价权力交给 Critic 网络，用 Critic 的输出来控制 Actor 参数的更新。</p>
+<p>而 Critic 的数学原理就是 Q Learning 的 TD Error 思想。观察我们对一个状态的价值评估函数：</p>
+<p><span class="math display">\[
+V^{\b w}(s) = \opE_{\b\tau \sim \b w} \left[G_t(\b\tau) \mid s_t = s\right]
+\]</span></p>
+<p>而另外一方面：</p>
+<p><span class="math display">\[
+G_t(\b\tau) = \sum_{k = 0}^{+\infty} \gamma^k r_{t + k + 1} = r_{t + 1} + \gamma\sum_{k = 0}^{+\infty} \gamma^k r_{t + k + 2} = r_{t + 1} + \gamma G_{t + 1}(\b\tau)
+\]</span></p>
+<p>所以：</p>
+<p><span class="math display">\[
+\begin{aligned}
+V^{\b w}(s) &amp;= \opE_{\b\tau \sim \b w} \left[G_t(\b\tau) \mid s_t = s\right] \\
+&amp;= \opE_{\b\tau \sim \b w} \left[r_{t + 1} + \gamma G_{t + 1}(\b\tau) \mid s_t = s\right] \\
+&amp;= \opE_{\b\tau \sim \b w} \left[r_{t + 1} \mid s_t = s\right] + \gamma\opE_{\b\tau \sim \b w}\left[G_{t + 1}(\b\tau) \mid s_t = s\right] \\
+&amp;= \opE_{\b\tau \sim \b w} \left[r_{t + 1} \mid s_t = s\right] + \gamma\opE_{\b\tau \sim \b w}\left[G_{t + 1}(\b\tau) \mid s_{t + 1} = s&#39;\right] \\
+&amp;= \opE_{\b\tau \sim \b w} \left[r_{t + 1} \mid s_t = s\right] + \gamma V^{\b w}(s&#39;)
+\end{aligned}
+\]</span></p>
+<p>这里 <span class="math inline">\(s&#39;\)</span> 为转移过程中 <span class="math inline">\(s\)</span> 的下一个状态。这说明了 <span class="math inline">\(r_{t + 1} + \gamma V^{\b w}(s&#39;) - V^{\b w}(s)\)</span> 构成了一个无偏估计，从而可以用此修正对 <span class="math inline">\(V^{\b w}\)</span> 的估计。而这里 <span class="math inline">\(r_{t + 1} + \gamma V^{\b w}(s&#39;) - V^{\b w}(s)\)</span> 就被称为 TD Error。</p>
+<p>上述推理对 <span class="math inline">\(Q^{\b w}\)</span> 依然有效，与之对应的 <span class="math inline">\(r_{t + 1} + \gamma Q^{\b w}(s&#39;, a&#39;) - Q^{\b w}(s, a)\)</span> 也可以称为 TD Error。</p>
+<p>从而 Critic 网络的更新策略为首先计算 TD Error：</p>
+<p><span class="math display">\[
+\delta_t \leftarrow r_{t + 1} + \gamma Q^{\b w}(s&#39;, a&#39;) - Q^{\b w}(s, a)
+\]</span></p>
+<p>之后用 TD Error 更新 Critic 网络参数：</p>
+<p><span class="math display">\[
+\b w \leftarrow \b w + \alpha_{\b w}\delta_t\nabla_{\b w}Q^{\b w}(s, a)
+\]</span></p>
+<p>这也就是最经典的 Actor Critic 算法。</p>
+<h1 id="advantage-actor-critic-a2c">Advantage Actor Critic (A2C)</h1>
+<p>我们注意到直接让 Critic 学习 Q 值存在一个问题，那就是 Q 值均值很大，但是波动很小。在均值很大的背景下，较小的波动的分布可能被网络忽略，所以相比较于直接使用 Q 值，我们不妨设立 Baseline 函数，替换为使用 Q 值和 Baseline 的差值。这个差值就是 Advantage 函数。</p>
+<p>我们首先需要在数学上论证引入 Baseline 并不影响无偏性，也就是说需要证明：</p>
+<p><span class="math display">\[
+\begin{aligned}
+\nabla_{\b\theta}\mathcal{J}(\b\theta) &amp;= \opE_{\b\tau \sim \pi_{\b\theta}} \frac{1}{|\b\tau|} \sum_{(s, a) \in \b\tau} [Q^{\b w}(s, a)\nabla_{\b\theta}\ln \pi_{\b\theta}(a \mid s)] \\
+&amp;= \opE_{\b\tau \sim \pi_{\b\theta}} \frac{1}{|\b\tau|} \sum_{(s, a) \in \b\tau} [(Q^{\b w}(s, a) - b(s)) \nabla_{\b\theta}\ln \pi_{\b\theta}(a \mid s)]
+\end{aligned}
+\]</span></p>
+<p>事实上，我们只需要令 Baseline 函数和行为 <span class="math inline">\(a\)</span> 无关，就可以保证上述关系成立。证明思路为考虑下面的式子，如下，首先展开数学期望：</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;\opE_{\b\tau \sim \pi_{\b\theta}} \frac{1}{|\b\tau|} \sum_{(s, a) \in \b\tau} [b(s) \nabla_{\b\theta}\ln \pi_{\b\theta}(a \mid s)] \\
+=&amp; \opE_{(s, a) \sim \pi_{\b\theta}} [b(s) \nabla_{\b\theta}\ln \pi_{\b\theta}(a \mid s)] \\
+=&amp; \int_{s \in \mathcal{S}} d^{\pi_{\b\theta}}(s) \int_{a \in \mathcal{A}} \pi_{\b\theta}(a \mid s) [b(s) \nabla_{\b\theta}\ln \pi_{\b\theta}(a \mid s)] {\rm d}a {\rm d}s \\
+\end{aligned}
+\]</span></p>
+<p>根据：</p>
+<p><span class="math display">\[
+\pi_{\b\theta}(a \mid s) \cdot \nabla_{\b\theta}\ln \pi_{\b\theta}(a \mid s) = \nabla_{\b\theta}\pi_{\b\theta}(a \mid s)
+\]</span></p>
+<p>得到下述：</p>
+<p><span class="math display">\[
+{\rm LHS} = \int_{s \in \mathcal{S}} d^{\pi_{\b\theta}}(s) \int_{a \in \mathcal{A}} b(s) \nabla_{\b\theta} \pi_{\b\theta}(a \mid s) {\rm d}a {\rm d}s \\
+\]</span></p>
+<p>考虑到 <span class="math inline">\(b(s)\)</span> 和 <span class="math inline">\(a\)</span> 的无关性，继续展开得到：</p>
+<p><span class="math display">\[
+\begin{aligned}
+{\rm LHS} &amp;= \int_{s \in \mathcal{S}} d^{\pi_{\b\theta}}(s)b(s) \nabla_{\b\theta}\left[\int_{a \in \mathcal{A}} \pi_{\b\theta}(a \mid s) {\rm d}a\right] {\rm d}s \\
+&amp;= \int_{s \in \mathcal{S}} d^{\pi_{\b\theta}}(s)b(s) (\nabla_{\b\theta} 1) {\rm d}s \\
+&amp;= 0
+\end{aligned}
+\]</span></p>
+<p>据此显然就能得到无偏性依然保持。</p>
+<h2 id="bellman-equation">Bellman equation</h2>
+<p>我们一般选取的 Baseline 函数就是该状态的评价函数 <span class="math inline">\(V^{\b w}(s)\)</span>，所以此时我们定义 Advantage 函数：</p>
+<p><span class="math display">\[
+A^{\b w}(s, a) := Q^{\b w}(s, a) - V^{\b w}(s)
+\]</span></p>
+<p>之前我们得到过下述结论：</p>
+<p><span class="math display">\[
+Q^{\b w}(s, a) = \int_{s&#39; \in \mathcal{S}} \P_{\mathcal{E}}(s&#39; \mid s, a)\left[r + V^{\b w}(s&#39;)\right] {\rm d}s&#39; = \opE_{s&#39; \sim \b w} \left[r + V^{\b w}(s&#39;)\right]
+\]</span></p>
+<p>那么我们不妨把 Advantage 函数写为：</p>
+<p><span class="math display">\[
+A^{\b w}(s, a) := r + V^{\b w}(s&#39;) - V^{\b w}(s)
+\]</span></p>
+<p>而 Critic 就需要学习 Advantage 函数，相应的 Actor 的梯度计算更新为：</p>
+<p><span class="math display">\[
+\nabla_{\b\theta}\mathcal{J}(\b\theta) = \opE_{(s, a) \sim \pi_{\b\theta}} [A^{\b w}(s, a)\nabla_{\b\theta}\ln \pi_{\b\theta}(a \mid s)]
+\]</span></p>
+<h2 id="代码示例-5">代码示例</h2>
+<p>这里采用这样的网络结构：</p>
+<p><img src="/uploads/note-of-rl/3.png" /></p>
+<p>Critic 网络的结构很简单，其接受一个状态，输出这个状态的价值，即 Advantage 函数的作用。而其 loss 的计算即为 TD Error 的平方。这样我们训练 Critic 的方法就很明确，只需要不断在状态转移过程中计算 TD Error 后平方并将其反向传播即可：</p>
+<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># $&#123;repo&#125;/Actor-Critic/ac.py - class Critic def __init__</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.variable_scope(<span class="string">&quot;critic_squared_td_error&quot;</span>):</span><br><span class="line">    self.td_error = self.reward + self.gamma * self.next_state_value - self.state_value</span><br><span class="line">    self.loss = tf.square(self.td_error)</span><br></pre></td></tr></table></figure>
+<p>Critic 引导 Actor 的方式为将 TD Error 传递给 Actor，与梯度求积后进行反向传播：</p>
+<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># $&#123;repo&#125;/Actor-Critic/ac.py - class Actor def __init__</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.variable_scope(<span class="string">&quot;action_value&quot;</span>):</span><br><span class="line">    log_prob = tf.log(self.action_prob[<span class="number">0</span>, self.action])</span><br><span class="line">    <span class="comment"># TD Error - scalar</span></span><br><span class="line">    self.action_value = tf.reduce_mean(log_prob * self.td_error) <span class="comment"># Advantage (TD_error) guided loss</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.variable_scope(<span class="string">&quot;actor_train&quot;</span>):</span><br><span class="line">    self.train_op = tf.train.AdamOptimizer(lr).minimize(-self.action_value)</span><br></pre></td></tr></table></figure>
+<h1 id="deep-deterministic-policy-gradients-ddpg">Deep Deterministic Policy Gradients (DDPG)</h1>
+<p>DDPG 的主要思想是将 DQN 的双网络思想借鉴到 Actor Critic 结构中。在 DDPG 中，Actor 具有两个相同结构的网络，Critic 也具有两个相同结构的网络。</p>
+<p>在具体介绍 DDPG 之前，我们首先简单介绍 Deterministic Policy Gradients，即 DPG。这里 Deterministic 的含义就是区别于一般的 Policy Gradients 最后输出的是行为空间 <span class="math inline">\(\mathcal{A}\)</span> 上的概率分布，DPG 会直接给出某个状态下应当采取何种行为。其决策函数我们标记为：</p>
+<p><span class="math display">\[
+a = \mu_{\b\theta}(s)
+\]</span></p>
+<p>我们用符号 <span class="math inline">\(\mu\)</span> 表示确定性策略，与随机策略 <span class="math inline">\(\pi\)</span> 区分。</p>
+<p>我们首先观察随机策略 <span class="math inline">\(\pi_{\b\theta}\)</span> 下的评价函数表达：</p>
+<p><span class="math display">\[
+\mathcal{J}_{\pi}(\b\theta) = \int_{s \in \mathcal{S}} d^{\pi_{\b\theta}}(s) \int_{a \in \mathcal{A}} \pi_{\b\theta}(a \mid s)Q^{\pi_{\b\theta}}(s, a) {\rm d}a {\rm d}s
+\]</span></p>
+<p>两者实际上都表达出了同样的含义，即策略的评价函数就是 Q 值的数学期望：</p>
+<p><span class="math display">\[
+\mathcal{J}_{\pi}(\b\theta) = \opE_{(s, a) \sim \pi_{\b\theta}} Q^{\pi_{\b\theta}}(s, a)
+\]</span></p>
+<p>那么在确定性策略下，策略的评价函数应当定义为：</p>
+<p><span class="math display">\[
+\mathcal{J}_{\mu}(\b\theta) := \opE_{s \sim \mu_{\b\theta}} Q^{\mu_{\b\theta}}(s, \mu_{\b\theta}(s)) = \int_{s \in \mathcal{S}} d^{\mu_{\b\theta}}(s)Q^{\mu_{\b\theta}}(s, \mu_{\b\theta}(s)) {\rm d}s
+\]</span></p>
+<p>这里梯度的推理则较为简单，直接使用复合函数的导数法则即可：</p>
+<p><span class="math display">\[
+\begin{aligned}
+\nabla_{\b\theta}\mathcal{J}_{\mu}(\b\theta) &amp;= \int_{s \in \mathcal{S}} d^{\mu_{\b\theta}}(s) \nabla_{\b\theta}Q^{\mu_{\b\theta}}(s, \mu_{\b\theta}(s)) {\rm d}s \\
+&amp;= \int_{s \in \mathcal{S}} d^{\mu_{\b\theta}}(s) \nabla_{a} \left.Q^{\mu_{\b\theta}}(s, a)\right|_{a = \mu_{\b\theta}(s)} \nabla_{\b\theta}\mu_{\b\theta}(s) {\rm d}s \\
+&amp;= \opE_{s \sim \mu_{\b\theta}} \left[\nabla_{a} \left.Q^{\mu_{\b\theta}}(s, a)\right|_{a = \mu_{\b\theta}(s)} \nabla_{\b\theta}\mu_{\b\theta}(s)\right]
+\end{aligned}
+\]</span></p>
+<p>基于此，我们在 DPG 的基础上引入 DQN 的双网络思路。我们记 Actor 网络中在线更新网络的参数为 <span class="math inline">\(\b\theta\)</span>，目标网络的参数为 <span class="math inline">\(\b\theta^-\)</span>。Critic 网络中在线更新网络的参数为 <span class="math inline">\(\b w\)</span>，目标网络的参数为 <span class="math inline">\(\b w^-\)</span>。初始化时应当令 <span class="math inline">\(\b\theta = \b\theta^-, \b w = \b w^-\)</span>。</p>
+<p>DDPG 的算法流程完全基于 DQN 算法，这里简单介绍如下：</p>
+<ul>
+<li>首先初始化一个容量为 <span class="math inline">\(N\)</span> 的记忆库 <span class="math inline">\(D\)</span> 用于存放先前的经验，这里 <span class="math inline">\(N\)</span> 是先前设定的超参</li>
+<li>随机初始化结构一致的 Critic 网络 <span class="math inline">\(Q, \hat Q\)</span>，其初始化参数分别为 <span class="math inline">\(\b\theta, \b\theta^-\)</span>，初始化的时候保证 <span class="math inline">\(\b\theta = \b\theta^-\)</span></li>
+<li>随机初始化结构一致的 Actor 网络 <span class="math inline">\(\mu, \hat\mu\)</span>，其初始化参数分别为 <span class="math inline">\(\b w, \b w^-\)</span>，初始化的时候保证 <span class="math inline">\(\b w = \b w^-\)</span></li>
+<li>对模型按照下述流程训练 <span class="math inline">\(M\)</span> 个 epoch，这里 <span class="math inline">\(M\)</span> 为先前设定的超参
+<ul>
+<li>初始化随机数发生器 <span class="math inline">\(\mathcal{N}\)</span></li>
+<li>假定初始状态 <span class="math inline">\(s_1\)</span>，初始化 <span class="math inline">\(s = s_1\)</span></li>
+<li>推演下述状态转移 <span class="math inline">\(T\)</span> 次，这里 <span class="math inline">\(T\)</span> 为先前设定的超参，下述过程的 <span class="math inline">\(t\)</span> 表示目前转移的次数
+<ul>
+<li>使用 Actor 网络选取行为 <span class="math inline">\(a_t := \mu_{\b\theta}(s_t) + \mathcal{N}(t)\)</span></li>
+<li>令 <span class="math inline">\(r_t\)</span> 表示在状态 <span class="math inline">\(s_t\)</span> 的条件下执行行为 <span class="math inline">\(a_t\)</span> 得到的直接收益</li>
+<li>令 <span class="math inline">\(s_{t + 1}\)</span> 表示在状态 <span class="math inline">\(s_t\)</span> 的条件下执行行为 <span class="math inline">\(a_t\)</span> 转移到的状态</li>
+<li>将描述状态转移的元组 <span class="math inline">\((s_t, a_t, r_t; s_{t + 1})\)</span> 存入 <span class="math inline">\(D\)</span></li>
+<li>从 <span class="math inline">\(D\)</span> 中抽取 <span class="math inline">\(B\)</span> 组数据，更新 <span class="math inline">\(\b\theta, \b w\)</span>，具体流程见下述，这里 <span class="math inline">\(B\)</span> 是先前设定的超参</li>
+<li>令 <span class="math inline">\(\b\theta^- \leftarrow \tau\b\theta + (1 - \tau)\b\theta^-\)</span>，这里 <span class="math inline">\(\tau\)</span> 是先前设定的超参</li>
+<li>令 <span class="math inline">\(\b w^- \leftarrow \tau\b w + (1 - \tau)\b w^-\)</span>，这里 <span class="math inline">\(\tau\)</span> 是先前设定的超参</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>具体需要说明的是如何更新 <span class="math inline">\(\b\theta, \b w\)</span>。首先观察 Critic 网络，其几乎完全就是 DQN 更新方式。下述为 DQN 的 loss 计算：</p>
+<p><span class="math display">\[
+\mathcal{L}_{\rm DQN}(\b\theta) := \opE_{(s, a, r; s&#39;) \sim U(D)} \left[r + \gamma\max_{a&#39; \in \Gamma(s&#39;)} \hat Q(s&#39;, a&#39;; \b\theta^-) - Q(s, a; \b\theta)\right]^2
+\]</span></p>
+<p>而 DDPG 中 Critic 的 loss 则为：</p>
+<p><span class="math display">\[
+\mathcal{L}_{\rm DDPG(Critic)}(\b w) := \opE_{(s, a, r; s&#39;) \sim U(D)} \left[r + \gamma\hat Q(s&#39;, \hat\mu_{\b\theta^-}(s&#39;); \b w^-) - Q(s, a; \b w)\right]^2
+\]</span></p>
+<p>显然，仅仅是将通过贪心获取 <span class="math inline">\(s&#39;\)</span> 状态下的下一行为修改为通过 Actor 网络来获取 <span class="math inline">\(s&#39;\)</span> 状态下的下一行为，这样的设计使得 Critic 更为现实化。</p>
+<p>Actor 网络的梯度则先前已经证明：</p>
+<p><span class="math display">\[
+\nabla_{\b\theta}\mathcal{J}_{\mu}(\b\theta) = \opE_{s \sim \mu_{\b\theta}} \left[\nabla_{a} \left.Q(s, a; \b w)\right|_{a = \mu_{\b\theta}(s)} \nabla_{\b\theta}\mu_{\b\theta}(s)\right]
+\]</span></p>
+<p>这里仅仅将严格的 Q 值函数替换为 Critic 网络给出的估计值。</p>
+<p>可以看出 DDPG 和 DQN 不同的地方仅在于：</p>
+<ul>
+<li>选取行为是通过 Actor 网络完成的，而非使用 epsilon greedy 策略，使用神经网络一定程度上也保证了行为的随机性</li>
+<li>选取行为的时候加入了全局随机数发生器增加探索未知状态的可能</li>
+<li>每一回合均更新目标网络的参数，但是使用 Soft update，即通过衰减系数 <span class="math inline">\(\tau\)</span> 进行更新，而非 DQN 中完全同步</li>
+<li>loss 的计算融入了 Policy Gradients 的思路</li>
+</ul>
+<p>这种能够打乱学习顺序的方式，很好地解决了传统 Actor Critic 中由于经常抽样到相同的转移路径导致反复学习无用知识的问题。</p>
+<h2 id="代码示例-6">代码示例</h2>
+<p>这里的网络结构为：</p>
+<p><img src="/uploads/note-of-rl/4.png" /></p>
+<p>此时的网络结构图并不一定清晰，所以我们基于代码完成分析。</p>
+<p>这里直接把构建网络的代码贴过来：</p>
+<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># $&#123;repo&#125;/DDPG/ddpg.py - class DDPG def __init__</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Placeholders</span></span><br><span class="line">self.state = tf.placeholder(tf.float32, [<span class="literal">None</span>, n_feature], <span class="string">&quot;state&quot;</span>)</span><br><span class="line">self.next_state = tf.placeholder(tf.float32, [<span class="literal">None</span>, n_feature], <span class="string">&quot;next_state&quot;</span>)</span><br><span class="line">self.reward = tf.placeholder(tf.float32, [<span class="literal">None</span>, <span class="number">1</span>], <span class="string">&quot;reward&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.variable_scope(<span class="string">&quot;actor&quot;</span>):</span><br><span class="line">    self.action = self._build_actor(self.state, scope = <span class="string">&quot;eval&quot;</span>, trainable = <span class="literal">True</span>)</span><br><span class="line">    next_action = self._build_actor(self.next_state, scope = <span class="string">&quot;target&quot;</span>, trainable = <span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.variable_scope(<span class="string">&quot;critic&quot;</span>):</span><br><span class="line">    <span class="comment"># Assign self.action = action in memory when calculating Q value for td_error,</span></span><br><span class="line">    <span class="comment"># Otherwise the self.action is from Actor when updating Actor</span></span><br><span class="line">    q_value = self._build_critic(self.state, self.action, scope = <span class="string">&quot;eval&quot;</span>, trainable = <span class="literal">True</span>)</span><br><span class="line">    next_q_value = self._build_critic(self.next_state, next_action, scope = <span class="string">&quot;target&quot;</span>, trainable = <span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Networks parameters</span></span><br><span class="line">self.actor_eval_params = tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES, scope = <span class="string">&quot;actor/eval&quot;</span>)</span><br><span class="line">self.actor_target_params = tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES, scope = <span class="string">&quot;actor/target&quot;</span>)</span><br><span class="line">self.critic_eval_params = tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES, scope = <span class="string">&quot;critic/eval&quot;</span>)</span><br><span class="line">self.critic_target_params = tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES, scope = <span class="string">&quot;critic/target&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Target net replacement</span></span><br><span class="line">self.soft_replace = [</span><br><span class="line">    tf.assign(t, (<span class="number">1</span> - self.tau) * t + self.tau * e)</span><br><span class="line">        <span class="keyword">for</span> t, e <span class="keyword">in</span> <span class="built_in">zip</span>(</span><br><span class="line">            self.actor_target_params + self.critic_target_params,</span><br><span class="line">            self.actor_eval_params + self.critic_eval_params</span><br><span class="line">        )</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">q_target = self.reward + self.gamma * next_q_value</span><br><span class="line">td_error = tf.losses.mean_squared_error(labels = q_target, predictions = q_value)</span><br><span class="line">self.critic_train = tf.train.AdamOptimizer(critic_lr).minimize(td_error, var_list = self.critic_eval_params)</span><br><span class="line"></span><br><span class="line">actor_loss = -tf.reduce_mean(q_value)</span><br><span class="line">self.actor_train = tf.train.AdamOptimizer(actor_lr).minimize(actor_loss, var_list = self.actor_eval_params)</span><br></pre></td></tr></table></figure>
+<p>这里 <code>self._build_actor</code> 以及 <code>self._build_critic</code> 是构建 Actor 和 Critic 网络具体结构的函数，这里省略。</p>
+<p>可以看到，首先需要构建 Tensorflow Placeholder，之后构建 Actor 的 Eval 和 Target 网络，Critic 的 Eval 和 Target 网络。其中 Actor 网络接受的输入是当前状态，给出的输出是行为选择。而 Critic 网络接受的输入是当前状态和 Actor 网络给出的行为选择，给出的输出是行为的评估值。</p>
+<p>之后需要编写软替换算子，直接遍历所有网络参数，对其施以软替换即可。</p>
+<p>最后是 loss 的计算。Critic 网络的 loss 较为简单，公式为：</p>
+<p><span class="math display">\[
+\mathcal{L}_{\rm DDPG(Critic)}(\b w) := \opE_{(s, a, r; s&#39;) \sim U(D)} \left[r + \gamma\hat Q(s&#39;, \hat\mu_{\b\theta^-}(s&#39;); \b w^-) - Q(s, a; \b w)\right]^2
+\]</span></p>
+<p>而代码中也只是简单将这个公式转换为代码。</p>
+<p>之后是 Actor，我们注意到评价函数就是 Q 值的期望，所以只需要把 <code>q_value</code> 求取平均送入优化器求取其梯度即可。</p>
+<p>后面的具体运行学习过程的代码和 DQN 类似，从记忆库中抽样，之后将其送入网络运算即可。</p>
+<p>实际上 DDPG 就是 AC 和 DQN 代码的结合，基本上的原理并没有很大的差别。</p>
+<p>使用上述代码获得的 Reward 曲线为：</p>
+<p><img src="/uploads/note-of-rl/5.png" /></p>
+<h1 id="asynchronous-advantage-actor-critic-a3c">Asynchronous Advantage Actor Critic (A3C)</h1>
+<p>A3C 相较于 A2C 多出的特征是 Asynchronous，即异步。其核心思想是让多个网络尝试不同的行为，获得各类反馈传播到主网络。这样主网络由于接收到多个副网络的更新请求，就不会发生连续更新导致连续学习无用知识的问题，这样就可以抛弃 DQN 的记忆库策略解决这个问题。此外，主网络对副网络的指导也能够加速收敛的速度。</p>
+<p>这里并不想过多解释 A3C 代码，因为其核心思路并没有发生变化，这里直接给出训练结果：</p>
+<p><img src="/uploads/note-of-rl/6.png" /></p>
+<h1 id="trust-region-policy-optimization-trpo">Trust Region Policy Optimization (TRPO)</h1>
+<p>TRPO 是引入最后的 DPPO 算法之前，我们需要事先了解的一个简单的算法。</p>
+<h2 id="kl-散度">KL 散度</h2>
+<p>KL 散度是一种度量两个随机分布之间距离的一种方式，对于空间 <span class="math inline">\(X\)</span> 上的概率分布 <span class="math inline">\(P, Q\)</span>，其 KL 散度定义为：</p>
+<p><span class="math display">\[
+D_{\rm KL}(P \parallel Q) := \opE_{x \sim P}\left[\ln \frac{P(x)}{Q(x)}\right] = \int_{x \in X} P(x)\ln \frac{P(x)}{Q(x)} {\rm d}x
+\]</span></p>
+<p>KL 度量的意义在于，如果我们将 <span class="math inline">\(P\)</span> 认为是标准分布，即需要学习的概率分布。而 <span class="math inline">\(Q\)</span> 是机器给出的预测分布，那么 KL 散度实际上给出了当前机器给出的预测和真实分布的距离，机器应当尽可能缩小 KL 散度来逼近真实分布。</p>
+<p>可以证明 <span class="math inline">\(D_{\rm KL}(P \parallel Q) = 0\)</span> 当且仅当 <span class="math inline">\(P \equiv Q\)</span>。</p>
+<p>这是显然的：</p>
+<p><span class="math display">\[
+\begin{aligned}
+D_{\rm KL}(P \parallel Q) &amp;= \int_{x \in X} P(x)\ln \frac{P(x)}{Q(x)} {\rm d}x = -\int_{x \in X} P(x) \ln \frac{Q(x)}{P(x)} {\rm d}x \\
+&amp;\geq -\int_{x \in X} P(x) \left(\frac{Q(x)}{P(x)} - 1\right) {\rm d}x = -\int_{x \in X} (Q(x) - P(x)) {\rm d}x \\
+&amp;= 0
+\end{aligned}
+\]</span></p>
+<p>显然等号仅仅在 <span class="math inline">\(P \equiv Q\)</span> 的时候得到。</p>
+<p>另外，我们需要说明 KL 散度并不是对称的，也就是说 KL 散度虽然直观上可以理解为一种度量，但是实际上并不满足数学上度量的定义：</p>
+<p><span class="math display">\[
+D_{\rm KL}(P \parallel Q) \neq D_{\rm KL}(Q \parallel P)
+\]</span></p>
+<p>在先前提到的机器学习场合下，往往把 <span class="math inline">\(D_{\rm KL}(P \parallel Q)\)</span> 称为前向 KL 散度，而 <span class="math inline">\(D_{\rm KL}(Q \parallel P)\)</span> 则是后向 KL 散度。</p>
+<hr />
+<p>此外，我们需要说明的是，如果分布 <span class="math inline">\(Q\)</span> 是参数 <span class="math inline">\(\b\theta\)</span> 建模的，那么最小化前向 KL 散度得到的参数 <span class="math inline">\(\b\theta = \argmin_{\b\theta} D_{\rm KL}(P \parallel Q_{\b\theta})\)</span> 等价于极大似然估计。</p>
+<p>在此之前，我们需要对机器学习领域中的极大似然估计作出说明。对于参数 <span class="math inline">\(\b\theta\)</span> 建模的，空间 <span class="math inline">\(X\)</span> 上的随机分布 <span class="math inline">\(A\)</span>，我们观测到了样本 <span class="math inline">\(x\)</span>，那么似然函数定义为：</p>
+<p><span class="math display">\[
+\mathcal{L}(\b\theta) := A_{\b\theta}(x)
+\]</span></p>
+<p>即似然函数描述了在不同的分布参数之下，我们观测到该样本的概率。那么极大似然估计的思想就是最大化似然函数，作为该样本观测下的参数估计值。</p>
+<p>而如果我们观测到了样本列 <span class="math inline">\(\{x_n\} \in X^n\)</span>，那么似然定义为：</p>
+<p><span class="math display">\[
+\mathcal{L}(\b\theta) := \prod_{k = 1}^n A_{\b\theta}(x_k)
+\]</span></p>
+<p>机器学习中为了防止连乘下溢，会使用对数似然：</p>
+<p><span class="math display">\[
+\mathcal{L}&#39;(\b\theta) := \sum_{k = 1}^n \ln A_{\b\theta}(x_k)
+\]</span></p>
+<p>在这种条件下最大似然估计就是：</p>
+<p><span class="math display">\[
+\b\theta := \argmax_{\b\theta} \sum_{k = 1}^n \ln A_{\b\theta}(x_k) = \argmax_{\b\theta} \frac{1}{n}\sum_{k = 1}^n \ln A_{\b\theta}(x_k) = \argmax_{\b\theta} \opE_{x \sim \mathcal{D}_A}[\ln A_{\b\theta}(x)]
+\]</span></p>
+<p>这里 <span class="math inline">\(\mathcal{D}_A\)</span> 是在分布 <span class="math inline">\(A\)</span> 下采样得到的采样分布。</p>
+<p>那么回到原先的问题，我们对 KL 散度作变形：</p>
+<p><span class="math display">\[
+\begin{aligned}
+\b\theta &amp;= \argmin_{\b\theta} D_{\rm KL}(P \parallel Q_{\b\theta}) = \argmin_{\b\theta} \opE_{x \sim P}\left[\ln \frac{P(x)}{Q_{\b\theta}(x)}\right] \\
+&amp;= \argmin_{\b\theta} \left(\opE_{x \sim P}\left[\ln P(x)\right] - \opE_{x \sim P}\left[\ln Q_{\b\theta}(x)\right]\right) \\
+&amp;= \argmin_{\b\theta} \left(-\opE_{x \sim P}\left[\ln Q_{\b\theta}(x)\right]\right) = \argmax_{\b\theta} \opE_{x \sim P}\left[\ln Q_{\b\theta}(x)\right] \\
+&amp;\approx \argmax_{\b\theta} \opE_{x \sim \mathcal{D}_P}\left[\ln Q_{\b\theta}(x)\right]
+\end{aligned}
+\]</span></p>
+<p>这里基于 <span class="math inline">\(\mathcal{D}_P \approx P\)</span>，即采样分布近似表示原先分布得到了最后的结果。所以我们证明了最小化 KL 散度得到的参数等价于根据真实分布 <span class="math inline">\(P\)</span> 的样本对分布 <span class="math inline">\(Q\)</span> 作极大似然估计。</p>
+<h2 id="off-policy-policy-gradients">Off-policy Policy gradients</h2>
+]]></content>
+      <categories>
+        <category>【学习笔记】计算机</category>
+      </categories>
+  </entry>
+  <entry>
     <title>原创数学题集</title>
     <url>/2022/07/12/orginal-problems/</url>
     <content><![CDATA[<p>一些奇妙的数学想法而已，可能是初中、高中、大学题，反正是弄着玩的。</p>
@@ -17189,613 +17429,46 @@ Q(s, a, z) := \sum_{s&#39; \in \mathcal{S}} \mathbb{T}[s&#39; \mid s, a, z](r(s,
 \]</span></p>
 <p>所以现在解决 input process 未知条件下的最优策略求解问题就是最重要的。</p>
 <h3 id="meta-rl-with-domain-knowledge">Meta RL with Domain Knowledge</h3>
+<p>总之就是又阐述了一边 AABR 分为离线和在线两个训练过程，离线训练一个元算法之后在线训练一个个性化 ABR 算法。那么两个问题就是：</p>
+<div class="note info no-icon"><ol type="i">
+<li><p>How to obtain a good parameter initialization for fast-learning?</p></li>
+<li><p>How to efficiently learn tailor-made ABR algorithms online?</p></li>
+</ol>
+</div>
+<h3 id="model-agnostic-meta-learning">Model Agnostic Meta-Learning</h3>
+<p>总之就是选定了 MAML 作为 AABR 的核心算法，MAML 的论文后面慢慢推着看。</p>
+<p>不过这一部分也阐释了为何 MAML 适合用于这个场景，原文是：</p>
+<div class="note info no-icon"><p>We find that model agnostic meta learning (MAML) is quite suitable in personalized ABR scenarios where the network traces on each user are quite limited.</p>
+<p>Specifically, MAML consists of an inner loop and an outer loop.</p>
+</div>
+<p>也就是说从数据集的角度和训练流程的角度上说，MAML 和这个实验场景的契合度比较高。</p>
+<h3 id="leveraging-domain-knowledge">Leveraging Domain Knowledge</h3>
+<p>总体的含义是设计了一个模拟器用于生成数据以及相关的启发式算法，一方面补充了现实世界中数据量不足的问题，另外一方面其代表的启发式算法可以在 policy 无法处理某些状态的时候作为 backup 使用。</p>
+<p><strong>注：</strong>这一部分可能需要结合下面的 overview 仔细学一下，然后对这里做一些扩充，因为这里模拟器的细节应该是做数据扩充的重要部分。</p>
+<h2 id="aabr-overview">AABR Overview</h2>
+<p>系统的大致结构为：</p>
+<p><img src="/uploads/paper-2022-12/3.png" /></p>
+<h3 id="basic-training-algorithm">Basic Training Algorithm</h3>
+<p>在设计网络的输入的时候首先需要考虑的是什么才是真正需要考虑的状态，这篇文章采用的方式是首先将所有可以使用的状态都作为输入以训练一个 teacher network，之后采用类似模仿学习的方式，采用类似决策树等较为轻量级的模型去模仿神经网络的策略，之后再使用决策树剪枝的方式去获取真正有意义的非平凡状态。</p>
+<div class="note success no-icon"><p>这个方法似乎是比较好玩的一个方法，用于筛选真正有用的输入状态。</p>
+</div>
+<p>这里剪枝的目的也是为了压缩最后的成本。</p>
+<p>最后筛选出来的状态包括：</p>
+<ul>
+<li>上一次选定的视频块质量 <span class="math inline">\(q_t\)</span></li>
+<li>目前的缓冲区占用率 <span class="math inline">\(b_t\)</span></li>
+<li>前 <span class="math inline">\(k\)</span> 个视频块传输时网络吞吐率 <span class="math inline">\(C_t\)</span></li>
+<li>前 <span class="math inline">\(k\)</span> 个视频块的下载时间 <span class="math inline">\(D_t\)</span></li>
+<li>前 <span class="math inline">\(k\)</span> 个视频块的应答时间 <span class="math inline">\(P_t\)</span></li>
+</ul>
+<p>这里为了控制成本，实验中选取 <span class="math inline">\(k = 5\)</span>。</p>
+<p>另外，为了保证模型的泛化性，这里需要将参数正则化，这样至少能保证模型面对完全没有经历过的网络环境不至于将其认为非法输入。</p>
+<p>模型的输出和正常的 AC 网络没有很大的差别，都是 Actor 网络输出一个 softmax 后的概率张量表示各个行为的决策概率，而 Critic 网络输出一个标量表示对当前状态的价值评估。</p>
+<h4 id="maximum-entropy-ppo-me-ppo">Maximum Entropy PPO (ME-PPO)</h4>
+<p>这里的训练策略是 ME-PPO，其与 PPO 的差别在于最优行为的定义里纳入了熵。</p>
 ]]></content>
       <categories>
         <category>【论文笔记】计算机</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>强化学习入门学习笔记</title>
-    <url>/2022/06/30/note-of-rl/</url>
-    <content><![CDATA[<p>目前实验室的项目和强化学习关系比较大，然而自己确实没有什么强化学习的基础。</p>
-<p>实验室的学长似乎有一个不错的强化学习入门学习仓库，感觉可以照着这个慢慢学来。</p>
-<p><span class="math display">\[
-\newcommand{\b}{\boldsymbol}
-\newcommand{\argmax}{\mathop{\rm argmax}}
-\newcommand{\argmin}{\mathop{\rm argmin}}
-\newcommand{\P}{\mathbb{P}}
-\newcommand{\E}{\mathbb{E}}
-\newcommand{\opE}{\mathop{\mathbb{E}}}
-\newcommand{\relmiddle}[1]{\mathrel{}\middle#1\mathrel{}}
-\]</span></p>
-<span id="more"></span>
-<p>本笔记也有参考代码 Repo，虽然大部分是从别人那边搬过来的，但是我自己还是稍微做了一些调整，增加了一些可读性然后修复了一些 deprecated 的问题。</p>
-<p>代码 Repo 的地址：<a href="https://github.com/Ashitemaru/RL-tutorial">Reinforce learning code repository</a>。</p>
-<h1 id="强化学习的基本概念">强化学习的基本概念</h1>
-<p>强化学习和常见的监督学习有一定的类似，但是也有区别。监督学习我们给出的监督往往是数据集上的标签，但是强化学习我们能给出的提示是给机器的行为作出评分。即，在强化学习中，我们会有一个不断给机器的行为评分的监督者，我们希望机器能够通过这个评分监督者学习到如何作出高分行为。</p>
-<p>监督学习的标签往往需要事先由人类标注出来，也就是说监督学习学习的是人类标签的模式，但是强化学习不一定需要事先标注，他需要学习我们给出的评分策略的模式。</p>
-<h2 id="强化学习方法的分类">强化学习方法的分类</h2>
-<p>根据强化学习方法是否需要理解环境，可以将强化学习算法分为 model-based 和 model-free 两类。</p>
-<p>model-free 方法不需要机器去理解环境，他每一步决策都需要等待真实环境的反馈才能进行下一步。而 model-based 方法可以通过 model 来模拟现实环境，这样机器可以通过这个模拟现实环境的 model 来预测自己的行为对环境的影响，甚至分析行为不同分支的影响，从而做到对现实环境的理解。</p>
-<p>model-free 方法包括 Q Learning、Sarsa、Policy gradients。</p>
-<hr />
-<p>根据强化学习方法最后选择行为的依据，可以将强化学习算法分为基于概率（policy-based）和基于价值（value-based）两类。</p>
-<p>基于概率的强化学习算法是最自然的，其会根据其感官接收到的信息，给出其下一步各个行为的概率，然后根据这个概率随机选择下一步的行为。这些算法包括 Policy gradients。</p>
-<p>基于价值的强化学习算法则会测算各个行动的价值，并且选择价值最高的作为自己下一步的行为。这类算法包括 Sarsa、Q Learning。</p>
-<p>基于概率的方法的一个优势在于能够根据概率分布作出连续动作的选择，而基于价值的方法不得不在选择一步动作后才能作出下一步动作的价值评估。</p>
-<p>当然现在也有将两者结合起来的算法，即 Actor-Critic 方法，这个方法内 Actor 会基于概率给出动作，而 Critic 会给出价值评估，这样的话能够在 Policy gradients 的基础上加快训练速度。</p>
-<hr />
-<p>根据其更新参数的策略，可以将强化学习算法分为回合制更新（Monte-Carlo update）和单步更新（temporal difference update）。</p>
-<p>Monte-Carlo learning 和基础版本的 Policy gradients 方法都是回合制更新的，然而 Q Learning、Sarsa 和升级版本的 Policy gradients 都会基于更为现实和有效的单步更新。</p>
-<hr />
-<p>另外还有在线算法（on policy）和离线算法（off policy）的区别。离线算法的优势就是我可以在脱离交互环境的条件下，学习先前的交互记录。而在线算法必须要在交互环境内更新参数。</p>
-<p>最典型的在线算法是 Sarsa 和强化过后的 Sarsa lambda。而典型的离线算法为 Q Learning 和强化过的 Deep Q network。</p>
-<h1 id="q-learning">Q Learning</h1>
-<p>首先引入 Q 表这个概念，Q 表可以看作一个函数 <span class="math inline">\(Q(s, a)\)</span>，这个函数值的含义为在状态 <span class="math inline">\(s\)</span> 的条件下，作出行为 <span class="math inline">\(a\)</span> 的潜在收益。而 Q Learning 的决策过程就是选择当前状态的所有可选行为中潜在收益最高的行为。</p>
-<p>Q 表的更新是在进行决策之后开始的，如果我们原先在状态 <span class="math inline">\(s\)</span>，并且我们通过行为 <span class="math inline">\(a\)</span> 到达新状态 <span class="math inline">\(s&#39;\)</span>，这个时候我们需要重新估算 <span class="math inline">\(Q(s, a)\)</span> 的值。这个估计值新增的部分应当包含两个部分，即我们采取这个行为立刻能得到的奖励和我们在 <span class="math inline">\(s&#39;\)</span> 状态处能够达到的最大可能收益。</p>
-<p>我们的更新策略如下：</p>
-<p><span class="math display">\[
-Q&#39;(s, a) := Q(s, a) + \alpha\left[r + \gamma\max_{a&#39; \in \Gamma(s&#39;)} Q(s&#39;, a&#39;) - Q(s, a)\right]
-\]</span></p>
-<p>这里 <span class="math inline">\(\Gamma(s&#39;)\)</span> 表示在状态 <span class="math inline">\(s&#39;\)</span> 处能够选择的所有行为构成的集合，<span class="math inline">\(\alpha\)</span> 表示<strong>学习率</strong>。</p>
-<p>这样我们就能看到调整估计值的逻辑。我们首先获取在新状态 <span class="math inline">\(s&#39;\)</span> 处所有行为可能得到的最大收益 <span class="math inline">\(\max_{a&#39; \in \Gamma(s&#39;)} Q(s&#39;, a&#39;)\)</span>，乘以一个衰减 <span class="math inline">\(\gamma\)</span>，之后加上采取行为 <span class="math inline">\(a\)</span> 后立刻能得到的收益 <span class="math inline">\(r\)</span> 计算出行为 <span class="math inline">\(a\)</span> 的潜在收益。之后我们将这个估计值和原先的值作差得到差距，乘以学习率 <span class="math inline">\(\alpha\)</span> 之后就得到了我们需要更新到 <span class="math inline">\(Q(s, a)\)</span> 上的增量。</p>
-<p>实际使用的 Q Learning 为了防止完全贪心算法导致算法无法充分探索环境，故在作出决策的时候其实也不一定完全按照最高价值选择，而是可能通过 epsilon greedy 的策略。即提前设定一个 <span class="math inline">\(\varepsilon \in (0, 1)\)</span>，以 <span class="math inline">\(\varepsilon\)</span> 概率按照 Q 表最优价值选择行为，以 <span class="math inline">\(1 - \varepsilon\)</span> 概率随机选择行为。这里 <span class="math inline">\(\varepsilon\)</span> 也被称为<strong>贪婪度</strong>。</p>
-<p>在学习过程的初期，我们希望机器能够随机探索环境，所以此时 <span class="math inline">\(\varepsilon\)</span> 参数会设定较小。而后期我们在已经具有较为可靠的 Q 表并且希望得到最优解的时候，就可以适当调整到较高的 <span class="math inline">\(\varepsilon\)</span>。</p>
-<hr />
-<p>如果我们分析参数 <span class="math inline">\(\gamma\)</span> 在这个学习过程中的作用，我们注意到第一步的奖励会以 <span class="math inline">\(\gamma\)</span> 衰减，而第二步的奖励会以 <span class="math inline">\(\gamma^2\)</span> 衰减，以此类推，越远的奖励衰减的次数越高。</p>
-<p>这就说明，如果令 <span class="math inline">\(\gamma = 0\)</span>，就意味着除了最近的直接奖励，其余奖励均会清空，此时机器只会关注最近的直接奖励。而如果令 <span class="math inline">\(\gamma = 1\)</span>，则意味着机器会平等地对待所有可能的奖励。而一般条件下 <span class="math inline">\(0 &lt; \gamma &lt; 1\)</span>，此时机器会按照指数衰减的方式对待从近到远的奖励。所以 <span class="math inline">\(\gamma\)</span> 也被称为<strong>奖励衰减指数</strong>。</p>
-<h2 id="代码示例">代码示例</h2>
-<p>这里在 <code>$&#123;repo&#125;/Q-learning</code> 下写了一个简单的通过 Q Learning 学习走迷宫的小程序，这里稍微介绍一下。</p>
-<p>其实主要关注主函数之中的主循环就可以知道 Q Learning 是如何进行的了：</p>
-<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># $&#123;repo&#125;/Q-learning/main.py</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">update</span>():</span></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">100</span>):</span><br><span class="line">        <span class="comment"># Initial state</span></span><br><span class="line">        state = env.reset()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            <span class="comment"># Refresh the canvas</span></span><br><span class="line">            env.render()</span><br><span class="line"></span><br><span class="line">            <span class="comment"># RL choose action based on state</span></span><br><span class="line">            action = RL.choose_action(<span class="built_in">str</span>(state))</span><br><span class="line"></span><br><span class="line">            <span class="comment"># RL take action and get next state and reward</span></span><br><span class="line">            next_state, reward, done = env.step(action)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># RL learn from this transition</span></span><br><span class="line">            RL.learn(<span class="built_in">str</span>(state), action, reward, <span class="built_in">str</span>(next_state))</span><br><span class="line"></span><br><span class="line">            <span class="comment"># Swap state, move ahead</span></span><br><span class="line">            state = next_state</span><br><span class="line"></span><br><span class="line">            <span class="comment"># Break while loop when end of this episode</span></span><br><span class="line">            <span class="keyword">if</span> done:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># End of game</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Game over&quot;</span>)</span><br><span class="line">    env.destroy()</span><br></pre></td></tr></table></figure>
-<p>这里的 <code>RL</code> 相当于我们学习认识环境的机器，其具备的接口包括选择下一步行动（即 <code>RL.choose_action</code>）和根据环境的反馈做出学习（即 <code>RL.learn</code>）。而 <code>env</code> 则模拟了机器需要去认识的环境，其实质上是一个方形地图，地图上有两个地狱和一个代表最终结果的天堂，机器应该尝试着去学习一个绕过地狱到达天堂的路径。</p>
-<p>其实主逻辑十分简单。我们需要训练 100 个 epoch，对于每个 epoch 我们首先初始化环境和机器所在的位置，然后在主循环中重复进行下述动作：</p>
-<ul>
-<li>令机器选择一个行为</li>
-<li>将这个行为传递给环境，令环境给出反馈（包括奖励函数、是否终止、机器即将转到的状态）</li>
-<li>机器通过环境的反馈进行学习</li>
-<li>令机器采取该行为</li>
-</ul>
-<p>这里机器选择一个行为即我们提到的 epsilon greedy 策略，而其学习方式就是 Q 表的更新策略也已经叙述过。环境给出反馈则是简单判定机器是否走到了地狱或者天堂，并给出相应的结果。</p>
-<p>只需要这样简单的代码，我们就可以看见一个红色方块仅依靠着环境的反馈学习到了如何登上天堂。</p>
-<h1 id="sarsa">Sarsa</h1>
-<p>Sarsa 和 Q Learning 的策略选择方面是一致的，也就是使用 epsilon greedy 策略选择自己下一步实际的路径，但是 Sarsa 在更新 Q 表的策略上和 Q Learning 是不同的。</p>
-<p>我们观察 Q Learning 的更新策略：</p>
-<p><span class="math display">\[
-Q&#39;_{\rm QL}(s, a) := Q(s, a) + \alpha\left[r + \gamma{\color{red} \max_{a&#39; \in \Gamma(s&#39;)} Q(s&#39;, a&#39;)} - Q(s, a)\right]
-\]</span></p>
-<p>而 Sarsa 的更新策略为：</p>
-<p><span class="math display">\[
-Q&#39;_{\rm Sarsa}(s, a) := Q(s, a) + \alpha\left[r + \gamma{\color{red} Q(s&#39;, {\rm EG}(s&#39;))} - Q(s, a)\right]
-\]</span></p>
-<p>这里 <span class="math inline">\(a = {\rm EG}(s)\)</span> 表示的是在状态 <span class="math inline">\(s\)</span> 处使用 epsilon greedy 策略选择行为 <span class="math inline">\(a\)</span>。</p>
-<p>除去这里更新策略的不同之外，Sarsa 在到达新状态 <span class="math inline">\(s&#39;\)</span> 后决定此时需要采取的行动的时候，就会采取之前更新策略中的 <span class="math inline">\({\rm EG}(s&#39;)\)</span> 直接作为下一步。</p>
-<hr />
-<p>Sarsa 的策略意味着，其在评估新状态 <span class="math inline">\(s&#39;\)</span> 的潜在收益的时候，并不会像 Q Learning 一样贪心选择最大的可能收益，而是更为现实地选择下一步行为，并且一定会采取这一步行为。</p>
-<p>而 Q Learning 这里使用最大值贪心的更新策略也意味着其会完全沿着局部最优的路径前行，而无视可能造成的负面效果。Sarsa 则相对而言较为实际且保守。</p>
-<p>另外，Q Learning 由于可以脱离环境，所以是 off policy 的。而 Sarsa 需要边转移状态边更新 Q 表，所以是 on policy 的。</p>
-<h2 id="代码示例-1">代码示例</h2>
-<p>这里不具体展示代码了，代码位于 <code>$&#123;repo&#125;/Sarsa</code> 目录之下。</p>
-<p>需要注意和 Q Learning 算法不同的地方在于，在主循环里面我们除了需要保存一个 <code>state</code> 变量，我们还需要一个 <code>action</code> 变量保存即将需要采取的动作。</p>
-<p>如果比对两种算法的效率，其实可以发现 Sarsa 算法的收敛速度明显慢于 Q Learning 算法。</p>
-<h1 id="sarsa-lambda">Sarsa lambda</h1>
-<p>Sarsa lambda 相对于 Sarsa 的优化点在于，机器最初探索环境的时候所采取的那些行为很有可能和最终结果无关，但是在经典的 Sarsa 算法中，每一步都会以同等的权重更新 Q 表，这很有可能导致后续真正导致较高奖励函数的行为没有匹配到较高权重。</p>
-<p>所以我们可以采取近似于回合制更新的方式取代经典的 Sarsa 单步更新策略。我们令到达最终结果的最后一步以原始权重更新 Q 表，倒数第二步需要乘以常数 <span class="math inline">\(\lambda\)</span> 再更新到 Q 表，以此类推，倒数第 <span class="math inline">\(n\)</span> 步需要以权重 <span class="math inline">\(\lambda^{n - 1}\)</span> 更新到 Q 表。</p>
-<p>我们可以注意到 <span class="math inline">\(\lambda = 0\)</span> 的时候，只有最后一步被更新到 Q 表，这就是最经典的回合更新。而 <span class="math inline">\(\lambda = 1\)</span> 的时候就是经典的 Sarsa 单步更新。</p>
-<p>这里的 <span class="math inline">\(\lambda\)</span> 就被称为<strong>路径衰减指数</strong>。</p>
-<h2 id="代码示例-2">代码示例</h2>
-<p>这里只需要在 Sarsa 的基础上加上一个 E 表来累计每一步的 Q 表更新值即可，每走一步就需要将 E 表以 <span class="math inline">\(\lambda\)</span> 权重衰减一次。</p>
-<p>主要观察 E 表在模型学习过程中的作用：</p>
-<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># $&#123;repo&#125;/Sarsa/model.py - class SarsaLambdaTable</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">learn</span>(<span class="params">self, state, action, reward, next_state, next_action</span>):</span></span><br><span class="line">    self.check_state_exist(next_state)</span><br><span class="line"></span><br><span class="line">    q_predict = self.q_table.loc[state, action]</span><br><span class="line">    <span class="keyword">if</span> next_state != <span class="string">&quot;terminal&quot;</span>:</span><br><span class="line">        q_target = reward + self.gamma * self.q_table.loc[next_state, next_action]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        q_target = reward</span><br><span class="line">        </span><br><span class="line">    error = q_target - q_predict</span><br><span class="line"></span><br><span class="line">    self.e_table.loc[state, :] *= <span class="number">0</span></span><br><span class="line">    self.e_table.loc[state, action] = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    self.q_table += self.lr * error * self.e_table</span><br><span class="line">    self.e_table *= self.gamma * self.lambda_ <span class="comment"># Decay</span></span><br></pre></td></tr></table></figure>
-<p>前半部分和经典 Sarsa 是完全一致的，但是注意后续的两个更新。在说明具体更新之前，我们可以说明 E 表的含义，E 表实际上就是将具体值更新到 Q 表时的权重表。</p>
-<p>首先是将当前状态对应的 E 表行清零并将当前动作对应的列设为 <code>1</code>，即更新 E 表。之后以当前权重将误差更新到 Q 表，最后对权重作出衰减。</p>
-<div class="note info"><p>我觉得他这个代码框架存在一个问题，就是当机器走到角落的时候，实际上它的决策空间会变小，但是代码里面没有体现这一点，只是简单的让机器不动。比如机器在左上角选择向左走，那么只是简单地让机器停在左上角。</p>
-<p>这是一个并不好的处理，因为如果此时机器还没有碰巧到达天堂产生正向激励的话，机器完全会缩在角落里来避免地狱的反向激励。</p>
-<p>有时间给他代码改改吧。</p>
-</div>
-<h1 id="deep-q-network-dqn">Deep Q Network (DQN)</h1>
-<p>在我们面对更大的解空间的时候，存储过大的 Q 表会导致内存不够使用，所以此时我们需要令 <span class="math inline">\(Q(s, a)\)</span> 使用其他的方法计算，比如说我们可以引入深度神经网络来计算 <span class="math inline">\(Q(s, a)\)</span>。</p>
-<p>这里我们可以引入这样的一个深度神经网络，该网络接受的输入是当前机器的状态 <span class="math inline">\(s\)</span>，该网络给出的输出则是各种可行的行为以及其评估值，我们只需要按照最基本的 Q Learning 原则根据神经网络的输出给出。</p>
-<p>在这个给定的决策过程下，我们需要给出神经网络的训练策略。实际上我们只需要给出网络 loss 的计算方式就可以。我们思考 Q Learning 之中的训练策略，我们可以得知，在经典的 Q Learning 算法中我们会求出估计的 Q 值，将其与现实的 Q 值做差之后乘以学习率叠加到原先的 Q 表上。</p>
-<p>而如果将这样的策略和神经网络联系起来，我们会发现估计的 Q 值和现实的 Q 值之间的差距实际上就表现出了 loss，我们只需要将这个 loss 对网络各个参数的梯度乘以学习率叠加到网络上就可以。</p>
-<p>基于这样的认识，我们给出下述 loss 计算，使用平方误差的基本思想：</p>
-<p><span class="math display">\[
-\mathcal{L} := \left[r + \gamma\max_{a&#39; \in \Gamma(s&#39;)} Q(s&#39;, a&#39;) - Q(s, a)\right]^2
-\]</span></p>
-<p>这里在状态 <span class="math inline">\(s\)</span> 下选择动作 <span class="math inline">\(a\)</span> 会转移到状态 <span class="math inline">\(s&#39;\)</span>。</p>
-<hr />
-<p>另外，我们可以使用两种方法强化 DQN，这两种方法包括 Experience replay 和 Fixed Q targets。</p>
-<p>前者实际上基于 Q Learning 的 off policy 特性，我们可以使用以往的训练数据乃至其他机器的经验数据来训练网络。</p>
-<p>后者的含义是使用两个同样结构但是参数不同的网络，一个使用较早的参数来给出估计的 Q 值，而且这个网络的参数几乎不会在训练过程中更新，这个网络代表了过去的经验。一个使用较新的参数来给出现实的 Q 值，这个网络会在训练过程中更新参数并且会被应用到实际场景之中。这样做的原因是取消数据的相关性和提高训练的稳定性，具体的原因后续研讨。</p>
-<p>在引入了这两个强化方法之后，loss 的具体计算方式会有所不同，具体的讨论见下方。</p>
-<h2 id="代码示例-3">代码示例</h2>
-<p>这里我们使用 Tensorflow 实现 DQN，这里我们使用的 DQN 具体算法描述为：</p>
-<ul>
-<li>首先初始化一个容量为 <span class="math inline">\(N\)</span> 的记忆库 <span class="math inline">\(D\)</span> 用于存放先前的经验，这里 <span class="math inline">\(N\)</span> 是先前设定的超参</li>
-<li>随机初始化两个结构一致的神经网络 <span class="math inline">\(Q, \hat Q\)</span>，其初始化参数分别为 <span class="math inline">\(\b\theta, \b\theta^-\)</span>，初始化的时候保证 <span class="math inline">\(\b\theta = \b\theta^-\)</span></li>
-<li>对模型按照下述流程训练 <span class="math inline">\(M\)</span> 个 epoch，这里 <span class="math inline">\(M\)</span> 为先前设定的超参
-<ul>
-<li>假定初始状态 <span class="math inline">\(s_1\)</span>，初始化 <span class="math inline">\(s = s_1\)</span></li>
-<li>重复下述流程直到需要中断
-<ul>
-<li>以超参 <span class="math inline">\(\varepsilon\)</span> 使用 epsilon greedy 策略选取行为 <span class="math inline">\(a := \argmax_{a&#39;} Q(s, a&#39;; \b\theta)\)</span></li>
-<li>令 <span class="math inline">\(r\)</span> 表示在状态 <span class="math inline">\(s\)</span> 的条件下执行行为 <span class="math inline">\(a\)</span> 得到的直接收益</li>
-<li>令 <span class="math inline">\(s&#39;\)</span> 表示在状态 <span class="math inline">\(s\)</span> 的条件下执行行为 <span class="math inline">\(a\)</span> 转移到的状态</li>
-<li>将描述状态转移的元组 <span class="math inline">\((s, a, r; s&#39;)\)</span> 存入 <span class="math inline">\(D\)</span></li>
-<li>从 <span class="math inline">\(D\)</span> 中抽取 <span class="math inline">\(B\)</span> 组数据回放，更新 <span class="math inline">\(\b\theta\)</span>，具体流程见下述，这里 <span class="math inline">\(B\)</span> 是先前设定的超参</li>
-<li>如果此时 <span class="math inline">\(s&#39;\)</span> 是终止状态，则终止流程，否则令 <span class="math inline">\(s \leftarrow s&#39;\)</span>，转移状态</li>
-<li>每经过 <span class="math inline">\(C\)</span> 步，令 <span class="math inline">\(\b\theta^- \leftarrow \b\theta\)</span>，即令 <span class="math inline">\(\hat Q\)</span> 更新至 <span class="math inline">\(Q\)</span>，这里 <span class="math inline">\(C\)</span> 是先前设定的超参</li>
-</ul></li>
-</ul></li>
-</ul>
-<p>阐述具体学习过程之前，我们研讨一下引入了 Experience replay 和 Fixed Q targets 之后 loss 的计算。首先由于引入了两个神经网络，计算估计 Q 值和现实 Q 值的网络参数不一致，上述已经通过 <span class="math inline">\(\b\theta, \b\theta^-\)</span> 作出区分。</p>
-<p>另外，由于引入了记忆库 <span class="math inline">\(D\)</span> 并且需要从中随机抽取转移对，那么最后的 loss 应该是基于 <span class="math inline">\(D\)</span> 上的均匀分布的期望，所以最后的 loss 为：</p>
-<p><span class="math display">\[
-\mathcal{L}_{\rm DQN}(\b\theta) := \opE_{(s, a, r; s&#39;) \sim U(D)} \left[r + \gamma\max_{a&#39; \in \Gamma(s&#39;)} \hat Q(s&#39;, a&#39;; \b\theta^-) - Q(s, a; \b\theta)\right]^2
-\]</span></p>
-<p>具体的学习流程为：</p>
-<ul>
-<li>从 <span class="math inline">\(D\)</span> 中抽取 <span class="math inline">\(B\)</span> 组转移元组</li>
-<li>对每一个元组 <span class="math inline">\((s, a, r; s&#39;)\)</span> 计算 loss</li>
-<li>计算梯度将 loss 反向传播到 <span class="math inline">\(\b\theta\)</span> 参数上，完成一次参数更新</li>
-<li>根据具体情况调整 epsilon greedy 参数 <span class="math inline">\(\varepsilon\)</span></li>
-</ul>
-<p>这里使用的网络的数据依赖关系表现为：</p>
-<p><img src="/uploads/note-of-rl/1.png" /></p>
-<p>现在关注具体的代码实现，我们需要注意到我们采用的网络是两层全连接层：</p>
-<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># $&#123;repo&#125;/DQN/dqn.py - def _build_net</span></span><br><span class="line"></span><br><span class="line">self.state = tf.placeholder(tf.float32, [<span class="literal">None</span>, self.n_features], name = <span class="string">&quot;state&quot;</span>)</span><br><span class="line">...</span><br><span class="line"><span class="keyword">with</span> tf.variable_scope(<span class="string">&quot;eval_net&quot;</span>):</span><br><span class="line">    eval_layer = tf.keras.layers.Dense(</span><br><span class="line">        units = <span class="number">20</span>,</span><br><span class="line">        activation = tf.nn.relu,</span><br><span class="line">        kernel_initializer = w_initializer,</span><br><span class="line">        bias_initializer = b_initializer,</span><br><span class="line">        name = <span class="string">&quot;eval_layer&quot;</span></span><br><span class="line">    )(self.state) <span class="comment"># Output: (None, 20)</span></span><br><span class="line">    self.q_eval = tf.keras.layers.Dense(</span><br><span class="line">        units = self.n_actions,</span><br><span class="line">        kernel_initializer = w_initializer,</span><br><span class="line">        bias_initializer = b_initializer,</span><br><span class="line">        name = <span class="string">&quot;q_eval_layer&quot;</span></span><br><span class="line">    )(eval_layer) <span class="comment"># Output: (None, n_actions)</span></span><br></pre></td></tr></table></figure>
-<p>其逻辑是接受一个 <code>(batch_size, n_features)</code> 形状的输入，产生一个 <code>(batch_size, n_actions)</code> 形状的输出。<code>n_features</code> 表示需要多少个特征描述一个状态 <span class="math inline">\(s\)</span>，即状态空间维数。最后的输出则是各个动作的 Q 值。</p>
-<p>在这样的网络设计之下，我们在求取 loss 的时候需要将 <code>(batch_size, n_actions)</code> 形状的输出中每一行挑出我们实际上选取的行为的 Q 值，压缩为 <code>(batch_size, )</code> 形状的 Q 值向量，再求取平方误差。所以就有下述代码：</p>
-<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># $&#123;repo&#125;/DQN/dqn.py - def _build_net</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.variable_scope(<span class="string">&quot;q_target&quot;</span>):</span><br><span class="line">    q_target = self.reward + self.gamma * tf.reduce_max(self.q_next, axis = <span class="number">1</span>, name = <span class="string">&quot;q_max_next_state&quot;</span>)</span><br><span class="line">    self.q_target = tf.stop_gradient(q_target) <span class="comment"># Shape: (None, )</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.variable_scope(<span class="string">&quot;q_eval&quot;</span>):</span><br><span class="line">    action_indices = tf.stack([</span><br><span class="line">        tf.<span class="built_in">range</span>(tf.shape(self.action)[<span class="number">0</span>], dtype = tf.int32), <span class="comment"># Index</span></span><br><span class="line">        self.action <span class="comment"># The index of action</span></span><br><span class="line">    ], axis = <span class="number">1</span>)</span><br><span class="line">    self.q_eval_wrt_action = tf.gather_nd(params = self.q_eval, indices = action_indices) <span class="comment"># Shape: (None, )</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.variable_scope(<span class="string">&quot;loss&quot;</span>):</span><br><span class="line">    self.loss = tf.reduce_mean(tf.squared_difference(</span><br><span class="line">        self.q_target, self.q_eval_wrt_action,</span><br><span class="line">        name = <span class="string">&quot;error&quot;</span></span><br><span class="line">    ))</span><br></pre></td></tr></table></figure>
-<p>这里 <code>q_target</code> 部分只需要直接求取每一行的最大值就可以，而 <code>q_eval</code> 部分需要根据 <code>self.action</code> 压缩网络的输出，得到 <code>q_eval</code>。最后求取平方误差即可。</p>
-<h2 id="dqn-enhancement">DQN Enhancement</h2>
-<h3 id="double-dqn">Double DQN</h3>
-<p>上述讨论的 DQN 其实有 overestimate 的问题，因为我们每次都会使用旧参数 <span class="math inline">\(\b\theta^-\)</span>，采用最大值函数去估计 evaluated Q value。为了解决这个问题，我们需要利用另外一个网络，即参数及时更新的网络来平衡旧参数网络的估计。</p>
-<p>传统 DQN 的 loss 计算为：</p>
-<p><span class="math display">\[
-\mathcal{L}_{\rm DQN} := \left[r + \gamma{\color{red} \max_{a&#39; \in \Gamma(s&#39;)} \hat Q(s&#39;, a&#39;; \b\theta^-)} - Q(s, a; \b\theta)\right]^2
-\]</span></p>
-<p>这里 <span class="math inline">\(a&#39;\)</span> 的选择仅仅依赖于 <span class="math inline">\(\hat Q\)</span> 网络的情况，我们在 Double DQN 中可以使用 <span class="math inline">\(Q\)</span> 网络来选择 <span class="math inline">\(a&#39;\)</span> 以控制 Q 值的估计：</p>
-<p><span class="math display">\[
-\mathcal{L}_{\rm DDQN} := \left[r + \gamma{\color{red} \hat Q\left(s&#39;, \argmax_{a&#39; \in \Gamma(s&#39;)} Q(s&#39;, a&#39;; \b\theta); \b\theta^-\right)} - Q(s, a; \b\theta)\right]^2
-\]</span></p>
-<p>也就是说这里令 <span class="math inline">\(a&#39;\)</span> 是 <span class="math inline">\(Q\)</span> 网络选取出的在 <span class="math inline">\(s&#39;\)</span> 状态下的最佳行为，而非仅通过 <span class="math inline">\(\hat Q\)</span> 网络选择，这样做的平衡就可以防止 <span class="math inline">\(\hat Q\)</span> 给出过高的 Q 值。</p>
-<hr />
-<p>这里就不给出具体的代码实现了。</p>
-<p><code>UPDATE TODO</code></p>
-<h3 id="prioritized-experience-replay">Prioritized Experience Replay</h3>
-<p>如果我们的环境的 reward 分配比较不均匀，正向反馈较难获取，但是却需要要求机器重点学习正向反馈，我们原先的 replay 策略就会失效，因为在原先的策略内，我们令各个回忆的权重是一致的，这个分配并不符合实际。</p>
-<p>我们可以这样估计每个回忆的优先级，和 loss 的计算类似，我们用估计的 Q 值直接减去现实的 Q 值，如果这个值越大，就说明还能提升的空间就越大，从而说明这个回忆的优先级越高。上述 Q 值的差值一般称为 TD error。</p>
-<hr />
-<p>每次选取回忆的时候，我们都需要根据 TD error 给出的优先级排序各个回忆，但如果每次都排序的话显然会浪费算力，所以我们需要使用 Sum tree 数据结构组织各个回忆。</p>
-<p><code>TODO</code></p>
-<h1 id="policy-gradients">Policy Gradients</h1>
-<p>Policy Gradients 的特点在于其直接输出下一步行为本身，而不是行为的某种评分。这个特点使得 Policy Gradients 可以应对决策空间无限的情况，而 Q Learning 则无法应对无限决策空间。</p>
-<p>Policy Gradients 基于随机策略，也就是我们需要给出在某个状态 <span class="math inline">\(s\)</span> 下我们采取行为 <span class="math inline">\(a\)</span> 的概率，这种随机策略一般用参数 <span class="math inline">\(\b\theta\)</span> 建模。</p>
-<p>我们把基于参数为 <span class="math inline">\(\b\theta\)</span> 的随机策略 <span class="math inline">\(\pi_{\b\theta}\)</span>，在状态 <span class="math inline">\(s\)</span> 下，我们采取行为 <span class="math inline">\(a\)</span> 的概率表示为 <span class="math inline">\(\pi_{\b\theta}(a \mid s)\)</span>。这里 <span class="math inline">\(s_t, a_t\)</span> 表示在第 <span class="math inline">\(t\)</span> 时刻的状态和行为，后续有类似的 <span class="math inline">\(r_t\)</span>。</p>
-<p>显然这样的 <span class="math inline">\(\pi_{\b\theta}(\cdot\mid s)\)</span> 代表了一个行为决策空间 <span class="math inline">\(\mathcal{A}\)</span> 上的一个分布。</p>
-<p>我们首先定义累计收益：</p>
-<p><span class="math display">\[
-G_t(\b\tau) := \sum_{k = 0}^{+\infty} \gamma^k r_{t + k}
-\]</span></p>
-<p>这里 <span class="math inline">\(\b\tau\)</span> 是一个已知的转移过程，<span class="math inline">\(G_t(\b\tau)\)</span> 就表示沿着已知的转移过程 <span class="math inline">\(\b\tau\)</span>，从时刻 <span class="math inline">\(t\)</span> 开始能获得的累计收益。<span class="math inline">\(\gamma\)</span> 则是先前介绍过的奖励衰减指数，我们将未来所有的收益全部相加作为总收益。</p>
-<p>那么我们可以基于此定义出一个行为评估函数：</p>
-<p><span class="math display">\[
-Q^{\pi_{\b\theta}}(s, a) := \opE_{\b\tau \sim \pi_{\b\theta}} \left[G_t(\b\tau) \mid s_t = s, a_t = a\right]
-\]</span></p>
-<p>定义的含义也是直观的，这个评估函数的值就是随机取出一个在第 <span class="math inline">\(t\)</span> 时刻，状态和行为分别为 <span class="math inline">\(s, a\)</span> 的转移过程 <span class="math inline">\(\b\tau\)</span>，求取后续能获取的收益的期望。</p>
-<p>另外，由于我们知道给定状态 <span class="math inline">\(s\)</span> 的时候行为 <span class="math inline">\(a\)</span> 的分布就是随机策略 <span class="math inline">\(\pi_{\b\theta}\)</span> 指定的，所以我们可以定义一个不需要给定具体行为的，仅针对状态进行评估的状态函数：</p>
-<p><span class="math display">\[
-V^{\pi_{\b\theta}}(s) := \int_{a \in \mathcal{A}} \pi_{\b\theta}(a \mid s)Q^{\pi_{\b\theta}}(s, a) {\rm d}a = \opE_{\b\tau \sim \pi_{\b\theta}} \left[G_t(\b\tau) \mid s_t = s\right]
-\]</span></p>
-<p>此外，我们可以注意到这个随机策略实际上定义了一个在状态空间 <span class="math inline">\(\mathcal{S}\)</span> 上的 Markov chain，那么我们就有下述稳态概率的定义：</p>
-<p><span class="math display">\[
-d^{\pi_{\b\theta}}(s) := \lim_{t \to +\infty} \P_{\pi_{\b\theta}}(s_t = s \mid s_0)
-\]</span></p>
-<p>稳态概率实际上描述了在给定初始状态 <span class="math inline">\(s_0\)</span> 的条件下，使用随机策略 <span class="math inline">\(\pi_{\b\theta}\)</span> 在状态空间 <span class="math inline">\(\mathcal{S}\)</span> 上随机转移，最终到达稳定状态的时候，位于状态 <span class="math inline">\(s\)</span> 的概率。</p>
-<p>基于稳态概率，我们就可以给一个策略 <span class="math inline">\(\pi_{\b\theta}\)</span> 定义价值：</p>
-<p><span class="math display">\[
-\mathcal{J}(\b\theta) := \int_{s \in \mathcal{S}} d^{\pi_{\b\theta}}(s)V^{\pi_{\b\theta}}(s) {\rm d}s = \int_{s \in \mathcal{S}} d^{\pi_{\b\theta}}(s) \int_{a \in \mathcal{A}} \pi_{\b\theta}(a \mid s)Q^{\pi_{\b\theta}}(s, a) {\rm d}a{\rm d}s
-\]</span></p>
-<p>容易看出 <span class="math inline">\(d^{\pi_{\b\theta}}(s)\pi_{\b\theta}(a \mid s)\)</span> 给出了 <span class="math inline">\(\mathcal{S} \times \mathcal{A}\)</span> 上的分布：</p>
-<p><span class="math display">\[
-\int_{s \in \mathcal{S}}\int_{a \in \mathcal{A}} d^{\pi_{\b\theta}}(s)\pi_{\b\theta}(a \mid s) {\rm d}a{\rm d}s = 1
-\]</span></p>
-<p>那么：</p>
-<p><span class="math display">\[
-\mathcal{J}(\b\theta) = \opE_{(s, a) \sim \pi_{\b\theta}} [Q^{\pi_{\b\theta}}(s, a)]
-\]</span></p>
-<p>为了尽可能提高策略的价值，我们采用梯度上升的方式，所以重点就是计算上述价值函数的梯度 <span class="math inline">\(\nabla_{\b\theta}\mathcal{J}(\b\theta)\)</span>。</p>
-<hr />
-<p>首先我们对 <span class="math inline">\(Q^{\pi_{\b\theta}}(s, a)\)</span> 做一些简单的展开。</p>
-<p>我们只需要遍历 <span class="math inline">\(s\)</span> 所有可能的下一步状态 <span class="math inline">\(s&#39;\)</span>，得到其发生转移 <span class="math inline">\(s \to s&#39;\)</span> 的概率，而相应的价值评估也会拆分为直接收益 <span class="math inline">\(r\)</span> 和接下来到达状态 <span class="math inline">\(s&#39;\)</span> 的收益（与 Q Learning 具有类似的结构）。基于上述思路，得到下述展开：</p>
-<p><span class="math display">\[
-Q^{\pi_{\b\theta}}(s, a) = \int_{s&#39; \in \mathcal{S}} \P_{\mathcal{E}}(s&#39; \mid s, a)\left[r + V^{\pi_{\b\theta}}(s&#39;)\right] {\rm d} s&#39;
-\]</span></p>
-<p>这里概率符号带有下标 <span class="math inline">\(\mathcal{E}\)</span>，表示这个概率仅仅依赖于环境 <span class="math inline">\(\mathcal{E}\)</span>，和随机策略 <span class="math inline">\(\pi_{\b\theta}\)</span> 并无关系。那么考虑到 <span class="math inline">\(r, \P_{\mathcal{E}}(s&#39; \mid s, a)\)</span> 相对于 <span class="math inline">\(\b\theta\)</span> 都是常数，可以得到：</p>
-<p><span class="math display">\[
-\nabla_{\b\theta}Q^{\pi_{\b\theta}}(s, a) = \int_{s&#39; \in \mathcal{S}} \P_{\mathcal{E}}(s&#39; \mid s, a)\nabla_{\b\theta}V^{\pi_{\b\theta}}(s&#39;) {\rm d} s&#39;
-\]</span></p>
-<p>基于此，我们做出如下推理：</p>
-<p><span class="math display">\[
-\begin{aligned}
-&amp;{\color{red} \nabla_{\b\theta}V^{\pi_{\b\theta}}(s)} \\
-=&amp; \nabla_{\b\theta}\left[\int_{a \in \mathcal{A}} \pi_{\b\theta}(a \mid s)Q^{\pi_{\b\theta}}(s, a) {\rm d} a\right] \\
-=&amp; \int_{a \in \mathcal{A}}\left[Q^{\pi_{\b\theta}}(s, a)\nabla_{\b\theta}\pi_{\b\theta}(a \mid s) + \pi_{\b\theta}(a \mid s)\nabla_{\b\theta}Q^{\pi_{\b\theta}}(s, a)\right] {\rm d} a \\
-=&amp; \int_{a \in \mathcal{A}}\left[Q^{\pi_{\b\theta}}(s, a)\nabla_{\b\theta}\pi_{\b\theta}(a \mid s) + \pi_{\b\theta}(a \mid s)\int_{s&#39; \in \mathcal{S}} \P_{\mathcal{E}}(s&#39; \mid s, a)\nabla_{\b\theta}V^{\pi_{\b\theta}}(s&#39;) {\rm d} s&#39;\right] {\rm d} a \\
-=&amp; \int_{a \in \mathcal{A}}Q^{\pi_{\b\theta}}(s, a)\nabla_{\b\theta}\pi_{\b\theta}(a \mid s) {\rm d} a + \int_{a \in \mathcal{A}}\left[\pi_{\b\theta}(a \mid s)\int_{s&#39; \in \mathcal{S}} \P_{\mathcal{E}}(s&#39; \mid s, a) {\color{red} \nabla_{\b\theta}V^{\pi_{\b\theta}}(s&#39;)} {\rm d} s&#39;\right] {\rm d} a
-\end{aligned}
-\]</span></p>
-<p>这里我们观测到了 <span class="math inline">\(\nabla_{\b\theta}V^{\pi_{\b\theta}}(s)\)</span> 结构的重复，下面思考该递归结构。</p>
-<p>定义记号：</p>
-<p><span class="math display">\[
-\P_{\pi_{\b\theta}}(s \mathop{\to}^k s_\bot)
-\]</span></p>
-<p>表示从初态 <span class="math inline">\(s\)</span> 通过随机策略 <span class="math inline">\(\pi_{\b\theta}\)</span> 经过 <span class="math inline">\(k\)</span> 步转移能够到达终态 <span class="math inline">\(s_\bot\)</span> 的概率。这个概率也具有递归的运算特征，即：</p>
-<p><span class="math display">\[
-\P_{\pi_{\b\theta}}(s \mathop{\to}^{k + 1} s_\bot) = \int_{s&#39; \in \mathcal{S}} \P_{\pi_{\b\theta}}(s \mathop{\to}^k s&#39;) \P_{\pi_{\b\theta}}(s&#39; \mathop{\to}^1 s_\bot) {\rm d}s&#39;
-\]</span></p>
-<p>此外，根据该概率的定义，我们能确定：</p>
-<p><span class="math display">\[
-\P_{\pi_{\b\theta}}(s \mathop{\to}^1 s&#39;) = \int_{a \in \mathcal{A}} \pi_{\b\theta}(a \mid s)\P_{\mathcal{E}}(s&#39; \mid s, a) {\rm d}a
-\]</span></p>
-<p>另外，为了后续讨论简单，定义记号：</p>
-<p><span class="math display">\[
-\phi(s) := \int_{a \in \mathcal{A}}Q^{\pi_{\b\theta}}(s, a)\nabla_{\b\theta}\pi_{\b\theta}(a \mid s) {\rm d} a
-\]</span></p>
-<p>从而观察下述展开：</p>
-<p><span class="math display">\[
-\begin{aligned}
-&amp;\nabla_{\b\theta}V^{\pi_{\b\theta}}(s) \\
-=&amp; \phi(s) + \int_{a \in \mathcal{A}}\left[\pi_{\b\theta}(a \mid s)\int_{s&#39; \in \mathcal{S}} \P_{\mathcal{E}}(s&#39; \mid s, a) \nabla_{\b\theta}V^{\pi_{\b\theta}}(s&#39;) {\rm d} s&#39;\right] {\rm d} a \\
-=&amp; \phi(s) + \int_{s&#39; \in \mathcal{S}} \left[\int_{a \in \mathcal{A}} \pi_{\b\theta}(a \mid s) \P_{\mathcal{E}}(s&#39; \mid s, a) {\rm d} a\right] \nabla_{\b\theta}V^{\pi_{\b\theta}}(s&#39;) {\rm d} s&#39; \\
-=&amp; \phi(s) + {\color{red} \int_{s&#39; \in \mathcal{S}} \P_{\pi_{\b\theta}}(s \mathop{\to}^1 s&#39;) \nabla_{\b\theta}V^{\pi_{\b\theta}}(s&#39;) {\rm d} s&#39;} \\
-=&amp; \phi(s) + \int_{s&#39; \in \mathcal{S}} \P_{\pi_{\b\theta}}(s \mathop{\to}^1 s&#39;) \left[\phi(s&#39;) + \int_{s&#39;&#39; \in \mathcal{S}} \P_{\pi_{\b\theta}}(s&#39; \mathop{\to}^1 s&#39;&#39;) \nabla_{\b\theta}V^{\pi_{\b\theta}}(s&#39;&#39;) {\rm d} s&#39;&#39;\right] {\rm d} s&#39; \\
-=&amp; \phi(s) + \int_{s&#39; \in \mathcal{S}} \P_{\pi_{\b\theta}}(s \mathop{\to}^1 s&#39;)\phi(s&#39;) {\rm d} s&#39; + \int_{s&#39; \in \mathcal{S}} \P_{\pi_{\b\theta}}(s \mathop{\to}^1 s&#39;) \left[\int_{s&#39;&#39; \in \mathcal{S}} \P_{\pi_{\b\theta}}(s&#39; \mathop{\to}^1 s&#39;&#39;) \nabla_{\b\theta}V^{\pi_{\b\theta}}(s&#39;&#39;) {\rm d} s&#39;&#39;\right]{\rm d} s&#39; \\
-=&amp; \phi(s) + \int_{s&#39; \in \mathcal{S}} \P_{\pi_{\b\theta}}(s \mathop{\to}^1 s&#39;)\phi(s&#39;) {\rm d} s&#39; + \int_{s&#39;&#39; \in \mathcal{S}}\left[\int_{s&#39; \in \mathcal{S}} \P_{\pi_{\b\theta}}(s \mathop{\to}^1 s&#39;) \P_{\pi_{\b\theta}}(s&#39; \mathop{\to}^1 s&#39;&#39;){\rm d} s&#39;\right] \nabla_{\b\theta}V^{\pi_{\b\theta}}(s&#39;&#39;) {\rm d} s&#39;&#39; \\
-=&amp; \phi(s) + {\color{green} \int_{s&#39; \in \mathcal{S}} \P_{\pi_{\b\theta}}(s \mathop{\to}^1 s&#39;)\phi(s&#39;) {\rm d} s&#39;} + {\color{red} \int_{s&#39;&#39; \in \mathcal{S}} \P_{\pi_{\b\theta}}(s \mathop{\to}^2 s&#39;&#39;) \nabla_{\b\theta}V^{\pi_{\b\theta}}(s&#39;&#39;) {\rm d} s&#39;&#39;}
-\end{aligned}
-\]</span></p>
-<p>我们这一次观察到了如上述的递归现象，红色部分始终保持结构一致，并且每展开一次就会得到类似绿色部分的一个常数项。</p>
-<p>注意到：</p>
-<p><span class="math display">\[
-\P_{\pi_{\b\theta}}(s \mathop{\to}^{+\infty} s_\bot) = 0
-\]</span></p>
-<p>所以上述展开中红色部分在无穷次递归后会变为零，那么上述式子应当在无穷次递归后仅仅留下绿色的常数项的累加：</p>
-<p><span class="math display">\[
-\nabla_{\b\theta}V^{\pi_{\b\theta}}(s) = \sum_{k = 0}^{+\infty} \int_{s_\bot \in \mathcal{S}} \P_{\pi_{\b\theta}}(s \mathop{\to}^k s_\bot)\phi(s_\bot) {\rm d} s_\bot
-\]</span></p>
-<p>根据定义，实际上我们有：</p>
-<p><span class="math display">\[
-\sum_{k = 0}^{+\infty}\P_{\pi_{\b\theta}}(s \mathop{\to}^k s_\bot) = d^{\pi_{\b\theta}}(s_\bot)
-\]</span></p>
-<p>那么，考虑到对策略的评估实际上就是对该策略下初态价值的评估，我们得到：</p>
-<p><span class="math display">\[
-\begin{aligned}
-\nabla_{\b\theta}\mathcal{J}(\b\theta) &amp;= \nabla_{\b\theta} V^{\pi_{\b\theta}}(s_0) \\
-&amp;= \sum_{k = 0}^{+\infty} \int_{s_\bot \in \mathcal{S}} \P_{\pi_{\b\theta}}(s_0 \mathop{\to}^k s_\bot)\phi(s_\bot) {\rm d} s_\bot \\
-&amp;= \int_{s_\bot \in \mathcal{S}} \left[\sum_{k = 0}^{+\infty} \P_{\pi_{\b\theta}}(s_0 \mathop{\to}^k s_\bot)\right] \phi(s_\bot) {\rm d} s_\bot \\
-&amp;= \int_{s_\bot \in \mathcal{S}} d^{\pi_{\b\theta}}(s_\bot) \phi(s_\bot) {\rm d} s_\bot \\
-&amp;= \int_{s_\bot \in \mathcal{S}} d^{\pi_{\b\theta}}(s_\bot) \int_{a \in \mathcal{A}}Q^{\pi_{\b\theta}}(s, a)\nabla_{\b\theta}\pi_{\b\theta}(a \mid s) {\rm d} a {\rm d} s_\bot
-\end{aligned}
-\]</span></p>
-<p>将 <span class="math inline">\(s_\bot\)</span> 替换回 <span class="math inline">\(s\)</span> 就得到 Policy gradient theorem 的公式：</p>
-<p><span class="math display">\[
-\nabla_{\b\theta}\mathcal{J}(\b\theta) = \int_{s \in \mathcal{S}}\left[d^{\pi_{\b\theta}}(s) \int_{a \in \mathcal{A}}Q^{\pi_{\b\theta}}(s, a)\nabla_{\b\theta}\pi_{\b\theta}(a \mid s) {\rm d} a\right] {\rm d} s
-\]</span></p>
-<p>为了让计算机便于计算，我们对上述计算式作出进一步变形：</p>
-<p><span class="math display">\[
-\begin{aligned}
-\nabla_{\b\theta}\mathcal{J}(\b\theta) &amp;= \int_{s \in \mathcal{S}}\left[d^{\pi_{\b\theta}}(s) \int_{a \in \mathcal{A}}Q^{\pi_{\b\theta}}(s, a)\nabla_{\b\theta}\pi_{\b\theta}(a \mid s){\rm d} a\right]{\rm d} s \\
-&amp;= \int_{s \in \mathcal{S}}\left[d^{\pi_{\b\theta}}(s) \int_{a \in \mathcal{A}}Q^{\pi_{\b\theta}}(s, a)\pi_{\b\theta}(a \mid s)\frac{\nabla_{\b\theta}\pi_{\b\theta}(a \mid s)}{\pi_{\b\theta}(a \mid s)}{\rm d} a\right]{\rm d} s \\
-&amp;= \int_{s \in \mathcal{S}}\int_{a \in \mathcal{A}} (d^{\pi_{\b\theta}}(s)\pi_{\b\theta}(a \mid s)) \cdot (Q^{\pi_{\b\theta}}(s, a)\nabla_{\b\theta}\ln \pi_{\b\theta}(a \mid s)){\rm d} a {\rm d} s \\
-&amp;= \opE_{(s, a) \sim \pi_{\b\theta}} [Q^{\pi_{\b\theta}}(s, a)\nabla_{\b\theta}\ln \pi_{\b\theta}(a \mid s)]
-\end{aligned}
-\]</span></p>
-<p>为了计算这个期望，我们可以通过 <span class="math inline">\(\pi_{\b\theta}\)</span> 确定转移过程 <span class="math inline">\(\b\tau\)</span>，之后将转移过程上的所有 <span class="math inline">\((s, a)\)</span> 代入：</p>
-<p><span class="math display">\[
-\nabla_{\b\theta}\mathcal{J}(\b\theta) = \opE_{\b\tau \sim \pi_{\b\theta}} \frac{1}{|\b\tau|} \sum_{(s, a) \in \b\tau} [Q^{\pi_{\b\theta}}(s, a)\nabla_{\b\theta}\ln \pi_{\b\theta}(a \mid s)]
-\]</span></p>
-<h2 id="代码示例-4">代码示例</h2>
-<p>这里使用 Reinforce 方法实现 Policy Gradients，这是最为基本的一种实现方式，是一种回合制更新策略。</p>
-<p>首先我们使用两层全连接层作为随机策略，其参数为 <span class="math inline">\(\b\theta\)</span>，网络整体结构为：</p>
-<p><img src="/uploads/note-of-rl/2.png" /></p>
-<p>之后我们需要在随机策略 <span class="math inline">\(\pi_{\b\theta}\)</span> 指导下得到的一整个回合信息：</p>
-<p><span class="math display">\[
-s_1, a_1, r_1; s_2, a_2, r_2; s_3, \cdots; s_T, a_T, r_T; {\rm terminal}
-\]</span></p>
-<p>在将状态、行为、奖励列表传入网络之前，我们需要对奖励列表根据参数 <span class="math inline">\(\gamma\)</span> 作出衰减并累计，同时将其均值归零标准差归一，这样就完成了 reward 的规范化。</p>
-<p>下面考虑我们之前计算的梯度：</p>
-<p><span class="math display">\[
-\nabla_{\b\theta}\mathcal{J}(\b\theta) = \opE_{\b\tau \sim \pi_{\b\theta}} \frac{1}{|\b\tau|} \sum_{(s, a) \in \b\tau} [G_t\nabla_{\b\theta}\ln \pi_{\b\theta}(a \mid s)]
-\]</span></p>
-<p>这里上述序列就是一个简单的抽样，我们用该抽样近似表示期望，这样就能够得到更新为：</p>
-<p><span class="math display">\[
-\nabla_{\b\theta}\mathcal{J}(\b\theta) = \frac{1}{T}\sum_{i = 1}^T [G_i \nabla_{\b\theta}\ln \pi_{\b\theta}(a_i \mid s_i)]
-\]</span></p>
-<p>考虑到 <span class="math inline">\(G_{i}\)</span> 对 <span class="math inline">\(\b\theta\)</span> 是常数，那么：</p>
-<p><span class="math display">\[
-\nabla_{\b\theta}\mathcal{J}(\b\theta) = \nabla_{\b\theta}\frac{1}{T}\sum_{i = 1}^T [G_{i}\ln \pi_{\b\theta}(a_i \mid s_i)]
-\]</span></p>
-<p>梯度是容易实现的，我们只需要计算出下述式子（即目标式）：</p>
-<p><span class="math display">\[
-\frac{1}{T}\sum_{i = 1}^T [G_{i}\ln \pi_{\b\theta}(a_i \mid s_i)]
-\]</span></p>
-<p>然后将其传入优化器，交由优化器推算其梯度并附加到 <span class="math inline">\(\b\theta\)</span> 上即可。</p>
-<p>基于这个式子，我们观察代码中 loss 的计算：</p>
-<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># $&#123;repo&#125;/Policy-gradients/pg.py - def _build_net</span></span><br><span class="line"></span><br><span class="line">all_action = tf.keras.layers.Dense(...)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.name_scope(<span class="string">&quot;loss&quot;</span>):</span><br><span class="line">    <span class="comment"># To maximize total reward (log_p * R) is to minimize -(log_p * R)</span></span><br><span class="line">    <span class="comment"># And the tf only have minimize(loss)</span></span><br><span class="line">    neg_log_prob = tf.nn.sparse_softmax_cross_entropy_with_logits(</span><br><span class="line">        logits = all_action,</span><br><span class="line">        labels = self.tf_action_list) <span class="comment"># This is negative log of chosen action</span></span><br><span class="line"></span><br><span class="line">    loss = tf.reduce_mean(neg_log_prob * self.tf_reward_list) <span class="comment"># Reward guided loss</span></span><br></pre></td></tr></table></figure>
-<p>这里用到了 <code>tf.nn.sparse_softmax_cross_entropy_with_logits</code> 函数，这个函数接受的参数中 <code>logits</code> 形状为 <code>[batch_size, n_action]</code>，<code>labels</code> 形状为 <code>[n_action]</code>，<code>labels</code> 参数中的项代表该 batch 给出的分类结果。返回值的形状则为 <code>[n_action]</code>。</p>
-<p>对于每一个 batch，该函数首先将 <code>logits</code> 对应行取 softmax，并取出序号为 <code>labels</code> 参数指定的项，取其负对数作为该 batch 的结果。</p>
-<p>比如对于某 batch，其 <code>logits</code> 为 <span class="math inline">\(\{L_j\}_{1 \leq j \leq N}\)</span>，这里 <span class="math inline">\(N\)</span> 为 <code>n_action</code>，而该 batch 的 <code>labels</code> 为 <span class="math inline">\(M(1 \leq M \leq N)\)</span>，那么最后对该 batch，该函数返回：</p>
-<p><span class="math display">\[
-R = -\ln\left(\frac{e^{L_M}}{\sum_{j = 1}^N e^{L_j}}\right)
-\]</span></p>
-<p>而我们也发现我们也是通过 softmax 来定义动作的概率：</p>
-<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># $&#123;repo&#125;/Policy-gradients/pg.py - def _build_net</span></span><br><span class="line"></span><br><span class="line">self.all_action_prob = tf.nn.softmax(all_action, name = <span class="string">&quot;action_prob&quot;</span>)</span><br></pre></td></tr></table></figure>
-<p>也就是说：</p>
-<p><span class="math display">\[
-\pi_{\b\theta}(a_i \mid s_i) = \frac{e^{L_{a_i}}}{\sum_{j = 1}^N e^{L_j}}
-\]</span></p>
-<p>所以 <code>tf.nn.sparse_softmax_cross_entropy_with_logits</code> 的返回值实际上就是下述数列构成的向量：</p>
-<p><span class="math display">\[
--\ln\pi_{\b\theta}(a_1 \mid s_1), -\ln\pi_{\b\theta}(a_2 \mid s_2), \cdots, -\ln\pi_{\b\theta}(a_i \mid s_i), \cdots, -\ln\pi_{\b\theta}(a_T \mid s_T)
-\]</span></p>
-<p>将这个数列和规范化后的 reward 数组逐项相乘，求取所有积的平均值就得到了目标式的相反数。这里求出其相反数的目的是通过优化器最小化负梯度，得到最大化梯度从而实现梯度上升。</p>
-<p>这样我们就给出了 Policy gradients 的基本实现。</p>
-<h1 id="actor-critic">Actor Critic</h1>
-<p>我们注意到 Q Learning 无法处理决策空间无限的问题，而 Policy Gradients 又仅能完成回合更新，效率低。为了结合这两者的优点，这里介绍 Actor Critic 网络。</p>
-<p>Actor Critic 的基本思路是，利用一个基于概率的 Actor 网络随机给出行为，利用一个基于价值的 Critic 网络给出 Actor 网络行为的评价。具体而言，Actor 网络不断进行梯度上升，而 Critic 网络会判定本次上升是否合理，其会根据其学习到的规则来衰减本次 Actor 的梯度上升。</p>
-<p>单步更新还有一个好处，如果一个完整的转移过程 <span class="math inline">\(\b\tau\)</span> 中既需要上升参数，又需要下降参数，这两个都需要细节学习的内容会因为沿着路径累计而消失，从而两者均没有学习到。</p>
-<h2 id="数学推理">数学推理</h2>
-<p>这里我们聚焦于 Actor Critic 的基本数学原理，我们思考 Policy Gradients 的梯度计算：</p>
-<p><span class="math display">\[
-\nabla_{\b\theta}\mathcal{J}(\b\theta) = \opE_{\b\tau \sim \pi_{\b\theta}} \frac{1}{|\b\tau|} \sum_{(s, a) \in \b\tau} [Q^{\pi_{\b\theta}}(s, a)\nabla_{\b\theta}\ln \pi_{\b\theta}(a \mid s)]
-\]</span></p>
-<p>我们下面将其扩展为 Actor 网络的行为。</p>
-<p>现在由于引入了 Critic 网络，所以 Actor 的更新也变成了在线单步更新。也就是说我们在逐探索转移过程，在某一时刻到达状态 <span class="math inline">\(s\)</span>，并且根据 Actor 网络 <span class="math inline">\(\pi_{\b\theta}\)</span> 选择了行为 <span class="math inline">\(a\)</span>，那么此时只需要完成下述单步更新即可：</p>
-<p><span class="math display">\[
-\b\theta \leftarrow \b\theta + \alpha_{\b\theta}Q^{\b w}(s, a)\nabla_{\b\theta}\ln \pi_{\b\theta}(a \mid s)
-\]</span></p>
-<p>这里 <span class="math inline">\(\alpha_{\b\theta}\)</span> 为 Actor 网络 <span class="math inline">\(\pi_{\b\theta}\)</span> 的学习率，这里 <span class="math inline">\(\b w\)</span> 是 Critic 网络的参数。</p>
-<p>注意到这里 <span class="math inline">\(Q\)</span> 的参数是 <span class="math inline">\(\b w\)</span> 而非 <span class="math inline">\(\b\theta\)</span>，这是因为我们需要将 Actor 的评价权力交给 Critic 网络，用 Critic 的输出来控制 Actor 参数的更新。</p>
-<p>而 Critic 的数学原理就是 Q Learning 的 TD Error 思想。观察我们对一个状态的价值评估函数：</p>
-<p><span class="math display">\[
-V^{\b w}(s) = \opE_{\b\tau \sim \b w} \left[G_t(\b\tau) \mid s_t = s\right]
-\]</span></p>
-<p>而另外一方面：</p>
-<p><span class="math display">\[
-G_t(\b\tau) = \sum_{k = 0}^{+\infty} \gamma^k r_{t + k + 1} = r_{t + 1} + \gamma\sum_{k = 0}^{+\infty} \gamma^k r_{t + k + 2} = r_{t + 1} + \gamma G_{t + 1}(\b\tau)
-\]</span></p>
-<p>所以：</p>
-<p><span class="math display">\[
-\begin{aligned}
-V^{\b w}(s) &amp;= \opE_{\b\tau \sim \b w} \left[G_t(\b\tau) \mid s_t = s\right] \\
-&amp;= \opE_{\b\tau \sim \b w} \left[r_{t + 1} + \gamma G_{t + 1}(\b\tau) \mid s_t = s\right] \\
-&amp;= \opE_{\b\tau \sim \b w} \left[r_{t + 1} \mid s_t = s\right] + \gamma\opE_{\b\tau \sim \b w}\left[G_{t + 1}(\b\tau) \mid s_t = s\right] \\
-&amp;= \opE_{\b\tau \sim \b w} \left[r_{t + 1} \mid s_t = s\right] + \gamma\opE_{\b\tau \sim \b w}\left[G_{t + 1}(\b\tau) \mid s_{t + 1} = s&#39;\right] \\
-&amp;= \opE_{\b\tau \sim \b w} \left[r_{t + 1} \mid s_t = s\right] + \gamma V^{\b w}(s&#39;)
-\end{aligned}
-\]</span></p>
-<p>这里 <span class="math inline">\(s&#39;\)</span> 为转移过程中 <span class="math inline">\(s\)</span> 的下一个状态。这说明了 <span class="math inline">\(r_{t + 1} + \gamma V^{\b w}(s&#39;) - V^{\b w}(s)\)</span> 构成了一个无偏估计，从而可以用此修正对 <span class="math inline">\(V^{\b w}\)</span> 的估计。而这里 <span class="math inline">\(r_{t + 1} + \gamma V^{\b w}(s&#39;) - V^{\b w}(s)\)</span> 就被称为 TD Error。</p>
-<p>上述推理对 <span class="math inline">\(Q^{\b w}\)</span> 依然有效，与之对应的 <span class="math inline">\(r_{t + 1} + \gamma Q^{\b w}(s&#39;, a&#39;) - Q^{\b w}(s, a)\)</span> 也可以称为 TD Error。</p>
-<p>从而 Critic 网络的更新策略为首先计算 TD Error：</p>
-<p><span class="math display">\[
-\delta_t \leftarrow r_{t + 1} + \gamma Q^{\b w}(s&#39;, a&#39;) - Q^{\b w}(s, a)
-\]</span></p>
-<p>之后用 TD Error 更新 Critic 网络参数：</p>
-<p><span class="math display">\[
-\b w \leftarrow \b w + \alpha_{\b w}\delta_t\nabla_{\b w}Q^{\b w}(s, a)
-\]</span></p>
-<p>这也就是最经典的 Actor Critic 算法。</p>
-<h1 id="advantage-actor-critic-a2c">Advantage Actor Critic (A2C)</h1>
-<p>我们注意到直接让 Critic 学习 Q 值存在一个问题，那就是 Q 值均值很大，但是波动很小。在均值很大的背景下，较小的波动的分布可能被网络忽略，所以相比较于直接使用 Q 值，我们不妨设立 Baseline 函数，替换为使用 Q 值和 Baseline 的差值。这个差值就是 Advantage 函数。</p>
-<p>我们首先需要在数学上论证引入 Baseline 并不影响无偏性，也就是说需要证明：</p>
-<p><span class="math display">\[
-\begin{aligned}
-\nabla_{\b\theta}\mathcal{J}(\b\theta) &amp;= \opE_{\b\tau \sim \pi_{\b\theta}} \frac{1}{|\b\tau|} \sum_{(s, a) \in \b\tau} [Q^{\b w}(s, a)\nabla_{\b\theta}\ln \pi_{\b\theta}(a \mid s)] \\
-&amp;= \opE_{\b\tau \sim \pi_{\b\theta}} \frac{1}{|\b\tau|} \sum_{(s, a) \in \b\tau} [(Q^{\b w}(s, a) - b(s)) \nabla_{\b\theta}\ln \pi_{\b\theta}(a \mid s)]
-\end{aligned}
-\]</span></p>
-<p>事实上，我们只需要令 Baseline 函数和行为 <span class="math inline">\(a\)</span> 无关，就可以保证上述关系成立。证明思路为考虑下面的式子，如下，首先展开数学期望：</p>
-<p><span class="math display">\[
-\begin{aligned}
-&amp;\opE_{\b\tau \sim \pi_{\b\theta}} \frac{1}{|\b\tau|} \sum_{(s, a) \in \b\tau} [b(s) \nabla_{\b\theta}\ln \pi_{\b\theta}(a \mid s)] \\
-=&amp; \opE_{(s, a) \sim \pi_{\b\theta}} [b(s) \nabla_{\b\theta}\ln \pi_{\b\theta}(a \mid s)] \\
-=&amp; \int_{s \in \mathcal{S}} d^{\pi_{\b\theta}}(s) \int_{a \in \mathcal{A}} \pi_{\b\theta}(a \mid s) [b(s) \nabla_{\b\theta}\ln \pi_{\b\theta}(a \mid s)] {\rm d}a {\rm d}s \\
-\end{aligned}
-\]</span></p>
-<p>根据：</p>
-<p><span class="math display">\[
-\pi_{\b\theta}(a \mid s) \cdot \nabla_{\b\theta}\ln \pi_{\b\theta}(a \mid s) = \nabla_{\b\theta}\pi_{\b\theta}(a \mid s)
-\]</span></p>
-<p>得到下述：</p>
-<p><span class="math display">\[
-{\rm LHS} = \int_{s \in \mathcal{S}} d^{\pi_{\b\theta}}(s) \int_{a \in \mathcal{A}} b(s) \nabla_{\b\theta} \pi_{\b\theta}(a \mid s) {\rm d}a {\rm d}s \\
-\]</span></p>
-<p>考虑到 <span class="math inline">\(b(s)\)</span> 和 <span class="math inline">\(a\)</span> 的无关性，继续展开得到：</p>
-<p><span class="math display">\[
-\begin{aligned}
-{\rm LHS} &amp;= \int_{s \in \mathcal{S}} d^{\pi_{\b\theta}}(s)b(s) \nabla_{\b\theta}\left[\int_{a \in \mathcal{A}} \pi_{\b\theta}(a \mid s) {\rm d}a\right] {\rm d}s \\
-&amp;= \int_{s \in \mathcal{S}} d^{\pi_{\b\theta}}(s)b(s) (\nabla_{\b\theta} 1) {\rm d}s \\
-&amp;= 0
-\end{aligned}
-\]</span></p>
-<p>据此显然就能得到无偏性依然保持。</p>
-<h2 id="bellman-equation">Bellman equation</h2>
-<p>我们一般选取的 Baseline 函数就是该状态的评价函数 <span class="math inline">\(V^{\b w}(s)\)</span>，所以此时我们定义 Advantage 函数：</p>
-<p><span class="math display">\[
-A^{\b w}(s, a) := Q^{\b w}(s, a) - V^{\b w}(s)
-\]</span></p>
-<p>之前我们得到过下述结论：</p>
-<p><span class="math display">\[
-Q^{\b w}(s, a) = \int_{s&#39; \in \mathcal{S}} \P_{\mathcal{E}}(s&#39; \mid s, a)\left[r + V^{\b w}(s&#39;)\right] {\rm d}s&#39; = \opE_{s&#39; \sim \b w} \left[r + V^{\b w}(s&#39;)\right]
-\]</span></p>
-<p>那么我们不妨把 Advantage 函数写为：</p>
-<p><span class="math display">\[
-A^{\b w}(s, a) := r + V^{\b w}(s&#39;) - V^{\b w}(s)
-\]</span></p>
-<p>而 Critic 就需要学习 Advantage 函数，相应的 Actor 的梯度计算更新为：</p>
-<p><span class="math display">\[
-\nabla_{\b\theta}\mathcal{J}(\b\theta) = \opE_{(s, a) \sim \pi_{\b\theta}} [A^{\b w}(s, a)\nabla_{\b\theta}\ln \pi_{\b\theta}(a \mid s)]
-\]</span></p>
-<h2 id="代码示例-5">代码示例</h2>
-<p>这里采用这样的网络结构：</p>
-<p><img src="/uploads/note-of-rl/3.png" /></p>
-<p>Critic 网络的结构很简单，其接受一个状态，输出这个状态的价值，即 Advantage 函数的作用。而其 loss 的计算即为 TD Error 的平方。这样我们训练 Critic 的方法就很明确，只需要不断在状态转移过程中计算 TD Error 后平方并将其反向传播即可：</p>
-<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># $&#123;repo&#125;/Actor-Critic/ac.py - class Critic def __init__</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.variable_scope(<span class="string">&quot;critic_squared_td_error&quot;</span>):</span><br><span class="line">    self.td_error = self.reward + self.gamma * self.next_state_value - self.state_value</span><br><span class="line">    self.loss = tf.square(self.td_error)</span><br></pre></td></tr></table></figure>
-<p>Critic 引导 Actor 的方式为将 TD Error 传递给 Actor，与梯度求积后进行反向传播：</p>
-<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># $&#123;repo&#125;/Actor-Critic/ac.py - class Actor def __init__</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.variable_scope(<span class="string">&quot;action_value&quot;</span>):</span><br><span class="line">    log_prob = tf.log(self.action_prob[<span class="number">0</span>, self.action])</span><br><span class="line">    <span class="comment"># TD Error - scalar</span></span><br><span class="line">    self.action_value = tf.reduce_mean(log_prob * self.td_error) <span class="comment"># Advantage (TD_error) guided loss</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.variable_scope(<span class="string">&quot;actor_train&quot;</span>):</span><br><span class="line">    self.train_op = tf.train.AdamOptimizer(lr).minimize(-self.action_value)</span><br></pre></td></tr></table></figure>
-<h1 id="deep-deterministic-policy-gradients-ddpg">Deep Deterministic Policy Gradients (DDPG)</h1>
-<p>DDPG 的主要思想是将 DQN 的双网络思想借鉴到 Actor Critic 结构中。在 DDPG 中，Actor 具有两个相同结构的网络，Critic 也具有两个相同结构的网络。</p>
-<p>在具体介绍 DDPG 之前，我们首先简单介绍 Deterministic Policy Gradients，即 DPG。这里 Deterministic 的含义就是区别于一般的 Policy Gradients 最后输出的是行为空间 <span class="math inline">\(\mathcal{A}\)</span> 上的概率分布，DPG 会直接给出某个状态下应当采取何种行为。其决策函数我们标记为：</p>
-<p><span class="math display">\[
-a = \mu_{\b\theta}(s)
-\]</span></p>
-<p>我们用符号 <span class="math inline">\(\mu\)</span> 表示确定性策略，与随机策略 <span class="math inline">\(\pi\)</span> 区分。</p>
-<p>我们首先观察随机策略 <span class="math inline">\(\pi_{\b\theta}\)</span> 下的评价函数表达：</p>
-<p><span class="math display">\[
-\mathcal{J}_{\pi}(\b\theta) = \int_{s \in \mathcal{S}} d^{\pi_{\b\theta}}(s) \int_{a \in \mathcal{A}} \pi_{\b\theta}(a \mid s)Q^{\pi_{\b\theta}}(s, a) {\rm d}a {\rm d}s
-\]</span></p>
-<p>两者实际上都表达出了同样的含义，即策略的评价函数就是 Q 值的数学期望：</p>
-<p><span class="math display">\[
-\mathcal{J}_{\pi}(\b\theta) = \opE_{(s, a) \sim \pi_{\b\theta}} Q^{\pi_{\b\theta}}(s, a)
-\]</span></p>
-<p>那么在确定性策略下，策略的评价函数应当定义为：</p>
-<p><span class="math display">\[
-\mathcal{J}_{\mu}(\b\theta) := \opE_{s \sim \mu_{\b\theta}} Q^{\mu_{\b\theta}}(s, \mu_{\b\theta}(s)) = \int_{s \in \mathcal{S}} d^{\mu_{\b\theta}}(s)Q^{\mu_{\b\theta}}(s, \mu_{\b\theta}(s)) {\rm d}s
-\]</span></p>
-<p>这里梯度的推理则较为简单，直接使用复合函数的导数法则即可：</p>
-<p><span class="math display">\[
-\begin{aligned}
-\nabla_{\b\theta}\mathcal{J}_{\mu}(\b\theta) &amp;= \int_{s \in \mathcal{S}} d^{\mu_{\b\theta}}(s) \nabla_{\b\theta}Q^{\mu_{\b\theta}}(s, \mu_{\b\theta}(s)) {\rm d}s \\
-&amp;= \int_{s \in \mathcal{S}} d^{\mu_{\b\theta}}(s) \nabla_{a} \left.Q^{\mu_{\b\theta}}(s, a)\right|_{a = \mu_{\b\theta}(s)} \nabla_{\b\theta}\mu_{\b\theta}(s) {\rm d}s \\
-&amp;= \opE_{s \sim \mu_{\b\theta}} \left[\nabla_{a} \left.Q^{\mu_{\b\theta}}(s, a)\right|_{a = \mu_{\b\theta}(s)} \nabla_{\b\theta}\mu_{\b\theta}(s)\right]
-\end{aligned}
-\]</span></p>
-<p>基于此，我们在 DPG 的基础上引入 DQN 的双网络思路。我们记 Actor 网络中在线更新网络的参数为 <span class="math inline">\(\b\theta\)</span>，目标网络的参数为 <span class="math inline">\(\b\theta^-\)</span>。Critic 网络中在线更新网络的参数为 <span class="math inline">\(\b w\)</span>，目标网络的参数为 <span class="math inline">\(\b w^-\)</span>。初始化时应当令 <span class="math inline">\(\b\theta = \b\theta^-, \b w = \b w^-\)</span>。</p>
-<p>DDPG 的算法流程完全基于 DQN 算法，这里简单介绍如下：</p>
-<ul>
-<li>首先初始化一个容量为 <span class="math inline">\(N\)</span> 的记忆库 <span class="math inline">\(D\)</span> 用于存放先前的经验，这里 <span class="math inline">\(N\)</span> 是先前设定的超参</li>
-<li>随机初始化结构一致的 Critic 网络 <span class="math inline">\(Q, \hat Q\)</span>，其初始化参数分别为 <span class="math inline">\(\b\theta, \b\theta^-\)</span>，初始化的时候保证 <span class="math inline">\(\b\theta = \b\theta^-\)</span></li>
-<li>随机初始化结构一致的 Actor 网络 <span class="math inline">\(\mu, \hat\mu\)</span>，其初始化参数分别为 <span class="math inline">\(\b w, \b w^-\)</span>，初始化的时候保证 <span class="math inline">\(\b w = \b w^-\)</span></li>
-<li>对模型按照下述流程训练 <span class="math inline">\(M\)</span> 个 epoch，这里 <span class="math inline">\(M\)</span> 为先前设定的超参
-<ul>
-<li>初始化随机数发生器 <span class="math inline">\(\mathcal{N}\)</span></li>
-<li>假定初始状态 <span class="math inline">\(s_1\)</span>，初始化 <span class="math inline">\(s = s_1\)</span></li>
-<li>推演下述状态转移 <span class="math inline">\(T\)</span> 次，这里 <span class="math inline">\(T\)</span> 为先前设定的超参，下述过程的 <span class="math inline">\(t\)</span> 表示目前转移的次数
-<ul>
-<li>使用 Actor 网络选取行为 <span class="math inline">\(a_t := \mu_{\b\theta}(s_t) + \mathcal{N}(t)\)</span></li>
-<li>令 <span class="math inline">\(r_t\)</span> 表示在状态 <span class="math inline">\(s_t\)</span> 的条件下执行行为 <span class="math inline">\(a_t\)</span> 得到的直接收益</li>
-<li>令 <span class="math inline">\(s_{t + 1}\)</span> 表示在状态 <span class="math inline">\(s_t\)</span> 的条件下执行行为 <span class="math inline">\(a_t\)</span> 转移到的状态</li>
-<li>将描述状态转移的元组 <span class="math inline">\((s_t, a_t, r_t; s_{t + 1})\)</span> 存入 <span class="math inline">\(D\)</span></li>
-<li>从 <span class="math inline">\(D\)</span> 中抽取 <span class="math inline">\(B\)</span> 组数据，更新 <span class="math inline">\(\b\theta, \b w\)</span>，具体流程见下述，这里 <span class="math inline">\(B\)</span> 是先前设定的超参</li>
-<li>令 <span class="math inline">\(\b\theta^- \leftarrow \tau\b\theta + (1 - \tau)\b\theta^-\)</span>，这里 <span class="math inline">\(\tau\)</span> 是先前设定的超参</li>
-<li>令 <span class="math inline">\(\b w^- \leftarrow \tau\b w + (1 - \tau)\b w^-\)</span>，这里 <span class="math inline">\(\tau\)</span> 是先前设定的超参</li>
-</ul></li>
-</ul></li>
-</ul>
-<p>具体需要说明的是如何更新 <span class="math inline">\(\b\theta, \b w\)</span>。首先观察 Critic 网络，其几乎完全就是 DQN 更新方式。下述为 DQN 的 loss 计算：</p>
-<p><span class="math display">\[
-\mathcal{L}_{\rm DQN}(\b\theta) := \opE_{(s, a, r; s&#39;) \sim U(D)} \left[r + \gamma\max_{a&#39; \in \Gamma(s&#39;)} \hat Q(s&#39;, a&#39;; \b\theta^-) - Q(s, a; \b\theta)\right]^2
-\]</span></p>
-<p>而 DDPG 中 Critic 的 loss 则为：</p>
-<p><span class="math display">\[
-\mathcal{L}_{\rm DDPG(Critic)}(\b w) := \opE_{(s, a, r; s&#39;) \sim U(D)} \left[r + \gamma\hat Q(s&#39;, \hat\mu_{\b\theta^-}(s&#39;); \b w^-) - Q(s, a; \b w)\right]^2
-\]</span></p>
-<p>显然，仅仅是将通过贪心获取 <span class="math inline">\(s&#39;\)</span> 状态下的下一行为修改为通过 Actor 网络来获取 <span class="math inline">\(s&#39;\)</span> 状态下的下一行为，这样的设计使得 Critic 更为现实化。</p>
-<p>Actor 网络的梯度则先前已经证明：</p>
-<p><span class="math display">\[
-\nabla_{\b\theta}\mathcal{J}_{\mu}(\b\theta) = \opE_{s \sim \mu_{\b\theta}} \left[\nabla_{a} \left.Q(s, a; \b w)\right|_{a = \mu_{\b\theta}(s)} \nabla_{\b\theta}\mu_{\b\theta}(s)\right]
-\]</span></p>
-<p>这里仅仅将严格的 Q 值函数替换为 Critic 网络给出的估计值。</p>
-<p>可以看出 DDPG 和 DQN 不同的地方仅在于：</p>
-<ul>
-<li>选取行为是通过 Actor 网络完成的，而非使用 epsilon greedy 策略，使用神经网络一定程度上也保证了行为的随机性</li>
-<li>选取行为的时候加入了全局随机数发生器增加探索未知状态的可能</li>
-<li>每一回合均更新目标网络的参数，但是使用 Soft update，即通过衰减系数 <span class="math inline">\(\tau\)</span> 进行更新，而非 DQN 中完全同步</li>
-<li>loss 的计算融入了 Policy Gradients 的思路</li>
-</ul>
-<p>这种能够打乱学习顺序的方式，很好地解决了传统 Actor Critic 中由于经常抽样到相同的转移路径导致反复学习无用知识的问题。</p>
-<h2 id="代码示例-6">代码示例</h2>
-<p>这里的网络结构为：</p>
-<p><img src="/uploads/note-of-rl/4.png" /></p>
-<p>此时的网络结构图并不一定清晰，所以我们基于代码完成分析。</p>
-<p>这里直接把构建网络的代码贴过来：</p>
-<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># $&#123;repo&#125;/DDPG/ddpg.py - class DDPG def __init__</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Placeholders</span></span><br><span class="line">self.state = tf.placeholder(tf.float32, [<span class="literal">None</span>, n_feature], <span class="string">&quot;state&quot;</span>)</span><br><span class="line">self.next_state = tf.placeholder(tf.float32, [<span class="literal">None</span>, n_feature], <span class="string">&quot;next_state&quot;</span>)</span><br><span class="line">self.reward = tf.placeholder(tf.float32, [<span class="literal">None</span>, <span class="number">1</span>], <span class="string">&quot;reward&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.variable_scope(<span class="string">&quot;actor&quot;</span>):</span><br><span class="line">    self.action = self._build_actor(self.state, scope = <span class="string">&quot;eval&quot;</span>, trainable = <span class="literal">True</span>)</span><br><span class="line">    next_action = self._build_actor(self.next_state, scope = <span class="string">&quot;target&quot;</span>, trainable = <span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.variable_scope(<span class="string">&quot;critic&quot;</span>):</span><br><span class="line">    <span class="comment"># Assign self.action = action in memory when calculating Q value for td_error,</span></span><br><span class="line">    <span class="comment"># Otherwise the self.action is from Actor when updating Actor</span></span><br><span class="line">    q_value = self._build_critic(self.state, self.action, scope = <span class="string">&quot;eval&quot;</span>, trainable = <span class="literal">True</span>)</span><br><span class="line">    next_q_value = self._build_critic(self.next_state, next_action, scope = <span class="string">&quot;target&quot;</span>, trainable = <span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Networks parameters</span></span><br><span class="line">self.actor_eval_params = tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES, scope = <span class="string">&quot;actor/eval&quot;</span>)</span><br><span class="line">self.actor_target_params = tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES, scope = <span class="string">&quot;actor/target&quot;</span>)</span><br><span class="line">self.critic_eval_params = tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES, scope = <span class="string">&quot;critic/eval&quot;</span>)</span><br><span class="line">self.critic_target_params = tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES, scope = <span class="string">&quot;critic/target&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Target net replacement</span></span><br><span class="line">self.soft_replace = [</span><br><span class="line">    tf.assign(t, (<span class="number">1</span> - self.tau) * t + self.tau * e)</span><br><span class="line">        <span class="keyword">for</span> t, e <span class="keyword">in</span> <span class="built_in">zip</span>(</span><br><span class="line">            self.actor_target_params + self.critic_target_params,</span><br><span class="line">            self.actor_eval_params + self.critic_eval_params</span><br><span class="line">        )</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">q_target = self.reward + self.gamma * next_q_value</span><br><span class="line">td_error = tf.losses.mean_squared_error(labels = q_target, predictions = q_value)</span><br><span class="line">self.critic_train = tf.train.AdamOptimizer(critic_lr).minimize(td_error, var_list = self.critic_eval_params)</span><br><span class="line"></span><br><span class="line">actor_loss = -tf.reduce_mean(q_value)</span><br><span class="line">self.actor_train = tf.train.AdamOptimizer(actor_lr).minimize(actor_loss, var_list = self.actor_eval_params)</span><br></pre></td></tr></table></figure>
-<p>这里 <code>self._build_actor</code> 以及 <code>self._build_critic</code> 是构建 Actor 和 Critic 网络具体结构的函数，这里省略。</p>
-<p>可以看到，首先需要构建 Tensorflow Placeholder，之后构建 Actor 的 Eval 和 Target 网络，Critic 的 Eval 和 Target 网络。其中 Actor 网络接受的输入是当前状态，给出的输出是行为选择。而 Critic 网络接受的输入是当前状态和 Actor 网络给出的行为选择，给出的输出是行为的评估值。</p>
-<p>之后需要编写软替换算子，直接遍历所有网络参数，对其施以软替换即可。</p>
-<p>最后是 loss 的计算。Critic 网络的 loss 较为简单，公式为：</p>
-<p><span class="math display">\[
-\mathcal{L}_{\rm DDPG(Critic)}(\b w) := \opE_{(s, a, r; s&#39;) \sim U(D)} \left[r + \gamma\hat Q(s&#39;, \hat\mu_{\b\theta^-}(s&#39;); \b w^-) - Q(s, a; \b w)\right]^2
-\]</span></p>
-<p>而代码中也只是简单将这个公式转换为代码。</p>
-<p>之后是 Actor，我们注意到评价函数就是 Q 值的期望，所以只需要把 <code>q_value</code> 求取平均送入优化器求取其梯度即可。</p>
-<p>后面的具体运行学习过程的代码和 DQN 类似，从记忆库中抽样，之后将其送入网络运算即可。</p>
-<p>实际上 DDPG 就是 AC 和 DQN 代码的结合，基本上的原理并没有很大的差别。</p>
-<p>使用上述代码获得的 Reward 曲线为：</p>
-<p><img src="/uploads/note-of-rl/5.png" /></p>
-<h1 id="asynchronous-advantage-actor-critic-a3c">Asynchronous Advantage Actor Critic (A3C)</h1>
-<p>A3C 相较于 A2C 多出的特征是 Asynchronous，即异步。其核心思想是让多个网络尝试不同的行为，获得各类反馈传播到主网络。这样主网络由于接收到多个副网络的更新请求，就不会发生连续更新导致连续学习无用知识的问题，这样就可以抛弃 DQN 的记忆库策略解决这个问题。此外，主网络对副网络的指导也能够加速收敛的速度。</p>
-<p>这里并不想过多解释 A3C 代码，因为其核心思路并没有发生变化，这里直接给出训练结果：</p>
-<p><img src="/uploads/note-of-rl/6.png" /></p>
-<h1 id="trust-region-policy-optimization-trpo">Trust Region Policy Optimization (TRPO)</h1>
-<p>TRPO 是引入最后的 DPPO 算法之前，我们需要事先了解的一个简单的算法。</p>
-<h2 id="kl-散度">KL 散度</h2>
-<p>KL 散度是一种度量两个随机分布之间距离的一种方式，对于空间 <span class="math inline">\(X\)</span> 上的概率分布 <span class="math inline">\(P, Q\)</span>，其 KL 散度定义为：</p>
-<p><span class="math display">\[
-D_{\rm KL}(P \parallel Q) := \opE_{x \sim P}\left[\ln \frac{P(x)}{Q(x)}\right] = \int_{x \in X} P(x)\ln \frac{P(x)}{Q(x)} {\rm d}x
-\]</span></p>
-<p>KL 度量的意义在于，如果我们将 <span class="math inline">\(P\)</span> 认为是标准分布，即需要学习的概率分布。而 <span class="math inline">\(Q\)</span> 是机器给出的预测分布，那么 KL 散度实际上给出了当前机器给出的预测和真实分布的距离，机器应当尽可能缩小 KL 散度来逼近真实分布。</p>
-<p>可以证明 <span class="math inline">\(D_{\rm KL}(P \parallel Q) = 0\)</span> 当且仅当 <span class="math inline">\(P \equiv Q\)</span>。</p>
-<p>这是显然的：</p>
-<p><span class="math display">\[
-\begin{aligned}
-D_{\rm KL}(P \parallel Q) &amp;= \int_{x \in X} P(x)\ln \frac{P(x)}{Q(x)} {\rm d}x = -\int_{x \in X} P(x) \ln \frac{Q(x)}{P(x)} {\rm d}x \\
-&amp;\geq -\int_{x \in X} P(x) \left(\frac{Q(x)}{P(x)} - 1\right) {\rm d}x = -\int_{x \in X} (Q(x) - P(x)) {\rm d}x \\
-&amp;= 0
-\end{aligned}
-\]</span></p>
-<p>显然等号仅仅在 <span class="math inline">\(P \equiv Q\)</span> 的时候得到。</p>
-<p>另外，我们需要说明 KL 散度并不是对称的，也就是说 KL 散度虽然直观上可以理解为一种度量，但是实际上并不满足数学上度量的定义：</p>
-<p><span class="math display">\[
-D_{\rm KL}(P \parallel Q) \neq D_{\rm KL}(Q \parallel P)
-\]</span></p>
-<p>在先前提到的机器学习场合下，往往把 <span class="math inline">\(D_{\rm KL}(P \parallel Q)\)</span> 称为前向 KL 散度，而 <span class="math inline">\(D_{\rm KL}(Q \parallel P)\)</span> 则是后向 KL 散度。</p>
-<hr />
-<p>此外，我们需要说明的是，如果分布 <span class="math inline">\(Q\)</span> 是参数 <span class="math inline">\(\b\theta\)</span> 建模的，那么最小化前向 KL 散度得到的参数 <span class="math inline">\(\b\theta = \argmin_{\b\theta} D_{\rm KL}(P \parallel Q_{\b\theta})\)</span> 等价于极大似然估计。</p>
-<p>在此之前，我们需要对机器学习领域中的极大似然估计作出说明。对于参数 <span class="math inline">\(\b\theta\)</span> 建模的，空间 <span class="math inline">\(X\)</span> 上的随机分布 <span class="math inline">\(A\)</span>，我们观测到了样本 <span class="math inline">\(x\)</span>，那么似然函数定义为：</p>
-<p><span class="math display">\[
-\mathcal{L}(\b\theta) := A_{\b\theta}(x)
-\]</span></p>
-<p>即似然函数描述了在不同的分布参数之下，我们观测到该样本的概率。那么极大似然估计的思想就是最大化似然函数，作为该样本观测下的参数估计值。</p>
-<p>而如果我们观测到了样本列 <span class="math inline">\(\{x_n\} \in X^n\)</span>，那么似然定义为：</p>
-<p><span class="math display">\[
-\mathcal{L}(\b\theta) := \prod_{k = 1}^n A_{\b\theta}(x_k)
-\]</span></p>
-<p>机器学习中为了防止连乘下溢，会使用对数似然：</p>
-<p><span class="math display">\[
-\mathcal{L}&#39;(\b\theta) := \sum_{k = 1}^n \ln A_{\b\theta}(x_k)
-\]</span></p>
-<p>在这种条件下最大似然估计就是：</p>
-<p><span class="math display">\[
-\b\theta := \argmax_{\b\theta} \sum_{k = 1}^n \ln A_{\b\theta}(x_k) = \argmax_{\b\theta} \frac{1}{n}\sum_{k = 1}^n \ln A_{\b\theta}(x_k) = \argmax_{\b\theta} \opE_{x \sim \mathcal{D}_A}[\ln A_{\b\theta}(x)]
-\]</span></p>
-<p>这里 <span class="math inline">\(\mathcal{D}_A\)</span> 是在分布 <span class="math inline">\(A\)</span> 下采样得到的采样分布。</p>
-<p>那么回到原先的问题，我们对 KL 散度作变形：</p>
-<p><span class="math display">\[
-\begin{aligned}
-\b\theta &amp;= \argmin_{\b\theta} D_{\rm KL}(P \parallel Q_{\b\theta}) = \argmin_{\b\theta} \opE_{x \sim P}\left[\ln \frac{P(x)}{Q_{\b\theta}(x)}\right] \\
-&amp;= \argmin_{\b\theta} \left(\opE_{x \sim P}\left[\ln P(x)\right] - \opE_{x \sim P}\left[\ln Q_{\b\theta}(x)\right]\right) \\
-&amp;= \argmin_{\b\theta} \left(-\opE_{x \sim P}\left[\ln Q_{\b\theta}(x)\right]\right) = \argmax_{\b\theta} \opE_{x \sim P}\left[\ln Q_{\b\theta}(x)\right] \\
-&amp;\approx \argmax_{\b\theta} \opE_{x \sim \mathcal{D}_P}\left[\ln Q_{\b\theta}(x)\right]
-\end{aligned}
-\]</span></p>
-<p>这里基于 <span class="math inline">\(\mathcal{D}_P \approx P\)</span>，即采样分布近似表示原先分布得到了最后的结果。所以我们证明了最小化 KL 散度得到的参数等价于根据真实分布 <span class="math inline">\(P\)</span> 的样本对分布 <span class="math inline">\(Q\)</span> 作极大似然估计。</p>
-<h2 id="off-policy-policy-gradients">Off-policy Policy gradients</h2>
-]]></content>
-      <categories>
-        <category>【学习笔记】计算机</category>
       </categories>
   </entry>
   <entry>
@@ -17861,6 +17534,338 @@ D_{\rm KL}(P \parallel Q) \neq D_{\rm KL}(Q \parallel P)
 ]]></content>
       <categories>
         <category>【杂谈】碎碎念</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>2021 暑假生活记录</title>
+    <url>/2021/06/29/2021-summer-record/</url>
+    <content><![CDATA[<p>经过 6 月 22 日到 28 日这几天的折腾，大概和高中的老师、驾校教练等人商量了一些后续的安排。现在终于可以安定下来，准备做一些学习、开发、摸鱼的事情了。</p>
+<span id="more"></span>
+<p>总体而言，这个暑假想要做的事情其实还是很多的。</p>
+<ul>
+<li><p>学习一些新东西</p>
+<ul>
+<li><p>Java / Android 开发相关（或许最终的结果是随便看了看 Java 的语法，装好 IDE 就不做事了）</p></li>
+<li><p>汇编语言和量子计算（这属于完全不知道干啥，写在这里是因为小学期）</p></li>
+<li><p>Verilog 相关（但是这个属于想想而已，因为对这东西没有兴趣，下学期 xge 带我就好）</p></li>
+<li><p>编译原理相关（这个也属于想想而已，写这个是因为自动机学得惨不忍睹，要补一点）</p></li>
+<li><p>图形学相关（纯纯因为安主席的安利）</p></li>
+</ul></li>
+<li><p>跟进一些东西</p>
+<ul>
+<li><p>实验室项目（主要是最近划了，要跟上）</p></li>
+<li><p>THUInfo 的 UI 翻新以及培养计划 / 课程表功能翻新</p></li>
+<li><p>科协技能引导文档的结构初始化</p></li>
+</ul></li>
+<li><p>考试相关</p>
+<ul>
+<li><p>科目二（再不考是来不及了，大三不计划回家）</p></li>
+<li><p>GRE（属于想考一下试一下）</p></li>
+</ul></li>
+</ul>
+<p>此外还有一些杂事，包括买一个新电脑、预定 GRE 考试、选大三的课、重办身份证、回高中讲竞赛、和高中东方同好会线下聚会、陪 Sakana 玩等各种。</p>
+<p>因为想做的事情很多，所以想着不如就在这里开一个日记贴，就每天写一下想干什么，最后干了什么之类的。没啥价值，目标就是让自己做点事情，别划水了。</p>
+<h2 id="section">2021.06.29</h2>
+<p><strong>今天想要做的事情：</strong></p>
+<ul>
+<li><p>去驾校办理科目二入学手续</p></li>
+<li><p>公布科协网络部招新结果，准备一下文档初始化</p></li>
+<li><p>CRACKER 一日游，就到处看看有什么资料</p></li>
+<li><p>准备 THUInfo 主页 UI 翻新</p></li>
+<li><p>问一下韩旭下一步可以做什么</p></li>
+</ul>
+<p>其实想做的多，最后能做完的，凭运气吧。睡大觉去了，祝自己好梦，祝自己暑假顺利。也祝 Sakana 军训平稳度过。</p>
+<p><strong>今天汇报：</strong></p>
+<p>基本上弄完了网络部招新的通知工作，飞书还没有完全摸完，这个晚上慢慢来。后面应该要去问一下技术顾问团他们的情况，好准备做点事情。不过考虑到零字班的新生估计还要等他们军训完了才能安排工作，所以初始化应该暂且由老人完成。</p>
+<p>给韩旭发了微信消息，等他安排吧。</p>
+<p>目前下学期应该是四大原理 + 人机交互 + 计算机网络安全 + 台球 / 网球，所以也可以开始做点准备了。</p>
+<p>之后就是逛 CRACKER。目前的一个打算是汇编和计组应该就通过 CSAPP 先摸一下。计组可能还需要一些 Verilog 什么的东西，这个以后等买了 Windows 电脑再来搞一搞，造 CPU 的那本书也已经拿到手了，也可以拿 PPT 做一些补充。Java 相关是不打算弄多少，总之和 xge 他们组队搬砖，所以就打算把一些算法代码改成 Java 的，熟悉一下语法算了。</p>
+<p>编原那就是纯纯的逆天，因为我自动机学不明白，所以编译原理需要先看一些讲义和 Compiler 那本书。</p>
+<p>信号据说是数学课，所以找个课本随便学应该也就应付过去了。网原看起来属于巨大背诵的一门课，找了个《计算机网络：自顶而下》，然后要到了所有的课件，就打算看着玩玩算了。</p>
+<p>至于那些限选课，网络安全技术看起来和网原巨大相关，懒得搞。然后就是人机交互没啥经验，就算了。</p>
+<p>最后是打算学习图形学，问安主席要到了整本书的电子版，然后找到了网课链接，总之打算干活。</p>
+<h2 id="section-1">2021.06.30</h2>
+<p><strong>今天想要做的事情：</strong></p>
+<ul>
+<li><p>去驾校办理科目二入学手续，开始练车</p></li>
+<li><p>还有一位网络部新人没有联系上，需要补联系，并且需要搞一下飞书</p></li>
+<li><p>推一点点 CSAPP、图形学什么的</p></li>
+<li><p>准备 THUInfo 主页 UI 翻新</p></li>
+</ul>
+<p>其实也没什么好说的，就是学点新知识之后做一点之前就有的锅。明天要早起所以赶快睡大觉吧。</p>
+<p><strong>今天汇报：</strong></p>
+<p>以为去报名的，结果刚进去就被拉上车开始练了，估计以后就是早上八点下午两点，一整个白天都要在驾校了，所以推活、上课这些事情都得是晚上来做了。</p>
+<p>那个还没联系上的新人联系上了，所以招新基本上就结束了，可以开始具体规划下面一步要做的事情了。然后对下面的工作做了一点点的推进。</p>
+<p>然后就是 THUInfo 还在消极怠工，不过最近会开工的，会开工的。</p>
+<h2 id="section-2">2021.07.01</h2>
+<p><strong>今天想要做的事情：</strong></p>
+<ul>
+<li><p>科目二学侧方停车、倒车入库、坡道起步</p></li>
+<li><p>推一点点 CSAPP 之类的</p></li>
+<li><p>准备 THUInfo 主页 UI 翻新</p></li>
+</ul>
+<p>主要是晚上和家里人聊了比较多，所以说实际上今天晚上也没有认真学一些东西。</p>
+<p><strong>今天汇报：</strong></p>
+<p>学车真的是比较无聊，就开车十分钟等待两小时，于是其实天气热什么的都不是最大的问题，无聊是最需要解决的。</p>
+<p>然后，看了一点信号处理原理和编译原理，然后就发现自己的数学全忘完了，还是得回来再学一点点。</p>
+<p>没什么好说的，以后估计就是这样的重复的生活了。</p>
+<h2 id="section-3">2021.07.02</h2>
+<p><strong>今天想要做的事情：</strong></p>
+<ul>
+<li><p>科目二继续练习，但是要问清楚考试时间这些东西</p></li>
+<li><p>推一点点 CSAPP 之类的（这个真的要赶快了）</p></li>
+<li><p>准备 THUInfo 主页 UI 翻新（栋栋跑起来 THUInfo 了，工期来了）</p></li>
+<li><p>网络部工作规划再稍微写详细一点，准备主席团会议</p></li>
+</ul>
+<p>这两天除了科目二看起来什么都没有做呢，所以说下面还是要准备开工吧。之前似乎还说过要买新电脑的，似乎也给我搞忘了。</p>
+<p>想到一年前的自己还宣称着一个人孤独地走下去反而好，现在却苦于这里找不到人一起做事，莫名有点可笑。</p>
+<p>七月份，下半年的开始，要准备拾起自己了。</p>
+<p><strong>今天汇报：</strong></p>
+<p>很平凡地过了一天，晚上想回姜堰找人吃饭，结果因为下雨没去得了。学习也没学多少，看了一点点 CSAPP，但是也是很肤浅。</p>
+<p>话说直到现在才猛然发现自己似乎没有什么兴趣爱好，这个时候又突然想到自己之前小学的时候填兴趣爱好，永远都是大众化的“读书”。思来想去，觉得自己可能不太喜欢一直呆着，自己还是比较喜欢在路上的感觉。于是就有了一个还在萌芽的想法，就是只用公交或者地铁，去很远的地方，比如说从家到北京、到广州。也正如我自己感觉的那样，我自己还算喜欢折磨自己。这个规划算是很远期很远期的了。然后问了一下 Sakana 有没有兴趣，但是她也没有给出明确答复。</p>
+<p>学习？那是不可能学习的。在闷热的天气底下随时准备被教练喊去练车，这种情况下那是不可能学习的。于是我是真的把贴吧、知乎刷到推荐都开始循环，然后就开始戳 Sakana 等她回复，要么就是水群。但哪里有闲人像我这样一整天啥事没有呢，或多或少都要去做点什么事，打游戏也算。</p>
+<p>自己还是很不擅长应对无聊这个问题啊。其实只要有一个聊得来的人在，但是我能聊得来的都有事情，这就尴尬了。</p>
+<h2 id="section-4">2021.07.03</h2>
+<p><strong>今天想要做的事情：</strong></p>
+<p>想做的事情和之前差不多，觉得也没有必要再写一遍了。</p>
+<p>大概还有一些感慨吧，感慨自己怎么很容易变得惆怅起来，会有那种莫名其妙的伤感。</p>
+<p><strong>今天汇报：</strong></p>
+<p>今天下午和明天都不用去练车了，还算比较开心。但是相应的，我需要在这段时间内，把之前剩下来的事情处理好，包括之前自学内容要整理成文字，网络部的工作规划还是要继续细化一下，韩旭那边还要继续跟进。</p>
+<p>下午先写一些工作规划，然后等韩旭那边的回复，然后就是写博客了。</p>
+<p>然后目前实验室下一步要做的事情就是先调教好 T5 以保证能够做 prompt。具体的东西会在实验室周报上写，这里就不会写了，毕竟也不是什么太适合公开的东西。</p>
+<h2 id="section-5">2021.07.04</h2>
+<p><strong>今天想要做的事情：</strong></p>
+<p>从驾校休息了一天，计划就是什么事情不做，好好放松一下</p>
+<p><strong>今天汇报：</strong></p>
+<p>发现自己最大的问题实际上是，闲下来的时候很容易胡思乱想，进而就是情绪容易不稳定。最近身边也没什么了解情况的人可以好好聊聊，所以就比较尴尬了。</p>
+<p>今晚似乎喝得有点多，又对 Sakana 说了一堆胡话，大概自己到现在还没学会控制情绪。</p>
+<h2 id="section-6">2021.07.05</h2>
+<p><strong>今天想要做的事情：</strong></p>
+<p>暑期回校的计划最终安定下来了，6 号开始讲课到 22 号，我主要负责答疑。由于 12 号科目二才能考完，所以打算到时候再回去，这前面的一个星期就晚上线上答疑吧。</p>
+<p>要做的事情，大概就是继续看看论文，晚上回学校协商一下后面的安排。至于 THUInfo 和科协那边，真的有点过意不去了快要。</p>
+<p>本来想今晚找 Sakana 聊聊的，但看来落空了，所以还是自己调节吧。Holder 能做到的，或许吧。</p>
+<p><strong>今天汇报：</strong></p>
+<p>回高中和 FFF 遇了一下，商量了后面的安排。</p>
+<p>当然还有一些和 Sakana 那边的事情，这里不多说，但是至少我现在，真的感到很安心很快乐就是了。</p>
+<h2 id="section-7">2021.07.06</h2>
+<p><strong>今天想要做的事情：</strong></p>
+<p>没有什么很想做的，就是很平凡地看书学习、写写 THUInfo、写写实验室代码、写写科协文档。</p>
+<p><strong>今天汇报：</strong></p>
+<p>选课掉了康总的计组和人机交互，可能打算去搞 VLSI 来混学分。出乎意料的是台球上了。</p>
+<p>自从昨天开始，Holder 就变得似乎没那么难受了，或许也与梅雨渐渐离开有关。今天上午看了一点点 CSAPP，也预约好了 12 号的科目二考试，之后就是每天去练一练就好。</p>
+<p>晚上主要在安排暑培和技能引导文档那边，夏老板突然提到了可以和企业 / 实验室 / 其他学生组织做双向链接，这样的话既解决了文档来源比较单一的问题，也一定程度上提高了文档的实用价值。</p>
+<p>【和 Sakana 约了见面再聊，默默期待，还有一些误解，需要慢慢解开】</p>
+<h2 id="section-8">2021.07.07</h2>
+<p><strong>今天想要做的事情：</strong></p>
+<p>因为上午不去驾校，所以睡大觉放松一下。晚上的话照常工作，不过比较紧急的事情是编写竞赛习题解答以及和猫猫准备一下文档的部署。</p>
+<p><strong>今天汇报：</strong></p>
+<p>回学校了，旁听了 FFF 的一节课。</p>
+<p>大概是觉得这一届的基础有点问题吧，很基础的解析几何都没有把握很快给出正解，这就比较困难了。</p>
+<p>目前老师的意思是想让我带一下几个有机会去清华夏令营的同学，自己也要开始复习一些自主招生题了。</p>
+<h2 id="section-9">2021.07.08</h2>
+<p><strong>今天想要做的事情：</strong></p>
+<p>回家拿一些当时的自主招生参考资料，然后准备码点字吧。自己的事的话，可能就学习一些基本的东西，然后 THUInfo 开一些工。</p>
+<p><strong>今天汇报：</strong></p>
+<p>出卷子真的是好累啊，到处翻找资料，然后还要想尽办法保证我是站在一个中学生的角度来思考问题。磨了一整天还熬了一夜，基本上把一份数理化的试卷全都出完了，大概准备 10 号来考这一份卷子，以筛选出适合去清北夏令营的同学。</p>
+<p>我现在比较担心的是，大家都考得不高，最后还是拉不开差距。</p>
+<h2 id="section-10">2021.07.09</h2>
+<p><strong>今天想要做的事情：</strong></p>
+<p>学车，然后有什么事情就做什么事情。现在是越来越不太想把自己逼得太紧。</p>
+<p><strong>今天汇报：</strong></p>
+<p>下午把昨天出的卷子的答案给搞出来了，结果发现这份卷子应该是比较困难的，可能会把他们搞得很惨。</p>
+<p>THUInfo 说要开工到现在都没有动静，实验室没干活，科协现在还在筹划。总之就是除了正事之外的事情都在做。</p>
+<p>今晚回家的时候突然想起来 GRE 还没有报名，可能都快没有考位了，还是赶快把坑填上。身份证也已经做好了，要找个时间去拿。眼镜有点刮花了，其实要去重配，但是也一直在拖。头发也要去剪一下了，现在还是得注意下形象？</p>
+<p>明天早上回学校与那些考试的同学见一下面，监考一下之类的。明天下午尽快把卷子批改好成绩公布。</p>
+<p>另外，我仔细思考了一下，暑假还是不要预习下学期的内容为好，暑假应该做一些其他的事情。</p>
+<p>所以说这个暑假的主线就变成了 THUInfo、科协、实验室、高中竞赛、 GRE。至于新电脑、身份证、眼镜、头发之类的也就是支线任务了，科目二也将会在 12 号迎来终结。</p>
+<h2 id="section-11">2021.07.10</h2>
+<p><strong>今天想要做的事情：</strong></p>
+<p>上午回去监考，下午批改试卷并且和老师交流一下。然后尽可能能开工的东西就得开工，目前比较急的就是实验室和技能引导文档了。</p>
+<p><strong>今天汇报：</strong></p>
+<p>去监了个考，然后尽快把试卷给批改好了给老师。整体而言学弟们做得还是不错，但是细节上属于是真的需要很大的工夫去训练。</p>
+<p>然后就是平凡的学车和练习。</p>
+<p>另外就是，盼望 Sakana 回来。</p>
+<h2 id="section-12">2021.07.11</h2>
+<p><strong>今天想要做的事情：</strong></p>
+<p>去高港模考科目二，期间要开始阅读论文，至于能看多少，能领悟多少就是另外一回事情了。</p>
+<p>然后就是尽快考虑新电脑的事情，并且尽快制定后面的讲课计划吧。</p>
+<p><strong>今天汇报：</strong></p>
+<p>高港练车真的是好累好累，一整天就在那里站着看各个考试位的点位，很没意思还很折磨。</p>
+<p>当天也没别的什么事情了，出去参加了一个饭局，平平凡凡地结束了一天。</p>
+<h2 id="section-13">2021.07.12</h2>
+<p><strong>今天想要做的事情：</strong></p>
+<p>考科目二，然后回去准备和参加清北夏令营的各位见一个面。顺便安排之后的课程。</p>
+<p><strong>今天汇报：</strong></p>
+<p>科目二让我整整坐在那里等了六个小时，几乎是最后一个才考的。</p>
+<p>于是顺理成章地没有赶得上下午回学校，晚上才和学弟学妹们见了个面，稍微聊了一些没有什么含金量的话题。</p>
+<p>Sakana 从上海回来了，但我以后白天就似乎没有什么时间去找她玩了。</p>
+<h2 id="section-14">2021.07.13</h2>
+<p><strong>今天想要做的事情：</strong></p>
+<p>给他们讲一点很简单的东西。</p>
+<p>自己也要开始干各种的活了，包括看论文，写 THUInfo。其实最主要的是科协那边似乎真的拖不下去了。</p>
+<p><strong>今天汇报：</strong></p>
+<p>上课是真的很累，站很长时间会让自己很累很难受，然后还要说很多话，口干舌燥。</p>
+<p>其他倒是没有什么特别的感受，总体而言就是觉得过了很平凡的一天。</p>
+<h2 id="section-15">2021.07.14</h2>
+<p><strong>今天想要做的事情：</strong></p>
+<p>做一些平凡的事情，讲讲课。晚上被提前安排了饭局，所以还是得去。</p>
+<p><strong>今天汇报：</strong></p>
+<p>照样是讲了很平凡的一些课，没有涉及到很深层次的东西。给他们做了一个限时训练，估计效果不会很好吧。</p>
+<p>晚上饭局结束，去了一趟宾馆取回东西。和 Sakana 连麦闲聊了一段时间，约了明天出来玩。然后确定买了一个新电脑，联想拯救者 Y7000，显卡只是 RTX3050，处理器是 i5 的。买这个电脑是为了混一下大作业，顺便尝试一下一些只有 Windows 有的小游戏。</p>
+<p>也是很平凡地结束了一整天。</p>
+<h2 id="section-16">2021.07.15</h2>
+<p><strong>今天想要做的事情：</strong></p>
+<p>和 Sakana 约了去猫咖看看，然后吃烧烤打电动。</p>
+<p>本来上午打算睡懒觉的，结果接到消息说清北夏令营同学不放假，所以还得去一趟。</p>
+<p><strong>今天汇报：</strong></p>
+<p>玩得算是很开心？撸猫很好玩，但是猫毛真的是很烦人，到现在我背后都是微微发痒。撸完猫吃了甜品之后去找 FFF 吃烧烤。随后就去时代广场打电动了。</p>
+<p>Sakana 说大夏天的不想出门，但这也算是没办法吧。我俩的暑假完美错开，相交的时间几乎只有一个星期左右，所以要见面的话也就只有这一点时间。不过我的新电脑到货了，以后可以找 Sakana 连麦打游戏。</p>
+<p>明天被家里人安排了，后天和 Sakana 约了晚上看 1921，大后天就得送她走了。于是这个暑假就这样等价于结束了。</p>
+<h2 id="section-17">2021.07.16</h2>
+<p><strong>今天想要做的事情：</strong></p>
+<p>蹲在学校正常讲讲课，晚上已经有了安排所以就没啥了。</p>
+<p><strong>今天汇报：</strong></p>
+<p>实际情况是，高中突然出现了电力故障导致学校全部停课，但是参与清北夏令营的同学由于在小教室里没有被电力故障波及所以电力一切正常。但是可以想见的是，看见同学们放假了，他们也完全没有心思学习。所以我就和他们玩狼人杀，聊了聊他们现在的焦虑和压力。</p>
+<p>他们不是不想学习，但是高中这个体系给他们的限制实在是比较多，我作为学长也只能劝说他们做一些适应和牺牲。其实有的时候，也真的是毫无方法。</p>
+<div class="note info no-icon"><p>有时治愈，常常帮助，总是安慰。</p>
+<p>To cure sometimes, to relieve often, to comfort always.</p>
+</div>
+<p>这是特鲁多的名言，本来是形容医生的。但现在看起来我有的时候也像是这样，我帮不了他们实现他们理想中的高中生活，我最多只能做到帮助他们去理解这个可能有些扭曲的体系，让他们稍微以一种平稳的心态度过高中。</p>
+<p>高中这边结束之后就去忙自己的事情了。明天去见 Sakana，18 号还有一小波聚会。</p>
+<h2 id="section-18">2021.07.17</h2>
+<p><strong>今天想要做的事情：</strong></p>
+<p>正常地活下去。重要的事情是开工技能引导文档。</p>
+<p><strong>今天汇报：</strong></p>
+<p>结果上午翘班了，在配置新电脑的 C 语言编译器和装 Python。结果就这两件事硬生生让我一个上午耗费完了。下午平凡地来高中简单讲了些东西，也顺便做了一些小事情。</p>
+<p>晚上陪 Sakana 看了 1921，虽然对题材没有特别的兴趣，对演员无感，但感觉看下来还算是一部不错的电影，除了叙事线很多很杂，要不是了解一些历史可能就会错乱吧。</p>
+<p>Sakana 不急着 18 号就直接回去了，打算 20 号左右回去，于是就默默约了 19 号再出来玩。</p>
+<p>总之就是，一切都在慢慢变好。</p>
+<h2 id="section-19">2021.07.18</h2>
+<p><strong>今天想要做的事情：</strong></p>
+<p>今天约了同学聚会，所以重点会在出去玩上。不过高中这边也应该好好干活。</p>
+<p><strong>今天汇报：</strong></p>
+<p>和姜东会玩了一个下午一个晚上，先去麦当劳吃饭搓音游，然后星巴克打雀、掼蛋、闲聊，之后定番小菜园聚餐和舞立方手痒打机，最后 KTV。</p>
+<p>KTV 上我唱了不少歌，但最满意的还是《太阳系 DISCO》。作为自己很喜欢和大家都能参与（指鼓掌和参与オーオオー以及ナナナナナナナー环节）的一首歌，整体气氛还是很好的，比那些大部分人看不懂歌词也不熟悉的比较冷的 V 曲要好一些。当然唱完这首歌我嗓子就明显不行了，中途的一段几乎就是在纯靠喊。</p>
+<div class="note info no-icon"><p>あの一等星のさんざめく光で，あなたとダンスを踊ろうか。 ——「太陽系ディスコ」</p>
+</div>
+<p>回来之后就是和 Sakana 闲聊了一会，然后转头就装了个有补丁的 Riddle Joker 开始推。由于之前认真推过没有补丁的七海线，所以这次就很快地过掉了，看了一下 H 情节怎么搞的就睡觉去了。</p>
+<h2 id="section-20">2021.07.19</h2>
+<p><strong>今天想要做的事情：</strong></p>
+<p>今天 Sakana 家里有一些事情不能出门了，所以今天见不了面了。有一些话不如连麦的时候随便扯一下吧，晚上陪她打打游戏什么的也不是不行。</p>
+<p>其他事情就正常慢慢推进就好。</p>
+<p>【我自己依然在为一些虚无缥缈的东西而伤心，Holder 还是需要花一些时间来恢复理性】</p>
+<p><strong>今天汇报：</strong></p>
+<p>用了点时间给自己的网站加了个评论系统，本来是想用 Valine 的，结果现在较高版本的 NexT 不支持了，所以退而求其次装了 DisqusJS，他的缺点就是需要翻墙的账号。</p>
+<p>之后听从了栋栋的建议换了 <a href="https://twikoo.js.org">Twikoo</a>，发现是真的好用而且还不用翻墙，现在我直接安利这个评论系统。</p>
+<h2 id="section-21">2021.07.20</h2>
+<p><strong>今天想要做的事情：</strong></p>
+<p>今天 Sakana 回上海了，所以估计是不能去找她了。</p>
+<p>Holder 一个人要好好地过好自己的生活。</p>
+<p><strong>今天汇报：</strong></p>
+<p>大概就是接着修了一下评论系统，然后出去吃了个饭，结果又喝多了（Holder 从来没有信守过自己的 flag）。回来之后和 Sakana 连麦闲聊了一点点，似乎一直在说胡话，语无伦次。</p>
+<p>之后就是和 LCR 两个人联机打 Minecraft，但说是一起玩，实际上就是两个人在已经建好的一个挡里面骑马。</p>
+<div class="note info no-icon"><p>【 LCR 】芜湖，上次骑马出去忘了把第二只马骑回来，Holder 你没马了。</p>
+</div>
+<p>大概就这样平凡地过去了一整天。</p>
+<h2 id="section-22">2021.07.21</h2>
+<p><strong>今天想要做的事情：</strong></p>
+<p>今天和高中的老师一起吃饭讨论这几天讲课的情况，实际上 Holder 并没有做出什么很突出的贡献。</p>
+<p>接着过下去就好了。</p>
+<p><strong>今天汇报：</strong></p>
+<p>听闻 LCR 那边可以提供他们宿舍给我住，突然有点想要去上海玩一圈，也正好送一下 Sakana。但是南京突如其来的疫情让家里人对此很担心，我自己还算是不太认为会影响到什么，但也因此搞得很不愉快就是了。</p>
+<p>上海不去就算了吧，反正也只是去见个面，最多晚上陪 Sakana 在交大转转圈，再陪 LCR 打一白天加一晚上游戏。</p>
+<h2 id="section-23">2021.07.22</h2>
+<p><strong>今天想要做的事情：</strong></p>
+<p>好好生活。</p>
+<p><strong>今天汇报：</strong></p>
+<p>最近一直比较烦躁，不知道是因为无聊还是因为什么。其实能隐隐约约感到实际上就是因为当下各种事情都不顺遂（科协事情没做，实验室那边也在咕咕咕，高中这边还是感觉自己没做到什么有用的事情）加上后面还要和 Sakana 失联，一下子又没有了倾诉的人，FFF 不久出去旅游，这下子是真的没有谁出来一起玩了。还是那句话，想到一年前的自己甘愿一个人闭锁在黑暗的房间里，独自对着屏幕无论是欢笑还是难过，都不愿意和其他人过多交流，现在的我无疑是对过去的讽刺。</p>
+<p>不过稍微好一些的是，我可能解开了一些心结。概括来说大概就是，我以往认为自己伤感的来源是别人变得特立独行而怪异，但是自己认认真真享受过生活之后，我才认识到，以往昏暗的我才是最为特立独行的。</p>
+<div class="note info no-icon"><p>从一个本就不合群还自认为合群的人的眼光之中看去，那一切的平凡和正常，反倒是怪异。</p>
+</div>
+<p>所以 Holder 重新立起 flag，从今开始好好生活。</p>
+<p>【箴言：Holder 的 flag 没有不倒的】</p>
+<hr />
+<p>于是今天上午的 Holder 起床之后就在 Riddle Joker，现在应该只剩下茉优线没有完全结束了（年上系真的不在我的 XP 上，最后推自然没有任何的问题）。</p>
+<p>中午的 Holder 开始到处看 V 曲的 live，真的突然想去一次 V 家演唱会。要说现场感比较好的歌的话，<a href="https://www.bilibili.com/video/BV1Nf4y1U7z1?t=279">《Unknown Mother Goose》</a>是首推（众人おおおーおおー的那个场面真的是很震撼的），之后就是<a href="https://www.bilibili.com/video/BV11W411C7io?t=295">《劣等上等》</a>（Giga 的专业炸场子歌），<a href="https://www.bilibili.com/video/BV16s411h7eE">《号哭》</a>和<a href="https://www.bilibili.com/video/BV1As411B7J8">《东京泰迪熊》</a>也算是很有感觉的。然后就似乎沿着推荐来到了几个网络合唱视频，首先是 2017 年的<a href="https://www.bilibili.com/video/BV1Nx411u7YT">《砂之惑星》</a>（八爷 yyds，可惜出道娱乐圈了，当个 P 主不好么），然后是 2011 年的<a href="https://www.bilibili.com/video/BV1Ax411w7Sh">《千本樱》</a>，也算是猛然回忆起高中的一些时光了。</p>
+<p>之前在<a href="/about">关于页</a>提到我最喜欢《无梦之梦》，但是这首歌适合一个人在难过的时候自己听，用来做安慰用的。其实春卷饭的歌基本都是这个特征，很温柔，适合一个人独自欣赏，很难在演唱会上表演得好。同理还有新曲<a href="https://www.bilibili.com/video/BV1hA411g7mt?from=search&amp;seid=51222177324975189">《第三心脏》</a>，也是最近很喜欢的。</p>
+<hr />
+<p>最终通过一番协商，还是决定去上海了。自己的一时冲动把 Sakana 还有家里人的安排搞得一团乱，说实话现在还是有一点愧疚。然后在安排在上海的行程的时候，发现竟然想不到可以去哪里玩。</p>
+<p>所以说，Holder 的脑子一热带来的是无数若干的混乱，让 Sakana 落单还拉着她一起不知道干什么，一时间不知道说什么好。</p>
+<p>今天 Sakana 应该是和同学们出去玩去了，Holder 一个人默默地去未来极越把卡里的钱给用掉了，之后骑车绕县城转了一圈。</p>
+<p>一个人真的很无聊，无聊的时候就喜欢胡思乱想，然后可能就会做出很没有理由的事情。</p>
+<p>惋惜我自己的高中没有发展若干的朋友，导致现在回到家乡竟然是四处无人。还不如早点回北京，至少我的舍友可以一起打牌，一起出去找地方看个电影或者是到处找点吃的。或者就是找北大的几个熟人出去转转，要么也可以和迅哥哥等 308 闲聊。</p>
+<p>于是 Holder 又开始莫名难过起来，Holder 自以为值得夸耀的，竟然是一片荒芜。</p>
+<p>Holder 嫉妒且憎恨着那些现实生活充实的人们，虽然这种无名火显得幼稚且没有道理。Holder 似乎就像是对着并不存在的敌人宣战一般，对着自己幻想中的困境，对着不存在的挫折精神低落而恍惚。</p>
+<p>那个好好生活的 flag 突然显得可笑。</p>
+<hr />
+<p>我一直在思索着，现在的我的生活多么像我先前的追求。和同学彻夜聚会，和 Sakana 看电影、逛街、撸猫，即使一地鸡毛但依然决定去上海，那种自由挥洒情感，自由表达自己，不计成本地为了简单的目标而大闹一番的生活。然而我却似乎不像是之前那样无忧无虑，我每天都被一种不能明状的忧伤所萦绕。即使某天我说我释怀了，我看开了，我似乎找到了生活的乐趣。即使我这么说，我的心中实际上从未解开过这种难过的感情，只不过是因为当下的愉悦而暂且麻痹。</p>
+<p>在房间里自说自话地走了几圈，尝试理清楚自己这个情感的来源。结果还是不太弄得明白，所以暂且作罢。</p>
+<h2 id="section-24">2021.07.23</h2>
+<p><strong>今天想要做的事情：</strong></p>
+<p>逃到上海，然后不知道干什么。</p>
+<p><strong>今天汇报：</strong></p>
+<p>单纯地溜来上海了，Sakana 因为绿格那边的政策一直没有很能确定下来比较低落，于是也就很单纯地一起吃了饭，去了私影玩了一圈而已。</p>
+<p>晚上打算玩冬日计划，结果因为网络原因一直没有能够一起玩得了，只能作罢。</p>
+<h2 id="section-25">2021.07.24</h2>
+<p><strong>今天想要做的事情：</strong></p>
+<p>和 LCR 混一天。</p>
+<p><strong>今天汇报：</strong></p>
+<p>大概就是中午先和 Sakana 吃了一顿饭然后就和 LCR 一起到处瞎跑了。</p>
+<p>本来的预定是去外滩，沿着江边随便走走，结果 LCR 在地铁半路上突然提到想要去海边，但是已经出发一段路了，就决定去黄浦江入长江口转一圈。地铁坐了整整两个小时到双江路下，然后就是沿着黄浦江骑车十几公里。本来以为沿着江边能看到什么的，结果全是造船厂，能看到的就是一堆重型机械和工人们。值得一提的是本来今天是台风来的日子，结果雨是真的没有下下来，倒是风是相当的大，大到我骑车下坡不蹬的话，风会把我吹上坡。</p>
+<p>然后就是沿着一条路一路骑到了入江口，那里的风已经是相当大了，但依然没有能阻挡钓鱼佬们翻越围墙站到江边的防波堤上钓鱼。自己胆子小，就没翻过去看看，所以也就站在墙外拍了照片，打了个车回去了。</p>
+<p>至于今晚发生的一些并不太愉悦的事情，还是暂且不提吧。只能说现在的 Holder 不太振作得起来。</p>
+<h2 id="section-26">2021.07.25</h2>
+<p><strong>今天想要做的事情：</strong></p>
+<p>活着。</p>
+<p><strong>今天汇报：</strong></p>
+<p>台风终于登陆上海了，整个天都是漆黑的那种，狂风大作暴雨如注。然而我还是和 LCR 两个人出了门在上交里面转了好长一段时间，跑去下院瞎窜，去思源湖边上看台风，去宿舍楼的风口看被吹倒的树。</p>
+<p>反正就是两个不要命的人在台风天的无聊之举，和昨天顶着台风去江边上差不多。结果是误了回去的火车，不得不立刻改签第二天的。</p>
+<p>Sakana 自然在台风天不愿意出来，所以一整天都没有见到，晚上喊她打游戏也没有理我，说是没有兴致。</p>
+<h2 id="section-27">2021.07.26</h2>
+<p><strong>今天想要做的事情：</strong></p>
+<p>继续活着。</p>
+<p><strong>今天汇报：</strong></p>
+<p>早上爬起来就接到了火车取消的消息，于是不得不接着留一天。</p>
+<p>早上和 LCR 就一直在打 Minecraft 消磨时间，生存档从零开始真的是很耗时间的一种玩法。玩好了之后和 Sakana 说了下午陪她去做核酸，最后是自己任性地拉着她冒着还算不小的雨去了天街。</p>
+<p>晚上没事做，于是合计了一下和 LCR 又出门了，结果是一天去了两次天街（这个时候就得说交大旁边真的是没啥玩的，除了两个商场、一个桌游店、一个 KTV、若干小饭馆之外似乎什么都没有了，喊 Sakana 出门最终的归宿永远是找一个吃饭的地方闲聊，最多去看电影）。</p>
+<h2 id="section-28">2021.07.27</h2>
+<p><strong>今天想要做的事情：</strong></p>
+<p>回家，然后活着。</p>
+<p><strong>今天汇报：</strong></p>
+<p>早上 Sakana 突然说打算送我去火车站，但实际上我知道她出远门的东西还没收拾好，但还是答应了。</p>
+<p>然后就没有什么特别的事情了，在火车站拥抱后分别，自己一个人坐火车然后兜兜转转回到了家，冒着雨赶去高中。</p>
+<p>一整天都过得比较累，回来之后又不得不通宵清掉了一些任务。</p>
+<h2 id="section-29">2021.07.28</h2>
+<p><strong>今天想要做的事情：</strong></p>
+<p>清闲地活着。</p>
+<p><strong>今天汇报：</strong></p>
+<p>今天是给高中的学弟学妹们考试的日子，自己是出题人也是监考。监考这个活是真的令人烦躁，无聊至极，甚至愿意出点事情让自己不至于无聊。</p>
+<p>Sakana 最终踏上了旅程，坐了十个小时的火车前往兰州，她也在经受着无聊的时光。两个人一起听歌了一个小时，她到达兰州之后需要办理一系列的事务，便暂且失联了。</p>
+<hr />
+<p>不过 Holder 似乎算是慢慢理清楚自己到底在担忧什么了，异地造成的交流不畅和误解真的是相当折磨。不多说吧，总之就是意识到了我和 Sakana 处境其实类似，而我潜意识里深刻地误解了很多的事情而已。所以现在应该心态平稳很多了，Holder 也已经下定决心要保证自己生活乐趣的多元化了。</p>
+<h2 id="section-30">2021.07.29</h2>
+<p><strong>今天想要做的事情：</strong></p>
+<p>一个人活着。</p>
+<p><strong>今天汇报：</strong></p>
+<p>今天什么都没有发生，起床吃饭，一个人躺在床上刷手机。就是典型的一个无聊的人应该有的样子。</p>
+<p>现在 Sakana 应该到达了最终的目的地，可能以后就会是几乎完全失联了。大概如此。</p>
+<h2 id="section-31">2021.07.30</h2>
+<p><strong>今天想要做的事情：</strong></p>
+<p>把科协暑培好好弄好。</p>
+<p><strong>今天汇报：</strong></p>
+<p>Sakana 现在彻底处于失联状态了，多半是不到晚上联系不上了。虽然有点消沉，而且为生日怎么办的事情有点烦躁，但是自己的事情还是得好好做下去。</p>
+<hr />
+<p>就这样吧，这个纪录就此结束，新的生活渐渐就要开始了。</p>
+<p>Holder 通过这个暑假，大概是缓慢地将自己的心态平稳下来了，或许还有一些不能言说的不舍、迷惘、辛酸等等，但暂且都埋藏起来吧。不过相较于一个自闭的 Holder，虽然现在的我或许不如以往那样沉稳专注，但可能更像一个正常的人吧。</p>
+<div class="note info no-icon"><p>あたしが愛を語るのなら，そのすべてはこの歌だ。</p>
+<p>誰も知らないこの物語，また口ずさんでしまったみたいだ。</p>
+<p>「Unknown Mother Goose」</p>
+</div>
+<p>总而言之，或许还有许多的困难，还有许多的考验，还有很多我们需要去做的事情，但我依然坚信未来可期。</p>
+<p>我是 Holder，我们继续走下去吧。</p>
+]]></content>
+      <categories>
+        <category>【生活记录】假期日记</category>
       </categories>
   </entry>
   <entry>
@@ -17941,6 +17946,38 @@ D_{\rm KL}(P \parallel Q) \neq D_{\rm KL}(Q \parallel P)
 ]]></content>
       <categories>
         <category>【杂谈】游戏</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>安卓前端开发杂谈</title>
+    <url>/2021/09/01/android-dev-exp-1/</url>
+    <content><![CDATA[<p>安卓的移动端开发，属实让我血压高了一小段时间。毕竟已经接触过类似于 React Native 那种基于 TypeScript 语言的、优秀的跨平台移动端框架，再去尝试用繁琐的 Java 语言写安卓前端自然是不适应且感到烦躁。</p>
+<p>但是毕竟是 Java 程序设计训练课程，安卓前端开发作为其最大的特色，不得不消受。</p>
+<span id="more"></span>
+<h1 id="关于数据绑定">关于数据绑定</h1>
+<p>如果要我说最大的不适应的地方，首先就是数据和图形界面的完全分离。在 React Native 框架之中，数据和图形界面的管理大概是这样的：</p>
+<figure class="highlight typescript"><figcaption><span>TypeScript</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> App = <span class="function">(<span class="params">props: AppProps</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// Set states &amp; initialize</span></span><br><span class="line">    <span class="keyword">const</span> [bar, setBar] = useState&lt;<span class="built_in">number</span>&gt;(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Some functions to update or rewrite data</span></span><br><span class="line">    <span class="keyword">const</span> update = <span class="function">() =&gt;</span> setBar(<span class="function">(<span class="params">o</span>) =&gt;</span> o + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Write UI with TSX, use data freely</span></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="xml"><span class="tag">&lt;<span class="name">View</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Text</span>&gt;</span> Hello world! <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;`The val of bar is $&#123;bar&#125;`&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;`Property foo is $&#123;props.foo&#125;`&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Button</span> <span class="attr">onClick</span>=<span class="string">&#123;update&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但是在安卓之中，图形界面完全定义在 <code>.xml</code> 文件之中，而且一定程度上其定义各个组件摆放方式的语法细节的繁杂程度不低于 HTML。而如果需要将数据载入图形界面，则首先要根据组件的 ID 获取组件，之后才能调用各种方法设定具体属性。</p>
+<figure class="highlight java"><figcaption><span>Java</span></figcaption><table><tr><td class="code"><pre><span class="line">((TextView) view.findViewById(R.id.entity_name)).setText(data.name);</span><br></pre></td></tr></table></figure>
+<p>这里出现的 <code>R</code> 类据说是相当厉害的。但是我第一次接触安卓的时候，这个符号给我带来的感觉就是不安，因为我再也不能像写 React Native 一样至少自认为自己掌握了程序之中的数据流。换一种说法，即使 React Native 可能做了很多背后工作，但它至少做到了让开发者在很多时候能直观引导数据流。</p>
+<p>对于按钮等组件，React Native 框架下可以直接传入回调函数。而众所周知 Java 是纯净的面向对象语言，怎么会有 lambda 这种异端呢（新版本的 Java 已经离经叛道了！）。</p>
+<p>所以你需要写监听器对象，重写其中的方法等等。</p>
+<hr />
+<p>并不是说这样不好，我还记得之前大一小学期的时候写 Qt 很多时候就是各种指针到处乱飞然后到处乱 <code>set</code> 这个那个的，最后一个 <code>draw</code> 函数里面上百行的，成块的各种格式设定、字体设定、内容设定、排列设定，然后这次写安卓让我回忆起了那一段黑暗时光。</p>
+<h1 id="并不适应的适配器模式">并不适应的适配器模式</h1>
+<p>如果只是想给一个 <code>TextView</code> 载入文字，直接几个 <code>set</code> 函数就结束了。但是给一个格式复杂的列表载入数据，则相当繁琐。比如说现在主流的 <code>RecyclerView</code>，其载入数据，就需要你自己编写一个数据适配器。</p>
+<p>我首先是上网找轮子，随后想了一下，干脆自己包装了个简单的 <code>RecyclerViewAdapter</code> 先勉强用用。</p>
+<p>将数据塞到图形界面上，最重要的三个东西是上下文、使用什么 <code>layout</code> 和数据本身，那么适配器的构造函数就需要接受这三项。然后就是平凡地重写 <code>RecyclerView.Adapter</code> 所要求的三个函数。不过这里我在重写 <code>onBindViewHolder</code> 的时候留了空，因为这里就是定义适配器最重要部分——数据如何映射到 UI 的函数。我将这一个函数设为虚函数，让子类继承重写就可以实现各种映射方式。最后的成果大致这样：</p>
+<figure class="highlight java"><figcaption><span>Java</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">RecyclerViewAdapter</span>&lt;<span class="title">T</span>&gt; <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">Adapter</span>&lt;<span class="title">RecyclerViewAdapter</span>.<span class="title">ViewHolder</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> Context mContext;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">int</span> mLayoutId;</span><br><span class="line">    <span class="keyword">protected</span> List&lt;T&gt; mData;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RecyclerViewAdapter</span><span class="params">(Context context, <span class="keyword">int</span> layoutId, List&lt;T&gt; data)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.mContext = context;</span><br><span class="line">        <span class="keyword">this</span>.mLayoutId = layoutId;</span><br><span class="line">        <span class="keyword">this</span>.mData = data;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="meta">@NonNull</span> <span class="function">ViewHolder <span class="title">onCreateViewHolder</span><span class="params">(<span class="meta">@NonNull</span> ViewGroup parent, <span class="keyword">int</span> viewType)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ViewHolder(</span><br><span class="line">                LayoutInflater.from(mContext).inflate(mLayoutId, parent, <span class="keyword">false</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBindViewHolder</span><span class="params">(<span class="meta">@NonNull</span> ViewHolder holder, <span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// <span class="doctag">TODO:</span> What is this?</span></span><br><span class="line">        <span class="comment">// holder.updatePosition(position);</span></span><br><span class="line">        <span class="keyword">this</span>.convert(holder, mData.get(position));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">convert</span><span class="params">(ViewHolder holder, T data)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getItemCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> mData.size();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ViewHolder</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">ViewHolder</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">private</span> View mConvertView;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">ViewHolder</span><span class="params">(View itemView)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>(itemView);</span><br><span class="line">            <span class="keyword">this</span>.mConvertView = itemView;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> &lt;K extends View&gt; <span class="function">K <span class="title">getViewById</span><span class="params">(<span class="keyword">int</span> viewId)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> (K) mConvertView.findViewById(viewId);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>用起来也简单，传入三个要素，之后重写 <code>convert</code> 方法定义一下数据到 UI 的映射就好了：</p>
+<figure class="highlight java"><figcaption><span>Java</span></figcaption><table><tr><td class="code"><pre><span class="line">binding.entityList.setAdapter(<span class="keyword">new</span> RecyclerViewAdapter&lt;Entity&gt;(</span><br><span class="line">    HomeFragment.<span class="keyword">this</span>.getActivity(), R.layout.home_entity_item, baseEntities</span><br><span class="line">) &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">convert</span><span class="params">(RecyclerViewAdapter.ViewHolder holder, Entity data)</span> </span>&#123;</span><br><span class="line">        ((TextView) holder.getViewById(R.id.entity_name)).setText(data.getLabel());</span><br><span class="line">        ((TextView) holder.getViewById(R.id.entity_category)).setText(data.getCategory());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>你会发现，这比 React Native 要写的东西多太多了。上面这么多需要折腾的，React Native 只需要这样写：</p>
+<figure class="highlight typescript"><figcaption><span>TypeScript</span></figcaption><table><tr><td class="code"><pre><span class="line">&lt;View&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        baseEntities.map(<span class="function">(<span class="params">val, ind</span>) =&gt;</span> (</span><br><span class="line">            <span class="xml"><span class="tag">&lt;<span class="name">View</span> <span class="attr">key</span>=<span class="string">&#123;ind&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;val.name&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;val.category&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span></span><br><span class="line">        ))</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/View&gt;</span><br></pre></td></tr></table></figure>
+<p>就可以实现一个列表了。</p>
+<p>Java 我写了一整个类，光数据转成 UI 也写了好几行长代码，这还没有算 <code>.xml</code> 文件。</p>
+]]></content>
+      <categories>
+        <category>【杂谈】开发</category>
       </categories>
   </entry>
   <entry>
