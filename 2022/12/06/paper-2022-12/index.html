@@ -230,7 +230,7 @@ $(function () {
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#learning-tailored-adaptive-bitrate-algorithms-to-heterogeneous-network-conditions---a-domain-specific-priors-and-meta-reinforcement-learning-approach"><span class="nav-number">1.</span> <span class="nav-text">Learning Tailored Adaptive Bitrate Algorithms to Heterogeneous Network Conditions - A Domain-Specific Priors and Meta-Reinforcement Learning Approach</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction"><span class="nav-number">1.1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#background-motivation"><span class="nav-number">1.2.</span> <span class="nav-text">Background &amp; Motivation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#methods"><span class="nav-number">1.3.</span> <span class="nav-text">Methods</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#input-driven-markov-decision-process"><span class="nav-number">1.3.1.</span> <span class="nav-text">Input-driven Markov Decision Process</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#meta-rl-with-domain-knowledge"><span class="nav-number">1.3.2.</span> <span class="nav-text">Meta RL with Domain Knowledge</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#model-agnostic-meta-learning"><span class="nav-number">1.3.3.</span> <span class="nav-text">Model Agnostic Meta-Learning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leveraging-domain-knowledge"><span class="nav-number">1.3.4.</span> <span class="nav-text">Leveraging Domain Knowledge</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#aabr-overview"><span class="nav-number">1.4.</span> <span class="nav-text">AABR Overview</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#basic-training-algorithm"><span class="nav-number">1.4.1.</span> <span class="nav-text">Basic Training Algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#maximum-entropy-ppo-me-ppo"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">Maximum Entropy PPO (ME-PPO)</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#learning-tailored-adaptive-bitrate-algorithms-to-heterogeneous-network-conditions---a-domain-specific-priors-and-meta-reinforcement-learning-approach"><span class="nav-number">1.</span> <span class="nav-text">Learning Tailored Adaptive Bitrate Algorithms to Heterogeneous Network Conditions - A Domain-Specific Priors and Meta-Reinforcement Learning Approach</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction"><span class="nav-number">1.1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#background-motivation"><span class="nav-number">1.2.</span> <span class="nav-text">Background &amp; Motivation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#methods"><span class="nav-number">1.3.</span> <span class="nav-text">Methods</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#input-driven-markov-decision-process"><span class="nav-number">1.3.1.</span> <span class="nav-text">Input-driven Markov Decision Process</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#meta-rl-with-domain-knowledge"><span class="nav-number">1.3.2.</span> <span class="nav-text">Meta RL with Domain Knowledge</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#model-agnostic-meta-learning"><span class="nav-number">1.3.3.</span> <span class="nav-text">Model Agnostic Meta-Learning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leveraging-domain-knowledge"><span class="nav-number">1.3.4.</span> <span class="nav-text">Leveraging Domain Knowledge</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#aabr-overview"><span class="nav-number">1.4.</span> <span class="nav-text">AABR Overview</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#basic-training-algorithm"><span class="nav-number">1.4.1.</span> <span class="nav-text">Basic Training Algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#maximum-entropy-ppo-me-ppo"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">Maximum Entropy PPO (ME-PPO)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#meta-learned-policies-for-offline-stage"><span class="nav-number">1.4.2.</span> <span class="nav-text">Meta-Learned Policies for Offline Stage</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -400,14 +400,14 @@ $(function () {
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>3.6k</span>
+      <span>5k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>3 分钟</span>
+      <span>5 分钟</span>
     </span>
 </div>
 
@@ -497,7 +497,46 @@ Q(s, a, z) := \sum_{s&#39; \in \mathcal{S}} \mathbb{T}[s&#39; \mid s, a, z](r(s,
 <p>另外，为了保证模型的泛化性，这里需要将参数正则化，这样至少能保证模型面对完全没有经历过的网络环境不至于将其认为非法输入。</p>
 <p>模型的输出和正常的 AC 网络没有很大的差别，都是 Actor 网络输出一个 softmax 后的概率张量表示各个行为的决策概率，而 Critic 网络输出一个标量表示对当前状态的价值评估。</p>
 <h4 id="maximum-entropy-ppo-me-ppo">Maximum Entropy PPO (ME-PPO)</h4>
-<p>这里的训练策略是 ME-PPO，其与 PPO 的差别在于最优行为的定义里纳入了熵。</p>
+<p>这里的训练策略是 ME-PPO，其与 PPO 的差别在于最优行为的定义里纳入了熵：</p>
+<p><span class="math display">\[
+a_t^* := \mathop{\rm argmax}_a \hat{\mathbb{E}}_t\left[\sum_t \gamma^t(r_t + \lambda H^{\pi_\theta}(s_t))\right]
+\]</span></p>
+<p>这里定义熵为：</p>
+<p><span class="math display">\[
+H^{\pi_\theta}(s_t) = -\sum_{a \in \mathcal{A}} \pi_\theta(a \mid s_t) \ln\pi_\theta(a \mid s_t)
+\]</span></p>
+<p>元学习要求在离线环境下更重视 exploration 而在线环境下更重视 exploitation。这里将熵纳入考虑，如果策略 <span class="math inline">\(\pi_\theta\)</span> 对动作空间 <span class="math inline">\(\mathcal{A}\)</span> 中的所有动作给出的概率约趋向于平均，则熵越高，从而越会支持这样的选择。</p>
+<p>ME-PPO 的具体策略是基于 Dual-PPO 的 double clip 策略，具体如下：</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathcal{L}^{\rm PPO} &amp;:= \min\left(\frac{\pi_\theta(a_t \mid s_t)}{\pi_{\theta_{\rm old}}(a_t \mid s_t)}(\theta) \hat A_t, {\rm clip}\left(\frac{\pi_\theta(a_t \mid s_t)}{\pi_{\theta_{\rm old}}(a_t \mid s_t)}(\theta), 1 - \varepsilon, 1 + \varepsilon\right)\hat A_t\right) \\
+\mathcal{L}^{\rm Actor} &amp;:= \begin{cases}
+\hat{\mathbb{E}}_t[\max(\mathcal{L}^{\rm PPO}, c\hat A_t)] &amp; \hat A_t &lt; 0 \\
+\hat{\mathbb{E}}_t[\mathcal{L}^{\rm PPO}] &amp; \hat A_t \geq 0 \\
+\end{cases}
+\end{aligned}
+\]</span></p>
+<p>这里 <span class="math inline">\(\hat A_t\)</span> 是优势函数，定义为：</p>
+<p><span class="math display">\[
+\hat A_t := r_t + \gamma(V^{\pi_\theta}(s_{t + 1}) + \lambda H^{\pi_\theta}(s_{t + 1})) - V^{\pi_\theta}(s_t)
+\]</span></p>
+<p>这里 <span class="math inline">\(c, \varepsilon\)</span> 是用来控制梯度的超参数。</p>
+<p>AABR 中的 Critic 网络的训练策略就是最小化优势函数的均方误差：</p>
+<p><span class="math display">\[
+\mathcal{L}^{\rm Critic} := \frac12 \hat{\mathbb{E}}_t[A_t]^2
+\]</span></p>
+<p>从而整体的 loss 可以总结为：</p>
+<p><span class="math display">\[
+\nabla\mathcal{L}^{\rm MEPPO} := -\nabla_\theta \mathcal{L}^{\rm Actor}(\pi_\theta, \hat A_t) + \nabla_{\theta_v} \mathcal{L}^{\rm Critic}
+\]</span></p>
+<hr />
+<p>此外，由于算法对 <span class="math inline">\(\lambda\)</span> 较为敏感，我们需要在训练过程中不断调节 <span class="math inline">\(\lambda\)</span>，调节方式较为简单：</p>
+<p><span class="math display">\[
+\lambda \leftarrow \lambda + \alpha[H^{\pi_\theta}(s_t) - H^{\rm Target}]
+\]</span></p>
+<p>这个目标在于熵逐步接近目标的时候衰减 <span class="math inline">\(\lambda\)</span> 以减缓接近速度。</p>
+<h3 id="meta-learned-policies-for-offline-stage">Meta-Learned Policies for Offline Stage</h3>
+<p><strong>注：</strong>具体的训练方式后续补充。</p>
 
     </div>
 
@@ -548,13 +587,13 @@ Q(s, a, z) := \sum_{s&#39; \in \mathcal{S}} \mathbb{T}[s&#39; \mid s, a, z](r(s,
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">400k</span>
+    <span title="站点总字数">405k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">6:04</span>
+    <span title="站点阅读时长">6:08</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
