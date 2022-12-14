@@ -434,3 +434,118 @@ $$
 $$
 
 综上所述，证明完毕。
+
+# Problem 8
+
+已知函数：
+
+$$
+f(x) = \frac{1}{[x] - \{x\} + 1}
+$$
+
+定义数列 $a_1 = 1$ 以及 $a_{n + 1} = f(a_n), n \geq 1$。证明：所有正有理数在数列 $\{a_n\}_{n \geq 1}$ 中均出现且仅出现一次。
+
+## Solution
+
+若 $x \in \mathbb{N}^+$，显然：
+
+$$
+f(x) = \frac{1}{x + 1} \in \mathbb{Q}^+
+$$
+
+若 $x \in \mathbb{Q}^+ \backslash \mathbb{N}^+$，记 $n := [x], \dfrac{p}{q} := \{x\}$，这里 $p, q \in \mathbb{N}^+, p < q, \mathop{\rm gcd}(p, q) = 1$，那么：
+
+$$
+f(x) = \frac{q}{nq - p + q} \in \mathbb{Q}
+$$
+
+注意到 $nq - p + q = (n + 1)q - p \geq q - p > 0$，所以 $f(x) \in \mathbb{Q}^+$。
+
+所以若 $x \in \mathbb{Q}^+$ 则 $f(x) \in \mathbb{Q}^+$，据归纳法得知 $\{a_n\}_{n \geq 1}$ 中项均是正有理数。
+
+下面说明数列 $\{a_n\}_{n \geq 1}$ 中没有重复项，即不存在 $m \neq n, m, n \in \mathbb{N}^+$ 使得 $a_m = a_n$。
+
+首先说明 $f$ 是单射，即不存在 $x \neq y$ 使得 $f(x) = f(y)$。使用反证法，如果存在 $x \neq y$ 使得 $f(x) = f(y)$，那么：
+
+$$
+\frac{1}{[x] - \{x\} + 1} = \frac{1}{[y] - \{y\} + 1} \iff [x] - [y] = \{x\} - \{y\}
+$$
+
+那么：
+
+$$
+\mathbb{Z} \ni |[x] - [y]| = |\{x\} - \{y\}| < 1
+$$
+
+从而 $[x] = [y]$，进一步 $\{x\} = \{y\}$，也就是说 $x = y$，矛盾。故 $f$ 是单射。
+
+回到原先证明，使用反证法。如果存在 $m \neq n, m, n \in \mathbb{N}^+$ 使得 $a_m = a_n$，考虑到 $f(0) = 1$，记函数迭代符号为 $f^{(n)}$，可以得到 $f^{(m)}(0) = f^{(n)}(0)$。考虑到 $f$ 是单射，所以 $f^{(|m - n|)}(0) = 0$，即 $a_{|m - n|} = 0$。这与先前证明的该数列均为正有理数矛盾。故数列 $\{a_n\}_{n \geq 1}$ 中没有重复项。
+
+现在我们仅需要说明任何正有理数均出现在该数列中即可。
+
+我们令 $g(x) := x + 1, h(x) := \dfrac{x}{x + 1}$。我们证明 $g(a_n) = a_{2n + 1}, h(a_n) = a_{2n}$。
+
+使用归纳法，$n = 1$ 时上述命题的成立是显然的，假设 $n = k$ 时上述命题成立，考虑 $n = k + 1$。此时：
+
+$$
+a_{2k + 2} = f(a_{2k + 1}) = f(g(a_k)) = f(a_k + 1) = \frac{1}{[a_k + 1] - \{a_k + 1\} + 1} = \frac{1}{[a_k] - \{a_k\} + 2}
+$$
+
+而：
+
+$$
+h(a_{k + 1}) = \frac{a_{k + 1}}{a_{k + 1} + 1} = \frac{1}{1 + a_{k + 1}^{-1}} = \frac{1}{1 + (f(a_k))^{-1}} = \frac{1}{1 + ([a_k] - \{a_k\} + 1)} = \frac{1}{[a_k] - \{a_k\} + 2}
+$$
+
+故 $h(a_{k + 1}) = a_{2k + 2}$，此时：
+
+$$
+a_{2k + 3} = f(a_{2k + 2}) = f(h(a_{k + 1})) = \frac{1}{[h(a_{k + 1})] - \{h(a_{k + 1})\} + 1}
+$$
+
+由于 $x > 0$ 时 $0 < h(x) < 1$，所以：
+
+$$
+a_{2k + 3} = \frac{1}{1 - h(a_{k + 1})} = \frac{1}{1 - \dfrac{a_{k + 1}}{a_{k + 1} + 1}} = a_{k + 1} + 1 = g(a_{k + 1})
+$$
+
+故 $g(a_{k + 1}) = a_{2k + 3}$。据归纳法，证明完毕。
+
+定义函数：
+
+$$
+\varphi(x) := \begin{cases}
+g^{-1}(x) & x \geq 1 \\
+h^{-1}(x) & x < 1 \\
+\end{cases} = \begin{cases}
+x - 1 & x \geq 1 \\
+\dfrac{x}{1 - x} & x < 1 \\
+\end{cases}
+$$
+
+对于既约分数 $\dfrac{p}{q} \in \mathbb{Q}^+$，显然有：
+
+$$
+\varphi\left(\dfrac{p}{q}\right) = \begin{cases}
+\dfrac{p - q}{q} & p \geq q \\
+\dfrac{p}{q - p} & p < q \\
+\end{cases}
+$$
+
+显然任何正既约分数经过 $\varphi$ 映射后依然既约且分子和分母的和严格减少（特别规定 $0$ 的分子分母和为 $0$），而 $\varphi(0) = 0$，分子和分母的和保持不变。
+
+对任何正既约分数 $\dfrac{p}{q}$，考虑序列 $\dfrac{p}{q}, \varphi\left(\dfrac{p}{q}\right), \varphi^{(2)}\left(\dfrac{p}{q}\right), \cdots, \varphi^{(n)}\left(\dfrac{p}{q}\right), \cdots$，序列中分子和分母的和显然始终非负且不增，这意味着从某一项开始分子分母和始终不变，而此时序列的项仅有可能全零。考虑到 $\varphi(x) = 0$ 的解仅有 $x = 0$ 或者 $x = 1$，这意味着序列中必然有 $1$。
+
+这说明对任何正既约分数 $\dfrac{p}{q}$ 存在某一个 $g^{-1}, h^{-1}$ 组成的有限序列使得，这里 $\circ$ 是映射复合符号：
+
+$$
+g^{-1} \circ h^{-1} \circ h^{-1} \circ \cdots \circ g^{-1}\left(\dfrac{p}{q}\right) = 1
+$$
+
+也就是存在某一个 $g, h$ 组成的有限序列使得：
+
+$$
+g \circ \cdots \circ h \circ h \circ g(1) = \dfrac{p}{q}
+$$
+
+据之前的证明，$g \circ \cdots \circ h \circ h \circ g(1)$ 显然在数列 $\{a_n\}_{n \geq 1}$ 内，证明完毕。
