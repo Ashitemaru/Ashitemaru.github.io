@@ -1013,6 +1013,13 @@
 <p>这两天是没有什么大事情的，主要就是回高中见了一下各位老师和做毕设的文献调研，说白了就是看一堆论文。</p>
 <p>但是身体似乎有一点点不太舒服，其实倒是没什么就是特别嗜睡，在晚上已经睡了七八个小时的条件下，今天居然下午又睡了四五个小时，而且现在似乎还在慢慢变困，又想睡觉了。</p>
 <p>组会又一次推迟到了周五，周六约了同学，所以今明也应该得认真工作了。</p>
+<h1 id="section-10">2022.12.15</h1>
+<p>本来是打算好好学习的，结果今天下午写了一下午的日语笔记，然后晚上跑去出勤。</p>
+<p>晚上回家，文献调研还是没怎么做，真的是摸鱼摸透了。</p>
+<h1 id="section-11">2022.12.16</h1>
+<p>组会似乎什么都没说，但是直接让我下周就要模拟开题，这我就真的有点着急了，因为说实话我现在还没有彻底想好我要干啥，现在文献调研还是没怎么做，完全不知道开题应该去说些什么。</p>
+<p>但是毕竟是熬过去了组会，所以晚上又去出勤了。</p>
+<p>这次回来直接是直接骑车回来的，差点没给逼近零度的气温冻死。</p>
 ]]></content>
       <categories>
         <category>【生活记录】假期日记</category>
@@ -10120,7 +10127,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
     <content><![CDATA[<p>本章主要承接在上一章之后，讲解用言（助动词）各种活用形以及体言的基本应用场景。本章并不会展开讲解涉及到助动词、助词的用法，这些用法将会在后续的章节具体展开说明。对于不涉及到助动词、助词的用法，本文将详细讲解。</p>
 <span id="more"></span>
 <h1 id="修饰成分">修饰成分</h1>
-<p>形容词和形容动词的最重要的作用就是修饰体言，此外，动词或者动词词组也可以用于修饰体言。这三者在修饰体言的时候均应当使用连体形。此外，大部分助动词的连体形也可以用于修饰体言，「ます、です、う、まい」的连体形除外，这四个助动词的连体形已经退化至仅能用于连接各种助词或者助动词。下述例句中所修饰的成分用下划线表示。</p>
+<p>形容词和形容动词的最重要的作用就是修饰体言，此外，动词或者动词词组也可以用于修饰体言。这三者在修饰体言的时候均应当使用连体形。此外，大部分助动词的连体形也可以用于修饰体言，「だ、ます、です、う、まい」的连体形除外，这五个助动词的连体形已经退化至仅能用于连接各种助词或者助动词。下述例句中所修饰的成分用下划线表示。</p>
 <ul>
 <li>（动词）太陽は東から<strong>上る</strong><u>もの</u>。（太阳从东方升起）</li>
 <li>（类动词助动词）裏切り者と呼ば<strong>れる</strong><u>男</u>。（被称为叛徒的男人）</li>
@@ -11484,6 +11491,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <p>词语接续助动词「れる・られる」后的形式，一般称之为该词语的<strong>被动式</strong>或者<strong>可能式</strong>等。</p>
 <div class="note info no-icon"><p>本助动词四种含义的区别往往涉及到句中助词的使用，所以这里需要讨论到部分助词的使用方法。</p>
 </div>
+<h2 id="被动语义">被动语义</h2>
 <p>首先讨论该助动词表达被动语义的用法，我们可以观察主动语义句如何转换为被动语义句。</p>
 <ul>
 <li>先生<strong>は</strong>わたし<strong>を</strong>褒めた。（老师夸奖了我）</li>
@@ -11541,6 +11549,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <li>あの子<strong>は</strong>両親<strong>に</strong>死な<u>れた</u>。（那孩子死了父母）</li>
 </ul>
 <p>这里「死ぬ」并非是及物动词（日语称为“他动词”），所以没有对应的主动语义句。但是这句话表明的是，这个孩子受到了父母双亡造成的不良影响。广义而言动作的发出者为「両親」，而广义而言动作的接收者为「あの子」。</p>
+<h2 id="可能语义">可能语义</h2>
 <p>之后讨论该助动词表达可能语义的用法。该用法即代表动词的主语有能力，能够做到该动词所指代的动作。这里需要注意的是助词的变化：</p>
 <ul>
 <li>あの子は自分で来<u>られます</u>。（那孩子能自己过来）</li>
@@ -11578,12 +11587,18 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 </ul>
 <p>但是需要注意，书面语必须遵守日语语法，即使表达可能语义也不能省略「ら」。</p>
 </div>
+<div class="note info no-icon"><p>除了「ら抜き言葉」，实际上还有「られ足し言葉」，也就是在可能动词基础上再加上「られる」形成双重可能表达，虽然这严格而言违反语法，但是在「行けられる、書けられる」，甚至再拔去「ら」形成的「行けれる、書けれる」等词例中已经得以体现。</p>
+<p>这种口语语法可能的成因是，「行ける」除了是「行く」的可能动词外还具有其他义项，为了强调可能的语义，只能再次添加「られる」形成「行けられる」并按照「ら抜き言葉」的规则变为「行けれる」。</p>
+<p>不过相较于「ら抜き言葉」，「られ足し言葉」并不普及，目前仅出现在极少数的动词上。</p>
+</div>
+<h2 id="自发语义">自发语义</h2>
 <p>然后讨论该助动词表达自发语义的用法。自发语义指的是某一个动作是说话人自然而然形成的或者发出的，一般用于描述在某一种环境或者境遇下自然的行为或表现。例如下述句子：</p>
 <ul>
 <li>子供の時の写真を見て、あのころが思い出さ<u>れます</u>。（看到童年的照片，不禁回忆起了那个时候）</li>
 </ul>
 <p>这里就阐述了说话人在看见了自己童年时期的照片的时候，自然而然地会想起那段时间的记忆。</p>
 <p>自发语义在汉语中并不常见，因为这类语义常常使用实意副词“自然而然”“情不自禁”等表达，而不会通过一个固定的语法形式进行。</p>
+<h2 id="尊敬语义">尊敬语义</h2>
 <p>最后讨论该助动词表达尊敬语义的用法。描述地位高的对象的行为的时候，可以使用该形式表达尊敬的语气：</p>
 <ul>
 <li>課長も来<u>られます</u>。（课长也会来）</li>
@@ -11592,6 +11607,49 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 </ul>
 <p>这里注意第三句中的格助词使用，尊敬语义下，格助词应当遵守正常的使用规则。如果将这句话中的「を」替换为「が」，则表明助动词「れる」此时表达可能语义，这句话的含义也就变为询问老师是否能读得懂报纸，相对于想要表达的尊敬语义则是完全相反。</p>
 <p>基于该助动词承担了过多容易混淆的语义，在表达尊敬语义的时候，有时可以使用更为正式的敬语以防止和被动语义混淆。</p>
+<h2 id="可能式的拓展">可能式的拓展</h2>
+<p>事实上日语表达可能语义的方式较为丰富，除了通过助动词「れる・られる」，还有很多其他方式：</p>
+<ul>
+<li>（助动词）わたしは英語で手紙を<strong>書かれる</strong>。</li>
+<li>（可能动词）わたしは英語で手紙を<strong>書ける</strong>。</li>
+<li>（可能动词）わたしは英語で手紙を<strong>書くことができる</strong>。</li>
+<li>（复合动词后项）わたしは英語で手紙を<strong>書きえる</strong>。</li>
+</ul>
+<p>事实上，日语中部分动词自带有可能语义，这类动词理论上不能再表示为可能式，这类动词包括「分かる、治る、入る、受かる、慣れる、上がる」。直接用这类动词表达的可能语义称为<strong>无标可能</strong>：</p>
+<ul>
+<li>この薬を飲めば、一週間で<strong>治る</strong>。（吃了这个药，一周就能好）</li>
+<li>肩が痛くて、腕が<strong>上がらない</strong>。（肩膀太疼了，手抬不起来）</li>
+<li>いくら押しても、ドアが<strong>開かない</strong>。（再怎么推，门就是开不了）</li>
+<li>ここの生活にはまったく<strong>慣れない</strong>。（完全没法习惯这里的生活）</li>
+<li>もう少し詰めれば、まだ<strong>入る</strong>。（稍微再压压还能放得进去）</li>
+</ul>
+<p>这类无标可能动词尽量不使用可能式也是目前日语学习的一个重点。</p>
+<hr />
+<p>另外，先前提到可能式的宾语使用格助词「が」，事实上，如果句子过分长可能导致误解，仍然应当用回「を」防止误解：</p>
+<ul>
+<li>ワープロ<strong>を</strong>今年から一年生の間に<strong>打てる</strong>ように、カリキュラムを組み直すことになりました。（为了能让从现在开始的一年级学生学会用打字机，我们重新安排了课程）</li>
+</ul>
+<p>事实上，可能式的主语还可以用「に・には」之类的助词标注，但是这类标注一般用于可能式的否定：</p>
+<ul>
+<li>あいつ<strong>には</strong>そんな困難な問題は解けないよ。（他可做不出来这么难的问题）</li>
+<li>もちろん、素人<strong>に</strong>できる技はありません。（当然，新手就会的技术是不存在的）</li>
+<li>これがわたし<strong>には</strong>できない。（这我不会做）</li>
+</ul>
+<hr />
+<p>此外，提及可能式，则还需要提出两个重要的动词，即「見える、聞こえる」。</p>
+<div class="note info no-icon"><p>从词源上讲，这两个动词的起源更为久远，来源于上古日语的可能式助动词「ゆ」，其接续在「見る、聞く」之后形成了「見ゆ、聞かゆ」，随后「聞かゆ」转音为「聞こゆ」。事实上在中古日语中「見ゆ、聞こゆ」就已经和「見る、聞く」区分开了。这也是因为语言学中越常用的词语越容易不规则这一原则。</p>
+<p>随后这两个动词均遵守了中古日语下二段动词演化为现代下一段动词的规律，变为现代日语的「見える、聞こえる」。</p>
+<p>事实上，现代日语中的「あらゆる、いわゆる、しのはゆ」也是助动词「ゆ」的残留，这里不展开说明。</p>
+</div>
+<p>这里讲解「見える、見られる」的区别，「聞こえる、聞ける・聞かれる」的差别基本与之类似。</p>
+<p>从语义上说，「見られる」是用来形容在有看的欲望或者意图的前提下是否能够看到的，相比较而言「見える」一般用于形容客观条件下是否可以看到或者自发地看到。可以观察下述例句：</p>
+<ul>
+<li>（客观制约）この文字が<strong>見えます</strong>か？（这个字看得见吗？）</li>
+<li>（有意图）今は美術館でゴッホの絵が<strong>見られます</strong>。（现在美术馆能看到梵高的画）</li>
+<li>（自发性）ああ、富士山が<strong>見える</strong>！（啊，看见富士山了！）</li>
+<li>（自发性）目を閉じると、懐かしい故郷の風景が<strong>見える</strong>。（闭上眼，眼前浮现了令人怀念的故乡风景）</li>
+</ul>
+<p>简而言之，「見られる」更具有主观性质，更强调在主体拥有想去看的欲望或者意图下能否如愿。</p>
 <h1 id="使役助动词せるさせる">使役助动词「せる・させる」</h1>
 <p>该助动词的接续表为：</p>
 <table>
@@ -11693,6 +11751,27 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <p>这里两句话的具体阐释略去。</p>
 <div class="note info no-icon"><p>使役式的一个重要作用为通过助词「て」接续表示授受的补助动词以进一步表达使役方向，这一用法我们后续阐释。</p>
 </div>
+<div class="note info no-icon"><p>与可能式中的「見える、聞こえる」类似，使役式中也存在「見せる、着せる」这类具有使役含义的动词与真正的使役式「見させる、着させる」的对立。</p>
+<p>「見せる、見させる」的区别在于是否强制：</p>
+<ul>
+<li>（非强制性）子どもに教育テレビを<strong>見せる</strong>。（让孩子看教育台）</li>
+<li>（强制性）嫌がる子どもに教育テレビを<strong>見させる</strong>。（让讨厌学习的孩子看教育台）</li>
+</ul>
+<p>这里明显「見させる」突出了强制的含义。</p>
+<p>此外，由于使役式也可以表示放任的语义，所以下列句子虽然不是强制，但是依然使用「見させる」：</p>
+<ul>
+<li>子どもにテレビを<strong>見せ</strong>たくはないけど、どうしてもって言うから、毎日二時間だけは<strong>見させる</strong>よ。（虽然不想给孩子看电视，但是要说的话，每天还是会让他就看个两个小时）</li>
+</ul>
+<p>这里前者的「見せる」是并非强制的使役，说话人本就不想让孩子看电视，更不可能用「見させる」表示强制使役了。而后者的「見させる」则是表示放任的使役式用法。</p>
+<p>而「着せる、着させる」的区别在动作的主体：</p>
+<ul>
+<li>（使役发出者动作）母親は子どもに服を<strong>着せる</strong>。（妈妈给孩子穿衣服）</li>
+<li>（使役对象动作）母親は子どもに服を<strong>着させる</strong>。（妈妈让孩子穿衣服）</li>
+</ul>
+<p>事实上这依然是强制性上的差别。使役的本意就在于强制让使役对象作出要求中的动作，所以「着させる」的本意就是让使役对象自己穿衣服，或者说强制要求使役对象穿衣服，所以穿衣服的动作主体是使役对象。而「着せる」则是使役发出者帮助使役对象穿好衣服，严格而言并非是使役，实际上是另外一种动作。</p>
+<p>迁移到「見せる、見させる」上。「見させる」作为本质的使役式，应当表示使役发出者强制要求使役对象看，本身就包含了强制要求。而「見せる」实际上可以理解为让使役对象能够看到，并没有强烈的强制性。</p>
+</div>
+<h2 id="使役被动式">使役被动式</h2>
 <p>之后我们需要讲解使役被动式。使役被动式是使役式和被动式的连用，两者的顺序为先构成使役式，后构成被动式。所以动词的使役被动式即为其未然形接续「せられる・させられる」：</p>
 <ul>
 <li>読ま<strong>せられる</strong>、食べ<strong>させられる</strong>、来<strong>させられる</strong>、さ<strong>せられる</strong></li>
@@ -11706,24 +11785,28 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <div class="note info no-icon"><p>该音便的一种解释为人们重新接纳了古语使役助动词「す」，毕竟类似「費やす、濡らす、満たす、踊らす」等古语使役式的残留依然存在于现代语中。</p>
 <p>部分学者将这一音便归纳为使役助动词的五段化的一个侧面。</p>
 </div>
+<h3 id="使役被动语义">使役被动语义</h3>
 <p>使役被动式的基本用法即表达说话方被强迫进行某一行为：</p>
 <ul>
 <li>あの子<strong>が</strong>先生<strong>に</strong>廊下<strong>で</strong>立たせられた。（那孩子被老师在走廊罚站）</li>
 <li>あいつ<strong>は</strong>社長<strong>に</strong>会社<strong>を</strong>やめさせられた。（他被社长要求离职）</li>
 </ul>
 <p>可以注意到使役被动句之中的主语和主动句中的主语一致，唯一的差别为需要标记一个使役发出者。使役发出者优先使用「に」标记，出现格助词冲突时则视情况调整其他格助词。</p>
+<h3 id="使役自发语义">使役自发语义</h3>
 <p>另外由于助动词「れる・られる」还能表示自发语义，所以使役被动式还可以用于表达某一个事物、行为使得说话方自然地进行了某一行为：</p>
 <ul>
 <li>目の前の素晴らしい景色<strong>に</strong>感動させられた。（眼前美丽的景色让我感动）</li>
 <li>先生の決断<strong>には</strong>、わたしは実に感心させられました。（老师的决断真的让我钦佩）</li>
 </ul>
 <p>这里应当使用「に」标记使得说话人作出自发行为的事物、行为。</p>
+<h3 id="使役可能语义">使役可能语义</h3>
 <p>此外由于助动词「れる・られる」还能表示可能语义，所以使役被动式还可以用于表达可能能够使得某人作出某种行为：</p>
 <ul>
 <li>雲もない日にも雨<strong>を</strong>降らせられますか？（我们还能让连云都没有天空下雨？）</li>
 <li>金満家でも彼女の欲望<strong>を</strong>満足させられない。（再有钱也满足不了她的欲望）</li>
 </ul>
 <p>可见这里格助词的使用准则基本符合使役式的格助词使用规则。</p>
+<h3 id="尊敬语义-1">尊敬语义</h3>
 <p>最后由于助动词「れる・られる」还能表示尊敬语义，所以使役被动式还可以用于表达最高程度的敬意，常常用于皇室相关活动。此时使役被动式不能使用音便形式：</p>
 <ul>
 <li>殿下はご視察のご日程<strong>を</strong>予定の通り<strong>に</strong>終えさせられました。（殿下按照预定的日程结束了视察）</li>
@@ -11741,6 +11824,14 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <p>此外例如被动可能，实际上由于被动式实际上并不是意志性的，故严格意义而言不存在被动可能式。如果确需表达可能，则可以通过连用形复合动词「得る」表达：</p>
 <ul>
 <li>褒められえる。（可能被表扬）</li>
+</ul>
+<p>再者，在尊敬的语义下询问可能，理论上可以在可能动词上继续通过助动词「れる・られる」表示，如：</p>
+<ul>
+<li>先生は漢文が読められますか？（老师能看懂汉文吗？）</li>
+</ul>
+<p>事实上这种用法极其少见，一般会换用其他敬语表达：</p>
+<ul>
+<li>先生は漢文がお読みになれますか？（老师能看懂汉文吗？）</li>
 </ul>
 </div>
 <h1 id="愿望助动词たいたがる">愿望助动词「たい、たがる」</h1>
@@ -18125,7 +18216,66 @@ H^{\pi_\theta}(s_t) = -\sum_{a \in \mathcal{A}} \pi_\theta(a \mid s_t) \ln\pi_\t
 <p>这之后就是一些实验结果了，感觉没啥意思了。</p>
 <h1 id="learning-to-adapt-in-dynamic-real-world-environments-through-meta-reinforcement-learning">Learning to Adapt in Dynamic, Real-World Environments through Meta Reinforcement Learning</h1>
 <h2 id="abstract-introduction">Abstract &amp; Introduction</h2>
-<p>需要解决的问题依然是生成数据很困难以及测试环境中无法预料到的数据可能导致所训练的策略失效，为了让模型能够快速适应测试环境中的新任务</p>
+<p>需要解决的问题依然是生成数据很困难以及测试环境中无法预料到的数据可能导致所训练的策略失效，引言之中也基本上叙述了人类可以很快适应自身机体发生的变化和外界环境发生的变化，提出了如果模型经历了足够多的环境微扰，其就可以很快学习适应新环境。</p>
+<p>相比较于原先的 meta RL 对任务的定义，这篇文章提出的模型能够处理每个时间步环境或者任务都在变化的情景。也就是说，原先的 meta RL 不过是提前预设好了需要解决什么样的任务，并且每一个 RL trajectory 仅会属于一个任务，而这篇文章的 RL trajectory 中可以涵盖多种任务并且任何时间都可以切换。所以这篇文章的 meta RL 更为 general。</p>
+<p>本文也是有 trade off 的，主要表达如下：</p>
+<div class="note info no-icon"><p>By specifically training a neural network model to require only a small amount of experience to adapt, we can enable effective online adaptation in complex environments while putting less pressure on needing a perfect global model.</p>
+</div>
+<p>也就是说，这篇文章为了能够在少数据条件下快速适应新环境，并不会强制要求这个模型在 global 环境下表现到 perfect。</p>
+<p>总而言之，这篇文章主要强调学得快，学习速度大约是每个新任务需要在真实世界中经历 1.5 到 3 小时，不到原有 model-free RL 方法学习时间的十分之一。并且，在同等数据量条件下，这篇文章的模型效果也比其他方法优越。此外，为了展示本文模型的学习能力，其将其真实部署在了机器人上，来学习真实世界的情况。</p>
+<h2 id="related-works">Related Works</h2>
+<p>首先提到最原始的强化学习方法没有泛用性，以及 model-free RL 往往需要大量和真是环境交互从而不实际。发展为 model-based RL 之后，就需要面临对环境建模的 model 需要在不同的任务之间调整的问题，首先否决了单一的全局模型，而先前有人尝试通过 GP 方法合并模型不确定性从而让模型能够表示不同的环境，然而这个方法做出了额外的假设且拓展性差且难以运用到高维空间，而本文提出的结果能够通过观察从而快速切换到新的环境。</p>
+<div class="note warning no-icon"><p>这里的问题就是我是真的没有太看懂这个 model 到底是对环境建模的模型还是最后要学习的 policy。</p>
+</div>
+<p>还有一种处理方式是首先学习一个全局模型，在测试的时候通过梯度下降进行微调。此外，还有工作表明不需要完美的全局模型，可以微调先验知识来处理小变化。然而，这些方法面临着模型的训练目的与测试时的使用方式之间的不匹配的问题。本文通过明确训练一个能快速有效适应的模型来弥合这一差距。</p>
+<h2 id="preliminaries">Preliminaries</h2>
+<h3 id="model-based-reinforcement-learning">Model-Based Reinforcement Learning</h3>
+<p>马尔可夫决策过程在这里建模为 <span class="math inline">\((\mathcal{S}, \mathcal{A}, p, r, \gamma, \rho_0, H)\)</span>。这里 <span class="math inline">\(\mathcal{S}\)</span> 是状态空间，<span class="math inline">\(\mathcal{A}\)</span> 是动作空间，<span class="math inline">\(p(s&#39; \mid s, a)\)</span> 是环境状态转移概率，<span class="math inline">\(r: \mathcal{S} \times \mathcal{A} \to \mathbb{R}\)</span> 是奖励函数，<span class="math inline">\(\rho_0: \mathcal{S} \to \mathbb{R}^+\)</span> 是初始状态概率分布，<span class="math inline">\(\gamma\)</span> 是奖励衰减常数，<span class="math inline">\(H\)</span> 是轨迹长度。</p>
+<p>一条轨迹描述为 <span class="math inline">\(\tau(i, j) := (s_i, a_i, \cdots, s_j, a_j, s_{j + 1})\)</span>，我们的目标是求取最优策略 <span class="math inline">\(\pi: \mathcal{S} \to \mathcal{A}\)</span> 使得累计收益期望最大。</p>
+<p>model-based RL 目标是近似处理 <span class="math inline">\(p(s&#39; \mid s, a)\)</span>，这个模型也被称为 dynamics model。</p>
+<h3 id="meta-learning">Meta Learning</h3>
+<p>一般的元学习需要给定假设，即训练用的任务和最终的测试任务都是从同一个任务分布 <span class="math inline">\(\rho(\mathcal{T})\)</span> 中抽取。元学习的目标是获取一个学习流程 <span class="math inline">\(\theta&#39; := u_\psi(\mathcal{D}^{\rm tr}_{\mathcal{T}}, \theta)\)</span> 以通过小数据集 <span class="math inline">\(\mathcal{D}^{\rm tr}_{\mathcal{T}}\)</span> 来学习任务 <span class="math inline">\(\mathcal{T}\)</span>，学习过程可以表示为：</p>
+<p><span class="math display">\[
+\min_{\theta, \psi} \mathbb{E}_{\mathcal{T} \sim \rho(\mathcal{T})}\left[\mathcal{L}(\mathcal{D}^{\rm test}_{\mathcal{T}}, \theta&#39;)\right]
+\]</span></p>
+<p>其中 <span class="math inline">\(\theta&#39; := u_\psi(\mathcal{D}^{\rm tr}_{\mathcal{T}}, \theta)\)</span>。</p>
+<div class="note info no-icon"><p>这里的记号是真的复杂，事实上训练过程应该是函数 <span class="math inline">\(u_\psi\)</span>，训练过程用参数 <span class="math inline">\(\psi\)</span> 代表，其输出为训练后的最优参数 <span class="math inline">\(\theta&#39;\)</span>，而 <span class="math inline">\(\theta\)</span> 表示初始化参数。</p>
+<p>另外注意，<span class="math inline">\(\theta\)</span> 这里是模拟环境的模型的参数，而非 policy 的参数。</p>
+</div>
+<h4 id="gradient-based-meta-learning">Gradient Based Meta Learning</h4>
+<p>MAML 就是一种基于梯度的元学习方法，其最主要的目标是学习一个较好的参数初始化保证在少数调整中即可实现较好的下游任务。</p>
+<p>MAML 的 <span class="math inline">\(u_\psi\)</span> 就是一般的梯度下降：</p>
+<p><span class="math display">\[
+u_\psi(\mathcal{D}^{\rm tr}_{\mathcal{T}}, \theta) = \theta - \alpha\nabla_\theta \mathcal{L}(\mathcal{D}^{\rm tr}_{\mathcal{T}}, \theta)
+\]</span></p>
+<p>如果学习率 <span class="math inline">\(\alpha\)</span> 是一个固定参数，那么 <span class="math inline">\(\psi = \varnothing\)</span>，如果 <span class="math inline">\(\alpha\)</span> 是一个元学习过程中需要学习的参数，那么 <span class="math inline">\(\psi = \alpha\)</span>。</p>
+<p>即使看起来 <span class="math inline">\(u_\psi\)</span> 是平凡的，但是这种方法的表达能力和下面介绍的方法是持平的。</p>
+<h4 id="recurrence-based-meta-learning">Recurrence Based Meta Learning</h4>
+<p>这里借用了 RNN 的思想，在这个方法中，更新函数 <span class="math inline">\(u_\psi\)</span> 始终需要不断学习，其中 <span class="math inline">\(\psi\)</span> 是用于更新 RNN 隐含层状态的参数，而 <span class="math inline">\(\theta\)</span> 是余下的参数。</p>
+<div class="note warning no-icon"><p>这里是真的真的真的没看懂，这在说啥？是我前置知识欠缺太多了？</p>
+<p>只能希望下面能有个稍微好一点的说明。</p>
+</div>
+<h2 id="meta-learning-for-online-model-adaptation">Meta Learning for Online Model Adaptation</h2>
+<p>之前提到过本文的 trajectory 中任务可以随着时间步推进而变化，所以本文设定的目标是根据前 <span class="math inline">\(M\)</span> 个时间步的数据预测未来 <span class="math inline">\(K\)</span> 个时间步情况，这里 <span class="math inline">\(M, K\)</span> 都是固定的超参数。</p>
+<p>所以在这样的设定下，训练目标就是：</p>
+<p><span class="math display">\[
+\begin{aligned}
+\theta_{\mathcal{E}}&#39; &amp;= u_\psi(\tau_{\mathcal{E}}(t - M, t - 1), \theta) \\
+\min_{\theta, \psi}&amp; \mathbb{E}_{\tau_{\mathcal{E}}(t - M, t + K)} [\mathcal{L}(\tau_{\mathcal{E}}(t, t + K), \theta_{\mathcal{E}}&#39;)]
+\end{aligned}
+\]</span></p>
+<p>而这里 loss 定义为：</p>
+<p><span class="math display">\[
+\mathcal{L}(\tau_{\mathcal{E}}(t, t + K), \theta_{\mathcal{E}}&#39;) := -\frac{1}{K} \sum_{k = t}^{t + K} \log\hat{p}_{\theta_{\mathcal{E}&#39;}}(s_{k + 1} \mid s_k, a_k)
+\]</span></p>
+<p>GrBAL 采取的更新策略为：</p>
+<p><span class="math display">\[
+\theta_{\mathcal{E}}&#39; = u_\psi(\tau_{\mathcal{E}}(t - M, t - 1), \theta) = \theta_{\mathcal{E}} + \psi\nabla_\theta\frac{1}{M} \sum_{m = t - M}^{t - 1} \log\hat{p}_{\theta_{\mathcal{E}}}(s_{m + 1} \mid s_m, a_m)
+\]</span></p>
+<p>ReBAL 这里又是没看懂，所以这个基于循环模型的到底是个什么东西。</p>
+<h2 id="model-based-meta-reinforcement-learning">Model Based Meta Reinforcement Learning</h2>
+<p>这一部分就是在讲解如何在线上做 adaptation，我觉得整体不如直接看算法直观：</p>
+<p><img src="/uploads/paper-2022-12/6.png" /></p>
 ]]></content>
       <categories>
         <category>【论文笔记】计算机</category>
