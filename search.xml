@@ -4375,426 +4375,6 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
       </categories>
   </entry>
   <entry>
-    <title>日语单词变形手册</title>
-    <url>/2021/06/18/ja-1/</url>
-    <content><![CDATA[<p>这是一个相当长的文档，几乎可以说记录了我对日语单词变形能想到的一切。即使日语有的时候和中文很相似，但是它作为黏着语还是让它的语法成为了汉语母语者学习的巨大障碍。</p>
-<p>这个文档随时更新，欢迎大家关注。</p>
-<span id="more"></span>
-<p>首先说一下这个文档整理的原则。由于日语的词汇可以很灵活地变形，比如「書く」先变成第一连用形后接续「たい」形成类似形容词的「書きたい」，之后再按照形容词过去否定的规则变为「書きたくなかった」后，在按照连体形规则接上助动词「ので」变成「書きたくなかったので」。在这样的背景下，本文档不可能穷尽所有的变形以及这种变形的所有应用方式，不过本文档会这样表述：“这样变形之后，词汇将类似于形容词”。这样的话后续进行第二次变形的时候就可以在形容词栏目之下进行寻找。</p>
-<h1 id="日语动词的变形">日语动词的变形</h1>
-<p>在介绍变形之前，我们要首先介绍日语动词的分类。日语动词按照活用类型可以分为四类：</p>
-<ul>
-<li>五段动词</li>
-</ul>
-<p>形式为词干加上某一个ウ段假名构成，比如「書く、読む、話す」。</p>
-<ul>
-<li>一段动词</li>
-</ul>
-<p>形式一般为一个イ段假名或者エ段假名结尾的词干加上「る」构成，比如「食べる、教える、起きる」。</p>
-<p>有一些细化为上一段动词和下一段动词的说法，这里可以简单理解为以イ段假名接续的是上一段动词，以エ段假名接续的是下一段动词。</p>
-<ul>
-<li>サ变动词</li>
-</ul>
-<p>形式为「する」或者某一个词干加上「する」，同时也有一些以「ずる」结尾的动词也是サ变动词。比如「する、勉強する、散歩する、感ずる、禁ずる」。</p>
-<ul>
-<li>カ变动词</li>
-</ul>
-<p>只有「来る」是カ变动词。</p>
-<h2 id="原形辞书形连体形">原形/辞书形/连体形</h2>
-<p>这种形式就是字典上表示动词的形式，所以称为“原形”或者“辞书形”。其用途也是较为多的。</p>
-<h3 id="用于终结一句话">用于终结一句话</h3>
-<p>动词原形可以直接用于终结一个句子，提示动作：</p>
-<div class="note info no-icon"><p>今朝，朝ごはんを<strong>食べる</strong>。 そこで<strong>立つ</strong>。</p>
-</div>
-<p>但是用原形终结一句话有的时候会给人一种语气直接了当的感觉，现实对话之中也较少使用原形直接终结句子。</p>
-<h3 id="用于修饰体言">用于修饰体言</h3>
-<p>实际上，动词原形同时也是连体形。连体形顾名思义是接续体言的，其用途就是具体修饰一个名词具有的性质：</p>
-<div class="note info no-icon"><p>明日の会議に<strong>使う書類</strong>。 <strong>勉強する時</strong>に。</p>
-</div>
-<p>这个可以说是相当常用的一种用法了，不过这里要介绍几个东西，也就是<strong>形式体言</strong>，这种体言没有实际含义，但是可以辅助作为句子成分。</p>
-<h4 id="形式体言事ことの">形式体言：事「こと」／の</h4>
-<p>这是相当常见的形式体言，其汉字表示为「事」，常常用来接在连体后表达一种抽象的概念，常常构成类似「ことがある」「ことになる」「ことにする」「と言うことだ」这样的短语存在。</p>
-<p>「の」也是相当常见的形式体言，但显然比较“轻量级”。</p>
-<p>一般情况下，只是单纯完成动词名词化的时候，这两个形式体言是可以互换的：</p>
-<div class="note info no-icon"><p>日本語を<strong>勉強すること</strong>は楽しいです。 日本語を<strong>勉強するの</strong>は楽しいです。</p>
-</div>
-<p>不过这两者之间存在一些小区别，这里首先说一下一般用「の」的情况。比如说如果名词化的动词是「みる」「聞こえる」等表示感知的动词的宾语的时候，或者比如说名词化的动词比较具像化的时候。</p>
-<div class="note info no-icon"><p>あいつが本を<strong>読むの</strong>を聞こえます。 山田さんが<strong>来るの</strong>を待っています。</p>
-</div>
-<p>常常用「こと」的情况可能是接续的动词是「言う」「話す」「考える」「決める」等发言动词或决定性动词，也可以是直接接续「です」「だ」等动词，或者是构成了常用短语：</p>
-<div class="note info no-icon"><p>アメリカに<strong>留学すること</strong>を考えている。 日本語を<strong>勉強し続くこと</strong>を決めました。 団長の仕事は団員を<strong>守ること</strong>だ。 今日からタバコを<strong>止めること</strong>にしました。</p>
-</div>
-<p>额外说明一点，有的时候「のです／のだ」也可以使用，但是在口语之中常常简化为「んです／んだ」。</p>
-<p>这里可能需要进一步说明的是包含有「こと」的一些常用短语，这些短语一般已经具有了独特的含义了。</p>
-<p>「ことがある」表示“这样的事件可能存在”：</p>
-<div class="note info no-icon"><p>自分で料理を<strong>作ることがある</strong>。</p>
-</div>
-<p>「ことになる」表示“事态发展到了某一种状况，这种发展不是主观可控的”：</p>
-<div class="note info no-icon"><p>学校のプールは六月一日から<strong>始まることになっ</strong>ている。</p>
-</div>
-<p>「ことにする」表示“下决心做什么事”：</p>
-<div class="note info no-icon"><p>最後，彼はアメリカに<strong>留学することにし</strong>ました。</p>
-</div>
-<p>「ことには」有的时候用于表达一种强烈的情感和强调：</p>
-<div class="note info no-icon"><p><strong>困「こま」ることには</strong>，今お金がないんです。</p>
-</div>
-<p>「ことができる」表示“有能力做到”：</p>
-<div class="note info no-icon"><p>彼はこの歌を<strong>歌うことができ</strong>ます。</p>
-</div>
-<p>这里我们发现接续「こと」的全都是原形，但很多时候还可以使用第二连用形加「た／だ」之后接续「こと」，或者使用未然形加上「ない」之后接续「こと」，并且这些时候意思会产生一些微妙的变化。</p>
-<div class="note default"><p><strong>注解：</strong>从这里开始，形式体言部分会涉及到许多不是原形进行接续的场合，但这些东西不会拆分到对应的条目（比如第二连用形加「た／だ」之后接续就不会放到第二连用形部分），这是因为形容词或者第二连用形加「た／だ」之后接续体言是相当自然的事情，故不如只设定一个条目统一管理。在第二连用形部分以及形容词部分会设置跳转提示，提示形式体言均放在此处记录。</p>
-</div>
-<p>「ないことには」表示“如果不...就...”：</p>
-<div class="note info no-icon"><p>やって<strong>みないことには</strong>，何もわからないです。</p>
-</div>
-<p>这句话就可以翻译为“不试试看的话，就什么都不知道了”。</p>
-<p>「たことにする」表示“知道这件事，但是主观上不想重视”的意思：</p>
-<div class="note info no-icon"><p>そんな話を<strong>聞こえなかったことにし</strong>よう。</p>
-</div>
-<p>这句话就可以翻译为“就当作没听见这样的话吧”。</p>
-<p>「たことがある」表示“曾经有过这个经验”：</p>
-<div class="note info no-icon"><p>横浜へ<strong>行ったことがある</strong>よ。</p>
-</div>
-<p>这句话就可以翻译为“我曾去过横滨”。</p>
-<h4 id="形式体言物もの">形式体言：物「もの」</h4>
-<p>这种形式体言最为重要的应用就是表示“情理之中的行为”或者“真理”。补充说明一下，这里也可以使用未然形加上「ない」之后接续：</p>
-<div class="note info no-icon"><p>太陽は東方から<strong>登るもの</strong>です。 そんなことを<strong>言わないもの</strong>です。</p>
-</div>
-<p>与「こと」类似，「もの」这个词的灵魂在于大量的短语以及固定表达，这里直接介绍。</p>
-<p>「たいものだ」表示“相当强的欲望”：</p>
-<div class="note info no-icon"><p>世界各地を<strong>旅行したいものだ</strong>。</p>
-</div>
-<p>「ものがある」表示相当强调的语气：</p>
-<div class="note info no-icon"><p>あいつがやったことには，目に<strong>余るものがある</strong>。</p>
-</div>
-<p>「目に余る」表示“看不下去”，所以这句话就是说“那家伙所做的事根本看不下去”。</p>
-<p>「たものだ」表示“对过去经历的怀念”：</p>
-<div class="note info no-icon"><p>これで君とよく遊びに<strong>来たものだ</strong>。</p>
-</div>
-<p>「もの／もので／ものだから」这三个词应用于表达原因，其语气是一个比一个强烈。第一个含有一种轻微的因果感觉，而第三个就是相当强的因果关系：</p>
-<div class="note info no-icon"><p><strong>子供というもの</strong>，仕方ないですね。 あまり天気が<strong>いいもので</strong>，どこかへ遊びに行きたくなった。 雨が<strong>酷いものだから</strong>，どうしても出掛けたくない。</p>
-</div>
-<p>「ものなら」表示一种假设。如果接续在表示可能的动词原形后面，就表示“如果...的话，就...”，如果接续在助动词「よう／う」后面就表示“万一...的话，就...”：</p>
-<div class="note info no-icon"><p><strong>できるものなら</strong>，やってみなさい。 <strong>失敗しようものなら</strong>，大目玉を食う。</p>
-</div>
-<p>「大目玉を食う」表示“受到严厉训斥”。这两句话分别表示“如果能做到的话，做做试试看吧”以及“万一失败了的话，就会被骂得很惨”。</p>
-<p>「ものの」表示“虽然...但是...”：</p>
-<div class="note info no-icon"><p>苦しいことは<strong>苦しいものの</strong>，楽しいこともあるんだ。</p>
-</div>
-<p>「ものを」是一个逆接的助词，表达转折含义：</p>
-<div class="note info no-icon"><p>そんな上手に<strong>歌えるものを</strong>，なぜ歌わなかったのですか？</p>
-</div>
-<h4 id="形式体言所ところ">形式体言：所「ところ」</h4>
-<p>这个体言最基本的含义就是“地点”或者“场所”，所以也可以表示虚化的“场合”：</p>
-<div class="note info no-icon"><p>お<strong>忙しいところ</strong>をおいでくださいましてありがとうございました。</p>
-</div>
-<p>这里「おいで」是「来ること」等的尊敬语格式，这里可以理解为“出席”。这句话直译就是“能从繁忙的事务之中抽身出席，非常感谢”，也就是“感谢您百忙之中出席”。</p>
-<p>这个体言也可以被引申后用来表示“某一点”或者“某一方面”：</p>
-<div class="note info no-icon"><p>あなただって足りて<strong>いないところ</strong>だらけ。 あなたの<strong>悪いところ</strong>はすぐ怒ることです。</p>
-</div>
-<p>同时也可以被引申为“范围”：</p>
-<div class="note info no-icon"><p>私が知っているのは大体<strong>こんなところ</strong>です。</p>
-</div>
-<p>之后就是一些更为抽象的引申义。首先是表示程度，可以理解为“已经到了这个地步了”这样的意思：</p>
-<div class="note info no-icon"><p>もう少しで車に引かれて<strong>しまうところ</strong>だった。</p>
-</div>
-<h4 id="形式体言訳わけ">形式体言：訳「わけ」</h4>
-<h4 id="形式体言筈はず">形式体言：筈「はず」</h4>
-<h4 id="形式体言為ため">形式体言：為「ため」</h4>
-<h4 id="形式体言つもり">形式体言：つもり</h4>
-<p>这个体言最基本的意义就是“计划、打算”。</p>
-<div class="note info no-icon"><p>僕もタバコを<strong>やめるつもり</strong>だ。</p>
-</div>
-<p>另一方面，这个词语就可以表示主观意愿上的“估算、评价”（下述第一句），但有的时候会翻译为“自以为”（下述第二句），带有一定的贬义色彩：</p>
-<div class="note info no-icon"><p><strong>君のつもり</strong>では，どれほど費用がかかるんだか？ あの人は自分が<strong>有能なつもり</strong>だが，彼の仕事ぶりに対する周囲の評価は低い。</p>
-</div>
-<p>另外一种是表示假设，翻译为“就当作”。但一般形成短语「たつもり」：</p>
-<div class="note info no-icon"><p>先生に<strong>なったつもり</strong>で，みんなに説明しよう。</p>
-</div>
-<p>另外说一下这个体言的否定，「〜ないつもり」表示“不打算这么做”，「〜つもりはない」则根本上否定，表示“完全不打算”：</p>
-<div class="note info no-icon"><p><strong>進学しないつもり</strong>だ。 率直的「そっちょくてき」にいう，俺は<strong>進学するつもりはない</strong>んだ。</p>
-</div>
-<h4 id="形式体言方ほう">形式体言：方「ほう」</h4>
-<p>这个词一般被运用在比较句之中，用来形成比较的语气：</p>
-<div class="note info no-icon"><p><strong>あちらの方</strong>はデザインがいいんだ。</p>
-</div>
-<h4 id="形式体言儘まま">形式体言：儘「まま」</h4>
-<p>这个词核心意思就是“保持某一种状态不变”：</p>
-<div class="note info no-icon"><p><strong>そのまま</strong>でいいでしょう？ 前に<strong>向こうまま</strong>歩いている。 自分の<strong>意のまま</strong>にいこう。</p>
-</div>
-<p>第一句表示“就这样下去也不错吧？”，而第二句意思为“一直向前走”，第三句意思为“随着自己的意思行动”。这三句话都蕴含着“保持一种状态不变”或者“跟随某一种状态不变”的含义。而如果表明的是“跟随自己的意见”，这个词可以酌情翻译为“任性”，并且这个时候常常带有些许贬义。比如说常见的形容动词「わがままだ」。</p>
-<h4 id="形式体言通とおり">形式体言：通「とお」り</h4>
-<p>这个词核心意思为“按照”或者“正如”：</p>
-<div class="note info no-icon"><p><strong>教えた通り</strong>にやってみよう。 <strong>ご覧の通り</strong>なんでもない。</p>
-</div>
-<p>这两句话的意思就是“按着刚刚教的做做试试看吧”以及“正如您所见，什么都没有”。</p>
-<h4 id="形式体言上うえ">形式体言：上「うえ」</h4>
-<p>首先这个词有个非常直观的意思，就是“...上”，用来表示一个方面：</p>
-<div class="note info no-icon"><p><strong>仕事の上</strong>で問題はない。</p>
-</div>
-<p>这句话很简单的翻译为“工作上没有问题”。</p>
-<p>另外，这个词还可以表示“添加评注”，也就是添加一段对某个人或物性质的描述：</p>
-<div class="note info no-icon"><p>このカメラはよく<strong>映る上</strong>に，値段がやすいです。</p>
-</div>
-<p>这句话直接翻译的话就是“这个照相机除了拍照片很好，还很便宜”。</p>
-<p>另外，如果用「た」接续，就表明“在...之后再...”：</p>
-<div class="note info no-icon"><p>お目に<strong>かかった上</strong>で決めましょう。</p>
-</div>
-<p>这里「お目にかかる」表示“会面”，所以这句话意思为“见面之后再决定吧”。</p>
-<p>还有一种意思表示“既然...那么...”：</p>
-<div class="note info no-icon"><p>事実はそうで<strong>あった上</strong>で，仕方はないでしょう？</p>
-</div>
-<h4 id="形式体言うち">形式体言：うち</h4>
-<p>这个词的核心意思就是“范围”：</p>
-<div class="note info no-icon"><p><strong>三人のうち</strong>で誰が一番年長ですか？</p>
-</div>
-<p>这句话可以简单翻译为“这三个人（的范围）里面，谁年龄最大？”</p>
-<h4 id="形式体言元もと">形式体言：元「もと」</h4>
-<p>这个词核心的意思就是“范围”，进而引申出“在...之下”的含义：</p>
-<div class="note info no-icon"><p><strong>親のもと</strong>を離れる。 先生の<strong>指導のもと</strong>で研究を続ける。</p>
-</div>
-<p>第一句话直接翻译就是“离开了父母的范围”，意思就是“与父母分离”。第二句话使用了引申义，意思是“在老师的指导之下，研究得以继续”。</p>
-<h4 id="形式体言限かぎり">形式体言：限「かぎ」り</h4>
-<p>这个词最简单的含义就是表示“极限”。但是作为形式体言，其可以构成“只要...就...”的句式：</p>
-<div class="note info no-icon"><p>このうるさい音が<strong>続く限り</strong>，私は眠れない。</p>
-</div>
-<p>这句话就表示“只要那烦人的声音还在响，我就睡不着”。</p>
-<p>当然，这个词如果接续在否定的「ない」后面，就表达“除非...就不...”，这实际上就是上面的“只要...就...”的否定：</p>
-<div class="note info no-icon"><p>病気が<strong>ない限り</strong>学校を休まない。</p>
-</div>
-<p>这句话就可以翻译为“只要没生病就不能请假”。</p>
-<h4 id="形式体言代かわりに">形式体言：代「か」わりに</h4>
-<p>这个词可以作为实际含义的词，表示“代替”：</p>
-<div class="note info no-icon"><p>私の<strong>母の代わりに</strong>，ご挨拶します。</p>
-</div>
-<p>但是其作为形式体言，有一个作用就是构成“虽然...但也...”的句式：</p>
-<div class="note info no-icon"><p>スポーツがあまり上手では<strong>ない代わりに</strong>，大病もしたことがない。</p>
-</div>
-<p>这句话就被翻译为“虽然我运动不是很好，但是也从未生过大病”。</p>
-<p>同时，这个形式体言也可以表示两者之间的一个交换条件：</p>
-<div class="note info no-icon"><p>英語を教えて<strong>もらう代わりに</strong>，日本語を教えてあげます。</p>
-</div>
-<p>这句话可以形象翻译为“你来教我英语，作为交换，我教你日语”，实际上就是表明两个行为是一种交换的行为。</p>
-<h4 id="形式体言次第しだい">形式体言：次第「しだい」</h4>
-<p>这个词本质上也是一个实质体言，意思为“次序”，但是其作为形式体言有两种意思。如果接在连用形后面，就表示“全凭，全靠”的意思，如果接在第一连用形后面，就表示“一...就...”的意思：</p>
-<div class="note info no-icon"><p>全ては君の<strong>決心の次第</strong>です。 <strong>出来次第</strong>，お届けいたします。</p>
-</div>
-<p>这里「出来次第」可能一下子看不出来，实际上就是动词「できる」的第一连用形「出来」加上「次第」的形式。这两句话意为“这全靠你的决心”以及“一旦做出来就给您送过去”。</p>
-<h4 id="形式体言癖くせに">形式体言：癖「くせ」に</h4>
-<p>这个词附加在动词上往往表达一种不满的、责备的语气，一般含有“明明怎么样，却怎么样”的感觉：</p>
-<div class="note info no-icon"><p>お前は知って<strong>いるくせに</strong>，なんで私に教えてくれなかったの？ あいつはバスケットボールが<strong>下手なくせに</strong>，選手になりたいなんて夢を見ている。</p>
-</div>
-<p>这两句话可以根据语气分别翻译为“你明明知道，为什么不告诉我”以及“他篮球明明打得不好，却还想做当运动员的梦”。</p>
-<h3 id="接续助词辅助表意">接续助词辅助表意</h3>
-<p>另外，还可以接续一些助词，比如说表达客观原因的「ので」。</p>
-<div class="note info no-icon"><p>横浜へ行ったことがあるよ。</p>
-</div>
-<h2 id="第一连用形">第一连用形</h2>
-<p>首先我们给出第一连用形的变形规则：</p>
-<ul>
-<li><p>五段动词将词尾ウ段假名改为イ段假名</p></li>
-<li><p>一段动词将词尾「る」删去</p></li>
-<li><p>サ变动词删去词尾「する／ずる」加上「し／じ」</p></li>
-<li><p>カ变动词变为「き」</p></li>
-</ul>
-<p>这里直接给出变形例子：</p>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;">動詞類型</th>
-<th style="text-align: center;">原形／辞書形</th>
-<th style="text-align: center;">語幹／第一連用形</th>
-<th style="text-align: center;">第一連用形＋ます</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">五段動詞「く」</td>
-<td style="text-align: center;">書く</td>
-<td style="text-align: center;">書き</td>
-<td style="text-align: center;">書きます</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">五段動詞「ぐ」</td>
-<td style="text-align: center;">泳ぐ</td>
-<td style="text-align: center;">泳ぎ</td>
-<td style="text-align: center;">泳ぎます</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">五段動詞「す」</td>
-<td style="text-align: center;">話す</td>
-<td style="text-align: center;">話し</td>
-<td style="text-align: center;">話します</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">五段動詞「つ」</td>
-<td style="text-align: center;">立つ</td>
-<td style="text-align: center;">立ち</td>
-<td style="text-align: center;">立ちます</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">五段動詞「ぬ」</td>
-<td style="text-align: center;">死ぬ</td>
-<td style="text-align: center;">死に</td>
-<td style="text-align: center;">死にます</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">五段動詞「ぶ」</td>
-<td style="text-align: center;">飛ぶ</td>
-<td style="text-align: center;">飛び</td>
-<td style="text-align: center;">飛びます</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">五段動詞「む」</td>
-<td style="text-align: center;">読む</td>
-<td style="text-align: center;">読み</td>
-<td style="text-align: center;">読みます</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">五段動詞「る」</td>
-<td style="text-align: center;">降る</td>
-<td style="text-align: center;">降り</td>
-<td style="text-align: center;">降ります</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">五段動詞「う」</td>
-<td style="text-align: center;">歌う</td>
-<td style="text-align: center;">歌い</td>
-<td style="text-align: center;">歌います</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">上一段動詞</td>
-<td style="text-align: center;">起きる</td>
-<td style="text-align: center;">起き</td>
-<td style="text-align: center;">起きます</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">下一段動詞</td>
-<td style="text-align: center;">教える</td>
-<td style="text-align: center;">教え</td>
-<td style="text-align: center;">教えます</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">サ変動詞「基本」</td>
-<td style="text-align: center;">する</td>
-<td style="text-align: center;">し</td>
-<td style="text-align: center;">します</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">サ変動詞「語幹ある」</td>
-<td style="text-align: center;">勉強する</td>
-<td style="text-align: center;">勉強し</td>
-<td style="text-align: center;">勉強します</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">サ変動詞「濁点ある」</td>
-<td style="text-align: center;">感ずる</td>
-<td style="text-align: center;">感じ</td>
-<td style="text-align: center;">感じます</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">カ変動詞</td>
-<td style="text-align: center;">くる</td>
-<td style="text-align: center;">き</td>
-<td style="text-align: center;">きます</td>
-</tr>
-</tbody>
-</table>
-<p>之后我们就可以介绍第一连用形的用途了。</p>
-<h3 id="接续助词辅助表意-1">接续助词辅助表意</h3>
-<h4 id="助动词ます">助动词ます</h4>
-<p>「ます」在一定程度上是一种很常用的助动词，常常用来表示一种稍稍表敬意的语气。</p>
-<p>「ます」在一定意义上也具有各种的变形来表达各种含义（毕竟原本的动词为了接续「ます」只能变为第一连用形，从而就不能再变形来表达含义了）。</p>
-<ul>
-<li>基本形「ます」</li>
-</ul>
-<p>最为基本的用法，不做介绍。</p>
-<ul>
-<li>未然形「ませ」</li>
-</ul>
-<p>接续「ん／ぬ」表示否定。不过要注意，接续「ぬ」已经是比较古老的用法，现今基本不使用。</p>
-<div class="note info no-icon"><p>私はお茶を飲み<strong>ません</strong>。 そんなことを知り<strong>ませぬ</strong>。</p>
-</div>
-<ul>
-<li>连用形「まし」</li>
-</ul>
-<p>接续「て」表示停顿或者接续「た」表达过去。</p>
-<div class="note info no-icon"><p>昨日は新聞を読み<strong>ました</strong>。 昨日は雑誌を読み<strong>ませんでした</strong>。 初め<strong>まして</strong>。</p>
-</div>
-<p>这里稍微说说「ませんでした」这样的形式是怎么样构成的。因为日语构建过去否定都是先否定再过去，在形容词上面就已经有较多体现：</p>
-<p>暑い <span class="math inline">\(\Rightarrow\)</span> 暑くない <span class="math inline">\(\Rightarrow\)</span> 暑くなかった</p>
-<p>那么我们对「ます」的否定形式「ません」该如何处理呢？它不是用言，我们必须用助动词修饰之后才能进行过去化：</p>
-<p>ません <span class="math inline">\(\Rightarrow\)</span> ませんです <span class="math inline">\(\Rightarrow\)</span> ませんでした</p>
-<p>这里的「ませんです」只是一个变形中间体，不具有任何语言用途，不能在实际用语中出现。</p>
-<ul>
-<li>终止形「ます」</li>
-</ul>
-<p>终结句子用，没有实际含义。</p>
-<ul>
-<li>推量形「ましょ」</li>
-</ul>
-<p>接续「う」表示劝说、意见或者推论。</p>
-<div class="note info no-icon"><p>今夜，一緒に食事をし<strong>ましょう</strong>。</p>
-</div>
-<h4 id="助动词たいたがる">助动词たい／たがる</h4>
-<p>「たい／たがる」是表达欲望的助动词，其中第一人称常用「たい」，而其他人称常用「たがる」。不过要注意的是使用「たい」之后，其行为类似于形容词，而「たがる」行为类似于动词。</p>
-<div class="note info no-icon"><p>私はお菓子を<strong>食べたい</strong>です。 今何も<strong>したくない</strong>です。 昨日は買い物<strong>したかった</strong>。 昨夜は宿題を<strong>やりたくなかった</strong>。 <strong>遊びたければ</strong>，一緒にいこう。 うちの子は，いつもケーキを<strong>食べたがる</strong>のよ。</p>
-</div>
-<p>不过要注意的一点是，「たがる」是用来推测别人的愿望的，是蕴涵着自上而下审视的语气的。比如说上面的例句，实际上有一种“孩子爱吃蛋糕，别给吃胖了”或者“吃这么多，多费钱啊”这样的隐含负面语气，所以尽量少使用。</p>
-<h4 id="助动词ながらつつ">助动词ながら／つつ</h4>
-<p>「ながら」最为基本的意思是“一边”或者“同时”。如果要描述某个人一边如何一边如何，就可以用这个助词：</p>
-<div class="note info no-icon"><p>山を<strong>登りながら</strong>，こう思った。</p>
-</div>
-<p>但是这个词有的时候会表达一种很轻微的转折，在一定程度上可以酌情表达为“但是”：</p>
-<div class="note info no-icon"><p>我が国の労働者は仕事を<strong>しながら</strong>，勉強もできる。</p>
-</div>
-<p>这句话可以理解为“劳动者一边工作一边学习”，但是实际上如果语气适当，会表现出一种“我国劳动者会工作，但是也可以一边学习”种种带有转折含义的语气。</p>
-<p>「つつ」有的时候也可以表达这种“一边”或者“同时”的含义，比如说：</p>
-<div class="note info no-icon"><p>帰りのバスで外の景色を<strong>眺めつつ</strong>，明日の仕事を考えていた。</p>
-</div>
-<p>但是这个词似乎在更多的场合会被用来强调“言行不一”的转折含义，并且常常和主观动词「言う」「思う」「考える」「悩む」「知る」「嫌う」等连接使用，并且常常形成「つつも」的形式：</p>
-<div class="note info no-icon"><p>今日は勉強しようと<strong>思いつつも</strong>，テレビを見てしまった。</p>
-</div>
-<p>这个助词还可以构成「つつある」的形式在口语中表示动作的持续，一定程度上类似后面要说到的「ている」形式：</p>
-<div class="note info no-icon"><p>彼は今自分が<strong>死につつある</strong>ことを意識していた。</p>
-</div>
-<h3 id="接续辅助动词构成复合动词">接续辅助动词构成复合动词</h3>
-<p>复合动词是日语中常用的一种动词，常常是动词后面接续辅助动词或者形容动词接续辅助动词构成的，前面的动词或者形容动词构成主要意思，后面的辅助动词提供补充含义。当然，也有一些复合动词演化出了较为独特的含义。这里简单举出一些例子。</p>
-<ul>
-<li>辅助动词「合う」</li>
-</ul>
-<p>这个辅助动词的含义一般是“互相”，所以经常用来表达一些双方之间互相进行的行为，比如“互相帮助”或者“互相理解”。但是有的时候这个动词也可以表达出“汇合”的感觉。这类复合动词有：</p>
-<div class="note info no-icon"><p>愛し合う、巡り合う、話し合う、語り合う、助け合う、理解し合う、分かり合う</p>
-</div>
-<ul>
-<li>辅助动词「込む」</li>
-</ul>
-<p>这个辅助动词的含义一般是“程度深”，所以一般用来表示前面的动词进行的较为深入。所以可以接在“申请”后面表示“申请进入”或者接在“饮用”后面表示“吞噬”等含义。这种这类复合动词有：</p>
-<div class="note info no-icon"><p>申し込む、読み込む、落ち込む、飲み込む、飛び込む</p>
-</div>
-<ul>
-<li>辅助动词「出す」</li>
-</ul>
-<p>这个辅助动词的含义一般是“...出来”，这样的表述在汉语里也很多，类似“说出来”或者“飞出来”等等，所以这种复合动词很好理解。这类复合动词有：</p>
-<div class="note info no-icon"><p>言い出す、思い出す、呼び出す、飛び出す、逃げ出す、考え出す</p>
-</div>
-<ul>
-<li>辅助动词「上がる／上げる」</li>
-</ul>
-<p>这个辅助动词的含义一般是“完成”，但是会根据前面的动词是自动词还是他动词进行区分使用。如果是自动词就使用「上がる」，如果是他动词就使用「上げる」。这类复合动词有：</p>
-<div class="note info no-icon"><p>飛び上がる、打ち上げる、晴れ上がる</p>
-</div>
-<p>实际上复合动词接续的辅助动词绝对不限于这些，比如说「始める」「続ける」「終わる」「残す」「返す」「かける」「切る」「兼ねる」都可以作为辅助动词使用。</p>
-<h3 id="接续辅助形容词构成复合形容词">接续辅助形容词构成复合形容词</h3>
-<p>这里着重介绍「やすい」「にくい」这两个形容词。这两个形容词常常接续在第一连用形之后，分别表示“这个动作容易做”以及“这个动作不好做”的意思。由于不是重点，这里简单写两个例句表明用法：</p>
-<div class="note info no-icon"><p>この薬は<strong>飲みやすい</strong>です。 冬の日に食べ物は悪く<strong>なりにくい</strong>です。</p>
-</div>
-]]></content>
-      <categories>
-        <category>【学习笔记】日语</category>
-      </categories>
-  </entry>
-  <entry>
     <title>日本高中课程《漢文》学习笔记</title>
     <url>/2021/08/16/ja-2/</url>
     <content><![CDATA[<p>这门课大致就是讲日本人是如何阅读中文文言文的。学这个纯属是觉得日语这门语言真的很有意思，借鉴中文的文字，却采用了和中文几乎完全不一样的语法。另一方面也是因为好奇中国的典籍传到日本是如何被翻译的。</p>
@@ -9068,10 +8648,10 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <h2 id="日语常见助词">日语常见助词</h2>
 <p>日语助词系统，包括日语助词的分类，各个观点并不统一。而我们采用的助词分类方式为：</p>
 <ul>
-<li><strong>格助词</strong>。格助词为标识主语、宾语、动作目标、动作主观原因、动作客观原因等逻辑关系的助词，其作用为保证句意并不受语序排列不同的影响。常见的格助词包括「が①、から、で、と①、に、の①、へ、まで①、より、を」。</li>
+<li><strong>格助词</strong>。格助词为标识主语、宾语、动作目标、动作主观原因、动作客观原因等逻辑关系的助词，其作用为保证句意并不受语序排列不同的影响。常见的格助词包括「が①、から①、で、と①、に、の①、へ、まで①、より、を」。</li>
 <li><strong>终止助词</strong>。终止助词的作用为用于语句的最后，用于表达不同的语气。常见的终止助词包括「か①、かしら、け、こと、さ、ぜ、ぞ、とも、な①、な②、ね、の②、もの・もん、ものか、よ、わ」。</li>
 <li><strong>副助词</strong>。副助词往往接续在格助词或者动词等后，用于进一步修饰语意。常见的副助词包括「か②、か③、きり、くらい・ぐらい、こそ、さえ、しか、すら、だけ、とか、など・なんて、なり、のみ、は、ばかり、ほど、まで②、も、や」。</li>
-<li><strong>接续助词</strong>。接续助词的作用为置于两个小句之间，用于表示两个小句之间的关系，例如表达顺接、逆接等关系。常见的接续助词包括「が②、けれど・けど・けれども、し、たり・だり、て・で、ても・でも、と②、ながら①、ながら②、ので、のに、ば、ものの、ものを」。</li>
+<li><strong>接续助词</strong>。接续助词的作用为置于两个小句之间，用于表示两个小句之间的关系，例如表达顺接、逆接等关系。常见的接续助词包括「が②、から②、けれど・けど・けれども、し、たり・だり、て・で、ても・でも、と②、ながら①、ながら②、ので、のに、ば、ものの、ものを」。</li>
 </ul>
 <p>这里我们需要额外注意接续助词「て・で」，其几乎可以认为是日语中最重要的助词，因为其后可以继续接续补助动词进一步表达语意。本手册中会着重讨论的补助动词包括：</p>
 <ul>
@@ -10163,12 +9743,13 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <li>プレゼンは誰でも分かりやすいように簡単な<strong>内容にし</strong>た。（为了让所有人都容易理解我的讲解，我尽量选择了简单的内容）</li>
 </ul>
 <p>可以发现这里的状态变迁是有人的主观意志存在的，所以在翻译的时候需要强调人的主观能动性。</p>
-<p>此外，动词如果想要使用这样的表达，需要借助助动词「ようだ」：</p>
+<p>此外，动词如果想要使用这样的表达，需要借助助动词「ようだ」或者使用形式体言「こと」：</p>
 <ul>
 <li>今は手が離せませんが、終わり次第できるだけ早く<strong>着くようにし</strong>ます。（虽然现在抽不开身，但是我一结束就会尽快到场）</li>
 <li>無理し<strong>ないようにし</strong>てね。（不要太勉强自己）</li>
+<li>会議の結果、部長の案を<strong>採用することになっ</strong>た。（会议的结果是采用了部长的提议）</li>
+<li>拾った子猫を<strong>飼うことにし</strong>た。（决定收养捡到的小猫）</li>
 </ul>
-<p>这种表达的具体应用见下一章中对「ようだ」的讲解。</p>
 </div>
 <h2 id="chapter-3-section-1-练习">Chapter 3 Section 1 练习</h2>
 <p>【第一问】尝试将下述划线部分的用言或助动词原形修改为合适的活用形，以符合语法要求：</p>
@@ -10431,7 +10012,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <td style="text-align: center;">未然形 <br /> <strong>し</strong>ない</td>
 <td style="text-align: center;">第一连用形 <br /> <strong>高く</strong>ない <br /> <strong>なく</strong>ない</td>
 <td style="text-align: center;">第一连用形 <br /> <strong>好きで</strong><em>は</em>ない <br /> <strong>ようで</strong><em>は</em>ない</td>
-<td style="text-align: center;">（助动词） <br /> <strong>花</strong><em>では</em>ない</td>
+<td style="text-align: center;">（助动词） <br /> <strong>花</strong><em>では</em>ない <br /> <strong>これ</strong><em>では</em>ない</td>
 </tr>
 </tbody>
 </table>
@@ -10463,6 +10044,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 </table>
 <p>后续如果有特殊说明会在表后列出。</p>
 <p>该表有一项并未覆盖到，即助词之后接续助动词。事实上，能够接续在助词之后的助动词较少，并且能够接续助动词的助词也较少。如果即将讲解的助动词可以接续在助词之后，会另附表举出若干例子。</p>
+<p>有关指示词，这里将所有名词性的指示词处理为体言，并以「これ」为例。连体性、副词性和形容动词性的「この、こう、こんな」如果可以用于接续，则另附表举出若干例子。这里不把「こんなだ」处理为形容动词是因为其行为和形容动词依然有很多不一致之处。</p>
 <p>此外，一定注意，本表仅显示接续要求，并不一定代表接续后形成的词组真实存在。</p>
 <h1 id="否定助动词ない">否定助动词「ない」</h1>
 <p>该助动词的接续表为：</p>
@@ -10495,7 +10077,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <td style="text-align: center;">未然形 <br /> <strong>し</strong>ない</td>
 <td style="text-align: center;">第一连用形 <br /> <strong>高く</strong>ない <br /> <strong>なく</strong>ない</td>
 <td style="text-align: center;">第一连用形 <br /> <strong>好きで</strong><em>は</em>ない <br /> <strong>ようで</strong><em>は</em>ない</td>
-<td style="text-align: center;">（助动词） <br /> <strong>花</strong><em>では</em>ない</td>
+<td style="text-align: center;">（助动词） <br /> <strong>花</strong><em>では</em>ない <br /> <strong>これ</strong><em>では</em>ない</td>
 </tr>
 </tbody>
 </table>
@@ -10565,6 +10147,12 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <ul>
 <li>（×）そんなことを<strong>やら<u>ありません</u></strong>。</li>
 </ul>
+<p>另外关于「ある」的否定，严格的语法说明是「ある」不能使用「ない」否定，而直接采用其反义词「ない」代表，也就是说这里的「ない」就是实意形容词。或者可以理解为「ある」接续助动词「ない」形成的「あらない」让位给了实意形容词「ない」。可以观察下面句子的对应：</p>
+<ul>
+<li>わたしは横浜へ行ったことが<strong>ある</strong>。（我去过横滨）</li>
+<li>わたしは横浜へ行ったことが<strong>ない</strong>。（我没去过横滨）</li>
+</ul>
+<p>事实上这一观点的支持并不少，其一就是实意形容词「ない」可以用「ありません」代替。</p>
 <div class="note info no-icon"><p>助动词「う」的否定式「うではない」目前几乎仅可以应用于固定句式「～うではないか？」之中，用于表示说话者的邀请和提议。</p>
 </div>
 <p>该助动词的各类活用形式的例句如下：</p>
@@ -10751,7 +10339,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <td style="text-align: center;">第二连用形 <br /> <strong>し</strong>た</td>
 <td style="text-align: center;">第二连用形 <br /> <strong>高かっ</strong>た <br /> <strong>なかっ</strong>た</td>
 <td style="text-align: center;">第二连用形 <br /> <strong>好きだっ</strong>た <br /> <strong>ようだっ</strong>た</td>
-<td style="text-align: center;">（助动词） <br /> <strong>花</strong><em>だっ</em>た <br /> <strong>花</strong><em>でし</em>た</td>
+<td style="text-align: center;">（助动词） <br /> <strong>花</strong><em>だっ</em>た <br /> <strong>花</strong><em>でし</em>た <br /> <strong>これ</strong><em>だっ</em>た <br /> <strong>これ</strong><em>でし</em>た</td>
 </tr>
 </tbody>
 </table>
@@ -10939,7 +10527,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <td style="text-align: center;">（终止形） <br /> <strong>する</strong>です</td>
 <td style="text-align: center;">（终止形） <br /> <strong>高い</strong>です <br /> <strong>ない</strong>です</td>
 <td style="text-align: center;">词干 <br /> <strong>好き</strong>です <br /> <strong>よう</strong>です</td>
-<td style="text-align: center;">原形 <br /> <strong>花</strong>です</td>
+<td style="text-align: center;">原形 <br /> <strong>花</strong>です <br /> <strong>これ</strong>です</td>
 </tr>
 </tbody>
 </table>
@@ -11026,7 +10614,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <td style="text-align: center;">（终止形） <br /> <strong>する</strong>だ</td>
 <td style="text-align: center;">（终止形） <br /> <strong>高い</strong>だ <br /> <strong>ない</strong>だ</td>
 <td style="text-align: center;">―</td>
-<td style="text-align: center;">原形 <br /> <strong>花</strong>だ</td>
+<td style="text-align: center;">原形 <br /> <strong>花</strong>だ <br /> <strong>これ</strong>だ</td>
 </tr>
 </tbody>
 </table>
@@ -11361,7 +10949,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <td style="text-align: center;">意志形 <br /> <strong>しよ</strong>う</td>
 <td style="text-align: center;">未然形 <br /> <strong>高かろ</strong>う <br /> <strong>なかろ</strong>う</td>
 <td style="text-align: center;">未然形 <br /> <strong>好きだろ</strong>う <br /> <strong>ようだろ</strong>う</td>
-<td style="text-align: center;">（助动词） <br /> <strong>花</strong><em>だろ</em>う</td>
+<td style="text-align: center;">（助动词） <br /> <strong>花</strong><em>だろ</em>う <br /> <strong>花</strong><em>でしょ</em>う <br /> <strong>これ</strong><em>だろ</em>う <br /> <strong>これ</strong><em>でしょ</em>う</td>
 </tr>
 </tbody>
 </table>
@@ -11436,6 +11024,24 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <li>昨日は楽しかっ<strong>たろ<u>う</u></strong>？（昨天快乐吗？）</li>
 </ul>
 <p>由于该助动词活用形式有限，故不给出该助动词的各类活用形式的例句。</p>
+<div class="note info no-icon"><p>意志式最重要的句式就是和动词「思う」连用表示当前说话人的行为意向：</p>
+<ul>
+<li>明日は六時くらい<strong>起きようと思う</strong>。（我打算明天六点起）</li>
+<li>この秘密をみんなに<strong>打ち明けようと思っ</strong>ている。（在想着把这个秘密告诉大家）</li>
+</ul>
+<p>此外，出于行为意向可能有不确定性，加入表示不确定的助词「か」也是常见的：</p>
+<ul>
+<li>明日は六時くらい<strong>起きよう<u>か</u>と思う</strong>。（我在想明天要不要六点起）</li>
+<li>この秘密をみんなに<strong>打ち明けよう<u>か</u>と思っ</strong>ている。（在想着要不要把这个秘密告诉大家）</li>
+</ul>
+<p>另外注意，这一句式不能用来形容他人的行为意向，形容他人行为意向可以使用形式体言「つもり」。</p>
+<p>而如果这种行为意向已经将要变为现实，则一般使用动词「する」：</p>
+<ul>
+<li><strong>出かけようとし</strong>たとき、友達がきた。（刚要出门的时候朋友来了）</li>
+<li><strong>言おうとする</strong>と、忘れてしまった。（刚要说的就忘了）</li>
+</ul>
+<p>当然，另外一个重要句式是先前提到过的表示邀请和提议的「～うではないか？」。</p>
+</div>
 <h1 id="被动可能自发尊敬助动词れるられる">被动、可能、自发、尊敬助动词「れる・られる」</h1>
 <p>该助动词的接续表为：</p>
 <table>
@@ -11788,7 +11394,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <h3 id="使役被动语义">使役被动语义</h3>
 <p>使役被动式的基本用法即表达说话方被强迫进行某一行为：</p>
 <ul>
-<li>あの子<strong>が</strong>先生<strong>に</strong>廊下<strong>で</strong>立たせられた。（那孩子被老师在走廊罚站）</li>
+<li>あの子<strong>は</strong>先生<strong>に</strong>廊下<strong>で</strong>立たせられた。（那孩子被老师在走廊罚站）</li>
 <li>あいつ<strong>は</strong>社長<strong>に</strong>会社<strong>を</strong>やめさせられた。（他被社长要求离职）</li>
 </ul>
 <p>可以注意到使役被动句之中的主语和主动句中的主语一致，唯一的差别为需要标记一个使役发出者。使役发出者优先使用「に」标记，出现格助词冲突时则视情况调整其他格助词。</p>
@@ -11966,7 +11572,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <td style="text-align: center;">终止形 <br /> <strong>する</strong>らしい</td>
 <td style="text-align: center;">终止形 <br /> <strong>高い</strong>らしい <br /> <strong>ない</strong>らしい</td>
 <td style="text-align: center;">词干 <br /> <strong>好き</strong>らしい <br /> <strong>よう</strong>らしい</td>
-<td style="text-align: center;">原形 <br /> <strong>花</strong>らしい</td>
+<td style="text-align: center;">原形 <br /> <strong>花</strong>らしい <br /> <strong>これ</strong>らしい</td>
 </tr>
 </tbody>
 </table>
@@ -12081,7 +11687,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 </div>
 <div class="note info no-icon"><p>表示推测的和表示样态的「らしい」的连体形一般而言为了做出区分，表示推测的「らしい」的连体形会使用古语连体形「らしき」。</p>
 </div>
-<h1 id="推量样态助动词ようだ">推量、样态助动词「ようだ」</h1>
+<h1 id="比况助动词ようだ">比况助动词「ようだ」</h1>
 <p>该助动词的接续表为：</p>
 <table style="width:100%;">
 <colgroup>
@@ -12112,7 +11718,7 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <td style="text-align: center;">连体形 <br /> <strong>する</strong>ようだ</td>
 <td style="text-align: center;">连体形 <br /> <strong>高い</strong>ようだ <br /> <strong>ない</strong>ようだ</td>
 <td style="text-align: center;">连体形 <br /> <strong>好きな</strong>ようだ <br /> <strong>ような</strong>ようだ</td>
-<td style="text-align: center;">（助词） <br /> <strong>花</strong><em>の</em>ようだ</td>
+<td style="text-align: center;">（助词） <br /> <strong>花</strong><em>の</em>ようだ <br /> <del><strong>これ</strong><em>の</em>ようだ</del></td>
 </tr>
 </tbody>
 </table>
@@ -12137,11 +11743,749 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <td style="text-align: center;">―</td>
 <td style="text-align: center;">―</td>
 <td style="text-align: center;">―</td>
+<td style="text-align: center;">（终止形） <br /> <strong>ん</strong>ようだ</td>
+<td style="text-align: center;">―</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">指示词接续例</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>この</strong>ようだ</td>
+</tr>
+</tbody>
+</table>
+<p>这个助动词实际上也有四种语义，简而言之是比况、列举、推量、引用，其中后三者实际上都是比况语义的拓展。</p>
+<h2 id="比况语义">比况语义</h2>
+<p>首先讨论比况语义，这种语义有时也称为比喻，这也是日语中比喻句的最常见的构成方式。</p>
+<ul>
+<li>この銅像はまるで生きて<strong>いるようだ</strong>。（这铜像简直就像活了一样）</li>
+<li>赤ちゃんを<strong>扱うように</strong>優しくしてください。（请像对待婴儿一样温柔一点）</li>
+<li>人生は<strong>桜のようだ</strong>。（人生就如樱花一般）</li>
+<li>何かに取りつかれ<strong>たように</strong>唸っている。（像是被什么东西附身了一样一直在碎碎念）</li>
+</ul>
+<p>另外，由于比喻句总是蕴含着实际上并不是但是很像是这样的对比语义，所以加入表示不确定的助词「か」以表现说话人无法断定的语感也是常见的，注意这里「か」和「ようだ」之间需要用助词「の」连接：</p>
+<ul>
+<li>この銅像はまるで生きて<strong>いるかのようだ</strong>。（这铜像简直就像活了一样）</li>
+<li>明日<strong>死ぬかのように</strong>生きよう。（向死而生吧）</li>
+</ul>
+<h2 id="列举语义">列举语义</h2>
+<p>之后讨论列举语义。事实上列举语义是从比况语义中分解出来的，因为列举本身就是在暗示与已经举出来的例子类似，或者比况近似的事例，表达的语感近似于“像这样的”：</p>
+<ul>
+<li><strong>数学、物理のような</strong>科目が嫌いだ。（不喜欢像数学、物理这样的学科）</li>
+<li><strong>彼女のような</strong>美しさが欲しい。（想要像她那样的美貌）</li>
+<li><strong>東京のような</strong>大きな都市には、人と人の距離は逆に希薄になる傾向がある。（在东京这样的大城市里，人与人之间的距离反而容易变得疏远）</li>
+</ul>
+<h2 id="推量语义">推量语义</h2>
+<p>然后讨论推量语义。这种语义依然和比况语义有较强的联系，表示通过观察到的状态所做出的对事实的推测：</p>
+<ul>
+<li>どうやら失敗し<strong>たようだ</strong>。（怎么看都是失败了啊）</li>
+<li>この猫はお腹が空い<strong>たようだっ</strong>たから食べ物をあげた。（那只猫看起来饿了，所以我就给了点吃的）</li>
+<li>空の様子を見ると、明日は雨が<strong>降るようだ</strong>。（看这天，明天恐怕要下雨）</li>
+</ul>
+<h2 id="引用语义">引用语义</h2>
+<p>最后讨论引用语义。这种语义依然和比况语义有较强的联系，表示正如同某种信源所描述的一样，接续对某一种事态的论述：</p>
+<ul>
+<li>先生が言ってい<strong>たように</strong>、今学期の授業内容はだんだん難しくなった。（正如老师所说，这学期的讲课内容越来越难了）</li>
+<li>このグラフが<strong>示すように</strong>、日本は晩婚化が進んでいます。（正如这幅图，日本正在迈入晚婚社会）</li>
+</ul>
+<div class="note info no-icon"><p>「ようだ」实际上还有一种表达希望、建议、祈愿的语义，但是基本仅使用「ように」这个活用形。</p>
+<ul>
+<li>（希望）皆様に楽しんで<strong>いただけるように</strong>頑張ります。（为了让大家都能开心而努力）</li>
+<li>（建议）寝坊し<strong>ないように</strong>早めにおやすみなさい。（防止睡过头，建议你早点睡）</li>
+<li>（祈愿）明日の試験、うまくいき<strong>ますように</strong>。（希望明天考试顺利）</li>
+</ul>
+<p>一般而言，使用「～ますように、～ませんように」这类接续在「ます」之后的用法常见于向神明祈愿，是一种正式的祈愿语法。</p>
+</div>
+<div class="note info no-icon"><p>「ようだ」的否定式「ようではない」几乎不使用，需要否定时使用「ないようだ」这一形式。</p>
+</div>
+<div class="note info no-icon"><p>「ようだ」在现代日语中的重要地位实际上来源于其构成的大量固定句式，这里列举部分。</p>
+<p>首先是和形式用言「なる、する」连用的「～ようになる、～ようにする」，分别表示自然的状态变迁和强制的状态变迁，表示否定的时候使用「～ないようになる、～ないようにする」：</p>
+<ul>
+<li><strong>できるようになる</strong>と楽しいだが、そこまでの道は長い。（能做得到的话自然很开心，但是为了学会要走过的路还是很长）</li>
+<li>ここから先は、ログインしないと閲覧でき<strong>ないようになっ</strong>ている。（从这里开始，如果不登录的话就没法浏览了）</li>
+<li>きれいな服を買いたい、髪型とかもそれに<strong>似合うようにし</strong>たい。（想买好看的衣服，那么也要做个搭配的发型）</li>
+<li>周りに迷惑をかけ<strong>ないようにし</strong>て。（别给周围人添麻烦）</li>
+</ul>
+<p>这里注意「～ようになる」常用于表示能力上的变迁，比如从不可能变为可能或者从可能变得不可能。</p>
+<p>另外，「～ようにしている」常常用于表示长期习惯，这里关于补助动词「いる」的知识后续章节讲解：</p>
+<ul>
+<li>毎日日本語の番組を<strong>見るようにしている</strong>。（我每天都会看日语节目）</li>
+</ul>
+<p>更多的句式已经超出了对这个助动词本身的讨论范围，后续章节将会具体说明。</p>
+</div>
+<p>该助动词的各类活用形式的例句如下：</p>
+<ul>
+<li>（終止形）明日は雨が降る<strong>ようだ</strong>。（明天看起来要下雨）</li>
+<li>（未然形）忘れ物は家にある<strong>ようだろ</strong>う？（你东西大概是忘在家了吧）</li>
+<li>（連用形①）迷惑をかけた<strong>ようで</strong>ある。（像是之前给添麻烦了）</li>
+<li>（連用形②）あの表情はまるで氷の<strong>ようだっ</strong>た。（那表情就像冰一样）</li>
+<li>（連用形③）ピアノを弾ける<strong>ように</strong>頑張ってる。（为了能弹好琴而努力）</li>
+<li>（連体形）花の<strong>ような</strong>少年。（像花一样的少年）</li>
+<li>（仮定形）返せない<strong>ようなら</strong>ば通報します。（再不还给我就报警了）</li>
+</ul>
+<div class="note info no-icon"><p>表达比况实际上还有一个类似于助动词的表达「みたいだ」，但是目前的日语语法并不将其认为是一个助动词，而部分对外日语教学中则将其作为一个助动词处理。</p>
+<p>「みたいだ」和「ようだ」的用法几乎一致，差别在于：</p>
+<ul>
+<li>接续上「みたいだ」可以直接接续体言，如「花みたいだ」，另外「みたいだ」一般不接续助动词「ます、ん」和指示词</li>
+<li>语义上「みたいだ」不能表示引用、希望、建议、祈愿（即仅能用于推量、比况、列举），并且包含「みたいだ」的句式较少（也就是说没有和「～ようになる」类似的固定句式表达状态变迁）</li>
+</ul>
+<p>例句如下：</p>
+<ul>
+<li>（推量）教室に誰かが<strong>いるみたいだ</strong>。（教室里好像有人）</li>
+<li>（推量）このコップは<strong>壊れやすいみたいだ</strong>。（这杯子看起来容易坏）</li>
+<li>（推量）今寝不足、少し睡眠が<strong>必要みたいだ</strong>。（现在有点没睡饱，好像有必要再睡会）</li>
+<li>（推量）あの人は<strong>留学生みたいだ</strong>。（那人看起来像是留学生）</li>
+<li>（比况）彼は<strong>飛ぶみたいに</strong>帰った。（他像飞一样回家了）</li>
+<li>（比况）彼は<strong>アメリカ人みたいに</strong>英語で話している。（他能像美国人一样说英语）</li>
+<li>（列举）<strong>金盗むみたいな</strong>ことをやるな！（别做偷钱这种事！）</li>
+<li>（列举）<strong>東京みたいな</strong>都市にはコンビニが多い。（东京这种大城市里便利店很多）</li>
+</ul>
+<p>另外，口语中直接以「みたいだ」结尾的时候常常直接使用词干：</p>
+<ul>
+<li>教室に誰かが<strong>いるみたい</strong>。（教室里好像有人）</li>
+</ul>
+<p>以及，与「ようだ」类似，其否定式「みたいではない」几乎不使用，需要否定时使用「ないみたい」这一形式：</p>
+<ul>
+<li>あの人は先生では<strong>ないみたい</strong>。（那人看起来不像是老师）</li>
+</ul>
+</div>
+<h1 id="传闻助动词そうだ①">传闻助动词「そうだ①」</h1>
+<p>该助动词的接续表为：</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">五段动词</th>
+<th style="text-align: center;">一段动词</th>
+<th style="text-align: center;">カ变动词</th>
+<th style="text-align: center;">サ变动词</th>
+<th style="text-align: center;">形容词</th>
+<th style="text-align: center;">形容动词</th>
+<th style="text-align: center;">体言</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">终止形 <br /> <strong>読む</strong>そうだ <br /> <strong>たがる</strong>そうだ</td>
+<td style="text-align: center;">终止形 <br /> <strong>起きる</strong>そうだ <br /> <strong>られる</strong>そうだ</td>
+<td style="text-align: center;">终止形 <br /> <strong><code>@ 来 く</code>る</strong>そうだ</td>
+<td style="text-align: center;">终止形 <br /> <strong>する</strong>そうだ</td>
+<td style="text-align: center;">终止形 <br /> <strong>高い</strong>そうだ <br /> <strong>ない</strong>そうだ</td>
+<td style="text-align: center;">终止形 <br /> <strong>好きだ</strong>そうだ <br /> <strong>ようだ</strong>そうだ</td>
+<td style="text-align: center;">（助动词） <br /> <strong>花</strong><em>だ</em>そうだ <br /> <strong>これ</strong><em>だ</em>そうだ</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">です</th>
+<th style="text-align: center;">ます</th>
+<th style="text-align: center;">た</th>
+<th style="text-align: center;">そうだ①</th>
+<th style="text-align: center;">まい</th>
+<th style="text-align: center;">う</th>
+<th style="text-align: center;">ず・ぬ・ん</th>
+<th style="text-align: center;">べし</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">终止形 <br /> <strong>た</strong>そうだ</td>
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">―</td>
 <td style="text-align: center;">―</td>
 <td style="text-align: center;">―</td>
 </tr>
 </tbody>
 </table>
+<p>该助动词的最主要语义为表达传闻，即直接转述说话人的所见所闻。</p>
+<ul>
+<li>明日は先生が<strong>来るそうだ</strong>。（听说明天老师要来）</li>
+<li>高齢者は操作ミスで事故が<strong>多いそうだ</strong>。（听说高龄工人因为操作失误出的事故很多）</li>
+<li>先生は最近<strong>元気だそうだ</strong>。（听说老师最近身体健康）</li>
+<li>あの子はもう<strong>十歳だそうだ</strong>。（听说那孩子已经十岁了）</li>
+</ul>
+<p>一定要注意的是「そうだ①」本身没有否定和过去式，必须要通过前面接续的词语去表达否定和过去：</p>
+<ul>
+<li>明日は先生が来<strong>ないそうだ</strong>。（听说明天老师不来）</li>
+<li>先生もこの小説を読ん<strong>だそうだ</strong>。（听说老师也读过这本小说）</li>
+</ul>
+<div class="note info no-icon"><p>相较于「そうだ②」常常用词干结句表示感叹等语义，「そうだ①」的词干理论上很少直接结句。但是近期类似于下述的表达逐渐被大众接受了：</p>
+<ul>
+<li>ね、明日は<strong>雨だそう</strong>よ。（诶，明天说要下雨啊）</li>
+</ul>
+</div>
+<p>该助动词的各类活用形式的例句如下：</p>
+<ul>
+<li>（終止形）昨日来たのは木下さんではなかった<strong>そうだ</strong>。（听说昨天来的不是木下）</li>
+<li>（連用形）教授はおいでになる<strong>そうで</strong>ある。（听说教授要来）</li>
+</ul>
+<p>这里假定形由于使用频率极低所以不举出例句。</p>
+<h1 id="样态助动词そうだ②">样态助动词「そうだ②」</h1>
+<p>该助动词的接续表为：</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">五段动词</th>
+<th style="text-align: center;">一段动词</th>
+<th style="text-align: center;">カ变动词</th>
+<th style="text-align: center;">サ变动词</th>
+<th style="text-align: center;">形容词</th>
+<th style="text-align: center;">形容动词</th>
+<th style="text-align: center;">体言</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">第一连用形 <br /> <strong>読み</strong>そうだ <br /> <strong>たがり</strong>そうだ</td>
+<td style="text-align: center;">第一连用形 <br /> <strong>起き</strong>そうだ <br /> <strong>られ</strong>そうだ</td>
+<td style="text-align: center;">第一连用形 <br /> <strong><code>@ 来 き</code></strong>そうだ</td>
+<td style="text-align: center;">第一连用形 <br /> <strong>し</strong>そうだ</td>
+<td style="text-align: center;">词干 <br /> <strong>高</strong>そうだ <br /> <strong>な</strong>そうだ</td>
+<td style="text-align: center;">词干 <br /> <strong>好き</strong>そうだ <br /> <strong>よう</strong>そうだ</td>
+<td style="text-align: center;">―</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">です</th>
+<th style="text-align: center;">ます</th>
+<th style="text-align: center;">た</th>
+<th style="text-align: center;">そうだ①</th>
+<th style="text-align: center;">まい</th>
+<th style="text-align: center;">う</th>
+<th style="text-align: center;">ず・ぬ・ん</th>
+<th style="text-align: center;">べし</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">―</td>
+</tr>
+</tbody>
+</table>
+<p>该接续的例外包括：</p>
+<ul>
+<li>单音节形容词「ない、よい、いい」接续「そうだ②」形成「な<strong>さ</strong>そうだ、よ<strong>さ</strong>そうだ、よ<strong>さ</strong>そうだ」而非「なそうだ、よそうだ、いそうだ」</li>
+</ul>
+<div class="note info no-icon"><p>之前提到过实意形容词「ない」和助动词「ない」的区别，理论上这两者在接续「そうだ②」的时候应该分别形成「なさそうだ」和「なそうだ」，是存在对立的。但是近年来这一对立已经基本上消耗完毕，即随着实意形容词和助动词的合流，各种能够区分这两者的语法现象均在消逝：</p>
+<ul>
+<li>（○）小林君は行か<strong>なそうだ</strong>。</li>
+<li>（△）小林君は行か<strong>なさそうだ</strong>。（小林像是不去）</li>
+<li>（×）小林君は楽しく<strong>なそうだ</strong>。</li>
+<li>（○）小林君は楽しく<strong>なさそうだ</strong>。（小林像是不高兴）</li>
+</ul>
+<p>事实上，这一差别还有模糊之处，比如本身以「ない」结尾的形容词「危ない、つまらない、申し訳ない」。从严格的语法上讲「危なそうだ、つまらなそうだ、申し訳な<strong>さ</strong>そうだ」是正确的，但是除了「申し訳ない<strong>さ</strong>そうだ」基本是共识用法外，「つまらな<strong>さ</strong>そうだ」有部分人也会使用，而「危な<strong>さ</strong>そうだ」虽然有人用但是仅限极少数。</p>
+<p>追根溯源，「申し訳ない」作为合成词的痕迹过于明显，也就是说实意形容词「ない」过于突出，所以共识上使用「申し訳な<strong>さ</strong>そうだ」。而「つまらない」语源是「つまる」的否定，虽然即使从语源的角度也不应该使用「つまらな<strong>さ</strong>そうだ」，但是随着「ない」的区分模糊，这类用法也有不少人开始使用。而「危ない」只是单纯以「ない」这两个假名结尾而已，和「ない」没有一点关系，然而受到使用惯性而说出「危な<strong>さ</strong>そうだ」的人也逐步出现了。</p>
+<p>语言本身就是在变化的，也许什么时候就规定所有以「ない」结尾的词接续「そうだ②」都要用「なさそうだ」呢。</p>
+</div>
+<div class="note info no-icon"><p>采用「なさそうだ、よさそうだ」这种莫名多一个「さ」的接续方式的主要原因是「ない、よい」词干是单音节的，很容易在使用中多出一个辅助音节。然而对于「濃い」这类不常用的单音节形容词反倒还按照语法规定接续为「濃そうだ」（「濃さそうだ」也是可以用的，但具体何者使用频率高目前无从可知），然而另外一个不常用的单音节形容词「酸い」反倒会使用其同义词「酸っぱい」代替而形成「酸っぱそうだ」这样的表达。</p>
+</div>
+<p>该助动词的主要含义为表达样态，即表达事物应当具有的性质：</p>
+<ul>
+<li>天気が寒くてもう<strong>凍えそうだ</strong>。（天冷的都像冻起来了）</li>
+<li>あの荷物は<strong>重そうだ</strong>。（那件行李看起来就很重）</li>
+<li>あいつは日本語が<strong>上手そうだ</strong>。（他日语像是很好）</li>
+<li>子どもたちは遊園地へ行き<strong>たそうだ</strong>。（孩子们看起来很想去游乐园）</li>
+<li>あいつは日本人では<strong>なさそうだ</strong>。（那人不像是日本人）</li>
+</ul>
+<p>「そうだ②」的否定较为复杂，先不论到底是否定「そうだ②」本身还是其前面接续的词语，就连否定「そうだ②」本身的时候使用哪一个连用形也是有区别的。这里首先给出本文接纳的否定规则：</p>
+<ul>
+<li>动词接续「そうだ②」的否定应当否定「そうだ②」本身并且使用第三连用形，即形成「～そうにない」的形式，此外添加副助词的「～そうにはない、～そうにもない」也是可以接受的
+<ul>
+<li>部分情况下使用词干和副助词形成「～そうもない」也是可以接受的</li>
+</ul></li>
+<li>形容词和形容动词接续「そうだ②」的否定应当否定形容词或形容动词，形成「～なさそうだ」
+<ul>
+<li>理论上此时也可以否定「そうだ②」本身并且使用第一连用形，但是含义并不一样并且接受程度不高</li>
+</ul></li>
+</ul>
+<p>例句如下：</p>
+<ul>
+<li>空は晴れて、雨が<strong>降りそうにもない</strong>。（天空放晴了，不像要下雨）</li>
+<li>この料理は<strong>おいしくなさそうだ</strong>。（这菜看起来不好吃）</li>
+<li>どうした？<strong>元気ではなさそうだ</strong>。（怎么了？看起来身体不好的样子）</li>
+</ul>
+<p>形容词和形容动词接续的语义对比如下：</p>
+<ul>
+<li>この料理はおいしく<strong>なさそうだ</strong>。（这菜看起来不好吃）</li>
+<li>この料理はおいし<strong>そうではない</strong>。（这菜不是看起来好吃的样子）</li>
+<li>あの家族は幸せでは<strong>なさそうだ</strong>。（那家人看起来不幸福）</li>
+<li>あの家族は幸せ<strong>そうではない</strong>。（那家人不是看起来幸福的样子）</li>
+</ul>
+<p>总而言之，否定的位置不同确实能够带来些许的语义差别，但是整体差别不大。</p>
+<p>就实际语用而言，有两点需要注意：</p>
+<ul>
+<li>无论何种否定，看起来和形容动词保持一致的「そうではない」的接受程度极低，达不到 20%</li>
+<li>年轻人群体中逐渐出现动词接续「そうだ②」时也用「なさそうだ」表达否定的倾向
+<ul>
+<li>比如年轻人很有可能说出「空は晴れて、雨が降らなさそうだ」</li>
+</ul></li>
+</ul>
+<p>该助动词的各类活用形式的例句如下：</p>
+<ul>
+<li>（終止形）今日は雨になり<strong>そうだ</strong>。（今天看起来要下雨）</li>
+<li>（未然形）彼ならこの問題を解け<strong>そうだろ</strong>う？（要是他就应该能解决问题了）</li>
+<li>（連用形①）このままなら迷惑になり<strong>そうで</strong>ある。（再这样下去恐怕就麻烦了）</li>
+<li>（連用形②）今にも雪になり<strong>そうだっ</strong>た。（好像随时都会下雪）</li>
+<li>（連用形③）水溜りが氷となって、転び<strong>そうに</strong>なった。（积水结冰了，走路容易滑到了）</li>
+<li>（連体形）雨になり<strong>そうな</strong>ときには、傘を差してはいい。（要下雨的时候，打把伞比较好）</li>
+<li>（仮定形）雨になり<strong>そうなら</strong>、傘を差しなさい。（要是要下雨，就打把伞吧）</li>
+</ul>
+<div class="note info no-icon"><p>可以注意到「らしい、ようだ、そうだ①、そうだ②、みたいだ」有很多重合的语义，下面简单介绍这几个助动词之间的细微语感差别。</p>
+<p>具体而言，「そうだ①」是最特殊的，其无法表示说话人的判断，其仅仅说明说话人正在转述无论是媒体报道或者是他人判断中的信息。另外，「みたいだ」和「ようだ」几乎含义一致。</p>
+<p>所以只需要区分「らしい、ようだ、そうだ②」即可。简单而言：</p>
+<ul>
+<li>「らしい」表示判断的时候，信息来源往往是<strong>间接的</strong>，如之前读过的书或者别人曾说过的话，可信度较低，主观成分低</li>
+<li>「ようだ」表示判断的时候，信息来源往往是<strong>带有主观的间接信息源</strong>或<strong>直接的</strong>，如自己经历过的事情形成的经验，可信度稍高，主观成分较多</li>
+<li>「そうだ②」表示判断的时候，信息来源往往是<strong>直接的</strong>，如目前正在发生的事情或目前的状态，可信度较高，主观成分高。此外，强调当下即将发生，不能用于判断过去的事情，不能用于判断自己目前所在地方之外的事物</li>
+</ul>
+<p>如果现在说话人都判断即将下雨，那么可能的情景如下：</p>
+<ul>
+<li>判断来源于今早的天气预报或者听别人说了要下雨，多用「らしい」</li>
+<li>判断来源于刚刚看了一眼天气预报，多用「ようだ」</li>
+<li>判断来源于现在天色转暗且开始打雷，多用「そうだ②」</li>
+</ul>
+<p>如果现在说话人判断昨晚下过雨，首先不能使用「そうだ②」，可能的情景如下：</p>
+<ul>
+<li>判断来源于别人的判断，多用「らしい」</li>
+<li>判断来源于看到了地上的积水，多用「ようだ」</li>
+</ul>
+<p>如果现在说话人判断东京要下雨（说话人不在东京），首先不能使用「そうだ②」，并且「ようだ」也很少使用，此时几乎仅能依靠间接信息源给出判定，所以基本只能使用「らしい」。</p>
+<p>当然，上述状况无论如何都可以通过传闻的方式获取信息而不涉及到任何主观判断，无论如何都可以使用「そうだ①」。</p>
+</div>
+<h1 id="古语残留助动词べし">古语残留助动词「べし」</h1>
+<p>该助动词的接续表为：</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">五段动词</th>
+<th style="text-align: center;">一段动词</th>
+<th style="text-align: center;">カ变动词</th>
+<th style="text-align: center;">サ变动词</th>
+<th style="text-align: center;">形容词</th>
+<th style="text-align: center;">形容动词</th>
+<th style="text-align: center;">体言</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">终止形 <br /> <strong>読む</strong>べし <br /> <strong>たがる</strong>べし</td>
+<td style="text-align: center;">终止形 <br /> <strong>起きる</strong>べし <br /> <strong>られる</strong>べし</td>
+<td style="text-align: center;">终止形 <br /> <strong><code>@ 来 く</code>る</strong>べし</td>
+<td style="text-align: center;">终止形 <br /> <strong>する</strong>べし <br /> <strong>す</strong>べし</td>
+<td style="text-align: center;">（辅助动词） <br /> <strong>高く</strong><em>ある</em>べし <br /> <strong>なく</strong><em>ある</em>べし</td>
+<td style="text-align: center;">（辅助动词） <br /> <strong>好きで</strong><em>ある</em>べし <br /> <strong>ようで</strong><em>ある</em>べし</td>
+<td style="text-align: center;">―</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">です</th>
+<th style="text-align: center;">ます</th>
+<th style="text-align: center;">た</th>
+<th style="text-align: center;">そうだ①</th>
+<th style="text-align: center;">まい</th>
+<th style="text-align: center;">う</th>
+<th style="text-align: center;">ず・ぬ・ん</th>
+<th style="text-align: center;">べし</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">―</td>
+</tr>
+</tbody>
+</table>
+<p>需要注意的是，该助动词是中古日语残留的助动词，在现代日语中严格来说已经丧失原形，仅能使用「べき」这一原先的连体形。</p>
+<p>该助动词用于表达“应当”的判断或建议语气，表达效果类似于「～ほうがいい、～ないほうがいい」。不过该助动词语气较为生硬，尽量不在正式用语场合之外使用。由于这种使用场景的约束，其经常与「です」连用（也可以在口语中与「だ」连用）：</p>
+<ul>
+<li>お客様に敬語を<strong>使うべき</strong>です。（对客人应该使用敬语）</li>
+<li>取扱説明書は<strong>簡単であるべき</strong>です。（使用说明书应该简单易懂）</li>
+</ul>
+<p>该助动词的否定仅可以使用「べきではない、べきではありません」而不能使用「ないべき」：</p>
+<ul>
+<li>電車の中で大声で<strong>話すべきではありません</strong>。（电车中不应大声交谈）</li>
+</ul>
+<p>该助动词和仅有连体形与古语保持一致，即可以使用「べき」直接修饰体言：</p>
+<ul>
+<li><strong>注意すべき</strong>点はひとつあります。（需要注意的地方有一个）</li>
+</ul>
+<p>此外，在接续「のに、ので」等助词的时候，应当使用「べきな」的形式：</p>
+<ul>
+<li>お前がやる<strong>べきなのに</strong>、全部わたしがやったんだ。（本来该你做的活全给我做了）</li>
+</ul>
+<p>除了上述的使用方法外，该助动词不应当以其他方式使用，除非熟语或其余古语残留情况。目前常见的古语残余包括表示“不应当”的「べからず」以及表示“尽可能”的「なるべく」。此外，在类似下述对仗句中，有可能出现古语终止形：</p>
+<ul>
+<li>食欲の秋、恐る<strong>べし</strong>。（食欲之秋，令人畏惧）</li>
+</ul>
+<h1 id="古语残留助动词まい">古语残留助动词「まい」</h1>
+<p>该助动词的接续表为：</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">五段动词</th>
+<th style="text-align: center;">一段动词</th>
+<th style="text-align: center;">カ变动词</th>
+<th style="text-align: center;">サ变动词</th>
+<th style="text-align: center;">形容词</th>
+<th style="text-align: center;">形容动词</th>
+<th style="text-align: center;">体言</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">终止形 <br /> <strong>読む</strong>まい <br /> <strong>たがる</strong>まい</td>
+<td style="text-align: center;">终止形 <br /> <strong>起きる</strong>まい <br /> <strong>られる</strong>まい <br /> 未然形 <br /> <strong>起き</strong>まい <br /> <strong>られ</strong>まい</td>
+<td style="text-align: center;">终止形 <br /> <strong><code>@ 来 く</code>る</strong>まい <br /> <strong><code>@ 来 く</code></strong>まい <br /> 未然形 <br /> <strong><code>@ 来 こ</code></strong>まい</td>
+<td style="text-align: center;">终止形 <br /> <strong>する</strong>まい <br /> <strong>す</strong>まい <br /> 未然形 <br /> <strong>し</strong>まい <br /> <strong>せ</strong>まい</td>
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">―</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">です</th>
+<th style="text-align: center;">ます</th>
+<th style="text-align: center;">た</th>
+<th style="text-align: center;">そうだ①</th>
+<th style="text-align: center;">まい</th>
+<th style="text-align: center;">う</th>
+<th style="text-align: center;">ず・ぬ・ん</th>
+<th style="text-align: center;">べし</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">终止形 <br /> <strong>ます</strong>まい</td>
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">―</td>
+<td style="text-align: center;">―</td>
+</tr>
+</tbody>
+</table>
+<p>该助动词用于表达否定的推量或意志语气，表达效果类似于「～ないだろう、～ないつもりだ」：</p>
+<ul>
+<li>いや、そんなことは<strong>あるまい</strong>。（不，那种事不会有的）</li>
+</ul>
+<p>目前这一助动词正在逐步消退，被等价表达替换，目前该助动词也仅仅常用于部分固定句式。</p>
+<h1 id="练习参考答案">练习参考答案</h1>
+<p>本章节没有练习问题。</p>
+<div class="note info no-icon"><p>从这一章开始，应该再也没有练习问题了，因为作者出不出来好题目了。</p>
+<p>事实上之前的日语汉字、用言活用等等都能出题，是因为这是有相当严格语法规定的和词典支持的，而从助动词开始，到后面的助词、虚词、句式，就开始走到没有严格语法约束的语用过程中了。</p>
+<p>就比如说我这一章最多让大家练习一下某个助动词前面动词应该是未然形还是第一连用形，而涉及到比如说样态描述或者说「れる・られる」四种语义的区别，乃至更为深刻的一些语言内核，作者自己都不会怎么出题。</p>
+<p>所以大家多看日语文本，多和日本人交流可能才是学日语的最终路径，这里写的这些语法，只是大家约定俗成的一种最基本最基本的规定，至于怎么去说出一句话，还得靠自己习得。</p>
+</div>
+]]></content>
+      <categories>
+        <category>【学习笔记】日语</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>简明日语自学手册 Chapter 5 助词使用规则</title>
+    <url>/2022/08/22/ja-tutorial-ch5/</url>
+    <content><![CDATA[<p>本文将主要讲解各个助词的基本使用法则，并举出若干例句进行分析。在阅读先前章节的基础上，通过本文读者应当可以基本了解日语的附属词体系。</p>
+<span id="more"></span>
+<h1 id="格助词">格助词</h1>
+<p>首先讲解格助词，格助词一般接续在体言之后，部分情况下接续在用言终止形（形容动词词干）、助词、副词等后。格助词的最基本用途是标记某个词语或者词组在句子之中的地位（也就是所谓的<strong>格</strong>）。日语在提供格助词标记词组语法作用的条件下就可以在一定范围内自由调换各个词组的顺序而不至于影响整个句子的理解。</p>
+<p>另外需要注意，格助词并非是界限分明的，比如主格助词「が①」依然可以在部分条件下标记宾格，这里我们会详细说明。</p>
+<h2 id="主格助词が①">主格助词「が①」</h2>
+<p>「が①」用于标记句子的主语，后续承接形容该主语样态的形容词句或者表现该主语动作的动词句：</p>
+<ul>
+<li>田中さん<strong>が</strong>本を読んでいる。（田中在读书）</li>
+<li>リンゴ<strong>が</strong>紅い。（苹果是红的）</li>
+</ul>
+<p>「が①」有时也可以用于标记宾语，但这种用法一般仅限于下述情景：</p>
+<ul>
+<li>可能式以及涉及到助动词「たい」的句子中，宾语可以使用「が①」标记</li>
+<li>助词「て」后接续补助动词「ある」形成的存在状态句中，宾语可以使用「が①」标记</li>
+<li>被动句中如果不需要强调实际动作发出方，宾语可以使用「が①」标记</li>
+<li>自发语义中，宾语可以使用「が①」标记</li>
+</ul>
+<p>例句如下：</p>
+<ul>
+<li>わたしは日本語<strong>が</strong><u>話せる</u>。（我会说日语）</li>
+<li>今は水<strong>が</strong>飲み<u>たい</u>。（现在想喝水）</li>
+<li>机の上にケーキ<strong>が</strong>置い<u>てある</u>。（桌上放着蛋糕）</li>
+<li>選択幅<strong>が</strong>大きく<u>拡大された</u>。（选择的范围大幅扩大了）</li>
+<li>外国の息子のこと<strong>が</strong><u>案じられる</u>。（我很担心我在外国的孩子）</li>
+</ul>
+<div class="note info no-icon"><p>在提到「が①」时往往绕不过去的就是形容词「欲しい」，例如：</p>
+<ul>
+<li>わたしはきれいな服<strong>が</strong>欲しい。（我想要漂亮的衣服）</li>
+</ul>
+<p>从中文角度来看，“漂亮的衣服”应该是“想要”的宾语，但日文中使用了「が①」这一主格助词。事实上，「欲しい」的本意是描述某个事物具有使得说话者希望拥有之的性质，是对事物性质的描述，所以应该用主格助词。</p>
+<p>同样的，涉及到部分有动词性质的形容动词的时候，也会有这个问题：</p>
+<ul>
+<li>わたしは甘いもの<strong>が</strong>好きだ。（我喜欢甜食）</li>
+<li>わたしはピアノ<strong>が</strong>上手だ。（我擅长钢琴）</li>
+</ul>
+<p>先前提到过形容动词本身和动词之间有一定的联系，即形容动词描述的状态往往和动作有关联。但即使如此，形容动词本质依然是对事物性质的描述，应当使用主格助词。</p>
+<hr />
+<p>上述例子全都是基于第一人称的，在考虑其他人称的时候实际上和「たい、たがる」的对立类似，因为我们无法断言其他人的愿望、感情，所以使用涉及到愿望、感情的形容词或形容动词，如「欲しい、嫌だ」等的时候，应当使用接尾词「○がる」并用回宾格助词「を」：</p>
+<ul>
+<li>田中さんはきれいな服<strong>を</strong>欲し<u>がる</u>。（田中想要漂亮的衣服）</li>
+<li>田中さんは勉強<strong>を</strong>嫌<u>がる</u>。（田中讨厌学习）</li>
+</ul>
+<p>但是描述能力等词语以及「好きだ、嫌いだ」是例外：</p>
+<ul>
+<li>田中さんは甘いもの<strong>が</strong>好きだ。（田中喜欢甜食）</li>
+<li>田中さんはピアノ<strong>が</strong>上手だ。（田中擅长钢琴）</li>
+</ul>
+</div>
+<p>此外，「が①」还可以构成「がする」固定句式，用于「音がする、匂いがする、吐き気がする、地鳴りがする」等短语中用于表示说话方的自身的感受或者感官感受到的动作或自然现象：</p>
+<ul>
+<li>隣の部屋から、人の話し声<strong>がする</strong>。（隔壁房间有人说话）</li>
+<li>体調が悪くて、吐き気<strong>がする</strong>。（身体不太好，有点想吐）</li>
+</ul>
+<p>再者，「が①」有时起到连体修饰的作用，即现代日语中「の①」的作用，但这种用法几乎仅存在于固定短语中，是古日语的残余：</p>
+<ul>
+<li>我<strong>が</strong>国の労働者。（我国的劳动者）</li>
+<li>霞<strong>が</strong>関。（霞关）</li>
+</ul>
+<h2 id="补格助词から①">补格助词「から①」</h2>
+<p>「から」最主要的目的是标注起点，这类起点可以是具体的时间、地点、材料的起点，也可以是抽象的顺序、授受的起点。可以从下述例句中观察「から」的语义：</p>
+<ul>
+<li>（时间起点）授業は六時<strong>から</strong>始まります。（从六点开始上课）</li>
+<li>（地点起点）野良猫は窓<strong>から</strong>入ってくる。（野猫从窗户进来）</li>
+<li>（材料起点）チーズは牛乳<strong>から</strong>作られたものだ。（奶酪是牛奶做的）</li>
+<li>（顺序起点）君<strong>から</strong>入って。（从你开始进去）</li>
+<li>（授受起点）友達<strong>から</strong>もらったプレゼント。（朋友给的礼物）</li>
+</ul>
+<p>此外，「から①」也可以在被动句中表示动作的发出方：</p>
+<ul>
+<li>わたしは先生<strong>から</strong>褒められた。（我被老师夸奖了）</li>
+</ul>
+<div class="note info no-icon"><p>事实上「から」还有表示事物缘由的语义：</p>
+<ul>
+<li>だんだん暗くなってきた<strong>から</strong>、早く帰ろう。（天已经慢慢变黑了，早点回去吧）</li>
+</ul>
+<p>这个语义的「から」既可以是格助词「から①」也可以是接续助词「から②」，甚至还有观点认为还需要更为细分。不过在上述例句中的「から」接续在一个小句后而非体言成分后，显然不符合格助词要求，所以是接续助词。</p>
+<p>本文所采纳的观点是，作为格助词的「から」表示事物缘由的语义已经基本被作为接续助词的「から」所代替，所以不认为作为格助词的「から①」具有表达事物缘由的语义。而作为接续助词的「から」则几乎仅有表达事物缘由的语义。</p>
+</div>
+<div class="note info no-icon"><p>表示时间起点的「から」有时也会出现不符合格助词要求的用法：</p>
+<ul>
+<li>手を洗って<strong>から</strong>、ご飯を食べる。（先洗手再吃饭）</li>
+<li>猫を飼って<strong>から</strong>が本当の人生だ。（养了猫之后才叫人生）</li>
+<li>これ<strong>から</strong>が真剣勝負だ。（从现在开始才是决战）</li>
+</ul>
+<p>这里的「から」显然也不符合格助词的要求。虽然第一个例句符合接续助词要求，但是第二个和第三个例句甚至不满足接续助词的要求，其接续在小句后，但并不像接续助词一样和后续的某个小句形成承接关系，反而类似于从句，作为主句的一个体言成分。有观点将这类助词称为<strong>准体助词</strong>。</p>
+<p>本文将这类情况作为例外处理。</p>
+<p>另外，这里提到了特殊句式「～てから」，这种特殊句式一般用于强调时间的先后关系，使用在需要特别说明动作先后关系的句子中。</p>
+</div>
+<h2 id="补格助词で">补格助词「で」</h2>
+<p>「で」最主要的目的如下所述：</p>
+<ul>
+<li>标注动作发生的地点</li>
+<li>标注手段
+<ul>
+<li>标注动作所使用的道具</li>
+<li>标注动作的方式、方法</li>
+<li>标注动作的材料</li>
+<li>标注动作的构成要素</li>
+<li>标注动作的内容物、附着物</li>
+</ul></li>
+<li>标注范围</li>
+<li>标注数量、期限、限度</li>
+<li>标注原因、理由</li>
+</ul>
+<p>例句如下：</p>
+<ul>
+<li>（地点）あの店<strong>で</strong>ラーメンを食べる。（在那家店吃拉面）</li>
+<li>（手段）
+<ul>
+<li>（道具）包丁<strong>で</strong>野菜を切る。（用菜刀切菜）</li>
+<li>（方式）インターネット<strong>で</strong>相手の情報を探る。（在网上找对手信息）</li>
+<li>（材料）粘土<strong>で</strong>人形を作る。（用粘土做人偶）</li>
+<li>（构成要素）今日の試合は三人<strong>で</strong>行きます。（今天比赛要三个人去）</li>
+<li>（内容物）スタジアムは熱気<strong>で</strong>ムンムンしてる。（体育场里充满热气）</li>
+<li>（附着物）髪の毛は雨<strong>で</strong>ぐっしょり濡れてしまった。（头发被雨水全打湿了）</li>
+</ul></li>
+<li>（范围）これは世界<strong>で</strong>一番高い建物だ。（这是世界上最高的建筑）</li>
+<li>（数量）車は時速百キロ<strong>で</strong>走っている。（汽车以时速一百公里飞驰）</li>
+<li>（期限）一週間<strong>で</strong>できるのか？（一周内能做完吗？）</li>
+<li>（原因）地震<strong>で</strong>電車が止まった。（电车因为地震停了下来）</li>
+</ul>
+<p>这里需要注意，标注手段中的道具是可以抽象化的，也就是说动作的道具可以不是一个具体的事物，而也可以是一种抽象的描述：</p>
+<ul>
+<li>（具体）新幹線<strong>で</strong>東京へ行く。（乘新干线去东京）</li>
+<li>（抽象）言葉<strong>で</strong>相手を責める。（用话语责备对方）</li>
+<li>（抽象）赤ちゃんは大声<strong>で</strong>泣いている。（婴儿在大声哭闹）</li>
+<li>素足<strong>で</strong>砂浜を歩く。（赤脚在沙滩上走）</li>
+</ul>
+<p>这里考虑最后一个例句，虽然「素足」是一个具体的事物，但是其并不能完全认为是「歩く」这个动作的道具，其更像是「歩く」这个动作进行时候的状态。这是一类介于具体道具和抽象道具之间的表述。</p>
+<p>此外，标注道具和标注方式的「で」之间也并非界限分明：</p>
+<ul>
+<li>（道具）汚い手<strong>で</strong>お菓子をつままないでください。（不要用脏手拿点心）</li>
+<li>（方式）汚い手<strong>で</strong>ライバルを蹴落とす。（用肮脏手段打败对手）</li>
+</ul>
+<p>即使同时都标注了「汚い手」这个词，但是根据这个词具体采用具体的含义还是抽象的含义，这里的「で」的含义也有所变化。</p>
+<div class="note info no-icon"><p>「で」以及「から①」都可以用于标注材料，关注下述两句话：</p>
+<ul>
+<li>ワインは葡萄<strong>から</strong>作られた。（红酒是葡萄做的）</li>
+<li>千代紙<strong>で</strong>鶴を折る。（用纸折千纸鹤）</li>
+</ul>
+<p>由于「から」表达起点的语义很强，所以当其标注材料的时候，一般会强调从材料到成品需要经过一个很长的过程，而且最后成品往往是看不出材料原本的性质的。相对应，「で」标注材料则一般能够在成品中体现出原材料。</p>
+<p>所以，酿酒、造纸等工序较长的制作中会使用「から」，而烹饪、手工等工序较短的制作中会使用「で」。</p>
+</div>
+<div class="note info no-icon"><p>事实上「で」的应用范围几乎不太可能穷尽，这个助词在现代日语中有着举足轻重的地位，而且还具有很强的生命力。</p>
+<p>这里举出的「で」的用法分类和例句也仅仅只能作为这个助词语用的冰山一角，要掌握这个助词还是需要读者多读日语文本。</p>
+</div>
+<h2 id="补格助词と①">补格助词「と①」</h2>
+<p>「と」最主要的目的如下所述：</p>
+<ul>
+<li>标注动作的对象</li>
+<li>标注动作的共同进行者
+<ul>
+<li>用于枚举对象</li>
+</ul></li>
+<li>标注比较的对象</li>
+<li>标注状态变迁的结果</li>
+<li>标注所引用的引文</li>
+<li>标注动作的状态</li>
+</ul>
+<p>从中文的角度理解的话，该助词的前三个用法均和中文的“和”“与”的虚词类似。</p>
+<p>例句如下：</p>
+<ul>
+<li>（动作对象）彼女<strong>と</strong>結婚する。（和她结婚）</li>
+<li>（动作共同进行者）家族<strong>と</strong>一緒に公園に行く。（和家人一起去公园）
+<ul>
+<li>（枚举对象）竹本さん<strong>と</strong>山本さんは一緒に来る。（竹本和山本一起来）</li>
+</ul></li>
+<li>（比较对象）この町は昔<strong>と</strong>違う。（这小镇和之前不一样）</li>
+<li>（状态变迁结果）氷は水<strong>と</strong>なった。（冰变成了水）</li>
+<li>（引用）「こんにちは」<strong>と</strong>言った。（说了声“你好”）</li>
+<li>（动作状态）彼はゆっくり<strong>と</strong>立ち上がった。（他慢慢站起身）</li>
+</ul>
+<p>这里一定注意动作对象和动作共同进行者并不一致，区别方式是添加一个副词「一緒に」，如果无法添加则代表这里「と①」代表动作对象，如果可以添加则代表动作共同进行者。</p>
+<p>此外，标注动作状态这一用法几乎仅能用于副词，接续在体言后并表动作状态的「と①」在现代日语中几乎由「～のようだ」代替。另外，部分在古语中是タリ活用形容动词的副词，如「だんだんと」可能自带「と」词尾，但是随着这类词语逐步丧失「と」词尾，「だんだん、だんだんと」两种形式均可以使用。</p>
+<p>另外，标注状态变迁结果这一用法具体的讲解见 Chapter 7，其中会比较在这一语义上格助词「と①」和「に」的语感差别。</p>
+<h2 id="补格助词に">补格助词「に」</h2>
+<p>「に」最主要的目的如下所述：</p>
+<h1 id="接续助词">接续助词</h1>
+<h2 id="から②">「から②」</h2>
+<p>笔记：「からだ」这种语法不能认为是准体助词，而是一种小句结尾的方式，也就是说不和后续句子承接了，直接结束。</p>
+<p>笔记：记得说一下「日曜日から」和「日曜日だから」的区别。</p>
+]]></content>
+      <categories>
+        <category>【学习笔记】日语</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>简明日语自学手册 Chapter 7 句式与常用固定表达</title>
+    <url>/2022/08/22/ja-tutorial-ch7/</url>
+    <content><![CDATA[<p>本文将在基本了解日语语句构成的条件下总结各类常见的日语语句表达方式，基于此，读者应当可以自行书写符合语法且自然的日语语句。</p>
+<span id="more"></span>
+<h1 id="状态变迁">状态变迁</h1>
+<p>有关状态变迁的表达相当之多，先前也讲解过部分。虽然设计状态变迁的句式很多，但基本上均分为自然变迁和强制变迁两种，分别对应「なる、する」两个动词。</p>
+<p>这里讲解的时候直接引用了先前章节的例句。</p>
+<p>如果描述状态的是形容词（类形容词助动词），则一般使用「～くなる、～くする」句式：</p>
+<ul>
+<li>彼女は化粧すると<strong>かわいくなる</strong>。（她化妆了就会很可爱）</li>
+<li>辛いものが苦手なので、料理はいつも<strong>甘くする</strong>。（因为吃不了辣所以总是把菜做甜）</li>
+</ul>
+<p>如果描述状态的是形容动词（类形容动词助动词）或者体言，则一般使用「～になる、～にする」句式：</p>
+<ul>
+<li>気づいたら彼が<strong>好きになっ</strong>ていた。（等发觉的时候已经喜欢上他了）</li>
+<li>やっと<strong>大人になっ</strong>た。（终于长大了）</li>
+<li>練習は不可能を<strong>可能にする</strong>。（练习能把不可能变为可能）</li>
+<li>プレゼンは誰でも分かりやすいように簡単な<strong>内容にし</strong>た。（为了让所有人都容易理解我的讲解，我尽量选择了简单的内容）</li>
+</ul>
+<p>如果描述状态的是动词，则可以使用「～ことになる、～ことにする」，其中「～ことになる」强调事态自然而然发展到了某个情况，而「～ことにする」一般用于描述说话者作出了某种决定：</p>
+<ul>
+<li>会議の結果、部長の案を<strong>採用することになっ</strong>た。（会议的结果是采用了部长的提议）</li>
+<li>拾った子猫を<strong>飼うことにし</strong>た。（决定收养捡到的小猫）</li>
+</ul>
+<p>同时，也可以使用「～ようになる、～ようにする」，其中「～ようになる」强调能力的变化，而「～ようにする」一般用于描述为了达到某一种目的而做的努力。特别地，「～ようにしている」用于描述为了达到某一种目的而养成的习惯：</p>
+<ul>
+<li><strong>できるようになる</strong>と楽しいだが、そこまでの道は長い。（能做得到的话自然很开心，但是为了学会要走过的路还是很长）</li>
+<li>きれいな服を買いたい、髪型とかもそれに<strong>似合うようにし</strong>たい。（想买好看的衣服，那么也要做个搭配的发型）</li>
+<li>毎日日本語の番組を<strong>見るようにしている</strong>。（我每天都会看日语节目）</li>
+</ul>
+<p>另外，形容动词、体言以及动词接续「こと」后还可以使用「～となる」句式，该句式相对于对应的使用助词「に」的句式语义整体并无变化但是语气较为生硬，适合正式行文：</p>
+<ul>
+<li><strong>冷静となっ</strong>て考えてみよう。（冷静下来再想想看）</li>
+<li>年取って<strong>病気となっ</strong>た。（年纪大了开始生病了）</li>
+<li>明日は<strong>出勤することとなっ</strong>た。（明天得上班了）</li>
+</ul>
+<p><strong>注意</strong>，该句式不能描述理所当然、物理规律使然的自然变化，比如时间的推移，只能使用「七時になる」而不能用「七時となる」。</p>
+<p>而动词还能使用「～こととする」句式，该句式相对于「～ことにする」语义整体并无变化但是语气较为生硬，适合正式行文：</p>
+<ul>
+<li>地球温暖化防止のため、化石燃料を使う代わりに自然エネルギーを<strong>利用することとし</strong>た。（为了防止全球变暖，决定用清洁能源代替化石燃料）</li>
+</ul>
+<p><strong>注意</strong>，该句式不能描述他人的决定。</p>
+<p>在涉及到动词的「～ことになる、～ことにする、～ようになる、～ようにする、～こととなる、～こととする」句式中表否定均是否定接续在这些句式前面的动词，即形成「～<strong>ない</strong>ことになる、～<strong>ない</strong>ことにする、～<strong>ない</strong>ようになる、～<strong>ない</strong>ようにする、～<strong>ない</strong>こととなる、～<strong>ない</strong>こととする」。</p>
+<p>另外注意，这类句式之中涉及到的时态全部都是<strong>现在时</strong>，如果采用过去时则这些句式的含义可能有所变化。</p>
 ]]></content>
       <categories>
         <category>【学习笔记】日语</category>
