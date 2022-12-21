@@ -843,9 +843,8 @@
 </ul></li>
 <li>课内
 <ul>
-<li>【12.18】日语期末口语视频</li>
 <li>【每周】现代控制技术作业</li>
-<li>【未定】现代控制技术期末考核</li>
+<li>【未定】现代控制技术期末大作业</li>
 </ul></li>
 <li>THUInfo
 <ul>
@@ -855,6 +854,10 @@
 <ul>
 <li>软工小作业文档 &amp; 软工小作业试题</li>
 <li>一字班回访 &amp; 零字班访谈</li>
+</ul></li>
+<li>想学的一些其他东西
+<ul>
+<li>整理之前的数学笔记</li>
 </ul></li>
 <li>摸鱼
 <ul>
@@ -976,7 +979,7 @@
 <h2 id="新闻选录-5">新闻选录</h2>
 <p>要说最为重磅的新闻还得是这几天。</p>
 <ul>
-<li>“新十条”发布，除中小学、医院等重点场所，取消查验核酸阴性证明以及健康码，包括跨省旅行亦不查验</li>
+<li>“新十条”发布，除中小学、医院等重点场所，取消查验核酸证明以及健康码，包括跨省旅行亦不查验</li>
 <li>清华大学不再公布校内疫情信息</li>
 <li>（未经证实）部分大学撤销疫情防控小组或类似组织</li>
 <li>（未经证实）北京大学恢复自由出入校</li>
@@ -1020,6 +1023,36 @@
 <p>组会似乎什么都没说，但是直接让我下周就要模拟开题，这我就真的有点着急了，因为说实话我现在还没有彻底想好我要干啥，现在文献调研还是没怎么做，完全不知道开题应该去说些什么。</p>
 <p>但是毕竟是熬过去了组会，所以晚上又去出勤了。</p>
 <p>这次回来直接是直接骑车回来的，差点没给逼近零度的气温冻死。</p>
+<h1 id="section-12">2022.12.17 - 2022.12.18</h1>
+<p>最近真的是一点写日记的动力都没有，因为感觉每天都没有什么值得去记忆的事情，随着考研临近我也不太敢频繁戳 Sakana，即使我自己现在很想看夏日重现。</p>
+<p>然后就是日语课的结课视频得赶快交，所以这几天就在写日语小作文。再加上最近我家这个疫情也逐步扩散开了，家里人还不太希望我出门之类的，所以更加只能憋在家里做点自己的事情。</p>
+<p>不过有一件还可以的事情就是今天和学长去聊一下毕设的事情，希望这次能把我后面的时间线，或者至少是要做些什么比较具体的事情给理顺了，这样我至少能对自己的时间有一个最基本的规划。</p>
+<p>实验室那边是真的有点摸鱼了，最近这些其他的事情比较麻烦。</p>
+<p>如果时间还能空闲得开的话就学一点数学然后赶快和软工的助教那边做一个对接，然后好好写软工的小作业文档。</p>
+<hr />
+<p>贾老师在细节上可能比较想用 Transformer 做，自己比较想去基于之前的一篇文章去做。</p>
+<p>目前可能的一个 story 是注意到现在可能视频传输会遇到从 4G 网络且切换到 WiFi 网络的环境变化，现在希望模型能够快速感知到这一变化并作出切换。但是目前对这个 story 的证明还不够，还需要复现这篇论文并且将其迁移到我们原有的工作上。</p>
+<p>开题的话，可以尝试去造一些环境切换的 network trace，然后跑 Pensieve 作为 baseline，之后用原先论文的算法击败 Pensieve 即可。</p>
+<p>Related work 可以找各种 ABR 的论文，然后总结他们的方法，之后用环境切换的 network trace 跑一遍画图，说明现在他们的表现并不能解决这一问题，并提出自己希望能够提供到何种程度的优化。</p>
+<p>baseline 最好有两个，有一个最基本的 Pensieve，另外是特化的 Pensieve，也就是将环境切换的 network trace 也放到训练集里面，naive 地训练一下。后者的必要性在于这是一种最简单的解决方式，如果这种解决方式都能 work，就代表我不需要换到你新提出的方式上了。</p>
+<h1 id="section-13">2022.12.19</h1>
+<p>今天一下子不知道该做些什么了，干脆先写软工吧。</p>
+<p>然后就写了一天软工的第二版规划草案，晚上觉得没啥事情就去超市采购了一批零食。现在随着我这边阳性数量不断攀升，目前所有商场、超市等营业场所也开始提前闭店，并且餐饮也几乎以外卖为主。</p>
+<p>不过据说十几天之后社会面的活力就会回来了，不过我不太关心这些，因为我感觉我这十几天只能窝在家里做毕设。</p>
+<h1 id="section-14">2022.12.20</h1>
+<p>今天就好好做毕设吧，晚上和软工的助教约了一个简单的聊天局，到时候再来关注一些东西吧。</p>
+<p>毕设上今天找到了 community code base，看了一眼，Tensorflow 的那一份整个框架非常好用，logger 什么的一应俱全，我甚至想专门为此写一个文档。现在的打算是把这个框架迁移到 Pytorch 上，可能后面我的毕设就会基于这个框架了。</p>
+<p>而晚上的软工助教交流会则非常激烈，讨论了很多东西。小作业目前是没有什么大问题了，CICD 小作业计划直接教大家怎么用 SECoder deploy toolkit，目前计划是找王博文之类的来写一下文档。而今天最主要聊的是关于考试和大作业评分的问题，主要矛盾还是难以同时满足开发者、学生、教学组的所有需求，而且目前所有改革目标的最大问题都出现在教务处不能接受必修课多于 40% 的 4.0 这样的潜规则。这套潜规则直接让设置一个刁钻的考试成为了最简单的课改方案 fallback，但这显然违反软件工程课程最基本的教学目标。</p>
+<p>目前就这一点的讨论形成了一个待进一步研究的方案，也就是类似于 OS 的设立中期检查和一个面试，只有在前八周或者某个时间段内高强度地完成某一个目标的小组才允许报名申请免考，通过完成拓展功能来代替考试。</p>
+<p>这样的话课程组也可以正大光明地控制免考人数，从而免考的人几乎全可以给到 4.0 而不触犯教务处的潜规则。另外，由于这一部分群体毕竟是少数，也可以做到比较好的指导。我的想法是让这一部分人自己提出需求，自己写策划案，自己完成，工作量不能低于一个 baseline 即可。</p>
+<p>而免考的要求可以是大作业布置一周内完成一个最基础的功能，就说明这一组整体满足了要求。</p>
+<p>另外，总助教也表示了能够接受 4 人左右的额外助教申请，所以下学期的助教基本上也就确定下来了。</p>
+<p>现在计划拿着这个方案去找老师们探讨一下，另外在探讨一下习题课究竟以什么样的形式展开就行了。感觉整体已经达到了一个我对软件工程课程的理想状态的期待了。</p>
+<h1 id="section-15">2022.12.21</h1>
+<p>今天写了一天的代码框架，以及决定干脆就直接用 Tensorflow 算了，已经能用的代码改到 Pytorch 毫无作用。</p>
+<p>晚上和李山山老师对了一下，从他那边得知老师对加软工考试也是比较犹豫的态度，计划是下学期先不加考试，观察下一学期的大作业是不是能拉开区分度，如果能拉开的话就决定不加考试。另外，下一学期 lambda 也应该会对软工做一点调研，用数据支持后面的决定。不过从我个人的角度，我还是觉得不加考试比较好。</p>
+<p>然而今天最大的好玩的事情就是<strong>我一直在做毕设相关的事情但是却一直没准备明天的模拟开题</strong>，现在我还是不知道在组会上讲一个什么样的 story 比较好，感觉比较困惑。现在观察下来，导师，甚至是学长都不会特别特别关心你到具体你写了些什么代码之类的细节工作的，他们只是想听到一个 story，听到一个 conclusion，导师尤其不会具体管你工作做了什么。</p>
+<p>虽然是意料之中，但是我这种不会讲 story，现在文献调研也没怎么做的人，确实是不知道讲个什么东西出来比较好。</p>
 ]]></content>
       <categories>
         <category>【生活记录】假期日记</category>
@@ -2297,6 +2330,111 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 ]]></content>
       <categories>
         <category>【生活记录】学期总结</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>毕业设计代码框架文档</title>
+    <url>/2022/12/21/graduation-code-base/</url>
+    <content><![CDATA[<p>今天从参考的 paper 底下白嫖到了一份开源的 Tensorflow training framework，目前希望把这一整套学习一下，做点自定义之后作为自己毕业设计的 code base。于是为了自己有迹可循，就在这里写这个代码框架的文档，迁移到哪里写到哪里。</p>
+<span id="more"></span>
+<p>这里基本只考虑 <code>src</code> 目录下各个 Python 模块的作用以及重要函数的文档。</p>
+<h1 id="实验脚本-scripts">实验脚本 <code>scripts</code></h1>
+<h2 id="grbal-实验脚本-scriptsrun_grbal.py">GrBAL 实验脚本 <code>scripts/run_grbal.py</code></h2>
+<p>该脚本为训练 GrBAL 模型的脚本，内部主要逻辑为一个 <code>run_experiment</code> 函数，其启动实验的流程为：</p>
+<ul>
+<li>根据 config 拼接 log 路径并初始化 logger</li>
+<li>将当前实验 config 用 JSON 格式存储到 <code>log</code> 目录下</li>
+</ul>
+<p>实验的 config 可以在 <code>if __name__ == "__main__":</code> 代码块下局部变量 <code>config</code> 中修改。</p>
+<h1 id="学习环境-envs">学习环境 <code>envs</code></h1>
+<h2 id="规范化环境-envsnormalized_env.py">规范化环境 <code>envs/normalized_env.py</code></h2>
+<p>该模块提供了一个规范化的环境 wrapper，将各种不同的 Gym RL 环境的数值规范化到一个范围内。</p>
+<p><code>NormalizedEnv</code> 构造函数接受的参数包括：</p>
+<ul>
+<li><code>env</code>，即需要规范化的 Gym 环境</li>
+<li><code>scale_reward</code>，即对收益的规范化系数 <span class="math inline">\(M_r\)</span></li>
+<li><code>scale_action</code>，即对行为的规范化系数 <span class="math inline">\(M_a\)</span></li>
+<li><code>normalize_obs</code>，布尔值，即是否要规范化观测（状态）</li>
+<li><code>normalize_reward</code>，布尔值，即是否要规范化收益</li>
+<li><code>obs_alpha</code>，即更新观测（状态）均值和方差的步长 <span class="math inline">\(\alpha_o\)</span></li>
+<li><code>reward_alpha</code>，即更新收益均值和方差的步长 <span class="math inline">\(\alpha_r\)</span></li>
+</ul>
+<p>首先分析行为的规范化，这里用一维动作空间为例做分析，假设规范化前的动作空间为 <span class="math inline">\(\mathcal{A} = [l, r]\)</span>。这里，通过 <code>self.action_space</code> 属性获取到的规范化后的动作空间则会是 <span class="math inline">\(\mathcal{A}_M = [-M_a, M_a]\)</span>，当外部的智能体根据该空间作出行为 <span class="math inline">\(a \in \mathcal{A}_M\)</span> 后，在 <code>self.step()</code> 函数中，则会做下面的映射让在规范化动作空间中的行为映射回原动作空间：</p>
+<p><span class="math display">\[
+f(a) = l + \frac{(a + M_a)(r - l)}{2M_a} \in \mathcal{A}
+\]</span></p>
+<p>注意，只有当原动作空间是 <span class="math inline">\(\mathbb{R}^n\)</span> 中的高维长方体的时候（代码上即动作空间是 <code>Box</code> 实例）才会做上述规范化。</p>
+<p>之后讨论收益的规范化，这里收益的规范化通过 <code>self._apply_normalize_reward()</code> 方法实现。规范化收益的方式为：</p>
+<p><span class="math display">\[
+r \to \frac{M_r r}{\sqrt{V_r} + \lambda}
+\]</span></p>
+<p>这里 <span class="math inline">\(V_r\)</span> 是目前记录的收益的方差，<span class="math inline">\(\lambda = 10^{-8}\)</span> 为平滑系数。</p>
+<p>目前记录的收益的均值和方差的维护都是简单的，初始值均值设定为 <span class="math inline">\(0\)</span>，方差设定为 <span class="math inline">\(1\)</span>：</p>
+<p><span class="math display">\[
+\begin{aligned}
+\overline r &amp;\leftarrow (1 - \alpha_r)\overline r + \alpha_r r \\
+V_r &amp;\leftarrow (1 - \alpha_r)V_r + \alpha_r(r - \overline r)^2 \\
+\end{aligned}
+\]</span></p>
+<div class="note info no-icon"><p>这里不太懂的就是为何收益的规范化不需要减去均值，按我的理解是需要减去均值的。以及这里会比观测（状态）的规范化多乘以一个 <span class="math inline">\(M_r\)</span> 系数，这也是我不是特别明白的。</p>
+</div>
+<p>而观测（状态）的规范化也是基本类似的：</p>
+<p><span class="math display">\[
+o \to \frac{o - \overline o}{\sqrt{V_o} + \lambda}
+\]</span></p>
+<p>这里 <span class="math inline">\(\overline o\)</span> 是目前记录的观测（状态）的均值，<span class="math inline">\(V_o\)</span> 是目前记录的观测（状态）的方差，<span class="math inline">\(\lambda = 10^{-8}\)</span> 为平滑系数。</p>
+<p>目前记录的观测（状态）的均值和方差的维护都是简单的，初始值均值设定为全 <span class="math inline">\(0\)</span> 矩阵，方差设定为全 <span class="math inline">\(1\)</span> 矩阵：</p>
+<p><span class="math display">\[
+\begin{aligned}
+\overline o &amp;\leftarrow (1 - \alpha_o)\overline o + \alpha_o o \\
+V_o &amp;\leftarrow (1 - \alpha_o)V_o + \alpha_o(o - \overline o)^2 \\
+\end{aligned}
+\]</span></p>
+<p>基于上述规范化，<code>self.step()</code> 的流程就是简单的，首先将智能体决策的行为映射回原动作空间，获取到下一状态和收益后，如果需要规范化则将其规范化，并将这些数据直接返回。</p>
+<h1 id="辅助工具-utils">辅助工具 <code>utils</code></h1>
+<p>这里大概都是一些辅助工具和辅助函数。</p>
+<h2 id="序列化基类-utilsserializable.py">序列化基类 <code>utils/serializable.py</code></h2>
+<p>这里主要是配合日志使用，可以将模型、环境等对象序列化为日志内容。不过这个基类内部使用了很多 Python 本身的黑魔法，目前也在尝试着弄明白，现在大体知道的是 <code>self.quick_init()</code> 的作用是将构造 <code>self</code> 对象时 <code>self.__init__()</code> 所接受的参数按照顺序存放在 <code>self.__args, self.__kwargs</code> 属性内。</p>
+<p>这个基类的使用方式是这样的：</p>
+<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestClass</span>(<span class="params">Serializable</span>):</span></span><br><span class="line">    Serializable.quick_init(self, <span class="built_in">locals</span>())</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Continue</span></span><br></pre></td></tr></table></figure>
+<p>也就是说用 <code>self.quick_init()</code> 代替 <code>super(TestClass, self).__init__()</code> 来初始化 <code>self</code> 对象。</p>
+<h2 id="日志管理器-utilslogger">日志管理器 <code>utils/logger</code></h2>
+<p>这个日志管理器是从 OpenAI 那边抄过来的，把里面比较有意思的部分留了下来。</p>
+<h3 id="格式化日志-utilsloggerformats.py">格式化日志 <code>utils/logger/formats.py</code></h3>
+<p>这里定义了用于格式化日志的若干管理器，包括：</p>
+<ul>
+<li>供开发者查看的自然语言格式的 <code>HumanOutputFormat</code></li>
+<li>JSON 格式的 <code>JSONOutputFormat</code></li>
+<li>CSV 格式的 <code>CSVOutputFormat</code></li>
+<li>Tensorboard 格式的 <code>TensorBoardOutputFormat</code></li>
+</ul>
+<p><strong>这里 Tensorboard 格式并没有经过充分测试，并不保证可用。</strong></p>
+<p>格式化日志接受两种数据，其一是键值对数据，其二是流数据。其中仅有自然语言格式接受流数据，并且数据呈现就是将流数据原原本本传输到标准流输出或者文件中。</p>
+<p>键值对数据在上述格式中的数据呈现为：</p>
+<figure class="highlight plaintext"><figcaption><span>Variety</span></figcaption><table><tr><td class="code"><pre><span class="line">// In HumanOutputFormat</span><br><span class="line">--------------------</span><br><span class="line">| key_a | 5.5      |</span><br><span class="line">| key_b | -33.3    |</span><br><span class="line">--------------------</span><br><span class="line"></span><br><span class="line">// In JSONOutputFormat</span><br><span class="line">&#123;</span><br><span class="line">    &quot;key_a&quot;: 5.5,</span><br><span class="line">    &quot;key_b&quot;: -33.3</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// In CSVOutputFormat</span><br><span class="line">key_a,key_b</span><br><span class="line">5.5,-33.3</span><br></pre></td></tr></table></figure>
+<h3 id="日志管理器后端-utilsloggerlogger.py">日志管理器后端 <code>utils/logger/logger.py</code></h3>
+<p>这里主要定义了日志管理器类 <code>Logger</code>。其最主要的功能在于管理多种输出格式的日志，对于每条接受到的数据，其都会将其输出到所有可能输出的目标。而控制输出格式的成员变量为 <code>self.output_formats</code>，其是一个数组，存放有所有可能的输出目标。</p>
+<p>对于键值对数据，该管理器会为其构造 buffer，仅有在调用 <code>self.dumpkvs()</code> 方法的时候才会将其实际输出到文件或者标准流输出中。这样做的原因是有求取历史平均值之类的需要回溯的日志需求。</p>
+<p>对于流数据，该管理器会直接输出到指定位置。</p>
+<p>对于模型参数，该管理器会根据指定的设置（每次均保存、固定间隔保存、仅保存最后一次等）将模型参数存储为 <code>.pkl</code> 文件。</p>
+<h3 id="对外接口-utilsloggerapi.py">对外接口 <code>utils/logger/api.py</code></h3>
+<p>这里定义了日志管理器所有对外的接口，包括：</p>
+<ul>
+<li><code>configure</code>，用于初始化日志管理器，接受的参数均直接传入日志管理器</li>
+<li><code>logkv, logkv_mean</code>，用于向管理器 buffer 中记录键值对数据</li>
+<li><code>dumpkvs</code>，用于将所有键值对数据输出到指定位置</li>
+<li><code>getkvs</code>，用于获取当前管理器 buffer 中记录的键值对数据</li>
+<li><code>log</code>，用于记录流数据，最常用的日志接口</li>
+<li><code>debug, info, warn, error</code>，用于以不同等级记录流数据</li>
+<li><code>set_level</code>，用于设置当前流数据日志的等级</li>
+<li><code>get_dir</code>，用于获取当前保存日志的目录地址</li>
+<li><code>save_itr_params</code>，用于保存某一次迭代的模型参数</li>
+<li><code>reset</code>，用于重置日志管理器，重置为仅向标准流输出的日志模式</li>
+<li><code>unittest</code>，用于测试当前日志管理器，仅测试自然语言格式和 CSV 格式</li>
+</ul>
+]]></content>
+      <categories>
+        <category>【杂谈】开发</category>
       </categories>
   </entry>
   <entry>
@@ -13011,9 +13149,10 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
   <entry>
     <title>早安、可能是午安、或者是晚安</title>
     <url>/2021/09/17/navigation/</url>
-    <content><![CDATA[<p>这里是 Ashitemaru，清华大学计算机科学与技术系本科、预计本系直博。做过 NLP，干过 CG，现在做流媒体传输。对数学，尤其是代数比较有兴趣。</p>
+    <content><![CDATA[<p>这里是 Ashitemaru，清华大学计算机科学与技术系本科，本系媒体所流媒体实验室直博，导师孙立峰。之前做过 NLP，干过 CG。对数学，尤其是代数比较有兴趣，Artin 支持者（bushi）</p>
 <p>开发过 THUInfo，负责其 iOS 版本维护。大三任系学生科协网络部副主席，负责技能引导文档维护。两个项目的链接均在网页上方栏目。</p>
-<p>打日麻，打音游，主修 osu! mania 和 Project Sekai 等下落式音游，街机音游均不擅长。正在尝试舞萌 DX 即 maimai。雀魂账号和 osu! mania 账号名均为 Ashitemaru。</p>
+<p>主要课程项目包括《现代密码学》的 SHARNN 哈希函数，《搜索引擎技术基础》的 LSE Frontend，《专业实践》的 Minkowski Calculator。除最后一个项目外，前两个项目均在 Github 开源。</p>
+<p>打日麻，打音游，主修 osu! mania 等下落式音游，街机音游均不擅长。正在尝试舞萌 DX 即 maimai。雀魂账号和 osu! mania 账号名均为 Ashitemaru。</p>
 <p>V+ 人，推 Giga、utsu-P 等曲风激烈的 P 主，没有歌姬倾向，抒情曲也会听。</p>
 <p>Sakana 单推 ❤。</p>
 <hr />
@@ -18559,6 +18698,7 @@ H^{\pi_\theta}(s_t) = -\sum_{a \in \mathcal{A}} \pi_\theta(a \mid s_t) \ln\pi_\t
 <p><img src="/uploads/paper-2022-12/5.png" /></p>
 <p>这之后就是一些实验结果了，感觉没啥意思了。</p>
 <h1 id="learning-to-adapt-in-dynamic-real-world-environments-through-meta-reinforcement-learning">Learning to Adapt in Dynamic, Real-World Environments through Meta Reinforcement Learning</h1>
+<p>这篇文章似乎没有官方的 code base，只有两个 community code base，现在可以在 <a href="https://paperswithcode.com/paper/learning-to-adapt-in-dynamic-real-world">这个链接</a> 获取，分别是 Tensorflow 和 Pytorch 版本。</p>
 <h2 id="abstract-introduction">Abstract &amp; Introduction</h2>
 <p>需要解决的问题依然是生成数据很困难以及测试环境中无法预料到的数据可能导致所训练的策略失效，引言之中也基本上叙述了人类可以很快适应自身机体发生的变化和外界环境发生的变化，提出了如果模型经历了足够多的环境微扰，其就可以很快学习适应新环境。</p>
 <p>相比较于原先的 meta RL 对任务的定义，这篇文章提出的模型能够处理每个时间步环境或者任务都在变化的情景。也就是说，原先的 meta RL 不过是提前预设好了需要解决什么样的任务，并且每一个 RL trajectory 仅会属于一个任务，而这篇文章的 RL trajectory 中可以涵盖多种任务并且任何时间都可以切换。所以这篇文章的 meta RL 更为 general。</p>

@@ -20,27 +20,27 @@
   <link rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;ashitemaru.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Muse&quot;,&quot;version&quot;:&quot;8.5.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;width&quot;:320,&quot;display&quot;:&quot;always&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:&quot;disqusjs&quot;,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;},&quot;path&quot;:&quot;&#x2F;search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;manual&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="先前因为一次偶然的通宵导致作息又紊乱了起来，周三不得不去射击课导致当晚没睡满五小时，只能下午补了五小时觉，结果就是今天的凌晨五六点，Holder 还坐在 308 不知道干啥。">
+<meta name="description" content="今天从参考的 paper 底下白嫖到了一份开源的 Tensorflow training framework，目前希望把这一整套学习一下，做点自定义之后作为自己毕业设计的 code base。于是为了自己有迹可循，就在这里写这个代码框架的文档，迁移到哪里写到哪里。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2022 年 11 月 17 日凌晨的一些">
-<meta property="og:url" content="https://ashitemaru.github.io/2022/11/17/look-back/index.html">
+<meta property="og:title" content="毕业设计代码框架文档">
+<meta property="og:url" content="https://ashitemaru.github.io/2022/12/21/graduation-code-base/index.html">
 <meta property="og:site_name" content="Ashitemaru">
-<meta property="og:description" content="先前因为一次偶然的通宵导致作息又紊乱了起来，周三不得不去射击课导致当晚没睡满五小时，只能下午补了五小时觉，结果就是今天的凌晨五六点，Holder 还坐在 308 不知道干啥。">
+<meta property="og:description" content="今天从参考的 paper 底下白嫖到了一份开源的 Tensorflow training framework，目前希望把这一整套学习一下，做点自定义之后作为自己毕业设计的 code base。于是为了自己有迹可循，就在这里写这个代码框架的文档，迁移到哪里写到哪里。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-11-17T05:49:24.000Z">
-<meta property="article:modified_time" content="2022-11-17T05:49:24.000Z">
+<meta property="article:published_time" content="2022-12-21T02:08:54.000Z">
+<meta property="article:modified_time" content="2022-12-21T02:08:54.000Z">
 <meta property="article:author" content="Ashitemaru">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://ashitemaru.github.io/2022/11/17/look-back/">
+<link rel="canonical" href="https://ashitemaru.github.io/2022/12/21/graduation-code-base/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;ashitemaru.github.io&#x2F;2022&#x2F;11&#x2F;17&#x2F;look-back&#x2F;&quot;,&quot;path&quot;:&quot;2022&#x2F;11&#x2F;17&#x2F;look-back&#x2F;&quot;,&quot;title&quot;:&quot;2022 年 11 月 17 日凌晨的一些&quot;}</script>
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;ashitemaru.github.io&#x2F;2022&#x2F;12&#x2F;21&#x2F;graduation-code-base&#x2F;&quot;,&quot;path&quot;:&quot;2022&#x2F;12&#x2F;21&#x2F;graduation-code-base&#x2F;&quot;,&quot;title&quot;:&quot;毕业设计代码框架文档&quot;}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
-<title>2022 年 11 月 17 日凌晨的一些 | Ashitemaru</title>
+<title>毕业设计代码框架文档 | Ashitemaru</title>
   
 
 
@@ -213,7 +213,7 @@ $(function () {
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -226,6 +226,7 @@ $(function () {
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E8%84%9A%E6%9C%AC-scripts"><span class="nav-number">1.</span> <span class="nav-text">实验脚本 scripts</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#grbal-%E5%AE%9E%E9%AA%8C%E8%84%9A%E6%9C%AC-scriptsrun_grbal.py"><span class="nav-number">1.1.</span> <span class="nav-text">GrBAL 实验脚本 scripts&#x2F;run_grbal.py</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E7%8E%AF%E5%A2%83-envs"><span class="nav-number">2.</span> <span class="nav-text">学习环境 envs</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%84%E8%8C%83%E5%8C%96%E7%8E%AF%E5%A2%83-envsnormalized_env.py"><span class="nav-number">2.1.</span> <span class="nav-text">规范化环境 envs&#x2F;normalized_env.py</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BE%85%E5%8A%A9%E5%B7%A5%E5%85%B7-utils"><span class="nav-number">3.</span> <span class="nav-text">辅助工具 utils</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%8F%E5%88%97%E5%8C%96%E5%9F%BA%E7%B1%BB-utilsserializable.py"><span class="nav-number">3.1.</span> <span class="nav-text">序列化基类 utils&#x2F;serializable.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86%E5%99%A8-utilslogger"><span class="nav-number">3.2.</span> <span class="nav-text">日志管理器 utils&#x2F;logger</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%97%A5%E5%BF%97-utilsloggerformats.py"><span class="nav-number">3.2.1.</span> <span class="nav-text">格式化日志 utils&#x2F;logger&#x2F;formats.py</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86%E5%99%A8%E5%90%8E%E7%AB%AF-utilsloggerlogger.py"><span class="nav-number">3.2.2.</span> <span class="nav-text">日志管理器后端 utils&#x2F;logger&#x2F;logger.py</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E5%A4%96%E6%8E%A5%E5%8F%A3-utilsloggerapi.py"><span class="nav-number">3.2.3.</span> <span class="nav-text">对外接口 utils&#x2F;logger&#x2F;api.py</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -336,7 +337,7 @@ $(function () {
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://ashitemaru.github.io/2022/11/17/look-back/">
+    <link itemprop="mainEntityOfPage" href="https://ashitemaru.github.io/2022/12/21/graduation-code-base/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.png">
@@ -349,7 +350,7 @@ $(function () {
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          2022 年 11 月 17 日凌晨的一些
+          毕业设计代码框架文档
         </h1>
 
         <div class="post-meta-container">
@@ -360,14 +361,14 @@ $(function () {
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2022-11-17 05:49:24" itemprop="dateCreated datePublished" datetime="2022-11-17T05:49:24+00:00">2022-11-17</time>
+      <time title="创建时间：2022-12-21 02:08:54" itemprop="dateCreated datePublished" datetime="2022-12-21T02:08:54+00:00">2022-12-21</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-11-17 05:49:24" itemprop="dateModified" datetime="2022-11-17T05:49:24+00:00">2022-11-17</time>
+        <time title="修改时间：2022-12-21 02:08:54" itemprop="dateModified" datetime="2022-12-21T02:08:54+00:00">2022-12-21</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -375,12 +376,12 @@ $(function () {
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E3%80%90%E6%9D%82%E8%B0%88%E3%80%91%E7%A2%8E%E7%A2%8E%E5%BF%B5/" itemprop="url" rel="index"><span itemprop="name">【杂谈】碎碎念</span></a>
+          <a href="/categories/%E3%80%90%E6%9D%82%E8%B0%88%E3%80%91%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">【杂谈】开发</span></a>
         </span>
     </span>
 
   
-    <span id="/2022/11/17/look-back/" class="post-meta-item twikoo_visitors" data-flag-title="2022 年 11 月 17 日凌晨的一些" title="阅读次数">
+    <span id="/2022/12/21/graduation-code-base/" class="post-meta-item twikoo_visitors" data-flag-title="毕业设计代码框架文档" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -395,14 +396,14 @@ $(function () {
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>2.6k</span>
+      <span>3.5k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
+      <span>3 分钟</span>
     </span>
 </div>
 
@@ -413,35 +414,103 @@ $(function () {
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>先前因为一次偶然的通宵导致作息又紊乱了起来，周三不得不去射击课导致当晚没睡满五小时，只能下午补了五小时觉，结果就是今天的凌晨五六点，Holder 还坐在 308 不知道干啥。</p>
+        <p>今天从参考的 paper 底下白嫖到了一份开源的 Tensorflow training framework，目前希望把这一整套学习一下，做点自定义之后作为自己毕业设计的 code base。于是为了自己有迹可循，就在这里写这个代码框架的文档，迁移到哪里写到哪里。</p>
 <span id="more"></span>
-<p>本来来 308 是打算边调之前炸炉子的丹，边写软工改进方案的，毕竟李山山老师都杀到跟前，这周日还不得不和他见一面，不能真的啥都写就去见他吧。</p>
-<p>然而也是偶然，闲的无聊在 QQ 空间转发了一个“你最早注意到我是什么时候”这样的说说，底下一小部分都是 22 届学弟学妹回的一些类似“高中榜样”之类的。然而这也正常，高中，三年一轮，19 年目送我毕业的老师们，紧接着就会带 22 届的高一新生。如今 22 届的小朋友们也已经高中毕业，开始在网络上活跃起来。</p>
-<p>但是想到我为何有这么多 22 届学弟学妹的好友，其实还得说 19 年年底，大一刚过一学期的寒假回高中做的一次所谓宣讲。其实大家那个时候都明白，老师只不过是将行政楼五楼空出来，让我们这些才上大学的学长学姐随便讲点东西，给那些才上高中的学弟学妹们开开眼界、放放松而已。真要说“宣讲”了什么政策还是什么有价值的论点，大概是一点没有的。以那次宣讲为契机，和很多 22 届学弟学妹成了 QQ 好友，不过真要说有什么交流，我觉得是没有多少的。</p>
-<p>然而这种玩笑一般的宣讲，自从 20 年新冠袭来后，也就变的索然无味，加上各个大学也给大一新生附加上了一些宣讲的要求，这种宣讲多半是变了些味道。</p>
-<p>所以我在愣神，我想不出来为什么我对高中有着这么奇妙的情感。我回想着我大学以来的屡次长假，寒暑假、五一、十一，除了过年、找 Sakana，多半可能还是和高中纠缠，甚至还回去带过一次胡闹的暑期学校。按照道理讲，高中那种非人类的作息安排，非人类的约束，似乎完全不可能构成所谓的美好回忆。</p>
-<p>之前我似乎也和别人提过，要让我重来一遍高中，我万分乐意，重来一遍本科，我大抵抗拒。</p>
-<p>我不可否认的是，我为我在我高中所取得的成绩万分自负，我依然可以大方地夸耀我在高中时期的成绩，在那些高中生的眼中，这大抵是近乎顶峰的存在。我不可否认，我回到高中，多半是带着夸耀自己，衣锦还乡的意味。</p>
-<p>然而为我披上锦衣的你清，那万众所向的所谓学府，为何我又不想再来一回。</p>
-<p>我记忆中我的大学，只有两年万分黑暗的时光和一年并不那么黑暗但也并不光明的时光。大一大二闷头卷绩点，我现在也难以想象我大一的下学期和大二的上学期是怎么做到在那么多课程中还能苟延残喘，甚至在大一下学期疫情在家的时候，还能给政治课记下详细的笔记，还能分出精力学那么多课外的东西。</p>
-<p>或许是疫情，我的大学似乎并没有给我留下任何一个闪光的回忆，我永远想不到一个能让我在深夜的时候把玩的一个瞬间。我的大学能让我感慨的，只不过是为了继续留在你清拼尽全力，平凡地完成一个个任务而已。我翻阅了我大学期间的 QQ 空间，除了时不时抱怨累了，发一些装逼说说，或者是一些打牌、唱歌、打游戏的东西外，似乎也没有什么很有意义的。我也翻阅了我的相册，除了 2021 年那个惊心动魄的夏季外，也只是绵延不断的打牌、唱歌、打游戏和涩图。</p>
-<p>然而似乎高中给我留下的还是很多的。我对高中最早的记忆，是 2016 年参加实验班选拔，离我家最近的北门因为修路走不了，我顶着大太阳绕远路赶到班上，破旧的空调降不下教室的气温，室内一直都是干热炙烤出来的气味。那天天非常蓝，即使那时候的新闻天天在批判环保问题。</p>
-<p>还有什么，高一的每一个周末和一群人讨论数学竞赛然后再去北门口喝奶茶，寒假去苏州时用恶作剧戏弄同学，快要小高考时的大雪，2018 年的传奇夏季，临近高考的时候经常一个人蜷缩的楼梯角落。</p>
-<p>其实，我时常想着，高中最主要的还是纯粹，舞台不过那么一亩三分地，每天的内容不过枯燥无味的反复，这其中的闪光似乎显得弥足珍贵。</p>
-<p>但说实话，最近还是经常感到一种剥离感的。我时常疑惑着这样的生活真的值得我用三年高中换来吗。我总是感觉现在的每一步行动，每一步决策似乎都有着目标，都伴随着责任，我举步维艰。我担心着是否应当做出这样的决定。</p>
-<p>最近几位朋友筹划着给我们的一位朋友庆生，然而就在筹办的时候，我又一次感受到了极度的不真实，我真心地为这位同学的生日感到快乐吗？还是包含着我怎么没有这样一群朋友为我这样庆祝生日的嫉妒？</p>
-<p>我又一次回忆起那天晚上在 C 楼和众多计算机的零字班一字班朋友们闲聊，某人不经意飘了一句“这不是 Holder 在前面探路么”。具体的语气、语境、上下文早就忘却了，但这个“探路者”的评价我倒是记住了。当时我一下子卡住，我总感觉这句话让我很不是滋味，倒不是说这位同学说错了什么，只是我又一次卡在了回忆里面。</p>
-<p>早在 2017 年，我的高中出了一位高分省状元录取姚班，2018 年，出了一位省第二录取经管。18 年那位学姐，与我的交集，或许仅仅是招生的时候聊过两句，以及在我军训的时候将一本 C++ 入门书在紫荆门口交给了我便离去。我与 17 年的那位学长呢？我甚至在本科就没和他见过面，虽然甚至我们就住在一栋楼。</p>
-<p>我在你清的探索，在你清计算机系的探索，现在这么想来，或许还真的是孤身一人。大一大二的时候一直在模仿着一位能力突出的同届同学的路径，大三之后决心不再模仿别人，结果是处处碰壁，今年的暑假还因此折磨不已。</p>
-<p>真的有谁给我引过路吗，我想很少，没有任何一位学长，告诫我应该干啥，除了安老板曾经叮嘱过一些。翻翻我的朋友圈，八字班的学长少之又少，零字班和一字班的学弟却是很多，我向这些学弟没少倒过我本科的苦水。</p>
-<p>然后我又看到了正在编写的软工课程改革草案，一瞬间感觉，这又是何苦呢，我大没有义务做这些。</p>
-<p>我不知道。</p>
-<p>我是否应该花更多的时间关注自己的能力提升，而不是在这里给别人做公益。</p>
-<p>我也不知道。</p>
-<p>但或许这也就是我对高中如此眷恋的缘故，高中的那些所谓的波澜，与大学相比，显得那么渺小，就连那个时候所谓的伤感、颓丧，反倒显得那么可爱。高中不过是高考的缓冲区，是一条不允许有任何路径偏移的单行道，在这种狭小的天地里，我完全不需要为未知迷茫，因为我的未来就是在高考中考出尽可能高的成绩。</p>
-<p>今天看到一篇分析克苏鲁神话恐惧感来源的文章，大体就是又强调了一遍恐惧来源于未知。</p>
-<p>高中的纯粹保护了这脆弱的平衡，在我们求知欲最旺盛的时段，构造了最精致的闭合结构，让我们误以为我们无所不知无所不晓，从而战无不胜。</p>
-<p>果然，我至今也不过是那些大人口中，未经风霜的温室花朵而已。今天凌晨的这些，也不过只是无用的叹息，为赋新词强说愁罢了。</p>
+<p>这里基本只考虑 <code>src</code> 目录下各个 Python 模块的作用以及重要函数的文档。</p>
+<h1 id="实验脚本-scripts">实验脚本 <code>scripts</code></h1>
+<h2 id="grbal-实验脚本-scriptsrun_grbal.py">GrBAL 实验脚本 <code>scripts/run_grbal.py</code></h2>
+<p>该脚本为训练 GrBAL 模型的脚本，内部主要逻辑为一个 <code>run_experiment</code> 函数，其启动实验的流程为：</p>
+<ul>
+<li>根据 config 拼接 log 路径并初始化 logger</li>
+<li>将当前实验 config 用 JSON 格式存储到 <code>log</code> 目录下</li>
+</ul>
+<p>实验的 config 可以在 <code>if __name__ == "__main__":</code> 代码块下局部变量 <code>config</code> 中修改。</p>
+<h1 id="学习环境-envs">学习环境 <code>envs</code></h1>
+<h2 id="规范化环境-envsnormalized_env.py">规范化环境 <code>envs/normalized_env.py</code></h2>
+<p>该模块提供了一个规范化的环境 wrapper，将各种不同的 Gym RL 环境的数值规范化到一个范围内。</p>
+<p><code>NormalizedEnv</code> 构造函数接受的参数包括：</p>
+<ul>
+<li><code>env</code>，即需要规范化的 Gym 环境</li>
+<li><code>scale_reward</code>，即对收益的规范化系数 <span class="math inline">\(M_r\)</span></li>
+<li><code>scale_action</code>，即对行为的规范化系数 <span class="math inline">\(M_a\)</span></li>
+<li><code>normalize_obs</code>，布尔值，即是否要规范化观测（状态）</li>
+<li><code>normalize_reward</code>，布尔值，即是否要规范化收益</li>
+<li><code>obs_alpha</code>，即更新观测（状态）均值和方差的步长 <span class="math inline">\(\alpha_o\)</span></li>
+<li><code>reward_alpha</code>，即更新收益均值和方差的步长 <span class="math inline">\(\alpha_r\)</span></li>
+</ul>
+<p>首先分析行为的规范化，这里用一维动作空间为例做分析，假设规范化前的动作空间为 <span class="math inline">\(\mathcal{A} = [l, r]\)</span>。这里，通过 <code>self.action_space</code> 属性获取到的规范化后的动作空间则会是 <span class="math inline">\(\mathcal{A}_M = [-M_a, M_a]\)</span>，当外部的智能体根据该空间作出行为 <span class="math inline">\(a \in \mathcal{A}_M\)</span> 后，在 <code>self.step()</code> 函数中，则会做下面的映射让在规范化动作空间中的行为映射回原动作空间：</p>
+<p><span class="math display">\[
+f(a) = l + \frac{(a + M_a)(r - l)}{2M_a} \in \mathcal{A}
+\]</span></p>
+<p>注意，只有当原动作空间是 <span class="math inline">\(\mathbb{R}^n\)</span> 中的高维长方体的时候（代码上即动作空间是 <code>Box</code> 实例）才会做上述规范化。</p>
+<p>之后讨论收益的规范化，这里收益的规范化通过 <code>self._apply_normalize_reward()</code> 方法实现。规范化收益的方式为：</p>
+<p><span class="math display">\[
+r \to \frac{M_r r}{\sqrt{V_r} + \lambda}
+\]</span></p>
+<p>这里 <span class="math inline">\(V_r\)</span> 是目前记录的收益的方差，<span class="math inline">\(\lambda = 10^{-8}\)</span> 为平滑系数。</p>
+<p>目前记录的收益的均值和方差的维护都是简单的，初始值均值设定为 <span class="math inline">\(0\)</span>，方差设定为 <span class="math inline">\(1\)</span>：</p>
+<p><span class="math display">\[
+\begin{aligned}
+\overline r &amp;\leftarrow (1 - \alpha_r)\overline r + \alpha_r r \\
+V_r &amp;\leftarrow (1 - \alpha_r)V_r + \alpha_r(r - \overline r)^2 \\
+\end{aligned}
+\]</span></p>
+<div class="note info no-icon"><p>这里不太懂的就是为何收益的规范化不需要减去均值，按我的理解是需要减去均值的。以及这里会比观测（状态）的规范化多乘以一个 <span class="math inline">\(M_r\)</span> 系数，这也是我不是特别明白的。</p>
+</div>
+<p>而观测（状态）的规范化也是基本类似的：</p>
+<p><span class="math display">\[
+o \to \frac{o - \overline o}{\sqrt{V_o} + \lambda}
+\]</span></p>
+<p>这里 <span class="math inline">\(\overline o\)</span> 是目前记录的观测（状态）的均值，<span class="math inline">\(V_o\)</span> 是目前记录的观测（状态）的方差，<span class="math inline">\(\lambda = 10^{-8}\)</span> 为平滑系数。</p>
+<p>目前记录的观测（状态）的均值和方差的维护都是简单的，初始值均值设定为全 <span class="math inline">\(0\)</span> 矩阵，方差设定为全 <span class="math inline">\(1\)</span> 矩阵：</p>
+<p><span class="math display">\[
+\begin{aligned}
+\overline o &amp;\leftarrow (1 - \alpha_o)\overline o + \alpha_o o \\
+V_o &amp;\leftarrow (1 - \alpha_o)V_o + \alpha_o(o - \overline o)^2 \\
+\end{aligned}
+\]</span></p>
+<p>基于上述规范化，<code>self.step()</code> 的流程就是简单的，首先将智能体决策的行为映射回原动作空间，获取到下一状态和收益后，如果需要规范化则将其规范化，并将这些数据直接返回。</p>
+<h1 id="辅助工具-utils">辅助工具 <code>utils</code></h1>
+<p>这里大概都是一些辅助工具和辅助函数。</p>
+<h2 id="序列化基类-utilsserializable.py">序列化基类 <code>utils/serializable.py</code></h2>
+<p>这里主要是配合日志使用，可以将模型、环境等对象序列化为日志内容。不过这个基类内部使用了很多 Python 本身的黑魔法，目前也在尝试着弄明白，现在大体知道的是 <code>self.quick_init()</code> 的作用是将构造 <code>self</code> 对象时 <code>self.__init__()</code> 所接受的参数按照顺序存放在 <code>self.__args, self.__kwargs</code> 属性内。</p>
+<p>这个基类的使用方式是这样的：</p>
+<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestClass</span>(<span class="params">Serializable</span>):</span></span><br><span class="line">    Serializable.quick_init(self, <span class="built_in">locals</span>())</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Continue</span></span><br></pre></td></tr></table></figure>
+<p>也就是说用 <code>self.quick_init()</code> 代替 <code>super(TestClass, self).__init__()</code> 来初始化 <code>self</code> 对象。</p>
+<h2 id="日志管理器-utilslogger">日志管理器 <code>utils/logger</code></h2>
+<p>这个日志管理器是从 OpenAI 那边抄过来的，把里面比较有意思的部分留了下来。</p>
+<h3 id="格式化日志-utilsloggerformats.py">格式化日志 <code>utils/logger/formats.py</code></h3>
+<p>这里定义了用于格式化日志的若干管理器，包括：</p>
+<ul>
+<li>供开发者查看的自然语言格式的 <code>HumanOutputFormat</code></li>
+<li>JSON 格式的 <code>JSONOutputFormat</code></li>
+<li>CSV 格式的 <code>CSVOutputFormat</code></li>
+<li>Tensorboard 格式的 <code>TensorBoardOutputFormat</code></li>
+</ul>
+<p><strong>这里 Tensorboard 格式并没有经过充分测试，并不保证可用。</strong></p>
+<p>格式化日志接受两种数据，其一是键值对数据，其二是流数据。其中仅有自然语言格式接受流数据，并且数据呈现就是将流数据原原本本传输到标准流输出或者文件中。</p>
+<p>键值对数据在上述格式中的数据呈现为：</p>
+<figure class="highlight plaintext"><figcaption><span>Variety</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// In HumanOutputFormat</span><br><span class="line">--------------------</span><br><span class="line">| key_a | 5.5      |</span><br><span class="line">| key_b | -33.3    |</span><br><span class="line">--------------------</span><br><span class="line"></span><br><span class="line">// In JSONOutputFormat</span><br><span class="line">&#123;</span><br><span class="line">    &quot;key_a&quot;: 5.5,</span><br><span class="line">    &quot;key_b&quot;: -33.3</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// In CSVOutputFormat</span><br><span class="line">key_a,key_b</span><br><span class="line">5.5,-33.3</span><br></pre></td></tr></table></figure>
+<h3 id="日志管理器后端-utilsloggerlogger.py">日志管理器后端 <code>utils/logger/logger.py</code></h3>
+<p>这里主要定义了日志管理器类 <code>Logger</code>。其最主要的功能在于管理多种输出格式的日志，对于每条接受到的数据，其都会将其输出到所有可能输出的目标。而控制输出格式的成员变量为 <code>self.output_formats</code>，其是一个数组，存放有所有可能的输出目标。</p>
+<p>对于键值对数据，该管理器会为其构造 buffer，仅有在调用 <code>self.dumpkvs()</code> 方法的时候才会将其实际输出到文件或者标准流输出中。这样做的原因是有求取历史平均值之类的需要回溯的日志需求。</p>
+<p>对于流数据，该管理器会直接输出到指定位置。</p>
+<p>对于模型参数，该管理器会根据指定的设置（每次均保存、固定间隔保存、仅保存最后一次等）将模型参数存储为 <code>.pkl</code> 文件。</p>
+<h3 id="对外接口-utilsloggerapi.py">对外接口 <code>utils/logger/api.py</code></h3>
+<p>这里定义了日志管理器所有对外的接口，包括：</p>
+<ul>
+<li><code>configure</code>，用于初始化日志管理器，接受的参数均直接传入日志管理器</li>
+<li><code>logkv, logkv_mean</code>，用于向管理器 buffer 中记录键值对数据</li>
+<li><code>dumpkvs</code>，用于将所有键值对数据输出到指定位置</li>
+<li><code>getkvs</code>，用于获取当前管理器 buffer 中记录的键值对数据</li>
+<li><code>log</code>，用于记录流数据，最常用的日志接口</li>
+<li><code>debug, info, warn, error</code>，用于以不同等级记录流数据</li>
+<li><code>set_level</code>，用于设置当前流数据日志的等级</li>
+<li><code>get_dir</code>，用于获取当前保存日志的目录地址</li>
+<li><code>save_itr_params</code>，用于保存某一次迭代的模型参数</li>
+<li><code>reset</code>，用于重置日志管理器，重置为仅向标准流输出的日志模式</li>
+<li><code>unittest</code>，用于测试当前日志管理器，仅测试自然语言格式和 CSV 格式</li>
+</ul>
 
     </div>
 
@@ -455,14 +524,11 @@ $(function () {
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/11/11/vnext-7/" rel="prev" title="第七回 V+Next 曲推《旅》小作文">
-                  <i class="fa fa-chevron-left"></i> 第七回 V+Next 曲推《旅》小作文
+                <a href="/2022/12/06/paper-2022-12/" rel="prev" title="2022 年 12 月论文笔记">
+                  <i class="fa fa-chevron-left"></i> 2022 年 12 月论文笔记
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/11/24/note-of-next/" rel="next" title="Next.js 框架摸索实录">
-                  Next.js 框架摸索实录 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
@@ -529,7 +595,7 @@ $(function () {
 
   
 
-  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;tags&quot;:&quot;none&quot;,&quot;js&quot;:{&quot;url&quot;:&quot;https:&#x2F;&#x2F;unpkg.com&#x2F;mathjax@3.1.4&#x2F;es5&#x2F;tex-mml-chtml.js&quot;,&quot;integrity&quot;:&quot;sha256-ncNI9OXOS5Ek4tzVYiOMmN&#x2F;KKCPZ6V0Cpv2P&#x2F;zHntiA&#x3D;&quot;}}</script>
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;tags&quot;:&quot;none&quot;,&quot;js&quot;:{&quot;url&quot;:&quot;https:&#x2F;&#x2F;unpkg.com&#x2F;mathjax@3.1.4&#x2F;es5&#x2F;tex-mml-chtml.js&quot;,&quot;integrity&quot;:&quot;sha256-ncNI9OXOS5Ek4tzVYiOMmN&#x2F;KKCPZ6V0Cpv2P&#x2F;zHntiA&#x3D;&quot;}}</script>
 <script src="/js/third-party/math/mathjax.js"></script>
 
 
