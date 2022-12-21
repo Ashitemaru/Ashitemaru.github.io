@@ -6,11 +6,13 @@ category:
     - 【导航】
 ---
 
-这里是 Ashitemaru，清华大学计算机科学与技术系本科、预计本系直博。做过 NLP，干过 CG，现在做流媒体传输。对数学，尤其是代数比较有兴趣。
+这里是 Ashitemaru，清华大学计算机科学与技术系本科，本系媒体所流媒体实验室直博，导师孙立峰。之前做过 NLP，干过 CG。对数学，尤其是代数比较有兴趣，Artin 支持者（bushi）
 
 开发过 THUInfo，负责其 iOS 版本维护。大三任系学生科协网络部副主席，负责技能引导文档维护。两个项目的链接均在网页上方栏目。
 
-打日麻，打音游，主修 osu! mania 和 Project Sekai 等下落式音游，街机音游均不擅长。正在尝试舞萌 DX 即 maimai。雀魂账号和 osu! mania 账号名均为 Ashitemaru。
+主要课程项目包括《现代密码学》的 SHARNN 哈希函数，《搜索引擎技术基础》的 LSE Frontend，《专业实践》的 Minkowski Calculator。除最后一个项目外，前两个项目均在 Github 开源。
+
+打日麻，打音游，主修 osu! mania 等下落式音游，街机音游均不擅长。正在尝试舞萌 DX 即 maimai。雀魂账号和 osu! mania 账号名均为 Ashitemaru。
 
 V+ 人，推 Giga、utsu-P 等曲风激烈的 P 主，没有歌姬倾向，抒情曲也会听。
 
