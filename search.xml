@@ -4726,7 +4726,7 @@ V_o &amp;\leftarrow (1 - \alpha_o)V_o + \alpha_o(o - \overline o)^2 \\
     <content><![CDATA[<p>本文章为自学手册 Chapter 1 生词表。</p>
 <span id="more"></span>
 <p>考虑到这里还未讲解用言、助动词活用，故会同时列举出本章内出现的词语的活用形和相对应的原形，活用形使用小括号括出并写在原形下方以示区分。</p>
-<p>动词生词表中词性一列的具体含义参见第二章动词活用分类。另外，对于动词、形容词、形容动词，方括号括出的为该词语在古日语中的形式与词性，若没有方括号标记，则表明古日语中该词语和现代形式或词性一致。</p>
+<p>动词生词表中词性一列的具体含义参见第二章动词活用分类。另外，对于动词、形容词、形容动词，方括号括出的为该词语在古日语中的形式与词性，若没有方括号标记，则表明古日语中该词语和现代形式或词性一致，也有可能是该词语是现代造词，没有古语对应。</p>
 <p>另外补充说明，由于动词的第一连用形可以用于将动词名词化。如果名词化后形成的名词和原先动词的含义类似，我们就将动词形式纳入生词表，其名词形式作为其衍生。而若含义差别较大，则其动词和名词形式分别纳入生词表。</p>
 <p>本章生词表选择性收录 Chapter 1 Section 3 中的词语。</p>
 <h1 id="动词生词表">动词生词表</h1>
@@ -7363,9 +7363,9 @@ V_o &amp;\leftarrow (1 - \alpha_o)V_o + \alpha_o(o - \overline o)^2 \\
     <url>/2022/08/21/ja-tutorial-ch2-vocab/</url>
     <content><![CDATA[<p>本文章为自学手册 Chapter 2 生词表。</p>
 <span id="more"></span>
-<p>对于动词、形容词、形容动词，方括号括出的为该词语在古日语中的形式与词性，若没有方括号标记，则表明古日语中该词语和现代形式或词性一致。</p>
+<p>对于动词、形容词、形容动词，方括号括出的为该词语在古日语中的形式与词性，若没有方括号标记，则表明古日语中该词语和现代形式或词性一致，也有可能是该词语是现代造词，没有古语对应。</p>
 <p>另外补充说明，由于动词的第一连用形可以用于将动词名词化。如果名词化后形成的名词和原先动词的含义类似，我们就将动词形式纳入生词表，其名词形式作为其衍生。而若含义差别较大，则其动词和名词形式分别纳入生词表。</p>
-<p>本章生词表不录入代词、助动词与助词。</p>
+<p>本章生词表不录入数词、代词、助动词与助词。</p>
 <h1 id="动词生词表">动词生词表</h1>
 <table>
 <thead>
@@ -7445,6 +7445,26 @@ V_o &amp;\leftarrow (1 - \alpha_o)V_o + \alpha_o(o - \overline o)^2 \\
 <td style="text-align: center;"><code>@ 入 はい</code>る[<code>@ 入 はひ</code>る]</td>
 <td style="text-align: center;">動ラ五[動ラ四]</td>
 <td style="text-align: center;">进入</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 察 さっ</code>する[<code>@ 察 さっ</code>す]</td>
+<td style="text-align: center;">動サ変[動サ変]</td>
+<td style="text-align: center;">推测、推察、同情</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 告 こく</code>る</td>
+<td style="text-align: center;">動ラ五</td>
+<td style="text-align: center;">（年轻群体用语）告白、表白</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 好 す</code>く</td>
+<td style="text-align: center;">動カ五[動カ四]</td>
+<td style="text-align: center;">喜爱</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 嫌 きら</code>う[<code>@ 嫌 きら</code>ふ]</td>
+<td style="text-align: center;">動ワ五[動ハ四]</td>
+<td style="text-align: center;">讨厌</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>@ 許 ゆる</code>す</td>
@@ -7607,6 +7627,16 @@ V_o &amp;\leftarrow (1 - \alpha_o)V_o + \alpha_o(o - \overline o)^2 \\
 <td style="text-align: center;">爱、心爱</td>
 </tr>
 <tr class="odd">
+<td style="text-align: center;">なる</td>
+<td style="text-align: center;">動ラ五[動ラ四]</td>
+<td style="text-align: center;">成为、变成</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">しまう[しまふ]</td>
+<td style="text-align: center;">動ワ五[動ハ四]</td>
+<td style="text-align: center;">①结束、终结 <br /> ②（作补助动词）表示动作最终结束</td>
+</tr>
+<tr class="odd">
 <td style="text-align: center;"><code>@ 登 のぼ</code>る</td>
 <td style="text-align: center;">動ラ五[動ラ四]</td>
 <td style="text-align: center;">攀登、登上</td>
@@ -7766,21 +7796,26 @@ V_o &amp;\leftarrow (1 - \alpha_o)V_o + \alpha_o(o - \overline o)^2 \\
 </thead>
 <tbody>
 <tr class="odd">
+<td style="text-align: center;"><code>@ 自由 じゆう</code>だ[<code>@ 自由 じゆう</code>なり]</td>
+<td style="text-align: center;">形動[形動ナリ]</td>
+<td style="text-align: center;">自由的</td>
+</tr>
+<tr class="even">
 <td style="text-align: center;"><code>@ 同 おな</code>じだ[<code>@ 同 おな</code>じ]</td>
 <td style="text-align: center;">形動[形シク]</td>
 <td style="text-align: center;">相同的</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: center;"><code>@ 大 おお</code>きな[<code>@ 大 おほ</code>きなり]</td>
 <td style="text-align: center;">形動[形動ナリ]</td>
 <td style="text-align: center;">大的、巨大的</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: center;"><code>@ 小 ちい</code>さな[<code>@ 小 ちひ</code>さなり]</td>
 <td style="text-align: center;">形動[形動ナリ]</td>
 <td style="text-align: center;">小的、微小的</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: center;">おかしな[をかしなり]</td>
 <td style="text-align: center;">形動[形動ナリ]</td>
 <td style="text-align: center;">奇怪的、可笑的</td>
@@ -7807,9 +7842,24 @@ V_o &amp;\leftarrow (1 - \alpha_o)V_o + \alpha_o(o - \overline o)^2 \\
 <td style="text-align: center;">副[形動タリ]</td>
 <td style="text-align: center;">渐渐地</td>
 </tr>
+<tr class="odd">
+<td style="text-align: center;">いつしか</td>
+<td style="text-align: center;">副</td>
+<td style="text-align: center;">不知不觉地、迟早、早晚</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">どうやって</td>
+<td style="text-align: center;">副</td>
+<td style="text-align: center;">应当如何（做某事、达成某种目标）</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">たった</td>
+<td style="text-align: center;">副</td>
+<td style="text-align: center;">仅仅、就</td>
+</tr>
 </tbody>
 </table>
-<h1 id="名词数词生词表">名词、数词生词表</h1>
+<h1 id="名词生词表">名词生词表</h1>
 <table>
 <thead>
 <tr class="header">
@@ -7820,6 +7870,16 @@ V_o &amp;\leftarrow (1 - \alpha_o)V_o + \alpha_o(o - \overline o)^2 \\
 </thead>
 <tbody>
 <tr class="odd">
+<td style="text-align: center;"><code>@ 自由 じゆう</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">自由</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 意味 いみ</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">含义</td>
+</tr>
+<tr class="odd">
 <td style="text-align: center;"><code>@ 朝 あさ</code>ご<code>@ 飯 はん</code></td>
 <td style="text-align: center;">名</td>
 <td style="text-align: center;">早饭</td>
@@ -7828,6 +7888,51 @@ V_o &amp;\leftarrow (1 - \alpha_o)V_o + \alpha_o(o - \overline o)^2 \\
 <td style="text-align: center;"><code>@ 日本 にほん</code></td>
 <td style="text-align: center;">名</td>
 <td style="text-align: center;">日本</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 気持 きも</code>ち</td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">感受、心情、感觉</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 純愛 じゅんあい</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">纯爱</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 浮気 うわき</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">出轨、不伦</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">ホラー</td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">恐怖、恐怖片</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">コメディ</td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">喜剧</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 誰 だれ</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">（疑问词）谁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 全員 ぜんいん</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">全员</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 神 かみ</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">神、神仙</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 鬼 おに</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">鬼、鬼怪</td>
 </tr>
 </tbody>
 </table>
@@ -8795,6 +8900,11 @@ V_o &amp;\leftarrow (1 - \alpha_o)V_o + \alpha_o(o - \overline o)^2 \\
 <p>第三行是<strong>カ变动词</strong>，现代日语仅有「<code>@ 来 く</code>る」为カ变动词。</p>
 <p>第四行是<strong>サ变动词</strong>，现代日语仅有「する」以及以汉字等为词干并以「する、ずる」结尾的动词为サ变动词。</p>
 <p>这里需要注意的是，以「る」结尾的并且不是サ变动词的动词，既可能是五段动词也可能是一段动词。其辨别方式为，首先确定倒数第二个假名所在段，如果不在い段或者え段，则一定是五段动词。例如「<code>@ 上 あ</code>がる、<code>@ 売 う</code>る、<code>@ 残 のこ</code>る」即为五段动词。相应的，如果在い段或者え段则大概率为一段动词，但是这依然有例外，仅能通过查询词典确认。例如「<code>@ 滑 すべ</code>る、<code>@ 入 はい</code>る」即为五段动词。</p>
+<div class="note info no-icon"><p>サ变动词和名词的关系实际上是比较模糊的，大部分サ变动词的词干本身实际上也可以作为名词使用，如「勉強する」的词干「勉強」完全可以作为名词应用在词组「日本語の勉強」之中。</p>
+<p>一个サ变动词具体应该认为是单个动词还是认为是一个名词和「する」的复合，这两者的区分往往并不明显。比如「察する」现在往往认为是单纯的サ变动词，而「勉強する」则位于两者之间，另外类似「涙する」的表达则几乎就看作名词和「する」的复合。一个サ变动词在母语者角度应当怎么理解，可以通过词典确认。</p>
+<p>另外一种确认方式是加入宾格助词「を」观察是否自然，这里「察をする」显然不自然而「勉強をする」仅仅是稍显别扭，所以「察する」更倾向于サ变动词，不过该方法应用范围也较为有限。</p>
+<p>另外，这里强调一个口语现象，部分理应是サ变动词的词语可能会在口语中丢失「す」，作为一段或者五段动词使用。比如著名的「<code>@ 告 こく</code>る」，其显然是名词「告」和「する」的复合，然而在年轻群体中「<code>@ 告 こく</code>る」的使用频率并不低，甚至著名漫画「かぐや様は告らせたい」，即《辉夜大小姐想让我告白》中的「告らせたい」就是「告る」的活用。另外类似麻将名词「ツモる」等也是这样的来源。</p>
+</div>
 <h2 id="形容词和形容动词的特征">形容词和形容动词的特征</h2>
 <p>我们观察下面的形容词词例：</p>
 <ul>
@@ -8811,6 +8921,15 @@ V_o &amp;\leftarrow (1 - \alpha_o)V_o + \alpha_o(o - \overline o)^2 \\
 </div>
 <div class="note info no-icon"><p>部分观点将形容词和形容动词都归为形容词，因为在现代日语中两者都起到了类似于形容词的作用。这里我们依然按照传统的语法概念保留形容动词这个概念。</p>
 <p>形容词和形容动词的差别在于，形容动词有一定的动词的属性。例如「<code>@ 好 す</code>きだ」的含义为“喜欢”，其本质上是一种动作，但是可以应用在“喜欢的事物”这样的短语中起到形容词的语法作用。</p>
+</div>
+<div class="note info no-icon"><p>形容动词和名词的关系实际上是比较模糊的，部分形容动词本身和名词并无太大差别，如「自由だ」，其完全有名词用法「自由」。大部分词典对这类词语的处理是认为这些词语同时是形容动词和名词。</p>
+<p>事实上形容动词仅仅是名词的一种使用方式的观点在日语语法学界也一直存在，而大部分形容动词的名词痕迹确实明显，如「好きだ」的词干「好き」可以认为是动词「好く」的名词化（用言名词化见下一章），而「嫌いだ」则和动词「嫌う」有所关联。</p>
+<p>不过同为形容动词和名词的词语在修饰名词的时候，往往语义上是有微微差别的：</p>
+<ul>
+<li>（形容动词）自由な意味（表达某个事物的含义是自由的）</li>
+<li>（名词）自由の意味（描述自由这个概念的含义）</li>
+</ul>
+<p>上述两个词组在汉语中均一般译为“自由的含义”，所以理论上汉语中的“的”暗示的偏正短语是有可能存在歧义的。</p>
 </div>
 <h2 id="日语常见助动词">日语常见助动词</h2>
 <p>日语的助动词常常附属在用言的活用形后，辅助用言表达更丰富的语言含义。现在将本手册着重讨论的日语助动词的原形罗列如下：</p>
@@ -9418,9 +9537,9 @@ V_o &amp;\leftarrow (1 - \alpha_o)V_o + \alpha_o(o - \overline o)^2 \\
 </table>
 <p>下面列举歌词、推特发言等处的用例，可见口语中「愛す」的运用范围极其广泛：</p>
 <ul>
-<li>私は彼を<strong>愛さず</strong>にはいられない気持ちにいつしかなっていた。</li>
-<li>どうやってこの世界を<strong>愛せる</strong>かな？</li>
-<li>たった一人を<strong>愛せば</strong>純愛、二人<strong>愛せば</strong>浮気、三人<strong>愛せば</strong>ホラー、十人<strong>愛せば</strong>コメディ、百人<strong>愛せば</strong>誰も<strong>愛して</strong>ないのと同じ、全員<strong>愛せば</strong>神、自分だけ<strong>愛せば</strong>鬼、誰も<strong>愛せず</strong>とも鬼。</li>
+<li>私は彼を<strong>愛さず</strong>にはいられない気持ちにいつしかなっていた。（我不知何时变得非他不可）</li>
+<li>どうやってこの世界を<strong>愛せる</strong>かな？（我到底应当如何去爱这个世界？）</li>
+<li>たった一人を<strong>愛せば</strong>純愛、二人<strong>愛せば</strong>浮気、三人<strong>愛せば</strong>ホラー、十人<strong>愛せば</strong>コメディ、百人<strong>愛せば</strong>誰も<strong>愛して</strong>ないのと同じ、全員<strong>愛せば</strong>神、自分だけ<strong>愛せば</strong>鬼、誰も<strong>愛せず</strong>とも鬼。（只爱一个人是纯爱，爱两个人是出轨，爱三个人是恐怖片，爱十个人是喜剧，爱一百个人就和谁都不爱一样，爱所有人的是神，只爱自己的是鬼，谁也不爱也是鬼）</li>
 </ul>
 <p>有趣的是上述第三句中的「愛せず」是「愛する」或者「愛せる」的否定而非「愛す」的否定，但是根据排比句式，基本可以排除这是「愛せる」的否定的情况。这也说明了口语的随意性。</p>
 <p>而以「ずる」结尾的サ变动词的一段化则几乎十分完全，甚至影响了现代日本人对古日语的认识。</p>
@@ -10028,6 +10147,15 @@ V_o &amp;\leftarrow (1 - \alpha_o)V_o + \alpha_o(o - \overline o)^2 \\
 <ul>
 <li><code>@ 心 こころ</code> ＋ <code>@ 細 ほそ</code>い → <code>@ 心細 こころぼそ</code>い</li>
 </ul>
+<div class="note info no-icon"><p>在涉及到形容词词干的地方，绕不过去单音节形容词这个大问题，比如「ない、いい、よい」。一般而言，由于单音节形容词的词干太短，和其余成分复合的时候容易丢失，故日语中常常在其后面加入冗余的「さ」，如「よ<strong>さ</strong>そうだ、な<strong>さ</strong>すぎる」。</p>
+<p>然而这个冗余的「さ」到底加不加，目前几乎成为了仅能用惯例来约束的语法。这个语法之所以混乱，有几个原因。其一是有两个「ない」，一个是作为形容词的「ない」，一个是作为助动词的「ない」，而事实上更为复杂，部分的形容词内部有固化的「ない」，部分形容词以「ない」结尾。其二是单音节形容词中常用的仅仅是「ない、いい、よい」三个，而「濃い、酸い」之类的不常用单音节形容词应当如何处置没有定论，且语料很少。</p>
+<p>这里我们分情况给出本文所接受的观点，另外由于还未讲解助动词，这里的「そうだ」是需要使用形容词词干接续的类形容动词助动词。</p>
+<p>首先是「濃い、酸い」，其中「濃い」完全不加冗余的「さ」，「酸い」在涉及词干时一般使用其同义词「酸っぱい」代替。例如「濃そうだ、濃すぎる、酸っぱそうだ、酸っぱすぎる」。不过注意，「濃<strong>さ</strong>すぎる」在一定程度上也是可以接受的表达。</p>
+<p>之后是「いい、よい」，由于「いい」词干往往会使用「よ」，所以这两者可以混同考虑。一般而言，接续助动词的时候会添加冗余的「さ」，形成「よ<strong>さ</strong>そうだ」，其余状况下则一般不添加，如「よすぎる」。</p>
+<p>最后讨论最为麻烦的「ない」。所有用于否定动词的「ない」，都应当是助动词「ない」，包括这一类的已经固化在形容词中的「ない」，如「つまらない」，此时按照严格语法，无论如何均不能加冗余的「さ」，如「取れなそうだ、つまらなそうだ、食べなすぎる、つまらなすぎる」。然而由于「ない」在形容词和助动词之间的差别日趋消失，在口语中容忍添加冗余的「さ」的表达，如「取れな<strong>さ</strong>そうだ、つまらな<strong>さ</strong>そうだ」。</p>
+<p>用于否定形容词、形容动词的「ない」，表达存在与否的「ない」，包括这一类的已经固化在形容词中的「ない」，如「頼りない」，均应当添加冗余的「さ」，如「楽しくな<strong>さ</strong>そうだ、静かではな<strong>さ</strong>すぎる、頼りな<strong>さ</strong>そうだ」。</p>
+<p>仅仅以「ない」结尾的形容词，如「危ない、少ない」，均不应当添加冗余的「さ」，如「危なそうだ、少なすぎる」。然而由于使用者的惯性，逐渐出现了在口语中添加冗余的「さ」的现象，如「危な<strong>さ</strong>そうだ、少な<strong>さ</strong>すぎる」。</p>
+</div>
 <div class="note info no-icon"><p>复合词语的语义应当由前项与后项共同赋予。但是随着语言的发展，部分复合词语中的后项逐步退化。这意味着部分后项词语逐渐变为了类似补助词语的存在，复合词语的语义主要由其前项决定。</p>
 <p>比如动词「合う」，其作为复合词语的后项的时候，用于表达“相互”的语义。如「分かる」的含义为“了解、理解”，那么「分かり合う」的含义为“相互理解”。</p>
 <p>比如形容词「難い」，其作为复合词语的后项的时候，用于表达“难以”的语义。如「腐る」的含义为“腐坏”，那么「腐りにくい」的含义为“难以腐坏”。</p>
@@ -10111,7 +10239,7 @@ V_o &amp;\leftarrow (1 - \alpha_o)V_o + \alpha_o(o - \overline o)^2 \\
 <li>（形容词）夏は<strong>暑く</strong>、冬は寒い。（夏天热，冬天冷）</li>
 <li>（类形容词助动词）彼は学生では<strong>なく</strong>、会社員です。（他不是学生，是公司职员）</li>
 <li>（形容动词）ここは水が<strong>きれいで</strong>、空は高い。（这里流水清澈，天空辽阔）</li>
-<li>（类形容动词助动词）リンゴは赤<strong>そうで</strong>、うまく見える。（苹果红红的，看起来好吃）</li>
+<li>（类形容动词助动词）リンゴは赤<strong>そうで</strong>、うまそうに見える。（苹果红红的，看起来好吃）</li>
 <li>（不规则助动词）窓を閉じ<strong>ずに</strong>寝てる。（不关窗就睡着了）</li>
 </ul>
 <p>可以发现中顿可以是顺接的中顿，即语义前后没有转折，也可以是逆接的中顿，即语义前后发生了转折。如果不借助接续助词，顺接和逆接需要通过语义自行判断。而为了语义更加容易理解和清晰，需要借助各种接续助词表达中顿中所包含的基本含义。这里举出几例接续助词：</p>
@@ -12183,18 +12311,7 @@ V_o &amp;\leftarrow (1 - \alpha_o)V_o + \alpha_o(o - \overline o)^2 \\
 <ul>
 <li>单音节形容词「ない、よい、いい」接续「そうだ②」形成「な<strong>さ</strong>そうだ、よ<strong>さ</strong>そうだ、よ<strong>さ</strong>そうだ」而非「なそうだ、よそうだ、いそうだ」</li>
 </ul>
-<div class="note info no-icon"><p>之前提到过实意形容词「ない」和助动词「ない」的区别，理论上这两者在接续「そうだ②」的时候应该分别形成「なさそうだ」和「なそうだ」，是存在对立的。但是近年来这一对立已经基本上消耗完毕，即随着实意形容词和助动词的合流，各种能够区分这两者的语法现象均在消逝：</p>
-<ul>
-<li>（○）小林君は行か<strong>なそうだ</strong>。</li>
-<li>（△）小林君は行か<strong>なさそうだ</strong>。（小林像是不去）</li>
-<li>（×）小林君は楽しく<strong>なそうだ</strong>。</li>
-<li>（○）小林君は楽しく<strong>なさそうだ</strong>。（小林像是不高兴）</li>
-</ul>
-<p>事实上，这一差别还有模糊之处，比如本身以「ない」结尾的形容词「危ない、つまらない、申し訳ない」。从严格的语法上讲「危なそうだ、つまらなそうだ、申し訳な<strong>さ</strong>そうだ」是正确的，但是除了「申し訳ない<strong>さ</strong>そうだ」基本是共识用法外，「つまらな<strong>さ</strong>そうだ」有部分人也会使用，而「危な<strong>さ</strong>そうだ」虽然有人用但是仅限极少数。</p>
-<p>追根溯源，「申し訳ない」作为合成词的痕迹过于明显，也就是说实意形容词「ない」过于突出，所以共识上使用「申し訳な<strong>さ</strong>そうだ」。而「つまらない」语源是「つまる」的否定，虽然即使从语源的角度也不应该使用「つまらな<strong>さ</strong>そうだ」，但是随着「ない」的区分模糊，这类用法也有不少人开始使用。而「危ない」只是单纯以「ない」这两个假名结尾而已，和「ない」没有一点关系，然而受到使用惯性而说出「危な<strong>さ</strong>そうだ」的人也逐步出现了。</p>
-<p>语言本身就是在变化的，也许什么时候就规定所有以「ない」结尾的词接续「そうだ②」都要用「なさそうだ」呢。</p>
-</div>
-<div class="note info no-icon"><p>采用「なさそうだ、よさそうだ」这种莫名多一个「さ」的接续方式的主要原因是「ない、よい」词干是单音节的，很容易在使用中多出一个辅助音节。然而对于「濃い」这类不常用的单音节形容词反倒还按照语法规定接续为「濃そうだ」（「濃さそうだ」也是可以用的，但具体何者使用频率高目前无从可知），然而另外一个不常用的单音节形容词「酸い」反倒会使用其同义词「酸っぱい」代替而形成「酸っぱそうだ」这样的表达。</p>
+<div class="note info no-icon"><p>关于上述接续中冗余的「さ」的问题，见上一章复合词语部分的讨论。</p>
 </div>
 <p>该助动词的主要含义为表达样态，即表达事物应当具有的性质：</p>
 <ul>
@@ -12446,32 +12563,29 @@ V_o &amp;\leftarrow (1 - \alpha_o)V_o + \alpha_o(o - \overline o)^2 \\
 </ul>
 <p>「が①」有时也可以用于标记宾语，但这种用法一般仅限于下述情景：</p>
 <ul>
-<li>可能式以及涉及到助动词「たい」的句子中，宾语可以使用「が①」标记</li>
+<li>涉及到<strong>说话人自身</strong>情感的句子，如愿望、好恶等等，以及部分表示能力的句子，宾语可以使用「が①」标记，例如：
+<ul>
+<li>助动词「たい」</li>
+<li>形容词「欲しい」</li>
+<li>形容动词「好きだ、嫌いだ、上手だ、下手だ、苦手だ」</li>
+</ul></li>
 <li>助词「て」后接续补助动词「ある」形成的存在状态句中，宾语可以使用「が①」标记</li>
+<li>表达可能的句子中，宾语可以使用「が①」标记</li>
 <li>被动句中如果不需要强调实际动作发出方，宾语可以使用「が①」标记</li>
 <li>自发语义中，宾语可以使用「が①」标记</li>
 </ul>
 <p>例句如下：</p>
 <ul>
-<li>わたしは日本語<strong>が</strong><u>話せる</u>。（我会说日语）</li>
 <li>今は水<strong>が</strong>飲み<u>たい</u>。（现在想喝水）</li>
+<li>わたしはきれいな服<strong>が</strong><u>欲しい</u>。（我想要漂亮的衣服）</li>
+<li>わたしは甘いもの<strong>が</strong><u>好きだ</u>。（我喜欢甜食）</li>
+<li>わたしはピアノ<strong>が</strong><u>上手だ</u>。（我擅长钢琴）</li>
 <li>机の上にケーキ<strong>が</strong>置い<u>てある</u>。（桌上放着蛋糕）</li>
+<li>わたしは日本語<strong>が</strong><u>話せる</u>。（我会说日语）</li>
 <li>選択幅<strong>が</strong>大きく<u>拡大された</u>。（选择的范围大幅扩大了）</li>
 <li>外国の息子のこと<strong>が</strong><u>案じられる</u>。（我很担心我在外国的孩子）</li>
 </ul>
-<div class="note info no-icon"><p>在提到「が①」时往往绕不过去的就是形容词「欲しい」，例如：</p>
-<ul>
-<li>わたしはきれいな服<strong>が</strong>欲しい。（我想要漂亮的衣服）</li>
-</ul>
-<p>从中文角度来看，“漂亮的衣服”应该是“想要”的宾语，但日文中使用了「が①」这一主格助词。事实上，「欲しい」的本意是描述某个事物具有使得说话者希望拥有之的性质，是对事物性质的描述，所以应该用主格助词。</p>
-<p>同样的，涉及到部分有动词性质的形容动词的时候，也会有这个问题：</p>
-<ul>
-<li>わたしは甘いもの<strong>が</strong>好きだ。（我喜欢甜食）</li>
-<li>わたしはピアノ<strong>が</strong>上手だ。（我擅长钢琴）</li>
-</ul>
-<p>先前提到过形容动词本身和动词之间有一定的联系，即形容动词描述的状态往往和动作有关联。但即使如此，形容动词本质依然是对事物性质的描述，应当使用主格助词。</p>
-<hr />
-<p>上述例子全都是基于第一人称的，在考虑其他人称的时候实际上和「たい、たがる」的对立类似，因为我们无法断言其他人的愿望、感情，所以使用涉及到愿望、感情的形容词或形容动词，如「欲しい、嫌だ」等的时候，应当使用接尾词「○がる」并用回宾格助词「を」：</p>
+<div class="note info no-icon"><p>上面提到的「たい、欲しい、好きだ」等例子，均强调了一定是第一人称。在描述其他人称的时候实际上和「たい、たがる」的对立类似，因为我们无法断言其他人的愿望、感情，所以使用涉及到愿望、感情的形容词或形容动词，如「欲しい、嫌だ」等的时候，应当使用接尾词「○がる」并用回宾格助词「を」：</p>
 <ul>
 <li>田中さんはきれいな服<strong>を</strong>欲し<u>がる</u>。（田中想要漂亮的衣服）</li>
 <li>田中さんは勉強<strong>を</strong>嫌<u>がる</u>。（田中讨厌学习）</li>
@@ -12626,7 +12740,7 @@ V_o &amp;\leftarrow (1 - \alpha_o)V_o + \alpha_o(o - \overline o)^2 \\
     <content><![CDATA[<p>本文将在基本了解日语语句构成的条件下总结各类常见的日语语句表达方式，基于此，读者应当可以自行书写符合语法且自然的日语语句。</p>
 <span id="more"></span>
 <h1 id="状态变迁">状态变迁</h1>
-<p>有关状态变迁的表达相当之多，先前也讲解过部分。虽然设计状态变迁的句式很多，但基本上均分为自然变迁和强制变迁两种，分别对应「なる、する」两个动词。</p>
+<p>有关状态变迁的表达相当之多，先前也讲解过部分。虽然涉及状态变迁的句式很多，但基本上均分为自然变迁和强制变迁两种，分别对应「なる、する」两个动词。</p>
 <p>这里讲解的时候直接引用了先前章节的例句。</p>
 <p>如果描述状态的是形容词（类形容词助动词），则一般使用「～くなる、～くする」句式：</p>
 <ul>
