@@ -11050,7 +11050,13 @@ V_o &amp;\leftarrow (1 - \alpha_o)V_o + \alpha_o(o - \overline o)^2 \\
 </tr>
 </tbody>
 </table>
-<p>事实上「読むだろう」以及「読むなら」以及「読むではない」等这类用法存在的目的是补全动词活用也未能表达出的部分语义。这里「読むだろう」与「読もう」的差别，「読むなら」与「読めば」乃至于与「読んだら」和「読むと」的差别则在后续进一步阐释。</p>
+<p>事实上「読むだろう」以及「読むなら」以及「読むではない」等这类用法存在的目的是补全动词活用也未能表达出的部分语义。这里至少存在下面三组词组的对比：</p>
+<ul>
+<li>「読まない」与「読むではない」</li>
+<li>「読むだろう」与「読もう」</li>
+<li>「読むなら」与「読めば」乃至于与「読んだら」和「読むと」</li>
+</ul>
+<p>下面的注释部分解释了第一组词组之间的差别，第二组和第三组的差别则需要在这之后具体讲解。</p>
 <div class="note info no-icon"><p>这里简单阐述一下动词的一般否定形式和使用「だ」的否定形式的区别。</p>
 <p>事实上，这也就是日语反问句的构成。我们比较下述两句话：</p>
 <ul>
@@ -11067,169 +11073,7 @@ V_o &amp;\leftarrow (1 - \alpha_o)V_o + \alpha_o(o - \overline o)^2 \\
 </div>
 <p>另外一方面，形容词接续「だ」的活用形式形成的「高いだろう」，以及接续「です」的活用形式形成的「高いでしょう」等这类表达，则和动词有着类似的出发点，即补全缺失的意志形和替代并不常用的未然形。</p>
 <p>相比之下，形容动词的未然形虽然依然常用，但其使用词干接续「です」的活用形式形成的「好きでしょう」等表达也同时是常用词组。</p>
-<div class="note info no-icon"><p>事实上上述各种词组之间的对照，归根结底是日语两种常用语体之间的对立，即<strong>ですます体</strong>与<strong>简体</strong>（或称<strong>だ体</strong>）之间的对立。</p>
-<p>ですます体已经提到过，是一种面向陌生人、上级等有一定距离的对象的语体，而简体则是面向自己、亲友等关系紧密的对象，或者自己所不尊敬、蔑视的对象的语体。</p>
-<p>事实上日语中还存在<strong>である体</strong>，其基本上仅用于严谨的书面文章中。「である」的语源为判断助动词「だ」的第一连用形接续动词「ある」，其完全继承了动词「ある」的活用方式。另外，「である」在表达尊敬含义的时候也可以使用「であります」。</p>
-<p>「である」的另外一种用途是用于补全「です、だ」缺失的部分活用。例如「です、だ」需要接续助词「ば」表示假定的时候，「だ」可以使用「ならば」的形式，但是「です」没有假定形，此时只能使用「である」代替表达为「であれば」。</p>
-<p>另外，由于ですます体实际上仅仅是一般尊敬，在公文、商务邮件、与地位相对高的对象交谈等场合中所使用的，更为完整的敬语体系则在后续部分介绍。</p>
-<p>下表列举出了ですます体与简体中相对应的若干词组：</p>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;"></th>
-<th style="text-align: center;">ですます体</th>
-<th style="text-align: center;">简体</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">动词陈述</td>
-<td style="text-align: center;">読みます</td>
-<td style="text-align: center;">読む</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">动词否定</td>
-<td style="text-align: center;">読みません</td>
-<td style="text-align: center;">読まない</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">动词过去</td>
-<td style="text-align: center;">読みました</td>
-<td style="text-align: center;">読んだ</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">动词过去否定</td>
-<td style="text-align: center;">読みませんでした</td>
-<td style="text-align: center;">読まなかった</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">动词意志</td>
-<td style="text-align: center;">読みましょう</td>
-<td style="text-align: center;">読もう</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">动词推测</td>
-<td style="text-align: center;">読むでしょう</td>
-<td style="text-align: center;">読むだろう</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">动词命令</td>
-<td style="text-align: center;">（読みましょう）</td>
-<td style="text-align: center;">読め</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">形容词陈述</td>
-<td style="text-align: center;">高いです</td>
-<td style="text-align: center;">高い <br /> （高いだ）</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">形容词否定</td>
-<td style="text-align: center;">高くありません <br /> （高くないです）</td>
-<td style="text-align: center;">高くない</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">形容词过去</td>
-<td style="text-align: center;">高かったです</td>
-<td style="text-align: center;">高かった</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">形容词过去否定</td>
-<td style="text-align: center;">高くありませんでした <br /> （高くなかったです）</td>
-<td style="text-align: center;">高くなかった</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">形容词推测、征询</td>
-<td style="text-align: center;">高いでしょう</td>
-<td style="text-align: center;">高いだろう</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">形容词命令</td>
-<td style="text-align: center;">（高くしましょう）</td>
-<td style="text-align: center;">高くしろ・高くせよ</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">形容动词陈述</td>
-<td style="text-align: center;">静かです</td>
-<td style="text-align: center;">静かだ</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">形容动词否定</td>
-<td style="text-align: center;">静かではありません <br /> （静かではないです）</td>
-<td style="text-align: center;">静かではない</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">形容动词过去</td>
-<td style="text-align: center;">静かだったです</td>
-<td style="text-align: center;">静かだった</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">形容动词过去否定</td>
-<td style="text-align: center;">静かではありませんでした <br /> （静かではなかったです）</td>
-<td style="text-align: center;">静かではなかった</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">形容动词推测、征询</td>
-<td style="text-align: center;">静かでしょう</td>
-<td style="text-align: center;">静かだろう</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">形容动词命令</td>
-<td style="text-align: center;">（静かにしましょう）</td>
-<td style="text-align: center;">静かにしろ・静かにせよ</td>
-</tr>
-</tbody>
-</table>
-<p>下表为描述体言的时候，三种语体相对应的若干词组：</p>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;"></th>
-<th style="text-align: center;">ですます体</th>
-<th style="text-align: center;">简体</th>
-<th style="text-align: center;">である体</th>
-<th style="text-align: center;">（であります体）</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">陈述</td>
-<td style="text-align: center;">花です</td>
-<td style="text-align: center;">花だ</td>
-<td style="text-align: center;">花である</td>
-<td style="text-align: center;">花であります</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">否定</td>
-<td style="text-align: center;">花ではありません</td>
-<td style="text-align: center;">花ではない</td>
-<td style="text-align: center;">花ではない</td>
-<td style="text-align: center;">花ではありません</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">过去</td>
-<td style="text-align: center;">花でした</td>
-<td style="text-align: center;">花だった</td>
-<td style="text-align: center;">花であった</td>
-<td style="text-align: center;">―</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">过去否定</td>
-<td style="text-align: center;">花ではありませんでした</td>
-<td style="text-align: center;">花ではなかった</td>
-<td style="text-align: center;">花ではなかった</td>
-<td style="text-align: center;">花ではありませんでした</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">推测</td>
-<td style="text-align: center;">花でしょう</td>
-<td style="text-align: center;">花だろう</td>
-<td style="text-align: center;">花であろう</td>
-<td style="text-align: center;">―</td>
-</tr>
-</tbody>
-</table>
-<p>语体需要注意的是，同一句话之中语体需要统一，不能混用语体，同一篇文章原则上也应当仅使用一种语体。</p>
-</div>
+<p>这些词组的对比，事实上是两种日语语体之间的对比，关于日语语体的介绍见本文的最后。</p>
 <p>该助动词的各类活用形式的例句如下：</p>
 <ul>
 <li>（終止形）いまは朝七時<strong>だ</strong>。（现在是早上七点）</li>
@@ -11240,16 +11084,6 @@ V_o &amp;\leftarrow (1 - \alpha_o)V_o + \alpha_o(o - \overline o)^2 \\
 <li>（仮定形）あの人<strong>なら</strong>できると思います。（要是那个人的话就能做成了）</li>
 </ul>
 <p>这里第三连用形由于使用频率极低所以不举出例句。</p>
-<div class="note info no-icon"><p>事实上两个判断助动词「だ、です」的连体形都是残缺的，其连体形并不能直接修饰一般体言，而如果需要修饰体言，则只能使用「である」表达：</p>
-<ul>
-<li>友人<strong>である</strong>高橋さんと一緒に参加します。（与朋友高桥先生一起出席）</li>
-</ul>
-<p>而这种用法常常会表现两个体言之间的同位关系（即两个体言所指向的事物是同一个），可以使用表同位关系的格助词「の」代替：</p>
-<ul>
-<li>友人<strong>の</strong>高橋さんと一緒に参加します。（与朋友高桥先生一起出席）</li>
-</ul>
-<p>而助动词「ます」以及后续讲解的助动词「う」也类似，其连体形并不能直接修饰一般体言。但是一般而言，也没有使用这两个助动词修饰体言的应用场景。</p>
-</div>
 <h1 id="推量意志助动词う">推量、意志助动词「う」</h1>
 <p>该助动词的接续表为：</p>
 <table style="width:100%;">
@@ -12560,6 +12394,363 @@ V_o &amp;\leftarrow (1 - \alpha_o)V_o + \alpha_o(o - \overline o)^2 \\
 <li>いや、そんなことは<strong>あるまい</strong>。（不，那种事不会有的）</li>
 </ul>
 <p>目前这一助动词正在逐步消退，被等价表达替换，目前该助动词也仅仅常用于部分固定句式。</p>
+<h1 id="日语的语体">日语的语体</h1>
+<p>日语有两种常用语体，即<strong>ですます体</strong>与<strong>简体</strong>（或称<strong>だ体</strong>）。</p>
+<p>ですます体已经在讲解助动词「です」和「ます」的部分提到过，是一种面向陌生人、上级等有一定距离的对象的语体，而简体则是面向自己、亲友等关系紧密的对象，或者自己所不尊敬、蔑视的对象的语体。</p>
+<p>事实上日语中还存在<strong>である体</strong>，其基本上仅用于严谨的书面文章中。「である」的语源为判断助动词「だ」的第一连用形接续动词「ある」，其完全继承了动词「ある」的活用方式。另外，「である」在表达尊敬含义的时候也可以使用「であります」。である体的另外一种称谓是<strong>书面简体</strong>，而在这种语境下，一般的简体就称为<strong>口语简体</strong>，代表である体是用于严谨书面行文而一般的简体用于正常口语交流。</p>
+<p>在ですます体中，「です」和「ます」的区分在于「ます」仅用于动词或者类动词助动词，而其余词语为了表达一般尊敬均可以直接使用「です」。当然，在由于「です」和「ます」缺乏对应的活用形式的时候，则也需要借用其他语体的表达。另外，由于ですます体实际上仅仅是一般尊敬，在公文、商务邮件、与地位相对高的对象交谈等场合中所使用的，更为完整的敬语体系则在后续部分介绍。</p>
+<p>下面我们列举三种语体在各种表现要求下的具体词组构成，首先是动词：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">ですます体</th>
+<th style="text-align: center;">简体</th>
+<th style="text-align: center;">である体</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">动词陈述</td>
+<td style="text-align: center;">読みます</td>
+<td style="text-align: center;">読む</td>
+<td style="text-align: center;">読む</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">动词中顿</td>
+<td style="text-align: center;">読みまして</td>
+<td style="text-align: center;">読んで</td>
+<td style="text-align: center;">読み</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">动词连体</td>
+<td style="text-align: center;">読むこと</td>
+<td style="text-align: center;">読むこと</td>
+<td style="text-align: center;">読むこと</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">动词否定</td>
+<td style="text-align: center;">読みません <br /> （読まないです）</td>
+<td style="text-align: center;">読まない</td>
+<td style="text-align: center;">読まない</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">动词否定中顿①</td>
+<td style="text-align: center;">読まないで</td>
+<td style="text-align: center;">読まないで</td>
+<td style="text-align: center;">読まずに <br /> （読まないで）</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">动词否定中顿②</td>
+<td style="text-align: center;">読まなくて</td>
+<td style="text-align: center;">読まなくて</td>
+<td style="text-align: center;">読まず <br /> 読まなく</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">动词假定①</td>
+<td style="text-align: center;">読めば <br /> （読みますれば）</td>
+<td style="text-align: center;">読めば</td>
+<td style="text-align: center;">読めば</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">动词假定②</td>
+<td style="text-align: center;">読みましたら</td>
+<td style="text-align: center;">読んだら</td>
+<td style="text-align: center;">読んだら</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">动词过去</td>
+<td style="text-align: center;">読みました</td>
+<td style="text-align: center;">読んだ</td>
+<td style="text-align: center;">読んだ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">动词过去否定</td>
+<td style="text-align: center;">読みませんでした <br /> （読まなかったです）</td>
+<td style="text-align: center;">読まなかった</td>
+<td style="text-align: center;">読まなかった</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">动词意志</td>
+<td style="text-align: center;">読みましょう</td>
+<td style="text-align: center;">読もう</td>
+<td style="text-align: center;">―</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">动词推测</td>
+<td style="text-align: center;">読むでしょう</td>
+<td style="text-align: center;">読むだろう</td>
+<td style="text-align: center;">読むだろう</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">动词命令</td>
+<td style="text-align: center;">（読みましょう）</td>
+<td style="text-align: center;">読め</td>
+<td style="text-align: center;">―</td>
+</tr>
+</tbody>
+</table>
+<p>之后是形容词：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">ですます体</th>
+<th style="text-align: center;">简体</th>
+<th style="text-align: center;">である体</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">形容词陈述</td>
+<td style="text-align: center;">高いです</td>
+<td style="text-align: center;">高い <br /> （高いだ）</td>
+<td style="text-align: center;">高い <br /> （高いだ）</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">形容词中顿</td>
+<td style="text-align: center;">高くて</td>
+<td style="text-align: center;">高くて</td>
+<td style="text-align: center;">高く</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">形容词连体</td>
+<td style="text-align: center;">高いこと</td>
+<td style="text-align: center;">高いこと</td>
+<td style="text-align: center;">高いこと</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">形容词否定</td>
+<td style="text-align: center;">高くありません <br /> （高くないです）</td>
+<td style="text-align: center;">高くない</td>
+<td style="text-align: center;">高くない</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">形容词否定中顿</td>
+<td style="text-align: center;">高くなくて</td>
+<td style="text-align: center;">高くなくて</td>
+<td style="text-align: center;">高くなく</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">形容词假定①</td>
+<td style="text-align: center;">高ければ</td>
+<td style="text-align: center;">高ければ</td>
+<td style="text-align: center;">高ければ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">形容词假定②</td>
+<td style="text-align: center;">高いようでしたら</td>
+<td style="text-align: center;">高かったら</td>
+<td style="text-align: center;">高かったら</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">形容词过去</td>
+<td style="text-align: center;">高かったです</td>
+<td style="text-align: center;">高かった</td>
+<td style="text-align: center;">高かった</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">形容词过去否定</td>
+<td style="text-align: center;">高くありませんでした <br /> （高くなかったです）</td>
+<td style="text-align: center;">高くなかった</td>
+<td style="text-align: center;">高くなかった</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">形容词推测、征询</td>
+<td style="text-align: center;">高いでしょう</td>
+<td style="text-align: center;">高いだろう</td>
+<td style="text-align: center;">高いだろう</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">形容词命令</td>
+<td style="text-align: center;">（高くしましょう）</td>
+<td style="text-align: center;">高くしろ・高くせよ</td>
+<td style="text-align: center;">―</td>
+</tr>
+</tbody>
+</table>
+<p>最后是形容动词：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">ですます体</th>
+<th style="text-align: center;">简体</th>
+<th style="text-align: center;">である体</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">形容动词陈述</td>
+<td style="text-align: center;">静かです</td>
+<td style="text-align: center;">静かだ</td>
+<td style="text-align: center;">静かだ</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">形容动词中顿</td>
+<td style="text-align: center;">静かで</td>
+<td style="text-align: center;">静かで</td>
+<td style="text-align: center;">静かで</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">形容动词连体</td>
+<td style="text-align: center;">静かなこと</td>
+<td style="text-align: center;">静かなこと</td>
+<td style="text-align: center;">静かなこと</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">形容动词否定</td>
+<td style="text-align: center;">静かではありません <br /> （静かではないです）</td>
+<td style="text-align: center;">静かではない</td>
+<td style="text-align: center;">静かではない</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">形容动词否定中顿</td>
+<td style="text-align: center;">静かではなく</td>
+<td style="text-align: center;">静かではなくて</td>
+<td style="text-align: center;">静かではなく</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">形容动词假定①</td>
+<td style="text-align: center;">静かならば</td>
+<td style="text-align: center;">静かならば</td>
+<td style="text-align: center;">静かならば</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">形容动词假定②</td>
+<td style="text-align: center;">静かだったら</td>
+<td style="text-align: center;">静かだったら</td>
+<td style="text-align: center;">静かだったら</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">形容动词过去</td>
+<td style="text-align: center;">静かだったです</td>
+<td style="text-align: center;">静かだった</td>
+<td style="text-align: center;">静かだった</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">形容动词过去否定</td>
+<td style="text-align: center;">静かではありませんでした <br /> （静かではなかったです）</td>
+<td style="text-align: center;">静かではなかった</td>
+<td style="text-align: center;">静かではなかった</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">形容动词推测、征询</td>
+<td style="text-align: center;">静かでしょう</td>
+<td style="text-align: center;">静かだろう</td>
+<td style="text-align: center;">静かだろう</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">形容动词命令</td>
+<td style="text-align: center;">（静かにしましょう）</td>
+<td style="text-align: center;">静かにしろ・静かにせよ</td>
+<td style="text-align: center;">―</td>
+</tr>
+</tbody>
+</table>
+<p>观察可以发现：</p>
+<ul>
+<li>である体和简体几乎没有很大差别，差别几乎仅仅在三处
+<ul>
+<li>である体倾向于在中顿时不使用接续助词「て」</li>
+<li>である体倾向于使用古语否定助动词「ず」</li>
+<li>である体不具有命令和意志的概念</li>
+</ul></li>
+<li>ですます体很多时候需要借用简体的表达方式，其原因在于「です」和「ます」的退化
+<ul>
+<li>（连体形退化）「です」和「ます」的连体形仅能用于接续助词，不能接续一般体言。这种退化甚至会影响后续接续的助动词，如「でした、ました」事实上也不能用于修饰一般体言</li>
+<li>（假定形退化）「ます」的假定形逐步被废弃</li>
+<li>（古语否定形式局限）「ます」否定式为「ません」，其后续继续接续词语的时候受限于活用已经严重退化的古语否定助动词「ん」从而往往无法形成合法表达</li>
+<li>（连用形退化）「です」的连用形接续接续助词「て」形成的「でして」虽然语法正确但是作者并未在实际语用中见过该表达（更多时候使用「～なので」等表达方式代替）</li>
+<li>（假定形缺失）「です」没有假定形，无法接续接续助词「ば」</li>
+</ul></li>
+</ul>
+<p>前面提到的「です」，事实上会在描述体言的时候让ですます体大量借用である体的表达。下表为描述体言的时候，三种语体相对应的若干词组：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">ですます体</th>
+<th style="text-align: center;">简体</th>
+<th style="text-align: center;">である体</th>
+<th style="text-align: center;">（であります体）</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">陈述</td>
+<td style="text-align: center;">花です</td>
+<td style="text-align: center;">花だ</td>
+<td style="text-align: center;">花である</td>
+<td style="text-align: center;">花であります</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">否定</td>
+<td style="text-align: center;">花ではありません</td>
+<td style="text-align: center;">花ではない</td>
+<td style="text-align: center;">花ではない</td>
+<td style="text-align: center;">花ではありません</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">过去</td>
+<td style="text-align: center;">花でした</td>
+<td style="text-align: center;">花だった</td>
+<td style="text-align: center;">花であった</td>
+<td style="text-align: center;">―</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">过去否定</td>
+<td style="text-align: center;">花ではありませんでした</td>
+<td style="text-align: center;">花ではなかった</td>
+<td style="text-align: center;">花ではなかった</td>
+<td style="text-align: center;">花ではありませんでした</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">推测</td>
+<td style="text-align: center;">花でしょう</td>
+<td style="text-align: center;">花だろう</td>
+<td style="text-align: center;">花であろう</td>
+<td style="text-align: center;">―</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">中顿</td>
+<td style="text-align: center;">花であって <br /> （花であり）</td>
+<td style="text-align: center;">花で</td>
+<td style="text-align: center;">花であり <br /> （花であって）</td>
+<td style="text-align: center;">花でありまして</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">否定中顿</td>
+<td style="text-align: center;">花ではなくて</td>
+<td style="text-align: center;">花ではなくて</td>
+<td style="text-align: center;">花ではなく</td>
+<td style="text-align: center;">―</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">连体</td>
+<td style="text-align: center;">花であること</td>
+<td style="text-align: center;">花であること <br /> （花なこと）</td>
+<td style="text-align: center;">花であること</td>
+<td style="text-align: center;">―</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">假定①</td>
+<td style="text-align: center;">花であれば</td>
+<td style="text-align: center;">花ならば</td>
+<td style="text-align: center;">花であれば</td>
+<td style="text-align: center;">―</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">假定②</td>
+<td style="text-align: center;">花であったら</td>
+<td style="text-align: center;">花だったら</td>
+<td style="text-align: center;">花であったら</td>
+<td style="text-align: center;">―</td>
+</tr>
+</tbody>
+</table>
+<p>语体需要注意的是，同一句话之中语体需要统一，不能混用语体，同一篇文章原则上也应当仅使用一种语体。</p>
+<p>最后我们需要说明的一点是，「である」现今已经越来越近似于「です」在部分情况下的替代品。其一，「である」内部可以插入副助词形成「で<strong>も</strong>ある、で<strong>しか</strong>ない」之类的表达。其二，在「です」缺乏合适的活用的时候的形成类似「であり<strong>たい</strong>、である<strong>べき</strong>」之类的表达。</p>
 <h1 id="练习参考答案">练习参考答案</h1>
 <p>本章节没有练习问题。</p>
 <div class="note info no-icon"><p>从这一章开始，应该再也没有练习问题了，因为作者出不出来好题目了。</p>
@@ -13173,6 +13364,113 @@ V_o &amp;\leftarrow (1 - \alpha_o)V_o + \alpha_o(o - \overline o)^2 \\
 <ul>
 <li>接续在动词（类动词助动词）第一连用形后，如「<strong>書き</strong>ながら、<strong>泳ぎ</strong>ながら、<strong>飛び</strong>ながら、<strong>られ</strong>ながら」</li>
 </ul>
+<p>该助词的主要含义是表示动作同时发生，与汉语中“一边...一边...”语义近似：</p>
+<ul>
+<li>お茶を飲み<strong>ながら</strong>、新聞を読んでいる。（边喝茶边看报）</li>
+<li>テレビを見<strong>ながら</strong>、ご飯を食べる。（边看电视边吃饭）</li>
+</ul>
+<h2 id="逆接关系ながら②">逆接关系「ながら②」</h2>
+<p>该助词接续在用言和助动词后的接续要求为：</p>
+<ul>
+<li>接续在表示存在的动词「ある、いる」的第一连用形后，如「<strong>あり</strong>ながら、<strong>い</strong>ながら」
+<ul>
+<li>作为这一规则的拓展，「～ている、～である」句式后接续该助词的时候形成「～て<strong>い</strong>ながら、～で<strong>あり</strong>ながら」</li>
+</ul></li>
+<li>接续在表示称谓、思维的动词「言う、思う、考える」等的第一连用形后，如「<strong>言い</strong>ながら、<strong>思い</strong>ながら、<strong>考え</strong>ながら」
+<ul>
+<li>此时「ながら」多和副助词「も」连用形成「ながらも」</li>
+</ul></li>
+<li>接续在形容词（类形容词助动词）的终止形后，如「<strong>高い</strong>ながら、<strong>ない</strong>ながら」</li>
+<li>接续在形容动词（类形容动词助动词）的词干后，如「<strong>好き</strong>ながら、<strong>そう</strong>ながら」</li>
+<li>接续在体言原形后，如「<strong>昔</strong>ながら」</li>
+</ul>
+<p>该助动词的主要含义是表现转折，并且语气一般较为强烈，即相较于「が②」或者「けれども」等相对委婉的转折而言强烈，其语气近似于「～のに、～のくせに」等表达：</p>
+<ul>
+<li>知ってい<strong>ながら</strong>、知らないふりしている。（明明知道，却一直装不知道）</li>
+<li>体が小さい<strong>ながら</strong>、なかなか力がある。（虽说身材小，但是力气也真大）</li>
+<li>このカメラは小型<strong>ながら</strong>、よく映る。（这相机虽说小型，但是拍照效果很好）</li>
+<li>難しいと言い<strong>ながら</strong><u>も</u>、テストで満点を取った。（虽然一直说难，但还是考了满分）</li>
+</ul>
+<div class="note info no-icon"><p>「ながら」无论是表示动作并列还是逆接，都有不少固定短语，这里列出部分：</p>
+<ul>
+<li>（动作并列）いつもながら、生まれながら、涙ながら</li>
+<li>（逆接）残念ながら、及ばずながら、失礼ながら、お粗末ながら、われながら</li>
+</ul>
+<p>这些词语部分甚至不符合接续要求，理应作为固定词组或者单独的一个单词处理。然而这些词语的合成词痕迹过于明显，本文依然将其视为助词「ながら」的应用，但是是一类例外。</p>
+</div>
+<h2 id="因果关系ので">因果关系「ので」</h2>
+<p>该助词接续在用言和助动词后的接续要求为：</p>
+<ul>
+<li>接续在动词（类动词助动词）连体形后，如「<strong>書く</strong>ので、<strong>泳ぐ</strong>ので、<strong>飛ぶ</strong>ので、<strong>られる</strong>ので」</li>
+<li>接续在形容词（类形容词助动词）连体形后，如「<strong>高い</strong>ので、<strong>ない</strong>ので」</li>
+<li>接续在形容动词（类形容动词助动词）连体形后，如「<strong>好きな</strong>ので、<strong>ような</strong>ので」</li>
+<li>可以与不规则助动词形成「<strong>です</strong>ので、<strong>ます</strong>ので、<strong>た</strong>ので、<strong>ん</strong>ので」等词组，但是不可以接续在表示推量或者意志的助动词「う、まい」之后</li>
+<li>通过助动词「だ」的连体形可以接续在体言原形后，如「<strong>中国人</strong><u>な</u>ので」</li>
+</ul>
+<p>该助词的核心语义是表达客观原因，其客观原因极强，导致含有主观因素（愿望、命令、推测、请求等）的类似「う、まい」等表达均很少与其连用：</p>
+<ul>
+<li>ちょっと外出します<strong>ので</strong>、留守をお願いします。（我得出个门，得麻烦你看个家）</li>
+<li>電車の事故がありました<strong>ので</strong>、遅れたのです。（因为电车出事故了，所以迟到了）</li>
+<li>中国人な<strong>ので</strong>、日本語が下手だ。（因为我是中国人，所以日语不太好）</li>
+</ul>
+<p>不过「～たいので」的表达一定程度上是可以接受的，这种时候与其称之为因果关系，更多时候近似于表达一种为了某种目标而做某一件事的语感：</p>
+<ul>
+<li>試験に合格したい<strong>ので</strong>、いつも勉強してます。（为了通过考试，我一直在学习）</li>
+</ul>
+<p>另外，由于主观性和客观性的对立，「から」可以和表示不确定的助词「か」连用而「ので」不能：</p>
+<ul>
+<li>昨日仕事やりすぎた<strong>からか</strong>、腰がすごく痛い。（昨天怕不是工作过头了，现在腰好疼）</li>
+</ul>
+<div class="note info no-icon"><p>「ので」在口语中经常约音为「んで」：</p>
+<ul>
+<li>中国人な<strong>んで</strong>、日本語が下手だ。（因为我是中国人，所以日语不太好）</li>
+<li>試験に合格したい<strong>んで</strong>、いつも勉強してる。（为了通过考试，我一直在学习）</li>
+</ul>
+</div>
+<h2 id="逆接关系のに">逆接关系「のに」</h2>
+<p>该助词接续在用言和助动词后的接续要求为：</p>
+<ul>
+<li>接续在动词（类动词助动词）连体形后，如「<strong>書く</strong>のに、<strong>泳ぐ</strong>のに、<strong>飛ぶ</strong>のに、<strong>られる</strong>のに」</li>
+<li>接续在形容词（类形容词助动词）连体形后，如「<strong>高い</strong>のに、<strong>ない</strong>のに」</li>
+<li>接续在形容动词（类形容动词助动词）连体形后，如「<strong>好きな</strong>のに、<strong>ような</strong>のに」</li>
+<li>可以与不规则助动词形成「<strong>です</strong>のに、<strong>ます</strong>のに、<strong>た</strong>のに、<strong>ん</strong>のに」等词组，「<strong>う</strong>のに、<strong>まい</strong>のに」相对而言较为少见</li>
+<li>通过助动词「だ」的连体形可以接续在体言原形后，如「<strong>中国人</strong><u>な</u>のに」</li>
+</ul>
+<p>该助词的核心语义是表达说话人对现状不满的语义，一般表达现状不符合预期的不满、遗憾、惊讶语气：</p>
+<ul>
+<li>大学生な<strong>のに</strong>、そんな小学生レベルの問題も解けないか？（明明是大学生，连这种小学生等级的问题都做不出来吗？）</li>
+<li>外は寒い<strong>のに</strong>、店内はエアコンがあるので暖かい。（外面虽然很冷，但是店里有空调就很暖和）</li>
+<li>まだ彼女のことが好きな<strong>のに</strong>、なぜそんなひどいことしたの？（明明你还喜欢她，为什么要做这么过分的事？）</li>
+<li>試合に勝った<strong>のに</strong>、全然嬉しくない。（明明赢了比赛，却开心不起来）</li>
+</ul>
+<h2 id="条件关系ば">条件关系「ば」</h2>
+<p>该助词接续在用言和助动词后的接续要求为：</p>
+<ul>
+<li>接续在任何具有假定形活用的用言或者助动词的假定形后，如「<strong>書け</strong>ば、<strong>られれ</strong>ば、<strong>高けれ</strong>ば、<strong>なけれ</strong>ば、<strong>好きなら</strong>ば、<strong>ようなら</strong>ば、<strong>ますれ</strong>ば、<strong>たら</strong>ば、<strong>ね</strong>ば」
+<ul>
+<li>形容动词（类形容动词助动词）以及助动词「た」的假定形接续「ば」后会形成「○○ならば、○○たらば」，这种结构中的「ば」倾向于省略</li>
+</ul></li>
+</ul>
+<div class="note info no-icon"><p>「○○ならば、○○たらば」结构中「ば」可省略的原因的一种解释如下。</p>
+<p>「なら、たら」假定形在成形过程中实际上已经吞并了助词「ば」，如古语的ナリ活用形容动词的假定形（已然形）语尾事实上是「なれ」，而现代日语的「なら」实际上是「なれ」接续「ば」后约音形成的，所以再在「なら」后面加「ば」实际上是重复的。但是为了让现代日语语法连贯，即假定形之后都可以加「ば」，「ならば、たらば」这种表达也是允许的，但是会显得不自然。但是近年来「ならば」在部分条件下也在慢慢被人接受。</p>
+</div>
+<p>该助词的核心语义是表达假定条件：</p>
+<ul>
+<li>素人なのに、背がそんなに高くなけれ<strong>ば</strong>バスケ部に入部は全然できないだろう？（明明还是新手，要不是个子那么高估计也进不了篮球部）</li>
+<li>余った食材があれ<strong>ば</strong>、晩ご飯は自分で作ろう。（要是还有多的食材的话，晚饭就自己做吧）</li>
+</ul>
+<p>不过该助词表达既定条件也是可行的，但是相对较少，且多出现在熟语等场景中：</p>
+<ul>
+<li>捨てる神あれ<strong>ば</strong>拾う神あり。（天无绝人之路）</li>
+<li>備えあれ<strong>ば</strong>憂いなし。（有备无患）</li>
+</ul>
+<p>此外，在「～いえば、～によれば」等表达中，该助词表达条件的语义较为微弱：</p>
+<ul>
+<li>そう<strong>いえば</strong>、昨日はあいつを見たんだ。（这么说的话，昨天我看见他了）</li>
+<li>情報<strong>によれば</strong>、敵は北にいる。（根据情报，敌人在北方）</li>
+</ul>
+<div class="note info no-icon"><p>现在，现代日语中用于表达条件的四大表达方式终于全部涉及，即「と、ば、たら、なら」，现在简单介绍这四种表达的区别。</p>
+</div>
 ]]></content>
       <categories>
         <category>【学习笔记】日语</category>
@@ -19368,6 +19666,19 @@ u_\psi(\mathcal{D}^{\rm tr}_{\mathcal{T}}, \theta) = \theta - \alpha\nabla_\thet
       </categories>
   </entry>
   <entry>
+    <title>直博招生专业面试的一些</title>
+    <url>/2022/09/14/phd-interview/</url>
+    <content><![CDATA[<p>2022 年 9 月 14 日，是清华大学计算机科学与技术系 2023 级免试攻读博士生招生专业面试。Holder 参加了这一场面试，然后人炸了。</p>
+<span id="more"></span>
+<p>今天面试本来就有点不安，最大的问题就是唯一能吹的一份挂了名的 SIGGRAPH 的文章实际上自己并没有参与特别核心的工作，而且做到一半就被拒了，所以实际上最后那段时间就在摆烂，组会吹水也不去了。</p>
+<p>然而，今天就是这么时运不济，面试的评委里同时有徐昆老师和胡事民老师。没听过组会吹水不敢乱说，但胡老师就喜欢捉着这些问。他要是具体问如何实现了我负责的代码部分，我倒是可以说不少，但是问我一些 Overview，说实话倒还真的不会。</p>
+<p>Holder 的科研真的毫无意义，毕竟自己就是如丧家之犬一般到处跑路。或许 Holder 真的就不应该硬头皮读这个博士，或许就该进厂上班了。</p>
+]]></content>
+      <categories>
+        <category>【杂谈】碎碎念</category>
+      </categories>
+  </entry>
+  <entry>
     <title>《Petal Letter》歌词试译</title>
     <url>/2022/10/27/petal-letter-lyrics/</url>
     <content><![CDATA[<p>秋枫老师发来的一份歌词，感觉挺有意思就试着自己翻译看看了。</p>
@@ -19417,19 +19728,6 @@ u_\psi(\mathcal{D}^{\rm tr}_{\mathcal{T}}, \theta) = \theta - \alpha\nabla_\thet
 ]]></content>
       <categories>
         <category>【杂谈】日语</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>直博招生专业面试的一些</title>
-    <url>/2022/09/14/phd-interview/</url>
-    <content><![CDATA[<p>2022 年 9 月 14 日，是清华大学计算机科学与技术系 2023 级免试攻读博士生招生专业面试。Holder 参加了这一场面试，然后人炸了。</p>
-<span id="more"></span>
-<p>今天面试本来就有点不安，最大的问题就是唯一能吹的一份挂了名的 SIGGRAPH 的文章实际上自己并没有参与特别核心的工作，而且做到一半就被拒了，所以实际上最后那段时间就在摆烂，组会吹水也不去了。</p>
-<p>然而，今天就是这么时运不济，面试的评委里同时有徐昆老师和胡事民老师。没听过组会吹水不敢乱说，但胡老师就喜欢捉着这些问。他要是具体问如何实现了我负责的代码部分，我倒是可以说不少，但是问我一些 Overview，说实话倒还真的不会。</p>
-<p>Holder 的科研真的毫无意义，毕竟自己就是如丧家之犬一般到处跑路。或许 Holder 真的就不应该硬头皮读这个博士，或许就该进厂上班了。</p>
-]]></content>
-      <categories>
-        <category>【杂谈】碎碎念</category>
       </categories>
   </entry>
   <entry>
