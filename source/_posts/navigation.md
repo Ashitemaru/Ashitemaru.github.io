@@ -12,7 +12,7 @@ category:
 
 主要课程项目包括《现代密码学》的 SHARNN 哈希函数，《搜索引擎技术基础》的 LSE Frontend，《专业实践》的 Minkowski Calculator。除最后一个项目外，前两个项目均在 Github 开源。
 
-打日麻，打音游，主修 osu! mania 等下落式音游，街机音游均不擅长。正在尝试舞萌 DX 即 maimai。雀魂账号和 osu! mania 账号名均为 Ashitemaru。
+打日麻，打音游，主修 osu! mania 等下落式音游，街机音游目前主修舞萌 DX 即 maimai。雀魂账号和 osu! mania 账号名均为 Ashitemaru，maimai 国服账号为 ASTMR。
 
 V+ 人，推 Giga、utsu-P 等曲风激烈的 P 主，没有歌姬倾向，抒情曲也会听。
 
