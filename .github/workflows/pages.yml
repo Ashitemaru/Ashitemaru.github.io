@@ -32,6 +32,7 @@ jobs:
           npm install
           npm un hexo-renderer-marked
           npm i hexo-renderer-pandoc
+          sudo apt-get install pandoc
       - name: Build
         run: npm run build
       - name: Deploy
