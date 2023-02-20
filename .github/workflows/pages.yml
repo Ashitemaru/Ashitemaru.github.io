@@ -28,7 +28,7 @@ jobs:
           restore-keys: |
             ${{ runner.OS }}-npm-cache
       - name: Install Dependencies
-        script:
+        run:
           - npm install
           - npm un hexo-renderer-marked
           - npm i hexo-renderer-pandoc
