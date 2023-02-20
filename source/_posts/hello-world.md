@@ -11,7 +11,7 @@ category:
 
 <!-- more -->
 
-首先玩玩代码块，自然首先试试 cpp。
+首先玩玩代码块，自然首先试试 CPP。
 
 {% codeblock lang:cpp C++ %}
 #include <iostream>
