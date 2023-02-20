@@ -18,3 +18,40 @@ mathjax: true
 
 - 迁移好服务器上的数据，跑上实验
 - 确认小程序的商品列表页面写完，check 一下 yfgg 那边给的信息
+
+本来以为迁移数据是小工作，结果发现还挺麻烦，在经历了实验室机子硬盘满了换挂载之后，我发现我测试集好像没了，现在只能想办法去把这个测试集找出来了。
+
+最终还是把测试集找出来了，之前写 Pensieve PyTorch 的时候用了这个数据集然后忘了 ignore 传到了 Github 上，只能说感谢当时比较粗心了。
+
+另外就是老师又把我拉到了一个项目的工作群里面，事情又要多起来。之后就是用新 Puffer 数据训练出来的模型依然是炸裂状态，洗数据的脚本不知道为什么很慢，而且估计还是有问题。自己个人网站的 CI 也不知道为啥停了三个星期没动。我现在真的是，完全不知道从哪里下手。
+
+---
+
+现在洗数据的脚本慢的问题居然莫名其妙解决了，并且顺带学了一个 Python 的小知识。
+
+洗数据有个非常经典的操作，就是不断向一个列表之中 append 数据，正常都会这么写：
+
+{% codeblock lang:python Python %}
+batch = []
+
+for data in tqdm(data_reader):
+    # Process
+
+    batch.append(data_item)
+{% endcodeblock %}
+
+然而由于取字段运算符（就是 `batch.append` 中的 `.` 运算符）事实上在 Python 中占用的资源很大，所以事实上用下面的写法速度会快很多很多：
+
+{% codeblock lang:python Python %}
+batch = []
+add_data = batch.append
+
+for data in tqdm(data_reader):
+    # Process
+
+    add_data(data_item)
+{% endcodeblock %}
+
+我的数据大约是 $10^6$ 量级，然后每次都需要对四个列表 append，改用这个写法直接让洗数据时间从近三个小时变成了两分钟左右。
+
+这种改进方法有个需要注意的地方就是不能改变 `batch` 所指向的内存，否则先前的 `add_data` 将无法正确修改 `batch` 中的内容。比如 `batch = batch[: -1]` 之类的重新指向的写法就不能在循环体内出现。
