@@ -396,7 +396,7 @@ $(function () {
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1k</span>
+      <span>1.1k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -434,6 +434,8 @@ $(function () {
 <figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">batch = []</span><br><span class="line">add_data = batch.append</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> data <span class="keyword">in</span> tqdm(data_reader):</span><br><span class="line">    <span class="comment"># Process</span></span><br><span class="line"></span><br><span class="line">    add_data(data_item)</span><br></pre></td></tr></table></figure>
 <p>我的数据大约是 <span class="math inline">\(10^6\)</span> 量级，然后每次都需要对四个列表 append，改用这个写法直接让洗数据时间从近三个小时变成了两分钟左右。</p>
 <p>这种改进方法有个需要注意的地方就是不能改变 <code>batch</code> 所指向的内存，否则先前的 <code>add_data</code> 将无法正确修改 <code>batch</code> 中的内容。比如 <code>batch = batch[: -1]</code> 之类的重新指向的写法就不能在循环体内出现。</p>
+<hr />
+<p>最后发现个人网站 CI 不动的原因是 Travis CI 收费了，而我自然是欠费的。那么，只能用免费的 Github Actions 了，虽然要把仓库内容给 Github 去训练 Copilot，但反正我这个个人网站他能学到个什么呢？</p>
 
     </div>
 
@@ -484,7 +486,7 @@ $(function () {
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">427k</span>
+    <span title="站点总字数">428k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
