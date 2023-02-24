@@ -549,3 +549,90 @@ g \circ \cdots \circ h \circ h \circ g(1) = \dfrac{p}{q}
 $$
 
 据之前的证明，$g \circ \cdots \circ h \circ h \circ g(1)$ 显然在数列 $\{a_n\}_{n \geq 1}$ 内，证明完毕。
+
+# Problem 9
+
+(Credit to 2023 某四省联考数学试卷)
+
+椭圆曲线可以用于区块链等技术中的加密环节。
+
+定义椭圆曲线 $C$：
+
+$$
+C := \{(x, y): y^2 = x^3 + ax + b, 4a^3 + 27b^2 \neq 0\}
+$$
+
+定义两个运算：
+
+- 运算 $\tilde{\cdot}: C \to C$。令 $\tilde{P} \in C$ 是 $P \in C$ 关于 $x$ 轴的对称点
+- 运算 $\oplus: C^2 \to C$。对 $P, Q \in C$：
+    - 若直线 $PQ$ 与 $C$ 有第三个交点 $R \in C$，令 $P \oplus Q = \tilde{R}$
+    - 若直线 $PQ$ 与 $C$ 相切且切点为 $P$，定义 $P \oplus Q = \tilde{P}$
+    - 定义 $P \oplus \tilde{P} = 0^*$ 以及 $P \oplus 0^* = 0^* \oplus P = 0^*$
+
+1. 已知 $\oplus$ 满足交换律、结合律，对于与曲线 $C$ 相切于 $P$ 的直线 $PQ$，其中 $P, Q \in C$，证明 $P \oplus P = \tilde{Q}$
+2. 已知 $P(x_1, y_1), Q(x_2, y_2) \in C$，且 $PQ$ 与 $C$ 有第三个交点，求 $P \oplus Q$ 坐标
+
+## Solution
+
+Subproblem 1.
+
+我们考虑式子 $P \oplus P \oplus Q \oplus \tilde{Q}$，据结合律：
+
+$$
+\begin{aligned}
+P \oplus P \oplus Q \oplus \tilde{Q} &= (P \oplus P) \oplus (Q \oplus \tilde{Q}) = (P \oplus P) \oplus 0^* = P \oplus P
+\end{aligned}
+$$
+
+另据结合律：
+
+$$
+\begin{aligned}
+P \oplus P \oplus Q \oplus \tilde{Q} &= P \oplus (P \oplus Q) \oplus \tilde{Q}
+\end{aligned}
+$$
+
+又 $PQ$ 与 $C$ 相切于 $P$，故 $P \oplus Q = \tilde{P}$，所以：
+
+$$
+\begin{aligned}
+P \oplus P \oplus Q \oplus \tilde{Q} &= P \oplus \tilde{P} \oplus \tilde{Q} = 0^* \oplus \tilde{Q} = \tilde{Q}
+\end{aligned}
+$$
+
+Subproblem 2.
+
+设 $PQ$ 与曲线 $C$ 的第三个交点 $R$ 坐标为 $(x_3, y_3)$，那么 $P \oplus Q$ 的坐标为 $(x_3, -y_3)$。
+
+从而 $y_i^2 = x_i^3 + ax_i + b, i \in \{1, 2, 3\}$。作差：
+
+$$
+\begin{cases}
+y_3^2 - y_2^2 = (x_3^3 - x_2^3) + a(x_3 - x_2) \\
+y_3^2 - y_1^2 = (x_3^3 - x_1^3) + a(x_3 - x_1) \\
+\end{cases}
+$$
+
+若令 $PQ$ 的斜率为 $k$（斜率必然存在，否则 $R$ 不存在），则有：
+
+$$
+\begin{cases}
+k(y_3 + y_2) = x_3^2 + x_2x_3 + x_2^2 + a \\
+k(y_3 + y_1) = x_3^2 + x_1x_3 + x_1^2 + a \\
+\end{cases}
+$$
+
+再作差：
+
+$$
+k(y_2 - y_1) = x_3(x_2 - x_1) + (x_2^2 - x_1^2) \Rightarrow k^2 = x_1 + x_2 + x_3
+$$
+
+从而就可以得到 $x_3$，基于此得到 $y_3$ 的计算则很简单了。
+
+## Comment
+
+这题我还是有些话想说的，我感觉这道题出得很新，但我并不觉得很好。因为很多学生会对这个运算是否是良定义产生疑问，进而在解题的时候对一些地方畏手畏脚，尤其是优等生会产生这种现象。
+
+而且基于一个很新的背景出运算题，说实话，没什么意思。
