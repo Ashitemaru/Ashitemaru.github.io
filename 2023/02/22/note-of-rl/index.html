@@ -226,7 +226,7 @@ $(function () {
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E4%B8%8E%E5%9F%BA%E6%9C%AC%E4%BC%98%E5%8C%96%E7%90%86%E8%AE%BA"><span class="nav-number">1.</span> <span class="nav-text">强化学习的基本概念与基本优化理论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E4%B8%8E%E7%AD%96%E7%95%A5"><span class="nav-number">1.1.</span> <span class="nav-text">环境与策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%AF%E8%AE%A1%E6%94%B6%E7%9B%8A%E4%B8%8E%E4%BB%B7%E5%80%BC%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.</span> <span class="nav-text">累计收益与价值函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E4%BC%98%E5%8C%96%E7%90%86%E8%AE%BA"><span class="nav-number">1.3.</span> <span class="nav-text">基本优化理论</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dynamic-programming-dp"><span class="nav-number">2.</span> <span class="nav-text">Dynamic Programming (DP)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#policy-iteration-pi"><span class="nav-number">2.1.</span> <span class="nav-text">Policy Iteration (PI)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#value-iteration-vi"><span class="nav-number">2.2.</span> <span class="nav-text">Value Iteration (VI)</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E4%B8%8E%E5%9F%BA%E6%9C%AC%E4%BC%98%E5%8C%96%E7%90%86%E8%AE%BA"><span class="nav-number">1.</span> <span class="nav-text">强化学习的基本概念与基本优化理论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E4%B8%8E%E7%AD%96%E7%95%A5"><span class="nav-number">1.1.</span> <span class="nav-text">环境与策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%AF%E8%AE%A1%E6%94%B6%E7%9B%8A%E4%B8%8E%E4%BB%B7%E5%80%BC%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.</span> <span class="nav-text">累计收益与价值函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E4%BC%98%E5%8C%96%E7%90%86%E8%AE%BA"><span class="nav-number">1.3.</span> <span class="nav-text">基本优化理论</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dynamic-programming-dp"><span class="nav-number">2.</span> <span class="nav-text">Dynamic Programming (DP)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#policy-iteration-pi"><span class="nav-number">2.1.</span> <span class="nav-text">Policy Iteration (PI)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#value-iteration-vi"><span class="nav-number">2.2.</span> <span class="nav-text">Value Iteration (VI)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%E5%85%B3-pi-%E5%92%8C-vi-%E7%9A%84%E4%B8%80%E4%BA%9B%E5%AF%B9%E6%AF%94"><span class="nav-number">2.3.</span> <span class="nav-text">有关 PI 和 VI 的一些对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%E5%85%B3-bellman-%E7%AE%97%E5%AD%90%E7%9A%84%E6%8B%93%E5%B1%95"><span class="nav-number">2.4.</span> <span class="nav-text">有关 Bellman 算子的拓展</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -396,14 +396,14 @@ $(function () {
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>12k</span>
+      <span>16k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>11 分钟</span>
+      <span>14 分钟</span>
     </span>
 </div>
 
@@ -648,6 +648,100 @@ V^\pi(s) \leq \Eop_{\tau \sim \pi&#39;}[{\color{red} r_{t + 1} + \gamma r^{t + 2
 <p>重复该迭代直到收敛，即可获得最优状态价值函数。基于最优状态价值函数，可以推知最优策略，从而算法求解完毕。</p>
 <p>这里需要说明的一点是，使用值迭代求解的时候，策略是比价值函数先收敛的。这一点是显然的，因为通过价值函数获取对应的策略是贪心的。从而，在价值函数还未实际完全收敛的时候，各个状态的价值大小关系很有可能已经确定且不变化，从而从这一时间点开始，推知的策略都不会发生变化，理论上都是最优策略。</p>
 <p>值迭代的时间复杂度为 <span class="math inline">\(O(|\mathcal{S}|^2|\mathcal{A}|)\)</span>。</p>
+<h2 id="有关-pi-和-vi-的一些对比">有关 PI 和 VI 的一些对比</h2>
+<p>事实上基于 Bellman 方程而言，VI 方法是最直观也是最容易想到的，因为通过迭代法求解有递归结构的方程确实是一种很常见的方法。然而 VI 的两个特点也是限制其运用的缺陷，即<strong>策略早于价值函数收敛</strong>和<strong>复杂度较高</strong>。</p>
+<p>前者事实上是 VI 的一个致命缺陷，因为从根本上而言我们需要获取的是最优策略，具体的价值函数可能并不关注，或者至少不是最主要目标。另外，高复杂度也让 VI 的实际运算难度较高，而这也一定程度上催生了 PI 方法。</p>
+<p>VI 在运算过程中有一步涉及到了 <span class="math inline">\(\max_{a \in \A}\)</span>，这需要遍历行为空间却没有有效利用遍历的信息（仅取了最大值）。那么一个显然的性能换时间的操作就是我们取一个并非最优但足够优的策略 <span class="math inline">\(\pi: \S \to \A\)</span>，直接用 <span class="math inline">\(a := \pi(s)\)</span> 代替掉 <span class="math inline">\(a := \argmax_{a \in \A}\)</span>，这样复杂度直接就降低到 <span class="math inline">\(O(|\S|^2)\)</span>。</p>
+<p>为了保证 <span class="math inline">\(\pi\)</span> 能够足够优，那我们可以两路并进，一路优化 <span class="math inline">\(\pi\)</span>，一路更新 <span class="math inline">\(V^\pi\)</span>，从而我们就得到了 PI 方法。PI 方法在部分条件下会比 VI 方法收敛快很多，并且我们依然可以证明 PI 理论可以得到最优策略。</p>
+<h2 id="有关-bellman-算子的拓展">有关 Bellman 算子的拓展</h2>
+<p>如果仔细观察 Bellman 方程，其事实上就是一个线性方程：</p>
+<p><span class="math display">\[
+{\color{red} V^\pi(s)} = \sum_{a \in \A} \pi(a \mid s) \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a)[r(s, a, s&#39;) + \gamma {\color{red} V^\pi(s&#39;)}]
+\]</span></p>
+<p>首先作一些记号简化：</p>
+<p><span class="math display">\[
+\begin{aligned}
+\P^\pi(s&#39; \mid s) &amp;:= \sum_{a \in \A} \pi(a \mid s)\Pe(s&#39; \mid s, a) \\
+r^\pi(s) &amp;:= \sum_{a \in \A} \pi(a \mid s) \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a)r(s, a, s&#39;) \\
+\end{aligned}
+\]</span></p>
+<p>得到：</p>
+<p><span class="math display">\[
+{\color{red} V^\pi(s)} = r^\pi(s) + \gamma\sum_{s&#39; \in \S} \P^\pi(s&#39; \mid s){\color{red} V^\pi(s&#39;)}
+\]</span></p>
+<p>如果记 <span class="math inline">\(\S = \{s_1, s_2, \cdots, s_n\}, n = |\mathcal{S}|\)</span>，并定义矩阵：</p>
+<p><span class="math display">\[
+\begin{aligned}
+\b{V}^\pi &amp;:= (v^\pi_i)^T_{n} \in \mathbb{R}^n &amp;&amp; v^\pi_i := V^\pi(s_i) \\
+\b{R}^\pi &amp;:= (r^\pi_i)^T_{n} \in \mathbb{R}^n &amp;&amp; r^\pi_i := r^\pi(s_i) \\
+\b{P}^\pi &amp;:= (p^\pi_{ij})_{n \times n} \in \mathbb{R}^{n \times n} &amp;&amp; p^\pi_{ij} := \P^\pi(s_j \mid s_i) \\
+\end{aligned}
+\]</span></p>
+<p>那么 Bellman 方程等价于：</p>
+<p><span class="math display">\[
+\b{V}^\pi = \b{R}^\pi + \gamma\b{P}^\pi\b{V}^\pi \Rightarrow (I - \gamma\b{P}^\pi)\b{V}^\pi = \b{R}^\pi
+\]</span></p>
+<p>这里就可以引入 Bellman 算子：</p>
+<p><span class="math display">\[
+\mathcal{T}^\pi(\b{x}) := \b{R}^\pi + \gamma\b{P}^\pi\b{x}
+\]</span></p>
+<p>如果状态空间足够小，那么在 PI 的策略评估阶段，事实上完全可以通过求解上述线性方程组解的方式得到策略的价值函数。</p>
+<p>除了 Bellman 算子，还可以从最优 Bellman 方程引入最优 Bellman 算子。首先依然是定义矩阵：</p>
+<p><span class="math display">\[
+\begin{aligned}
+\b{V}^\star &amp;:= (v^\star_i)^T_{n} \in \mathbb{R}^n &amp;&amp; v^\star_i := V^\star(s_i) \\
+\b{R}(a) &amp;:= (r_i(a))^T_{n} \in \mathbb{R}^n &amp;&amp; r_i(a) := \sum_{s_j \in \S} \Pe(s_j \mid s_i, a)r(s_i, a, s_j) \\
+\b{P}(a) &amp;:= (p_{ij}(a))_{n \times n} \in \mathbb{R}^{n \times n} &amp;&amp; p_{ij}(a) := \Pe(s_j \mid s_i, a) \\
+\end{aligned}
+\]</span></p>
+<p>那么最优 Bellman 算子就定义为：</p>
+<p><span class="math display">\[
+\mathcal{T}^\star(\b{x}) := \max_{a \in \A}(\b{R}(a) + \gamma\b{P}(a)\b{x})
+\]</span></p>
+<p>现在我们需要证明一个我们并没有严格说明的引理，即使用迭代法求解价值函数的合法性，无论是 PI 中策略评估还是 VI 求最优价值函数本身。事实上，这两者本质相同，其都在求解 Bellman 算子的不动点，只不过一个是一般 Bellman 算子，一个是最优 Bellman 算子。这里以最优 Bellman 算子为例进行证明。</p>
+<p>证明的主要思想就是 Banach 空间不动点定理。</p>
+<div class="note info no-icon"><p><strong>Theorem 2.02 (Banach Fixed-point Theorem)</strong> 给定完备度量空间 <span class="math inline">\(X\)</span> 以及其范数 <span class="math inline">\(d\)</span>，假设 <span class="math inline">\(f: X \to X\)</span> 是一个压缩映射，即存在 <span class="math inline">\(\gamma \in [0, 1)\)</span> 令 <span class="math inline">\(\forall x_1, x_2 \in X\)</span> 都有：</p>
+<p><span class="math display">\[
+d(f(x_1), f(x_2)) \leq \gamma d(x_1, x_2)
+\]</span></p>
+<p>那么 <span class="math inline">\(f\)</span> 在 <span class="math inline">\(X\)</span> 上存在唯一不动点 <span class="math inline">\(x^*\)</span>。</p>
+<p>该不动点满足，任取 <span class="math inline">\(x_0 \in X\)</span>，定义序列 <span class="math inline">\(\{x_n\}_{n \geq 0}\)</span>，其中 <span class="math inline">\(x_{n + 1} = f(x_n), n \geq 0\)</span>，那么该序列必然收敛到 <span class="math inline">\(x^*\)</span>。</p>
+</div>
+<p>证明是简单的。首先我们任取 <span class="math inline">\(x_0 \in X\)</span>，考虑对 <span class="math inline">\(m &gt; n\)</span>：</p>
+<p><span class="math display">\[
+\begin{aligned}
+d(f^{(m)}(x_0), f^{(n)}(x_0)) &amp;\leq d(f^{(m)}(x_0), f^{(m - 1)}(x_0)) + d(f^{(m - 1)}(x_0), f^{(m - 2)}(x_0)) + \cdots + d(f^{(n + 1)}(x_0), f^{(n)}(x_0)) \\
+&amp;\leq \gamma^{m - 1}d(f(x_0), x_0) + \gamma^{m - 2}d(f(x_0), x_0) + \cdots + \gamma^nd(f(x_0), x_0) \\
+&amp;\leq \dfrac{\gamma^n}{1 - \gamma}d(f(x_0), x_0) \\
+\end{aligned}
+\]</span></p>
+<p>也就是无论给多紧的界，我总能令 <span class="math inline">\(n\)</span> 充分大满足上界约束，从而该序列是 Cauchy 序列，在完备度量空间上其自然是收敛的。</p>
+<p>假定这个序列收敛到 <span class="math inline">\(x^*\)</span>，我们需要说明 <span class="math inline">\(x^*\)</span> 是 <span class="math inline">\(f\)</span> 的不动点以及其唯一性。其是不动点是容易的，考虑：</p>
+<p><span class="math display">\[
+0 \leq d(x_{n + 1}, f(x^*)) = d(f(x_n), f(x^*)) \leq \gamma d(x_n, x^*)
+\]</span></p>
+<p>由于 <span class="math inline">\(n \to \infty\)</span> 时 <span class="math inline">\(d(x_n, x^*) \to 0\)</span>，这说明 <span class="math inline">\(d(x_{n + 1}, f(x^*)) \to 0\)</span>，也就说明 <span class="math inline">\(f(x^*)\)</span> 也是序列 <span class="math inline">\(\{x_n\}_{n \geq 0}\)</span> 的极限，据极限的唯一性，不动点得证。</p>
+<p>唯一性则据反证。若存在第二个不动点 <span class="math inline">\(f(y) = y\)</span>，那么：</p>
+<p><span class="math display">\[
+d(x^*, y) = d(f(x^*), f(y)) \leq \gamma d(x^*, y) \Rightarrow (1 - \gamma)d(x^*, y) \leq 0
+\]</span></p>
+<p>上述约束仅有 <span class="math inline">\(y = x^*\)</span> 时成立，唯一性得证。</p>
+<hr />
+<p>基于该引理，我们只需要说明最优 Bellman 算子也满足引理所述条件即可。在空间 <span class="math inline">\(\mathcal{S}\)</span> 上取其 <span class="math inline">\(L^{\infty}\)</span> 范数（即各分量最大值）。我们证明最优 Bellman 算子是压缩的：</p>
+<p><span class="math display">\[
+\begin{aligned}
+\|\mathcal{T}^\star(\b{V}_1) - \mathcal{T}^\star(\b{V}_2)\|_\infty &amp;= \left\|\max_{a \in \A}(\b{R}(a) + \gamma\b{P}(a)\b{V}_1) - \max_{a \in \A}(\b{R}(a) + \gamma\b{P}(a)\b{V}_2)\right\|_\infty \\
+&amp;\leq \left\|\max_{a \in \A}(\b{R}(a) + \gamma\b{P}(a)\b{V}_1 - \b{R}(a) - \gamma\b{P}(a)\b{V}_2)\right\|_\infty \\
+&amp;= \gamma\left\|\max_{a \in \A}(\b{P}(a)(\b{V}_1 - \b{V}_2))\right\|_\infty \\
+&amp;\leq \gamma\|\b{V}_1 - \b{V}_2\|_\infty
+\end{aligned}
+\]</span></p>
+<p>最后一个不等号源于 <span class="math inline">\(\b{P}(a)\)</span> 矩阵中，每一行的元素之和必然为 <span class="math inline">\(1\)</span>。如果假设 <span class="math inline">\(\b{V}_1 - \b{V}_2\)</span> 各元素中最大为 <span class="math inline">\(p\)</span>（亦其 <span class="math inline">\(L^\infty\)</span> 范数），那么 <span class="math inline">\(\b{P}(a)(\b{V}_1 - \b{V}_2)\)</span> 每一个元素都不会大于 <span class="math inline">\(p\)</span>。</p>
+<p>从而得证。</p>
+<p>事实上我们有下述定理，描述了迭代法求解的正确性。对于任意初始化的 <span class="math inline">\(\b{V}_0\)</span>：</p>
+<p><span class="math display">\[
+\lim_{n \to \infty} \mathcal{T}^{\pi(n)}\b{V}_0 = \b{V}^\pi, \lim_{n \to \infty} \mathcal{T}^{\star(n)}\b{V}_0 = \b{V}^\star
+\]</span></p>
 
     </div>
 
@@ -698,13 +792,13 @@ V^\pi(s) \leq \Eop_{\tau \sim \pi&#39;}[{\color{red} r_{t + 1} + \gamma r^{t + 2
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">392k</span>
+    <span title="站点总字数">396k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">5:56</span>
+    <span title="站点阅读时长">6:01</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
