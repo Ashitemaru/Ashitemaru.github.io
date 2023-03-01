@@ -348,3 +348,143 @@ $$
 这里需要说明的一点是，使用值迭代求解的时候，策略是比价值函数先收敛的。这一点是显然的，因为通过价值函数获取对应的策略是贪心的。从而，在价值函数还未实际完全收敛的时候，各个状态的价值大小关系很有可能已经确定且不变化，从而从这一时间点开始，推知的策略都不会发生变化，理论上都是最优策略。
 
 值迭代的时间复杂度为 $O(|\mathcal{S}|^2|\mathcal{A}|)$。
+
+## 有关 PI 和 VI 的一些对比
+
+事实上基于 Bellman 方程而言，VI 方法是最直观也是最容易想到的，因为通过迭代法求解有递归结构的方程确实是一种很常见的方法。然而 VI 的两个特点也是限制其运用的缺陷，即**策略早于价值函数收敛**和**复杂度较高**。
+
+前者事实上是 VI 的一个致命缺陷，因为从根本上而言我们需要获取的是最优策略，具体的价值函数可能并不关注，或者至少不是最主要目标。另外，高复杂度也让 VI 的实际运算难度较高，而这也一定程度上催生了 PI 方法。
+
+VI 在运算过程中有一步涉及到了 $\max_{a \in \A}$，这需要遍历行为空间却没有有效利用遍历的信息（仅取了最大值）。那么一个显然的性能换时间的操作就是我们取一个并非最优但足够优的策略 $\pi: \S \to \A$，直接用 $a := \pi(s)$ 代替掉 $a := \argmax_{a \in \A}$，这样复杂度直接就降低到 $O(|\S|^2)$。
+
+为了保证 $\pi$ 能够足够优，那我们可以两路并进，一路优化 $\pi$，一路更新 $V^\pi$，从而我们就得到了 PI 方法。PI 方法在部分条件下会比 VI 方法收敛快很多，并且我们依然可以证明 PI 理论可以得到最优策略。
+
+## 有关 Bellman 算子的拓展
+
+如果仔细观察 Bellman 方程，其事实上就是一个线性方程：
+
+$$
+{\color{red} V^\pi(s)} = \sum_{a \in \A} \pi(a \mid s) \sum_{s' \in \S} \Pe(s' \mid s, a)[r(s, a, s') + \gamma {\color{red} V^\pi(s')}]
+$$
+
+首先作一些记号简化：
+
+$$
+\begin{aligned}
+\P^\pi(s' \mid s) &:= \sum_{a \in \A} \pi(a \mid s)\Pe(s' \mid s, a) \\
+r^\pi(s) &:= \sum_{a \in \A} \pi(a \mid s) \sum_{s' \in \S} \Pe(s' \mid s, a)r(s, a, s') \\
+\end{aligned}
+$$
+
+得到：
+
+$$
+{\color{red} V^\pi(s)} = r^\pi(s) + \gamma\sum_{s' \in \S} \P^\pi(s' \mid s){\color{red} V^\pi(s')}
+$$
+
+如果记 $\S = \{s_1, s_2, \cdots, s_n\}, n = |\mathcal{S}|$，并定义矩阵：
+
+$$
+\begin{aligned}
+\b{V}^\pi &:= (v^\pi_i)^T_{n} \in \mathbb{R}^n && v^\pi_i := V^\pi(s_i) \\
+\b{R}^\pi &:= (r^\pi_i)^T_{n} \in \mathbb{R}^n && r^\pi_i := r^\pi(s_i) \\
+\b{P}^\pi &:= (p^\pi_{ij})_{n \times n} \in \mathbb{R}^{n \times n} && p^\pi_{ij} := \P^\pi(s_j \mid s_i) \\
+\end{aligned}
+$$
+
+那么 Bellman 方程等价于：
+
+$$
+\b{V}^\pi = \b{R}^\pi + \gamma\b{P}^\pi\b{V}^\pi \Rightarrow (I - \gamma\b{P}^\pi)\b{V}^\pi = \b{R}^\pi
+$$
+
+这里就可以引入 Bellman 算子：
+
+$$
+\mathcal{T}^\pi(\b{x}) := \b{R}^\pi + \gamma\b{P}^\pi\b{x}
+$$
+
+如果状态空间足够小，那么在 PI 的策略评估阶段，事实上完全可以通过求解上述线性方程组解的方式得到策略的价值函数。
+
+除了 Bellman 算子，还可以从最优 Bellman 方程引入最优 Bellman 算子。首先依然是定义矩阵：
+
+$$
+\begin{aligned}
+\b{V}^\star &:= (v^\star_i)^T_{n} \in \mathbb{R}^n && v^\star_i := V^\star(s_i) \\
+\b{R}(a) &:= (r_i(a))^T_{n} \in \mathbb{R}^n && r_i(a) := \sum_{s_j \in \S} \Pe(s_j \mid s_i, a)r(s_i, a, s_j) \\
+\b{P}(a) &:= (p_{ij}(a))_{n \times n} \in \mathbb{R}^{n \times n} && p_{ij}(a) := \Pe(s_j \mid s_i, a) \\
+\end{aligned}
+$$
+
+那么最优 Bellman 算子就定义为：
+
+$$
+\mathcal{T}^\star(\b{x}) := \max_{a \in \A}(\b{R}(a) + \gamma\b{P}(a)\b{x})
+$$
+
+现在我们需要证明一个我们并没有严格说明的引理，即使用迭代法求解价值函数的合法性，无论是 PI 中策略评估还是 VI 求最优价值函数本身。事实上，这两者本质相同，其都在求解 Bellman 算子的不动点，只不过一个是一般 Bellman 算子，一个是最优 Bellman 算子。这里以最优 Bellman 算子为例进行证明。
+
+证明的主要思想就是 Banach 空间不动点定理。
+
+{% note info no-icon %}
+**Theorem 2.02 (Banach Fixed-point Theorem)** 给定完备度量空间 $X$ 以及其范数 $d$，假设 $f: X \to X$ 是一个压缩映射，即存在 $\gamma \in [0, 1)$ 令 $\forall x_1, x_2 \in X$ 都有：
+
+$$
+d(f(x_1), f(x_2)) \leq \gamma d(x_1, x_2)
+$$
+
+那么 $f$ 在 $X$ 上存在唯一不动点 $x^*$。
+
+该不动点满足，任取 $x_0 \in X$，定义序列 $\{x_n\}_{n \geq 0}$，其中 $x_{n + 1} = f(x_n), n \geq 0$，那么该序列必然收敛到 $x^*$。
+{% endnote %}
+
+证明是简单的。首先我们任取 $x_0 \in X$，考虑对 $m > n$：
+
+$$
+\begin{aligned}
+d(f^{(m)}(x_0), f^{(n)}(x_0)) &\leq d(f^{(m)}(x_0), f^{(m - 1)}(x_0)) + d(f^{(m - 1)}(x_0), f^{(m - 2)}(x_0)) + \cdots + d(f^{(n + 1)}(x_0), f^{(n)}(x_0)) \\
+&\leq \gamma^{m - 1}d(f(x_0), x_0) + \gamma^{m - 2}d(f(x_0), x_0) + \cdots + \gamma^nd(f(x_0), x_0) \\
+&\leq \dfrac{\gamma^n}{1 - \gamma}d(f(x_0), x_0) \\
+\end{aligned}
+$$
+
+也就是无论给多紧的界，我总能令 $n$ 充分大满足上界约束，从而该序列是 Cauchy 序列，在完备度量空间上其自然是收敛的。
+
+假定这个序列收敛到 $x^*$，我们需要说明 $x^*$ 是 $f$ 的不动点以及其唯一性。其是不动点是容易的，考虑：
+
+$$
+0 \leq d(x_{n + 1}, f(x^*)) = d(f(x_n), f(x^*)) \leq \gamma d(x_n, x^*)
+$$
+
+由于 $n \to \infty$ 时 $d(x_n, x^*) \to 0$，这说明 $d(x_{n + 1}, f(x^*)) \to 0$，也就说明 $f(x^*)$ 也是序列 $\{x_n\}_{n \geq 0}$ 的极限，据极限的唯一性，不动点得证。
+
+唯一性则据反证。若存在第二个不动点 $f(y) = y$，那么：
+
+$$
+d(x^*, y) = d(f(x^*), f(y)) \leq \gamma d(x^*, y) \Rightarrow (1 - \gamma)d(x^*, y) \leq 0
+$$
+
+上述约束仅有 $y = x^*$ 时成立，唯一性得证。
+
+---
+
+基于该引理，我们只需要说明最优 Bellman 算子也满足引理所述条件即可。在空间 $\mathcal{S}$ 上取其 $L^{\infty}$ 范数（即各分量最大值）。我们证明最优 Bellman 算子是压缩的：
+
+$$
+\begin{aligned}
+\|\mathcal{T}^\star(\b{V}_1) - \mathcal{T}^\star(\b{V}_2)\|_\infty &= \left\|\max_{a \in \A}(\b{R}(a) + \gamma\b{P}(a)\b{V}_1) - \max_{a \in \A}(\b{R}(a) + \gamma\b{P}(a)\b{V}_2)\right\|_\infty \\
+&\leq \left\|\max_{a \in \A}(\b{R}(a) + \gamma\b{P}(a)\b{V}_1 - \b{R}(a) - \gamma\b{P}(a)\b{V}_2)\right\|_\infty \\
+&= \gamma\left\|\max_{a \in \A}(\b{P}(a)(\b{V}_1 - \b{V}_2))\right\|_\infty \\
+&\leq \gamma\|\b{V}_1 - \b{V}_2\|_\infty
+\end{aligned}
+$$
+
+最后一个不等号源于 $\b{P}(a)$ 矩阵中，每一行的元素之和必然为 $1$。如果假设 $\b{V}_1 - \b{V}_2$ 各元素中最大为 $p$（亦其 $L^\infty$ 范数），那么 $\b{P}(a)(\b{V}_1 - \b{V}_2)$ 每一个元素都不会大于 $p$。
+
+从而得证。
+
+事实上我们有下述定理，描述了迭代法求解的正确性。对于任意初始化的 $\b{V}_0$：
+
+$$
+\lim_{n \to \infty} \mathcal{T}^{\pi(n)}\b{V}_0 = \b{V}^\pi, \lim_{n \to \infty} \mathcal{T}^{\star(n)}\b{V}_0 = \b{V}^\star
+$$
