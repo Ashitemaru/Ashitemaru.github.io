@@ -488,3 +488,83 @@ $$
 $$
 \lim_{n \to \infty} \mathcal{T}^{\pi(n)}\b{V}_0 = \b{V}^\pi, \lim_{n \to \infty} \mathcal{T}^{\star(n)}\b{V}_0 = \b{V}^\star
 $$
+
+# Monte-Carlo 方法
+
+DP 方法的一个重要局限在于，其必须要对环境有完整的了解，也就是对 $\Pe, r$ 有完整的理解才能进行，然而对于现实的问题，这是完全不可能的。这也就是需要让智能体不断和环境交互的原因，因为我们需要通过智能体的探索来获取环境的信息。
+
+这里简单提一下 model-free RL 与 model-based RL 的概念。在智能体和环境交互的过程中，事实上我们有两种选择，其一是让智能体去和真实的环境作交互，这就是 model-free RL 方法。其二是我们事先使用另外一个模型去拟合环境，让智能体和这个模型交互，这就是 model-based RL 方法。model-based RL 方法的优势在于，如果智能体和真实的环境交互成本高昂或者环境响应较慢，则可以用于大幅降低实验成本。但相应地，model-based RL 方法也需要一个相当优越的和环境契合的模型才能让智能体真正学习到最优策略。
+
+这里提到的 Monte-Carlo 方法是 model-free RL 方法，其核心是不断让智能体和环境交互采样，用样本均值拟合价值函数。
+
+其算法思想极其简单，流程如下：
+
+- 获取待评测的策略 $\pi$
+- 初始化访问计数器 $N(s) \leftarrow 0, s \in \S$，以及价值函数估计值 $V(s), s \in \S$
+- 不断重复下述
+    - 使用策略 $\pi$ 获取 trajectory $\tau$
+    - 对每一个 $s \in \tau$ 以及其在 $\tau$ 中出现的时刻 $t$ 进行下述
+        - 递增计数器 $N(s) \leftarrow N(s) + 1$
+        - 更新价值函数估计 $V(s) \leftarrow V(s) + \dfrac{1}{N(s)}(G_t(\tau) - V(s))$
+
+当然，还有一种并不完全使用样本均值的更新策略是，设定固定的学习率 $\alpha$，更新策略设定为：
+
+$$
+V(s) \leftarrow V(s) + \alpha(G_t(\tau) - V(s))
+$$
+
+理论而言，Monte-Carlo 方法相当简易且不涉及到 bootstrap。这里 bootstrap 指的是一类“利用估计值本身更新估计值”的更新策略，在后续 TD 方法中展开说明。
+
+另一方面，Monte-Carlo 方法也因为低效和并没有充分利用 Bellman 方程而具有缺陷。
+
+# Temporal-Difference 方法
+
+TD 方法与 MC 方法目标是一致的，也是尽力取得价值函数的准确估计。但是两者的核心差别在于，TD 方法是一个更新力度更小的 bootstrap 方法，TD 方法会在每一次决策后进行更新。这种逐步更新的问题在于我们无法精确获取某一个状态的累计收益，所以我们需要虚化一个更新目标，这也就是所谓的 TD target。
+
+假设我们在时刻 $t$ 时位于状态 $s_t$，我们通过决策行为 $a_t$ 迁移到了状态 $s_{t + 1}$，并且获取收益 $r_{t + 1}$。另外，我们保存有一个所有状态的价值函数估计值表 $V(s), s \in \S$。那么 TD target 指的是：
+
+$$
+{\rm TD\ target} := r_{t + 1} + \gamma V(s_{t + 1})
+$$
+
+可以注意到，TD target 本身是利用类似 Bellman 方程中的步进展开方法，通过 $V(s_{t + 1})$ 对 $V(s_t)$ 作出估计，并以此作为 $V(s_t)$ 更新的目标。这和 MC 使用真实采样获取到真实的累计收益作为更新目标完全不同，这也就是 bootstrap 的含义。
+
+在获取 TD target 后，就可以计算目标和当前估计值的差，即 TD error：
+
+$$
+{\rm TD\ error} = \delta_t := r_{t + 1} + \gamma V(s_{t + 1}) - V(s_t)
+$$
+
+之后，设定一个适当的学习率 $\alpha$，即可得到 TD 方法的核心更新策略，下述这种简单的更新策略也被称为 TD(0) 方法：
+
+$$
+V(s_t) \leftarrow V(s_t) + \alpha\delta_t = V(s_t) + \alpha(r_{t + 1} + \gamma V(s_{t + 1}) - V(s_t))
+$$
+
+从理论上比较 TD 方法与 MC 方法。MC 方法使用的累计收益 $G_t(\tau)$ 是对价值函数 $V^\pi(s)$ 的无偏估计，而 TD 方法使用的 TD target 则相应是有偏估计。然而就估计方差而言，TD 方法由于仅仅涉及到一步决策，其方差显然较 MC 方法小。就初始值方面而言，MC 方法对估计的初始值设置并不敏感，然而 TD 由于基于 bootstrap，故对初始值设置极为敏感。
+
+如果简单总结上述方法，可以使用下述图：
+
+![](/uploads/note-of-rl/1.webp)
+
+简而言之，MC 方法较 TD 方法而言有着更深的探索。而 DP 方法（尤其是 VI）则是遍历所有可能的后继状态进行更新，从而具有更广泛的视角，也就拥有广度。与这三者均不同的则是搜索，其需要完整探索整个决策树，但这自然是相当浪费资源的。
+
+## 多步 TD target 与 TD($\lambda$)
+
+TD target 事实上可以设置为多步的。传统的 TD target 是单步的，即仅仅考虑 trajectory 上的一步转移。考虑多步 TD target，不妨考虑三步，假定 trajectory 上有三步转移片段 $s_t, a_t, r_{t + 1}; s_{t + 1}, a_{t + 1}, r_{t + 2}; s_{t + 2}, a_{t + 2}, r_{t + 3}; s_{t + 3}$，那么 TD target 可以定义为：
+
+$$
+{\rm TD\ target} := r_{t + 1} + \gamma r_{t + 2} + \gamma^2 r_{t + 3} + \gamma^3 V(s_{t + 3})
+$$
+
+这也可以称为三步 TD target。事实上，如果令考虑的步数趋向于无限，无穷步 TD target 也就成为了事实的累计收益，TD 方法转化为 MC 方法。
+
+我们先前提到过，TD 方法对估计值初始化敏感，但是其效率较高。另一方面，MC 方法对初始值不敏感，但是效率较低。我们事实上可以使用一种方法将其两者结合，即基于介于 TD 与 MC 方法之间的多步 TD target，利用一定的权重将其组合，作为新的 TD target，这就是 TD($\lambda$) 方法。
+
+将 $n$ 步 TD target 记为 $G^{(n)}_t$，那么 TD($\lambda$) 中的 TD target 定义为：
+
+$$
+G^\lambda_t = (1 - \lambda)\sum_{n = 1}^{+\infty}\lambda^{n - 1}G_t^{(n)}
+$$
+
+传统的 TD 方法即 $\lambda = 0$ 的 TD($\lambda$) 方法。
