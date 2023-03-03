@@ -27,10 +27,12 @@
 <meta property="og:site_name" content="Ashitemaru">
 <meta property="og:description" content="这学期选了一门深度强化学习，也正好趁此机会系统性质地把强化学习理论基础过一下，如果可以的话可能还打算过一下深度学习基础扩展一下视野之类的。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ashitemaru.github.io/uploads/note-of-rl/1.webp">
 <meta property="article:published_time" content="2023-02-22T17:39:55.000Z">
 <meta property="article:modified_time" content="2023-02-22T17:39:55.000Z">
 <meta property="article:author" content="Ashitemaru">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ashitemaru.github.io/uploads/note-of-rl/1.webp">
 
 
 <link rel="canonical" href="https://ashitemaru.github.io/2023/02/22/note-of-rl/">
@@ -226,7 +228,7 @@ $(function () {
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E4%B8%8E%E5%9F%BA%E6%9C%AC%E4%BC%98%E5%8C%96%E7%90%86%E8%AE%BA"><span class="nav-number">1.</span> <span class="nav-text">强化学习的基本概念与基本优化理论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E4%B8%8E%E7%AD%96%E7%95%A5"><span class="nav-number">1.1.</span> <span class="nav-text">环境与策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%AF%E8%AE%A1%E6%94%B6%E7%9B%8A%E4%B8%8E%E4%BB%B7%E5%80%BC%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.</span> <span class="nav-text">累计收益与价值函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E4%BC%98%E5%8C%96%E7%90%86%E8%AE%BA"><span class="nav-number">1.3.</span> <span class="nav-text">基本优化理论</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dynamic-programming-dp"><span class="nav-number">2.</span> <span class="nav-text">Dynamic Programming (DP)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#policy-iteration-pi"><span class="nav-number">2.1.</span> <span class="nav-text">Policy Iteration (PI)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#value-iteration-vi"><span class="nav-number">2.2.</span> <span class="nav-text">Value Iteration (VI)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%E5%85%B3-pi-%E5%92%8C-vi-%E7%9A%84%E4%B8%80%E4%BA%9B%E5%AF%B9%E6%AF%94"><span class="nav-number">2.3.</span> <span class="nav-text">有关 PI 和 VI 的一些对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%E5%85%B3-bellman-%E7%AE%97%E5%AD%90%E7%9A%84%E6%8B%93%E5%B1%95"><span class="nav-number">2.4.</span> <span class="nav-text">有关 Bellman 算子的拓展</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E4%B8%8E%E5%9F%BA%E6%9C%AC%E4%BC%98%E5%8C%96%E7%90%86%E8%AE%BA"><span class="nav-number">1.</span> <span class="nav-text">强化学习的基本概念与基本优化理论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E4%B8%8E%E7%AD%96%E7%95%A5"><span class="nav-number">1.1.</span> <span class="nav-text">环境与策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%AF%E8%AE%A1%E6%94%B6%E7%9B%8A%E4%B8%8E%E4%BB%B7%E5%80%BC%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.</span> <span class="nav-text">累计收益与价值函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E4%BC%98%E5%8C%96%E7%90%86%E8%AE%BA"><span class="nav-number">1.3.</span> <span class="nav-text">基本优化理论</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dynamic-programming-dp"><span class="nav-number">2.</span> <span class="nav-text">Dynamic Programming (DP)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#policy-iteration-pi"><span class="nav-number">2.1.</span> <span class="nav-text">Policy Iteration (PI)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#value-iteration-vi"><span class="nav-number">2.2.</span> <span class="nav-text">Value Iteration (VI)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%E5%85%B3-pi-%E5%92%8C-vi-%E7%9A%84%E4%B8%80%E4%BA%9B%E5%AF%B9%E6%AF%94"><span class="nav-number">2.3.</span> <span class="nav-text">有关 PI 和 VI 的一些对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%E5%85%B3-bellman-%E7%AE%97%E5%AD%90%E7%9A%84%E6%8B%93%E5%B1%95"><span class="nav-number">2.4.</span> <span class="nav-text">有关 Bellman 算子的拓展</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#monte-carlo-%E6%96%B9%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">Monte-Carlo 方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#temporal-difference-%E6%96%B9%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">Temporal-Difference 方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E6%AD%A5-td-target-%E4%B8%8E-tdlambda"><span class="nav-number">4.1.</span> <span class="nav-text">多步 TD target 与 TD(\(\lambda\))</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -396,14 +398,14 @@ $(function () {
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>16k</span>
+      <span>19k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>14 分钟</span>
+      <span>17 分钟</span>
     </span>
 </div>
 
@@ -742,6 +744,61 @@ d(x^*, y) = d(f(x^*), f(y)) \leq \gamma d(x^*, y) \Rightarrow (1 - \gamma)d(x^*,
 <p><span class="math display">\[
 \lim_{n \to \infty} \mathcal{T}^{\pi(n)}\b{V}_0 = \b{V}^\pi, \lim_{n \to \infty} \mathcal{T}^{\star(n)}\b{V}_0 = \b{V}^\star
 \]</span></p>
+<h1 id="monte-carlo-方法">Monte-Carlo 方法</h1>
+<p>DP 方法的一个重要局限在于，其必须要对环境有完整的了解，也就是对 <span class="math inline">\(\Pe, r\)</span> 有完整的理解才能进行，然而对于现实的问题，这是完全不可能的。这也就是需要让智能体不断和环境交互的原因，因为我们需要通过智能体的探索来获取环境的信息。</p>
+<p>这里简单提一下 model-free RL 与 model-based RL 的概念。在智能体和环境交互的过程中，事实上我们有两种选择，其一是让智能体去和真实的环境作交互，这就是 model-free RL 方法。其二是我们事先使用另外一个模型去拟合环境，让智能体和这个模型交互，这就是 model-based RL 方法。model-based RL 方法的优势在于，如果智能体和真实的环境交互成本高昂或者环境响应较慢，则可以用于大幅降低实验成本。但相应地，model-based RL 方法也需要一个相当优越的和环境契合的模型才能让智能体真正学习到最优策略。</p>
+<p>这里提到的 Monte-Carlo 方法是 model-free RL 方法，其核心是不断让智能体和环境交互采样，用样本均值拟合价值函数。</p>
+<p>其算法思想极其简单，流程如下：</p>
+<ul>
+<li>获取待评测的策略 <span class="math inline">\(\pi\)</span></li>
+<li>初始化访问计数器 <span class="math inline">\(N(s) \leftarrow 0, s \in \S\)</span>，以及价值函数估计值 <span class="math inline">\(V(s), s \in \S\)</span></li>
+<li>不断重复下述
+<ul>
+<li>使用策略 <span class="math inline">\(\pi\)</span> 获取 trajectory <span class="math inline">\(\tau\)</span></li>
+<li>对每一个 <span class="math inline">\(s \in \tau\)</span> 以及其在 <span class="math inline">\(\tau\)</span> 中出现的时刻 <span class="math inline">\(t\)</span> 进行下述
+<ul>
+<li>递增计数器 <span class="math inline">\(N(s) \leftarrow N(s) + 1\)</span></li>
+<li>更新价值函数估计 <span class="math inline">\(V(s) \leftarrow V(s) + \dfrac{1}{N(s)}(G_t(\tau) - V(s))\)</span></li>
+</ul></li>
+</ul></li>
+</ul>
+<p>当然，还有一种并不完全使用样本均值的更新策略是，设定固定的学习率 <span class="math inline">\(\alpha\)</span>，更新策略设定为：</p>
+<p><span class="math display">\[
+V(s) \leftarrow V(s) + \alpha(G_t(\tau) - V(s))
+\]</span></p>
+<p>理论而言，Monte-Carlo 方法相当简易且不涉及到 bootstrap。这里 bootstrap 指的是一类“利用估计值本身更新估计值”的更新策略，在后续 TD 方法中展开说明。</p>
+<p>另一方面，Monte-Carlo 方法也因为低效和并没有充分利用 Bellman 方程而具有缺陷。</p>
+<h1 id="temporal-difference-方法">Temporal-Difference 方法</h1>
+<p>TD 方法与 MC 方法目标是一致的，也是尽力取得价值函数的准确估计。但是两者的核心差别在于，TD 方法是一个更新力度更小的 bootstrap 方法，TD 方法会在每一次决策后进行更新。这种逐步更新的问题在于我们无法精确获取某一个状态的累计收益，所以我们需要虚化一个更新目标，这也就是所谓的 TD target。</p>
+<p>假设我们在时刻 <span class="math inline">\(t\)</span> 时位于状态 <span class="math inline">\(s_t\)</span>，我们通过决策行为 <span class="math inline">\(a_t\)</span> 迁移到了状态 <span class="math inline">\(s_{t + 1}\)</span>，并且获取收益 <span class="math inline">\(r_{t + 1}\)</span>。另外，我们保存有一个所有状态的价值函数估计值表 <span class="math inline">\(V(s), s \in \S\)</span>。那么 TD target 指的是：</p>
+<p><span class="math display">\[
+{\rm TD\ target} := r_{t + 1} + \gamma V(s_{t + 1})
+\]</span></p>
+<p>可以注意到，TD target 本身是利用类似 Bellman 方程中的步进展开方法，通过 <span class="math inline">\(V(s_{t + 1})\)</span> 对 <span class="math inline">\(V(s_t)\)</span> 作出估计，并以此作为 <span class="math inline">\(V(s_t)\)</span> 更新的目标。这和 MC 使用真实采样获取到真实的累计收益作为更新目标完全不同，这也就是 bootstrap 的含义。</p>
+<p>在获取 TD target 后，就可以计算目标和当前估计值的差，即 TD error：</p>
+<p><span class="math display">\[
+{\rm TD\ error} = \delta_t := r_{t + 1} + \gamma V(s_{t + 1}) - V(s_t)
+\]</span></p>
+<p>之后，设定一个适当的学习率 <span class="math inline">\(\alpha\)</span>，即可得到 TD 方法的核心更新策略，下述这种简单的更新策略也被称为 TD(0) 方法：</p>
+<p><span class="math display">\[
+V(s_t) \leftarrow V(s_t) + \alpha\delta_t = V(s_t) + \alpha(r_{t + 1} + \gamma V(s_{t + 1}) - V(s_t))
+\]</span></p>
+<p>从理论上比较 TD 方法与 MC 方法。MC 方法使用的累计收益 <span class="math inline">\(G_t(\tau)\)</span> 是对价值函数 <span class="math inline">\(V^\pi(s)\)</span> 的无偏估计，而 TD 方法使用的 TD target 则相应是有偏估计。然而就估计方差而言，TD 方法由于仅仅涉及到一步决策，其方差显然较 MC 方法小。就初始值方面而言，MC 方法对估计的初始值设置并不敏感，然而 TD 由于基于 bootstrap，故对初始值设置极为敏感。</p>
+<p>如果简单总结上述方法，可以使用下述图：</p>
+<p><img src="/uploads/note-of-rl/1.webp" /></p>
+<p>简而言之，MC 方法较 TD 方法而言有着更深的探索。而 DP 方法（尤其是 VI）则是遍历所有可能的后继状态进行更新，从而具有更广泛的视角，也就拥有广度。与这三者均不同的则是搜索，其需要完整探索整个决策树，但这自然是相当浪费资源的。</p>
+<h2 id="多步-td-target-与-tdlambda">多步 TD target 与 TD(<span class="math inline">\(\lambda\)</span>)</h2>
+<p>TD target 事实上可以设置为多步的。传统的 TD target 是单步的，即仅仅考虑 trajectory 上的一步转移。考虑多步 TD target，不妨考虑三步，假定 trajectory 上有三步转移片段 <span class="math inline">\(s_t, a_t, r_{t + 1}; s_{t + 1}, a_{t + 1}, r_{t + 2}; s_{t + 2}, a_{t + 2}, r_{t + 3}; s_{t + 3}\)</span>，那么 TD target 可以定义为：</p>
+<p><span class="math display">\[
+{\rm TD\ target} := r_{t + 1} + \gamma r_{t + 2} + \gamma^2 r_{t + 3} + \gamma^3 V(s_{t + 3})
+\]</span></p>
+<p>这也可以称为三步 TD target。事实上，如果令考虑的步数趋向于无限，无穷步 TD target 也就成为了事实的累计收益，TD 方法转化为 MC 方法。</p>
+<p>我们先前提到过，TD 方法对估计值初始化敏感，但是其效率较高。另一方面，MC 方法对初始值不敏感，但是效率较低。我们事实上可以使用一种方法将其两者结合，即基于介于 TD 与 MC 方法之间的多步 TD target，利用一定的权重将其组合，作为新的 TD target，这就是 TD(<span class="math inline">\(\lambda\)</span>) 方法。</p>
+<p>将 <span class="math inline">\(n\)</span> 步 TD target 记为 <span class="math inline">\(G^{(n)}_t\)</span>，那么 TD(<span class="math inline">\(\lambda\)</span>) 中的 TD target 定义为：</p>
+<p><span class="math display">\[
+G^\lambda_t = (1 - \lambda)\sum_{n = 1}^{+\infty}\lambda^{n - 1}G_t^{(n)}
+\]</span></p>
+<p>传统的 TD 方法即 <span class="math inline">\(\lambda = 0\)</span> 的 TD(<span class="math inline">\(\lambda\)</span>) 方法。</p>
 
     </div>
 
@@ -792,13 +849,13 @@ d(x^*, y) = d(f(x^*), f(y)) \leq \gamma d(x^*, y) \Rightarrow (1 - \gamma)d(x^*,
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">396k</span>
+    <span title="站点总字数">399k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">6:01</span>
+    <span title="站点阅读时长">6:03</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
