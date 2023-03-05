@@ -168,7 +168,7 @@ $(function () {
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">12</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">50</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">49</span></a></li>
         <li class="menu-item menu-item-skill-docs"><a href="https://sast-skill-docers.github.io/sast-skill-docs/" rel="noopener" target="_blank"><i class="fa fa-book fa-fw"></i>技能引导文档</a></li>
         <li class="menu-item menu-item-thuinfo"><a href="https://www.thuinfo.net/" rel="noopener" target="_blank"><i class="fa fa-sitemap fa-fw"></i>THUInfo</a></li>
         <li class="menu-item menu-item-se-index"><a href="https://thuse-course.github.io/course-index/" rel="noopener" target="_blank"><i class="fa fa-calendar fa-fw"></i>软工课程主页</a></li>
@@ -245,7 +245,7 @@ $(function () {
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">50</span>
+          <span class="site-state-item-count">49</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -796,7 +796,7 @@ V(s_t) \leftarrow V(s_t) + \alpha\delta_t = V(s_t) + \alpha(r_{t + 1} + \gamma V
 <p>我们先前提到过，TD 方法对估计值初始化敏感，但是其效率较高。另一方面，MC 方法对初始值不敏感，但是效率较低。我们事实上可以使用一种方法将其两者结合，即基于介于 TD 与 MC 方法之间的多步 TD target，利用一定的权重将其组合，作为新的 TD target，这就是 TD(<span class="math inline">\(\lambda\)</span>) 方法。</p>
 <p>将 <span class="math inline">\(n\)</span> 步 TD target 记为 <span class="math inline">\(G^{(n)}_t\)</span>，那么 TD(<span class="math inline">\(\lambda\)</span>) 中的 TD target 定义为：</p>
 <p><span class="math display">\[
-G^\lambda_t = (1 - \lambda)\sum_{n = 1}^{+\infty}\lambda^{n - 1}G_t^{(n)}
+G^\lambda_t := (1 - \lambda)\sum_{n = 1}^{+\infty}\lambda^{n - 1}G_t^{(n)}
 \]</span></p>
 <p>传统的 TD 方法即 <span class="math inline">\(\lambda = 0\)</span> 的 TD(<span class="math inline">\(\lambda\)</span>) 方法。</p>
 
@@ -849,13 +849,13 @@ G^\lambda_t = (1 - \lambda)\sum_{n = 1}^{+\infty}\lambda^{n - 1}G_t^{(n)}
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">399k</span>
+    <span title="站点总字数">390k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">6:03</span>
+    <span title="站点阅读时长">5:55</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
