@@ -564,7 +564,7 @@ $$
 将 $n$ 步 TD target 记为 $G^{(n)}_t$，那么 TD($\lambda$) 中的 TD target 定义为：
 
 $$
-G^\lambda_t = (1 - \lambda)\sum_{n = 1}^{+\infty}\lambda^{n - 1}G_t^{(n)}
+G^\lambda_t := (1 - \lambda)\sum_{n = 1}^{+\infty}\lambda^{n - 1}G_t^{(n)}
 $$
 
 传统的 TD 方法即 $\lambda = 0$ 的 TD($\lambda$) 方法。
