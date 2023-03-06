@@ -961,6 +961,10 @@
 <p>但是说实话，还是赶快做点事情从周一开始恢复到第一周的工作状态吧，否则实在是有点太摸了。</p>
 <hr />
 <p>总之今天整体还是太摸鱼了，实习那边的东西没有一发调出来也是真的没绷住，然后还时不时被 ouuan 拷打，包括各种可以优化的地方。看来 holder 还需要再稍微锻炼一下抗压能力，这点抗压能力完全不能应付啊，包括之前被 cyr 拷打毕设也是，完全做不到坦然面对面前的问题呢，遇到问题只想摆烂和找借口嘴硬，这实在是有点过分了。</p>
+<h1 id="section-14">2023.03.06</h1>
+<p>今天早上起来就发现已经十点了，已经过了韩语课的签到，于是也懒得去了，看到湖中在说想出勤，于是直接去了五道口。没有想到的是，即使是星期一的上午，五道口依然充满了人，完全打不了多少，只能随便糊糊作罢。</p>
+<p>下午精神终于回来了一点，昨天摆烂加上被拷打真的是完全绷不住，但还是得赶快调整。到了工位，整理了一下自己的东西，结果发现耳机的耳塞又掉了，没有办法只能赶快下单新耳机，不能再将就着用这个破耳机了。下午依然是随便跑了一下 Puffer 的实验，可喜的是这一次实验居然似乎有了点看起来能行的样子，因为现在至少能打过启发式了，至少不是智障了。在等实验的过程中帮 abmfy 修了一下日语作文，然后准备还是赶快把实习那边的事情给做完，少一件事终究是好事。</p>
+<p>今早在出勤的时候顺手把当前前端小作业存在的问题给罗列了一下，整体来讲虽然有点绷不住但还是感谢 ouuan 提供了这么多的改进意见。</p>
 ]]></content>
       <categories>
         <category>【生活记录】日记</category>
@@ -2319,985 +2323,6 @@ V_o &amp;\leftarrow (1 - \alpha_o)V_o + \alpha_o(o - \overline o)^2 \\
 ]]></content>
       <categories>
         <category>【杂谈】开发</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>简明日语自学手册 Chapter 1 生词表</title>
-    <url>/2022/08/21/ja-tutorial-ch1-vocab/</url>
-    <content><![CDATA[<p>本文章为自学手册 Chapter 1 生词表。</p>
-<span id="more"></span>
-<p>考虑到这里还未讲解用言、助动词活用，故会同时列举出本章内出现的词语的活用形和相对应的原形，活用形使用小括号括出并写在原形下方以示区分。</p>
-<p>动词生词表中词性一列的具体含义参见第二章动词活用分类。另外，对于动词、形容词、形容动词，方括号括出的为该词语在古日语中的形式与词性，若没有方括号标记，则表明古日语中该词语和现代形式或词性一致，也有可能是该词语是现代造词，没有古语对应。</p>
-<p>另外补充说明，由于动词的第一连用形可以用于将动词名词化。如果名词化后形成的名词和原先动词的含义类似，我们就将动词形式纳入生词表，其名词形式作为其衍生。而若含义差别较大，则其动词和名词形式分别纳入生词表。</p>
-<p>本章生词表选择性收录 Chapter 1 Section 3 中的词语。</p>
-<h1 id="动词生词表">动词生词表</h1>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;">日语</th>
-<th style="text-align: center;">词性</th>
-<th style="text-align: center;">汉语释义</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 気付 きづ</code>く</td>
-<td style="text-align: center;">動カ五[動カ四]</td>
-<td style="text-align: center;">发现、察觉</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 縮 ちぢ</code>む</td>
-<td style="text-align: center;">動マ五[動マ四]</td>
-<td style="text-align: center;">缩小、收缩</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 居 い</code>る[<code>@ 居 ゐ</code>る] <br /> （い）</td>
-<td style="text-align: center;">動ア上一[動ワ上一]</td>
-<td style="text-align: center;">①（有生命事物）存在 <br /> ②居住、逗留 <br /> ③保持在某一状态</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 調 しら</code>べる[<code>@ 調 しら</code>ぶ] <br /> （<code>@ 調 しら</code>べ）</td>
-<td style="text-align: center;">動バ下一[動バ下二]</td>
-<td style="text-align: center;">调查、查询</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 下 くだ</code>さる <br /> （ください）</td>
-<td style="text-align: center;">動ラ五[動ラ四]</td>
-<td style="text-align: center;">①（给我方）送、给 <br /> ②（作补助动词）请</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 作 つく</code>る <br /> （<code>@ 作 つく</code>り）</td>
-<td style="text-align: center;">動ラ五[動ラ四]</td>
-<td style="text-align: center;">制作</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 過 す</code>ぎる[<code>@ 過 す</code>ぐ] <br /> （<code>@ 過 す</code>ぎ）</td>
-<td style="text-align: center;">動ガ上一[動ガ上二]</td>
-<td style="text-align: center;">①经过、通过 <br /> ②（时间）流逝、消逝 <br /> ③（作补助动词）过度、过分</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 持 も</code>つ <br /> （<code>@ 持 も</code>っ）</td>
-<td style="text-align: center;">動タ五[動タ四]</td>
-<td style="text-align: center;">①（用手）拿、持 <br /> ②携带 <br /> ③（某种物品）拥有、具有</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 行 い</code>く <br /> （<code>@ 行 い</code>っ）</td>
-<td style="text-align: center;">動カ五[動カ四]</td>
-<td style="text-align: center;">①去、走、前往 <br /> ②步行</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 上 あ</code>げる[<code>@ 上 あ</code>ぐ] <br /> （<code>@ 上 あ</code>げ）</td>
-<td style="text-align: center;">動ガ下一[動ガ下二]</td>
-<td style="text-align: center;">①举起、抬起 <br /> ②（给他方）给、送给</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 仕舞 しま</code>う[<code>@ 仕舞 しま</code>ふ]</td>
-<td style="text-align: center;">動ワ五[動ハ四]</td>
-<td style="text-align: center;">结束、终结</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">する[す] <br /> （し）</td>
-<td style="text-align: center;">動サ変[動サ変]</td>
-<td style="text-align: center;">做、办、进行</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 思 おも</code>う[<code>@ 思 おも</code>ふ] <br /> （<code>@ 思 おも</code>い）</td>
-<td style="text-align: center;">動ワ五[動ハ四]</td>
-<td style="text-align: center;">①思考、思索 <br /> ②相信、确信 <br /> ③预想、预料 <br /> ④希望、期待</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 使 つか</code>い<code>@ 古 ふる</code>す[<code>@ 使 つか</code>ひ<code>@ 古 ふる</code>す]</td>
-<td style="text-align: center;">動サ五[動サ四]</td>
-<td style="text-align: center;">用旧、因长时间多次使用而变旧</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 来 く</code>る[<code>@ 来 く</code>]</td>
-<td style="text-align: center;">動カ変[動カ変]</td>
-<td style="text-align: center;">来、来到</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 話 はな</code>す</td>
-<td style="text-align: center;">動サ五[動サ四]</td>
-<td style="text-align: center;">说话、讲话</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 飛 と</code>ぶ</td>
-<td style="text-align: center;">動バ五[動バ四]</td>
-<td style="text-align: center;">①飞行 <br /> ②（因外力）飞舞</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 立 た</code>つ</td>
-<td style="text-align: center;">動タ五[動タ四]</td>
-<td style="text-align: center;">站立</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 書 か</code>く</td>
-<td style="text-align: center;">動カ五[動カ四]</td>
-<td style="text-align: center;">书写</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 出来 でき</code>る[<code>@ 出来 いでく</code>] <br /> （でき）</td>
-<td style="text-align: center;">動カ上一[動カ変]</td>
-<td style="text-align: center;">①做好、形成 <br /> ②能够做到、有能力</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 出 だ</code>す <br /> （<code>@ 出 だ</code>し）</td>
-<td style="text-align: center;">動サ五[動サ四]</td>
-<td style="text-align: center;">取出</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 送 おく</code>る <br /> （<code>@ 送 おく</code>り）</td>
-<td style="text-align: center;">動ラ五[動ラ四]</td>
-<td style="text-align: center;">①送、邮寄、派遣 <br /> ②送行 <br /> ③传送、放送</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 見 み</code>る <br /> （<code>@ 見 み</code>）</td>
-<td style="text-align: center;">動マ上一[動マ上一]</td>
-<td style="text-align: center;">①看、观看 <br /> ②（作补助动词）尝试</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 誤魔化 ごまか</code>す <br /> （<code>@ 誤魔化 ごまか</code>し）</td>
-<td style="text-align: center;">動サ五[動サ四]</td>
-<td style="text-align: center;">糊弄、搪塞</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 逃 に</code>げる[<code>@ 逃 に</code>ぐ] <br /> （<code>@ 逃 に</code>げ）</td>
-<td style="text-align: center;">動ガ下一[動ガ下二]</td>
-<td style="text-align: center;">逃跑、逃走、逃出</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 成功 せいこう</code>する[<code>@ 成功 せいこう</code>す]</td>
-<td style="text-align: center;">動サ変[動サ変]</td>
-<td style="text-align: center;">成功</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 会 あ</code>う[<code>@ 会 あ</code>ふ] <br /> （<code>@ 会 あ</code>い）</td>
-<td style="text-align: center;">動ワ五[動ハ四]</td>
-<td style="text-align: center;">会面、见面</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 軽 かろ</code>んずる[<code>@ 軽 かろ</code>んず]</td>
-<td style="text-align: center;">動サ変[動サ変]</td>
-<td style="text-align: center;">轻视</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 消 き</code>える[<code>@ 消 き</code>ゆ]</td>
-<td style="text-align: center;">動ア下一[動ヤ下二]</td>
-<td style="text-align: center;">消失</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 消 け</code>す</td>
-<td style="text-align: center;">動サ五[動サ四]</td>
-<td style="text-align: center;">使熄灭、关闭、解除</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 芽生 めば</code>える[<code>@ 芽生 めば</code>ゆ]</td>
-<td style="text-align: center;">動ア下一[動ヤ下二]</td>
-<td style="text-align: center;">出芽、发芽</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 生 い</code>きる[<code>@ 生 い</code>く]</td>
-<td style="text-align: center;">動カ上一[動カ上二]</td>
-<td style="text-align: center;">生存、生活</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 生 う</code>まれつく</td>
-<td style="text-align: center;">動カ五[動カ四]</td>
-<td style="text-align: center;">天生、生来就有</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 笑 わら</code>う[<code>@ 笑 わら</code>ふ]</td>
-<td style="text-align: center;">動ワ五[動ハ四]</td>
-<td style="text-align: center;">笑</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 迷 まよ</code>う[<code>@ 迷 まよ</code>ふ] <br /> （<code>@ 迷 まよ</code>っ）</td>
-<td style="text-align: center;">動ワ五[動ハ四]</td>
-<td style="text-align: center;">迷失、迷惘</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 辿 たど</code>る <br /> （<code>@ 辿 たど</code>り）</td>
-<td style="text-align: center;">動ラ五[動ラ四]</td>
-<td style="text-align: center;">沿路前进、追寻</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 着 つ</code>く <br /> （<code>@ 着 つ</code>い）</td>
-<td style="text-align: center;">動カ五[動カ四]</td>
-<td style="text-align: center;">到达、抵达</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">やる <br /> （やっ）</td>
-<td style="text-align: center;">動ラ五[動ラ四]</td>
-<td style="text-align: center;">做、干、进行、派遣</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 知 し</code>る <br /> （<code>@ 知 し</code>ら）</td>
-<td style="text-align: center;">動ラ五[動ラ四]</td>
-<td style="text-align: center;">知道、了解</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 拠 よ</code>る <br /> （<code>@ 拠 よ</code>っ）</td>
-<td style="text-align: center;">動ラ五[動ラ四]</td>
-<td style="text-align: center;">基于、根据、按照</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 降 ふ</code>る <br /> （<code>@ 降 ふ</code>り）</td>
-<td style="text-align: center;">動ラ五[動ラ四]</td>
-<td style="text-align: center;">降下、落下</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 始 はじ</code>まる <br /> （<code>@ 始 はじ</code>まり）</td>
-<td style="text-align: center;">動ラ五[動ラ四]</td>
-<td style="text-align: center;">开始</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 有 あ</code>る[<code>@ 有 あ</code>り] <br /> （あれ、あり）</td>
-<td style="text-align: center;">動ラ五[動ラ変]</td>
-<td style="text-align: center;">①（无生命事物）存在 <br /> ②属于、归于</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 終 お</code>わる[<code>@ 終 を</code>はる] <br /> （<code>@ 終 お</code>わり）</td>
-<td style="text-align: center;">動ラ五[動ラ四]</td>
-<td style="text-align: center;">结束、终结</td>
-</tr>
-</tbody>
-</table>
-<h1 id="形容词生词表">形容词生词表</h1>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;">日语</th>
-<th style="text-align: center;">词性</th>
-<th style="text-align: center;">汉语释义</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 速 はや</code>い[<code>@ 速 はや</code>し] <br /> （はやく）</td>
-<td style="text-align: center;">形[形ク]</td>
-<td style="text-align: center;">动作迅速的</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 煩 うるさ</code>い・<code>@ 五月蠅 うるさ</code>い[<code>@ 煩 うるさ</code>し]</td>
-<td style="text-align: center;">形[形ク]</td>
-<td style="text-align: center;">嘈杂的、烦人的</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 軽 かる</code>い[<code>@ 軽 かる</code>し]</td>
-<td style="text-align: center;">形[形ク]</td>
-<td style="text-align: center;">轻的</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 重 おも</code>い[<code>@ 重 おも</code>し]</td>
-<td style="text-align: center;">形[形ク]</td>
-<td style="text-align: center;">重的</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 赤 あか</code>い[<code>@ 赤 あか</code>し]</td>
-<td style="text-align: center;">形[形ク]</td>
-<td style="text-align: center;">红色的</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 黒 くろ</code>い[<code>@ 黒 くろ</code>し]</td>
-<td style="text-align: center;">形[形ク]</td>
-<td style="text-align: center;">黑色的</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 長 なが</code>い[<code>@ 長 なが</code>し]</td>
-<td style="text-align: center;">形[形ク]</td>
-<td style="text-align: center;">长的</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 広 ひろ</code>い[<code>@ 広 ひろ</code>し]</td>
-<td style="text-align: center;">形[形ク]</td>
-<td style="text-align: center;">宽广的</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 美 うつく</code>しい[<code>@ 美 うつく</code>し]</td>
-<td style="text-align: center;">形[形シク]</td>
-<td style="text-align: center;">美丽的</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 難 むずか</code>しい[<code>@ 難 むずか</code>し]</td>
-<td style="text-align: center;">形[形シク]</td>
-<td style="text-align: center;">困难的</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 素晴 すば</code>らしい[<code>@ 素晴 すば</code>らし]</td>
-<td style="text-align: center;">形[形シク]</td>
-<td style="text-align: center;">美好的</td>
-</tr>
-</tbody>
-</table>
-<h1 id="形容动词生词表">形容动词生词表</h1>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;">日语</th>
-<th style="text-align: center;">词性</th>
-<th style="text-align: center;">汉语释义</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 素敵 すてき</code>だ[<code>@ 素敵 すてき</code>なり]</td>
-<td style="text-align: center;">形動[形動ナリ]</td>
-<td style="text-align: center;">美好的</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 好 す</code>きだ[<code>@ 好 す</code>きなり]</td>
-<td style="text-align: center;">形動[形動ナリ]</td>
-<td style="text-align: center;">喜欢的</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 嫌 きら</code>いだ[<code>@ 嫌 きら</code>ひなり]</td>
-<td style="text-align: center;">形動[形動ナリ]</td>
-<td style="text-align: center;">讨厌的</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 静 しず</code>かだ[<code>@ 静 しず</code>かなり]</td>
-<td style="text-align: center;">形動[形動ナリ]</td>
-<td style="text-align: center;">安静的</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 大変 たいへん</code>だ[<code>@ 大変 たいへん</code>なり] <br /> （<code>@ 大変 たいへん</code>に）</td>
-<td style="text-align: center;">形動[形動ナリ]</td>
-<td style="text-align: center;">极重要的、非常</td>
-</tr>
-</tbody>
-</table>
-<h1 id="助词助动词生词表">助词、助动词生词表</h1>
-<p>助词和助动词的细节用法会在后续章节讲解，这里不需要过度关注各个助词和助动词的含义。</p>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;">日语</th>
-<th style="text-align: center;">词性</th>
-<th style="text-align: center;">汉语释义</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">は</td>
-<td style="text-align: center;">副助</td>
-<td style="text-align: center;">标注语句的主题</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">が</td>
-<td style="text-align: center;">格助</td>
-<td style="text-align: center;">标注语句的主语</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">ます <br /> （ましょ、ませ）</td>
-<td style="text-align: center;">助動</td>
-<td style="text-align: center;">提示一般尊敬陈述语气</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">の</td>
-<td style="text-align: center;">格助</td>
-<td style="text-align: center;">标注从属或者同位关系</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">を</td>
-<td style="text-align: center;">格助</td>
-<td style="text-align: center;">标注语句的宾语</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">て</td>
-<td style="text-align: center;">接助</td>
-<td style="text-align: center;">标注语句的中顿</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">た</td>
-<td style="text-align: center;">助動</td>
-<td style="text-align: center;">提示过去时态</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">ので</td>
-<td style="text-align: center;">接助</td>
-<td style="text-align: center;">标注客观原因</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">に</td>
-<td style="text-align: center;">格助</td>
-<td style="text-align: center;">标注动作发生的时间、动作的方向等</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">も</td>
-<td style="text-align: center;">副助</td>
-<td style="text-align: center;">①标注同类追加（类似“也”） <br /> ②标注极端语气（类似“甚至”）</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">か</td>
-<td style="text-align: center;">終助</td>
-<td style="text-align: center;">标注疑问语气</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">だ <br /> （だっ）</td>
-<td style="text-align: center;">助動</td>
-<td style="text-align: center;">（简体）作为判断词提示断定语气</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">で</td>
-<td style="text-align: center;">格助</td>
-<td style="text-align: center;">标注动作发生的地点、动作的手段等</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">ない</td>
-<td style="text-align: center;">助動</td>
-<td style="text-align: center;">提示否定语义</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">から</td>
-<td style="text-align: center;">格助</td>
-<td style="text-align: center;">标注时间、地点的起始，标注主观原因</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">まで</td>
-<td style="text-align: center;">格助</td>
-<td style="text-align: center;">标注时间、地点的终止等</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">だけ</td>
-<td style="text-align: center;">副助</td>
-<td style="text-align: center;">标注程度限定（类似“只”）</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">う</td>
-<td style="text-align: center;">助動</td>
-<td style="text-align: center;">提示自发意志</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">べし <br /> （べから）</td>
-<td style="text-align: center;">助動</td>
-<td style="text-align: center;">提示应当、可能等语气</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">ず・ぬ・ん</td>
-<td style="text-align: center;">助動</td>
-<td style="text-align: center;">提示否定语义</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">ば</td>
-<td style="text-align: center;">接助</td>
-<td style="text-align: center;">标注假设、可能</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">そうだ <br /> （そうに）</td>
-<td style="text-align: center;">助動</td>
-<td style="text-align: center;">提示样态</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">です <br /> （でし）</td>
-<td style="text-align: center;">助動</td>
-<td style="text-align: center;">（一般尊敬语气）作为判断词提示断定语气</td>
-</tr>
-</tbody>
-</table>
-<h1 id="副词生词表">副词生词表</h1>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;">日语</th>
-<th style="text-align: center;">词性</th>
-<th style="text-align: center;">汉语释义</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">しっかり</td>
-<td style="text-align: center;">副</td>
-<td style="text-align: center;">①（身体）健壮、结实 <br /> ②（结构）稳固、牢靠 <br /> ③（含义）明确 <br /> ④（性格）坚强、坚定</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">もう</td>
-<td style="text-align: center;">副</td>
-<td style="text-align: center;">①已经 <br /> ②就要、将要、快要 <br /> ③再、还、另外</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">さっぱり</td>
-<td style="text-align: center;">副</td>
-<td style="text-align: center;">整洁、利落</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">たくさん</td>
-<td style="text-align: center;">副</td>
-<td style="text-align: center;">大量、许多</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">なんでも</td>
-<td style="text-align: center;">副</td>
-<td style="text-align: center;">①无论什么、无论如何 <br /> ②据说是</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">いつか</td>
-<td style="text-align: center;">副</td>
-<td style="text-align: center;">①不知不觉的 <br /> ②曾经 <br /> ③早晚、迟早</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">きっと</td>
-<td style="text-align: center;">副</td>
-<td style="text-align: center;">一定</td>
-</tr>
-</tbody>
-</table>
-<h1 id="名词代词数词生词表">名词、代词、数词生词表</h1>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;">日语</th>
-<th style="text-align: center;">词性</th>
-<th style="text-align: center;">汉语释义</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 大阪 おおさか</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">大阪</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 経済 けいざい</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">经济</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">フィルム</td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">胶卷</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 俺 おれ</code></td>
-<td style="text-align: center;">代</td>
-<td style="text-align: center;">（男性对同辈、下级使用）我</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 兄弟 きょうだい</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">兄弟</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 三人 さんにん</code></td>
-<td style="text-align: center;">数</td>
-<td style="text-align: center;">三人</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 容疑者 ようぎしゃ</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">嫌疑人</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 情報 じょうほう</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">消息、信息</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">ケーキ</td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">蛋糕</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">これ</td>
-<td style="text-align: center;">代</td>
-<td style="text-align: center;">（名词性事物近称）这个、这些</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">お<code>@ 婆 ばあ</code>さん</td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">①（敬称）祖母、奶奶 <br /> ②（敬称）外祖母、外婆 <br /> ③（对老年女性的敬称）老太太</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 伊呂波 いろは</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">①伊吕波歌（一首用平假名编制的歌曲） <br /> ②初步、入门</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 山 やま</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">山</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 奈美 なみ</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">（女性名）奈美</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 共和 きょうわ</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">共和</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 当 あ</code>て<code>@ 字 じ</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">假借字</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 仕付 しつけ</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">管教、约束</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 仕方 しかた</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">方法、手段</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 仕草 しぐさ</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">台词、说辞</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 仕事 しごと</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">工作</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 亜細亜 アジア</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">亚洲</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 麦酒 ビール</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">啤酒</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 俱楽部 クラブ</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">俱乐部</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 言葉 ことば</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">话语</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 何度 なんど</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">多少次、多少回</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">の</td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">（形式体言）起动词名词化的作用</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 送 おく</code>り<code>@ 仮名 がな</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">送假名</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 事 こと</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">①事物、事情 <br /> ②（形式体言）起动词名词化的作用</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">あれ</td>
-<td style="text-align: center;">代</td>
-<td style="text-align: center;">（名词性事物远称）那个、那些</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 去年 きょねん</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">去年</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 私 わたし</code></td>
-<td style="text-align: center;">代</td>
-<td style="text-align: center;">（通用）我</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 日本語 にほんご</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">日语</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 手紙 てがみ</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">书信</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 資料 しりょう</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">资料</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 改 かい</code>ざん</td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">篡改</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">この</td>
-<td style="text-align: center;">代</td>
-<td style="text-align: center;">（连体性近称）这个</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 番組 ばんぐみ</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">节目</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">ご<code>@ 覧 らん</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">（尊他语）看、所看</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">スポンサー</td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">赞助方</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 提供 ていきょう</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">提供</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 上海 シャンハイ</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">上海</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 東京 とうきょう</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">东京</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 飛行機 ひこうき</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">飞机</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 振 ふ</code>り</td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">①振动、摆动 <br /> ②（外表）样子、打扮 <br /> ③（作补助名词）装作、假装 <br /> ④（舞蹈）动作、姿势 <br /> ⑤陌生 <br /> ⑥临时、突然</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 囚人 しゅうじん</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">犯人</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 看守 かんしゅ</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">看守</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 目 め</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">①眼睛、眼球 <br /> ②眼光、眼神 <br /> ③外表、外观 <br /> ④监视、看守</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 彼 かれ</code></td>
-<td style="text-align: center;">代</td>
-<td style="text-align: center;">（通用）他</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 勤勉家 きんべんか</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">实干家、用功的人</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 当 あ</code>たり<code>@ 前 まえ</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">理所应当</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 明日 あした</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">明天</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 七時 しちじ</code></td>
-<td style="text-align: center;">数</td>
-<td style="text-align: center;">七点</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 会社 かいしゃ</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">公司</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 受付 うけつけ</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">前台</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 一寸 いっすん</code></td>
-<td style="text-align: center;">数</td>
-<td style="text-align: center;">一寸</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 光陰 こういん</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">光阴</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 世界 せかい</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">世界</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 祝福 しゅくふく</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">祝福</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 橋 はし</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">桥梁</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 石 いし</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">石头</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 生 なま</code>ビール</td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">生啤酒</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 五月雨 さみだれ</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">梅雨、阴历五月的阴雨</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 時雨 しぐれ</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">（秋冬之交的）阵雨</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 村雨 むらさめ</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">阵雨、骤雨</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 梅雨 つゆ</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">梅雨</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 一昨日 おととい</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">前天</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 明後日 あさって</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">后天</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 晦日 みそか</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">（阴历的）每月最后一天</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 足袋 たび</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">（日式）短布袜</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 吹雪 ふぶき</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">暴风雪</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 芝生 しばふ</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">草坪、矮草地</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 合図 あいず</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">信号、暗号</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 馬鹿 ばか</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">愚蠢的人、傻子</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 額縁 がくぶち</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">画框、相框</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 残高 ざんだか</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">余额</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 虚 うつ</code>ろ</td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">空虚、空洞</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 午前 ごぜん</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">午前、正午之前、上午</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">そこ</td>
-<td style="text-align: center;">代</td>
-<td style="text-align: center;">（名词性地点中称）那里</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">ハッピー</td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">快乐</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 天気予報 てんきよほう</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">天气预报</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 雨 あめ</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">雨</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 申 もう</code>し<code>@ 訳 わけ</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">辩解</td>
-</tr>
-</tbody>
-</table>
-<h1 id="其他类型词语生词表">其他类型词语生词表</h1>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;">日语</th>
-<th style="text-align: center;">词性</th>
-<th style="text-align: center;">汉语释义</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 御 お</code></td>
-<td style="text-align: center;">接続</td>
-<td style="text-align: center;">①您、您的 <br /> ②表尊敬的接头词</td>
-</tr>
-</tbody>
-</table>
-<h1 id="常用交际语表">常用交际语表</h1>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;">日语</th>
-<th style="text-align: center;">汉语释义</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">よろしくお<code>@ 願 ねが</code>いします。</td>
-<td style="text-align: center;">请多指教。</td>
-</tr>
-</tbody>
-</table>
-]]></content>
-      <categories>
-        <category>【学习笔记】日语</category>
       </categories>
   </entry>
   <entry>
@@ -4954,6 +3979,985 @@ V_o &amp;\leftarrow (1 - \alpha_o)V_o + \alpha_o(o - \overline o)^2 \\
 </ul>
 <p>首先区分音训读，一般而言动词、形容词等的单字词干、有送假名词尾的多为训读汉字，而构词法类似汉语的、没有送假名词尾的词语多为音读汉字。基本上基于此就可以区分大部分音读训读汉字。</p>
 <p>之后根据给出的读音表逐个根据送假名词尾确定读音即可。</p>
+]]></content>
+      <categories>
+        <category>【学习笔记】日语</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>简明日语自学手册 Chapter 1 生词表</title>
+    <url>/2022/08/21/ja-tutorial-ch1-vocab/</url>
+    <content><![CDATA[<p>本文章为自学手册 Chapter 1 生词表。</p>
+<span id="more"></span>
+<p>考虑到这里还未讲解用言、助动词活用，故会同时列举出本章内出现的词语的活用形和相对应的原形，活用形使用小括号括出并写在原形下方以示区分。</p>
+<p>动词生词表中词性一列的具体含义参见第二章动词活用分类。另外，对于动词、形容词、形容动词，方括号括出的为该词语在古日语中的形式与词性，若没有方括号标记，则表明古日语中该词语和现代形式或词性一致，也有可能是该词语是现代造词，没有古语对应。</p>
+<p>另外补充说明，由于动词的第一连用形可以用于将动词名词化。如果名词化后形成的名词和原先动词的含义类似，我们就将动词形式纳入生词表，其名词形式作为其衍生。而若含义差别较大，则其动词和名词形式分别纳入生词表。</p>
+<p>本章生词表选择性收录 Chapter 1 Section 3 中的词语。</p>
+<h1 id="动词生词表">动词生词表</h1>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">日语</th>
+<th style="text-align: center;">词性</th>
+<th style="text-align: center;">汉语释义</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 気付 きづ</code>く</td>
+<td style="text-align: center;">動カ五[動カ四]</td>
+<td style="text-align: center;">发现、察觉</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 縮 ちぢ</code>む</td>
+<td style="text-align: center;">動マ五[動マ四]</td>
+<td style="text-align: center;">缩小、收缩</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 居 い</code>る[<code>@ 居 ゐ</code>る] <br /> （い）</td>
+<td style="text-align: center;">動ア上一[動ワ上一]</td>
+<td style="text-align: center;">①（有生命事物）存在 <br /> ②居住、逗留 <br /> ③保持在某一状态</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 調 しら</code>べる[<code>@ 調 しら</code>ぶ] <br /> （<code>@ 調 しら</code>べ）</td>
+<td style="text-align: center;">動バ下一[動バ下二]</td>
+<td style="text-align: center;">调查、查询</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 下 くだ</code>さる <br /> （ください）</td>
+<td style="text-align: center;">動ラ五[動ラ四]</td>
+<td style="text-align: center;">①（给我方）送、给 <br /> ②（作补助动词）请</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 作 つく</code>る <br /> （<code>@ 作 つく</code>り）</td>
+<td style="text-align: center;">動ラ五[動ラ四]</td>
+<td style="text-align: center;">制作</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 過 す</code>ぎる[<code>@ 過 す</code>ぐ] <br /> （<code>@ 過 す</code>ぎ）</td>
+<td style="text-align: center;">動ガ上一[動ガ上二]</td>
+<td style="text-align: center;">①经过、通过 <br /> ②（时间）流逝、消逝 <br /> ③（作补助动词）过度、过分</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 持 も</code>つ <br /> （<code>@ 持 も</code>っ）</td>
+<td style="text-align: center;">動タ五[動タ四]</td>
+<td style="text-align: center;">①（用手）拿、持 <br /> ②携带 <br /> ③（某种物品）拥有、具有</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 行 い</code>く <br /> （<code>@ 行 い</code>っ）</td>
+<td style="text-align: center;">動カ五[動カ四]</td>
+<td style="text-align: center;">①去、走、前往 <br /> ②步行</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 上 あ</code>げる[<code>@ 上 あ</code>ぐ] <br /> （<code>@ 上 あ</code>げ）</td>
+<td style="text-align: center;">動ガ下一[動ガ下二]</td>
+<td style="text-align: center;">①举起、抬起 <br /> ②（给他方）给、送给</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 仕舞 しま</code>う[<code>@ 仕舞 しま</code>ふ]</td>
+<td style="text-align: center;">動ワ五[動ハ四]</td>
+<td style="text-align: center;">结束、终结</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">する[す] <br /> （し）</td>
+<td style="text-align: center;">動サ変[動サ変]</td>
+<td style="text-align: center;">做、办、进行</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 思 おも</code>う[<code>@ 思 おも</code>ふ] <br /> （<code>@ 思 おも</code>い）</td>
+<td style="text-align: center;">動ワ五[動ハ四]</td>
+<td style="text-align: center;">①思考、思索 <br /> ②相信、确信 <br /> ③预想、预料 <br /> ④希望、期待</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 使 つか</code>い<code>@ 古 ふる</code>す[<code>@ 使 つか</code>ひ<code>@ 古 ふる</code>す]</td>
+<td style="text-align: center;">動サ五[動サ四]</td>
+<td style="text-align: center;">用旧、因长时间多次使用而变旧</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 来 く</code>る[<code>@ 来 く</code>]</td>
+<td style="text-align: center;">動カ変[動カ変]</td>
+<td style="text-align: center;">来、来到</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 話 はな</code>す</td>
+<td style="text-align: center;">動サ五[動サ四]</td>
+<td style="text-align: center;">说话、讲话</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 飛 と</code>ぶ</td>
+<td style="text-align: center;">動バ五[動バ四]</td>
+<td style="text-align: center;">①飞行 <br /> ②（因外力）飞舞</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 立 た</code>つ</td>
+<td style="text-align: center;">動タ五[動タ四]</td>
+<td style="text-align: center;">站立</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 書 か</code>く</td>
+<td style="text-align: center;">動カ五[動カ四]</td>
+<td style="text-align: center;">书写</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 出来 でき</code>る[<code>@ 出来 いでく</code>] <br /> （でき）</td>
+<td style="text-align: center;">動カ上一[動カ変]</td>
+<td style="text-align: center;">①做好、形成 <br /> ②能够做到、有能力</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 出 だ</code>す <br /> （<code>@ 出 だ</code>し）</td>
+<td style="text-align: center;">動サ五[動サ四]</td>
+<td style="text-align: center;">取出</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 送 おく</code>る <br /> （<code>@ 送 おく</code>り）</td>
+<td style="text-align: center;">動ラ五[動ラ四]</td>
+<td style="text-align: center;">①送、邮寄、派遣 <br /> ②送行 <br /> ③传送、放送</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 見 み</code>る <br /> （<code>@ 見 み</code>）</td>
+<td style="text-align: center;">動マ上一[動マ上一]</td>
+<td style="text-align: center;">①看、观看 <br /> ②（作补助动词）尝试</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 誤魔化 ごまか</code>す <br /> （<code>@ 誤魔化 ごまか</code>し）</td>
+<td style="text-align: center;">動サ五[動サ四]</td>
+<td style="text-align: center;">糊弄、搪塞</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 逃 に</code>げる[<code>@ 逃 に</code>ぐ] <br /> （<code>@ 逃 に</code>げ）</td>
+<td style="text-align: center;">動ガ下一[動ガ下二]</td>
+<td style="text-align: center;">逃跑、逃走、逃出</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 成功 せいこう</code>する[<code>@ 成功 せいこう</code>す]</td>
+<td style="text-align: center;">動サ変[動サ変]</td>
+<td style="text-align: center;">成功</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 会 あ</code>う[<code>@ 会 あ</code>ふ] <br /> （<code>@ 会 あ</code>い）</td>
+<td style="text-align: center;">動ワ五[動ハ四]</td>
+<td style="text-align: center;">会面、见面</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 軽 かろ</code>んずる[<code>@ 軽 かろ</code>んず]</td>
+<td style="text-align: center;">動サ変[動サ変]</td>
+<td style="text-align: center;">轻视</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 消 き</code>える[<code>@ 消 き</code>ゆ]</td>
+<td style="text-align: center;">動ア下一[動ヤ下二]</td>
+<td style="text-align: center;">消失</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 消 け</code>す</td>
+<td style="text-align: center;">動サ五[動サ四]</td>
+<td style="text-align: center;">使熄灭、关闭、解除</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 芽生 めば</code>える[<code>@ 芽生 めば</code>ゆ]</td>
+<td style="text-align: center;">動ア下一[動ヤ下二]</td>
+<td style="text-align: center;">出芽、发芽</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 生 い</code>きる[<code>@ 生 い</code>く]</td>
+<td style="text-align: center;">動カ上一[動カ上二]</td>
+<td style="text-align: center;">生存、生活</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 生 う</code>まれつく</td>
+<td style="text-align: center;">動カ五[動カ四]</td>
+<td style="text-align: center;">天生、生来就有</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 笑 わら</code>う[<code>@ 笑 わら</code>ふ]</td>
+<td style="text-align: center;">動ワ五[動ハ四]</td>
+<td style="text-align: center;">笑</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 迷 まよ</code>う[<code>@ 迷 まよ</code>ふ] <br /> （<code>@ 迷 まよ</code>っ）</td>
+<td style="text-align: center;">動ワ五[動ハ四]</td>
+<td style="text-align: center;">迷失、迷惘</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 辿 たど</code>る <br /> （<code>@ 辿 たど</code>り）</td>
+<td style="text-align: center;">動ラ五[動ラ四]</td>
+<td style="text-align: center;">沿路前进、追寻</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 着 つ</code>く <br /> （<code>@ 着 つ</code>い）</td>
+<td style="text-align: center;">動カ五[動カ四]</td>
+<td style="text-align: center;">到达、抵达</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">やる <br /> （やっ）</td>
+<td style="text-align: center;">動ラ五[動ラ四]</td>
+<td style="text-align: center;">做、干、进行、派遣</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 知 し</code>る <br /> （<code>@ 知 し</code>ら）</td>
+<td style="text-align: center;">動ラ五[動ラ四]</td>
+<td style="text-align: center;">知道、了解</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 拠 よ</code>る <br /> （<code>@ 拠 よ</code>っ）</td>
+<td style="text-align: center;">動ラ五[動ラ四]</td>
+<td style="text-align: center;">基于、根据、按照</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 降 ふ</code>る <br /> （<code>@ 降 ふ</code>り）</td>
+<td style="text-align: center;">動ラ五[動ラ四]</td>
+<td style="text-align: center;">降下、落下</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 始 はじ</code>まる <br /> （<code>@ 始 はじ</code>まり）</td>
+<td style="text-align: center;">動ラ五[動ラ四]</td>
+<td style="text-align: center;">开始</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 有 あ</code>る[<code>@ 有 あ</code>り] <br /> （あれ、あり）</td>
+<td style="text-align: center;">動ラ五[動ラ変]</td>
+<td style="text-align: center;">①（无生命事物）存在 <br /> ②属于、归于</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 終 お</code>わる[<code>@ 終 を</code>はる] <br /> （<code>@ 終 お</code>わり）</td>
+<td style="text-align: center;">動ラ五[動ラ四]</td>
+<td style="text-align: center;">结束、终结</td>
+</tr>
+</tbody>
+</table>
+<h1 id="形容词生词表">形容词生词表</h1>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">日语</th>
+<th style="text-align: center;">词性</th>
+<th style="text-align: center;">汉语释义</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 速 はや</code>い[<code>@ 速 はや</code>し] <br /> （はやく）</td>
+<td style="text-align: center;">形[形ク]</td>
+<td style="text-align: center;">动作迅速的</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 煩 うるさ</code>い・<code>@ 五月蠅 うるさ</code>い[<code>@ 煩 うるさ</code>し]</td>
+<td style="text-align: center;">形[形ク]</td>
+<td style="text-align: center;">嘈杂的、烦人的</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 軽 かる</code>い[<code>@ 軽 かる</code>し]</td>
+<td style="text-align: center;">形[形ク]</td>
+<td style="text-align: center;">轻的</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 重 おも</code>い[<code>@ 重 おも</code>し]</td>
+<td style="text-align: center;">形[形ク]</td>
+<td style="text-align: center;">重的</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 赤 あか</code>い[<code>@ 赤 あか</code>し]</td>
+<td style="text-align: center;">形[形ク]</td>
+<td style="text-align: center;">红色的</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 黒 くろ</code>い[<code>@ 黒 くろ</code>し]</td>
+<td style="text-align: center;">形[形ク]</td>
+<td style="text-align: center;">黑色的</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 長 なが</code>い[<code>@ 長 なが</code>し]</td>
+<td style="text-align: center;">形[形ク]</td>
+<td style="text-align: center;">长的</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 広 ひろ</code>い[<code>@ 広 ひろ</code>し]</td>
+<td style="text-align: center;">形[形ク]</td>
+<td style="text-align: center;">宽广的</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 美 うつく</code>しい[<code>@ 美 うつく</code>し]</td>
+<td style="text-align: center;">形[形シク]</td>
+<td style="text-align: center;">美丽的</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 難 むずか</code>しい[<code>@ 難 むずか</code>し]</td>
+<td style="text-align: center;">形[形シク]</td>
+<td style="text-align: center;">困难的</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 素晴 すば</code>らしい[<code>@ 素晴 すば</code>らし]</td>
+<td style="text-align: center;">形[形シク]</td>
+<td style="text-align: center;">美好的</td>
+</tr>
+</tbody>
+</table>
+<h1 id="形容动词生词表">形容动词生词表</h1>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">日语</th>
+<th style="text-align: center;">词性</th>
+<th style="text-align: center;">汉语释义</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 素敵 すてき</code>だ[<code>@ 素敵 すてき</code>なり]</td>
+<td style="text-align: center;">形動[形動ナリ]</td>
+<td style="text-align: center;">美好的</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 好 す</code>きだ[<code>@ 好 す</code>きなり]</td>
+<td style="text-align: center;">形動[形動ナリ]</td>
+<td style="text-align: center;">喜欢的</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 嫌 きら</code>いだ[<code>@ 嫌 きら</code>ひなり]</td>
+<td style="text-align: center;">形動[形動ナリ]</td>
+<td style="text-align: center;">讨厌的</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 静 しず</code>かだ[<code>@ 静 しず</code>かなり]</td>
+<td style="text-align: center;">形動[形動ナリ]</td>
+<td style="text-align: center;">安静的</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 大変 たいへん</code>だ[<code>@ 大変 たいへん</code>なり] <br /> （<code>@ 大変 たいへん</code>に）</td>
+<td style="text-align: center;">形動[形動ナリ]</td>
+<td style="text-align: center;">极重要的、非常</td>
+</tr>
+</tbody>
+</table>
+<h1 id="助词助动词生词表">助词、助动词生词表</h1>
+<p>助词和助动词的细节用法会在后续章节讲解，这里不需要过度关注各个助词和助动词的含义。</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">日语</th>
+<th style="text-align: center;">词性</th>
+<th style="text-align: center;">汉语释义</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">は</td>
+<td style="text-align: center;">副助</td>
+<td style="text-align: center;">标注语句的主题</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">が</td>
+<td style="text-align: center;">格助</td>
+<td style="text-align: center;">标注语句的主语</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">ます <br /> （ましょ、ませ）</td>
+<td style="text-align: center;">助動</td>
+<td style="text-align: center;">提示一般尊敬陈述语气</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">の</td>
+<td style="text-align: center;">格助</td>
+<td style="text-align: center;">标注从属或者同位关系</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">を</td>
+<td style="text-align: center;">格助</td>
+<td style="text-align: center;">标注语句的宾语</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">て</td>
+<td style="text-align: center;">接助</td>
+<td style="text-align: center;">标注语句的中顿</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">た</td>
+<td style="text-align: center;">助動</td>
+<td style="text-align: center;">提示过去时态</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">ので</td>
+<td style="text-align: center;">接助</td>
+<td style="text-align: center;">标注客观原因</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">に</td>
+<td style="text-align: center;">格助</td>
+<td style="text-align: center;">标注动作发生的时间、动作的方向等</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">も</td>
+<td style="text-align: center;">副助</td>
+<td style="text-align: center;">①标注同类追加（类似“也”） <br /> ②标注极端语气（类似“甚至”）</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">か</td>
+<td style="text-align: center;">終助</td>
+<td style="text-align: center;">标注疑问语气</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">だ <br /> （だっ）</td>
+<td style="text-align: center;">助動</td>
+<td style="text-align: center;">（简体）作为判断词提示断定语气</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">で</td>
+<td style="text-align: center;">格助</td>
+<td style="text-align: center;">标注动作发生的地点、动作的手段等</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">ない</td>
+<td style="text-align: center;">助動</td>
+<td style="text-align: center;">提示否定语义</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">から</td>
+<td style="text-align: center;">格助</td>
+<td style="text-align: center;">标注时间、地点的起始，标注主观原因</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">まで</td>
+<td style="text-align: center;">格助</td>
+<td style="text-align: center;">标注时间、地点的终止等</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">だけ</td>
+<td style="text-align: center;">副助</td>
+<td style="text-align: center;">标注程度限定（类似“只”）</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">う</td>
+<td style="text-align: center;">助動</td>
+<td style="text-align: center;">提示自发意志</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">べし <br /> （べから）</td>
+<td style="text-align: center;">助動</td>
+<td style="text-align: center;">提示应当、可能等语气</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">ず・ぬ・ん</td>
+<td style="text-align: center;">助動</td>
+<td style="text-align: center;">提示否定语义</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">ば</td>
+<td style="text-align: center;">接助</td>
+<td style="text-align: center;">标注假设、可能</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">そうだ <br /> （そうに）</td>
+<td style="text-align: center;">助動</td>
+<td style="text-align: center;">提示样态</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">です <br /> （でし）</td>
+<td style="text-align: center;">助動</td>
+<td style="text-align: center;">（一般尊敬语气）作为判断词提示断定语气</td>
+</tr>
+</tbody>
+</table>
+<h1 id="副词生词表">副词生词表</h1>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">日语</th>
+<th style="text-align: center;">词性</th>
+<th style="text-align: center;">汉语释义</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">しっかり</td>
+<td style="text-align: center;">副</td>
+<td style="text-align: center;">①（身体）健壮、结实 <br /> ②（结构）稳固、牢靠 <br /> ③（含义）明确 <br /> ④（性格）坚强、坚定</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">もう</td>
+<td style="text-align: center;">副</td>
+<td style="text-align: center;">①已经 <br /> ②就要、将要、快要 <br /> ③再、还、另外</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">さっぱり</td>
+<td style="text-align: center;">副</td>
+<td style="text-align: center;">整洁、利落</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">たくさん</td>
+<td style="text-align: center;">副</td>
+<td style="text-align: center;">大量、许多</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">なんでも</td>
+<td style="text-align: center;">副</td>
+<td style="text-align: center;">①无论什么、无论如何 <br /> ②据说是</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">いつか</td>
+<td style="text-align: center;">副</td>
+<td style="text-align: center;">①不知不觉的 <br /> ②曾经 <br /> ③早晚、迟早</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">きっと</td>
+<td style="text-align: center;">副</td>
+<td style="text-align: center;">一定</td>
+</tr>
+</tbody>
+</table>
+<h1 id="名词代词数词生词表">名词、代词、数词生词表</h1>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">日语</th>
+<th style="text-align: center;">词性</th>
+<th style="text-align: center;">汉语释义</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 大阪 おおさか</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">大阪</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 経済 けいざい</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">经济</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">フィルム</td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">胶卷</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 俺 おれ</code></td>
+<td style="text-align: center;">代</td>
+<td style="text-align: center;">（男性对同辈、下级使用）我</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 兄弟 きょうだい</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">兄弟</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 三人 さんにん</code></td>
+<td style="text-align: center;">数</td>
+<td style="text-align: center;">三人</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 容疑者 ようぎしゃ</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">嫌疑人</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 情報 じょうほう</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">消息、信息</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">ケーキ</td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">蛋糕</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">これ</td>
+<td style="text-align: center;">代</td>
+<td style="text-align: center;">（名词性事物近称）这个、这些</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">お<code>@ 婆 ばあ</code>さん</td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">①（敬称）祖母、奶奶 <br /> ②（敬称）外祖母、外婆 <br /> ③（对老年女性的敬称）老太太</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 伊呂波 いろは</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">①伊吕波歌（一首用平假名编制的歌曲） <br /> ②初步、入门</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 山 やま</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">山</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 奈美 なみ</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">（女性名）奈美</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 共和 きょうわ</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">共和</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 当 あ</code>て<code>@ 字 じ</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">假借字</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 仕付 しつけ</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">管教、约束</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 仕方 しかた</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">方法、手段</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 仕草 しぐさ</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">台词、说辞</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 仕事 しごと</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">工作</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 亜細亜 アジア</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">亚洲</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 麦酒 ビール</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">啤酒</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 俱楽部 クラブ</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">俱乐部</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 言葉 ことば</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">话语</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 何度 なんど</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">多少次、多少回</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">の</td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">（形式体言）起动词名词化的作用</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 送 おく</code>り<code>@ 仮名 がな</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">送假名</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 事 こと</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">①事物、事情 <br /> ②（形式体言）起动词名词化的作用</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">あれ</td>
+<td style="text-align: center;">代</td>
+<td style="text-align: center;">（名词性事物远称）那个、那些</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 去年 きょねん</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">去年</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 私 わたし</code></td>
+<td style="text-align: center;">代</td>
+<td style="text-align: center;">（通用）我</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 日本語 にほんご</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">日语</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 手紙 てがみ</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">书信</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 資料 しりょう</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">资料</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 改 かい</code>ざん</td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">篡改</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">この</td>
+<td style="text-align: center;">代</td>
+<td style="text-align: center;">（连体性近称）这个</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 番組 ばんぐみ</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">节目</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">ご<code>@ 覧 らん</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">（尊他语）看、所看</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">スポンサー</td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">赞助方</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 提供 ていきょう</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">提供</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 上海 シャンハイ</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">上海</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 東京 とうきょう</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">东京</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 飛行機 ひこうき</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">飞机</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 振 ふ</code>り</td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">①振动、摆动 <br /> ②（外表）样子、打扮 <br /> ③（作补助名词）装作、假装 <br /> ④（舞蹈）动作、姿势 <br /> ⑤陌生 <br /> ⑥临时、突然</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 囚人 しゅうじん</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">犯人</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 看守 かんしゅ</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">看守</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 目 め</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">①眼睛、眼球 <br /> ②眼光、眼神 <br /> ③外表、外观 <br /> ④监视、看守</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 彼 かれ</code></td>
+<td style="text-align: center;">代</td>
+<td style="text-align: center;">（通用）他</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 勤勉家 きんべんか</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">实干家、用功的人</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 当 あ</code>たり<code>@ 前 まえ</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">理所应当</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 明日 あした</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">明天</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 七時 しちじ</code></td>
+<td style="text-align: center;">数</td>
+<td style="text-align: center;">七点</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 会社 かいしゃ</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">公司</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 受付 うけつけ</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">前台</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 一寸 いっすん</code></td>
+<td style="text-align: center;">数</td>
+<td style="text-align: center;">一寸</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 光陰 こういん</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">光阴</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 世界 せかい</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">世界</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 祝福 しゅくふく</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">祝福</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 橋 はし</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">桥梁</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 石 いし</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">石头</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 生 なま</code>ビール</td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">生啤酒</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 五月雨 さみだれ</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">梅雨、阴历五月的阴雨</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 時雨 しぐれ</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">（秋冬之交的）阵雨</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 村雨 むらさめ</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">阵雨、骤雨</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 梅雨 つゆ</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">梅雨</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 一昨日 おととい</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">前天</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 明後日 あさって</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">后天</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 晦日 みそか</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">（阴历的）每月最后一天</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 足袋 たび</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">（日式）短布袜</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 吹雪 ふぶき</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">暴风雪</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 芝生 しばふ</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">草坪、矮草地</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 合図 あいず</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">信号、暗号</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 馬鹿 ばか</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">愚蠢的人、傻子</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 額縁 がくぶち</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">画框、相框</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 残高 ざんだか</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">余额</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 虚 うつ</code>ろ</td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">空虚、空洞</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 午前 ごぜん</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">午前、正午之前、上午</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">そこ</td>
+<td style="text-align: center;">代</td>
+<td style="text-align: center;">（名词性地点中称）那里</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">ハッピー</td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">快乐</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 天気予報 てんきよほう</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">天气预报</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 雨 あめ</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">雨</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 申 もう</code>し<code>@ 訳 わけ</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">辩解</td>
+</tr>
+</tbody>
+</table>
+<h1 id="其他类型词语生词表">其他类型词语生词表</h1>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">日语</th>
+<th style="text-align: center;">词性</th>
+<th style="text-align: center;">汉语释义</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 御 お</code></td>
+<td style="text-align: center;">接続</td>
+<td style="text-align: center;">①您、您的 <br /> ②表尊敬的接头词</td>
+</tr>
+</tbody>
+</table>
+<h1 id="常用交际语表">常用交际语表</h1>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">日语</th>
+<th style="text-align: center;">汉语释义</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">よろしくお<code>@ 願 ねが</code>いします。</td>
+<td style="text-align: center;">请多指教。</td>
+</tr>
+</tbody>
+</table>
 ]]></content>
       <categories>
         <category>【学习笔记】日语</category>
@@ -11089,6 +11093,53 @@ V_o &amp;\leftarrow (1 - \alpha_o)V_o + \alpha_o(o - \overline o)^2 \\
       </categories>
   </entry>
   <entry>
+    <title>《铃芽户缔》的不恰当译名与日译中问题</title>
+    <url>/2022/11/04/jc-translation/</url>
+    <content><![CDATA[<p>今天偶然刷到新海诚的动画电影新作《すずめの戸締り》的中文译名从《铃芽户缔》换为了《铃芽小姐来锁门》的新闻，于是产生了一些奇妙的感叹，慨叹翻译真的是一门艺术。这里也就随便写写，反正也就是 Holder 自己的一些想法罢了，没有严谨性，不具有参考价值。</p>
+<span id="more"></span>
+<h1 id="为什么直接搬汉字是不对的">为什么直接搬汉字是不对的</h1>
+<p>中日双语互译有一个特点，就是这两门语言至今都在使用汉字，而汉字是具有超脱于语言的表意性的，这也就是甚嚣尘上的“日语不要学，汉字随便拼一拼就读懂了”这个观点的一个基本点。</p>
+<p>事实上这类观点不能直接断定地说不对，因为如果一个日语句子里音读词居多，日本本土的虚词居少的话，实际上只要在认读汉字的基础上了解日语是 SOV 主宾谓语序就可以很方便地读出来句子：</p>
+<ul>
+<li>私は東京大学の大学生です。</li>
+<li>私は毎日七時に朝ご飯を食べます。</li>
+</ul>
+<p>虽然具体用词上和中文有些许差异，比如第一人称这里用的汉字是“私”，“早饭”在日语中的汉字是“朝饭”，但是大部分认识汉字的人都能基本准确地了解第一句表达“我是东京大学的大学生”，第二句表达“我每天七点吃早饭”。</p>
+<p>要是再知道点现代日语的高频虚词，比如否定往往以「ない、ません、ず」出现，存在往往以「ある、いる、あります、います」出现，过去往往以「た」出现，断定往往以「です、だ」出现，假定往往以「ば、なら、たら」出现，基本上就已经能够在甚至不会读五十音的条件下阅读很多的日语句子了。</p>
+<p>但是，这套方法的缺陷是相当明显的。</p>
+<p>首先，现代日语的汉字使用频率实际上是在下降的。除了由于同音异义词过多导致不得不使用汉字的音读词，事实上大部分不太常用的训读慢慢都在消退。比如说，现在很少有人将「かける」写成「駆ける、掛ける」之类的了，在诸如「夜にかける」这样结构的句子里，显然就直接导致动词无法认读，进而完全无法理解整体含义。甚至，类似「私、君、彼」等词语现今写为假名的频率可能已经高于或者逐步高于写为汉字。</p>
+<p>再者，日语汉字的含义与中文汉字的含义，可以有着很大的差别。相信大家早已在很多地方见过类似日语的“手纸”实际上是“信件”，日语的“爱人”实际上是“小三”之类的科普文章。事实上，还有很多类似「直す、戸惑う、見舞う、手配」等各种在中文中找不到对应表达的包含有汉字的日语词，即使可以尝试通过上下文断定，但是这类词语的认读依然是相当困难的。</p>
+<p>而这个原因也恰恰是我认为直接搬汉字的翻译方式是完全不正确的理由，日语中的汉字经过多年的发展，早已和当代中文中的汉字有了很大的偏差。纵使有相当部分的词语中的汉字和中文近似，我们也不能忽视掉另外一部分和中文并不贴切的汉字。这里「戸締り」就是一个重要的例子，「戸」是日语中表达“门”的汉字，「締まり」是动词「締まる」的名词形式，其动词形式表达“关闭”。而「戸締り」完完全全就是按照日语 VO 顺序构造出来的一个复合词，和中文使用汉字的思路完全不一致。直接的搬运明显造成了表意不明，因为“户缔”在中文中并不存在，对于完全不了解日语的人，这是一个不亚于“鲁棒性”一样的迷惑翻译。</p>
+<h1 id="与你的名字等的比较">与《你的名字》等的比较</h1>
+<p>或许有人反驳，《你的名字》的原名是《君の名は》，其称为《君名》是完全可以接受的。但我依然认为，《你的名字》这个翻译的使用频率高于《君名》这个翻译。而且《君名》能被接受的核心原因，我认为是这个名称的的构词语序对于中文日文都是统一的。这是一个偏正短语，在中文和日文中都是定语置于名词之前，再加上「の」这个假名作为格助词表示“的”的含义早就广为人知，这才让《君名》这个实际上很偷懒的译名活了下来。</p>
+<p>再说说新海诚别的作品，比如《言の葉の庭》《秒速 5 センチメートル》《天気の子》，这些作品的译名分别为《言叶之庭》《秒速五厘米》《天气之子》。这些标题的结构都较为简单，而且几乎没有使用到和中文意义不一致的汉字，所以翻译相当简单。或许这一次的《铃芽户缔》也就出于这种翻译惯性才成为了最初的官方译名。</p>
+<h1 id="日式风格">日式风格？</h1>
+<p>上面提到了《言叶之庭》，其中有一个词语“言叶”，这个词语显然并不是中文的词汇。然而这个词语由于已引入中国很长时间，在这一类日系作品的受众人群中，其表达“话语”这一含义已经广为人知。这实际上和「の」表示“的”也广为人知有类似之处。而「の」作为“的”广为人知的程度更是相当恐怖，甚至在输入法内输入 de，也有几率跳出「の」这个选项。另外，部分仿日式商品的销售词中会故意将“的”替换为「の」，完全忽视了「の」仅能够接在名词之后，导致部分动词词组修饰名词的时候也用「の」，让了解日语的人一眼看出来这是假日本货。</p>
+<p>然而这类严格意义上错误的用法依然得到了广泛承认，这又是为何。这类和中文并不一致但是又不至于和中文用法相差过远的日文事实上营造了一种日式的风格。包括日本人的姓名也有着类似的作用。</p>
+<p>与之前流行过的欧美翻译腔类似，事实上日文文本的翻译也为中文带来了日式表达。这类表达并不是源于中文本土环境，但是又能够让中文使用者理解，在这种微妙的违和感中携带的，就是所谓的语言风格。</p>
+<p>观察下述两句话（引用自知乎专栏 <a href="https://zhuanlan.zhihu.com/p/134031271" class="uri">https://zhuanlan.zhihu.com/p/134031271</a>）：</p>
+<ul>
+<li>我敢打赌，他做的菜就像地狱一样糟糕。</li>
+<li>突然被告白什么的，怎么做才好。</li>
+</ul>
+<p>前者明显携带一种欧美的语言风格，而后者则携带有一种日式的语言风格。</p>
+<p>营造这样的一种语言风格是有利于传播和营销的，现在大部分的人还是比较买日式这笔账的。然而，我也说过，营造这种氛围至少要让中文使用者理解，翻译的底线至少要做到让完全不懂对方语言的人能够看懂含义。回到《铃芽户缔》的问题上，如果你是完全不懂日语的中文使用者，你可能能够通过“铃芽”这个日式名字来感受这是一个日式的电影，然而如果我只给你看“户缔”，你又会如何理解呢？这种舍本逐末的行为显然是不可行的。</p>
+<p>再说现在新的译名《铃芽小姐来锁门》，这次做到了中文正确，但是是否过于僵硬了呢？这个译名过分强调了动作，“来”和“锁”的动作性过于强烈，让整个译名的重心偏向了动作。再加上莫名其妙加上了个现在比较微妙的“小姐”这个称谓，是否和铃芽作为少女的身份或多或少有点不匹配呢？“小姐”容易让人对主人公铃芽产生不正确的第一印象。</p>
+<p>我斗胆试译为《铃芽关上了门》，弱化一部分动作的属性，避免使用“小姐”这类可能引起误解的称谓，留下一些空白，可能稍微好一些。</p>
+<h1 id="口语与书面">口语与书面</h1>
+<p>其实在打算把这篇文章结束的时候，我突然想起《命に嫌われている》这首歌的歌名也经常简称为《命嫌》。</p>
+<p>不过这并不能构成对《铃芽户缔》这个译名的辩护，因为《命嫌》永远不是正式译名，仅仅是一个口语上的简称，其正式的译名依然是《被生命所嫌弃》。</p>
+<p>口语的随意性永远不能影响书面语的正式性，虽然我理解部分文艺作品的翻译为了贴合口语以方便受众，但是这类完全不能表达原意的翻译成为正式翻译是我不能接受的。</p>
+<h1 id="一些其他的话">一些其他的话</h1>
+<p>事实上随着信息交换的速度加快，认真翻译一个外来概念已经越来越困难，这在网络热词上更为明显。比如说日文中的接尾词「がち」，用于表达“往往”的含义。这个词在日本 Vtuber 圈内火了一圈之后传入中国，在中文互联网上则直接写为 gachi，直接音译，甚至连汉字都没用。当然这也有身份认可的作用在里面，理解 gachi 含义的人，显然比知道这个词应该翻译为“往往”的人更容易被这个团体接受。</p>
+<p>毕竟网络热词这种东西转瞬即逝，你认真为某个热词设计了很贴切的翻译，随后这个词早就没有人用了。</p>
+<p>或许这也是不愿意好好翻译电影名称的原因吧，虽然现在能引入国内院线的外国电影也是越来越少就是了。</p>
+]]></content>
+      <categories>
+        <category>【杂谈】日语</category>
+      </categories>
+  </entry>
+  <entry>
     <title>简明日语自学手册 Chapter 7 句式与常用固定表达</title>
     <url>/2022/08/22/ja-tutorial-ch7/</url>
     <content><![CDATA[<p>本文将在基本了解日语语句构成的条件下总结各类常见的日语语句表达方式，基于此，读者应当可以自行书写符合语法且自然的日语语句。</p>
@@ -11142,50 +11193,49 @@ V_o &amp;\leftarrow (1 - \alpha_o)V_o + \alpha_o(o - \overline o)^2 \\
       </categories>
   </entry>
   <entry>
-    <title>《铃芽户缔》的不恰当译名与日译中问题</title>
-    <url>/2022/11/04/jc-translation/</url>
-    <content><![CDATA[<p>今天偶然刷到新海诚的动画电影新作《すずめの戸締り》的中文译名从《铃芽户缔》换为了《铃芽小姐来锁门》的新闻，于是产生了一些奇妙的感叹，慨叹翻译真的是一门艺术。这里也就随便写写，反正也就是 Holder 自己的一些想法罢了，没有严谨性，不具有参考价值。</p>
+    <title>又一年五月</title>
+    <url>/2022/05/08/lab-quit/</url>
+    <content><![CDATA[<p>是不是每年的五月都会有些不太顺遂的事情发生。</p>
 <span id="more"></span>
-<h1 id="为什么直接搬汉字是不对的">为什么直接搬汉字是不对的</h1>
-<p>中日双语互译有一个特点，就是这两门语言至今都在使用汉字，而汉字是具有超脱于语言的表意性的，这也就是甚嚣尘上的“日语不要学，汉字随便拼一拼就读懂了”这个观点的一个基本点。</p>
-<p>事实上这类观点不能直接断定地说不对，因为如果一个日语句子里音读词居多，日本本土的虚词居少的话，实际上只要在认读汉字的基础上了解日语是 SOV 主宾谓语序就可以很方便地读出来句子：</p>
-<ul>
-<li>私は東京大学の大学生です。</li>
-<li>私は毎日七時に朝ご飯を食べます。</li>
-</ul>
-<p>虽然具体用词上和中文有些许差异，比如第一人称这里用的汉字是“私”，“早饭”在日语中的汉字是“朝饭”，但是大部分认识汉字的人都能基本准确地了解第一句表达“我是东京大学的大学生”，第二句表达“我每天七点吃早饭”。</p>
-<p>要是再知道点现代日语的高频虚词，比如否定往往以「ない、ません、ず」出现，存在往往以「ある、いる、あります、います」出现，过去往往以「た」出现，断定往往以「です、だ」出现，假定往往以「ば、なら、たら」出现，基本上就已经能够在甚至不会读五十音的条件下阅读很多的日语句子了。</p>
-<p>但是，这套方法的缺陷是相当明显的。</p>
-<p>首先，现代日语的汉字使用频率实际上是在下降的。除了由于同音异义词过多导致不得不使用汉字的音读词，事实上大部分不太常用的训读慢慢都在消退。比如说，现在很少有人将「かける」写成「駆ける、掛ける」之类的了，在诸如「夜にかける」这样结构的句子里，显然就直接导致动词无法认读，进而完全无法理解整体含义。甚至，类似「私、君、彼」等词语现今写为假名的频率可能已经高于或者逐步高于写为汉字。</p>
-<p>再者，日语汉字的含义与中文汉字的含义，可以有着很大的差别。相信大家早已在很多地方见过类似日语的“手纸”实际上是“信件”，日语的“爱人”实际上是“小三”之类的科普文章。事实上，还有很多类似「直す、戸惑う、見舞う、手配」等各种在中文中找不到对应表达的包含有汉字的日语词，即使可以尝试通过上下文断定，但是这类词语的认读依然是相当困难的。</p>
-<p>而这个原因也恰恰是我认为直接搬汉字的翻译方式是完全不正确的理由，日语中的汉字经过多年的发展，早已和当代中文中的汉字有了很大的偏差。纵使有相当部分的词语中的汉字和中文近似，我们也不能忽视掉另外一部分和中文并不贴切的汉字。这里「戸締り」就是一个重要的例子，「戸」是日语中表达“门”的汉字，「締まり」是动词「締まる」的名词形式，其动词形式表达“关闭”。而「戸締り」完完全全就是按照日语 VO 顺序构造出来的一个复合词，和中文使用汉字的思路完全不一致。直接的搬运明显造成了表意不明，因为“户缔”在中文中并不存在，对于完全不了解日语的人，这是一个不亚于“鲁棒性”一样的迷惑翻译。</p>
-<h1 id="与你的名字等的比较">与《你的名字》等的比较</h1>
-<p>或许有人反驳，《你的名字》的原名是《君の名は》，其称为《君名》是完全可以接受的。但我依然认为，《你的名字》这个翻译的使用频率高于《君名》这个翻译。而且《君名》能被接受的核心原因，我认为是这个名称的的构词语序对于中文日文都是统一的。这是一个偏正短语，在中文和日文中都是定语置于名词之前，再加上「の」这个假名作为格助词表示“的”的含义早就广为人知，这才让《君名》这个实际上很偷懒的译名活了下来。</p>
-<p>再说说新海诚别的作品，比如《言の葉の庭》《秒速 5 センチメートル》《天気の子》，这些作品的译名分别为《言叶之庭》《秒速五厘米》《天气之子》。这些标题的结构都较为简单，而且几乎没有使用到和中文意义不一致的汉字，所以翻译相当简单。或许这一次的《铃芽户缔》也就出于这种翻译惯性才成为了最初的官方译名。</p>
-<h1 id="日式风格">日式风格？</h1>
-<p>上面提到了《言叶之庭》，其中有一个词语“言叶”，这个词语显然并不是中文的词汇。然而这个词语由于已引入中国很长时间，在这一类日系作品的受众人群中，其表达“话语”这一含义已经广为人知。这实际上和「の」表示“的”也广为人知有类似之处。而「の」作为“的”广为人知的程度更是相当恐怖，甚至在输入法内输入 de，也有几率跳出「の」这个选项。另外，部分仿日式商品的销售词中会故意将“的”替换为「の」，完全忽视了「の」仅能够接在名词之后，导致部分动词词组修饰名词的时候也用「の」，让了解日语的人一眼看出来这是假日本货。</p>
-<p>然而这类严格意义上错误的用法依然得到了广泛承认，这又是为何。这类和中文并不一致但是又不至于和中文用法相差过远的日文事实上营造了一种日式的风格。包括日本人的姓名也有着类似的作用。</p>
-<p>与之前流行过的欧美翻译腔类似，事实上日文文本的翻译也为中文带来了日式表达。这类表达并不是源于中文本土环境，但是又能够让中文使用者理解，在这种微妙的违和感中携带的，就是所谓的语言风格。</p>
-<p>观察下述两句话（引用自知乎专栏 <a href="https://zhuanlan.zhihu.com/p/134031271" class="uri">https://zhuanlan.zhihu.com/p/134031271</a>）：</p>
-<ul>
-<li>我敢打赌，他做的菜就像地狱一样糟糕。</li>
-<li>突然被告白什么的，怎么做才好。</li>
-</ul>
-<p>前者明显携带一种欧美的语言风格，而后者则携带有一种日式的语言风格。</p>
-<p>营造这样的一种语言风格是有利于传播和营销的，现在大部分的人还是比较买日式这笔账的。然而，我也说过，营造这种氛围至少要让中文使用者理解，翻译的底线至少要做到让完全不懂对方语言的人能够看懂含义。回到《铃芽户缔》的问题上，如果你是完全不懂日语的中文使用者，你可能能够通过“铃芽”这个日式名字来感受这是一个日式的电影，然而如果我只给你看“户缔”，你又会如何理解呢？这种舍本逐末的行为显然是不可行的。</p>
-<p>再说现在新的译名《铃芽小姐来锁门》，这次做到了中文正确，但是是否过于僵硬了呢？这个译名过分强调了动作，“来”和“锁”的动作性过于强烈，让整个译名的重心偏向了动作。再加上莫名其妙加上了个现在比较微妙的“小姐”这个称谓，是否和铃芽作为少女的身份或多或少有点不匹配呢？“小姐”容易让人对主人公铃芽产生不正确的第一印象。</p>
-<p>我斗胆试译为《铃芽关上了门》，弱化一部分动作的属性，避免使用“小姐”这类可能引起误解的称谓，留下一些空白，可能稍微好一些。</p>
-<h1 id="口语与书面">口语与书面</h1>
-<p>其实在打算把这篇文章结束的时候，我突然想起《命に嫌われている》这首歌的歌名也经常简称为《命嫌》。</p>
-<p>不过这并不能构成对《铃芽户缔》这个译名的辩护，因为《命嫌》永远不是正式译名，仅仅是一个口语上的简称，其正式的译名依然是《被生命所嫌弃》。</p>
-<p>口语的随意性永远不能影响书面语的正式性，虽然我理解部分文艺作品的翻译为了贴合口语以方便受众，但是这类完全不能表达原意的翻译成为正式翻译是我不能接受的。</p>
-<h1 id="一些其他的话">一些其他的话</h1>
-<p>事实上随着信息交换的速度加快，认真翻译一个外来概念已经越来越困难，这在网络热词上更为明显。比如说日文中的接尾词「がち」，用于表达“往往”的含义。这个词在日本 Vtuber 圈内火了一圈之后传入中国，在中文互联网上则直接写为 gachi，直接音译，甚至连汉字都没用。当然这也有身份认可的作用在里面，理解 gachi 含义的人，显然比知道这个词应该翻译为“往往”的人更容易被这个团体接受。</p>
-<p>毕竟网络热词这种东西转瞬即逝，你认真为某个热词设计了很贴切的翻译，随后这个词早就没有人用了。</p>
-<p>或许这也是不愿意好好翻译电影名称的原因吧，虽然现在能引入国内院线的外国电影也是越来越少就是了。</p>
+<p>昨晚通宵写了一些密码学的作业，然后就睡昏过去，一路睡到了下午四点，醒来之后导师发了微信消息说想聊聊。</p>
+<p>虽然有一点不太妙的预感，但在做完核酸之后还是接了导师的电话，导师自然还是弯弯绕绕地回忆了一下我在实验室的几个月，然后也就直白地说出了“我觉得你还是不太适合我们实验室”。</p>
+<p>其实还是有所预料的，毕竟自己因为期中课内一堆事情咕咕咕了科协咕咕咕了实验室工作，而这个项目五月底是要投的，所以交给我的任务也是无限期拖延，即使只是一个 Toy example。然后半路有一位茶园的同年级同学也加入了这个项目，虽然没和他直接交流，但是可以看出他一个星期内将项目推进了很多。</p>
+<p>所以导师不把名额给我其实也是很正常的一件事情。</p>
+<p>但毕竟现在是大三下学期，都快进入正常的推免流程了，这个时候作出这样的定论，毕竟还是杀了我一个措手不及。</p>
+<p>一看时间，又是五月初。去年五月初的狼狈已经不堪回首，前年五月的混沌早已淡出了记忆，今年的五月又是这样的变故。再这样下去，怕不是每年五月，即使我相当喜欢初夏，我也得下意识地恐惧这段时光。</p>
+<hr />
+<p>其实我一直是选择困难症的，选专业、选导师啥的。选图形学也是因为安老板推荐，加上 GAMES101 看着还不错，也就直接这么选了。但面临这样的境遇，也只能再去审视自己到底想去学什么。</p>
+<p>最后经过和若干位学长和同学交流了一番，我给季铮锋老师发出了邮件，想着去做量子计算之类的方向。</p>
+<hr />
+<p>其实打心底而言，我一直没有动现在实验室的项目也是有一定原因的。我想的是来实验室做一些渲染工作，然而我打开项目工程代码，我看到的是 Pytorch。虽然这也并不奇怪，毕竟有名言“Neural network rapes everything”。</p>
+<p>但我在想，导师把我安排来这个项目也是有原因的，毕竟我的简历上写着刘知远实验室的经历。但他可能并不了解的是，我从那里退出并不是因为我抢不到他的名额，而是我不想做人工智能。</p>
+<p>所以在面对项目代码的时候，我还是有点不大愿意动手。</p>
+<hr />
+<p>选量子，我也不是那么清楚为什么，可能是因为没人去做量子，所以名额比较充裕，也有可能是一种病急乱投医。</p>
+<p>时而会感叹自己，从人工智能到图形学再到量子，完全是从热门到冷门，从就业面宽到没有就业面。</p>
+<hr />
+<p>我到底想做什么，其实要我说，我也说不明白，我能明确说明的，只有我绝对不想做什么。我厌恶人工智能，厌恶计算机网络，高性能和计算机系统也不太想触碰（不是反感，而是自己太菜了）。</p>
+<p>如果需要给出一点模糊的答案，那可能是做开发，软件开发。我严重怀疑我自己的代码强迫症，看到什么都想重构，喜欢写那些别人看来是炫技的代码。</p>
+<p>但是软件开发又何必读博士呢。</p>
+<p>我也不太清楚我为何想继续读书，可能只是不想那么早就去接触职场。但毕竟这是逃避。</p>
+<hr />
+<p>谁知道呢，更何况我们的 Prof. Ji 也可以拒绝我，那我只能拿着 GPA 到时候随机挑导师了。</p>
+<p>出国没考 GRE，就业没实习，推免还被导师因为摸鱼拒绝了。</p>
+<hr />
+<p>但其实我现在也说不上难过，说不上有什么负面情绪，我大概看了几篇量子方向的论文，重新拿起 Artin，似乎又对可能的研究方向起了兴趣。</p>
+<p>然而我自己也是清楚的，我之前对图形学也有着这样的幻想，直到我打开了项目代码。</p>
+<p>Holder 真没有什么持久的爱好，慨叹。于是又要担心这种三分钟的热度何时会被消磨殆尽。</p>
+<hr />
+<p>哎，为了学位读书好烦啊，我好想就顺着自己的爱好随便乱学东西，今天学日语明天看几何大后天说不定在敲 Haskell。</p>
+<p>然而不为了学位读书没饭吃，没饭吃就没我这个人了。</p>
+<hr />
+<p>其实也算不上什么挫折，但是 Holder 莫名其妙想了好多。有那种积沙成塔但是倾覆于一旦的感觉，就是这种一点点的失落感。</p>
+<p>Whatever，明天照样起床，去做核酸，写密码学作业，等 Prof. Ji 的回信。</p>
+<p>其实现在内心还有一点点，说不定又可以名正言顺学 Artin 的兴奋。</p>
+<p>晚安哦。</p>
 ]]></content>
       <categories>
-        <category>【杂谈】日语</category>
+        <category>【杂谈】碎碎念</category>
       </categories>
   </entry>
   <entry>
@@ -11232,52 +11282,6 @@ V_o &amp;\leftarrow (1 - \alpha_o)V_o + \alpha_o(o - \overline o)^2 \\
 ]]></content>
       <categories>
         <category>【杂谈】日语</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>又一年五月</title>
-    <url>/2022/05/08/lab-quit/</url>
-    <content><![CDATA[<p>是不是每年的五月都会有些不太顺遂的事情发生。</p>
-<span id="more"></span>
-<p>昨晚通宵写了一些密码学的作业，然后就睡昏过去，一路睡到了下午四点，醒来之后导师发了微信消息说想聊聊。</p>
-<p>虽然有一点不太妙的预感，但在做完核酸之后还是接了导师的电话，导师自然还是弯弯绕绕地回忆了一下我在实验室的几个月，然后也就直白地说出了“我觉得你还是不太适合我们实验室”。</p>
-<p>其实还是有所预料的，毕竟自己因为期中课内一堆事情咕咕咕了科协咕咕咕了实验室工作，而这个项目五月底是要投的，所以交给我的任务也是无限期拖延，即使只是一个 Toy example。然后半路有一位茶园的同年级同学也加入了这个项目，虽然没和他直接交流，但是可以看出他一个星期内将项目推进了很多。</p>
-<p>所以导师不把名额给我其实也是很正常的一件事情。</p>
-<p>但毕竟现在是大三下学期，都快进入正常的推免流程了，这个时候作出这样的定论，毕竟还是杀了我一个措手不及。</p>
-<p>一看时间，又是五月初。去年五月初的狼狈已经不堪回首，前年五月的混沌早已淡出了记忆，今年的五月又是这样的变故。再这样下去，怕不是每年五月，即使我相当喜欢初夏，我也得下意识地恐惧这段时光。</p>
-<hr />
-<p>其实我一直是选择困难症的，选专业、选导师啥的。选图形学也是因为安老板推荐，加上 GAMES101 看着还不错，也就直接这么选了。但面临这样的境遇，也只能再去审视自己到底想去学什么。</p>
-<p>最后经过和若干位学长和同学交流了一番，我给季铮锋老师发出了邮件，想着去做量子计算之类的方向。</p>
-<hr />
-<p>其实打心底而言，我一直没有动现在实验室的项目也是有一定原因的。我想的是来实验室做一些渲染工作，然而我打开项目工程代码，我看到的是 Pytorch。虽然这也并不奇怪，毕竟有名言“Neural network rapes everything”。</p>
-<p>但我在想，导师把我安排来这个项目也是有原因的，毕竟我的简历上写着刘知远实验室的经历。但他可能并不了解的是，我从那里退出并不是因为我抢不到他的名额，而是我不想做人工智能。</p>
-<p>所以在面对项目代码的时候，我还是有点不大愿意动手。</p>
-<hr />
-<p>选量子，我也不是那么清楚为什么，可能是因为没人去做量子，所以名额比较充裕，也有可能是一种病急乱投医。</p>
-<p>时而会感叹自己，从人工智能到图形学再到量子，完全是从热门到冷门，从就业面宽到没有就业面。</p>
-<hr />
-<p>我到底想做什么，其实要我说，我也说不明白，我能明确说明的，只有我绝对不想做什么。我厌恶人工智能，厌恶计算机网络，高性能和计算机系统也不太想触碰（不是反感，而是自己太菜了）。</p>
-<p>如果需要给出一点模糊的答案，那可能是做开发，软件开发。我严重怀疑我自己的代码强迫症，看到什么都想重构，喜欢写那些别人看来是炫技的代码。</p>
-<p>但是软件开发又何必读博士呢。</p>
-<p>我也不太清楚我为何想继续读书，可能只是不想那么早就去接触职场。但毕竟这是逃避。</p>
-<hr />
-<p>谁知道呢，更何况我们的 Prof. Ji 也可以拒绝我，那我只能拿着 GPA 到时候随机挑导师了。</p>
-<p>出国没考 GRE，就业没实习，推免还被导师因为摸鱼拒绝了。</p>
-<hr />
-<p>但其实我现在也说不上难过，说不上有什么负面情绪，我大概看了几篇量子方向的论文，重新拿起 Artin，似乎又对可能的研究方向起了兴趣。</p>
-<p>然而我自己也是清楚的，我之前对图形学也有着这样的幻想，直到我打开了项目代码。</p>
-<p>Holder 真没有什么持久的爱好，慨叹。于是又要担心这种三分钟的热度何时会被消磨殆尽。</p>
-<hr />
-<p>哎，为了学位读书好烦啊，我好想就顺着自己的爱好随便乱学东西，今天学日语明天看几何大后天说不定在敲 Haskell。</p>
-<p>然而不为了学位读书没饭吃，没饭吃就没我这个人了。</p>
-<hr />
-<p>其实也算不上什么挫折，但是 Holder 莫名其妙想了好多。有那种积沙成塔但是倾覆于一旦的感觉，就是这种一点点的失落感。</p>
-<p>Whatever，明天照样起床，去做核酸，写密码学作业，等 Prof. Ji 的回信。</p>
-<p>其实现在内心还有一点点，说不定又可以名正言顺学 Artin 的兴奋。</p>
-<p>晚安哦。</p>
-]]></content>
-      <categories>
-        <category>【杂谈】碎碎念</category>
       </categories>
   </entry>
   <entry>
@@ -14993,6 +14997,576 @@ v = H\log_2\left(1 + \frac{S}{N}\right)({\rm bps})
       </categories>
   </entry>
   <entry>
+    <title>强化学习入门笔记</title>
+    <url>/2023/02/22/note-of-rl/</url>
+    <content><![CDATA[<p>这学期选了一门深度强化学习，也正好趁此机会系统性质地把强化学习理论基础过一下，如果可以的话可能还打算过一下深度学习基础扩展一下视野之类的。</p>
+<span id="more"></span>
+<p><span class="math display">\[
+\newcommand{\Pe}{\mathbb{P}_{\mathcal{E}}}
+\newcommand{\P}{\mathbb{P}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\S}{\mathcal{S}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\Eop}{\mathop{\mathbb{E}}}
+\newcommand{\b}{\boldsymbol}
+\newcommand{\argmax}{\mathop{\rm argmax}}
+\]</span></p>
+<h1 id="强化学习的基本概念与基本优化理论">强化学习的基本概念与基本优化理论</h1>
+<h2 id="环境与策略">环境与策略</h2>
+<p>强化学习的基本框架为一个智能体和环境交互，环境对智能体的决策给出反馈，即收益信号并转移到下一状态，智能体需要学会在不同的状态下应该做出何种决策以收获最高总收益。</p>
+<p>这里环境常常建模为 Markov 决策过程，即 MDP <span class="math inline">\((\S, \A, \Pe, r, \gamma)\)</span>。所谓 Markov 过程，指的是状态转移和历史状态无关，仅仅和当前状态有关，可以简单描述为 <span class="math inline">\(\P(s_{t + 1} \mid s_t) = \P(s_{t + 1} \mid s_t, s_{t - 1}, \cdots, s_1)\)</span>。MDP 中各项指的是：</p>
+<ul>
+<li>状态空间 <span class="math inline">\(\S\)</span>。即环境可以表现出的所有状态构成的集合。</li>
+<li>决策空间 <span class="math inline">\(\A\)</span>。即环境允许智能体做出的所有决策构成的集合。</li>
+<li>状态转移概率函数 <span class="math inline">\(\Pe\)</span>。<span class="math inline">\(\Pe(s&#39; \mid s, a)\)</span> 表示环境在状态 <span class="math inline">\(s \in \S\)</span> 且智能体做出决策 <span class="math inline">\(a \in \A\)</span> 的时候环境下一步转移到状态 <span class="math inline">\(s&#39; \in \S\)</span> 的概率。这里下标 <span class="math inline">\(\mathcal{E}\)</span> 表示该概率仅与环境 <span class="math inline">\(\mathcal{E}\)</span> 本身有关。其一般称为 model 或者 dynamics。</li>
+<li>收益函数 <span class="math inline">\(r\)</span>。收益函数为从 <span class="math inline">\(\S \times \A \times \S\)</span> 到 <span class="math inline">\(\R\)</span> 的映射。<span class="math inline">\(r(s, a, s&#39;)\)</span> 表示环境在状态 <span class="math inline">\(s \in \S\)</span> 且智能体做出决策 <span class="math inline">\(a \in \A\)</span> 并转移到新状态 <span class="math inline">\(s&#39; \in \S\)</span> 的时候环境给予智能体的收益。</li>
+<li>收益衰减系数 <span class="math inline">\(\gamma\)</span>。这里 <span class="math inline">\(\gamma \in [0, 1]\)</span>。该参数代表收益随着时间步衰减的系数，具体含义将会在后续定义累计收益的时候展开。</li>
+</ul>
+<p>另外需要说明的是，状态 <span class="math inline">\(s \in \mathcal{S}\)</span> 可能并不是完全可以观测的，如果 <span class="math inline">\(s\)</span> 不能完全观测，我们会将 <span class="math inline">\(s\)</span> 中能观测的部分记作 <span class="math inline">\(o\)</span>，称为<strong>观测</strong>，即 observation。所有观测构成的集合记作 <span class="math inline">\(\mathcal{O}\)</span>。这种部分可以观测的 MDP 称为 <strong>P</strong>artially <strong>O</strong>bservable MDP，缩写 POMDP。</p>
+<p>而智能体内部所使用的策略一般表现为 <span class="math inline">\(\pi_{\b\theta}(a \mid s)\)</span>。这里策略 <span class="math inline">\(\pi_{\b\theta}\)</span> 的下标 <span class="math inline">\(\b\theta\)</span> 表示该策略由参数 <span class="math inline">\(\b\theta \in \R^n\)</span> 建模。另外 <span class="math inline">\(\pi_{\b\theta}(a \mid s)\)</span> 表示了智能体在该策略条件下，在状态 <span class="math inline">\(s\)</span> 时做出决策 <span class="math inline">\(a\)</span> 的概率。</p>
+<p>上述的策略往往称为<strong>非确定性策略</strong>，因为其对于某个状态给出的是做出某一种决策的概率，是不确定的。而另外一类策略，即<strong>确定性策略</strong>，会对于某个状态给出具体的某一种决策。确定性策略的记号，为了和非确定性策略的 <span class="math inline">\(\pi_{\b\theta}\)</span> 区别，往往使用 <span class="math inline">\(\mu_{\b\theta}\)</span>。而 <span class="math inline">\(a := \mu_{\b\theta}(s)\)</span> 就表示了智能体在该策略条件下，在状态 <span class="math inline">\(s\)</span> 时会做出决策 <span class="math inline">\(a\)</span>。</p>
+<p>一条<strong>轨迹</strong>，或者 <strong>trajectory</strong>，指的是智能体和环境不断交互的过程的记录。具体而言，环境首先位于状态 <span class="math inline">\(s_0\)</span>，智能体做出决策 <span class="math inline">\(a_0\)</span>，环境返回收益 <span class="math inline">\(r_1\)</span> 后转入新状态 <span class="math inline">\(s_1\)</span>。以此类推形成 <span class="math inline">\(s_0, a_0, r_1; s_1, a_1, r_2; \cdots\)</span>。轨迹常常使用记号 <span class="math inline">\(\tau\)</span> 表示。</p>
+<p>显然根据 Markov 的特性，我们可以得到在策略 <span class="math inline">\(\pi_{\b\theta}\)</span> 的条件下某一条轨迹 <span class="math inline">\(\tau = (s_0, a_0, r_1; s_1, a_1, r_2; \cdots)\)</span> 出现的概率为：</p>
+<p><span class="math display">\[
+\P_{\b\theta}(\tau) = \Pe(s_0)\prod_{t = 0}^{+\infty} \pi_{\b\theta}(a_t \mid s_t)\Pe(s_{t + 1} \mid s_t, a_t)
+\]</span></p>
+<p>这里 <span class="math inline">\(\Pe(s_0)\)</span> 表示环境初始状态为 <span class="math inline">\(s_0\)</span> 的概率。</p>
+<p>我们表示轨迹 <span class="math inline">\(\tau\)</span> 服从上述概率分布的时候，可以写成多种符号，包括 <span class="math inline">\(\tau \sim \P_{\b\theta}(\tau)\)</span> 或者 <span class="math inline">\(\tau \sim \pi_{\b\theta}\)</span> 等等，本文会使用第二种表达。</p>
+<h2 id="累计收益与价值函数">累计收益与价值函数</h2>
+<p>对一条轨迹，<strong>累计收益（Utility）</strong>的定义为：</p>
+<p><span class="math display">\[
+R_t(\tau) := \sum_{k = 0}^{+\infty} \gamma^k r_{t + k + 1}
+\]</span></p>
+<p>这里注意到我们累加收益的时候需要不断使用衰减因子进行衰减，这一操作主要是为了拟合现实中距离现在越远的行为对当前决策的影响越小的特征，这一操作同时也保证了收敛性。</p>
+<p>之后，我们进一步定义<strong>价值函数</strong>。首先需要定义<strong>状态行为价值函数</strong>：</p>
+<p><span class="math display">\[
+Q^{\pi_{\b\theta}}(s, a) := \Eop_{\tau \sim \pi_{\b\theta}}[R_t(\tau) \mid s_t = s, a_t = a]
+\]</span></p>
+<p>可以注意到上述期望中 <span class="math inline">\(t\)</span> 的分布并没有指定，这里一般认为是等概率地选择一个自然数即可。</p>
+<p>进一步即可有<strong>状态价值函数</strong>：</p>
+<p><span class="math display">\[
+V^{\pi_{\b\theta}}(s) := \Eop_{\tau \sim \pi_{\b\theta}}[R_t(\tau) \mid s_t = s]
+\]</span></p>
+<p>我们可以发现状态行为价值函数描述了在状态 <span class="math inline">\(s\)</span> 下做出决策 <span class="math inline">\(a\)</span> 后期望的累计收益，也就是说该价值函数评价了给定状态下的某个决策的期望收益，所以我们常常使用状态行为价值函数辅助决策。而状态价值函数则和具体的决策无关，是衡量从某一个状态出发，能够获得的期望收益。</p>
+<p>显然这两个价值函数之间存在相互推出关系，而这种关系描述如下：</p>
+<div class="note info no-icon"><p><strong>Theorem 1.01</strong> 对于任何 MDP 与其上的策略 <span class="math inline">\(\pi\)</span>，该策略的状态价值函数与状态行为价值函数满足：</p>
+<p><span class="math display">\[
+\begin{aligned}
+{\color{red} V^\pi(s)} &amp;= \sum_{a \in \mathcal{A}} \pi(a \mid s){\color{red} Q^\pi(s, a)} \\
+{\color{red} Q^\pi(s, a)} &amp;= \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a)[r(s, a, s&#39;) + \gamma {\color{red} V^\pi(s&#39;)}] \\
+\end{aligned}
+\]</span></p>
+</div>
+<p>第一个等式是由 <span class="math inline">\(Q^\pi\)</span> 推出 <span class="math inline">\(V^\pi\)</span> 的路径，证明也是简单的：</p>
+<p><span class="math display">\[
+\begin{aligned}
+V^\pi(s) &amp;= \Eop_{\tau \sim \pi}[R_t(\tau) \mid s_t = s] \\
+&amp;= \sum_{\tau} \P_{\b\theta}(\tau \mid s_t = s)R_t(\tau) \\
+&amp;= \sum_{\tau} \left(\sum_{a \in \mathcal{A}} \P_{\b\theta}(\tau, a_t = a \mid s_t = s)\right)R_t(\tau) \\
+&amp;= \sum_{\tau} \left(\sum_{a \in \mathcal{A}} \P_{\b\theta}(\tau \mid s_t = s, a_t = a)\P_{\b\theta}(a_t = a \mid s_t = s)\right)R_t(\tau) \\
+&amp;= \sum_{a \in \mathcal{A}} \P_{\b\theta}(a_t = a \mid s_t = s) \left(\sum_{\tau} \P_{\b\theta}(\tau \mid s_t = s, a_t = a) R_t(\tau)\right) \\
+&amp;= \sum_{a \in \mathcal{A}} \pi(a \mid s)\Eop_{\tau \sim \pi}[R_t(\tau) \mid s_t = s, a_t = a] \\
+&amp;= \sum_{a \in \mathcal{A}} \pi(a \mid s)Q^\pi(s, a) \\
+\end{aligned}
+\]</span></p>
+<p>第二个等式是由 <span class="math inline">\(V^\pi\)</span> 推出 <span class="math inline">\(Q^\pi\)</span> 的路径，其涉及到了后续状态，从而实际上描述出了价值函数之间的递推关系。</p>
+<p>我们考虑其证明，首先我们显然有这个等式：</p>
+<p><span class="math display">\[
+r(s, a, s&#39;) = \Eop_{\tau \sim \pi}[r_{t + 1} \mid s_t = s, a_t = a, s_{t + 1} = s&#39;]
+\]</span></p>
+<p>之后考虑对状态行为价值函数的单步展开：</p>
+<p><span class="math display">\[
+\begin{aligned}
+Q^\pi(s) &amp;= \Eop_{\tau \sim \pi}[R_t(\tau) \mid s_t = s, a_t = a] \\
+&amp;= \Eop_{\tau \sim \pi}\left[\sum_{k = 0}^{+\infty} \gamma^k r_{t + k + 1} \middle| s_t = s, a_t = a\right] \\
+&amp;= \Eop_{\tau \sim \pi}\left[r_{t + 1} + \sum_{k = 1}^{+\infty} \gamma^k r_{t + k + 1} \middle| s_t = s, a_t = a\right] \\
+&amp;= \Eop_{\tau \sim \pi}\left[r_{t + 1} + \gamma\sum_{k = 0}^{+\infty} \gamma^k r_{t + k + 2} \middle| s_t = s, a_t = a\right] \\
+&amp;= \Eop_{\tau \sim \pi}[r_{t + 1} \mid s_t = s, a_t = a] + \Eop_{\tau \sim \pi}\left[\gamma\sum_{k = 0}^{+\infty} \gamma^k r_{(t + 1) + k + 1} \middle| s_t = s, a_t = a\right] \\
+&amp;= \Eop_{\tau \sim \pi}[r_{t + 1} \mid s_t = s, a_t = a] + \gamma\Eop_{\tau \sim \pi}[R_{t + 1}(\tau) \mid s_t = s, a_t = a] \\
+\end{aligned}
+\]</span></p>
+<p>之后我们使用全期望公式处理条件期望中的条件：</p>
+<p><span class="math display">\[
+\begin{aligned}
+\Eop_{\tau \sim \pi}[r_{t + 1} \mid s_t = s, a_t = a] &amp;= \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a) \Eop_{\tau \sim \pi}[r_{t + 1} \mid s_t = s, a_t = a, s_{t + 1} = s&#39;] \\
+&amp;= \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a)r(s, a, s&#39;) \\
+\Eop_{\tau \sim \pi}[R_{t + 1}(\tau) \mid s_t = s, a_t = a] &amp;= \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a) \Eop_{\tau \sim \pi}[R_{t + 1}(\tau) \mid s_t = s, a_t = a, s_{t + 1} = s&#39;] \\
+&amp;= \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a) \Eop_{\tau \sim \pi}[R_{t + 1}(\tau) \mid s_{t + 1} = s&#39;] \\
+&amp;= \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a)V^\pi(s&#39;) \\
+\end{aligned}
+\]</span></p>
+<p>这里注意到处理第二个条件期望的时候，直接删去了 <span class="math inline">\(s_t = s\)</span> 和 <span class="math inline">\(a_t = a\)</span> 两个条件，这是因为 <span class="math inline">\(R_{t + 1}(\tau)\)</span> 与 <span class="math inline">\(s_t, a_t\)</span> 无关，可以直接删去而不影响最后的期望。</p>
+<p>将此代入原有展开式即可证明完毕。</p>
+<p>事实上，基于这两个价值函数的互相推出，我们可以得到 <span class="math inline">\(Q^\pi\)</span> 推出 <span class="math inline">\(Q^\pi\)</span> 的公式：</p>
+<p><span class="math display">\[
+{\color{red} Q^\pi(s, a)} = \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a) \left[r(s, a, s&#39;) + \gamma\sum_{a&#39; \in \A} \pi(a&#39; \mid s&#39;){\color{red} Q^\pi(s&#39;, a&#39;)}\right]
+\]</span></p>
+<p>以及 <span class="math inline">\(V^\pi\)</span> 推出 <span class="math inline">\(V^\pi\)</span> 的公式：</p>
+<p><span class="math display">\[
+{\color{red} V^\pi(s)} = \sum_{a \in \A} \pi(a \mid s) \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a)[r(s, a, s&#39;) + \gamma {\color{red} V^\pi(s&#39;)}]
+\]</span></p>
+<p>这两个公式直接表现出了价值函数自身具有的迭代结构，也就是当前强化学习中最为重要的方程之一，目前大部分强化学习方法的核心就是拟合该方程。该方程即 <strong>Bellman 方程（Bellman Equation）</strong>。</p>
+<h2 id="基本优化理论">基本优化理论</h2>
+<p>现在我们讨论如何获取一个最有价值的策略。</p>
+<p>首先，我们定义<strong>最优状态行为价值函数</strong>和<strong>最优状态价值函数</strong>：</p>
+<p><span class="math display">\[
+\begin{aligned}
+Q^\star(s, a) &amp;:= \max_\pi Q^\pi(s, a) \\
+V^\star(s) &amp;:= \max_\pi V^\pi(s) \\
+\end{aligned}
+\]</span></p>
+<p>基于最优性，我们可以定义策略之间的序。我们称策略 <span class="math inline">\(\pi\)</span> 优于 <span class="math inline">\(\pi&#39;\)</span>，记作 <span class="math inline">\(\pi \geq \pi&#39;\)</span>，当且仅当对于所有 <span class="math inline">\(s \in \S\)</span> 都满足 <span class="math inline">\(\pi\)</span> 的状态函数优于 <span class="math inline">\(\pi&#39;\)</span>，即 <span class="math inline">\(V^\pi(s) \geq V^{\pi&#39;}(s)\)</span>。</p>
+<p>我们有下述基本优化理论：</p>
+<div class="note info no-icon"><p><strong>Theorem 1.02</strong> 对于任何 MDP，都存在一个最优策略 <span class="math inline">\(\pi^\star\)</span> 满足对于任何 <span class="math inline">\(\pi\)</span> 都有 <span class="math inline">\(\pi^\star \geq \pi\)</span>。并且该最优策略 <span class="math inline">\(\pi^\star\)</span> 在在任何状态与任何决策下均实现了最优价值，即对于任何 <span class="math inline">\(s \in \S, a \in \A\)</span> 都有 <span class="math inline">\(V^{\pi^\star}(s) = V^\star(s), Q^{\pi^\star}(s, a) = Q^\star(s, a)\)</span>。</p>
+</div>
+<p>本文不加证明地认为该理论成立。另外，这里给出最优策略的构造。可见最优策略是确定性策略：</p>
+<p><span class="math display">\[
+\pi^\star(a \mid s) := \begin{cases}
+1 &amp; a = \argmax_{a \in \A} Q^\star(s, a) \\
+0 &amp; \text{otherwise}
+\end{cases}
+\]</span></p>
+<p>基于该定理我们能够得到两个最优价值函数之间存在的关系：</p>
+<div class="note info no-icon"><p><strong>Theorem 1.03</strong> 对于任何 MDP，其最优状态价值函数与最优状态行为价值函数满足：</p>
+<p><span class="math display">\[
+\begin{aligned}
+{\color{red} V^\star(s)} &amp;= \max_{a \in \mathcal{A}} {\color{red} Q^\star(s, a)} \\
+{\color{red} Q^\star(s, a)} &amp;= \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a)[r(s, a, s&#39;) + \gamma {\color{red} V^\star(s&#39;)}] \\
+\end{aligned}
+\]</span></p>
+</div>
+<p>第一个等式是简单的：</p>
+<p><span class="math display">\[
+V^\star(s) = V^{\pi^\star}(s) = \sum_{a \in \A} \pi^\star(a \mid s)Q^{\pi^\star}(s, a) = \max_{a \in \A} Q^{\pi^\star}(s, a) = \max_{a \in \A} Q^\star(s, a)
+\]</span></p>
+<p>第二个等式直接对 <span class="math inline">\(\pi^\star\)</span> 应用一般的 Bellman 方程即可得到。</p>
+<p>从而还有下述<strong>最优 Bellman 方程（Bellman Optimality Equation）</strong>：</p>
+<p><span class="math display">\[
+{\color{red} Q^\star(s, a)} = \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a) \left[r(s, a, s&#39;) + \gamma\max_{a&#39; \in \A} {\color{red} Q^\star(s&#39;, a&#39;)}\right]
+\]</span></p>
+<p>以及：</p>
+<p><span class="math display">\[
+{\color{red} V^\star(s)} = \max_{a \in \A} \left[\sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a)[r(s, a, s&#39;) + \gamma {\color{red} V^\star(s&#39;)}]\right]
+\]</span></p>
+<p>理论上我们可以求解最优 Bellman 方程得到 <span class="math inline">\(V^\star\)</span>，从而就能够反推出 <span class="math inline">\(\pi^\star\)</span>。然而求解最优 Bellman 方程是计算困难的，现行的强化学习方法就是在尝试近似求解最优 Bellman 方程。</p>
+<h1 id="dynamic-programming-dp">Dynamic Programming (DP)</h1>
+<h2 id="policy-iteration-pi">Policy Iteration (PI)</h2>
+<p>如果我们已经对环境有了完整的建模，我们完全可以使用迭代的方式求解最优 Bellman 方程。</p>
+<p>具体的迭代过程分为两步，分别为<strong>策略评估（Policy Evaluation）</strong>和<strong>策略提升（Policy Improvement）</strong>，这两步会交替进行。具体而言，策略评估是在已知 <span class="math inline">\(\pi\)</span> 的条件下计算其状态价值函数 <span class="math inline">\(V^\pi\)</span>。而策略提升为在得知状态价值函数的基础上优化策略 <span class="math inline">\(\pi\)</span>。</p>
+<p>首先阐述策略评估的过程，这里举出一个迭代计算的方式。</p>
+<p>我们记 <span class="math inline">\(V_k\)</span> 是第 <span class="math inline">\(k\)</span> 轮迭代的时候的状态价值函数，那么我们在初始化 <span class="math inline">\(V_0\)</span> 之后不断进行下述迭代直到状态价值函数收敛：</p>
+<p><span class="math display">\[
+V_{k + 1}(s) \leftarrow \sum_{a \in \A} \pi(a \mid s) \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a)[r(s, a, s&#39;) + \gamma V_k(s&#39;)]
+\]</span></p>
+<p>收敛后，应当有 <span class="math inline">\(V_{+\infty} = V^\pi\)</span>，此时我们就得到了策略 <span class="math inline">\(\pi\)</span> 所对应的价值函数。</p>
+<p>策略评估除了使用迭代的方式计算，也可以使用求解线性方程组等方式计算，这些方法我们不具体展开。</p>
+<p>之后阐述策略提升的方法。</p>
+<p>我们在得知了策略 <span class="math inline">\(\pi\)</span> 的状态价值函数 <span class="math inline">\(V^\pi\)</span> 之后，我们可以贪心地构造一个确定性策略 <span class="math inline">\(\pi&#39;\)</span>，保证策略更优。保证这一点能够成立的是下述定理：</p>
+<div class="note info no-icon"><p><strong>Theorem 2.01 (Policy Improvement Theorem)</strong> 对于已知的策略 <span class="math inline">\(\pi\)</span>，定义确定性策略 <span class="math inline">\(\pi&#39;\)</span>：</p>
+<p><span class="math display">\[
+\pi&#39;(a \mid s) := \begin{cases}
+1 &amp; a = \argmax_{a \in \A} Q^\pi(s, a) \\
+0 &amp; \text{otherwise}
+\end{cases}
+\]</span></p>
+<p>那么 <span class="math inline">\(\pi&#39; \geq \pi\)</span>，并且等号成立当且仅当 <span class="math inline">\(\pi = \pi&#39; = \pi^\star\)</span>。</p>
+</div>
+<p>证明是简单的，首先我们可以注意到：</p>
+<p><span class="math display">\[
+Q^\pi(s, \pi&#39;(s)) = \max_{a \in \A} Q^\pi(s, a) \geq \sum_{a \in \A} \pi(a \mid s)Q^\pi(s, a) = V^\pi(s)
+\]</span></p>
+<p>我们从而能得到下述不等式。这里事实上进行了单步展开，进一步就可以尝试利用迭代结构构造不等式链，具体细节则在后续证明中说明：</p>
+<p><span class="math display">\[
+\begin{aligned}
+V^\pi(s) &amp;\leq Q^\pi(s, \pi&#39;(s)) \\
+&amp;= \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, \pi&#39;(s))[r(s, \pi&#39;(s), s&#39;) + \gamma V^\pi(s&#39;)] \\
+&amp;= \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, \pi&#39;(s))r(s, \pi&#39;(s), s&#39;) + \gamma\sum_{s&#39; \in \S} \Pe(s&#39; \mid s, \pi&#39;(s)) V^\pi(s&#39;) \\
+\end{aligned}
+\]</span></p>
+<p>另外，我们可以证明：</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;\sum_{s&#39; \in \S} \Pe(s&#39; \mid s, \pi&#39;(s))r(s, \pi&#39;(s), s&#39;) \\
+=&amp; \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, \pi&#39;(s))\Eop_{\tau \sim \pi&#39;}[r_{t + 1} \mid s_t = s, a_t = \pi&#39;(s), s_{t + 1} = s&#39;] \\
+=&amp; \sum_{a \in \A} \pi&#39;(a \mid s)\sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a)\Eop_{\tau \sim \pi&#39;}[r_{t + 1} \mid s_t = s, a_t = a, s_{t + 1} = s&#39;] \\
+=&amp; \Eop_{\tau \sim \pi&#39;}[r_{t + 1} \mid s_t = s]
+\end{aligned}
+\]</span></p>
+<p>即得到：</p>
+<p><span class="math display">\[
+V^\pi(s) \leq \Eop_{\tau \sim \pi&#39;}[r_{t + 1} \mid s_t = s] + \gamma\sum_{s&#39; \in \S} \Pe(s&#39; \mid s, \pi&#39;(s)) V^\pi(s&#39;)
+\]</span></p>
+<p>对这个不等式迭代展开：</p>
+<p><span class="math display">\[
+\begin{aligned}
+V^\pi(s) &amp;\leq \Eop_{\tau \sim \pi&#39;}[r_{t + 1} \mid s_t = s] + \gamma\sum_{s&#39; \in \S} \Pe(s&#39; \mid s, \pi&#39;(s)) V^\pi(s&#39;) \\
+&amp;\leq \Eop_{\tau \sim \pi&#39;}[r_{t + 1} \mid s_t = s] + \gamma\sum_{s&#39; \in \S} \Pe(s&#39; \mid s, \pi&#39;(s)) \left[\Eop_{\tau \sim \pi&#39;}[r_{t + 2} \mid s_{t + 1} = s&#39;] + \gamma\sum_{s&#39;&#39; \in \S} \Pe(s&#39;&#39; \mid s&#39;, \pi&#39;(s&#39;)) V^\pi(s&#39;&#39;)\right] \\
+&amp;= \Eop_{\tau \sim \pi&#39;}[r_{t + 1} \mid s_t = s] + \gamma{\color{red} \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, \pi&#39;(s))\Eop_{\tau \sim \pi&#39;}[r_{t + 2} \mid s_{t + 1} = s&#39;]} + \gamma^2\sum_{s&#39; \in \S}\sum_{s&#39;&#39; \in \S}\Pe(s&#39;&#39; \mid s&#39;, \pi&#39;(s&#39;)) V^\pi(s&#39;&#39;) \\
+\end{aligned}
+\]</span></p>
+<p>对于红色部分，我们容易发现 <span class="math inline">\(s_t = s\)</span> 对于 <span class="math inline">\(r_{t + 2}\)</span> 的期望是无效条件，所以：</p>
+<p><span class="math display">\[
+\sum_{s&#39; \in \S} \Pe(s&#39; \mid s, \pi&#39;(s))\Eop_{\tau \sim \pi&#39;}[r_{t + 2} \mid s_{t + 1} = s&#39;] = \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, \pi&#39;(s))\Eop_{\tau \sim \pi&#39;}[r_{t + 2} \mid s_t = s, s_{t + 1} = s&#39;] = \Eop_{\tau \sim \pi&#39;}[r_{t + 2} \mid s_t = s]
+\]</span></p>
+<p>所以：</p>
+<p><span class="math display">\[
+V^\pi(s) \leq \Eop_{\tau \sim \pi&#39;}[{\color{red} r_{t + 1} + \gamma r^{t + 2}} \mid s_t = s] + {\color{green} \gamma^2\sum_{s&#39; \in \S}\sum_{s&#39;&#39; \in \S}\Pe(s&#39;&#39; \mid s&#39;, \pi&#39;(s&#39;)) V^\pi(s&#39;&#39;)}
+\]</span></p>
+<p>我们接下来展开绿色部分的时候，可以注意到我们需要为 <span class="math inline">\(r_{t + 3}\)</span> 的条件期望补上 <span class="math inline">\(s_t = s\)</span> 和 <span class="math inline">\(s_{t + 1} = s&#39;\)</span> 两个无效条件，然后两个求和号通过全期望公式消去 <span class="math inline">\(s_{t + 1} = s&#39;\)</span> 以及 <span class="math inline">\(s_{t + 2} = s&#39;&#39;\)</span> 两个条件，故剩余的条件仅有 <span class="math inline">\(s_t = s\)</span>，从而可以进一步合并到红色部分。以此类推，我们就能够说明该不等式的迭代展开是可行的，从而得到：</p>
+<p><span class="math display">\[
+V^\pi(s) \leq \Eop_{\tau \sim \pi&#39;}[{\color{red} r_{t + 1} + \gamma r^{t + 2} + \gamma^2r_{t + 3} + \cdots} \mid s_t = s] = V^{\pi&#39;}(s)
+\]</span></p>
+<p>从而欲证明的不等式成立。</p>
+<p>而根据证明过程，该不等式取等当且仅当满足 <span class="math inline">\(V^\pi(s) = Q^\pi(s, \pi&#39;(s)) = \max_{a \in \A}Q^\pi(s, a)\)</span>，而这正是最优 Bellman 方程。也就是说我们使得 <span class="math inline">\(V^\pi = V^\star\)</span>。此外，<span class="math inline">\(\pi\)</span> 目前也必须是一个确定性策略，从而也就保证了 <span class="math inline">\(\pi = \pi^\star\)</span>。</p>
+<p>综合策略评估和策略提升，交替进行两者我们就可以保证能够获取到最优策略。然而这个方法并不现实，因为理论上我们需要对环境有完全把握，至少我们需要得到整个环境状态转移矩阵才能进行。</p>
+<h2 id="value-iteration-vi">Value Iteration (VI)</h2>
+<p>同样，在已经完全得知环境的条件下，除了策略迭代，我们还可以用值迭代求解最优策略。相较于策略迭代是迭代策略本身，值迭代则是在迭代求解状态价值函数。</p>
+<p>考虑最优 Bellman 方程：</p>
+<p><span class="math display">\[
+{\color{red} V^\star(s)} = \max_{a \in \A} \left[\sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a)[r(s, a, s&#39;) + \gamma {\color{red} V^\star(s&#39;)}]\right]
+\]</span></p>
+<p>也就是说我们完全可以直接先随意初始化一个 <span class="math inline">\(V_0 \equiv 0\)</span>，然后不断使用上述方程做迭代直到收敛，此时 <span class="math inline">\(V_{+\infty} = V^\star\)</span>。迭代的流程描述为：</p>
+<p><span class="math display">\[
+{\color{red} V_{k + 1}(s)} \leftarrow \max_{a \in \A} \left[\sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a)[r(s, a, s&#39;) + \gamma {\color{red} V_k(s&#39;)}]\right]
+\]</span></p>
+<p>重复该迭代直到收敛，即可获得最优状态价值函数。基于最优状态价值函数，可以推知最优策略，从而算法求解完毕。</p>
+<p>这里需要说明的一点是，使用值迭代求解的时候，策略是比价值函数先收敛的。这一点是显然的，因为通过价值函数获取对应的策略是贪心的。从而，在价值函数还未实际完全收敛的时候，各个状态的价值大小关系很有可能已经确定且不变化，从而从这一时间点开始，推知的策略都不会发生变化，理论上都是最优策略。</p>
+<p>值迭代的时间复杂度为 <span class="math inline">\(O(|\mathcal{S}|^2|\mathcal{A}|)\)</span>。</p>
+<h2 id="有关-pi-和-vi-的一些对比">有关 PI 和 VI 的一些对比</h2>
+<p>事实上基于 Bellman 方程而言，VI 方法是最直观也是最容易想到的，因为通过迭代法求解有递归结构的方程确实是一种很常见的方法。然而 VI 的两个特点也是限制其运用的缺陷，即<strong>策略早于价值函数收敛</strong>和<strong>复杂度较高</strong>。</p>
+<p>前者事实上是 VI 的一个致命缺陷，因为从根本上而言我们需要获取的是最优策略，具体的价值函数可能并不关注，或者至少不是最主要目标。另外，高复杂度也让 VI 的实际运算难度较高，而这也一定程度上催生了 PI 方法。</p>
+<p>VI 在运算过程中有一步涉及到了 <span class="math inline">\(\max_{a \in \A}\)</span>，这需要遍历行为空间却没有有效利用遍历的信息（仅取了最大值）。那么一个显然的性能换时间的操作就是我们取一个并非最优但足够优的策略 <span class="math inline">\(\pi: \S \to \A\)</span>，直接用 <span class="math inline">\(a := \pi(s)\)</span> 代替掉 <span class="math inline">\(a := \argmax_{a \in \A}\)</span>，这样复杂度直接就降低到 <span class="math inline">\(O(|\S|^2)\)</span>。</p>
+<p>为了保证 <span class="math inline">\(\pi\)</span> 能够足够优，那我们可以两路并进，一路优化 <span class="math inline">\(\pi\)</span>，一路更新 <span class="math inline">\(V^\pi\)</span>，从而我们就得到了 PI 方法。PI 方法在部分条件下会比 VI 方法收敛快很多，并且我们依然可以证明 PI 理论可以得到最优策略。</p>
+<h2 id="有关-bellman-算子的拓展">有关 Bellman 算子的拓展</h2>
+<p>如果仔细观察 Bellman 方程，其事实上就是一个线性方程：</p>
+<p><span class="math display">\[
+{\color{red} V^\pi(s)} = \sum_{a \in \A} \pi(a \mid s) \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a)[r(s, a, s&#39;) + \gamma {\color{red} V^\pi(s&#39;)}]
+\]</span></p>
+<p>首先作一些记号简化：</p>
+<p><span class="math display">\[
+\begin{aligned}
+\P^\pi(s&#39; \mid s) &amp;:= \sum_{a \in \A} \pi(a \mid s)\Pe(s&#39; \mid s, a) \\
+r^\pi(s) &amp;:= \sum_{a \in \A} \pi(a \mid s) \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a)r(s, a, s&#39;) \\
+\end{aligned}
+\]</span></p>
+<p>得到：</p>
+<p><span class="math display">\[
+{\color{red} V^\pi(s)} = r^\pi(s) + \gamma\sum_{s&#39; \in \S} \P^\pi(s&#39; \mid s){\color{red} V^\pi(s&#39;)}
+\]</span></p>
+<p>如果记 <span class="math inline">\(\S = \{s_1, s_2, \cdots, s_n\}, n = |\mathcal{S}|\)</span>，并定义矩阵：</p>
+<p><span class="math display">\[
+\begin{aligned}
+\b{V}^\pi &amp;:= (v^\pi_i)^T_{n} \in \mathbb{R}^n &amp;&amp; v^\pi_i := V^\pi(s_i) \\
+\b{R}^\pi &amp;:= (r^\pi_i)^T_{n} \in \mathbb{R}^n &amp;&amp; r^\pi_i := r^\pi(s_i) \\
+\b{P}^\pi &amp;:= (p^\pi_{ij})_{n \times n} \in \mathbb{R}^{n \times n} &amp;&amp; p^\pi_{ij} := \P^\pi(s_j \mid s_i) \\
+\end{aligned}
+\]</span></p>
+<p>那么 Bellman 方程等价于：</p>
+<p><span class="math display">\[
+\b{V}^\pi = \b{R}^\pi + \gamma\b{P}^\pi\b{V}^\pi \Rightarrow (I - \gamma\b{P}^\pi)\b{V}^\pi = \b{R}^\pi
+\]</span></p>
+<p>这里就可以引入 Bellman 算子：</p>
+<p><span class="math display">\[
+\mathcal{T}^\pi(\b{x}) := \b{R}^\pi + \gamma\b{P}^\pi\b{x}
+\]</span></p>
+<p>如果状态空间足够小，那么在 PI 的策略评估阶段，事实上完全可以通过求解上述线性方程组解的方式得到策略的价值函数。</p>
+<p>除了 Bellman 算子，还可以从最优 Bellman 方程引入最优 Bellman 算子。首先依然是定义矩阵：</p>
+<p><span class="math display">\[
+\begin{aligned}
+\b{V}^\star &amp;:= (v^\star_i)^T_{n} \in \mathbb{R}^n &amp;&amp; v^\star_i := V^\star(s_i) \\
+\b{R}(a) &amp;:= (r_i(a))^T_{n} \in \mathbb{R}^n &amp;&amp; r_i(a) := \sum_{s_j \in \S} \Pe(s_j \mid s_i, a)r(s_i, a, s_j) \\
+\b{P}(a) &amp;:= (p_{ij}(a))_{n \times n} \in \mathbb{R}^{n \times n} &amp;&amp; p_{ij}(a) := \Pe(s_j \mid s_i, a) \\
+\end{aligned}
+\]</span></p>
+<p>那么最优 Bellman 算子就定义为：</p>
+<p><span class="math display">\[
+\mathcal{T}^\star(\b{x}) := \max_{a \in \A}(\b{R}(a) + \gamma\b{P}(a)\b{x})
+\]</span></p>
+<p>现在我们需要证明一个我们并没有严格说明的引理，即使用迭代法求解价值函数的合法性，无论是 PI 中策略评估还是 VI 求最优价值函数本身。事实上，这两者本质相同，其都在求解 Bellman 算子的不动点，只不过一个是一般 Bellman 算子，一个是最优 Bellman 算子。这里以最优 Bellman 算子为例进行证明。</p>
+<p>证明的主要思想就是 Banach 空间不动点定理。</p>
+<div class="note info no-icon"><p><strong>Theorem 2.02 (Banach Fixed-point Theorem)</strong> 给定完备度量空间 <span class="math inline">\(X\)</span> 以及其范数 <span class="math inline">\(d\)</span>，假设 <span class="math inline">\(f: X \to X\)</span> 是一个压缩映射，即存在 <span class="math inline">\(\gamma \in [0, 1)\)</span> 令 <span class="math inline">\(\forall x_1, x_2 \in X\)</span> 都有：</p>
+<p><span class="math display">\[
+d(f(x_1), f(x_2)) \leq \gamma d(x_1, x_2)
+\]</span></p>
+<p>那么 <span class="math inline">\(f\)</span> 在 <span class="math inline">\(X\)</span> 上存在唯一不动点 <span class="math inline">\(x^*\)</span>。</p>
+<p>该不动点满足，任取 <span class="math inline">\(x_0 \in X\)</span>，定义序列 <span class="math inline">\(\{x_n\}_{n \geq 0}\)</span>，其中 <span class="math inline">\(x_{n + 1} = f(x_n), n \geq 0\)</span>，那么该序列必然收敛到 <span class="math inline">\(x^*\)</span>。</p>
+</div>
+<p>证明是简单的。首先我们任取 <span class="math inline">\(x_0 \in X\)</span>，考虑对 <span class="math inline">\(m &gt; n\)</span>：</p>
+<p><span class="math display">\[
+\begin{aligned}
+d(f^{(m)}(x_0), f^{(n)}(x_0)) &amp;\leq d(f^{(m)}(x_0), f^{(m - 1)}(x_0)) + d(f^{(m - 1)}(x_0), f^{(m - 2)}(x_0)) + \cdots + d(f^{(n + 1)}(x_0), f^{(n)}(x_0)) \\
+&amp;\leq \gamma^{m - 1}d(f(x_0), x_0) + \gamma^{m - 2}d(f(x_0), x_0) + \cdots + \gamma^nd(f(x_0), x_0) \\
+&amp;\leq \dfrac{\gamma^n}{1 - \gamma}d(f(x_0), x_0) \\
+\end{aligned}
+\]</span></p>
+<p>也就是无论给多紧的界，我总能令 <span class="math inline">\(n\)</span> 充分大满足上界约束，从而该序列是 Cauchy 序列，在完备度量空间上其自然是收敛的。</p>
+<p>假定这个序列收敛到 <span class="math inline">\(x^*\)</span>，我们需要说明 <span class="math inline">\(x^*\)</span> 是 <span class="math inline">\(f\)</span> 的不动点以及其唯一性。其是不动点是容易的，考虑：</p>
+<p><span class="math display">\[
+0 \leq d(x_{n + 1}, f(x^*)) = d(f(x_n), f(x^*)) \leq \gamma d(x_n, x^*)
+\]</span></p>
+<p>由于 <span class="math inline">\(n \to \infty\)</span> 时 <span class="math inline">\(d(x_n, x^*) \to 0\)</span>，这说明 <span class="math inline">\(d(x_{n + 1}, f(x^*)) \to 0\)</span>，也就说明 <span class="math inline">\(f(x^*)\)</span> 也是序列 <span class="math inline">\(\{x_n\}_{n \geq 0}\)</span> 的极限，据极限的唯一性，不动点得证。</p>
+<p>唯一性则据反证。若存在第二个不动点 <span class="math inline">\(f(y) = y\)</span>，那么：</p>
+<p><span class="math display">\[
+d(x^*, y) = d(f(x^*), f(y)) \leq \gamma d(x^*, y) \Rightarrow (1 - \gamma)d(x^*, y) \leq 0
+\]</span></p>
+<p>上述约束仅有 <span class="math inline">\(y = x^*\)</span> 时成立，唯一性得证。</p>
+<hr />
+<p>基于该引理，我们只需要说明最优 Bellman 算子也满足引理所述条件即可。在空间 <span class="math inline">\(\mathcal{S}\)</span> 上取其 <span class="math inline">\(L^{\infty}\)</span> 范数（即各分量最大值）。我们证明最优 Bellman 算子是压缩的：</p>
+<p><span class="math display">\[
+\begin{aligned}
+\|\mathcal{T}^\star(\b{V}_1) - \mathcal{T}^\star(\b{V}_2)\|_\infty &amp;= \left\|\max_{a \in \A}(\b{R}(a) + \gamma\b{P}(a)\b{V}_1) - \max_{a \in \A}(\b{R}(a) + \gamma\b{P}(a)\b{V}_2)\right\|_\infty \\
+&amp;\leq \left\|\max_{a \in \A}(\b{R}(a) + \gamma\b{P}(a)\b{V}_1 - \b{R}(a) - \gamma\b{P}(a)\b{V}_2)\right\|_\infty \\
+&amp;= \gamma\left\|\max_{a \in \A}(\b{P}(a)(\b{V}_1 - \b{V}_2))\right\|_\infty \\
+&amp;\leq \gamma\|\b{V}_1 - \b{V}_2\|_\infty
+\end{aligned}
+\]</span></p>
+<p>最后一个不等号源于 <span class="math inline">\(\b{P}(a)\)</span> 矩阵中，每一行的元素之和必然为 <span class="math inline">\(1\)</span>。如果假设 <span class="math inline">\(\b{V}_1 - \b{V}_2\)</span> 各元素中最大为 <span class="math inline">\(p\)</span>（亦其 <span class="math inline">\(L^\infty\)</span> 范数），那么 <span class="math inline">\(\b{P}(a)(\b{V}_1 - \b{V}_2)\)</span> 每一个元素都不会大于 <span class="math inline">\(p\)</span>。</p>
+<p>从而得证。</p>
+<p>事实上我们有下述定理，描述了迭代法求解的正确性。对于任意初始化的 <span class="math inline">\(\b{V}_0\)</span>：</p>
+<p><span class="math display">\[
+\lim_{n \to \infty} \mathcal{T}^{\pi(n)}\b{V}_0 = \b{V}^\pi, \lim_{n \to \infty} \mathcal{T}^{\star(n)}\b{V}_0 = \b{V}^\star
+\]</span></p>
+<h1 id="monte-carlo-方法">Monte-Carlo 方法</h1>
+<p>DP 方法的一个重要局限在于，其必须要对环境有完整的了解，也就是对 <span class="math inline">\(\Pe, r\)</span> 有完整的理解才能进行，然而对于现实的问题，这是完全不可能的。这也就是需要让智能体不断和环境交互的原因，因为我们需要通过智能体的探索来获取环境的信息。</p>
+<p>这里简单提一下 model-free RL 与 model-based RL 的概念。在智能体和环境交互的过程中，事实上我们有两种选择，其一是让智能体去和真实的环境作交互，这就是 model-free RL 方法。其二是我们事先使用另外一个模型去拟合环境，让智能体和这个模型交互，这就是 model-based RL 方法。model-based RL 方法的优势在于，如果智能体和真实的环境交互成本高昂或者环境响应较慢，则可以用于大幅降低实验成本。但相应地，model-based RL 方法也需要一个相当优越的和环境契合的模型才能让智能体真正学习到最优策略。</p>
+<p>这里提到的 Monte-Carlo 方法是 model-free RL 方法，其核心是不断让智能体和环境交互采样，用样本均值拟合价值函数。</p>
+<p>其算法思想极其简单，流程如下：</p>
+<ul>
+<li>获取待评测的策略 <span class="math inline">\(\pi\)</span></li>
+<li>初始化访问计数器 <span class="math inline">\(N(s) \leftarrow 0, s \in \S\)</span>，以及价值函数估计值 <span class="math inline">\(V(s), s \in \S\)</span></li>
+<li>不断重复下述
+<ul>
+<li>使用策略 <span class="math inline">\(\pi\)</span> 获取 trajectory <span class="math inline">\(\tau\)</span></li>
+<li>对每一个 <span class="math inline">\(s \in \tau\)</span> 以及其在 <span class="math inline">\(\tau\)</span> 中出现的时刻 <span class="math inline">\(t\)</span> 进行下述
+<ul>
+<li>递增计数器 <span class="math inline">\(N(s) \leftarrow N(s) + 1\)</span></li>
+<li>更新价值函数估计 <span class="math inline">\(V(s) \leftarrow V(s) + \dfrac{1}{N(s)}(G_t(\tau) - V(s))\)</span></li>
+</ul></li>
+</ul></li>
+</ul>
+<p>当然，还有一种并不完全使用样本均值的更新策略是，设定固定的学习率 <span class="math inline">\(\alpha\)</span>，更新策略设定为：</p>
+<p><span class="math display">\[
+V(s) \leftarrow V(s) + \alpha(G_t(\tau) - V(s))
+\]</span></p>
+<p>理论而言，Monte-Carlo 方法相当简易且不涉及到 bootstrap。这里 bootstrap 指的是一类“利用估计值本身更新估计值”的更新策略，在后续 TD 方法中展开说明。</p>
+<p>另一方面，Monte-Carlo 方法也因为低效和并没有充分利用 Bellman 方程而具有缺陷。</p>
+<h1 id="temporal-difference-方法">Temporal-Difference 方法</h1>
+<p>TD 方法与 MC 方法目标是一致的，也是尽力取得价值函数的准确估计。但是两者的核心差别在于，TD 方法是一个更新力度更小的 bootstrap 方法，TD 方法会在每一次决策后进行更新。这种逐步更新的问题在于我们无法精确获取某一个状态的累计收益，所以我们需要虚化一个更新目标，这也就是所谓的 TD target。</p>
+<p>假设我们在时刻 <span class="math inline">\(t\)</span> 时位于状态 <span class="math inline">\(s_t\)</span>，我们通过决策行为 <span class="math inline">\(a_t\)</span> 迁移到了状态 <span class="math inline">\(s_{t + 1}\)</span>，并且获取收益 <span class="math inline">\(r_{t + 1}\)</span>。另外，我们保存有一个所有状态的价值函数估计值表 <span class="math inline">\(V(s), s \in \S\)</span>。那么 TD target 指的是：</p>
+<p><span class="math display">\[
+{\rm TD\ target} := r_{t + 1} + \gamma V(s_{t + 1})
+\]</span></p>
+<p>可以注意到，TD target 本身是利用类似 Bellman 方程中的步进展开方法，通过 <span class="math inline">\(V(s_{t + 1})\)</span> 对 <span class="math inline">\(V(s_t)\)</span> 作出估计，并以此作为 <span class="math inline">\(V(s_t)\)</span> 更新的目标。这和 MC 使用真实采样获取到真实的累计收益作为更新目标完全不同，这也就是 bootstrap 的含义。</p>
+<p>在获取 TD target 后，就可以计算目标和当前估计值的差，即 TD error：</p>
+<p><span class="math display">\[
+{\rm TD\ error} = \delta_t := r_{t + 1} + \gamma V(s_{t + 1}) - V(s_t)
+\]</span></p>
+<p>之后，设定一个适当的学习率 <span class="math inline">\(\alpha\)</span>，即可得到 TD 方法的核心更新策略，下述这种简单的更新策略也被称为 TD(0) 方法：</p>
+<p><span class="math display">\[
+V(s_t) \leftarrow V(s_t) + \alpha\delta_t = V(s_t) + \alpha(r_{t + 1} + \gamma V(s_{t + 1}) - V(s_t))
+\]</span></p>
+<p>从理论上比较 TD 方法与 MC 方法。MC 方法使用的累计收益 <span class="math inline">\(G_t(\tau)\)</span> 是对价值函数 <span class="math inline">\(V^\pi(s)\)</span> 的无偏估计，而 TD 方法使用的 TD target 则相应是有偏估计。然而就估计方差而言，TD 方法由于仅仅涉及到一步决策，其方差显然较 MC 方法小。就初始值方面而言，MC 方法对估计的初始值设置并不敏感，然而 TD 由于基于 bootstrap，故对初始值设置极为敏感。</p>
+<p>如果简单总结上述方法，可以使用下述图：</p>
+<p><img src="/uploads/note-of-rl/1.webp" /></p>
+<p>简而言之，MC 方法较 TD 方法而言有着更深的探索。而 DP 方法（尤其是 VI）则是遍历所有可能的后继状态进行更新，从而具有更广泛的视角，也就拥有广度。与这三者均不同的则是搜索，其需要完整探索整个决策树，但这自然是相当浪费资源的。</p>
+<h2 id="多步-td-target-与-tdlambda">多步 TD target 与 TD(<span class="math inline">\(\lambda\)</span>)</h2>
+<p>TD target 事实上可以设置为多步的。传统的 TD target 是单步的，即仅仅考虑 trajectory 上的一步转移。考虑多步 TD target，不妨考虑三步，假定 trajectory 上有三步转移片段 <span class="math inline">\(s_t, a_t, r_{t + 1}; s_{t + 1}, a_{t + 1}, r_{t + 2}; s_{t + 2}, a_{t + 2}, r_{t + 3}; s_{t + 3}\)</span>，那么 TD target 可以定义为：</p>
+<p><span class="math display">\[
+{\rm TD\ target} := r_{t + 1} + \gamma r_{t + 2} + \gamma^2 r_{t + 3} + \gamma^3 V(s_{t + 3})
+\]</span></p>
+<p>这也可以称为三步 TD target。事实上，如果令考虑的步数趋向于无限，无穷步 TD target 也就成为了事实的累计收益，TD 方法转化为 MC 方法。</p>
+<p>我们先前提到过，TD 方法对估计值初始化敏感，但是其效率较高。另一方面，MC 方法对初始值不敏感，但是效率较低。我们事实上可以使用一种方法将其两者结合，即基于介于 TD 与 MC 方法之间的多步 TD target，利用一定的权重将其组合，作为新的 TD target，这就是 TD(<span class="math inline">\(\lambda\)</span>) 方法。</p>
+<p>将 <span class="math inline">\(n\)</span> 步 TD target 记为 <span class="math inline">\(G^{(n)}_t\)</span>，那么 TD(<span class="math inline">\(\lambda\)</span>) 中的 TD target 定义为：</p>
+<p><span class="math display">\[
+G^\lambda_t := (1 - \lambda)\sum_{n = 1}^{+\infty}\lambda^{n - 1}G_t^{(n)}
+\]</span></p>
+<p>传统的 TD 方法即 <span class="math inline">\(\lambda = 0\)</span> 的 TD(<span class="math inline">\(\lambda\)</span>) 方法。</p>
+]]></content>
+      <categories>
+        <category>【学习笔记】计算机</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>2022 年 2 月论文笔记</title>
+    <url>/2022/01/18/paper-2022-02/</url>
+    <content><![CDATA[<p>2022 年 2 月，主要工作为可微渲染相关方向。</p>
+<span id="more"></span>
+<h1 id="soft-rasterizer---a-differentiable-renderer-for-image-based-3d-reasoning">Soft Rasterizer - A Differentiable Renderer for Image-based 3D Reasoning</h1>
+<h2 id="工作概述">工作概述</h2>
+<p>主要思想还是想把逆向渲染管线（通过二维图像推理三维模型的参数）和神经网络结合，但是最大的问题是管线中的光栅化是离散化操作，可能导致不可微。一些其他的工作在尝试<strong>近似估算</strong>梯度，但是这个工作提出了一种真正可微的框架，能做到：</p>
+<ul>
+<li>直接用可微函数渲染染色的网格</li>
+<li>能从轮廓、阴影等各种二维图像信息有效反向传递为网格顶点参数</li>
+</ul>
+<p>这个工作的重点是把渲染过程的部分看作<strong>聚合函数（Aggregation function）</strong>，该函数联系了三维模型的网格三角形的概率分布以及其渲染出来的像素。</p>
+<div class="note info no-icon"><p>看起来标题中的 Soft 的含义就是使用概率分布的方式来把离散的光栅化变成可微的，最初始的光栅化一般会涉及到离散采样（即确定每一个离散的像素是否要显示网格上的某一个三角形），这也是不可微性的来源。</p>
+</div>
+<p>本论文主要讲述了如何通过 Soft rasterization 框架实现可微的光栅化以保证渲染管线的可微性，基于此，该渲染框架即可方便地接入神经网络以将二维图像信息反向传播到三维模型。同时，本论文也会指出近期的近似估算梯度的方式（使用 hand-crafted 的函数近似表示梯度）并不具有泛用性，且可能会降低三维模型信息更新的效率。</p>
+<h3 id="softras-与传统光栅化">SoftRas 与传统光栅化</h3>
+<p>SoftRas 在将模型投影到平面上的时候，会将模型转换为投影平面上的概率分布。而传统光栅化则是转化为具体某个像素是否染色。</p>
+<p>另外，似乎 SoftRas 对遮挡的处理也和传统渲染管线的 z-buffer 不一样。传统光栅化会使用 onehot 的方式处理遮挡（应该指的是处理为完全遮挡），而 SoftRas 也会基于概率分布做出不同处理。</p>
+<h2 id="相关工作">相关工作</h2>
+<h3 id="可微渲染">可微渲染</h3>
+<p>主要关注如何描述二维图像变化和三维模型操作的关系，主要解决如何从二维图像重建三维场景。考虑给定的二维图片 <span class="math inline">\(A\)</span>，首先粗略初始化一个三维场景 <span class="math inline">\(B&#39;\)</span>，然后通过渲染管线渲染得到二维图片 <span class="math inline">\(B\)</span>。计算 <span class="math inline">\(A\)</span> 和 <span class="math inline">\(B\)</span> 的 loss，将其梯度反向传播给三维场景 <span class="math inline">\(B&#39;\)</span> 的参数，更新之。这里反向传播就是可微渲染最重要的步骤，即如何计算梯度，因为三维场景参数更新量取决于 loss 对参数的偏导数。</p>
+<p>先前提到，这里获取梯度有困难。有些工作使用估计梯度的方式进行，有些工作可以精确计算梯度但是不具有泛用性。</p>
+<h3 id="基于图像的三维推理">基于图像的三维推理</h3>
+<p>依然考虑从二维图像重建三维场景。传统方法往往要求获得从多个角度观察得到的二维图像，而由于数据集的扩大，基于学习的重建方法可以使用一张或少量二维图像来重建场景。部分工作会将重建三维场景拆分为首先重建 2.5 维的表示（深度表等）。</p>
+<p>另外，姿态估计也是三位推理的一个重要的子任务。通过深度学习的方法，预测刚体姿态是较为简单的，而预测人体这类非刚体的姿态则较为困难。</p>
+<h2 id="softras-基本原理">SoftRas 基本原理</h2>
+<p>大约是这样的一个流程：</p>
+<p><img src="/uploads/paper-2022-02/1.png" /></p>
+<p>这里外部因素包含相机参数 <span class="math inline">\(\boldsymbol{P}\)</span> 和环境光照 <span class="math inline">\(\boldsymbol{L}\)</span>，内部因素包括网格信息 <span class="math inline">\(\boldsymbol{M}\)</span> 以及各个顶点的信息（如颜色、材质）<span class="math inline">\(\boldsymbol{A}\)</span>。</p>
+<p>这里第一步要做的是获取三个中间信息，即网格法向量 <span class="math inline">\(\boldsymbol{N}\)</span>、视图空间（投影后的空间）各点坐标 <span class="math inline">\(\boldsymbol{U}\)</span> 以及 View dependent depths <span class="math inline">\(\boldsymbol{Z}\)</span>。这三个量只需要使用相机参数和网格信息即可得到。</p>
+<p>之后可以使用例如 Phong 模型等着色模型计算出颜色 <span class="math inline">\(\boldsymbol{C}\)</span>。</p>
+<p>进行到这一步，上述这些操作都是可微的。但是如果按照传统的渲染管线，下一步应该分别确定每一个网格三角形与每一个像素的对应（即光栅化），之后还要用 z-buffer 处理遮挡，这两步都因为离散采样从而是不可微的。</p>
+<p>SoftRas 软化光栅化和 z-buffer 的方式是引入 probability maps <span class="math inline">\(\{\mathcal{D}_j\}\)</span> 和聚合函数 <span class="math inline">\(\mathcal{A}(\cdot)\)</span> 分别代替光栅化和 z-buffer。这里 <span class="math inline">\(\mathcal{D}_j\)</span> 表示的是每一个像素在网格三角形 <span class="math inline">\(f_j\)</span> 内部的概率在平面上的分布。而聚合函数 <span class="math inline">\(\mathcal{A}(\cdot)\)</span> 联系起了 probability maps 以及深度信息，作为整个后续渲染流程的代表。</p>
+<h3 id="probability-maps-计算">probability maps 计算</h3>
+<p>考虑网格三角形在屏幕上的投影 <span class="math inline">\(f_j\)</span> 和屏幕上的像素 <span class="math inline">\(p_i\)</span>，记在屏幕上 <span class="math inline">\(p_i\)</span> 到 <span class="math inline">\(f_j\)</span> 的边最近距离为 <span class="math inline">\(d(i, j)\)</span>。显然，这个距离越小的像素点，出现在内部的概率越大。由于其可以反映三角形对屏幕的影响，并且其可微，所以可以用此作为 probability maps 的代表。随后通过添加控制常数、符号标记并归一化到 <span class="math inline">\((0, 1)\)</span> 内之后，我们得到了 probability maps 的公式：</p>
+<p><span class="math display">\[
+\mathcal{D}_{i, j} = \mathrm{sigmoid}\left(\delta_{i, j}\cdot\frac{d^2(i, j)}{\sigma}\right)
+\]</span></p>
+<p>这里 <span class="math inline">\(\sigma\)</span> 是一个正常数，一般默认为 <span class="math inline">\(1\times 10^{-4}\)</span>。而 <span class="math inline">\(\delta_{i, j}\)</span> 标记了 <span class="math inline">\(p_i\)</span> 是否在 <span class="math inline">\(f_j\)</span> 之中。若在，则 <span class="math inline">\(\delta_{i, j} = 1\)</span>，否则 <span class="math inline">\(\delta_{i, j} = -1\)</span>。</p>
+<p>下图展示了 <span class="math inline">\(d(i, j)\)</span> 的定义以及 <span class="math inline">\(\sigma\)</span> 常数对概率分布的影响：</p>
+<p><img src="/uploads/paper-2022-02/2.png" /></p>
+<p>显然看出 <span class="math inline">\(\sigma\)</span> 越大，概率分布就越模糊。</p>
+<p>另外一个显然的点是 <span class="math inline">\(\sigma \to 0\)</span> 的时候概率分布中三角形外的点概率密度为 <span class="math inline">\(0\)</span>，而三角形内的点为 <span class="math inline">\(1\)</span>。此时 SoftRas 退化为一般的光栅化。</p>
+<h3 id="聚合函数">聚合函数</h3>
+<p>我们考虑最后一个阶段，这里我们需要根据深度信息、 probability maps 以及颜色信息计算出最后的渲染结果。</p>
+<p>最后渲染结果中，像素 <span class="math inline">\(p_i\)</span> 的渲染结果用聚合函数表示，定义为：</p>
+<p><span class="math display">\[
+I_i = \mathcal{A}_S(\{C_j\}) := \sum_j w_{i, j}C_{i, j} + w_{i, b}C_b
+\]</span></p>
+<p>这里渲染结果定义为一系列颜色信息的加权求和，颜色构成的集合为 <span class="math inline">\(\{C_j\}\)</span>，符号 <span class="math inline">\(C_{i, j}\)</span> 表示三角形 <span class="math inline">\(f_j\)</span> 在像素 <span class="math inline">\(p_i\)</span> 处的颜色。而 <span class="math inline">\(C_b\)</span> 表示背景颜色。</p>
+<p>权重 <span class="math inline">\(w_{i, j}\)</span> 至少满足归一化条件：</p>
+<p><span class="math display">\[
+w_{i, b} + \sum_j w_{i, j} = 1
+\]</span></p>
+<p>而权重的具体值取决于先前得到的 probability maps 以及深度信息。我们将三角形 <span class="math inline">\(f_j\)</span> 中投影到 <span class="math inline">\(p_i\)</span> 像素的点的逆深度记为 <span class="math inline">\(z_{i, j}\)</span>。概率分布沿用先前的符号。定义：</p>
+<p><span class="math display">\[
+w_{i, j} := \frac{\mathcal{D}_{i, j}\exp(z_{i, j} / \gamma)}{\sum_k \mathcal{D}_{i, k}\exp(z_{i, k} / \gamma) + \exp(\varepsilon / \gamma)}
+\]</span></p>
+<p>依据归一化条件就有：</p>
+<p><span class="math display">\[
+w_{i, b} := \frac{\exp(\varepsilon / \gamma)}{\sum_k \mathcal{D}_{i, k}\exp(z_{i, k} / \gamma) + \exp(\varepsilon / \gamma)}
+\]</span></p>
+<div class="note info no-icon"><p>可以看出权重的计算公式其实是类似 Softmax 函数：</p>
+<p><span class="math display">\[
+{\rm softmax}(z_1, z_2, \cdots, z_n)_j = \frac{e^{z_j}}{\sum_i e^{z_i}}
+\]</span></p>
+</div>
+<p>这里可以看出 <span class="math inline">\(\varepsilon\)</span> 是一个小正常数，其作用是将背景颜色纳入计算。<span class="math inline">\(\gamma\)</span> 是一个调节清晰度的正常数，与计算 probability maps 的 <span class="math inline">\(\sigma\)</span> 类似，默认值一般是 <span class="math inline">\(1 \times 10^{-4}\)</span>。</p>
+<p>可以看出，具有更大概率密度的，且离投影平面更近的（即具有更大逆深度的）三角形会获得更大的权重，这符合直觉。</p>
+<hr />
+<p>现在考虑退化。针对像素 <span class="math inline">\(p_i\)</span>，假设 <span class="math inline">\(z_{i, 1} &lt; z_{i, 2} &lt; \cdots &lt; z_{i, N}\)</span>，考虑 <span class="math inline">\(\gamma\to 0\)</span>。首先考察 <span class="math inline">\(j = N\)</span>：</p>
+<p><span class="math display">\[
+\begin{aligned}
+w_{i, N} &amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}\exp(z_{i, N} / \gamma)}{\sum_k \mathcal{D}_{i, k}\exp(z_{i, k} / \gamma) + \exp(\varepsilon / \gamma)} \\
+&amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}}{\sum_k \mathcal{D}_{i, k}\exp((z_{i, k} - z_{i, N}) / \gamma) + \exp((\varepsilon - z_{i, N}) / \gamma)} \\
+&amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}}{\sum_{k = 1}^{N - 1} \mathcal{D}_{i, k}\exp((z_{i, k} - z_{i, N}) / \gamma) + \mathcal{D}_{i, N} + \exp((\varepsilon - z_{i, N}) / \gamma)} \\
+&amp;= 1
+\end{aligned}
+\]</span></p>
+<p>最后一步注意到 <span class="math inline">\(z_{i, N}\)</span> 大于任何 <span class="math inline">\(z_{i, k}(k &lt; N)\)</span>，故有这样的结果。而对于 <span class="math inline">\(j &lt; N\)</span>：</p>
+<p><span class="math display">\[
+\begin{aligned}
+w_{i, j} &amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, j}\exp(z_{i, j} / \gamma)}{\sum_k \mathcal{D}_{i, k}\exp(z_{i, k} / \gamma) + \exp(\varepsilon / \gamma)} \\
+&amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}}{\sum_k \mathcal{D}_{i, k}\exp((z_{i, k} - z_{i, j}) / \gamma) + \exp((\varepsilon - z_{i, j}) / \gamma)} \\
+&amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}}{\left(\sum_{k = 1}^{j - 1} + \sum_{k = j + 1}^{N}\right) \mathcal{D}_{i, k}\exp((z_{i, k} - z_{i, N}) / \gamma) + \mathcal{D}_{i, N} + \exp((\varepsilon - z_{i, N}) / \gamma)} \\
+&amp;= 0
+\end{aligned}
+\]</span></p>
+<p>这里要注意到分母上 <span class="math inline">\(\sum_{k = j + 1}^{N}\)</span> 的部分最终会趋向于正无穷，整体极限为 <span class="math inline">\(0\)</span>。最后根据归一化条件也有 <span class="math inline">\(w_{i, b} = 0\)</span>。</p>
+<p>结合这样的推理，可以看出：</p>
+<p><span class="math display">\[
+I_i = \mathcal{A}_S(\{C_j\}) = C_{i, N}
+\]</span></p>
+<p>也就是说最后渲染的结果只考虑了最近的网格三角形，这也就是 z-buffer 方法。</p>
+<hr />
+<p>似乎还有一个和轮廓相关的聚合函数：</p>
+<p><span class="math display">\[
+I_{i, S} = \mathcal{A}_O(\{\mathcal{D}_j\}) := 1 - \prod_j (1 - \mathcal{D}_{i, j})
+\]</span></p>
+<p>这里没有出现颜色项，这是因为轮廓的颜色一般设定为常数。这里聚合函数形式上实际上就是计算出了像素 <span class="math inline">\(p_i\)</span> 被至少一个三角形覆盖的概率。</p>
+<h2 id="实验内容">实验内容</h2>
+<h3 id="single-view-mesh-reconstruction">Single-View Mesh Reconstruction</h3>
+<p>使用这样的结构：</p>
+<p><img src="/uploads/paper-2022-02/3.png" /></p>
+<p>这里固定了渲染管线中的外部变量，即固定了相机位置和环境光照。每一个输入图片都会进入 color generator 和 shape generator 生成三维模型参数 <span class="math inline">\(\boldsymbol{C}\)</span> 和 <span class="math inline">\(\boldsymbol{M}\)</span>。随后后续接入 SoftRas，渲染得到带颜色的图像 <span class="math inline">\(I_C\)</span> 和轮廓 <span class="math inline">\(I_S\)</span>，最后和原先图像比较计算 loss。</p>
+<p>最后定义的 loss 分为三部分。在叙述定义之前，我们将原始图像的颜色和轮廓定义为 <span class="math inline">\(\hat I_C\)</span> 以及 <span class="math inline">\(\hat I_S\)</span>：</p>
+<ul>
+<li>color loss。定义为颜色之差的 1- 范数：</li>
+</ul>
+<p><span class="math display">\[
+\mathcal{L}_C := \|I_C - \hat I_C\|_1
+\]</span></p>
+<ul>
+<li>silhouette loss。定义为，这里使用 <span class="math inline">\(\otimes\)</span> 表示逐元素求积，<span class="math inline">\(\oplus\)</span> 表示逐元素求和：</li>
+</ul>
+<p><span class="math display">\[
+\mathcal{L}_S := 1 - \frac{\|I_S \otimes \hat I_S\|_1}{\|I_S \oplus \hat I_S - I_S \otimes \hat I_S\|_1}
+\]</span></p>
+<ul>
+<li>geometry loss。作用是对 loss 进行 L1 正则化。</li>
+</ul>
+<p>最后定义的 loss 是这三部分的加权求和：</p>
+<p><span class="math display">\[
+\mathcal{L} := \mathcal{L}_S + \lambda\mathcal{L}_C + \mu\mathcal{L}_G
+\]</span></p>
+<p>这里论文主要提了一下 color generator 的结构：</p>
+<p><img src="/uploads/paper-2022-02/4.png" /></p>
+<p>似乎是提出了一种新结构，让颜色重建变为一个多分类问题，进而降低了时间复杂度。但是论文的描述中有若干的暂且不太清楚的名词，暂且把原文贴在这里以后再来看：</p>
+<div class="note info no-icon"><p>Instead of directly regressing the color value, our color generator formulates color reconstruction as a classification problem that learns to reuse the pixel colors in the input image for each sampling point. Let <span class="math inline">\(N_c\)</span> denote the number of sampling points on <span class="math inline">\(\boldsymbol{M}\)</span> and <span class="math inline">\(H, W\)</span> be the height and width of the input image respectively. However, the computational cost of a naive color selection approach is prohibitive, i.e. <span class="math inline">\(O(HWN_c)\)</span>. To address this challenge, we propose a novel approach to colorize mesh using a color palette, as shown in Figure 7. Specifically, after passing input image to a neural network, the extracted features are fed into (1) a sampling network that samples the representative colors for building the palette; and (2) a selection network that combines colors from the palette for texturing the sampling points. The color prediction is obtained by multiplying the color selections with the learned color palette. Our approach reduces the computation complexity to <span class="math inline">\(O(N_d(HW + N_c))\)</span>, where <span class="math inline">\(N_p\)</span> is the size of color palette. With a proper setting of <span class="math inline">\(N_p\)</span>, one can significantly reduce the computational cost while achieving sharp and accurate color recovery.</p>
+</div>
+<h3 id="image-based-shape-fitting">Image-based Shape Fitting</h3>
+<p>似乎依然是从图像重建模型，但是这个重建任务似乎和姿态预测有较为紧密的联系。</p>
+<p>传统方法面临的问题依然是梯度不精确的问题，这样就导致反向传播较为困难。另外，传统方法也面临这样的问题：</p>
+<ul>
+<li><p>遮挡问题。传统方法中，被遮挡的三角形无法调整参数，而 SoftRas 允许被遮挡的三角形参与到运算中，所以这个问题可以解决。</p></li>
+<li><p>局部最小值问题。我们希望误差反向传播可以传播到较大范围，即希望一次三维模型参数调整不局限于较小的局部，否则可能会导致模型收敛到局部最小值而非更优的结果。而 SoftRas 使用的概率分布算法允许全局的像素参与到运算中，所以理论上误差可以传播到较大范围，这个问题可以解决。</p></li>
+</ul>
+<p>所以最后就直接使用这样的方式训练就行了：</p>
+<p><span class="math display">\[
+\{\rho, \theta, t\} = \mathop{\mathrm{argmin}}_{\rho, \theta, t}\|R(M(\rho, \theta, t)) - I_t\|_2
+\]</span></p>
+<p>这里 <span class="math inline">\(\rho, \theta, t\)</span> 是三维模型的参数，分别是非刚体形变参数、姿态角度、转换参数（或许就是视图转换的参数），<span class="math inline">\(M(\cdot)\)</span> 将这些参数转换为网格，<span class="math inline">\(R(\cdot)\)</span> 是渲染函数，<span class="math inline">\(I_t\)</span> 则是目标图像。这个训练方式也就是机器学习的通式。</p>
+<h2 id="实验结果">实验结果</h2>
+<h3 id="single-view-mesh-reconstruction-1">Single-View Mesh Reconstruction</h3>
+<p>实验结果看确实挺好的，下面展示的是不带颜色的网格重建：</p>
+<p><img src="/uploads/paper-2022-02/5.png" /></p>
+<p>颜色似乎也重建得挺好：</p>
+<p><img src="/uploads/paper-2022-02/6.png" height="50%" width="50%" /></p>
+<p>使用的评价方法是 3D IoU，即 3D Intersection over Union。这是一种物体检测领域的评价函数。二维情况下的 IoU 定义如下图所示。这里的矩形均指代物体的包围盒，分别为实际的包围盒和模型预测的包围盒：</p>
+<p><img src="/uploads/paper-2022-02/7.png" height="50%" width="50%" /></p>
+<p>SoftRas 的平均 3D IoU 超出了 state-of-art 的 NMR 的 3D IoU 约 4.5 点，从而说明在网格重建任务上 SoftRas 的表现超出了传统方法。</p>
+<p>另外似乎还有一项称为 Ablation Study 的后续实验，这里省略。</p>
+<h3 id="image-based-shape-fitting-1">Image-based Shape Fitting</h3>
+<p>首先实验刚体结构预测，这里采用六面着不同色的正方体。给定渲染后图像，要求给出正方体应当旋转的角度。SoftRas 和 NMR 的实验结果如下：</p>
+<p><img src="/uploads/paper-2022-02/8.png" /></p>
+<p>可以发现 SoftRas 成功获得了最后的结果，而 NMR 则收敛到了一个局部最小值无法得到正确结果。</p>
+<p>论文认为 NMR 失败的原因正是因为六个面的相互遮挡，这导致了 NMR 无法越过局部最小值。</p>
+<p>另外其也做了大量实验，表明 SoftRas 预测的旋转角度误差严格优于 NMR，在不优化的情况下，SoftRas 的角度误差平均比 NMR 低 <span class="math inline">\(10.60^\circ\)</span>。</p>
+<p>这里似乎涉及到 <span class="math inline">\({\rm SO}(3)\)</span> 旋转群的一些东西，后面再来研究吧。</p>
+<hr />
+<p>非刚体结构预测则选用了人体结构预测，这里初始化时人的右手位于背后，而目标图像中右手已经移动到前面，实验目标是将手移出来。显然 NMR 依然因为无法处理遮挡，最后没有能够完成任务。而 SoftRas 完成了：</p>
+<p><img src="/uploads/paper-2022-02/9.png" /></p>
+<h2 id="附录梯度计算">附录：梯度计算</h2>
+<p>我们现在研究一下 SoftRas 渲染出来的图像 <span class="math inline">\(\boldsymbol{I}\)</span> 对网格参数 <span class="math inline">\(\boldsymbol{M}\)</span> 的梯度，这个梯度也就是在反向传播的时候要计算的值。首先显然有：</p>
+<p><span class="math display">\[
+\frac{\partial\boldsymbol{I}}{\partial\boldsymbol{M}} = \frac{\partial\boldsymbol{I}}{\partial\boldsymbol{U}}\frac{\partial\boldsymbol{U}}{\partial\boldsymbol{M}} + \frac{\partial\boldsymbol{I}}{\partial\boldsymbol{Z}}\frac{\partial\boldsymbol{Z}}{\partial\boldsymbol{M}} + \frac{\partial\boldsymbol{I}}{\partial\boldsymbol{N}}\frac{\partial\boldsymbol{N}}{\partial\boldsymbol{M}}
+\]</span></p>
+<p>这里显然可以看出 <span class="math inline">\(\dfrac{\partial\boldsymbol{U}}{\partial\boldsymbol{M}}, \dfrac{\partial\boldsymbol{Z}}{\partial\boldsymbol{M}}, \dfrac{\partial\boldsymbol{N}}{\partial\boldsymbol{M}}\)</span> 是可以简单计算的，因为 <span class="math inline">\(\boldsymbol{U}, \boldsymbol{Z}, \boldsymbol{N}\)</span> 都可以由 <span class="math inline">\(\boldsymbol{M}\)</span> 通过简单的视图变换得到，由变换矩阵即可推算偏导数。</p>
+<p>而根据着色模型，<span class="math inline">\(\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{N}}\)</span> 也是可以计算的。</p>
+<p>剩余的两个梯度中，<span class="math inline">\(\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{Z}}\)</span> 直接和聚合函数相关，而 <span class="math inline">\(\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{U}}\)</span> 经过了两层，分别是概率分布计算和聚合函数，所以我们需要拆解：</p>
+<p><span class="math display">\[
+\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{U}} = \dfrac{\partial\boldsymbol{I}}{\partial\mathcal{D}}\dfrac{\partial\mathcal{D}}{\partial\boldsymbol{U}}
+\]</span></p>
+]]></content>
+      <categories>
+        <category>【论文笔记】计算机</category>
+      </categories>
+  </entry>
+  <entry>
     <title>原创数学题集</title>
     <url>/2022/07/12/orginal-problems/</url>
     <content><![CDATA[<p>一些奇妙的数学想法而已，可能是初中、高中、大学题，反正是弄着玩的。</p>
@@ -15418,185 +15992,6 @@ k(y_2 - y_1) = x_3(x_2 - x_1) + (x_2^2 - x_1^2) \Rightarrow k^2 = x_1 + x_2 + x_
       </categories>
   </entry>
   <entry>
-    <title>2022 年 2 月论文笔记</title>
-    <url>/2022/01/18/paper-2022-02/</url>
-    <content><![CDATA[<p>2022 年 2 月，主要工作为可微渲染相关方向。</p>
-<span id="more"></span>
-<h1 id="soft-rasterizer---a-differentiable-renderer-for-image-based-3d-reasoning">Soft Rasterizer - A Differentiable Renderer for Image-based 3D Reasoning</h1>
-<h2 id="工作概述">工作概述</h2>
-<p>主要思想还是想把逆向渲染管线（通过二维图像推理三维模型的参数）和神经网络结合，但是最大的问题是管线中的光栅化是离散化操作，可能导致不可微。一些其他的工作在尝试<strong>近似估算</strong>梯度，但是这个工作提出了一种真正可微的框架，能做到：</p>
-<ul>
-<li>直接用可微函数渲染染色的网格</li>
-<li>能从轮廓、阴影等各种二维图像信息有效反向传递为网格顶点参数</li>
-</ul>
-<p>这个工作的重点是把渲染过程的部分看作<strong>聚合函数（Aggregation function）</strong>，该函数联系了三维模型的网格三角形的概率分布以及其渲染出来的像素。</p>
-<div class="note info no-icon"><p>看起来标题中的 Soft 的含义就是使用概率分布的方式来把离散的光栅化变成可微的，最初始的光栅化一般会涉及到离散采样（即确定每一个离散的像素是否要显示网格上的某一个三角形），这也是不可微性的来源。</p>
-</div>
-<p>本论文主要讲述了如何通过 Soft rasterization 框架实现可微的光栅化以保证渲染管线的可微性，基于此，该渲染框架即可方便地接入神经网络以将二维图像信息反向传播到三维模型。同时，本论文也会指出近期的近似估算梯度的方式（使用 hand-crafted 的函数近似表示梯度）并不具有泛用性，且可能会降低三维模型信息更新的效率。</p>
-<h3 id="softras-与传统光栅化">SoftRas 与传统光栅化</h3>
-<p>SoftRas 在将模型投影到平面上的时候，会将模型转换为投影平面上的概率分布。而传统光栅化则是转化为具体某个像素是否染色。</p>
-<p>另外，似乎 SoftRas 对遮挡的处理也和传统渲染管线的 z-buffer 不一样。传统光栅化会使用 onehot 的方式处理遮挡（应该指的是处理为完全遮挡），而 SoftRas 也会基于概率分布做出不同处理。</p>
-<h2 id="相关工作">相关工作</h2>
-<h3 id="可微渲染">可微渲染</h3>
-<p>主要关注如何描述二维图像变化和三维模型操作的关系，主要解决如何从二维图像重建三维场景。考虑给定的二维图片 <span class="math inline">\(A\)</span>，首先粗略初始化一个三维场景 <span class="math inline">\(B&#39;\)</span>，然后通过渲染管线渲染得到二维图片 <span class="math inline">\(B\)</span>。计算 <span class="math inline">\(A\)</span> 和 <span class="math inline">\(B\)</span> 的 loss，将其梯度反向传播给三维场景 <span class="math inline">\(B&#39;\)</span> 的参数，更新之。这里反向传播就是可微渲染最重要的步骤，即如何计算梯度，因为三维场景参数更新量取决于 loss 对参数的偏导数。</p>
-<p>先前提到，这里获取梯度有困难。有些工作使用估计梯度的方式进行，有些工作可以精确计算梯度但是不具有泛用性。</p>
-<h3 id="基于图像的三维推理">基于图像的三维推理</h3>
-<p>依然考虑从二维图像重建三维场景。传统方法往往要求获得从多个角度观察得到的二维图像，而由于数据集的扩大，基于学习的重建方法可以使用一张或少量二维图像来重建场景。部分工作会将重建三维场景拆分为首先重建 2.5 维的表示（深度表等）。</p>
-<p>另外，姿态估计也是三位推理的一个重要的子任务。通过深度学习的方法，预测刚体姿态是较为简单的，而预测人体这类非刚体的姿态则较为困难。</p>
-<h2 id="softras-基本原理">SoftRas 基本原理</h2>
-<p>大约是这样的一个流程：</p>
-<p><img src="/uploads/paper-2022-02/1.png" /></p>
-<p>这里外部因素包含相机参数 <span class="math inline">\(\boldsymbol{P}\)</span> 和环境光照 <span class="math inline">\(\boldsymbol{L}\)</span>，内部因素包括网格信息 <span class="math inline">\(\boldsymbol{M}\)</span> 以及各个顶点的信息（如颜色、材质）<span class="math inline">\(\boldsymbol{A}\)</span>。</p>
-<p>这里第一步要做的是获取三个中间信息，即网格法向量 <span class="math inline">\(\boldsymbol{N}\)</span>、视图空间（投影后的空间）各点坐标 <span class="math inline">\(\boldsymbol{U}\)</span> 以及 View dependent depths <span class="math inline">\(\boldsymbol{Z}\)</span>。这三个量只需要使用相机参数和网格信息即可得到。</p>
-<p>之后可以使用例如 Phong 模型等着色模型计算出颜色 <span class="math inline">\(\boldsymbol{C}\)</span>。</p>
-<p>进行到这一步，上述这些操作都是可微的。但是如果按照传统的渲染管线，下一步应该分别确定每一个网格三角形与每一个像素的对应（即光栅化），之后还要用 z-buffer 处理遮挡，这两步都因为离散采样从而是不可微的。</p>
-<p>SoftRas 软化光栅化和 z-buffer 的方式是引入 probability maps <span class="math inline">\(\{\mathcal{D}_j\}\)</span> 和聚合函数 <span class="math inline">\(\mathcal{A}(\cdot)\)</span> 分别代替光栅化和 z-buffer。这里 <span class="math inline">\(\mathcal{D}_j\)</span> 表示的是每一个像素在网格三角形 <span class="math inline">\(f_j\)</span> 内部的概率在平面上的分布。而聚合函数 <span class="math inline">\(\mathcal{A}(\cdot)\)</span> 联系起了 probability maps 以及深度信息，作为整个后续渲染流程的代表。</p>
-<h3 id="probability-maps-计算">probability maps 计算</h3>
-<p>考虑网格三角形在屏幕上的投影 <span class="math inline">\(f_j\)</span> 和屏幕上的像素 <span class="math inline">\(p_i\)</span>，记在屏幕上 <span class="math inline">\(p_i\)</span> 到 <span class="math inline">\(f_j\)</span> 的边最近距离为 <span class="math inline">\(d(i, j)\)</span>。显然，这个距离越小的像素点，出现在内部的概率越大。由于其可以反映三角形对屏幕的影响，并且其可微，所以可以用此作为 probability maps 的代表。随后通过添加控制常数、符号标记并归一化到 <span class="math inline">\((0, 1)\)</span> 内之后，我们得到了 probability maps 的公式：</p>
-<p><span class="math display">\[
-\mathcal{D}_{i, j} = \mathrm{sigmoid}\left(\delta_{i, j}\cdot\frac{d^2(i, j)}{\sigma}\right)
-\]</span></p>
-<p>这里 <span class="math inline">\(\sigma\)</span> 是一个正常数，一般默认为 <span class="math inline">\(1\times 10^{-4}\)</span>。而 <span class="math inline">\(\delta_{i, j}\)</span> 标记了 <span class="math inline">\(p_i\)</span> 是否在 <span class="math inline">\(f_j\)</span> 之中。若在，则 <span class="math inline">\(\delta_{i, j} = 1\)</span>，否则 <span class="math inline">\(\delta_{i, j} = -1\)</span>。</p>
-<p>下图展示了 <span class="math inline">\(d(i, j)\)</span> 的定义以及 <span class="math inline">\(\sigma\)</span> 常数对概率分布的影响：</p>
-<p><img src="/uploads/paper-2022-02/2.png" /></p>
-<p>显然看出 <span class="math inline">\(\sigma\)</span> 越大，概率分布就越模糊。</p>
-<p>另外一个显然的点是 <span class="math inline">\(\sigma \to 0\)</span> 的时候概率分布中三角形外的点概率密度为 <span class="math inline">\(0\)</span>，而三角形内的点为 <span class="math inline">\(1\)</span>。此时 SoftRas 退化为一般的光栅化。</p>
-<h3 id="聚合函数">聚合函数</h3>
-<p>我们考虑最后一个阶段，这里我们需要根据深度信息、 probability maps 以及颜色信息计算出最后的渲染结果。</p>
-<p>最后渲染结果中，像素 <span class="math inline">\(p_i\)</span> 的渲染结果用聚合函数表示，定义为：</p>
-<p><span class="math display">\[
-I_i = \mathcal{A}_S(\{C_j\}) := \sum_j w_{i, j}C_{i, j} + w_{i, b}C_b
-\]</span></p>
-<p>这里渲染结果定义为一系列颜色信息的加权求和，颜色构成的集合为 <span class="math inline">\(\{C_j\}\)</span>，符号 <span class="math inline">\(C_{i, j}\)</span> 表示三角形 <span class="math inline">\(f_j\)</span> 在像素 <span class="math inline">\(p_i\)</span> 处的颜色。而 <span class="math inline">\(C_b\)</span> 表示背景颜色。</p>
-<p>权重 <span class="math inline">\(w_{i, j}\)</span> 至少满足归一化条件：</p>
-<p><span class="math display">\[
-w_{i, b} + \sum_j w_{i, j} = 1
-\]</span></p>
-<p>而权重的具体值取决于先前得到的 probability maps 以及深度信息。我们将三角形 <span class="math inline">\(f_j\)</span> 中投影到 <span class="math inline">\(p_i\)</span> 像素的点的逆深度记为 <span class="math inline">\(z_{i, j}\)</span>。概率分布沿用先前的符号。定义：</p>
-<p><span class="math display">\[
-w_{i, j} := \frac{\mathcal{D}_{i, j}\exp(z_{i, j} / \gamma)}{\sum_k \mathcal{D}_{i, k}\exp(z_{i, k} / \gamma) + \exp(\varepsilon / \gamma)}
-\]</span></p>
-<p>依据归一化条件就有：</p>
-<p><span class="math display">\[
-w_{i, b} := \frac{\exp(\varepsilon / \gamma)}{\sum_k \mathcal{D}_{i, k}\exp(z_{i, k} / \gamma) + \exp(\varepsilon / \gamma)}
-\]</span></p>
-<div class="note info no-icon"><p>可以看出权重的计算公式其实是类似 Softmax 函数：</p>
-<p><span class="math display">\[
-{\rm softmax}(z_1, z_2, \cdots, z_n)_j = \frac{e^{z_j}}{\sum_i e^{z_i}}
-\]</span></p>
-</div>
-<p>这里可以看出 <span class="math inline">\(\varepsilon\)</span> 是一个小正常数，其作用是将背景颜色纳入计算。<span class="math inline">\(\gamma\)</span> 是一个调节清晰度的正常数，与计算 probability maps 的 <span class="math inline">\(\sigma\)</span> 类似，默认值一般是 <span class="math inline">\(1 \times 10^{-4}\)</span>。</p>
-<p>可以看出，具有更大概率密度的，且离投影平面更近的（即具有更大逆深度的）三角形会获得更大的权重，这符合直觉。</p>
-<hr />
-<p>现在考虑退化。针对像素 <span class="math inline">\(p_i\)</span>，假设 <span class="math inline">\(z_{i, 1} &lt; z_{i, 2} &lt; \cdots &lt; z_{i, N}\)</span>，考虑 <span class="math inline">\(\gamma\to 0\)</span>。首先考察 <span class="math inline">\(j = N\)</span>：</p>
-<p><span class="math display">\[
-\begin{aligned}
-w_{i, N} &amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}\exp(z_{i, N} / \gamma)}{\sum_k \mathcal{D}_{i, k}\exp(z_{i, k} / \gamma) + \exp(\varepsilon / \gamma)} \\
-&amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}}{\sum_k \mathcal{D}_{i, k}\exp((z_{i, k} - z_{i, N}) / \gamma) + \exp((\varepsilon - z_{i, N}) / \gamma)} \\
-&amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}}{\sum_{k = 1}^{N - 1} \mathcal{D}_{i, k}\exp((z_{i, k} - z_{i, N}) / \gamma) + \mathcal{D}_{i, N} + \exp((\varepsilon - z_{i, N}) / \gamma)} \\
-&amp;= 1
-\end{aligned}
-\]</span></p>
-<p>最后一步注意到 <span class="math inline">\(z_{i, N}\)</span> 大于任何 <span class="math inline">\(z_{i, k}(k &lt; N)\)</span>，故有这样的结果。而对于 <span class="math inline">\(j &lt; N\)</span>：</p>
-<p><span class="math display">\[
-\begin{aligned}
-w_{i, j} &amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, j}\exp(z_{i, j} / \gamma)}{\sum_k \mathcal{D}_{i, k}\exp(z_{i, k} / \gamma) + \exp(\varepsilon / \gamma)} \\
-&amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}}{\sum_k \mathcal{D}_{i, k}\exp((z_{i, k} - z_{i, j}) / \gamma) + \exp((\varepsilon - z_{i, j}) / \gamma)} \\
-&amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}}{\left(\sum_{k = 1}^{j - 1} + \sum_{k = j + 1}^{N}\right) \mathcal{D}_{i, k}\exp((z_{i, k} - z_{i, N}) / \gamma) + \mathcal{D}_{i, N} + \exp((\varepsilon - z_{i, N}) / \gamma)} \\
-&amp;= 0
-\end{aligned}
-\]</span></p>
-<p>这里要注意到分母上 <span class="math inline">\(\sum_{k = j + 1}^{N}\)</span> 的部分最终会趋向于正无穷，整体极限为 <span class="math inline">\(0\)</span>。最后根据归一化条件也有 <span class="math inline">\(w_{i, b} = 0\)</span>。</p>
-<p>结合这样的推理，可以看出：</p>
-<p><span class="math display">\[
-I_i = \mathcal{A}_S(\{C_j\}) = C_{i, N}
-\]</span></p>
-<p>也就是说最后渲染的结果只考虑了最近的网格三角形，这也就是 z-buffer 方法。</p>
-<hr />
-<p>似乎还有一个和轮廓相关的聚合函数：</p>
-<p><span class="math display">\[
-I_{i, S} = \mathcal{A}_O(\{\mathcal{D}_j\}) := 1 - \prod_j (1 - \mathcal{D}_{i, j})
-\]</span></p>
-<p>这里没有出现颜色项，这是因为轮廓的颜色一般设定为常数。这里聚合函数形式上实际上就是计算出了像素 <span class="math inline">\(p_i\)</span> 被至少一个三角形覆盖的概率。</p>
-<h2 id="实验内容">实验内容</h2>
-<h3 id="single-view-mesh-reconstruction">Single-View Mesh Reconstruction</h3>
-<p>使用这样的结构：</p>
-<p><img src="/uploads/paper-2022-02/3.png" /></p>
-<p>这里固定了渲染管线中的外部变量，即固定了相机位置和环境光照。每一个输入图片都会进入 color generator 和 shape generator 生成三维模型参数 <span class="math inline">\(\boldsymbol{C}\)</span> 和 <span class="math inline">\(\boldsymbol{M}\)</span>。随后后续接入 SoftRas，渲染得到带颜色的图像 <span class="math inline">\(I_C\)</span> 和轮廓 <span class="math inline">\(I_S\)</span>，最后和原先图像比较计算 loss。</p>
-<p>最后定义的 loss 分为三部分。在叙述定义之前，我们将原始图像的颜色和轮廓定义为 <span class="math inline">\(\hat I_C\)</span> 以及 <span class="math inline">\(\hat I_S\)</span>：</p>
-<ul>
-<li>color loss。定义为颜色之差的 1- 范数：</li>
-</ul>
-<p><span class="math display">\[
-\mathcal{L}_C := \|I_C - \hat I_C\|_1
-\]</span></p>
-<ul>
-<li>silhouette loss。定义为，这里使用 <span class="math inline">\(\otimes\)</span> 表示逐元素求积，<span class="math inline">\(\oplus\)</span> 表示逐元素求和：</li>
-</ul>
-<p><span class="math display">\[
-\mathcal{L}_S := 1 - \frac{\|I_S \otimes \hat I_S\|_1}{\|I_S \oplus \hat I_S - I_S \otimes \hat I_S\|_1}
-\]</span></p>
-<ul>
-<li>geometry loss。作用是对 loss 进行 L1 正则化。</li>
-</ul>
-<p>最后定义的 loss 是这三部分的加权求和：</p>
-<p><span class="math display">\[
-\mathcal{L} := \mathcal{L}_S + \lambda\mathcal{L}_C + \mu\mathcal{L}_G
-\]</span></p>
-<p>这里论文主要提了一下 color generator 的结构：</p>
-<p><img src="/uploads/paper-2022-02/4.png" /></p>
-<p>似乎是提出了一种新结构，让颜色重建变为一个多分类问题，进而降低了时间复杂度。但是论文的描述中有若干的暂且不太清楚的名词，暂且把原文贴在这里以后再来看：</p>
-<div class="note info no-icon"><p>Instead of directly regressing the color value, our color generator formulates color reconstruction as a classification problem that learns to reuse the pixel colors in the input image for each sampling point. Let <span class="math inline">\(N_c\)</span> denote the number of sampling points on <span class="math inline">\(\boldsymbol{M}\)</span> and <span class="math inline">\(H, W\)</span> be the height and width of the input image respectively. However, the computational cost of a naive color selection approach is prohibitive, i.e. <span class="math inline">\(O(HWN_c)\)</span>. To address this challenge, we propose a novel approach to colorize mesh using a color palette, as shown in Figure 7. Specifically, after passing input image to a neural network, the extracted features are fed into (1) a sampling network that samples the representative colors for building the palette; and (2) a selection network that combines colors from the palette for texturing the sampling points. The color prediction is obtained by multiplying the color selections with the learned color palette. Our approach reduces the computation complexity to <span class="math inline">\(O(N_d(HW + N_c))\)</span>, where <span class="math inline">\(N_p\)</span> is the size of color palette. With a proper setting of <span class="math inline">\(N_p\)</span>, one can significantly reduce the computational cost while achieving sharp and accurate color recovery.</p>
-</div>
-<h3 id="image-based-shape-fitting">Image-based Shape Fitting</h3>
-<p>似乎依然是从图像重建模型，但是这个重建任务似乎和姿态预测有较为紧密的联系。</p>
-<p>传统方法面临的问题依然是梯度不精确的问题，这样就导致反向传播较为困难。另外，传统方法也面临这样的问题：</p>
-<ul>
-<li><p>遮挡问题。传统方法中，被遮挡的三角形无法调整参数，而 SoftRas 允许被遮挡的三角形参与到运算中，所以这个问题可以解决。</p></li>
-<li><p>局部最小值问题。我们希望误差反向传播可以传播到较大范围，即希望一次三维模型参数调整不局限于较小的局部，否则可能会导致模型收敛到局部最小值而非更优的结果。而 SoftRas 使用的概率分布算法允许全局的像素参与到运算中，所以理论上误差可以传播到较大范围，这个问题可以解决。</p></li>
-</ul>
-<p>所以最后就直接使用这样的方式训练就行了：</p>
-<p><span class="math display">\[
-\{\rho, \theta, t\} = \mathop{\mathrm{argmin}}_{\rho, \theta, t}\|R(M(\rho, \theta, t)) - I_t\|_2
-\]</span></p>
-<p>这里 <span class="math inline">\(\rho, \theta, t\)</span> 是三维模型的参数，分别是非刚体形变参数、姿态角度、转换参数（或许就是视图转换的参数），<span class="math inline">\(M(\cdot)\)</span> 将这些参数转换为网格，<span class="math inline">\(R(\cdot)\)</span> 是渲染函数，<span class="math inline">\(I_t\)</span> 则是目标图像。这个训练方式也就是机器学习的通式。</p>
-<h2 id="实验结果">实验结果</h2>
-<h3 id="single-view-mesh-reconstruction-1">Single-View Mesh Reconstruction</h3>
-<p>实验结果看确实挺好的，下面展示的是不带颜色的网格重建：</p>
-<p><img src="/uploads/paper-2022-02/5.png" /></p>
-<p>颜色似乎也重建得挺好：</p>
-<p><img src="/uploads/paper-2022-02/6.png" height="50%" width="50%" /></p>
-<p>使用的评价方法是 3D IoU，即 3D Intersection over Union。这是一种物体检测领域的评价函数。二维情况下的 IoU 定义如下图所示。这里的矩形均指代物体的包围盒，分别为实际的包围盒和模型预测的包围盒：</p>
-<p><img src="/uploads/paper-2022-02/7.png" height="50%" width="50%" /></p>
-<p>SoftRas 的平均 3D IoU 超出了 state-of-art 的 NMR 的 3D IoU 约 4.5 点，从而说明在网格重建任务上 SoftRas 的表现超出了传统方法。</p>
-<p>另外似乎还有一项称为 Ablation Study 的后续实验，这里省略。</p>
-<h3 id="image-based-shape-fitting-1">Image-based Shape Fitting</h3>
-<p>首先实验刚体结构预测，这里采用六面着不同色的正方体。给定渲染后图像，要求给出正方体应当旋转的角度。SoftRas 和 NMR 的实验结果如下：</p>
-<p><img src="/uploads/paper-2022-02/8.png" /></p>
-<p>可以发现 SoftRas 成功获得了最后的结果，而 NMR 则收敛到了一个局部最小值无法得到正确结果。</p>
-<p>论文认为 NMR 失败的原因正是因为六个面的相互遮挡，这导致了 NMR 无法越过局部最小值。</p>
-<p>另外其也做了大量实验，表明 SoftRas 预测的旋转角度误差严格优于 NMR，在不优化的情况下，SoftRas 的角度误差平均比 NMR 低 <span class="math inline">\(10.60^\circ\)</span>。</p>
-<p>这里似乎涉及到 <span class="math inline">\({\rm SO}(3)\)</span> 旋转群的一些东西，后面再来研究吧。</p>
-<hr />
-<p>非刚体结构预测则选用了人体结构预测，这里初始化时人的右手位于背后，而目标图像中右手已经移动到前面，实验目标是将手移出来。显然 NMR 依然因为无法处理遮挡，最后没有能够完成任务。而 SoftRas 完成了：</p>
-<p><img src="/uploads/paper-2022-02/9.png" /></p>
-<h2 id="附录梯度计算">附录：梯度计算</h2>
-<p>我们现在研究一下 SoftRas 渲染出来的图像 <span class="math inline">\(\boldsymbol{I}\)</span> 对网格参数 <span class="math inline">\(\boldsymbol{M}\)</span> 的梯度，这个梯度也就是在反向传播的时候要计算的值。首先显然有：</p>
-<p><span class="math display">\[
-\frac{\partial\boldsymbol{I}}{\partial\boldsymbol{M}} = \frac{\partial\boldsymbol{I}}{\partial\boldsymbol{U}}\frac{\partial\boldsymbol{U}}{\partial\boldsymbol{M}} + \frac{\partial\boldsymbol{I}}{\partial\boldsymbol{Z}}\frac{\partial\boldsymbol{Z}}{\partial\boldsymbol{M}} + \frac{\partial\boldsymbol{I}}{\partial\boldsymbol{N}}\frac{\partial\boldsymbol{N}}{\partial\boldsymbol{M}}
-\]</span></p>
-<p>这里显然可以看出 <span class="math inline">\(\dfrac{\partial\boldsymbol{U}}{\partial\boldsymbol{M}}, \dfrac{\partial\boldsymbol{Z}}{\partial\boldsymbol{M}}, \dfrac{\partial\boldsymbol{N}}{\partial\boldsymbol{M}}\)</span> 是可以简单计算的，因为 <span class="math inline">\(\boldsymbol{U}, \boldsymbol{Z}, \boldsymbol{N}\)</span> 都可以由 <span class="math inline">\(\boldsymbol{M}\)</span> 通过简单的视图变换得到，由变换矩阵即可推算偏导数。</p>
-<p>而根据着色模型，<span class="math inline">\(\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{N}}\)</span> 也是可以计算的。</p>
-<p>剩余的两个梯度中，<span class="math inline">\(\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{Z}}\)</span> 直接和聚合函数相关，而 <span class="math inline">\(\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{U}}\)</span> 经过了两层，分别是概率分布计算和聚合函数，所以我们需要拆解：</p>
-<p><span class="math display">\[
-\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{U}} = \dfrac{\partial\boldsymbol{I}}{\partial\mathcal{D}}\dfrac{\partial\mathcal{D}}{\partial\boldsymbol{U}}
-\]</span></p>
-]]></content>
-      <categories>
-        <category>【论文笔记】计算机</category>
-      </categories>
-  </entry>
-  <entry>
     <title>2022 年 8 月论文笔记</title>
     <url>/2022/06/10/paper-2022-08/</url>
     <content><![CDATA[<p>这个月主要是刚刚进入流媒体相关的方向，需要阅读一些论文来了解目前的发展。</p>
@@ -15719,397 +16114,6 @@ I_{i, S} = \mathcal{A}_O(\{\mathcal{D}_j\}) := 1 - \prod_j (1 - \mathcal{D}_{i, 
 ]]></content>
       <categories>
         <category>【论文笔记】计算机</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>强化学习入门笔记</title>
-    <url>/2023/02/22/note-of-rl/</url>
-    <content><![CDATA[<p>这学期选了一门深度强化学习，也正好趁此机会系统性质地把强化学习理论基础过一下，如果可以的话可能还打算过一下深度学习基础扩展一下视野之类的。</p>
-<span id="more"></span>
-<p><span class="math display">\[
-\newcommand{\Pe}{\mathbb{P}_{\mathcal{E}}}
-\newcommand{\P}{\mathbb{P}}
-\newcommand{\E}{\mathbb{E}}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\S}{\mathcal{S}}
-\newcommand{\A}{\mathcal{A}}
-\newcommand{\Eop}{\mathop{\mathbb{E}}}
-\newcommand{\b}{\boldsymbol}
-\newcommand{\argmax}{\mathop{\rm argmax}}
-\]</span></p>
-<h1 id="强化学习的基本概念与基本优化理论">强化学习的基本概念与基本优化理论</h1>
-<h2 id="环境与策略">环境与策略</h2>
-<p>强化学习的基本框架为一个智能体和环境交互，环境对智能体的决策给出反馈，即收益信号并转移到下一状态，智能体需要学会在不同的状态下应该做出何种决策以收获最高总收益。</p>
-<p>这里环境常常建模为 Markov 决策过程，即 MDP <span class="math inline">\((\S, \A, \Pe, r, \gamma)\)</span>。所谓 Markov 过程，指的是状态转移和历史状态无关，仅仅和当前状态有关，可以简单描述为 <span class="math inline">\(\P(s_{t + 1} \mid s_t) = \P(s_{t + 1} \mid s_t, s_{t - 1}, \cdots, s_1)\)</span>。MDP 中各项指的是：</p>
-<ul>
-<li>状态空间 <span class="math inline">\(\S\)</span>。即环境可以表现出的所有状态构成的集合。</li>
-<li>决策空间 <span class="math inline">\(\A\)</span>。即环境允许智能体做出的所有决策构成的集合。</li>
-<li>状态转移概率函数 <span class="math inline">\(\Pe\)</span>。<span class="math inline">\(\Pe(s&#39; \mid s, a)\)</span> 表示环境在状态 <span class="math inline">\(s \in \S\)</span> 且智能体做出决策 <span class="math inline">\(a \in \A\)</span> 的时候环境下一步转移到状态 <span class="math inline">\(s&#39; \in \S\)</span> 的概率。这里下标 <span class="math inline">\(\mathcal{E}\)</span> 表示该概率仅与环境 <span class="math inline">\(\mathcal{E}\)</span> 本身有关。其一般称为 model 或者 dynamics。</li>
-<li>收益函数 <span class="math inline">\(r\)</span>。收益函数为从 <span class="math inline">\(\S \times \A \times \S\)</span> 到 <span class="math inline">\(\R\)</span> 的映射。<span class="math inline">\(r(s, a, s&#39;)\)</span> 表示环境在状态 <span class="math inline">\(s \in \S\)</span> 且智能体做出决策 <span class="math inline">\(a \in \A\)</span> 并转移到新状态 <span class="math inline">\(s&#39; \in \S\)</span> 的时候环境给予智能体的收益。</li>
-<li>收益衰减系数 <span class="math inline">\(\gamma\)</span>。这里 <span class="math inline">\(\gamma \in [0, 1]\)</span>。该参数代表收益随着时间步衰减的系数，具体含义将会在后续定义累计收益的时候展开。</li>
-</ul>
-<p>另外需要说明的是，状态 <span class="math inline">\(s \in \mathcal{S}\)</span> 可能并不是完全可以观测的，如果 <span class="math inline">\(s\)</span> 不能完全观测，我们会将 <span class="math inline">\(s\)</span> 中能观测的部分记作 <span class="math inline">\(o\)</span>，称为<strong>观测</strong>，即 observation。所有观测构成的集合记作 <span class="math inline">\(\mathcal{O}\)</span>。这种部分可以观测的 MDP 称为 <strong>P</strong>artially <strong>O</strong>bservable MDP，缩写 POMDP。</p>
-<p>而智能体内部所使用的策略一般表现为 <span class="math inline">\(\pi_{\b\theta}(a \mid s)\)</span>。这里策略 <span class="math inline">\(\pi_{\b\theta}\)</span> 的下标 <span class="math inline">\(\b\theta\)</span> 表示该策略由参数 <span class="math inline">\(\b\theta \in \R^n\)</span> 建模。另外 <span class="math inline">\(\pi_{\b\theta}(a \mid s)\)</span> 表示了智能体在该策略条件下，在状态 <span class="math inline">\(s\)</span> 时做出决策 <span class="math inline">\(a\)</span> 的概率。</p>
-<p>上述的策略往往称为<strong>非确定性策略</strong>，因为其对于某个状态给出的是做出某一种决策的概率，是不确定的。而另外一类策略，即<strong>确定性策略</strong>，会对于某个状态给出具体的某一种决策。确定性策略的记号，为了和非确定性策略的 <span class="math inline">\(\pi_{\b\theta}\)</span> 区别，往往使用 <span class="math inline">\(\mu_{\b\theta}\)</span>。而 <span class="math inline">\(a := \mu_{\b\theta}(s)\)</span> 就表示了智能体在该策略条件下，在状态 <span class="math inline">\(s\)</span> 时会做出决策 <span class="math inline">\(a\)</span>。</p>
-<p>一条<strong>轨迹</strong>，或者 <strong>trajectory</strong>，指的是智能体和环境不断交互的过程的记录。具体而言，环境首先位于状态 <span class="math inline">\(s_0\)</span>，智能体做出决策 <span class="math inline">\(a_0\)</span>，环境返回收益 <span class="math inline">\(r_1\)</span> 后转入新状态 <span class="math inline">\(s_1\)</span>。以此类推形成 <span class="math inline">\(s_0, a_0, r_1; s_1, a_1, r_2; \cdots\)</span>。轨迹常常使用记号 <span class="math inline">\(\tau\)</span> 表示。</p>
-<p>显然根据 Markov 的特性，我们可以得到在策略 <span class="math inline">\(\pi_{\b\theta}\)</span> 的条件下某一条轨迹 <span class="math inline">\(\tau = (s_0, a_0, r_1; s_1, a_1, r_2; \cdots)\)</span> 出现的概率为：</p>
-<p><span class="math display">\[
-\P_{\b\theta}(\tau) = \Pe(s_0)\prod_{t = 0}^{+\infty} \pi_{\b\theta}(a_t \mid s_t)\Pe(s_{t + 1} \mid s_t, a_t)
-\]</span></p>
-<p>这里 <span class="math inline">\(\Pe(s_0)\)</span> 表示环境初始状态为 <span class="math inline">\(s_0\)</span> 的概率。</p>
-<p>我们表示轨迹 <span class="math inline">\(\tau\)</span> 服从上述概率分布的时候，可以写成多种符号，包括 <span class="math inline">\(\tau \sim \P_{\b\theta}(\tau)\)</span> 或者 <span class="math inline">\(\tau \sim \pi_{\b\theta}\)</span> 等等，本文会使用第二种表达。</p>
-<h2 id="累计收益与价值函数">累计收益与价值函数</h2>
-<p>对一条轨迹，<strong>累计收益（Utility）</strong>的定义为：</p>
-<p><span class="math display">\[
-R_t(\tau) := \sum_{k = 0}^{+\infty} \gamma^k r_{t + k + 1}
-\]</span></p>
-<p>这里注意到我们累加收益的时候需要不断使用衰减因子进行衰减，这一操作主要是为了拟合现实中距离现在越远的行为对当前决策的影响越小的特征，这一操作同时也保证了收敛性。</p>
-<p>之后，我们进一步定义<strong>价值函数</strong>。首先需要定义<strong>状态行为价值函数</strong>：</p>
-<p><span class="math display">\[
-Q^{\pi_{\b\theta}}(s, a) := \Eop_{\tau \sim \pi_{\b\theta}}[R_t(\tau) \mid s_t = s, a_t = a]
-\]</span></p>
-<p>可以注意到上述期望中 <span class="math inline">\(t\)</span> 的分布并没有指定，这里一般认为是等概率地选择一个自然数即可。</p>
-<p>进一步即可有<strong>状态价值函数</strong>：</p>
-<p><span class="math display">\[
-V^{\pi_{\b\theta}}(s) := \Eop_{\tau \sim \pi_{\b\theta}}[R_t(\tau) \mid s_t = s]
-\]</span></p>
-<p>我们可以发现状态行为价值函数描述了在状态 <span class="math inline">\(s\)</span> 下做出决策 <span class="math inline">\(a\)</span> 后期望的累计收益，也就是说该价值函数评价了给定状态下的某个决策的期望收益，所以我们常常使用状态行为价值函数辅助决策。而状态价值函数则和具体的决策无关，是衡量从某一个状态出发，能够获得的期望收益。</p>
-<p>显然这两个价值函数之间存在相互推出关系，而这种关系描述如下：</p>
-<div class="note info no-icon"><p><strong>Theorem 1.01</strong> 对于任何 MDP 与其上的策略 <span class="math inline">\(\pi\)</span>，该策略的状态价值函数与状态行为价值函数满足：</p>
-<p><span class="math display">\[
-\begin{aligned}
-{\color{red} V^\pi(s)} &amp;= \sum_{a \in \mathcal{A}} \pi(a \mid s){\color{red} Q^\pi(s, a)} \\
-{\color{red} Q^\pi(s, a)} &amp;= \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a)[r(s, a, s&#39;) + \gamma {\color{red} V^\pi(s&#39;)}] \\
-\end{aligned}
-\]</span></p>
-</div>
-<p>第一个等式是由 <span class="math inline">\(Q^\pi\)</span> 推出 <span class="math inline">\(V^\pi\)</span> 的路径，证明也是简单的：</p>
-<p><span class="math display">\[
-\begin{aligned}
-V^\pi(s) &amp;= \Eop_{\tau \sim \pi}[R_t(\tau) \mid s_t = s] \\
-&amp;= \sum_{\tau} \P_{\b\theta}(\tau \mid s_t = s)R_t(\tau) \\
-&amp;= \sum_{\tau} \left(\sum_{a \in \mathcal{A}} \P_{\b\theta}(\tau, a_t = a \mid s_t = s)\right)R_t(\tau) \\
-&amp;= \sum_{\tau} \left(\sum_{a \in \mathcal{A}} \P_{\b\theta}(\tau \mid s_t = s, a_t = a)\P_{\b\theta}(a_t = a \mid s_t = s)\right)R_t(\tau) \\
-&amp;= \sum_{a \in \mathcal{A}} \P_{\b\theta}(a_t = a \mid s_t = s) \left(\sum_{\tau} \P_{\b\theta}(\tau \mid s_t = s, a_t = a) R_t(\tau)\right) \\
-&amp;= \sum_{a \in \mathcal{A}} \pi(a \mid s)\Eop_{\tau \sim \pi}[R_t(\tau) \mid s_t = s, a_t = a] \\
-&amp;= \sum_{a \in \mathcal{A}} \pi(a \mid s)Q^\pi(s, a) \\
-\end{aligned}
-\]</span></p>
-<p>第二个等式是由 <span class="math inline">\(V^\pi\)</span> 推出 <span class="math inline">\(Q^\pi\)</span> 的路径，其涉及到了后续状态，从而实际上描述出了价值函数之间的递推关系。</p>
-<p>我们考虑其证明，首先我们显然有这个等式：</p>
-<p><span class="math display">\[
-r(s, a, s&#39;) = \Eop_{\tau \sim \pi}[r_{t + 1} \mid s_t = s, a_t = a, s_{t + 1} = s&#39;]
-\]</span></p>
-<p>之后考虑对状态行为价值函数的单步展开：</p>
-<p><span class="math display">\[
-\begin{aligned}
-Q^\pi(s) &amp;= \Eop_{\tau \sim \pi}[R_t(\tau) \mid s_t = s, a_t = a] \\
-&amp;= \Eop_{\tau \sim \pi}\left[\sum_{k = 0}^{+\infty} \gamma^k r_{t + k + 1} \middle| s_t = s, a_t = a\right] \\
-&amp;= \Eop_{\tau \sim \pi}\left[r_{t + 1} + \sum_{k = 1}^{+\infty} \gamma^k r_{t + k + 1} \middle| s_t = s, a_t = a\right] \\
-&amp;= \Eop_{\tau \sim \pi}\left[r_{t + 1} + \gamma\sum_{k = 0}^{+\infty} \gamma^k r_{t + k + 2} \middle| s_t = s, a_t = a\right] \\
-&amp;= \Eop_{\tau \sim \pi}[r_{t + 1} \mid s_t = s, a_t = a] + \Eop_{\tau \sim \pi}\left[\gamma\sum_{k = 0}^{+\infty} \gamma^k r_{(t + 1) + k + 1} \middle| s_t = s, a_t = a\right] \\
-&amp;= \Eop_{\tau \sim \pi}[r_{t + 1} \mid s_t = s, a_t = a] + \gamma\Eop_{\tau \sim \pi}[R_{t + 1}(\tau) \mid s_t = s, a_t = a] \\
-\end{aligned}
-\]</span></p>
-<p>之后我们使用全期望公式处理条件期望中的条件：</p>
-<p><span class="math display">\[
-\begin{aligned}
-\Eop_{\tau \sim \pi}[r_{t + 1} \mid s_t = s, a_t = a] &amp;= \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a) \Eop_{\tau \sim \pi}[r_{t + 1} \mid s_t = s, a_t = a, s_{t + 1} = s&#39;] \\
-&amp;= \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a)r(s, a, s&#39;) \\
-\Eop_{\tau \sim \pi}[R_{t + 1}(\tau) \mid s_t = s, a_t = a] &amp;= \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a) \Eop_{\tau \sim \pi}[R_{t + 1}(\tau) \mid s_t = s, a_t = a, s_{t + 1} = s&#39;] \\
-&amp;= \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a) \Eop_{\tau \sim \pi}[R_{t + 1}(\tau) \mid s_{t + 1} = s&#39;] \\
-&amp;= \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a)V^\pi(s&#39;) \\
-\end{aligned}
-\]</span></p>
-<p>这里注意到处理第二个条件期望的时候，直接删去了 <span class="math inline">\(s_t = s\)</span> 和 <span class="math inline">\(a_t = a\)</span> 两个条件，这是因为 <span class="math inline">\(R_{t + 1}(\tau)\)</span> 与 <span class="math inline">\(s_t, a_t\)</span> 无关，可以直接删去而不影响最后的期望。</p>
-<p>将此代入原有展开式即可证明完毕。</p>
-<p>事实上，基于这两个价值函数的互相推出，我们可以得到 <span class="math inline">\(Q^\pi\)</span> 推出 <span class="math inline">\(Q^\pi\)</span> 的公式：</p>
-<p><span class="math display">\[
-{\color{red} Q^\pi(s, a)} = \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a) \left[r(s, a, s&#39;) + \gamma\sum_{a&#39; \in \A} \pi(a&#39; \mid s&#39;){\color{red} Q^\pi(s&#39;, a&#39;)}\right]
-\]</span></p>
-<p>以及 <span class="math inline">\(V^\pi\)</span> 推出 <span class="math inline">\(V^\pi\)</span> 的公式：</p>
-<p><span class="math display">\[
-{\color{red} V^\pi(s)} = \sum_{a \in \A} \pi(a \mid s) \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a)[r(s, a, s&#39;) + \gamma {\color{red} V^\pi(s&#39;)}]
-\]</span></p>
-<p>这两个公式直接表现出了价值函数自身具有的迭代结构，也就是当前强化学习中最为重要的方程之一，目前大部分强化学习方法的核心就是拟合该方程。该方程即 <strong>Bellman 方程（Bellman Equation）</strong>。</p>
-<h2 id="基本优化理论">基本优化理论</h2>
-<p>现在我们讨论如何获取一个最有价值的策略。</p>
-<p>首先，我们定义<strong>最优状态行为价值函数</strong>和<strong>最优状态价值函数</strong>：</p>
-<p><span class="math display">\[
-\begin{aligned}
-Q^\star(s, a) &amp;:= \max_\pi Q^\pi(s, a) \\
-V^\star(s) &amp;:= \max_\pi V^\pi(s) \\
-\end{aligned}
-\]</span></p>
-<p>基于最优性，我们可以定义策略之间的序。我们称策略 <span class="math inline">\(\pi\)</span> 优于 <span class="math inline">\(\pi&#39;\)</span>，记作 <span class="math inline">\(\pi \geq \pi&#39;\)</span>，当且仅当对于所有 <span class="math inline">\(s \in \S\)</span> 都满足 <span class="math inline">\(\pi\)</span> 的状态函数优于 <span class="math inline">\(\pi&#39;\)</span>，即 <span class="math inline">\(V^\pi(s) \geq V^{\pi&#39;}(s)\)</span>。</p>
-<p>我们有下述基本优化理论：</p>
-<div class="note info no-icon"><p><strong>Theorem 1.02</strong> 对于任何 MDP，都存在一个最优策略 <span class="math inline">\(\pi^\star\)</span> 满足对于任何 <span class="math inline">\(\pi\)</span> 都有 <span class="math inline">\(\pi^\star \geq \pi\)</span>。并且该最优策略 <span class="math inline">\(\pi^\star\)</span> 在在任何状态与任何决策下均实现了最优价值，即对于任何 <span class="math inline">\(s \in \S, a \in \A\)</span> 都有 <span class="math inline">\(V^{\pi^\star}(s) = V^\star(s), Q^{\pi^\star}(s, a) = Q^\star(s, a)\)</span>。</p>
-</div>
-<p>本文不加证明地认为该理论成立。另外，这里给出最优策略的构造。可见最优策略是确定性策略：</p>
-<p><span class="math display">\[
-\pi^\star(a \mid s) := \begin{cases}
-1 &amp; a = \argmax_{a \in \A} Q^\star(s, a) \\
-0 &amp; \text{otherwise}
-\end{cases}
-\]</span></p>
-<p>基于该定理我们能够得到两个最优价值函数之间存在的关系：</p>
-<div class="note info no-icon"><p><strong>Theorem 1.03</strong> 对于任何 MDP，其最优状态价值函数与最优状态行为价值函数满足：</p>
-<p><span class="math display">\[
-\begin{aligned}
-{\color{red} V^\star(s)} &amp;= \max_{a \in \mathcal{A}} {\color{red} Q^\star(s, a)} \\
-{\color{red} Q^\star(s, a)} &amp;= \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a)[r(s, a, s&#39;) + \gamma {\color{red} V^\star(s&#39;)}] \\
-\end{aligned}
-\]</span></p>
-</div>
-<p>第一个等式是简单的：</p>
-<p><span class="math display">\[
-V^\star(s) = V^{\pi^\star}(s) = \sum_{a \in \A} \pi^\star(a \mid s)Q^{\pi^\star}(s, a) = \max_{a \in \A} Q^{\pi^\star}(s, a) = \max_{a \in \A} Q^\star(s, a)
-\]</span></p>
-<p>第二个等式直接对 <span class="math inline">\(\pi^\star\)</span> 应用一般的 Bellman 方程即可得到。</p>
-<p>从而还有下述<strong>最优 Bellman 方程（Bellman Optimality Equation）</strong>：</p>
-<p><span class="math display">\[
-{\color{red} Q^\star(s, a)} = \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a) \left[r(s, a, s&#39;) + \gamma\max_{a&#39; \in \A} {\color{red} Q^\star(s&#39;, a&#39;)}\right]
-\]</span></p>
-<p>以及：</p>
-<p><span class="math display">\[
-{\color{red} V^\star(s)} = \max_{a \in \A} \left[\sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a)[r(s, a, s&#39;) + \gamma {\color{red} V^\star(s&#39;)}]\right]
-\]</span></p>
-<p>理论上我们可以求解最优 Bellman 方程得到 <span class="math inline">\(V^\star\)</span>，从而就能够反推出 <span class="math inline">\(\pi^\star\)</span>。然而求解最优 Bellman 方程是计算困难的，现行的强化学习方法就是在尝试近似求解最优 Bellman 方程。</p>
-<h1 id="dynamic-programming-dp">Dynamic Programming (DP)</h1>
-<h2 id="policy-iteration-pi">Policy Iteration (PI)</h2>
-<p>如果我们已经对环境有了完整的建模，我们完全可以使用迭代的方式求解最优 Bellman 方程。</p>
-<p>具体的迭代过程分为两步，分别为<strong>策略评估（Policy Evaluation）</strong>和<strong>策略提升（Policy Improvement）</strong>，这两步会交替进行。具体而言，策略评估是在已知 <span class="math inline">\(\pi\)</span> 的条件下计算其状态价值函数 <span class="math inline">\(V^\pi\)</span>。而策略提升为在得知状态价值函数的基础上优化策略 <span class="math inline">\(\pi\)</span>。</p>
-<p>首先阐述策略评估的过程，这里举出一个迭代计算的方式。</p>
-<p>我们记 <span class="math inline">\(V_k\)</span> 是第 <span class="math inline">\(k\)</span> 轮迭代的时候的状态价值函数，那么我们在初始化 <span class="math inline">\(V_0\)</span> 之后不断进行下述迭代直到状态价值函数收敛：</p>
-<p><span class="math display">\[
-V_{k + 1}(s) \leftarrow \sum_{a \in \A} \pi(a \mid s) \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a)[r(s, a, s&#39;) + \gamma V_k(s&#39;)]
-\]</span></p>
-<p>收敛后，应当有 <span class="math inline">\(V_{+\infty} = V^\pi\)</span>，此时我们就得到了策略 <span class="math inline">\(\pi\)</span> 所对应的价值函数。</p>
-<p>策略评估除了使用迭代的方式计算，也可以使用求解线性方程组等方式计算，这些方法我们不具体展开。</p>
-<p>之后阐述策略提升的方法。</p>
-<p>我们在得知了策略 <span class="math inline">\(\pi\)</span> 的状态价值函数 <span class="math inline">\(V^\pi\)</span> 之后，我们可以贪心地构造一个确定性策略 <span class="math inline">\(\pi&#39;\)</span>，保证策略更优。保证这一点能够成立的是下述定理：</p>
-<div class="note info no-icon"><p><strong>Theorem 2.01 (Policy Improvement Theorem)</strong> 对于已知的策略 <span class="math inline">\(\pi\)</span>，定义确定性策略 <span class="math inline">\(\pi&#39;\)</span>：</p>
-<p><span class="math display">\[
-\pi&#39;(a \mid s) := \begin{cases}
-1 &amp; a = \argmax_{a \in \A} Q^\pi(s, a) \\
-0 &amp; \text{otherwise}
-\end{cases}
-\]</span></p>
-<p>那么 <span class="math inline">\(\pi&#39; \geq \pi\)</span>，并且等号成立当且仅当 <span class="math inline">\(\pi = \pi&#39; = \pi^\star\)</span>。</p>
-</div>
-<p>证明是简单的，首先我们可以注意到：</p>
-<p><span class="math display">\[
-Q^\pi(s, \pi&#39;(s)) = \max_{a \in \A} Q^\pi(s, a) \geq \sum_{a \in \A} \pi(a \mid s)Q^\pi(s, a) = V^\pi(s)
-\]</span></p>
-<p>我们从而能得到下述不等式。这里事实上进行了单步展开，进一步就可以尝试利用迭代结构构造不等式链，具体细节则在后续证明中说明：</p>
-<p><span class="math display">\[
-\begin{aligned}
-V^\pi(s) &amp;\leq Q^\pi(s, \pi&#39;(s)) \\
-&amp;= \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, \pi&#39;(s))[r(s, \pi&#39;(s), s&#39;) + \gamma V^\pi(s&#39;)] \\
-&amp;= \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, \pi&#39;(s))r(s, \pi&#39;(s), s&#39;) + \gamma\sum_{s&#39; \in \S} \Pe(s&#39; \mid s, \pi&#39;(s)) V^\pi(s&#39;) \\
-\end{aligned}
-\]</span></p>
-<p>另外，我们可以证明：</p>
-<p><span class="math display">\[
-\begin{aligned}
-&amp;\sum_{s&#39; \in \S} \Pe(s&#39; \mid s, \pi&#39;(s))r(s, \pi&#39;(s), s&#39;) \\
-=&amp; \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, \pi&#39;(s))\Eop_{\tau \sim \pi&#39;}[r_{t + 1} \mid s_t = s, a_t = \pi&#39;(s), s_{t + 1} = s&#39;] \\
-=&amp; \sum_{a \in \A} \pi&#39;(a \mid s)\sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a)\Eop_{\tau \sim \pi&#39;}[r_{t + 1} \mid s_t = s, a_t = a, s_{t + 1} = s&#39;] \\
-=&amp; \Eop_{\tau \sim \pi&#39;}[r_{t + 1} \mid s_t = s]
-\end{aligned}
-\]</span></p>
-<p>即得到：</p>
-<p><span class="math display">\[
-V^\pi(s) \leq \Eop_{\tau \sim \pi&#39;}[r_{t + 1} \mid s_t = s] + \gamma\sum_{s&#39; \in \S} \Pe(s&#39; \mid s, \pi&#39;(s)) V^\pi(s&#39;)
-\]</span></p>
-<p>对这个不等式迭代展开：</p>
-<p><span class="math display">\[
-\begin{aligned}
-V^\pi(s) &amp;\leq \Eop_{\tau \sim \pi&#39;}[r_{t + 1} \mid s_t = s] + \gamma\sum_{s&#39; \in \S} \Pe(s&#39; \mid s, \pi&#39;(s)) V^\pi(s&#39;) \\
-&amp;\leq \Eop_{\tau \sim \pi&#39;}[r_{t + 1} \mid s_t = s] + \gamma\sum_{s&#39; \in \S} \Pe(s&#39; \mid s, \pi&#39;(s)) \left[\Eop_{\tau \sim \pi&#39;}[r_{t + 2} \mid s_{t + 1} = s&#39;] + \gamma\sum_{s&#39;&#39; \in \S} \Pe(s&#39;&#39; \mid s&#39;, \pi&#39;(s&#39;)) V^\pi(s&#39;&#39;)\right] \\
-&amp;= \Eop_{\tau \sim \pi&#39;}[r_{t + 1} \mid s_t = s] + \gamma{\color{red} \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, \pi&#39;(s))\Eop_{\tau \sim \pi&#39;}[r_{t + 2} \mid s_{t + 1} = s&#39;]} + \gamma^2\sum_{s&#39; \in \S}\sum_{s&#39;&#39; \in \S}\Pe(s&#39;&#39; \mid s&#39;, \pi&#39;(s&#39;)) V^\pi(s&#39;&#39;) \\
-\end{aligned}
-\]</span></p>
-<p>对于红色部分，我们容易发现 <span class="math inline">\(s_t = s\)</span> 对于 <span class="math inline">\(r_{t + 2}\)</span> 的期望是无效条件，所以：</p>
-<p><span class="math display">\[
-\sum_{s&#39; \in \S} \Pe(s&#39; \mid s, \pi&#39;(s))\Eop_{\tau \sim \pi&#39;}[r_{t + 2} \mid s_{t + 1} = s&#39;] = \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, \pi&#39;(s))\Eop_{\tau \sim \pi&#39;}[r_{t + 2} \mid s_t = s, s_{t + 1} = s&#39;] = \Eop_{\tau \sim \pi&#39;}[r_{t + 2} \mid s_t = s]
-\]</span></p>
-<p>所以：</p>
-<p><span class="math display">\[
-V^\pi(s) \leq \Eop_{\tau \sim \pi&#39;}[{\color{red} r_{t + 1} + \gamma r^{t + 2}} \mid s_t = s] + {\color{green} \gamma^2\sum_{s&#39; \in \S}\sum_{s&#39;&#39; \in \S}\Pe(s&#39;&#39; \mid s&#39;, \pi&#39;(s&#39;)) V^\pi(s&#39;&#39;)}
-\]</span></p>
-<p>我们接下来展开绿色部分的时候，可以注意到我们需要为 <span class="math inline">\(r_{t + 3}\)</span> 的条件期望补上 <span class="math inline">\(s_t = s\)</span> 和 <span class="math inline">\(s_{t + 1} = s&#39;\)</span> 两个无效条件，然后两个求和号通过全期望公式消去 <span class="math inline">\(s_{t + 1} = s&#39;\)</span> 以及 <span class="math inline">\(s_{t + 2} = s&#39;&#39;\)</span> 两个条件，故剩余的条件仅有 <span class="math inline">\(s_t = s\)</span>，从而可以进一步合并到红色部分。以此类推，我们就能够说明该不等式的迭代展开是可行的，从而得到：</p>
-<p><span class="math display">\[
-V^\pi(s) \leq \Eop_{\tau \sim \pi&#39;}[{\color{red} r_{t + 1} + \gamma r^{t + 2} + \gamma^2r_{t + 3} + \cdots} \mid s_t = s] = V^{\pi&#39;}(s)
-\]</span></p>
-<p>从而欲证明的不等式成立。</p>
-<p>而根据证明过程，该不等式取等当且仅当满足 <span class="math inline">\(V^\pi(s) = Q^\pi(s, \pi&#39;(s)) = \max_{a \in \A}Q^\pi(s, a)\)</span>，而这正是最优 Bellman 方程。也就是说我们使得 <span class="math inline">\(V^\pi = V^\star\)</span>。此外，<span class="math inline">\(\pi\)</span> 目前也必须是一个确定性策略，从而也就保证了 <span class="math inline">\(\pi = \pi^\star\)</span>。</p>
-<p>综合策略评估和策略提升，交替进行两者我们就可以保证能够获取到最优策略。然而这个方法并不现实，因为理论上我们需要对环境有完全把握，至少我们需要得到整个环境状态转移矩阵才能进行。</p>
-<h2 id="value-iteration-vi">Value Iteration (VI)</h2>
-<p>同样，在已经完全得知环境的条件下，除了策略迭代，我们还可以用值迭代求解最优策略。相较于策略迭代是迭代策略本身，值迭代则是在迭代求解状态价值函数。</p>
-<p>考虑最优 Bellman 方程：</p>
-<p><span class="math display">\[
-{\color{red} V^\star(s)} = \max_{a \in \A} \left[\sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a)[r(s, a, s&#39;) + \gamma {\color{red} V^\star(s&#39;)}]\right]
-\]</span></p>
-<p>也就是说我们完全可以直接先随意初始化一个 <span class="math inline">\(V_0 \equiv 0\)</span>，然后不断使用上述方程做迭代直到收敛，此时 <span class="math inline">\(V_{+\infty} = V^\star\)</span>。迭代的流程描述为：</p>
-<p><span class="math display">\[
-{\color{red} V_{k + 1}(s)} \leftarrow \max_{a \in \A} \left[\sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a)[r(s, a, s&#39;) + \gamma {\color{red} V_k(s&#39;)}]\right]
-\]</span></p>
-<p>重复该迭代直到收敛，即可获得最优状态价值函数。基于最优状态价值函数，可以推知最优策略，从而算法求解完毕。</p>
-<p>这里需要说明的一点是，使用值迭代求解的时候，策略是比价值函数先收敛的。这一点是显然的，因为通过价值函数获取对应的策略是贪心的。从而，在价值函数还未实际完全收敛的时候，各个状态的价值大小关系很有可能已经确定且不变化，从而从这一时间点开始，推知的策略都不会发生变化，理论上都是最优策略。</p>
-<p>值迭代的时间复杂度为 <span class="math inline">\(O(|\mathcal{S}|^2|\mathcal{A}|)\)</span>。</p>
-<h2 id="有关-pi-和-vi-的一些对比">有关 PI 和 VI 的一些对比</h2>
-<p>事实上基于 Bellman 方程而言，VI 方法是最直观也是最容易想到的，因为通过迭代法求解有递归结构的方程确实是一种很常见的方法。然而 VI 的两个特点也是限制其运用的缺陷，即<strong>策略早于价值函数收敛</strong>和<strong>复杂度较高</strong>。</p>
-<p>前者事实上是 VI 的一个致命缺陷，因为从根本上而言我们需要获取的是最优策略，具体的价值函数可能并不关注，或者至少不是最主要目标。另外，高复杂度也让 VI 的实际运算难度较高，而这也一定程度上催生了 PI 方法。</p>
-<p>VI 在运算过程中有一步涉及到了 <span class="math inline">\(\max_{a \in \A}\)</span>，这需要遍历行为空间却没有有效利用遍历的信息（仅取了最大值）。那么一个显然的性能换时间的操作就是我们取一个并非最优但足够优的策略 <span class="math inline">\(\pi: \S \to \A\)</span>，直接用 <span class="math inline">\(a := \pi(s)\)</span> 代替掉 <span class="math inline">\(a := \argmax_{a \in \A}\)</span>，这样复杂度直接就降低到 <span class="math inline">\(O(|\S|^2)\)</span>。</p>
-<p>为了保证 <span class="math inline">\(\pi\)</span> 能够足够优，那我们可以两路并进，一路优化 <span class="math inline">\(\pi\)</span>，一路更新 <span class="math inline">\(V^\pi\)</span>，从而我们就得到了 PI 方法。PI 方法在部分条件下会比 VI 方法收敛快很多，并且我们依然可以证明 PI 理论可以得到最优策略。</p>
-<h2 id="有关-bellman-算子的拓展">有关 Bellman 算子的拓展</h2>
-<p>如果仔细观察 Bellman 方程，其事实上就是一个线性方程：</p>
-<p><span class="math display">\[
-{\color{red} V^\pi(s)} = \sum_{a \in \A} \pi(a \mid s) \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a)[r(s, a, s&#39;) + \gamma {\color{red} V^\pi(s&#39;)}]
-\]</span></p>
-<p>首先作一些记号简化：</p>
-<p><span class="math display">\[
-\begin{aligned}
-\P^\pi(s&#39; \mid s) &amp;:= \sum_{a \in \A} \pi(a \mid s)\Pe(s&#39; \mid s, a) \\
-r^\pi(s) &amp;:= \sum_{a \in \A} \pi(a \mid s) \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a)r(s, a, s&#39;) \\
-\end{aligned}
-\]</span></p>
-<p>得到：</p>
-<p><span class="math display">\[
-{\color{red} V^\pi(s)} = r^\pi(s) + \gamma\sum_{s&#39; \in \S} \P^\pi(s&#39; \mid s){\color{red} V^\pi(s&#39;)}
-\]</span></p>
-<p>如果记 <span class="math inline">\(\S = \{s_1, s_2, \cdots, s_n\}, n = |\mathcal{S}|\)</span>，并定义矩阵：</p>
-<p><span class="math display">\[
-\begin{aligned}
-\b{V}^\pi &amp;:= (v^\pi_i)^T_{n} \in \mathbb{R}^n &amp;&amp; v^\pi_i := V^\pi(s_i) \\
-\b{R}^\pi &amp;:= (r^\pi_i)^T_{n} \in \mathbb{R}^n &amp;&amp; r^\pi_i := r^\pi(s_i) \\
-\b{P}^\pi &amp;:= (p^\pi_{ij})_{n \times n} \in \mathbb{R}^{n \times n} &amp;&amp; p^\pi_{ij} := \P^\pi(s_j \mid s_i) \\
-\end{aligned}
-\]</span></p>
-<p>那么 Bellman 方程等价于：</p>
-<p><span class="math display">\[
-\b{V}^\pi = \b{R}^\pi + \gamma\b{P}^\pi\b{V}^\pi \Rightarrow (I - \gamma\b{P}^\pi)\b{V}^\pi = \b{R}^\pi
-\]</span></p>
-<p>这里就可以引入 Bellman 算子：</p>
-<p><span class="math display">\[
-\mathcal{T}^\pi(\b{x}) := \b{R}^\pi + \gamma\b{P}^\pi\b{x}
-\]</span></p>
-<p>如果状态空间足够小，那么在 PI 的策略评估阶段，事实上完全可以通过求解上述线性方程组解的方式得到策略的价值函数。</p>
-<p>除了 Bellman 算子，还可以从最优 Bellman 方程引入最优 Bellman 算子。首先依然是定义矩阵：</p>
-<p><span class="math display">\[
-\begin{aligned}
-\b{V}^\star &amp;:= (v^\star_i)^T_{n} \in \mathbb{R}^n &amp;&amp; v^\star_i := V^\star(s_i) \\
-\b{R}(a) &amp;:= (r_i(a))^T_{n} \in \mathbb{R}^n &amp;&amp; r_i(a) := \sum_{s_j \in \S} \Pe(s_j \mid s_i, a)r(s_i, a, s_j) \\
-\b{P}(a) &amp;:= (p_{ij}(a))_{n \times n} \in \mathbb{R}^{n \times n} &amp;&amp; p_{ij}(a) := \Pe(s_j \mid s_i, a) \\
-\end{aligned}
-\]</span></p>
-<p>那么最优 Bellman 算子就定义为：</p>
-<p><span class="math display">\[
-\mathcal{T}^\star(\b{x}) := \max_{a \in \A}(\b{R}(a) + \gamma\b{P}(a)\b{x})
-\]</span></p>
-<p>现在我们需要证明一个我们并没有严格说明的引理，即使用迭代法求解价值函数的合法性，无论是 PI 中策略评估还是 VI 求最优价值函数本身。事实上，这两者本质相同，其都在求解 Bellman 算子的不动点，只不过一个是一般 Bellman 算子，一个是最优 Bellman 算子。这里以最优 Bellman 算子为例进行证明。</p>
-<p>证明的主要思想就是 Banach 空间不动点定理。</p>
-<div class="note info no-icon"><p><strong>Theorem 2.02 (Banach Fixed-point Theorem)</strong> 给定完备度量空间 <span class="math inline">\(X\)</span> 以及其范数 <span class="math inline">\(d\)</span>，假设 <span class="math inline">\(f: X \to X\)</span> 是一个压缩映射，即存在 <span class="math inline">\(\gamma \in [0, 1)\)</span> 令 <span class="math inline">\(\forall x_1, x_2 \in X\)</span> 都有：</p>
-<p><span class="math display">\[
-d(f(x_1), f(x_2)) \leq \gamma d(x_1, x_2)
-\]</span></p>
-<p>那么 <span class="math inline">\(f\)</span> 在 <span class="math inline">\(X\)</span> 上存在唯一不动点 <span class="math inline">\(x^*\)</span>。</p>
-<p>该不动点满足，任取 <span class="math inline">\(x_0 \in X\)</span>，定义序列 <span class="math inline">\(\{x_n\}_{n \geq 0}\)</span>，其中 <span class="math inline">\(x_{n + 1} = f(x_n), n \geq 0\)</span>，那么该序列必然收敛到 <span class="math inline">\(x^*\)</span>。</p>
-</div>
-<p>证明是简单的。首先我们任取 <span class="math inline">\(x_0 \in X\)</span>，考虑对 <span class="math inline">\(m &gt; n\)</span>：</p>
-<p><span class="math display">\[
-\begin{aligned}
-d(f^{(m)}(x_0), f^{(n)}(x_0)) &amp;\leq d(f^{(m)}(x_0), f^{(m - 1)}(x_0)) + d(f^{(m - 1)}(x_0), f^{(m - 2)}(x_0)) + \cdots + d(f^{(n + 1)}(x_0), f^{(n)}(x_0)) \\
-&amp;\leq \gamma^{m - 1}d(f(x_0), x_0) + \gamma^{m - 2}d(f(x_0), x_0) + \cdots + \gamma^nd(f(x_0), x_0) \\
-&amp;\leq \dfrac{\gamma^n}{1 - \gamma}d(f(x_0), x_0) \\
-\end{aligned}
-\]</span></p>
-<p>也就是无论给多紧的界，我总能令 <span class="math inline">\(n\)</span> 充分大满足上界约束，从而该序列是 Cauchy 序列，在完备度量空间上其自然是收敛的。</p>
-<p>假定这个序列收敛到 <span class="math inline">\(x^*\)</span>，我们需要说明 <span class="math inline">\(x^*\)</span> 是 <span class="math inline">\(f\)</span> 的不动点以及其唯一性。其是不动点是容易的，考虑：</p>
-<p><span class="math display">\[
-0 \leq d(x_{n + 1}, f(x^*)) = d(f(x_n), f(x^*)) \leq \gamma d(x_n, x^*)
-\]</span></p>
-<p>由于 <span class="math inline">\(n \to \infty\)</span> 时 <span class="math inline">\(d(x_n, x^*) \to 0\)</span>，这说明 <span class="math inline">\(d(x_{n + 1}, f(x^*)) \to 0\)</span>，也就说明 <span class="math inline">\(f(x^*)\)</span> 也是序列 <span class="math inline">\(\{x_n\}_{n \geq 0}\)</span> 的极限，据极限的唯一性，不动点得证。</p>
-<p>唯一性则据反证。若存在第二个不动点 <span class="math inline">\(f(y) = y\)</span>，那么：</p>
-<p><span class="math display">\[
-d(x^*, y) = d(f(x^*), f(y)) \leq \gamma d(x^*, y) \Rightarrow (1 - \gamma)d(x^*, y) \leq 0
-\]</span></p>
-<p>上述约束仅有 <span class="math inline">\(y = x^*\)</span> 时成立，唯一性得证。</p>
-<hr />
-<p>基于该引理，我们只需要说明最优 Bellman 算子也满足引理所述条件即可。在空间 <span class="math inline">\(\mathcal{S}\)</span> 上取其 <span class="math inline">\(L^{\infty}\)</span> 范数（即各分量最大值）。我们证明最优 Bellman 算子是压缩的：</p>
-<p><span class="math display">\[
-\begin{aligned}
-\|\mathcal{T}^\star(\b{V}_1) - \mathcal{T}^\star(\b{V}_2)\|_\infty &amp;= \left\|\max_{a \in \A}(\b{R}(a) + \gamma\b{P}(a)\b{V}_1) - \max_{a \in \A}(\b{R}(a) + \gamma\b{P}(a)\b{V}_2)\right\|_\infty \\
-&amp;\leq \left\|\max_{a \in \A}(\b{R}(a) + \gamma\b{P}(a)\b{V}_1 - \b{R}(a) - \gamma\b{P}(a)\b{V}_2)\right\|_\infty \\
-&amp;= \gamma\left\|\max_{a \in \A}(\b{P}(a)(\b{V}_1 - \b{V}_2))\right\|_\infty \\
-&amp;\leq \gamma\|\b{V}_1 - \b{V}_2\|_\infty
-\end{aligned}
-\]</span></p>
-<p>最后一个不等号源于 <span class="math inline">\(\b{P}(a)\)</span> 矩阵中，每一行的元素之和必然为 <span class="math inline">\(1\)</span>。如果假设 <span class="math inline">\(\b{V}_1 - \b{V}_2\)</span> 各元素中最大为 <span class="math inline">\(p\)</span>（亦其 <span class="math inline">\(L^\infty\)</span> 范数），那么 <span class="math inline">\(\b{P}(a)(\b{V}_1 - \b{V}_2)\)</span> 每一个元素都不会大于 <span class="math inline">\(p\)</span>。</p>
-<p>从而得证。</p>
-<p>事实上我们有下述定理，描述了迭代法求解的正确性。对于任意初始化的 <span class="math inline">\(\b{V}_0\)</span>：</p>
-<p><span class="math display">\[
-\lim_{n \to \infty} \mathcal{T}^{\pi(n)}\b{V}_0 = \b{V}^\pi, \lim_{n \to \infty} \mathcal{T}^{\star(n)}\b{V}_0 = \b{V}^\star
-\]</span></p>
-<h1 id="monte-carlo-方法">Monte-Carlo 方法</h1>
-<p>DP 方法的一个重要局限在于，其必须要对环境有完整的了解，也就是对 <span class="math inline">\(\Pe, r\)</span> 有完整的理解才能进行，然而对于现实的问题，这是完全不可能的。这也就是需要让智能体不断和环境交互的原因，因为我们需要通过智能体的探索来获取环境的信息。</p>
-<p>这里简单提一下 model-free RL 与 model-based RL 的概念。在智能体和环境交互的过程中，事实上我们有两种选择，其一是让智能体去和真实的环境作交互，这就是 model-free RL 方法。其二是我们事先使用另外一个模型去拟合环境，让智能体和这个模型交互，这就是 model-based RL 方法。model-based RL 方法的优势在于，如果智能体和真实的环境交互成本高昂或者环境响应较慢，则可以用于大幅降低实验成本。但相应地，model-based RL 方法也需要一个相当优越的和环境契合的模型才能让智能体真正学习到最优策略。</p>
-<p>这里提到的 Monte-Carlo 方法是 model-free RL 方法，其核心是不断让智能体和环境交互采样，用样本均值拟合价值函数。</p>
-<p>其算法思想极其简单，流程如下：</p>
-<ul>
-<li>获取待评测的策略 <span class="math inline">\(\pi\)</span></li>
-<li>初始化访问计数器 <span class="math inline">\(N(s) \leftarrow 0, s \in \S\)</span>，以及价值函数估计值 <span class="math inline">\(V(s), s \in \S\)</span></li>
-<li>不断重复下述
-<ul>
-<li>使用策略 <span class="math inline">\(\pi\)</span> 获取 trajectory <span class="math inline">\(\tau\)</span></li>
-<li>对每一个 <span class="math inline">\(s \in \tau\)</span> 以及其在 <span class="math inline">\(\tau\)</span> 中出现的时刻 <span class="math inline">\(t\)</span> 进行下述
-<ul>
-<li>递增计数器 <span class="math inline">\(N(s) \leftarrow N(s) + 1\)</span></li>
-<li>更新价值函数估计 <span class="math inline">\(V(s) \leftarrow V(s) + \dfrac{1}{N(s)}(G_t(\tau) - V(s))\)</span></li>
-</ul></li>
-</ul></li>
-</ul>
-<p>当然，还有一种并不完全使用样本均值的更新策略是，设定固定的学习率 <span class="math inline">\(\alpha\)</span>，更新策略设定为：</p>
-<p><span class="math display">\[
-V(s) \leftarrow V(s) + \alpha(G_t(\tau) - V(s))
-\]</span></p>
-<p>理论而言，Monte-Carlo 方法相当简易且不涉及到 bootstrap。这里 bootstrap 指的是一类“利用估计值本身更新估计值”的更新策略，在后续 TD 方法中展开说明。</p>
-<p>另一方面，Monte-Carlo 方法也因为低效和并没有充分利用 Bellman 方程而具有缺陷。</p>
-<h1 id="temporal-difference-方法">Temporal-Difference 方法</h1>
-<p>TD 方法与 MC 方法目标是一致的，也是尽力取得价值函数的准确估计。但是两者的核心差别在于，TD 方法是一个更新力度更小的 bootstrap 方法，TD 方法会在每一次决策后进行更新。这种逐步更新的问题在于我们无法精确获取某一个状态的累计收益，所以我们需要虚化一个更新目标，这也就是所谓的 TD target。</p>
-<p>假设我们在时刻 <span class="math inline">\(t\)</span> 时位于状态 <span class="math inline">\(s_t\)</span>，我们通过决策行为 <span class="math inline">\(a_t\)</span> 迁移到了状态 <span class="math inline">\(s_{t + 1}\)</span>，并且获取收益 <span class="math inline">\(r_{t + 1}\)</span>。另外，我们保存有一个所有状态的价值函数估计值表 <span class="math inline">\(V(s), s \in \S\)</span>。那么 TD target 指的是：</p>
-<p><span class="math display">\[
-{\rm TD\ target} := r_{t + 1} + \gamma V(s_{t + 1})
-\]</span></p>
-<p>可以注意到，TD target 本身是利用类似 Bellman 方程中的步进展开方法，通过 <span class="math inline">\(V(s_{t + 1})\)</span> 对 <span class="math inline">\(V(s_t)\)</span> 作出估计，并以此作为 <span class="math inline">\(V(s_t)\)</span> 更新的目标。这和 MC 使用真实采样获取到真实的累计收益作为更新目标完全不同，这也就是 bootstrap 的含义。</p>
-<p>在获取 TD target 后，就可以计算目标和当前估计值的差，即 TD error：</p>
-<p><span class="math display">\[
-{\rm TD\ error} = \delta_t := r_{t + 1} + \gamma V(s_{t + 1}) - V(s_t)
-\]</span></p>
-<p>之后，设定一个适当的学习率 <span class="math inline">\(\alpha\)</span>，即可得到 TD 方法的核心更新策略，下述这种简单的更新策略也被称为 TD(0) 方法：</p>
-<p><span class="math display">\[
-V(s_t) \leftarrow V(s_t) + \alpha\delta_t = V(s_t) + \alpha(r_{t + 1} + \gamma V(s_{t + 1}) - V(s_t))
-\]</span></p>
-<p>从理论上比较 TD 方法与 MC 方法。MC 方法使用的累计收益 <span class="math inline">\(G_t(\tau)\)</span> 是对价值函数 <span class="math inline">\(V^\pi(s)\)</span> 的无偏估计，而 TD 方法使用的 TD target 则相应是有偏估计。然而就估计方差而言，TD 方法由于仅仅涉及到一步决策，其方差显然较 MC 方法小。就初始值方面而言，MC 方法对估计的初始值设置并不敏感，然而 TD 由于基于 bootstrap，故对初始值设置极为敏感。</p>
-<p>如果简单总结上述方法，可以使用下述图：</p>
-<p><img src="/uploads/note-of-rl/1.webp" /></p>
-<p>简而言之，MC 方法较 TD 方法而言有着更深的探索。而 DP 方法（尤其是 VI）则是遍历所有可能的后继状态进行更新，从而具有更广泛的视角，也就拥有广度。与这三者均不同的则是搜索，其需要完整探索整个决策树，但这自然是相当浪费资源的。</p>
-<h2 id="多步-td-target-与-tdlambda">多步 TD target 与 TD(<span class="math inline">\(\lambda\)</span>)</h2>
-<p>TD target 事实上可以设置为多步的。传统的 TD target 是单步的，即仅仅考虑 trajectory 上的一步转移。考虑多步 TD target，不妨考虑三步，假定 trajectory 上有三步转移片段 <span class="math inline">\(s_t, a_t, r_{t + 1}; s_{t + 1}, a_{t + 1}, r_{t + 2}; s_{t + 2}, a_{t + 2}, r_{t + 3}; s_{t + 3}\)</span>，那么 TD target 可以定义为：</p>
-<p><span class="math display">\[
-{\rm TD\ target} := r_{t + 1} + \gamma r_{t + 2} + \gamma^2 r_{t + 3} + \gamma^3 V(s_{t + 3})
-\]</span></p>
-<p>这也可以称为三步 TD target。事实上，如果令考虑的步数趋向于无限，无穷步 TD target 也就成为了事实的累计收益，TD 方法转化为 MC 方法。</p>
-<p>我们先前提到过，TD 方法对估计值初始化敏感，但是其效率较高。另一方面，MC 方法对初始值不敏感，但是效率较低。我们事实上可以使用一种方法将其两者结合，即基于介于 TD 与 MC 方法之间的多步 TD target，利用一定的权重将其组合，作为新的 TD target，这就是 TD(<span class="math inline">\(\lambda\)</span>) 方法。</p>
-<p>将 <span class="math inline">\(n\)</span> 步 TD target 记为 <span class="math inline">\(G^{(n)}_t\)</span>，那么 TD(<span class="math inline">\(\lambda\)</span>) 中的 TD target 定义为：</p>
-<p><span class="math display">\[
-G^\lambda_t := (1 - \lambda)\sum_{n = 1}^{+\infty}\lambda^{n - 1}G_t^{(n)}
-\]</span></p>
-<p>传统的 TD 方法即 <span class="math inline">\(\lambda = 0\)</span> 的 TD(<span class="math inline">\(\lambda\)</span>) 方法。</p>
-]]></content>
-      <categories>
-        <category>【学习笔记】计算机</category>
       </categories>
   </entry>
   <entry>
@@ -16313,58 +16317,6 @@ a_t \sim \pi_\theta(\cdot \mid \hat s_t), \hat s_{t + 1} = \hat f_{\phi_t}(\hat 
 ]]></content>
       <categories>
         <category>【论文笔记】计算机</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>《Petal Letter》歌词试译</title>
-    <url>/2022/10/27/petal-letter-lyrics/</url>
-    <content><![CDATA[<p>秋枫老师发来的一份歌词，感觉挺有意思就试着自己翻译看看了。</p>
-<p>歌曲的地址是 BV1Y14y1j7Fi。</p>
-<span id="more"></span>
-<p><strong><code>@ 朝日 あさひ</code>に<code>@ 溶 と</code>ける<code>@ 微睡 まどろ</code>みと<code>@ 目覚 めざ</code>めの<code>@ 狭間 はざま</code>、そっと<code>@ 口遊 くちずさ</code>む<code>@ 旋律 メロディ</code>、<code>@ 花片 はなびら</code>にのせ、<code>@ 風 かぜ</code>よ<code>@ 届 とど</code>けて、あなたが<code>@ 旅 たび</code>する<code>@ 世界 せかい</code>へ。</strong></p>
-<p>在朝阳中浅睡与苏醒的间隙中悄悄吟唱的旋律，乘上飘落的花瓣，就让微风将它传达到你所旅行的世界吧。</p>
-<p><strong><code>@ 魔法 まほう</code>で<code>@ 出逢 であ</code>った、あなたと<code>@ 私 わたし</code>、<code>@ 今 いま</code>は<code>@ 別々 べつべつ</code>の<code>@ 物語 ものがたり</code>を<code>@ 行 ゆ</code>く。</strong></p>
-<p>因魔法而相遇的你我二人，如今却向着不同的未来而去。</p>
-<p>【注释 #1】这里并没有将「<code>@ 物語 ものがたり</code>」直接翻译为“故事”，感觉并不太符合中文的语感。</p>
-<p><strong><code>@ 何 なに</code>かが<code>@ 始 はじ</code>まる<code>@ 予感 よかん</code>を<code>@ 胸 むね</code>に、<code>@ 歩 ある</code>き<code>@ 出 だ</code>してから、どれだけ<code>@ 経 た</code>ったの。</strong></p>
-<p>心中不知为何，总有着何事将至的预感。即使知道那时的分别，已经过去了不知多长时间。</p>
-<p><strong><code>@ 緩 ゆる</code>やかな<code>@ 坂道 さかみち</code>、<code>@ 登 のぼ</code>ればまた<code>@ 独 ひと</code>りきり。</strong></p>
-<p>登上平缓的山坡，依然独自一人。</p>
-<p><strong><code>@ 寂 さび</code>しさに、<code>@ 心細 こころぼそ</code>さに、<code>@ 寄 よ</code>り<code>@ 添 そ</code>ってくれる、あなたと<code>@ 交 か</code>わした<code>@ 心 こころ</code>の<code>@ 花束 はなたば</code>。</strong></p>
-<p>在这寂寞与不安中，我依偎着的，是与你交换的心之花束。</p>
-<p>【注释 #2】这里的语句结构有点怪异，歌曲中这里的断句也比较怪异，难以判定「くれる」与后续句子的关系。这里又要经典批判一遍为何现代日语的终止形和连体形合流，这显然难以判定一个动词词组究竟是修饰名词还是直接终止语句，这导致大量的歌词翻译困难。</p>
-<p><strong>いつでも<code>@ 誰 だれ</code>かが<code>@ 泣 な</code>いている<code>@ 世界 せかい</code>、<code>@ 鏡 かがみ</code>の<code>@ 向 む</code>こうに<code>@ 霞 かす</code>んだ。<code>@ 今 いま</code>は<code>@ 消 き</code>えた、<code>@ 祭 まつ</code>りの<code>@ 果 は</code>てで。</strong></p>
-<p>无论何时都有谁在哭泣着的世界，也在镜子中烟雾朦胧。现在早已在祭典的尽头，消失不见。</p>
-<p><strong><code>@ 触 ふ</code>れ<code>@ 合 あ</code>うことすら、できずに<code>@ 別 わか</code>れた。</strong></p>
-<p>我们甚至都还没有再次相遇，却又再次分别。</p>
-<p><strong>あなたを<code>@ 感 かん</code>じたい<code>@ 時 とき</code>は、<code>@ 名前 なまえ</code>をもう<code>@ 一度 いちど</code> <code>@ 呼 よ</code>ぶ。</strong></p>
-<p>每当想要感受你的温暖的时候，再一次，呼唤你的名字。</p>
-<p><strong><code>@ 青 あお</code>い<code>@ 薔薇 ローズ</code>、<code>@ 赤 あか</code>い<code>@ 椿 カメリア</code>、<code>@ 花 はな</code>は<code>@ 今日 きょう</code>も<code>@ 咲 さ</code>いてますか。</strong></p>
-<p>蓝色的玫瑰，红色的山茶花，花朵如今，也依然在绽放吗。</p>
-<p><strong><code>@ 問 と</code>いかけて<code>@ 応 こた</code>えなくても、<code>@ 同 おな</code>じ<code>@ 楽園 そら</code>を<code>@ 見上 みあ</code>げてる。</strong></p>
-<p>即使问而不答，我们也始终仰望着同一片乐园（天空）。</p>
-<p><strong>あれから<code>@ 始 はじ</code>まった<code>@ 長 なが</code>い<code>@ 旅 たび</code>も、<code>@ 終 お</code>わる、いつかは、<code>@ 消 き</code>える、<code>@ 全 すべ</code>てが。そして、<code>@ 星 ほし</code>は、<code>@ 巡 めぐ</code>る。</strong></p>
-<p>从那时开始的漫长旅途，总有一天也会结束，到那时，一切都会消逝。而后，群星依然流转。</p>
-<p><strong><code>@ 止 や</code>まない<code>@ 嵐 あらし</code>に<code>@ 足 あし</code>を<code>@ 止 と</code>められ、<code>@ 草臥 くたび</code>れた<code>@ 靴 くつ</code>の<code>@ 跡 あと</code>を<code>@ 振 ふ</code>り<code>@ 返 かえ</code>る。</strong></p>
-<p>无休无止的山林雾气中，我不得不停下脚步，回望着以往的足迹，鞋履也早因旅途破旧不堪。</p>
-<p><strong><code>@ 大事 だいじ</code>なものはまだ、<code>@ 歩 ある</code>く<code>@ 度 たび</code>に<code>@ 増 ふ</code>えるでしょう。</strong></p>
-<p>然而，那些珍贵的回忆，依然随着我们前行的每一步而积累着。</p>
-<p><strong>それでも<code>@ 俯 うつむ</code>く<code>@ 私 わたし</code>の<code>@ 背中 せなか</code>を<code>@ 押 お</code>すのは、あなたと<code>@ 交 か</code>わした、<code>@ 叶 かな</code>わぬ<code>@ 約束 やくそく</code>。</strong></p>
-<p>尽管如此，激励着早已疲惫不堪的我继续前行的，是与你定下的未竟约定。</p>
-<p>【注释 #3】这里意译了「<code>@ 俯 うつむ</code>く」，其本意是“低下头”。</p>
-<p><strong><code>@ 大 おお</code>きな<code>@ 鞄 かばん</code>に<code>@ 閉 と</code>じこめた<code>@ 願 ねが</code>い、<code>@ 鏡 かがみ</code>と<code>@ 一緒 いっしょ</code>に<code>@ 壊 こわ</code>れた。<code>@ 夢 ゆめ</code>と<code>@ 追憶 ついおく</code>が<code>@ 降 ふ</code>り<code>@ 注 そそ</code>ぐ。</strong></p>
-<p>珍藏在大大的行李箱中的愿望，也随着镜子一同破碎，梦与追忆倾泻而下。</p>
-<p><strong><code>@ 砂 すな</code>へと<code>@ 零 こぼ</code>れた<code>@ 涙 なみだ</code>を<code>@ 拭 ぬぐ</code>って、<code>@ 震 ふる</code>える<code>@ 手 て</code>が<code>@ 拾 ひろ</code>い<code>@ 上 あ</code>げた。</strong></p>
-<p>拭去飘落在沙地上的泪水，用颤抖的手将碎片拾起。</p>
-<p><strong><code>@ 光 ひかり</code>はきっと、<code>@ 同 おな</code>じ<code>@ 色 いろ</code>をした<code>@ 花 はな</code>。</strong></p>
-<p>那光芒必然是，闪耀着相同颜色的花朵。</p>
-<p><strong><code>@ 目 め</code>を<code>@ 閉 と</code>じれば、<code>@ 耳 みみ</code>を<code>@ 澄 す</code>ませば、<code>@ 花片 はなびら</code>が<code>@ 風 かぜ</code>に<code>@ 乗 の</code>って、<code>@ 旋律 メロディ</code>を<code>@ 届 とど</code>けるでしょう。</strong></p>
-<p>闭上眼睛，侧耳倾听，花瓣乘上微风，将那旋律传达给你。</p>
-<p><strong><code>@ 私 わたし</code>からあなたへの<code>@ 手紙 レター</code>。</strong></p>
-<p>这就是，我寄给你的，一封信。</p>
-]]></content>
-      <categories>
-        <category>【杂谈】日语</category>
       </categories>
   </entry>
   <entry>
@@ -16603,6 +16555,58 @@ u_\psi(\mathcal{D}^{\rm tr}_{\mathcal{T}}, \theta) = \theta - \alpha\nabla_\thet
 ]]></content>
       <categories>
         <category>【论文笔记】计算机</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>《Petal Letter》歌词试译</title>
+    <url>/2022/10/27/petal-letter-lyrics/</url>
+    <content><![CDATA[<p>秋枫老师发来的一份歌词，感觉挺有意思就试着自己翻译看看了。</p>
+<p>歌曲的地址是 BV1Y14y1j7Fi。</p>
+<span id="more"></span>
+<p><strong><code>@ 朝日 あさひ</code>に<code>@ 溶 と</code>ける<code>@ 微睡 まどろ</code>みと<code>@ 目覚 めざ</code>めの<code>@ 狭間 はざま</code>、そっと<code>@ 口遊 くちずさ</code>む<code>@ 旋律 メロディ</code>、<code>@ 花片 はなびら</code>にのせ、<code>@ 風 かぜ</code>よ<code>@ 届 とど</code>けて、あなたが<code>@ 旅 たび</code>する<code>@ 世界 せかい</code>へ。</strong></p>
+<p>在朝阳中浅睡与苏醒的间隙中悄悄吟唱的旋律，乘上飘落的花瓣，就让微风将它传达到你所旅行的世界吧。</p>
+<p><strong><code>@ 魔法 まほう</code>で<code>@ 出逢 であ</code>った、あなたと<code>@ 私 わたし</code>、<code>@ 今 いま</code>は<code>@ 別々 べつべつ</code>の<code>@ 物語 ものがたり</code>を<code>@ 行 ゆ</code>く。</strong></p>
+<p>因魔法而相遇的你我二人，如今却向着不同的未来而去。</p>
+<p>【注释 #1】这里并没有将「<code>@ 物語 ものがたり</code>」直接翻译为“故事”，感觉并不太符合中文的语感。</p>
+<p><strong><code>@ 何 なに</code>かが<code>@ 始 はじ</code>まる<code>@ 予感 よかん</code>を<code>@ 胸 むね</code>に、<code>@ 歩 ある</code>き<code>@ 出 だ</code>してから、どれだけ<code>@ 経 た</code>ったの。</strong></p>
+<p>心中不知为何，总有着何事将至的预感。即使知道那时的分别，已经过去了不知多长时间。</p>
+<p><strong><code>@ 緩 ゆる</code>やかな<code>@ 坂道 さかみち</code>、<code>@ 登 のぼ</code>ればまた<code>@ 独 ひと</code>りきり。</strong></p>
+<p>登上平缓的山坡，依然独自一人。</p>
+<p><strong><code>@ 寂 さび</code>しさに、<code>@ 心細 こころぼそ</code>さに、<code>@ 寄 よ</code>り<code>@ 添 そ</code>ってくれる、あなたと<code>@ 交 か</code>わした<code>@ 心 こころ</code>の<code>@ 花束 はなたば</code>。</strong></p>
+<p>在这寂寞与不安中，我依偎着的，是与你交换的心之花束。</p>
+<p>【注释 #2】这里的语句结构有点怪异，歌曲中这里的断句也比较怪异，难以判定「くれる」与后续句子的关系。这里又要经典批判一遍为何现代日语的终止形和连体形合流，这显然难以判定一个动词词组究竟是修饰名词还是直接终止语句，这导致大量的歌词翻译困难。</p>
+<p><strong>いつでも<code>@ 誰 だれ</code>かが<code>@ 泣 な</code>いている<code>@ 世界 せかい</code>、<code>@ 鏡 かがみ</code>の<code>@ 向 む</code>こうに<code>@ 霞 かす</code>んだ。<code>@ 今 いま</code>は<code>@ 消 き</code>えた、<code>@ 祭 まつ</code>りの<code>@ 果 は</code>てで。</strong></p>
+<p>无论何时都有谁在哭泣着的世界，也在镜子中烟雾朦胧。现在早已在祭典的尽头，消失不见。</p>
+<p><strong><code>@ 触 ふ</code>れ<code>@ 合 あ</code>うことすら、できずに<code>@ 別 わか</code>れた。</strong></p>
+<p>我们甚至都还没有再次相遇，却又再次分别。</p>
+<p><strong>あなたを<code>@ 感 かん</code>じたい<code>@ 時 とき</code>は、<code>@ 名前 なまえ</code>をもう<code>@ 一度 いちど</code> <code>@ 呼 よ</code>ぶ。</strong></p>
+<p>每当想要感受你的温暖的时候，再一次，呼唤你的名字。</p>
+<p><strong><code>@ 青 あお</code>い<code>@ 薔薇 ローズ</code>、<code>@ 赤 あか</code>い<code>@ 椿 カメリア</code>、<code>@ 花 はな</code>は<code>@ 今日 きょう</code>も<code>@ 咲 さ</code>いてますか。</strong></p>
+<p>蓝色的玫瑰，红色的山茶花，花朵如今，也依然在绽放吗。</p>
+<p><strong><code>@ 問 と</code>いかけて<code>@ 応 こた</code>えなくても、<code>@ 同 おな</code>じ<code>@ 楽園 そら</code>を<code>@ 見上 みあ</code>げてる。</strong></p>
+<p>即使问而不答，我们也始终仰望着同一片乐园（天空）。</p>
+<p><strong>あれから<code>@ 始 はじ</code>まった<code>@ 長 なが</code>い<code>@ 旅 たび</code>も、<code>@ 終 お</code>わる、いつかは、<code>@ 消 き</code>える、<code>@ 全 すべ</code>てが。そして、<code>@ 星 ほし</code>は、<code>@ 巡 めぐ</code>る。</strong></p>
+<p>从那时开始的漫长旅途，总有一天也会结束，到那时，一切都会消逝。而后，群星依然流转。</p>
+<p><strong><code>@ 止 や</code>まない<code>@ 嵐 あらし</code>に<code>@ 足 あし</code>を<code>@ 止 と</code>められ、<code>@ 草臥 くたび</code>れた<code>@ 靴 くつ</code>の<code>@ 跡 あと</code>を<code>@ 振 ふ</code>り<code>@ 返 かえ</code>る。</strong></p>
+<p>无休无止的山林雾气中，我不得不停下脚步，回望着以往的足迹，鞋履也早因旅途破旧不堪。</p>
+<p><strong><code>@ 大事 だいじ</code>なものはまだ、<code>@ 歩 ある</code>く<code>@ 度 たび</code>に<code>@ 増 ふ</code>えるでしょう。</strong></p>
+<p>然而，那些珍贵的回忆，依然随着我们前行的每一步而积累着。</p>
+<p><strong>それでも<code>@ 俯 うつむ</code>く<code>@ 私 わたし</code>の<code>@ 背中 せなか</code>を<code>@ 押 お</code>すのは、あなたと<code>@ 交 か</code>わした、<code>@ 叶 かな</code>わぬ<code>@ 約束 やくそく</code>。</strong></p>
+<p>尽管如此，激励着早已疲惫不堪的我继续前行的，是与你定下的未竟约定。</p>
+<p>【注释 #3】这里意译了「<code>@ 俯 うつむ</code>く」，其本意是“低下头”。</p>
+<p><strong><code>@ 大 おお</code>きな<code>@ 鞄 かばん</code>に<code>@ 閉 と</code>じこめた<code>@ 願 ねが</code>い、<code>@ 鏡 かがみ</code>と<code>@ 一緒 いっしょ</code>に<code>@ 壊 こわ</code>れた。<code>@ 夢 ゆめ</code>と<code>@ 追憶 ついおく</code>が<code>@ 降 ふ</code>り<code>@ 注 そそ</code>ぐ。</strong></p>
+<p>珍藏在大大的行李箱中的愿望，也随着镜子一同破碎，梦与追忆倾泻而下。</p>
+<p><strong><code>@ 砂 すな</code>へと<code>@ 零 こぼ</code>れた<code>@ 涙 なみだ</code>を<code>@ 拭 ぬぐ</code>って、<code>@ 震 ふる</code>える<code>@ 手 て</code>が<code>@ 拾 ひろ</code>い<code>@ 上 あ</code>げた。</strong></p>
+<p>拭去飘落在沙地上的泪水，用颤抖的手将碎片拾起。</p>
+<p><strong><code>@ 光 ひかり</code>はきっと、<code>@ 同 おな</code>じ<code>@ 色 いろ</code>をした<code>@ 花 はな</code>。</strong></p>
+<p>那光芒必然是，闪耀着相同颜色的花朵。</p>
+<p><strong><code>@ 目 め</code>を<code>@ 閉 と</code>じれば、<code>@ 耳 みみ</code>を<code>@ 澄 す</code>ませば、<code>@ 花片 はなびら</code>が<code>@ 風 かぜ</code>に<code>@ 乗 の</code>って、<code>@ 旋律 メロディ</code>を<code>@ 届 とど</code>けるでしょう。</strong></p>
+<p>闭上眼睛，侧耳倾听，花瓣乘上微风，将那旋律传达给你。</p>
+<p><strong><code>@ 私 わたし</code>からあなたへの<code>@ 手紙 レター</code>。</strong></p>
+<p>这就是，我寄给你的，一封信。</p>
+]]></content>
+      <categories>
+        <category>【杂谈】日语</category>
       </categories>
   </entry>
   <entry>
