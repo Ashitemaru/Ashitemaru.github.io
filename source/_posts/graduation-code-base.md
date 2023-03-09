@@ -168,3 +168,13 @@ key_a,key_b
 - `save_itr_params`，用于保存某一次迭代的模型参数
 - `reset`，用于重置日志管理器，重置为仅向标准流输出的日志模式
 - `unittest`，用于测试当前日志管理器，仅测试自然语言格式和 CSV 格式
+
+# 配置文件
+
+Anaconda 所使用的环境配置文件位于 `/docker/environment.yml` 中，其通过命令：
+
+{% codeblock lang:shell ZSH %}
+conda env export > docker/environment.yml
+{% endcodeblock %}
+
+自动生成并导出。
