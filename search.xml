@@ -965,6 +965,12 @@
 <p>今天早上起来就发现已经十点了，已经过了韩语课的签到，于是也懒得去了，看到湖中在说想出勤，于是直接去了五道口。没有想到的是，即使是星期一的上午，五道口依然充满了人，完全打不了多少，只能随便糊糊作罢。</p>
 <p>下午精神终于回来了一点，昨天摆烂加上被拷打真的是完全绷不住，但还是得赶快调整。到了工位，整理了一下自己的东西，结果发现耳机的耳塞又掉了，没有办法只能赶快下单新耳机，不能再将就着用这个破耳机了。下午依然是随便跑了一下 Puffer 的实验，可喜的是这一次实验居然似乎有了点看起来能行的样子，因为现在至少能打过启发式了，至少不是智障了。在等实验的过程中帮 abmfy 修了一下日语作文，然后准备还是赶快把实习那边的事情给做完，少一件事终究是好事。</p>
 <p>今早在出勤的时候顺手把当前前端小作业存在的问题给罗列了一下，整体来讲虽然有点绷不住但还是感谢 ouuan 提供了这么多的改进意见。</p>
+<h1 id="section-15">2023.03.07 - 2023.03.08</h1>
+<p>7 号真实地没有任何可以记录的事情，因为早上起来之后随手在群里发了一个“礼问上几”，得到上地机厅只有一人的答复之后，立刻收拾东西去出勤了。然后原本是打算随便打打就下午回来的，结果因为手感好到离谱，直接上了四十几底分，于是就这样一直打下去了。最后快要闭店的时候，随手开了一把高桥名人，结果 24 分纵连全打上了，鸟价 13.2 吃分。</p>
+<p>但是事情总是得做的，因为和实习那边说了已经写完了订单页面，所以这个坑得填上，最终还是来到了 308 开夜班，一路做到早上六点，真实做到了三四个小时糊完整个页面。</p>
+<p>写完这个页面之后我意识到周三 8 号的韩语课多半是起不来了，于是和老师说明了情况，打算韩语课退课自学了。</p>
+<p>8 号的话，起来之后先是去了 DRL，下课后结果兴致来了就去吃了顿麦当劳然后五道口出勤，出到了晚上回来和舍友吃了顿饭，308 睡了一觉之后就是软工的课咨委启动会，开完之后就十一点了，直到这个时候才准备开始做毕设。</p>
+<p>这两天属实没有什么特别有意思的事情，也没有什么有意思的新闻，只是很平淡地摸鱼了两天，只能赶快把毕设启动了，不然太摸鱼了。然后韩语的收音和今天 DRL 的课程内容还得整理一下，不过还是毕设为重，这些可以明天开完会之后慢慢摸索。</p>
 ]]></content>
       <categories>
         <category>【生活记录】日记</category>
@@ -2241,6 +2247,10 @@ V_o &amp;\leftarrow (1 - \alpha_o)V_o + \alpha_o(o - \overline o)^2 \\
 <li><code>reset</code>，用于重置日志管理器，重置为仅向标准流输出的日志模式</li>
 <li><code>unittest</code>，用于测试当前日志管理器，仅测试自然语言格式和 CSV 格式</li>
 </ul>
+<h1 id="配置文件">配置文件</h1>
+<p>Anaconda 所使用的环境配置文件位于 <code>/docker/environment.yml</code> 中，其通过命令：</p>
+<figure class="highlight shell"><figcaption><span>ZSH</span></figcaption><table><tr><td class="code"><pre><span class="line">conda env export &gt; docker/environment.yml</span><br></pre></td></tr></table></figure>
+<p>自动生成并导出。</p>
 ]]></content>
       <categories>
         <category>【杂谈】开发</category>
@@ -2323,6 +2333,985 @@ V_o &amp;\leftarrow (1 - \alpha_o)V_o + \alpha_o(o - \overline o)^2 \\
 ]]></content>
       <categories>
         <category>【杂谈】开发</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>简明日语自学手册 Chapter 1 生词表</title>
+    <url>/2022/08/21/ja-tutorial-ch1-vocab/</url>
+    <content><![CDATA[<p>本文章为自学手册 Chapter 1 生词表。</p>
+<span id="more"></span>
+<p>考虑到这里还未讲解用言、助动词活用，故会同时列举出本章内出现的词语的活用形和相对应的原形，活用形使用小括号括出并写在原形下方以示区分。</p>
+<p>动词生词表中词性一列的具体含义参见第二章动词活用分类。另外，对于动词、形容词、形容动词，方括号括出的为该词语在古日语中的形式与词性，若没有方括号标记，则表明古日语中该词语和现代形式或词性一致，也有可能是该词语是现代造词，没有古语对应。</p>
+<p>另外补充说明，由于动词的第一连用形可以用于将动词名词化。如果名词化后形成的名词和原先动词的含义类似，我们就将动词形式纳入生词表，其名词形式作为其衍生。而若含义差别较大，则其动词和名词形式分别纳入生词表。</p>
+<p>本章生词表选择性收录 Chapter 1 Section 3 中的词语。</p>
+<h1 id="动词生词表">动词生词表</h1>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">日语</th>
+<th style="text-align: center;">词性</th>
+<th style="text-align: center;">汉语释义</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 気付 きづ</code>く</td>
+<td style="text-align: center;">動カ五[動カ四]</td>
+<td style="text-align: center;">发现、察觉</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 縮 ちぢ</code>む</td>
+<td style="text-align: center;">動マ五[動マ四]</td>
+<td style="text-align: center;">缩小、收缩</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 居 い</code>る[<code>@ 居 ゐ</code>る] <br /> （い）</td>
+<td style="text-align: center;">動ア上一[動ワ上一]</td>
+<td style="text-align: center;">①（有生命事物）存在 <br /> ②居住、逗留 <br /> ③保持在某一状态</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 調 しら</code>べる[<code>@ 調 しら</code>ぶ] <br /> （<code>@ 調 しら</code>べ）</td>
+<td style="text-align: center;">動バ下一[動バ下二]</td>
+<td style="text-align: center;">调查、查询</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 下 くだ</code>さる <br /> （ください）</td>
+<td style="text-align: center;">動ラ五[動ラ四]</td>
+<td style="text-align: center;">①（给我方）送、给 <br /> ②（作补助动词）请</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 作 つく</code>る <br /> （<code>@ 作 つく</code>り）</td>
+<td style="text-align: center;">動ラ五[動ラ四]</td>
+<td style="text-align: center;">制作</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 過 す</code>ぎる[<code>@ 過 す</code>ぐ] <br /> （<code>@ 過 す</code>ぎ）</td>
+<td style="text-align: center;">動ガ上一[動ガ上二]</td>
+<td style="text-align: center;">①经过、通过 <br /> ②（时间）流逝、消逝 <br /> ③（作补助动词）过度、过分</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 持 も</code>つ <br /> （<code>@ 持 も</code>っ）</td>
+<td style="text-align: center;">動タ五[動タ四]</td>
+<td style="text-align: center;">①（用手）拿、持 <br /> ②携带 <br /> ③（某种物品）拥有、具有</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 行 い</code>く <br /> （<code>@ 行 い</code>っ）</td>
+<td style="text-align: center;">動カ五[動カ四]</td>
+<td style="text-align: center;">①去、走、前往 <br /> ②步行</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 上 あ</code>げる[<code>@ 上 あ</code>ぐ] <br /> （<code>@ 上 あ</code>げ）</td>
+<td style="text-align: center;">動ガ下一[動ガ下二]</td>
+<td style="text-align: center;">①举起、抬起 <br /> ②（给他方）给、送给</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 仕舞 しま</code>う[<code>@ 仕舞 しま</code>ふ]</td>
+<td style="text-align: center;">動ワ五[動ハ四]</td>
+<td style="text-align: center;">结束、终结</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">する[す] <br /> （し）</td>
+<td style="text-align: center;">動サ変[動サ変]</td>
+<td style="text-align: center;">做、办、进行</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 思 おも</code>う[<code>@ 思 おも</code>ふ] <br /> （<code>@ 思 おも</code>い）</td>
+<td style="text-align: center;">動ワ五[動ハ四]</td>
+<td style="text-align: center;">①思考、思索 <br /> ②相信、确信 <br /> ③预想、预料 <br /> ④希望、期待</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 使 つか</code>い<code>@ 古 ふる</code>す[<code>@ 使 つか</code>ひ<code>@ 古 ふる</code>す]</td>
+<td style="text-align: center;">動サ五[動サ四]</td>
+<td style="text-align: center;">用旧、因长时间多次使用而变旧</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 来 く</code>る[<code>@ 来 く</code>]</td>
+<td style="text-align: center;">動カ変[動カ変]</td>
+<td style="text-align: center;">来、来到</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 話 はな</code>す</td>
+<td style="text-align: center;">動サ五[動サ四]</td>
+<td style="text-align: center;">说话、讲话</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 飛 と</code>ぶ</td>
+<td style="text-align: center;">動バ五[動バ四]</td>
+<td style="text-align: center;">①飞行 <br /> ②（因外力）飞舞</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 立 た</code>つ</td>
+<td style="text-align: center;">動タ五[動タ四]</td>
+<td style="text-align: center;">站立</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 書 か</code>く</td>
+<td style="text-align: center;">動カ五[動カ四]</td>
+<td style="text-align: center;">书写</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 出来 でき</code>る[<code>@ 出来 いでく</code>] <br /> （でき）</td>
+<td style="text-align: center;">動カ上一[動カ変]</td>
+<td style="text-align: center;">①做好、形成 <br /> ②能够做到、有能力</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 出 だ</code>す <br /> （<code>@ 出 だ</code>し）</td>
+<td style="text-align: center;">動サ五[動サ四]</td>
+<td style="text-align: center;">取出</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 送 おく</code>る <br /> （<code>@ 送 おく</code>り）</td>
+<td style="text-align: center;">動ラ五[動ラ四]</td>
+<td style="text-align: center;">①送、邮寄、派遣 <br /> ②送行 <br /> ③传送、放送</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 見 み</code>る <br /> （<code>@ 見 み</code>）</td>
+<td style="text-align: center;">動マ上一[動マ上一]</td>
+<td style="text-align: center;">①看、观看 <br /> ②（作补助动词）尝试</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 誤魔化 ごまか</code>す <br /> （<code>@ 誤魔化 ごまか</code>し）</td>
+<td style="text-align: center;">動サ五[動サ四]</td>
+<td style="text-align: center;">糊弄、搪塞</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 逃 に</code>げる[<code>@ 逃 に</code>ぐ] <br /> （<code>@ 逃 に</code>げ）</td>
+<td style="text-align: center;">動ガ下一[動ガ下二]</td>
+<td style="text-align: center;">逃跑、逃走、逃出</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 成功 せいこう</code>する[<code>@ 成功 せいこう</code>す]</td>
+<td style="text-align: center;">動サ変[動サ変]</td>
+<td style="text-align: center;">成功</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 会 あ</code>う[<code>@ 会 あ</code>ふ] <br /> （<code>@ 会 あ</code>い）</td>
+<td style="text-align: center;">動ワ五[動ハ四]</td>
+<td style="text-align: center;">会面、见面</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 軽 かろ</code>んずる[<code>@ 軽 かろ</code>んず]</td>
+<td style="text-align: center;">動サ変[動サ変]</td>
+<td style="text-align: center;">轻视</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 消 き</code>える[<code>@ 消 き</code>ゆ]</td>
+<td style="text-align: center;">動ア下一[動ヤ下二]</td>
+<td style="text-align: center;">消失</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 消 け</code>す</td>
+<td style="text-align: center;">動サ五[動サ四]</td>
+<td style="text-align: center;">使熄灭、关闭、解除</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 芽生 めば</code>える[<code>@ 芽生 めば</code>ゆ]</td>
+<td style="text-align: center;">動ア下一[動ヤ下二]</td>
+<td style="text-align: center;">出芽、发芽</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 生 い</code>きる[<code>@ 生 い</code>く]</td>
+<td style="text-align: center;">動カ上一[動カ上二]</td>
+<td style="text-align: center;">生存、生活</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 生 う</code>まれつく</td>
+<td style="text-align: center;">動カ五[動カ四]</td>
+<td style="text-align: center;">天生、生来就有</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 笑 わら</code>う[<code>@ 笑 わら</code>ふ]</td>
+<td style="text-align: center;">動ワ五[動ハ四]</td>
+<td style="text-align: center;">笑</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 迷 まよ</code>う[<code>@ 迷 まよ</code>ふ] <br /> （<code>@ 迷 まよ</code>っ）</td>
+<td style="text-align: center;">動ワ五[動ハ四]</td>
+<td style="text-align: center;">迷失、迷惘</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 辿 たど</code>る <br /> （<code>@ 辿 たど</code>り）</td>
+<td style="text-align: center;">動ラ五[動ラ四]</td>
+<td style="text-align: center;">沿路前进、追寻</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 着 つ</code>く <br /> （<code>@ 着 つ</code>い）</td>
+<td style="text-align: center;">動カ五[動カ四]</td>
+<td style="text-align: center;">到达、抵达</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">やる <br /> （やっ）</td>
+<td style="text-align: center;">動ラ五[動ラ四]</td>
+<td style="text-align: center;">做、干、进行、派遣</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 知 し</code>る <br /> （<code>@ 知 し</code>ら）</td>
+<td style="text-align: center;">動ラ五[動ラ四]</td>
+<td style="text-align: center;">知道、了解</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 拠 よ</code>る <br /> （<code>@ 拠 よ</code>っ）</td>
+<td style="text-align: center;">動ラ五[動ラ四]</td>
+<td style="text-align: center;">基于、根据、按照</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 降 ふ</code>る <br /> （<code>@ 降 ふ</code>り）</td>
+<td style="text-align: center;">動ラ五[動ラ四]</td>
+<td style="text-align: center;">降下、落下</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 始 はじ</code>まる <br /> （<code>@ 始 はじ</code>まり）</td>
+<td style="text-align: center;">動ラ五[動ラ四]</td>
+<td style="text-align: center;">开始</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 有 あ</code>る[<code>@ 有 あ</code>り] <br /> （あれ、あり）</td>
+<td style="text-align: center;">動ラ五[動ラ変]</td>
+<td style="text-align: center;">①（无生命事物）存在 <br /> ②属于、归于</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 終 お</code>わる[<code>@ 終 を</code>はる] <br /> （<code>@ 終 お</code>わり）</td>
+<td style="text-align: center;">動ラ五[動ラ四]</td>
+<td style="text-align: center;">结束、终结</td>
+</tr>
+</tbody>
+</table>
+<h1 id="形容词生词表">形容词生词表</h1>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">日语</th>
+<th style="text-align: center;">词性</th>
+<th style="text-align: center;">汉语释义</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 速 はや</code>い[<code>@ 速 はや</code>し] <br /> （はやく）</td>
+<td style="text-align: center;">形[形ク]</td>
+<td style="text-align: center;">动作迅速的</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 煩 うるさ</code>い・<code>@ 五月蠅 うるさ</code>い[<code>@ 煩 うるさ</code>し]</td>
+<td style="text-align: center;">形[形ク]</td>
+<td style="text-align: center;">嘈杂的、烦人的</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 軽 かる</code>い[<code>@ 軽 かる</code>し]</td>
+<td style="text-align: center;">形[形ク]</td>
+<td style="text-align: center;">轻的</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 重 おも</code>い[<code>@ 重 おも</code>し]</td>
+<td style="text-align: center;">形[形ク]</td>
+<td style="text-align: center;">重的</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 赤 あか</code>い[<code>@ 赤 あか</code>し]</td>
+<td style="text-align: center;">形[形ク]</td>
+<td style="text-align: center;">红色的</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 黒 くろ</code>い[<code>@ 黒 くろ</code>し]</td>
+<td style="text-align: center;">形[形ク]</td>
+<td style="text-align: center;">黑色的</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 長 なが</code>い[<code>@ 長 なが</code>し]</td>
+<td style="text-align: center;">形[形ク]</td>
+<td style="text-align: center;">长的</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 広 ひろ</code>い[<code>@ 広 ひろ</code>し]</td>
+<td style="text-align: center;">形[形ク]</td>
+<td style="text-align: center;">宽广的</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 美 うつく</code>しい[<code>@ 美 うつく</code>し]</td>
+<td style="text-align: center;">形[形シク]</td>
+<td style="text-align: center;">美丽的</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 難 むずか</code>しい[<code>@ 難 むずか</code>し]</td>
+<td style="text-align: center;">形[形シク]</td>
+<td style="text-align: center;">困难的</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 素晴 すば</code>らしい[<code>@ 素晴 すば</code>らし]</td>
+<td style="text-align: center;">形[形シク]</td>
+<td style="text-align: center;">美好的</td>
+</tr>
+</tbody>
+</table>
+<h1 id="形容动词生词表">形容动词生词表</h1>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">日语</th>
+<th style="text-align: center;">词性</th>
+<th style="text-align: center;">汉语释义</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 素敵 すてき</code>だ[<code>@ 素敵 すてき</code>なり]</td>
+<td style="text-align: center;">形動[形動ナリ]</td>
+<td style="text-align: center;">美好的</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 好 す</code>きだ[<code>@ 好 す</code>きなり]</td>
+<td style="text-align: center;">形動[形動ナリ]</td>
+<td style="text-align: center;">喜欢的</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 嫌 きら</code>いだ[<code>@ 嫌 きら</code>ひなり]</td>
+<td style="text-align: center;">形動[形動ナリ]</td>
+<td style="text-align: center;">讨厌的</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 静 しず</code>かだ[<code>@ 静 しず</code>かなり]</td>
+<td style="text-align: center;">形動[形動ナリ]</td>
+<td style="text-align: center;">安静的</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 大変 たいへん</code>だ[<code>@ 大変 たいへん</code>なり] <br /> （<code>@ 大変 たいへん</code>に）</td>
+<td style="text-align: center;">形動[形動ナリ]</td>
+<td style="text-align: center;">极重要的、非常</td>
+</tr>
+</tbody>
+</table>
+<h1 id="助词助动词生词表">助词、助动词生词表</h1>
+<p>助词和助动词的细节用法会在后续章节讲解，这里不需要过度关注各个助词和助动词的含义。</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">日语</th>
+<th style="text-align: center;">词性</th>
+<th style="text-align: center;">汉语释义</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">は</td>
+<td style="text-align: center;">副助</td>
+<td style="text-align: center;">标注语句的主题</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">が</td>
+<td style="text-align: center;">格助</td>
+<td style="text-align: center;">标注语句的主语</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">ます <br /> （ましょ、ませ）</td>
+<td style="text-align: center;">助動</td>
+<td style="text-align: center;">提示一般尊敬陈述语气</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">の</td>
+<td style="text-align: center;">格助</td>
+<td style="text-align: center;">标注从属或者同位关系</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">を</td>
+<td style="text-align: center;">格助</td>
+<td style="text-align: center;">标注语句的宾语</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">て</td>
+<td style="text-align: center;">接助</td>
+<td style="text-align: center;">标注语句的中顿</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">た</td>
+<td style="text-align: center;">助動</td>
+<td style="text-align: center;">提示过去时态</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">ので</td>
+<td style="text-align: center;">接助</td>
+<td style="text-align: center;">标注客观原因</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">に</td>
+<td style="text-align: center;">格助</td>
+<td style="text-align: center;">标注动作发生的时间、动作的方向等</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">も</td>
+<td style="text-align: center;">副助</td>
+<td style="text-align: center;">①标注同类追加（类似“也”） <br /> ②标注极端语气（类似“甚至”）</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">か</td>
+<td style="text-align: center;">終助</td>
+<td style="text-align: center;">标注疑问语气</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">だ <br /> （だっ）</td>
+<td style="text-align: center;">助動</td>
+<td style="text-align: center;">（简体）作为判断词提示断定语气</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">で</td>
+<td style="text-align: center;">格助</td>
+<td style="text-align: center;">标注动作发生的地点、动作的手段等</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">ない</td>
+<td style="text-align: center;">助動</td>
+<td style="text-align: center;">提示否定语义</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">から</td>
+<td style="text-align: center;">格助</td>
+<td style="text-align: center;">标注时间、地点的起始，标注主观原因</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">まで</td>
+<td style="text-align: center;">格助</td>
+<td style="text-align: center;">标注时间、地点的终止等</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">だけ</td>
+<td style="text-align: center;">副助</td>
+<td style="text-align: center;">标注程度限定（类似“只”）</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">う</td>
+<td style="text-align: center;">助動</td>
+<td style="text-align: center;">提示自发意志</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">べし <br /> （べから）</td>
+<td style="text-align: center;">助動</td>
+<td style="text-align: center;">提示应当、可能等语气</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">ず・ぬ・ん</td>
+<td style="text-align: center;">助動</td>
+<td style="text-align: center;">提示否定语义</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">ば</td>
+<td style="text-align: center;">接助</td>
+<td style="text-align: center;">标注假设、可能</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">そうだ <br /> （そうに）</td>
+<td style="text-align: center;">助動</td>
+<td style="text-align: center;">提示样态</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">です <br /> （でし）</td>
+<td style="text-align: center;">助動</td>
+<td style="text-align: center;">（一般尊敬语气）作为判断词提示断定语气</td>
+</tr>
+</tbody>
+</table>
+<h1 id="副词生词表">副词生词表</h1>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">日语</th>
+<th style="text-align: center;">词性</th>
+<th style="text-align: center;">汉语释义</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">しっかり</td>
+<td style="text-align: center;">副</td>
+<td style="text-align: center;">①（身体）健壮、结实 <br /> ②（结构）稳固、牢靠 <br /> ③（含义）明确 <br /> ④（性格）坚强、坚定</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">もう</td>
+<td style="text-align: center;">副</td>
+<td style="text-align: center;">①已经 <br /> ②就要、将要、快要 <br /> ③再、还、另外</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">さっぱり</td>
+<td style="text-align: center;">副</td>
+<td style="text-align: center;">整洁、利落</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">たくさん</td>
+<td style="text-align: center;">副</td>
+<td style="text-align: center;">大量、许多</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">なんでも</td>
+<td style="text-align: center;">副</td>
+<td style="text-align: center;">①无论什么、无论如何 <br /> ②据说是</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">いつか</td>
+<td style="text-align: center;">副</td>
+<td style="text-align: center;">①不知不觉的 <br /> ②曾经 <br /> ③早晚、迟早</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">きっと</td>
+<td style="text-align: center;">副</td>
+<td style="text-align: center;">一定</td>
+</tr>
+</tbody>
+</table>
+<h1 id="名词代词数词生词表">名词、代词、数词生词表</h1>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">日语</th>
+<th style="text-align: center;">词性</th>
+<th style="text-align: center;">汉语释义</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 大阪 おおさか</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">大阪</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 経済 けいざい</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">经济</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">フィルム</td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">胶卷</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 俺 おれ</code></td>
+<td style="text-align: center;">代</td>
+<td style="text-align: center;">（男性对同辈、下级使用）我</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 兄弟 きょうだい</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">兄弟</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 三人 さんにん</code></td>
+<td style="text-align: center;">数</td>
+<td style="text-align: center;">三人</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 容疑者 ようぎしゃ</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">嫌疑人</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 情報 じょうほう</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">消息、信息</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">ケーキ</td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">蛋糕</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">これ</td>
+<td style="text-align: center;">代</td>
+<td style="text-align: center;">（名词性事物近称）这个、这些</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">お<code>@ 婆 ばあ</code>さん</td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">①（敬称）祖母、奶奶 <br /> ②（敬称）外祖母、外婆 <br /> ③（对老年女性的敬称）老太太</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 伊呂波 いろは</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">①伊吕波歌（一首用平假名编制的歌曲） <br /> ②初步、入门</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 山 やま</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">山</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 奈美 なみ</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">（女性名）奈美</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 共和 きょうわ</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">共和</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 当 あ</code>て<code>@ 字 じ</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">假借字</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 仕付 しつけ</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">管教、约束</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 仕方 しかた</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">方法、手段</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 仕草 しぐさ</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">台词、说辞</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 仕事 しごと</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">工作</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 亜細亜 アジア</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">亚洲</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 麦酒 ビール</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">啤酒</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 俱楽部 クラブ</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">俱乐部</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 言葉 ことば</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">话语</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 何度 なんど</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">多少次、多少回</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">の</td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">（形式体言）起动词名词化的作用</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 送 おく</code>り<code>@ 仮名 がな</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">送假名</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 事 こと</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">①事物、事情 <br /> ②（形式体言）起动词名词化的作用</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">あれ</td>
+<td style="text-align: center;">代</td>
+<td style="text-align: center;">（名词性事物远称）那个、那些</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 去年 きょねん</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">去年</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 私 わたし</code></td>
+<td style="text-align: center;">代</td>
+<td style="text-align: center;">（通用）我</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 日本語 にほんご</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">日语</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 手紙 てがみ</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">书信</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 資料 しりょう</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">资料</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 改 かい</code>ざん</td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">篡改</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">この</td>
+<td style="text-align: center;">代</td>
+<td style="text-align: center;">（连体性近称）这个</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 番組 ばんぐみ</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">节目</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">ご<code>@ 覧 らん</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">（尊他语）看、所看</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">スポンサー</td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">赞助方</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 提供 ていきょう</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">提供</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 上海 シャンハイ</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">上海</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 東京 とうきょう</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">东京</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 飛行機 ひこうき</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">飞机</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 振 ふ</code>り</td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">①振动、摆动 <br /> ②（外表）样子、打扮 <br /> ③（作补助名词）装作、假装 <br /> ④（舞蹈）动作、姿势 <br /> ⑤陌生 <br /> ⑥临时、突然</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 囚人 しゅうじん</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">犯人</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 看守 かんしゅ</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">看守</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 目 め</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">①眼睛、眼球 <br /> ②眼光、眼神 <br /> ③外表、外观 <br /> ④监视、看守</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 彼 かれ</code></td>
+<td style="text-align: center;">代</td>
+<td style="text-align: center;">（通用）他</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 勤勉家 きんべんか</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">实干家、用功的人</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 当 あ</code>たり<code>@ 前 まえ</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">理所应当</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 明日 あした</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">明天</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 七時 しちじ</code></td>
+<td style="text-align: center;">数</td>
+<td style="text-align: center;">七点</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 会社 かいしゃ</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">公司</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 受付 うけつけ</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">前台</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 一寸 いっすん</code></td>
+<td style="text-align: center;">数</td>
+<td style="text-align: center;">一寸</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 光陰 こういん</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">光阴</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 世界 せかい</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">世界</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 祝福 しゅくふく</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">祝福</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 橋 はし</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">桥梁</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 石 いし</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">石头</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 生 なま</code>ビール</td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">生啤酒</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 五月雨 さみだれ</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">梅雨、阴历五月的阴雨</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 時雨 しぐれ</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">（秋冬之交的）阵雨</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 村雨 むらさめ</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">阵雨、骤雨</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 梅雨 つゆ</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">梅雨</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 一昨日 おととい</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">前天</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 明後日 あさって</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">后天</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 晦日 みそか</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">（阴历的）每月最后一天</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 足袋 たび</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">（日式）短布袜</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 吹雪 ふぶき</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">暴风雪</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 芝生 しばふ</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">草坪、矮草地</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 合図 あいず</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">信号、暗号</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 馬鹿 ばか</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">愚蠢的人、傻子</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 額縁 がくぶち</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">画框、相框</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 残高 ざんだか</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">余额</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 虚 うつ</code>ろ</td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">空虚、空洞</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 午前 ごぜん</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">午前、正午之前、上午</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">そこ</td>
+<td style="text-align: center;">代</td>
+<td style="text-align: center;">（名词性地点中称）那里</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">ハッピー</td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">快乐</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 天気予報 てんきよほう</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">天气预报</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 雨 あめ</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">雨</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>@ 申 もう</code>し<code>@ 訳 わけ</code></td>
+<td style="text-align: center;">名</td>
+<td style="text-align: center;">辩解</td>
+</tr>
+</tbody>
+</table>
+<h1 id="其他类型词语生词表">其他类型词语生词表</h1>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">日语</th>
+<th style="text-align: center;">词性</th>
+<th style="text-align: center;">汉语释义</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><code>@ 御 お</code></td>
+<td style="text-align: center;">接続</td>
+<td style="text-align: center;">①您、您的 <br /> ②表尊敬的接头词</td>
+</tr>
+</tbody>
+</table>
+<h1 id="常用交际语表">常用交际语表</h1>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">日语</th>
+<th style="text-align: center;">汉语释义</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">よろしくお<code>@ 願 ねが</code>いします。</td>
+<td style="text-align: center;">请多指教。</td>
+</tr>
+</tbody>
+</table>
+]]></content>
+      <categories>
+        <category>【学习笔记】日语</category>
       </categories>
   </entry>
   <entry>
@@ -3979,985 +4968,6 @@ V_o &amp;\leftarrow (1 - \alpha_o)V_o + \alpha_o(o - \overline o)^2 \\
 </ul>
 <p>首先区分音训读，一般而言动词、形容词等的单字词干、有送假名词尾的多为训读汉字，而构词法类似汉语的、没有送假名词尾的词语多为音读汉字。基本上基于此就可以区分大部分音读训读汉字。</p>
 <p>之后根据给出的读音表逐个根据送假名词尾确定读音即可。</p>
-]]></content>
-      <categories>
-        <category>【学习笔记】日语</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>简明日语自学手册 Chapter 1 生词表</title>
-    <url>/2022/08/21/ja-tutorial-ch1-vocab/</url>
-    <content><![CDATA[<p>本文章为自学手册 Chapter 1 生词表。</p>
-<span id="more"></span>
-<p>考虑到这里还未讲解用言、助动词活用，故会同时列举出本章内出现的词语的活用形和相对应的原形，活用形使用小括号括出并写在原形下方以示区分。</p>
-<p>动词生词表中词性一列的具体含义参见第二章动词活用分类。另外，对于动词、形容词、形容动词，方括号括出的为该词语在古日语中的形式与词性，若没有方括号标记，则表明古日语中该词语和现代形式或词性一致，也有可能是该词语是现代造词，没有古语对应。</p>
-<p>另外补充说明，由于动词的第一连用形可以用于将动词名词化。如果名词化后形成的名词和原先动词的含义类似，我们就将动词形式纳入生词表，其名词形式作为其衍生。而若含义差别较大，则其动词和名词形式分别纳入生词表。</p>
-<p>本章生词表选择性收录 Chapter 1 Section 3 中的词语。</p>
-<h1 id="动词生词表">动词生词表</h1>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;">日语</th>
-<th style="text-align: center;">词性</th>
-<th style="text-align: center;">汉语释义</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 気付 きづ</code>く</td>
-<td style="text-align: center;">動カ五[動カ四]</td>
-<td style="text-align: center;">发现、察觉</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 縮 ちぢ</code>む</td>
-<td style="text-align: center;">動マ五[動マ四]</td>
-<td style="text-align: center;">缩小、收缩</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 居 い</code>る[<code>@ 居 ゐ</code>る] <br /> （い）</td>
-<td style="text-align: center;">動ア上一[動ワ上一]</td>
-<td style="text-align: center;">①（有生命事物）存在 <br /> ②居住、逗留 <br /> ③保持在某一状态</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 調 しら</code>べる[<code>@ 調 しら</code>ぶ] <br /> （<code>@ 調 しら</code>べ）</td>
-<td style="text-align: center;">動バ下一[動バ下二]</td>
-<td style="text-align: center;">调查、查询</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 下 くだ</code>さる <br /> （ください）</td>
-<td style="text-align: center;">動ラ五[動ラ四]</td>
-<td style="text-align: center;">①（给我方）送、给 <br /> ②（作补助动词）请</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 作 つく</code>る <br /> （<code>@ 作 つく</code>り）</td>
-<td style="text-align: center;">動ラ五[動ラ四]</td>
-<td style="text-align: center;">制作</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 過 す</code>ぎる[<code>@ 過 す</code>ぐ] <br /> （<code>@ 過 す</code>ぎ）</td>
-<td style="text-align: center;">動ガ上一[動ガ上二]</td>
-<td style="text-align: center;">①经过、通过 <br /> ②（时间）流逝、消逝 <br /> ③（作补助动词）过度、过分</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 持 も</code>つ <br /> （<code>@ 持 も</code>っ）</td>
-<td style="text-align: center;">動タ五[動タ四]</td>
-<td style="text-align: center;">①（用手）拿、持 <br /> ②携带 <br /> ③（某种物品）拥有、具有</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 行 い</code>く <br /> （<code>@ 行 い</code>っ）</td>
-<td style="text-align: center;">動カ五[動カ四]</td>
-<td style="text-align: center;">①去、走、前往 <br /> ②步行</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 上 あ</code>げる[<code>@ 上 あ</code>ぐ] <br /> （<code>@ 上 あ</code>げ）</td>
-<td style="text-align: center;">動ガ下一[動ガ下二]</td>
-<td style="text-align: center;">①举起、抬起 <br /> ②（给他方）给、送给</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 仕舞 しま</code>う[<code>@ 仕舞 しま</code>ふ]</td>
-<td style="text-align: center;">動ワ五[動ハ四]</td>
-<td style="text-align: center;">结束、终结</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">する[す] <br /> （し）</td>
-<td style="text-align: center;">動サ変[動サ変]</td>
-<td style="text-align: center;">做、办、进行</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 思 おも</code>う[<code>@ 思 おも</code>ふ] <br /> （<code>@ 思 おも</code>い）</td>
-<td style="text-align: center;">動ワ五[動ハ四]</td>
-<td style="text-align: center;">①思考、思索 <br /> ②相信、确信 <br /> ③预想、预料 <br /> ④希望、期待</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 使 つか</code>い<code>@ 古 ふる</code>す[<code>@ 使 つか</code>ひ<code>@ 古 ふる</code>す]</td>
-<td style="text-align: center;">動サ五[動サ四]</td>
-<td style="text-align: center;">用旧、因长时间多次使用而变旧</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 来 く</code>る[<code>@ 来 く</code>]</td>
-<td style="text-align: center;">動カ変[動カ変]</td>
-<td style="text-align: center;">来、来到</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 話 はな</code>す</td>
-<td style="text-align: center;">動サ五[動サ四]</td>
-<td style="text-align: center;">说话、讲话</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 飛 と</code>ぶ</td>
-<td style="text-align: center;">動バ五[動バ四]</td>
-<td style="text-align: center;">①飞行 <br /> ②（因外力）飞舞</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 立 た</code>つ</td>
-<td style="text-align: center;">動タ五[動タ四]</td>
-<td style="text-align: center;">站立</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 書 か</code>く</td>
-<td style="text-align: center;">動カ五[動カ四]</td>
-<td style="text-align: center;">书写</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 出来 でき</code>る[<code>@ 出来 いでく</code>] <br /> （でき）</td>
-<td style="text-align: center;">動カ上一[動カ変]</td>
-<td style="text-align: center;">①做好、形成 <br /> ②能够做到、有能力</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 出 だ</code>す <br /> （<code>@ 出 だ</code>し）</td>
-<td style="text-align: center;">動サ五[動サ四]</td>
-<td style="text-align: center;">取出</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 送 おく</code>る <br /> （<code>@ 送 おく</code>り）</td>
-<td style="text-align: center;">動ラ五[動ラ四]</td>
-<td style="text-align: center;">①送、邮寄、派遣 <br /> ②送行 <br /> ③传送、放送</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 見 み</code>る <br /> （<code>@ 見 み</code>）</td>
-<td style="text-align: center;">動マ上一[動マ上一]</td>
-<td style="text-align: center;">①看、观看 <br /> ②（作补助动词）尝试</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 誤魔化 ごまか</code>す <br /> （<code>@ 誤魔化 ごまか</code>し）</td>
-<td style="text-align: center;">動サ五[動サ四]</td>
-<td style="text-align: center;">糊弄、搪塞</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 逃 に</code>げる[<code>@ 逃 に</code>ぐ] <br /> （<code>@ 逃 に</code>げ）</td>
-<td style="text-align: center;">動ガ下一[動ガ下二]</td>
-<td style="text-align: center;">逃跑、逃走、逃出</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 成功 せいこう</code>する[<code>@ 成功 せいこう</code>す]</td>
-<td style="text-align: center;">動サ変[動サ変]</td>
-<td style="text-align: center;">成功</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 会 あ</code>う[<code>@ 会 あ</code>ふ] <br /> （<code>@ 会 あ</code>い）</td>
-<td style="text-align: center;">動ワ五[動ハ四]</td>
-<td style="text-align: center;">会面、见面</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 軽 かろ</code>んずる[<code>@ 軽 かろ</code>んず]</td>
-<td style="text-align: center;">動サ変[動サ変]</td>
-<td style="text-align: center;">轻视</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 消 き</code>える[<code>@ 消 き</code>ゆ]</td>
-<td style="text-align: center;">動ア下一[動ヤ下二]</td>
-<td style="text-align: center;">消失</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 消 け</code>す</td>
-<td style="text-align: center;">動サ五[動サ四]</td>
-<td style="text-align: center;">使熄灭、关闭、解除</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 芽生 めば</code>える[<code>@ 芽生 めば</code>ゆ]</td>
-<td style="text-align: center;">動ア下一[動ヤ下二]</td>
-<td style="text-align: center;">出芽、发芽</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 生 い</code>きる[<code>@ 生 い</code>く]</td>
-<td style="text-align: center;">動カ上一[動カ上二]</td>
-<td style="text-align: center;">生存、生活</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 生 う</code>まれつく</td>
-<td style="text-align: center;">動カ五[動カ四]</td>
-<td style="text-align: center;">天生、生来就有</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 笑 わら</code>う[<code>@ 笑 わら</code>ふ]</td>
-<td style="text-align: center;">動ワ五[動ハ四]</td>
-<td style="text-align: center;">笑</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 迷 まよ</code>う[<code>@ 迷 まよ</code>ふ] <br /> （<code>@ 迷 まよ</code>っ）</td>
-<td style="text-align: center;">動ワ五[動ハ四]</td>
-<td style="text-align: center;">迷失、迷惘</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 辿 たど</code>る <br /> （<code>@ 辿 たど</code>り）</td>
-<td style="text-align: center;">動ラ五[動ラ四]</td>
-<td style="text-align: center;">沿路前进、追寻</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 着 つ</code>く <br /> （<code>@ 着 つ</code>い）</td>
-<td style="text-align: center;">動カ五[動カ四]</td>
-<td style="text-align: center;">到达、抵达</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">やる <br /> （やっ）</td>
-<td style="text-align: center;">動ラ五[動ラ四]</td>
-<td style="text-align: center;">做、干、进行、派遣</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 知 し</code>る <br /> （<code>@ 知 し</code>ら）</td>
-<td style="text-align: center;">動ラ五[動ラ四]</td>
-<td style="text-align: center;">知道、了解</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 拠 よ</code>る <br /> （<code>@ 拠 よ</code>っ）</td>
-<td style="text-align: center;">動ラ五[動ラ四]</td>
-<td style="text-align: center;">基于、根据、按照</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 降 ふ</code>る <br /> （<code>@ 降 ふ</code>り）</td>
-<td style="text-align: center;">動ラ五[動ラ四]</td>
-<td style="text-align: center;">降下、落下</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 始 はじ</code>まる <br /> （<code>@ 始 はじ</code>まり）</td>
-<td style="text-align: center;">動ラ五[動ラ四]</td>
-<td style="text-align: center;">开始</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 有 あ</code>る[<code>@ 有 あ</code>り] <br /> （あれ、あり）</td>
-<td style="text-align: center;">動ラ五[動ラ変]</td>
-<td style="text-align: center;">①（无生命事物）存在 <br /> ②属于、归于</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 終 お</code>わる[<code>@ 終 を</code>はる] <br /> （<code>@ 終 お</code>わり）</td>
-<td style="text-align: center;">動ラ五[動ラ四]</td>
-<td style="text-align: center;">结束、终结</td>
-</tr>
-</tbody>
-</table>
-<h1 id="形容词生词表">形容词生词表</h1>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;">日语</th>
-<th style="text-align: center;">词性</th>
-<th style="text-align: center;">汉语释义</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 速 はや</code>い[<code>@ 速 はや</code>し] <br /> （はやく）</td>
-<td style="text-align: center;">形[形ク]</td>
-<td style="text-align: center;">动作迅速的</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 煩 うるさ</code>い・<code>@ 五月蠅 うるさ</code>い[<code>@ 煩 うるさ</code>し]</td>
-<td style="text-align: center;">形[形ク]</td>
-<td style="text-align: center;">嘈杂的、烦人的</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 軽 かる</code>い[<code>@ 軽 かる</code>し]</td>
-<td style="text-align: center;">形[形ク]</td>
-<td style="text-align: center;">轻的</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 重 おも</code>い[<code>@ 重 おも</code>し]</td>
-<td style="text-align: center;">形[形ク]</td>
-<td style="text-align: center;">重的</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 赤 あか</code>い[<code>@ 赤 あか</code>し]</td>
-<td style="text-align: center;">形[形ク]</td>
-<td style="text-align: center;">红色的</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 黒 くろ</code>い[<code>@ 黒 くろ</code>し]</td>
-<td style="text-align: center;">形[形ク]</td>
-<td style="text-align: center;">黑色的</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 長 なが</code>い[<code>@ 長 なが</code>し]</td>
-<td style="text-align: center;">形[形ク]</td>
-<td style="text-align: center;">长的</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 広 ひろ</code>い[<code>@ 広 ひろ</code>し]</td>
-<td style="text-align: center;">形[形ク]</td>
-<td style="text-align: center;">宽广的</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 美 うつく</code>しい[<code>@ 美 うつく</code>し]</td>
-<td style="text-align: center;">形[形シク]</td>
-<td style="text-align: center;">美丽的</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 難 むずか</code>しい[<code>@ 難 むずか</code>し]</td>
-<td style="text-align: center;">形[形シク]</td>
-<td style="text-align: center;">困难的</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 素晴 すば</code>らしい[<code>@ 素晴 すば</code>らし]</td>
-<td style="text-align: center;">形[形シク]</td>
-<td style="text-align: center;">美好的</td>
-</tr>
-</tbody>
-</table>
-<h1 id="形容动词生词表">形容动词生词表</h1>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;">日语</th>
-<th style="text-align: center;">词性</th>
-<th style="text-align: center;">汉语释义</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 素敵 すてき</code>だ[<code>@ 素敵 すてき</code>なり]</td>
-<td style="text-align: center;">形動[形動ナリ]</td>
-<td style="text-align: center;">美好的</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 好 す</code>きだ[<code>@ 好 す</code>きなり]</td>
-<td style="text-align: center;">形動[形動ナリ]</td>
-<td style="text-align: center;">喜欢的</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 嫌 きら</code>いだ[<code>@ 嫌 きら</code>ひなり]</td>
-<td style="text-align: center;">形動[形動ナリ]</td>
-<td style="text-align: center;">讨厌的</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 静 しず</code>かだ[<code>@ 静 しず</code>かなり]</td>
-<td style="text-align: center;">形動[形動ナリ]</td>
-<td style="text-align: center;">安静的</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 大変 たいへん</code>だ[<code>@ 大変 たいへん</code>なり] <br /> （<code>@ 大変 たいへん</code>に）</td>
-<td style="text-align: center;">形動[形動ナリ]</td>
-<td style="text-align: center;">极重要的、非常</td>
-</tr>
-</tbody>
-</table>
-<h1 id="助词助动词生词表">助词、助动词生词表</h1>
-<p>助词和助动词的细节用法会在后续章节讲解，这里不需要过度关注各个助词和助动词的含义。</p>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;">日语</th>
-<th style="text-align: center;">词性</th>
-<th style="text-align: center;">汉语释义</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">は</td>
-<td style="text-align: center;">副助</td>
-<td style="text-align: center;">标注语句的主题</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">が</td>
-<td style="text-align: center;">格助</td>
-<td style="text-align: center;">标注语句的主语</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">ます <br /> （ましょ、ませ）</td>
-<td style="text-align: center;">助動</td>
-<td style="text-align: center;">提示一般尊敬陈述语气</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">の</td>
-<td style="text-align: center;">格助</td>
-<td style="text-align: center;">标注从属或者同位关系</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">を</td>
-<td style="text-align: center;">格助</td>
-<td style="text-align: center;">标注语句的宾语</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">て</td>
-<td style="text-align: center;">接助</td>
-<td style="text-align: center;">标注语句的中顿</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">た</td>
-<td style="text-align: center;">助動</td>
-<td style="text-align: center;">提示过去时态</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">ので</td>
-<td style="text-align: center;">接助</td>
-<td style="text-align: center;">标注客观原因</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">に</td>
-<td style="text-align: center;">格助</td>
-<td style="text-align: center;">标注动作发生的时间、动作的方向等</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">も</td>
-<td style="text-align: center;">副助</td>
-<td style="text-align: center;">①标注同类追加（类似“也”） <br /> ②标注极端语气（类似“甚至”）</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">か</td>
-<td style="text-align: center;">終助</td>
-<td style="text-align: center;">标注疑问语气</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">だ <br /> （だっ）</td>
-<td style="text-align: center;">助動</td>
-<td style="text-align: center;">（简体）作为判断词提示断定语气</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">で</td>
-<td style="text-align: center;">格助</td>
-<td style="text-align: center;">标注动作发生的地点、动作的手段等</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">ない</td>
-<td style="text-align: center;">助動</td>
-<td style="text-align: center;">提示否定语义</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">から</td>
-<td style="text-align: center;">格助</td>
-<td style="text-align: center;">标注时间、地点的起始，标注主观原因</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">まで</td>
-<td style="text-align: center;">格助</td>
-<td style="text-align: center;">标注时间、地点的终止等</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">だけ</td>
-<td style="text-align: center;">副助</td>
-<td style="text-align: center;">标注程度限定（类似“只”）</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">う</td>
-<td style="text-align: center;">助動</td>
-<td style="text-align: center;">提示自发意志</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">べし <br /> （べから）</td>
-<td style="text-align: center;">助動</td>
-<td style="text-align: center;">提示应当、可能等语气</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">ず・ぬ・ん</td>
-<td style="text-align: center;">助動</td>
-<td style="text-align: center;">提示否定语义</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">ば</td>
-<td style="text-align: center;">接助</td>
-<td style="text-align: center;">标注假设、可能</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">そうだ <br /> （そうに）</td>
-<td style="text-align: center;">助動</td>
-<td style="text-align: center;">提示样态</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">です <br /> （でし）</td>
-<td style="text-align: center;">助動</td>
-<td style="text-align: center;">（一般尊敬语气）作为判断词提示断定语气</td>
-</tr>
-</tbody>
-</table>
-<h1 id="副词生词表">副词生词表</h1>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;">日语</th>
-<th style="text-align: center;">词性</th>
-<th style="text-align: center;">汉语释义</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">しっかり</td>
-<td style="text-align: center;">副</td>
-<td style="text-align: center;">①（身体）健壮、结实 <br /> ②（结构）稳固、牢靠 <br /> ③（含义）明确 <br /> ④（性格）坚强、坚定</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">もう</td>
-<td style="text-align: center;">副</td>
-<td style="text-align: center;">①已经 <br /> ②就要、将要、快要 <br /> ③再、还、另外</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">さっぱり</td>
-<td style="text-align: center;">副</td>
-<td style="text-align: center;">整洁、利落</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">たくさん</td>
-<td style="text-align: center;">副</td>
-<td style="text-align: center;">大量、许多</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">なんでも</td>
-<td style="text-align: center;">副</td>
-<td style="text-align: center;">①无论什么、无论如何 <br /> ②据说是</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">いつか</td>
-<td style="text-align: center;">副</td>
-<td style="text-align: center;">①不知不觉的 <br /> ②曾经 <br /> ③早晚、迟早</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">きっと</td>
-<td style="text-align: center;">副</td>
-<td style="text-align: center;">一定</td>
-</tr>
-</tbody>
-</table>
-<h1 id="名词代词数词生词表">名词、代词、数词生词表</h1>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;">日语</th>
-<th style="text-align: center;">词性</th>
-<th style="text-align: center;">汉语释义</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 大阪 おおさか</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">大阪</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 経済 けいざい</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">经济</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">フィルム</td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">胶卷</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 俺 おれ</code></td>
-<td style="text-align: center;">代</td>
-<td style="text-align: center;">（男性对同辈、下级使用）我</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 兄弟 きょうだい</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">兄弟</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 三人 さんにん</code></td>
-<td style="text-align: center;">数</td>
-<td style="text-align: center;">三人</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 容疑者 ようぎしゃ</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">嫌疑人</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 情報 じょうほう</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">消息、信息</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">ケーキ</td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">蛋糕</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">これ</td>
-<td style="text-align: center;">代</td>
-<td style="text-align: center;">（名词性事物近称）这个、这些</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">お<code>@ 婆 ばあ</code>さん</td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">①（敬称）祖母、奶奶 <br /> ②（敬称）外祖母、外婆 <br /> ③（对老年女性的敬称）老太太</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 伊呂波 いろは</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">①伊吕波歌（一首用平假名编制的歌曲） <br /> ②初步、入门</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 山 やま</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">山</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 奈美 なみ</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">（女性名）奈美</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 共和 きょうわ</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">共和</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 当 あ</code>て<code>@ 字 じ</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">假借字</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 仕付 しつけ</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">管教、约束</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 仕方 しかた</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">方法、手段</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 仕草 しぐさ</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">台词、说辞</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 仕事 しごと</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">工作</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 亜細亜 アジア</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">亚洲</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 麦酒 ビール</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">啤酒</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 俱楽部 クラブ</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">俱乐部</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 言葉 ことば</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">话语</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 何度 なんど</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">多少次、多少回</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">の</td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">（形式体言）起动词名词化的作用</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 送 おく</code>り<code>@ 仮名 がな</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">送假名</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 事 こと</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">①事物、事情 <br /> ②（形式体言）起动词名词化的作用</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">あれ</td>
-<td style="text-align: center;">代</td>
-<td style="text-align: center;">（名词性事物远称）那个、那些</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 去年 きょねん</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">去年</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 私 わたし</code></td>
-<td style="text-align: center;">代</td>
-<td style="text-align: center;">（通用）我</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 日本語 にほんご</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">日语</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 手紙 てがみ</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">书信</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 資料 しりょう</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">资料</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 改 かい</code>ざん</td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">篡改</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">この</td>
-<td style="text-align: center;">代</td>
-<td style="text-align: center;">（连体性近称）这个</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 番組 ばんぐみ</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">节目</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">ご<code>@ 覧 らん</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">（尊他语）看、所看</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">スポンサー</td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">赞助方</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 提供 ていきょう</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">提供</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 上海 シャンハイ</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">上海</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 東京 とうきょう</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">东京</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 飛行機 ひこうき</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">飞机</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 振 ふ</code>り</td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">①振动、摆动 <br /> ②（外表）样子、打扮 <br /> ③（作补助名词）装作、假装 <br /> ④（舞蹈）动作、姿势 <br /> ⑤陌生 <br /> ⑥临时、突然</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 囚人 しゅうじん</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">犯人</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 看守 かんしゅ</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">看守</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 目 め</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">①眼睛、眼球 <br /> ②眼光、眼神 <br /> ③外表、外观 <br /> ④监视、看守</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 彼 かれ</code></td>
-<td style="text-align: center;">代</td>
-<td style="text-align: center;">（通用）他</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 勤勉家 きんべんか</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">实干家、用功的人</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 当 あ</code>たり<code>@ 前 まえ</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">理所应当</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 明日 あした</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">明天</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 七時 しちじ</code></td>
-<td style="text-align: center;">数</td>
-<td style="text-align: center;">七点</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 会社 かいしゃ</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">公司</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 受付 うけつけ</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">前台</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 一寸 いっすん</code></td>
-<td style="text-align: center;">数</td>
-<td style="text-align: center;">一寸</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 光陰 こういん</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">光阴</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 世界 せかい</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">世界</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 祝福 しゅくふく</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">祝福</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 橋 はし</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">桥梁</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 石 いし</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">石头</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 生 なま</code>ビール</td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">生啤酒</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 五月雨 さみだれ</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">梅雨、阴历五月的阴雨</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 時雨 しぐれ</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">（秋冬之交的）阵雨</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 村雨 むらさめ</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">阵雨、骤雨</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 梅雨 つゆ</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">梅雨</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 一昨日 おととい</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">前天</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 明後日 あさって</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">后天</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 晦日 みそか</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">（阴历的）每月最后一天</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 足袋 たび</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">（日式）短布袜</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 吹雪 ふぶき</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">暴风雪</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 芝生 しばふ</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">草坪、矮草地</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 合図 あいず</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">信号、暗号</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 馬鹿 ばか</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">愚蠢的人、傻子</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 額縁 がくぶち</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">画框、相框</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 残高 ざんだか</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">余额</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 虚 うつ</code>ろ</td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">空虚、空洞</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 午前 ごぜん</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">午前、正午之前、上午</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">そこ</td>
-<td style="text-align: center;">代</td>
-<td style="text-align: center;">（名词性地点中称）那里</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">ハッピー</td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">快乐</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 天気予報 てんきよほう</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">天气预报</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 雨 あめ</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">雨</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>@ 申 もう</code>し<code>@ 訳 わけ</code></td>
-<td style="text-align: center;">名</td>
-<td style="text-align: center;">辩解</td>
-</tr>
-</tbody>
-</table>
-<h1 id="其他类型词语生词表">其他类型词语生词表</h1>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;">日语</th>
-<th style="text-align: center;">词性</th>
-<th style="text-align: center;">汉语释义</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><code>@ 御 お</code></td>
-<td style="text-align: center;">接続</td>
-<td style="text-align: center;">①您、您的 <br /> ②表尊敬的接头词</td>
-</tr>
-</tbody>
-</table>
-<h1 id="常用交际语表">常用交际语表</h1>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;">日语</th>
-<th style="text-align: center;">汉语释义</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">よろしくお<code>@ 願 ねが</code>いします。</td>
-<td style="text-align: center;">请多指教。</td>
-</tr>
-</tbody>
-</table>
 ]]></content>
       <categories>
         <category>【学习笔记】日语</category>
@@ -11093,53 +11103,6 @@ V_o &amp;\leftarrow (1 - \alpha_o)V_o + \alpha_o(o - \overline o)^2 \\
       </categories>
   </entry>
   <entry>
-    <title>《铃芽户缔》的不恰当译名与日译中问题</title>
-    <url>/2022/11/04/jc-translation/</url>
-    <content><![CDATA[<p>今天偶然刷到新海诚的动画电影新作《すずめの戸締り》的中文译名从《铃芽户缔》换为了《铃芽小姐来锁门》的新闻，于是产生了一些奇妙的感叹，慨叹翻译真的是一门艺术。这里也就随便写写，反正也就是 Holder 自己的一些想法罢了，没有严谨性，不具有参考价值。</p>
-<span id="more"></span>
-<h1 id="为什么直接搬汉字是不对的">为什么直接搬汉字是不对的</h1>
-<p>中日双语互译有一个特点，就是这两门语言至今都在使用汉字，而汉字是具有超脱于语言的表意性的，这也就是甚嚣尘上的“日语不要学，汉字随便拼一拼就读懂了”这个观点的一个基本点。</p>
-<p>事实上这类观点不能直接断定地说不对，因为如果一个日语句子里音读词居多，日本本土的虚词居少的话，实际上只要在认读汉字的基础上了解日语是 SOV 主宾谓语序就可以很方便地读出来句子：</p>
-<ul>
-<li>私は東京大学の大学生です。</li>
-<li>私は毎日七時に朝ご飯を食べます。</li>
-</ul>
-<p>虽然具体用词上和中文有些许差异，比如第一人称这里用的汉字是“私”，“早饭”在日语中的汉字是“朝饭”，但是大部分认识汉字的人都能基本准确地了解第一句表达“我是东京大学的大学生”，第二句表达“我每天七点吃早饭”。</p>
-<p>要是再知道点现代日语的高频虚词，比如否定往往以「ない、ません、ず」出现，存在往往以「ある、いる、あります、います」出现，过去往往以「た」出现，断定往往以「です、だ」出现，假定往往以「ば、なら、たら」出现，基本上就已经能够在甚至不会读五十音的条件下阅读很多的日语句子了。</p>
-<p>但是，这套方法的缺陷是相当明显的。</p>
-<p>首先，现代日语的汉字使用频率实际上是在下降的。除了由于同音异义词过多导致不得不使用汉字的音读词，事实上大部分不太常用的训读慢慢都在消退。比如说，现在很少有人将「かける」写成「駆ける、掛ける」之类的了，在诸如「夜にかける」这样结构的句子里，显然就直接导致动词无法认读，进而完全无法理解整体含义。甚至，类似「私、君、彼」等词语现今写为假名的频率可能已经高于或者逐步高于写为汉字。</p>
-<p>再者，日语汉字的含义与中文汉字的含义，可以有着很大的差别。相信大家早已在很多地方见过类似日语的“手纸”实际上是“信件”，日语的“爱人”实际上是“小三”之类的科普文章。事实上，还有很多类似「直す、戸惑う、見舞う、手配」等各种在中文中找不到对应表达的包含有汉字的日语词，即使可以尝试通过上下文断定，但是这类词语的认读依然是相当困难的。</p>
-<p>而这个原因也恰恰是我认为直接搬汉字的翻译方式是完全不正确的理由，日语中的汉字经过多年的发展，早已和当代中文中的汉字有了很大的偏差。纵使有相当部分的词语中的汉字和中文近似，我们也不能忽视掉另外一部分和中文并不贴切的汉字。这里「戸締り」就是一个重要的例子，「戸」是日语中表达“门”的汉字，「締まり」是动词「締まる」的名词形式，其动词形式表达“关闭”。而「戸締り」完完全全就是按照日语 VO 顺序构造出来的一个复合词，和中文使用汉字的思路完全不一致。直接的搬运明显造成了表意不明，因为“户缔”在中文中并不存在，对于完全不了解日语的人，这是一个不亚于“鲁棒性”一样的迷惑翻译。</p>
-<h1 id="与你的名字等的比较">与《你的名字》等的比较</h1>
-<p>或许有人反驳，《你的名字》的原名是《君の名は》，其称为《君名》是完全可以接受的。但我依然认为，《你的名字》这个翻译的使用频率高于《君名》这个翻译。而且《君名》能被接受的核心原因，我认为是这个名称的的构词语序对于中文日文都是统一的。这是一个偏正短语，在中文和日文中都是定语置于名词之前，再加上「の」这个假名作为格助词表示“的”的含义早就广为人知，这才让《君名》这个实际上很偷懒的译名活了下来。</p>
-<p>再说说新海诚别的作品，比如《言の葉の庭》《秒速 5 センチメートル》《天気の子》，这些作品的译名分别为《言叶之庭》《秒速五厘米》《天气之子》。这些标题的结构都较为简单，而且几乎没有使用到和中文意义不一致的汉字，所以翻译相当简单。或许这一次的《铃芽户缔》也就出于这种翻译惯性才成为了最初的官方译名。</p>
-<h1 id="日式风格">日式风格？</h1>
-<p>上面提到了《言叶之庭》，其中有一个词语“言叶”，这个词语显然并不是中文的词汇。然而这个词语由于已引入中国很长时间，在这一类日系作品的受众人群中，其表达“话语”这一含义已经广为人知。这实际上和「の」表示“的”也广为人知有类似之处。而「の」作为“的”广为人知的程度更是相当恐怖，甚至在输入法内输入 de，也有几率跳出「の」这个选项。另外，部分仿日式商品的销售词中会故意将“的”替换为「の」，完全忽视了「の」仅能够接在名词之后，导致部分动词词组修饰名词的时候也用「の」，让了解日语的人一眼看出来这是假日本货。</p>
-<p>然而这类严格意义上错误的用法依然得到了广泛承认，这又是为何。这类和中文并不一致但是又不至于和中文用法相差过远的日文事实上营造了一种日式的风格。包括日本人的姓名也有着类似的作用。</p>
-<p>与之前流行过的欧美翻译腔类似，事实上日文文本的翻译也为中文带来了日式表达。这类表达并不是源于中文本土环境，但是又能够让中文使用者理解，在这种微妙的违和感中携带的，就是所谓的语言风格。</p>
-<p>观察下述两句话（引用自知乎专栏 <a href="https://zhuanlan.zhihu.com/p/134031271" class="uri">https://zhuanlan.zhihu.com/p/134031271</a>）：</p>
-<ul>
-<li>我敢打赌，他做的菜就像地狱一样糟糕。</li>
-<li>突然被告白什么的，怎么做才好。</li>
-</ul>
-<p>前者明显携带一种欧美的语言风格，而后者则携带有一种日式的语言风格。</p>
-<p>营造这样的一种语言风格是有利于传播和营销的，现在大部分的人还是比较买日式这笔账的。然而，我也说过，营造这种氛围至少要让中文使用者理解，翻译的底线至少要做到让完全不懂对方语言的人能够看懂含义。回到《铃芽户缔》的问题上，如果你是完全不懂日语的中文使用者，你可能能够通过“铃芽”这个日式名字来感受这是一个日式的电影，然而如果我只给你看“户缔”，你又会如何理解呢？这种舍本逐末的行为显然是不可行的。</p>
-<p>再说现在新的译名《铃芽小姐来锁门》，这次做到了中文正确，但是是否过于僵硬了呢？这个译名过分强调了动作，“来”和“锁”的动作性过于强烈，让整个译名的重心偏向了动作。再加上莫名其妙加上了个现在比较微妙的“小姐”这个称谓，是否和铃芽作为少女的身份或多或少有点不匹配呢？“小姐”容易让人对主人公铃芽产生不正确的第一印象。</p>
-<p>我斗胆试译为《铃芽关上了门》，弱化一部分动作的属性，避免使用“小姐”这类可能引起误解的称谓，留下一些空白，可能稍微好一些。</p>
-<h1 id="口语与书面">口语与书面</h1>
-<p>其实在打算把这篇文章结束的时候，我突然想起《命に嫌われている》这首歌的歌名也经常简称为《命嫌》。</p>
-<p>不过这并不能构成对《铃芽户缔》这个译名的辩护，因为《命嫌》永远不是正式译名，仅仅是一个口语上的简称，其正式的译名依然是《被生命所嫌弃》。</p>
-<p>口语的随意性永远不能影响书面语的正式性，虽然我理解部分文艺作品的翻译为了贴合口语以方便受众，但是这类完全不能表达原意的翻译成为正式翻译是我不能接受的。</p>
-<h1 id="一些其他的话">一些其他的话</h1>
-<p>事实上随着信息交换的速度加快，认真翻译一个外来概念已经越来越困难，这在网络热词上更为明显。比如说日文中的接尾词「がち」，用于表达“往往”的含义。这个词在日本 Vtuber 圈内火了一圈之后传入中国，在中文互联网上则直接写为 gachi，直接音译，甚至连汉字都没用。当然这也有身份认可的作用在里面，理解 gachi 含义的人，显然比知道这个词应该翻译为“往往”的人更容易被这个团体接受。</p>
-<p>毕竟网络热词这种东西转瞬即逝，你认真为某个热词设计了很贴切的翻译，随后这个词早就没有人用了。</p>
-<p>或许这也是不愿意好好翻译电影名称的原因吧，虽然现在能引入国内院线的外国电影也是越来越少就是了。</p>
-]]></content>
-      <categories>
-        <category>【杂谈】日语</category>
-      </categories>
-  </entry>
-  <entry>
     <title>简明日语自学手册 Chapter 7 句式与常用固定表达</title>
     <url>/2022/08/22/ja-tutorial-ch7/</url>
     <content><![CDATA[<p>本文将在基本了解日语语句构成的条件下总结各类常见的日语语句表达方式，基于此，读者应当可以自行书写符合语法且自然的日语语句。</p>
@@ -11193,49 +11156,50 @@ V_o &amp;\leftarrow (1 - \alpha_o)V_o + \alpha_o(o - \overline o)^2 \\
       </categories>
   </entry>
   <entry>
-    <title>又一年五月</title>
-    <url>/2022/05/08/lab-quit/</url>
-    <content><![CDATA[<p>是不是每年的五月都会有些不太顺遂的事情发生。</p>
+    <title>《铃芽户缔》的不恰当译名与日译中问题</title>
+    <url>/2022/11/04/jc-translation/</url>
+    <content><![CDATA[<p>今天偶然刷到新海诚的动画电影新作《すずめの戸締り》的中文译名从《铃芽户缔》换为了《铃芽小姐来锁门》的新闻，于是产生了一些奇妙的感叹，慨叹翻译真的是一门艺术。这里也就随便写写，反正也就是 Holder 自己的一些想法罢了，没有严谨性，不具有参考价值。</p>
 <span id="more"></span>
-<p>昨晚通宵写了一些密码学的作业，然后就睡昏过去，一路睡到了下午四点，醒来之后导师发了微信消息说想聊聊。</p>
-<p>虽然有一点不太妙的预感，但在做完核酸之后还是接了导师的电话，导师自然还是弯弯绕绕地回忆了一下我在实验室的几个月，然后也就直白地说出了“我觉得你还是不太适合我们实验室”。</p>
-<p>其实还是有所预料的，毕竟自己因为期中课内一堆事情咕咕咕了科协咕咕咕了实验室工作，而这个项目五月底是要投的，所以交给我的任务也是无限期拖延，即使只是一个 Toy example。然后半路有一位茶园的同年级同学也加入了这个项目，虽然没和他直接交流，但是可以看出他一个星期内将项目推进了很多。</p>
-<p>所以导师不把名额给我其实也是很正常的一件事情。</p>
-<p>但毕竟现在是大三下学期，都快进入正常的推免流程了，这个时候作出这样的定论，毕竟还是杀了我一个措手不及。</p>
-<p>一看时间，又是五月初。去年五月初的狼狈已经不堪回首，前年五月的混沌早已淡出了记忆，今年的五月又是这样的变故。再这样下去，怕不是每年五月，即使我相当喜欢初夏，我也得下意识地恐惧这段时光。</p>
-<hr />
-<p>其实我一直是选择困难症的，选专业、选导师啥的。选图形学也是因为安老板推荐，加上 GAMES101 看着还不错，也就直接这么选了。但面临这样的境遇，也只能再去审视自己到底想去学什么。</p>
-<p>最后经过和若干位学长和同学交流了一番，我给季铮锋老师发出了邮件，想着去做量子计算之类的方向。</p>
-<hr />
-<p>其实打心底而言，我一直没有动现在实验室的项目也是有一定原因的。我想的是来实验室做一些渲染工作，然而我打开项目工程代码，我看到的是 Pytorch。虽然这也并不奇怪，毕竟有名言“Neural network rapes everything”。</p>
-<p>但我在想，导师把我安排来这个项目也是有原因的，毕竟我的简历上写着刘知远实验室的经历。但他可能并不了解的是，我从那里退出并不是因为我抢不到他的名额，而是我不想做人工智能。</p>
-<p>所以在面对项目代码的时候，我还是有点不大愿意动手。</p>
-<hr />
-<p>选量子，我也不是那么清楚为什么，可能是因为没人去做量子，所以名额比较充裕，也有可能是一种病急乱投医。</p>
-<p>时而会感叹自己，从人工智能到图形学再到量子，完全是从热门到冷门，从就业面宽到没有就业面。</p>
-<hr />
-<p>我到底想做什么，其实要我说，我也说不明白，我能明确说明的，只有我绝对不想做什么。我厌恶人工智能，厌恶计算机网络，高性能和计算机系统也不太想触碰（不是反感，而是自己太菜了）。</p>
-<p>如果需要给出一点模糊的答案，那可能是做开发，软件开发。我严重怀疑我自己的代码强迫症，看到什么都想重构，喜欢写那些别人看来是炫技的代码。</p>
-<p>但是软件开发又何必读博士呢。</p>
-<p>我也不太清楚我为何想继续读书，可能只是不想那么早就去接触职场。但毕竟这是逃避。</p>
-<hr />
-<p>谁知道呢，更何况我们的 Prof. Ji 也可以拒绝我，那我只能拿着 GPA 到时候随机挑导师了。</p>
-<p>出国没考 GRE，就业没实习，推免还被导师因为摸鱼拒绝了。</p>
-<hr />
-<p>但其实我现在也说不上难过，说不上有什么负面情绪，我大概看了几篇量子方向的论文，重新拿起 Artin，似乎又对可能的研究方向起了兴趣。</p>
-<p>然而我自己也是清楚的，我之前对图形学也有着这样的幻想，直到我打开了项目代码。</p>
-<p>Holder 真没有什么持久的爱好，慨叹。于是又要担心这种三分钟的热度何时会被消磨殆尽。</p>
-<hr />
-<p>哎，为了学位读书好烦啊，我好想就顺着自己的爱好随便乱学东西，今天学日语明天看几何大后天说不定在敲 Haskell。</p>
-<p>然而不为了学位读书没饭吃，没饭吃就没我这个人了。</p>
-<hr />
-<p>其实也算不上什么挫折，但是 Holder 莫名其妙想了好多。有那种积沙成塔但是倾覆于一旦的感觉，就是这种一点点的失落感。</p>
-<p>Whatever，明天照样起床，去做核酸，写密码学作业，等 Prof. Ji 的回信。</p>
-<p>其实现在内心还有一点点，说不定又可以名正言顺学 Artin 的兴奋。</p>
-<p>晚安哦。</p>
+<h1 id="为什么直接搬汉字是不对的">为什么直接搬汉字是不对的</h1>
+<p>中日双语互译有一个特点，就是这两门语言至今都在使用汉字，而汉字是具有超脱于语言的表意性的，这也就是甚嚣尘上的“日语不要学，汉字随便拼一拼就读懂了”这个观点的一个基本点。</p>
+<p>事实上这类观点不能直接断定地说不对，因为如果一个日语句子里音读词居多，日本本土的虚词居少的话，实际上只要在认读汉字的基础上了解日语是 SOV 主宾谓语序就可以很方便地读出来句子：</p>
+<ul>
+<li>私は東京大学の大学生です。</li>
+<li>私は毎日七時に朝ご飯を食べます。</li>
+</ul>
+<p>虽然具体用词上和中文有些许差异，比如第一人称这里用的汉字是“私”，“早饭”在日语中的汉字是“朝饭”，但是大部分认识汉字的人都能基本准确地了解第一句表达“我是东京大学的大学生”，第二句表达“我每天七点吃早饭”。</p>
+<p>要是再知道点现代日语的高频虚词，比如否定往往以「ない、ません、ず」出现，存在往往以「ある、いる、あります、います」出现，过去往往以「た」出现，断定往往以「です、だ」出现，假定往往以「ば、なら、たら」出现，基本上就已经能够在甚至不会读五十音的条件下阅读很多的日语句子了。</p>
+<p>但是，这套方法的缺陷是相当明显的。</p>
+<p>首先，现代日语的汉字使用频率实际上是在下降的。除了由于同音异义词过多导致不得不使用汉字的音读词，事实上大部分不太常用的训读慢慢都在消退。比如说，现在很少有人将「かける」写成「駆ける、掛ける」之类的了，在诸如「夜にかける」这样结构的句子里，显然就直接导致动词无法认读，进而完全无法理解整体含义。甚至，类似「私、君、彼」等词语现今写为假名的频率可能已经高于或者逐步高于写为汉字。</p>
+<p>再者，日语汉字的含义与中文汉字的含义，可以有着很大的差别。相信大家早已在很多地方见过类似日语的“手纸”实际上是“信件”，日语的“爱人”实际上是“小三”之类的科普文章。事实上，还有很多类似「直す、戸惑う、見舞う、手配」等各种在中文中找不到对应表达的包含有汉字的日语词，即使可以尝试通过上下文断定，但是这类词语的认读依然是相当困难的。</p>
+<p>而这个原因也恰恰是我认为直接搬汉字的翻译方式是完全不正确的理由，日语中的汉字经过多年的发展，早已和当代中文中的汉字有了很大的偏差。纵使有相当部分的词语中的汉字和中文近似，我们也不能忽视掉另外一部分和中文并不贴切的汉字。这里「戸締り」就是一个重要的例子，「戸」是日语中表达“门”的汉字，「締まり」是动词「締まる」的名词形式，其动词形式表达“关闭”。而「戸締り」完完全全就是按照日语 VO 顺序构造出来的一个复合词，和中文使用汉字的思路完全不一致。直接的搬运明显造成了表意不明，因为“户缔”在中文中并不存在，对于完全不了解日语的人，这是一个不亚于“鲁棒性”一样的迷惑翻译。</p>
+<h1 id="与你的名字等的比较">与《你的名字》等的比较</h1>
+<p>或许有人反驳，《你的名字》的原名是《君の名は》，其称为《君名》是完全可以接受的。但我依然认为，《你的名字》这个翻译的使用频率高于《君名》这个翻译。而且《君名》能被接受的核心原因，我认为是这个名称的的构词语序对于中文日文都是统一的。这是一个偏正短语，在中文和日文中都是定语置于名词之前，再加上「の」这个假名作为格助词表示“的”的含义早就广为人知，这才让《君名》这个实际上很偷懒的译名活了下来。</p>
+<p>再说说新海诚别的作品，比如《言の葉の庭》《秒速 5 センチメートル》《天気の子》，这些作品的译名分别为《言叶之庭》《秒速五厘米》《天气之子》。这些标题的结构都较为简单，而且几乎没有使用到和中文意义不一致的汉字，所以翻译相当简单。或许这一次的《铃芽户缔》也就出于这种翻译惯性才成为了最初的官方译名。</p>
+<h1 id="日式风格">日式风格？</h1>
+<p>上面提到了《言叶之庭》，其中有一个词语“言叶”，这个词语显然并不是中文的词汇。然而这个词语由于已引入中国很长时间，在这一类日系作品的受众人群中，其表达“话语”这一含义已经广为人知。这实际上和「の」表示“的”也广为人知有类似之处。而「の」作为“的”广为人知的程度更是相当恐怖，甚至在输入法内输入 de，也有几率跳出「の」这个选项。另外，部分仿日式商品的销售词中会故意将“的”替换为「の」，完全忽视了「の」仅能够接在名词之后，导致部分动词词组修饰名词的时候也用「の」，让了解日语的人一眼看出来这是假日本货。</p>
+<p>然而这类严格意义上错误的用法依然得到了广泛承认，这又是为何。这类和中文并不一致但是又不至于和中文用法相差过远的日文事实上营造了一种日式的风格。包括日本人的姓名也有着类似的作用。</p>
+<p>与之前流行过的欧美翻译腔类似，事实上日文文本的翻译也为中文带来了日式表达。这类表达并不是源于中文本土环境，但是又能够让中文使用者理解，在这种微妙的违和感中携带的，就是所谓的语言风格。</p>
+<p>观察下述两句话（引用自知乎专栏 <a href="https://zhuanlan.zhihu.com/p/134031271" class="uri">https://zhuanlan.zhihu.com/p/134031271</a>）：</p>
+<ul>
+<li>我敢打赌，他做的菜就像地狱一样糟糕。</li>
+<li>突然被告白什么的，怎么做才好。</li>
+</ul>
+<p>前者明显携带一种欧美的语言风格，而后者则携带有一种日式的语言风格。</p>
+<p>营造这样的一种语言风格是有利于传播和营销的，现在大部分的人还是比较买日式这笔账的。然而，我也说过，营造这种氛围至少要让中文使用者理解，翻译的底线至少要做到让完全不懂对方语言的人能够看懂含义。回到《铃芽户缔》的问题上，如果你是完全不懂日语的中文使用者，你可能能够通过“铃芽”这个日式名字来感受这是一个日式的电影，然而如果我只给你看“户缔”，你又会如何理解呢？这种舍本逐末的行为显然是不可行的。</p>
+<p>再说现在新的译名《铃芽小姐来锁门》，这次做到了中文正确，但是是否过于僵硬了呢？这个译名过分强调了动作，“来”和“锁”的动作性过于强烈，让整个译名的重心偏向了动作。再加上莫名其妙加上了个现在比较微妙的“小姐”这个称谓，是否和铃芽作为少女的身份或多或少有点不匹配呢？“小姐”容易让人对主人公铃芽产生不正确的第一印象。</p>
+<p>我斗胆试译为《铃芽关上了门》，弱化一部分动作的属性，避免使用“小姐”这类可能引起误解的称谓，留下一些空白，可能稍微好一些。</p>
+<h1 id="口语与书面">口语与书面</h1>
+<p>其实在打算把这篇文章结束的时候，我突然想起《命に嫌われている》这首歌的歌名也经常简称为《命嫌》。</p>
+<p>不过这并不能构成对《铃芽户缔》这个译名的辩护，因为《命嫌》永远不是正式译名，仅仅是一个口语上的简称，其正式的译名依然是《被生命所嫌弃》。</p>
+<p>口语的随意性永远不能影响书面语的正式性，虽然我理解部分文艺作品的翻译为了贴合口语以方便受众，但是这类完全不能表达原意的翻译成为正式翻译是我不能接受的。</p>
+<h1 id="一些其他的话">一些其他的话</h1>
+<p>事实上随着信息交换的速度加快，认真翻译一个外来概念已经越来越困难，这在网络热词上更为明显。比如说日文中的接尾词「がち」，用于表达“往往”的含义。这个词在日本 Vtuber 圈内火了一圈之后传入中国，在中文互联网上则直接写为 gachi，直接音译，甚至连汉字都没用。当然这也有身份认可的作用在里面，理解 gachi 含义的人，显然比知道这个词应该翻译为“往往”的人更容易被这个团体接受。</p>
+<p>毕竟网络热词这种东西转瞬即逝，你认真为某个热词设计了很贴切的翻译，随后这个词早就没有人用了。</p>
+<p>或许这也是不愿意好好翻译电影名称的原因吧，虽然现在能引入国内院线的外国电影也是越来越少就是了。</p>
 ]]></content>
       <categories>
-        <category>【杂谈】碎碎念</category>
+        <category>【杂谈】日语</category>
       </categories>
   </entry>
   <entry>
@@ -11282,6 +11246,52 @@ V_o &amp;\leftarrow (1 - \alpha_o)V_o + \alpha_o(o - \overline o)^2 \\
 ]]></content>
       <categories>
         <category>【杂谈】日语</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>又一年五月</title>
+    <url>/2022/05/08/lab-quit/</url>
+    <content><![CDATA[<p>是不是每年的五月都会有些不太顺遂的事情发生。</p>
+<span id="more"></span>
+<p>昨晚通宵写了一些密码学的作业，然后就睡昏过去，一路睡到了下午四点，醒来之后导师发了微信消息说想聊聊。</p>
+<p>虽然有一点不太妙的预感，但在做完核酸之后还是接了导师的电话，导师自然还是弯弯绕绕地回忆了一下我在实验室的几个月，然后也就直白地说出了“我觉得你还是不太适合我们实验室”。</p>
+<p>其实还是有所预料的，毕竟自己因为期中课内一堆事情咕咕咕了科协咕咕咕了实验室工作，而这个项目五月底是要投的，所以交给我的任务也是无限期拖延，即使只是一个 Toy example。然后半路有一位茶园的同年级同学也加入了这个项目，虽然没和他直接交流，但是可以看出他一个星期内将项目推进了很多。</p>
+<p>所以导师不把名额给我其实也是很正常的一件事情。</p>
+<p>但毕竟现在是大三下学期，都快进入正常的推免流程了，这个时候作出这样的定论，毕竟还是杀了我一个措手不及。</p>
+<p>一看时间，又是五月初。去年五月初的狼狈已经不堪回首，前年五月的混沌早已淡出了记忆，今年的五月又是这样的变故。再这样下去，怕不是每年五月，即使我相当喜欢初夏，我也得下意识地恐惧这段时光。</p>
+<hr />
+<p>其实我一直是选择困难症的，选专业、选导师啥的。选图形学也是因为安老板推荐，加上 GAMES101 看着还不错，也就直接这么选了。但面临这样的境遇，也只能再去审视自己到底想去学什么。</p>
+<p>最后经过和若干位学长和同学交流了一番，我给季铮锋老师发出了邮件，想着去做量子计算之类的方向。</p>
+<hr />
+<p>其实打心底而言，我一直没有动现在实验室的项目也是有一定原因的。我想的是来实验室做一些渲染工作，然而我打开项目工程代码，我看到的是 Pytorch。虽然这也并不奇怪，毕竟有名言“Neural network rapes everything”。</p>
+<p>但我在想，导师把我安排来这个项目也是有原因的，毕竟我的简历上写着刘知远实验室的经历。但他可能并不了解的是，我从那里退出并不是因为我抢不到他的名额，而是我不想做人工智能。</p>
+<p>所以在面对项目代码的时候，我还是有点不大愿意动手。</p>
+<hr />
+<p>选量子，我也不是那么清楚为什么，可能是因为没人去做量子，所以名额比较充裕，也有可能是一种病急乱投医。</p>
+<p>时而会感叹自己，从人工智能到图形学再到量子，完全是从热门到冷门，从就业面宽到没有就业面。</p>
+<hr />
+<p>我到底想做什么，其实要我说，我也说不明白，我能明确说明的，只有我绝对不想做什么。我厌恶人工智能，厌恶计算机网络，高性能和计算机系统也不太想触碰（不是反感，而是自己太菜了）。</p>
+<p>如果需要给出一点模糊的答案，那可能是做开发，软件开发。我严重怀疑我自己的代码强迫症，看到什么都想重构，喜欢写那些别人看来是炫技的代码。</p>
+<p>但是软件开发又何必读博士呢。</p>
+<p>我也不太清楚我为何想继续读书，可能只是不想那么早就去接触职场。但毕竟这是逃避。</p>
+<hr />
+<p>谁知道呢，更何况我们的 Prof. Ji 也可以拒绝我，那我只能拿着 GPA 到时候随机挑导师了。</p>
+<p>出国没考 GRE，就业没实习，推免还被导师因为摸鱼拒绝了。</p>
+<hr />
+<p>但其实我现在也说不上难过，说不上有什么负面情绪，我大概看了几篇量子方向的论文，重新拿起 Artin，似乎又对可能的研究方向起了兴趣。</p>
+<p>然而我自己也是清楚的，我之前对图形学也有着这样的幻想，直到我打开了项目代码。</p>
+<p>Holder 真没有什么持久的爱好，慨叹。于是又要担心这种三分钟的热度何时会被消磨殆尽。</p>
+<hr />
+<p>哎，为了学位读书好烦啊，我好想就顺着自己的爱好随便乱学东西，今天学日语明天看几何大后天说不定在敲 Haskell。</p>
+<p>然而不为了学位读书没饭吃，没饭吃就没我这个人了。</p>
+<hr />
+<p>其实也算不上什么挫折，但是 Holder 莫名其妙想了好多。有那种积沙成塔但是倾覆于一旦的感觉，就是这种一点点的失落感。</p>
+<p>Whatever，明天照样起床，去做核酸，写密码学作业，等 Prof. Ji 的回信。</p>
+<p>其实现在内心还有一点点，说不定又可以名正言顺学 Artin 的兴奋。</p>
+<p>晚安哦。</p>
+]]></content>
+      <categories>
+        <category>【杂谈】碎碎念</category>
       </categories>
   </entry>
   <entry>
@@ -15388,185 +15398,6 @@ G^\lambda_t := (1 - \lambda)\sum_{n = 1}^{+\infty}\lambda^{n - 1}G_t^{(n)}
       </categories>
   </entry>
   <entry>
-    <title>2022 年 2 月论文笔记</title>
-    <url>/2022/01/18/paper-2022-02/</url>
-    <content><![CDATA[<p>2022 年 2 月，主要工作为可微渲染相关方向。</p>
-<span id="more"></span>
-<h1 id="soft-rasterizer---a-differentiable-renderer-for-image-based-3d-reasoning">Soft Rasterizer - A Differentiable Renderer for Image-based 3D Reasoning</h1>
-<h2 id="工作概述">工作概述</h2>
-<p>主要思想还是想把逆向渲染管线（通过二维图像推理三维模型的参数）和神经网络结合，但是最大的问题是管线中的光栅化是离散化操作，可能导致不可微。一些其他的工作在尝试<strong>近似估算</strong>梯度，但是这个工作提出了一种真正可微的框架，能做到：</p>
-<ul>
-<li>直接用可微函数渲染染色的网格</li>
-<li>能从轮廓、阴影等各种二维图像信息有效反向传递为网格顶点参数</li>
-</ul>
-<p>这个工作的重点是把渲染过程的部分看作<strong>聚合函数（Aggregation function）</strong>，该函数联系了三维模型的网格三角形的概率分布以及其渲染出来的像素。</p>
-<div class="note info no-icon"><p>看起来标题中的 Soft 的含义就是使用概率分布的方式来把离散的光栅化变成可微的，最初始的光栅化一般会涉及到离散采样（即确定每一个离散的像素是否要显示网格上的某一个三角形），这也是不可微性的来源。</p>
-</div>
-<p>本论文主要讲述了如何通过 Soft rasterization 框架实现可微的光栅化以保证渲染管线的可微性，基于此，该渲染框架即可方便地接入神经网络以将二维图像信息反向传播到三维模型。同时，本论文也会指出近期的近似估算梯度的方式（使用 hand-crafted 的函数近似表示梯度）并不具有泛用性，且可能会降低三维模型信息更新的效率。</p>
-<h3 id="softras-与传统光栅化">SoftRas 与传统光栅化</h3>
-<p>SoftRas 在将模型投影到平面上的时候，会将模型转换为投影平面上的概率分布。而传统光栅化则是转化为具体某个像素是否染色。</p>
-<p>另外，似乎 SoftRas 对遮挡的处理也和传统渲染管线的 z-buffer 不一样。传统光栅化会使用 onehot 的方式处理遮挡（应该指的是处理为完全遮挡），而 SoftRas 也会基于概率分布做出不同处理。</p>
-<h2 id="相关工作">相关工作</h2>
-<h3 id="可微渲染">可微渲染</h3>
-<p>主要关注如何描述二维图像变化和三维模型操作的关系，主要解决如何从二维图像重建三维场景。考虑给定的二维图片 <span class="math inline">\(A\)</span>，首先粗略初始化一个三维场景 <span class="math inline">\(B&#39;\)</span>，然后通过渲染管线渲染得到二维图片 <span class="math inline">\(B\)</span>。计算 <span class="math inline">\(A\)</span> 和 <span class="math inline">\(B\)</span> 的 loss，将其梯度反向传播给三维场景 <span class="math inline">\(B&#39;\)</span> 的参数，更新之。这里反向传播就是可微渲染最重要的步骤，即如何计算梯度，因为三维场景参数更新量取决于 loss 对参数的偏导数。</p>
-<p>先前提到，这里获取梯度有困难。有些工作使用估计梯度的方式进行，有些工作可以精确计算梯度但是不具有泛用性。</p>
-<h3 id="基于图像的三维推理">基于图像的三维推理</h3>
-<p>依然考虑从二维图像重建三维场景。传统方法往往要求获得从多个角度观察得到的二维图像，而由于数据集的扩大，基于学习的重建方法可以使用一张或少量二维图像来重建场景。部分工作会将重建三维场景拆分为首先重建 2.5 维的表示（深度表等）。</p>
-<p>另外，姿态估计也是三位推理的一个重要的子任务。通过深度学习的方法，预测刚体姿态是较为简单的，而预测人体这类非刚体的姿态则较为困难。</p>
-<h2 id="softras-基本原理">SoftRas 基本原理</h2>
-<p>大约是这样的一个流程：</p>
-<p><img src="/uploads/paper-2022-02/1.png" /></p>
-<p>这里外部因素包含相机参数 <span class="math inline">\(\boldsymbol{P}\)</span> 和环境光照 <span class="math inline">\(\boldsymbol{L}\)</span>，内部因素包括网格信息 <span class="math inline">\(\boldsymbol{M}\)</span> 以及各个顶点的信息（如颜色、材质）<span class="math inline">\(\boldsymbol{A}\)</span>。</p>
-<p>这里第一步要做的是获取三个中间信息，即网格法向量 <span class="math inline">\(\boldsymbol{N}\)</span>、视图空间（投影后的空间）各点坐标 <span class="math inline">\(\boldsymbol{U}\)</span> 以及 View dependent depths <span class="math inline">\(\boldsymbol{Z}\)</span>。这三个量只需要使用相机参数和网格信息即可得到。</p>
-<p>之后可以使用例如 Phong 模型等着色模型计算出颜色 <span class="math inline">\(\boldsymbol{C}\)</span>。</p>
-<p>进行到这一步，上述这些操作都是可微的。但是如果按照传统的渲染管线，下一步应该分别确定每一个网格三角形与每一个像素的对应（即光栅化），之后还要用 z-buffer 处理遮挡，这两步都因为离散采样从而是不可微的。</p>
-<p>SoftRas 软化光栅化和 z-buffer 的方式是引入 probability maps <span class="math inline">\(\{\mathcal{D}_j\}\)</span> 和聚合函数 <span class="math inline">\(\mathcal{A}(\cdot)\)</span> 分别代替光栅化和 z-buffer。这里 <span class="math inline">\(\mathcal{D}_j\)</span> 表示的是每一个像素在网格三角形 <span class="math inline">\(f_j\)</span> 内部的概率在平面上的分布。而聚合函数 <span class="math inline">\(\mathcal{A}(\cdot)\)</span> 联系起了 probability maps 以及深度信息，作为整个后续渲染流程的代表。</p>
-<h3 id="probability-maps-计算">probability maps 计算</h3>
-<p>考虑网格三角形在屏幕上的投影 <span class="math inline">\(f_j\)</span> 和屏幕上的像素 <span class="math inline">\(p_i\)</span>，记在屏幕上 <span class="math inline">\(p_i\)</span> 到 <span class="math inline">\(f_j\)</span> 的边最近距离为 <span class="math inline">\(d(i, j)\)</span>。显然，这个距离越小的像素点，出现在内部的概率越大。由于其可以反映三角形对屏幕的影响，并且其可微，所以可以用此作为 probability maps 的代表。随后通过添加控制常数、符号标记并归一化到 <span class="math inline">\((0, 1)\)</span> 内之后，我们得到了 probability maps 的公式：</p>
-<p><span class="math display">\[
-\mathcal{D}_{i, j} = \mathrm{sigmoid}\left(\delta_{i, j}\cdot\frac{d^2(i, j)}{\sigma}\right)
-\]</span></p>
-<p>这里 <span class="math inline">\(\sigma\)</span> 是一个正常数，一般默认为 <span class="math inline">\(1\times 10^{-4}\)</span>。而 <span class="math inline">\(\delta_{i, j}\)</span> 标记了 <span class="math inline">\(p_i\)</span> 是否在 <span class="math inline">\(f_j\)</span> 之中。若在，则 <span class="math inline">\(\delta_{i, j} = 1\)</span>，否则 <span class="math inline">\(\delta_{i, j} = -1\)</span>。</p>
-<p>下图展示了 <span class="math inline">\(d(i, j)\)</span> 的定义以及 <span class="math inline">\(\sigma\)</span> 常数对概率分布的影响：</p>
-<p><img src="/uploads/paper-2022-02/2.png" /></p>
-<p>显然看出 <span class="math inline">\(\sigma\)</span> 越大，概率分布就越模糊。</p>
-<p>另外一个显然的点是 <span class="math inline">\(\sigma \to 0\)</span> 的时候概率分布中三角形外的点概率密度为 <span class="math inline">\(0\)</span>，而三角形内的点为 <span class="math inline">\(1\)</span>。此时 SoftRas 退化为一般的光栅化。</p>
-<h3 id="聚合函数">聚合函数</h3>
-<p>我们考虑最后一个阶段，这里我们需要根据深度信息、 probability maps 以及颜色信息计算出最后的渲染结果。</p>
-<p>最后渲染结果中，像素 <span class="math inline">\(p_i\)</span> 的渲染结果用聚合函数表示，定义为：</p>
-<p><span class="math display">\[
-I_i = \mathcal{A}_S(\{C_j\}) := \sum_j w_{i, j}C_{i, j} + w_{i, b}C_b
-\]</span></p>
-<p>这里渲染结果定义为一系列颜色信息的加权求和，颜色构成的集合为 <span class="math inline">\(\{C_j\}\)</span>，符号 <span class="math inline">\(C_{i, j}\)</span> 表示三角形 <span class="math inline">\(f_j\)</span> 在像素 <span class="math inline">\(p_i\)</span> 处的颜色。而 <span class="math inline">\(C_b\)</span> 表示背景颜色。</p>
-<p>权重 <span class="math inline">\(w_{i, j}\)</span> 至少满足归一化条件：</p>
-<p><span class="math display">\[
-w_{i, b} + \sum_j w_{i, j} = 1
-\]</span></p>
-<p>而权重的具体值取决于先前得到的 probability maps 以及深度信息。我们将三角形 <span class="math inline">\(f_j\)</span> 中投影到 <span class="math inline">\(p_i\)</span> 像素的点的逆深度记为 <span class="math inline">\(z_{i, j}\)</span>。概率分布沿用先前的符号。定义：</p>
-<p><span class="math display">\[
-w_{i, j} := \frac{\mathcal{D}_{i, j}\exp(z_{i, j} / \gamma)}{\sum_k \mathcal{D}_{i, k}\exp(z_{i, k} / \gamma) + \exp(\varepsilon / \gamma)}
-\]</span></p>
-<p>依据归一化条件就有：</p>
-<p><span class="math display">\[
-w_{i, b} := \frac{\exp(\varepsilon / \gamma)}{\sum_k \mathcal{D}_{i, k}\exp(z_{i, k} / \gamma) + \exp(\varepsilon / \gamma)}
-\]</span></p>
-<div class="note info no-icon"><p>可以看出权重的计算公式其实是类似 Softmax 函数：</p>
-<p><span class="math display">\[
-{\rm softmax}(z_1, z_2, \cdots, z_n)_j = \frac{e^{z_j}}{\sum_i e^{z_i}}
-\]</span></p>
-</div>
-<p>这里可以看出 <span class="math inline">\(\varepsilon\)</span> 是一个小正常数，其作用是将背景颜色纳入计算。<span class="math inline">\(\gamma\)</span> 是一个调节清晰度的正常数，与计算 probability maps 的 <span class="math inline">\(\sigma\)</span> 类似，默认值一般是 <span class="math inline">\(1 \times 10^{-4}\)</span>。</p>
-<p>可以看出，具有更大概率密度的，且离投影平面更近的（即具有更大逆深度的）三角形会获得更大的权重，这符合直觉。</p>
-<hr />
-<p>现在考虑退化。针对像素 <span class="math inline">\(p_i\)</span>，假设 <span class="math inline">\(z_{i, 1} &lt; z_{i, 2} &lt; \cdots &lt; z_{i, N}\)</span>，考虑 <span class="math inline">\(\gamma\to 0\)</span>。首先考察 <span class="math inline">\(j = N\)</span>：</p>
-<p><span class="math display">\[
-\begin{aligned}
-w_{i, N} &amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}\exp(z_{i, N} / \gamma)}{\sum_k \mathcal{D}_{i, k}\exp(z_{i, k} / \gamma) + \exp(\varepsilon / \gamma)} \\
-&amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}}{\sum_k \mathcal{D}_{i, k}\exp((z_{i, k} - z_{i, N}) / \gamma) + \exp((\varepsilon - z_{i, N}) / \gamma)} \\
-&amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}}{\sum_{k = 1}^{N - 1} \mathcal{D}_{i, k}\exp((z_{i, k} - z_{i, N}) / \gamma) + \mathcal{D}_{i, N} + \exp((\varepsilon - z_{i, N}) / \gamma)} \\
-&amp;= 1
-\end{aligned}
-\]</span></p>
-<p>最后一步注意到 <span class="math inline">\(z_{i, N}\)</span> 大于任何 <span class="math inline">\(z_{i, k}(k &lt; N)\)</span>，故有这样的结果。而对于 <span class="math inline">\(j &lt; N\)</span>：</p>
-<p><span class="math display">\[
-\begin{aligned}
-w_{i, j} &amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, j}\exp(z_{i, j} / \gamma)}{\sum_k \mathcal{D}_{i, k}\exp(z_{i, k} / \gamma) + \exp(\varepsilon / \gamma)} \\
-&amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}}{\sum_k \mathcal{D}_{i, k}\exp((z_{i, k} - z_{i, j}) / \gamma) + \exp((\varepsilon - z_{i, j}) / \gamma)} \\
-&amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}}{\left(\sum_{k = 1}^{j - 1} + \sum_{k = j + 1}^{N}\right) \mathcal{D}_{i, k}\exp((z_{i, k} - z_{i, N}) / \gamma) + \mathcal{D}_{i, N} + \exp((\varepsilon - z_{i, N}) / \gamma)} \\
-&amp;= 0
-\end{aligned}
-\]</span></p>
-<p>这里要注意到分母上 <span class="math inline">\(\sum_{k = j + 1}^{N}\)</span> 的部分最终会趋向于正无穷，整体极限为 <span class="math inline">\(0\)</span>。最后根据归一化条件也有 <span class="math inline">\(w_{i, b} = 0\)</span>。</p>
-<p>结合这样的推理，可以看出：</p>
-<p><span class="math display">\[
-I_i = \mathcal{A}_S(\{C_j\}) = C_{i, N}
-\]</span></p>
-<p>也就是说最后渲染的结果只考虑了最近的网格三角形，这也就是 z-buffer 方法。</p>
-<hr />
-<p>似乎还有一个和轮廓相关的聚合函数：</p>
-<p><span class="math display">\[
-I_{i, S} = \mathcal{A}_O(\{\mathcal{D}_j\}) := 1 - \prod_j (1 - \mathcal{D}_{i, j})
-\]</span></p>
-<p>这里没有出现颜色项，这是因为轮廓的颜色一般设定为常数。这里聚合函数形式上实际上就是计算出了像素 <span class="math inline">\(p_i\)</span> 被至少一个三角形覆盖的概率。</p>
-<h2 id="实验内容">实验内容</h2>
-<h3 id="single-view-mesh-reconstruction">Single-View Mesh Reconstruction</h3>
-<p>使用这样的结构：</p>
-<p><img src="/uploads/paper-2022-02/3.png" /></p>
-<p>这里固定了渲染管线中的外部变量，即固定了相机位置和环境光照。每一个输入图片都会进入 color generator 和 shape generator 生成三维模型参数 <span class="math inline">\(\boldsymbol{C}\)</span> 和 <span class="math inline">\(\boldsymbol{M}\)</span>。随后后续接入 SoftRas，渲染得到带颜色的图像 <span class="math inline">\(I_C\)</span> 和轮廓 <span class="math inline">\(I_S\)</span>，最后和原先图像比较计算 loss。</p>
-<p>最后定义的 loss 分为三部分。在叙述定义之前，我们将原始图像的颜色和轮廓定义为 <span class="math inline">\(\hat I_C\)</span> 以及 <span class="math inline">\(\hat I_S\)</span>：</p>
-<ul>
-<li>color loss。定义为颜色之差的 1- 范数：</li>
-</ul>
-<p><span class="math display">\[
-\mathcal{L}_C := \|I_C - \hat I_C\|_1
-\]</span></p>
-<ul>
-<li>silhouette loss。定义为，这里使用 <span class="math inline">\(\otimes\)</span> 表示逐元素求积，<span class="math inline">\(\oplus\)</span> 表示逐元素求和：</li>
-</ul>
-<p><span class="math display">\[
-\mathcal{L}_S := 1 - \frac{\|I_S \otimes \hat I_S\|_1}{\|I_S \oplus \hat I_S - I_S \otimes \hat I_S\|_1}
-\]</span></p>
-<ul>
-<li>geometry loss。作用是对 loss 进行 L1 正则化。</li>
-</ul>
-<p>最后定义的 loss 是这三部分的加权求和：</p>
-<p><span class="math display">\[
-\mathcal{L} := \mathcal{L}_S + \lambda\mathcal{L}_C + \mu\mathcal{L}_G
-\]</span></p>
-<p>这里论文主要提了一下 color generator 的结构：</p>
-<p><img src="/uploads/paper-2022-02/4.png" /></p>
-<p>似乎是提出了一种新结构，让颜色重建变为一个多分类问题，进而降低了时间复杂度。但是论文的描述中有若干的暂且不太清楚的名词，暂且把原文贴在这里以后再来看：</p>
-<div class="note info no-icon"><p>Instead of directly regressing the color value, our color generator formulates color reconstruction as a classification problem that learns to reuse the pixel colors in the input image for each sampling point. Let <span class="math inline">\(N_c\)</span> denote the number of sampling points on <span class="math inline">\(\boldsymbol{M}\)</span> and <span class="math inline">\(H, W\)</span> be the height and width of the input image respectively. However, the computational cost of a naive color selection approach is prohibitive, i.e. <span class="math inline">\(O(HWN_c)\)</span>. To address this challenge, we propose a novel approach to colorize mesh using a color palette, as shown in Figure 7. Specifically, after passing input image to a neural network, the extracted features are fed into (1) a sampling network that samples the representative colors for building the palette; and (2) a selection network that combines colors from the palette for texturing the sampling points. The color prediction is obtained by multiplying the color selections with the learned color palette. Our approach reduces the computation complexity to <span class="math inline">\(O(N_d(HW + N_c))\)</span>, where <span class="math inline">\(N_p\)</span> is the size of color palette. With a proper setting of <span class="math inline">\(N_p\)</span>, one can significantly reduce the computational cost while achieving sharp and accurate color recovery.</p>
-</div>
-<h3 id="image-based-shape-fitting">Image-based Shape Fitting</h3>
-<p>似乎依然是从图像重建模型，但是这个重建任务似乎和姿态预测有较为紧密的联系。</p>
-<p>传统方法面临的问题依然是梯度不精确的问题，这样就导致反向传播较为困难。另外，传统方法也面临这样的问题：</p>
-<ul>
-<li><p>遮挡问题。传统方法中，被遮挡的三角形无法调整参数，而 SoftRas 允许被遮挡的三角形参与到运算中，所以这个问题可以解决。</p></li>
-<li><p>局部最小值问题。我们希望误差反向传播可以传播到较大范围，即希望一次三维模型参数调整不局限于较小的局部，否则可能会导致模型收敛到局部最小值而非更优的结果。而 SoftRas 使用的概率分布算法允许全局的像素参与到运算中，所以理论上误差可以传播到较大范围，这个问题可以解决。</p></li>
-</ul>
-<p>所以最后就直接使用这样的方式训练就行了：</p>
-<p><span class="math display">\[
-\{\rho, \theta, t\} = \mathop{\mathrm{argmin}}_{\rho, \theta, t}\|R(M(\rho, \theta, t)) - I_t\|_2
-\]</span></p>
-<p>这里 <span class="math inline">\(\rho, \theta, t\)</span> 是三维模型的参数，分别是非刚体形变参数、姿态角度、转换参数（或许就是视图转换的参数），<span class="math inline">\(M(\cdot)\)</span> 将这些参数转换为网格，<span class="math inline">\(R(\cdot)\)</span> 是渲染函数，<span class="math inline">\(I_t\)</span> 则是目标图像。这个训练方式也就是机器学习的通式。</p>
-<h2 id="实验结果">实验结果</h2>
-<h3 id="single-view-mesh-reconstruction-1">Single-View Mesh Reconstruction</h3>
-<p>实验结果看确实挺好的，下面展示的是不带颜色的网格重建：</p>
-<p><img src="/uploads/paper-2022-02/5.png" /></p>
-<p>颜色似乎也重建得挺好：</p>
-<p><img src="/uploads/paper-2022-02/6.png" height="50%" width="50%" /></p>
-<p>使用的评价方法是 3D IoU，即 3D Intersection over Union。这是一种物体检测领域的评价函数。二维情况下的 IoU 定义如下图所示。这里的矩形均指代物体的包围盒，分别为实际的包围盒和模型预测的包围盒：</p>
-<p><img src="/uploads/paper-2022-02/7.png" height="50%" width="50%" /></p>
-<p>SoftRas 的平均 3D IoU 超出了 state-of-art 的 NMR 的 3D IoU 约 4.5 点，从而说明在网格重建任务上 SoftRas 的表现超出了传统方法。</p>
-<p>另外似乎还有一项称为 Ablation Study 的后续实验，这里省略。</p>
-<h3 id="image-based-shape-fitting-1">Image-based Shape Fitting</h3>
-<p>首先实验刚体结构预测，这里采用六面着不同色的正方体。给定渲染后图像，要求给出正方体应当旋转的角度。SoftRas 和 NMR 的实验结果如下：</p>
-<p><img src="/uploads/paper-2022-02/8.png" /></p>
-<p>可以发现 SoftRas 成功获得了最后的结果，而 NMR 则收敛到了一个局部最小值无法得到正确结果。</p>
-<p>论文认为 NMR 失败的原因正是因为六个面的相互遮挡，这导致了 NMR 无法越过局部最小值。</p>
-<p>另外其也做了大量实验，表明 SoftRas 预测的旋转角度误差严格优于 NMR，在不优化的情况下，SoftRas 的角度误差平均比 NMR 低 <span class="math inline">\(10.60^\circ\)</span>。</p>
-<p>这里似乎涉及到 <span class="math inline">\({\rm SO}(3)\)</span> 旋转群的一些东西，后面再来研究吧。</p>
-<hr />
-<p>非刚体结构预测则选用了人体结构预测，这里初始化时人的右手位于背后，而目标图像中右手已经移动到前面，实验目标是将手移出来。显然 NMR 依然因为无法处理遮挡，最后没有能够完成任务。而 SoftRas 完成了：</p>
-<p><img src="/uploads/paper-2022-02/9.png" /></p>
-<h2 id="附录梯度计算">附录：梯度计算</h2>
-<p>我们现在研究一下 SoftRas 渲染出来的图像 <span class="math inline">\(\boldsymbol{I}\)</span> 对网格参数 <span class="math inline">\(\boldsymbol{M}\)</span> 的梯度，这个梯度也就是在反向传播的时候要计算的值。首先显然有：</p>
-<p><span class="math display">\[
-\frac{\partial\boldsymbol{I}}{\partial\boldsymbol{M}} = \frac{\partial\boldsymbol{I}}{\partial\boldsymbol{U}}\frac{\partial\boldsymbol{U}}{\partial\boldsymbol{M}} + \frac{\partial\boldsymbol{I}}{\partial\boldsymbol{Z}}\frac{\partial\boldsymbol{Z}}{\partial\boldsymbol{M}} + \frac{\partial\boldsymbol{I}}{\partial\boldsymbol{N}}\frac{\partial\boldsymbol{N}}{\partial\boldsymbol{M}}
-\]</span></p>
-<p>这里显然可以看出 <span class="math inline">\(\dfrac{\partial\boldsymbol{U}}{\partial\boldsymbol{M}}, \dfrac{\partial\boldsymbol{Z}}{\partial\boldsymbol{M}}, \dfrac{\partial\boldsymbol{N}}{\partial\boldsymbol{M}}\)</span> 是可以简单计算的，因为 <span class="math inline">\(\boldsymbol{U}, \boldsymbol{Z}, \boldsymbol{N}\)</span> 都可以由 <span class="math inline">\(\boldsymbol{M}\)</span> 通过简单的视图变换得到，由变换矩阵即可推算偏导数。</p>
-<p>而根据着色模型，<span class="math inline">\(\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{N}}\)</span> 也是可以计算的。</p>
-<p>剩余的两个梯度中，<span class="math inline">\(\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{Z}}\)</span> 直接和聚合函数相关，而 <span class="math inline">\(\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{U}}\)</span> 经过了两层，分别是概率分布计算和聚合函数，所以我们需要拆解：</p>
-<p><span class="math display">\[
-\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{U}} = \dfrac{\partial\boldsymbol{I}}{\partial\mathcal{D}}\dfrac{\partial\mathcal{D}}{\partial\boldsymbol{U}}
-\]</span></p>
-]]></content>
-      <categories>
-        <category>【论文笔记】计算机</category>
-      </categories>
-  </entry>
-  <entry>
     <title>原创数学题集</title>
     <url>/2022/07/12/orginal-problems/</url>
     <content><![CDATA[<p>一些奇妙的数学想法而已，可能是初中、高中、大学题，反正是弄着玩的。</p>
@@ -15992,6 +15823,185 @@ k(y_2 - y_1) = x_3(x_2 - x_1) + (x_2^2 - x_1^2) \Rightarrow k^2 = x_1 + x_2 + x_
       </categories>
   </entry>
   <entry>
+    <title>2022 年 2 月论文笔记</title>
+    <url>/2022/01/18/paper-2022-02/</url>
+    <content><![CDATA[<p>2022 年 2 月，主要工作为可微渲染相关方向。</p>
+<span id="more"></span>
+<h1 id="soft-rasterizer---a-differentiable-renderer-for-image-based-3d-reasoning">Soft Rasterizer - A Differentiable Renderer for Image-based 3D Reasoning</h1>
+<h2 id="工作概述">工作概述</h2>
+<p>主要思想还是想把逆向渲染管线（通过二维图像推理三维模型的参数）和神经网络结合，但是最大的问题是管线中的光栅化是离散化操作，可能导致不可微。一些其他的工作在尝试<strong>近似估算</strong>梯度，但是这个工作提出了一种真正可微的框架，能做到：</p>
+<ul>
+<li>直接用可微函数渲染染色的网格</li>
+<li>能从轮廓、阴影等各种二维图像信息有效反向传递为网格顶点参数</li>
+</ul>
+<p>这个工作的重点是把渲染过程的部分看作<strong>聚合函数（Aggregation function）</strong>，该函数联系了三维模型的网格三角形的概率分布以及其渲染出来的像素。</p>
+<div class="note info no-icon"><p>看起来标题中的 Soft 的含义就是使用概率分布的方式来把离散的光栅化变成可微的，最初始的光栅化一般会涉及到离散采样（即确定每一个离散的像素是否要显示网格上的某一个三角形），这也是不可微性的来源。</p>
+</div>
+<p>本论文主要讲述了如何通过 Soft rasterization 框架实现可微的光栅化以保证渲染管线的可微性，基于此，该渲染框架即可方便地接入神经网络以将二维图像信息反向传播到三维模型。同时，本论文也会指出近期的近似估算梯度的方式（使用 hand-crafted 的函数近似表示梯度）并不具有泛用性，且可能会降低三维模型信息更新的效率。</p>
+<h3 id="softras-与传统光栅化">SoftRas 与传统光栅化</h3>
+<p>SoftRas 在将模型投影到平面上的时候，会将模型转换为投影平面上的概率分布。而传统光栅化则是转化为具体某个像素是否染色。</p>
+<p>另外，似乎 SoftRas 对遮挡的处理也和传统渲染管线的 z-buffer 不一样。传统光栅化会使用 onehot 的方式处理遮挡（应该指的是处理为完全遮挡），而 SoftRas 也会基于概率分布做出不同处理。</p>
+<h2 id="相关工作">相关工作</h2>
+<h3 id="可微渲染">可微渲染</h3>
+<p>主要关注如何描述二维图像变化和三维模型操作的关系，主要解决如何从二维图像重建三维场景。考虑给定的二维图片 <span class="math inline">\(A\)</span>，首先粗略初始化一个三维场景 <span class="math inline">\(B&#39;\)</span>，然后通过渲染管线渲染得到二维图片 <span class="math inline">\(B\)</span>。计算 <span class="math inline">\(A\)</span> 和 <span class="math inline">\(B\)</span> 的 loss，将其梯度反向传播给三维场景 <span class="math inline">\(B&#39;\)</span> 的参数，更新之。这里反向传播就是可微渲染最重要的步骤，即如何计算梯度，因为三维场景参数更新量取决于 loss 对参数的偏导数。</p>
+<p>先前提到，这里获取梯度有困难。有些工作使用估计梯度的方式进行，有些工作可以精确计算梯度但是不具有泛用性。</p>
+<h3 id="基于图像的三维推理">基于图像的三维推理</h3>
+<p>依然考虑从二维图像重建三维场景。传统方法往往要求获得从多个角度观察得到的二维图像，而由于数据集的扩大，基于学习的重建方法可以使用一张或少量二维图像来重建场景。部分工作会将重建三维场景拆分为首先重建 2.5 维的表示（深度表等）。</p>
+<p>另外，姿态估计也是三位推理的一个重要的子任务。通过深度学习的方法，预测刚体姿态是较为简单的，而预测人体这类非刚体的姿态则较为困难。</p>
+<h2 id="softras-基本原理">SoftRas 基本原理</h2>
+<p>大约是这样的一个流程：</p>
+<p><img src="/uploads/paper-2022-02/1.png" /></p>
+<p>这里外部因素包含相机参数 <span class="math inline">\(\boldsymbol{P}\)</span> 和环境光照 <span class="math inline">\(\boldsymbol{L}\)</span>，内部因素包括网格信息 <span class="math inline">\(\boldsymbol{M}\)</span> 以及各个顶点的信息（如颜色、材质）<span class="math inline">\(\boldsymbol{A}\)</span>。</p>
+<p>这里第一步要做的是获取三个中间信息，即网格法向量 <span class="math inline">\(\boldsymbol{N}\)</span>、视图空间（投影后的空间）各点坐标 <span class="math inline">\(\boldsymbol{U}\)</span> 以及 View dependent depths <span class="math inline">\(\boldsymbol{Z}\)</span>。这三个量只需要使用相机参数和网格信息即可得到。</p>
+<p>之后可以使用例如 Phong 模型等着色模型计算出颜色 <span class="math inline">\(\boldsymbol{C}\)</span>。</p>
+<p>进行到这一步，上述这些操作都是可微的。但是如果按照传统的渲染管线，下一步应该分别确定每一个网格三角形与每一个像素的对应（即光栅化），之后还要用 z-buffer 处理遮挡，这两步都因为离散采样从而是不可微的。</p>
+<p>SoftRas 软化光栅化和 z-buffer 的方式是引入 probability maps <span class="math inline">\(\{\mathcal{D}_j\}\)</span> 和聚合函数 <span class="math inline">\(\mathcal{A}(\cdot)\)</span> 分别代替光栅化和 z-buffer。这里 <span class="math inline">\(\mathcal{D}_j\)</span> 表示的是每一个像素在网格三角形 <span class="math inline">\(f_j\)</span> 内部的概率在平面上的分布。而聚合函数 <span class="math inline">\(\mathcal{A}(\cdot)\)</span> 联系起了 probability maps 以及深度信息，作为整个后续渲染流程的代表。</p>
+<h3 id="probability-maps-计算">probability maps 计算</h3>
+<p>考虑网格三角形在屏幕上的投影 <span class="math inline">\(f_j\)</span> 和屏幕上的像素 <span class="math inline">\(p_i\)</span>，记在屏幕上 <span class="math inline">\(p_i\)</span> 到 <span class="math inline">\(f_j\)</span> 的边最近距离为 <span class="math inline">\(d(i, j)\)</span>。显然，这个距离越小的像素点，出现在内部的概率越大。由于其可以反映三角形对屏幕的影响，并且其可微，所以可以用此作为 probability maps 的代表。随后通过添加控制常数、符号标记并归一化到 <span class="math inline">\((0, 1)\)</span> 内之后，我们得到了 probability maps 的公式：</p>
+<p><span class="math display">\[
+\mathcal{D}_{i, j} = \mathrm{sigmoid}\left(\delta_{i, j}\cdot\frac{d^2(i, j)}{\sigma}\right)
+\]</span></p>
+<p>这里 <span class="math inline">\(\sigma\)</span> 是一个正常数，一般默认为 <span class="math inline">\(1\times 10^{-4}\)</span>。而 <span class="math inline">\(\delta_{i, j}\)</span> 标记了 <span class="math inline">\(p_i\)</span> 是否在 <span class="math inline">\(f_j\)</span> 之中。若在，则 <span class="math inline">\(\delta_{i, j} = 1\)</span>，否则 <span class="math inline">\(\delta_{i, j} = -1\)</span>。</p>
+<p>下图展示了 <span class="math inline">\(d(i, j)\)</span> 的定义以及 <span class="math inline">\(\sigma\)</span> 常数对概率分布的影响：</p>
+<p><img src="/uploads/paper-2022-02/2.png" /></p>
+<p>显然看出 <span class="math inline">\(\sigma\)</span> 越大，概率分布就越模糊。</p>
+<p>另外一个显然的点是 <span class="math inline">\(\sigma \to 0\)</span> 的时候概率分布中三角形外的点概率密度为 <span class="math inline">\(0\)</span>，而三角形内的点为 <span class="math inline">\(1\)</span>。此时 SoftRas 退化为一般的光栅化。</p>
+<h3 id="聚合函数">聚合函数</h3>
+<p>我们考虑最后一个阶段，这里我们需要根据深度信息、 probability maps 以及颜色信息计算出最后的渲染结果。</p>
+<p>最后渲染结果中，像素 <span class="math inline">\(p_i\)</span> 的渲染结果用聚合函数表示，定义为：</p>
+<p><span class="math display">\[
+I_i = \mathcal{A}_S(\{C_j\}) := \sum_j w_{i, j}C_{i, j} + w_{i, b}C_b
+\]</span></p>
+<p>这里渲染结果定义为一系列颜色信息的加权求和，颜色构成的集合为 <span class="math inline">\(\{C_j\}\)</span>，符号 <span class="math inline">\(C_{i, j}\)</span> 表示三角形 <span class="math inline">\(f_j\)</span> 在像素 <span class="math inline">\(p_i\)</span> 处的颜色。而 <span class="math inline">\(C_b\)</span> 表示背景颜色。</p>
+<p>权重 <span class="math inline">\(w_{i, j}\)</span> 至少满足归一化条件：</p>
+<p><span class="math display">\[
+w_{i, b} + \sum_j w_{i, j} = 1
+\]</span></p>
+<p>而权重的具体值取决于先前得到的 probability maps 以及深度信息。我们将三角形 <span class="math inline">\(f_j\)</span> 中投影到 <span class="math inline">\(p_i\)</span> 像素的点的逆深度记为 <span class="math inline">\(z_{i, j}\)</span>。概率分布沿用先前的符号。定义：</p>
+<p><span class="math display">\[
+w_{i, j} := \frac{\mathcal{D}_{i, j}\exp(z_{i, j} / \gamma)}{\sum_k \mathcal{D}_{i, k}\exp(z_{i, k} / \gamma) + \exp(\varepsilon / \gamma)}
+\]</span></p>
+<p>依据归一化条件就有：</p>
+<p><span class="math display">\[
+w_{i, b} := \frac{\exp(\varepsilon / \gamma)}{\sum_k \mathcal{D}_{i, k}\exp(z_{i, k} / \gamma) + \exp(\varepsilon / \gamma)}
+\]</span></p>
+<div class="note info no-icon"><p>可以看出权重的计算公式其实是类似 Softmax 函数：</p>
+<p><span class="math display">\[
+{\rm softmax}(z_1, z_2, \cdots, z_n)_j = \frac{e^{z_j}}{\sum_i e^{z_i}}
+\]</span></p>
+</div>
+<p>这里可以看出 <span class="math inline">\(\varepsilon\)</span> 是一个小正常数，其作用是将背景颜色纳入计算。<span class="math inline">\(\gamma\)</span> 是一个调节清晰度的正常数，与计算 probability maps 的 <span class="math inline">\(\sigma\)</span> 类似，默认值一般是 <span class="math inline">\(1 \times 10^{-4}\)</span>。</p>
+<p>可以看出，具有更大概率密度的，且离投影平面更近的（即具有更大逆深度的）三角形会获得更大的权重，这符合直觉。</p>
+<hr />
+<p>现在考虑退化。针对像素 <span class="math inline">\(p_i\)</span>，假设 <span class="math inline">\(z_{i, 1} &lt; z_{i, 2} &lt; \cdots &lt; z_{i, N}\)</span>，考虑 <span class="math inline">\(\gamma\to 0\)</span>。首先考察 <span class="math inline">\(j = N\)</span>：</p>
+<p><span class="math display">\[
+\begin{aligned}
+w_{i, N} &amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}\exp(z_{i, N} / \gamma)}{\sum_k \mathcal{D}_{i, k}\exp(z_{i, k} / \gamma) + \exp(\varepsilon / \gamma)} \\
+&amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}}{\sum_k \mathcal{D}_{i, k}\exp((z_{i, k} - z_{i, N}) / \gamma) + \exp((\varepsilon - z_{i, N}) / \gamma)} \\
+&amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}}{\sum_{k = 1}^{N - 1} \mathcal{D}_{i, k}\exp((z_{i, k} - z_{i, N}) / \gamma) + \mathcal{D}_{i, N} + \exp((\varepsilon - z_{i, N}) / \gamma)} \\
+&amp;= 1
+\end{aligned}
+\]</span></p>
+<p>最后一步注意到 <span class="math inline">\(z_{i, N}\)</span> 大于任何 <span class="math inline">\(z_{i, k}(k &lt; N)\)</span>，故有这样的结果。而对于 <span class="math inline">\(j &lt; N\)</span>：</p>
+<p><span class="math display">\[
+\begin{aligned}
+w_{i, j} &amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, j}\exp(z_{i, j} / \gamma)}{\sum_k \mathcal{D}_{i, k}\exp(z_{i, k} / \gamma) + \exp(\varepsilon / \gamma)} \\
+&amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}}{\sum_k \mathcal{D}_{i, k}\exp((z_{i, k} - z_{i, j}) / \gamma) + \exp((\varepsilon - z_{i, j}) / \gamma)} \\
+&amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}}{\left(\sum_{k = 1}^{j - 1} + \sum_{k = j + 1}^{N}\right) \mathcal{D}_{i, k}\exp((z_{i, k} - z_{i, N}) / \gamma) + \mathcal{D}_{i, N} + \exp((\varepsilon - z_{i, N}) / \gamma)} \\
+&amp;= 0
+\end{aligned}
+\]</span></p>
+<p>这里要注意到分母上 <span class="math inline">\(\sum_{k = j + 1}^{N}\)</span> 的部分最终会趋向于正无穷，整体极限为 <span class="math inline">\(0\)</span>。最后根据归一化条件也有 <span class="math inline">\(w_{i, b} = 0\)</span>。</p>
+<p>结合这样的推理，可以看出：</p>
+<p><span class="math display">\[
+I_i = \mathcal{A}_S(\{C_j\}) = C_{i, N}
+\]</span></p>
+<p>也就是说最后渲染的结果只考虑了最近的网格三角形，这也就是 z-buffer 方法。</p>
+<hr />
+<p>似乎还有一个和轮廓相关的聚合函数：</p>
+<p><span class="math display">\[
+I_{i, S} = \mathcal{A}_O(\{\mathcal{D}_j\}) := 1 - \prod_j (1 - \mathcal{D}_{i, j})
+\]</span></p>
+<p>这里没有出现颜色项，这是因为轮廓的颜色一般设定为常数。这里聚合函数形式上实际上就是计算出了像素 <span class="math inline">\(p_i\)</span> 被至少一个三角形覆盖的概率。</p>
+<h2 id="实验内容">实验内容</h2>
+<h3 id="single-view-mesh-reconstruction">Single-View Mesh Reconstruction</h3>
+<p>使用这样的结构：</p>
+<p><img src="/uploads/paper-2022-02/3.png" /></p>
+<p>这里固定了渲染管线中的外部变量，即固定了相机位置和环境光照。每一个输入图片都会进入 color generator 和 shape generator 生成三维模型参数 <span class="math inline">\(\boldsymbol{C}\)</span> 和 <span class="math inline">\(\boldsymbol{M}\)</span>。随后后续接入 SoftRas，渲染得到带颜色的图像 <span class="math inline">\(I_C\)</span> 和轮廓 <span class="math inline">\(I_S\)</span>，最后和原先图像比较计算 loss。</p>
+<p>最后定义的 loss 分为三部分。在叙述定义之前，我们将原始图像的颜色和轮廓定义为 <span class="math inline">\(\hat I_C\)</span> 以及 <span class="math inline">\(\hat I_S\)</span>：</p>
+<ul>
+<li>color loss。定义为颜色之差的 1- 范数：</li>
+</ul>
+<p><span class="math display">\[
+\mathcal{L}_C := \|I_C - \hat I_C\|_1
+\]</span></p>
+<ul>
+<li>silhouette loss。定义为，这里使用 <span class="math inline">\(\otimes\)</span> 表示逐元素求积，<span class="math inline">\(\oplus\)</span> 表示逐元素求和：</li>
+</ul>
+<p><span class="math display">\[
+\mathcal{L}_S := 1 - \frac{\|I_S \otimes \hat I_S\|_1}{\|I_S \oplus \hat I_S - I_S \otimes \hat I_S\|_1}
+\]</span></p>
+<ul>
+<li>geometry loss。作用是对 loss 进行 L1 正则化。</li>
+</ul>
+<p>最后定义的 loss 是这三部分的加权求和：</p>
+<p><span class="math display">\[
+\mathcal{L} := \mathcal{L}_S + \lambda\mathcal{L}_C + \mu\mathcal{L}_G
+\]</span></p>
+<p>这里论文主要提了一下 color generator 的结构：</p>
+<p><img src="/uploads/paper-2022-02/4.png" /></p>
+<p>似乎是提出了一种新结构，让颜色重建变为一个多分类问题，进而降低了时间复杂度。但是论文的描述中有若干的暂且不太清楚的名词，暂且把原文贴在这里以后再来看：</p>
+<div class="note info no-icon"><p>Instead of directly regressing the color value, our color generator formulates color reconstruction as a classification problem that learns to reuse the pixel colors in the input image for each sampling point. Let <span class="math inline">\(N_c\)</span> denote the number of sampling points on <span class="math inline">\(\boldsymbol{M}\)</span> and <span class="math inline">\(H, W\)</span> be the height and width of the input image respectively. However, the computational cost of a naive color selection approach is prohibitive, i.e. <span class="math inline">\(O(HWN_c)\)</span>. To address this challenge, we propose a novel approach to colorize mesh using a color palette, as shown in Figure 7. Specifically, after passing input image to a neural network, the extracted features are fed into (1) a sampling network that samples the representative colors for building the palette; and (2) a selection network that combines colors from the palette for texturing the sampling points. The color prediction is obtained by multiplying the color selections with the learned color palette. Our approach reduces the computation complexity to <span class="math inline">\(O(N_d(HW + N_c))\)</span>, where <span class="math inline">\(N_p\)</span> is the size of color palette. With a proper setting of <span class="math inline">\(N_p\)</span>, one can significantly reduce the computational cost while achieving sharp and accurate color recovery.</p>
+</div>
+<h3 id="image-based-shape-fitting">Image-based Shape Fitting</h3>
+<p>似乎依然是从图像重建模型，但是这个重建任务似乎和姿态预测有较为紧密的联系。</p>
+<p>传统方法面临的问题依然是梯度不精确的问题，这样就导致反向传播较为困难。另外，传统方法也面临这样的问题：</p>
+<ul>
+<li><p>遮挡问题。传统方法中，被遮挡的三角形无法调整参数，而 SoftRas 允许被遮挡的三角形参与到运算中，所以这个问题可以解决。</p></li>
+<li><p>局部最小值问题。我们希望误差反向传播可以传播到较大范围，即希望一次三维模型参数调整不局限于较小的局部，否则可能会导致模型收敛到局部最小值而非更优的结果。而 SoftRas 使用的概率分布算法允许全局的像素参与到运算中，所以理论上误差可以传播到较大范围，这个问题可以解决。</p></li>
+</ul>
+<p>所以最后就直接使用这样的方式训练就行了：</p>
+<p><span class="math display">\[
+\{\rho, \theta, t\} = \mathop{\mathrm{argmin}}_{\rho, \theta, t}\|R(M(\rho, \theta, t)) - I_t\|_2
+\]</span></p>
+<p>这里 <span class="math inline">\(\rho, \theta, t\)</span> 是三维模型的参数，分别是非刚体形变参数、姿态角度、转换参数（或许就是视图转换的参数），<span class="math inline">\(M(\cdot)\)</span> 将这些参数转换为网格，<span class="math inline">\(R(\cdot)\)</span> 是渲染函数，<span class="math inline">\(I_t\)</span> 则是目标图像。这个训练方式也就是机器学习的通式。</p>
+<h2 id="实验结果">实验结果</h2>
+<h3 id="single-view-mesh-reconstruction-1">Single-View Mesh Reconstruction</h3>
+<p>实验结果看确实挺好的，下面展示的是不带颜色的网格重建：</p>
+<p><img src="/uploads/paper-2022-02/5.png" /></p>
+<p>颜色似乎也重建得挺好：</p>
+<p><img src="/uploads/paper-2022-02/6.png" height="50%" width="50%" /></p>
+<p>使用的评价方法是 3D IoU，即 3D Intersection over Union。这是一种物体检测领域的评价函数。二维情况下的 IoU 定义如下图所示。这里的矩形均指代物体的包围盒，分别为实际的包围盒和模型预测的包围盒：</p>
+<p><img src="/uploads/paper-2022-02/7.png" height="50%" width="50%" /></p>
+<p>SoftRas 的平均 3D IoU 超出了 state-of-art 的 NMR 的 3D IoU 约 4.5 点，从而说明在网格重建任务上 SoftRas 的表现超出了传统方法。</p>
+<p>另外似乎还有一项称为 Ablation Study 的后续实验，这里省略。</p>
+<h3 id="image-based-shape-fitting-1">Image-based Shape Fitting</h3>
+<p>首先实验刚体结构预测，这里采用六面着不同色的正方体。给定渲染后图像，要求给出正方体应当旋转的角度。SoftRas 和 NMR 的实验结果如下：</p>
+<p><img src="/uploads/paper-2022-02/8.png" /></p>
+<p>可以发现 SoftRas 成功获得了最后的结果，而 NMR 则收敛到了一个局部最小值无法得到正确结果。</p>
+<p>论文认为 NMR 失败的原因正是因为六个面的相互遮挡，这导致了 NMR 无法越过局部最小值。</p>
+<p>另外其也做了大量实验，表明 SoftRas 预测的旋转角度误差严格优于 NMR，在不优化的情况下，SoftRas 的角度误差平均比 NMR 低 <span class="math inline">\(10.60^\circ\)</span>。</p>
+<p>这里似乎涉及到 <span class="math inline">\({\rm SO}(3)\)</span> 旋转群的一些东西，后面再来研究吧。</p>
+<hr />
+<p>非刚体结构预测则选用了人体结构预测，这里初始化时人的右手位于背后，而目标图像中右手已经移动到前面，实验目标是将手移出来。显然 NMR 依然因为无法处理遮挡，最后没有能够完成任务。而 SoftRas 完成了：</p>
+<p><img src="/uploads/paper-2022-02/9.png" /></p>
+<h2 id="附录梯度计算">附录：梯度计算</h2>
+<p>我们现在研究一下 SoftRas 渲染出来的图像 <span class="math inline">\(\boldsymbol{I}\)</span> 对网格参数 <span class="math inline">\(\boldsymbol{M}\)</span> 的梯度，这个梯度也就是在反向传播的时候要计算的值。首先显然有：</p>
+<p><span class="math display">\[
+\frac{\partial\boldsymbol{I}}{\partial\boldsymbol{M}} = \frac{\partial\boldsymbol{I}}{\partial\boldsymbol{U}}\frac{\partial\boldsymbol{U}}{\partial\boldsymbol{M}} + \frac{\partial\boldsymbol{I}}{\partial\boldsymbol{Z}}\frac{\partial\boldsymbol{Z}}{\partial\boldsymbol{M}} + \frac{\partial\boldsymbol{I}}{\partial\boldsymbol{N}}\frac{\partial\boldsymbol{N}}{\partial\boldsymbol{M}}
+\]</span></p>
+<p>这里显然可以看出 <span class="math inline">\(\dfrac{\partial\boldsymbol{U}}{\partial\boldsymbol{M}}, \dfrac{\partial\boldsymbol{Z}}{\partial\boldsymbol{M}}, \dfrac{\partial\boldsymbol{N}}{\partial\boldsymbol{M}}\)</span> 是可以简单计算的，因为 <span class="math inline">\(\boldsymbol{U}, \boldsymbol{Z}, \boldsymbol{N}\)</span> 都可以由 <span class="math inline">\(\boldsymbol{M}\)</span> 通过简单的视图变换得到，由变换矩阵即可推算偏导数。</p>
+<p>而根据着色模型，<span class="math inline">\(\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{N}}\)</span> 也是可以计算的。</p>
+<p>剩余的两个梯度中，<span class="math inline">\(\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{Z}}\)</span> 直接和聚合函数相关，而 <span class="math inline">\(\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{U}}\)</span> 经过了两层，分别是概率分布计算和聚合函数，所以我们需要拆解：</p>
+<p><span class="math display">\[
+\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{U}} = \dfrac{\partial\boldsymbol{I}}{\partial\mathcal{D}}\dfrac{\partial\mathcal{D}}{\partial\boldsymbol{U}}
+\]</span></p>
+]]></content>
+      <categories>
+        <category>【论文笔记】计算机</category>
+      </categories>
+  </entry>
+  <entry>
     <title>2022 年 8 月论文笔记</title>
     <url>/2022/06/10/paper-2022-08/</url>
     <content><![CDATA[<p>这个月主要是刚刚进入流媒体相关的方向，需要阅读一些论文来了解目前的发展。</p>
@@ -16111,209 +16121,6 @@ k(y_2 - y_1) = x_3(x_2 - x_1) + (x_2^2 - x_1^2) \Rightarrow k^2 = x_1 + x_2 + x_
 <p>为了了解 TCP 慢启动造成的影响，设计的实验为在带宽 6 Mbps 的条件下不断以某一个恒定的码率请求视频块。得出的结论为，在启用 TCP 慢启动的条件下请求的码率越低带宽利用率越低，而不启用 TCP 慢启动的条件下所有码率均充分利用了带宽。</p>
 <p>所以为了让模拟贴合现实，我们可以关闭服务器的 TCP 慢启动。虽然这可能导致流量的突变，但目前可以有其他的解决方案解决这一问题而不需要 Pensieve 来处理。</p>
 <p>事实上上述模拟依然是不精确的，但是我们发现 Pensieve 依然可以通过上述不完整的模拟学习到高质量的 ABR 算法，这可能是由于 Pensieve 强大的泛用能力。</p>
-]]></content>
-      <categories>
-        <category>【论文笔记】计算机</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>2022 年 9 月论文笔记</title>
-    <url>/2022/09/20/paper-2022-09/</url>
-    <content><![CDATA[<p>这个月正式参与进入了实验室和快手的一个合作项目，依然还是需要从论文先开始。</p>
-<span id="more"></span>
-<h1 id="causalsim---unbiased-trace-driven-network-simulation">CausalSim - Unbiased Trace-Driven Network Simulation</h1>
-<h2 id="abstract-introduction">Abstract &amp; Introduction</h2>
-<p>在测评网络协议在线上的实际性能的时候，虽然 RCT 方法是最为标准的，但是由于其极其昂贵，对周边基础设施的要求也很高，所以只有若干大型网络运营方才能支持这种测评方法。基于此，一般的研究所会选择网络模拟器或者 trace-based simulation。但是网络模拟器往往难以模拟出真实网络环境中的复杂情况，并且这类模拟器需要对网络环境的极其详细的掌握。而 trace-based simulation 又常常因为数据质量不高或者有偏导致测评不精确。</p>
-<p>【RCT 方法之后看论文】</p>
-<p>应用反事实模拟以利用离线历史数据的主要思路为，首先获取在某一个给定网络条件下使用某一个网络协议时的 trajectory，而我们需要训练一个模型来预测在这个网络条件下使用其他网络协议的时候的 trajectory。基于这个模型，我们只需要已知一个协议的性能，就能够得知新协议的性能表现而不需要实际部署该协议。</p>
-<p>使用反事实模拟的好处包括：</p>
-<ul>
-<li>节省部署协议和使用 RCT 方法评测的成本</li>
-<li>能够在完全一致的网络条件下比较不同协议的差异</li>
-<li>使用模型进行反事实模拟得到的数据可在社区内交流，帮助无法访问大型网络以测试其协议设计的开发者</li>
-</ul>
-<p>当然，反事实模拟的方法是困难的，原因之一是用于采集观测数据的策略可能破坏无偏性，这一点我们后续阐述。</p>
-<p>那么本文的核心成果就是：</p>
-<div class="note info no-icon"><p>We present CausalSim, a framework for learning <strong>unbiased trace-driven counterfactual simulation models</strong> for network protocols.</p>
-</div>
-<h2 id="motivation">Motivation</h2>
-<p>总体而言，该文章尝试解决的问题依然是，考虑到直接线上测试算法性能较为耗时且代价较大，能否：</p>
-<ul>
-<li>使用历史数据预测算法的性能</li>
-<li>服务运营商能否使用历史数据构建一个模拟器使得开发者可以在不接触实际网络环境的条件下评测算法</li>
-</ul>
-<h3 id="the-problem-of-trace-driven-network-simulation">The problem of trace-driven network simulation</h3>
-<p>这一部分假设了一个新算法 FabABR，然后在 Puffer 数据集上收集了类似 BOLA-BASIC、BBA、Fugu 等已知的算法在给定的网络条件下的 buffer occupancy，令 BOLA-BASIC v1 充当新算法 FabABR，之后构建了两个模型来通过其他已知算法的 buffer occupancy 预测 FabABR 的 buffer occupancy，并和 ground truth 比较。</p>
-<p>当然，在实际环境中，我们是没有 ground truth 的，因为我们没有新算法通过 RCT 方法评测得到的 buffer occupancy 作为 ground truth。</p>
-<p>第一个模型是 ExpertSim。其原理为，在某个网络条件下，如果某个算法在时刻 <span class="math inline">\(t\)</span> 达成的吞吐率为 <span class="math inline">\(\hat c_t\)</span>，那么我们假设在该网络条件下，新算法达成的吞吐率也是 <span class="math inline">\(\hat c_t\)</span>。这也是该模型的首要假设，即不同算法对码率的决策不影响观测到的网络吞吐率，而这个假设广泛应用于各种模型。</p>
-<p>在这个假设下，记时刻 <span class="math inline">\(t\)</span> 时的 buffer size 为 <span class="math inline">\(b_t\)</span>，而时刻 <span class="math inline">\(t + 1\)</span> 时的 buffer size 为 <span class="math inline">\(b_{t + 1}\)</span>，时刻 <span class="math inline">\(t\)</span> 的视频块时间为 <span class="math inline">\(T\)</span>，根据 FabABR 选择的码率该视频块的大小为 <span class="math inline">\(s_t\)</span>，那么：</p>
-<p><span class="math display">\[
-b_{t + 1} = \max\left(0, b_t - \frac{s_t}{\hat c_t}\right) + T
-\]</span></p>
-<p>第二个模型为 SLSim。其模型为两层全链接层，每层 128 个 ReLU 激活的神经元。该网络的输入为 <span class="math inline">\(b_t, \hat c_t, s_t\)</span>，输出为 <span class="math inline">\(b_{t + 1}\)</span>，符号的意义同上。由于我们具有 ground truth，我们就将其作为 supervisor 进行训练，loss 设定为 L2 loss。最后的实验结果为：</p>
-<p><img src="/uploads/paper-2022-09/1.png" height="50%" width="50%" /></p>
-<p>这里可以看见两种模型都不及 CausalSim 做出的预测。而这一差距的本质就是这两个模型都默认了不同算法对码率的决策不影响观测到的网络吞吐率，但实际上由于类似于 TCP 慢启动、和其他流量竞争等因素，不同的码率选择实际上会影响实际的吞吐率。而 Puffer 数据集实际上就能证明该假设错误：</p>
-<p><img src="/uploads/paper-2022-09/2.png" height="50%" width="50%" /></p>
-<p>可见不同算法影响了吞吐率的分布。这种错误的假设导致了数据的有偏。</p>
-<h3 id="causal-inference-to-the-rescue">Causal inference to the rescue</h3>
-<p>如果我们能够获取更深层次的网络情况而非仅仅是表层的吞吐率，我们完全就能修正原先的错误假设，这是因为我们可以将这些底层的网络情况视作独立于 ABR 算法的因素。</p>
-<p>但是这些底层网络情况并不出现在数据集中，我们需要通过表层数据推测这些底层情况，而这也就是反事实推理介入的地方。</p>
-<p>具体的设计见下述部分。</p>
-<h2 id="model">Model</h2>
-<h3 id="causal-dynamics">Causal dynamics</h3>
-<p>我们给出这样的建模，令 <span class="math inline">\(o_t^\star\)</span> 表示时刻 <span class="math inline">\(t\)</span> 的时候系统观测到的表层数据，<span class="math inline">\(u_t\)</span> 表示时刻 <span class="math inline">\(t\)</span> 的时候系统的底层数据，<span class="math inline">\(a_t\)</span> 表示时刻 <span class="math inline">\(t\)</span> 时我们对系统做出的决策，那么系统行为可以建模为：</p>
-<p><span class="math display">\[
-o_{t + 1}^\star = \mathcal{F}_{\rm evolution}(o_t^\star, u_t, a_t)
-\]</span></p>
-<p>在 ABR 问题中，<span class="math inline">\(o_t^\star\)</span> 包括的因素有 buffer size、实际吞吐率、Min RTT、可选视频块大小，而 <span class="math inline">\(u_t\)</span> 包括的因素有瓶颈连接时间、竞争流量的数量、竞争流量的 congestion control。</p>
-<p>此外，我们可以将 <span class="math inline">\(o_t^\star\)</span> 拆分为 <span class="math inline">\(o_t\)</span> 和 <span class="math inline">\(m_t\)</span>，这里 <span class="math inline">\(m_t\)</span> 是观测数据中受到底层数据所影响的部分，从而我们可以拆分出纯外部数据 <span class="math inline">\(o_t\)</span>，而后续我们所称呼的“观测数据”即指代 <span class="math inline">\(o_t\)</span>。这一步拆分后，建模可以变为：</p>
-<p><span class="math display">\[
-\begin{aligned}
-m_t &amp;= \mathcal{F}_{\rm mediation}(a_t, u_t) \\
-o_{t + 1} &amp;= \mathcal{F}_{\rm system}(o_t, m_t, a_t) \\
-o_t^\star &amp;= [o_t, m_t]
-\end{aligned}
-\]</span></p>
-<p>这里，我们需要说明的是 <span class="math inline">\(m_t\)</span> 是可观测的，而 <span class="math inline">\(u_t\)</span> 是潜在而不可观测的。另外，<span class="math inline">\(m_t\)</span> 受到决策的影响，而 <span class="math inline">\(u_t\)</span> 不受到决策的影响。</p>
-<p>在 ABR 问题中，<span class="math inline">\(m_t\)</span> 就是我们实现的吞吐率，其不仅受到潜在网络环境影响，还受到 ABR 码率决策的影响，而这也就是先前两个策略失败的核心原因。此外，根据该建模，在得知吞吐率 <span class="math inline">\(m_t\)</span> 的信息之后，我们完全不需要了解其他信息即可推断出其他可观测的信息 <span class="math inline">\(o_t\)</span>。</p>
-<h3 id="trace-driven-simulation-is-counterfactual-estimation">Trace-driven simulation is counterfactual estimation</h3>
-<p>首先统一符号，我们假设数据集一共采用了 <span class="math inline">\(K\)</span> 种不同算法，一共生成了 <span class="math inline">\(N\)</span> 条 trajectory，我们记第 <span class="math inline">\(i\)</span> 个 trajectory 的长度为 <span class="math inline">\(H_i\)</span>。</p>
-<p>那么我们的训练策略可以描述为，首先对于任何 <span class="math inline">\(i\)</span>，我们给出决策序列 <span class="math inline">\(\{\tilde a_t^i\}_{t = 1}^{H_i}\)</span>，给定初始观测 <span class="math inline">\(o_1^i\)</span>，并且我们确定所有 trajectory 均基于同一个潜在状态序列 <span class="math inline">\(\{u_t^i\}_{t = 1}^{H_i}\)</span>，我们的目的是预测出观测序列 <span class="math inline">\(\{\tilde o_t^i\}_{t = 1}^{H_i}\)</span>。</p>
-<p>此外，我们注意到学习 <span class="math inline">\(\mathcal{F}_{\rm system}\)</span> 是完全监督的，因为所有需要的数据均可以观测。所以最终的困难点在于估计 <span class="math inline">\(\{u_t^i\}_{t = 1}^{H_i}, \{m_t^i\}_{t = 1}^{H_i}\)</span> 以及学习 <span class="math inline">\(\mathcal{F}_{\rm mediation}\)</span>。</p>
-<h2 id="causalsim---key-insights">CausalSim - Key insights</h2>
-<h3 id="counterfactual-estimation-as-matrix-completion">Counterfactual estimation as matrix completion</h3>
-<p>这一步的核心在于将反事实推理等效为矩阵填充问题。我们假设动作空间大小为 <span class="math inline">\(A\)</span>，即 <span class="math inline">\(a_t^i \in \{1, 2, \cdots, A\}\)</span>，另外记：</p>
-<p><span class="math display">\[
-U := \sum_{i = 1}^NH_i
-\]</span></p>
-<p>那么我们考虑一个 <span class="math inline">\(A \times U\)</span> 的矩阵，其中每一行代表一种决策，每一列代表潜在状态。这里我们将第 <span class="math inline">\(i\)</span> 个 trajectory 的第 <span class="math inline">\(t\)</span> 时刻中所有的 <span class="math inline">\((i, t)\)</span> 按 <span class="math inline">\(i\)</span> 为主序数排列为长度为 <span class="math inline">\(U\)</span> 的序列，从而每一个 <span class="math inline">\((i, t)\)</span> 都能对应到 <span class="math inline">\(M\)</span> 中的某一列。</p>
-<p>在第 <span class="math inline">\(i\)</span> 个 trajectory 的第 <span class="math inline">\(t\)</span> 时刻，我们观测到 <span class="math inline">\(m_t^i = \mathcal{F}_{\rm mediation}(a_t^i, u_t^i)\)</span>，而 <span class="math inline">\(m_t^i\)</span> 就是矩阵 <span class="math inline">\(M\)</span> 中 <span class="math inline">\(a_t^i\)</span> 所对应的行和 <span class="math inline">\((i, t)\)</span> 所对应的列处的已知元素，该列其余元素均为未知元素。也就是说我们在初始条件下，每一列都会有一个已知元素。</p>
-<p>而现有的矩阵填充算法并不能直接应用到本问题上，因为本问题中的 <span class="math inline">\(M\)</span> 元素缺失的 pattern 并不随机并且缺失元素数量过多。但是另外一方面，矩阵 <span class="math inline">\(M\)</span> 显然具有更为优越的结构，因为元素缺失的 pattern 和已知的 ABR 算法决策流程相关，并且 <span class="math inline">\(N\)</span> 个 trajectory 的网络潜在条件是一致的。</p>
-<h3 id="exploiting-the-policy-invarience-of-latent-factors">Exploiting the policy invarience of latent factors</h3>
-<p>我们这里考虑一个简单情况，即 <span class="math inline">\(A = 2, U = 2n\)</span>，并且矩阵 <span class="math inline">\(M\)</span> 秩为 <span class="math inline">\(1\)</span>。这说明存在 <span class="math inline">\(a \in \mathbb{R}^2, u \in \mathbb{R}^{2n}\)</span> 满足 <span class="math inline">\(M = au^T\)</span>。之后我们令 <span class="math inline">\(K = 2\)</span>。</p>
-<p>考虑到：</p>
-<p><span class="math display">\[
-\frac{M_{1, j}}{M_{2, j}} = \frac{a_1u_j}{a_2u_j} = \frac{a_1}{a_2}
-\]</span></p>
-<p>并且每一列必然有一个已知元素，所以我们只需要估计 <span class="math inline">\(a_1 / a_2\)</span>。</p>
-<p>另外，基于两个 trajectory 均基于一致的网络潜在条件，所以对于较大的 <span class="math inline">\(n\)</span>，每一列的期望应当类似，所以有以下估计（这个估计我感觉比较奇怪，说理也比较不充分）：</p>
-<p><span class="math display">\[
-\frac{1}{n}\sum_{j = 1}^n u_j \approx \frac{1}{n}\sum_{j = n + 1}^{2n} u_j
-\]</span></p>
-<p>之后我们就可以得到下述估计：</p>
-<p><span class="math display">\[
-\frac{\sum_{j = 1}^n M_{1, j}}{\sum_{j = n + 1}^{2n} M_{2, j}} = \frac{\sum_{j = 1}^n a_1u_j}{\sum_{j = n + 1}^{2n} a_2u_j} \approx \frac{a_1}{a_2}
-\]</span></p>
-<p>从而我们得到了我们需要的估计，从而我们就能补充完整整个矩阵。</p>
-<h2 id="causalsim---details">CausalSim - Details</h2>
-<p>最后采用了这样的一个网络结构：</p>
-<p><img src="/uploads/paper-2022-09/3.png" height="50%" width="50%" /></p>
-<p>该网络的目标是为了获取不变的潜在条件 <span class="math inline">\(\{u_t^i\}_{t = 1}^{H_i}\)</span>，而完成这项任务的网络是 Policy Discriminator，其接受 <span class="math inline">\(\{u_t^i\}_{t = 1}^{H_i}\)</span> 作为输入，输出为其认为该行为决策是由哪一个算法做出的。由于其为一个简单的多分类任务，所以其 loss 就采用简单的交叉熵表示为：</p>
-<p><span class="math display">\[
-\mathcal{L}_{\rm disc} := \mathbb{E}_D[-\ln \mathbb{P}(\pi \mid \hat u)]
-\]</span></p>
-<p>而我们的目标是让 Policy Discriminator 的 loss 尽可能大，从而通过分类器无法区分各类算法保证抽取的潜在不变条件确实和具体的算法无关。</p>
-<p>整个网络采用的 loss 为：</p>
-<p><span class="math display">\[
-\mathcal{L}_{\rm total} := \mathbb{E}_D[\delta(m_t^i - \hat m_t^i)^2 + (o_t^i - \hat o_t^i)^2] - \kappa\mathcal{L}_{\rm disc}
-\]</span></p>
-<h2 id="evaluation">Evaluation</h2>
-<h3 id="a-real-world-abr-experiment">A real-world ABR experiment</h3>
-<p>实验过程比较简单，问题出现在如何评测。因为 Puffer 数据集里每一个 trajectory 仅使用了一种算法跑过，所以实际上是无法对多个新算法进行评测的。所以其采用了评价变量分布的方式进行评测。即，不同的算法在不同的 trajectory 上运行，只要潜在网络因素不变，各类变量的分布应该是类似的。那么基于此，我们只要再做一次模拟，之后指定一个变量，评价两次模拟中该变量分布之间的差距。这里评价分布的差距使用 EMD：</p>
-<p><span class="math display">\[
-{\rm EMD}(\mathcal{P}, \mathcal{Q}) := \int_{-\infty}^{+\infty} |\mathcal{P}(x) - \mathcal{Q}(x)| {\rm d}x
-\]</span></p>
-<p>这里 <span class="math inline">\(\mathcal{P}, \mathcal{Q}\)</span> 都是累积分布函数。</p>
-<p>评测结果自然是 CausalSim 很厉害：</p>
-<p><img src="/uploads/paper-2022-09/4.png" height="50%" width="50%" /></p>
-<h3 id="learning-abr-policies-with-causalsim">Learning ABR policies with CausalSim</h3>
-<p>既然现在已经具有了工作良好的模拟器，我们就可以利用该模拟器训练 ABR，具体的过程不阐述，结果如下：</p>
-<p><img src="/uploads/paper-2022-09/5.png" height="70%" width="70%" /></p>
-<p>总体而言，CausalSim 显然和真实环境下训练的结果贴近，而其他的模拟器均有很大偏差。并且对于高 RTT 的 Agent，这个差距更大。这个差距的根本原因依然是其他模拟器都是有偏的，在例如慢启动等条件下，容易选择保守的码率。</p>
-<h3 id="server-load-balancing">Server load balancing</h3>
-<p>【PASS】</p>
-<h2 id="final-analysis">Final analysis</h2>
-<p>读这一篇论文目的是为了研究怎么离线评测算法，也就是训练一个合理的环境模拟器出来。但感觉本文的一个核心思想为将网络吞吐率等因素视作和 ABR 决策有关的变量，将其纳入考虑。严格而言就是更新了对环境内部逻辑的建模，使之更为贴近真实环境。而如果不把网络吞吐率纳入考虑，则前一时刻无论做出什么选择，下一时刻环境都会要求算法实现同样的吞吐率，从而导致算法趋近于保守，在高 RTT Agent 上表现出仅选择较低码率。</p>
-<p>方法上的话，感觉 Policy Discriminator 没有太见过，是一个训练无关性的好方法。</p>
-<h1 id="deployment-efficient-reinforcement-learning-via-model-based-offline-optimization">Deployment-Efficient Reinforcement Learning via Model-Based Offline Optimization</h1>
-<h2 id="abstract-introduction-1">Abstract &amp; Introduction</h2>
-<p>离线 RL 的问题在于在线和环境交互可能导致较大开销，为了解决这一问题，主要的策略分为：</p>
-<ul>
-<li>限制 agent 的行为，防止其做出错误举动。这里 BCQ 就采用了这样的做法（但是 BCQ 论文实在是需要慢慢看）</li>
-<li>强化 agent 的 exploitation 能力，令其最大化利用有限的数据</li>
-</ul>
-<p>本文的成果是提出了衡量 RL 算法的一个指标，即 deployment efficiency，其基于了 RL 学习过程中数据采集策略发生变化的次数（因为策略发生变化意味着需要一次新的部署）。完全离线的 RL 算法如 BCQ、BRAC 具有很高的 deployment efficiency，而完全在线的 RL 算法如 DDPG、SAC 则较低。</p>
-<p>论文特别指出，deployment efficiency 和已有的 data efficiency 并不完全类似，这里后者衡量了 RL 学习过程中采集数据的次数。这意味着，即使 data efficiency 很低（数据采样次数极大），只要收集数据的策略没变，那么 deployment efficiency 依然较高。</p>
-<p>目前大部分的离线 RL 算法都在大数据集上进行训练和评测，以保证 deployment efficiency 和 data efficiency 都很高。但实际上我们注意到由于 extrapolation error，这种简单直接的算法其实并不优越。而对于在线算法，虽然可以克服数据集数据分布不符合真实数据分布的问题，但实际上会限制 policy 的表达能力【Question #1：这里没有特别明白】。</p>
-<p>此外，本文还提出了 BREMEN，即 Behavior Regularized Model ENsemble。</p>
-<div class="note info no-icon"><p>We propose Behavior-Regularized Model-ENsemble (BREMEN), which learns an ensemble of dynamics models in conjunction with a policy using imaginary rollouts while implicitly regularizing the learned policy via appropriate parameter initialization and conservative trust-region learning updates.</p>
-</div>
-<p>自然，BREMEN 在高维连续决策空间上也表现很好。</p>
-<h2 id="preliminaries">Preliminaries</h2>
-<p>首先定义 MDP <span class="math inline">\((\mathcal{S}, \mathcal{A}, p, r, \gamma)\)</span>，而 policy <span class="math inline">\(\pi\)</span> 定义了 agent 的行为，<span class="math inline">\(\pi\)</span> 接受一个状态，输出一个状态空间 <span class="math inline">\(\mathcal{A}\)</span> 上的概率分布，表示 agent 做出给定行为的概率。我们的目标是获取下述最优 policy：</p>
-<p><span class="math display">\[
-\pi^* = \mathop{\rm argmax}_\pi \eta[\pi] = \mathop{\rm argmax}_\pi \mathbb{E}_\pi\left[\sum_{t = 0}^{+\infty} \gamma^tr(s_t)\right]
-\]</span></p>
-<p>而所谓 model-based 的 RL 方法，就需要对 MDP 中的 <span class="math inline">\(p(s&#39; \mid s, a)\)</span> 建模估计。</p>
-<p>RL 的学习过程中包含两种行为，分别为获取 MDP 转移对（即 deployment）与更新 policy 参数（即 learning）。如果学习过程中每次更新参数后均将收集到的数据舍弃，那么该学习就是 on-policy 的。反之，如果不断积累数据形成 replay dataset <span class="math inline">\(\mathcal{D}\)</span>，那么该学习就是 off-policy 的，因为用于更新 policy 的数据并不一定通过当前 policy 收集。</p>
-<p>但是上述的学习过程都是 online 的，因为其 deployment 和 learning 是混合进行的，而纯 offline 算法中 agent 不会直接与环境进行任何的交互，agent 只能从固定的数据集之中学习。当然，介于 online 和 offline 之间有 semi-batch RL，其实现了较高的 deployment efficiency，当然这种方法并没有完全研究过。</p>
-<h2 id="deployment-efficiency">Deployment efficiency</h2>
-<p>这里主要阐述这样的观点，即对于 online RL，无论其是 on-policy 还是 off-policy，在一次迭代之后，必然会部署新的 policy 并获取数据，这显然是 deployment unefficient 的。相反，纯 offline RL 只会学习一次部署得到的数据。而一个理想的平衡算法应当位于这两个极端之间。</p>
-<p>论文认为现在的 RL 算法忽视了 deployment efficiency，并且现行的部分 SOTA 算法甚至需要百万量级的部署次数（如 SAC）。本文提出了只需要五次到十次部署即可有效学习的算法。</p>
-<h2 id="behavior-regularized-model-ensemble">Behavior regularized model ensemble</h2>
-<h3 id="imaginary-rollout-from-model-ensemble">Imaginary rollout from model ensemble</h3>
-<p>为了解决 model bias 的问题，BREMEN 使用了包含 <span class="math inline">\(K\)</span> 个 deterministic dynamic model 的 <span class="math inline">\(\hat f_\phi := \left\{\hat f_{\phi_1}, \cdots, \hat f_{\phi_K}\right\}\)</span>，其中 <span class="math inline">\(\phi_i\)</span> 表示模型参数。这些模型的训练方式都是最小化下述均方误差，即 model 预测的后续状态和数据集 <span class="math inline">\(\mathcal{D}\)</span> 指示的后续状态：</p>
-<p><span class="math display">\[
-\min_{\phi_i} \frac{1}{|\mathcal{D}|} \sum_{(s_t, a_t; s_{t + 1}) \in \mathcal{D}} \frac{1}{2} \left\|s_{t + 1} - \hat f_{\phi_i}(s_t, a_t)\right\|_2^2
-\]</span></p>
-<p>在实际训练 policy <span class="math inline">\(\pi_\theta\)</span> 的时候，会从这 <span class="math inline">\(K\)</span> 个 model 中随机选择一个来提供下一状态：</p>
-<p><span class="math display">\[
-a_t \sim \pi_\theta(\cdot \mid \hat s_t), \hat s_{t + 1} = \hat f_{\phi_t}(\hat s_t, a_t), i \sim \{1, 2, \cdots, K\}
-\]</span></p>
-<h3 id="policy-update-with-behavior-regularization">Policy update with behavior regularization</h3>
-<p>这里训练具体的 policy 的时候，需要使用置信区间约束来解决 distribution shift 的问题，即在每一次部署之后都使用 behavior clone 得到的 policy <span class="math inline">\(\hat\pi_\beta\)</span> 对 <span class="math inline">\(\pi_\theta\)</span> 重新初始化。具体而言，在每一次部署之后我们都能得到一个更新过的数据集 <span class="math inline">\(\mathcal{D}\)</span>，从而我们使用 BC 对真实的 policy <span class="math inline">\(\pi_b\)</span> 进行估计。具体的训练方式为下述，这里论文作了 fixed variance 假设：</p>
-<p><span class="math display">\[
-\min_\beta \frac{1}{|\mathcal{D}|} \sum_{(s_t, a_t) \in \mathcal{D}} \frac{1}{2} \left\|a_t - \hat\pi_\beta(s_t)\right\|_2^2
-\]</span></p>
-<div class="note info no-icon"><p>好像 behavior clone 和 distribution shift 都是模仿学习的东西，这里还真的不太会，后面补。</p>
-<p>一个可能有用的 <a href="https://wensun.github.io/CS4789_data/Imitation_Learning_April_8_annotated.pdf">slide</a>。</p>
-<hr />
-<p>似乎学明白了一点东西，模仿学习是一种改进的 RL，其面对的是无法合理得到 reward signal 的 RL 环境，但是其可以获得部分专家数据，那么我们就可以模仿专家数据进行学习，这就是 behavior clone。</p>
-<p>behavior clone 的基本思想借鉴了监督学习。例如我们获得了专家数据集 <span class="math inline">\(\mathcal{D}\)</span>，那么我们的训练方式就是：</p>
-<p><span class="math display">\[
-\theta^* := \mathop{\rm argmin}_\theta \mathbb{E}_{(s, a) \sim \mathcal{D}} \mathcal{L}(\pi_\theta(s), a)
-\]</span></p>
-<p>这里 <span class="math inline">\(\mathcal{L}\)</span> 是 loss，可以设定为负 reward 等。</p>
-<p>但这个方法有很多问题，包括在数据集较小的时候学习效率极低、无法分辨真正导致 reward 上升的行为等，但是更为致命的问题是 distribution shift。</p>
-<p>这个问题指的是专家数据和实际数据分布不一致，尤其指训练集和测试集分布之间有偏差。由于我们参考了监督学习的思想，behavior clone 实际上也继承了监督学习的一个假设，即数据集分布和真实数据分布一致。但是，即使这个假设并不严格成立，监督学习也是可以忽略的，因为监督学习的各个数据之间独立，可以忽略。然而 RL 是逐步决策的，某一步的偏差可能导致后续误差的累积导致后续决策的极大偏移。</p>
-<p>有一种解决方式是数据聚合，这里就和论文无关了，故不做讨论。</p>
-</div>
-<p>而通过 <span class="math inline">\(\hat\pi_\beta\)</span> 重新初始化 <span class="math inline">\(\pi_\theta\)</span> 的方式为正态分布初始化，均值设定为 <span class="math inline">\(\hat\pi_\beta\)</span> 而标准差置 <span class="math inline">\(1\)</span>。论文认为在这里将 BC 和普通的梯度下降相结合可以使得 <span class="math inline">\(\pi_\theta\)</span> 趋向于新数据集 <span class="math inline">\(\mathcal{D}\)</span> 代表的 policy，可以认为是一种 distribution shift 问题的补救措施。</p>
-<p>为了进一步补救，其进一步使用 KL-based trust region optimization。总体上 BREMEN 的 policy 更新策略就是：</p>
-<p><span class="math display">\[
-\theta_{k + 1} = \mathop{\rm argmax}_\theta \mathbb{E}_{(s, a) \sim (\pi_{\theta_k}, \hat f_{\phi_i})} \left[\frac{\pi_\theta(a \mid s)}{\pi_{\theta_k}(a \mid s)} A^{\pi_{\theta_k}}(s, a)\right]
-\]</span></p>
-<p>这里要求：</p>
-<p><span class="math display">\[
-\mathbb{E}_{s \sim (\pi_{\theta_k}, \hat f_{\phi_i})} D_{\rm KL}(\pi_\theta(\cdot \mid s) \parallel \pi_{\theta_k}(\cdot \mid s)) \leq \delta
-\]</span></p>
-<p>此外定义初始值：</p>
-<p><span class="math display">\[
-\pi_{\theta_0} := \mathcal{N}(\hat\pi_\beta, 1)
-\]</span></p>
-<p>得到的 BREMEN 算法流程为：</p>
-<p><img src="/uploads/paper-2022-09/6.png" /></p>
-<p>总体来看，简化了部署的过程，然后使用类似 TRPO 中信任域的方式约束了 agent 的行为。</p>
-<h2 id="experiments">Experiments</h2>
-<p>既然 BREMEN 的优势在于少量部署条件下能高效学习，其第一个实验就是和其余 RL 在约束部署次数的条件下比较 reward，效果是明显的：</p>
-<p><img src="/uploads/paper-2022-09/7.png" /></p>
-<p>这里每一条竖直虚线都代表一次部署，部署次数约束在五次到十次之间，每次 batch size 约束在 200k 到 100k。可见 BREMEN 明显优于大部分算法，而几乎仅劣于完全在线的 SAC，但是 SAC 可能需要近百万量级的部署次数。</p>
-<p>此外，为了测试 data efficiency，论文采用的方法是训练一个 SAC 后用该 policy 采集一个 dataset 并用该 dataset 训练各种离线算法，根据下述结果可以看出 BREMEN 能在很小的数据集下就能超越 BC 的 baseline，而其余类似 BCQ 等的方法甚至无法超越 baseline，这说明了 BREMEN 不仅 deployment efficient 而且是 data efficient 的：</p>
-<p><img src="/uploads/paper-2022-09/8.png" /></p>
-<h2 id="final-analysis-1">Final analysis</h2>
-<p>说实话由于 RL 基础还是有点欠缺，自己不是很了解信任域相关方法的数学基础，所以对其数学论证也没看很细致，尤其是涉及到 implicit KL regularization 的部分。</p>
-<p>但总体而言这篇文章提出的核心思想是需要考虑部署带来的开销，并且提出了利用 BC 等方法来强化模型的 exploitation 能力并且尝试使用信任域的想法约束 agent 的行为，总体上依然符合离线 RL 的两大思路。</p>
-<p>数学证明之类的可能真的要等到补补 TRPO 之类 RL 方法之后写，目前打算基于 Sutton 把博客里面这些有关 RL 的一些东西串起来。</p>
 ]]></content>
       <categories>
         <category>【论文笔记】计算机</category>
@@ -16623,6 +16430,209 @@ u_\psi(\mathcal{D}^{\rm tr}_{\mathcal{T}}, \theta) = \theta - \alpha\nabla_\thet
       </categories>
   </entry>
   <entry>
+    <title>2022 年 9 月论文笔记</title>
+    <url>/2022/09/20/paper-2022-09/</url>
+    <content><![CDATA[<p>这个月正式参与进入了实验室和快手的一个合作项目，依然还是需要从论文先开始。</p>
+<span id="more"></span>
+<h1 id="causalsim---unbiased-trace-driven-network-simulation">CausalSim - Unbiased Trace-Driven Network Simulation</h1>
+<h2 id="abstract-introduction">Abstract &amp; Introduction</h2>
+<p>在测评网络协议在线上的实际性能的时候，虽然 RCT 方法是最为标准的，但是由于其极其昂贵，对周边基础设施的要求也很高，所以只有若干大型网络运营方才能支持这种测评方法。基于此，一般的研究所会选择网络模拟器或者 trace-based simulation。但是网络模拟器往往难以模拟出真实网络环境中的复杂情况，并且这类模拟器需要对网络环境的极其详细的掌握。而 trace-based simulation 又常常因为数据质量不高或者有偏导致测评不精确。</p>
+<p>【RCT 方法之后看论文】</p>
+<p>应用反事实模拟以利用离线历史数据的主要思路为，首先获取在某一个给定网络条件下使用某一个网络协议时的 trajectory，而我们需要训练一个模型来预测在这个网络条件下使用其他网络协议的时候的 trajectory。基于这个模型，我们只需要已知一个协议的性能，就能够得知新协议的性能表现而不需要实际部署该协议。</p>
+<p>使用反事实模拟的好处包括：</p>
+<ul>
+<li>节省部署协议和使用 RCT 方法评测的成本</li>
+<li>能够在完全一致的网络条件下比较不同协议的差异</li>
+<li>使用模型进行反事实模拟得到的数据可在社区内交流，帮助无法访问大型网络以测试其协议设计的开发者</li>
+</ul>
+<p>当然，反事实模拟的方法是困难的，原因之一是用于采集观测数据的策略可能破坏无偏性，这一点我们后续阐述。</p>
+<p>那么本文的核心成果就是：</p>
+<div class="note info no-icon"><p>We present CausalSim, a framework for learning <strong>unbiased trace-driven counterfactual simulation models</strong> for network protocols.</p>
+</div>
+<h2 id="motivation">Motivation</h2>
+<p>总体而言，该文章尝试解决的问题依然是，考虑到直接线上测试算法性能较为耗时且代价较大，能否：</p>
+<ul>
+<li>使用历史数据预测算法的性能</li>
+<li>服务运营商能否使用历史数据构建一个模拟器使得开发者可以在不接触实际网络环境的条件下评测算法</li>
+</ul>
+<h3 id="the-problem-of-trace-driven-network-simulation">The problem of trace-driven network simulation</h3>
+<p>这一部分假设了一个新算法 FabABR，然后在 Puffer 数据集上收集了类似 BOLA-BASIC、BBA、Fugu 等已知的算法在给定的网络条件下的 buffer occupancy，令 BOLA-BASIC v1 充当新算法 FabABR，之后构建了两个模型来通过其他已知算法的 buffer occupancy 预测 FabABR 的 buffer occupancy，并和 ground truth 比较。</p>
+<p>当然，在实际环境中，我们是没有 ground truth 的，因为我们没有新算法通过 RCT 方法评测得到的 buffer occupancy 作为 ground truth。</p>
+<p>第一个模型是 ExpertSim。其原理为，在某个网络条件下，如果某个算法在时刻 <span class="math inline">\(t\)</span> 达成的吞吐率为 <span class="math inline">\(\hat c_t\)</span>，那么我们假设在该网络条件下，新算法达成的吞吐率也是 <span class="math inline">\(\hat c_t\)</span>。这也是该模型的首要假设，即不同算法对码率的决策不影响观测到的网络吞吐率，而这个假设广泛应用于各种模型。</p>
+<p>在这个假设下，记时刻 <span class="math inline">\(t\)</span> 时的 buffer size 为 <span class="math inline">\(b_t\)</span>，而时刻 <span class="math inline">\(t + 1\)</span> 时的 buffer size 为 <span class="math inline">\(b_{t + 1}\)</span>，时刻 <span class="math inline">\(t\)</span> 的视频块时间为 <span class="math inline">\(T\)</span>，根据 FabABR 选择的码率该视频块的大小为 <span class="math inline">\(s_t\)</span>，那么：</p>
+<p><span class="math display">\[
+b_{t + 1} = \max\left(0, b_t - \frac{s_t}{\hat c_t}\right) + T
+\]</span></p>
+<p>第二个模型为 SLSim。其模型为两层全链接层，每层 128 个 ReLU 激活的神经元。该网络的输入为 <span class="math inline">\(b_t, \hat c_t, s_t\)</span>，输出为 <span class="math inline">\(b_{t + 1}\)</span>，符号的意义同上。由于我们具有 ground truth，我们就将其作为 supervisor 进行训练，loss 设定为 L2 loss。最后的实验结果为：</p>
+<p><img src="/uploads/paper-2022-09/1.png" height="50%" width="50%" /></p>
+<p>这里可以看见两种模型都不及 CausalSim 做出的预测。而这一差距的本质就是这两个模型都默认了不同算法对码率的决策不影响观测到的网络吞吐率，但实际上由于类似于 TCP 慢启动、和其他流量竞争等因素，不同的码率选择实际上会影响实际的吞吐率。而 Puffer 数据集实际上就能证明该假设错误：</p>
+<p><img src="/uploads/paper-2022-09/2.png" height="50%" width="50%" /></p>
+<p>可见不同算法影响了吞吐率的分布。这种错误的假设导致了数据的有偏。</p>
+<h3 id="causal-inference-to-the-rescue">Causal inference to the rescue</h3>
+<p>如果我们能够获取更深层次的网络情况而非仅仅是表层的吞吐率，我们完全就能修正原先的错误假设，这是因为我们可以将这些底层的网络情况视作独立于 ABR 算法的因素。</p>
+<p>但是这些底层网络情况并不出现在数据集中，我们需要通过表层数据推测这些底层情况，而这也就是反事实推理介入的地方。</p>
+<p>具体的设计见下述部分。</p>
+<h2 id="model">Model</h2>
+<h3 id="causal-dynamics">Causal dynamics</h3>
+<p>我们给出这样的建模，令 <span class="math inline">\(o_t^\star\)</span> 表示时刻 <span class="math inline">\(t\)</span> 的时候系统观测到的表层数据，<span class="math inline">\(u_t\)</span> 表示时刻 <span class="math inline">\(t\)</span> 的时候系统的底层数据，<span class="math inline">\(a_t\)</span> 表示时刻 <span class="math inline">\(t\)</span> 时我们对系统做出的决策，那么系统行为可以建模为：</p>
+<p><span class="math display">\[
+o_{t + 1}^\star = \mathcal{F}_{\rm evolution}(o_t^\star, u_t, a_t)
+\]</span></p>
+<p>在 ABR 问题中，<span class="math inline">\(o_t^\star\)</span> 包括的因素有 buffer size、实际吞吐率、Min RTT、可选视频块大小，而 <span class="math inline">\(u_t\)</span> 包括的因素有瓶颈连接时间、竞争流量的数量、竞争流量的 congestion control。</p>
+<p>此外，我们可以将 <span class="math inline">\(o_t^\star\)</span> 拆分为 <span class="math inline">\(o_t\)</span> 和 <span class="math inline">\(m_t\)</span>，这里 <span class="math inline">\(m_t\)</span> 是观测数据中受到底层数据所影响的部分，从而我们可以拆分出纯外部数据 <span class="math inline">\(o_t\)</span>，而后续我们所称呼的“观测数据”即指代 <span class="math inline">\(o_t\)</span>。这一步拆分后，建模可以变为：</p>
+<p><span class="math display">\[
+\begin{aligned}
+m_t &amp;= \mathcal{F}_{\rm mediation}(a_t, u_t) \\
+o_{t + 1} &amp;= \mathcal{F}_{\rm system}(o_t, m_t, a_t) \\
+o_t^\star &amp;= [o_t, m_t]
+\end{aligned}
+\]</span></p>
+<p>这里，我们需要说明的是 <span class="math inline">\(m_t\)</span> 是可观测的，而 <span class="math inline">\(u_t\)</span> 是潜在而不可观测的。另外，<span class="math inline">\(m_t\)</span> 受到决策的影响，而 <span class="math inline">\(u_t\)</span> 不受到决策的影响。</p>
+<p>在 ABR 问题中，<span class="math inline">\(m_t\)</span> 就是我们实现的吞吐率，其不仅受到潜在网络环境影响，还受到 ABR 码率决策的影响，而这也就是先前两个策略失败的核心原因。此外，根据该建模，在得知吞吐率 <span class="math inline">\(m_t\)</span> 的信息之后，我们完全不需要了解其他信息即可推断出其他可观测的信息 <span class="math inline">\(o_t\)</span>。</p>
+<h3 id="trace-driven-simulation-is-counterfactual-estimation">Trace-driven simulation is counterfactual estimation</h3>
+<p>首先统一符号，我们假设数据集一共采用了 <span class="math inline">\(K\)</span> 种不同算法，一共生成了 <span class="math inline">\(N\)</span> 条 trajectory，我们记第 <span class="math inline">\(i\)</span> 个 trajectory 的长度为 <span class="math inline">\(H_i\)</span>。</p>
+<p>那么我们的训练策略可以描述为，首先对于任何 <span class="math inline">\(i\)</span>，我们给出决策序列 <span class="math inline">\(\{\tilde a_t^i\}_{t = 1}^{H_i}\)</span>，给定初始观测 <span class="math inline">\(o_1^i\)</span>，并且我们确定所有 trajectory 均基于同一个潜在状态序列 <span class="math inline">\(\{u_t^i\}_{t = 1}^{H_i}\)</span>，我们的目的是预测出观测序列 <span class="math inline">\(\{\tilde o_t^i\}_{t = 1}^{H_i}\)</span>。</p>
+<p>此外，我们注意到学习 <span class="math inline">\(\mathcal{F}_{\rm system}\)</span> 是完全监督的，因为所有需要的数据均可以观测。所以最终的困难点在于估计 <span class="math inline">\(\{u_t^i\}_{t = 1}^{H_i}, \{m_t^i\}_{t = 1}^{H_i}\)</span> 以及学习 <span class="math inline">\(\mathcal{F}_{\rm mediation}\)</span>。</p>
+<h2 id="causalsim---key-insights">CausalSim - Key insights</h2>
+<h3 id="counterfactual-estimation-as-matrix-completion">Counterfactual estimation as matrix completion</h3>
+<p>这一步的核心在于将反事实推理等效为矩阵填充问题。我们假设动作空间大小为 <span class="math inline">\(A\)</span>，即 <span class="math inline">\(a_t^i \in \{1, 2, \cdots, A\}\)</span>，另外记：</p>
+<p><span class="math display">\[
+U := \sum_{i = 1}^NH_i
+\]</span></p>
+<p>那么我们考虑一个 <span class="math inline">\(A \times U\)</span> 的矩阵，其中每一行代表一种决策，每一列代表潜在状态。这里我们将第 <span class="math inline">\(i\)</span> 个 trajectory 的第 <span class="math inline">\(t\)</span> 时刻中所有的 <span class="math inline">\((i, t)\)</span> 按 <span class="math inline">\(i\)</span> 为主序数排列为长度为 <span class="math inline">\(U\)</span> 的序列，从而每一个 <span class="math inline">\((i, t)\)</span> 都能对应到 <span class="math inline">\(M\)</span> 中的某一列。</p>
+<p>在第 <span class="math inline">\(i\)</span> 个 trajectory 的第 <span class="math inline">\(t\)</span> 时刻，我们观测到 <span class="math inline">\(m_t^i = \mathcal{F}_{\rm mediation}(a_t^i, u_t^i)\)</span>，而 <span class="math inline">\(m_t^i\)</span> 就是矩阵 <span class="math inline">\(M\)</span> 中 <span class="math inline">\(a_t^i\)</span> 所对应的行和 <span class="math inline">\((i, t)\)</span> 所对应的列处的已知元素，该列其余元素均为未知元素。也就是说我们在初始条件下，每一列都会有一个已知元素。</p>
+<p>而现有的矩阵填充算法并不能直接应用到本问题上，因为本问题中的 <span class="math inline">\(M\)</span> 元素缺失的 pattern 并不随机并且缺失元素数量过多。但是另外一方面，矩阵 <span class="math inline">\(M\)</span> 显然具有更为优越的结构，因为元素缺失的 pattern 和已知的 ABR 算法决策流程相关，并且 <span class="math inline">\(N\)</span> 个 trajectory 的网络潜在条件是一致的。</p>
+<h3 id="exploiting-the-policy-invarience-of-latent-factors">Exploiting the policy invarience of latent factors</h3>
+<p>我们这里考虑一个简单情况，即 <span class="math inline">\(A = 2, U = 2n\)</span>，并且矩阵 <span class="math inline">\(M\)</span> 秩为 <span class="math inline">\(1\)</span>。这说明存在 <span class="math inline">\(a \in \mathbb{R}^2, u \in \mathbb{R}^{2n}\)</span> 满足 <span class="math inline">\(M = au^T\)</span>。之后我们令 <span class="math inline">\(K = 2\)</span>。</p>
+<p>考虑到：</p>
+<p><span class="math display">\[
+\frac{M_{1, j}}{M_{2, j}} = \frac{a_1u_j}{a_2u_j} = \frac{a_1}{a_2}
+\]</span></p>
+<p>并且每一列必然有一个已知元素，所以我们只需要估计 <span class="math inline">\(a_1 / a_2\)</span>。</p>
+<p>另外，基于两个 trajectory 均基于一致的网络潜在条件，所以对于较大的 <span class="math inline">\(n\)</span>，每一列的期望应当类似，所以有以下估计（这个估计我感觉比较奇怪，说理也比较不充分）：</p>
+<p><span class="math display">\[
+\frac{1}{n}\sum_{j = 1}^n u_j \approx \frac{1}{n}\sum_{j = n + 1}^{2n} u_j
+\]</span></p>
+<p>之后我们就可以得到下述估计：</p>
+<p><span class="math display">\[
+\frac{\sum_{j = 1}^n M_{1, j}}{\sum_{j = n + 1}^{2n} M_{2, j}} = \frac{\sum_{j = 1}^n a_1u_j}{\sum_{j = n + 1}^{2n} a_2u_j} \approx \frac{a_1}{a_2}
+\]</span></p>
+<p>从而我们得到了我们需要的估计，从而我们就能补充完整整个矩阵。</p>
+<h2 id="causalsim---details">CausalSim - Details</h2>
+<p>最后采用了这样的一个网络结构：</p>
+<p><img src="/uploads/paper-2022-09/3.png" height="50%" width="50%" /></p>
+<p>该网络的目标是为了获取不变的潜在条件 <span class="math inline">\(\{u_t^i\}_{t = 1}^{H_i}\)</span>，而完成这项任务的网络是 Policy Discriminator，其接受 <span class="math inline">\(\{u_t^i\}_{t = 1}^{H_i}\)</span> 作为输入，输出为其认为该行为决策是由哪一个算法做出的。由于其为一个简单的多分类任务，所以其 loss 就采用简单的交叉熵表示为：</p>
+<p><span class="math display">\[
+\mathcal{L}_{\rm disc} := \mathbb{E}_D[-\ln \mathbb{P}(\pi \mid \hat u)]
+\]</span></p>
+<p>而我们的目标是让 Policy Discriminator 的 loss 尽可能大，从而通过分类器无法区分各类算法保证抽取的潜在不变条件确实和具体的算法无关。</p>
+<p>整个网络采用的 loss 为：</p>
+<p><span class="math display">\[
+\mathcal{L}_{\rm total} := \mathbb{E}_D[\delta(m_t^i - \hat m_t^i)^2 + (o_t^i - \hat o_t^i)^2] - \kappa\mathcal{L}_{\rm disc}
+\]</span></p>
+<h2 id="evaluation">Evaluation</h2>
+<h3 id="a-real-world-abr-experiment">A real-world ABR experiment</h3>
+<p>实验过程比较简单，问题出现在如何评测。因为 Puffer 数据集里每一个 trajectory 仅使用了一种算法跑过，所以实际上是无法对多个新算法进行评测的。所以其采用了评价变量分布的方式进行评测。即，不同的算法在不同的 trajectory 上运行，只要潜在网络因素不变，各类变量的分布应该是类似的。那么基于此，我们只要再做一次模拟，之后指定一个变量，评价两次模拟中该变量分布之间的差距。这里评价分布的差距使用 EMD：</p>
+<p><span class="math display">\[
+{\rm EMD}(\mathcal{P}, \mathcal{Q}) := \int_{-\infty}^{+\infty} |\mathcal{P}(x) - \mathcal{Q}(x)| {\rm d}x
+\]</span></p>
+<p>这里 <span class="math inline">\(\mathcal{P}, \mathcal{Q}\)</span> 都是累积分布函数。</p>
+<p>评测结果自然是 CausalSim 很厉害：</p>
+<p><img src="/uploads/paper-2022-09/4.png" height="50%" width="50%" /></p>
+<h3 id="learning-abr-policies-with-causalsim">Learning ABR policies with CausalSim</h3>
+<p>既然现在已经具有了工作良好的模拟器，我们就可以利用该模拟器训练 ABR，具体的过程不阐述，结果如下：</p>
+<p><img src="/uploads/paper-2022-09/5.png" height="70%" width="70%" /></p>
+<p>总体而言，CausalSim 显然和真实环境下训练的结果贴近，而其他的模拟器均有很大偏差。并且对于高 RTT 的 Agent，这个差距更大。这个差距的根本原因依然是其他模拟器都是有偏的，在例如慢启动等条件下，容易选择保守的码率。</p>
+<h3 id="server-load-balancing">Server load balancing</h3>
+<p>【PASS】</p>
+<h2 id="final-analysis">Final analysis</h2>
+<p>读这一篇论文目的是为了研究怎么离线评测算法，也就是训练一个合理的环境模拟器出来。但感觉本文的一个核心思想为将网络吞吐率等因素视作和 ABR 决策有关的变量，将其纳入考虑。严格而言就是更新了对环境内部逻辑的建模，使之更为贴近真实环境。而如果不把网络吞吐率纳入考虑，则前一时刻无论做出什么选择，下一时刻环境都会要求算法实现同样的吞吐率，从而导致算法趋近于保守，在高 RTT Agent 上表现出仅选择较低码率。</p>
+<p>方法上的话，感觉 Policy Discriminator 没有太见过，是一个训练无关性的好方法。</p>
+<h1 id="deployment-efficient-reinforcement-learning-via-model-based-offline-optimization">Deployment-Efficient Reinforcement Learning via Model-Based Offline Optimization</h1>
+<h2 id="abstract-introduction-1">Abstract &amp; Introduction</h2>
+<p>离线 RL 的问题在于在线和环境交互可能导致较大开销，为了解决这一问题，主要的策略分为：</p>
+<ul>
+<li>限制 agent 的行为，防止其做出错误举动。这里 BCQ 就采用了这样的做法（但是 BCQ 论文实在是需要慢慢看）</li>
+<li>强化 agent 的 exploitation 能力，令其最大化利用有限的数据</li>
+</ul>
+<p>本文的成果是提出了衡量 RL 算法的一个指标，即 deployment efficiency，其基于了 RL 学习过程中数据采集策略发生变化的次数（因为策略发生变化意味着需要一次新的部署）。完全离线的 RL 算法如 BCQ、BRAC 具有很高的 deployment efficiency，而完全在线的 RL 算法如 DDPG、SAC 则较低。</p>
+<p>论文特别指出，deployment efficiency 和已有的 data efficiency 并不完全类似，这里后者衡量了 RL 学习过程中采集数据的次数。这意味着，即使 data efficiency 很低（数据采样次数极大），只要收集数据的策略没变，那么 deployment efficiency 依然较高。</p>
+<p>目前大部分的离线 RL 算法都在大数据集上进行训练和评测，以保证 deployment efficiency 和 data efficiency 都很高。但实际上我们注意到由于 extrapolation error，这种简单直接的算法其实并不优越。而对于在线算法，虽然可以克服数据集数据分布不符合真实数据分布的问题，但实际上会限制 policy 的表达能力【Question #1：这里没有特别明白】。</p>
+<p>此外，本文还提出了 BREMEN，即 Behavior Regularized Model ENsemble。</p>
+<div class="note info no-icon"><p>We propose Behavior-Regularized Model-ENsemble (BREMEN), which learns an ensemble of dynamics models in conjunction with a policy using imaginary rollouts while implicitly regularizing the learned policy via appropriate parameter initialization and conservative trust-region learning updates.</p>
+</div>
+<p>自然，BREMEN 在高维连续决策空间上也表现很好。</p>
+<h2 id="preliminaries">Preliminaries</h2>
+<p>首先定义 MDP <span class="math inline">\((\mathcal{S}, \mathcal{A}, p, r, \gamma)\)</span>，而 policy <span class="math inline">\(\pi\)</span> 定义了 agent 的行为，<span class="math inline">\(\pi\)</span> 接受一个状态，输出一个状态空间 <span class="math inline">\(\mathcal{A}\)</span> 上的概率分布，表示 agent 做出给定行为的概率。我们的目标是获取下述最优 policy：</p>
+<p><span class="math display">\[
+\pi^* = \mathop{\rm argmax}_\pi \eta[\pi] = \mathop{\rm argmax}_\pi \mathbb{E}_\pi\left[\sum_{t = 0}^{+\infty} \gamma^tr(s_t)\right]
+\]</span></p>
+<p>而所谓 model-based 的 RL 方法，就需要对 MDP 中的 <span class="math inline">\(p(s&#39; \mid s, a)\)</span> 建模估计。</p>
+<p>RL 的学习过程中包含两种行为，分别为获取 MDP 转移对（即 deployment）与更新 policy 参数（即 learning）。如果学习过程中每次更新参数后均将收集到的数据舍弃，那么该学习就是 on-policy 的。反之，如果不断积累数据形成 replay dataset <span class="math inline">\(\mathcal{D}\)</span>，那么该学习就是 off-policy 的，因为用于更新 policy 的数据并不一定通过当前 policy 收集。</p>
+<p>但是上述的学习过程都是 online 的，因为其 deployment 和 learning 是混合进行的，而纯 offline 算法中 agent 不会直接与环境进行任何的交互，agent 只能从固定的数据集之中学习。当然，介于 online 和 offline 之间有 semi-batch RL，其实现了较高的 deployment efficiency，当然这种方法并没有完全研究过。</p>
+<h2 id="deployment-efficiency">Deployment efficiency</h2>
+<p>这里主要阐述这样的观点，即对于 online RL，无论其是 on-policy 还是 off-policy，在一次迭代之后，必然会部署新的 policy 并获取数据，这显然是 deployment unefficient 的。相反，纯 offline RL 只会学习一次部署得到的数据。而一个理想的平衡算法应当位于这两个极端之间。</p>
+<p>论文认为现在的 RL 算法忽视了 deployment efficiency，并且现行的部分 SOTA 算法甚至需要百万量级的部署次数（如 SAC）。本文提出了只需要五次到十次部署即可有效学习的算法。</p>
+<h2 id="behavior-regularized-model-ensemble">Behavior regularized model ensemble</h2>
+<h3 id="imaginary-rollout-from-model-ensemble">Imaginary rollout from model ensemble</h3>
+<p>为了解决 model bias 的问题，BREMEN 使用了包含 <span class="math inline">\(K\)</span> 个 deterministic dynamic model 的 <span class="math inline">\(\hat f_\phi := \left\{\hat f_{\phi_1}, \cdots, \hat f_{\phi_K}\right\}\)</span>，其中 <span class="math inline">\(\phi_i\)</span> 表示模型参数。这些模型的训练方式都是最小化下述均方误差，即 model 预测的后续状态和数据集 <span class="math inline">\(\mathcal{D}\)</span> 指示的后续状态：</p>
+<p><span class="math display">\[
+\min_{\phi_i} \frac{1}{|\mathcal{D}|} \sum_{(s_t, a_t; s_{t + 1}) \in \mathcal{D}} \frac{1}{2} \left\|s_{t + 1} - \hat f_{\phi_i}(s_t, a_t)\right\|_2^2
+\]</span></p>
+<p>在实际训练 policy <span class="math inline">\(\pi_\theta\)</span> 的时候，会从这 <span class="math inline">\(K\)</span> 个 model 中随机选择一个来提供下一状态：</p>
+<p><span class="math display">\[
+a_t \sim \pi_\theta(\cdot \mid \hat s_t), \hat s_{t + 1} = \hat f_{\phi_t}(\hat s_t, a_t), i \sim \{1, 2, \cdots, K\}
+\]</span></p>
+<h3 id="policy-update-with-behavior-regularization">Policy update with behavior regularization</h3>
+<p>这里训练具体的 policy 的时候，需要使用置信区间约束来解决 distribution shift 的问题，即在每一次部署之后都使用 behavior clone 得到的 policy <span class="math inline">\(\hat\pi_\beta\)</span> 对 <span class="math inline">\(\pi_\theta\)</span> 重新初始化。具体而言，在每一次部署之后我们都能得到一个更新过的数据集 <span class="math inline">\(\mathcal{D}\)</span>，从而我们使用 BC 对真实的 policy <span class="math inline">\(\pi_b\)</span> 进行估计。具体的训练方式为下述，这里论文作了 fixed variance 假设：</p>
+<p><span class="math display">\[
+\min_\beta \frac{1}{|\mathcal{D}|} \sum_{(s_t, a_t) \in \mathcal{D}} \frac{1}{2} \left\|a_t - \hat\pi_\beta(s_t)\right\|_2^2
+\]</span></p>
+<div class="note info no-icon"><p>好像 behavior clone 和 distribution shift 都是模仿学习的东西，这里还真的不太会，后面补。</p>
+<p>一个可能有用的 <a href="https://wensun.github.io/CS4789_data/Imitation_Learning_April_8_annotated.pdf">slide</a>。</p>
+<hr />
+<p>似乎学明白了一点东西，模仿学习是一种改进的 RL，其面对的是无法合理得到 reward signal 的 RL 环境，但是其可以获得部分专家数据，那么我们就可以模仿专家数据进行学习，这就是 behavior clone。</p>
+<p>behavior clone 的基本思想借鉴了监督学习。例如我们获得了专家数据集 <span class="math inline">\(\mathcal{D}\)</span>，那么我们的训练方式就是：</p>
+<p><span class="math display">\[
+\theta^* := \mathop{\rm argmin}_\theta \mathbb{E}_{(s, a) \sim \mathcal{D}} \mathcal{L}(\pi_\theta(s), a)
+\]</span></p>
+<p>这里 <span class="math inline">\(\mathcal{L}\)</span> 是 loss，可以设定为负 reward 等。</p>
+<p>但这个方法有很多问题，包括在数据集较小的时候学习效率极低、无法分辨真正导致 reward 上升的行为等，但是更为致命的问题是 distribution shift。</p>
+<p>这个问题指的是专家数据和实际数据分布不一致，尤其指训练集和测试集分布之间有偏差。由于我们参考了监督学习的思想，behavior clone 实际上也继承了监督学习的一个假设，即数据集分布和真实数据分布一致。但是，即使这个假设并不严格成立，监督学习也是可以忽略的，因为监督学习的各个数据之间独立，可以忽略。然而 RL 是逐步决策的，某一步的偏差可能导致后续误差的累积导致后续决策的极大偏移。</p>
+<p>有一种解决方式是数据聚合，这里就和论文无关了，故不做讨论。</p>
+</div>
+<p>而通过 <span class="math inline">\(\hat\pi_\beta\)</span> 重新初始化 <span class="math inline">\(\pi_\theta\)</span> 的方式为正态分布初始化，均值设定为 <span class="math inline">\(\hat\pi_\beta\)</span> 而标准差置 <span class="math inline">\(1\)</span>。论文认为在这里将 BC 和普通的梯度下降相结合可以使得 <span class="math inline">\(\pi_\theta\)</span> 趋向于新数据集 <span class="math inline">\(\mathcal{D}\)</span> 代表的 policy，可以认为是一种 distribution shift 问题的补救措施。</p>
+<p>为了进一步补救，其进一步使用 KL-based trust region optimization。总体上 BREMEN 的 policy 更新策略就是：</p>
+<p><span class="math display">\[
+\theta_{k + 1} = \mathop{\rm argmax}_\theta \mathbb{E}_{(s, a) \sim (\pi_{\theta_k}, \hat f_{\phi_i})} \left[\frac{\pi_\theta(a \mid s)}{\pi_{\theta_k}(a \mid s)} A^{\pi_{\theta_k}}(s, a)\right]
+\]</span></p>
+<p>这里要求：</p>
+<p><span class="math display">\[
+\mathbb{E}_{s \sim (\pi_{\theta_k}, \hat f_{\phi_i})} D_{\rm KL}(\pi_\theta(\cdot \mid s) \parallel \pi_{\theta_k}(\cdot \mid s)) \leq \delta
+\]</span></p>
+<p>此外定义初始值：</p>
+<p><span class="math display">\[
+\pi_{\theta_0} := \mathcal{N}(\hat\pi_\beta, 1)
+\]</span></p>
+<p>得到的 BREMEN 算法流程为：</p>
+<p><img src="/uploads/paper-2022-09/6.png" /></p>
+<p>总体来看，简化了部署的过程，然后使用类似 TRPO 中信任域的方式约束了 agent 的行为。</p>
+<h2 id="experiments">Experiments</h2>
+<p>既然 BREMEN 的优势在于少量部署条件下能高效学习，其第一个实验就是和其余 RL 在约束部署次数的条件下比较 reward，效果是明显的：</p>
+<p><img src="/uploads/paper-2022-09/7.png" /></p>
+<p>这里每一条竖直虚线都代表一次部署，部署次数约束在五次到十次之间，每次 batch size 约束在 200k 到 100k。可见 BREMEN 明显优于大部分算法，而几乎仅劣于完全在线的 SAC，但是 SAC 可能需要近百万量级的部署次数。</p>
+<p>此外，为了测试 data efficiency，论文采用的方法是训练一个 SAC 后用该 policy 采集一个 dataset 并用该 dataset 训练各种离线算法，根据下述结果可以看出 BREMEN 能在很小的数据集下就能超越 BC 的 baseline，而其余类似 BCQ 等的方法甚至无法超越 baseline，这说明了 BREMEN 不仅 deployment efficient 而且是 data efficient 的：</p>
+<p><img src="/uploads/paper-2022-09/8.png" /></p>
+<h2 id="final-analysis-1">Final analysis</h2>
+<p>说实话由于 RL 基础还是有点欠缺，自己不是很了解信任域相关方法的数学基础，所以对其数学论证也没看很细致，尤其是涉及到 implicit KL regularization 的部分。</p>
+<p>但总体而言这篇文章提出的核心思想是需要考虑部署带来的开销，并且提出了利用 BC 等方法来强化模型的 exploitation 能力并且尝试使用信任域的想法约束 agent 的行为，总体上依然符合离线 RL 的两大思路。</p>
+<p>数学证明之类的可能真的要等到补补 TRPO 之类 RL 方法之后写，目前打算基于 Sutton 把博客里面这些有关 RL 的一些东西串起来。</p>
+]]></content>
+      <categories>
+        <category>【论文笔记】计算机</category>
+      </categories>
+  </entry>
+  <entry>
     <title>《美少女万华镜 5 ——理与迷宫的少女》游戏测评</title>
     <url>/2021/08/18/renge-5/</url>
     <content><![CDATA[<p>Holder 不是一个玩 GAL 的人，能想到的 GAL 除了万华镜就是柚子社这种。但是 Holder 想了想，决定把万华镜 5 这个宣称中的最终章认真通一下，也算对我几乎唯一知晓的 GAL 致以敬意。</p>
@@ -16700,6 +16710,96 @@ u_\psi(\mathcal{D}^{\rm tr}_{\mathcal{T}}, \theta) = \theta - \alpha\nabla_\thet
 ]]></content>
       <categories>
         <category>【杂谈】游戏 &amp; 番剧</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Holder 与 Vocaloid</title>
+    <url>/2022/10/02/vocaloid-and-me/</url>
+    <content><![CDATA[<p>和 V+ 群群友度过了一天快乐的国庆假期，这次的 V+ Next 推曲活动中，又一次提及了我的“自传”——即我和 Vocaloid 的一些故事。</p>
+<p>先前已经和 nagi 以及莎布老师谈过一些，也在推曲小作文里面写过不少小故事。但回想起来我好像自己也没有系统总结过这些有趣的经历，明明是挺有意思的一段旅程，所以干脆晚上花点时间写写。</p>
+<p>大约是一些按照年份编写的流水账和回忆录，随便看看就好。</p>
+<span id="more"></span>
+<h1 id="小学高年级2010---2013">小学高年级（2010 - 2013）</h1>
+<p>大约这是一切的开端了。小学的时候 Holder 可能并没有什么爱好或者说口味，同学们在玩什么游戏我就玩什么游戏，似乎并没有什么主见。但是有几件事情倒是记忆挺深刻。</p>
+<p>首先是《甩葱歌》的莫名走红。Holder 家所在的街区是县城中心的一个破旧商店街，当时的所有店铺，从手机店、音乐店，甚至是鞋店、服装店，都在大音量播放这首歌，每天上下学的时候多多少少都是一直听着这首歌的。继此之后的，是 2011 年突然爆火的《甩饼歌》。这首歌有了歌词，讲述的是 2011 年利比亚空袭、物价飞升之类的大事件。本来自己就已经对《甩葱歌》旋律很熟悉，有了能唱的歌词，自然是很快就上手了这首改编歌，和小学同学时不时还一起唱着玩。</p>
+<p>其次是有一次我父亲问到我有没有喜欢的歌手，因为当时他一直在家里放歌自己听。但我当时说实话，真的不知道什么歌曲，而当时我的玩伴正沉迷汪峰，所以我就随口回答汪峰。结果我父亲大概是一下子就知道了我只是糊弄过去，于是无心地扔了一句“要找找自己喜欢的东西而不是随波逐流”。</p>
+<p>这句话随后就应验了。2012 年前后，我进入了元素收藏这个小众坑，这个坑大约就是收集各种元素的单质。在当年这还是一项很难的事情，因为稀土很难有货源，类似 Rb、Cs 之类的碱金属还只能从国外进口，一克近一千，这对小学生来说已经是天价（题外话，现在国内自制 Rb、Cs 已经不稀奇，克价已经跌下两百，正所谓中国人擅长把东西搞成白菜价。此外，现在元素收藏坑也近乎是进坑投资几千左右就已经能买到全套单质了）。也正是因此，当时我对贴吧里面那些拥有类似 Rb、Cs、Tl、Sc 等这些元素的聚聚们可谓是十分敬仰，其中就包括一位元老——真·凤舞九天。</p>
+<p>这位元老有一天晚上，在贴吧转载了一个视频，说自己今天单曲循环了一晚上。我点进去一看，是《世末舞厅》的一个自制 PV。当然，当时我是不知道这是什么的，但我能明白的是，这是一首日文歌，而且不同于小学音乐课上那些民歌、红歌、教学歌曲，不同于汪峰那种伤感，而是一种完全不能理解的，全新的歌曲艺术形式。</p>
+<p>小学的我第一次看到类似心脏、死亡、骷髅、终结这些意象，而即使我一点点都看不懂英文和日文，歌词一句话都看不懂，但是图像和声音却将世界终结前的疯狂传达了出来。</p>
+<p>这显然是震撼的，所以即使当时 Holder 只有一个充话费送的小手机，但我依然拿出了零花钱到同学家的手机店买下了一张 SD 卡，从家里人工作的地方偷偷拿了一个读卡器，自己在周末摸索着如何下载视频。这样忙活了一段时间后，我便能够随时听《世末舞厅》了。</p>
+<p>然而，还是那句话，由于完全看不懂英文和日文，我没能借此机会认识 wowaka，也没能认识巡音，更没能借此机会打开术力口的大门，虽然我隐隐约约感觉到了这机械的电子音背后，似乎和《甩葱歌》有着千丝万缕的联系。</p>
+<h1 id="初中2013---2016">初中（2013 - 2016）</h1>
+<p>这一段时间似乎和术力口就没有什么关系了。</p>
+<p>因为家人工作的原因，我离开了原先的住处，去往另外一个地方上初中，于是也就脱离了我小学的所有同学。在完全陌生的环境下，Holder 度过了一个并不美妙的初一。转机出现在初二，父亲的一位朋友送给我了一台 iPad。我的父母算是十分开明，决定将这个 iPad 交给我全权处置，并不打算限制我的使用时间之类。</p>
+<p>那段时间，我注意到周围同学都在听歌，虽然我不知道他们在听什么，但是就是莫名其妙觉的一个人听歌似乎是一件很酷的事情。这样想着，Holder 在 iPad 上下载了音乐软件，添加了几首类似《江南 Style》之类的大众歌曲。</p>
+<p>你可能会问，《世末舞厅》呢？然而这就很不好说了，我记忆中我似乎并没有将它加入到歌单里面，因为我不会打日文。当时我要是想听这首歌，我只能去贴吧翻找之前那位元老的贴子，或者拿 U 盘在电脑上听（SD 卡应该在搬家时遗失了，但是之后我有了一个 U 盘）。</p>
+<p>《江南 Style》可能是一个并不好的种子，因为我为了扩充歌单，只能每天看看音乐软件的推荐。然而因为这个种子，加上当时 EXO 和 TFBoys 在网络上的对立导致两方热度都居高不下，我的歌单迅速充满了 EXO。EXO 的曲风大多是炫酷的类型，这也塑造了我后续的听歌风格。</p>
+<p>然而，我并没有在 K-pop 的路上走得很深，因为我初中有一位朋友，很喜欢看番。当时我和他在一起玩的时候，常常是白天出门，晚上窝在某人家里看番，也就是那个时候我认识了《刀剑神域》和一些其他的番，也收获了第一个严格意义上加入歌单的日语歌——TV 动画《空战魔导士候补生的教官》OP《D.O.B.》，因为这首歌很炫酷，节奏有力量。</p>
+<p>也是在他的带领之下，大约是 2014 年，我入了 B 站，但我当时几乎只会看鬼畜区。</p>
+<p>虽然如此，我当时的歌单的主流依然是 EXO 和权志龙，最喜欢的可能依然是《Call me baby》或者《BANG BANG BANG》。而随后因为 K-pop 的外延了解到 Maroon 5、TheFatRat 的一些歌和欧美音乐则完全是支线了。</p>
+<p>其实要说到为啥即使有这么一位看番的好朋友我还一直听韩流，倒也只能说是大环境所趋。当时我的初中班级，大部分同学更乐意听 K-pop。那种带着一些痞气，或者说是不良、叛逆、特立独行风格的歌曲，在初中生中很有市场。</p>
+<p>不过也正是因此，我错过了阳炎 Project 的时代。</p>
+<h1 id="高中一年级2016---2017">高中一年级（2016 - 2017）</h1>
+<p>中考考上了当地最好的中学，并且在入学分班考试里考上了年级第一，这完全是出乎所有人的意料的，包括我自己，因为没人相信从那种初中出来的毕业生能考上这个高中的第一。这是一个非常奇妙的开局，在单纯的高中生之中，这样的成就足以让你受到瞩目。所以 Holder 的高一开局并不算很差，反倒是收获了一群朋友。</p>
+<p>先前提到过 2014 年我开始看 B 站，等到我 2016 年高中入学的时候，我已经大体对鬼畜区了解了个遍，自然也就包括了音 MAD 和人力 Vocaloid。在此期间，我接触到了我严格意义上第一个知道是术曲的术曲——《千本樱》（《世末舞厅》我最开始并不知道这是术曲，我甚至不知道这首歌和初音未来有关）。</p>
+<p>然而，2016 年的 B 站大事是和术无关的，而是《极乐净土》的爆火。这首歌的爆火让我经常逛的鬼畜区充满了这首歌的相关创作，自然而然地，这首歌也进入了我的歌单。</p>
+<p>有一件黑历史和这首歌有着很大的关联。当时我不会日语，想唱《极乐净土》自然是唱不出来，只能哼调。然而当时哲♂学里的 FA 乐器又在鬼畜中广泛运用。于是有一次我在班上用 FA 乐器唱了一小段《极乐净土》。现在想起来的话，可以说是万分羞耻。</p>
+<p>一切都是有开端的，自从《极乐净土》和《千本樱》进入歌单，随之而来的就是各种日语歌。但其实这个时候，我依然只是知道初音未来的名号，还不认识双子、IA 等其他歌姬。另外，这个时候，我还不知道什么是歌姬什么是 P 主，当时的 Holder 认为初音未来的所有作品都由一个运营方创作，甚至还因此惊讶于为何这个运营方作出的曲子曲风如此多变。</p>
+<p>但也就是这个时候，我入了 LL 坑，听了不少缪斯的歌。不过即使如此，此时我的歌单依然是 K-pop 和欧美音乐占主流，日语歌有但不多，术也不过几首。</p>
+<p>当然，要是说几件小事的话还是有的。</p>
+<p>首先是高一的寒假，学校组织了去苏州的数学竞赛集训，那段时间比较休闲，我便无聊的时候去整理歌单，删掉了不少 K-pop 歌。这个行为的原因其实挺怪的，因为大约在 2016 年年底或者说 2017 年年初，我经历了第一次所谓的“被分手”。而为了将初中这些破事的记忆删除，我不仅删掉了她所有的照片（当然后面我居然在 iCloud 的自动备份里面翻出来了），删掉了聊天记录和所有联系方式。而寒假在苏州的时候，我翻了翻歌单，发现听歌的时候依然能回想起初中当时的一些奇怪经历，尤其是《Call me baby》，这首歌是我和她都喜欢的。于是，我删掉了大多的 K-pop 歌，只留下了几首自己特别喜欢的，比如《MAMA》和《Lightsaber》。</p>
+<p>之后是 2016 年年底《你的名字》上映，而这让我的歌单中又多出了若干的日语歌，包括《前前前世》《火花》《没什么大不了》《黄昏之时》《梦灯笼》。其中最可说的就是《梦灯笼》，当时我沉迷这首歌到，即使我不会日语，不会写五十音，我也会拿并不富裕的晚饭休息时间跑回家打开电脑抄歌词和罗马音，尝试着学唱。</p>
+<p>2017 年的暑假并没有多少可以称道的事情，虽然当时是第一年接触学科竞赛，辗转扬州、南京等地，但是就听歌而言，并没有什么可说的。硬要说的话，就是看了《未闻花名》，然后沉迷于《Secret base》这首歌。术曲方面，则是零零散散加了《深海少女》《天之弱》《反语》《脑浆炸裂女孩》一共四首。</p>
+<h1 id="高中二年级2017---2018">高中二年级（2017 - 2018）</h1>
+<p>熟悉 Holder 的人都知道，这是一切的转折点。</p>
+<p>2017 年进入高二之后，发生了几件事情。</p>
+<p>首先是 9 月份《病名为爱》投稿，这首歌莫名其妙地在国内收获了极高的热度。而在这段时间，我们高中为我们争取到了去南京旁听数学竞赛省队培训的机会，我又可以公款旅游了。于是我在南京和我同学两个人，反复听这首歌。这里比较好玩的是，我先听到的是 Neru 的术版，而非不少人先听到的翻唱版。就我记忆而言，这应该是我听到的第一首双子曲。</p>
+<p>之后是 12 月份《打上花火》在国内上映，我和同学翘课去看了。当时通行的一位同学稍微对八爷有一点了解，晚上在 KFC 吃饭的时候，讲了不少八爷相关的小知识之类的，包括他前期作为 P 主投稿的一些曲子。</p>
+<p>经过这一个学期，Holder 的歌单大致变成了术曲占一半，其他歌曲混混乱乱杂在里面的一种状态，但 Holder 此时依然没有主动去挖术曲或者去了解 Vocaloid，依然是听到好听的就放歌单。然而这个时候，大数据已经开始给我不断推术相关的东西，很少再有韩流或者欧美了。</p>
+<p>高二寒假备战小高考，没有什么可以说的事情，除了通过一个人力 Vocaloid 认识了《太阳系 DISCO》。</p>
+<p>而高二的春季学期，我遇到了两首歌，分别是《神佛》和《被生命所厌恶》，但是是 mafumafu 版本。mafumafu 这个名号的出现，让我本就不清楚的概念更加混乱，什么是歌姬，什么是 P 主，什么是唱见，这些我当时可以说万分混乱。然而也正是这两首歌，打开了一道通过 mafumafu 获取新术曲的大门。</p>
+<p>3 月的时候，我在听《病名为爱》的时候，注意到评论里面有一句说 Neru 来 B 站了。我记得当时我并不是很清楚 Neru 到底是谁，但总之我给他点了关注，所以说 Neru 是我第一个关注的 P 主。在此之后，我也将 Neru 的《SNOBBISM》和《随便随便》加入了歌单。</p>
+<p>也就是这段时间，我开始学习日语。</p>
+<p>时间就这样到了传奇的 2018 年暑假。</p>
+<p>这个暑假我为了争取清华的各种政策，首先是各个学科竞赛，数学要在扬州集训然后考试，化学要在南京集训然后考试，物理也是在南京，期间还需要参加清华的暑期学校，要去杭州参加一个训练。所以从 6 月份一直到 9 月份这近三个月的时间，我几乎一直在外，而且几乎孤身一人，因为我高中有资格参与化学国初的不过两人，能参与物理复赛的也寥寥无几。</p>
+<p>这是我第一次远离熟悉的家乡如此长的时间，而且我父母也说为了锻炼我的独立能力，并不打算跟在后面，只是说了一句，有什么要紧的情况或者缺钱了就给家里打电话。显然，为了填补课余时间，除了刷题看书，似乎也只剩下听歌了，因为我几乎不玩游戏，除了当时短暂玩过的《炉石传说》。</p>
+<p>这段时间给了我扩充歌单绝佳的机会，我开始第一次下意识地在搜索框中输入初音未来，我开始有意识地找各种番去看，去听它的 OP 和 ED。那段时间，类似 MARETU、れるりり、Neru 等这些名字开始慢慢变得熟悉，镜音双子、巡音也开始进入我的视野，虽然我还是区分不开 P 主和歌姬。</p>
+<p>此时我收集到的术曲已经开始出现两极分化的特征，一类是吵闹的、喧嚣的、意味不明的，这些歌单纯提供一种精神上的刺激，似乎也和当时我沉迷 K-pop 有着相同的根源。而另外一类，则是舒缓的、抒情的、温柔的，这些歌，大约才真正是我当时能共鸣的。</p>
+<p>这其中最为特殊的自然是《胧月》。第一次听到这首歌，我并没有觉得多么特殊，甚至因为它并不突出的调教觉得十分粗糙。然而，正所谓音乐并不仅仅是一段声音，是要和个人境遇相结合的。在那个晚上，我刚刚做完一套题，起身去阳台休息。凌晨两点的南大早已休眠，但是远处登山道的路灯依然闪烁，就在那一阵风之中，歌单循环到了《胧月》。</p>
+<p>那应该是第一次我感受到了所谓的情景结合。因为匆匆学过一点日语，也看过歌词翻译，所以当「逃れる術を探すばかりの孤独な星」这一句响起的时候，那种孤身一人求学的寂寞，疲惫后的困倦一瞬间全部返了上来，而阳台上是依然燥热的夏夜晚风。</p>
+<p>而这一幕大约也是我高中那么多回忆中最为深刻的几个之一，也就是这个契机，我第一次感受到了术曲机械音中的那一种，真人并不能表达出来的沙哑感。现在我依然觉得，《胧月》再如何使用真人翻唱，也难以表达出其中蕴含的孤寂感。人本身是社会性的，再如何表达孤独，也不过是先建立起和别人的连接再失去，比如那些表达孤独寂寞的失恋曲。然而机械音中表达出的那种，自己身为人造物或者非人，生来即无法和人们平等的孤寂感，或许才是深层的。这也是我在之后沉迷于《心》这首歌的原因。</p>
+<p>在此之后，术曲便不断进入歌单，而自己听术曲的风格也渐渐明晰。</p>
+<p>当然，Holder 这个时候还是分不清歌姬和 P 主。</p>
+<h1 id="高中三年级2018---2019">高中三年级（2018 - 2019）</h1>
+<p>备战高考的一年，并无什么可讲的。这段时间除去学习，几乎也没有其他事情可做。</p>
+<p>然而这个时候我遇到了《月光润色女孩》。这首歌是网易云推荐给我的，第一次听也是一点感觉都没有，没有什么特别之处。然而就是这样听着听着，就沉迷了。</p>
+<p>这段时间，为了学习日语，我买了标日，但是上面的课文实在是无聊乏味。这个时候我注意到，自己的歌单已经几乎全是日语了，为什么不去打印歌词来学呢。于是我打印了几首歌的歌词，一首一首学，这里面包括《Secret base》《鸟之诗》《心做》以及不用想就知道的《月光润色女孩》。</p>
+<p>于是我早读课就不读语文或者英语了，而是把歌词偷偷藏在书下面，一个假名一个假名认，不会的语法就圈出来下课查标日。就这样，这几首歌也成为了我最先会的几首歌。不过，要是你问为啥我这么喜欢《胧月》却不打这首歌的歌词，我只能说，这首歌歌词太难了，生词太多，看不下去。</p>
+<p>要问我多喜欢《月光润色女孩》，我只能引用我前桌在高考后和我说的那句话，“你早读课天天唱，唱得我都会唱了”。</p>
+<h1 id="高考后暑假-大一2019---2020">高考后暑假 &amp; 大一（2019 - 2020）</h1>
+<p>高考后的暑假，我依然不能说我是术术人，虽然听不少术，但还是没主动找过多少。当时我喜欢的一首歌是《Narrative》，一个电影的 ED。</p>
+<p>这个暑假事实上记忆最深刻的术曲是《朗朗晴天》，是一位高中的好友推荐给我的。高考出分后，因为填报志愿的事情，我、我父母、我的高中和清北招生组之间产生了一些奇怪的摩擦，而这也让我产生了无法把握自身命运的一种无力感，也就在那个时候，我和高中好友交谈的时候她把这首曲子推荐给了我。</p>
+<hr />
+<p>进了大学之后，事情发生了一点转变。我开始接触 gyari 的 Voiceroid 小剧场，认识了缘兔、akari、琴叶姐妹这些歌姬，也就是这个时候，我才真正知道什么是 P 主，什么是歌姬。</p>
+<p>如果要说大一上学期印象最为深刻的歌曲，就是《蜘蛛丝 Monopoly》、《妄想感伤代偿联盟》和《几望之月》。</p>
+<p>然而大一的下学期，因为疫情一整个学期都只能在家。然而也正是这段时间，由于我已经开始主动认识术曲，从而也是我术曲底子正式构成的开端。这段时间，我听到了《霞む夏の灯》《Unknown mother goose》，和几乎是我听术曲里程碑一般的《无梦之梦》。</p>
+<p>事实上，大一下学期在家的这一段时间，即使我依然在听动漫歌曲或者 J-pop，比如 Reol 之类，但实际上我开始明显地倾向于术曲。术曲具有一种奇妙的创作自由感，相比于动漫歌曲需要考虑类似表达主旨等约束，术曲更像是自由地让歌姬传达创作者的感情，无须特别关注所谓创作要求或者一些限制自由表达的限制。</p>
+<p>在那段时间内，wowaka、怪力熊、MARETU、春卷饭、DECO 构成了我最初的底子。当然，还有类似《萤火虫》《ROKI》之类的单曲。</p>
+<h1 id="在这之后2020--">在这之后（2020 - ）</h1>
+<p>在这之后就并没有太多值得讲述的了，已经入了门的术术人自然是会自己去翻找自己所喜欢的曲子的。</p>
+<p>不过也就是在这之后，我明显感觉到了听歌风格和个人境遇的关系。在大一的下学期，我就已经听过了《劣等上等》，而在那个时候，我觉得这首歌过分吵闹，毫无节奏可言，遂跳过。然而在我大二上学期再次听到的时候，我却觉得万分戳心。现在回想，大概是大一下学期还在为学业挣扎，社工上也因为团支书不作为而寸步难行。相比之下，大二已经适应了大学节奏并且取得一些成就，这首歌似乎也就不是那么刺耳了。</p>
+<p>还可以作为例子的就是 2021 年的 5 月感情受挫的时候，在这事之前和在这事之后听春卷饭，完全是两个感觉。在这之前，我只能感受到单纯的震撼，而似乎并没有那么多的共鸣。然而在这之后，尤其是听《第三心脏》的时候，我甚至感觉这首歌就是为我而作。</p>
+<p>说到《第三心脏》，春卷饭的幻影系列曲，从 2021 年更新到现在，似乎就和我奇妙地贴合了一般。在我低沉的时候，听到了《第三心脏》，在我逐步挣脱的时候，听到了《萤火虫未曾来过》，听《美影日记》的时候则又让我回到了一年前的一些混乱之中。</p>
+<p>当然还有一些插曲，就是入了音游坑，通过 osu 和 PJSK 认识了不少新 P 主和术曲。还有就是认识了术群的各位，见识到了很多新的术曲口味，听到了很多新歌。</p>
+<h1 id="所以呢">所以呢</h1>
+<p>Holder 真正听术曲的时间并不长，或许只能说大一下学期之后才开始有意识听。然而实际上，Holder 小学就听过术曲了，虽然毫不自知。</p>
+<p>Holder 正如自己所描述的那样，并不想把歌曲独立于个人的境遇去解释。就像《劣等上等》，不同的境遇下就是不同的体验。我依然习惯将歌曲、文字等这些艺术和具体的、切身体会的场景联系起来。</p>
+<p>仔细回忆一下，Holder 喜欢夏天的晚上并不是没有原因，因为每一年的夏天都承载了太多太多的深刻回忆。18 年和 Sakana 的相遇以及独自求学终有回报，19 年为三年高中完美谢幕，20 年的一人旅行，21 年和 Sakana 最激烈的矛盾到最后的和解，22 年被导师拒绝和最后的平安上岸。而这些夏夜，都有一些曲子作伴，18 年的《胧月》、19 年的《朗朗晴天》、20 年的《无梦之梦》、21 年的《第三心脏》《某一家的茶会》、22 年的《坠入地狱》。</p>
+<p>大约歌曲就像回忆的书签一般，听到这个旋律，就仿佛回到了当时那段时光。</p>
+<p>Holder 和 Vocaloid 的故事，不如说就是 Holder 自己的故事，然而这个故事还很长很长。</p>
+]]></content>
+      <categories>
+        <category>【杂谈】碎碎念</category>
       </categories>
   </entry>
   <entry>
@@ -17306,96 +17406,6 @@ u_\psi(\mathcal{D}^{\rm tr}_{\mathcal{T}}, \theta) = \theta - \alpha\nabla_\thet
 <p>据说是这位 P 主唯一一首出名曲，这一点莫名显得有些凄凉。</p>
 <p>歌词里面杂乱无章的意象，似乎描绘了沉在海底的荒诞世界。</p>
 <p>似乎并不想去那里旅行呢（笑）。</p>
-]]></content>
-      <categories>
-        <category>【杂谈】碎碎念</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Holder 与 Vocaloid</title>
-    <url>/2022/10/02/vocaloid-and-me/</url>
-    <content><![CDATA[<p>和 V+ 群群友度过了一天快乐的国庆假期，这次的 V+ Next 推曲活动中，又一次提及了我的“自传”——即我和 Vocaloid 的一些故事。</p>
-<p>先前已经和 nagi 以及莎布老师谈过一些，也在推曲小作文里面写过不少小故事。但回想起来我好像自己也没有系统总结过这些有趣的经历，明明是挺有意思的一段旅程，所以干脆晚上花点时间写写。</p>
-<p>大约是一些按照年份编写的流水账和回忆录，随便看看就好。</p>
-<span id="more"></span>
-<h1 id="小学高年级2010---2013">小学高年级（2010 - 2013）</h1>
-<p>大约这是一切的开端了。小学的时候 Holder 可能并没有什么爱好或者说口味，同学们在玩什么游戏我就玩什么游戏，似乎并没有什么主见。但是有几件事情倒是记忆挺深刻。</p>
-<p>首先是《甩葱歌》的莫名走红。Holder 家所在的街区是县城中心的一个破旧商店街，当时的所有店铺，从手机店、音乐店，甚至是鞋店、服装店，都在大音量播放这首歌，每天上下学的时候多多少少都是一直听着这首歌的。继此之后的，是 2011 年突然爆火的《甩饼歌》。这首歌有了歌词，讲述的是 2011 年利比亚空袭、物价飞升之类的大事件。本来自己就已经对《甩葱歌》旋律很熟悉，有了能唱的歌词，自然是很快就上手了这首改编歌，和小学同学时不时还一起唱着玩。</p>
-<p>其次是有一次我父亲问到我有没有喜欢的歌手，因为当时他一直在家里放歌自己听。但我当时说实话，真的不知道什么歌曲，而当时我的玩伴正沉迷汪峰，所以我就随口回答汪峰。结果我父亲大概是一下子就知道了我只是糊弄过去，于是无心地扔了一句“要找找自己喜欢的东西而不是随波逐流”。</p>
-<p>这句话随后就应验了。2012 年前后，我进入了元素收藏这个小众坑，这个坑大约就是收集各种元素的单质。在当年这还是一项很难的事情，因为稀土很难有货源，类似 Rb、Cs 之类的碱金属还只能从国外进口，一克近一千，这对小学生来说已经是天价（题外话，现在国内自制 Rb、Cs 已经不稀奇，克价已经跌下两百，正所谓中国人擅长把东西搞成白菜价。此外，现在元素收藏坑也近乎是进坑投资几千左右就已经能买到全套单质了）。也正是因此，当时我对贴吧里面那些拥有类似 Rb、Cs、Tl、Sc 等这些元素的聚聚们可谓是十分敬仰，其中就包括一位元老——真·凤舞九天。</p>
-<p>这位元老有一天晚上，在贴吧转载了一个视频，说自己今天单曲循环了一晚上。我点进去一看，是《世末舞厅》的一个自制 PV。当然，当时我是不知道这是什么的，但我能明白的是，这是一首日文歌，而且不同于小学音乐课上那些民歌、红歌、教学歌曲，不同于汪峰那种伤感，而是一种完全不能理解的，全新的歌曲艺术形式。</p>
-<p>小学的我第一次看到类似心脏、死亡、骷髅、终结这些意象，而即使我一点点都看不懂英文和日文，歌词一句话都看不懂，但是图像和声音却将世界终结前的疯狂传达了出来。</p>
-<p>这显然是震撼的，所以即使当时 Holder 只有一个充话费送的小手机，但我依然拿出了零花钱到同学家的手机店买下了一张 SD 卡，从家里人工作的地方偷偷拿了一个读卡器，自己在周末摸索着如何下载视频。这样忙活了一段时间后，我便能够随时听《世末舞厅》了。</p>
-<p>然而，还是那句话，由于完全看不懂英文和日文，我没能借此机会认识 wowaka，也没能认识巡音，更没能借此机会打开术力口的大门，虽然我隐隐约约感觉到了这机械的电子音背后，似乎和《甩葱歌》有着千丝万缕的联系。</p>
-<h1 id="初中2013---2016">初中（2013 - 2016）</h1>
-<p>这一段时间似乎和术力口就没有什么关系了。</p>
-<p>因为家人工作的原因，我离开了原先的住处，去往另外一个地方上初中，于是也就脱离了我小学的所有同学。在完全陌生的环境下，Holder 度过了一个并不美妙的初一。转机出现在初二，父亲的一位朋友送给我了一台 iPad。我的父母算是十分开明，决定将这个 iPad 交给我全权处置，并不打算限制我的使用时间之类。</p>
-<p>那段时间，我注意到周围同学都在听歌，虽然我不知道他们在听什么，但是就是莫名其妙觉的一个人听歌似乎是一件很酷的事情。这样想着，Holder 在 iPad 上下载了音乐软件，添加了几首类似《江南 Style》之类的大众歌曲。</p>
-<p>你可能会问，《世末舞厅》呢？然而这就很不好说了，我记忆中我似乎并没有将它加入到歌单里面，因为我不会打日文。当时我要是想听这首歌，我只能去贴吧翻找之前那位元老的贴子，或者拿 U 盘在电脑上听（SD 卡应该在搬家时遗失了，但是之后我有了一个 U 盘）。</p>
-<p>《江南 Style》可能是一个并不好的种子，因为我为了扩充歌单，只能每天看看音乐软件的推荐。然而因为这个种子，加上当时 EXO 和 TFBoys 在网络上的对立导致两方热度都居高不下，我的歌单迅速充满了 EXO。EXO 的曲风大多是炫酷的类型，这也塑造了我后续的听歌风格。</p>
-<p>然而，我并没有在 K-pop 的路上走得很深，因为我初中有一位朋友，很喜欢看番。当时我和他在一起玩的时候，常常是白天出门，晚上窝在某人家里看番，也就是那个时候我认识了《刀剑神域》和一些其他的番，也收获了第一个严格意义上加入歌单的日语歌——TV 动画《空战魔导士候补生的教官》OP《D.O.B.》，因为这首歌很炫酷，节奏有力量。</p>
-<p>也是在他的带领之下，大约是 2014 年，我入了 B 站，但我当时几乎只会看鬼畜区。</p>
-<p>虽然如此，我当时的歌单的主流依然是 EXO 和权志龙，最喜欢的可能依然是《Call me baby》或者《BANG BANG BANG》。而随后因为 K-pop 的外延了解到 Maroon 5、TheFatRat 的一些歌和欧美音乐则完全是支线了。</p>
-<p>其实要说到为啥即使有这么一位看番的好朋友我还一直听韩流，倒也只能说是大环境所趋。当时我的初中班级，大部分同学更乐意听 K-pop。那种带着一些痞气，或者说是不良、叛逆、特立独行风格的歌曲，在初中生中很有市场。</p>
-<p>不过也正是因此，我错过了阳炎 Project 的时代。</p>
-<h1 id="高中一年级2016---2017">高中一年级（2016 - 2017）</h1>
-<p>中考考上了当地最好的中学，并且在入学分班考试里考上了年级第一，这完全是出乎所有人的意料的，包括我自己，因为没人相信从那种初中出来的毕业生能考上这个高中的第一。这是一个非常奇妙的开局，在单纯的高中生之中，这样的成就足以让你受到瞩目。所以 Holder 的高一开局并不算很差，反倒是收获了一群朋友。</p>
-<p>先前提到过 2014 年我开始看 B 站，等到我 2016 年高中入学的时候，我已经大体对鬼畜区了解了个遍，自然也就包括了音 MAD 和人力 Vocaloid。在此期间，我接触到了我严格意义上第一个知道是术曲的术曲——《千本樱》（《世末舞厅》我最开始并不知道这是术曲，我甚至不知道这首歌和初音未来有关）。</p>
-<p>然而，2016 年的 B 站大事是和术无关的，而是《极乐净土》的爆火。这首歌的爆火让我经常逛的鬼畜区充满了这首歌的相关创作，自然而然地，这首歌也进入了我的歌单。</p>
-<p>有一件黑历史和这首歌有着很大的关联。当时我不会日语，想唱《极乐净土》自然是唱不出来，只能哼调。然而当时哲♂学里的 FA 乐器又在鬼畜中广泛运用。于是有一次我在班上用 FA 乐器唱了一小段《极乐净土》。现在想起来的话，可以说是万分羞耻。</p>
-<p>一切都是有开端的，自从《极乐净土》和《千本樱》进入歌单，随之而来的就是各种日语歌。但其实这个时候，我依然只是知道初音未来的名号，还不认识双子、IA 等其他歌姬。另外，这个时候，我还不知道什么是歌姬什么是 P 主，当时的 Holder 认为初音未来的所有作品都由一个运营方创作，甚至还因此惊讶于为何这个运营方作出的曲子曲风如此多变。</p>
-<p>但也就是这个时候，我入了 LL 坑，听了不少缪斯的歌。不过即使如此，此时我的歌单依然是 K-pop 和欧美音乐占主流，日语歌有但不多，术也不过几首。</p>
-<p>当然，要是说几件小事的话还是有的。</p>
-<p>首先是高一的寒假，学校组织了去苏州的数学竞赛集训，那段时间比较休闲，我便无聊的时候去整理歌单，删掉了不少 K-pop 歌。这个行为的原因其实挺怪的，因为大约在 2016 年年底或者说 2017 年年初，我经历了第一次所谓的“被分手”。而为了将初中这些破事的记忆删除，我不仅删掉了她所有的照片（当然后面我居然在 iCloud 的自动备份里面翻出来了），删掉了聊天记录和所有联系方式。而寒假在苏州的时候，我翻了翻歌单，发现听歌的时候依然能回想起初中当时的一些奇怪经历，尤其是《Call me baby》，这首歌是我和她都喜欢的。于是，我删掉了大多的 K-pop 歌，只留下了几首自己特别喜欢的，比如《MAMA》和《Lightsaber》。</p>
-<p>之后是 2016 年年底《你的名字》上映，而这让我的歌单中又多出了若干的日语歌，包括《前前前世》《火花》《没什么大不了》《黄昏之时》《梦灯笼》。其中最可说的就是《梦灯笼》，当时我沉迷这首歌到，即使我不会日语，不会写五十音，我也会拿并不富裕的晚饭休息时间跑回家打开电脑抄歌词和罗马音，尝试着学唱。</p>
-<p>2017 年的暑假并没有多少可以称道的事情，虽然当时是第一年接触学科竞赛，辗转扬州、南京等地，但是就听歌而言，并没有什么可说的。硬要说的话，就是看了《未闻花名》，然后沉迷于《Secret base》这首歌。术曲方面，则是零零散散加了《深海少女》《天之弱》《反语》《脑浆炸裂女孩》一共四首。</p>
-<h1 id="高中二年级2017---2018">高中二年级（2017 - 2018）</h1>
-<p>熟悉 Holder 的人都知道，这是一切的转折点。</p>
-<p>2017 年进入高二之后，发生了几件事情。</p>
-<p>首先是 9 月份《病名为爱》投稿，这首歌莫名其妙地在国内收获了极高的热度。而在这段时间，我们高中为我们争取到了去南京旁听数学竞赛省队培训的机会，我又可以公款旅游了。于是我在南京和我同学两个人，反复听这首歌。这里比较好玩的是，我先听到的是 Neru 的术版，而非不少人先听到的翻唱版。就我记忆而言，这应该是我听到的第一首双子曲。</p>
-<p>之后是 12 月份《打上花火》在国内上映，我和同学翘课去看了。当时通行的一位同学稍微对八爷有一点了解，晚上在 KFC 吃饭的时候，讲了不少八爷相关的小知识之类的，包括他前期作为 P 主投稿的一些曲子。</p>
-<p>经过这一个学期，Holder 的歌单大致变成了术曲占一半，其他歌曲混混乱乱杂在里面的一种状态，但 Holder 此时依然没有主动去挖术曲或者去了解 Vocaloid，依然是听到好听的就放歌单。然而这个时候，大数据已经开始给我不断推术相关的东西，很少再有韩流或者欧美了。</p>
-<p>高二寒假备战小高考，没有什么可以说的事情，除了通过一个人力 Vocaloid 认识了《太阳系 DISCO》。</p>
-<p>而高二的春季学期，我遇到了两首歌，分别是《神佛》和《被生命所厌恶》，但是是 mafumafu 版本。mafumafu 这个名号的出现，让我本就不清楚的概念更加混乱，什么是歌姬，什么是 P 主，什么是唱见，这些我当时可以说万分混乱。然而也正是这两首歌，打开了一道通过 mafumafu 获取新术曲的大门。</p>
-<p>3 月的时候，我在听《病名为爱》的时候，注意到评论里面有一句说 Neru 来 B 站了。我记得当时我并不是很清楚 Neru 到底是谁，但总之我给他点了关注，所以说 Neru 是我第一个关注的 P 主。在此之后，我也将 Neru 的《SNOBBISM》和《随便随便》加入了歌单。</p>
-<p>也就是这段时间，我开始学习日语。</p>
-<p>时间就这样到了传奇的 2018 年暑假。</p>
-<p>这个暑假我为了争取清华的各种政策，首先是各个学科竞赛，数学要在扬州集训然后考试，化学要在南京集训然后考试，物理也是在南京，期间还需要参加清华的暑期学校，要去杭州参加一个训练。所以从 6 月份一直到 9 月份这近三个月的时间，我几乎一直在外，而且几乎孤身一人，因为我高中有资格参与化学国初的不过两人，能参与物理复赛的也寥寥无几。</p>
-<p>这是我第一次远离熟悉的家乡如此长的时间，而且我父母也说为了锻炼我的独立能力，并不打算跟在后面，只是说了一句，有什么要紧的情况或者缺钱了就给家里打电话。显然，为了填补课余时间，除了刷题看书，似乎也只剩下听歌了，因为我几乎不玩游戏，除了当时短暂玩过的《炉石传说》。</p>
-<p>这段时间给了我扩充歌单绝佳的机会，我开始第一次下意识地在搜索框中输入初音未来，我开始有意识地找各种番去看，去听它的 OP 和 ED。那段时间，类似 MARETU、れるりり、Neru 等这些名字开始慢慢变得熟悉，镜音双子、巡音也开始进入我的视野，虽然我还是区分不开 P 主和歌姬。</p>
-<p>此时我收集到的术曲已经开始出现两极分化的特征，一类是吵闹的、喧嚣的、意味不明的，这些歌单纯提供一种精神上的刺激，似乎也和当时我沉迷 K-pop 有着相同的根源。而另外一类，则是舒缓的、抒情的、温柔的，这些歌，大约才真正是我当时能共鸣的。</p>
-<p>这其中最为特殊的自然是《胧月》。第一次听到这首歌，我并没有觉得多么特殊，甚至因为它并不突出的调教觉得十分粗糙。然而，正所谓音乐并不仅仅是一段声音，是要和个人境遇相结合的。在那个晚上，我刚刚做完一套题，起身去阳台休息。凌晨两点的南大早已休眠，但是远处登山道的路灯依然闪烁，就在那一阵风之中，歌单循环到了《胧月》。</p>
-<p>那应该是第一次我感受到了所谓的情景结合。因为匆匆学过一点日语，也看过歌词翻译，所以当「逃れる術を探すばかりの孤独な星」这一句响起的时候，那种孤身一人求学的寂寞，疲惫后的困倦一瞬间全部返了上来，而阳台上是依然燥热的夏夜晚风。</p>
-<p>而这一幕大约也是我高中那么多回忆中最为深刻的几个之一，也就是这个契机，我第一次感受到了术曲机械音中的那一种，真人并不能表达出来的沙哑感。现在我依然觉得，《胧月》再如何使用真人翻唱，也难以表达出其中蕴含的孤寂感。人本身是社会性的，再如何表达孤独，也不过是先建立起和别人的连接再失去，比如那些表达孤独寂寞的失恋曲。然而机械音中表达出的那种，自己身为人造物或者非人，生来即无法和人们平等的孤寂感，或许才是深层的。这也是我在之后沉迷于《心》这首歌的原因。</p>
-<p>在此之后，术曲便不断进入歌单，而自己听术曲的风格也渐渐明晰。</p>
-<p>当然，Holder 这个时候还是分不清歌姬和 P 主。</p>
-<h1 id="高中三年级2018---2019">高中三年级（2018 - 2019）</h1>
-<p>备战高考的一年，并无什么可讲的。这段时间除去学习，几乎也没有其他事情可做。</p>
-<p>然而这个时候我遇到了《月光润色女孩》。这首歌是网易云推荐给我的，第一次听也是一点感觉都没有，没有什么特别之处。然而就是这样听着听着，就沉迷了。</p>
-<p>这段时间，为了学习日语，我买了标日，但是上面的课文实在是无聊乏味。这个时候我注意到，自己的歌单已经几乎全是日语了，为什么不去打印歌词来学呢。于是我打印了几首歌的歌词，一首一首学，这里面包括《Secret base》《鸟之诗》《心做》以及不用想就知道的《月光润色女孩》。</p>
-<p>于是我早读课就不读语文或者英语了，而是把歌词偷偷藏在书下面，一个假名一个假名认，不会的语法就圈出来下课查标日。就这样，这几首歌也成为了我最先会的几首歌。不过，要是你问为啥我这么喜欢《胧月》却不打这首歌的歌词，我只能说，这首歌歌词太难了，生词太多，看不下去。</p>
-<p>要问我多喜欢《月光润色女孩》，我只能引用我前桌在高考后和我说的那句话，“你早读课天天唱，唱得我都会唱了”。</p>
-<h1 id="高考后暑假-大一2019---2020">高考后暑假 &amp; 大一（2019 - 2020）</h1>
-<p>高考后的暑假，我依然不能说我是术术人，虽然听不少术，但还是没主动找过多少。当时我喜欢的一首歌是《Narrative》，一个电影的 ED。</p>
-<p>这个暑假事实上记忆最深刻的术曲是《朗朗晴天》，是一位高中的好友推荐给我的。高考出分后，因为填报志愿的事情，我、我父母、我的高中和清北招生组之间产生了一些奇怪的摩擦，而这也让我产生了无法把握自身命运的一种无力感，也就在那个时候，我和高中好友交谈的时候她把这首曲子推荐给了我。</p>
-<hr />
-<p>进了大学之后，事情发生了一点转变。我开始接触 gyari 的 Voiceroid 小剧场，认识了缘兔、akari、琴叶姐妹这些歌姬，也就是这个时候，我才真正知道什么是 P 主，什么是歌姬。</p>
-<p>如果要说大一上学期印象最为深刻的歌曲，就是《蜘蛛丝 Monopoly》、《妄想感伤代偿联盟》和《几望之月》。</p>
-<p>然而大一的下学期，因为疫情一整个学期都只能在家。然而也正是这段时间，由于我已经开始主动认识术曲，从而也是我术曲底子正式构成的开端。这段时间，我听到了《霞む夏の灯》《Unknown mother goose》，和几乎是我听术曲里程碑一般的《无梦之梦》。</p>
-<p>事实上，大一下学期在家的这一段时间，即使我依然在听动漫歌曲或者 J-pop，比如 Reol 之类，但实际上我开始明显地倾向于术曲。术曲具有一种奇妙的创作自由感，相比于动漫歌曲需要考虑类似表达主旨等约束，术曲更像是自由地让歌姬传达创作者的感情，无须特别关注所谓创作要求或者一些限制自由表达的限制。</p>
-<p>在那段时间内，wowaka、怪力熊、MARETU、春卷饭、DECO 构成了我最初的底子。当然，还有类似《萤火虫》《ROKI》之类的单曲。</p>
-<h1 id="在这之后2020--">在这之后（2020 - ）</h1>
-<p>在这之后就并没有太多值得讲述的了，已经入了门的术术人自然是会自己去翻找自己所喜欢的曲子的。</p>
-<p>不过也就是在这之后，我明显感觉到了听歌风格和个人境遇的关系。在大一的下学期，我就已经听过了《劣等上等》，而在那个时候，我觉得这首歌过分吵闹，毫无节奏可言，遂跳过。然而在我大二上学期再次听到的时候，我却觉得万分戳心。现在回想，大概是大一下学期还在为学业挣扎，社工上也因为团支书不作为而寸步难行。相比之下，大二已经适应了大学节奏并且取得一些成就，这首歌似乎也就不是那么刺耳了。</p>
-<p>还可以作为例子的就是 2021 年的 5 月感情受挫的时候，在这事之前和在这事之后听春卷饭，完全是两个感觉。在这之前，我只能感受到单纯的震撼，而似乎并没有那么多的共鸣。然而在这之后，尤其是听《第三心脏》的时候，我甚至感觉这首歌就是为我而作。</p>
-<p>说到《第三心脏》，春卷饭的幻影系列曲，从 2021 年更新到现在，似乎就和我奇妙地贴合了一般。在我低沉的时候，听到了《第三心脏》，在我逐步挣脱的时候，听到了《萤火虫未曾来过》，听《美影日记》的时候则又让我回到了一年前的一些混乱之中。</p>
-<p>当然还有一些插曲，就是入了音游坑，通过 osu 和 PJSK 认识了不少新 P 主和术曲。还有就是认识了术群的各位，见识到了很多新的术曲口味，听到了很多新歌。</p>
-<h1 id="所以呢">所以呢</h1>
-<p>Holder 真正听术曲的时间并不长，或许只能说大一下学期之后才开始有意识听。然而实际上，Holder 小学就听过术曲了，虽然毫不自知。</p>
-<p>Holder 正如自己所描述的那样，并不想把歌曲独立于个人的境遇去解释。就像《劣等上等》，不同的境遇下就是不同的体验。我依然习惯将歌曲、文字等这些艺术和具体的、切身体会的场景联系起来。</p>
-<p>仔细回忆一下，Holder 喜欢夏天的晚上并不是没有原因，因为每一年的夏天都承载了太多太多的深刻回忆。18 年和 Sakana 的相遇以及独自求学终有回报，19 年为三年高中完美谢幕，20 年的一人旅行，21 年和 Sakana 最激烈的矛盾到最后的和解，22 年被导师拒绝和最后的平安上岸。而这些夏夜，都有一些曲子作伴，18 年的《胧月》、19 年的《朗朗晴天》、20 年的《无梦之梦》、21 年的《第三心脏》《某一家的茶会》、22 年的《坠入地狱》。</p>
-<p>大约歌曲就像回忆的书签一般，听到这个旋律，就仿佛回到了当时那段时光。</p>
-<p>Holder 和 Vocaloid 的故事，不如说就是 Holder 自己的故事，然而这个故事还很长很长。</p>
 ]]></content>
       <categories>
         <category>【杂谈】碎碎念</category>
