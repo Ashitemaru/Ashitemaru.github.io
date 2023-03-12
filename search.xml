@@ -971,6 +971,29 @@
 <p>写完这个页面之后我意识到周三 8 号的韩语课多半是起不来了，于是和老师说明了情况，打算韩语课退课自学了。</p>
 <p>8 号的话，起来之后先是去了 DRL，下课后结果兴致来了就去吃了顿麦当劳然后五道口出勤，出到了晚上回来和舍友吃了顿饭，308 睡了一觉之后就是软工的课咨委启动会，开完之后就十一点了，直到这个时候才准备开始做毕设。</p>
 <p>这两天属实没有什么特别有意思的事情，也没有什么有意思的新闻，只是很平淡地摸鱼了两天，只能赶快把毕设启动了，不然太摸鱼了。然后韩语的收音和今天 DRL 的课程内容还得整理一下，不过还是毕设为重，这些可以明天开完会之后慢慢摸索。</p>
+<h1 id="section-16">2023.03.09</h1>
+<h1 id="section-17">2023.03.10</h1>
+<p>周五似乎并没有什么安排，因为周四理论上已经大体解决了问题，我也成功在周五凌晨六点前把实习的代码交掉了，虽然我知道里面还有不少的错误，但这些错误也不是我写的，我真的很难去帮别人补天。</p>
+<p>然而下午毕竟是要验收的，验收这就发现这玩意几乎没有办法用，功能上欠缺了一堆东西，实习那边的学长能看得出来很着急，于是急忙安排我们前端开发的两拨人赶快开会对接。我迅速把一些比较严重的问题扔到了群里，但是他们的答复也比较暧昧不清，不太能对实际解决问题起到什么作用。</p>
+<p>晚上稍微开了个会，我直接对着他们的代码指指点点了一通，总之就是他们那边出了不少问题（虽然感觉我也可能出问题），导致现在功能上完全用不了。在这之前事实上我已经和 yfgg 吐槽了很多他们代码上的错误之类的，总之就是血压超级高。</p>
+<p>开会的时候我直接说我周末不奉陪了，你们的问题你们慢慢解决，然后我就开始心安理得地摆烂，打了一晚上德州扑克之后就早早睡了。</p>
+<h1 id="section-18">2023.03.11</h1>
+<p>周六是约好先去麦当劳吃饭然后 V+ 群群 K 的，我定好了十一点的闹钟，虽然被闹醒了但是小小眯了一会，没想到就直接迟到半小时。</p>
+<p>因为这次参加的群友相当之多，最终我们是分为中 V 和日 V 两边举行，我一直在日 V 这边，确实也唱了相当多的 V 曲，嗓子已经炸裂了。</p>
+<p>晚上本来是打算聚餐的，但是还是和湖中、秋枫老师临时起意去窝出了一小会勤，只是没想到窝现在十点钟就会关门，于是也没玩很长时间就只能回来了。</p>
+<p>回来洗了个澡，准备稍微干点活。在今天玩的时候实习那边还在说打算周日把 bug 修好，但总之我有点不想再陪他们玩下去了，我把我的工作做好，这周，我必须把那里的事情放下来做毕设了，后面软工助教会还得开，不能再这样拖泥带水了。</p>
+<hr />
+<p>今天还是主要配置了一下 DRL 的环境，因为手上的 Mac 说实话已经很不好用了，很怕后面要做深度神经网络的时候撑不住，于是直接把代码拉到服务器上去了。但是这有一个重要的问题，DRL 的作业是基于 Gymnasium 的，这是需要渲染图形界面的，那我就需要通过 X11 转发图形界面到我的 Mac 上。但是刚配置完 X11，就报错了：</p>
+<figure class="highlight shell"><figcaption><span>ZSH</span></figcaption><table><tr><td class="code"><pre><span class="line">X Error of failed request:  BadValue (integer parameter out of range for operation)</span><br><span class="line">  Major opcode of failed request:  149 (GLX)</span><br><span class="line">  Minor opcode of failed request:  3 (X_GLXCreateContext)</span><br><span class="line">  Value in failed request:  0x0</span><br><span class="line">  Serial number of failed request:  143</span><br><span class="line">  Current serial number in output stream:  144</span><br></pre></td></tr></table></figure>
+<p>我查了半天终于在 StackOverflow 上找到了解决方案，只需要在 MacOS 的客户端这边运行下述命令启用 IGLX 即可：</p>
+<figure class="highlight shell"><figcaption><span>ZSH</span></figcaption><table><tr><td class="code"><pre><span class="line">defaults write `quartz-wm --help | awk &#x27;/default:.*X11/ &#123; gsub(/\)/, &quot;&quot;, $2); print $2; &#125;&#x27;` enable_iglx -bool true</span><br></pre></td></tr></table></figure>
+<p>然后普通地 <code>ssh -Y</code> 连接到 Linux 服务器端就可以了。如果是 VSCode 的话，需要在 SSH config 里面加上下面两行来保证 X11 启用：</p>
+<figure class="highlight shell"><figcaption><span>SSH config</span></figcaption><table><tr><td class="code"><pre><span class="line">ForwardX11 yes</span><br><span class="line">ForwardX11Trusted yes</span><br></pre></td></tr></table></figure>
+<h1 id="section-19">2023.03.12</h1>
+<p>今天是周日，按照道理是和实习那边对前端的任务的，不过下午我都用来搬迁毕设代码框架里面的一个第三方框架了。我毕设真的是，毫无进展，真的得速速做点东西出来了，尤其是下一次组会真的得说点什么东西出来了，不然这也太慢了。</p>
+<p>晚上临时起意去了胜博殿去吃炸猪排，不得不说，特别好吃，超出想象的好吃。猪排我点的千层锦，切面可以看到是一层层猪肉叠起来，最后炸出来居然不散开，居然还能保持猪排的形状，这也太惊艳了。小菜比如说包菜丝、茶水、金枪鱼拌饭、味增汤之类的就没有那么惊艳，但绝对也是平均向上的水平。</p>
+<p>今晚吃饭的地方旁边就有 maimai，于是就去打了几把，差点鸟掉 Big Daddy，但是尾杀崩盘了就没办法了。这个机厅最大的问题就是游戏币原价太贵了，两块钱一币，maimai 1pc 要五币，原价的话十块钱 1pc，实在是离谱。</p>
+<p>晚上回来发现自己 B 站六级了，于是做了一下硬核会员考试，擦边通过，关于鬼畜的一些东西真的已经是考的都是边边角角完全不知道了。做完这些迅速过了一下实习那边的代码，把订单列表页的按钮都写上了回调函数，我这边工作基本就相当于结束了。交了一些 Bug report，和学长说了自己可能得做毕设之后，就暂且告一段落吧。</p>
 ]]></content>
       <categories>
         <category>【生活记录】日记</category>
@@ -16127,309 +16150,6 @@ I_{i, S} = \mathcal{A}_O(\{\mathcal{D}_j\}) := 1 - \prod_j (1 - \mathcal{D}_{i, 
       </categories>
   </entry>
   <entry>
-    <title>2022 年 12 月论文笔记</title>
-    <url>/2022/12/06/paper-2022-12/</url>
-    <content><![CDATA[<p>12 月开始就得准备做毕设了，先要充分阅读文献，确定自己要做的方向有什么要解决的问题，以及目前已经有的探索和目前还存在的困难。</p>
-<p><span class="math display">\[
-\newcommand{\b}{\boldsymbol}
-\]</span></p>
-<span id="more"></span>
-<h1 id="learning-tailored-adaptive-bitrate-algorithms-to-heterogeneous-network-conditions---a-domain-specific-priors-and-meta-reinforcement-learning-approach">Learning Tailored Adaptive Bitrate Algorithms to Heterogeneous Network Conditions - A Domain-Specific Priors and Meta-Reinforcement Learning Approach</h1>
-<p>黄老师的文章，作为起手还是需要好好看看的。</p>
-<p>这篇文章的基本概念是，基于学习的 ABR 已经能够实现一个平均而言优秀的 ABR 算法，但是对于部分特殊的网络环境其依然表现不佳，而这也就是所谓的个性化。然后这篇文章使用了 meta RL 的方式实现了 AABR（其实应当是 <span class="math inline">\(A^2BR\)</span>，但是我真的不想打公式了，AABR 表示 Adaptation of ABR）。</p>
-<p>AABR 首先离线学习一个元算法，之后再在在线的个性化环境下学习一个针对当前网络环境的个性化算法。另外，还需要不断优化离线学习来保证元算法的优势。</p>
-<h2 id="introduction">Introduction</h2>
-<p>首先对 ABR 算法做了总结，启发式算法根据当前网络情况和一部分状态变量给出决策，但是只有在选定较好的算法参数的时候这种算法才能表现较好。基于学习的算法则根据网络情况学习这些参数。然而总而言之，这些算法都不会自动调节自己的算法参数，尤其在面对变化较多的网络环境下时，这些算法表现较差。</p>
-<p>之后是通过实验说明了现在的网络状况不仅是多样性（diverse）的，更多的是独一无二（unique）的。基于这一点，这篇文章认为做用户个性化是一个重要的提升。</p>
-<p>所以基于 Input-driven Markov Decision Process (IMDP)，本文提出了 AABR。分为离线和在线两步，具体的训练方式见后续。</p>
-<p>总结一下这篇文章的工作就是确认了当今网络环境的独特性，并通过 meta RL 解决了 ABR 的个性化问题。</p>
-<h2 id="background-motivation">Background &amp; Motivation</h2>
-<p>关于 ABR 之类的介绍这里忽略，主要看这篇文章如何论证当今网络的多样性。</p>
-<p>多样性分为三个方向去论证，即不同用户间差异、不同场景间差异以及已有的部分 ABR 算法在这些网络环境下的表现。</p>
-<p>用户间差异和场景间差异可以关注下图：</p>
-<p><img src="/uploads/paper-2022-12/1.png" /></p>
-<p>可以首先注意到网络吞吐率和 RTT 的变动是相当大的，而如果观察具体的用户，也可以发现用户之间的网络状况差异也很大，部分用户网络稳定（整体带宽 CDF 陡峭）而部分用户的网络波动较大，而且各个用户的网络指标平均值也差异较大。</p>
-<p>对于场景，也可以注意到步行、地铁、公交、汽车的网络情况也各有不同，并不能一概而论。</p>
-<p>如果从 ABR 的角度出发，这篇文章在两个不同环境下测试了若干个 ABR 算法的性能，得到的结果是：</p>
-<p><img src="/uploads/paper-2022-12/2.png" /></p>
-<p>显然可以注意到已有的算法都很难兼顾两种情况，常常顾此失彼。这就意味着不稳定的网络情况很容易导致这些算法失效，从而也难以实现用户个性化。</p>
-<h2 id="methods">Methods</h2>
-<h3 id="input-driven-markov-decision-process">Input-driven Markov Decision Process</h3>
-<p>基本而言是在正常的 MDP 中引入了 input process <span class="math inline">\(\mathcal{Z}\)</span>，这个时候环境的转移概率定义为：</p>
-<p><span class="math display">\[
-\mathbb{T}[s&#39; \mid s, a, z] := \mathbb{P}[s_{t + 1} = s&#39; \mid s_t = s, a_t = a, z_t = z]
-\]</span></p>
-<p>此外，决策依然仅仅和 <span class="math inline">\(s_t \in \mathcal{S}\)</span> 有关，也就是说具体行为 <span class="math inline">\(a_t \in \mathcal{A}\)</span> 与 <span class="math inline">\(z_t \in \mathcal{Z}\)</span> 是独立的。</p>
-<p>进一步的价值函数定义为：</p>
-<p><span class="math display">\[
-Q(s, a, z) := \sum_{s&#39; \in \mathcal{S}} \mathbb{T}[s&#39; \mid s, a, z](r(s, a, z) + \gamma V(s&#39;, z&#39;))
-\]</span></p>
-<p>在 IMDP 下，最优策略也就定义为：</p>
-<p><span class="math display">\[
-\pi^*(s, z) := \mathop{\rm argmax}_{a \in \mathcal{A}} \sum_{s&#39; \in \mathcal{S}} \mathbb{T}[s&#39;, z&#39; \mid s, a, z]\left[r(s, a, z) + \gamma \max_{a&#39; \in \mathcal{A}} Q(s&#39;, a&#39;, z&#39;)\right]
-\]</span></p>
-<p>可以注意到，如果两个 agent 运行相同的 policy <span class="math inline">\(\pi\)</span>，其不同之处仅仅是 input process <span class="math inline">\(\mathcal{Z}_{1, 2}\)</span> 不同。可以注意到这两个 agent 将会始终保持相同的决策，所以其价值函数相同当且仅当 <span class="math inline">\(\mathcal{Z}_1 = \mathcal{Z}_2\)</span>。</p>
-<p>如果在完全得知 input process <span class="math inline">\(\mathcal{Z}\)</span> 的条件下，求解最优策略相当于一般的强化学习问题，可以通过大量的强化学习方法完成。但是我们现在需要假定 input process 是完全不可感知的，在这种条件下，一般强化学习方法学习到的最优策略 <span class="math inline">\(\hat\pi^*\)</span> 的价值函数实际上是与 input process 无关的，其价值函数用 <span class="math inline">\(Q(s&#39;, a&#39;)\)</span> 表示，其满足：</p>
-<p><span class="math display">\[
-\max_{a&#39; \in \mathcal{A}} Q(s&#39;, a&#39;) = \mathbb{E}_{z&#39;} \max_{a&#39; \in \mathcal{A}} Q(s&#39;, a&#39;, z&#39;)
-\]</span></p>
-<p>所以现在解决 input process 未知条件下的最优策略求解问题就是最重要的。</p>
-<h3 id="meta-rl-with-domain-knowledge">Meta RL with Domain Knowledge</h3>
-<p>总之就是又阐述了一边 AABR 分为离线和在线两个训练过程，离线训练一个元算法之后在线训练一个个性化 ABR 算法。那么两个问题就是：</p>
-<div class="note info no-icon"><ol type="i">
-<li><p>How to obtain a good parameter initialization for fast-learning?</p></li>
-<li><p>How to efficiently learn tailor-made ABR algorithms online?</p></li>
-</ol>
-</div>
-<h3 id="model-agnostic-meta-learning">Model Agnostic Meta-Learning</h3>
-<p>总之就是选定了 MAML 作为 AABR 的核心算法，MAML 的论文后面慢慢推着看。</p>
-<p>不过这一部分也阐释了为何 MAML 适合用于这个场景，原文是：</p>
-<div class="note info no-icon"><p>We find that model agnostic meta learning (MAML) is quite suitable in personalized ABR scenarios where the network traces on each user are quite limited.</p>
-<p>Specifically, MAML consists of an inner loop and an outer loop.</p>
-</div>
-<p>也就是说从数据集的角度和训练流程的角度上说，MAML 和这个实验场景的契合度比较高。</p>
-<h3 id="leveraging-domain-knowledge">Leveraging Domain Knowledge</h3>
-<p>总体的含义是设计了一个模拟器用于生成数据以及相关的启发式算法，一方面补充了现实世界中数据量不足的问题，另外一方面其代表的启发式算法可以在 policy 无法处理某些状态的时候作为 backup 使用。</p>
-<p><strong>注：</strong>这一部分可能需要结合下面的 overview 仔细学一下，然后对这里做一些扩充，因为这里模拟器的细节应该是做数据扩充的重要部分。</p>
-<h2 id="aabr-overview">AABR Overview</h2>
-<p>系统的大致结构为：</p>
-<p><img src="/uploads/paper-2022-12/3.png" /></p>
-<h3 id="basic-training-algorithm">Basic Training Algorithm</h3>
-<p>在设计网络的输入的时候首先需要考虑的是什么才是真正需要考虑的状态，这篇文章采用的方式是首先将所有可以使用的状态都作为输入以训练一个 teacher network，之后采用类似模仿学习的方式，采用类似决策树等较为轻量级的模型去模仿神经网络的策略，之后再使用决策树剪枝的方式去获取真正有意义的非平凡状态。</p>
-<div class="note success no-icon"><p>这个方法似乎是比较好玩的一个方法，用于筛选真正有用的输入状态。</p>
-</div>
-<p>这里剪枝的目的也是为了压缩最后的成本。</p>
-<p>最后筛选出来的状态包括：</p>
-<ul>
-<li>上一次选定的视频块质量 <span class="math inline">\(q_t\)</span></li>
-<li>目前的缓冲区占用率 <span class="math inline">\(b_t\)</span></li>
-<li>前 <span class="math inline">\(k\)</span> 个视频块传输时网络吞吐率 <span class="math inline">\(C_t\)</span></li>
-<li>前 <span class="math inline">\(k\)</span> 个视频块的下载时间 <span class="math inline">\(D_t\)</span></li>
-<li>前 <span class="math inline">\(k\)</span> 个视频块的应答时间 <span class="math inline">\(P_t\)</span></li>
-</ul>
-<p>这里为了控制成本，实验中选取 <span class="math inline">\(k = 5\)</span>。</p>
-<p>另外，为了保证模型的泛化性，这里需要将参数正则化，这样至少能保证模型面对完全没有经历过的网络环境不至于将其认为非法输入。</p>
-<p>模型的输出和正常的 AC 网络没有很大的差别，都是 Actor 网络输出一个 softmax 后的概率张量表示各个行为的决策概率，而 Critic 网络输出一个标量表示对当前状态的价值评估。</p>
-<h4 id="maximum-entropy-ppo-me-ppo">Maximum Entropy PPO (ME-PPO)</h4>
-<p>这里的训练策略是 ME-PPO，其与 PPO 的差别在于最优行为的定义里纳入了熵：</p>
-<p><span class="math display">\[
-a_t^* := \mathop{\rm argmax}_a \hat{\mathbb{E}}_t\left[\sum_t \gamma^t(r_t + \lambda H^{\pi_\theta}(s_t))\right]
-\]</span></p>
-<p>这里定义熵为：</p>
-<p><span class="math display">\[
-H^{\pi_\theta}(s_t) = -\sum_{a \in \mathcal{A}} \pi_\theta(a \mid s_t) \ln\pi_\theta(a \mid s_t)
-\]</span></p>
-<p>元学习要求在离线环境下更重视 exploration 而在线环境下更重视 exploitation。这里将熵纳入考虑，如果策略 <span class="math inline">\(\pi_\theta\)</span> 对动作空间 <span class="math inline">\(\mathcal{A}\)</span> 中的所有动作给出的概率约趋向于平均，则熵越高，从而越会支持这样的选择。</p>
-<p>ME-PPO 的具体策略是基于 Dual-PPO 的 double clip 策略，具体如下：</p>
-<p><span class="math display">\[
-\begin{aligned}
-\mathcal{L}^{\rm PPO} &amp;:= \min\left(\frac{\pi_\theta(a_t \mid s_t)}{\pi_{\theta_{\rm old}}(a_t \mid s_t)}(\theta) \hat A_t, {\rm clip}\left(\frac{\pi_\theta(a_t \mid s_t)}{\pi_{\theta_{\rm old}}(a_t \mid s_t)}(\theta), 1 - \varepsilon, 1 + \varepsilon\right)\hat A_t\right) \\
-\mathcal{L}^{\rm Actor} &amp;:= \begin{cases}
-\hat{\mathbb{E}}_t[\max(\mathcal{L}^{\rm PPO}, c\hat A_t)] &amp; \hat A_t &lt; 0 \\
-\hat{\mathbb{E}}_t[\mathcal{L}^{\rm PPO}] &amp; \hat A_t \geq 0 \\
-\end{cases}
-\end{aligned}
-\]</span></p>
-<p>这里 <span class="math inline">\(\hat A_t\)</span> 是优势函数，定义为：</p>
-<p><span class="math display">\[
-\hat A_t := r_t + \gamma(V^{\pi_\theta}(s_{t + 1}) + \lambda H^{\pi_\theta}(s_{t + 1})) - V^{\pi_\theta}(s_t)
-\]</span></p>
-<p>这里 <span class="math inline">\(c, \varepsilon\)</span> 是用来控制梯度的超参数。</p>
-<p>AABR 中的 Critic 网络的训练策略就是最小化优势函数的均方误差：</p>
-<p><span class="math display">\[
-\mathcal{L}^{\rm Critic} := \frac12 \hat{\mathbb{E}}_t[A_t]^2
-\]</span></p>
-<p>从而整体的 loss 可以总结为：</p>
-<p><span class="math display">\[
-\nabla\mathcal{L}^{\rm MEPPO} := -\nabla_\theta \mathcal{L}^{\rm Actor}(\pi_\theta, \hat A_t) + \nabla_{\theta_v} \mathcal{L}^{\rm Critic}
-\]</span></p>
-<hr />
-<p>此外，由于算法对 <span class="math inline">\(\lambda\)</span> 较为敏感，我们需要在训练过程中不断调节 <span class="math inline">\(\lambda\)</span>，调节方式较为简单：</p>
-<p><span class="math display">\[
-\lambda \leftarrow \lambda + \alpha[H^{\pi_\theta}(s_t) - H^{\rm Target}]
-\]</span></p>
-<p>这个目标在于熵逐步接近目标的时候衰减 <span class="math inline">\(\lambda\)</span> 以减缓接近速度。</p>
-<h3 id="meta-learned-policies-for-offline-stage">Meta-Learned Policies for Offline Stage</h3>
-<p><strong>注：</strong>具体的训练方式后续补充。</p>
-<h1 id="model-agnostic-meta-learning-for-fast-adaptation-of-deep-networks">Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks</h1>
-<p>这是 MAML 训练方法的原始论文，看情况有没有时间做一个复现。</p>
-<p>文章的主要贡献就是一个元学习方式，并且似乎泛用性很广：</p>
-<div class="note info no-icon"><p>In this work, we propose a meta-learning algorithm that is general and model-agnostic, in the sense that it can be directly applied to any learning problem and model that is trained with a gradient descent procedure.</p>
-</div>
-<p>元学习的核心在于训练好的模型能够迅速通过少量数据学习到新的任务，并且其能够应用到大量的下游任务中。这篇文章将训练模型理解为在模型内部建立起适用于某种任务的特征表示，如果这种表示能够适合于多种任务，那么我们只需要进行合适的微调就可以迅速适应新的任务。如果从动力系统的角度理解，我们需要提高需要完成的任务的 loss 对参数的敏感度，这个敏感度越高，参数的变化对 loss 的提升的影响越大。</p>
-<h2 id="model-agnostic-meta-learning-1">Model-Agnostic Meta-Learning</h2>
-<h3 id="meta-learning-problem-set-up">Meta-Learning Problem Set-Up</h3>
-<p>这里严格定义了元学习需要解决的问题。</p>
-<p>首先我们需要形式化定义什么是任务，这篇文章定义为：</p>
-<p><span class="math display">\[
-\mathcal{T} := \{\mathcal{L}(\b x_1, \b a_1, \cdots, \b x_H, \b a_H), q(\b x_1), q(\b x_{t + 1} \mid \b x_t, \b a_t), H\}
-\]</span></p>
-<p>这里 <span class="math inline">\(\mathcal{L}\)</span> 表示 loss，<span class="math inline">\(q(\b x_1)\)</span> 是初始状态的分布，<span class="math inline">\(q(\b x_{t + 1} \mid \b x_t, \b a_t)\)</span> 是状态转移的概率分布，<span class="math inline">\(H\)</span> 是 episode 的长度。这个定义同时涵盖了普通的强化学习和监督学习，其中监督学习中 <span class="math inline">\(H = 1\)</span>。</p>
-<p>模型本身描述为一个函数 <span class="math inline">\(f\)</span>，其接受当前状态 <span class="math inline">\(\b x\)</span> 并给出输出 <span class="math inline">\(\b a\)</span>，即 <span class="math inline">\(\b a = f(\b x)\)</span>。模型不断在该任务中给定 <span class="math inline">\(\b a_1, \b a_2, \cdots, \b a_H\)</span>，而 loss <span class="math inline">\(\mathcal{L}\)</span> 则给出了实际的反馈，这种反馈可以是分类问题中的失配损失或者 Markov 决策过程中的负收益。</p>
-<p>在元学习中我们需要考虑一系列的任务的分布，这里记作 <span class="math inline">\(p(\mathcal{T})\)</span>。如果我们要求 <span class="math inline">\(K\)</span> shot learning，对于每一个从 <span class="math inline">\(p(\mathcal{T})\)</span> 抽取的具体任务 <span class="math inline">\(\mathcal{T}_i\)</span>，我们需要再通过 <span class="math inline">\(q_i\)</span> 抽取 <span class="math inline">\(K\)</span> 个样本，并且考虑 <span class="math inline">\(\mathcal{L}_{\mathcal{T}_i}\)</span> 的反馈。</p>
-<p>之后直接搬一个论文原句，也应该是论文后面算法设计的主要出发点：</p>
-<div class="note info no-icon"><p>The model <span class="math inline">\(f\)</span> is then improved by considering how the <em>test</em> error on new data from <span class="math inline">\(q_i\)</span> changes with respect to the parameters.</p>
-</div>
-<h3 id="a-model-agnostic-meta-learning-algorithm">A Model-Agnostic Meta-Learning Algorithm</h3>
-<p>这里提供了算法设计，一个关键词就是之前提到的<strong>敏感度</strong>。</p>
-<p>考虑用参数 <span class="math inline">\(\theta\)</span> 表示的模型 <span class="math inline">\(f_\theta\)</span>。在学习具体的任务 <span class="math inline">\(\mathcal{T}_i\)</span> 的时候，参数的更新方式为：</p>
-<p><span class="math display">\[
-\theta \leftarrow \theta - \alpha\nabla_\theta\mathcal{L}_{\mathcal{T}_i}(f_\theta)
-\]</span></p>
-<p>为了简化记号，我们假设在元学习之后学习具体任务仅用了一次梯度更新，此时任务 <span class="math inline">\(\mathcal{T}_i\)</span> 的最优参数就是 <span class="math inline">\(\theta_i&#39; := \theta - \alpha\nabla_\theta\mathcal{L}_{\mathcal{T}_i}(f_\theta)\)</span>，那么元学习的目标是：</p>
-<p><span class="math display">\[
-\min_\theta \sum_{\mathcal{T}_i \in p(\mathcal{T})} \mathcal{L}_{\mathcal{T}_i}(f_{\theta_i&#39;}) = \min_\theta \sum_{\mathcal{T}_i \in p(\mathcal{T})} \mathcal{L}_{\mathcal{T}_i}(f_{\theta - \alpha\nabla_\theta\mathcal{L}_{\mathcal{T}_i}(f_\theta)})
-\]</span></p>
-<p>那么还是使用简单的梯度下降，元学习中的参数更新就是：</p>
-<p><span class="math display">\[
-\theta \leftarrow \theta - \beta\nabla_\theta \sum_{\mathcal{T}_i \in p(\mathcal{T})} \mathcal{L}_{\mathcal{T}_i}(f_{\theta_i&#39;})
-\]</span></p>
-<p>在这里我们注意到出现了二阶梯度，部分深度学习框架能够支持这一操作，但本文也同样指出作一阶近似（即舍去二阶及以上的高阶项）是可行的。</p>
-<p>基于此，MAML 的整体框架为：</p>
-<p><img src="/uploads/paper-2022-12/4.png" /></p>
-<h2 id="species-of-maml">Species of MAML</h2>
-<p>本文这里举出了监督学习和强化学习中运用 MAML 的例子，这里我们只关注强化学习。</p>
-<p>强化学习特化的 MAML 主要关注的是 loss 的选定，这里选定的就是最经典的负收益。另外，此时 <span class="math inline">\(q_{\mathcal{T}_i}\)</span> 实际上就是环境中的状态转移概率分布：</p>
-<p><span class="math display">\[
-\mathcal{L}_{\mathcal{T}_i}(f_\phi) = -\mathbb{E}_{(\b x_t, \b a_t) \sim (f_\phi, q_{\mathcal{T}_i})} \left[\sum_{t = 1}^H R(\b x_t, \b a_t)\right]
-\]</span></p>
-<p>从而，强化学习特化的 MAML 算法为：</p>
-<p><img src="/uploads/paper-2022-12/5.png" /></p>
-<p>这之后就是一些实验结果了，感觉没啥意思了。</p>
-<h1 id="learning-to-adapt-in-dynamic-real-world-environments-through-meta-reinforcement-learning">Learning to Adapt in Dynamic, Real-World Environments through Meta Reinforcement Learning</h1>
-<p>这篇文章似乎没有官方的 code base，只有两个 community code base，现在可以在 <a href="https://paperswithcode.com/paper/learning-to-adapt-in-dynamic-real-world">这个链接</a> 获取，分别是 Tensorflow 和 Pytorch 版本。</p>
-<h2 id="abstract-introduction">Abstract &amp; Introduction</h2>
-<p>需要解决的问题依然是生成数据很困难以及测试环境中无法预料到的数据可能导致所训练的策略失效，引言之中也基本上叙述了人类可以很快适应自身机体发生的变化和外界环境发生的变化，提出了如果模型经历了足够多的环境微扰，其就可以很快学习适应新环境。</p>
-<p>相比较于原先的 meta RL 对任务的定义，这篇文章提出的模型能够处理每个时间步环境或者任务都在变化的情景。也就是说，原先的 meta RL 不过是提前预设好了需要解决什么样的任务，并且每一个 RL trajectory 仅会属于一个任务，而这篇文章的 RL trajectory 中可以涵盖多种任务并且任何时间都可以切换。所以这篇文章的 meta RL 更为 general。</p>
-<p>本文也是有 trade off 的，主要表达如下：</p>
-<div class="note info no-icon"><p>By specifically training a neural network model to require only a small amount of experience to adapt, we can enable effective online adaptation in complex environments while putting less pressure on needing a perfect global model.</p>
-</div>
-<p>也就是说，这篇文章为了能够在少数据条件下快速适应新环境，并不会强制要求这个模型在 global 环境下表现到 perfect。</p>
-<p>总而言之，这篇文章主要强调学得快，学习速度大约是每个新任务需要在真实世界中经历 1.5 到 3 小时，不到原有 model-free RL 方法学习时间的十分之一。并且，在同等数据量条件下，这篇文章的模型效果也比其他方法优越。此外，为了展示本文模型的学习能力，其将其真实部署在了机器人上，来学习真实世界的情况。</p>
-<h2 id="related-works">Related Works</h2>
-<p>首先提到最原始的强化学习方法没有泛用性，以及 model-free RL 往往需要大量和真是环境交互从而不实际。发展为 model-based RL 之后，就需要面临对环境建模的 model 需要在不同的任务之间调整的问题，首先否决了单一的全局模型，而先前有人尝试通过 GP 方法合并模型不确定性从而让模型能够表示不同的环境，然而这个方法做出了额外的假设且拓展性差且难以运用到高维空间，而本文提出的结果能够通过观察从而快速切换到新的环境。</p>
-<div class="note warning no-icon"><p>这里的问题就是我是真的没有太看懂这个 model 到底是对环境建模的模型还是最后要学习的 policy。</p>
-</div>
-<p>还有一种处理方式是首先学习一个全局模型，在测试的时候通过梯度下降进行微调。此外，还有工作表明不需要完美的全局模型，可以微调先验知识来处理小变化。然而，这些方法面临着模型的训练目的与测试时的使用方式之间的不匹配的问题。本文通过明确训练一个能快速有效适应的模型来弥合这一差距。</p>
-<h2 id="preliminaries">Preliminaries</h2>
-<h3 id="model-based-reinforcement-learning">Model-Based Reinforcement Learning</h3>
-<p>马尔可夫决策过程在这里建模为 <span class="math inline">\((\mathcal{S}, \mathcal{A}, p, r, \gamma, \rho_0, H)\)</span>。这里 <span class="math inline">\(\mathcal{S}\)</span> 是状态空间，<span class="math inline">\(\mathcal{A}\)</span> 是动作空间，<span class="math inline">\(p(s&#39; \mid s, a)\)</span> 是环境状态转移概率，<span class="math inline">\(r: \mathcal{S} \times \mathcal{A} \to \mathbb{R}\)</span> 是奖励函数，<span class="math inline">\(\rho_0: \mathcal{S} \to \mathbb{R}^+\)</span> 是初始状态概率分布，<span class="math inline">\(\gamma\)</span> 是奖励衰减常数，<span class="math inline">\(H\)</span> 是轨迹长度。</p>
-<p>一条轨迹描述为 <span class="math inline">\(\tau(i, j) := (s_i, a_i, \cdots, s_j, a_j, s_{j + 1})\)</span>，我们的目标是求取最优策略 <span class="math inline">\(\pi: \mathcal{S} \to \mathcal{A}\)</span> 使得累计收益期望最大。</p>
-<p>model-based RL 目标是近似处理 <span class="math inline">\(p(s&#39; \mid s, a)\)</span>，这个模型也被称为 dynamics model。</p>
-<h3 id="meta-learning">Meta Learning</h3>
-<p>一般的元学习需要给定假设，即训练用的任务和最终的测试任务都是从同一个任务分布 <span class="math inline">\(\rho(\mathcal{T})\)</span> 中抽取。元学习的目标是获取一个学习流程 <span class="math inline">\(\theta&#39; := u_\psi(\mathcal{D}^{\rm tr}_{\mathcal{T}}, \theta)\)</span> 以通过小数据集 <span class="math inline">\(\mathcal{D}^{\rm tr}_{\mathcal{T}}\)</span> 来学习任务 <span class="math inline">\(\mathcal{T}\)</span>，学习过程可以表示为：</p>
-<p><span class="math display">\[
-\min_{\theta, \psi} \mathbb{E}_{\mathcal{T} \sim \rho(\mathcal{T})}\left[\mathcal{L}(\mathcal{D}^{\rm test}_{\mathcal{T}}, \theta&#39;)\right]
-\]</span></p>
-<p>其中 <span class="math inline">\(\theta&#39; := u_\psi(\mathcal{D}^{\rm tr}_{\mathcal{T}}, \theta)\)</span>。</p>
-<div class="note info no-icon"><p>这里的记号是真的复杂，事实上训练过程应该是函数 <span class="math inline">\(u_\psi\)</span>，训练过程用参数 <span class="math inline">\(\psi\)</span> 代表，其输出为训练后的最优参数 <span class="math inline">\(\theta&#39;\)</span>，而 <span class="math inline">\(\theta\)</span> 表示初始化参数。</p>
-<p>另外注意，<span class="math inline">\(\theta\)</span> 这里是模拟环境的模型的参数，而非 policy 的参数。</p>
-</div>
-<h4 id="gradient-based-meta-learning">Gradient Based Meta Learning</h4>
-<p>MAML 就是一种基于梯度的元学习方法，其最主要的目标是学习一个较好的参数初始化保证在少数调整中即可实现较好的下游任务。</p>
-<p>MAML 的 <span class="math inline">\(u_\psi\)</span> 就是一般的梯度下降：</p>
-<p><span class="math display">\[
-u_\psi(\mathcal{D}^{\rm tr}_{\mathcal{T}}, \theta) = \theta - \alpha\nabla_\theta \mathcal{L}(\mathcal{D}^{\rm tr}_{\mathcal{T}}, \theta)
-\]</span></p>
-<p>如果学习率 <span class="math inline">\(\alpha\)</span> 是一个固定参数，那么 <span class="math inline">\(\psi = \varnothing\)</span>，如果 <span class="math inline">\(\alpha\)</span> 是一个元学习过程中需要学习的参数，那么 <span class="math inline">\(\psi = \alpha\)</span>。</p>
-<p>即使看起来 <span class="math inline">\(u_\psi\)</span> 是平凡的，但是这种方法的表达能力和下面介绍的方法是持平的。</p>
-<h4 id="recurrence-based-meta-learning">Recurrence Based Meta Learning</h4>
-<p>这里借用了 RNN 的思想，在这个方法中，更新函数 <span class="math inline">\(u_\psi\)</span> 始终需要不断学习，其中 <span class="math inline">\(\psi\)</span> 是用于更新 RNN 隐含层状态的参数，而 <span class="math inline">\(\theta\)</span> 是余下的参数。</p>
-<div class="note warning no-icon"><p>这里是真的真的真的没看懂，这在说啥？是我前置知识欠缺太多了？</p>
-<p>只能希望下面能有个稍微好一点的说明。</p>
-</div>
-<h2 id="meta-learning-for-online-model-adaptation">Meta Learning for Online Model Adaptation</h2>
-<p>之前提到过本文的 trajectory 中任务可以随着时间步推进而变化，所以本文设定的目标是根据前 <span class="math inline">\(M\)</span> 个时间步的数据预测未来 <span class="math inline">\(K\)</span> 个时间步情况，这里 <span class="math inline">\(M, K\)</span> 都是固定的超参数。</p>
-<p>所以在这样的设定下，训练目标就是：</p>
-<p><span class="math display">\[
-\begin{aligned}
-\theta_{\mathcal{E}}&#39; &amp;= u_\psi(\tau_{\mathcal{E}}(t - M, t - 1), \theta) \\
-\min_{\theta, \psi}&amp; \mathbb{E}_{\tau_{\mathcal{E}}(t - M, t + K)} [\mathcal{L}(\tau_{\mathcal{E}}(t, t + K), \theta_{\mathcal{E}}&#39;)]
-\end{aligned}
-\]</span></p>
-<p>而这里 loss 定义为：</p>
-<p><span class="math display">\[
-\mathcal{L}(\tau_{\mathcal{E}}(t, t + K), \theta_{\mathcal{E}}&#39;) := -\frac{1}{K} \sum_{k = t}^{t + K} \log\hat{p}_{\theta_{\mathcal{E}&#39;}}(s_{k + 1} \mid s_k, a_k)
-\]</span></p>
-<p>GrBAL 采取的更新策略为：</p>
-<p><span class="math display">\[
-\theta_{\mathcal{E}}&#39; = u_\psi(\tau_{\mathcal{E}}(t - M, t - 1), \theta) = \theta_{\mathcal{E}} + \psi\nabla_\theta\frac{1}{M} \sum_{m = t - M}^{t - 1} \log\hat{p}_{\theta_{\mathcal{E}}}(s_{m + 1} \mid s_m, a_m)
-\]</span></p>
-<p>ReBAL 这里又是没看懂，所以这个基于循环模型的到底是个什么东西。</p>
-<h2 id="model-based-meta-reinforcement-learning">Model Based Meta Reinforcement Learning</h2>
-<p>这一部分就是在讲解如何在线上做 adaptation，我觉得整体不如直接看算法直观：</p>
-<p><img src="/uploads/paper-2022-12/6.png" /></p>
-]]></content>
-      <categories>
-        <category>【论文笔记】计算机</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>《Petal Letter》歌词试译</title>
-    <url>/2022/10/27/petal-letter-lyrics/</url>
-    <content><![CDATA[<p>秋枫老师发来的一份歌词，感觉挺有意思就试着自己翻译看看了。</p>
-<p>歌曲的地址是 BV1Y14y1j7Fi。</p>
-<span id="more"></span>
-<p><strong><code>@ 朝日 あさひ</code>に<code>@ 溶 と</code>ける<code>@ 微睡 まどろ</code>みと<code>@ 目覚 めざ</code>めの<code>@ 狭間 はざま</code>、そっと<code>@ 口遊 くちずさ</code>む<code>@ 旋律 メロディ</code>、<code>@ 花片 はなびら</code>にのせ、<code>@ 風 かぜ</code>よ<code>@ 届 とど</code>けて、あなたが<code>@ 旅 たび</code>する<code>@ 世界 せかい</code>へ。</strong></p>
-<p>在朝阳中浅睡与苏醒的间隙中悄悄吟唱的旋律，乘上飘落的花瓣，就让微风将它传达到你所旅行的世界吧。</p>
-<p><strong><code>@ 魔法 まほう</code>で<code>@ 出逢 であ</code>った、あなたと<code>@ 私 わたし</code>、<code>@ 今 いま</code>は<code>@ 別々 べつべつ</code>の<code>@ 物語 ものがたり</code>を<code>@ 行 ゆ</code>く。</strong></p>
-<p>因魔法而相遇的你我二人，如今却向着不同的未来而去。</p>
-<p>【注释 #1】这里并没有将「<code>@ 物語 ものがたり</code>」直接翻译为“故事”，感觉并不太符合中文的语感。</p>
-<p><strong><code>@ 何 なに</code>かが<code>@ 始 はじ</code>まる<code>@ 予感 よかん</code>を<code>@ 胸 むね</code>に、<code>@ 歩 ある</code>き<code>@ 出 だ</code>してから、どれだけ<code>@ 経 た</code>ったの。</strong></p>
-<p>心中不知为何，总有着何事将至的预感。即使知道那时的分别，已经过去了不知多长时间。</p>
-<p><strong><code>@ 緩 ゆる</code>やかな<code>@ 坂道 さかみち</code>、<code>@ 登 のぼ</code>ればまた<code>@ 独 ひと</code>りきり。</strong></p>
-<p>登上平缓的山坡，依然独自一人。</p>
-<p><strong><code>@ 寂 さび</code>しさに、<code>@ 心細 こころぼそ</code>さに、<code>@ 寄 よ</code>り<code>@ 添 そ</code>ってくれる、あなたと<code>@ 交 か</code>わした<code>@ 心 こころ</code>の<code>@ 花束 はなたば</code>。</strong></p>
-<p>在这寂寞与不安中，我依偎着的，是与你交换的心之花束。</p>
-<p>【注释 #2】这里的语句结构有点怪异，歌曲中这里的断句也比较怪异，难以判定「くれる」与后续句子的关系。这里又要经典批判一遍为何现代日语的终止形和连体形合流，这显然难以判定一个动词词组究竟是修饰名词还是直接终止语句，这导致大量的歌词翻译困难。</p>
-<p><strong>いつでも<code>@ 誰 だれ</code>かが<code>@ 泣 な</code>いている<code>@ 世界 せかい</code>、<code>@ 鏡 かがみ</code>の<code>@ 向 む</code>こうに<code>@ 霞 かす</code>んだ。<code>@ 今 いま</code>は<code>@ 消 き</code>えた、<code>@ 祭 まつ</code>りの<code>@ 果 は</code>てで。</strong></p>
-<p>无论何时都有谁在哭泣着的世界，也在镜子中烟雾朦胧。现在早已在祭典的尽头，消失不见。</p>
-<p><strong><code>@ 触 ふ</code>れ<code>@ 合 あ</code>うことすら、できずに<code>@ 別 わか</code>れた。</strong></p>
-<p>我们甚至都还没有再次相遇，却又再次分别。</p>
-<p><strong>あなたを<code>@ 感 かん</code>じたい<code>@ 時 とき</code>は、<code>@ 名前 なまえ</code>をもう<code>@ 一度 いちど</code> <code>@ 呼 よ</code>ぶ。</strong></p>
-<p>每当想要感受你的温暖的时候，再一次，呼唤你的名字。</p>
-<p><strong><code>@ 青 あお</code>い<code>@ 薔薇 ローズ</code>、<code>@ 赤 あか</code>い<code>@ 椿 カメリア</code>、<code>@ 花 はな</code>は<code>@ 今日 きょう</code>も<code>@ 咲 さ</code>いてますか。</strong></p>
-<p>蓝色的玫瑰，红色的山茶花，花朵如今，也依然在绽放吗。</p>
-<p><strong><code>@ 問 と</code>いかけて<code>@ 応 こた</code>えなくても、<code>@ 同 おな</code>じ<code>@ 楽園 そら</code>を<code>@ 見上 みあ</code>げてる。</strong></p>
-<p>即使问而不答，我们也始终仰望着同一片乐园（天空）。</p>
-<p><strong>あれから<code>@ 始 はじ</code>まった<code>@ 長 なが</code>い<code>@ 旅 たび</code>も、<code>@ 終 お</code>わる、いつかは、<code>@ 消 き</code>える、<code>@ 全 すべ</code>てが。そして、<code>@ 星 ほし</code>は、<code>@ 巡 めぐ</code>る。</strong></p>
-<p>从那时开始的漫长旅途，总有一天也会结束，到那时，一切都会消逝。而后，群星依然流转。</p>
-<p><strong><code>@ 止 や</code>まない<code>@ 嵐 あらし</code>に<code>@ 足 あし</code>を<code>@ 止 と</code>められ、<code>@ 草臥 くたび</code>れた<code>@ 靴 くつ</code>の<code>@ 跡 あと</code>を<code>@ 振 ふ</code>り<code>@ 返 かえ</code>る。</strong></p>
-<p>无休无止的山林雾气中，我不得不停下脚步，回望着以往的足迹，鞋履也早因旅途破旧不堪。</p>
-<p><strong><code>@ 大事 だいじ</code>なものはまだ、<code>@ 歩 ある</code>く<code>@ 度 たび</code>に<code>@ 増 ふ</code>えるでしょう。</strong></p>
-<p>然而，那些珍贵的回忆，依然随着我们前行的每一步而积累着。</p>
-<p><strong>それでも<code>@ 俯 うつむ</code>く<code>@ 私 わたし</code>の<code>@ 背中 せなか</code>を<code>@ 押 お</code>すのは、あなたと<code>@ 交 か</code>わした、<code>@ 叶 かな</code>わぬ<code>@ 約束 やくそく</code>。</strong></p>
-<p>尽管如此，激励着早已疲惫不堪的我继续前行的，是与你定下的未竟约定。</p>
-<p>【注释 #3】这里意译了「<code>@ 俯 うつむ</code>く」，其本意是“低下头”。</p>
-<p><strong><code>@ 大 おお</code>きな<code>@ 鞄 かばん</code>に<code>@ 閉 と</code>じこめた<code>@ 願 ねが</code>い、<code>@ 鏡 かがみ</code>と<code>@ 一緒 いっしょ</code>に<code>@ 壊 こわ</code>れた。<code>@ 夢 ゆめ</code>と<code>@ 追憶 ついおく</code>が<code>@ 降 ふ</code>り<code>@ 注 そそ</code>ぐ。</strong></p>
-<p>珍藏在大大的行李箱中的愿望，也随着镜子一同破碎，梦与追忆倾泻而下。</p>
-<p><strong><code>@ 砂 すな</code>へと<code>@ 零 こぼ</code>れた<code>@ 涙 なみだ</code>を<code>@ 拭 ぬぐ</code>って、<code>@ 震 ふる</code>える<code>@ 手 て</code>が<code>@ 拾 ひろ</code>い<code>@ 上 あ</code>げた。</strong></p>
-<p>拭去飘落在沙地上的泪水，用颤抖的手将碎片拾起。</p>
-<p><strong><code>@ 光 ひかり</code>はきっと、<code>@ 同 おな</code>じ<code>@ 色 いろ</code>をした<code>@ 花 はな</code>。</strong></p>
-<p>那光芒必然是，闪耀着相同颜色的花朵。</p>
-<p><strong><code>@ 目 め</code>を<code>@ 閉 と</code>じれば、<code>@ 耳 みみ</code>を<code>@ 澄 す</code>ませば、<code>@ 花片 はなびら</code>が<code>@ 風 かぜ</code>に<code>@ 乗 の</code>って、<code>@ 旋律 メロディ</code>を<code>@ 届 とど</code>けるでしょう。</strong></p>
-<p>闭上眼睛，侧耳倾听，花瓣乘上微风，将那旋律传达给你。</p>
-<p><strong><code>@ 私 わたし</code>からあなたへの<code>@ 手紙 レター</code>。</strong></p>
-<p>这就是，我寄给你的，一封信。</p>
-]]></content>
-      <categories>
-        <category>【杂谈】日语</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>直博招生专业面试的一些</title>
-    <url>/2022/09/14/phd-interview/</url>
-    <content><![CDATA[<p>2022 年 9 月 14 日，是清华大学计算机科学与技术系 2023 级免试攻读博士生招生专业面试。Holder 参加了这一场面试，然后人炸了。</p>
-<span id="more"></span>
-<p>今天面试本来就有点不安，最大的问题就是唯一能吹的一份挂了名的 SIGGRAPH 的文章实际上自己并没有参与特别核心的工作，而且做到一半就被拒了，所以实际上最后那段时间就在摆烂，组会吹水也不去了。</p>
-<p>然而，今天就是这么时运不济，面试的评委里同时有徐昆老师和胡事民老师。没听过组会吹水不敢乱说，但胡老师就喜欢捉着这些问。他要是具体问如何实现了我负责的代码部分，我倒是可以说不少，但是问我一些 Overview，说实话倒还真的不会。</p>
-<p>Holder 的科研真的毫无意义，毕竟自己就是如丧家之犬一般到处跑路。或许 Holder 真的就不应该硬头皮读这个博士，或许就该进厂上班了。</p>
-]]></content>
-      <categories>
-        <category>【杂谈】碎碎念</category>
-      </categories>
-  </entry>
-  <entry>
     <title>2022 年 9 月论文笔记</title>
     <url>/2022/09/20/paper-2022-09/</url>
     <content><![CDATA[<p>这个月正式参与进入了实验室和快手的一个合作项目，依然还是需要从论文先开始。</p>
@@ -16633,241 +16353,68 @@ a_t \sim \pi_\theta(\cdot \mid \hat s_t), \hat s_{t + 1} = \hat f_{\phi_t}(\hat 
       </categories>
   </entry>
   <entry>
-    <title>《美少女万华镜 5 ——理与迷宫的少女》游戏测评</title>
-    <url>/2021/08/18/renge-5/</url>
-    <content><![CDATA[<p>Holder 不是一个玩 GAL 的人，能想到的 GAL 除了万华镜就是柚子社这种。但是 Holder 想了想，决定把万华镜 5 这个宣称中的最终章认真通一下，也算对我几乎唯一知晓的 GAL 致以敬意。</p>
-<p>离万华镜 5 发售差不多过去一年半了，各路汉化理论上应该充斥互联网，但 Holder 也只找到了生肉，于是也顺便当成了日语阅读练习。</p>
+    <title>《Petal Letter》歌词试译</title>
+    <url>/2022/10/27/petal-letter-lyrics/</url>
+    <content><![CDATA[<p>秋枫老师发来的一份歌词，感觉挺有意思就试着自己翻译看看了。</p>
+<p>歌曲的地址是 BV1Y14y1j7Fi。</p>
 <span id="more"></span>
-<h1 id="总的感想">总的感想</h1>
-<p>Holder 大概花掉了靠近三十个小时打通了所有的线，由于 H 情节在一年前实际上就已经都看过一遍而且自己也有全 CG，这次的重点就是把当时看来冗杂无比的剧情认真看一下。</p>
-<p>当然，一直都说万华镜系列就是单纯的拔作，剧情几乎可有可无，这句话我可以说认同一半。首先，针对万华镜 5，如果不走莲华线，而是没有压住枪走了月丘线，那确实没有任何剧情，平平淡淡地每晚在澡堂触发 H 情节就结束了。而你如果剧情看到一半没忍住走了绿毛线（绿毛名字是もよか，说实话不知道怎么找当て字，倒是“绿毛”这个代号挺深入人心的），那也是很快就 BE 了。而如果你认认真真把莲华线推完，就会发现若干的伏笔被回收，剧情似乎就有了那么一点的道理（Holder 整体上还是觉得这个剧情偏扯，但是莲华线稍微补了一点论述）。其次，万华镜整个系列，确实几乎都是没啥剧情的，除了 5。其他系列都是推一会就开始炮火连天，而 5 我是整整看剧情看了靠近两天之后才解锁了新天地（当然玩的莲华线）。</p>
-<p>如果说总的感想的话，就是感觉看了一个很普通的小说。撇去还算优秀的 H 情节不谈，我在玩的时候几乎全程在看底下的文字，因为图像说实话提供不了信息。比如说“ A 把 B 扶起来”，这个动作在番或者剧里面都可以画或者演出来，但是万华镜里面也仅仅是两个人的立绘贴了一下，动作则是文字给出。所以整体我还是一直在看文字，当小说看。</p>
-<p>而说它“普通”，是因为贯穿全程的就是“理”或者“命运”或者“轮回转生”，题材不是什么新颖的东西，而且能预料到莲华和男主的一些前世姻缘之类的。然后中心矛盾之一也是普通的，“我能逆天改命”和“我们只能顺应命运”的矛盾，最后认为“我能逆天改命”的人盒饭了，但却让“我们只能顺应命运”的思想少许动摇，但是为时已晚不得不继续投入到命运的轮回之中。</p>
-<p>要我说的话，论剧情，万华镜 5 就是很普通的一个小说，人物关系简单，矛盾点简单。但是论 H 情节，首先我认为绿毛连动态情节都没有是很难受的（巫女后辈啊！不配画一点动态的吗！），但是莲华在二次轮回的时候 H 情节确实作画很好，动态也不错，还是稍微给点表扬。</p>
-<h1 id="剧情简要分析">剧情简要分析</h1>
-<h2 id="莲华-轮回线">莲华-轮回线</h2>
-<p>既然核心是“理”（不得不提的就是这个“理”在游戏里面训读成ことわり，而这个读音一般写成“断り”）和“轮回转生”，那么我们应该默认天理和轮回转生的存在。</p>
-<p>剧情的主干实际上就是莲华和男主深见夏彦的前世姻缘，他们可以说每一世都会相遇相爱但由于各种不可抗力无法修成正果。先是罗马时代的奴隶主和奴隶，又是中世纪的女王和下臣，之后是猎巫人和女巫。而重点是第四世，他们是古代日本的一对恋人（这时深见夏彦的名字是“彦一”，记住，要考的），而第五世就是莲华和深见夏彦。</p>
-<p>说第四世重要，是因为这里狐妖介入了进来。实际上狐妖附身了第四世的莲华，或者在一定程度上，莲华在这个时候已经成为了狐妖。而当彦一（第四世的深见夏彦）死于战火的时候，狐妖则处于对人类的憎恨和爱人亡故的怨念火烧城池。人们最后将狐妖的怨念封印为“杀生石”，并在城中修建相当数量的狐狸雕像望向杀生石的方向以镇压，同时也在杀生石所在的山顶修建了一座规模宏大的神社。但是神社实际上在很多年之后的又一次战火中被烧毁，但是村民并没有重建的计划（多半是已经忘了这段历史）。而杀生石和狐狸雕像却保留了下来，成为了传说。</p>
-<p>这里的杀生石、狐狸雕像、神社则是第五世（现代）剧情推进的一条线索。</p>
-<p>而这个时候就必须引出绿毛了。在第五世，也就是现代，绿毛先前有一个家境优渥的家庭，但是由于他人嫉妒而故意放出的无端谣言而招致了全村人的厌恶，随后她的家人因他人纵火全部亡故，而纵火者却至今逍遥法外，绿毛也因此有了对人类的憎恨和怨念。孤身一人的她投靠了从兄弟 H（名字不想打了，但是这个人的人设和痴汉别无他样，所以就用 Hentai 的首字母代称。这里 H 是一个女子中学的音乐老师），此时绿毛沉迷于深见夏彦所在的杂志社编辑的灵异杂志，自学了很多通灵方法。最终，她独身一人走上了原来有神社和杀生石的山顶，被满是怨念的狐妖附身，开启了剧情主线。</p>
-<p>绿毛有了狐妖的力量，而狐妖的一个信念就是“我是可以逆天改命的”，或者说“我不愿意服从命运的安排”。狐妖因恋人离世而对人类憎恶，绿毛因为家人离世也对人类憎恶，两个怨念叠加，绿毛开始了复仇。她的第一步就是先转学到 H 所在的女子高中并要控制全校，因为女子高中生就是当时散布绿毛家族无端谣言的主力。绿毛看中了这所高中禁止使用手机和通信软件，利用了她们相对闭锁的信息环境，开始通过狐妖的力量诱骗她们迷信自己的占卜，随后再通过狐妖的力量对她们下诅咒。诅咒的内容就是：</p>
-<div class="note info no-icon"><p>山顶有神社可以实现你的愿望，但是在前往神社之前，你必须不停地画白狐氏（びゃっこ氏）以表虔诚，否则就会降下惩罚。</p>
-</div>
-<p>而这座神社在现实中是真的不存在的（早就烧掉了还没重建），但是狐妖的灵力可以在山顶创建一个传送门，传送到若干年前的神社，而这个神社就在狐妖（或者说绿毛）控制之下。白狐氏就是这座神社供奉的神灵（就是狐妖），而所谓的惩罚是各种莫名其妙的伤害事件（突然被钢琴盖子砸断手指，实验的时候突然自燃之类），并且惩罚的共同点就是受伤的地方毛细血管会聚集成青色的蜘蛛网的样子，而且会长一个痣。</p>
-<p>这也就是最初的最初，深见夏彦所要调查的“青蜘蛛的诅咒”事件。</p>
-<hr />
-<p>主角团是四人组，深见夏彦，他的编辑月丘香恋，同期的只相信科学的优秀作家皇公晓，以及实体化的莲华。</p>
-<p>莲华在第五世转生的时候，没有获得肉体，成为了阿紫旅馆（也就是万华镜 1-4 开头的那个旅馆，其和神社等位于同一个村子）的座敷童子。所谓座敷童子，第五世的莲华的任务就是“超度”，也就是帮助满是怨念的灵魂安宁地走向死亡，走向轮回。而完成超度的道具就是“万华镜”。</p>
-<p>所以说 1-4 里面深见夏彦透过万华镜看到的，就是那些已经被超度的魂灵的生前故事，而往往这些故事都或多或少带着点怨恨（1 是人鬼情恋的越界之恨，2 是沉溺于爱而伤害恋人的愧疚之恨，3 是文明凋亡的孤独之恨，4 则是近亲的禁忌之恨）。</p>
-<p>另外，作为灵力的持有者，莲华的能力就是能够读取和修改人的记忆。</p>
-<p>由于没有肉体，莲华无法被感知，从而也让她一直孤独一人。但深见夏彦，作为这么多次轮回之中莲华的恋人，自然是唯一一个能感知到她存在的的人。所以深见夏彦对莲华而言，简直就是世界上唯一可以交流的人类。</p>
-<p>另一方面，莲华在得知深见夏彦想要来调查“青蜘蛛的诅咒”事件，要在阿紫旅馆住上一星期左右的时候，其花费了很多的灵力为自己构筑了肉体，并且通过修改记忆让主角团和旅馆工作人员都认为莲华是真实存在的一个女高中生，这也就是实体化。这个时候的莲华就可以和正常人一样活动了。</p>
-<hr />
-<p>先前提到，第四世的莲华和狐妖实际上几乎是一体的，而在第四世到第五世的轮回之中，莲华被拆分成了两部分，狐妖的部分被封印而剩下的部分幻化成了现在的莲华，这莲华是通过触碰了一只小狐狸之后回想起来的。</p>
-<p>在主角团调查的时候，绿毛自然早已经觉察到，深见夏彦就是自己前世恋人彦一，所以绿毛对从兄弟 H 不屑一顾而单单对深见夏彦热情，而且在深见夏彦和莲华前往深山随便走走的时候将他们拉入了神社。绿毛自然也早就明白莲华和自己理论上是一体的，所以才有绿毛的“我唯一的朋友是莲华”这一句。</p>
-<p>而绿毛为了在他人面前让自己和深见夏彦亲近显得合理，她故意称其为“哥哥”（大家都知道绿毛失去家人的过往，所以因此会把她亲近深见夏彦理解为“绿毛把对哥哥的思念寄托在深见身上”）。而绿毛则不需要对莲华隐藏，所以在澡堂里直接说“深见才不是我哥哥呢”。</p>
-<p>绿毛在知道深见夏彦的存在后，除去复仇的主线，自然是尝试再构姻缘。所以她引诱深见夏彦去神社，去看杀生石，去看她舞蹈，去听铜铃的声音，给他托梦，目的就是让深见夏彦回想起自己的前世。深见夏彦在经历了若干天的噩梦和梦游（梦游去神社）之后，终于在某一天晚上回想起来了自己的一切。但是深见夏彦已经沉迷莲华，依然坚称自己是深见夏彦而非彦一。</p>
-<p>得知恋人心意的绿毛，自然是相当悲愤。我大费周章为你复仇，你却出轨我自己（莲华理论上和绿毛是一体的，可以理解为绿毛是邪恶的一面，莲华是善良的一面），于是托了一个巨大的噩梦给深见夏彦（就是那个，裂嘴黑眼圈的莲华 CG，这也是游戏发售前就流传出来的梗图），想让他忘记莲华。随后动用了巨大的灵力干趴了学校里所有的学生，尝试吸取她们的灵魂。</p>
-<p>而随着调查的深入，莲华也了解了狐妖已经附身到绿毛身上开始复仇，而这个时候绿毛也已经因为深见夏彦的背叛而暴走了。所以为了阻止这些计划，莲华只身一人前往神社和狐妖打灵力战斗去了。</p>
-<p>但是莲华毕竟力量并非很充足，最后体力渐渐不支。这个时候深见夏彦突然赶到，给莲华挡下一击。绿毛眼看自己的攻击伤到的是自己的恋人，立马停手了。随后由于巨大的自责，她没有抵挡得住莲华的最后一击而幻化为怨念，被万华镜收纳住了。</p>
-<p>绿毛是解脱了，和 H 去过平凡的女高中生生活去了。学校的诅咒也解除了，大家渐渐都回到正轨了。但是深见夏彦的灵魂却因为狐妖的一击变得支离破碎，如果不修复，就等于死亡。莲华这个时候想到了解决方式，就是和深见夏彦一起回到万华镜，让深见夏彦重新回想起来所有的回忆，补全灵魂，最后用莲华的力量让死者复生。这里显然就注意到了，死者复生是违反“理”的，也就是说，莲华最终还是走上了背离天理的路。</p>
-<p>莲华和深见夏彦两人在万华镜里遨游，把 1-4 的场景都走了一遍，深见夏彦也渐渐回想起了各种东西，灵魂也渐渐补全。在走完第一圈后，莲华认为已经可以送深见夏彦回去了，但是深见夏彦坚决要和莲华在一起，于是他们又走了第二圈。这之后，莲华并不再是询问语气，而是命令深见夏彦赶快回去。</p>
-<p>原因很简单，莲华知道自己也是狐妖的一部分，包括自己的实体化，所动用的灵力的基础都是狐妖赖以生存的力量——人类的悲痛，莲华决定自己超度自己肮脏的灵魂。而这最后的力量就是留给将深见夏彦死者复生的，违反天理的力量。但是深见夏彦最终还是不愿回去，而这个时候他需要经受身边人的各种诘难以确认自己的心意。最后在一通告白之后，两人携手走向又一次轮回。</p>
-<p>轮回到第六世的结果，就是深见夏彦成了你（这也就是游戏开头让你输入你的名字的原因），莲华成为了一个知性大姐姐和你相遇，和你相恋。两人最后渐渐回想起了前世，由于狐妖已经消逝，阻碍已经消失，所以两人修成正果，过上了炮火连天的日子。</p>
-<h2 id="莲华-非轮回线">莲华-非轮回线</h2>
-<p>狐妖的部分都是一致的，第一世到第五世都是一致的，一直到两人走进万华镜都和莲华-轮回线一样。</p>
-<p>莲华在第一圈后会询问两次深见夏彦是否愿意回去，第二圈则会再问一次。三次都回答不想回去，才会进入轮回线，只要有一次回答了想回去，就会进入非轮回线。</p>
-<p>在这里，最后深见夏彦死者复生，但是他丧失了所有和莲华有关的记忆，“青蜘蛛的诅咒”事件也被科学解释了。苏醒的深见夏彦和月丘以及皇，去和旅馆工作人员、学校老师告别后回到东京过上了平凡的生活。虽然深见夏彦时不时还是觉得自己在搜寻着什么，但是总体而言并没有想起莲华。而莲华的灵魂，也随着狐妖一起被超度，不再和深见夏彦产生任何交集。</p>
-<h2 id="绿毛线">绿毛线</h2>
-<p>应该说是很单纯的 BE。</p>
-<p>绿毛在无数若干次引诱深见夏彦，让他回想前世之后，最终有一天直接冲进澡堂色诱深见夏彦。这个时候如果选择“放任自己”，则会开启第一段绿毛 H，否则则会以绿毛无故消失结束这一天。</p>
-<p>最后某一晚，深见夏彦再一次前往神社的时候终于回想起了一切，这个时候会有选项问“你是谁”。如果先前压住了枪，这里就会有两个选项，一个是“深见夏彦”一个是“彦一”。选择深见夏彦就进入莲华线，被绿毛噩梦调戏一番后直接开始和莲华炮火连天。选择彦一则进入第二段绿毛 H。不过在一炮之后，绿毛就会以“我要将你变成我的玩物”为由杀死深见夏彦后自杀。而在现实世界中，消息就是“深见夏彦和绿毛在深山中失踪”。随后两年后，月丘香恋和皇公晓回到这个村子尝试回忆一些什么，误入了深山，看到了杀生石下两人的遗体。</p>
-<p>如果先前没有压住枪，那么在问“你是谁”的时候，只有“彦一”一个选项，后面的剧情是一样的。</p>
-<h2 id="月丘线">月丘线</h2>
-<p>最没有意思的线。</p>
-<p>月丘实际上一直喜欢着深见。在主角组前往调查之前，月丘前往深见夏彦的家交代一些工作的事情，这个时候月丘得知深见一直不会做饭，于是她决定给深见做一顿饭。在饭后，带有一点醉意的两人突然趴倒在墙角，男下女上。这个时候月丘向深见表白，会有“接受”和“拒绝”的选项。</p>
-<p>拒绝的话就正常开始调查，会调查到很多东西，会有机会进绿毛线、莲华线之类。</p>
-<p>接受的话直接开启 H 情节。而因此深见夏彦的心态就变成了“我要尝试融入‘大人’的世界，不能再沉迷于莲华的万华镜了”。而这种心态下，主角组调查的时候，莲华就一直处于很边缘的地位，而月丘和深见则会每晚定时开 H 情节。</p>
-<p>这次调查最终无疾而终，莲华在意识到深见的心意之后也只是默默留下一句“那就结束了吧”，便再也不见。主角组回到东京之后，自然是深见和月丘的炮火连天的二人世界。</p>
-<h1 id="一些其他地方的想法">一些其他地方的想法</h1>
-<p>总体而言还是贯彻了万华镜系列“压住枪的都是好儿郎”的准则，越早压不住枪就只能解锁越少的剧情，然后留下越多的没有起底的伏笔。</p>
-<p>虽然说万华镜没啥剧情，但是实际上总体看下来虽然平淡无奇，但还算是叙事完整，能看明白。而且有些伏笔也还算可以，比如说旅馆的“野干（やかん）”面具（“野干”在日语中是狐狸的一种代称），一方面暗示了这里和狐狸有千丝万缕的联系，而最终，绿毛跳舞给深见夏彦看的时候，戴的就是野干面具。另一方面，这个村子叫“薬缶”，和“野干”日语同音，应该是讹传出来的地名。</p>
-<p>此外，一定要抨击一下文案，不是说他写的东西多差，是<strong>经常把一些已经约定俗成不写汉字的关联词、虚词写成汉字</strong>，而有的时候又会把<strong>约定俗成写成汉字的词写成假名</strong>。这让我这个现代日语没学好的人读得有那么点难受。举点例子吧：</p>
-<div class="note info no-icon"><p>成程、折角、兎に角、沢山、取り敢えず、一寸、丁度、其程、是迄</p>
-</div>
-<p>他们实际上是：</p>
-<div class="note info no-icon"><p>なるほど、せっかく、とにかく、たくさん、とりあえず、ちょっと、ちょうど、それほど、ここまで</p>
-</div>
-<p>这些词可以说是，不太懂日语的人只要听到读音都能回想起来点什么的词，结果硬生生给我看不懂了。</p>
-<h1 id="最后的最后">最后的最后</h1>
-<p>万华镜系列我认为是，中下的剧情，中上的作画，虽然不知道为何如此火，但还是有点为三十个小时感到不值。</p>
-<p>但如果闲的话推推也不错，当成一个耗时间的小说吧。不过个人建议先把月丘和绿毛推了，先推莲华会很容易没有推支线的动力，因为莲华线的叙事已经很完备，其他线的逻辑就是误入歧途从而有些事情没发现最后遗憾收场。</p>
-<p>知乎上看了一句总结比较好：</p>
-<div class="note info no-icon"><p>你以为是你把卖片的上了，谁知道人家是命中注定给你卖片。</p>
-</div>
-<p>就这样吧，小学期还在等着我。</p>
+<p><strong><code>@ 朝日 あさひ</code>に<code>@ 溶 と</code>ける<code>@ 微睡 まどろ</code>みと<code>@ 目覚 めざ</code>めの<code>@ 狭間 はざま</code>、そっと<code>@ 口遊 くちずさ</code>む<code>@ 旋律 メロディ</code>、<code>@ 花片 はなびら</code>にのせ、<code>@ 風 かぜ</code>よ<code>@ 届 とど</code>けて、あなたが<code>@ 旅 たび</code>する<code>@ 世界 せかい</code>へ。</strong></p>
+<p>在朝阳中浅睡与苏醒的间隙中悄悄吟唱的旋律，乘上飘落的花瓣，就让微风将它传达到你所旅行的世界吧。</p>
+<p><strong><code>@ 魔法 まほう</code>で<code>@ 出逢 であ</code>った、あなたと<code>@ 私 わたし</code>、<code>@ 今 いま</code>は<code>@ 別々 べつべつ</code>の<code>@ 物語 ものがたり</code>を<code>@ 行 ゆ</code>く。</strong></p>
+<p>因魔法而相遇的你我二人，如今却向着不同的未来而去。</p>
+<p>【注释 #1】这里并没有将「<code>@ 物語 ものがたり</code>」直接翻译为“故事”，感觉并不太符合中文的语感。</p>
+<p><strong><code>@ 何 なに</code>かが<code>@ 始 はじ</code>まる<code>@ 予感 よかん</code>を<code>@ 胸 むね</code>に、<code>@ 歩 ある</code>き<code>@ 出 だ</code>してから、どれだけ<code>@ 経 た</code>ったの。</strong></p>
+<p>心中不知为何，总有着何事将至的预感。即使知道那时的分别，已经过去了不知多长时间。</p>
+<p><strong><code>@ 緩 ゆる</code>やかな<code>@ 坂道 さかみち</code>、<code>@ 登 のぼ</code>ればまた<code>@ 独 ひと</code>りきり。</strong></p>
+<p>登上平缓的山坡，依然独自一人。</p>
+<p><strong><code>@ 寂 さび</code>しさに、<code>@ 心細 こころぼそ</code>さに、<code>@ 寄 よ</code>り<code>@ 添 そ</code>ってくれる、あなたと<code>@ 交 か</code>わした<code>@ 心 こころ</code>の<code>@ 花束 はなたば</code>。</strong></p>
+<p>在这寂寞与不安中，我依偎着的，是与你交换的心之花束。</p>
+<p>【注释 #2】这里的语句结构有点怪异，歌曲中这里的断句也比较怪异，难以判定「くれる」与后续句子的关系。这里又要经典批判一遍为何现代日语的终止形和连体形合流，这显然难以判定一个动词词组究竟是修饰名词还是直接终止语句，这导致大量的歌词翻译困难。</p>
+<p><strong>いつでも<code>@ 誰 だれ</code>かが<code>@ 泣 な</code>いている<code>@ 世界 せかい</code>、<code>@ 鏡 かがみ</code>の<code>@ 向 む</code>こうに<code>@ 霞 かす</code>んだ。<code>@ 今 いま</code>は<code>@ 消 き</code>えた、<code>@ 祭 まつ</code>りの<code>@ 果 は</code>てで。</strong></p>
+<p>无论何时都有谁在哭泣着的世界，也在镜子中烟雾朦胧。现在早已在祭典的尽头，消失不见。</p>
+<p><strong><code>@ 触 ふ</code>れ<code>@ 合 あ</code>うことすら、できずに<code>@ 別 わか</code>れた。</strong></p>
+<p>我们甚至都还没有再次相遇，却又再次分别。</p>
+<p><strong>あなたを<code>@ 感 かん</code>じたい<code>@ 時 とき</code>は、<code>@ 名前 なまえ</code>をもう<code>@ 一度 いちど</code> <code>@ 呼 よ</code>ぶ。</strong></p>
+<p>每当想要感受你的温暖的时候，再一次，呼唤你的名字。</p>
+<p><strong><code>@ 青 あお</code>い<code>@ 薔薇 ローズ</code>、<code>@ 赤 あか</code>い<code>@ 椿 カメリア</code>、<code>@ 花 はな</code>は<code>@ 今日 きょう</code>も<code>@ 咲 さ</code>いてますか。</strong></p>
+<p>蓝色的玫瑰，红色的山茶花，花朵如今，也依然在绽放吗。</p>
+<p><strong><code>@ 問 と</code>いかけて<code>@ 応 こた</code>えなくても、<code>@ 同 おな</code>じ<code>@ 楽園 そら</code>を<code>@ 見上 みあ</code>げてる。</strong></p>
+<p>即使问而不答，我们也始终仰望着同一片乐园（天空）。</p>
+<p><strong>あれから<code>@ 始 はじ</code>まった<code>@ 長 なが</code>い<code>@ 旅 たび</code>も、<code>@ 終 お</code>わる、いつかは、<code>@ 消 き</code>える、<code>@ 全 すべ</code>てが。そして、<code>@ 星 ほし</code>は、<code>@ 巡 めぐ</code>る。</strong></p>
+<p>从那时开始的漫长旅途，总有一天也会结束，到那时，一切都会消逝。而后，群星依然流转。</p>
+<p><strong><code>@ 止 や</code>まない<code>@ 嵐 あらし</code>に<code>@ 足 あし</code>を<code>@ 止 と</code>められ、<code>@ 草臥 くたび</code>れた<code>@ 靴 くつ</code>の<code>@ 跡 あと</code>を<code>@ 振 ふ</code>り<code>@ 返 かえ</code>る。</strong></p>
+<p>无休无止的山林雾气中，我不得不停下脚步，回望着以往的足迹，鞋履也早因旅途破旧不堪。</p>
+<p><strong><code>@ 大事 だいじ</code>なものはまだ、<code>@ 歩 ある</code>く<code>@ 度 たび</code>に<code>@ 増 ふ</code>えるでしょう。</strong></p>
+<p>然而，那些珍贵的回忆，依然随着我们前行的每一步而积累着。</p>
+<p><strong>それでも<code>@ 俯 うつむ</code>く<code>@ 私 わたし</code>の<code>@ 背中 せなか</code>を<code>@ 押 お</code>すのは、あなたと<code>@ 交 か</code>わした、<code>@ 叶 かな</code>わぬ<code>@ 約束 やくそく</code>。</strong></p>
+<p>尽管如此，激励着早已疲惫不堪的我继续前行的，是与你定下的未竟约定。</p>
+<p>【注释 #3】这里意译了「<code>@ 俯 うつむ</code>く」，其本意是“低下头”。</p>
+<p><strong><code>@ 大 おお</code>きな<code>@ 鞄 かばん</code>に<code>@ 閉 と</code>じこめた<code>@ 願 ねが</code>い、<code>@ 鏡 かがみ</code>と<code>@ 一緒 いっしょ</code>に<code>@ 壊 こわ</code>れた。<code>@ 夢 ゆめ</code>と<code>@ 追憶 ついおく</code>が<code>@ 降 ふ</code>り<code>@ 注 そそ</code>ぐ。</strong></p>
+<p>珍藏在大大的行李箱中的愿望，也随着镜子一同破碎，梦与追忆倾泻而下。</p>
+<p><strong><code>@ 砂 すな</code>へと<code>@ 零 こぼ</code>れた<code>@ 涙 なみだ</code>を<code>@ 拭 ぬぐ</code>って、<code>@ 震 ふる</code>える<code>@ 手 て</code>が<code>@ 拾 ひろ</code>い<code>@ 上 あ</code>げた。</strong></p>
+<p>拭去飘落在沙地上的泪水，用颤抖的手将碎片拾起。</p>
+<p><strong><code>@ 光 ひかり</code>はきっと、<code>@ 同 おな</code>じ<code>@ 色 いろ</code>をした<code>@ 花 はな</code>。</strong></p>
+<p>那光芒必然是，闪耀着相同颜色的花朵。</p>
+<p><strong><code>@ 目 め</code>を<code>@ 閉 と</code>じれば、<code>@ 耳 みみ</code>を<code>@ 澄 す</code>ませば、<code>@ 花片 はなびら</code>が<code>@ 風 かぜ</code>に<code>@ 乗 の</code>って、<code>@ 旋律 メロディ</code>を<code>@ 届 とど</code>けるでしょう。</strong></p>
+<p>闭上眼睛，侧耳倾听，花瓣乘上微风，将那旋律传达给你。</p>
+<p><strong><code>@ 私 わたし</code>からあなたへの<code>@ 手紙 レター</code>。</strong></p>
+<p>这就是，我寄给你的，一封信。</p>
 ]]></content>
       <categories>
-        <category>【杂谈】游戏 &amp; 番剧</category>
+        <category>【杂谈】日语</category>
       </categories>
   </entry>
   <entry>
-    <title>Holder 与 Vocaloid</title>
-    <url>/2022/10/02/vocaloid-and-me/</url>
-    <content><![CDATA[<p>和 V+ 群群友度过了一天快乐的国庆假期，这次的 V+ Next 推曲活动中，又一次提及了我的“自传”——即我和 Vocaloid 的一些故事。</p>
-<p>先前已经和 nagi 以及莎布老师谈过一些，也在推曲小作文里面写过不少小故事。但回想起来我好像自己也没有系统总结过这些有趣的经历，明明是挺有意思的一段旅程，所以干脆晚上花点时间写写。</p>
-<p>大约是一些按照年份编写的流水账和回忆录，随便看看就好。</p>
+    <title>直博招生专业面试的一些</title>
+    <url>/2022/09/14/phd-interview/</url>
+    <content><![CDATA[<p>2022 年 9 月 14 日，是清华大学计算机科学与技术系 2023 级免试攻读博士生招生专业面试。Holder 参加了这一场面试，然后人炸了。</p>
 <span id="more"></span>
-<h1 id="小学高年级2010---2013">小学高年级（2010 - 2013）</h1>
-<p>大约这是一切的开端了。小学的时候 Holder 可能并没有什么爱好或者说口味，同学们在玩什么游戏我就玩什么游戏，似乎并没有什么主见。但是有几件事情倒是记忆挺深刻。</p>
-<p>首先是《甩葱歌》的莫名走红。Holder 家所在的街区是县城中心的一个破旧商店街，当时的所有店铺，从手机店、音乐店，甚至是鞋店、服装店，都在大音量播放这首歌，每天上下学的时候多多少少都是一直听着这首歌的。继此之后的，是 2011 年突然爆火的《甩饼歌》。这首歌有了歌词，讲述的是 2011 年利比亚空袭、物价飞升之类的大事件。本来自己就已经对《甩葱歌》旋律很熟悉，有了能唱的歌词，自然是很快就上手了这首改编歌，和小学同学时不时还一起唱着玩。</p>
-<p>其次是有一次我父亲问到我有没有喜欢的歌手，因为当时他一直在家里放歌自己听。但我当时说实话，真的不知道什么歌曲，而当时我的玩伴正沉迷汪峰，所以我就随口回答汪峰。结果我父亲大概是一下子就知道了我只是糊弄过去，于是无心地扔了一句“要找找自己喜欢的东西而不是随波逐流”。</p>
-<p>这句话随后就应验了。2012 年前后，我进入了元素收藏这个小众坑，这个坑大约就是收集各种元素的单质。在当年这还是一项很难的事情，因为稀土很难有货源，类似 Rb、Cs 之类的碱金属还只能从国外进口，一克近一千，这对小学生来说已经是天价（题外话，现在国内自制 Rb、Cs 已经不稀奇，克价已经跌下两百，正所谓中国人擅长把东西搞成白菜价。此外，现在元素收藏坑也近乎是进坑投资几千左右就已经能买到全套单质了）。也正是因此，当时我对贴吧里面那些拥有类似 Rb、Cs、Tl、Sc 等这些元素的聚聚们可谓是十分敬仰，其中就包括一位元老——真·凤舞九天。</p>
-<p>这位元老有一天晚上，在贴吧转载了一个视频，说自己今天单曲循环了一晚上。我点进去一看，是《世末舞厅》的一个自制 PV。当然，当时我是不知道这是什么的，但我能明白的是，这是一首日文歌，而且不同于小学音乐课上那些民歌、红歌、教学歌曲，不同于汪峰那种伤感，而是一种完全不能理解的，全新的歌曲艺术形式。</p>
-<p>小学的我第一次看到类似心脏、死亡、骷髅、终结这些意象，而即使我一点点都看不懂英文和日文，歌词一句话都看不懂，但是图像和声音却将世界终结前的疯狂传达了出来。</p>
-<p>这显然是震撼的，所以即使当时 Holder 只有一个充话费送的小手机，但我依然拿出了零花钱到同学家的手机店买下了一张 SD 卡，从家里人工作的地方偷偷拿了一个读卡器，自己在周末摸索着如何下载视频。这样忙活了一段时间后，我便能够随时听《世末舞厅》了。</p>
-<p>然而，还是那句话，由于完全看不懂英文和日文，我没能借此机会认识 wowaka，也没能认识巡音，更没能借此机会打开术力口的大门，虽然我隐隐约约感觉到了这机械的电子音背后，似乎和《甩葱歌》有着千丝万缕的联系。</p>
-<h1 id="初中2013---2016">初中（2013 - 2016）</h1>
-<p>这一段时间似乎和术力口就没有什么关系了。</p>
-<p>因为家人工作的原因，我离开了原先的住处，去往另外一个地方上初中，于是也就脱离了我小学的所有同学。在完全陌生的环境下，Holder 度过了一个并不美妙的初一。转机出现在初二，父亲的一位朋友送给我了一台 iPad。我的父母算是十分开明，决定将这个 iPad 交给我全权处置，并不打算限制我的使用时间之类。</p>
-<p>那段时间，我注意到周围同学都在听歌，虽然我不知道他们在听什么，但是就是莫名其妙觉的一个人听歌似乎是一件很酷的事情。这样想着，Holder 在 iPad 上下载了音乐软件，添加了几首类似《江南 Style》之类的大众歌曲。</p>
-<p>你可能会问，《世末舞厅》呢？然而这就很不好说了，我记忆中我似乎并没有将它加入到歌单里面，因为我不会打日文。当时我要是想听这首歌，我只能去贴吧翻找之前那位元老的贴子，或者拿 U 盘在电脑上听（SD 卡应该在搬家时遗失了，但是之后我有了一个 U 盘）。</p>
-<p>《江南 Style》可能是一个并不好的种子，因为我为了扩充歌单，只能每天看看音乐软件的推荐。然而因为这个种子，加上当时 EXO 和 TFBoys 在网络上的对立导致两方热度都居高不下，我的歌单迅速充满了 EXO。EXO 的曲风大多是炫酷的类型，这也塑造了我后续的听歌风格。</p>
-<p>然而，我并没有在 K-pop 的路上走得很深，因为我初中有一位朋友，很喜欢看番。当时我和他在一起玩的时候，常常是白天出门，晚上窝在某人家里看番，也就是那个时候我认识了《刀剑神域》和一些其他的番，也收获了第一个严格意义上加入歌单的日语歌——TV 动画《空战魔导士候补生的教官》OP《D.O.B.》，因为这首歌很炫酷，节奏有力量。</p>
-<p>也是在他的带领之下，大约是 2014 年，我入了 B 站，但我当时几乎只会看鬼畜区。</p>
-<p>虽然如此，我当时的歌单的主流依然是 EXO 和权志龙，最喜欢的可能依然是《Call me baby》或者《BANG BANG BANG》。而随后因为 K-pop 的外延了解到 Maroon 5、TheFatRat 的一些歌和欧美音乐则完全是支线了。</p>
-<p>其实要说到为啥即使有这么一位看番的好朋友我还一直听韩流，倒也只能说是大环境所趋。当时我的初中班级，大部分同学更乐意听 K-pop。那种带着一些痞气，或者说是不良、叛逆、特立独行风格的歌曲，在初中生中很有市场。</p>
-<p>不过也正是因此，我错过了阳炎 Project 的时代。</p>
-<h1 id="高中一年级2016---2017">高中一年级（2016 - 2017）</h1>
-<p>中考考上了当地最好的中学，并且在入学分班考试里考上了年级第一，这完全是出乎所有人的意料的，包括我自己，因为没人相信从那种初中出来的毕业生能考上这个高中的第一。这是一个非常奇妙的开局，在单纯的高中生之中，这样的成就足以让你受到瞩目。所以 Holder 的高一开局并不算很差，反倒是收获了一群朋友。</p>
-<p>先前提到过 2014 年我开始看 B 站，等到我 2016 年高中入学的时候，我已经大体对鬼畜区了解了个遍，自然也就包括了音 MAD 和人力 Vocaloid。在此期间，我接触到了我严格意义上第一个知道是术曲的术曲——《千本樱》（《世末舞厅》我最开始并不知道这是术曲，我甚至不知道这首歌和初音未来有关）。</p>
-<p>然而，2016 年的 B 站大事是和术无关的，而是《极乐净土》的爆火。这首歌的爆火让我经常逛的鬼畜区充满了这首歌的相关创作，自然而然地，这首歌也进入了我的歌单。</p>
-<p>有一件黑历史和这首歌有着很大的关联。当时我不会日语，想唱《极乐净土》自然是唱不出来，只能哼调。然而当时哲♂学里的 FA 乐器又在鬼畜中广泛运用。于是有一次我在班上用 FA 乐器唱了一小段《极乐净土》。现在想起来的话，可以说是万分羞耻。</p>
-<p>一切都是有开端的，自从《极乐净土》和《千本樱》进入歌单，随之而来的就是各种日语歌。但其实这个时候，我依然只是知道初音未来的名号，还不认识双子、IA 等其他歌姬。另外，这个时候，我还不知道什么是歌姬什么是 P 主，当时的 Holder 认为初音未来的所有作品都由一个运营方创作，甚至还因此惊讶于为何这个运营方作出的曲子曲风如此多变。</p>
-<p>但也就是这个时候，我入了 LL 坑，听了不少缪斯的歌。不过即使如此，此时我的歌单依然是 K-pop 和欧美音乐占主流，日语歌有但不多，术也不过几首。</p>
-<p>当然，要是说几件小事的话还是有的。</p>
-<p>首先是高一的寒假，学校组织了去苏州的数学竞赛集训，那段时间比较休闲，我便无聊的时候去整理歌单，删掉了不少 K-pop 歌。这个行为的原因其实挺怪的，因为大约在 2016 年年底或者说 2017 年年初，我经历了第一次所谓的“被分手”。而为了将初中这些破事的记忆删除，我不仅删掉了她所有的照片（当然后面我居然在 iCloud 的自动备份里面翻出来了），删掉了聊天记录和所有联系方式。而寒假在苏州的时候，我翻了翻歌单，发现听歌的时候依然能回想起初中当时的一些奇怪经历，尤其是《Call me baby》，这首歌是我和她都喜欢的。于是，我删掉了大多的 K-pop 歌，只留下了几首自己特别喜欢的，比如《MAMA》和《Lightsaber》。</p>
-<p>之后是 2016 年年底《你的名字》上映，而这让我的歌单中又多出了若干的日语歌，包括《前前前世》《火花》《没什么大不了》《黄昏之时》《梦灯笼》。其中最可说的就是《梦灯笼》，当时我沉迷这首歌到，即使我不会日语，不会写五十音，我也会拿并不富裕的晚饭休息时间跑回家打开电脑抄歌词和罗马音，尝试着学唱。</p>
-<p>2017 年的暑假并没有多少可以称道的事情，虽然当时是第一年接触学科竞赛，辗转扬州、南京等地，但是就听歌而言，并没有什么可说的。硬要说的话，就是看了《未闻花名》，然后沉迷于《Secret base》这首歌。术曲方面，则是零零散散加了《深海少女》《天之弱》《反语》《脑浆炸裂女孩》一共四首。</p>
-<h1 id="高中二年级2017---2018">高中二年级（2017 - 2018）</h1>
-<p>熟悉 Holder 的人都知道，这是一切的转折点。</p>
-<p>2017 年进入高二之后，发生了几件事情。</p>
-<p>首先是 9 月份《病名为爱》投稿，这首歌莫名其妙地在国内收获了极高的热度。而在这段时间，我们高中为我们争取到了去南京旁听数学竞赛省队培训的机会，我又可以公款旅游了。于是我在南京和我同学两个人，反复听这首歌。这里比较好玩的是，我先听到的是 Neru 的术版，而非不少人先听到的翻唱版。就我记忆而言，这应该是我听到的第一首双子曲。</p>
-<p>之后是 12 月份《打上花火》在国内上映，我和同学翘课去看了。当时通行的一位同学稍微对八爷有一点了解，晚上在 KFC 吃饭的时候，讲了不少八爷相关的小知识之类的，包括他前期作为 P 主投稿的一些曲子。</p>
-<p>经过这一个学期，Holder 的歌单大致变成了术曲占一半，其他歌曲混混乱乱杂在里面的一种状态，但 Holder 此时依然没有主动去挖术曲或者去了解 Vocaloid，依然是听到好听的就放歌单。然而这个时候，大数据已经开始给我不断推术相关的东西，很少再有韩流或者欧美了。</p>
-<p>高二寒假备战小高考，没有什么可以说的事情，除了通过一个人力 Vocaloid 认识了《太阳系 DISCO》。</p>
-<p>而高二的春季学期，我遇到了两首歌，分别是《神佛》和《被生命所厌恶》，但是是 mafumafu 版本。mafumafu 这个名号的出现，让我本就不清楚的概念更加混乱，什么是歌姬，什么是 P 主，什么是唱见，这些我当时可以说万分混乱。然而也正是这两首歌，打开了一道通过 mafumafu 获取新术曲的大门。</p>
-<p>3 月的时候，我在听《病名为爱》的时候，注意到评论里面有一句说 Neru 来 B 站了。我记得当时我并不是很清楚 Neru 到底是谁，但总之我给他点了关注，所以说 Neru 是我第一个关注的 P 主。在此之后，我也将 Neru 的《SNOBBISM》和《随便随便》加入了歌单。</p>
-<p>也就是这段时间，我开始学习日语。</p>
-<p>时间就这样到了传奇的 2018 年暑假。</p>
-<p>这个暑假我为了争取清华的各种政策，首先是各个学科竞赛，数学要在扬州集训然后考试，化学要在南京集训然后考试，物理也是在南京，期间还需要参加清华的暑期学校，要去杭州参加一个训练。所以从 6 月份一直到 9 月份这近三个月的时间，我几乎一直在外，而且几乎孤身一人，因为我高中有资格参与化学国初的不过两人，能参与物理复赛的也寥寥无几。</p>
-<p>这是我第一次远离熟悉的家乡如此长的时间，而且我父母也说为了锻炼我的独立能力，并不打算跟在后面，只是说了一句，有什么要紧的情况或者缺钱了就给家里打电话。显然，为了填补课余时间，除了刷题看书，似乎也只剩下听歌了，因为我几乎不玩游戏，除了当时短暂玩过的《炉石传说》。</p>
-<p>这段时间给了我扩充歌单绝佳的机会，我开始第一次下意识地在搜索框中输入初音未来，我开始有意识地找各种番去看，去听它的 OP 和 ED。那段时间，类似 MARETU、れるりり、Neru 等这些名字开始慢慢变得熟悉，镜音双子、巡音也开始进入我的视野，虽然我还是区分不开 P 主和歌姬。</p>
-<p>此时我收集到的术曲已经开始出现两极分化的特征，一类是吵闹的、喧嚣的、意味不明的，这些歌单纯提供一种精神上的刺激，似乎也和当时我沉迷 K-pop 有着相同的根源。而另外一类，则是舒缓的、抒情的、温柔的，这些歌，大约才真正是我当时能共鸣的。</p>
-<p>这其中最为特殊的自然是《胧月》。第一次听到这首歌，我并没有觉得多么特殊，甚至因为它并不突出的调教觉得十分粗糙。然而，正所谓音乐并不仅仅是一段声音，是要和个人境遇相结合的。在那个晚上，我刚刚做完一套题，起身去阳台休息。凌晨两点的南大早已休眠，但是远处登山道的路灯依然闪烁，就在那一阵风之中，歌单循环到了《胧月》。</p>
-<p>那应该是第一次我感受到了所谓的情景结合。因为匆匆学过一点日语，也看过歌词翻译，所以当「逃れる術を探すばかりの孤独な星」这一句响起的时候，那种孤身一人求学的寂寞，疲惫后的困倦一瞬间全部返了上来，而阳台上是依然燥热的夏夜晚风。</p>
-<p>而这一幕大约也是我高中那么多回忆中最为深刻的几个之一，也就是这个契机，我第一次感受到了术曲机械音中的那一种，真人并不能表达出来的沙哑感。现在我依然觉得，《胧月》再如何使用真人翻唱，也难以表达出其中蕴含的孤寂感。人本身是社会性的，再如何表达孤独，也不过是先建立起和别人的连接再失去，比如那些表达孤独寂寞的失恋曲。然而机械音中表达出的那种，自己身为人造物或者非人，生来即无法和人们平等的孤寂感，或许才是深层的。这也是我在之后沉迷于《心》这首歌的原因。</p>
-<p>在此之后，术曲便不断进入歌单，而自己听术曲的风格也渐渐明晰。</p>
-<p>当然，Holder 这个时候还是分不清歌姬和 P 主。</p>
-<h1 id="高中三年级2018---2019">高中三年级（2018 - 2019）</h1>
-<p>备战高考的一年，并无什么可讲的。这段时间除去学习，几乎也没有其他事情可做。</p>
-<p>然而这个时候我遇到了《月光润色女孩》。这首歌是网易云推荐给我的，第一次听也是一点感觉都没有，没有什么特别之处。然而就是这样听着听着，就沉迷了。</p>
-<p>这段时间，为了学习日语，我买了标日，但是上面的课文实在是无聊乏味。这个时候我注意到，自己的歌单已经几乎全是日语了，为什么不去打印歌词来学呢。于是我打印了几首歌的歌词，一首一首学，这里面包括《Secret base》《鸟之诗》《心做》以及不用想就知道的《月光润色女孩》。</p>
-<p>于是我早读课就不读语文或者英语了，而是把歌词偷偷藏在书下面，一个假名一个假名认，不会的语法就圈出来下课查标日。就这样，这几首歌也成为了我最先会的几首歌。不过，要是你问为啥我这么喜欢《胧月》却不打这首歌的歌词，我只能说，这首歌歌词太难了，生词太多，看不下去。</p>
-<p>要问我多喜欢《月光润色女孩》，我只能引用我前桌在高考后和我说的那句话，“你早读课天天唱，唱得我都会唱了”。</p>
-<h1 id="高考后暑假-大一2019---2020">高考后暑假 &amp; 大一（2019 - 2020）</h1>
-<p>高考后的暑假，我依然不能说我是术术人，虽然听不少术，但还是没主动找过多少。当时我喜欢的一首歌是《Narrative》，一个电影的 ED。</p>
-<p>这个暑假事实上记忆最深刻的术曲是《朗朗晴天》，是一位高中的好友推荐给我的。高考出分后，因为填报志愿的事情，我、我父母、我的高中和清北招生组之间产生了一些奇怪的摩擦，而这也让我产生了无法把握自身命运的一种无力感，也就在那个时候，我和高中好友交谈的时候她把这首曲子推荐给了我。</p>
-<hr />
-<p>进了大学之后，事情发生了一点转变。我开始接触 gyari 的 Voiceroid 小剧场，认识了缘兔、akari、琴叶姐妹这些歌姬，也就是这个时候，我才真正知道什么是 P 主，什么是歌姬。</p>
-<p>如果要说大一上学期印象最为深刻的歌曲，就是《蜘蛛丝 Monopoly》、《妄想感伤代偿联盟》和《几望之月》。</p>
-<p>然而大一的下学期，因为疫情一整个学期都只能在家。然而也正是这段时间，由于我已经开始主动认识术曲，从而也是我术曲底子正式构成的开端。这段时间，我听到了《霞む夏の灯》《Unknown mother goose》，和几乎是我听术曲里程碑一般的《无梦之梦》。</p>
-<p>事实上，大一下学期在家的这一段时间，即使我依然在听动漫歌曲或者 J-pop，比如 Reol 之类，但实际上我开始明显地倾向于术曲。术曲具有一种奇妙的创作自由感，相比于动漫歌曲需要考虑类似表达主旨等约束，术曲更像是自由地让歌姬传达创作者的感情，无须特别关注所谓创作要求或者一些限制自由表达的限制。</p>
-<p>在那段时间内，wowaka、怪力熊、MARETU、春卷饭、DECO 构成了我最初的底子。当然，还有类似《萤火虫》《ROKI》之类的单曲。</p>
-<h1 id="在这之后2020--">在这之后（2020 - ）</h1>
-<p>在这之后就并没有太多值得讲述的了，已经入了门的术术人自然是会自己去翻找自己所喜欢的曲子的。</p>
-<p>不过也就是在这之后，我明显感觉到了听歌风格和个人境遇的关系。在大一的下学期，我就已经听过了《劣等上等》，而在那个时候，我觉得这首歌过分吵闹，毫无节奏可言，遂跳过。然而在我大二上学期再次听到的时候，我却觉得万分戳心。现在回想，大概是大一下学期还在为学业挣扎，社工上也因为团支书不作为而寸步难行。相比之下，大二已经适应了大学节奏并且取得一些成就，这首歌似乎也就不是那么刺耳了。</p>
-<p>还可以作为例子的就是 2021 年的 5 月感情受挫的时候，在这事之前和在这事之后听春卷饭，完全是两个感觉。在这之前，我只能感受到单纯的震撼，而似乎并没有那么多的共鸣。然而在这之后，尤其是听《第三心脏》的时候，我甚至感觉这首歌就是为我而作。</p>
-<p>说到《第三心脏》，春卷饭的幻影系列曲，从 2021 年更新到现在，似乎就和我奇妙地贴合了一般。在我低沉的时候，听到了《第三心脏》，在我逐步挣脱的时候，听到了《萤火虫未曾来过》，听《美影日记》的时候则又让我回到了一年前的一些混乱之中。</p>
-<p>当然还有一些插曲，就是入了音游坑，通过 osu 和 PJSK 认识了不少新 P 主和术曲。还有就是认识了术群的各位，见识到了很多新的术曲口味，听到了很多新歌。</p>
-<h1 id="所以呢">所以呢</h1>
-<p>Holder 真正听术曲的时间并不长，或许只能说大一下学期之后才开始有意识听。然而实际上，Holder 小学就听过术曲了，虽然毫不自知。</p>
-<p>Holder 正如自己所描述的那样，并不想把歌曲独立于个人的境遇去解释。就像《劣等上等》，不同的境遇下就是不同的体验。我依然习惯将歌曲、文字等这些艺术和具体的、切身体会的场景联系起来。</p>
-<p>仔细回忆一下，Holder 喜欢夏天的晚上并不是没有原因，因为每一年的夏天都承载了太多太多的深刻回忆。18 年和 Sakana 的相遇以及独自求学终有回报，19 年为三年高中完美谢幕，20 年的一人旅行，21 年和 Sakana 最激烈的矛盾到最后的和解，22 年被导师拒绝和最后的平安上岸。而这些夏夜，都有一些曲子作伴，18 年的《胧月》、19 年的《朗朗晴天》、20 年的《无梦之梦》、21 年的《第三心脏》《某一家的茶会》、22 年的《坠入地狱》。</p>
-<p>大约歌曲就像回忆的书签一般，听到这个旋律，就仿佛回到了当时那段时光。</p>
-<p>Holder 和 Vocaloid 的故事，不如说就是 Holder 自己的故事，然而这个故事还很长很长。</p>
+<p>今天面试本来就有点不安，最大的问题就是唯一能吹的一份挂了名的 SIGGRAPH 的文章实际上自己并没有参与特别核心的工作，而且做到一半就被拒了，所以实际上最后那段时间就在摆烂，组会吹水也不去了。</p>
+<p>然而，今天就是这么时运不济，面试的评委里同时有徐昆老师和胡事民老师。没听过组会吹水不敢乱说，但胡老师就喜欢捉着这些问。他要是具体问如何实现了我负责的代码部分，我倒是可以说不少，但是问我一些 Overview，说实话倒还真的不会。</p>
+<p>Holder 的科研真的毫无意义，毕竟自己就是如丧家之犬一般到处跑路。或许 Holder 真的就不应该硬头皮读这个博士，或许就该进厂上班了。</p>
 ]]></content>
       <categories>
         <category>【杂谈】碎碎念</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>一部真实的校园恋爱番《龙与虎》</title>
-    <url>/2022/12/29/toradora/</url>
-    <content><![CDATA[<p>由于新冠阳性卧病在床三天，中间某一天我一天刷完了《龙与虎》的 26 集，作为为数不多的超长校园恋爱番，在看完《龙与虎》之后，我明显感受到了这部番和当下很多恋爱番的不同。</p>
-<span id="more"></span>
-<h1 id="人物感情线">人物感情线</h1>
-<p>《龙与虎》可能最让人感到迷惑的就是错综复杂的感情线，很多观众也都评论说感情想相当扭曲。这里为了更好写读后感，还是稍微写写各个人物的感情线。</p>
-<p>这里想要探讨的是男主角团龙儿、北村和女主角团大河、实乃梨、亚美、会长的感情线。这里另外做个补充，由于大河在日语中发音为たいが，和意为老虎的タイガー读音类似，加上番里大河凶狠乖戾的性格，故大河也有老虎的外号。</p>
-<h2 id="北村与会长">北村与会长</h2>
-<p>北村为本作男二，会长为本作女四。在进入高中之后，由于对理想中的高中生活的憧憬，有点为了谈恋爱而谈恋爱地向大河表白，却遭到了拒绝。在心灰意冷之际，会长出现了，其劝说北村高中生活并不只有感情。受到鼓励的北村于是加入了学生会，在学生会的一年中，北村逐渐对会长产生了好感。由于北村确实能力卓著，会长也在自己心中确认了对北村的好感。</p>
-<p>然而转折出现在高二年级，会长作为毕业生即将毕业且计划留学。然而会长知道，北村之所以进学生会，之所以如此拼命干活，自己永远是重要乃至最重要的因素。也就是说，会长清晰地知道北村一直在追逐自己，所以即使答应了北村的感情，也注定将会是一段不平等的感情。所以会长为了防止北村不假思索追逐自己，强硬地隐瞒了留学的计划。</p>
-<p>但是计划依然暴露了，北村一蹶不振，因为对他而言，会长是他继续做下去，并接过学生会长这一身份的唯一理由，他想要追逐会长。受到打击的北村束手无策，选择了自暴自弃。先是宣布不参与学生会长竞选，后是故意违反校规校纪染发逃学，用他自己的方式阐述自己自甘堕落。会长在目睹这一切后，即使心疼，但是从自己的立场出发，依然在他人面前刻薄地评价北村为懦弱的人。</p>
-<p>在这个时间点，大河是喜欢北村的，为了拯救北村，大河宣布参加学生会长竞选，并故意宣扬自己在竞选成为学生会长后会推行相当严厉的政策毁掉所有人的高中生活。这种自爆行为，事实上是发动群众来劝说北村回到学生会长竞选中。在这一番操作之下，北村最终回到竞选，并且得到了会长的支持。</p>
-<p>在最终的竞选演讲中，北村高调面对全校向会长表白，然而会长并没有正面回应，发好人卡一样地冷处理了这一充满勇气的行为。在这之后，大河被彻底激怒了，她认为会长在玩弄北村的感情，于是提着木刀和会长线下械斗。会长自然无法是大河的对手，在落败后，会长最终情感崩溃，承认了自己喜欢北村，同时也讲出了自己的心声，讲出了不想让北村仅仅是追随自己的真实想法。</p>
-<p>最终，北村成为了学生会长，会长也按照计划前往美国留学。一年后，北村毕业，也同样规划前往美国留学，经历了高中三年的磨练，其心智更为成熟，也更加坚定了对会长的好感。</p>
-<h2 id="大河与龙儿">大河与龙儿</h2>
-<p>本作男女主。大河家庭情况较为混乱，父亲在和其生母诞下她后，不久就将其和其生母全部抛弃，除了每个月定时打入生活费外，与其生活完全没有交集。其与其生母的关系也较为冷淡，本作中是独居状态。正是因为这样的家庭背景，大河十分缺少关爱，这也是她感情线的重要基础。此外，大河的另外一个重要特征是十分缺乏生活技能和笨拙，这也和家庭背景有关联。</p>
-<p>而龙儿的家庭环境则也较为混乱，父亲是不良少年，在和龙儿生母未婚基础上诞下龙儿后人间蒸发。龙儿生母为了抚养龙儿，决定离家出走，通过陪酒女的工作支撑家庭，并且一直向龙儿隐瞒其父亲真实的情况。所以龙儿自幼缺乏父爱，又相当追求父爱。另外，由于这样的家庭背景，龙儿不得不学会了各种生活技能，主妇属性拉满。</p>
-<p>大河在刚进入高中被北村表白后，虽然其拒绝了北村，但是由于北村关注着她，在她困难的时候也会伸出援手，其得到了北村的关爱。在这样的基础上，大河萌生了对北村的好感。在某日，大河将写给北村的情书放到其书包中，但没想到不仅忘了把情书本体放到信封里，甚至还把情书错放到龙儿的书包内，这导致龙儿在回来拿书包回家的时候和大河起了争执，大河甚至在当晚为了夺回情书提着木刀来到龙儿家复仇。</p>
-<p>在那天晚上，龙儿劝说了大河，情感并非是可耻之事，并且给大河看了其为暗恋对象实乃梨写的诗乃至未来生活规划。在一番交流后，两人发现，大河暗恋的北村是龙儿的好友，而龙儿暗恋的实乃梨是大河的好友，于是两人组成龙虎同盟，帮助对方追求自己的好友。</p>
-<p>然而，由于大河严重缺乏生活技能，而龙儿又会做饭，两人家又很近，所以大河在此之后便稳定在龙儿家里吃饭，龙儿甚至还会帮助大河洗衣和打扫公寓。</p>
-<p>这个时候，大河和龙儿仅仅是一种依存关系，虽然在外人眼中看来两人已经近乎同居，但是两人均不承认和对方有超过朋友的越界行为。在龙虎同盟的约定之下，龙儿帮助大河拍北村的照片，大河也会创造龙儿和实乃梨独处的机会。</p>
-<p>其间，大河在龙儿鼓励之下向北村表白，但是被拒绝了，北村表示，其仅仅想作为朋友帮助大河。</p>
-<p>第一次转折发生在亚美的出现，作为模特，亚美身材傲人，相比之下大河的身材就显得较为弱势。这一矛盾的激发是游泳课，大河由于身材自卑于是抵触游泳课，龙儿为了帮助大河找回自信，于是帮其缝制胸垫来伪装身材。亚美在游泳课上见到这一幕后决定挑战龙虎联盟的关系，提出和大河比赛，若亚美获胜则会把龙儿带去自己的别墅过暑假。无论是出于对龙儿离去后自己生活质量下降的担忧，还是此时由于已经和龙儿相处甚久而萌生的朦胧情愫，大河都决心为了龙儿赢下比赛。比赛最终确定为五十米自由泳，然而由于大河不会游泳，所以龙儿又承担了教学游泳的任务。在两人在市民泳池练习的时候，大河第一次因为对龙儿朦胧的好感而情感爆发。</p>
-<p>比赛当场，大河在游泳过程中抽筋，龙儿立刻下水营救，但最终依然将自己搭了进去。然而这个时候群众的目光全都集中在亚美即将赢得比赛，没有多少人关注到龙儿即将陷入险境。最终，虽然在大河求救之下龙儿得救，但是大河也最终没能收束自己的情感，面对大家说出了著名的：</p>
-<div class="note info no-icon"><p>龙儿是我的，你们一个都不许碰他！</p>
-</div>
-<p>事实上，即使经历了这样的事件，大河对龙儿也依然仅仅是无法确定的朦胧好感，大河依然对北村充满热情。在此之后，由于亚美依然是实际上赢得比赛，所以亚美依然可以带龙儿前往她的别墅过暑假，然而在北村劝说之下，最终变成了主角团五人全部前往亚美的别墅。在这一过程中龙虎联盟达成了本次主要是大河帮助龙儿追求实乃梨的作战计划，大河得知实乃梨害怕灵异，于是计划故意恐吓实乃梨，让龙儿趁机营救实乃梨来创造机会。然而，这个计划非常自然地失败了，因为实乃梨实际上并不害怕灵异，反倒十分喜欢灵异。</p>
-<p>另外，这个时间段也是龙虎联盟在梦中和对方确认关系的时间点，两人都做了和对方确认关系的梦。</p>
-<p>随后，大河的父亲出现，其希望能够将大河带回抚养。作为大河的挚友，实乃梨十分清楚大河父亲的本质。然而渴望父爱的龙儿由于并不清楚大河父亲的本质，强硬地要求大河离开自己家和父亲生活。在名义上收回抚养权的基础上，大河的父亲作出了会来看女儿在学园祭上的演出的承诺，然而显然，这个承诺是空虚的，最终一条短信依然把大河甩给了龙儿。</p>
-<p>在学园祭的最后，发生了两件事。一件事是，由于大河没能等到父亲，其对家庭复原的期望再次落空，受伤的大河通过很有情感张力的演出赢下了学园祭选美比赛后，学生会追加举办了男子选拔赛，全校男子绕学校跑一圈，最快的人能够和选美比赛获胜者，也就是大河共舞。在这场比赛中，终于认识到自己没能看穿大河父亲而导致伤害了大河的龙儿为了赎罪，拼命希望抢下头名，在这过程中实乃梨也前来帮忙，两人自然地牵着手拿下第一。第二件事是，最终的篝火晚会上，北村邀请了大河一起跳舞。</p>
-<p>在这里，似乎龙虎同盟的目的即将达成，因为大河和北村，龙儿和实乃梨，这两对的关系都得到了进展。然而，转折也就随之而来，学生会长竞选事件的爆发，让大河最终认识到北村早就心有所属，其对自己的关心不过是作为朋友的关心，大河对北村的热情也随之慢慢地弱化。但是，大河先前对北村的追求，是全班都知道的，在北村表白失败后，全班为了安慰北村防止其再次自暴自弃，尝试着撮合北村和大河。另外，由于大河的学生手册中夹着在篝火晚会上她和北村共舞的照片，北村和大河的关系，在<strong>旁人眼中</strong>得到了强化。而这也让实乃梨终于敢于承认对龙儿的好感，出于龙虎同盟的约定，大河也更加卖力地帮助龙儿追求实乃梨。</p>
-<p>然而，实乃梨在亚美的质疑下，并没能成功面对自己对龙儿的好感，而是逃避着这一切。</p>
-<p>这之后，就是圣诞夜。学生会计划在圣诞夜举办派对，大河此时依然在帮助龙儿在圣诞夜向实乃梨表白，龙儿也为实乃梨准备了发卡作为礼物。但是由于实乃梨此时不断地逃避着自己的感情，不愿意面对大河和龙儿，所以并不计划参与圣诞派对，即使龙儿已经盛情邀请。大河在派对当晚，完成了演出之后立刻前往实乃梨家劝说其前往派对，并撒谎夸大了龙儿对实乃梨的承诺。大河由于此时已经逐步对龙儿产生好感，无法面对实乃梨和龙儿最终将会走到一起的现实，于是在劝说实乃梨后径直回家，没有再前往派对。</p>
-<p>在派对现场的龙儿，从亚美处了解到了大河早已回家，想到大河之前提到过想要见圣诞老人的想法，出于对大河的关心和担忧，立刻和别人借到一套戏服打扮成圣诞老人前往大河家。在和大河玩乐一圈后，大河意识到终究是要让龙儿回到派对现场，出于先前已经和实乃梨夸下海口并且龙虎同盟的约定也是如此，于是大河强硬地将龙儿赶去了派对。</p>
-<p>然而，在送走龙儿后，大河终于意识到，如果一切进展顺利，实乃梨最终和龙儿在一起，自己将无法时时刻刻呆在龙儿身边。也就是说自己已经视之平常的和龙儿的相伴，被自己亲手推向了毁灭。意识到这一切的大河情感崩溃了，赶忙出门追龙儿，但是已经为时已晚，只能无助地跪在路边痛哭。</p>
-<p>之后便是修学旅行，本年度修学旅行是前往雪山的滑雪之旅。在修学旅行中，亚美和实乃梨就情感问题爆发争执，这争执过程中，龙儿送给实乃梨的发卡掉落在悬崖下，而大河为了取回发卡，冒险滑下悬崖，最终被困。得知此事后，龙儿立刻前往营救并最终背回大河，大河在逐渐苏醒的过程中将龙儿错认为北村，并自言自语般透露了“这种时候还愿意管我的应该只有龙儿才对”并且透露了自己喜欢龙儿。龙儿听到了，但是没有戳穿自己不是北村这一事实。</p>
-<p>最后，大河为了感谢大家在自己遇难的时候帮助自己，将主角团召集在一起计划送给大家巧克力作为答谢。为了统一口径，龙儿特别叮嘱了北村，要假装成救援大河的是北村而不是自己，因为其知道大河在躲避承认感情，要是让大河知道了当晚她说的话已经被自己听到了，很有可能导致矛盾，然而龙儿忘了叮嘱知道真相的实乃梨。于是在大河送巧克力的时候，实乃梨认识到了大河并不知道真相，并且立刻明白了龙儿也在躲避大河的感情，而非正面面对。主角团其余人在此时达成共识，坚决不能让龙虎再躲避两人之间的感情，于是强硬地要求两人面对内心。大河在这样的情况下，选择了逃跑，而在追逐大河的时候，实乃梨终于不再压抑自己的情感，大声宣称自己对龙儿也是充满好感，但是由于自己还有棒球梦想，而且龙虎同盟已经事实存在了很长时间，实乃梨最终决定放弃了自己在情感上的追求。</p>
-<p>在这一连串事情后，龙虎二人最终互相表白。为了得到家长的认可，龙虎二人投奔了龙儿的祖父母，并用骗称龙儿遭遇事故将已经离家出走十余年的龙儿母亲骗回了家人身旁。大河在观察到龙儿的家庭之后，决心面对自己的家庭，在留下留言后，大河决定退学回到父母身边一段时间。面对这样的不辞而别，龙儿虽然不甘，但是依然充分理解。一年后，在毕业典礼上，大河终于回归，龙虎也终于破除了所有的感情障碍，走到了一起。</p>
-<h2 id="实乃梨">实乃梨</h2>
-<p>本作女二。其有一个弟弟，她和弟弟都擅长棒球，但是家庭却仅仅支持弟弟的棒球事业。不服输的实乃梨计划通过高中课余时间打工攒钱，在高中毕业后自给自足前往体育大学就读。实乃梨的性格对外而言是相当阳光开放的，然而其内心却相当闭塞和喜欢逃避现实。</p>
-<p>在感情上，由于这一梦想的存在，实乃梨一般并没有体现出自己的情感取向，更多的时候是以一副和感情绝缘的面貌示人。然而，由于目睹了龙儿的很多事迹之后，实乃梨慢慢对龙儿产生了好感。</p>
-<p>在暑期合宿中，龙儿在和实乃梨两人独处对话的时候，流露出了对实乃梨的好感，然而实乃梨并没有爽快承认，仅仅是搁置了这一议题。事实上，这是因为实乃梨想要维护龙虎同盟而在自己的感情上做出的让步。</p>
-<p>学园祭的男子选拔中，其和龙儿为了安慰受伤的大河，联手拿下了比赛的第一，事后，两人都收藏了和对方牵手冲线的照片。</p>
-<p>由于在她眼中看来，大河和北村的情感愈发成熟，其不需要再顾及好友的情感而不敢表达对龙儿的好感。所以在看到大河的学生手册中夹着和北村的合照之后，其松了一口气。但是这个时候，亚美发出了灵魂疑问：</p>
-<div class="note info no-icon"><p>负罪感，减少了吗？</p>
-</div>
-<p>在这样的疑问之下，实乃梨又一次对自己的情感犹豫了，她认为自己的情感牵挂的事情太多，自己选择龙儿依然被好友大河的情感牵制，于是她躲避了自己对龙儿的情感。然而在这种心不在焉的状态下，实乃梨甚至输掉了从来没想过会输的棒球比赛。</p>
-<p>在这样的低谷之下，实乃梨显然无法面对龙儿想和她一起参与圣诞派对的邀请。然而，在当晚大河的劝说下，实乃梨最终还是计划前往会场，但是，在路过大河公寓的时候，她看见了跪在地上痛哭的大河。这个时候实乃梨明白了实际上大河依然和自己想的一样喜欢着龙儿，大河依然还是出于朋友之间的情谊，将龙儿让给了自己，而大河自己却在忍耐着这些痛苦。实乃梨最终在遇到了龙儿的时候，还未等他开口，便拒绝了龙儿的所有好意。</p>
-<p>实乃梨对自己感情的极端逃避引来了亚美的不满，而这也是修学旅行中两人争吵的根本原因。在争吵导致大河遇难等一系列事情后，最终在大河送巧克力的时候，实乃梨终于鼓起勇气面对自己的感情，承认了龙儿终究不会选择和自己走到一起，那么自己就要更为棒球梦想努力。而正式与自己的感情告别的标志是另外一个名场景，实乃梨为了激励龙儿去追逐大河，伸出拳头给龙儿打气，结果碰到了龙儿的嘴唇，当时并没有发生什么，但是当龙儿下定决心飞奔去追逐大河之后，实乃梨偷偷亲吻了刚刚碰到龙儿嘴唇的拳头。</p>
-<p>然而，即使鼓起勇气，实乃梨依然改变不了自己的挚友和自己喜欢的人最终走到了一起，最终会离自己远去的事实，在痛哭一顿后，实乃梨最终接受了现实。</p>
-<h2 id="亚美">亚美</h2>
-<p>本作女三，是北村的青梅竹马。亚美是职业模特，因为跟踪狂的原因被迫放弃工作并转学，并且在工作中磨练了一套伪装术，也就是所谓人前一套人后一套。有着丰富的社会阅历，对主角团的这些情感问题看得最为透彻，甚至接近上帝视角，然而涉及到如何去解决的时候，又缺乏和青春期少年少女交流的能力，很容易触发意料之外的矛盾冲突。</p>
-<p>亚美的感情线较为简单，即在龙儿劝说她放弃伪装和大河暴打跟踪狂后，亚美就对龙儿产生了好感。但是亚美作为主角团中心态最为成熟的一人，其对龙儿的依赖感是最弱的，仅仅是保持了好感和希望其多关心自己的愿望。</p>
-<p>相对地，龙儿则几乎完全将亚美作为自己的朋友看待，在各种对话中也不会将自己和亚美并称。</p>
-<h1 id="一些想说的话">一些想说的话</h1>
-<p>这个作品的感情线是真的扭曲，尤其是圣诞夜，如果加上前夕的话，这一段时间主角团五人全部失恋。首先是北村表白被会长冷处理，之后是亚美向龙儿示好也被龙儿忽视，再然后是大河亲手将自己和龙儿相伴的机会毁灭而痛哭，其后是实乃梨看到大河对龙儿的热烈的情感而决心放弃自己的感情，最后是龙儿甚至没有表白就被实乃梨回绝。</p>
-<p>虽然虽然，龙儿和大河在当时已经几乎快要两情相悦，但就是这么阴差阳错让两人到了更晚才确定互相的心意。</p>
-<p>不过，我为什么还是觉得这部番相当优秀，是因为这部番的感情线虽然很扭曲，但是却真实。虽说不能忽视艺术加工，但是这部番对青春期的少年少女朦胧青涩、飘忽不定的情感，以及在此基础上对自己情感的逃避，对友情和爱情之间的抉择，对家庭的理解等等的刻画十分真实。就以我自己为例，我中学时期对爱情的认识也不过是一种飘忽的感情，大多时候并没有区分一场随便的恋爱和需要承诺和责任附加的一场恋爱，所以即使有观众认为不真实，但我认为大河到最后，到真正将龙儿推给实乃梨的时候才真正认识到一直支撑、关注自己的并非是北村而是龙儿，这样的认知变化也并不虚假，而且前期就已经铺垫了大河是笨拙迟钝的。事实上，就我个人而言，2021 年的时候我的情感动荡，直到 Sakana 离我远去才真正敢于面对自己内心对 Sakana 的情感而自责为何之前会冷处理两人的关系长达两三年。说实话，大河在圣诞夜的痛哭，我是觉得相当真实的，因为人真的是不见棺材不落泪，不到真的要失去了，都不会正视自己的情感。</p>
-<p>但要说这部番的情感刻画上的问题，说实话我觉得对龙儿的情感刻画还有些欠缺，尤其是其一直到圣诞都还对实乃梨保持好感，那他究竟出于什么样的契机就爱上了大河呢？这一点实际上并没有描绘得很好。不过实际上也是可以理解的，就和大河认知转变一样，在实乃梨拒绝自己之后，龙儿这才回归了理智，缓慢认识到自己陪伴良久的大河才真正让自己动心。但这个说法也有问题，因为龙儿本身就有主妇属性，长期照顾的女性可以是母亲，可以是女儿，并不一定是恋人。所以正因此，这部番也有不少人调侃龙虎之间更像是父女。</p>
-<p>但整体依然瑕不掩瑜，整部番很长，大河从开头的乖戾逐步变得善解人意和温柔，这样的成长和转变无疑让我钦佩作者对大河这个人物的刻画的深度，如此大的性格转变却不显得突兀。整部番的泪点很多，因为本身就设定在类似单亲家庭等并不健全的环境上，很容易凸显人物的伟大之处，无论是将龙儿抚养成人的母亲，还是最终决定重返家庭的大河，这些人物的光芒就显得相当耀眼。</p>
-<p>整体上来看，我是真的觉得这部番和《中二病》可以并称我最喜欢的恋爱番，因为他们都不止是简单发糖，他们都让我看到了爱情对一个人的改变，让我看到了两个人互相支持应当是什么样的。虽然《龙与虎》对男女主之间的感情刻画并没有多少篇幅，但是这种从无感走到一起的长途跋涉却又是另外一番有趣。</p>
-<p>总之，很好的一部番，很真实很有共鸣的一部番，让我能够一时脱离当下充斥的快节奏工业糖精恋爱番，重新想一想两个人应当如何建构感情，两个人应当如何面对各种现实问题，无论是家庭还是未来。</p>
-]]></content>
-      <categories>
-        <category>【杂谈】游戏 &amp; 番剧</category>
       </categories>
   </entry>
   <entry>
@@ -17406,6 +16953,482 @@ a_t \sim \pi_\theta(\cdot \mid \hat s_t), \hat s_{t + 1} = \hat f_{\phi_t}(\hat 
 <p>据说是这位 P 主唯一一首出名曲，这一点莫名显得有些凄凉。</p>
 <p>歌词里面杂乱无章的意象，似乎描绘了沉在海底的荒诞世界。</p>
 <p>似乎并不想去那里旅行呢（笑）。</p>
+]]></content>
+      <categories>
+        <category>【杂谈】碎碎念</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>2022 年 12 月论文笔记</title>
+    <url>/2022/12/06/paper-2022-12/</url>
+    <content><![CDATA[<p>12 月开始就得准备做毕设了，先要充分阅读文献，确定自己要做的方向有什么要解决的问题，以及目前已经有的探索和目前还存在的困难。</p>
+<p><span class="math display">\[
+\newcommand{\b}{\boldsymbol}
+\]</span></p>
+<span id="more"></span>
+<h1 id="learning-tailored-adaptive-bitrate-algorithms-to-heterogeneous-network-conditions---a-domain-specific-priors-and-meta-reinforcement-learning-approach">Learning Tailored Adaptive Bitrate Algorithms to Heterogeneous Network Conditions - A Domain-Specific Priors and Meta-Reinforcement Learning Approach</h1>
+<p>黄老师的文章，作为起手还是需要好好看看的。</p>
+<p>这篇文章的基本概念是，基于学习的 ABR 已经能够实现一个平均而言优秀的 ABR 算法，但是对于部分特殊的网络环境其依然表现不佳，而这也就是所谓的个性化。然后这篇文章使用了 meta RL 的方式实现了 AABR（其实应当是 <span class="math inline">\(A^2BR\)</span>，但是我真的不想打公式了，AABR 表示 Adaptation of ABR）。</p>
+<p>AABR 首先离线学习一个元算法，之后再在在线的个性化环境下学习一个针对当前网络环境的个性化算法。另外，还需要不断优化离线学习来保证元算法的优势。</p>
+<h2 id="introduction">Introduction</h2>
+<p>首先对 ABR 算法做了总结，启发式算法根据当前网络情况和一部分状态变量给出决策，但是只有在选定较好的算法参数的时候这种算法才能表现较好。基于学习的算法则根据网络情况学习这些参数。然而总而言之，这些算法都不会自动调节自己的算法参数，尤其在面对变化较多的网络环境下时，这些算法表现较差。</p>
+<p>之后是通过实验说明了现在的网络状况不仅是多样性（diverse）的，更多的是独一无二（unique）的。基于这一点，这篇文章认为做用户个性化是一个重要的提升。</p>
+<p>所以基于 Input-driven Markov Decision Process (IMDP)，本文提出了 AABR。分为离线和在线两步，具体的训练方式见后续。</p>
+<p>总结一下这篇文章的工作就是确认了当今网络环境的独特性，并通过 meta RL 解决了 ABR 的个性化问题。</p>
+<h2 id="background-motivation">Background &amp; Motivation</h2>
+<p>关于 ABR 之类的介绍这里忽略，主要看这篇文章如何论证当今网络的多样性。</p>
+<p>多样性分为三个方向去论证，即不同用户间差异、不同场景间差异以及已有的部分 ABR 算法在这些网络环境下的表现。</p>
+<p>用户间差异和场景间差异可以关注下图：</p>
+<p><img src="/uploads/paper-2022-12/1.png" /></p>
+<p>可以首先注意到网络吞吐率和 RTT 的变动是相当大的，而如果观察具体的用户，也可以发现用户之间的网络状况差异也很大，部分用户网络稳定（整体带宽 CDF 陡峭）而部分用户的网络波动较大，而且各个用户的网络指标平均值也差异较大。</p>
+<p>对于场景，也可以注意到步行、地铁、公交、汽车的网络情况也各有不同，并不能一概而论。</p>
+<p>如果从 ABR 的角度出发，这篇文章在两个不同环境下测试了若干个 ABR 算法的性能，得到的结果是：</p>
+<p><img src="/uploads/paper-2022-12/2.png" /></p>
+<p>显然可以注意到已有的算法都很难兼顾两种情况，常常顾此失彼。这就意味着不稳定的网络情况很容易导致这些算法失效，从而也难以实现用户个性化。</p>
+<h2 id="methods">Methods</h2>
+<h3 id="input-driven-markov-decision-process">Input-driven Markov Decision Process</h3>
+<p>基本而言是在正常的 MDP 中引入了 input process <span class="math inline">\(\mathcal{Z}\)</span>，这个时候环境的转移概率定义为：</p>
+<p><span class="math display">\[
+\mathbb{T}[s&#39; \mid s, a, z] := \mathbb{P}[s_{t + 1} = s&#39; \mid s_t = s, a_t = a, z_t = z]
+\]</span></p>
+<p>此外，决策依然仅仅和 <span class="math inline">\(s_t \in \mathcal{S}\)</span> 有关，也就是说具体行为 <span class="math inline">\(a_t \in \mathcal{A}\)</span> 与 <span class="math inline">\(z_t \in \mathcal{Z}\)</span> 是独立的。</p>
+<p>进一步的价值函数定义为：</p>
+<p><span class="math display">\[
+Q(s, a, z) := \sum_{s&#39; \in \mathcal{S}} \mathbb{T}[s&#39; \mid s, a, z](r(s, a, z) + \gamma V(s&#39;, z&#39;))
+\]</span></p>
+<p>在 IMDP 下，最优策略也就定义为：</p>
+<p><span class="math display">\[
+\pi^*(s, z) := \mathop{\rm argmax}_{a \in \mathcal{A}} \sum_{s&#39; \in \mathcal{S}} \mathbb{T}[s&#39;, z&#39; \mid s, a, z]\left[r(s, a, z) + \gamma \max_{a&#39; \in \mathcal{A}} Q(s&#39;, a&#39;, z&#39;)\right]
+\]</span></p>
+<p>可以注意到，如果两个 agent 运行相同的 policy <span class="math inline">\(\pi\)</span>，其不同之处仅仅是 input process <span class="math inline">\(\mathcal{Z}_{1, 2}\)</span> 不同。可以注意到这两个 agent 将会始终保持相同的决策，所以其价值函数相同当且仅当 <span class="math inline">\(\mathcal{Z}_1 = \mathcal{Z}_2\)</span>。</p>
+<p>如果在完全得知 input process <span class="math inline">\(\mathcal{Z}\)</span> 的条件下，求解最优策略相当于一般的强化学习问题，可以通过大量的强化学习方法完成。但是我们现在需要假定 input process 是完全不可感知的，在这种条件下，一般强化学习方法学习到的最优策略 <span class="math inline">\(\hat\pi^*\)</span> 的价值函数实际上是与 input process 无关的，其价值函数用 <span class="math inline">\(Q(s&#39;, a&#39;)\)</span> 表示，其满足：</p>
+<p><span class="math display">\[
+\max_{a&#39; \in \mathcal{A}} Q(s&#39;, a&#39;) = \mathbb{E}_{z&#39;} \max_{a&#39; \in \mathcal{A}} Q(s&#39;, a&#39;, z&#39;)
+\]</span></p>
+<p>所以现在解决 input process 未知条件下的最优策略求解问题就是最重要的。</p>
+<h3 id="meta-rl-with-domain-knowledge">Meta RL with Domain Knowledge</h3>
+<p>总之就是又阐述了一边 AABR 分为离线和在线两个训练过程，离线训练一个元算法之后在线训练一个个性化 ABR 算法。那么两个问题就是：</p>
+<div class="note info no-icon"><ol type="i">
+<li><p>How to obtain a good parameter initialization for fast-learning?</p></li>
+<li><p>How to efficiently learn tailor-made ABR algorithms online?</p></li>
+</ol>
+</div>
+<h3 id="model-agnostic-meta-learning">Model Agnostic Meta-Learning</h3>
+<p>总之就是选定了 MAML 作为 AABR 的核心算法，MAML 的论文后面慢慢推着看。</p>
+<p>不过这一部分也阐释了为何 MAML 适合用于这个场景，原文是：</p>
+<div class="note info no-icon"><p>We find that model agnostic meta learning (MAML) is quite suitable in personalized ABR scenarios where the network traces on each user are quite limited.</p>
+<p>Specifically, MAML consists of an inner loop and an outer loop.</p>
+</div>
+<p>也就是说从数据集的角度和训练流程的角度上说，MAML 和这个实验场景的契合度比较高。</p>
+<h3 id="leveraging-domain-knowledge">Leveraging Domain Knowledge</h3>
+<p>总体的含义是设计了一个模拟器用于生成数据以及相关的启发式算法，一方面补充了现实世界中数据量不足的问题，另外一方面其代表的启发式算法可以在 policy 无法处理某些状态的时候作为 backup 使用。</p>
+<p><strong>注：</strong>这一部分可能需要结合下面的 overview 仔细学一下，然后对这里做一些扩充，因为这里模拟器的细节应该是做数据扩充的重要部分。</p>
+<h2 id="aabr-overview">AABR Overview</h2>
+<p>系统的大致结构为：</p>
+<p><img src="/uploads/paper-2022-12/3.png" /></p>
+<h3 id="basic-training-algorithm">Basic Training Algorithm</h3>
+<p>在设计网络的输入的时候首先需要考虑的是什么才是真正需要考虑的状态，这篇文章采用的方式是首先将所有可以使用的状态都作为输入以训练一个 teacher network，之后采用类似模仿学习的方式，采用类似决策树等较为轻量级的模型去模仿神经网络的策略，之后再使用决策树剪枝的方式去获取真正有意义的非平凡状态。</p>
+<div class="note success no-icon"><p>这个方法似乎是比较好玩的一个方法，用于筛选真正有用的输入状态。</p>
+</div>
+<p>这里剪枝的目的也是为了压缩最后的成本。</p>
+<p>最后筛选出来的状态包括：</p>
+<ul>
+<li>上一次选定的视频块质量 <span class="math inline">\(q_t\)</span></li>
+<li>目前的缓冲区占用率 <span class="math inline">\(b_t\)</span></li>
+<li>前 <span class="math inline">\(k\)</span> 个视频块传输时网络吞吐率 <span class="math inline">\(C_t\)</span></li>
+<li>前 <span class="math inline">\(k\)</span> 个视频块的下载时间 <span class="math inline">\(D_t\)</span></li>
+<li>前 <span class="math inline">\(k\)</span> 个视频块的应答时间 <span class="math inline">\(P_t\)</span></li>
+</ul>
+<p>这里为了控制成本，实验中选取 <span class="math inline">\(k = 5\)</span>。</p>
+<p>另外，为了保证模型的泛化性，这里需要将参数正则化，这样至少能保证模型面对完全没有经历过的网络环境不至于将其认为非法输入。</p>
+<p>模型的输出和正常的 AC 网络没有很大的差别，都是 Actor 网络输出一个 softmax 后的概率张量表示各个行为的决策概率，而 Critic 网络输出一个标量表示对当前状态的价值评估。</p>
+<h4 id="maximum-entropy-ppo-me-ppo">Maximum Entropy PPO (ME-PPO)</h4>
+<p>这里的训练策略是 ME-PPO，其与 PPO 的差别在于最优行为的定义里纳入了熵：</p>
+<p><span class="math display">\[
+a_t^* := \mathop{\rm argmax}_a \hat{\mathbb{E}}_t\left[\sum_t \gamma^t(r_t + \lambda H^{\pi_\theta}(s_t))\right]
+\]</span></p>
+<p>这里定义熵为：</p>
+<p><span class="math display">\[
+H^{\pi_\theta}(s_t) = -\sum_{a \in \mathcal{A}} \pi_\theta(a \mid s_t) \ln\pi_\theta(a \mid s_t)
+\]</span></p>
+<p>元学习要求在离线环境下更重视 exploration 而在线环境下更重视 exploitation。这里将熵纳入考虑，如果策略 <span class="math inline">\(\pi_\theta\)</span> 对动作空间 <span class="math inline">\(\mathcal{A}\)</span> 中的所有动作给出的概率约趋向于平均，则熵越高，从而越会支持这样的选择。</p>
+<p>ME-PPO 的具体策略是基于 Dual-PPO 的 double clip 策略，具体如下：</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathcal{L}^{\rm PPO} &amp;:= \min\left(\frac{\pi_\theta(a_t \mid s_t)}{\pi_{\theta_{\rm old}}(a_t \mid s_t)}(\theta) \hat A_t, {\rm clip}\left(\frac{\pi_\theta(a_t \mid s_t)}{\pi_{\theta_{\rm old}}(a_t \mid s_t)}(\theta), 1 - \varepsilon, 1 + \varepsilon\right)\hat A_t\right) \\
+\mathcal{L}^{\rm Actor} &amp;:= \begin{cases}
+\hat{\mathbb{E}}_t[\max(\mathcal{L}^{\rm PPO}, c\hat A_t)] &amp; \hat A_t &lt; 0 \\
+\hat{\mathbb{E}}_t[\mathcal{L}^{\rm PPO}] &amp; \hat A_t \geq 0 \\
+\end{cases}
+\end{aligned}
+\]</span></p>
+<p>这里 <span class="math inline">\(\hat A_t\)</span> 是优势函数，定义为：</p>
+<p><span class="math display">\[
+\hat A_t := r_t + \gamma(V^{\pi_\theta}(s_{t + 1}) + \lambda H^{\pi_\theta}(s_{t + 1})) - V^{\pi_\theta}(s_t)
+\]</span></p>
+<p>这里 <span class="math inline">\(c, \varepsilon\)</span> 是用来控制梯度的超参数。</p>
+<p>AABR 中的 Critic 网络的训练策略就是最小化优势函数的均方误差：</p>
+<p><span class="math display">\[
+\mathcal{L}^{\rm Critic} := \frac12 \hat{\mathbb{E}}_t[A_t]^2
+\]</span></p>
+<p>从而整体的 loss 可以总结为：</p>
+<p><span class="math display">\[
+\nabla\mathcal{L}^{\rm MEPPO} := -\nabla_\theta \mathcal{L}^{\rm Actor}(\pi_\theta, \hat A_t) + \nabla_{\theta_v} \mathcal{L}^{\rm Critic}
+\]</span></p>
+<hr />
+<p>此外，由于算法对 <span class="math inline">\(\lambda\)</span> 较为敏感，我们需要在训练过程中不断调节 <span class="math inline">\(\lambda\)</span>，调节方式较为简单：</p>
+<p><span class="math display">\[
+\lambda \leftarrow \lambda + \alpha[H^{\pi_\theta}(s_t) - H^{\rm Target}]
+\]</span></p>
+<p>这个目标在于熵逐步接近目标的时候衰减 <span class="math inline">\(\lambda\)</span> 以减缓接近速度。</p>
+<h3 id="meta-learned-policies-for-offline-stage">Meta-Learned Policies for Offline Stage</h3>
+<p><strong>注：</strong>具体的训练方式后续补充。</p>
+<h1 id="model-agnostic-meta-learning-for-fast-adaptation-of-deep-networks">Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks</h1>
+<p>这是 MAML 训练方法的原始论文，看情况有没有时间做一个复现。</p>
+<p>文章的主要贡献就是一个元学习方式，并且似乎泛用性很广：</p>
+<div class="note info no-icon"><p>In this work, we propose a meta-learning algorithm that is general and model-agnostic, in the sense that it can be directly applied to any learning problem and model that is trained with a gradient descent procedure.</p>
+</div>
+<p>元学习的核心在于训练好的模型能够迅速通过少量数据学习到新的任务，并且其能够应用到大量的下游任务中。这篇文章将训练模型理解为在模型内部建立起适用于某种任务的特征表示，如果这种表示能够适合于多种任务，那么我们只需要进行合适的微调就可以迅速适应新的任务。如果从动力系统的角度理解，我们需要提高需要完成的任务的 loss 对参数的敏感度，这个敏感度越高，参数的变化对 loss 的提升的影响越大。</p>
+<h2 id="model-agnostic-meta-learning-1">Model-Agnostic Meta-Learning</h2>
+<h3 id="meta-learning-problem-set-up">Meta-Learning Problem Set-Up</h3>
+<p>这里严格定义了元学习需要解决的问题。</p>
+<p>首先我们需要形式化定义什么是任务，这篇文章定义为：</p>
+<p><span class="math display">\[
+\mathcal{T} := \{\mathcal{L}(\b x_1, \b a_1, \cdots, \b x_H, \b a_H), q(\b x_1), q(\b x_{t + 1} \mid \b x_t, \b a_t), H\}
+\]</span></p>
+<p>这里 <span class="math inline">\(\mathcal{L}\)</span> 表示 loss，<span class="math inline">\(q(\b x_1)\)</span> 是初始状态的分布，<span class="math inline">\(q(\b x_{t + 1} \mid \b x_t, \b a_t)\)</span> 是状态转移的概率分布，<span class="math inline">\(H\)</span> 是 episode 的长度。这个定义同时涵盖了普通的强化学习和监督学习，其中监督学习中 <span class="math inline">\(H = 1\)</span>。</p>
+<p>模型本身描述为一个函数 <span class="math inline">\(f\)</span>，其接受当前状态 <span class="math inline">\(\b x\)</span> 并给出输出 <span class="math inline">\(\b a\)</span>，即 <span class="math inline">\(\b a = f(\b x)\)</span>。模型不断在该任务中给定 <span class="math inline">\(\b a_1, \b a_2, \cdots, \b a_H\)</span>，而 loss <span class="math inline">\(\mathcal{L}\)</span> 则给出了实际的反馈，这种反馈可以是分类问题中的失配损失或者 Markov 决策过程中的负收益。</p>
+<p>在元学习中我们需要考虑一系列的任务的分布，这里记作 <span class="math inline">\(p(\mathcal{T})\)</span>。如果我们要求 <span class="math inline">\(K\)</span> shot learning，对于每一个从 <span class="math inline">\(p(\mathcal{T})\)</span> 抽取的具体任务 <span class="math inline">\(\mathcal{T}_i\)</span>，我们需要再通过 <span class="math inline">\(q_i\)</span> 抽取 <span class="math inline">\(K\)</span> 个样本，并且考虑 <span class="math inline">\(\mathcal{L}_{\mathcal{T}_i}\)</span> 的反馈。</p>
+<p>之后直接搬一个论文原句，也应该是论文后面算法设计的主要出发点：</p>
+<div class="note info no-icon"><p>The model <span class="math inline">\(f\)</span> is then improved by considering how the <em>test</em> error on new data from <span class="math inline">\(q_i\)</span> changes with respect to the parameters.</p>
+</div>
+<h3 id="a-model-agnostic-meta-learning-algorithm">A Model-Agnostic Meta-Learning Algorithm</h3>
+<p>这里提供了算法设计，一个关键词就是之前提到的<strong>敏感度</strong>。</p>
+<p>考虑用参数 <span class="math inline">\(\theta\)</span> 表示的模型 <span class="math inline">\(f_\theta\)</span>。在学习具体的任务 <span class="math inline">\(\mathcal{T}_i\)</span> 的时候，参数的更新方式为：</p>
+<p><span class="math display">\[
+\theta \leftarrow \theta - \alpha\nabla_\theta\mathcal{L}_{\mathcal{T}_i}(f_\theta)
+\]</span></p>
+<p>为了简化记号，我们假设在元学习之后学习具体任务仅用了一次梯度更新，此时任务 <span class="math inline">\(\mathcal{T}_i\)</span> 的最优参数就是 <span class="math inline">\(\theta_i&#39; := \theta - \alpha\nabla_\theta\mathcal{L}_{\mathcal{T}_i}(f_\theta)\)</span>，那么元学习的目标是：</p>
+<p><span class="math display">\[
+\min_\theta \sum_{\mathcal{T}_i \in p(\mathcal{T})} \mathcal{L}_{\mathcal{T}_i}(f_{\theta_i&#39;}) = \min_\theta \sum_{\mathcal{T}_i \in p(\mathcal{T})} \mathcal{L}_{\mathcal{T}_i}(f_{\theta - \alpha\nabla_\theta\mathcal{L}_{\mathcal{T}_i}(f_\theta)})
+\]</span></p>
+<p>那么还是使用简单的梯度下降，元学习中的参数更新就是：</p>
+<p><span class="math display">\[
+\theta \leftarrow \theta - \beta\nabla_\theta \sum_{\mathcal{T}_i \in p(\mathcal{T})} \mathcal{L}_{\mathcal{T}_i}(f_{\theta_i&#39;})
+\]</span></p>
+<p>在这里我们注意到出现了二阶梯度，部分深度学习框架能够支持这一操作，但本文也同样指出作一阶近似（即舍去二阶及以上的高阶项）是可行的。</p>
+<p>基于此，MAML 的整体框架为：</p>
+<p><img src="/uploads/paper-2022-12/4.png" /></p>
+<h2 id="species-of-maml">Species of MAML</h2>
+<p>本文这里举出了监督学习和强化学习中运用 MAML 的例子，这里我们只关注强化学习。</p>
+<p>强化学习特化的 MAML 主要关注的是 loss 的选定，这里选定的就是最经典的负收益。另外，此时 <span class="math inline">\(q_{\mathcal{T}_i}\)</span> 实际上就是环境中的状态转移概率分布：</p>
+<p><span class="math display">\[
+\mathcal{L}_{\mathcal{T}_i}(f_\phi) = -\mathbb{E}_{(\b x_t, \b a_t) \sim (f_\phi, q_{\mathcal{T}_i})} \left[\sum_{t = 1}^H R(\b x_t, \b a_t)\right]
+\]</span></p>
+<p>从而，强化学习特化的 MAML 算法为：</p>
+<p><img src="/uploads/paper-2022-12/5.png" /></p>
+<p>这之后就是一些实验结果了，感觉没啥意思了。</p>
+<h1 id="learning-to-adapt-in-dynamic-real-world-environments-through-meta-reinforcement-learning">Learning to Adapt in Dynamic, Real-World Environments through Meta Reinforcement Learning</h1>
+<p>这篇文章似乎没有官方的 code base，只有两个 community code base，现在可以在 <a href="https://paperswithcode.com/paper/learning-to-adapt-in-dynamic-real-world">这个链接</a> 获取，分别是 Tensorflow 和 Pytorch 版本。</p>
+<h2 id="abstract-introduction">Abstract &amp; Introduction</h2>
+<p>需要解决的问题依然是生成数据很困难以及测试环境中无法预料到的数据可能导致所训练的策略失效，引言之中也基本上叙述了人类可以很快适应自身机体发生的变化和外界环境发生的变化，提出了如果模型经历了足够多的环境微扰，其就可以很快学习适应新环境。</p>
+<p>相比较于原先的 meta RL 对任务的定义，这篇文章提出的模型能够处理每个时间步环境或者任务都在变化的情景。也就是说，原先的 meta RL 不过是提前预设好了需要解决什么样的任务，并且每一个 RL trajectory 仅会属于一个任务，而这篇文章的 RL trajectory 中可以涵盖多种任务并且任何时间都可以切换。所以这篇文章的 meta RL 更为 general。</p>
+<p>本文也是有 trade off 的，主要表达如下：</p>
+<div class="note info no-icon"><p>By specifically training a neural network model to require only a small amount of experience to adapt, we can enable effective online adaptation in complex environments while putting less pressure on needing a perfect global model.</p>
+</div>
+<p>也就是说，这篇文章为了能够在少数据条件下快速适应新环境，并不会强制要求这个模型在 global 环境下表现到 perfect。</p>
+<p>总而言之，这篇文章主要强调学得快，学习速度大约是每个新任务需要在真实世界中经历 1.5 到 3 小时，不到原有 model-free RL 方法学习时间的十分之一。并且，在同等数据量条件下，这篇文章的模型效果也比其他方法优越。此外，为了展示本文模型的学习能力，其将其真实部署在了机器人上，来学习真实世界的情况。</p>
+<h2 id="related-works">Related Works</h2>
+<p>首先提到最原始的强化学习方法没有泛用性，以及 model-free RL 往往需要大量和真是环境交互从而不实际。发展为 model-based RL 之后，就需要面临对环境建模的 model 需要在不同的任务之间调整的问题，首先否决了单一的全局模型，而先前有人尝试通过 GP 方法合并模型不确定性从而让模型能够表示不同的环境，然而这个方法做出了额外的假设且拓展性差且难以运用到高维空间，而本文提出的结果能够通过观察从而快速切换到新的环境。</p>
+<div class="note warning no-icon"><p>这里的问题就是我是真的没有太看懂这个 model 到底是对环境建模的模型还是最后要学习的 policy。</p>
+</div>
+<p>还有一种处理方式是首先学习一个全局模型，在测试的时候通过梯度下降进行微调。此外，还有工作表明不需要完美的全局模型，可以微调先验知识来处理小变化。然而，这些方法面临着模型的训练目的与测试时的使用方式之间的不匹配的问题。本文通过明确训练一个能快速有效适应的模型来弥合这一差距。</p>
+<h2 id="preliminaries">Preliminaries</h2>
+<h3 id="model-based-reinforcement-learning">Model-Based Reinforcement Learning</h3>
+<p>马尔可夫决策过程在这里建模为 <span class="math inline">\((\mathcal{S}, \mathcal{A}, p, r, \gamma, \rho_0, H)\)</span>。这里 <span class="math inline">\(\mathcal{S}\)</span> 是状态空间，<span class="math inline">\(\mathcal{A}\)</span> 是动作空间，<span class="math inline">\(p(s&#39; \mid s, a)\)</span> 是环境状态转移概率，<span class="math inline">\(r: \mathcal{S} \times \mathcal{A} \to \mathbb{R}\)</span> 是奖励函数，<span class="math inline">\(\rho_0: \mathcal{S} \to \mathbb{R}^+\)</span> 是初始状态概率分布，<span class="math inline">\(\gamma\)</span> 是奖励衰减常数，<span class="math inline">\(H\)</span> 是轨迹长度。</p>
+<p>一条轨迹描述为 <span class="math inline">\(\tau(i, j) := (s_i, a_i, \cdots, s_j, a_j, s_{j + 1})\)</span>，我们的目标是求取最优策略 <span class="math inline">\(\pi: \mathcal{S} \to \mathcal{A}\)</span> 使得累计收益期望最大。</p>
+<p>model-based RL 目标是近似处理 <span class="math inline">\(p(s&#39; \mid s, a)\)</span>，这个模型也被称为 dynamics model。</p>
+<h3 id="meta-learning">Meta Learning</h3>
+<p>一般的元学习需要给定假设，即训练用的任务和最终的测试任务都是从同一个任务分布 <span class="math inline">\(\rho(\mathcal{T})\)</span> 中抽取。元学习的目标是获取一个学习流程 <span class="math inline">\(\theta&#39; := u_\psi(\mathcal{D}^{\rm tr}_{\mathcal{T}}, \theta)\)</span> 以通过小数据集 <span class="math inline">\(\mathcal{D}^{\rm tr}_{\mathcal{T}}\)</span> 来学习任务 <span class="math inline">\(\mathcal{T}\)</span>，学习过程可以表示为：</p>
+<p><span class="math display">\[
+\min_{\theta, \psi} \mathbb{E}_{\mathcal{T} \sim \rho(\mathcal{T})}\left[\mathcal{L}(\mathcal{D}^{\rm test}_{\mathcal{T}}, \theta&#39;)\right]
+\]</span></p>
+<p>其中 <span class="math inline">\(\theta&#39; := u_\psi(\mathcal{D}^{\rm tr}_{\mathcal{T}}, \theta)\)</span>。</p>
+<div class="note info no-icon"><p>这里的记号是真的复杂，事实上训练过程应该是函数 <span class="math inline">\(u_\psi\)</span>，训练过程用参数 <span class="math inline">\(\psi\)</span> 代表，其输出为训练后的最优参数 <span class="math inline">\(\theta&#39;\)</span>，而 <span class="math inline">\(\theta\)</span> 表示初始化参数。</p>
+<p>另外注意，<span class="math inline">\(\theta\)</span> 这里是模拟环境的模型的参数，而非 policy 的参数。</p>
+</div>
+<h4 id="gradient-based-meta-learning">Gradient Based Meta Learning</h4>
+<p>MAML 就是一种基于梯度的元学习方法，其最主要的目标是学习一个较好的参数初始化保证在少数调整中即可实现较好的下游任务。</p>
+<p>MAML 的 <span class="math inline">\(u_\psi\)</span> 就是一般的梯度下降：</p>
+<p><span class="math display">\[
+u_\psi(\mathcal{D}^{\rm tr}_{\mathcal{T}}, \theta) = \theta - \alpha\nabla_\theta \mathcal{L}(\mathcal{D}^{\rm tr}_{\mathcal{T}}, \theta)
+\]</span></p>
+<p>如果学习率 <span class="math inline">\(\alpha\)</span> 是一个固定参数，那么 <span class="math inline">\(\psi = \varnothing\)</span>，如果 <span class="math inline">\(\alpha\)</span> 是一个元学习过程中需要学习的参数，那么 <span class="math inline">\(\psi = \alpha\)</span>。</p>
+<p>即使看起来 <span class="math inline">\(u_\psi\)</span> 是平凡的，但是这种方法的表达能力和下面介绍的方法是持平的。</p>
+<h4 id="recurrence-based-meta-learning">Recurrence Based Meta Learning</h4>
+<p>这里借用了 RNN 的思想，在这个方法中，更新函数 <span class="math inline">\(u_\psi\)</span> 始终需要不断学习，其中 <span class="math inline">\(\psi\)</span> 是用于更新 RNN 隐含层状态的参数，而 <span class="math inline">\(\theta\)</span> 是余下的参数。</p>
+<div class="note warning no-icon"><p>这里是真的真的真的没看懂，这在说啥？是我前置知识欠缺太多了？</p>
+<p>只能希望下面能有个稍微好一点的说明。</p>
+</div>
+<h2 id="meta-learning-for-online-model-adaptation">Meta Learning for Online Model Adaptation</h2>
+<p>之前提到过本文的 trajectory 中任务可以随着时间步推进而变化，所以本文设定的目标是根据前 <span class="math inline">\(M\)</span> 个时间步的数据预测未来 <span class="math inline">\(K\)</span> 个时间步情况，这里 <span class="math inline">\(M, K\)</span> 都是固定的超参数。</p>
+<p>所以在这样的设定下，训练目标就是：</p>
+<p><span class="math display">\[
+\begin{aligned}
+\theta_{\mathcal{E}}&#39; &amp;= u_\psi(\tau_{\mathcal{E}}(t - M, t - 1), \theta) \\
+\min_{\theta, \psi}&amp; \mathbb{E}_{\tau_{\mathcal{E}}(t - M, t + K)} [\mathcal{L}(\tau_{\mathcal{E}}(t, t + K), \theta_{\mathcal{E}}&#39;)]
+\end{aligned}
+\]</span></p>
+<p>而这里 loss 定义为：</p>
+<p><span class="math display">\[
+\mathcal{L}(\tau_{\mathcal{E}}(t, t + K), \theta_{\mathcal{E}}&#39;) := -\frac{1}{K} \sum_{k = t}^{t + K} \log\hat{p}_{\theta_{\mathcal{E}&#39;}}(s_{k + 1} \mid s_k, a_k)
+\]</span></p>
+<p>GrBAL 采取的更新策略为：</p>
+<p><span class="math display">\[
+\theta_{\mathcal{E}}&#39; = u_\psi(\tau_{\mathcal{E}}(t - M, t - 1), \theta) = \theta_{\mathcal{E}} + \psi\nabla_\theta\frac{1}{M} \sum_{m = t - M}^{t - 1} \log\hat{p}_{\theta_{\mathcal{E}}}(s_{m + 1} \mid s_m, a_m)
+\]</span></p>
+<p>ReBAL 这里又是没看懂，所以这个基于循环模型的到底是个什么东西。</p>
+<h2 id="model-based-meta-reinforcement-learning">Model Based Meta Reinforcement Learning</h2>
+<p>这一部分就是在讲解如何在线上做 adaptation，我觉得整体不如直接看算法直观：</p>
+<p><img src="/uploads/paper-2022-12/6.png" /></p>
+]]></content>
+      <categories>
+        <category>【论文笔记】计算机</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>《美少女万华镜 5 ——理与迷宫的少女》游戏测评</title>
+    <url>/2021/08/18/renge-5/</url>
+    <content><![CDATA[<p>Holder 不是一个玩 GAL 的人，能想到的 GAL 除了万华镜就是柚子社这种。但是 Holder 想了想，决定把万华镜 5 这个宣称中的最终章认真通一下，也算对我几乎唯一知晓的 GAL 致以敬意。</p>
+<p>离万华镜 5 发售差不多过去一年半了，各路汉化理论上应该充斥互联网，但 Holder 也只找到了生肉，于是也顺便当成了日语阅读练习。</p>
+<span id="more"></span>
+<h1 id="总的感想">总的感想</h1>
+<p>Holder 大概花掉了靠近三十个小时打通了所有的线，由于 H 情节在一年前实际上就已经都看过一遍而且自己也有全 CG，这次的重点就是把当时看来冗杂无比的剧情认真看一下。</p>
+<p>当然，一直都说万华镜系列就是单纯的拔作，剧情几乎可有可无，这句话我可以说认同一半。首先，针对万华镜 5，如果不走莲华线，而是没有压住枪走了月丘线，那确实没有任何剧情，平平淡淡地每晚在澡堂触发 H 情节就结束了。而你如果剧情看到一半没忍住走了绿毛线（绿毛名字是もよか，说实话不知道怎么找当て字，倒是“绿毛”这个代号挺深入人心的），那也是很快就 BE 了。而如果你认认真真把莲华线推完，就会发现若干的伏笔被回收，剧情似乎就有了那么一点的道理（Holder 整体上还是觉得这个剧情偏扯，但是莲华线稍微补了一点论述）。其次，万华镜整个系列，确实几乎都是没啥剧情的，除了 5。其他系列都是推一会就开始炮火连天，而 5 我是整整看剧情看了靠近两天之后才解锁了新天地（当然玩的莲华线）。</p>
+<p>如果说总的感想的话，就是感觉看了一个很普通的小说。撇去还算优秀的 H 情节不谈，我在玩的时候几乎全程在看底下的文字，因为图像说实话提供不了信息。比如说“ A 把 B 扶起来”，这个动作在番或者剧里面都可以画或者演出来，但是万华镜里面也仅仅是两个人的立绘贴了一下，动作则是文字给出。所以整体我还是一直在看文字，当小说看。</p>
+<p>而说它“普通”，是因为贯穿全程的就是“理”或者“命运”或者“轮回转生”，题材不是什么新颖的东西，而且能预料到莲华和男主的一些前世姻缘之类的。然后中心矛盾之一也是普通的，“我能逆天改命”和“我们只能顺应命运”的矛盾，最后认为“我能逆天改命”的人盒饭了，但却让“我们只能顺应命运”的思想少许动摇，但是为时已晚不得不继续投入到命运的轮回之中。</p>
+<p>要我说的话，论剧情，万华镜 5 就是很普通的一个小说，人物关系简单，矛盾点简单。但是论 H 情节，首先我认为绿毛连动态情节都没有是很难受的（巫女后辈啊！不配画一点动态的吗！），但是莲华在二次轮回的时候 H 情节确实作画很好，动态也不错，还是稍微给点表扬。</p>
+<h1 id="剧情简要分析">剧情简要分析</h1>
+<h2 id="莲华-轮回线">莲华-轮回线</h2>
+<p>既然核心是“理”（不得不提的就是这个“理”在游戏里面训读成ことわり，而这个读音一般写成“断り”）和“轮回转生”，那么我们应该默认天理和轮回转生的存在。</p>
+<p>剧情的主干实际上就是莲华和男主深见夏彦的前世姻缘，他们可以说每一世都会相遇相爱但由于各种不可抗力无法修成正果。先是罗马时代的奴隶主和奴隶，又是中世纪的女王和下臣，之后是猎巫人和女巫。而重点是第四世，他们是古代日本的一对恋人（这时深见夏彦的名字是“彦一”，记住，要考的），而第五世就是莲华和深见夏彦。</p>
+<p>说第四世重要，是因为这里狐妖介入了进来。实际上狐妖附身了第四世的莲华，或者在一定程度上，莲华在这个时候已经成为了狐妖。而当彦一（第四世的深见夏彦）死于战火的时候，狐妖则处于对人类的憎恨和爱人亡故的怨念火烧城池。人们最后将狐妖的怨念封印为“杀生石”，并在城中修建相当数量的狐狸雕像望向杀生石的方向以镇压，同时也在杀生石所在的山顶修建了一座规模宏大的神社。但是神社实际上在很多年之后的又一次战火中被烧毁，但是村民并没有重建的计划（多半是已经忘了这段历史）。而杀生石和狐狸雕像却保留了下来，成为了传说。</p>
+<p>这里的杀生石、狐狸雕像、神社则是第五世（现代）剧情推进的一条线索。</p>
+<p>而这个时候就必须引出绿毛了。在第五世，也就是现代，绿毛先前有一个家境优渥的家庭，但是由于他人嫉妒而故意放出的无端谣言而招致了全村人的厌恶，随后她的家人因他人纵火全部亡故，而纵火者却至今逍遥法外，绿毛也因此有了对人类的憎恨和怨念。孤身一人的她投靠了从兄弟 H（名字不想打了，但是这个人的人设和痴汉别无他样，所以就用 Hentai 的首字母代称。这里 H 是一个女子中学的音乐老师），此时绿毛沉迷于深见夏彦所在的杂志社编辑的灵异杂志，自学了很多通灵方法。最终，她独身一人走上了原来有神社和杀生石的山顶，被满是怨念的狐妖附身，开启了剧情主线。</p>
+<p>绿毛有了狐妖的力量，而狐妖的一个信念就是“我是可以逆天改命的”，或者说“我不愿意服从命运的安排”。狐妖因恋人离世而对人类憎恶，绿毛因为家人离世也对人类憎恶，两个怨念叠加，绿毛开始了复仇。她的第一步就是先转学到 H 所在的女子高中并要控制全校，因为女子高中生就是当时散布绿毛家族无端谣言的主力。绿毛看中了这所高中禁止使用手机和通信软件，利用了她们相对闭锁的信息环境，开始通过狐妖的力量诱骗她们迷信自己的占卜，随后再通过狐妖的力量对她们下诅咒。诅咒的内容就是：</p>
+<div class="note info no-icon"><p>山顶有神社可以实现你的愿望，但是在前往神社之前，你必须不停地画白狐氏（びゃっこ氏）以表虔诚，否则就会降下惩罚。</p>
+</div>
+<p>而这座神社在现实中是真的不存在的（早就烧掉了还没重建），但是狐妖的灵力可以在山顶创建一个传送门，传送到若干年前的神社，而这个神社就在狐妖（或者说绿毛）控制之下。白狐氏就是这座神社供奉的神灵（就是狐妖），而所谓的惩罚是各种莫名其妙的伤害事件（突然被钢琴盖子砸断手指，实验的时候突然自燃之类），并且惩罚的共同点就是受伤的地方毛细血管会聚集成青色的蜘蛛网的样子，而且会长一个痣。</p>
+<p>这也就是最初的最初，深见夏彦所要调查的“青蜘蛛的诅咒”事件。</p>
+<hr />
+<p>主角团是四人组，深见夏彦，他的编辑月丘香恋，同期的只相信科学的优秀作家皇公晓，以及实体化的莲华。</p>
+<p>莲华在第五世转生的时候，没有获得肉体，成为了阿紫旅馆（也就是万华镜 1-4 开头的那个旅馆，其和神社等位于同一个村子）的座敷童子。所谓座敷童子，第五世的莲华的任务就是“超度”，也就是帮助满是怨念的灵魂安宁地走向死亡，走向轮回。而完成超度的道具就是“万华镜”。</p>
+<p>所以说 1-4 里面深见夏彦透过万华镜看到的，就是那些已经被超度的魂灵的生前故事，而往往这些故事都或多或少带着点怨恨（1 是人鬼情恋的越界之恨，2 是沉溺于爱而伤害恋人的愧疚之恨，3 是文明凋亡的孤独之恨，4 则是近亲的禁忌之恨）。</p>
+<p>另外，作为灵力的持有者，莲华的能力就是能够读取和修改人的记忆。</p>
+<p>由于没有肉体，莲华无法被感知，从而也让她一直孤独一人。但深见夏彦，作为这么多次轮回之中莲华的恋人，自然是唯一一个能感知到她存在的的人。所以深见夏彦对莲华而言，简直就是世界上唯一可以交流的人类。</p>
+<p>另一方面，莲华在得知深见夏彦想要来调查“青蜘蛛的诅咒”事件，要在阿紫旅馆住上一星期左右的时候，其花费了很多的灵力为自己构筑了肉体，并且通过修改记忆让主角团和旅馆工作人员都认为莲华是真实存在的一个女高中生，这也就是实体化。这个时候的莲华就可以和正常人一样活动了。</p>
+<hr />
+<p>先前提到，第四世的莲华和狐妖实际上几乎是一体的，而在第四世到第五世的轮回之中，莲华被拆分成了两部分，狐妖的部分被封印而剩下的部分幻化成了现在的莲华，这莲华是通过触碰了一只小狐狸之后回想起来的。</p>
+<p>在主角团调查的时候，绿毛自然早已经觉察到，深见夏彦就是自己前世恋人彦一，所以绿毛对从兄弟 H 不屑一顾而单单对深见夏彦热情，而且在深见夏彦和莲华前往深山随便走走的时候将他们拉入了神社。绿毛自然也早就明白莲华和自己理论上是一体的，所以才有绿毛的“我唯一的朋友是莲华”这一句。</p>
+<p>而绿毛为了在他人面前让自己和深见夏彦亲近显得合理，她故意称其为“哥哥”（大家都知道绿毛失去家人的过往，所以因此会把她亲近深见夏彦理解为“绿毛把对哥哥的思念寄托在深见身上”）。而绿毛则不需要对莲华隐藏，所以在澡堂里直接说“深见才不是我哥哥呢”。</p>
+<p>绿毛在知道深见夏彦的存在后，除去复仇的主线，自然是尝试再构姻缘。所以她引诱深见夏彦去神社，去看杀生石，去看她舞蹈，去听铜铃的声音，给他托梦，目的就是让深见夏彦回想起自己的前世。深见夏彦在经历了若干天的噩梦和梦游（梦游去神社）之后，终于在某一天晚上回想起来了自己的一切。但是深见夏彦已经沉迷莲华，依然坚称自己是深见夏彦而非彦一。</p>
+<p>得知恋人心意的绿毛，自然是相当悲愤。我大费周章为你复仇，你却出轨我自己（莲华理论上和绿毛是一体的，可以理解为绿毛是邪恶的一面，莲华是善良的一面），于是托了一个巨大的噩梦给深见夏彦（就是那个，裂嘴黑眼圈的莲华 CG，这也是游戏发售前就流传出来的梗图），想让他忘记莲华。随后动用了巨大的灵力干趴了学校里所有的学生，尝试吸取她们的灵魂。</p>
+<p>而随着调查的深入，莲华也了解了狐妖已经附身到绿毛身上开始复仇，而这个时候绿毛也已经因为深见夏彦的背叛而暴走了。所以为了阻止这些计划，莲华只身一人前往神社和狐妖打灵力战斗去了。</p>
+<p>但是莲华毕竟力量并非很充足，最后体力渐渐不支。这个时候深见夏彦突然赶到，给莲华挡下一击。绿毛眼看自己的攻击伤到的是自己的恋人，立马停手了。随后由于巨大的自责，她没有抵挡得住莲华的最后一击而幻化为怨念，被万华镜收纳住了。</p>
+<p>绿毛是解脱了，和 H 去过平凡的女高中生生活去了。学校的诅咒也解除了，大家渐渐都回到正轨了。但是深见夏彦的灵魂却因为狐妖的一击变得支离破碎，如果不修复，就等于死亡。莲华这个时候想到了解决方式，就是和深见夏彦一起回到万华镜，让深见夏彦重新回想起来所有的回忆，补全灵魂，最后用莲华的力量让死者复生。这里显然就注意到了，死者复生是违反“理”的，也就是说，莲华最终还是走上了背离天理的路。</p>
+<p>莲华和深见夏彦两人在万华镜里遨游，把 1-4 的场景都走了一遍，深见夏彦也渐渐回想起了各种东西，灵魂也渐渐补全。在走完第一圈后，莲华认为已经可以送深见夏彦回去了，但是深见夏彦坚决要和莲华在一起，于是他们又走了第二圈。这之后，莲华并不再是询问语气，而是命令深见夏彦赶快回去。</p>
+<p>原因很简单，莲华知道自己也是狐妖的一部分，包括自己的实体化，所动用的灵力的基础都是狐妖赖以生存的力量——人类的悲痛，莲华决定自己超度自己肮脏的灵魂。而这最后的力量就是留给将深见夏彦死者复生的，违反天理的力量。但是深见夏彦最终还是不愿回去，而这个时候他需要经受身边人的各种诘难以确认自己的心意。最后在一通告白之后，两人携手走向又一次轮回。</p>
+<p>轮回到第六世的结果，就是深见夏彦成了你（这也就是游戏开头让你输入你的名字的原因），莲华成为了一个知性大姐姐和你相遇，和你相恋。两人最后渐渐回想起了前世，由于狐妖已经消逝，阻碍已经消失，所以两人修成正果，过上了炮火连天的日子。</p>
+<h2 id="莲华-非轮回线">莲华-非轮回线</h2>
+<p>狐妖的部分都是一致的，第一世到第五世都是一致的，一直到两人走进万华镜都和莲华-轮回线一样。</p>
+<p>莲华在第一圈后会询问两次深见夏彦是否愿意回去，第二圈则会再问一次。三次都回答不想回去，才会进入轮回线，只要有一次回答了想回去，就会进入非轮回线。</p>
+<p>在这里，最后深见夏彦死者复生，但是他丧失了所有和莲华有关的记忆，“青蜘蛛的诅咒”事件也被科学解释了。苏醒的深见夏彦和月丘以及皇，去和旅馆工作人员、学校老师告别后回到东京过上了平凡的生活。虽然深见夏彦时不时还是觉得自己在搜寻着什么，但是总体而言并没有想起莲华。而莲华的灵魂，也随着狐妖一起被超度，不再和深见夏彦产生任何交集。</p>
+<h2 id="绿毛线">绿毛线</h2>
+<p>应该说是很单纯的 BE。</p>
+<p>绿毛在无数若干次引诱深见夏彦，让他回想前世之后，最终有一天直接冲进澡堂色诱深见夏彦。这个时候如果选择“放任自己”，则会开启第一段绿毛 H，否则则会以绿毛无故消失结束这一天。</p>
+<p>最后某一晚，深见夏彦再一次前往神社的时候终于回想起了一切，这个时候会有选项问“你是谁”。如果先前压住了枪，这里就会有两个选项，一个是“深见夏彦”一个是“彦一”。选择深见夏彦就进入莲华线，被绿毛噩梦调戏一番后直接开始和莲华炮火连天。选择彦一则进入第二段绿毛 H。不过在一炮之后，绿毛就会以“我要将你变成我的玩物”为由杀死深见夏彦后自杀。而在现实世界中，消息就是“深见夏彦和绿毛在深山中失踪”。随后两年后，月丘香恋和皇公晓回到这个村子尝试回忆一些什么，误入了深山，看到了杀生石下两人的遗体。</p>
+<p>如果先前没有压住枪，那么在问“你是谁”的时候，只有“彦一”一个选项，后面的剧情是一样的。</p>
+<h2 id="月丘线">月丘线</h2>
+<p>最没有意思的线。</p>
+<p>月丘实际上一直喜欢着深见。在主角组前往调查之前，月丘前往深见夏彦的家交代一些工作的事情，这个时候月丘得知深见一直不会做饭，于是她决定给深见做一顿饭。在饭后，带有一点醉意的两人突然趴倒在墙角，男下女上。这个时候月丘向深见表白，会有“接受”和“拒绝”的选项。</p>
+<p>拒绝的话就正常开始调查，会调查到很多东西，会有机会进绿毛线、莲华线之类。</p>
+<p>接受的话直接开启 H 情节。而因此深见夏彦的心态就变成了“我要尝试融入‘大人’的世界，不能再沉迷于莲华的万华镜了”。而这种心态下，主角组调查的时候，莲华就一直处于很边缘的地位，而月丘和深见则会每晚定时开 H 情节。</p>
+<p>这次调查最终无疾而终，莲华在意识到深见的心意之后也只是默默留下一句“那就结束了吧”，便再也不见。主角组回到东京之后，自然是深见和月丘的炮火连天的二人世界。</p>
+<h1 id="一些其他地方的想法">一些其他地方的想法</h1>
+<p>总体而言还是贯彻了万华镜系列“压住枪的都是好儿郎”的准则，越早压不住枪就只能解锁越少的剧情，然后留下越多的没有起底的伏笔。</p>
+<p>虽然说万华镜没啥剧情，但是实际上总体看下来虽然平淡无奇，但还算是叙事完整，能看明白。而且有些伏笔也还算可以，比如说旅馆的“野干（やかん）”面具（“野干”在日语中是狐狸的一种代称），一方面暗示了这里和狐狸有千丝万缕的联系，而最终，绿毛跳舞给深见夏彦看的时候，戴的就是野干面具。另一方面，这个村子叫“薬缶”，和“野干”日语同音，应该是讹传出来的地名。</p>
+<p>此外，一定要抨击一下文案，不是说他写的东西多差，是<strong>经常把一些已经约定俗成不写汉字的关联词、虚词写成汉字</strong>，而有的时候又会把<strong>约定俗成写成汉字的词写成假名</strong>。这让我这个现代日语没学好的人读得有那么点难受。举点例子吧：</p>
+<div class="note info no-icon"><p>成程、折角、兎に角、沢山、取り敢えず、一寸、丁度、其程、是迄</p>
+</div>
+<p>他们实际上是：</p>
+<div class="note info no-icon"><p>なるほど、せっかく、とにかく、たくさん、とりあえず、ちょっと、ちょうど、それほど、ここまで</p>
+</div>
+<p>这些词可以说是，不太懂日语的人只要听到读音都能回想起来点什么的词，结果硬生生给我看不懂了。</p>
+<h1 id="最后的最后">最后的最后</h1>
+<p>万华镜系列我认为是，中下的剧情，中上的作画，虽然不知道为何如此火，但还是有点为三十个小时感到不值。</p>
+<p>但如果闲的话推推也不错，当成一个耗时间的小说吧。不过个人建议先把月丘和绿毛推了，先推莲华会很容易没有推支线的动力，因为莲华线的叙事已经很完备，其他线的逻辑就是误入歧途从而有些事情没发现最后遗憾收场。</p>
+<p>知乎上看了一句总结比较好：</p>
+<div class="note info no-icon"><p>你以为是你把卖片的上了，谁知道人家是命中注定给你卖片。</p>
+</div>
+<p>就这样吧，小学期还在等着我。</p>
+]]></content>
+      <categories>
+        <category>【杂谈】游戏 &amp; 番剧</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>一部真实的校园恋爱番《龙与虎》</title>
+    <url>/2022/12/29/toradora/</url>
+    <content><![CDATA[<p>由于新冠阳性卧病在床三天，中间某一天我一天刷完了《龙与虎》的 26 集，作为为数不多的超长校园恋爱番，在看完《龙与虎》之后，我明显感受到了这部番和当下很多恋爱番的不同。</p>
+<span id="more"></span>
+<h1 id="人物感情线">人物感情线</h1>
+<p>《龙与虎》可能最让人感到迷惑的就是错综复杂的感情线，很多观众也都评论说感情想相当扭曲。这里为了更好写读后感，还是稍微写写各个人物的感情线。</p>
+<p>这里想要探讨的是男主角团龙儿、北村和女主角团大河、实乃梨、亚美、会长的感情线。这里另外做个补充，由于大河在日语中发音为たいが，和意为老虎的タイガー读音类似，加上番里大河凶狠乖戾的性格，故大河也有老虎的外号。</p>
+<h2 id="北村与会长">北村与会长</h2>
+<p>北村为本作男二，会长为本作女四。在进入高中之后，由于对理想中的高中生活的憧憬，有点为了谈恋爱而谈恋爱地向大河表白，却遭到了拒绝。在心灰意冷之际，会长出现了，其劝说北村高中生活并不只有感情。受到鼓励的北村于是加入了学生会，在学生会的一年中，北村逐渐对会长产生了好感。由于北村确实能力卓著，会长也在自己心中确认了对北村的好感。</p>
+<p>然而转折出现在高二年级，会长作为毕业生即将毕业且计划留学。然而会长知道，北村之所以进学生会，之所以如此拼命干活，自己永远是重要乃至最重要的因素。也就是说，会长清晰地知道北村一直在追逐自己，所以即使答应了北村的感情，也注定将会是一段不平等的感情。所以会长为了防止北村不假思索追逐自己，强硬地隐瞒了留学的计划。</p>
+<p>但是计划依然暴露了，北村一蹶不振，因为对他而言，会长是他继续做下去，并接过学生会长这一身份的唯一理由，他想要追逐会长。受到打击的北村束手无策，选择了自暴自弃。先是宣布不参与学生会长竞选，后是故意违反校规校纪染发逃学，用他自己的方式阐述自己自甘堕落。会长在目睹这一切后，即使心疼，但是从自己的立场出发，依然在他人面前刻薄地评价北村为懦弱的人。</p>
+<p>在这个时间点，大河是喜欢北村的，为了拯救北村，大河宣布参加学生会长竞选，并故意宣扬自己在竞选成为学生会长后会推行相当严厉的政策毁掉所有人的高中生活。这种自爆行为，事实上是发动群众来劝说北村回到学生会长竞选中。在这一番操作之下，北村最终回到竞选，并且得到了会长的支持。</p>
+<p>在最终的竞选演讲中，北村高调面对全校向会长表白，然而会长并没有正面回应，发好人卡一样地冷处理了这一充满勇气的行为。在这之后，大河被彻底激怒了，她认为会长在玩弄北村的感情，于是提着木刀和会长线下械斗。会长自然无法是大河的对手，在落败后，会长最终情感崩溃，承认了自己喜欢北村，同时也讲出了自己的心声，讲出了不想让北村仅仅是追随自己的真实想法。</p>
+<p>最终，北村成为了学生会长，会长也按照计划前往美国留学。一年后，北村毕业，也同样规划前往美国留学，经历了高中三年的磨练，其心智更为成熟，也更加坚定了对会长的好感。</p>
+<h2 id="大河与龙儿">大河与龙儿</h2>
+<p>本作男女主。大河家庭情况较为混乱，父亲在和其生母诞下她后，不久就将其和其生母全部抛弃，除了每个月定时打入生活费外，与其生活完全没有交集。其与其生母的关系也较为冷淡，本作中是独居状态。正是因为这样的家庭背景，大河十分缺少关爱，这也是她感情线的重要基础。此外，大河的另外一个重要特征是十分缺乏生活技能和笨拙，这也和家庭背景有关联。</p>
+<p>而龙儿的家庭环境则也较为混乱，父亲是不良少年，在和龙儿生母未婚基础上诞下龙儿后人间蒸发。龙儿生母为了抚养龙儿，决定离家出走，通过陪酒女的工作支撑家庭，并且一直向龙儿隐瞒其父亲真实的情况。所以龙儿自幼缺乏父爱，又相当追求父爱。另外，由于这样的家庭背景，龙儿不得不学会了各种生活技能，主妇属性拉满。</p>
+<p>大河在刚进入高中被北村表白后，虽然其拒绝了北村，但是由于北村关注着她，在她困难的时候也会伸出援手，其得到了北村的关爱。在这样的基础上，大河萌生了对北村的好感。在某日，大河将写给北村的情书放到其书包中，但没想到不仅忘了把情书本体放到信封里，甚至还把情书错放到龙儿的书包内，这导致龙儿在回来拿书包回家的时候和大河起了争执，大河甚至在当晚为了夺回情书提着木刀来到龙儿家复仇。</p>
+<p>在那天晚上，龙儿劝说了大河，情感并非是可耻之事，并且给大河看了其为暗恋对象实乃梨写的诗乃至未来生活规划。在一番交流后，两人发现，大河暗恋的北村是龙儿的好友，而龙儿暗恋的实乃梨是大河的好友，于是两人组成龙虎同盟，帮助对方追求自己的好友。</p>
+<p>然而，由于大河严重缺乏生活技能，而龙儿又会做饭，两人家又很近，所以大河在此之后便稳定在龙儿家里吃饭，龙儿甚至还会帮助大河洗衣和打扫公寓。</p>
+<p>这个时候，大河和龙儿仅仅是一种依存关系，虽然在外人眼中看来两人已经近乎同居，但是两人均不承认和对方有超过朋友的越界行为。在龙虎同盟的约定之下，龙儿帮助大河拍北村的照片，大河也会创造龙儿和实乃梨独处的机会。</p>
+<p>其间，大河在龙儿鼓励之下向北村表白，但是被拒绝了，北村表示，其仅仅想作为朋友帮助大河。</p>
+<p>第一次转折发生在亚美的出现，作为模特，亚美身材傲人，相比之下大河的身材就显得较为弱势。这一矛盾的激发是游泳课，大河由于身材自卑于是抵触游泳课，龙儿为了帮助大河找回自信，于是帮其缝制胸垫来伪装身材。亚美在游泳课上见到这一幕后决定挑战龙虎联盟的关系，提出和大河比赛，若亚美获胜则会把龙儿带去自己的别墅过暑假。无论是出于对龙儿离去后自己生活质量下降的担忧，还是此时由于已经和龙儿相处甚久而萌生的朦胧情愫，大河都决心为了龙儿赢下比赛。比赛最终确定为五十米自由泳，然而由于大河不会游泳，所以龙儿又承担了教学游泳的任务。在两人在市民泳池练习的时候，大河第一次因为对龙儿朦胧的好感而情感爆发。</p>
+<p>比赛当场，大河在游泳过程中抽筋，龙儿立刻下水营救，但最终依然将自己搭了进去。然而这个时候群众的目光全都集中在亚美即将赢得比赛，没有多少人关注到龙儿即将陷入险境。最终，虽然在大河求救之下龙儿得救，但是大河也最终没能收束自己的情感，面对大家说出了著名的：</p>
+<div class="note info no-icon"><p>龙儿是我的，你们一个都不许碰他！</p>
+</div>
+<p>事实上，即使经历了这样的事件，大河对龙儿也依然仅仅是无法确定的朦胧好感，大河依然对北村充满热情。在此之后，由于亚美依然是实际上赢得比赛，所以亚美依然可以带龙儿前往她的别墅过暑假，然而在北村劝说之下，最终变成了主角团五人全部前往亚美的别墅。在这一过程中龙虎联盟达成了本次主要是大河帮助龙儿追求实乃梨的作战计划，大河得知实乃梨害怕灵异，于是计划故意恐吓实乃梨，让龙儿趁机营救实乃梨来创造机会。然而，这个计划非常自然地失败了，因为实乃梨实际上并不害怕灵异，反倒十分喜欢灵异。</p>
+<p>另外，这个时间段也是龙虎联盟在梦中和对方确认关系的时间点，两人都做了和对方确认关系的梦。</p>
+<p>随后，大河的父亲出现，其希望能够将大河带回抚养。作为大河的挚友，实乃梨十分清楚大河父亲的本质。然而渴望父爱的龙儿由于并不清楚大河父亲的本质，强硬地要求大河离开自己家和父亲生活。在名义上收回抚养权的基础上，大河的父亲作出了会来看女儿在学园祭上的演出的承诺，然而显然，这个承诺是空虚的，最终一条短信依然把大河甩给了龙儿。</p>
+<p>在学园祭的最后，发生了两件事。一件事是，由于大河没能等到父亲，其对家庭复原的期望再次落空，受伤的大河通过很有情感张力的演出赢下了学园祭选美比赛后，学生会追加举办了男子选拔赛，全校男子绕学校跑一圈，最快的人能够和选美比赛获胜者，也就是大河共舞。在这场比赛中，终于认识到自己没能看穿大河父亲而导致伤害了大河的龙儿为了赎罪，拼命希望抢下头名，在这过程中实乃梨也前来帮忙，两人自然地牵着手拿下第一。第二件事是，最终的篝火晚会上，北村邀请了大河一起跳舞。</p>
+<p>在这里，似乎龙虎同盟的目的即将达成，因为大河和北村，龙儿和实乃梨，这两对的关系都得到了进展。然而，转折也就随之而来，学生会长竞选事件的爆发，让大河最终认识到北村早就心有所属，其对自己的关心不过是作为朋友的关心，大河对北村的热情也随之慢慢地弱化。但是，大河先前对北村的追求，是全班都知道的，在北村表白失败后，全班为了安慰北村防止其再次自暴自弃，尝试着撮合北村和大河。另外，由于大河的学生手册中夹着在篝火晚会上她和北村共舞的照片，北村和大河的关系，在<strong>旁人眼中</strong>得到了强化。而这也让实乃梨终于敢于承认对龙儿的好感，出于龙虎同盟的约定，大河也更加卖力地帮助龙儿追求实乃梨。</p>
+<p>然而，实乃梨在亚美的质疑下，并没能成功面对自己对龙儿的好感，而是逃避着这一切。</p>
+<p>这之后，就是圣诞夜。学生会计划在圣诞夜举办派对，大河此时依然在帮助龙儿在圣诞夜向实乃梨表白，龙儿也为实乃梨准备了发卡作为礼物。但是由于实乃梨此时不断地逃避着自己的感情，不愿意面对大河和龙儿，所以并不计划参与圣诞派对，即使龙儿已经盛情邀请。大河在派对当晚，完成了演出之后立刻前往实乃梨家劝说其前往派对，并撒谎夸大了龙儿对实乃梨的承诺。大河由于此时已经逐步对龙儿产生好感，无法面对实乃梨和龙儿最终将会走到一起的现实，于是在劝说实乃梨后径直回家，没有再前往派对。</p>
+<p>在派对现场的龙儿，从亚美处了解到了大河早已回家，想到大河之前提到过想要见圣诞老人的想法，出于对大河的关心和担忧，立刻和别人借到一套戏服打扮成圣诞老人前往大河家。在和大河玩乐一圈后，大河意识到终究是要让龙儿回到派对现场，出于先前已经和实乃梨夸下海口并且龙虎同盟的约定也是如此，于是大河强硬地将龙儿赶去了派对。</p>
+<p>然而，在送走龙儿后，大河终于意识到，如果一切进展顺利，实乃梨最终和龙儿在一起，自己将无法时时刻刻呆在龙儿身边。也就是说自己已经视之平常的和龙儿的相伴，被自己亲手推向了毁灭。意识到这一切的大河情感崩溃了，赶忙出门追龙儿，但是已经为时已晚，只能无助地跪在路边痛哭。</p>
+<p>之后便是修学旅行，本年度修学旅行是前往雪山的滑雪之旅。在修学旅行中，亚美和实乃梨就情感问题爆发争执，这争执过程中，龙儿送给实乃梨的发卡掉落在悬崖下，而大河为了取回发卡，冒险滑下悬崖，最终被困。得知此事后，龙儿立刻前往营救并最终背回大河，大河在逐渐苏醒的过程中将龙儿错认为北村，并自言自语般透露了“这种时候还愿意管我的应该只有龙儿才对”并且透露了自己喜欢龙儿。龙儿听到了，但是没有戳穿自己不是北村这一事实。</p>
+<p>最后，大河为了感谢大家在自己遇难的时候帮助自己，将主角团召集在一起计划送给大家巧克力作为答谢。为了统一口径，龙儿特别叮嘱了北村，要假装成救援大河的是北村而不是自己，因为其知道大河在躲避承认感情，要是让大河知道了当晚她说的话已经被自己听到了，很有可能导致矛盾，然而龙儿忘了叮嘱知道真相的实乃梨。于是在大河送巧克力的时候，实乃梨认识到了大河并不知道真相，并且立刻明白了龙儿也在躲避大河的感情，而非正面面对。主角团其余人在此时达成共识，坚决不能让龙虎再躲避两人之间的感情，于是强硬地要求两人面对内心。大河在这样的情况下，选择了逃跑，而在追逐大河的时候，实乃梨终于不再压抑自己的情感，大声宣称自己对龙儿也是充满好感，但是由于自己还有棒球梦想，而且龙虎同盟已经事实存在了很长时间，实乃梨最终决定放弃了自己在情感上的追求。</p>
+<p>在这一连串事情后，龙虎二人最终互相表白。为了得到家长的认可，龙虎二人投奔了龙儿的祖父母，并用骗称龙儿遭遇事故将已经离家出走十余年的龙儿母亲骗回了家人身旁。大河在观察到龙儿的家庭之后，决心面对自己的家庭，在留下留言后，大河决定退学回到父母身边一段时间。面对这样的不辞而别，龙儿虽然不甘，但是依然充分理解。一年后，在毕业典礼上，大河终于回归，龙虎也终于破除了所有的感情障碍，走到了一起。</p>
+<h2 id="实乃梨">实乃梨</h2>
+<p>本作女二。其有一个弟弟，她和弟弟都擅长棒球，但是家庭却仅仅支持弟弟的棒球事业。不服输的实乃梨计划通过高中课余时间打工攒钱，在高中毕业后自给自足前往体育大学就读。实乃梨的性格对外而言是相当阳光开放的，然而其内心却相当闭塞和喜欢逃避现实。</p>
+<p>在感情上，由于这一梦想的存在，实乃梨一般并没有体现出自己的情感取向，更多的时候是以一副和感情绝缘的面貌示人。然而，由于目睹了龙儿的很多事迹之后，实乃梨慢慢对龙儿产生了好感。</p>
+<p>在暑期合宿中，龙儿在和实乃梨两人独处对话的时候，流露出了对实乃梨的好感，然而实乃梨并没有爽快承认，仅仅是搁置了这一议题。事实上，这是因为实乃梨想要维护龙虎同盟而在自己的感情上做出的让步。</p>
+<p>学园祭的男子选拔中，其和龙儿为了安慰受伤的大河，联手拿下了比赛的第一，事后，两人都收藏了和对方牵手冲线的照片。</p>
+<p>由于在她眼中看来，大河和北村的情感愈发成熟，其不需要再顾及好友的情感而不敢表达对龙儿的好感。所以在看到大河的学生手册中夹着和北村的合照之后，其松了一口气。但是这个时候，亚美发出了灵魂疑问：</p>
+<div class="note info no-icon"><p>负罪感，减少了吗？</p>
+</div>
+<p>在这样的疑问之下，实乃梨又一次对自己的情感犹豫了，她认为自己的情感牵挂的事情太多，自己选择龙儿依然被好友大河的情感牵制，于是她躲避了自己对龙儿的情感。然而在这种心不在焉的状态下，实乃梨甚至输掉了从来没想过会输的棒球比赛。</p>
+<p>在这样的低谷之下，实乃梨显然无法面对龙儿想和她一起参与圣诞派对的邀请。然而，在当晚大河的劝说下，实乃梨最终还是计划前往会场，但是，在路过大河公寓的时候，她看见了跪在地上痛哭的大河。这个时候实乃梨明白了实际上大河依然和自己想的一样喜欢着龙儿，大河依然还是出于朋友之间的情谊，将龙儿让给了自己，而大河自己却在忍耐着这些痛苦。实乃梨最终在遇到了龙儿的时候，还未等他开口，便拒绝了龙儿的所有好意。</p>
+<p>实乃梨对自己感情的极端逃避引来了亚美的不满，而这也是修学旅行中两人争吵的根本原因。在争吵导致大河遇难等一系列事情后，最终在大河送巧克力的时候，实乃梨终于鼓起勇气面对自己的感情，承认了龙儿终究不会选择和自己走到一起，那么自己就要更为棒球梦想努力。而正式与自己的感情告别的标志是另外一个名场景，实乃梨为了激励龙儿去追逐大河，伸出拳头给龙儿打气，结果碰到了龙儿的嘴唇，当时并没有发生什么，但是当龙儿下定决心飞奔去追逐大河之后，实乃梨偷偷亲吻了刚刚碰到龙儿嘴唇的拳头。</p>
+<p>然而，即使鼓起勇气，实乃梨依然改变不了自己的挚友和自己喜欢的人最终走到了一起，最终会离自己远去的事实，在痛哭一顿后，实乃梨最终接受了现实。</p>
+<h2 id="亚美">亚美</h2>
+<p>本作女三，是北村的青梅竹马。亚美是职业模特，因为跟踪狂的原因被迫放弃工作并转学，并且在工作中磨练了一套伪装术，也就是所谓人前一套人后一套。有着丰富的社会阅历，对主角团的这些情感问题看得最为透彻，甚至接近上帝视角，然而涉及到如何去解决的时候，又缺乏和青春期少年少女交流的能力，很容易触发意料之外的矛盾冲突。</p>
+<p>亚美的感情线较为简单，即在龙儿劝说她放弃伪装和大河暴打跟踪狂后，亚美就对龙儿产生了好感。但是亚美作为主角团中心态最为成熟的一人，其对龙儿的依赖感是最弱的，仅仅是保持了好感和希望其多关心自己的愿望。</p>
+<p>相对地，龙儿则几乎完全将亚美作为自己的朋友看待，在各种对话中也不会将自己和亚美并称。</p>
+<h1 id="一些想说的话">一些想说的话</h1>
+<p>这个作品的感情线是真的扭曲，尤其是圣诞夜，如果加上前夕的话，这一段时间主角团五人全部失恋。首先是北村表白被会长冷处理，之后是亚美向龙儿示好也被龙儿忽视，再然后是大河亲手将自己和龙儿相伴的机会毁灭而痛哭，其后是实乃梨看到大河对龙儿的热烈的情感而决心放弃自己的感情，最后是龙儿甚至没有表白就被实乃梨回绝。</p>
+<p>虽然虽然，龙儿和大河在当时已经几乎快要两情相悦，但就是这么阴差阳错让两人到了更晚才确定互相的心意。</p>
+<p>不过，我为什么还是觉得这部番相当优秀，是因为这部番的感情线虽然很扭曲，但是却真实。虽说不能忽视艺术加工，但是这部番对青春期的少年少女朦胧青涩、飘忽不定的情感，以及在此基础上对自己情感的逃避，对友情和爱情之间的抉择，对家庭的理解等等的刻画十分真实。就以我自己为例，我中学时期对爱情的认识也不过是一种飘忽的感情，大多时候并没有区分一场随便的恋爱和需要承诺和责任附加的一场恋爱，所以即使有观众认为不真实，但我认为大河到最后，到真正将龙儿推给实乃梨的时候才真正认识到一直支撑、关注自己的并非是北村而是龙儿，这样的认知变化也并不虚假，而且前期就已经铺垫了大河是笨拙迟钝的。事实上，就我个人而言，2021 年的时候我的情感动荡，直到 Sakana 离我远去才真正敢于面对自己内心对 Sakana 的情感而自责为何之前会冷处理两人的关系长达两三年。说实话，大河在圣诞夜的痛哭，我是觉得相当真实的，因为人真的是不见棺材不落泪，不到真的要失去了，都不会正视自己的情感。</p>
+<p>但要说这部番的情感刻画上的问题，说实话我觉得对龙儿的情感刻画还有些欠缺，尤其是其一直到圣诞都还对实乃梨保持好感，那他究竟出于什么样的契机就爱上了大河呢？这一点实际上并没有描绘得很好。不过实际上也是可以理解的，就和大河认知转变一样，在实乃梨拒绝自己之后，龙儿这才回归了理智，缓慢认识到自己陪伴良久的大河才真正让自己动心。但这个说法也有问题，因为龙儿本身就有主妇属性，长期照顾的女性可以是母亲，可以是女儿，并不一定是恋人。所以正因此，这部番也有不少人调侃龙虎之间更像是父女。</p>
+<p>但整体依然瑕不掩瑜，整部番很长，大河从开头的乖戾逐步变得善解人意和温柔，这样的成长和转变无疑让我钦佩作者对大河这个人物的刻画的深度，如此大的性格转变却不显得突兀。整部番的泪点很多，因为本身就设定在类似单亲家庭等并不健全的环境上，很容易凸显人物的伟大之处，无论是将龙儿抚养成人的母亲，还是最终决定重返家庭的大河，这些人物的光芒就显得相当耀眼。</p>
+<p>整体上来看，我是真的觉得这部番和《中二病》可以并称我最喜欢的恋爱番，因为他们都不止是简单发糖，他们都让我看到了爱情对一个人的改变，让我看到了两个人互相支持应当是什么样的。虽然《龙与虎》对男女主之间的感情刻画并没有多少篇幅，但是这种从无感走到一起的长途跋涉却又是另外一番有趣。</p>
+<p>总之，很好的一部番，很真实很有共鸣的一部番，让我能够一时脱离当下充斥的快节奏工业糖精恋爱番，重新想一想两个人应当如何建构感情，两个人应当如何面对各种现实问题，无论是家庭还是未来。</p>
+]]></content>
+      <categories>
+        <category>【杂谈】游戏 &amp; 番剧</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Holder 与 Vocaloid</title>
+    <url>/2022/10/02/vocaloid-and-me/</url>
+    <content><![CDATA[<p>和 V+ 群群友度过了一天快乐的国庆假期，这次的 V+ Next 推曲活动中，又一次提及了我的“自传”——即我和 Vocaloid 的一些故事。</p>
+<p>先前已经和 nagi 以及莎布老师谈过一些，也在推曲小作文里面写过不少小故事。但回想起来我好像自己也没有系统总结过这些有趣的经历，明明是挺有意思的一段旅程，所以干脆晚上花点时间写写。</p>
+<p>大约是一些按照年份编写的流水账和回忆录，随便看看就好。</p>
+<span id="more"></span>
+<h1 id="小学高年级2010---2013">小学高年级（2010 - 2013）</h1>
+<p>大约这是一切的开端了。小学的时候 Holder 可能并没有什么爱好或者说口味，同学们在玩什么游戏我就玩什么游戏，似乎并没有什么主见。但是有几件事情倒是记忆挺深刻。</p>
+<p>首先是《甩葱歌》的莫名走红。Holder 家所在的街区是县城中心的一个破旧商店街，当时的所有店铺，从手机店、音乐店，甚至是鞋店、服装店，都在大音量播放这首歌，每天上下学的时候多多少少都是一直听着这首歌的。继此之后的，是 2011 年突然爆火的《甩饼歌》。这首歌有了歌词，讲述的是 2011 年利比亚空袭、物价飞升之类的大事件。本来自己就已经对《甩葱歌》旋律很熟悉，有了能唱的歌词，自然是很快就上手了这首改编歌，和小学同学时不时还一起唱着玩。</p>
+<p>其次是有一次我父亲问到我有没有喜欢的歌手，因为当时他一直在家里放歌自己听。但我当时说实话，真的不知道什么歌曲，而当时我的玩伴正沉迷汪峰，所以我就随口回答汪峰。结果我父亲大概是一下子就知道了我只是糊弄过去，于是无心地扔了一句“要找找自己喜欢的东西而不是随波逐流”。</p>
+<p>这句话随后就应验了。2012 年前后，我进入了元素收藏这个小众坑，这个坑大约就是收集各种元素的单质。在当年这还是一项很难的事情，因为稀土很难有货源，类似 Rb、Cs 之类的碱金属还只能从国外进口，一克近一千，这对小学生来说已经是天价（题外话，现在国内自制 Rb、Cs 已经不稀奇，克价已经跌下两百，正所谓中国人擅长把东西搞成白菜价。此外，现在元素收藏坑也近乎是进坑投资几千左右就已经能买到全套单质了）。也正是因此，当时我对贴吧里面那些拥有类似 Rb、Cs、Tl、Sc 等这些元素的聚聚们可谓是十分敬仰，其中就包括一位元老——真·凤舞九天。</p>
+<p>这位元老有一天晚上，在贴吧转载了一个视频，说自己今天单曲循环了一晚上。我点进去一看，是《世末舞厅》的一个自制 PV。当然，当时我是不知道这是什么的，但我能明白的是，这是一首日文歌，而且不同于小学音乐课上那些民歌、红歌、教学歌曲，不同于汪峰那种伤感，而是一种完全不能理解的，全新的歌曲艺术形式。</p>
+<p>小学的我第一次看到类似心脏、死亡、骷髅、终结这些意象，而即使我一点点都看不懂英文和日文，歌词一句话都看不懂，但是图像和声音却将世界终结前的疯狂传达了出来。</p>
+<p>这显然是震撼的，所以即使当时 Holder 只有一个充话费送的小手机，但我依然拿出了零花钱到同学家的手机店买下了一张 SD 卡，从家里人工作的地方偷偷拿了一个读卡器，自己在周末摸索着如何下载视频。这样忙活了一段时间后，我便能够随时听《世末舞厅》了。</p>
+<p>然而，还是那句话，由于完全看不懂英文和日文，我没能借此机会认识 wowaka，也没能认识巡音，更没能借此机会打开术力口的大门，虽然我隐隐约约感觉到了这机械的电子音背后，似乎和《甩葱歌》有着千丝万缕的联系。</p>
+<h1 id="初中2013---2016">初中（2013 - 2016）</h1>
+<p>这一段时间似乎和术力口就没有什么关系了。</p>
+<p>因为家人工作的原因，我离开了原先的住处，去往另外一个地方上初中，于是也就脱离了我小学的所有同学。在完全陌生的环境下，Holder 度过了一个并不美妙的初一。转机出现在初二，父亲的一位朋友送给我了一台 iPad。我的父母算是十分开明，决定将这个 iPad 交给我全权处置，并不打算限制我的使用时间之类。</p>
+<p>那段时间，我注意到周围同学都在听歌，虽然我不知道他们在听什么，但是就是莫名其妙觉的一个人听歌似乎是一件很酷的事情。这样想着，Holder 在 iPad 上下载了音乐软件，添加了几首类似《江南 Style》之类的大众歌曲。</p>
+<p>你可能会问，《世末舞厅》呢？然而这就很不好说了，我记忆中我似乎并没有将它加入到歌单里面，因为我不会打日文。当时我要是想听这首歌，我只能去贴吧翻找之前那位元老的贴子，或者拿 U 盘在电脑上听（SD 卡应该在搬家时遗失了，但是之后我有了一个 U 盘）。</p>
+<p>《江南 Style》可能是一个并不好的种子，因为我为了扩充歌单，只能每天看看音乐软件的推荐。然而因为这个种子，加上当时 EXO 和 TFBoys 在网络上的对立导致两方热度都居高不下，我的歌单迅速充满了 EXO。EXO 的曲风大多是炫酷的类型，这也塑造了我后续的听歌风格。</p>
+<p>然而，我并没有在 K-pop 的路上走得很深，因为我初中有一位朋友，很喜欢看番。当时我和他在一起玩的时候，常常是白天出门，晚上窝在某人家里看番，也就是那个时候我认识了《刀剑神域》和一些其他的番，也收获了第一个严格意义上加入歌单的日语歌——TV 动画《空战魔导士候补生的教官》OP《D.O.B.》，因为这首歌很炫酷，节奏有力量。</p>
+<p>也是在他的带领之下，大约是 2014 年，我入了 B 站，但我当时几乎只会看鬼畜区。</p>
+<p>虽然如此，我当时的歌单的主流依然是 EXO 和权志龙，最喜欢的可能依然是《Call me baby》或者《BANG BANG BANG》。而随后因为 K-pop 的外延了解到 Maroon 5、TheFatRat 的一些歌和欧美音乐则完全是支线了。</p>
+<p>其实要说到为啥即使有这么一位看番的好朋友我还一直听韩流，倒也只能说是大环境所趋。当时我的初中班级，大部分同学更乐意听 K-pop。那种带着一些痞气，或者说是不良、叛逆、特立独行风格的歌曲，在初中生中很有市场。</p>
+<p>不过也正是因此，我错过了阳炎 Project 的时代。</p>
+<h1 id="高中一年级2016---2017">高中一年级（2016 - 2017）</h1>
+<p>中考考上了当地最好的中学，并且在入学分班考试里考上了年级第一，这完全是出乎所有人的意料的，包括我自己，因为没人相信从那种初中出来的毕业生能考上这个高中的第一。这是一个非常奇妙的开局，在单纯的高中生之中，这样的成就足以让你受到瞩目。所以 Holder 的高一开局并不算很差，反倒是收获了一群朋友。</p>
+<p>先前提到过 2014 年我开始看 B 站，等到我 2016 年高中入学的时候，我已经大体对鬼畜区了解了个遍，自然也就包括了音 MAD 和人力 Vocaloid。在此期间，我接触到了我严格意义上第一个知道是术曲的术曲——《千本樱》（《世末舞厅》我最开始并不知道这是术曲，我甚至不知道这首歌和初音未来有关）。</p>
+<p>然而，2016 年的 B 站大事是和术无关的，而是《极乐净土》的爆火。这首歌的爆火让我经常逛的鬼畜区充满了这首歌的相关创作，自然而然地，这首歌也进入了我的歌单。</p>
+<p>有一件黑历史和这首歌有着很大的关联。当时我不会日语，想唱《极乐净土》自然是唱不出来，只能哼调。然而当时哲♂学里的 FA 乐器又在鬼畜中广泛运用。于是有一次我在班上用 FA 乐器唱了一小段《极乐净土》。现在想起来的话，可以说是万分羞耻。</p>
+<p>一切都是有开端的，自从《极乐净土》和《千本樱》进入歌单，随之而来的就是各种日语歌。但其实这个时候，我依然只是知道初音未来的名号，还不认识双子、IA 等其他歌姬。另外，这个时候，我还不知道什么是歌姬什么是 P 主，当时的 Holder 认为初音未来的所有作品都由一个运营方创作，甚至还因此惊讶于为何这个运营方作出的曲子曲风如此多变。</p>
+<p>但也就是这个时候，我入了 LL 坑，听了不少缪斯的歌。不过即使如此，此时我的歌单依然是 K-pop 和欧美音乐占主流，日语歌有但不多，术也不过几首。</p>
+<p>当然，要是说几件小事的话还是有的。</p>
+<p>首先是高一的寒假，学校组织了去苏州的数学竞赛集训，那段时间比较休闲，我便无聊的时候去整理歌单，删掉了不少 K-pop 歌。这个行为的原因其实挺怪的，因为大约在 2016 年年底或者说 2017 年年初，我经历了第一次所谓的“被分手”。而为了将初中这些破事的记忆删除，我不仅删掉了她所有的照片（当然后面我居然在 iCloud 的自动备份里面翻出来了），删掉了聊天记录和所有联系方式。而寒假在苏州的时候，我翻了翻歌单，发现听歌的时候依然能回想起初中当时的一些奇怪经历，尤其是《Call me baby》，这首歌是我和她都喜欢的。于是，我删掉了大多的 K-pop 歌，只留下了几首自己特别喜欢的，比如《MAMA》和《Lightsaber》。</p>
+<p>之后是 2016 年年底《你的名字》上映，而这让我的歌单中又多出了若干的日语歌，包括《前前前世》《火花》《没什么大不了》《黄昏之时》《梦灯笼》。其中最可说的就是《梦灯笼》，当时我沉迷这首歌到，即使我不会日语，不会写五十音，我也会拿并不富裕的晚饭休息时间跑回家打开电脑抄歌词和罗马音，尝试着学唱。</p>
+<p>2017 年的暑假并没有多少可以称道的事情，虽然当时是第一年接触学科竞赛，辗转扬州、南京等地，但是就听歌而言，并没有什么可说的。硬要说的话，就是看了《未闻花名》，然后沉迷于《Secret base》这首歌。术曲方面，则是零零散散加了《深海少女》《天之弱》《反语》《脑浆炸裂女孩》一共四首。</p>
+<h1 id="高中二年级2017---2018">高中二年级（2017 - 2018）</h1>
+<p>熟悉 Holder 的人都知道，这是一切的转折点。</p>
+<p>2017 年进入高二之后，发生了几件事情。</p>
+<p>首先是 9 月份《病名为爱》投稿，这首歌莫名其妙地在国内收获了极高的热度。而在这段时间，我们高中为我们争取到了去南京旁听数学竞赛省队培训的机会，我又可以公款旅游了。于是我在南京和我同学两个人，反复听这首歌。这里比较好玩的是，我先听到的是 Neru 的术版，而非不少人先听到的翻唱版。就我记忆而言，这应该是我听到的第一首双子曲。</p>
+<p>之后是 12 月份《打上花火》在国内上映，我和同学翘课去看了。当时通行的一位同学稍微对八爷有一点了解，晚上在 KFC 吃饭的时候，讲了不少八爷相关的小知识之类的，包括他前期作为 P 主投稿的一些曲子。</p>
+<p>经过这一个学期，Holder 的歌单大致变成了术曲占一半，其他歌曲混混乱乱杂在里面的一种状态，但 Holder 此时依然没有主动去挖术曲或者去了解 Vocaloid，依然是听到好听的就放歌单。然而这个时候，大数据已经开始给我不断推术相关的东西，很少再有韩流或者欧美了。</p>
+<p>高二寒假备战小高考，没有什么可以说的事情，除了通过一个人力 Vocaloid 认识了《太阳系 DISCO》。</p>
+<p>而高二的春季学期，我遇到了两首歌，分别是《神佛》和《被生命所厌恶》，但是是 mafumafu 版本。mafumafu 这个名号的出现，让我本就不清楚的概念更加混乱，什么是歌姬，什么是 P 主，什么是唱见，这些我当时可以说万分混乱。然而也正是这两首歌，打开了一道通过 mafumafu 获取新术曲的大门。</p>
+<p>3 月的时候，我在听《病名为爱》的时候，注意到评论里面有一句说 Neru 来 B 站了。我记得当时我并不是很清楚 Neru 到底是谁，但总之我给他点了关注，所以说 Neru 是我第一个关注的 P 主。在此之后，我也将 Neru 的《SNOBBISM》和《随便随便》加入了歌单。</p>
+<p>也就是这段时间，我开始学习日语。</p>
+<p>时间就这样到了传奇的 2018 年暑假。</p>
+<p>这个暑假我为了争取清华的各种政策，首先是各个学科竞赛，数学要在扬州集训然后考试，化学要在南京集训然后考试，物理也是在南京，期间还需要参加清华的暑期学校，要去杭州参加一个训练。所以从 6 月份一直到 9 月份这近三个月的时间，我几乎一直在外，而且几乎孤身一人，因为我高中有资格参与化学国初的不过两人，能参与物理复赛的也寥寥无几。</p>
+<p>这是我第一次远离熟悉的家乡如此长的时间，而且我父母也说为了锻炼我的独立能力，并不打算跟在后面，只是说了一句，有什么要紧的情况或者缺钱了就给家里打电话。显然，为了填补课余时间，除了刷题看书，似乎也只剩下听歌了，因为我几乎不玩游戏，除了当时短暂玩过的《炉石传说》。</p>
+<p>这段时间给了我扩充歌单绝佳的机会，我开始第一次下意识地在搜索框中输入初音未来，我开始有意识地找各种番去看，去听它的 OP 和 ED。那段时间，类似 MARETU、れるりり、Neru 等这些名字开始慢慢变得熟悉，镜音双子、巡音也开始进入我的视野，虽然我还是区分不开 P 主和歌姬。</p>
+<p>此时我收集到的术曲已经开始出现两极分化的特征，一类是吵闹的、喧嚣的、意味不明的，这些歌单纯提供一种精神上的刺激，似乎也和当时我沉迷 K-pop 有着相同的根源。而另外一类，则是舒缓的、抒情的、温柔的，这些歌，大约才真正是我当时能共鸣的。</p>
+<p>这其中最为特殊的自然是《胧月》。第一次听到这首歌，我并没有觉得多么特殊，甚至因为它并不突出的调教觉得十分粗糙。然而，正所谓音乐并不仅仅是一段声音，是要和个人境遇相结合的。在那个晚上，我刚刚做完一套题，起身去阳台休息。凌晨两点的南大早已休眠，但是远处登山道的路灯依然闪烁，就在那一阵风之中，歌单循环到了《胧月》。</p>
+<p>那应该是第一次我感受到了所谓的情景结合。因为匆匆学过一点日语，也看过歌词翻译，所以当「逃れる術を探すばかりの孤独な星」这一句响起的时候，那种孤身一人求学的寂寞，疲惫后的困倦一瞬间全部返了上来，而阳台上是依然燥热的夏夜晚风。</p>
+<p>而这一幕大约也是我高中那么多回忆中最为深刻的几个之一，也就是这个契机，我第一次感受到了术曲机械音中的那一种，真人并不能表达出来的沙哑感。现在我依然觉得，《胧月》再如何使用真人翻唱，也难以表达出其中蕴含的孤寂感。人本身是社会性的，再如何表达孤独，也不过是先建立起和别人的连接再失去，比如那些表达孤独寂寞的失恋曲。然而机械音中表达出的那种，自己身为人造物或者非人，生来即无法和人们平等的孤寂感，或许才是深层的。这也是我在之后沉迷于《心》这首歌的原因。</p>
+<p>在此之后，术曲便不断进入歌单，而自己听术曲的风格也渐渐明晰。</p>
+<p>当然，Holder 这个时候还是分不清歌姬和 P 主。</p>
+<h1 id="高中三年级2018---2019">高中三年级（2018 - 2019）</h1>
+<p>备战高考的一年，并无什么可讲的。这段时间除去学习，几乎也没有其他事情可做。</p>
+<p>然而这个时候我遇到了《月光润色女孩》。这首歌是网易云推荐给我的，第一次听也是一点感觉都没有，没有什么特别之处。然而就是这样听着听着，就沉迷了。</p>
+<p>这段时间，为了学习日语，我买了标日，但是上面的课文实在是无聊乏味。这个时候我注意到，自己的歌单已经几乎全是日语了，为什么不去打印歌词来学呢。于是我打印了几首歌的歌词，一首一首学，这里面包括《Secret base》《鸟之诗》《心做》以及不用想就知道的《月光润色女孩》。</p>
+<p>于是我早读课就不读语文或者英语了，而是把歌词偷偷藏在书下面，一个假名一个假名认，不会的语法就圈出来下课查标日。就这样，这几首歌也成为了我最先会的几首歌。不过，要是你问为啥我这么喜欢《胧月》却不打这首歌的歌词，我只能说，这首歌歌词太难了，生词太多，看不下去。</p>
+<p>要问我多喜欢《月光润色女孩》，我只能引用我前桌在高考后和我说的那句话，“你早读课天天唱，唱得我都会唱了”。</p>
+<h1 id="高考后暑假-大一2019---2020">高考后暑假 &amp; 大一（2019 - 2020）</h1>
+<p>高考后的暑假，我依然不能说我是术术人，虽然听不少术，但还是没主动找过多少。当时我喜欢的一首歌是《Narrative》，一个电影的 ED。</p>
+<p>这个暑假事实上记忆最深刻的术曲是《朗朗晴天》，是一位高中的好友推荐给我的。高考出分后，因为填报志愿的事情，我、我父母、我的高中和清北招生组之间产生了一些奇怪的摩擦，而这也让我产生了无法把握自身命运的一种无力感，也就在那个时候，我和高中好友交谈的时候她把这首曲子推荐给了我。</p>
+<hr />
+<p>进了大学之后，事情发生了一点转变。我开始接触 gyari 的 Voiceroid 小剧场，认识了缘兔、akari、琴叶姐妹这些歌姬，也就是这个时候，我才真正知道什么是 P 主，什么是歌姬。</p>
+<p>如果要说大一上学期印象最为深刻的歌曲，就是《蜘蛛丝 Monopoly》、《妄想感伤代偿联盟》和《几望之月》。</p>
+<p>然而大一的下学期，因为疫情一整个学期都只能在家。然而也正是这段时间，由于我已经开始主动认识术曲，从而也是我术曲底子正式构成的开端。这段时间，我听到了《霞む夏の灯》《Unknown mother goose》，和几乎是我听术曲里程碑一般的《无梦之梦》。</p>
+<p>事实上，大一下学期在家的这一段时间，即使我依然在听动漫歌曲或者 J-pop，比如 Reol 之类，但实际上我开始明显地倾向于术曲。术曲具有一种奇妙的创作自由感，相比于动漫歌曲需要考虑类似表达主旨等约束，术曲更像是自由地让歌姬传达创作者的感情，无须特别关注所谓创作要求或者一些限制自由表达的限制。</p>
+<p>在那段时间内，wowaka、怪力熊、MARETU、春卷饭、DECO 构成了我最初的底子。当然，还有类似《萤火虫》《ROKI》之类的单曲。</p>
+<h1 id="在这之后2020--">在这之后（2020 - ）</h1>
+<p>在这之后就并没有太多值得讲述的了，已经入了门的术术人自然是会自己去翻找自己所喜欢的曲子的。</p>
+<p>不过也就是在这之后，我明显感觉到了听歌风格和个人境遇的关系。在大一的下学期，我就已经听过了《劣等上等》，而在那个时候，我觉得这首歌过分吵闹，毫无节奏可言，遂跳过。然而在我大二上学期再次听到的时候，我却觉得万分戳心。现在回想，大概是大一下学期还在为学业挣扎，社工上也因为团支书不作为而寸步难行。相比之下，大二已经适应了大学节奏并且取得一些成就，这首歌似乎也就不是那么刺耳了。</p>
+<p>还可以作为例子的就是 2021 年的 5 月感情受挫的时候，在这事之前和在这事之后听春卷饭，完全是两个感觉。在这之前，我只能感受到单纯的震撼，而似乎并没有那么多的共鸣。然而在这之后，尤其是听《第三心脏》的时候，我甚至感觉这首歌就是为我而作。</p>
+<p>说到《第三心脏》，春卷饭的幻影系列曲，从 2021 年更新到现在，似乎就和我奇妙地贴合了一般。在我低沉的时候，听到了《第三心脏》，在我逐步挣脱的时候，听到了《萤火虫未曾来过》，听《美影日记》的时候则又让我回到了一年前的一些混乱之中。</p>
+<p>当然还有一些插曲，就是入了音游坑，通过 osu 和 PJSK 认识了不少新 P 主和术曲。还有就是认识了术群的各位，见识到了很多新的术曲口味，听到了很多新歌。</p>
+<h1 id="所以呢">所以呢</h1>
+<p>Holder 真正听术曲的时间并不长，或许只能说大一下学期之后才开始有意识听。然而实际上，Holder 小学就听过术曲了，虽然毫不自知。</p>
+<p>Holder 正如自己所描述的那样，并不想把歌曲独立于个人的境遇去解释。就像《劣等上等》，不同的境遇下就是不同的体验。我依然习惯将歌曲、文字等这些艺术和具体的、切身体会的场景联系起来。</p>
+<p>仔细回忆一下，Holder 喜欢夏天的晚上并不是没有原因，因为每一年的夏天都承载了太多太多的深刻回忆。18 年和 Sakana 的相遇以及独自求学终有回报，19 年为三年高中完美谢幕，20 年的一人旅行，21 年和 Sakana 最激烈的矛盾到最后的和解，22 年被导师拒绝和最后的平安上岸。而这些夏夜，都有一些曲子作伴，18 年的《胧月》、19 年的《朗朗晴天》、20 年的《无梦之梦》、21 年的《第三心脏》《某一家的茶会》、22 年的《坠入地狱》。</p>
+<p>大约歌曲就像回忆的书签一般，听到这个旋律，就仿佛回到了当时那段时光。</p>
+<p>Holder 和 Vocaloid 的故事，不如说就是 Holder 自己的故事，然而这个故事还很长很长。</p>
 ]]></content>
       <categories>
         <category>【杂谈】碎碎念</category>
