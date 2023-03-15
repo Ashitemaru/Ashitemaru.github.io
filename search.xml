@@ -333,6 +333,248 @@
       </categories>
   </entry>
   <entry>
+    <title>2023 春季学期记录</title>
+    <url>/2023/02/20/2023-spring-record/</url>
+    <content><![CDATA[<p>应该是本科的最后一个学期了，最近事情也比较多，头绪也没完全理清楚，不如效仿之前假期通过日记的方式强迫自己认真工作，也写些学期中的日记算了。</p>
+<p>目前应该是毕设、先前和快手的项目以及软工助教三件长期的事情，另外有一份可能短期较忙后期平缓的实习。</p>
+<span id="more"></span>
+<h1 id="section">2023.02.20</h1>
+<p>学期的第一天，滚去上了韩语课，没想到的是韩语课居然不让使用电脑，本来还打算以后还可以在课上少说干点活的，看起来也不行了。中午偷摸去五道口出勤，结果还是一堆人，下午只能来工位，把预定中的几件事做了：</p>
+<ul>
+<li>迁移好服务器上的数据，跑上实验</li>
+<li>确认小程序的商品列表页面写完，check 一下 yfgg 那边给的信息</li>
+</ul>
+<p>本来以为迁移数据是小工作，结果发现还挺麻烦，在经历了实验室机子硬盘满了换挂载之后，我发现我测试集好像没了，现在只能想办法去把这个测试集找出来了。</p>
+<p>最终还是把测试集找出来了，之前写 Pensieve PyTorch 的时候用了这个数据集然后忘了 ignore 传到了 Github 上，只能说感谢当时比较粗心了。</p>
+<p>另外就是老师又把我拉到了一个项目的工作群里面，事情又要多起来。之后就是用新 Puffer 数据训练出来的模型依然是炸裂状态，洗数据的脚本不知道为什么很慢，而且估计还是有问题。自己个人网站的 CI 也不知道为啥停了三个星期没动。我现在真的是，完全不知道从哪里下手。</p>
+<hr />
+<p>现在洗数据的脚本慢的问题居然莫名其妙解决了，并且顺带学了一个 Python 的小知识。</p>
+<p>洗数据有个非常经典的操作，就是不断向一个列表之中 append 数据，正常都会这么写：</p>
+<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line">batch = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> data <span class="keyword">in</span> tqdm(data_reader):</span><br><span class="line">    <span class="comment"># Process</span></span><br><span class="line"></span><br><span class="line">    batch.append(data_item)</span><br></pre></td></tr></table></figure>
+<p>然而由于取字段运算符（就是 <code>batch.append</code> 中的 <code>.</code> 运算符）事实上在 Python 中占用的资源很大，所以事实上用下面的写法速度会快很多很多：</p>
+<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line">batch = []</span><br><span class="line">add_data = batch.append</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> data <span class="keyword">in</span> tqdm(data_reader):</span><br><span class="line">    <span class="comment"># Process</span></span><br><span class="line"></span><br><span class="line">    add_data(data_item)</span><br></pre></td></tr></table></figure>
+<p>我的数据大约是 <span class="math inline">\(10^6\)</span> 量级，然后每次都需要对四个列表 append，改用这个写法直接让洗数据时间从近三个小时变成了两分钟左右。</p>
+<p>这种改进方法有个需要注意的地方就是不能改变 <code>batch</code> 所指向的内存，否则先前的 <code>add_data</code> 将无法正确修改 <code>batch</code> 中的内容。比如 <code>batch = batch[: -1]</code> 之类的重新指向的写法就不能在循环体内出现。</p>
+<hr />
+<p>最后发现个人网站 CI 不动的原因是 Travis CI 收费了，而我自然是欠费的。那么，只能用免费的 Github Actions 了，虽然要把仓库内容给 Github 去训练 Copilot，但反正我这个个人网站他能学到个什么呢？</p>
+<h1 id="section-1">2023.02.21</h1>
+<p>今天早上又得早起，去软工课堂上讲小作业，不过因为学堂路堵车了稍微晚了点到，结果前排位置已经没了，只能坐到角落里。不过，由于高老板已经把小作业的 Slides 发出来了，所以我发现坐我前面的同学已经开始做了。要说实话的话，看到他能够非常顺利地把前端小作业运行起来我还是觉得挺欣慰的，毕竟没在这种地方出锅。</p>
+<p>软工课还是一如既往的无聊，周围的同学要么打牌，要么写小作业，要么复习自动机，而我因为没法给电脑充电所以没办法去做实习里的开发，只能坐牢睡觉。</p>
+<p>中午依然是偷偷出勤，现在疫情放开之后，五道口机厅就连工作日的下午往往也有近十个人在打。今天尝试推了推几个 13+ 的鸟，未果，随后因为又来了至少三四个人于是想了想就撤退回工位了。</p>
+<p>回到工位没想到第一件事情是有同学报告了 THUInfo 的 bug，虽然没花多少时间就排查出来是课程信息缓存策略有问题，如果退课并选择另一位老师同样的课的话就会导致无法正确更新缓存中的数据。然而即使是小事，这件事情也花了我一些时间。之后就是正常拉新的 Puffer 数据然后跑实验，但是现在实验室机子的存储空间大概是不够了，不能像之前那样一跑几天，几千个几千个 epoch 那样玩了，现在差不多收敛之后跑到 1000 epoch 左右就得停了。</p>
+<p>昨天挂上去的实验结果不是很好，最高的 reward 也只能达到 12 左右，甚至达不到启发式的 15，今天换了一个新的、更大的数据集看看，希望能够收获一点正常的结果。</p>
+<p>以及实习那边又开始催了，感觉是该找个时间好好卷卷实习了，然而最近晚上都不太好 308 直接干，因为连着三天需要早上十点钟去上课，还挺麻烦的。</p>
+<p>晚上和 xjj 他们去鹤一吃了顿烤肉，结果回来困到直接在椅子上睡着了，本来还想晚上做做事情的。</p>
+<p>另外让我惊讶的是，晚上居然有位同学来问软工小作业相关的东西，一看他都做下去不少了，感觉现在一字班果然还是不可小觑，说不定再过两三天就有人做完了。</p>
+<h1 id="section-2">2023.02.22</h1>
+<p>今天早上依然是韩语课，今天讲松紧辅音，然而我并不太会。下课之后依然是偷偷去五道口出勤一会然后赶回来上下午的强化学习。</p>
+<p>强化学习我记得课容量应该是四十几左右，结果不仅是微信群里就有一百四五十人，线下教室里也有快两百人，而我这个稍微晚到的就只能站在后面听了一节课。比较难绷的是，因为这堂课的内容我已经基本学过了，所以我就没怎么听，结果还被喊起来回答问题，还要用英语，这就很麻烦。不过说实话，这门课很符合我对大学课堂的想象，一个能有强交互性的、老师能和你保持交流的课堂，比单纯念 PPT 的单向授课不知道好了多少，可能也是因为这位老师也并没有大我们多少岁数，交流起来比较没有障碍吧。</p>
+<p>现在计划把目前这个网站上和 RL 相关的东西按照这堂课的 outline 给整理好，因为我发现这堂课所使用的符号系统之类的比较贴合我所用的，正好也不要废多大的力气。</p>
+<p>下午继续来工位，然后等一手 SOA 课程的消息，如果事情多、不好混分的话就赶快退了，本来大四也就想摆烂混个及格分赶快毕业得了。结果就是立刻从同学那边听闻课程大作业要求基于 ChatGPT 做开发，这已经完全超出我所需要了解的内容了，于是立刻退课跑路。</p>
+<hr />
+<p>今天看了一下用新一天的 Puffer 的 fox channel 训练的情况，更是爆炸，甚至到最后都负 reward，根本没收敛，我现在真的是在怀疑我的数据处理真的存在问题，然而我也是真的不知道怎么往下处理了，但这毕竟总是要结项的，我这边也要给结果的。</p>
+<p>今天估计要做的事情差不多是：</p>
+<ul>
+<li>收拾一下强化学习的笔记</li>
+<li>写实习那边的小程序</li>
+<li>毕设看看能不能推进点东西出来</li>
+</ul>
+<h1 id="section-3">2023.02.23</h1>
+<p>周四终于是没有要我十点钟就要起床的事情了，前三天连续早起让我精神状况相当不好，于是周三晚直接很早就睡了，结果一路睡了快十二个小时。</p>
+<p>周四恢复了组会，一点半准时赶到会议室。组会本身是没有什么很大意思的，比较有意思的有两件事，一件是和我一起做毕设的同学好像已经进展很快，这让我比较焦虑，另外一件就是我和老师说了我寒假在实习的事情，他感叹了一句“年轻人忙点好，但是我每周该查你毕设还是查”。总之就是这波组会开下来就让我感觉毕设再不做出点东西好像就得挂了。</p>
+<p>开完组会稍微收拾了点东西，把实习那边微信小程序开发者工具的一个 bug 修好之后就去上地出勤，不过因为状态不咋样就没怎么打。</p>
+<p>晚上回来之后实习那边的学长也在说我最近事情实在是太多，计划再找一个来帮忙的人，虽然可能需要我让渡部分回报（工资、股份之类的）。我感觉我最近确实也不太想继续推进实习了，实在是太累了，于是就答应了下来。结果他们很快就找来了两位似乎比较有意愿的同学。</p>
+<p>另外就是软工助教那边讨论大作业给分的事情，本来说很快的会，愣是开了一个多小时，就为了讨论应该怎么给同学们解释我们改革的动机和尽力阻止内卷。最后讨论下来，是和同学们明确给出过程评分要求（比如 Git 开发 comment 管理之类的评分），并且说明“完成拓展功能很容易导致在过程评分上失分，甚至可能得不偿失”，以此来尽力阻止过度追求满分的行为。</p>
+<p>开完会洗完澡来到 308 本来计划好好写写实习那边的东西，结果却是一躺就睡着了，一直睡到了周五的十二点，看来这几天是真的困了。</p>
+<h1 id="section-4">2023.02.24</h1>
+<p>从 308 的沙发上醒来之后，就简单点了个外卖，然后和 return 讨论了一波日语中助词「は、が」的用法，这些东西稍后整理到自学手册里。外卖到后吃完了就继续推实习那边的事情了。</p>
+<p>结果说是好好做实习的事情的，因为空间里刷到了一条以椭圆曲线加密算法为背景的高中题，就研究了大概几个小时的椭圆曲线。只能说完全不能集中做实习这边的事情。</p>
+<p>好摸啊，今天一整天感觉一直到晚上六点都没做出来什么实际的东西，果然还是得 push 一下自己。结果就这样一直到了晚上八点，还是没有做出来什么实质性的东西，倒是实习那边的学长似乎有一些想找我的事情，先来了解一下吧。</p>
+<p>和实习那边新找的技术团队简单见了一个面，看起来他们确实是很有经验的开发团队，至少对商业开发的流程把握比我这种随便写写玩玩的人实在是高到不知道哪里去了，如果可以的话还希望能把我这边接手过去我就可以稍微歇歇了。这里还是得感谢一下实习的 leader 还是帮我在投资人那里保住了一些利益，至少原先约定的现金工资还是能给出，这就还可以了，因为我确实没有作出那么多的贡献。</p>
+<p>讨论下来最终我应该就只要在一周内完成：</p>
+<ul>
+<li>“我的”页面以及订单详情页</li>
+<li>自定义导航栏</li>
+<li>询问学校和手机的 PageContainer</li>
+</ul>
+<p>这三个应该就可以暂且休整了，感觉整体安排还是很好的。</p>
+<p>晚上稍微花了点时间修正了一下主页相关的一些东西，目前来看问题不大。</p>
+<p>另外，最近不少人软工小作业前后端都做得七七八八了，目前也没什么大的 bug report，还算是心里安稳了不少，希望 CI/CD 也不会出大锅。</p>
+<h1 id="section-5">2023.02.25</h1>
+<p>今天大概是实习那边简单开一个会，把团队所有的同学召集起来互相认识。不过说实话，我这个做开发的，确实不太了解运营那边，倒是 yfgg 需要和运营那边对接后端管理，反倒是需要经常接触。</p>
+<p>中午出去吃牛肉面，结果那家店既不能在线下单，而且还需要自己取餐，还没有防丢包机制，属于是当下互联网应用普及背景下的漏网之鱼了。</p>
+<p>下午于是就正常工作把“我的”页面赶快写完，说是今晚就打算验收，那总之认真干干吧。</p>
+<p>然而微信小程序这种东西就是很折磨，写了一整天还是有些逻辑上的问题。另外，在写这玩意的时候还有一位上软工的同学一直在找我答疑，然而这位同学似乎对一些计算机的基础知识都不是特别熟练，确实也弄得我有点麻烦。</p>
+<p>晚上就直接摸鱼了，打了一晚上德州，然后早早睡了。</p>
+<h1 id="section-6">2023.02.26</h1>
+<p>一点没睡好，因为突然出现了一点点的感冒症状，喉咙发痒然后咳痰，我在怀疑是冬春之交的流感，或者是我复阳了，顺带着精神状况也不是特别好，有点头晕且没啥精神，口干舌燥的很难受。</p>
+<p>十一点左右就醒了，打了一把牌之后就去看 KOP maimai 决赛，yoshiki 还是很稳健地拿下优胜，确实也没啥特别可以说得上是悬念的东西。然而最主要的是在国际服比赛之前三位主持人透露了似乎 SBGA 终于要把国服 UI 更新到 festival 的信息：</p>
+<ul>
+<li>マイマイは日本でも人気なんですけれども、海外でも...</li>
+<li>中国で、あのマイマイみたいな...</li>
+<li>せっかくで、バージョンアップ、言ってもいい？</li>
+<li>バージョンアップしなかったですけど、近々、システムはフェスティバルにと...</li>
+</ul>
+<p>然而这完全不像是一次正式通告，虽然后面也提到了最近会发布正式公告，但这暧昧的态度和语气确实也很 SBGA。只能说如果真的给更新的话，maimai 暂且是一款我的问题。</p>
+<p>下午实在是拿不出来任何做事的干劲，直接去上地出勤了，然而上地一直保持着至少八人的规模，所以说实话也没打到多少把。感冒的症状说实话出勤的时候在缓慢加重，毕竟只穿了短袖而且还在不断流汗，很有可能受凉。一直到了晚上，本来想吃一顿萨利亚就回去的，结果是萨利亚居然卖完了主食，啥都吃不了，只能去上地华联地下那些不咋样的饭店随便吃吃，就这样还吃了我六七十，啥都没吃着。</p>
+<p>晚上回到宿舍拿到了美团上买的感冒药，结果上楼梯的时候就已经开始感受到极端的疲惫感，到了宿舍坐下来，立刻感觉好了不少，于是赶紧吃了颗药。</p>
+<p>今天本来想做的事情那是一件都没有做，这一周刚开始的时候干劲满满，每天除了日常工作还能出勤，心情也一直很不错。但是到了今天，周日，因为这个感冒症状，真的弄得我非常难受，希望明天起来能够快快好起来，这样至少不会影响我下一周的时间安排。</p>
+<h1 id="section-7">2023.02.27</h1>
+<p>果然症状没有好多少，依然是喉咙有点疼然后头很昏，整天处于疲劳状态，可能还有一点点低热。早上强撑着还去上了韩语课，虽然迟到了。韩语课目前在讲发音，没有什么特别有意思的东西。</p>
+<p>中午按照平常的饭量点了一套粥和配粥的小菜，结果发现自己完全吃不下，虽然吃了七八成，但还有些是完全没吃的，比如三个豆沙包。下午按照道理要准备开始干活了，然而这个状况是真的一点都没法工作，于是爬上床睡觉了，除了途中上了趟厕所之外，一直到七点左右我一直在床上睡觉。比较麻烦的是，我醒过来发现四肢有点冰凉然后还有点热，这说明症状严重了。</p>
+<p>为了防止我是新冠复阳，我去 308 里面拿了一份之前囤着的抗原，自测了一下是阴性，这就说明我得甲型流感的概率很高，前几天宿舍楼群里面也有人问有没有体温计之类的。</p>
+<p>就这样一直磨到了晚上八点，请舍友帮忙带了饭，结果发现还是没什么特别大的胃口。但这个时候我意识到很多事情再不做来不及了，比如第二天就要在课上讲的 React 前端小作业讲稿，还有大作业文档之类的也得稍微调整一下。就在我极不情愿地坐到桌前准备工作，这种疲劳感和不集中又袭来，而且实习那边还在 push 一些事情。</p>
+<p>怎么会变成这样的呢？我思考可能是先前太疲劳，毕竟连续早起了很多天，虽然只是十点起，但我平均得到四五点睡，这就很不好。于是想着该找机会调整作息和运动了，然而目前事情还得赶快推。</p>
+<h1 id="section-8">2023.02.28</h1>
+<p>二月的最后一天了，昨天晚上吃完药之后明显感到全身发烫，然后开始冒汗，最终到了凌晨五点左右退烧了。然而，喉咙疼和咳嗽确实是一点没有见好转，甚至还有恶化的感觉。</p>
+<p>强撑着去软工课堂上讲完了两节课，回来之后自然又是睡了整整一个下午，起来就已经是晚上了，点了个外卖，胃口依然没有恢复。</p>
+<p>晚上首先是我爸妈得知了消息，他们简单关照了几句，问了问药物的情况。然后我发了个朋友圈说已经甲流第三天，结果各种关心就都过来了，先是 rls，然后是之前一直有联系的学弟，一起打牌的学长，湖中，甚至贾珈老师都来关心，一时间受宠若惊。</p>
+<p>不过总的来说吃了颗药然后洗了个澡之后现在精神状况恢复不少，至少现在四肢都是温暖的，然后也几乎没有疲劳感，喉咙虽然沙哑但至少也只是微微发涩，估摸着明天，应该也就能正式好转了吧。</p>
+<p>期间 rls 提到了还有一个月薪两千的前端单子问我要不要接，我只能回一句“狗命要紧”，赶快回绝了。</p>
+<p>以及突然很想吃水果，尤其是苹果和梨，那种清甜的口感，不知道为啥现在特别想念。</p>
+<p>过了一遍 DRL 的 recitation，PyTorch 的简单入门，讲得还可以，但之前就学过了，不好说对初学者而言友不友好。比较好玩的一点是，我听完 recitation 之后，突然感觉神清气爽，有种大病初愈的感觉，难道 DRL 还有这个好处？</p>
+<p>不过看这样子，明天确实可以开始正常生活了，先是得把这几天没洗的衣服给洗了，然后给自己买点水果解个馋。工作上的话，软工助教一时半会是没啥大事了，实习估计这周也会结束，毕设已经请了一周假，这周组会应该也很好过去。</p>
+<p>三月了，希望能全新开始吧。</p>
+<h1 id="section-9">2023.03.01</h1>
+<p>今天起床之后发现好了不少，除了喉咙还是有点不舒服之外，其他应该基本都好差不多了，然后也第一次韩语课没有迟到。韩语课没啥值得记忆的，只是 zz 居然被老师听出来他的韩语有日语口音。</p>
+<p>中午点了麻辣烫，虽然这次没要酱料，毕竟现在还不太能吃辛辣，于是就吃了清水煮肉片，但是比较好的事情就是发现自己饭量已经差不多恢复了。此外去猫超买了黄瓜、菠萝蜜和哈密瓜，其他的还好，就是菠萝蜜难吃出了一种境界。</p>
+<p>下午摆烂没去 DRL，但是老师发 slides 真的很慢，我还打算至少看看 slides 来学点东西的。</p>
+<p>结果还是摆烂了一个下午，最终还是决定去洗个衣服，至少做点什么像样的事情吧。</p>
+<h1 id="section-10">2023.03.02</h1>
+<p>昨晚据我舍友说睡觉的时候连续咳嗽了一个多小时，说是真怕我睡着睡着人咳没了。</p>
+<p>中午爬起来去开组会，为了防止传染所以戴了个口罩去了实验室，实验室的学长们见到我这阵仗都纷纷戴上了口罩。老师看到这个状况，于是劝我还是等身体完全好了再来实验室，组会少一两次问题不大。于是我就从命地回去了，回去的路上顺手去吃了个午饭。</p>
+<p>吃完午饭才发现这几天的温度已经回升到了十几度了，天气最近也一直是晴天，这两天正好又是春季百团大战，于是就去逛了一下摊位。不过由于春季百团本来就不是重点战场，各个社团也没有拿出家底，所以摊位比较一般，没啥意思。但是，这次逛了摊位之后突然发现，只是走了百十米之后就开始喘气，我自己都没发现现在身子已经虚弱到了这个程度。</p>
+<p>回到宿舍坐了一会喝了口水之后瞬间就恢复了不少，甚至感觉和康复了毫无区别。果然只有出门才会意识到现在自己身体依然十分虚弱，即使没有很明显的症状。算了，先好好把 DRL 笔记整理完吧。</p>
+<h1 id="section-11">2023.03.03</h1>
+<p>身体看起来已经是完全好了，下午先是出门去做软工小作业答疑，但是就在这过程中不断被催实习那边的事情。目前预定下来要做的事情应该还就是之前定下来的那几个页面，然后预计还要去做后台管理应用的一些后端开发。</p>
+<p>因为现在身体好了不少于是直接去上地出勤，虽然状态依然没有完全回来，但是基本上已经是能活动开了。不过打了一晚上一分没上，还是很难受的。</p>
+<p>本来是打算和舍友一起去海底捞的，但是考虑到我出了勤得去洗澡，然后当晚还有韩语作业，只能偷摸溜回来。然而回来发现的第一件事就是我自行车被偷了，我明明好好锁了车，却依然被偷了。本来是打算报警的，但以前也被偷过车的一位同学提醒我这事报警挺麻烦，毕竟你也没法拿出什么很重要的证据说明这车就一定是你的，而且很多行政流程可能还挺麻烦。</p>
+<p>回到宿舍本来打算稍微做点事情的，结果是相当困，写完韩语作业之后就直接摸鱼了。</p>
+<h1 id="section-12">2023.03.04</h1>
+<p>今天起来先是收到了 SECoder 因为网段限制无法满足给所有同学开两个部署容器的麻烦消息，这代表我们对小作业框架要做大改。急急匆匆和高老板、mfy 商议了解决方案之后，我把作业文档和课程公告写好了，就等高老板那边把 code base 修改好，然后开好容器就可以准备谢罪了。</p>
+<p>此外不少同学的软工答疑我还暂且没解决，在此之外实习的事情理应今天解决我还没做。</p>
+<p>不过说实话，现在我对这份实习是越来越不想上心，因为自己毕设真的是没有进度，现在也已经是三月的开头过去三四天了，四月中期拿不出东西是真的要收拾东西走人的。</p>
+<p>有个题外话就是我考研的舍友似乎想来我们组，看上去还真有可能。如果是这样的话，至少几年内有个一起在组里的也不错。</p>
+<p>晚上稍微摸了鱼，打了一晚上德州扑克。这一把非常有意思的一局是，我起手 AK 方片，然后直接冲刺了，翻牌是三张方片，我直接中天顶同花，于是也不演了，打退几家。令我惊讶的是，即使是这样居然还有一家和我对着下注，我看后续牌没有对子，就说明没四条或者葫芦了，结果那一家还在和我对着下注一直到 All in，我这手牌自然是一击把他打飞了。后面我还拿到过天葫芦，天顶两对等好牌，只能说这一把太运势好了。</p>
+<p>其实晚上最主要的还是把软工小作业的问题解决了，更新了文档，发布了课程公告，也终于给大家开好了容器，这件事情也算是平稳过去了。</p>
+<h1 id="section-13">2023.03.05</h1>
+<p>周日，本来想好好做点实习的事情的，结果直接在宿舍开始摸鱼。现在气温开始回升了，慢慢有春天的感觉了，最近心情大好。</p>
+<p>不过下午却是摸鱼摸过去了，中途 c7w 给我转发了 ouuan 在自己 blog 上对软工小作业的批评，怎么说呢，别人说的没错那就只能立正挨打。硬伤就是计时器资源和网络请求并没有设置在组件卸载的时候取消，这一点怎么说呢，因为曾经的项目没有使用过定时器，也没有过于管 abort 网络请求的事情，所以就没这方面的经验，确乎是得学。然后就是 ESLint 配置的事情，怎么说呢，一是 holder 确实 prefer 一个并非大众喜爱的码风，然后 ESLint 没好好配也差不多是为了同学写的时候别真的红一片，我当时第一次开始写代码就经常被 lint 干到崩溃，明明会写的逻辑硬要跟着 lint 后面走。嘛，不过也确实是在想要不从众用 2 space 缩紧和单引号算了，但是说实话 holder 真的是单引号极端厌恶。</p>
+<p>整体要说的话，实际上问题也就是一个，就是“简陋”，不符合当下的一些约束或者说惯例，而且为了零基础也能上手，省掉了一堆东西还几乎没多少填空。</p>
+<p>算了，还是等 ouuan 来好好调教一番吧，我摆烂了，我只想毕业了。</p>
+<p>但是说实话，还是赶快做点事情从周一开始恢复到第一周的工作状态吧，否则实在是有点太摸了。</p>
+<hr />
+<p>总之今天整体还是太摸鱼了，实习那边的东西没有一发调出来也是真的没绷住，然后还时不时被 ouuan 拷打，包括各种可以优化的地方。看来 holder 还需要再稍微锻炼一下抗压能力，这点抗压能力完全不能应付啊，包括之前被 cyr 拷打毕设也是，完全做不到坦然面对面前的问题呢，遇到问题只想摆烂和找借口嘴硬，这实在是有点过分了。</p>
+<h1 id="section-14">2023.03.06</h1>
+<p>今天早上起来就发现已经十点了，已经过了韩语课的签到，于是也懒得去了，看到湖中在说想出勤，于是直接去了五道口。没有想到的是，即使是星期一的上午，五道口依然充满了人，完全打不了多少，只能随便糊糊作罢。</p>
+<p>下午精神终于回来了一点，昨天摆烂加上被拷打真的是完全绷不住，但还是得赶快调整。到了工位，整理了一下自己的东西，结果发现耳机的耳塞又掉了，没有办法只能赶快下单新耳机，不能再将就着用这个破耳机了。下午依然是随便跑了一下 Puffer 的实验，可喜的是这一次实验居然似乎有了点看起来能行的样子，因为现在至少能打过启发式了，至少不是智障了。在等实验的过程中帮 abmfy 修了一下日语作文，然后准备还是赶快把实习那边的事情给做完，少一件事终究是好事。</p>
+<p>今早在出勤的时候顺手把当前前端小作业存在的问题给罗列了一下，整体来讲虽然有点绷不住但还是感谢 ouuan 提供了这么多的改进意见。</p>
+<h1 id="section-15">2023.03.07</h1>
+<p>7 号真实地没有任何可以记录的事情，因为早上起来之后随手在群里发了一个“礼问上几”，得到上地机厅只有一人的答复之后，立刻收拾东西去出勤了。然后原本是打算随便打打就下午回来的，结果因为手感好到离谱，直接上了四十几底分，于是就这样一直打下去了。最后快要闭店的时候，随手开了一把高桥名人，结果 24 分纵连全打上了，鸟加 13.2 吃分。</p>
+<p>但是事情总是得做的，因为和实习那边说了已经写完了订单页面，所以这个坑得填上，最终还是来到了 308 开夜班，一路做到早上六点，真实做到了三四个小时糊完整个页面。</p>
+<h1 id="section-16">2023.03.08</h1>
+<p>7 号晚上写完订单页面之后我意识到周三 8 号的韩语课多半是起不来了，于是和老师说明了情况，打算韩语课退课自学了。</p>
+<p>8 号的话，起来之后先是去了 DRL，下课后结果兴致来了就去吃了顿麦当劳然后五道口出勤，出到了晚上回来和舍友吃了顿饭，308 睡了一觉之后就是软工的课咨委启动会，开完之后就十一点了，直到这个时候才准备开始做毕设。</p>
+<p>这两天属实没有什么特别有意思的事情，也没有什么有意思的新闻，只是很平淡地摸鱼了两天，只能赶快把毕设启动了，不然太摸鱼了。然后韩语的收音和今天 DRL 的课程内容还得整理一下，不过还是毕设为重，这些可以明天开完会之后慢慢摸索。</p>
+<h1 id="section-17">2023.03.09</h1>
+<p>昨天为了赶快干活，晚上做毕设做到三四点，但是实在是顶不住了赶快去睡觉了。但是这一觉也没睡多好，中间醒了几回。早上起来就看见导师要去参加另外一场会于是组会交给我们自行组织，绝佳摸鱼机会。</p>
+<p>于是下午的组会也只进行了半个小时就结束了，然后我们就在讨论导师参加的那一场会会开到什么时候，毕竟我们还得装作认真讨论的样子，至少不能让组会比导师的会提早结束。结果是没讨论出任何有价值的结果，就直接回实验室摸鱼聊天，没想到的是，导师已经回来坐到实验室了。</p>
+<p>今天机厅据说人并不多，但是说实话事情还是不少的，还是稍微做做吧，大不了周五出勤出一整天。</p>
+<h1 id="section-18">2023.03.10</h1>
+<p>周五似乎并没有什么安排，因为周四理论上已经大体解决了问题，我也成功在周五凌晨六点前把实习的代码交掉了，虽然我知道里面还有不少的错误，但这些错误也不是我写的，我真的很难去帮别人补天。</p>
+<p>然而下午毕竟是要验收的，验收这就发现这玩意几乎没有办法用，功能上欠缺了一堆东西，实习那边的学长能看得出来很着急，于是急忙安排我们前端开发的两拨人赶快开会对接。我迅速把一些比较严重的问题扔到了群里，但是他们的答复也比较暧昧不清，不太能对实际解决问题起到什么作用。</p>
+<p>晚上稍微开了个会，我直接对着他们的代码指指点点了一通，总之就是他们那边出了不少问题（虽然感觉我也可能出问题），导致现在功能上完全用不了。在这之前事实上我已经和 yfgg 吐槽了很多他们代码上的错误之类的，总之就是血压超级高。</p>
+<p>开会的时候我直接说我周末不奉陪了，你们的问题你们慢慢解决，然后我就开始心安理得地摆烂，打了一晚上德州扑克之后就早早睡了。</p>
+<h1 id="section-19">2023.03.11</h1>
+<p>周六是约好先去麦当劳吃饭然后 V+ 群群 K 的，我定好了十一点的闹钟，虽然被闹醒了但是小小眯了一会，没想到就直接迟到半小时。</p>
+<p>因为这次参加的群友相当之多，最终我们是分为中 V 和日 V 两边举行，我一直在日 V 这边，确实也唱了相当多的 V 曲，嗓子已经炸裂了。</p>
+<p>晚上本来是打算聚餐的，但是还是和湖中、秋枫老师临时起意去窝出了一小会勤，只是没想到窝现在十点钟就会关门，于是也没玩很长时间就只能回来了。</p>
+<p>回来洗了个澡，准备稍微干点活。在今天玩的时候实习那边还在说打算周日把 bug 修好，但总之我有点不想再陪他们玩下去了，我把我的工作做好，这周，我必须把那里的事情放下来做毕设了，后面软工助教会还得开，不能再这样拖泥带水了。</p>
+<hr />
+<p>今天还是主要配置了一下 DRL 的环境，因为手上的 Mac 说实话已经很不好用了，很怕后面要做深度神经网络的时候撑不住，于是直接把代码拉到服务器上去了。但是这有一个重要的问题，DRL 的作业是基于 Gymnasium 的，这是需要渲染图形界面的，那我就需要通过 X11 转发图形界面到我的 Mac 上。但是刚配置完 X11，就报错了：</p>
+<figure class="highlight shell"><figcaption><span>ZSH</span></figcaption><table><tr><td class="code"><pre><span class="line">X Error of failed request:  BadValue (integer parameter out of range for operation)</span><br><span class="line">  Major opcode of failed request:  149 (GLX)</span><br><span class="line">  Minor opcode of failed request:  3 (X_GLXCreateContext)</span><br><span class="line">  Value in failed request:  0x0</span><br><span class="line">  Serial number of failed request:  143</span><br><span class="line">  Current serial number in output stream:  144</span><br></pre></td></tr></table></figure>
+<p>我查了半天终于在 StackOverflow 上找到了解决方案，只需要在 MacOS 的客户端这边运行下述命令启用 IGLX 即可：</p>
+<figure class="highlight shell"><figcaption><span>ZSH</span></figcaption><table><tr><td class="code"><pre><span class="line">defaults write `quartz-wm --help | awk &#x27;/default:.*X11/ &#123; gsub(/\)/, &quot;&quot;, $2); print $2; &#125;&#x27;` enable_iglx -bool true</span><br></pre></td></tr></table></figure>
+<p>然后普通地 <code>ssh -Y</code> 连接到 Linux 服务器端就可以了。如果是 VSCode 的话，需要在 SSH config 里面加上下面两行来保证 X11 启用：</p>
+<figure class="highlight shell"><figcaption><span>SSH config</span></figcaption><table><tr><td class="code"><pre><span class="line">ForwardX11 yes</span><br><span class="line">ForwardX11Trusted yes</span><br></pre></td></tr></table></figure>
+<h1 id="section-20">2023.03.12</h1>
+<p>今天是周日，按照道理是和实习那边对前端的任务的，不过下午我都用来搬迁毕设代码框架里面的一个第三方框架了。我毕设真的是，毫无进展，真的得速速做点东西出来了，尤其是下一次组会真的得说点什么东西出来了，不然这也太慢了。</p>
+<p>晚上临时起意去了胜博殿去吃炸猪排，不得不说，特别好吃，超出想象的好吃。猪排我点的千层锦，切面可以看到是一层层猪肉叠起来，最后炸出来居然不散开，居然还能保持猪排的形状，这也太惊艳了。小菜比如说包菜丝、茶水、金枪鱼拌饭、味增汤之类的就没有那么惊艳，但绝对也是平均向上的水平。</p>
+<p>今晚吃饭的地方旁边就有 maimai，于是就去打了几把，差点鸟掉 Big Daddy，但是尾杀崩盘了就没办法了。这个机厅最大的问题就是游戏币原价太贵了，两块钱一币，maimai 1pc 要五币，原价的话十块钱 1pc，实在是离谱。</p>
+<p>晚上回来发现自己 B 站六级了，于是做了一下硬核会员考试，擦边通过，关于鬼畜的一些东西真的已经是考的都是边边角角完全不知道了。做完这些迅速过了一下实习那边的代码，把订单列表页的按钮都写上了回调函数，我这边工作基本就相当于结束了。交了一些 Bug report，和学长说了自己可能得做毕设之后，就暂且告一段落吧。</p>
+<h1 id="section-21">2023.03.13</h1>
+<p>周一，因为已经退掉了韩语，所以没有早起，起来之后按照以往的规划去了五道口出一小会勤。本来是打算出一两个小时就回去去工位做毕设的，结果是一直打到了闭店。</p>
+<p>不过这一次出勤实在是太值当了，不仅杀掉了心心念念的捕物帐、纵连派对、跳舞狗三个 13+，还 AP 了海底谭和弱虫。最经典的事情则是，因为我已经连续出勤了七个小时已经累得不行，但是最后快闭店的时候我同学拉着我说再来一把。我秉持着已经这么累了，再累点也没事的态度开了一把 DX 奶，没想到的是我把这玩意杀了。而正好，同学帮我录下来了最后十秒钟，当了一次战地记者。</p>
+<p>回来之后就把这个视频上传到了 B 站，还是很有意思的。</p>
+<h1 id="section-22">2023.03.14</h1>
+<p>今天决定好好做毕设了，不过这次我打算换方向了，我不打算完整复现论文了，而是直接用 community code base，在这个基础上先跑起来 Pensieve 作为 baseline。感谢贾老师的建议。</p>
+<p>不过这次在跑起来这个 code base 的过程中遇到了相当多的困难。我一开始打算在服务器上运行起来这套代码，首先遇到的问题是导入自己编写的模块会导致 Python 找不到模块，这也算是个经典问题了，不过这次我找到了这样一套 Python 引言代码，感觉可以后期长期使用这样一套引言来解决自己编写模块之间互引的问题：</p>
+<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">current_path = os.path.dirname(os.path.abspath(__file__))</span><br><span class="line">sys.path.append(os.path.join(current_path, <span class="string">&quot;..&quot;</span>))</span><br></pre></td></tr></table></figure>
+<p>之后遇到的问题是服务器上没有 OpenMPI，这个简单，直接 <code>sudo apt-get</code> 就可以了。然后还有一点就是没有装 Mujoco 131，这个也不难。</p>
+<p>然而后面的就是大问题了，因为这个代码框架还是涉及到图形界面，所以还是会涉及到 SSH X11 转发图形界面，然而我本以为配置好了，结果这次运行的时候炸了 <code>No specified protocol</code>。我上网找了一下，基本都是说没有权限的问题，用 <code>xhost +</code> 命令就可以解决问题，然而我无论怎么尝试都不行。于是我放弃了，我决定先在我 Mac 本地跑起来这一套玩意。</p>
+<p>然而在 Mac 本地上就有另外的问题，OpenGL 找不到。我尝试了很多方法安装 OpenGL，但都不行，最后还是找到了相当邪道的解决方式，即直接修改第三方 <code>pyopengl</code> 里面寻找 OpenGL 的代码。代码位于 <code>platform/ctypesloader.py</code> 中，里面函数 <code>_loadLibraryWindows</code> 中有一段如下的代码：</p>
+<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line">fullName = <span class="literal">None</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    fullName = util.find_library(name)</span><br><span class="line">    <span class="keyword">if</span> fullName <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">        name = fullName</span><br><span class="line">    <span class="keyword">elif</span> os.path.isfile(os.path.join(DLL_DIRECTORY, name + <span class="string">&#x27;.dll&#x27;</span>)):</span><br><span class="line">        name = os.path.join(DLL_DIRECTORY, name + <span class="string">&#x27;.dll&#x27;</span>)</span><br><span class="line"><span class="keyword">except</span> Exception <span class="keyword">as</span> err:</span><br><span class="line">    _log.info(<span class="string">&#x27;&#x27;&#x27;Failed on util.find_library(%r): %s&#x27;&#x27;&#x27;</span>, name, err)</span><br><span class="line">    <span class="comment"># Should the call fail, we just try to load the base filename...</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<p>这里直接把 <code>fullName</code> 变量硬设置为 <code>"/System/Library/Frameworks/OpenGL.framework/OpenGL"</code> 即可（在 MacOS 上），这样的话似乎就能通过检查了。</p>
+<p>之后也是 Mac 上装一下 OpenMPI，直接 <code>brew install openmpi</code> 就行，然后就跑起来了。然而我 Mac 究竟是老了，所以跑的时候风扇直接起飞，还是得放到服务器上。不过我发现一件事就是这玩意完全没有生成什么图形界面，意思就是说理论上根本碰不到 X11 转发的问题，所以我就打算今天至少得把这玩意在服务器上跑起来才行。</p>
+<hr />
+<p>在服务器上二分了一下确认了是 <code>mpi4py</code> 这个包在 import 的时候会爆炸，不过我也用不到这个东西所以直接注释掉就没有那么多事情了。</p>
+<p>这个框架另外还附赠了一个用 Flask 编写的前端用来可视化训练数据，不过看起来这个前端目前也是炸得不轻，啥地方都是 500 Internal Server Error，还得一步步修理。</p>
+<p>最终还是找到了前端的问题，是因为我以为代码里面的 <code>viskit</code> 是个需要安装的第三方，所以直接用 <code>pip install viskit</code> 装了一下，结果这个 <code>viskit</code> 事实上是自己写的一个 <code>viskit.py</code> 模块。而碰巧的是用 <code>pip</code> 装的时候装了个很老的依赖，现在更新到了 v3 而我装的是 v1，恰巧这个依赖还真的在 <code>viskit.py</code> 里面引用了，所以直接爆炸了。</p>
+<p>我比较怀疑这个框架里的 <code>viskit.py</code> 是一个 self modified 的魔改版第三方，所以才不能从 <code>pip</code> 直接下载。</p>
+<p>最后他还有一个用来展示训练结果的 Python 文件，里面读取了缓存的模型参数然后用了 Gymnasium 渲染一个图像出来，不过这里又是涉及到图像 X11 转发，于是又理所应当地炸掉了，但今晚我也懒得调试这个东西了，明天要帮黄老师找他博士毕业论文的错别字还得尽量把 Pensieve 写上去。</p>
+]]></content>
+      <categories>
+        <category>【生活记录】日记</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>安卓前端开发杂谈</title>
+    <url>/2021/09/01/android-dev-exp-1/</url>
+    <content><![CDATA[<p>安卓的移动端开发，属实让我血压高了一小段时间。毕竟已经接触过类似于 React Native 那种基于 TypeScript 语言的、优秀的跨平台移动端框架，再去尝试用繁琐的 Java 语言写安卓前端自然是不适应且感到烦躁。</p>
+<p>但是毕竟是 Java 程序设计训练课程，安卓前端开发作为其最大的特色，不得不消受。</p>
+<span id="more"></span>
+<h1 id="关于数据绑定">关于数据绑定</h1>
+<p>如果要我说最大的不适应的地方，首先就是数据和图形界面的完全分离。在 React Native 框架之中，数据和图形界面的管理大概是这样的：</p>
+<figure class="highlight typescript"><figcaption><span>TypeScript</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> App = <span class="function">(<span class="params">props: AppProps</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// Set states &amp; initialize</span></span><br><span class="line">    <span class="keyword">const</span> [bar, setBar] = useState&lt;<span class="built_in">number</span>&gt;(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Some functions to update or rewrite data</span></span><br><span class="line">    <span class="keyword">const</span> update = <span class="function">() =&gt;</span> setBar(<span class="function">(<span class="params">o</span>) =&gt;</span> o + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Write UI with TSX, use data freely</span></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="xml"><span class="tag">&lt;<span class="name">View</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Text</span>&gt;</span> Hello world! <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;`The val of bar is $&#123;bar&#125;`&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;`Property foo is $&#123;props.foo&#125;`&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Button</span> <span class="attr">onClick</span>=<span class="string">&#123;update&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但是在安卓之中，图形界面完全定义在 <code>.xml</code> 文件之中，而且一定程度上其定义各个组件摆放方式的语法细节的繁杂程度不低于 HTML。而如果需要将数据载入图形界面，则首先要根据组件的 ID 获取组件，之后才能调用各种方法设定具体属性。</p>
+<figure class="highlight java"><figcaption><span>Java</span></figcaption><table><tr><td class="code"><pre><span class="line">((TextView) view.findViewById(R.id.entity_name)).setText(data.name);</span><br></pre></td></tr></table></figure>
+<p>这里出现的 <code>R</code> 类据说是相当厉害的。但是我第一次接触安卓的时候，这个符号给我带来的感觉就是不安，因为我再也不能像写 React Native 一样至少自认为自己掌握了程序之中的数据流。换一种说法，即使 React Native 可能做了很多背后工作，但它至少做到了让开发者在很多时候能直观引导数据流。</p>
+<p>对于按钮等组件，React Native 框架下可以直接传入回调函数。而众所周知 Java 是纯净的面向对象语言，怎么会有 lambda 这种异端呢（新版本的 Java 已经离经叛道了！）。</p>
+<p>所以你需要写监听器对象，重写其中的方法等等。</p>
+<hr />
+<p>并不是说这样不好，我还记得之前大一小学期的时候写 Qt 很多时候就是各种指针到处乱飞然后到处乱 <code>set</code> 这个那个的，最后一个 <code>draw</code> 函数里面上百行的，成块的各种格式设定、字体设定、内容设定、排列设定，然后这次写安卓让我回忆起了那一段黑暗时光。</p>
+<h1 id="并不适应的适配器模式">并不适应的适配器模式</h1>
+<p>如果只是想给一个 <code>TextView</code> 载入文字，直接几个 <code>set</code> 函数就结束了。但是给一个格式复杂的列表载入数据，则相当繁琐。比如说现在主流的 <code>RecyclerView</code>，其载入数据，就需要你自己编写一个数据适配器。</p>
+<p>我首先是上网找轮子，随后想了一下，干脆自己包装了个简单的 <code>RecyclerViewAdapter</code> 先勉强用用。</p>
+<p>将数据塞到图形界面上，最重要的三个东西是上下文、使用什么 <code>layout</code> 和数据本身，那么适配器的构造函数就需要接受这三项。然后就是平凡地重写 <code>RecyclerView.Adapter</code> 所要求的三个函数。不过这里我在重写 <code>onBindViewHolder</code> 的时候留了空，因为这里就是定义适配器最重要部分——数据如何映射到 UI 的函数。我将这一个函数设为虚函数，让子类继承重写就可以实现各种映射方式。最后的成果大致这样：</p>
+<figure class="highlight java"><figcaption><span>Java</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">RecyclerViewAdapter</span>&lt;<span class="title">T</span>&gt; <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">Adapter</span>&lt;<span class="title">RecyclerViewAdapter</span>.<span class="title">ViewHolder</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> Context mContext;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">int</span> mLayoutId;</span><br><span class="line">    <span class="keyword">protected</span> List&lt;T&gt; mData;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RecyclerViewAdapter</span><span class="params">(Context context, <span class="keyword">int</span> layoutId, List&lt;T&gt; data)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.mContext = context;</span><br><span class="line">        <span class="keyword">this</span>.mLayoutId = layoutId;</span><br><span class="line">        <span class="keyword">this</span>.mData = data;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="meta">@NonNull</span> <span class="function">ViewHolder <span class="title">onCreateViewHolder</span><span class="params">(<span class="meta">@NonNull</span> ViewGroup parent, <span class="keyword">int</span> viewType)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ViewHolder(</span><br><span class="line">                LayoutInflater.from(mContext).inflate(mLayoutId, parent, <span class="keyword">false</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBindViewHolder</span><span class="params">(<span class="meta">@NonNull</span> ViewHolder holder, <span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// <span class="doctag">TODO:</span> What is this?</span></span><br><span class="line">        <span class="comment">// holder.updatePosition(position);</span></span><br><span class="line">        <span class="keyword">this</span>.convert(holder, mData.get(position));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">convert</span><span class="params">(ViewHolder holder, T data)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getItemCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> mData.size();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ViewHolder</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">ViewHolder</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">private</span> View mConvertView;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">ViewHolder</span><span class="params">(View itemView)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>(itemView);</span><br><span class="line">            <span class="keyword">this</span>.mConvertView = itemView;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> &lt;K extends View&gt; <span class="function">K <span class="title">getViewById</span><span class="params">(<span class="keyword">int</span> viewId)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> (K) mConvertView.findViewById(viewId);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>用起来也简单，传入三个要素，之后重写 <code>convert</code> 方法定义一下数据到 UI 的映射就好了：</p>
+<figure class="highlight java"><figcaption><span>Java</span></figcaption><table><tr><td class="code"><pre><span class="line">binding.entityList.setAdapter(<span class="keyword">new</span> RecyclerViewAdapter&lt;Entity&gt;(</span><br><span class="line">    HomeFragment.<span class="keyword">this</span>.getActivity(), R.layout.home_entity_item, baseEntities</span><br><span class="line">) &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">convert</span><span class="params">(RecyclerViewAdapter.ViewHolder holder, Entity data)</span> </span>&#123;</span><br><span class="line">        ((TextView) holder.getViewById(R.id.entity_name)).setText(data.getLabel());</span><br><span class="line">        ((TextView) holder.getViewById(R.id.entity_category)).setText(data.getCategory());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>你会发现，这比 React Native 要写的东西多太多了。上面这么多需要折腾的，React Native 只需要这样写：</p>
+<figure class="highlight typescript"><figcaption><span>TypeScript</span></figcaption><table><tr><td class="code"><pre><span class="line">&lt;View&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        baseEntities.map(<span class="function">(<span class="params">val, ind</span>) =&gt;</span> (</span><br><span class="line">            <span class="xml"><span class="tag">&lt;<span class="name">View</span> <span class="attr">key</span>=<span class="string">&#123;ind&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;val.name&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;val.category&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span></span><br><span class="line">        ))</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/View&gt;</span><br></pre></td></tr></table></figure>
+<p>就可以实现一个列表了。</p>
+<p>Java 我写了一整个类，光数据转成 UI 也写了好几行长代码，这还没有算 <code>.xml</code> 文件。</p>
+]]></content>
+      <categories>
+        <category>【杂谈】开发</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>JS 文件本地化</title>
+    <url>/2022/08/20/blog-js-localize/</url>
+    <content><![CDATA[<p>自从 JSDelivr 半挂了之后就一直在为这些事情苦恼。</p>
+<span id="more"></span>
+<p>简而言之，一个静态站需要拉取一堆 JS、CSS 文件。而正常而言的 JS 文件完全可以从网络上当场获取，但是由于 JS CDN JSDelivr 半墙，我只能速速转战其他的 CDN，结果近日发现速度非常不理想，甚至仅仅是拉 jQuery 都花了 15 秒，这完全不能接受。</p>
+<p><img src="/uploads/blog-js-localize/1.png" /></p>
+<p>本来想尝试一下换其他的 CDN，但是怎么试都不算快。</p>
+<p>还是暴力解决方法比较好，我直接把 jQuery 等一系列常用的东西的 min JS 打包放在了自己博客文件夹内，每次请求只不过是访问本地文件，太完美了。</p>
+<p>虽然问题暂且是解决了，但是我还是觉得，为啥这些 CDN 会受限呢，真的和什么敏感领域有关吗。</p>
+]]></content>
+      <categories>
+        <category>【杂谈】开发</category>
+      </categories>
+  </entry>
+  <entry>
     <title>2022 暑假生活记录</title>
     <url>/2022/05/27/2022-summer-record/</url>
     <content><![CDATA[<p>2022 年的暑假，将会来得意外地早，因为我提前回家了。</p>
@@ -826,245 +1068,6 @@
 ]]></content>
       <categories>
         <category>【生活记录】日记</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>2023 春季学期记录</title>
-    <url>/2023/02/20/2023-spring-record/</url>
-    <content><![CDATA[<p>应该是本科的最后一个学期了，最近事情也比较多，头绪也没完全理清楚，不如效仿之前假期通过日记的方式强迫自己认真工作，也写些学期中的日记算了。</p>
-<p>目前应该是毕设、先前和快手的项目以及软工助教三件长期的事情，另外有一份可能短期较忙后期平缓的实习。</p>
-<span id="more"></span>
-<h1 id="section">2023.02.20</h1>
-<p>学期的第一天，滚去上了韩语课，没想到的是韩语课居然不让使用电脑，本来还打算以后还可以在课上少说干点活的，看起来也不行了。中午偷摸去五道口出勤，结果还是一堆人，下午只能来工位，把预定中的几件事做了：</p>
-<ul>
-<li>迁移好服务器上的数据，跑上实验</li>
-<li>确认小程序的商品列表页面写完，check 一下 yfgg 那边给的信息</li>
-</ul>
-<p>本来以为迁移数据是小工作，结果发现还挺麻烦，在经历了实验室机子硬盘满了换挂载之后，我发现我测试集好像没了，现在只能想办法去把这个测试集找出来了。</p>
-<p>最终还是把测试集找出来了，之前写 Pensieve PyTorch 的时候用了这个数据集然后忘了 ignore 传到了 Github 上，只能说感谢当时比较粗心了。</p>
-<p>另外就是老师又把我拉到了一个项目的工作群里面，事情又要多起来。之后就是用新 Puffer 数据训练出来的模型依然是炸裂状态，洗数据的脚本不知道为什么很慢，而且估计还是有问题。自己个人网站的 CI 也不知道为啥停了三个星期没动。我现在真的是，完全不知道从哪里下手。</p>
-<hr />
-<p>现在洗数据的脚本慢的问题居然莫名其妙解决了，并且顺带学了一个 Python 的小知识。</p>
-<p>洗数据有个非常经典的操作，就是不断向一个列表之中 append 数据，正常都会这么写：</p>
-<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line">batch = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> data <span class="keyword">in</span> tqdm(data_reader):</span><br><span class="line">    <span class="comment"># Process</span></span><br><span class="line"></span><br><span class="line">    batch.append(data_item)</span><br></pre></td></tr></table></figure>
-<p>然而由于取字段运算符（就是 <code>batch.append</code> 中的 <code>.</code> 运算符）事实上在 Python 中占用的资源很大，所以事实上用下面的写法速度会快很多很多：</p>
-<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line">batch = []</span><br><span class="line">add_data = batch.append</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> data <span class="keyword">in</span> tqdm(data_reader):</span><br><span class="line">    <span class="comment"># Process</span></span><br><span class="line"></span><br><span class="line">    add_data(data_item)</span><br></pre></td></tr></table></figure>
-<p>我的数据大约是 <span class="math inline">\(10^6\)</span> 量级，然后每次都需要对四个列表 append，改用这个写法直接让洗数据时间从近三个小时变成了两分钟左右。</p>
-<p>这种改进方法有个需要注意的地方就是不能改变 <code>batch</code> 所指向的内存，否则先前的 <code>add_data</code> 将无法正确修改 <code>batch</code> 中的内容。比如 <code>batch = batch[: -1]</code> 之类的重新指向的写法就不能在循环体内出现。</p>
-<hr />
-<p>最后发现个人网站 CI 不动的原因是 Travis CI 收费了，而我自然是欠费的。那么，只能用免费的 Github Actions 了，虽然要把仓库内容给 Github 去训练 Copilot，但反正我这个个人网站他能学到个什么呢？</p>
-<h1 id="section-1">2023.02.21</h1>
-<p>今天早上又得早起，去软工课堂上讲小作业，不过因为学堂路堵车了稍微晚了点到，结果前排位置已经没了，只能坐到角落里。不过，由于高老板已经把小作业的 Slides 发出来了，所以我发现坐我前面的同学已经开始做了。要说实话的话，看到他能够非常顺利地把前端小作业运行起来我还是觉得挺欣慰的，毕竟没在这种地方出锅。</p>
-<p>软工课还是一如既往的无聊，周围的同学要么打牌，要么写小作业，要么复习自动机，而我因为没法给电脑充电所以没办法去做实习里的开发，只能坐牢睡觉。</p>
-<p>中午依然是偷偷出勤，现在疫情放开之后，五道口机厅就连工作日的下午往往也有近十个人在打。今天尝试推了推几个 13+ 的鸟，未果，随后因为又来了至少三四个人于是想了想就撤退回工位了。</p>
-<p>回到工位没想到第一件事情是有同学报告了 THUInfo 的 bug，虽然没花多少时间就排查出来是课程信息缓存策略有问题，如果退课并选择另一位老师同样的课的话就会导致无法正确更新缓存中的数据。然而即使是小事，这件事情也花了我一些时间。之后就是正常拉新的 Puffer 数据然后跑实验，但是现在实验室机子的存储空间大概是不够了，不能像之前那样一跑几天，几千个几千个 epoch 那样玩了，现在差不多收敛之后跑到 1000 epoch 左右就得停了。</p>
-<p>昨天挂上去的实验结果不是很好，最高的 reward 也只能达到 12 左右，甚至达不到启发式的 15，今天换了一个新的、更大的数据集看看，希望能够收获一点正常的结果。</p>
-<p>以及实习那边又开始催了，感觉是该找个时间好好卷卷实习了，然而最近晚上都不太好 308 直接干，因为连着三天需要早上十点钟去上课，还挺麻烦的。</p>
-<p>晚上和 xjj 他们去鹤一吃了顿烤肉，结果回来困到直接在椅子上睡着了，本来还想晚上做做事情的。</p>
-<p>另外让我惊讶的是，晚上居然有位同学来问软工小作业相关的东西，一看他都做下去不少了，感觉现在一字班果然还是不可小觑，说不定再过两三天就有人做完了。</p>
-<h1 id="section-2">2023.02.22</h1>
-<p>今天早上依然是韩语课，今天讲松紧辅音，然而我并不太会。下课之后依然是偷偷去五道口出勤一会然后赶回来上下午的强化学习。</p>
-<p>强化学习我记得课容量应该是四十几左右，结果不仅是微信群里就有一百四五十人，线下教室里也有快两百人，而我这个稍微晚到的就只能站在后面听了一节课。比较难绷的是，因为这堂课的内容我已经基本学过了，所以我就没怎么听，结果还被喊起来回答问题，还要用英语，这就很麻烦。不过说实话，这门课很符合我对大学课堂的想象，一个能有强交互性的、老师能和你保持交流的课堂，比单纯念 PPT 的单向授课不知道好了多少，可能也是因为这位老师也并没有大我们多少岁数，交流起来比较没有障碍吧。</p>
-<p>现在计划把目前这个网站上和 RL 相关的东西按照这堂课的 outline 给整理好，因为我发现这堂课所使用的符号系统之类的比较贴合我所用的，正好也不要废多大的力气。</p>
-<p>下午继续来工位，然后等一手 SOA 课程的消息，如果事情多、不好混分的话就赶快退了，本来大四也就想摆烂混个及格分赶快毕业得了。结果就是立刻从同学那边听闻课程大作业要求基于 ChatGPT 做开发，这已经完全超出我所需要了解的内容了，于是立刻退课跑路。</p>
-<hr />
-<p>今天看了一下用新一天的 Puffer 的 fox channel 训练的情况，更是爆炸，甚至到最后都负 reward，根本没收敛，我现在真的是在怀疑我的数据处理真的存在问题，然而我也是真的不知道怎么往下处理了，但这毕竟总是要结项的，我这边也要给结果的。</p>
-<p>今天估计要做的事情差不多是：</p>
-<ul>
-<li>收拾一下强化学习的笔记</li>
-<li>写实习那边的小程序</li>
-<li>毕设看看能不能推进点东西出来</li>
-</ul>
-<h1 id="section-3">2023.02.23</h1>
-<p>周四终于是没有要我十点钟就要起床的事情了，前三天连续早起让我精神状况相当不好，于是周三晚直接很早就睡了，结果一路睡了快十二个小时。</p>
-<p>周四恢复了组会，一点半准时赶到会议室。组会本身是没有什么很大意思的，比较有意思的有两件事，一件是和我一起做毕设的同学好像已经进展很快，这让我比较焦虑，另外一件就是我和老师说了我寒假在实习的事情，他感叹了一句“年轻人忙点好，但是我每周该查你毕设还是查”。总之就是这波组会开下来就让我感觉毕设再不做出点东西好像就得挂了。</p>
-<p>开完组会稍微收拾了点东西，把实习那边微信小程序开发者工具的一个 bug 修好之后就去上地出勤，不过因为状态不咋样就没怎么打。</p>
-<p>晚上回来之后实习那边的学长也在说我最近事情实在是太多，计划再找一个来帮忙的人，虽然可能需要我让渡部分回报（工资、股份之类的）。我感觉我最近确实也不太想继续推进实习了，实在是太累了，于是就答应了下来。结果他们很快就找来了两位似乎比较有意愿的同学。</p>
-<p>另外就是软工助教那边讨论大作业给分的事情，本来说很快的会，愣是开了一个多小时，就为了讨论应该怎么给同学们解释我们改革的动机和尽力阻止内卷。最后讨论下来，是和同学们明确给出过程评分要求（比如 Git 开发 comment 管理之类的评分），并且说明“完成拓展功能很容易导致在过程评分上失分，甚至可能得不偿失”，以此来尽力阻止过度追求满分的行为。</p>
-<p>开完会洗完澡来到 308 本来计划好好写写实习那边的东西，结果却是一躺就睡着了，一直睡到了周五的十二点，看来这几天是真的困了。</p>
-<h1 id="section-4">2023.02.24</h1>
-<p>从 308 的沙发上醒来之后，就简单点了个外卖，然后和 return 讨论了一波日语中助词「は、が」的用法，这些东西稍后整理到自学手册里。外卖到后吃完了就继续推实习那边的事情了。</p>
-<p>结果说是好好做实习的事情的，因为空间里刷到了一条以椭圆曲线加密算法为背景的高中题，就研究了大概几个小时的椭圆曲线。只能说完全不能集中做实习这边的事情。</p>
-<p>好摸啊，今天一整天感觉一直到晚上六点都没做出来什么实际的东西，果然还是得 push 一下自己。结果就这样一直到了晚上八点，还是没有做出来什么实质性的东西，倒是实习那边的学长似乎有一些想找我的事情，先来了解一下吧。</p>
-<p>和实习那边新找的技术团队简单见了一个面，看起来他们确实是很有经验的开发团队，至少对商业开发的流程把握比我这种随便写写玩玩的人实在是高到不知道哪里去了，如果可以的话还希望能把我这边接手过去我就可以稍微歇歇了。这里还是得感谢一下实习的 leader 还是帮我在投资人那里保住了一些利益，至少原先约定的现金工资还是能给出，这就还可以了，因为我确实没有作出那么多的贡献。</p>
-<p>讨论下来最终我应该就只要在一周内完成：</p>
-<ul>
-<li>“我的”页面以及订单详情页</li>
-<li>自定义导航栏</li>
-<li>询问学校和手机的 PageContainer</li>
-</ul>
-<p>这三个应该就可以暂且休整了，感觉整体安排还是很好的。</p>
-<p>晚上稍微花了点时间修正了一下主页相关的一些东西，目前来看问题不大。</p>
-<p>另外，最近不少人软工小作业前后端都做得七七八八了，目前也没什么大的 bug report，还算是心里安稳了不少，希望 CI/CD 也不会出大锅。</p>
-<h1 id="section-5">2023.02.25</h1>
-<p>今天大概是实习那边简单开一个会，把团队所有的同学召集起来互相认识。不过说实话，我这个做开发的，确实不太了解运营那边，倒是 yfgg 需要和运营那边对接后端管理，反倒是需要经常接触。</p>
-<p>中午出去吃牛肉面，结果那家店既不能在线下单，而且还需要自己取餐，还没有防丢包机制，属于是当下互联网应用普及背景下的漏网之鱼了。</p>
-<p>下午于是就正常工作把“我的”页面赶快写完，说是今晚就打算验收，那总之认真干干吧。</p>
-<p>然而微信小程序这种东西就是很折磨，写了一整天还是有些逻辑上的问题。另外，在写这玩意的时候还有一位上软工的同学一直在找我答疑，然而这位同学似乎对一些计算机的基础知识都不是特别熟练，确实也弄得我有点麻烦。</p>
-<p>晚上就直接摸鱼了，打了一晚上德州，然后早早睡了。</p>
-<h1 id="section-6">2023.02.26</h1>
-<p>一点没睡好，因为突然出现了一点点的感冒症状，喉咙发痒然后咳痰，我在怀疑是冬春之交的流感，或者是我复阳了，顺带着精神状况也不是特别好，有点头晕且没啥精神，口干舌燥的很难受。</p>
-<p>十一点左右就醒了，打了一把牌之后就去看 KOP maimai 决赛，yoshiki 还是很稳健地拿下优胜，确实也没啥特别可以说得上是悬念的东西。然而最主要的是在国际服比赛之前三位主持人透露了似乎 SBGA 终于要把国服 UI 更新到 festival 的信息：</p>
-<ul>
-<li>マイマイは日本でも人気なんですけれども、海外でも...</li>
-<li>中国で、あのマイマイみたいな...</li>
-<li>せっかくで、バージョンアップ、言ってもいい？</li>
-<li>バージョンアップしなかったですけど、近々、システムはフェスティバルにと...</li>
-</ul>
-<p>然而这完全不像是一次正式通告，虽然后面也提到了最近会发布正式公告，但这暧昧的态度和语气确实也很 SBGA。只能说如果真的给更新的话，maimai 暂且是一款我的问题。</p>
-<p>下午实在是拿不出来任何做事的干劲，直接去上地出勤了，然而上地一直保持着至少八人的规模，所以说实话也没打到多少把。感冒的症状说实话出勤的时候在缓慢加重，毕竟只穿了短袖而且还在不断流汗，很有可能受凉。一直到了晚上，本来想吃一顿萨利亚就回去的，结果是萨利亚居然卖完了主食，啥都吃不了，只能去上地华联地下那些不咋样的饭店随便吃吃，就这样还吃了我六七十，啥都没吃着。</p>
-<p>晚上回到宿舍拿到了美团上买的感冒药，结果上楼梯的时候就已经开始感受到极端的疲惫感，到了宿舍坐下来，立刻感觉好了不少，于是赶紧吃了颗药。</p>
-<p>今天本来想做的事情那是一件都没有做，这一周刚开始的时候干劲满满，每天除了日常工作还能出勤，心情也一直很不错。但是到了今天，周日，因为这个感冒症状，真的弄得我非常难受，希望明天起来能够快快好起来，这样至少不会影响我下一周的时间安排。</p>
-<h1 id="section-7">2023.02.27</h1>
-<p>果然症状没有好多少，依然是喉咙有点疼然后头很昏，整天处于疲劳状态，可能还有一点点低热。早上强撑着还去上了韩语课，虽然迟到了。韩语课目前在讲发音，没有什么特别有意思的东西。</p>
-<p>中午按照平常的饭量点了一套粥和配粥的小菜，结果发现自己完全吃不下，虽然吃了七八成，但还有些是完全没吃的，比如三个豆沙包。下午按照道理要准备开始干活了，然而这个状况是真的一点都没法工作，于是爬上床睡觉了，除了途中上了趟厕所之外，一直到七点左右我一直在床上睡觉。比较麻烦的是，我醒过来发现四肢有点冰凉然后还有点热，这说明症状严重了。</p>
-<p>为了防止我是新冠复阳，我去 308 里面拿了一份之前囤着的抗原，自测了一下是阴性，这就说明我得甲型流感的概率很高，前几天宿舍楼群里面也有人问有没有体温计之类的。</p>
-<p>就这样一直磨到了晚上八点，请舍友帮忙带了饭，结果发现还是没什么特别大的胃口。但这个时候我意识到很多事情再不做来不及了，比如第二天就要在课上讲的 React 前端小作业讲稿，还有大作业文档之类的也得稍微调整一下。就在我极不情愿地坐到桌前准备工作，这种疲劳感和不集中又袭来，而且实习那边还在 push 一些事情。</p>
-<p>怎么会变成这样的呢？我思考可能是先前太疲劳，毕竟连续早起了很多天，虽然只是十点起，但我平均得到四五点睡，这就很不好。于是想着该找机会调整作息和运动了，然而目前事情还得赶快推。</p>
-<h1 id="section-8">2023.02.28</h1>
-<p>二月的最后一天了，昨天晚上吃完药之后明显感到全身发烫，然后开始冒汗，最终到了凌晨五点左右退烧了。然而，喉咙疼和咳嗽确实是一点没有见好转，甚至还有恶化的感觉。</p>
-<p>强撑着去软工课堂上讲完了两节课，回来之后自然又是睡了整整一个下午，起来就已经是晚上了，点了个外卖，胃口依然没有恢复。</p>
-<p>晚上首先是我爸妈得知了消息，他们简单关照了几句，问了问药物的情况。然后我发了个朋友圈说已经甲流第三天，结果各种关心就都过来了，先是 rls，然后是之前一直有联系的学弟，一起打牌的学长，湖中，甚至贾珈老师都来关心，一时间受宠若惊。</p>
-<p>不过总的来说吃了颗药然后洗了个澡之后现在精神状况恢复不少，至少现在四肢都是温暖的，然后也几乎没有疲劳感，喉咙虽然沙哑但至少也只是微微发涩，估摸着明天，应该也就能正式好转了吧。</p>
-<p>期间 rls 提到了还有一个月薪两千的前端单子问我要不要接，我只能回一句“狗命要紧”，赶快回绝了。</p>
-<p>以及突然很想吃水果，尤其是苹果和梨，那种清甜的口感，不知道为啥现在特别想念。</p>
-<p>过了一遍 DRL 的 recitation，PyTorch 的简单入门，讲得还可以，但之前就学过了，不好说对初学者而言友不友好。比较好玩的一点是，我听完 recitation 之后，突然感觉神清气爽，有种大病初愈的感觉，难道 DRL 还有这个好处？</p>
-<p>不过看这样子，明天确实可以开始正常生活了，先是得把这几天没洗的衣服给洗了，然后给自己买点水果解个馋。工作上的话，软工助教一时半会是没啥大事了，实习估计这周也会结束，毕设已经请了一周假，这周组会应该也很好过去。</p>
-<p>三月了，希望能全新开始吧。</p>
-<h1 id="section-9">2023.03.01</h1>
-<p>今天起床之后发现好了不少，除了喉咙还是有点不舒服之外，其他应该基本都好差不多了，然后也第一次韩语课没有迟到。韩语课没啥值得记忆的，只是 zz 居然被老师听出来他的韩语有日语口音。</p>
-<p>中午点了麻辣烫，虽然这次没要酱料，毕竟现在还不太能吃辛辣，于是就吃了清水煮肉片，但是比较好的事情就是发现自己饭量已经差不多恢复了。此外去猫超买了黄瓜、菠萝蜜和哈密瓜，其他的还好，就是菠萝蜜难吃出了一种境界。</p>
-<p>下午摆烂没去 DRL，但是老师发 slides 真的很慢，我还打算至少看看 slides 来学点东西的。</p>
-<p>结果还是摆烂了一个下午，最终还是决定去洗个衣服，至少做点什么像样的事情吧。</p>
-<h1 id="section-10">2023.03.02</h1>
-<p>昨晚据我舍友说睡觉的时候连续咳嗽了一个多小时，说是真怕我睡着睡着人咳没了。</p>
-<p>中午爬起来去开组会，为了防止传染所以戴了个口罩去了实验室，实验室的学长们见到我这阵仗都纷纷戴上了口罩。老师看到这个状况，于是劝我还是等身体完全好了再来实验室，组会少一两次问题不大。于是我就从命地回去了，回去的路上顺手去吃了个午饭。</p>
-<p>吃完午饭才发现这几天的温度已经回升到了十几度了，天气最近也一直是晴天，这两天正好又是春季百团大战，于是就去逛了一下摊位。不过由于春季百团本来就不是重点战场，各个社团也没有拿出家底，所以摊位比较一般，没啥意思。但是，这次逛了摊位之后突然发现，只是走了百十米之后就开始喘气，我自己都没发现现在身子已经虚弱到了这个程度。</p>
-<p>回到宿舍坐了一会喝了口水之后瞬间就恢复了不少，甚至感觉和康复了毫无区别。果然只有出门才会意识到现在自己身体依然十分虚弱，即使没有很明显的症状。算了，先好好把 DRL 笔记整理完吧。</p>
-<h1 id="section-11">2023.03.03</h1>
-<p>身体看起来已经是完全好了，下午先是出门去做软工小作业答疑，但是就在这过程中不断被催实习那边的事情。目前预定下来要做的事情应该还就是之前定下来的那几个页面，然后预计还要去做后台管理应用的一些后端开发。</p>
-<p>因为现在身体好了不少于是直接去上地出勤，虽然状态依然没有完全回来，但是基本上已经是能活动开了。不过打了一晚上一分没上，还是很难受的。</p>
-<p>本来是打算和舍友一起去海底捞的，但是考虑到我出了勤得去洗澡，然后当晚还有韩语作业，只能偷摸溜回来。然而回来发现的第一件事就是我自行车被偷了，我明明好好锁了车，却依然被偷了。本来是打算报警的，但以前也被偷过车的一位同学提醒我这事报警挺麻烦，毕竟你也没法拿出什么很重要的证据说明这车就一定是你的，而且很多行政流程可能还挺麻烦。</p>
-<p>回到宿舍本来打算稍微做点事情的，结果是相当困，写完韩语作业之后就直接摸鱼了。</p>
-<h1 id="section-12">2023.03.04</h1>
-<p>今天起来先是收到了 SECoder 因为网段限制无法满足给所有同学开两个部署容器的麻烦消息，这代表我们对小作业框架要做大改。急急匆匆和高老板、mfy 商议了解决方案之后，我把作业文档和课程公告写好了，就等高老板那边把 code base 修改好，然后开好容器就可以准备谢罪了。</p>
-<p>此外不少同学的软工答疑我还暂且没解决，在此之外实习的事情理应今天解决我还没做。</p>
-<p>不过说实话，现在我对这份实习是越来越不想上心，因为自己毕设真的是没有进度，现在也已经是三月的开头过去三四天了，四月中期拿不出东西是真的要收拾东西走人的。</p>
-<p>有个题外话就是我考研的舍友似乎想来我们组，看上去还真有可能。如果是这样的话，至少几年内有个一起在组里的也不错。</p>
-<p>晚上稍微摸了鱼，打了一晚上德州扑克。这一把非常有意思的一局是，我起手 AK 方片，然后直接冲刺了，翻牌是三张方片，我直接中天顶同花，于是也不演了，打退几家。令我惊讶的是，即使是这样居然还有一家和我对着下注，我看后续牌没有对子，就说明没四条或者葫芦了，结果那一家还在和我对着下注一直到 All in，我这手牌自然是一击把他打飞了。后面我还拿到过天葫芦，天顶两对等好牌，只能说这一把太运势好了。</p>
-<p>其实晚上最主要的还是把软工小作业的问题解决了，更新了文档，发布了课程公告，也终于给大家开好了容器，这件事情也算是平稳过去了。</p>
-<h1 id="section-13">2023.03.05</h1>
-<p>周日，本来想好好做点实习的事情的，结果直接在宿舍开始摸鱼。现在气温开始回升了，慢慢有春天的感觉了，最近心情大好。</p>
-<p>不过下午却是摸鱼摸过去了，中途 c7w 给我转发了 ouuan 在自己 blog 上对软工小作业的批评，怎么说呢，别人说的没错那就只能立正挨打。硬伤就是计时器资源和网络请求并没有设置在组件卸载的时候取消，这一点怎么说呢，因为曾经的项目没有使用过定时器，也没有过于管 abort 网络请求的事情，所以就没这方面的经验，确乎是得学。然后就是 ESLint 配置的事情，怎么说呢，一是 holder 确实 prefer 一个并非大众喜爱的码风，然后 ESLint 没好好配也差不多是为了同学写的时候别真的红一片，我当时第一次开始写代码就经常被 lint 干到崩溃，明明会写的逻辑硬要跟着 lint 后面走。嘛，不过也确实是在想要不从众用 2 space 缩紧和单引号算了，但是说实话 holder 真的是单引号极端厌恶。</p>
-<p>整体要说的话，实际上问题也就是一个，就是“简陋”，不符合当下的一些约束或者说惯例，而且为了零基础也能上手，省掉了一堆东西还几乎没多少填空。</p>
-<p>算了，还是等 ouuan 来好好调教一番吧，我摆烂了，我只想毕业了。</p>
-<p>但是说实话，还是赶快做点事情从周一开始恢复到第一周的工作状态吧，否则实在是有点太摸了。</p>
-<hr />
-<p>总之今天整体还是太摸鱼了，实习那边的东西没有一发调出来也是真的没绷住，然后还时不时被 ouuan 拷打，包括各种可以优化的地方。看来 holder 还需要再稍微锻炼一下抗压能力，这点抗压能力完全不能应付啊，包括之前被 cyr 拷打毕设也是，完全做不到坦然面对面前的问题呢，遇到问题只想摆烂和找借口嘴硬，这实在是有点过分了。</p>
-<h1 id="section-14">2023.03.06</h1>
-<p>今天早上起来就发现已经十点了，已经过了韩语课的签到，于是也懒得去了，看到湖中在说想出勤，于是直接去了五道口。没有想到的是，即使是星期一的上午，五道口依然充满了人，完全打不了多少，只能随便糊糊作罢。</p>
-<p>下午精神终于回来了一点，昨天摆烂加上被拷打真的是完全绷不住，但还是得赶快调整。到了工位，整理了一下自己的东西，结果发现耳机的耳塞又掉了，没有办法只能赶快下单新耳机，不能再将就着用这个破耳机了。下午依然是随便跑了一下 Puffer 的实验，可喜的是这一次实验居然似乎有了点看起来能行的样子，因为现在至少能打过启发式了，至少不是智障了。在等实验的过程中帮 abmfy 修了一下日语作文，然后准备还是赶快把实习那边的事情给做完，少一件事终究是好事。</p>
-<p>今早在出勤的时候顺手把当前前端小作业存在的问题给罗列了一下，整体来讲虽然有点绷不住但还是感谢 ouuan 提供了这么多的改进意见。</p>
-<h1 id="section-15">2023.03.07</h1>
-<p>7 号真实地没有任何可以记录的事情，因为早上起来之后随手在群里发了一个“礼问上几”，得到上地机厅只有一人的答复之后，立刻收拾东西去出勤了。然后原本是打算随便打打就下午回来的，结果因为手感好到离谱，直接上了四十几底分，于是就这样一直打下去了。最后快要闭店的时候，随手开了一把高桥名人，结果 24 分纵连全打上了，鸟加 13.2 吃分。</p>
-<p>但是事情总是得做的，因为和实习那边说了已经写完了订单页面，所以这个坑得填上，最终还是来到了 308 开夜班，一路做到早上六点，真实做到了三四个小时糊完整个页面。</p>
-<h1 id="section-16">2023.03.08</h1>
-<p>7 号晚上写完订单页面之后我意识到周三 8 号的韩语课多半是起不来了，于是和老师说明了情况，打算韩语课退课自学了。</p>
-<p>8 号的话，起来之后先是去了 DRL，下课后结果兴致来了就去吃了顿麦当劳然后五道口出勤，出到了晚上回来和舍友吃了顿饭，308 睡了一觉之后就是软工的课咨委启动会，开完之后就十一点了，直到这个时候才准备开始做毕设。</p>
-<p>这两天属实没有什么特别有意思的事情，也没有什么有意思的新闻，只是很平淡地摸鱼了两天，只能赶快把毕设启动了，不然太摸鱼了。然后韩语的收音和今天 DRL 的课程内容还得整理一下，不过还是毕设为重，这些可以明天开完会之后慢慢摸索。</p>
-<h1 id="section-17">2023.03.09</h1>
-<h1 id="section-18">2023.03.10</h1>
-<p>周五似乎并没有什么安排，因为周四理论上已经大体解决了问题，我也成功在周五凌晨六点前把实习的代码交掉了，虽然我知道里面还有不少的错误，但这些错误也不是我写的，我真的很难去帮别人补天。</p>
-<p>然而下午毕竟是要验收的，验收这就发现这玩意几乎没有办法用，功能上欠缺了一堆东西，实习那边的学长能看得出来很着急，于是急忙安排我们前端开发的两拨人赶快开会对接。我迅速把一些比较严重的问题扔到了群里，但是他们的答复也比较暧昧不清，不太能对实际解决问题起到什么作用。</p>
-<p>晚上稍微开了个会，我直接对着他们的代码指指点点了一通，总之就是他们那边出了不少问题（虽然感觉我也可能出问题），导致现在功能上完全用不了。在这之前事实上我已经和 yfgg 吐槽了很多他们代码上的错误之类的，总之就是血压超级高。</p>
-<p>开会的时候我直接说我周末不奉陪了，你们的问题你们慢慢解决，然后我就开始心安理得地摆烂，打了一晚上德州扑克之后就早早睡了。</p>
-<h1 id="section-19">2023.03.11</h1>
-<p>周六是约好先去麦当劳吃饭然后 V+ 群群 K 的，我定好了十一点的闹钟，虽然被闹醒了但是小小眯了一会，没想到就直接迟到半小时。</p>
-<p>因为这次参加的群友相当之多，最终我们是分为中 V 和日 V 两边举行，我一直在日 V 这边，确实也唱了相当多的 V 曲，嗓子已经炸裂了。</p>
-<p>晚上本来是打算聚餐的，但是还是和湖中、秋枫老师临时起意去窝出了一小会勤，只是没想到窝现在十点钟就会关门，于是也没玩很长时间就只能回来了。</p>
-<p>回来洗了个澡，准备稍微干点活。在今天玩的时候实习那边还在说打算周日把 bug 修好，但总之我有点不想再陪他们玩下去了，我把我的工作做好，这周，我必须把那里的事情放下来做毕设了，后面软工助教会还得开，不能再这样拖泥带水了。</p>
-<hr />
-<p>今天还是主要配置了一下 DRL 的环境，因为手上的 Mac 说实话已经很不好用了，很怕后面要做深度神经网络的时候撑不住，于是直接把代码拉到服务器上去了。但是这有一个重要的问题，DRL 的作业是基于 Gymnasium 的，这是需要渲染图形界面的，那我就需要通过 X11 转发图形界面到我的 Mac 上。但是刚配置完 X11，就报错了：</p>
-<figure class="highlight shell"><figcaption><span>ZSH</span></figcaption><table><tr><td class="code"><pre><span class="line">X Error of failed request:  BadValue (integer parameter out of range for operation)</span><br><span class="line">  Major opcode of failed request:  149 (GLX)</span><br><span class="line">  Minor opcode of failed request:  3 (X_GLXCreateContext)</span><br><span class="line">  Value in failed request:  0x0</span><br><span class="line">  Serial number of failed request:  143</span><br><span class="line">  Current serial number in output stream:  144</span><br></pre></td></tr></table></figure>
-<p>我查了半天终于在 StackOverflow 上找到了解决方案，只需要在 MacOS 的客户端这边运行下述命令启用 IGLX 即可：</p>
-<figure class="highlight shell"><figcaption><span>ZSH</span></figcaption><table><tr><td class="code"><pre><span class="line">defaults write `quartz-wm --help | awk &#x27;/default:.*X11/ &#123; gsub(/\)/, &quot;&quot;, $2); print $2; &#125;&#x27;` enable_iglx -bool true</span><br></pre></td></tr></table></figure>
-<p>然后普通地 <code>ssh -Y</code> 连接到 Linux 服务器端就可以了。如果是 VSCode 的话，需要在 SSH config 里面加上下面两行来保证 X11 启用：</p>
-<figure class="highlight shell"><figcaption><span>SSH config</span></figcaption><table><tr><td class="code"><pre><span class="line">ForwardX11 yes</span><br><span class="line">ForwardX11Trusted yes</span><br></pre></td></tr></table></figure>
-<h1 id="section-20">2023.03.12</h1>
-<p>今天是周日，按照道理是和实习那边对前端的任务的，不过下午我都用来搬迁毕设代码框架里面的一个第三方框架了。我毕设真的是，毫无进展，真的得速速做点东西出来了，尤其是下一次组会真的得说点什么东西出来了，不然这也太慢了。</p>
-<p>晚上临时起意去了胜博殿去吃炸猪排，不得不说，特别好吃，超出想象的好吃。猪排我点的千层锦，切面可以看到是一层层猪肉叠起来，最后炸出来居然不散开，居然还能保持猪排的形状，这也太惊艳了。小菜比如说包菜丝、茶水、金枪鱼拌饭、味增汤之类的就没有那么惊艳，但绝对也是平均向上的水平。</p>
-<p>今晚吃饭的地方旁边就有 maimai，于是就去打了几把，差点鸟掉 Big Daddy，但是尾杀崩盘了就没办法了。这个机厅最大的问题就是游戏币原价太贵了，两块钱一币，maimai 1pc 要五币，原价的话十块钱 1pc，实在是离谱。</p>
-<p>晚上回来发现自己 B 站六级了，于是做了一下硬核会员考试，擦边通过，关于鬼畜的一些东西真的已经是考的都是边边角角完全不知道了。做完这些迅速过了一下实习那边的代码，把订单列表页的按钮都写上了回调函数，我这边工作基本就相当于结束了。交了一些 Bug report，和学长说了自己可能得做毕设之后，就暂且告一段落吧。</p>
-<h1 id="section-21">2023.03.13</h1>
-<p>周一，因为已经退掉了韩语，所以没有早起，起来之后按照以往的规划去了五道口出一小会勤。本来是打算出一两个小时就回去去工位做毕设的，结果是一直打到了闭店。</p>
-<p>不过这一次出勤实在是太值当了，不仅杀掉了心心念念的捕物帐、纵连派对、跳舞狗三个 13+，还 AP 了海底谭和弱虫。最经典的事情则是，因为我已经连续出勤了七个小时已经累得不行，但是最后快闭店的时候我同学拉着我说再来一把。我秉持着已经这么累了，再累点也没事的态度开了一把 DX 奶，没想到的是我把这玩意杀了。而正好，同学帮我录下来了最后十秒钟，当了一次战地记者。</p>
-<p>回来之后就把这个视频上传到了 B 站，还是很有意思的。</p>
-<h1 id="section-22">2023.03.14</h1>
-<p>今天决定好好做毕设了，不过这次我打算换方向了，我不打算完整复现论文了，而是直接用 community code base，在这个基础上先跑起来 Pensieve 作为 baseline。感谢贾老师的建议。</p>
-<p>不过这次在跑起来这个 code base 的过程中遇到了相当多的困难。我一开始打算在服务器上运行起来这套代码，首先遇到的问题是导入自己编写的模块会导致 Python 找不到模块，这也算是个经典问题了，不过这次我找到了这样一套 Python 引言代码，感觉可以后期长期使用这样一套引言来解决自己编写模块之间互引的问题：</p>
-<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">current_path = os.path.dirname(os.path.abspath(__file__))</span><br><span class="line">sys.path.append(os.path.join(current_path, <span class="string">&quot;..&quot;</span>))</span><br></pre></td></tr></table></figure>
-<p>之后遇到的问题是服务器上没有 OpenMPI，这个简单，直接 <code>sudo apt-get</code> 就可以了。然后还有一点就是没有装 Mujoco 131，这个也不难。</p>
-<p>然而后面的就是大问题了，因为这个代码框架还是涉及到图形界面，所以还是会涉及到 SSH X11 转发图形界面，然而我本以为配置好了，结果这次运行的时候炸了 <code>No specified protocol</code>。我上网找了一下，基本都是说没有权限的问题，用 <code>xhost +</code> 命令就可以解决问题，然而我无论怎么尝试都不行。于是我放弃了，我决定先在我 Mac 本地跑起来这一套玩意。</p>
-<p>然而在 Mac 本地上就有另外的问题，OpenGL 找不到。我尝试了很多方法安装 OpenGL，但都不行，最后还是找到了相当邪道的解决方式，即直接修改第三方 <code>pyopengl</code> 里面寻找 OpenGL 的代码。代码位于 <code>platform/ctypesloader.py</code> 中，里面函数 <code>_loadLibraryWindows</code> 中有一段如下的代码：</p>
-<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line">fullName = <span class="literal">None</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    fullName = util.find_library(name)</span><br><span class="line">    <span class="keyword">if</span> fullName <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">        name = fullName</span><br><span class="line">    <span class="keyword">elif</span> os.path.isfile(os.path.join(DLL_DIRECTORY, name + <span class="string">&#x27;.dll&#x27;</span>)):</span><br><span class="line">        name = os.path.join(DLL_DIRECTORY, name + <span class="string">&#x27;.dll&#x27;</span>)</span><br><span class="line"><span class="keyword">except</span> Exception <span class="keyword">as</span> err:</span><br><span class="line">    _log.info(<span class="string">&#x27;&#x27;&#x27;Failed on util.find_library(%r): %s&#x27;&#x27;&#x27;</span>, name, err)</span><br><span class="line">    <span class="comment"># Should the call fail, we just try to load the base filename...</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
-<p>这里直接把 <code>fullName</code> 变量硬设置为 <code>"/System/Library/Frameworks/OpenGL.framework/OpenGL"</code> 即可（在 MacOS 上），这样的话似乎就能通过检查了。</p>
-<p>之后也是 Mac 上装一下 OpenMPI，直接 <code>brew install openmpi</code> 就行，然后就跑起来了。然而我 Mac 究竟是老了，所以跑的时候风扇直接起飞，还是得放到服务器上。不过我发现一件事就是这玩意完全没有生成什么图形界面，意思就是说理论上根本碰不到 X11 转发的问题，所以我就打算今天至少得把这玩意在服务器上跑起来才行。</p>
-<hr />
-<p>在服务器上二分了一下确认了是 <code>mpi4py</code> 这个包在 import 的时候会爆炸，不过我也用不到这个东西所以直接注释掉就没有那么多事情了。</p>
-<p>这个框架另外还附赠了一个用 Flask 编写的前端用来可视化训练数据，不过看起来这个前端目前也是炸得不轻，啥地方都是 500 Internal Server Error，还得一步步修理。</p>
-<p>最终还是找到了前端的问题，是因为我以为代码里面的 <code>viskit</code> 是个需要安装的第三方，所以直接用 <code>pip install viskit</code> 装了一下，结果这个 <code>viskit</code> 事实上是自己写的一个 <code>viskit.py</code> 模块。而碰巧的是用 <code>pip</code> 装的时候装了个很老的依赖，现在更新到了 v3 而我装的是 v1，恰巧这个依赖还真的在 <code>viskit.py</code> 里面引用了，所以直接爆炸了。</p>
-<p>我比较怀疑这个框架里的 <code>viskit.py</code> 是一个 self modified 的魔改版第三方，所以才不能从 <code>pip</code> 直接下载。</p>
-<p>最后他还有一个用来展示训练结果的 Python 文件，里面读取了缓存的模型参数然后用了 Gymnasium 渲染一个图像出来，不过这里又是涉及到图像 X11 转发，于是又理所应当地炸掉了，但今晚我也懒得调试这个东西了，明天要帮黄老师找他博士毕业论文的错别字还得尽量把 Pensieve 写上去。</p>
-]]></content>
-      <categories>
-        <category>【生活记录】日记</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>安卓前端开发杂谈</title>
-    <url>/2021/09/01/android-dev-exp-1/</url>
-    <content><![CDATA[<p>安卓的移动端开发，属实让我血压高了一小段时间。毕竟已经接触过类似于 React Native 那种基于 TypeScript 语言的、优秀的跨平台移动端框架，再去尝试用繁琐的 Java 语言写安卓前端自然是不适应且感到烦躁。</p>
-<p>但是毕竟是 Java 程序设计训练课程，安卓前端开发作为其最大的特色，不得不消受。</p>
-<span id="more"></span>
-<h1 id="关于数据绑定">关于数据绑定</h1>
-<p>如果要我说最大的不适应的地方，首先就是数据和图形界面的完全分离。在 React Native 框架之中，数据和图形界面的管理大概是这样的：</p>
-<figure class="highlight typescript"><figcaption><span>TypeScript</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> App = <span class="function">(<span class="params">props: AppProps</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// Set states &amp; initialize</span></span><br><span class="line">    <span class="keyword">const</span> [bar, setBar] = useState&lt;<span class="built_in">number</span>&gt;(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Some functions to update or rewrite data</span></span><br><span class="line">    <span class="keyword">const</span> update = <span class="function">() =&gt;</span> setBar(<span class="function">(<span class="params">o</span>) =&gt;</span> o + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Write UI with TSX, use data freely</span></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="xml"><span class="tag">&lt;<span class="name">View</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Text</span>&gt;</span> Hello world! <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;`The val of bar is $&#123;bar&#125;`&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;`Property foo is $&#123;props.foo&#125;`&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Button</span> <span class="attr">onClick</span>=<span class="string">&#123;update&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>但是在安卓之中，图形界面完全定义在 <code>.xml</code> 文件之中，而且一定程度上其定义各个组件摆放方式的语法细节的繁杂程度不低于 HTML。而如果需要将数据载入图形界面，则首先要根据组件的 ID 获取组件，之后才能调用各种方法设定具体属性。</p>
-<figure class="highlight java"><figcaption><span>Java</span></figcaption><table><tr><td class="code"><pre><span class="line">((TextView) view.findViewById(R.id.entity_name)).setText(data.name);</span><br></pre></td></tr></table></figure>
-<p>这里出现的 <code>R</code> 类据说是相当厉害的。但是我第一次接触安卓的时候，这个符号给我带来的感觉就是不安，因为我再也不能像写 React Native 一样至少自认为自己掌握了程序之中的数据流。换一种说法，即使 React Native 可能做了很多背后工作，但它至少做到了让开发者在很多时候能直观引导数据流。</p>
-<p>对于按钮等组件，React Native 框架下可以直接传入回调函数。而众所周知 Java 是纯净的面向对象语言，怎么会有 lambda 这种异端呢（新版本的 Java 已经离经叛道了！）。</p>
-<p>所以你需要写监听器对象，重写其中的方法等等。</p>
-<hr />
-<p>并不是说这样不好，我还记得之前大一小学期的时候写 Qt 很多时候就是各种指针到处乱飞然后到处乱 <code>set</code> 这个那个的，最后一个 <code>draw</code> 函数里面上百行的，成块的各种格式设定、字体设定、内容设定、排列设定，然后这次写安卓让我回忆起了那一段黑暗时光。</p>
-<h1 id="并不适应的适配器模式">并不适应的适配器模式</h1>
-<p>如果只是想给一个 <code>TextView</code> 载入文字，直接几个 <code>set</code> 函数就结束了。但是给一个格式复杂的列表载入数据，则相当繁琐。比如说现在主流的 <code>RecyclerView</code>，其载入数据，就需要你自己编写一个数据适配器。</p>
-<p>我首先是上网找轮子，随后想了一下，干脆自己包装了个简单的 <code>RecyclerViewAdapter</code> 先勉强用用。</p>
-<p>将数据塞到图形界面上，最重要的三个东西是上下文、使用什么 <code>layout</code> 和数据本身，那么适配器的构造函数就需要接受这三项。然后就是平凡地重写 <code>RecyclerView.Adapter</code> 所要求的三个函数。不过这里我在重写 <code>onBindViewHolder</code> 的时候留了空，因为这里就是定义适配器最重要部分——数据如何映射到 UI 的函数。我将这一个函数设为虚函数，让子类继承重写就可以实现各种映射方式。最后的成果大致这样：</p>
-<figure class="highlight java"><figcaption><span>Java</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">RecyclerViewAdapter</span>&lt;<span class="title">T</span>&gt; <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">Adapter</span>&lt;<span class="title">RecyclerViewAdapter</span>.<span class="title">ViewHolder</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> Context mContext;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">int</span> mLayoutId;</span><br><span class="line">    <span class="keyword">protected</span> List&lt;T&gt; mData;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RecyclerViewAdapter</span><span class="params">(Context context, <span class="keyword">int</span> layoutId, List&lt;T&gt; data)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.mContext = context;</span><br><span class="line">        <span class="keyword">this</span>.mLayoutId = layoutId;</span><br><span class="line">        <span class="keyword">this</span>.mData = data;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="meta">@NonNull</span> <span class="function">ViewHolder <span class="title">onCreateViewHolder</span><span class="params">(<span class="meta">@NonNull</span> ViewGroup parent, <span class="keyword">int</span> viewType)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ViewHolder(</span><br><span class="line">                LayoutInflater.from(mContext).inflate(mLayoutId, parent, <span class="keyword">false</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBindViewHolder</span><span class="params">(<span class="meta">@NonNull</span> ViewHolder holder, <span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// <span class="doctag">TODO:</span> What is this?</span></span><br><span class="line">        <span class="comment">// holder.updatePosition(position);</span></span><br><span class="line">        <span class="keyword">this</span>.convert(holder, mData.get(position));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">convert</span><span class="params">(ViewHolder holder, T data)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getItemCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> mData.size();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ViewHolder</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">ViewHolder</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">private</span> View mConvertView;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">ViewHolder</span><span class="params">(View itemView)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>(itemView);</span><br><span class="line">            <span class="keyword">this</span>.mConvertView = itemView;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> &lt;K extends View&gt; <span class="function">K <span class="title">getViewById</span><span class="params">(<span class="keyword">int</span> viewId)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> (K) mConvertView.findViewById(viewId);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>用起来也简单，传入三个要素，之后重写 <code>convert</code> 方法定义一下数据到 UI 的映射就好了：</p>
-<figure class="highlight java"><figcaption><span>Java</span></figcaption><table><tr><td class="code"><pre><span class="line">binding.entityList.setAdapter(<span class="keyword">new</span> RecyclerViewAdapter&lt;Entity&gt;(</span><br><span class="line">    HomeFragment.<span class="keyword">this</span>.getActivity(), R.layout.home_entity_item, baseEntities</span><br><span class="line">) &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">convert</span><span class="params">(RecyclerViewAdapter.ViewHolder holder, Entity data)</span> </span>&#123;</span><br><span class="line">        ((TextView) holder.getViewById(R.id.entity_name)).setText(data.getLabel());</span><br><span class="line">        ((TextView) holder.getViewById(R.id.entity_category)).setText(data.getCategory());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>你会发现，这比 React Native 要写的东西多太多了。上面这么多需要折腾的，React Native 只需要这样写：</p>
-<figure class="highlight typescript"><figcaption><span>TypeScript</span></figcaption><table><tr><td class="code"><pre><span class="line">&lt;View&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        baseEntities.map(<span class="function">(<span class="params">val, ind</span>) =&gt;</span> (</span><br><span class="line">            <span class="xml"><span class="tag">&lt;<span class="name">View</span> <span class="attr">key</span>=<span class="string">&#123;ind&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;val.name&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;val.category&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span></span><br><span class="line">        ))</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/View&gt;</span><br></pre></td></tr></table></figure>
-<p>就可以实现一个列表了。</p>
-<p>Java 我写了一整个类，光数据转成 UI 也写了好几行长代码，这还没有算 <code>.xml</code> 文件。</p>
-]]></content>
-      <categories>
-        <category>【杂谈】开发</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>JS 文件本地化</title>
-    <url>/2022/08/20/blog-js-localize/</url>
-    <content><![CDATA[<p>自从 JSDelivr 半挂了之后就一直在为这些事情苦恼。</p>
-<span id="more"></span>
-<p>简而言之，一个静态站需要拉取一堆 JS、CSS 文件。而正常而言的 JS 文件完全可以从网络上当场获取，但是由于 JS CDN JSDelivr 半墙，我只能速速转战其他的 CDN，结果近日发现速度非常不理想，甚至仅仅是拉 jQuery 都花了 15 秒，这完全不能接受。</p>
-<p><img src="/uploads/blog-js-localize/1.png" /></p>
-<p>本来想尝试一下换其他的 CDN，但是怎么试都不算快。</p>
-<p>还是暴力解决方法比较好，我直接把 jQuery 等一系列常用的东西的 min JS 打包放在了自己博客文件夹内，每次请求只不过是访问本地文件，太完美了。</p>
-<p>虽然问题暂且是解决了，但是我还是觉得，为啥这些 CDN 会受限呢，真的和什么敏感领域有关吗。</p>
-]]></content>
-      <categories>
-        <category>【杂谈】开发</category>
       </categories>
   </entry>
   <entry>
