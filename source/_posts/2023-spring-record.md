@@ -469,9 +469,11 @@ except Exception as err:
     - 换框架可能流程
         - 通过邮件联系作者获取 code base
         - 找寻引用这篇论文的开源 code base
+    - 需要研读 code base，形成完整的 paper report 和 code doc
 - Pensieve 迁移
     - 写完通过 MPC 求解 Pensieve 的代码并运行
     - 研究 Pensieve environment（在线直播环境）
 - 数据集生成
     - 获取黄老师的 network trace data repo
     - 准备数据剪切脚本
+    - 训练 baseline Pensieve
