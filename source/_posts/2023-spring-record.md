@@ -511,3 +511,32 @@ except Exception as err:
 下面就是努力生成一篇 code doc 或者 report，迁移好 Pensieve 以及做好 baseline 了。目前中期确认在下周三，只能说希望人能活着过中期。
 
 不过现在有一点疑惑的是，似乎现在并没有写好一个比较完整的线上环境切换来做实验，可能还得找个时间写完这一块东西。
+
+# 2023.03.23
+
+今天组会，整体上汇报没什么问题，就是似乎进度还是不是很理想，老师们都建议考虑先至少把实验跑起来然后试着简化一下目标来混过中期。
+
+对着之前写的毕设目标记录一下最近的工作吧：
+
+- 验证原框架是否可用
+    - (Completed) 重新拉取原框架，完全不修改直接运行，确认其效果
+    - 若原框架可用，则 debug，若不可用，换框架
+    - 换框架可能流程
+        - (Completed) 通过邮件联系作者获取 code base
+        - (Aborted) 找寻引用这篇论文的开源 code base
+    - (In progress) 需要研读 code base，形成完整的 paper report 和 code doc
+- Pensieve 迁移
+    - (In progress) 写完通过 MPC 求解 Pensieve 的代码并运行
+    - (Completed) 研究 Pensieve environment（在线直播环境）
+- 数据集生成
+    - (Completed) 获取黄老师的 network trace data repo
+    - (In progress) 准备数据剪切脚本
+    - (Not started) 训练 baseline Pensieve
+
+总之今天黄老师帮忙鉴定了一下我想参考的论文之后，得出了这个方法是基于 MAML 的结论，并且断言这个方法至少一定能用，所以这个 code base 应该依然是可以使用的，只是超参数设定等需要调整一下。而这个超参数设定的事情，我在 HalfCheetah 和 Ant 两个环境下使用了论文给出的超参数，但是都没有获取到相当理想的结果，但也不差，至少能优于传统的 MAML。这个框架的 code report 自然还在路上。
+
+Pensieve 迁移遇到的问题是如何建立一个较为合理的 Pensieve environment 并合并到 code base 里面，而这个合并中最难的就是如何描述 Pensieve 的状态和决策空间，一般而言 Pensieve 的状态空间和决策空间都并不是传统意义上的高维空间，而更像是 hand craft 出来的一堆 tensor 构成的离散集合。而我参考的这个 code base 里面的环境基本都是描述成高维空间中的 Box 的，这不难理解，因为这篇文章主要在做动作连续控制，所以状态、决策空间基本上都是 Box 描述。而这里黄老师也给了我一份代码 repo，这份代码将 Pensieve 的状态、决策空间做了转换，即也用 Box 描述，恰好可以解决我目前遇到的问题。
+
+然后就是 baseline 构建的问题，现在我似乎并不打算构建很多复杂的 trace，先从简单的规律性切换开始吧，数据集造完之后就可以准备上手测试了。
+
+今晚约了麦当劳和游泳，明天打算去看电影，而且还有一个非常麻烦的毕设动员会，干活的时间确实不太多了。
