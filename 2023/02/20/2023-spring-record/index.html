@@ -396,14 +396,14 @@ $(function () {
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>20k</span>
+      <span>21k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>18 分钟</span>
+      <span>19 分钟</span>
     </span>
 </div>
 
@@ -713,6 +713,60 @@ $(function () {
 <p>晚上回到宿舍就是打打德州扑克摸摸鱼，然后自然就这样结束了摸鱼的一整天。</p>
 <h1 id="section-33">2023.03.25</h1>
 <p>来工位赶中期，没想到贾老师也在。似乎今天还正好是全高赛开赛，zsj 开了直播间直播你清海选第一轮，于是就边看边做事了。比赛的走势整体没什么特别的，所以也没怎么重点观看，还是以做事为主。</p>
+<p>今天主要是写完了 Data loader，写完了 network trace 切换的代码，然后生成了一份训练集和测试集用在训练 Pensieve baseline 上。另外由于目前的数据集并不太充足，当时突然想到可以用两条位于同一环境的 trace 之间做切换来做数据集扩充，这样的话勉强够使用了。目前 baseline 的设计是，三类训练集和四部分的测试集：</p>
+<ul>
+<li>训练集
+<ul>
+<li>#1. 由无切换的 4G 行走、4G 驾驶 trace 组成的训练集（使用数据扩充保证数据集规模一致）</li>
+<li>#2. 所有无切换 4G trace 与 3 次等间隔环境切换 trace 3:2 混合</li>
+<li>#3. 所有无切换 4G trace 与 3 次等间隔环境切换 trace 与随机环境切换 trace 3:1:1 混合</li>
+</ul></li>
+<li>测试集
+<ul>
+<li>#1. 4G 行走 trace</li>
+<li>#2. 4G 驾驶 trace</li>
+<li>#3. 3 次等间隔环境切换 trace</li>
+<li>#4. 随机环境切换 trace</li>
+</ul></li>
+</ul>
+<p>数据集弄好之后，从黄老师的 Pensieve 5G repo 那里弄来一份超参数设置，然后就开始训练了。比较好玩的一点，不知道为什么，似乎使用 #1 数据集训练的似乎在一开始（3k epoch 以内）反倒在有切换的环境下表现很好，甚至在 #3 和 #4 测试集上达到了较为明显的正向 reward，而在 #1 和 #2 测试集上甚至还是负 reward。</p>
+<p>现在这个实验跑一次七八个小时，三种训练集全都跑完估计得一两天，所以结果汇报还得再等等，我先放个占位表格在这里。这里均是训练 100k epoch 之后的结果汇报（无切换数据集正在重新实验）：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">无切换训练集</th>
+<th style="text-align: center;">等间隔切换训练集</th>
+<th style="text-align: center;">随机切换训练集</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">4G 行走测试</td>
+<td style="text-align: center;"><em>12.99</em></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4G 驾驶测试</td>
+<td style="text-align: center;"><em>16.88</em></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">等间隔切换测试</td>
+<td style="text-align: center;"><em>7.16</em></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">随机切换测试</td>
+<td style="text-align: center;"><em>18.27</em></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
 
     </div>
 
@@ -766,13 +820,13 @@ $(function () {
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">402k</span>
+    <span title="站点总字数">403k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">6:05</span>
+    <span title="站点阅读时长">6:06</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
