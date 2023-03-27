@@ -27,10 +27,14 @@
 <meta property="og:site_name" content="Ashitemaru">
 <meta property="og:description" content="应该是本科的最后一个学期了，最近事情也比较多，头绪也没完全理清楚，不如效仿之前假期通过日记的方式强迫自己认真工作，也写些学期中的日记算了。 目前应该是毕设、先前和快手的项目以及软工助教三件长期的事情，另外有一份可能短期较忙后期平缓的实习。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ashitemaru.github.io/uploads/2023-spring-record/1.png">
+<meta property="og:image" content="https://ashitemaru.github.io/uploads/2023-spring-record/3.png">
+<meta property="og:image" content="https://ashitemaru.github.io/uploads/2023-spring-record/2.png">
 <meta property="article:published_time" content="2023-02-20T14:25:46.000Z">
 <meta property="article:modified_time" content="2023-02-20T14:25:46.000Z">
 <meta property="article:author" content="Ashitemaru">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ashitemaru.github.io/uploads/2023-spring-record/1.png">
 
 
 <link rel="canonical" href="https://ashitemaru.github.io/2023/02/20/2023-spring-record/">
@@ -396,14 +400,14 @@ $(function () {
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>21k</span>
+      <span>27k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>19 分钟</span>
+      <span>24 分钟</span>
     </span>
 </div>
 
@@ -742,27 +746,108 @@ $(function () {
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">4G 行走测试</td>
-<td style="text-align: center;"><em>12.99</em></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
+<td style="text-align: center;">12.99</td>
+<td style="text-align: center;">14.35</td>
+<td style="text-align: center;">19.28</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">4G 驾驶测试</td>
-<td style="text-align: center;"><em>16.88</em></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
+<td style="text-align: center;">16.88</td>
+<td style="text-align: center;">17.66</td>
+<td style="text-align: center;">16.25</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">等间隔切换测试</td>
-<td style="text-align: center;"><em>7.16</em></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
+<td style="text-align: center;">7.16</td>
+<td style="text-align: center;">7.42</td>
+<td style="text-align: center;">5.91</td>
 </tr>
 </tbody>
 </table>
+<p>此外 26 号获得的一个训练曲线就报告在这里吧，这是等间隔切换训练集的训练曲线：</p>
+<p><img src="/uploads/2023-spring-record/1.png" /></p>
+<p>随机切换的训练曲线是：</p>
+<p><img src="/uploads/2023-spring-record/3.png" /></p>
+<p>目前总之是能明显观察到仅仅通过扩充数据集是不能完全解决这个问题的，扩充数据集确实可以提升结果，但是极其有限，在有切换的测试集上的表现依然和无切换的存在段差。</p>
+<p>另外，根据 AABR 论文的结果，即使 4G 网络在驾驶和行走这两个环境间差距并没有如此之大：</p>
+<p><img src="/uploads/2023-spring-record/2.png" /></p>
+<p>而这里使用的训练集中：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">4G 行走</th>
+<th style="text-align: center;">4G 驾驶</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">均值</td>
+<td style="text-align: center;">32.13</td>
+<td style="text-align: center;">39.34</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">方差</td>
+<td style="text-align: center;">860.32</td>
+<td style="text-align: center;">839.72</td>
+</tr>
+</tbody>
+</table>
+<p>可以发现事实上差距并没有想象中那么大，但其之间的切换依然会导致 Naive Pensieve 完全无法适应。</p>
+<p>不过这里我有一个想法，既然差距并没有这么大，那么这两个网络的特征到底是什么的呢？到底是什么决定了这个 trace 更像是行走时测出来的还是驾驶时测出来的，这个我觉得应该要画几个 trace 出来研究一下。</p>
+<hr />
+<p>这里应该还需要辅以部分 log 分析，log 分析的话就等第三个随机切换训练集弄完后基于那个 log 做一些分析。这些分析应该就构成了下述论点的证明：</p>
+<div class="note info no-icon"><p>Naive Pensieve 仅仅依靠于扩充训练集是无法解决线上环境切换的问题的。</p>
+</div>
+<p>这也就否定了简单的传统方法在这里的应用，从而构成了解决方案<strong>必要性</strong>的验证，下面毕设中期可能就缺一个比较好的方案<strong>可行性</strong>验证了。</p>
 <h1 id="section-34">2023.03.26</h1>
 <p>先前买的日语中高级语法教程到了，于是取了快递准备带去 FIT，但是偶然发现今天天气极其舒服，于是把骑着的共享单车扔在清芬，边看书边走去 FIT 了。到了 FIT 之后依然是一点点做事的心情也没有，Pensieve baseline 还在训练，按理说现在就应该准备写 code doc 然后做好迁移工作放上去训练，但是显然我摸鱼摸鱼到了现在。</p>
 <p>现在比较难受的一件事情就是我似乎不太清楚迁移到 Pensieve 之后应该用什么数据集做训练，现在还有点难绷，我可能还真的得好好思考一下这个问题。这个问题的思路就是好好阅读一下代码框架，研究一下原先基于 Gymnasium 环境的训练算法策略，基于此将 Pensieve 中的概念与框架代码做一下一一对应，之后就应该能摸明白最后的逻辑了。</p>
+<p>晚上是真的没心情继续做事了，于是偷摸去了五道口出勤，出到闭店之后回来继续干活。不过似乎实习那边的 bug 一直还要我修，基础技能培训我也得准备，现在总之就是事情还挺麻烦的。</p>
+<hr />
+<p>目前仔细阅读了一下 GrBAL 代码框架，有一些笔记就写在这里了，这里都是备忘：</p>
+<ul>
+<li><code>config</code> 里面的 <code>meta_batch_size</code> 应该代表的是目前训练多少个 meta task，似乎就是论文里的 #Task/itr，或者说 <span class="math inline">\(N\)</span></li>
+<li><code>config</code> 里面的 <code>adapt_batch_size</code> 应该基本对应采样的时候使用多少的 trajectory 节点通过元学习策略 <span class="math inline">\(u_{\psi_*}\)</span> 来更新 dynamic model 的参数 <span class="math inline">\(\theta\)</span>，也就是论文中的 <span class="math inline">\(M\)</span></li>
+<li>似乎代码框架内没有设置 <span class="math inline">\(n_S\)</span> 参数的地方，其 MB trainer 之中每一个 iteration 都会通过 Algorithm 2 收集 rollouts</li>
+<li><code>MetaMLPDynamics</code> 中的 <code>self.learning_rate</code> 就是 Algorithm 1 中的参数 <span class="math inline">\(\beta\)</span>，另外其中定义的 <code>self.train_op</code> 就是以学习率 <span class="math inline">\(\beta\)</span> 优化 <code>self.post_loss</code>，而这就是 <span class="math inline">\(1/N \sum_{i = 1}^N \mathcal{L}_j\)</span></li>
+</ul>
+<p>这里我们就直接研究一下 Meta MLP Dynamics 的结构究竟如何。首先他为每一个 meta task 都建立了一个 pre MLP 和一个 post MLP，用来预测一个代码中名为 <code>delta_pred</code> 的变量。而这个变量参与了下述 loss 的计算：</p>
+<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">pre_delta_pred = pre_mlp.output_var</span><br><span class="line">pre_loss = tf.reduce_mean(tf.square(pre_delta_per_task[idx] - pre_delta_pred))</span><br><span class="line"></span><br><span class="line"><span class="comment"># ...</span></span><br><span class="line"></span><br><span class="line">post_delta_pred = post_mlp.output_var</span><br><span class="line">post_loss = tf.reduce_mean(tf.square(post_delta_per_task[idx] - post_delta_pred))</span><br></pre></td></tr></table></figure>
+<p>这里就是简单的 MSE 均方误差，这里观察一下论文给出的 loss function，这是一个刻画当前 trajectory slice 和 dynamics 所希望的（或者说所预测的）trajectory slice 的吻合程度的 loss，最小化这个 loss 的效果就是让 dynamics 学习采样到的 trajectory，使得其模拟出来的 trajectory 贴合实际采样：</p>
+<p><span class="math display">\[
+\mathcal{L}(\tau_{\mathcal{E}}(t, t + K), \theta_{\mathcal{E}}&#39;) := -\frac{1}{K} \sum_{k = t}^{t + K} \ln \hat{p}_{\theta_{\mathcal{E}}&#39;}(s_{k + 1} \mid s_k, a_k)
+\]</span></p>
+<p>这里的 <span class="math inline">\(\theta_{\mathcal{E}}&#39;\)</span> 表示已经在环境 <span class="math inline">\(\mathcal{E}\)</span> 下 adapt 过的 dynamics 参数。</p>
+<p>这里代码和论文矛盾的点有一，即论文中 loss function 是基于一个非确定的 dynamics，即 <span class="math inline">\(p := \hat{p}_{\theta_{\mathcal{E}}&#39;}(s_{k + 1} \mid s_k, a_k)\)</span>。然而代码中接受 <code>self.obs_ph</code> 以及 <code>self.act_ph</code> 并输出 <code>self.delta_pred</code> 的 MLP 却显然更像确定性 dynamics，即 <span class="math inline">\(s_{k + 1} := \hat{p}_{\theta_{\mathcal{E}}&#39;}(s_k, a_k)\)</span>。</p>
+<p>post loss 的用处就是用来更新 dynamics 的参数 <span class="math inline">\(\theta\)</span>，学习率为 <span class="math inline">\(\beta\)</span>。pre loss 则似乎和元学习策略有关，但后续没在代码框架内寻找到这个变量的引用。</p>
+<hr />
+<p>决定换个思路了，在内部兜兜转转不如直接一点点剥开代码框架，把每个张量维度算清楚。论文中的算法有个相当明显的接口点，就是 Algorithm 1 和 Algorithm 2 之间通过 sampler 沟通，所以首先先去把握 sampler 给出的样本的尺寸。</p>
+<p>sampler 给出的 observation sample 尺寸为 <code>(n_rollouts, n_timestep, obs_dim)</code>，action sample 尺寸为 <code>(n_rollouts, n_timestep, act_dim)</code>。总体是符合想象的，也就是给出了 <code>n_rollout</code> 个轨迹，轨迹长度（总时间步）为 <code>n_timestep</code>，然后第三个维度就是具体的每个时间步的观测状态和决策。</p>
+<p>进入 dynamics 的 <code>fit</code> 函数，首先是把这个数据集划分成训练集和验证集，这个划分是在第一个维度上进行的，也就是把 <code>n_rollout</code> 个轨迹按照比例拆分。拆分完了就堆叠到训练集 <code>self._dataset_train</code> 和验证集 <code>self._dataset_test</code> 上。</p>
+<p>下面就是看他的 batch 生成。对每一个 meta task，首先在 <code>[0, n_rollout)</code> 里随机一个 trajectory，之后选择一个中间点，向前截取 <span class="math inline">\(M\)</span> 个时间步，向后截取 <span class="math inline">\(M\)</span> 个时间步。这里就出现了问题，代码中明显假设了 <span class="math inline">\(M = K\)</span>，也就是说在 trajectory 上前向和后向截取了相同的长度，这一点显然和论文中是不一样的。</p>
+<p>然后还有一点更为疑惑：</p>
+<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">num_paths, len_path = self._dataset_train[<span class="string">&quot;obs&quot;</span>].shape[:<span class="number">2</span>]</span><br><span class="line">idx_path = np.random.randint(<span class="number">0</span>, num_paths, size=self.meta_batch_size)</span><br><span class="line">idx_batch = np.random.randint(self.batch_size, len_path - self.batch_size, size=self.meta_batch_size)</span><br><span class="line"></span><br><span class="line">obs_batch = np.concatenate(</span><br><span class="line">    [</span><br><span class="line">        self._dataset_train[<span class="string">&quot;obs&quot;</span>][ip, ib - self.batch_size : ib + self.batch_size, :]</span><br><span class="line">            <span class="keyword">for</span> ip, ib <span class="keyword">in</span> <span class="built_in">zip</span>(idx_path, idx_batch)</span><br><span class="line">    ],</span><br><span class="line">    axis=<span class="number">0</span>,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>这里关注他如何访问 <code>self._dataset_train["obs"]</code>，第一个维度其直接写了一个标量 <code>ip</code> 上去，这样会导致第一个维度消失，虽说后面指定的是 <code>axis=0</code>，实际上是在第二个维度上做合并的。由于 <code>idx_path</code> 长度为 <code>self.meta_batch_size</code>，也就是 <span class="math inline">\(N\)</span>，而第二个维度每个 trajectory 取用了 <span class="math inline">\(2M\)</span> 的长度，所以最后得到的 <code>obs_batch</code> 尺寸为 <code>(2MN, obs_dim)</code>。</p>
+<p>这里明显做了很多的混同处理，比如根本体现不出来任务的差别，也体现不出来截取的作用。然而有个好处在于虽然融合了，但是这个 batch 第一个维度上的有序性至少保证我们之后可以再次把这个 batch 按照不同 meta task 拆分，虽然这也太丑陋了。</p>
+<p>另外补充一句，<code>delta</code> 的含义就是 <code>obs_next - obs</code>，就是后续状态减去前置状态，即决策后的状态变化量。</p>
+<p>获取 batch 之后就是喂到网络里算 post loss、pre loss，然后用优化器反传 post loss 更新网络。这里的认识就和上面的对上了，没什么新的，就不再写一遍了。</p>
+<hr />
+<p>把这些看明白之后我终于看明白了原先构建网络的时候的下面这段代码：</p>
+<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">nn_input_per_task = tf.split(self.nn_input, self.meta_batch_size, axis=<span class="number">0</span>)</span><br><span class="line">delta_per_task = tf.split(self.delta_ph, self.meta_batch_size, axis=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">pre_input_per_task, post_input_per_task = <span class="built_in">zip</span>(</span><br><span class="line">    *[tf.split(nn_input, <span class="number">2</span>, axis=<span class="number">0</span>) <span class="keyword">for</span> nn_input <span class="keyword">in</span> nn_input_per_task]</span><br><span class="line">)</span><br><span class="line">pre_delta_per_task, post_delta_per_task = <span class="built_in">zip</span>(</span><br><span class="line">    *[tf.split(delta, <span class="number">2</span>, axis=<span class="number">0</span>) <span class="keyword">for</span> delta <span class="keyword">in</span> delta_per_task]</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>他真的是我想的那样，依靠着那若有若无的有序性，先在生成 batch 的时候消失掉一个维度，然后再在这里凭空 split 出来。</p>
+<p>这里 <code>self.delta_ph</code> 尺寸是 <code>(2MN, obs_dim)</code>，在第一个维度上按照 meta batch size，即 <span class="math inline">\(N\)</span>，等分，得到的张量尺寸为 <code>(N, 2M, obs_dim)</code>，并且恰好恢复了各个 meta task 的区别。然后遍历，列表产生式之中的 <code>delta</code> 尺寸为 <code>(2M, obs_dim)</code>，再将其沿第一个维度两等份，前半自然是 pre，后者自然是 post，尺寸变为 <code>(2, M, obs_dim)</code>。之后用 <code>zip</code> 函数重新组合一下，这里 <code>zip</code> 接受了 <span class="math inline">\(N\)</span> 个尺寸为 <code>(2, M, obs_dim)</code> 的张量作为参数，最后传出 <span class="math inline">\(2\)</span> 个尺寸为 <code>(N, M, obs_dim)</code> 的张量。</p>
+<p>取 <code>obs_dim=1</code> 以及 <span class="math inline">\(N = 3, M = 2\)</span> 演示一下这个过程。下述 <code>self.delta_ph</code> 中 <code>0, 1, 2, 3</code> 属于 meta task #0，以此类推。并且 <code>0, 1</code> 是 pre observation，<code>2, 3</code> 是 post observation：</p>
+<figure class="highlight plaintext"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">self.delta_ph = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]</span><br><span class="line">-&gt;</span><br><span class="line">delta_per_task = [[0, 1, 2, 3], [4, 5, 6, 7], [8, 9, 10, 11]]</span><br><span class="line">-&gt;</span><br><span class="line">delta (example) = [4, 5, 6, 7]</span><br><span class="line">tf.split(delta, 2, axis=0) = [[4, 5], [6, 7]]</span><br><span class="line">*[tf.split(delta, 2, axis=0) for delta in delta_per_task] =</span><br><span class="line">    [[0, 1], [2, 3]], [[4, 5], [6, 7]], [[8, 9], [10, 11]]</span><br><span class="line">-&gt;</span><br><span class="line">pre_delta_per_task = [[0, 1], [4, 5], [8, 9]]</span><br><span class="line">post_delta_per_task = [[2, 3], [6, 7], [10, 11]]</span><br></pre></td></tr></table></figure>
+<p>这样确实同时完成了按 meta task 分割以及按 pre/post 分割两个任务，实在是高。</p>
+<hr />
+<p>把这些都看明白之后，就可以明白这里 loss function 实际上和论文不一样。代码里写的事实上是一个 deterministic dynamics，建模是 <span class="math inline">\(\delta_t := \hat{p}_{\theta_{\mathcal{E}}&#39;}(s_t, a_t)\)</span>，也就是用 MLP 预测状态的变化量，再与实际的状态变化量作 MSE（符号就随便用了，我看得懂就行）：</p>
+<p><span class="math display">\[
+\mathcal{L}(\tau_{\mathcal{E}}(t, t + K), \theta_{\mathcal{E}}&#39;) := \frac{1}{K \cdot \dim\mathcal{S}} \sum_{k = t}^{t + K} \bigoplus_{\mathcal{S}} [\hat{p}_{\theta_{\mathcal{E}}&#39;}(s_k, a_k) - (s_{t + 1} - s_t)]^{\otimes 2}
+\]</span></p>
+<p>这里上标 <span class="math inline">\(\otimes 2\)</span> 表示按元素平方，符号 <span class="math inline">\(\bigoplus_{\mathcal{S}}\)</span> 表示求所有元素的和。</p>
+<hr />
+<p>现在又有个未解之谜就是 <span class="math inline">\(\psi\)</span> 在哪里，这个元学习参数居然一下子没找到，而且我现在也暂且不太明白到底什么时候 <span class="math inline">\(\theta\)</span> 通过元学习被优化到了 <span class="math inline">\(\theta_{\mathcal{E}}&#39;\)</span>。</p>
 
     </div>
 
@@ -816,13 +901,13 @@ $(function () {
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">398k</span>
+    <span title="站点总字数">404k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">6:02</span>
+    <span title="站点阅读时长">6:07</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
