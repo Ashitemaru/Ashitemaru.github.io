@@ -576,12 +576,168 @@ Pensieve 迁移遇到的问题是如何建立一个较为合理的 Pensieve envi
 
 | | 无切换训练集 | 等间隔切换训练集 | 随机切换训练集 |
 | :-: | :-: | :-: | :-: |
-| 4G 行走测试 | *12.99* | | |
-| 4G 驾驶测试 | *16.88* | | |
-| 等间隔切换测试 | *7.16* | | |
+| 4G 行走测试 | 12.99 | 14.35 | 19.28 |
+| 4G 驾驶测试 | 16.88 | 17.66 | 16.25 |
+| 等间隔切换测试 | 7.16 | 7.42 | 5.91 |
+
+此外 26 号获得的一个训练曲线就报告在这里吧，这是等间隔切换训练集的训练曲线：
+
+![](/uploads/2023-spring-record/1.png)
+
+随机切换的训练曲线是：
+
+![](/uploads/2023-spring-record/3.png)
+
+目前总之是能明显观察到仅仅通过扩充数据集是不能完全解决这个问题的，扩充数据集确实可以提升结果，但是极其有限，在有切换的测试集上的表现依然和无切换的存在段差。
+
+另外，根据 AABR 论文的结果，即使 4G 网络在驾驶和行走这两个环境间差距并没有如此之大：
+
+![](/uploads/2023-spring-record/2.png)
+
+而这里使用的训练集中：
+
+| | 4G 行走 | 4G 驾驶 |
+| :-: | :-: | :-: |
+| 均值 | 32.13 | 39.34 |
+| 方差 | 860.32 | 839.72 |
+
+可以发现事实上差距并没有想象中那么大，但其之间的切换依然会导致 Naive Pensieve 完全无法适应。
+
+不过这里我有一个想法，既然差距并没有这么大，那么这两个网络的特征到底是什么的呢？到底是什么决定了这个 trace 更像是行走时测出来的还是驾驶时测出来的，这个我觉得应该要画几个 trace 出来研究一下。
+
+---
+
+这里应该还需要辅以部分 log 分析，log 分析的话就等第三个随机切换训练集弄完后基于那个 log 做一些分析。这些分析应该就构成了下述论点的证明：
+
+{% note info no-icon %}
+Naive Pensieve 仅仅依靠于扩充训练集是无法解决线上环境切换的问题的。
+{% endnote %}
+
+这也就否定了简单的传统方法在这里的应用，从而构成了解决方案**必要性**的验证，下面毕设中期可能就缺一个比较好的方案**可行性**验证了。
 
 # 2023.03.26
 
 先前买的日语中高级语法教程到了，于是取了快递准备带去 FIT，但是偶然发现今天天气极其舒服，于是把骑着的共享单车扔在清芬，边看书边走去 FIT 了。到了 FIT 之后依然是一点点做事的心情也没有，Pensieve baseline 还在训练，按理说现在就应该准备写 code doc 然后做好迁移工作放上去训练，但是显然我摸鱼摸鱼到了现在。
 
 现在比较难受的一件事情就是我似乎不太清楚迁移到 Pensieve 之后应该用什么数据集做训练，现在还有点难绷，我可能还真的得好好思考一下这个问题。这个问题的思路就是好好阅读一下代码框架，研究一下原先基于 Gymnasium 环境的训练算法策略，基于此将 Pensieve 中的概念与框架代码做一下一一对应，之后就应该能摸明白最后的逻辑了。
+
+晚上是真的没心情继续做事了，于是偷摸去了五道口出勤，出到闭店之后回来继续干活。不过似乎实习那边的 bug 一直还要我修，基础技能培训我也得准备，现在总之就是事情还挺麻烦的。
+
+---
+
+目前仔细阅读了一下 GrBAL 代码框架，有一些笔记就写在这里了，这里都是备忘：
+
+- `config` 里面的 `meta_batch_size` 应该代表的是目前训练多少个 meta task，似乎就是论文里的 #Task/itr，或者说 $N$
+- `config` 里面的 `adapt_batch_size` 应该基本对应采样的时候使用多少的 trajectory 节点通过元学习策略 $u_{\psi_*}$ 来更新 dynamic model 的参数 $\theta$，也就是论文中的 $M$
+- 似乎代码框架内没有设置 $n_S$ 参数的地方，其 MB trainer 之中每一个 iteration 都会通过 Algorithm 2 收集 rollouts
+- `MetaMLPDynamics` 中的 `self.learning_rate` 就是 Algorithm 1 中的参数 $\beta$，另外其中定义的 `self.train_op` 就是以学习率 $\beta$ 优化 `self.post_loss`，而这就是 $1/N \sum_{i = 1}^N \mathcal{L}_j$
+
+这里我们就直接研究一下 Meta MLP Dynamics 的结构究竟如何。首先他为每一个 meta task 都建立了一个 pre MLP 和一个 post MLP，用来预测一个代码中名为 `delta_pred` 的变量。而这个变量参与了下述 loss 的计算：
+
+{% codeblock lang:python Python %}
+pre_delta_pred = pre_mlp.output_var
+pre_loss = tf.reduce_mean(tf.square(pre_delta_per_task[idx] - pre_delta_pred))
+
+# ...
+
+post_delta_pred = post_mlp.output_var
+post_loss = tf.reduce_mean(tf.square(post_delta_per_task[idx] - post_delta_pred))
+{% endcodeblock %}
+
+这里就是简单的 MSE 均方误差，这里观察一下论文给出的 loss function，这是一个刻画当前 trajectory slice 和 dynamics 所希望的（或者说所预测的）trajectory slice 的吻合程度的 loss，最小化这个 loss 的效果就是让 dynamics 学习采样到的 trajectory，使得其模拟出来的 trajectory 贴合实际采样：
+
+$$
+\mathcal{L}(\tau_{\mathcal{E}}(t, t + K), \theta_{\mathcal{E}}') := -\frac{1}{K} \sum_{k = t}^{t + K} \ln \hat{p}_{\theta_{\mathcal{E}}'}(s_{k + 1} \mid s_k, a_k)
+$$
+
+这里的 $\theta_{\mathcal{E}}'$ 表示已经在环境 $\mathcal{E}$ 下 adapt 过的 dynamics 参数。
+
+这里代码和论文矛盾的点有一，即论文中 loss function 是基于一个非确定的 dynamics，即 $p := \hat{p}_{\theta_{\mathcal{E}}'}(s_{k + 1} \mid s_k, a_k)$。然而代码中接受 `self.obs_ph` 以及 `self.act_ph` 并输出 `self.delta_pred` 的 MLP 却显然更像确定性 dynamics，即 $s_{k + 1} := \hat{p}_{\theta_{\mathcal{E}}'}(s_k, a_k)$。
+
+post loss 的用处就是用来更新 dynamics 的参数 $\theta$，学习率为 $\beta$。pre loss 则似乎和元学习策略有关，但后续没在代码框架内寻找到这个变量的引用。
+
+---
+
+决定换个思路了，在内部兜兜转转不如直接一点点剥开代码框架，把每个张量维度算清楚。论文中的算法有个相当明显的接口点，就是 Algorithm 1 和 Algorithm 2 之间通过 sampler 沟通，所以首先先去把握 sampler 给出的样本的尺寸。
+
+sampler 给出的 observation sample 尺寸为 `(n_rollouts, n_timestep, obs_dim)`，action sample 尺寸为 `(n_rollouts, n_timestep, act_dim)`。总体是符合想象的，也就是给出了 `n_rollout` 个轨迹，轨迹长度（总时间步）为 `n_timestep`，然后第三个维度就是具体的每个时间步的观测状态和决策。
+
+进入 dynamics 的 `fit` 函数，首先是把这个数据集划分成训练集和验证集，这个划分是在第一个维度上进行的，也就是把 `n_rollout` 个轨迹按照比例拆分。拆分完了就堆叠到训练集 `self._dataset_train` 和验证集 `self._dataset_test` 上。
+
+下面就是看他的 batch 生成。对每一个 meta task，首先在 `[0, n_rollout)` 里随机一个 trajectory，之后选择一个中间点，向前截取 $M$ 个时间步，向后截取 $M$ 个时间步。这里就出现了问题，代码中明显假设了 $M = K$，也就是说在 trajectory 上前向和后向截取了相同的长度，这一点显然和论文中是不一样的。
+
+然后还有一点更为疑惑：
+
+{% codeblock lang:python Python %}
+num_paths, len_path = self._dataset_train["obs"].shape[:2]
+idx_path = np.random.randint(0, num_paths, size=self.meta_batch_size)
+idx_batch = np.random.randint(self.batch_size, len_path - self.batch_size, size=self.meta_batch_size)
+
+obs_batch = np.concatenate(
+    [
+        self._dataset_train["obs"][ip, ib - self.batch_size : ib + self.batch_size, :]
+            for ip, ib in zip(idx_path, idx_batch)
+    ],
+    axis=0,
+)
+{% endcodeblock %}
+
+这里关注他如何访问 `self._dataset_train["obs"]`，第一个维度其直接写了一个标量 `ip` 上去，这样会导致第一个维度消失，虽说后面指定的是 `axis=0`，实际上是在第二个维度上做合并的。由于 `idx_path` 长度为 `self.meta_batch_size`，也就是 $N$，而第二个维度每个 trajectory 取用了 $2M$ 的长度，所以最后得到的 `obs_batch` 尺寸为 `(2MN, obs_dim)`。
+
+这里明显做了很多的混同处理，比如根本体现不出来任务的差别，也体现不出来截取的作用。然而有个好处在于虽然融合了，但是这个 batch 第一个维度上的有序性至少保证我们之后可以再次把这个 batch 按照不同 meta task 拆分，虽然这也太丑陋了。
+
+另外补充一句，`delta` 的含义就是 `obs_next - obs`，就是后续状态减去前置状态，即决策后的状态变化量。
+
+获取 batch 之后就是喂到网络里算 post loss、pre loss，然后用优化器反传 post loss 更新网络。这里的认识就和上面的对上了，没什么新的，就不再写一遍了。
+
+---
+
+把这些看明白之后我终于看明白了原先构建网络的时候的下面这段代码：
+
+{% codeblock lang:python Python %}
+nn_input_per_task = tf.split(self.nn_input, self.meta_batch_size, axis=0)
+delta_per_task = tf.split(self.delta_ph, self.meta_batch_size, axis=0)
+
+pre_input_per_task, post_input_per_task = zip(
+    *[tf.split(nn_input, 2, axis=0) for nn_input in nn_input_per_task]
+)
+pre_delta_per_task, post_delta_per_task = zip(
+    *[tf.split(delta, 2, axis=0) for delta in delta_per_task]
+)
+{% endcodeblock %}
+
+他真的是我想的那样，依靠着那若有若无的有序性，先在生成 batch 的时候消失掉一个维度，然后再在这里凭空 split 出来。
+
+这里 `self.delta_ph` 尺寸是 `(2MN, obs_dim)`，在第一个维度上按照 meta batch size，即 $N$，等分，得到的张量尺寸为 `(N, 2M, obs_dim)`，并且恰好恢复了各个 meta task 的区别。然后遍历，列表产生式之中的 `delta` 尺寸为 `(2M, obs_dim)`，再将其沿第一个维度两等份，前半自然是 pre，后者自然是 post，尺寸变为 `(2, M, obs_dim)`。之后用 `zip` 函数重新组合一下，这里 `zip` 接受了 $N$ 个尺寸为 `(2, M, obs_dim)` 的张量作为参数，最后传出 $2$ 个尺寸为 `(N, M, obs_dim)` 的张量。
+
+取 `obs_dim=1` 以及 $N = 3, M = 2$ 演示一下这个过程。下述 `self.delta_ph` 中 `0, 1, 2, 3` 属于 meta task #0，以此类推。并且 `0, 1` 是 pre observation，`2, 3` 是 post observation：
+
+{% codeblock lang:text Text %}
+self.delta_ph = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+->
+delta_per_task = [[0, 1, 2, 3], [4, 5, 6, 7], [8, 9, 10, 11]]
+->
+delta (example) = [4, 5, 6, 7]
+tf.split(delta, 2, axis=0) = [[4, 5], [6, 7]]
+*[tf.split(delta, 2, axis=0) for delta in delta_per_task] =
+    [[0, 1], [2, 3]], [[4, 5], [6, 7]], [[8, 9], [10, 11]]
+->
+pre_delta_per_task = [[0, 1], [4, 5], [8, 9]]
+post_delta_per_task = [[2, 3], [6, 7], [10, 11]]
+{% endcodeblock %}
+
+这样确实同时完成了按 meta task 分割以及按 pre/post 分割两个任务，实在是高。
+
+---
+
+把这些都看明白之后，就可以明白这里 loss function 实际上和论文不一样。代码里写的事实上是一个 deterministic dynamics，建模是 $\delta_t := \hat{p}_{\theta_{\mathcal{E}}'}(s_t, a_t)$，也就是用 MLP 预测状态的变化量，再与实际的状态变化量作 MSE（符号就随便用了，我看得懂就行）：
+
+$$
+\mathcal{L}(\tau_{\mathcal{E}}(t, t + K), \theta_{\mathcal{E}}') := \frac{1}{K \cdot \dim\mathcal{S}} \sum_{k = t}^{t + K} \bigoplus_{\mathcal{S}} [\hat{p}_{\theta_{\mathcal{E}}'}(s_k, a_k) - (s_{t + 1} - s_t)]^{\otimes 2}
+$$
+
+这里上标 $\otimes 2$ 表示按元素平方，符号 $\bigoplus_{\mathcal{S}}$ 表示求所有元素的和。
+
+---
+
+现在又有个未解之谜就是 $\psi$ 在哪里，这个元学习参数居然一下子没找到，而且我现在也暂且不太明白到底什么时候 $\theta$ 通过元学习被优化到了 $\theta_{\mathcal{E}}'$。
