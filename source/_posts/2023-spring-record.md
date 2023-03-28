@@ -738,11 +738,63 @@ $$
 
 这里上标 $\otimes 2$ 表示按元素平方，符号 $\bigoplus_{\mathcal{S}}$ 表示求所有元素的和。
 
----
+# 2023.03.27
+
+昨天太累了，今天就起得很晚，到 FIT 的时候已经是四点多五点了，草草吃了晚饭就开始干活。
+
+昨天看了大半 GrBAL 之后，现在又有个未解之谜就是 $\psi$ 在哪里，这个元学习参数居然一下子没找到，而且我现在也暂且不太明白到底什么时候 $\theta$ 通过元学习被优化到了 $\theta_{\mathcal{E}}'$。
+
+不过最终还是给我挖出来了，在构建网络的时候有这么一段代码：
+
+{% codeblock lang:python Python %}
+def __init__(self, ...):
+    # ...
+
+    pre_delta_pred = pre_mlp.output_var
+    pre_loss = tf.reduce_mean(tf.square(pre_delta_per_task[idx] - pre_delta_pred))
+    adapted_params = self._adapt_sym(pre_loss, pre_mlp.get_params())
+    self._adapted_params.append(adapted_params)
+
+    # ...
+
+def _adapt_sym(self, loss, params_var):
+    update_param_keys = list(params_var.keys())
+
+    grads = tf.gradients(loss, [params_var[key] for key in update_param_keys])
+    gradients = dict(zip(update_param_keys, grads))
+
+    # Gradient descent
+    adapted_policy_params = [
+        params_var[key] - tf.multiply(self.inner_learning_rate, gradients[key])
+            for key in update_param_keys
+    ]
+
+    adapted_policy_params_dict = OrderedDict(zip(update_param_keys, adapted_policy_params))
+
+    return adapted_policy_params_dict
+{% endcodeblock %}
+
+这里就是非常简单的，把 pre MLP 参数和 pre loss 扔到 `self._adapt_sym` 里面去，而这个函数里面构建的就是：
+
+$$
+\theta_{\mathcal{E}}' \leftarrow u_\psi(\tau_{\mathcal{E}}(t - M, t - 1), \theta)
+$$
+
+的 adapt 过程。这个 adapt 过程在论文中具体定义为：
+
+$$
+\theta_{\mathcal{E}}' = \theta_{\mathcal{E}} + \psi\nabla_{\theta}\frac{1}{M}\sum_{m = t - M}^{t - 1}\ln\hat{p}_{\theta_{\mathcal{E}}}(s_{m + 1} \mid s_m, a_m)
+$$
+
+这里显然还是和昨天提到的问题一样，论文和代码没有对的上，dynamics 是确定性的，pre loss 也更像是 MSE。不过这里根据代码实现看，`self.inner_learning_rate` 就是元学习参数 $\psi$。下面一步就是找这个量究竟什么时候被实际计算，另外，何时其更新了元学习参数 $\psi$。可以注意到这些要被更新的参数全都压入了 `self._adapted_params`，找寻这个变量的引用就可确定出 adapt 实际执行的位置。
+
+简单找一下就能找到这个类里面的 `self.adapt` 方法就是实际执行的地方，继续找这个成员函数调用的地方，就会发现其仅仅在 `sim_policy.py` 中调用，那么就可以确定这个函数是用于线上 adapt dynamics 的。
 
 现在又有个未解之谜就是 $\psi$ 在哪里，这个元学习参数居然一下子没找到，而且我现在也暂且不太明白到底什么时候 $\theta$ 通过元学习被优化到了 $\theta_{\mathcal{E}}'$。
 
-# ADDED
+说实话目前这个框架里面还有很多地方我没有研究明白，比如说到现在我都不知道其构建这么多 MLP 的用处是什么，以及论文里的 $\theta, \psi$ 是否就如我理解这样，包括 $\psi$ 的训练究竟在哪里之类的问题。但是由于数据集加载策略我已经弄明白了，所以说实话可以先去载入数据集跑一跑看看结果了。
+
+---
 
 今晚偷摸去五道口出勤 2pc 之后回来，说起来昨天因为有人扒防盗门晚勤，导致商场领导直接下令禁止晚勤，所以现在晚上真的只能打到十点，反倒是帮我自律了。
 
@@ -781,3 +833,4 @@ def configure(...):
 然而这句话确实也很有意境，如果知道我们只有可能在梦中相遇，那么即使不可能，我也愿意长眠不醒。现代日语中没有专门表达反事实假想的词语或句式，只能用通用的表达愿望的句式「〜だろう、〜たろう、〜でしょう、〜ましょう、〜ように」等等，这个与现实抗争的感觉就没出来。
 
 不过我现在确实很累，确实希望长眠不醒了。
+
