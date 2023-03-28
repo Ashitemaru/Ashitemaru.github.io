@@ -400,7 +400,7 @@ $(function () {
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>30k</span>
+      <span>31k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -900,6 +900,9 @@ $(function () {
 </ul>
 <p>而在 Meta MLP Dynamics 里面做的训练集和验证机切分是用来算 loss 的，他有训练集 loss 和验证集 loss。</p>
 <p>也就是说，实际上用来做验证集 reward 的，应该就是采样时返回的那些 reward 信号，现在我已经把这些信号接入到 logger 里面了。</p>
+<p>然而做好这些之后挂了一下实验，发现验证集上 reward 能打到 50 上下，这显然太离谱了，因为即使 GrBAL 再怎么强，比 Pensieve 高出 400% 左右多少是不太对的。回到宿舍后思考了一下，觉得是验证集不可信，因为验证集毕竟和训练集来自同样的数据池，很有可能过拟合。所以迅速写了一个在另外的数据池上测试的脚本，挂了上去，顺便增加了一个把所有决策和环境信息输出出来的 logger。</p>
+<p>最后看完 logger 的记录后，总算是明白了。MPC Controller 似乎是相当激进的，其特别喜欢拉高码率，即使在低带宽环境下。这就导致在带宽还可以的环境下就能拉满 QoE，然而由于数据集低带宽环境毕竟有限（得益于现在的网络基础设施优化），所以 rebuffer 并没有预想中那么多，rebuffer penalty 也就没有把 reward 拉到很低。然而如果从直观上来讲，虽然其 reward 达到了 50 左右，其经常会在低带宽下出现十几秒的卡顿，这显然是不可接受的行为，所以这也就是 average QoE 的评价缺陷了。</p>
+<p>既然整体实验框架没啥问题我就打算一直跑着了，目前的话，reward 大概也是十几，至少达到了一般水平吧。这么说中期至少是有内容可以汇报的了，现在就差做一个 PPT 出来了，最后还是决定明天再做了，正好看一眼训练结果。然后一定要记住还要做一下 baseline log 的详细分析。</p>
 
     </div>
 
