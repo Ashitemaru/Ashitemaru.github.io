@@ -1316,6 +1316,27 @@
 <p>然而做好这些之后挂了一下实验，发现验证集上 reward 能打到 50 上下，这显然太离谱了，因为即使 GrBAL 再怎么强，比 Pensieve 高出 400% 左右多少是不太对的。回到宿舍后思考了一下，觉得是验证集不可信，因为验证集毕竟和训练集来自同样的数据池，很有可能过拟合。所以迅速写了一个在另外的数据池上测试的脚本，挂了上去，顺便增加了一个把所有决策和环境信息输出出来的 logger。</p>
 <p>最后看完 logger 的记录后，总算是明白了。MPC Controller 似乎是相当激进的，其特别喜欢拉高码率，即使在低带宽环境下。这就导致在带宽还可以的环境下就能拉满 QoE，然而由于数据集低带宽环境毕竟有限（得益于现在的网络基础设施优化），所以 rebuffer 并没有预想中那么多，rebuffer penalty 也就没有把 reward 拉到很低。然而如果从直观上来讲，虽然其 reward 达到了 50 左右，其经常会在低带宽下出现十几秒的卡顿，这显然是不可接受的行为，所以这也就是 average QoE 的评价缺陷了。</p>
 <p>既然整体实验框架没啥问题我就打算一直跑着了，目前的话，reward 大概也是十几，至少达到了一般水平吧。这么说中期至少是有内容可以汇报的了，现在就差做一个 PPT 出来了，最后还是决定明天再做了，正好看一眼训练结果。然后一定要记住还要做一下 baseline log 的详细分析。</p>
+<h2 id="added">ADDED</h2>
+<p>中期答辩基本上平稳地过去了，把实验结果汇报了之后，三位评审老师也没有什么很尖锐的问题，只有一位老师问了点简单的问题就放我走了。然而现在的问题就在于，我目前做出来的结果到底可不可信，因为确实感觉和大家长久以来的经验有不相符的地方，至少目前有几个值得验证的疑点：</p>
+<ul>
+<li>baseline 过弱，训练错误等问题</li>
+<li>数据集设计有问题，应当多随机生成几次重复实验</li>
+<li>GrBAL 实验成果不一定稳定，dynamics model 的预测效果也应当重复确认</li>
+</ul>
+<p>至少在进行中期答辩 PPT 上所写的未来研究之前，我还是打算把这些问题给思考清楚。</p>
+<p>然后就是其他的一些杂事了，现在安排如下：</p>
+<ul>
+<li>周四组会、软工 Sprint1 组会，晚上出勤</li>
+<li>周五 LVS 会议，预计早起前往</li>
+<li>周六 LVS 会议，预计晚归</li>
+<li>周日基础技能培训线下授课</li>
+<li>有 DDL 的任务
+<ul>
+<li>提出不再负责微信小程序开发，转 Rust 后台开发</li>
+<li>周六晚前完成基础技能培训课件供审核</li>
+</ul></li>
+</ul>
+<p>最近确实是没有什么很重要的任务了，确实可以计划摆烂了，毕竟最终答辩差不多得到六月，中间两个月可以自由摆烂。目前日语中高级教程还想自学，日语自学笔记也还有很多想写的，DRL 的任务也想好好做，也想出勤、打雀、旅游，总之就是什么都想做，毕竟没有什么硬性要求了。</p>
 ]]></content>
       <categories>
         <category>【生活记录】日记</category>
@@ -15617,6 +15638,455 @@ G^\lambda_t := (1 - \lambda)\sum_{n = 1}^{+\infty}\lambda^{n - 1}G_t^{(n)}
       </categories>
   </entry>
   <entry>
+    <title>2022 年 2 月论文笔记</title>
+    <url>/2022/01/18/paper-2022-02/</url>
+    <content><![CDATA[<p>2022 年 2 月，主要工作为可微渲染相关方向。</p>
+<span id="more"></span>
+<h1 id="soft-rasterizer---a-differentiable-renderer-for-image-based-3d-reasoning">Soft Rasterizer - A Differentiable Renderer for Image-based 3D Reasoning</h1>
+<h2 id="工作概述">工作概述</h2>
+<p>主要思想还是想把逆向渲染管线（通过二维图像推理三维模型的参数）和神经网络结合，但是最大的问题是管线中的光栅化是离散化操作，可能导致不可微。一些其他的工作在尝试<strong>近似估算</strong>梯度，但是这个工作提出了一种真正可微的框架，能做到：</p>
+<ul>
+<li>直接用可微函数渲染染色的网格</li>
+<li>能从轮廓、阴影等各种二维图像信息有效反向传递为网格顶点参数</li>
+</ul>
+<p>这个工作的重点是把渲染过程的部分看作<strong>聚合函数（Aggregation function）</strong>，该函数联系了三维模型的网格三角形的概率分布以及其渲染出来的像素。</p>
+<div class="note info no-icon"><p>看起来标题中的 Soft 的含义就是使用概率分布的方式来把离散的光栅化变成可微的，最初始的光栅化一般会涉及到离散采样（即确定每一个离散的像素是否要显示网格上的某一个三角形），这也是不可微性的来源。</p>
+</div>
+<p>本论文主要讲述了如何通过 Soft rasterization 框架实现可微的光栅化以保证渲染管线的可微性，基于此，该渲染框架即可方便地接入神经网络以将二维图像信息反向传播到三维模型。同时，本论文也会指出近期的近似估算梯度的方式（使用 hand-crafted 的函数近似表示梯度）并不具有泛用性，且可能会降低三维模型信息更新的效率。</p>
+<h3 id="softras-与传统光栅化">SoftRas 与传统光栅化</h3>
+<p>SoftRas 在将模型投影到平面上的时候，会将模型转换为投影平面上的概率分布。而传统光栅化则是转化为具体某个像素是否染色。</p>
+<p>另外，似乎 SoftRas 对遮挡的处理也和传统渲染管线的 z-buffer 不一样。传统光栅化会使用 onehot 的方式处理遮挡（应该指的是处理为完全遮挡），而 SoftRas 也会基于概率分布做出不同处理。</p>
+<h2 id="相关工作">相关工作</h2>
+<h3 id="可微渲染">可微渲染</h3>
+<p>主要关注如何描述二维图像变化和三维模型操作的关系，主要解决如何从二维图像重建三维场景。考虑给定的二维图片 <span class="math inline">\(A\)</span>，首先粗略初始化一个三维场景 <span class="math inline">\(B&#39;\)</span>，然后通过渲染管线渲染得到二维图片 <span class="math inline">\(B\)</span>。计算 <span class="math inline">\(A\)</span> 和 <span class="math inline">\(B\)</span> 的 loss，将其梯度反向传播给三维场景 <span class="math inline">\(B&#39;\)</span> 的参数，更新之。这里反向传播就是可微渲染最重要的步骤，即如何计算梯度，因为三维场景参数更新量取决于 loss 对参数的偏导数。</p>
+<p>先前提到，这里获取梯度有困难。有些工作使用估计梯度的方式进行，有些工作可以精确计算梯度但是不具有泛用性。</p>
+<h3 id="基于图像的三维推理">基于图像的三维推理</h3>
+<p>依然考虑从二维图像重建三维场景。传统方法往往要求获得从多个角度观察得到的二维图像，而由于数据集的扩大，基于学习的重建方法可以使用一张或少量二维图像来重建场景。部分工作会将重建三维场景拆分为首先重建 2.5 维的表示（深度表等）。</p>
+<p>另外，姿态估计也是三位推理的一个重要的子任务。通过深度学习的方法，预测刚体姿态是较为简单的，而预测人体这类非刚体的姿态则较为困难。</p>
+<h2 id="softras-基本原理">SoftRas 基本原理</h2>
+<p>大约是这样的一个流程：</p>
+<p><img src="/uploads/paper-2022-02/1.png" /></p>
+<p>这里外部因素包含相机参数 <span class="math inline">\(\boldsymbol{P}\)</span> 和环境光照 <span class="math inline">\(\boldsymbol{L}\)</span>，内部因素包括网格信息 <span class="math inline">\(\boldsymbol{M}\)</span> 以及各个顶点的信息（如颜色、材质）<span class="math inline">\(\boldsymbol{A}\)</span>。</p>
+<p>这里第一步要做的是获取三个中间信息，即网格法向量 <span class="math inline">\(\boldsymbol{N}\)</span>、视图空间（投影后的空间）各点坐标 <span class="math inline">\(\boldsymbol{U}\)</span> 以及 View dependent depths <span class="math inline">\(\boldsymbol{Z}\)</span>。这三个量只需要使用相机参数和网格信息即可得到。</p>
+<p>之后可以使用例如 Phong 模型等着色模型计算出颜色 <span class="math inline">\(\boldsymbol{C}\)</span>。</p>
+<p>进行到这一步，上述这些操作都是可微的。但是如果按照传统的渲染管线，下一步应该分别确定每一个网格三角形与每一个像素的对应（即光栅化），之后还要用 z-buffer 处理遮挡，这两步都因为离散采样从而是不可微的。</p>
+<p>SoftRas 软化光栅化和 z-buffer 的方式是引入 probability maps <span class="math inline">\(\{\mathcal{D}_j\}\)</span> 和聚合函数 <span class="math inline">\(\mathcal{A}(\cdot)\)</span> 分别代替光栅化和 z-buffer。这里 <span class="math inline">\(\mathcal{D}_j\)</span> 表示的是每一个像素在网格三角形 <span class="math inline">\(f_j\)</span> 内部的概率在平面上的分布。而聚合函数 <span class="math inline">\(\mathcal{A}(\cdot)\)</span> 联系起了 probability maps 以及深度信息，作为整个后续渲染流程的代表。</p>
+<h3 id="probability-maps-计算">probability maps 计算</h3>
+<p>考虑网格三角形在屏幕上的投影 <span class="math inline">\(f_j\)</span> 和屏幕上的像素 <span class="math inline">\(p_i\)</span>，记在屏幕上 <span class="math inline">\(p_i\)</span> 到 <span class="math inline">\(f_j\)</span> 的边最近距离为 <span class="math inline">\(d(i, j)\)</span>。显然，这个距离越小的像素点，出现在内部的概率越大。由于其可以反映三角形对屏幕的影响，并且其可微，所以可以用此作为 probability maps 的代表。随后通过添加控制常数、符号标记并归一化到 <span class="math inline">\((0, 1)\)</span> 内之后，我们得到了 probability maps 的公式：</p>
+<p><span class="math display">\[
+\mathcal{D}_{i, j} = \mathrm{sigmoid}\left(\delta_{i, j}\cdot\frac{d^2(i, j)}{\sigma}\right)
+\]</span></p>
+<p>这里 <span class="math inline">\(\sigma\)</span> 是一个正常数，一般默认为 <span class="math inline">\(1\times 10^{-4}\)</span>。而 <span class="math inline">\(\delta_{i, j}\)</span> 标记了 <span class="math inline">\(p_i\)</span> 是否在 <span class="math inline">\(f_j\)</span> 之中。若在，则 <span class="math inline">\(\delta_{i, j} = 1\)</span>，否则 <span class="math inline">\(\delta_{i, j} = -1\)</span>。</p>
+<p>下图展示了 <span class="math inline">\(d(i, j)\)</span> 的定义以及 <span class="math inline">\(\sigma\)</span> 常数对概率分布的影响：</p>
+<p><img src="/uploads/paper-2022-02/2.png" /></p>
+<p>显然看出 <span class="math inline">\(\sigma\)</span> 越大，概率分布就越模糊。</p>
+<p>另外一个显然的点是 <span class="math inline">\(\sigma \to 0\)</span> 的时候概率分布中三角形外的点概率密度为 <span class="math inline">\(0\)</span>，而三角形内的点为 <span class="math inline">\(1\)</span>。此时 SoftRas 退化为一般的光栅化。</p>
+<h3 id="聚合函数">聚合函数</h3>
+<p>我们考虑最后一个阶段，这里我们需要根据深度信息、 probability maps 以及颜色信息计算出最后的渲染结果。</p>
+<p>最后渲染结果中，像素 <span class="math inline">\(p_i\)</span> 的渲染结果用聚合函数表示，定义为：</p>
+<p><span class="math display">\[
+I_i = \mathcal{A}_S(\{C_j\}) := \sum_j w_{i, j}C_{i, j} + w_{i, b}C_b
+\]</span></p>
+<p>这里渲染结果定义为一系列颜色信息的加权求和，颜色构成的集合为 <span class="math inline">\(\{C_j\}\)</span>，符号 <span class="math inline">\(C_{i, j}\)</span> 表示三角形 <span class="math inline">\(f_j\)</span> 在像素 <span class="math inline">\(p_i\)</span> 处的颜色。而 <span class="math inline">\(C_b\)</span> 表示背景颜色。</p>
+<p>权重 <span class="math inline">\(w_{i, j}\)</span> 至少满足归一化条件：</p>
+<p><span class="math display">\[
+w_{i, b} + \sum_j w_{i, j} = 1
+\]</span></p>
+<p>而权重的具体值取决于先前得到的 probability maps 以及深度信息。我们将三角形 <span class="math inline">\(f_j\)</span> 中投影到 <span class="math inline">\(p_i\)</span> 像素的点的逆深度记为 <span class="math inline">\(z_{i, j}\)</span>。概率分布沿用先前的符号。定义：</p>
+<p><span class="math display">\[
+w_{i, j} := \frac{\mathcal{D}_{i, j}\exp(z_{i, j} / \gamma)}{\sum_k \mathcal{D}_{i, k}\exp(z_{i, k} / \gamma) + \exp(\varepsilon / \gamma)}
+\]</span></p>
+<p>依据归一化条件就有：</p>
+<p><span class="math display">\[
+w_{i, b} := \frac{\exp(\varepsilon / \gamma)}{\sum_k \mathcal{D}_{i, k}\exp(z_{i, k} / \gamma) + \exp(\varepsilon / \gamma)}
+\]</span></p>
+<div class="note info no-icon"><p>可以看出权重的计算公式其实是类似 Softmax 函数：</p>
+<p><span class="math display">\[
+{\rm softmax}(z_1, z_2, \cdots, z_n)_j = \frac{e^{z_j}}{\sum_i e^{z_i}}
+\]</span></p>
+</div>
+<p>这里可以看出 <span class="math inline">\(\varepsilon\)</span> 是一个小正常数，其作用是将背景颜色纳入计算。<span class="math inline">\(\gamma\)</span> 是一个调节清晰度的正常数，与计算 probability maps 的 <span class="math inline">\(\sigma\)</span> 类似，默认值一般是 <span class="math inline">\(1 \times 10^{-4}\)</span>。</p>
+<p>可以看出，具有更大概率密度的，且离投影平面更近的（即具有更大逆深度的）三角形会获得更大的权重，这符合直觉。</p>
+<hr />
+<p>现在考虑退化。针对像素 <span class="math inline">\(p_i\)</span>，假设 <span class="math inline">\(z_{i, 1} &lt; z_{i, 2} &lt; \cdots &lt; z_{i, N}\)</span>，考虑 <span class="math inline">\(\gamma\to 0\)</span>。首先考察 <span class="math inline">\(j = N\)</span>：</p>
+<p><span class="math display">\[
+\begin{aligned}
+w_{i, N} &amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}\exp(z_{i, N} / \gamma)}{\sum_k \mathcal{D}_{i, k}\exp(z_{i, k} / \gamma) + \exp(\varepsilon / \gamma)} \\
+&amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}}{\sum_k \mathcal{D}_{i, k}\exp((z_{i, k} - z_{i, N}) / \gamma) + \exp((\varepsilon - z_{i, N}) / \gamma)} \\
+&amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}}{\sum_{k = 1}^{N - 1} \mathcal{D}_{i, k}\exp((z_{i, k} - z_{i, N}) / \gamma) + \mathcal{D}_{i, N} + \exp((\varepsilon - z_{i, N}) / \gamma)} \\
+&amp;= 1
+\end{aligned}
+\]</span></p>
+<p>最后一步注意到 <span class="math inline">\(z_{i, N}\)</span> 大于任何 <span class="math inline">\(z_{i, k}(k &lt; N)\)</span>，故有这样的结果。而对于 <span class="math inline">\(j &lt; N\)</span>：</p>
+<p><span class="math display">\[
+\begin{aligned}
+w_{i, j} &amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, j}\exp(z_{i, j} / \gamma)}{\sum_k \mathcal{D}_{i, k}\exp(z_{i, k} / \gamma) + \exp(\varepsilon / \gamma)} \\
+&amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}}{\sum_k \mathcal{D}_{i, k}\exp((z_{i, k} - z_{i, j}) / \gamma) + \exp((\varepsilon - z_{i, j}) / \gamma)} \\
+&amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}}{\left(\sum_{k = 1}^{j - 1} + \sum_{k = j + 1}^{N}\right) \mathcal{D}_{i, k}\exp((z_{i, k} - z_{i, N}) / \gamma) + \mathcal{D}_{i, N} + \exp((\varepsilon - z_{i, N}) / \gamma)} \\
+&amp;= 0
+\end{aligned}
+\]</span></p>
+<p>这里要注意到分母上 <span class="math inline">\(\sum_{k = j + 1}^{N}\)</span> 的部分最终会趋向于正无穷，整体极限为 <span class="math inline">\(0\)</span>。最后根据归一化条件也有 <span class="math inline">\(w_{i, b} = 0\)</span>。</p>
+<p>结合这样的推理，可以看出：</p>
+<p><span class="math display">\[
+I_i = \mathcal{A}_S(\{C_j\}) = C_{i, N}
+\]</span></p>
+<p>也就是说最后渲染的结果只考虑了最近的网格三角形，这也就是 z-buffer 方法。</p>
+<hr />
+<p>似乎还有一个和轮廓相关的聚合函数：</p>
+<p><span class="math display">\[
+I_{i, S} = \mathcal{A}_O(\{\mathcal{D}_j\}) := 1 - \prod_j (1 - \mathcal{D}_{i, j})
+\]</span></p>
+<p>这里没有出现颜色项，这是因为轮廓的颜色一般设定为常数。这里聚合函数形式上实际上就是计算出了像素 <span class="math inline">\(p_i\)</span> 被至少一个三角形覆盖的概率。</p>
+<h2 id="实验内容">实验内容</h2>
+<h3 id="single-view-mesh-reconstruction">Single-View Mesh Reconstruction</h3>
+<p>使用这样的结构：</p>
+<p><img src="/uploads/paper-2022-02/3.png" /></p>
+<p>这里固定了渲染管线中的外部变量，即固定了相机位置和环境光照。每一个输入图片都会进入 color generator 和 shape generator 生成三维模型参数 <span class="math inline">\(\boldsymbol{C}\)</span> 和 <span class="math inline">\(\boldsymbol{M}\)</span>。随后后续接入 SoftRas，渲染得到带颜色的图像 <span class="math inline">\(I_C\)</span> 和轮廓 <span class="math inline">\(I_S\)</span>，最后和原先图像比较计算 loss。</p>
+<p>最后定义的 loss 分为三部分。在叙述定义之前，我们将原始图像的颜色和轮廓定义为 <span class="math inline">\(\hat I_C\)</span> 以及 <span class="math inline">\(\hat I_S\)</span>：</p>
+<ul>
+<li>color loss。定义为颜色之差的 1- 范数：</li>
+</ul>
+<p><span class="math display">\[
+\mathcal{L}_C := \|I_C - \hat I_C\|_1
+\]</span></p>
+<ul>
+<li>silhouette loss。定义为，这里使用 <span class="math inline">\(\otimes\)</span> 表示逐元素求积，<span class="math inline">\(\oplus\)</span> 表示逐元素求和：</li>
+</ul>
+<p><span class="math display">\[
+\mathcal{L}_S := 1 - \frac{\|I_S \otimes \hat I_S\|_1}{\|I_S \oplus \hat I_S - I_S \otimes \hat I_S\|_1}
+\]</span></p>
+<ul>
+<li>geometry loss。作用是对 loss 进行 L1 正则化。</li>
+</ul>
+<p>最后定义的 loss 是这三部分的加权求和：</p>
+<p><span class="math display">\[
+\mathcal{L} := \mathcal{L}_S + \lambda\mathcal{L}_C + \mu\mathcal{L}_G
+\]</span></p>
+<p>这里论文主要提了一下 color generator 的结构：</p>
+<p><img src="/uploads/paper-2022-02/4.png" /></p>
+<p>似乎是提出了一种新结构，让颜色重建变为一个多分类问题，进而降低了时间复杂度。但是论文的描述中有若干的暂且不太清楚的名词，暂且把原文贴在这里以后再来看：</p>
+<div class="note info no-icon"><p>Instead of directly regressing the color value, our color generator formulates color reconstruction as a classification problem that learns to reuse the pixel colors in the input image for each sampling point. Let <span class="math inline">\(N_c\)</span> denote the number of sampling points on <span class="math inline">\(\boldsymbol{M}\)</span> and <span class="math inline">\(H, W\)</span> be the height and width of the input image respectively. However, the computational cost of a naive color selection approach is prohibitive, i.e. <span class="math inline">\(O(HWN_c)\)</span>. To address this challenge, we propose a novel approach to colorize mesh using a color palette, as shown in Figure 7. Specifically, after passing input image to a neural network, the extracted features are fed into (1) a sampling network that samples the representative colors for building the palette; and (2) a selection network that combines colors from the palette for texturing the sampling points. The color prediction is obtained by multiplying the color selections with the learned color palette. Our approach reduces the computation complexity to <span class="math inline">\(O(N_d(HW + N_c))\)</span>, where <span class="math inline">\(N_p\)</span> is the size of color palette. With a proper setting of <span class="math inline">\(N_p\)</span>, one can significantly reduce the computational cost while achieving sharp and accurate color recovery.</p>
+</div>
+<h3 id="image-based-shape-fitting">Image-based Shape Fitting</h3>
+<p>似乎依然是从图像重建模型，但是这个重建任务似乎和姿态预测有较为紧密的联系。</p>
+<p>传统方法面临的问题依然是梯度不精确的问题，这样就导致反向传播较为困难。另外，传统方法也面临这样的问题：</p>
+<ul>
+<li><p>遮挡问题。传统方法中，被遮挡的三角形无法调整参数，而 SoftRas 允许被遮挡的三角形参与到运算中，所以这个问题可以解决。</p></li>
+<li><p>局部最小值问题。我们希望误差反向传播可以传播到较大范围，即希望一次三维模型参数调整不局限于较小的局部，否则可能会导致模型收敛到局部最小值而非更优的结果。而 SoftRas 使用的概率分布算法允许全局的像素参与到运算中，所以理论上误差可以传播到较大范围，这个问题可以解决。</p></li>
+</ul>
+<p>所以最后就直接使用这样的方式训练就行了：</p>
+<p><span class="math display">\[
+\{\rho, \theta, t\} = \mathop{\mathrm{argmin}}_{\rho, \theta, t}\|R(M(\rho, \theta, t)) - I_t\|_2
+\]</span></p>
+<p>这里 <span class="math inline">\(\rho, \theta, t\)</span> 是三维模型的参数，分别是非刚体形变参数、姿态角度、转换参数（或许就是视图转换的参数），<span class="math inline">\(M(\cdot)\)</span> 将这些参数转换为网格，<span class="math inline">\(R(\cdot)\)</span> 是渲染函数，<span class="math inline">\(I_t\)</span> 则是目标图像。这个训练方式也就是机器学习的通式。</p>
+<h2 id="实验结果">实验结果</h2>
+<h3 id="single-view-mesh-reconstruction-1">Single-View Mesh Reconstruction</h3>
+<p>实验结果看确实挺好的，下面展示的是不带颜色的网格重建：</p>
+<p><img src="/uploads/paper-2022-02/5.png" /></p>
+<p>颜色似乎也重建得挺好：</p>
+<p><img src="/uploads/paper-2022-02/6.png" height="50%" width="50%" /></p>
+<p>使用的评价方法是 3D IoU，即 3D Intersection over Union。这是一种物体检测领域的评价函数。二维情况下的 IoU 定义如下图所示。这里的矩形均指代物体的包围盒，分别为实际的包围盒和模型预测的包围盒：</p>
+<p><img src="/uploads/paper-2022-02/7.png" height="50%" width="50%" /></p>
+<p>SoftRas 的平均 3D IoU 超出了 state-of-art 的 NMR 的 3D IoU 约 4.5 点，从而说明在网格重建任务上 SoftRas 的表现超出了传统方法。</p>
+<p>另外似乎还有一项称为 Ablation Study 的后续实验，这里省略。</p>
+<h3 id="image-based-shape-fitting-1">Image-based Shape Fitting</h3>
+<p>首先实验刚体结构预测，这里采用六面着不同色的正方体。给定渲染后图像，要求给出正方体应当旋转的角度。SoftRas 和 NMR 的实验结果如下：</p>
+<p><img src="/uploads/paper-2022-02/8.png" /></p>
+<p>可以发现 SoftRas 成功获得了最后的结果，而 NMR 则收敛到了一个局部最小值无法得到正确结果。</p>
+<p>论文认为 NMR 失败的原因正是因为六个面的相互遮挡，这导致了 NMR 无法越过局部最小值。</p>
+<p>另外其也做了大量实验，表明 SoftRas 预测的旋转角度误差严格优于 NMR，在不优化的情况下，SoftRas 的角度误差平均比 NMR 低 <span class="math inline">\(10.60^\circ\)</span>。</p>
+<p>这里似乎涉及到 <span class="math inline">\({\rm SO}(3)\)</span> 旋转群的一些东西，后面再来研究吧。</p>
+<hr />
+<p>非刚体结构预测则选用了人体结构预测，这里初始化时人的右手位于背后，而目标图像中右手已经移动到前面，实验目标是将手移出来。显然 NMR 依然因为无法处理遮挡，最后没有能够完成任务。而 SoftRas 完成了：</p>
+<p><img src="/uploads/paper-2022-02/9.png" /></p>
+<h2 id="附录梯度计算">附录：梯度计算</h2>
+<p>我们现在研究一下 SoftRas 渲染出来的图像 <span class="math inline">\(\boldsymbol{I}\)</span> 对网格参数 <span class="math inline">\(\boldsymbol{M}\)</span> 的梯度，这个梯度也就是在反向传播的时候要计算的值。首先显然有：</p>
+<p><span class="math display">\[
+\frac{\partial\boldsymbol{I}}{\partial\boldsymbol{M}} = \frac{\partial\boldsymbol{I}}{\partial\boldsymbol{U}}\frac{\partial\boldsymbol{U}}{\partial\boldsymbol{M}} + \frac{\partial\boldsymbol{I}}{\partial\boldsymbol{Z}}\frac{\partial\boldsymbol{Z}}{\partial\boldsymbol{M}} + \frac{\partial\boldsymbol{I}}{\partial\boldsymbol{N}}\frac{\partial\boldsymbol{N}}{\partial\boldsymbol{M}}
+\]</span></p>
+<p>这里显然可以看出 <span class="math inline">\(\dfrac{\partial\boldsymbol{U}}{\partial\boldsymbol{M}}, \dfrac{\partial\boldsymbol{Z}}{\partial\boldsymbol{M}}, \dfrac{\partial\boldsymbol{N}}{\partial\boldsymbol{M}}\)</span> 是可以简单计算的，因为 <span class="math inline">\(\boldsymbol{U}, \boldsymbol{Z}, \boldsymbol{N}\)</span> 都可以由 <span class="math inline">\(\boldsymbol{M}\)</span> 通过简单的视图变换得到，由变换矩阵即可推算偏导数。</p>
+<p>而根据着色模型，<span class="math inline">\(\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{N}}\)</span> 也是可以计算的。</p>
+<p>剩余的两个梯度中，<span class="math inline">\(\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{Z}}\)</span> 直接和聚合函数相关，而 <span class="math inline">\(\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{U}}\)</span> 经过了两层，分别是概率分布计算和聚合函数，所以我们需要拆解：</p>
+<p><span class="math display">\[
+\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{U}} = \dfrac{\partial\boldsymbol{I}}{\partial\mathcal{D}}\dfrac{\partial\mathcal{D}}{\partial\boldsymbol{U}}
+\]</span></p>
+]]></content>
+      <categories>
+        <category>【论文笔记】计算机</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>2022 年 8 月论文笔记</title>
+    <url>/2022/06/10/paper-2022-08/</url>
+    <content><![CDATA[<p>这个月主要是刚刚进入流媒体相关的方向，需要阅读一些论文来了解目前的发展。</p>
+<span id="more"></span>
+<h1 id="stick---a-harmonious-fusion-of-buffer-based-and-learning-based-approach-for-adaptive-streaming">Stick - A Harmonious Fusion of Buffer-based and Learning-based Approach for Adaptive Streaming</h1>
+<h2 id="introduction">Introduction</h2>
+<p>首先考虑到现实应用背景，视频流传输已经占据了大部分的网络传输带宽。但视频传输的问题在于视频内容的多样性和可能的网络波动。一种可能的解决方案是使用 Adaptive bitrate (ABR) 算法，这些算法已经被证实可以提供高 QoE 的传输服务。</p>
+<p>传统的 ABR 算法往往是 buffer-based 的（例如 BBA 和 BOLA），这些算法通过固定的 buffer 和参数来选定下一个视频块的码率，这可能难以在波动网络环境下保证 QoE。</p>
+<p>另一方面，基于深度强化学习（DRL）的 ABR 算法 Pensieve 却给出了 state-of-the-art 的表现。在实践上，这类算法也常常部署在服务器侧以避免客户端的高计算开销。但是考虑到 ABR 算法往往需要部署在前端以避免连接后端的网络延迟，这使得这类算法理论可用但是并不实际。</p>
+<p>那么我们可以将这两种方法结合起来，使用 DRL 来强化 buffer-based 的方法，同时使用固定的缓冲区限制来限制计算开销。从而该论文提出了 Stick 框架，该框架将 QoE 参数、网络状态、视频特征作为输入参数，而缓冲区限制（连续的标量）作为其输出。</p>
+<p>考虑到连续的动作空间，我们计划使用 Deep deterministic policy gradient (DDPG) 来从头开始训练模型。此外，Stick 在无假设条件下通过和 ABR 环境交互来学习策略。</p>
+<p>为了保证计算效率，我们进一步提出了 Trigger。Trigger 会观测当前和先前的缓冲区限制，只在必要的时候激活 Stick 来更新缓冲区限制。Trigger 使用 imitation learing 方法来学习专家行为。同时，为了克服数据的无偏分布【Question #1】，我们使用了 prioritized experience replay 来存储专家策略。同时，该论文还提出了一种可以让其他 ABR 算法框架接入 Trigger 的方法。</p>
+<p>这篇论文的重点在于：</p>
+<ul>
+<li>首次提出结合 buffer-based 方法和 learning-based 方法</li>
+<li>通过 Stick，可以使用更小的模型实现比已有方法更好的效果</li>
+<li>通过 Trigger，证明轻量级模型可以有效降低计算开销</li>
+</ul>
+<h2 id="buffer-based-learning-based-abr-algorithm">Buffer-based &amp; learning-based ABR algorithm</h2>
+<p>BBA 只根据当前缓冲区限制来选定下一个视频块的码率。具体而言，其将对吞吐量的估计固定为启动态额吞吐量以克服吞吐量的波动，之后在稳定态时，使用缓冲区限制 <span class="math inline">\(\{B_{\rm min}, B_{\rm max}\}\)</span> 来获取块映射，块映射的作用是将缓冲区占用情况映射为码率。</p>
+<p>而这个映射也是简单的分块线性映射，缓冲区占用低于 <span class="math inline">\(B_{\rm min}\)</span> 时下一个视频块码率为低码率 <span class="math inline">\(R_{\rm min}\)</span>，缓冲区占用高于 <span class="math inline">\(B_{\rm max}\)</span> 时下一个视频块码率为高码率 <span class="math inline">\(R_{\rm max}\)</span>，位于这两者之间的时候使用线性函数决定。</p>
+<p>这个方法大部分情况下简单且有效，但是也在许多条件下效果不理想。原因是 BBA 使用的固定参数应当根据应用环境做出相应的调整。</p>
+<p>而 learning-based ABR，例如 Pensieve 则给出了较好的理论结果，但是该方案并不容易应用到现实中。此外，Pensieve 也在部分应用环境下效果不理想。</p>
+<h2 id="key-ideas">Key ideas</h2>
+<p>总结起来是这样的几点：</p>
+<ul>
+<li>使用 DRL 的方法调整 ABR 的参数，避免使用查表或者预训练模型造成的过大存储和计算成本</li>
+<li>模型的状态空间需要考虑全面，不仅包括当前缓冲区限制，还要包括网络状况和视频特征
+<ul>
+<li>此外，实验发现 Stick 可以仅使用一个参数控制缓冲区，而非两个参数</li>
+</ul></li>
+<li>QoE 要求会被作为 goal 输入模型，该参数会随机初始化，这会让模型意识到 QoE 参数和 feedback reward 之间的关系</li>
+<li>使用轻量级的 Trigger 来决定是否需要通过 Stick 更新缓冲区限制，以降低计算成本</li>
+</ul>
+<h2 id="system-overview">System overview</h2>
+<p>整体的框架可以表现为：</p>
+<p><img src="/uploads/paper-2022-08/1.png" /></p>
+<h3 id="stick-mechanism">Stick mechanism</h3>
+<p>Stick 的结构图可以表示为：</p>
+<p><img src="/uploads/paper-2022-08/2.png" /></p>
+<h4 id="design">Design</h4>
+<p>首先叙述状态空间的构造：</p>
+<ul>
+<li><span class="math inline">\(T\)</span> 为由客户端测量的前 <span class="math inline">\(k\)</span> 个序列的吞吐量</li>
+<li><span class="math inline">\(d\)</span> 为前 <span class="math inline">\(k\)</span> 个序列的下载时间</li>
+<li><span class="math inline">\(q\)</span> 为上一个视频块选定的码率</li>
+<li><span class="math inline">\(r\)</span> 为视频剩余播放时间</li>
+<li><span class="math inline">\(b\)</span> 为当前缓冲区占有情况</li>
+<li><span class="math inline">\(S\)</span> 为表示下一个视频块大小的向量</li>
+<li><span class="math inline">\(g\)</span> 为 QoE goal 参数，由 <span class="math inline">\(\mu, \tau\)</span> 构成</li>
+</ul>
+<p>动作空间则是一个连续标量 <span class="math inline">\(B \in [0, {\rm buffer}_{\rm max}]\)</span>，用于控制缓冲区限制。</p>
+<p>奖励函数则根据不同的 <span class="math inline">\(g\)</span>，使用经典的线性 QoE 指标来构造。</p>
+<h4 id="training-methodology-implementation">Training methodology &amp; Implementation</h4>
+<p>【这一部分在阅读完 DPG 相关论文之后再具体展开】</p>
+<h3 id="trigger">Trigger</h3>
+<p>Trigger 的一个核心思想在于，如果 Stick 在连续两个视频块上给出相同的结果，那么其第二次计算是无用的。而实验证明，无用操作可能占比达到 30%，所以我们的目标就是用 Trigger 去判别哪些操作是无用的。</p>
+<p>现在考量 Trigger 的状态空间。根据 Related work，网络吞吐量是我们需要考虑的重要参数。但是我们也发现了，先前的缓冲区占用情况也是一个重要特征，其可以揭示网络环境状态和视频块大小之间的隐藏关系。</p>
+<p>所以我们最终令 Trigger 的输入是先前的网络吞吐量、缓冲区大小和现在的缓冲区限制。而输出是一个二维向量，表示 Stick 保持或者改变当前缓冲区限制的概率。</p>
+<hr />
+<p>使用 imitation learning 来训练 Trigger，这种方法能够根据 expert demonstration 给出预期的结果。训练的算法可以表示为：</p>
+<p><img src="/uploads/paper-2022-08/3.png" /></p>
+<hr />
+<p>另外，我们需要关注训练数据集分布的问题。论文使用的数据集中有 83% 的操作是无用操作，这种分布不均匀的数据集和理想的 50%-50% 数据集差距过大，可能导致特征训练不均衡。所以这里使用了 Prioritized experience replay 方法来重新平衡数据集。</p>
+<p>关于这个方法的介绍可以参考 <a href="https://paperswithcode.com/method/prioritized-experience-replay">这篇文章</a>。</p>
+<p>之后讨论如何将 Trigger 应用到其他的 ABR 算法上。</p>
+<p>【这一部分在阅读完 DPG 相关论文之后再具体展开】</p>
+<h2 id="evaluation">Evaluation</h2>
+<p>介绍了使用的实验环境、数据集、训练方式、Baseline 的选取、QoE 指标的计算公式等等。</p>
+<p>首先在一个数据集上，实验证明了 Stick 输出单参数的表现并不比双参数差很多，甚至在一些条件下能得到更好的 QoE 指标。</p>
+<p>之后通过实验说明了 Stick 在各种数据集上都表现出了比 buffer-based 方法更为优秀的性能。</p>
+<p>有关比较性能，论文里面有这样一句被强调的话：</p>
+<div class="note success"><p>Note that Stick only utilize onequarter number of neurons that of Pensieve.</p>
+<p>感觉是一种简单的强大。</p>
+</div>
+<p>之后还探讨了不同 QoE 指标下 Stick 的表现，探讨了 Trigger 的网络结构（全连接、LSTM 还是 CNN），做了一些进一步的 Evaluation，这里就不具体展开了。</p>
+<h1 id="neural-adaptive-video-streaming-with-pensieve">Neural Adaptive Video Streaming with Pensieve</h1>
+<h2 id="introduction-1">Introduction</h2>
+<p>现行的 ABR 算法在选择下一个视频块的码率的时候往往面临下述四个问题：</p>
+<ul>
+<li>网络吞吐量的不稳定</li>
+<li>部分 QoE 指标内存在相互矛盾的要求（如高质量和尽可能减少缓冲）</li>
+<li>当前码率选择可能对未来的选择产生影响</li>
+<li>ABR 的决策可能是粗粒度的</li>
+</ul>
+<p>现行的大部分 ABR 方法都依赖于对网络吞吐的估计或者对缓冲区大小的估计，所以其难以应对网络吞吐的不稳定。比如说 SOTA 方法 MPC 依赖于对网络吞吐量的预估，原文：</p>
+<div class="note info no-icon"><p>However, MPC’s performance relies on an accurate model of the system dynamics - particularly, a forecast of future network throughput.</p>
+</div>
+<p>这样的限制使得 MPC 对预测结果的偏差十分敏感。</p>
+<p>从而本文提出了 Pensieve，该方法会自动学习 ABR 算法，而不需要任何的预训练的控制规则或者对运行环境的假设条件。Pensieve 是基于强化学习的，其完全通过其与环境交互的经验学习。Pensieve 的核心为一个神经网络，该神经网络代表了 Pensieve 所采取的针对网络环境的策略。该网络接受的输入为各种对网络环境的原始观测数据（吞吐量采样、回放缓冲区占用率、视频块尺寸等），而其输出则为下一个视频块应当采取的码率。该网络的训练方式为 A3C。</p>
+<p>Pensieve 的训练方式的核心则是一个模拟器，用于将大规模的网络跟踪信息数据库回放给 Pensieve，其划分粒度可以是块级别的，也可以是包级别的或者其他。Pensieve 的评测方式为将算法部署在一个 ABR 服务器上，令算法不断给出下一个视频块应当采取的码率，这样做可以避免在客户端上进行繁重的神经网络计算。</p>
+<p>最后 Pensieve 在几乎所有的网络环境和 QoE 指标上持平或超过现有最佳的 ABR 算法。</p>
+<h2 id="background">Background</h2>
+<p>当前占主导地位的视频分发策略为 HTTP-based adaptive streaming，而其标准化技术为 DASH，即 Dynamic Adaptive Streaming over HTTP。而 DASH 的流程可以大致描述为下图：</p>
+<p><img src="/uploads/paper-2022-08/4.png" /></p>
+<ul>
+<li>首先播放器向服务器获得认证</li>
+<li>服务器应答一个保存有实际视频数据的 CDN 地址，并且列出所有可选码率</li>
+<li>播放器使用 ABR 算法逐个请求视频块，视频块下载完成后渲染到屏幕上播放</li>
+</ul>
+<p>这里 ABR 算法几乎决定了整体的视频传输性能，其面临的若干挑战已经在 Introduction 部分给出了基本的介绍，这里稍加详细叙述。</p>
+<ol type="1">
+<li><p>ABR 算法并不能仅考虑网络情况，因为在类似蜂窝移动网络等不稳定网络条件下，我们难以预测未来的网络吞吐，最后往往仅能够获取到保守估计导致性能浪费，或者过高估计导致传输延迟。从而 ABR 也应当考虑缓冲区占有率等更为稳定的参数。</p></li>
+<li><p>QoE 指标可能是相互冲突的。在带宽有限的网络环境中持续以最高码率请求视频可以保证视频质量，但是会升高缓冲率。相反，在不稳定的网络环境中，在任何时候选取当前网络环境能提供的最高码率会导致视频播放不平滑。</p></li>
+<li><p>当前视频块的选择会对后续视频块的码率选择产生影响。其一，高码率视频块常常会导致后续视频块难以维持该高码率，因为可能导致缓冲。其二，为了保证视频播放平滑，ABR 算法不倾向于突然改变码率，所以后续视频块的码率并不会在当前码率基础上改变很大。</p></li>
+<li><p>由于 ABR 算法能选择的码率范围被服务器给出的 Manifest file 限制，所以其选择往往是粗粒度的。有时网络环境会恰好落在某一个低码率过于浪费资源而稍高的码率就会导致缓冲的临界区域。</p></li>
+</ol>
+<h2 id="learning-abr-algorithms">Learning ABR Algorithms</h2>
+<p>其首先将 Pensieve 和 Robust MPC 进行了对比，指出了 Robust MPC 的部分缺陷（基本还是先前部分提到的缺陷，只是使用了实验数据做了支持）。</p>
+<p>这一部分似乎并没有写出很多新东西，还是先前部分的重复。</p>
+<h2 id="design-1">Design</h2>
+<h3 id="training-methodology">Training Methodology</h3>
+<p>训练策略的核心是一个模拟视频下载流程的模拟器。其对于每一个视频块，模拟器会根据该视频块的码率以及网络状况生成下载耗时。在这一段时间，模拟器会缓慢消耗缓冲区内已经存在的视频块以模拟视频播放，之后再将该视频块压入缓冲区。模拟器会跟踪所有可能导致重新缓冲的事件，比如缓冲区剩余视频块长度小于正在下载的视频块需要的时间（这会导致已经缓冲的视频播放完成后新的视频块还未下载完毕）。另外一方面，如果当前缓冲区无法容纳新的视频块，那么模拟器会暂停下载 500 毫秒，之后重新开始请求。</p>
+<p>在完成下载之后，模拟器会给出若干参数，比如当前缓冲区占有率、重新缓冲时间、视频块下载时间、（在所有可选码率下）下一个视频块的大小、该视频剩余的视频块数量等。这些参数的具体使用方式见后。</p>
+<p>基于该模拟器，Pensieve 可以在很短的时间内学习一个本应占用长时间的视频下载流程。</p>
+<p>虽然上述基于应用层行为的建模简单直接，但是实际上由于传输层复杂的行为，上述建模有可能并不精确。例如，播放器在缓冲区已满的条件下可能并不会在视频块下载完成后立刻请求下一个视频块，这可能导致传输层 TCP 回退到慢启动状态，这样可能并不能充分利用带宽。该问题实际上让 ABR 算法需要考虑的方面增多了，因为通常意义上快速填满缓冲区的策略会导致 TCP 慢启动从而造成事实上的低效率。</p>
+<p>为了了解 TCP 慢启动造成的影响，设计的实验为在带宽 6 Mbps 的条件下不断以某一个恒定的码率请求视频块。得出的结论为，在启用 TCP 慢启动的条件下请求的码率越低带宽利用率越低，而不启用 TCP 慢启动的条件下所有码率均充分利用了带宽。</p>
+<p>所以为了让模拟贴合现实，我们可以关闭服务器的 TCP 慢启动。虽然这可能导致流量的突变，但目前可以有其他的解决方案解决这一问题而不需要 Pensieve 来处理。</p>
+<p>事实上上述模拟依然是不精确的，但是我们发现 Pensieve 依然可以通过上述不完整的模拟学习到高质量的 ABR 算法，这可能是由于 Pensieve 强大的泛用能力。</p>
+]]></content>
+      <categories>
+        <category>【论文笔记】计算机</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>《Petal Letter》歌词试译</title>
+    <url>/2022/10/27/petal-letter-lyrics/</url>
+    <content><![CDATA[<p>秋枫老师发来的一份歌词，感觉挺有意思就试着自己翻译看看了。</p>
+<p>歌曲的地址是 BV1Y14y1j7Fi。</p>
+<span id="more"></span>
+<p><strong><code>@ 朝日 あさひ</code>に<code>@ 溶 と</code>ける<code>@ 微睡 まどろ</code>みと<code>@ 目覚 めざ</code>めの<code>@ 狭間 はざま</code>、そっと<code>@ 口遊 くちずさ</code>む<code>@ 旋律 メロディ</code>、<code>@ 花片 はなびら</code>にのせ、<code>@ 風 かぜ</code>よ<code>@ 届 とど</code>けて、あなたが<code>@ 旅 たび</code>する<code>@ 世界 せかい</code>へ。</strong></p>
+<p>在朝阳中浅睡与苏醒的间隙中悄悄吟唱的旋律，乘上飘落的花瓣，就让微风将它传达到你所旅行的世界吧。</p>
+<p><strong><code>@ 魔法 まほう</code>で<code>@ 出逢 であ</code>った、あなたと<code>@ 私 わたし</code>、<code>@ 今 いま</code>は<code>@ 別々 べつべつ</code>の<code>@ 物語 ものがたり</code>を<code>@ 行 ゆ</code>く。</strong></p>
+<p>因魔法而相遇的你我二人，如今却向着不同的未来而去。</p>
+<p>【注释 #1】这里并没有将「<code>@ 物語 ものがたり</code>」直接翻译为“故事”，感觉并不太符合中文的语感。</p>
+<p><strong><code>@ 何 なに</code>かが<code>@ 始 はじ</code>まる<code>@ 予感 よかん</code>を<code>@ 胸 むね</code>に、<code>@ 歩 ある</code>き<code>@ 出 だ</code>してから、どれだけ<code>@ 経 た</code>ったの。</strong></p>
+<p>心中不知为何，总有着何事将至的预感。即使知道那时的分别，已经过去了不知多长时间。</p>
+<p><strong><code>@ 緩 ゆる</code>やかな<code>@ 坂道 さかみち</code>、<code>@ 登 のぼ</code>ればまた<code>@ 独 ひと</code>りきり。</strong></p>
+<p>登上平缓的山坡，依然独自一人。</p>
+<p><strong><code>@ 寂 さび</code>しさに、<code>@ 心細 こころぼそ</code>さに、<code>@ 寄 よ</code>り<code>@ 添 そ</code>ってくれる、あなたと<code>@ 交 か</code>わした<code>@ 心 こころ</code>の<code>@ 花束 はなたば</code>。</strong></p>
+<p>在这寂寞与不安中，我依偎着的，是与你交换的心之花束。</p>
+<p>【注释 #2】这里的语句结构有点怪异，歌曲中这里的断句也比较怪异，难以判定「くれる」与后续句子的关系。这里又要经典批判一遍为何现代日语的终止形和连体形合流，这显然难以判定一个动词词组究竟是修饰名词还是直接终止语句，这导致大量的歌词翻译困难。</p>
+<p><strong>いつでも<code>@ 誰 だれ</code>かが<code>@ 泣 な</code>いている<code>@ 世界 せかい</code>、<code>@ 鏡 かがみ</code>の<code>@ 向 む</code>こうに<code>@ 霞 かす</code>んだ。<code>@ 今 いま</code>は<code>@ 消 き</code>えた、<code>@ 祭 まつ</code>りの<code>@ 果 は</code>てで。</strong></p>
+<p>无论何时都有谁在哭泣着的世界，也在镜子中烟雾朦胧。现在早已在祭典的尽头，消失不见。</p>
+<p><strong><code>@ 触 ふ</code>れ<code>@ 合 あ</code>うことすら、できずに<code>@ 別 わか</code>れた。</strong></p>
+<p>我们甚至都还没有再次相遇，却又再次分别。</p>
+<p><strong>あなたを<code>@ 感 かん</code>じたい<code>@ 時 とき</code>は、<code>@ 名前 なまえ</code>をもう<code>@ 一度 いちど</code> <code>@ 呼 よ</code>ぶ。</strong></p>
+<p>每当想要感受你的温暖的时候，再一次，呼唤你的名字。</p>
+<p><strong><code>@ 青 あお</code>い<code>@ 薔薇 ローズ</code>、<code>@ 赤 あか</code>い<code>@ 椿 カメリア</code>、<code>@ 花 はな</code>は<code>@ 今日 きょう</code>も<code>@ 咲 さ</code>いてますか。</strong></p>
+<p>蓝色的玫瑰，红色的山茶花，花朵如今，也依然在绽放吗。</p>
+<p><strong><code>@ 問 と</code>いかけて<code>@ 応 こた</code>えなくても、<code>@ 同 おな</code>じ<code>@ 楽園 そら</code>を<code>@ 見上 みあ</code>げてる。</strong></p>
+<p>即使问而不答，我们也始终仰望着同一片乐园（天空）。</p>
+<p><strong>あれから<code>@ 始 はじ</code>まった<code>@ 長 なが</code>い<code>@ 旅 たび</code>も、<code>@ 終 お</code>わる、いつかは、<code>@ 消 き</code>える、<code>@ 全 すべ</code>てが。そして、<code>@ 星 ほし</code>は、<code>@ 巡 めぐ</code>る。</strong></p>
+<p>从那时开始的漫长旅途，总有一天也会结束，到那时，一切都会消逝。而后，群星依然流转。</p>
+<p><strong><code>@ 止 や</code>まない<code>@ 嵐 あらし</code>に<code>@ 足 あし</code>を<code>@ 止 と</code>められ、<code>@ 草臥 くたび</code>れた<code>@ 靴 くつ</code>の<code>@ 跡 あと</code>を<code>@ 振 ふ</code>り<code>@ 返 かえ</code>る。</strong></p>
+<p>无休无止的山林雾气中，我不得不停下脚步，回望着以往的足迹，鞋履也早因旅途破旧不堪。</p>
+<p><strong><code>@ 大事 だいじ</code>なものはまだ、<code>@ 歩 ある</code>く<code>@ 度 たび</code>に<code>@ 増 ふ</code>えるでしょう。</strong></p>
+<p>然而，那些珍贵的回忆，依然随着我们前行的每一步而积累着。</p>
+<p><strong>それでも<code>@ 俯 うつむ</code>く<code>@ 私 わたし</code>の<code>@ 背中 せなか</code>を<code>@ 押 お</code>すのは、あなたと<code>@ 交 か</code>わした、<code>@ 叶 かな</code>わぬ<code>@ 約束 やくそく</code>。</strong></p>
+<p>尽管如此，激励着早已疲惫不堪的我继续前行的，是与你定下的未竟约定。</p>
+<p>【注释 #3】这里意译了「<code>@ 俯 うつむ</code>く」，其本意是“低下头”。</p>
+<p><strong><code>@ 大 おお</code>きな<code>@ 鞄 かばん</code>に<code>@ 閉 と</code>じこめた<code>@ 願 ねが</code>い、<code>@ 鏡 かがみ</code>と<code>@ 一緒 いっしょ</code>に<code>@ 壊 こわ</code>れた。<code>@ 夢 ゆめ</code>と<code>@ 追憶 ついおく</code>が<code>@ 降 ふ</code>り<code>@ 注 そそ</code>ぐ。</strong></p>
+<p>珍藏在大大的行李箱中的愿望，也随着镜子一同破碎，梦与追忆倾泻而下。</p>
+<p><strong><code>@ 砂 すな</code>へと<code>@ 零 こぼ</code>れた<code>@ 涙 なみだ</code>を<code>@ 拭 ぬぐ</code>って、<code>@ 震 ふる</code>える<code>@ 手 て</code>が<code>@ 拾 ひろ</code>い<code>@ 上 あ</code>げた。</strong></p>
+<p>拭去飘落在沙地上的泪水，用颤抖的手将碎片拾起。</p>
+<p><strong><code>@ 光 ひかり</code>はきっと、<code>@ 同 おな</code>じ<code>@ 色 いろ</code>をした<code>@ 花 はな</code>。</strong></p>
+<p>那光芒必然是，闪耀着相同颜色的花朵。</p>
+<p><strong><code>@ 目 め</code>を<code>@ 閉 と</code>じれば、<code>@ 耳 みみ</code>を<code>@ 澄 す</code>ませば、<code>@ 花片 はなびら</code>が<code>@ 風 かぜ</code>に<code>@ 乗 の</code>って、<code>@ 旋律 メロディ</code>を<code>@ 届 とど</code>けるでしょう。</strong></p>
+<p>闭上眼睛，侧耳倾听，花瓣乘上微风，将那旋律传达给你。</p>
+<p><strong><code>@ 私 わたし</code>からあなたへの<code>@ 手紙 レター</code>。</strong></p>
+<p>这就是，我寄给你的，一封信。</p>
+]]></content>
+      <categories>
+        <category>【杂谈】日语</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>直博招生专业面试的一些</title>
+    <url>/2022/09/14/phd-interview/</url>
+    <content><![CDATA[<p>2022 年 9 月 14 日，是清华大学计算机科学与技术系 2023 级免试攻读博士生招生专业面试。Holder 参加了这一场面试，然后人炸了。</p>
+<span id="more"></span>
+<p>今天面试本来就有点不安，最大的问题就是唯一能吹的一份挂了名的 SIGGRAPH 的文章实际上自己并没有参与特别核心的工作，而且做到一半就被拒了，所以实际上最后那段时间就在摆烂，组会吹水也不去了。</p>
+<p>然而，今天就是这么时运不济，面试的评委里同时有徐昆老师和胡事民老师。没听过组会吹水不敢乱说，但胡老师就喜欢捉着这些问。他要是具体问如何实现了我负责的代码部分，我倒是可以说不少，但是问我一些 Overview，说实话倒还真的不会。</p>
+<p>Holder 的科研真的毫无意义，毕竟自己就是如丧家之犬一般到处跑路。或许 Holder 真的就不应该硬头皮读这个博士，或许就该进厂上班了。</p>
+]]></content>
+      <categories>
+        <category>【杂谈】碎碎念</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>《美少女万华镜 5 ——理与迷宫的少女》游戏测评</title>
+    <url>/2021/08/18/renge-5/</url>
+    <content><![CDATA[<p>Holder 不是一个玩 GAL 的人，能想到的 GAL 除了万华镜就是柚子社这种。但是 Holder 想了想，决定把万华镜 5 这个宣称中的最终章认真通一下，也算对我几乎唯一知晓的 GAL 致以敬意。</p>
+<p>离万华镜 5 发售差不多过去一年半了，各路汉化理论上应该充斥互联网，但 Holder 也只找到了生肉，于是也顺便当成了日语阅读练习。</p>
+<span id="more"></span>
+<h1 id="总的感想">总的感想</h1>
+<p>Holder 大概花掉了靠近三十个小时打通了所有的线，由于 H 情节在一年前实际上就已经都看过一遍而且自己也有全 CG，这次的重点就是把当时看来冗杂无比的剧情认真看一下。</p>
+<p>当然，一直都说万华镜系列就是单纯的拔作，剧情几乎可有可无，这句话我可以说认同一半。首先，针对万华镜 5，如果不走莲华线，而是没有压住枪走了月丘线，那确实没有任何剧情，平平淡淡地每晚在澡堂触发 H 情节就结束了。而你如果剧情看到一半没忍住走了绿毛线（绿毛名字是もよか，说实话不知道怎么找当て字，倒是“绿毛”这个代号挺深入人心的），那也是很快就 BE 了。而如果你认认真真把莲华线推完，就会发现若干的伏笔被回收，剧情似乎就有了那么一点的道理（Holder 整体上还是觉得这个剧情偏扯，但是莲华线稍微补了一点论述）。其次，万华镜整个系列，确实几乎都是没啥剧情的，除了 5。其他系列都是推一会就开始炮火连天，而 5 我是整整看剧情看了靠近两天之后才解锁了新天地（当然玩的莲华线）。</p>
+<p>如果说总的感想的话，就是感觉看了一个很普通的小说。撇去还算优秀的 H 情节不谈，我在玩的时候几乎全程在看底下的文字，因为图像说实话提供不了信息。比如说“ A 把 B 扶起来”，这个动作在番或者剧里面都可以画或者演出来，但是万华镜里面也仅仅是两个人的立绘贴了一下，动作则是文字给出。所以整体我还是一直在看文字，当小说看。</p>
+<p>而说它“普通”，是因为贯穿全程的就是“理”或者“命运”或者“轮回转生”，题材不是什么新颖的东西，而且能预料到莲华和男主的一些前世姻缘之类的。然后中心矛盾之一也是普通的，“我能逆天改命”和“我们只能顺应命运”的矛盾，最后认为“我能逆天改命”的人盒饭了，但却让“我们只能顺应命运”的思想少许动摇，但是为时已晚不得不继续投入到命运的轮回之中。</p>
+<p>要我说的话，论剧情，万华镜 5 就是很普通的一个小说，人物关系简单，矛盾点简单。但是论 H 情节，首先我认为绿毛连动态情节都没有是很难受的（巫女后辈啊！不配画一点动态的吗！），但是莲华在二次轮回的时候 H 情节确实作画很好，动态也不错，还是稍微给点表扬。</p>
+<h1 id="剧情简要分析">剧情简要分析</h1>
+<h2 id="莲华-轮回线">莲华-轮回线</h2>
+<p>既然核心是“理”（不得不提的就是这个“理”在游戏里面训读成ことわり，而这个读音一般写成“断り”）和“轮回转生”，那么我们应该默认天理和轮回转生的存在。</p>
+<p>剧情的主干实际上就是莲华和男主深见夏彦的前世姻缘，他们可以说每一世都会相遇相爱但由于各种不可抗力无法修成正果。先是罗马时代的奴隶主和奴隶，又是中世纪的女王和下臣，之后是猎巫人和女巫。而重点是第四世，他们是古代日本的一对恋人（这时深见夏彦的名字是“彦一”，记住，要考的），而第五世就是莲华和深见夏彦。</p>
+<p>说第四世重要，是因为这里狐妖介入了进来。实际上狐妖附身了第四世的莲华，或者在一定程度上，莲华在这个时候已经成为了狐妖。而当彦一（第四世的深见夏彦）死于战火的时候，狐妖则处于对人类的憎恨和爱人亡故的怨念火烧城池。人们最后将狐妖的怨念封印为“杀生石”，并在城中修建相当数量的狐狸雕像望向杀生石的方向以镇压，同时也在杀生石所在的山顶修建了一座规模宏大的神社。但是神社实际上在很多年之后的又一次战火中被烧毁，但是村民并没有重建的计划（多半是已经忘了这段历史）。而杀生石和狐狸雕像却保留了下来，成为了传说。</p>
+<p>这里的杀生石、狐狸雕像、神社则是第五世（现代）剧情推进的一条线索。</p>
+<p>而这个时候就必须引出绿毛了。在第五世，也就是现代，绿毛先前有一个家境优渥的家庭，但是由于他人嫉妒而故意放出的无端谣言而招致了全村人的厌恶，随后她的家人因他人纵火全部亡故，而纵火者却至今逍遥法外，绿毛也因此有了对人类的憎恨和怨念。孤身一人的她投靠了从兄弟 H（名字不想打了，但是这个人的人设和痴汉别无他样，所以就用 Hentai 的首字母代称。这里 H 是一个女子中学的音乐老师），此时绿毛沉迷于深见夏彦所在的杂志社编辑的灵异杂志，自学了很多通灵方法。最终，她独身一人走上了原来有神社和杀生石的山顶，被满是怨念的狐妖附身，开启了剧情主线。</p>
+<p>绿毛有了狐妖的力量，而狐妖的一个信念就是“我是可以逆天改命的”，或者说“我不愿意服从命运的安排”。狐妖因恋人离世而对人类憎恶，绿毛因为家人离世也对人类憎恶，两个怨念叠加，绿毛开始了复仇。她的第一步就是先转学到 H 所在的女子高中并要控制全校，因为女子高中生就是当时散布绿毛家族无端谣言的主力。绿毛看中了这所高中禁止使用手机和通信软件，利用了她们相对闭锁的信息环境，开始通过狐妖的力量诱骗她们迷信自己的占卜，随后再通过狐妖的力量对她们下诅咒。诅咒的内容就是：</p>
+<div class="note info no-icon"><p>山顶有神社可以实现你的愿望，但是在前往神社之前，你必须不停地画白狐氏（びゃっこ氏）以表虔诚，否则就会降下惩罚。</p>
+</div>
+<p>而这座神社在现实中是真的不存在的（早就烧掉了还没重建），但是狐妖的灵力可以在山顶创建一个传送门，传送到若干年前的神社，而这个神社就在狐妖（或者说绿毛）控制之下。白狐氏就是这座神社供奉的神灵（就是狐妖），而所谓的惩罚是各种莫名其妙的伤害事件（突然被钢琴盖子砸断手指，实验的时候突然自燃之类），并且惩罚的共同点就是受伤的地方毛细血管会聚集成青色的蜘蛛网的样子，而且会长一个痣。</p>
+<p>这也就是最初的最初，深见夏彦所要调查的“青蜘蛛的诅咒”事件。</p>
+<hr />
+<p>主角团是四人组，深见夏彦，他的编辑月丘香恋，同期的只相信科学的优秀作家皇公晓，以及实体化的莲华。</p>
+<p>莲华在第五世转生的时候，没有获得肉体，成为了阿紫旅馆（也就是万华镜 1-4 开头的那个旅馆，其和神社等位于同一个村子）的座敷童子。所谓座敷童子，第五世的莲华的任务就是“超度”，也就是帮助满是怨念的灵魂安宁地走向死亡，走向轮回。而完成超度的道具就是“万华镜”。</p>
+<p>所以说 1-4 里面深见夏彦透过万华镜看到的，就是那些已经被超度的魂灵的生前故事，而往往这些故事都或多或少带着点怨恨（1 是人鬼情恋的越界之恨，2 是沉溺于爱而伤害恋人的愧疚之恨，3 是文明凋亡的孤独之恨，4 则是近亲的禁忌之恨）。</p>
+<p>另外，作为灵力的持有者，莲华的能力就是能够读取和修改人的记忆。</p>
+<p>由于没有肉体，莲华无法被感知，从而也让她一直孤独一人。但深见夏彦，作为这么多次轮回之中莲华的恋人，自然是唯一一个能感知到她存在的的人。所以深见夏彦对莲华而言，简直就是世界上唯一可以交流的人类。</p>
+<p>另一方面，莲华在得知深见夏彦想要来调查“青蜘蛛的诅咒”事件，要在阿紫旅馆住上一星期左右的时候，其花费了很多的灵力为自己构筑了肉体，并且通过修改记忆让主角团和旅馆工作人员都认为莲华是真实存在的一个女高中生，这也就是实体化。这个时候的莲华就可以和正常人一样活动了。</p>
+<hr />
+<p>先前提到，第四世的莲华和狐妖实际上几乎是一体的，而在第四世到第五世的轮回之中，莲华被拆分成了两部分，狐妖的部分被封印而剩下的部分幻化成了现在的莲华，这莲华是通过触碰了一只小狐狸之后回想起来的。</p>
+<p>在主角团调查的时候，绿毛自然早已经觉察到，深见夏彦就是自己前世恋人彦一，所以绿毛对从兄弟 H 不屑一顾而单单对深见夏彦热情，而且在深见夏彦和莲华前往深山随便走走的时候将他们拉入了神社。绿毛自然也早就明白莲华和自己理论上是一体的，所以才有绿毛的“我唯一的朋友是莲华”这一句。</p>
+<p>而绿毛为了在他人面前让自己和深见夏彦亲近显得合理，她故意称其为“哥哥”（大家都知道绿毛失去家人的过往，所以因此会把她亲近深见夏彦理解为“绿毛把对哥哥的思念寄托在深见身上”）。而绿毛则不需要对莲华隐藏，所以在澡堂里直接说“深见才不是我哥哥呢”。</p>
+<p>绿毛在知道深见夏彦的存在后，除去复仇的主线，自然是尝试再构姻缘。所以她引诱深见夏彦去神社，去看杀生石，去看她舞蹈，去听铜铃的声音，给他托梦，目的就是让深见夏彦回想起自己的前世。深见夏彦在经历了若干天的噩梦和梦游（梦游去神社）之后，终于在某一天晚上回想起来了自己的一切。但是深见夏彦已经沉迷莲华，依然坚称自己是深见夏彦而非彦一。</p>
+<p>得知恋人心意的绿毛，自然是相当悲愤。我大费周章为你复仇，你却出轨我自己（莲华理论上和绿毛是一体的，可以理解为绿毛是邪恶的一面，莲华是善良的一面），于是托了一个巨大的噩梦给深见夏彦（就是那个，裂嘴黑眼圈的莲华 CG，这也是游戏发售前就流传出来的梗图），想让他忘记莲华。随后动用了巨大的灵力干趴了学校里所有的学生，尝试吸取她们的灵魂。</p>
+<p>而随着调查的深入，莲华也了解了狐妖已经附身到绿毛身上开始复仇，而这个时候绿毛也已经因为深见夏彦的背叛而暴走了。所以为了阻止这些计划，莲华只身一人前往神社和狐妖打灵力战斗去了。</p>
+<p>但是莲华毕竟力量并非很充足，最后体力渐渐不支。这个时候深见夏彦突然赶到，给莲华挡下一击。绿毛眼看自己的攻击伤到的是自己的恋人，立马停手了。随后由于巨大的自责，她没有抵挡得住莲华的最后一击而幻化为怨念，被万华镜收纳住了。</p>
+<p>绿毛是解脱了，和 H 去过平凡的女高中生生活去了。学校的诅咒也解除了，大家渐渐都回到正轨了。但是深见夏彦的灵魂却因为狐妖的一击变得支离破碎，如果不修复，就等于死亡。莲华这个时候想到了解决方式，就是和深见夏彦一起回到万华镜，让深见夏彦重新回想起来所有的回忆，补全灵魂，最后用莲华的力量让死者复生。这里显然就注意到了，死者复生是违反“理”的，也就是说，莲华最终还是走上了背离天理的路。</p>
+<p>莲华和深见夏彦两人在万华镜里遨游，把 1-4 的场景都走了一遍，深见夏彦也渐渐回想起了各种东西，灵魂也渐渐补全。在走完第一圈后，莲华认为已经可以送深见夏彦回去了，但是深见夏彦坚决要和莲华在一起，于是他们又走了第二圈。这之后，莲华并不再是询问语气，而是命令深见夏彦赶快回去。</p>
+<p>原因很简单，莲华知道自己也是狐妖的一部分，包括自己的实体化，所动用的灵力的基础都是狐妖赖以生存的力量——人类的悲痛，莲华决定自己超度自己肮脏的灵魂。而这最后的力量就是留给将深见夏彦死者复生的，违反天理的力量。但是深见夏彦最终还是不愿回去，而这个时候他需要经受身边人的各种诘难以确认自己的心意。最后在一通告白之后，两人携手走向又一次轮回。</p>
+<p>轮回到第六世的结果，就是深见夏彦成了你（这也就是游戏开头让你输入你的名字的原因），莲华成为了一个知性大姐姐和你相遇，和你相恋。两人最后渐渐回想起了前世，由于狐妖已经消逝，阻碍已经消失，所以两人修成正果，过上了炮火连天的日子。</p>
+<h2 id="莲华-非轮回线">莲华-非轮回线</h2>
+<p>狐妖的部分都是一致的，第一世到第五世都是一致的，一直到两人走进万华镜都和莲华-轮回线一样。</p>
+<p>莲华在第一圈后会询问两次深见夏彦是否愿意回去，第二圈则会再问一次。三次都回答不想回去，才会进入轮回线，只要有一次回答了想回去，就会进入非轮回线。</p>
+<p>在这里，最后深见夏彦死者复生，但是他丧失了所有和莲华有关的记忆，“青蜘蛛的诅咒”事件也被科学解释了。苏醒的深见夏彦和月丘以及皇，去和旅馆工作人员、学校老师告别后回到东京过上了平凡的生活。虽然深见夏彦时不时还是觉得自己在搜寻着什么，但是总体而言并没有想起莲华。而莲华的灵魂，也随着狐妖一起被超度，不再和深见夏彦产生任何交集。</p>
+<h2 id="绿毛线">绿毛线</h2>
+<p>应该说是很单纯的 BE。</p>
+<p>绿毛在无数若干次引诱深见夏彦，让他回想前世之后，最终有一天直接冲进澡堂色诱深见夏彦。这个时候如果选择“放任自己”，则会开启第一段绿毛 H，否则则会以绿毛无故消失结束这一天。</p>
+<p>最后某一晚，深见夏彦再一次前往神社的时候终于回想起了一切，这个时候会有选项问“你是谁”。如果先前压住了枪，这里就会有两个选项，一个是“深见夏彦”一个是“彦一”。选择深见夏彦就进入莲华线，被绿毛噩梦调戏一番后直接开始和莲华炮火连天。选择彦一则进入第二段绿毛 H。不过在一炮之后，绿毛就会以“我要将你变成我的玩物”为由杀死深见夏彦后自杀。而在现实世界中，消息就是“深见夏彦和绿毛在深山中失踪”。随后两年后，月丘香恋和皇公晓回到这个村子尝试回忆一些什么，误入了深山，看到了杀生石下两人的遗体。</p>
+<p>如果先前没有压住枪，那么在问“你是谁”的时候，只有“彦一”一个选项，后面的剧情是一样的。</p>
+<h2 id="月丘线">月丘线</h2>
+<p>最没有意思的线。</p>
+<p>月丘实际上一直喜欢着深见。在主角组前往调查之前，月丘前往深见夏彦的家交代一些工作的事情，这个时候月丘得知深见一直不会做饭，于是她决定给深见做一顿饭。在饭后，带有一点醉意的两人突然趴倒在墙角，男下女上。这个时候月丘向深见表白，会有“接受”和“拒绝”的选项。</p>
+<p>拒绝的话就正常开始调查，会调查到很多东西，会有机会进绿毛线、莲华线之类。</p>
+<p>接受的话直接开启 H 情节。而因此深见夏彦的心态就变成了“我要尝试融入‘大人’的世界，不能再沉迷于莲华的万华镜了”。而这种心态下，主角组调查的时候，莲华就一直处于很边缘的地位，而月丘和深见则会每晚定时开 H 情节。</p>
+<p>这次调查最终无疾而终，莲华在意识到深见的心意之后也只是默默留下一句“那就结束了吧”，便再也不见。主角组回到东京之后，自然是深见和月丘的炮火连天的二人世界。</p>
+<h1 id="一些其他地方的想法">一些其他地方的想法</h1>
+<p>总体而言还是贯彻了万华镜系列“压住枪的都是好儿郎”的准则，越早压不住枪就只能解锁越少的剧情，然后留下越多的没有起底的伏笔。</p>
+<p>虽然说万华镜没啥剧情，但是实际上总体看下来虽然平淡无奇，但还算是叙事完整，能看明白。而且有些伏笔也还算可以，比如说旅馆的“野干（やかん）”面具（“野干”在日语中是狐狸的一种代称），一方面暗示了这里和狐狸有千丝万缕的联系，而最终，绿毛跳舞给深见夏彦看的时候，戴的就是野干面具。另一方面，这个村子叫“薬缶”，和“野干”日语同音，应该是讹传出来的地名。</p>
+<p>此外，一定要抨击一下文案，不是说他写的东西多差，是<strong>经常把一些已经约定俗成不写汉字的关联词、虚词写成汉字</strong>，而有的时候又会把<strong>约定俗成写成汉字的词写成假名</strong>。这让我这个现代日语没学好的人读得有那么点难受。举点例子吧：</p>
+<div class="note info no-icon"><p>成程、折角、兎に角、沢山、取り敢えず、一寸、丁度、其程、是迄</p>
+</div>
+<p>他们实际上是：</p>
+<div class="note info no-icon"><p>なるほど、せっかく、とにかく、たくさん、とりあえず、ちょっと、ちょうど、それほど、ここまで</p>
+</div>
+<p>这些词可以说是，不太懂日语的人只要听到读音都能回想起来点什么的词，结果硬生生给我看不懂了。</p>
+<h1 id="最后的最后">最后的最后</h1>
+<p>万华镜系列我认为是，中下的剧情，中上的作画，虽然不知道为何如此火，但还是有点为三十个小时感到不值。</p>
+<p>但如果闲的话推推也不错，当成一个耗时间的小说吧。不过个人建议先把月丘和绿毛推了，先推莲华会很容易没有推支线的动力，因为莲华线的叙事已经很完备，其他线的逻辑就是误入歧途从而有些事情没发现最后遗憾收场。</p>
+<p>知乎上看了一句总结比较好：</p>
+<div class="note info no-icon"><p>你以为是你把卖片的上了，谁知道人家是命中注定给你卖片。</p>
+</div>
+<p>就这样吧，小学期还在等着我。</p>
+]]></content>
+      <categories>
+        <category>【杂谈】游戏 &amp; 番剧</category>
+      </categories>
+  </entry>
+  <entry>
     <title>原创数学题集</title>
     <url>/2022/07/12/orginal-problems/</url>
     <content><![CDATA[<p>一些奇妙的数学想法而已，可能是初中、高中、大学题，反正是弄着玩的。</p>
@@ -16039,964 +16509,6 @@ k(y_2 - y_1) = x_3(x_2 - x_1) + (x_2^2 - x_1^2) \Rightarrow k^2 = x_1 + x_2 + x_
 ]]></content>
       <categories>
         <category>【杂谈】数学</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>2022 年 2 月论文笔记</title>
-    <url>/2022/01/18/paper-2022-02/</url>
-    <content><![CDATA[<p>2022 年 2 月，主要工作为可微渲染相关方向。</p>
-<span id="more"></span>
-<h1 id="soft-rasterizer---a-differentiable-renderer-for-image-based-3d-reasoning">Soft Rasterizer - A Differentiable Renderer for Image-based 3D Reasoning</h1>
-<h2 id="工作概述">工作概述</h2>
-<p>主要思想还是想把逆向渲染管线（通过二维图像推理三维模型的参数）和神经网络结合，但是最大的问题是管线中的光栅化是离散化操作，可能导致不可微。一些其他的工作在尝试<strong>近似估算</strong>梯度，但是这个工作提出了一种真正可微的框架，能做到：</p>
-<ul>
-<li>直接用可微函数渲染染色的网格</li>
-<li>能从轮廓、阴影等各种二维图像信息有效反向传递为网格顶点参数</li>
-</ul>
-<p>这个工作的重点是把渲染过程的部分看作<strong>聚合函数（Aggregation function）</strong>，该函数联系了三维模型的网格三角形的概率分布以及其渲染出来的像素。</p>
-<div class="note info no-icon"><p>看起来标题中的 Soft 的含义就是使用概率分布的方式来把离散的光栅化变成可微的，最初始的光栅化一般会涉及到离散采样（即确定每一个离散的像素是否要显示网格上的某一个三角形），这也是不可微性的来源。</p>
-</div>
-<p>本论文主要讲述了如何通过 Soft rasterization 框架实现可微的光栅化以保证渲染管线的可微性，基于此，该渲染框架即可方便地接入神经网络以将二维图像信息反向传播到三维模型。同时，本论文也会指出近期的近似估算梯度的方式（使用 hand-crafted 的函数近似表示梯度）并不具有泛用性，且可能会降低三维模型信息更新的效率。</p>
-<h3 id="softras-与传统光栅化">SoftRas 与传统光栅化</h3>
-<p>SoftRas 在将模型投影到平面上的时候，会将模型转换为投影平面上的概率分布。而传统光栅化则是转化为具体某个像素是否染色。</p>
-<p>另外，似乎 SoftRas 对遮挡的处理也和传统渲染管线的 z-buffer 不一样。传统光栅化会使用 onehot 的方式处理遮挡（应该指的是处理为完全遮挡），而 SoftRas 也会基于概率分布做出不同处理。</p>
-<h2 id="相关工作">相关工作</h2>
-<h3 id="可微渲染">可微渲染</h3>
-<p>主要关注如何描述二维图像变化和三维模型操作的关系，主要解决如何从二维图像重建三维场景。考虑给定的二维图片 <span class="math inline">\(A\)</span>，首先粗略初始化一个三维场景 <span class="math inline">\(B&#39;\)</span>，然后通过渲染管线渲染得到二维图片 <span class="math inline">\(B\)</span>。计算 <span class="math inline">\(A\)</span> 和 <span class="math inline">\(B\)</span> 的 loss，将其梯度反向传播给三维场景 <span class="math inline">\(B&#39;\)</span> 的参数，更新之。这里反向传播就是可微渲染最重要的步骤，即如何计算梯度，因为三维场景参数更新量取决于 loss 对参数的偏导数。</p>
-<p>先前提到，这里获取梯度有困难。有些工作使用估计梯度的方式进行，有些工作可以精确计算梯度但是不具有泛用性。</p>
-<h3 id="基于图像的三维推理">基于图像的三维推理</h3>
-<p>依然考虑从二维图像重建三维场景。传统方法往往要求获得从多个角度观察得到的二维图像，而由于数据集的扩大，基于学习的重建方法可以使用一张或少量二维图像来重建场景。部分工作会将重建三维场景拆分为首先重建 2.5 维的表示（深度表等）。</p>
-<p>另外，姿态估计也是三位推理的一个重要的子任务。通过深度学习的方法，预测刚体姿态是较为简单的，而预测人体这类非刚体的姿态则较为困难。</p>
-<h2 id="softras-基本原理">SoftRas 基本原理</h2>
-<p>大约是这样的一个流程：</p>
-<p><img src="/uploads/paper-2022-02/1.png" /></p>
-<p>这里外部因素包含相机参数 <span class="math inline">\(\boldsymbol{P}\)</span> 和环境光照 <span class="math inline">\(\boldsymbol{L}\)</span>，内部因素包括网格信息 <span class="math inline">\(\boldsymbol{M}\)</span> 以及各个顶点的信息（如颜色、材质）<span class="math inline">\(\boldsymbol{A}\)</span>。</p>
-<p>这里第一步要做的是获取三个中间信息，即网格法向量 <span class="math inline">\(\boldsymbol{N}\)</span>、视图空间（投影后的空间）各点坐标 <span class="math inline">\(\boldsymbol{U}\)</span> 以及 View dependent depths <span class="math inline">\(\boldsymbol{Z}\)</span>。这三个量只需要使用相机参数和网格信息即可得到。</p>
-<p>之后可以使用例如 Phong 模型等着色模型计算出颜色 <span class="math inline">\(\boldsymbol{C}\)</span>。</p>
-<p>进行到这一步，上述这些操作都是可微的。但是如果按照传统的渲染管线，下一步应该分别确定每一个网格三角形与每一个像素的对应（即光栅化），之后还要用 z-buffer 处理遮挡，这两步都因为离散采样从而是不可微的。</p>
-<p>SoftRas 软化光栅化和 z-buffer 的方式是引入 probability maps <span class="math inline">\(\{\mathcal{D}_j\}\)</span> 和聚合函数 <span class="math inline">\(\mathcal{A}(\cdot)\)</span> 分别代替光栅化和 z-buffer。这里 <span class="math inline">\(\mathcal{D}_j\)</span> 表示的是每一个像素在网格三角形 <span class="math inline">\(f_j\)</span> 内部的概率在平面上的分布。而聚合函数 <span class="math inline">\(\mathcal{A}(\cdot)\)</span> 联系起了 probability maps 以及深度信息，作为整个后续渲染流程的代表。</p>
-<h3 id="probability-maps-计算">probability maps 计算</h3>
-<p>考虑网格三角形在屏幕上的投影 <span class="math inline">\(f_j\)</span> 和屏幕上的像素 <span class="math inline">\(p_i\)</span>，记在屏幕上 <span class="math inline">\(p_i\)</span> 到 <span class="math inline">\(f_j\)</span> 的边最近距离为 <span class="math inline">\(d(i, j)\)</span>。显然，这个距离越小的像素点，出现在内部的概率越大。由于其可以反映三角形对屏幕的影响，并且其可微，所以可以用此作为 probability maps 的代表。随后通过添加控制常数、符号标记并归一化到 <span class="math inline">\((0, 1)\)</span> 内之后，我们得到了 probability maps 的公式：</p>
-<p><span class="math display">\[
-\mathcal{D}_{i, j} = \mathrm{sigmoid}\left(\delta_{i, j}\cdot\frac{d^2(i, j)}{\sigma}\right)
-\]</span></p>
-<p>这里 <span class="math inline">\(\sigma\)</span> 是一个正常数，一般默认为 <span class="math inline">\(1\times 10^{-4}\)</span>。而 <span class="math inline">\(\delta_{i, j}\)</span> 标记了 <span class="math inline">\(p_i\)</span> 是否在 <span class="math inline">\(f_j\)</span> 之中。若在，则 <span class="math inline">\(\delta_{i, j} = 1\)</span>，否则 <span class="math inline">\(\delta_{i, j} = -1\)</span>。</p>
-<p>下图展示了 <span class="math inline">\(d(i, j)\)</span> 的定义以及 <span class="math inline">\(\sigma\)</span> 常数对概率分布的影响：</p>
-<p><img src="/uploads/paper-2022-02/2.png" /></p>
-<p>显然看出 <span class="math inline">\(\sigma\)</span> 越大，概率分布就越模糊。</p>
-<p>另外一个显然的点是 <span class="math inline">\(\sigma \to 0\)</span> 的时候概率分布中三角形外的点概率密度为 <span class="math inline">\(0\)</span>，而三角形内的点为 <span class="math inline">\(1\)</span>。此时 SoftRas 退化为一般的光栅化。</p>
-<h3 id="聚合函数">聚合函数</h3>
-<p>我们考虑最后一个阶段，这里我们需要根据深度信息、 probability maps 以及颜色信息计算出最后的渲染结果。</p>
-<p>最后渲染结果中，像素 <span class="math inline">\(p_i\)</span> 的渲染结果用聚合函数表示，定义为：</p>
-<p><span class="math display">\[
-I_i = \mathcal{A}_S(\{C_j\}) := \sum_j w_{i, j}C_{i, j} + w_{i, b}C_b
-\]</span></p>
-<p>这里渲染结果定义为一系列颜色信息的加权求和，颜色构成的集合为 <span class="math inline">\(\{C_j\}\)</span>，符号 <span class="math inline">\(C_{i, j}\)</span> 表示三角形 <span class="math inline">\(f_j\)</span> 在像素 <span class="math inline">\(p_i\)</span> 处的颜色。而 <span class="math inline">\(C_b\)</span> 表示背景颜色。</p>
-<p>权重 <span class="math inline">\(w_{i, j}\)</span> 至少满足归一化条件：</p>
-<p><span class="math display">\[
-w_{i, b} + \sum_j w_{i, j} = 1
-\]</span></p>
-<p>而权重的具体值取决于先前得到的 probability maps 以及深度信息。我们将三角形 <span class="math inline">\(f_j\)</span> 中投影到 <span class="math inline">\(p_i\)</span> 像素的点的逆深度记为 <span class="math inline">\(z_{i, j}\)</span>。概率分布沿用先前的符号。定义：</p>
-<p><span class="math display">\[
-w_{i, j} := \frac{\mathcal{D}_{i, j}\exp(z_{i, j} / \gamma)}{\sum_k \mathcal{D}_{i, k}\exp(z_{i, k} / \gamma) + \exp(\varepsilon / \gamma)}
-\]</span></p>
-<p>依据归一化条件就有：</p>
-<p><span class="math display">\[
-w_{i, b} := \frac{\exp(\varepsilon / \gamma)}{\sum_k \mathcal{D}_{i, k}\exp(z_{i, k} / \gamma) + \exp(\varepsilon / \gamma)}
-\]</span></p>
-<div class="note info no-icon"><p>可以看出权重的计算公式其实是类似 Softmax 函数：</p>
-<p><span class="math display">\[
-{\rm softmax}(z_1, z_2, \cdots, z_n)_j = \frac{e^{z_j}}{\sum_i e^{z_i}}
-\]</span></p>
-</div>
-<p>这里可以看出 <span class="math inline">\(\varepsilon\)</span> 是一个小正常数，其作用是将背景颜色纳入计算。<span class="math inline">\(\gamma\)</span> 是一个调节清晰度的正常数，与计算 probability maps 的 <span class="math inline">\(\sigma\)</span> 类似，默认值一般是 <span class="math inline">\(1 \times 10^{-4}\)</span>。</p>
-<p>可以看出，具有更大概率密度的，且离投影平面更近的（即具有更大逆深度的）三角形会获得更大的权重，这符合直觉。</p>
-<hr />
-<p>现在考虑退化。针对像素 <span class="math inline">\(p_i\)</span>，假设 <span class="math inline">\(z_{i, 1} &lt; z_{i, 2} &lt; \cdots &lt; z_{i, N}\)</span>，考虑 <span class="math inline">\(\gamma\to 0\)</span>。首先考察 <span class="math inline">\(j = N\)</span>：</p>
-<p><span class="math display">\[
-\begin{aligned}
-w_{i, N} &amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}\exp(z_{i, N} / \gamma)}{\sum_k \mathcal{D}_{i, k}\exp(z_{i, k} / \gamma) + \exp(\varepsilon / \gamma)} \\
-&amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}}{\sum_k \mathcal{D}_{i, k}\exp((z_{i, k} - z_{i, N}) / \gamma) + \exp((\varepsilon - z_{i, N}) / \gamma)} \\
-&amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}}{\sum_{k = 1}^{N - 1} \mathcal{D}_{i, k}\exp((z_{i, k} - z_{i, N}) / \gamma) + \mathcal{D}_{i, N} + \exp((\varepsilon - z_{i, N}) / \gamma)} \\
-&amp;= 1
-\end{aligned}
-\]</span></p>
-<p>最后一步注意到 <span class="math inline">\(z_{i, N}\)</span> 大于任何 <span class="math inline">\(z_{i, k}(k &lt; N)\)</span>，故有这样的结果。而对于 <span class="math inline">\(j &lt; N\)</span>：</p>
-<p><span class="math display">\[
-\begin{aligned}
-w_{i, j} &amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, j}\exp(z_{i, j} / \gamma)}{\sum_k \mathcal{D}_{i, k}\exp(z_{i, k} / \gamma) + \exp(\varepsilon / \gamma)} \\
-&amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}}{\sum_k \mathcal{D}_{i, k}\exp((z_{i, k} - z_{i, j}) / \gamma) + \exp((\varepsilon - z_{i, j}) / \gamma)} \\
-&amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}}{\left(\sum_{k = 1}^{j - 1} + \sum_{k = j + 1}^{N}\right) \mathcal{D}_{i, k}\exp((z_{i, k} - z_{i, N}) / \gamma) + \mathcal{D}_{i, N} + \exp((\varepsilon - z_{i, N}) / \gamma)} \\
-&amp;= 0
-\end{aligned}
-\]</span></p>
-<p>这里要注意到分母上 <span class="math inline">\(\sum_{k = j + 1}^{N}\)</span> 的部分最终会趋向于正无穷，整体极限为 <span class="math inline">\(0\)</span>。最后根据归一化条件也有 <span class="math inline">\(w_{i, b} = 0\)</span>。</p>
-<p>结合这样的推理，可以看出：</p>
-<p><span class="math display">\[
-I_i = \mathcal{A}_S(\{C_j\}) = C_{i, N}
-\]</span></p>
-<p>也就是说最后渲染的结果只考虑了最近的网格三角形，这也就是 z-buffer 方法。</p>
-<hr />
-<p>似乎还有一个和轮廓相关的聚合函数：</p>
-<p><span class="math display">\[
-I_{i, S} = \mathcal{A}_O(\{\mathcal{D}_j\}) := 1 - \prod_j (1 - \mathcal{D}_{i, j})
-\]</span></p>
-<p>这里没有出现颜色项，这是因为轮廓的颜色一般设定为常数。这里聚合函数形式上实际上就是计算出了像素 <span class="math inline">\(p_i\)</span> 被至少一个三角形覆盖的概率。</p>
-<h2 id="实验内容">实验内容</h2>
-<h3 id="single-view-mesh-reconstruction">Single-View Mesh Reconstruction</h3>
-<p>使用这样的结构：</p>
-<p><img src="/uploads/paper-2022-02/3.png" /></p>
-<p>这里固定了渲染管线中的外部变量，即固定了相机位置和环境光照。每一个输入图片都会进入 color generator 和 shape generator 生成三维模型参数 <span class="math inline">\(\boldsymbol{C}\)</span> 和 <span class="math inline">\(\boldsymbol{M}\)</span>。随后后续接入 SoftRas，渲染得到带颜色的图像 <span class="math inline">\(I_C\)</span> 和轮廓 <span class="math inline">\(I_S\)</span>，最后和原先图像比较计算 loss。</p>
-<p>最后定义的 loss 分为三部分。在叙述定义之前，我们将原始图像的颜色和轮廓定义为 <span class="math inline">\(\hat I_C\)</span> 以及 <span class="math inline">\(\hat I_S\)</span>：</p>
-<ul>
-<li>color loss。定义为颜色之差的 1- 范数：</li>
-</ul>
-<p><span class="math display">\[
-\mathcal{L}_C := \|I_C - \hat I_C\|_1
-\]</span></p>
-<ul>
-<li>silhouette loss。定义为，这里使用 <span class="math inline">\(\otimes\)</span> 表示逐元素求积，<span class="math inline">\(\oplus\)</span> 表示逐元素求和：</li>
-</ul>
-<p><span class="math display">\[
-\mathcal{L}_S := 1 - \frac{\|I_S \otimes \hat I_S\|_1}{\|I_S \oplus \hat I_S - I_S \otimes \hat I_S\|_1}
-\]</span></p>
-<ul>
-<li>geometry loss。作用是对 loss 进行 L1 正则化。</li>
-</ul>
-<p>最后定义的 loss 是这三部分的加权求和：</p>
-<p><span class="math display">\[
-\mathcal{L} := \mathcal{L}_S + \lambda\mathcal{L}_C + \mu\mathcal{L}_G
-\]</span></p>
-<p>这里论文主要提了一下 color generator 的结构：</p>
-<p><img src="/uploads/paper-2022-02/4.png" /></p>
-<p>似乎是提出了一种新结构，让颜色重建变为一个多分类问题，进而降低了时间复杂度。但是论文的描述中有若干的暂且不太清楚的名词，暂且把原文贴在这里以后再来看：</p>
-<div class="note info no-icon"><p>Instead of directly regressing the color value, our color generator formulates color reconstruction as a classification problem that learns to reuse the pixel colors in the input image for each sampling point. Let <span class="math inline">\(N_c\)</span> denote the number of sampling points on <span class="math inline">\(\boldsymbol{M}\)</span> and <span class="math inline">\(H, W\)</span> be the height and width of the input image respectively. However, the computational cost of a naive color selection approach is prohibitive, i.e. <span class="math inline">\(O(HWN_c)\)</span>. To address this challenge, we propose a novel approach to colorize mesh using a color palette, as shown in Figure 7. Specifically, after passing input image to a neural network, the extracted features are fed into (1) a sampling network that samples the representative colors for building the palette; and (2) a selection network that combines colors from the palette for texturing the sampling points. The color prediction is obtained by multiplying the color selections with the learned color palette. Our approach reduces the computation complexity to <span class="math inline">\(O(N_d(HW + N_c))\)</span>, where <span class="math inline">\(N_p\)</span> is the size of color palette. With a proper setting of <span class="math inline">\(N_p\)</span>, one can significantly reduce the computational cost while achieving sharp and accurate color recovery.</p>
-</div>
-<h3 id="image-based-shape-fitting">Image-based Shape Fitting</h3>
-<p>似乎依然是从图像重建模型，但是这个重建任务似乎和姿态预测有较为紧密的联系。</p>
-<p>传统方法面临的问题依然是梯度不精确的问题，这样就导致反向传播较为困难。另外，传统方法也面临这样的问题：</p>
-<ul>
-<li><p>遮挡问题。传统方法中，被遮挡的三角形无法调整参数，而 SoftRas 允许被遮挡的三角形参与到运算中，所以这个问题可以解决。</p></li>
-<li><p>局部最小值问题。我们希望误差反向传播可以传播到较大范围，即希望一次三维模型参数调整不局限于较小的局部，否则可能会导致模型收敛到局部最小值而非更优的结果。而 SoftRas 使用的概率分布算法允许全局的像素参与到运算中，所以理论上误差可以传播到较大范围，这个问题可以解决。</p></li>
-</ul>
-<p>所以最后就直接使用这样的方式训练就行了：</p>
-<p><span class="math display">\[
-\{\rho, \theta, t\} = \mathop{\mathrm{argmin}}_{\rho, \theta, t}\|R(M(\rho, \theta, t)) - I_t\|_2
-\]</span></p>
-<p>这里 <span class="math inline">\(\rho, \theta, t\)</span> 是三维模型的参数，分别是非刚体形变参数、姿态角度、转换参数（或许就是视图转换的参数），<span class="math inline">\(M(\cdot)\)</span> 将这些参数转换为网格，<span class="math inline">\(R(\cdot)\)</span> 是渲染函数，<span class="math inline">\(I_t\)</span> 则是目标图像。这个训练方式也就是机器学习的通式。</p>
-<h2 id="实验结果">实验结果</h2>
-<h3 id="single-view-mesh-reconstruction-1">Single-View Mesh Reconstruction</h3>
-<p>实验结果看确实挺好的，下面展示的是不带颜色的网格重建：</p>
-<p><img src="/uploads/paper-2022-02/5.png" /></p>
-<p>颜色似乎也重建得挺好：</p>
-<p><img src="/uploads/paper-2022-02/6.png" height="50%" width="50%" /></p>
-<p>使用的评价方法是 3D IoU，即 3D Intersection over Union。这是一种物体检测领域的评价函数。二维情况下的 IoU 定义如下图所示。这里的矩形均指代物体的包围盒，分别为实际的包围盒和模型预测的包围盒：</p>
-<p><img src="/uploads/paper-2022-02/7.png" height="50%" width="50%" /></p>
-<p>SoftRas 的平均 3D IoU 超出了 state-of-art 的 NMR 的 3D IoU 约 4.5 点，从而说明在网格重建任务上 SoftRas 的表现超出了传统方法。</p>
-<p>另外似乎还有一项称为 Ablation Study 的后续实验，这里省略。</p>
-<h3 id="image-based-shape-fitting-1">Image-based Shape Fitting</h3>
-<p>首先实验刚体结构预测，这里采用六面着不同色的正方体。给定渲染后图像，要求给出正方体应当旋转的角度。SoftRas 和 NMR 的实验结果如下：</p>
-<p><img src="/uploads/paper-2022-02/8.png" /></p>
-<p>可以发现 SoftRas 成功获得了最后的结果，而 NMR 则收敛到了一个局部最小值无法得到正确结果。</p>
-<p>论文认为 NMR 失败的原因正是因为六个面的相互遮挡，这导致了 NMR 无法越过局部最小值。</p>
-<p>另外其也做了大量实验，表明 SoftRas 预测的旋转角度误差严格优于 NMR，在不优化的情况下，SoftRas 的角度误差平均比 NMR 低 <span class="math inline">\(10.60^\circ\)</span>。</p>
-<p>这里似乎涉及到 <span class="math inline">\({\rm SO}(3)\)</span> 旋转群的一些东西，后面再来研究吧。</p>
-<hr />
-<p>非刚体结构预测则选用了人体结构预测，这里初始化时人的右手位于背后，而目标图像中右手已经移动到前面，实验目标是将手移出来。显然 NMR 依然因为无法处理遮挡，最后没有能够完成任务。而 SoftRas 完成了：</p>
-<p><img src="/uploads/paper-2022-02/9.png" /></p>
-<h2 id="附录梯度计算">附录：梯度计算</h2>
-<p>我们现在研究一下 SoftRas 渲染出来的图像 <span class="math inline">\(\boldsymbol{I}\)</span> 对网格参数 <span class="math inline">\(\boldsymbol{M}\)</span> 的梯度，这个梯度也就是在反向传播的时候要计算的值。首先显然有：</p>
-<p><span class="math display">\[
-\frac{\partial\boldsymbol{I}}{\partial\boldsymbol{M}} = \frac{\partial\boldsymbol{I}}{\partial\boldsymbol{U}}\frac{\partial\boldsymbol{U}}{\partial\boldsymbol{M}} + \frac{\partial\boldsymbol{I}}{\partial\boldsymbol{Z}}\frac{\partial\boldsymbol{Z}}{\partial\boldsymbol{M}} + \frac{\partial\boldsymbol{I}}{\partial\boldsymbol{N}}\frac{\partial\boldsymbol{N}}{\partial\boldsymbol{M}}
-\]</span></p>
-<p>这里显然可以看出 <span class="math inline">\(\dfrac{\partial\boldsymbol{U}}{\partial\boldsymbol{M}}, \dfrac{\partial\boldsymbol{Z}}{\partial\boldsymbol{M}}, \dfrac{\partial\boldsymbol{N}}{\partial\boldsymbol{M}}\)</span> 是可以简单计算的，因为 <span class="math inline">\(\boldsymbol{U}, \boldsymbol{Z}, \boldsymbol{N}\)</span> 都可以由 <span class="math inline">\(\boldsymbol{M}\)</span> 通过简单的视图变换得到，由变换矩阵即可推算偏导数。</p>
-<p>而根据着色模型，<span class="math inline">\(\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{N}}\)</span> 也是可以计算的。</p>
-<p>剩余的两个梯度中，<span class="math inline">\(\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{Z}}\)</span> 直接和聚合函数相关，而 <span class="math inline">\(\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{U}}\)</span> 经过了两层，分别是概率分布计算和聚合函数，所以我们需要拆解：</p>
-<p><span class="math display">\[
-\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{U}} = \dfrac{\partial\boldsymbol{I}}{\partial\mathcal{D}}\dfrac{\partial\mathcal{D}}{\partial\boldsymbol{U}}
-\]</span></p>
-]]></content>
-      <categories>
-        <category>【论文笔记】计算机</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>2022 年 8 月论文笔记</title>
-    <url>/2022/06/10/paper-2022-08/</url>
-    <content><![CDATA[<p>这个月主要是刚刚进入流媒体相关的方向，需要阅读一些论文来了解目前的发展。</p>
-<span id="more"></span>
-<h1 id="stick---a-harmonious-fusion-of-buffer-based-and-learning-based-approach-for-adaptive-streaming">Stick - A Harmonious Fusion of Buffer-based and Learning-based Approach for Adaptive Streaming</h1>
-<h2 id="introduction">Introduction</h2>
-<p>首先考虑到现实应用背景，视频流传输已经占据了大部分的网络传输带宽。但视频传输的问题在于视频内容的多样性和可能的网络波动。一种可能的解决方案是使用 Adaptive bitrate (ABR) 算法，这些算法已经被证实可以提供高 QoE 的传输服务。</p>
-<p>传统的 ABR 算法往往是 buffer-based 的（例如 BBA 和 BOLA），这些算法通过固定的 buffer 和参数来选定下一个视频块的码率，这可能难以在波动网络环境下保证 QoE。</p>
-<p>另一方面，基于深度强化学习（DRL）的 ABR 算法 Pensieve 却给出了 state-of-the-art 的表现。在实践上，这类算法也常常部署在服务器侧以避免客户端的高计算开销。但是考虑到 ABR 算法往往需要部署在前端以避免连接后端的网络延迟，这使得这类算法理论可用但是并不实际。</p>
-<p>那么我们可以将这两种方法结合起来，使用 DRL 来强化 buffer-based 的方法，同时使用固定的缓冲区限制来限制计算开销。从而该论文提出了 Stick 框架，该框架将 QoE 参数、网络状态、视频特征作为输入参数，而缓冲区限制（连续的标量）作为其输出。</p>
-<p>考虑到连续的动作空间，我们计划使用 Deep deterministic policy gradient (DDPG) 来从头开始训练模型。此外，Stick 在无假设条件下通过和 ABR 环境交互来学习策略。</p>
-<p>为了保证计算效率，我们进一步提出了 Trigger。Trigger 会观测当前和先前的缓冲区限制，只在必要的时候激活 Stick 来更新缓冲区限制。Trigger 使用 imitation learing 方法来学习专家行为。同时，为了克服数据的无偏分布【Question #1】，我们使用了 prioritized experience replay 来存储专家策略。同时，该论文还提出了一种可以让其他 ABR 算法框架接入 Trigger 的方法。</p>
-<p>这篇论文的重点在于：</p>
-<ul>
-<li>首次提出结合 buffer-based 方法和 learning-based 方法</li>
-<li>通过 Stick，可以使用更小的模型实现比已有方法更好的效果</li>
-<li>通过 Trigger，证明轻量级模型可以有效降低计算开销</li>
-</ul>
-<h2 id="buffer-based-learning-based-abr-algorithm">Buffer-based &amp; learning-based ABR algorithm</h2>
-<p>BBA 只根据当前缓冲区限制来选定下一个视频块的码率。具体而言，其将对吞吐量的估计固定为启动态额吞吐量以克服吞吐量的波动，之后在稳定态时，使用缓冲区限制 <span class="math inline">\(\{B_{\rm min}, B_{\rm max}\}\)</span> 来获取块映射，块映射的作用是将缓冲区占用情况映射为码率。</p>
-<p>而这个映射也是简单的分块线性映射，缓冲区占用低于 <span class="math inline">\(B_{\rm min}\)</span> 时下一个视频块码率为低码率 <span class="math inline">\(R_{\rm min}\)</span>，缓冲区占用高于 <span class="math inline">\(B_{\rm max}\)</span> 时下一个视频块码率为高码率 <span class="math inline">\(R_{\rm max}\)</span>，位于这两者之间的时候使用线性函数决定。</p>
-<p>这个方法大部分情况下简单且有效，但是也在许多条件下效果不理想。原因是 BBA 使用的固定参数应当根据应用环境做出相应的调整。</p>
-<p>而 learning-based ABR，例如 Pensieve 则给出了较好的理论结果，但是该方案并不容易应用到现实中。此外，Pensieve 也在部分应用环境下效果不理想。</p>
-<h2 id="key-ideas">Key ideas</h2>
-<p>总结起来是这样的几点：</p>
-<ul>
-<li>使用 DRL 的方法调整 ABR 的参数，避免使用查表或者预训练模型造成的过大存储和计算成本</li>
-<li>模型的状态空间需要考虑全面，不仅包括当前缓冲区限制，还要包括网络状况和视频特征
-<ul>
-<li>此外，实验发现 Stick 可以仅使用一个参数控制缓冲区，而非两个参数</li>
-</ul></li>
-<li>QoE 要求会被作为 goal 输入模型，该参数会随机初始化，这会让模型意识到 QoE 参数和 feedback reward 之间的关系</li>
-<li>使用轻量级的 Trigger 来决定是否需要通过 Stick 更新缓冲区限制，以降低计算成本</li>
-</ul>
-<h2 id="system-overview">System overview</h2>
-<p>整体的框架可以表现为：</p>
-<p><img src="/uploads/paper-2022-08/1.png" /></p>
-<h3 id="stick-mechanism">Stick mechanism</h3>
-<p>Stick 的结构图可以表示为：</p>
-<p><img src="/uploads/paper-2022-08/2.png" /></p>
-<h4 id="design">Design</h4>
-<p>首先叙述状态空间的构造：</p>
-<ul>
-<li><span class="math inline">\(T\)</span> 为由客户端测量的前 <span class="math inline">\(k\)</span> 个序列的吞吐量</li>
-<li><span class="math inline">\(d\)</span> 为前 <span class="math inline">\(k\)</span> 个序列的下载时间</li>
-<li><span class="math inline">\(q\)</span> 为上一个视频块选定的码率</li>
-<li><span class="math inline">\(r\)</span> 为视频剩余播放时间</li>
-<li><span class="math inline">\(b\)</span> 为当前缓冲区占有情况</li>
-<li><span class="math inline">\(S\)</span> 为表示下一个视频块大小的向量</li>
-<li><span class="math inline">\(g\)</span> 为 QoE goal 参数，由 <span class="math inline">\(\mu, \tau\)</span> 构成</li>
-</ul>
-<p>动作空间则是一个连续标量 <span class="math inline">\(B \in [0, {\rm buffer}_{\rm max}]\)</span>，用于控制缓冲区限制。</p>
-<p>奖励函数则根据不同的 <span class="math inline">\(g\)</span>，使用经典的线性 QoE 指标来构造。</p>
-<h4 id="training-methodology-implementation">Training methodology &amp; Implementation</h4>
-<p>【这一部分在阅读完 DPG 相关论文之后再具体展开】</p>
-<h3 id="trigger">Trigger</h3>
-<p>Trigger 的一个核心思想在于，如果 Stick 在连续两个视频块上给出相同的结果，那么其第二次计算是无用的。而实验证明，无用操作可能占比达到 30%，所以我们的目标就是用 Trigger 去判别哪些操作是无用的。</p>
-<p>现在考量 Trigger 的状态空间。根据 Related work，网络吞吐量是我们需要考虑的重要参数。但是我们也发现了，先前的缓冲区占用情况也是一个重要特征，其可以揭示网络环境状态和视频块大小之间的隐藏关系。</p>
-<p>所以我们最终令 Trigger 的输入是先前的网络吞吐量、缓冲区大小和现在的缓冲区限制。而输出是一个二维向量，表示 Stick 保持或者改变当前缓冲区限制的概率。</p>
-<hr />
-<p>使用 imitation learning 来训练 Trigger，这种方法能够根据 expert demonstration 给出预期的结果。训练的算法可以表示为：</p>
-<p><img src="/uploads/paper-2022-08/3.png" /></p>
-<hr />
-<p>另外，我们需要关注训练数据集分布的问题。论文使用的数据集中有 83% 的操作是无用操作，这种分布不均匀的数据集和理想的 50%-50% 数据集差距过大，可能导致特征训练不均衡。所以这里使用了 Prioritized experience replay 方法来重新平衡数据集。</p>
-<p>关于这个方法的介绍可以参考 <a href="https://paperswithcode.com/method/prioritized-experience-replay">这篇文章</a>。</p>
-<p>之后讨论如何将 Trigger 应用到其他的 ABR 算法上。</p>
-<p>【这一部分在阅读完 DPG 相关论文之后再具体展开】</p>
-<h2 id="evaluation">Evaluation</h2>
-<p>介绍了使用的实验环境、数据集、训练方式、Baseline 的选取、QoE 指标的计算公式等等。</p>
-<p>首先在一个数据集上，实验证明了 Stick 输出单参数的表现并不比双参数差很多，甚至在一些条件下能得到更好的 QoE 指标。</p>
-<p>之后通过实验说明了 Stick 在各种数据集上都表现出了比 buffer-based 方法更为优秀的性能。</p>
-<p>有关比较性能，论文里面有这样一句被强调的话：</p>
-<div class="note success"><p>Note that Stick only utilize onequarter number of neurons that of Pensieve.</p>
-<p>感觉是一种简单的强大。</p>
-</div>
-<p>之后还探讨了不同 QoE 指标下 Stick 的表现，探讨了 Trigger 的网络结构（全连接、LSTM 还是 CNN），做了一些进一步的 Evaluation，这里就不具体展开了。</p>
-<h1 id="neural-adaptive-video-streaming-with-pensieve">Neural Adaptive Video Streaming with Pensieve</h1>
-<h2 id="introduction-1">Introduction</h2>
-<p>现行的 ABR 算法在选择下一个视频块的码率的时候往往面临下述四个问题：</p>
-<ul>
-<li>网络吞吐量的不稳定</li>
-<li>部分 QoE 指标内存在相互矛盾的要求（如高质量和尽可能减少缓冲）</li>
-<li>当前码率选择可能对未来的选择产生影响</li>
-<li>ABR 的决策可能是粗粒度的</li>
-</ul>
-<p>现行的大部分 ABR 方法都依赖于对网络吞吐的估计或者对缓冲区大小的估计，所以其难以应对网络吞吐的不稳定。比如说 SOTA 方法 MPC 依赖于对网络吞吐量的预估，原文：</p>
-<div class="note info no-icon"><p>However, MPC’s performance relies on an accurate model of the system dynamics - particularly, a forecast of future network throughput.</p>
-</div>
-<p>这样的限制使得 MPC 对预测结果的偏差十分敏感。</p>
-<p>从而本文提出了 Pensieve，该方法会自动学习 ABR 算法，而不需要任何的预训练的控制规则或者对运行环境的假设条件。Pensieve 是基于强化学习的，其完全通过其与环境交互的经验学习。Pensieve 的核心为一个神经网络，该神经网络代表了 Pensieve 所采取的针对网络环境的策略。该网络接受的输入为各种对网络环境的原始观测数据（吞吐量采样、回放缓冲区占用率、视频块尺寸等），而其输出则为下一个视频块应当采取的码率。该网络的训练方式为 A3C。</p>
-<p>Pensieve 的训练方式的核心则是一个模拟器，用于将大规模的网络跟踪信息数据库回放给 Pensieve，其划分粒度可以是块级别的，也可以是包级别的或者其他。Pensieve 的评测方式为将算法部署在一个 ABR 服务器上，令算法不断给出下一个视频块应当采取的码率，这样做可以避免在客户端上进行繁重的神经网络计算。</p>
-<p>最后 Pensieve 在几乎所有的网络环境和 QoE 指标上持平或超过现有最佳的 ABR 算法。</p>
-<h2 id="background">Background</h2>
-<p>当前占主导地位的视频分发策略为 HTTP-based adaptive streaming，而其标准化技术为 DASH，即 Dynamic Adaptive Streaming over HTTP。而 DASH 的流程可以大致描述为下图：</p>
-<p><img src="/uploads/paper-2022-08/4.png" /></p>
-<ul>
-<li>首先播放器向服务器获得认证</li>
-<li>服务器应答一个保存有实际视频数据的 CDN 地址，并且列出所有可选码率</li>
-<li>播放器使用 ABR 算法逐个请求视频块，视频块下载完成后渲染到屏幕上播放</li>
-</ul>
-<p>这里 ABR 算法几乎决定了整体的视频传输性能，其面临的若干挑战已经在 Introduction 部分给出了基本的介绍，这里稍加详细叙述。</p>
-<ol type="1">
-<li><p>ABR 算法并不能仅考虑网络情况，因为在类似蜂窝移动网络等不稳定网络条件下，我们难以预测未来的网络吞吐，最后往往仅能够获取到保守估计导致性能浪费，或者过高估计导致传输延迟。从而 ABR 也应当考虑缓冲区占有率等更为稳定的参数。</p></li>
-<li><p>QoE 指标可能是相互冲突的。在带宽有限的网络环境中持续以最高码率请求视频可以保证视频质量，但是会升高缓冲率。相反，在不稳定的网络环境中，在任何时候选取当前网络环境能提供的最高码率会导致视频播放不平滑。</p></li>
-<li><p>当前视频块的选择会对后续视频块的码率选择产生影响。其一，高码率视频块常常会导致后续视频块难以维持该高码率，因为可能导致缓冲。其二，为了保证视频播放平滑，ABR 算法不倾向于突然改变码率，所以后续视频块的码率并不会在当前码率基础上改变很大。</p></li>
-<li><p>由于 ABR 算法能选择的码率范围被服务器给出的 Manifest file 限制，所以其选择往往是粗粒度的。有时网络环境会恰好落在某一个低码率过于浪费资源而稍高的码率就会导致缓冲的临界区域。</p></li>
-</ol>
-<h2 id="learning-abr-algorithms">Learning ABR Algorithms</h2>
-<p>其首先将 Pensieve 和 Robust MPC 进行了对比，指出了 Robust MPC 的部分缺陷（基本还是先前部分提到的缺陷，只是使用了实验数据做了支持）。</p>
-<p>这一部分似乎并没有写出很多新东西，还是先前部分的重复。</p>
-<h2 id="design-1">Design</h2>
-<h3 id="training-methodology">Training Methodology</h3>
-<p>训练策略的核心是一个模拟视频下载流程的模拟器。其对于每一个视频块，模拟器会根据该视频块的码率以及网络状况生成下载耗时。在这一段时间，模拟器会缓慢消耗缓冲区内已经存在的视频块以模拟视频播放，之后再将该视频块压入缓冲区。模拟器会跟踪所有可能导致重新缓冲的事件，比如缓冲区剩余视频块长度小于正在下载的视频块需要的时间（这会导致已经缓冲的视频播放完成后新的视频块还未下载完毕）。另外一方面，如果当前缓冲区无法容纳新的视频块，那么模拟器会暂停下载 500 毫秒，之后重新开始请求。</p>
-<p>在完成下载之后，模拟器会给出若干参数，比如当前缓冲区占有率、重新缓冲时间、视频块下载时间、（在所有可选码率下）下一个视频块的大小、该视频剩余的视频块数量等。这些参数的具体使用方式见后。</p>
-<p>基于该模拟器，Pensieve 可以在很短的时间内学习一个本应占用长时间的视频下载流程。</p>
-<p>虽然上述基于应用层行为的建模简单直接，但是实际上由于传输层复杂的行为，上述建模有可能并不精确。例如，播放器在缓冲区已满的条件下可能并不会在视频块下载完成后立刻请求下一个视频块，这可能导致传输层 TCP 回退到慢启动状态，这样可能并不能充分利用带宽。该问题实际上让 ABR 算法需要考虑的方面增多了，因为通常意义上快速填满缓冲区的策略会导致 TCP 慢启动从而造成事实上的低效率。</p>
-<p>为了了解 TCP 慢启动造成的影响，设计的实验为在带宽 6 Mbps 的条件下不断以某一个恒定的码率请求视频块。得出的结论为，在启用 TCP 慢启动的条件下请求的码率越低带宽利用率越低，而不启用 TCP 慢启动的条件下所有码率均充分利用了带宽。</p>
-<p>所以为了让模拟贴合现实，我们可以关闭服务器的 TCP 慢启动。虽然这可能导致流量的突变，但目前可以有其他的解决方案解决这一问题而不需要 Pensieve 来处理。</p>
-<p>事实上上述模拟依然是不精确的，但是我们发现 Pensieve 依然可以通过上述不完整的模拟学习到高质量的 ABR 算法，这可能是由于 Pensieve 强大的泛用能力。</p>
-]]></content>
-      <categories>
-        <category>【论文笔记】计算机</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>2022 年 9 月论文笔记</title>
-    <url>/2022/09/20/paper-2022-09/</url>
-    <content><![CDATA[<p>这个月正式参与进入了实验室和快手的一个合作项目，依然还是需要从论文先开始。</p>
-<span id="more"></span>
-<h1 id="causalsim---unbiased-trace-driven-network-simulation">CausalSim - Unbiased Trace-Driven Network Simulation</h1>
-<h2 id="abstract-introduction">Abstract &amp; Introduction</h2>
-<p>在测评网络协议在线上的实际性能的时候，虽然 RCT 方法是最为标准的，但是由于其极其昂贵，对周边基础设施的要求也很高，所以只有若干大型网络运营方才能支持这种测评方法。基于此，一般的研究所会选择网络模拟器或者 trace-based simulation。但是网络模拟器往往难以模拟出真实网络环境中的复杂情况，并且这类模拟器需要对网络环境的极其详细的掌握。而 trace-based simulation 又常常因为数据质量不高或者有偏导致测评不精确。</p>
-<p>【RCT 方法之后看论文】</p>
-<p>应用反事实模拟以利用离线历史数据的主要思路为，首先获取在某一个给定网络条件下使用某一个网络协议时的 trajectory，而我们需要训练一个模型来预测在这个网络条件下使用其他网络协议的时候的 trajectory。基于这个模型，我们只需要已知一个协议的性能，就能够得知新协议的性能表现而不需要实际部署该协议。</p>
-<p>使用反事实模拟的好处包括：</p>
-<ul>
-<li>节省部署协议和使用 RCT 方法评测的成本</li>
-<li>能够在完全一致的网络条件下比较不同协议的差异</li>
-<li>使用模型进行反事实模拟得到的数据可在社区内交流，帮助无法访问大型网络以测试其协议设计的开发者</li>
-</ul>
-<p>当然，反事实模拟的方法是困难的，原因之一是用于采集观测数据的策略可能破坏无偏性，这一点我们后续阐述。</p>
-<p>那么本文的核心成果就是：</p>
-<div class="note info no-icon"><p>We present CausalSim, a framework for learning <strong>unbiased trace-driven counterfactual simulation models</strong> for network protocols.</p>
-</div>
-<h2 id="motivation">Motivation</h2>
-<p>总体而言，该文章尝试解决的问题依然是，考虑到直接线上测试算法性能较为耗时且代价较大，能否：</p>
-<ul>
-<li>使用历史数据预测算法的性能</li>
-<li>服务运营商能否使用历史数据构建一个模拟器使得开发者可以在不接触实际网络环境的条件下评测算法</li>
-</ul>
-<h3 id="the-problem-of-trace-driven-network-simulation">The problem of trace-driven network simulation</h3>
-<p>这一部分假设了一个新算法 FabABR，然后在 Puffer 数据集上收集了类似 BOLA-BASIC、BBA、Fugu 等已知的算法在给定的网络条件下的 buffer occupancy，令 BOLA-BASIC v1 充当新算法 FabABR，之后构建了两个模型来通过其他已知算法的 buffer occupancy 预测 FabABR 的 buffer occupancy，并和 ground truth 比较。</p>
-<p>当然，在实际环境中，我们是没有 ground truth 的，因为我们没有新算法通过 RCT 方法评测得到的 buffer occupancy 作为 ground truth。</p>
-<p>第一个模型是 ExpertSim。其原理为，在某个网络条件下，如果某个算法在时刻 <span class="math inline">\(t\)</span> 达成的吞吐率为 <span class="math inline">\(\hat c_t\)</span>，那么我们假设在该网络条件下，新算法达成的吞吐率也是 <span class="math inline">\(\hat c_t\)</span>。这也是该模型的首要假设，即不同算法对码率的决策不影响观测到的网络吞吐率，而这个假设广泛应用于各种模型。</p>
-<p>在这个假设下，记时刻 <span class="math inline">\(t\)</span> 时的 buffer size 为 <span class="math inline">\(b_t\)</span>，而时刻 <span class="math inline">\(t + 1\)</span> 时的 buffer size 为 <span class="math inline">\(b_{t + 1}\)</span>，时刻 <span class="math inline">\(t\)</span> 的视频块时间为 <span class="math inline">\(T\)</span>，根据 FabABR 选择的码率该视频块的大小为 <span class="math inline">\(s_t\)</span>，那么：</p>
-<p><span class="math display">\[
-b_{t + 1} = \max\left(0, b_t - \frac{s_t}{\hat c_t}\right) + T
-\]</span></p>
-<p>第二个模型为 SLSim。其模型为两层全链接层，每层 128 个 ReLU 激活的神经元。该网络的输入为 <span class="math inline">\(b_t, \hat c_t, s_t\)</span>，输出为 <span class="math inline">\(b_{t + 1}\)</span>，符号的意义同上。由于我们具有 ground truth，我们就将其作为 supervisor 进行训练，loss 设定为 L2 loss。最后的实验结果为：</p>
-<p><img src="/uploads/paper-2022-09/1.png" height="50%" width="50%" /></p>
-<p>这里可以看见两种模型都不及 CausalSim 做出的预测。而这一差距的本质就是这两个模型都默认了不同算法对码率的决策不影响观测到的网络吞吐率，但实际上由于类似于 TCP 慢启动、和其他流量竞争等因素，不同的码率选择实际上会影响实际的吞吐率。而 Puffer 数据集实际上就能证明该假设错误：</p>
-<p><img src="/uploads/paper-2022-09/2.png" height="50%" width="50%" /></p>
-<p>可见不同算法影响了吞吐率的分布。这种错误的假设导致了数据的有偏。</p>
-<h3 id="causal-inference-to-the-rescue">Causal inference to the rescue</h3>
-<p>如果我们能够获取更深层次的网络情况而非仅仅是表层的吞吐率，我们完全就能修正原先的错误假设，这是因为我们可以将这些底层的网络情况视作独立于 ABR 算法的因素。</p>
-<p>但是这些底层网络情况并不出现在数据集中，我们需要通过表层数据推测这些底层情况，而这也就是反事实推理介入的地方。</p>
-<p>具体的设计见下述部分。</p>
-<h2 id="model">Model</h2>
-<h3 id="causal-dynamics">Causal dynamics</h3>
-<p>我们给出这样的建模，令 <span class="math inline">\(o_t^\star\)</span> 表示时刻 <span class="math inline">\(t\)</span> 的时候系统观测到的表层数据，<span class="math inline">\(u_t\)</span> 表示时刻 <span class="math inline">\(t\)</span> 的时候系统的底层数据，<span class="math inline">\(a_t\)</span> 表示时刻 <span class="math inline">\(t\)</span> 时我们对系统做出的决策，那么系统行为可以建模为：</p>
-<p><span class="math display">\[
-o_{t + 1}^\star = \mathcal{F}_{\rm evolution}(o_t^\star, u_t, a_t)
-\]</span></p>
-<p>在 ABR 问题中，<span class="math inline">\(o_t^\star\)</span> 包括的因素有 buffer size、实际吞吐率、Min RTT、可选视频块大小，而 <span class="math inline">\(u_t\)</span> 包括的因素有瓶颈连接时间、竞争流量的数量、竞争流量的 congestion control。</p>
-<p>此外，我们可以将 <span class="math inline">\(o_t^\star\)</span> 拆分为 <span class="math inline">\(o_t\)</span> 和 <span class="math inline">\(m_t\)</span>，这里 <span class="math inline">\(m_t\)</span> 是观测数据中受到底层数据所影响的部分，从而我们可以拆分出纯外部数据 <span class="math inline">\(o_t\)</span>，而后续我们所称呼的“观测数据”即指代 <span class="math inline">\(o_t\)</span>。这一步拆分后，建模可以变为：</p>
-<p><span class="math display">\[
-\begin{aligned}
-m_t &amp;= \mathcal{F}_{\rm mediation}(a_t, u_t) \\
-o_{t + 1} &amp;= \mathcal{F}_{\rm system}(o_t, m_t, a_t) \\
-o_t^\star &amp;= [o_t, m_t]
-\end{aligned}
-\]</span></p>
-<p>这里，我们需要说明的是 <span class="math inline">\(m_t\)</span> 是可观测的，而 <span class="math inline">\(u_t\)</span> 是潜在而不可观测的。另外，<span class="math inline">\(m_t\)</span> 受到决策的影响，而 <span class="math inline">\(u_t\)</span> 不受到决策的影响。</p>
-<p>在 ABR 问题中，<span class="math inline">\(m_t\)</span> 就是我们实现的吞吐率，其不仅受到潜在网络环境影响，还受到 ABR 码率决策的影响，而这也就是先前两个策略失败的核心原因。此外，根据该建模，在得知吞吐率 <span class="math inline">\(m_t\)</span> 的信息之后，我们完全不需要了解其他信息即可推断出其他可观测的信息 <span class="math inline">\(o_t\)</span>。</p>
-<h3 id="trace-driven-simulation-is-counterfactual-estimation">Trace-driven simulation is counterfactual estimation</h3>
-<p>首先统一符号，我们假设数据集一共采用了 <span class="math inline">\(K\)</span> 种不同算法，一共生成了 <span class="math inline">\(N\)</span> 条 trajectory，我们记第 <span class="math inline">\(i\)</span> 个 trajectory 的长度为 <span class="math inline">\(H_i\)</span>。</p>
-<p>那么我们的训练策略可以描述为，首先对于任何 <span class="math inline">\(i\)</span>，我们给出决策序列 <span class="math inline">\(\{\tilde a_t^i\}_{t = 1}^{H_i}\)</span>，给定初始观测 <span class="math inline">\(o_1^i\)</span>，并且我们确定所有 trajectory 均基于同一个潜在状态序列 <span class="math inline">\(\{u_t^i\}_{t = 1}^{H_i}\)</span>，我们的目的是预测出观测序列 <span class="math inline">\(\{\tilde o_t^i\}_{t = 1}^{H_i}\)</span>。</p>
-<p>此外，我们注意到学习 <span class="math inline">\(\mathcal{F}_{\rm system}\)</span> 是完全监督的，因为所有需要的数据均可以观测。所以最终的困难点在于估计 <span class="math inline">\(\{u_t^i\}_{t = 1}^{H_i}, \{m_t^i\}_{t = 1}^{H_i}\)</span> 以及学习 <span class="math inline">\(\mathcal{F}_{\rm mediation}\)</span>。</p>
-<h2 id="causalsim---key-insights">CausalSim - Key insights</h2>
-<h3 id="counterfactual-estimation-as-matrix-completion">Counterfactual estimation as matrix completion</h3>
-<p>这一步的核心在于将反事实推理等效为矩阵填充问题。我们假设动作空间大小为 <span class="math inline">\(A\)</span>，即 <span class="math inline">\(a_t^i \in \{1, 2, \cdots, A\}\)</span>，另外记：</p>
-<p><span class="math display">\[
-U := \sum_{i = 1}^NH_i
-\]</span></p>
-<p>那么我们考虑一个 <span class="math inline">\(A \times U\)</span> 的矩阵，其中每一行代表一种决策，每一列代表潜在状态。这里我们将第 <span class="math inline">\(i\)</span> 个 trajectory 的第 <span class="math inline">\(t\)</span> 时刻中所有的 <span class="math inline">\((i, t)\)</span> 按 <span class="math inline">\(i\)</span> 为主序数排列为长度为 <span class="math inline">\(U\)</span> 的序列，从而每一个 <span class="math inline">\((i, t)\)</span> 都能对应到 <span class="math inline">\(M\)</span> 中的某一列。</p>
-<p>在第 <span class="math inline">\(i\)</span> 个 trajectory 的第 <span class="math inline">\(t\)</span> 时刻，我们观测到 <span class="math inline">\(m_t^i = \mathcal{F}_{\rm mediation}(a_t^i, u_t^i)\)</span>，而 <span class="math inline">\(m_t^i\)</span> 就是矩阵 <span class="math inline">\(M\)</span> 中 <span class="math inline">\(a_t^i\)</span> 所对应的行和 <span class="math inline">\((i, t)\)</span> 所对应的列处的已知元素，该列其余元素均为未知元素。也就是说我们在初始条件下，每一列都会有一个已知元素。</p>
-<p>而现有的矩阵填充算法并不能直接应用到本问题上，因为本问题中的 <span class="math inline">\(M\)</span> 元素缺失的 pattern 并不随机并且缺失元素数量过多。但是另外一方面，矩阵 <span class="math inline">\(M\)</span> 显然具有更为优越的结构，因为元素缺失的 pattern 和已知的 ABR 算法决策流程相关，并且 <span class="math inline">\(N\)</span> 个 trajectory 的网络潜在条件是一致的。</p>
-<h3 id="exploiting-the-policy-invarience-of-latent-factors">Exploiting the policy invarience of latent factors</h3>
-<p>我们这里考虑一个简单情况，即 <span class="math inline">\(A = 2, U = 2n\)</span>，并且矩阵 <span class="math inline">\(M\)</span> 秩为 <span class="math inline">\(1\)</span>。这说明存在 <span class="math inline">\(a \in \mathbb{R}^2, u \in \mathbb{R}^{2n}\)</span> 满足 <span class="math inline">\(M = au^T\)</span>。之后我们令 <span class="math inline">\(K = 2\)</span>。</p>
-<p>考虑到：</p>
-<p><span class="math display">\[
-\frac{M_{1, j}}{M_{2, j}} = \frac{a_1u_j}{a_2u_j} = \frac{a_1}{a_2}
-\]</span></p>
-<p>并且每一列必然有一个已知元素，所以我们只需要估计 <span class="math inline">\(a_1 / a_2\)</span>。</p>
-<p>另外，基于两个 trajectory 均基于一致的网络潜在条件，所以对于较大的 <span class="math inline">\(n\)</span>，每一列的期望应当类似，所以有以下估计（这个估计我感觉比较奇怪，说理也比较不充分）：</p>
-<p><span class="math display">\[
-\frac{1}{n}\sum_{j = 1}^n u_j \approx \frac{1}{n}\sum_{j = n + 1}^{2n} u_j
-\]</span></p>
-<p>之后我们就可以得到下述估计：</p>
-<p><span class="math display">\[
-\frac{\sum_{j = 1}^n M_{1, j}}{\sum_{j = n + 1}^{2n} M_{2, j}} = \frac{\sum_{j = 1}^n a_1u_j}{\sum_{j = n + 1}^{2n} a_2u_j} \approx \frac{a_1}{a_2}
-\]</span></p>
-<p>从而我们得到了我们需要的估计，从而我们就能补充完整整个矩阵。</p>
-<h2 id="causalsim---details">CausalSim - Details</h2>
-<p>最后采用了这样的一个网络结构：</p>
-<p><img src="/uploads/paper-2022-09/3.png" height="50%" width="50%" /></p>
-<p>该网络的目标是为了获取不变的潜在条件 <span class="math inline">\(\{u_t^i\}_{t = 1}^{H_i}\)</span>，而完成这项任务的网络是 Policy Discriminator，其接受 <span class="math inline">\(\{u_t^i\}_{t = 1}^{H_i}\)</span> 作为输入，输出为其认为该行为决策是由哪一个算法做出的。由于其为一个简单的多分类任务，所以其 loss 就采用简单的交叉熵表示为：</p>
-<p><span class="math display">\[
-\mathcal{L}_{\rm disc} := \mathbb{E}_D[-\ln \mathbb{P}(\pi \mid \hat u)]
-\]</span></p>
-<p>而我们的目标是让 Policy Discriminator 的 loss 尽可能大，从而通过分类器无法区分各类算法保证抽取的潜在不变条件确实和具体的算法无关。</p>
-<p>整个网络采用的 loss 为：</p>
-<p><span class="math display">\[
-\mathcal{L}_{\rm total} := \mathbb{E}_D[\delta(m_t^i - \hat m_t^i)^2 + (o_t^i - \hat o_t^i)^2] - \kappa\mathcal{L}_{\rm disc}
-\]</span></p>
-<h2 id="evaluation">Evaluation</h2>
-<h3 id="a-real-world-abr-experiment">A real-world ABR experiment</h3>
-<p>实验过程比较简单，问题出现在如何评测。因为 Puffer 数据集里每一个 trajectory 仅使用了一种算法跑过，所以实际上是无法对多个新算法进行评测的。所以其采用了评价变量分布的方式进行评测。即，不同的算法在不同的 trajectory 上运行，只要潜在网络因素不变，各类变量的分布应该是类似的。那么基于此，我们只要再做一次模拟，之后指定一个变量，评价两次模拟中该变量分布之间的差距。这里评价分布的差距使用 EMD：</p>
-<p><span class="math display">\[
-{\rm EMD}(\mathcal{P}, \mathcal{Q}) := \int_{-\infty}^{+\infty} |\mathcal{P}(x) - \mathcal{Q}(x)| {\rm d}x
-\]</span></p>
-<p>这里 <span class="math inline">\(\mathcal{P}, \mathcal{Q}\)</span> 都是累积分布函数。</p>
-<p>评测结果自然是 CausalSim 很厉害：</p>
-<p><img src="/uploads/paper-2022-09/4.png" height="50%" width="50%" /></p>
-<h3 id="learning-abr-policies-with-causalsim">Learning ABR policies with CausalSim</h3>
-<p>既然现在已经具有了工作良好的模拟器，我们就可以利用该模拟器训练 ABR，具体的过程不阐述，结果如下：</p>
-<p><img src="/uploads/paper-2022-09/5.png" height="70%" width="70%" /></p>
-<p>总体而言，CausalSim 显然和真实环境下训练的结果贴近，而其他的模拟器均有很大偏差。并且对于高 RTT 的 Agent，这个差距更大。这个差距的根本原因依然是其他模拟器都是有偏的，在例如慢启动等条件下，容易选择保守的码率。</p>
-<h3 id="server-load-balancing">Server load balancing</h3>
-<p>【PASS】</p>
-<h2 id="final-analysis">Final analysis</h2>
-<p>读这一篇论文目的是为了研究怎么离线评测算法，也就是训练一个合理的环境模拟器出来。但感觉本文的一个核心思想为将网络吞吐率等因素视作和 ABR 决策有关的变量，将其纳入考虑。严格而言就是更新了对环境内部逻辑的建模，使之更为贴近真实环境。而如果不把网络吞吐率纳入考虑，则前一时刻无论做出什么选择，下一时刻环境都会要求算法实现同样的吞吐率，从而导致算法趋近于保守，在高 RTT Agent 上表现出仅选择较低码率。</p>
-<p>方法上的话，感觉 Policy Discriminator 没有太见过，是一个训练无关性的好方法。</p>
-<h1 id="deployment-efficient-reinforcement-learning-via-model-based-offline-optimization">Deployment-Efficient Reinforcement Learning via Model-Based Offline Optimization</h1>
-<h2 id="abstract-introduction-1">Abstract &amp; Introduction</h2>
-<p>离线 RL 的问题在于在线和环境交互可能导致较大开销，为了解决这一问题，主要的策略分为：</p>
-<ul>
-<li>限制 agent 的行为，防止其做出错误举动。这里 BCQ 就采用了这样的做法（但是 BCQ 论文实在是需要慢慢看）</li>
-<li>强化 agent 的 exploitation 能力，令其最大化利用有限的数据</li>
-</ul>
-<p>本文的成果是提出了衡量 RL 算法的一个指标，即 deployment efficiency，其基于了 RL 学习过程中数据采集策略发生变化的次数（因为策略发生变化意味着需要一次新的部署）。完全离线的 RL 算法如 BCQ、BRAC 具有很高的 deployment efficiency，而完全在线的 RL 算法如 DDPG、SAC 则较低。</p>
-<p>论文特别指出，deployment efficiency 和已有的 data efficiency 并不完全类似，这里后者衡量了 RL 学习过程中采集数据的次数。这意味着，即使 data efficiency 很低（数据采样次数极大），只要收集数据的策略没变，那么 deployment efficiency 依然较高。</p>
-<p>目前大部分的离线 RL 算法都在大数据集上进行训练和评测，以保证 deployment efficiency 和 data efficiency 都很高。但实际上我们注意到由于 extrapolation error，这种简单直接的算法其实并不优越。而对于在线算法，虽然可以克服数据集数据分布不符合真实数据分布的问题，但实际上会限制 policy 的表达能力【Question #1：这里没有特别明白】。</p>
-<p>此外，本文还提出了 BREMEN，即 Behavior Regularized Model ENsemble。</p>
-<div class="note info no-icon"><p>We propose Behavior-Regularized Model-ENsemble (BREMEN), which learns an ensemble of dynamics models in conjunction with a policy using imaginary rollouts while implicitly regularizing the learned policy via appropriate parameter initialization and conservative trust-region learning updates.</p>
-</div>
-<p>自然，BREMEN 在高维连续决策空间上也表现很好。</p>
-<h2 id="preliminaries">Preliminaries</h2>
-<p>首先定义 MDP <span class="math inline">\((\mathcal{S}, \mathcal{A}, p, r, \gamma)\)</span>，而 policy <span class="math inline">\(\pi\)</span> 定义了 agent 的行为，<span class="math inline">\(\pi\)</span> 接受一个状态，输出一个状态空间 <span class="math inline">\(\mathcal{A}\)</span> 上的概率分布，表示 agent 做出给定行为的概率。我们的目标是获取下述最优 policy：</p>
-<p><span class="math display">\[
-\pi^* = \mathop{\rm argmax}_\pi \eta[\pi] = \mathop{\rm argmax}_\pi \mathbb{E}_\pi\left[\sum_{t = 0}^{+\infty} \gamma^tr(s_t)\right]
-\]</span></p>
-<p>而所谓 model-based 的 RL 方法，就需要对 MDP 中的 <span class="math inline">\(p(s&#39; \mid s, a)\)</span> 建模估计。</p>
-<p>RL 的学习过程中包含两种行为，分别为获取 MDP 转移对（即 deployment）与更新 policy 参数（即 learning）。如果学习过程中每次更新参数后均将收集到的数据舍弃，那么该学习就是 on-policy 的。反之，如果不断积累数据形成 replay dataset <span class="math inline">\(\mathcal{D}\)</span>，那么该学习就是 off-policy 的，因为用于更新 policy 的数据并不一定通过当前 policy 收集。</p>
-<p>但是上述的学习过程都是 online 的，因为其 deployment 和 learning 是混合进行的，而纯 offline 算法中 agent 不会直接与环境进行任何的交互，agent 只能从固定的数据集之中学习。当然，介于 online 和 offline 之间有 semi-batch RL，其实现了较高的 deployment efficiency，当然这种方法并没有完全研究过。</p>
-<h2 id="deployment-efficiency">Deployment efficiency</h2>
-<p>这里主要阐述这样的观点，即对于 online RL，无论其是 on-policy 还是 off-policy，在一次迭代之后，必然会部署新的 policy 并获取数据，这显然是 deployment unefficient 的。相反，纯 offline RL 只会学习一次部署得到的数据。而一个理想的平衡算法应当位于这两个极端之间。</p>
-<p>论文认为现在的 RL 算法忽视了 deployment efficiency，并且现行的部分 SOTA 算法甚至需要百万量级的部署次数（如 SAC）。本文提出了只需要五次到十次部署即可有效学习的算法。</p>
-<h2 id="behavior-regularized-model-ensemble">Behavior regularized model ensemble</h2>
-<h3 id="imaginary-rollout-from-model-ensemble">Imaginary rollout from model ensemble</h3>
-<p>为了解决 model bias 的问题，BREMEN 使用了包含 <span class="math inline">\(K\)</span> 个 deterministic dynamic model 的 <span class="math inline">\(\hat f_\phi := \left\{\hat f_{\phi_1}, \cdots, \hat f_{\phi_K}\right\}\)</span>，其中 <span class="math inline">\(\phi_i\)</span> 表示模型参数。这些模型的训练方式都是最小化下述均方误差，即 model 预测的后续状态和数据集 <span class="math inline">\(\mathcal{D}\)</span> 指示的后续状态：</p>
-<p><span class="math display">\[
-\min_{\phi_i} \frac{1}{|\mathcal{D}|} \sum_{(s_t, a_t; s_{t + 1}) \in \mathcal{D}} \frac{1}{2} \left\|s_{t + 1} - \hat f_{\phi_i}(s_t, a_t)\right\|_2^2
-\]</span></p>
-<p>在实际训练 policy <span class="math inline">\(\pi_\theta\)</span> 的时候，会从这 <span class="math inline">\(K\)</span> 个 model 中随机选择一个来提供下一状态：</p>
-<p><span class="math display">\[
-a_t \sim \pi_\theta(\cdot \mid \hat s_t), \hat s_{t + 1} = \hat f_{\phi_t}(\hat s_t, a_t), i \sim \{1, 2, \cdots, K\}
-\]</span></p>
-<h3 id="policy-update-with-behavior-regularization">Policy update with behavior regularization</h3>
-<p>这里训练具体的 policy 的时候，需要使用置信区间约束来解决 distribution shift 的问题，即在每一次部署之后都使用 behavior clone 得到的 policy <span class="math inline">\(\hat\pi_\beta\)</span> 对 <span class="math inline">\(\pi_\theta\)</span> 重新初始化。具体而言，在每一次部署之后我们都能得到一个更新过的数据集 <span class="math inline">\(\mathcal{D}\)</span>，从而我们使用 BC 对真实的 policy <span class="math inline">\(\pi_b\)</span> 进行估计。具体的训练方式为下述，这里论文作了 fixed variance 假设：</p>
-<p><span class="math display">\[
-\min_\beta \frac{1}{|\mathcal{D}|} \sum_{(s_t, a_t) \in \mathcal{D}} \frac{1}{2} \left\|a_t - \hat\pi_\beta(s_t)\right\|_2^2
-\]</span></p>
-<div class="note info no-icon"><p>好像 behavior clone 和 distribution shift 都是模仿学习的东西，这里还真的不太会，后面补。</p>
-<p>一个可能有用的 <a href="https://wensun.github.io/CS4789_data/Imitation_Learning_April_8_annotated.pdf">slide</a>。</p>
-<hr />
-<p>似乎学明白了一点东西，模仿学习是一种改进的 RL，其面对的是无法合理得到 reward signal 的 RL 环境，但是其可以获得部分专家数据，那么我们就可以模仿专家数据进行学习，这就是 behavior clone。</p>
-<p>behavior clone 的基本思想借鉴了监督学习。例如我们获得了专家数据集 <span class="math inline">\(\mathcal{D}\)</span>，那么我们的训练方式就是：</p>
-<p><span class="math display">\[
-\theta^* := \mathop{\rm argmin}_\theta \mathbb{E}_{(s, a) \sim \mathcal{D}} \mathcal{L}(\pi_\theta(s), a)
-\]</span></p>
-<p>这里 <span class="math inline">\(\mathcal{L}\)</span> 是 loss，可以设定为负 reward 等。</p>
-<p>但这个方法有很多问题，包括在数据集较小的时候学习效率极低、无法分辨真正导致 reward 上升的行为等，但是更为致命的问题是 distribution shift。</p>
-<p>这个问题指的是专家数据和实际数据分布不一致，尤其指训练集和测试集分布之间有偏差。由于我们参考了监督学习的思想，behavior clone 实际上也继承了监督学习的一个假设，即数据集分布和真实数据分布一致。但是，即使这个假设并不严格成立，监督学习也是可以忽略的，因为监督学习的各个数据之间独立，可以忽略。然而 RL 是逐步决策的，某一步的偏差可能导致后续误差的累积导致后续决策的极大偏移。</p>
-<p>有一种解决方式是数据聚合，这里就和论文无关了，故不做讨论。</p>
-</div>
-<p>而通过 <span class="math inline">\(\hat\pi_\beta\)</span> 重新初始化 <span class="math inline">\(\pi_\theta\)</span> 的方式为正态分布初始化，均值设定为 <span class="math inline">\(\hat\pi_\beta\)</span> 而标准差置 <span class="math inline">\(1\)</span>。论文认为在这里将 BC 和普通的梯度下降相结合可以使得 <span class="math inline">\(\pi_\theta\)</span> 趋向于新数据集 <span class="math inline">\(\mathcal{D}\)</span> 代表的 policy，可以认为是一种 distribution shift 问题的补救措施。</p>
-<p>为了进一步补救，其进一步使用 KL-based trust region optimization。总体上 BREMEN 的 policy 更新策略就是：</p>
-<p><span class="math display">\[
-\theta_{k + 1} = \mathop{\rm argmax}_\theta \mathbb{E}_{(s, a) \sim (\pi_{\theta_k}, \hat f_{\phi_i})} \left[\frac{\pi_\theta(a \mid s)}{\pi_{\theta_k}(a \mid s)} A^{\pi_{\theta_k}}(s, a)\right]
-\]</span></p>
-<p>这里要求：</p>
-<p><span class="math display">\[
-\mathbb{E}_{s \sim (\pi_{\theta_k}, \hat f_{\phi_i})} D_{\rm KL}(\pi_\theta(\cdot \mid s) \parallel \pi_{\theta_k}(\cdot \mid s)) \leq \delta
-\]</span></p>
-<p>此外定义初始值：</p>
-<p><span class="math display">\[
-\pi_{\theta_0} := \mathcal{N}(\hat\pi_\beta, 1)
-\]</span></p>
-<p>得到的 BREMEN 算法流程为：</p>
-<p><img src="/uploads/paper-2022-09/6.png" /></p>
-<p>总体来看，简化了部署的过程，然后使用类似 TRPO 中信任域的方式约束了 agent 的行为。</p>
-<h2 id="experiments">Experiments</h2>
-<p>既然 BREMEN 的优势在于少量部署条件下能高效学习，其第一个实验就是和其余 RL 在约束部署次数的条件下比较 reward，效果是明显的：</p>
-<p><img src="/uploads/paper-2022-09/7.png" /></p>
-<p>这里每一条竖直虚线都代表一次部署，部署次数约束在五次到十次之间，每次 batch size 约束在 200k 到 100k。可见 BREMEN 明显优于大部分算法，而几乎仅劣于完全在线的 SAC，但是 SAC 可能需要近百万量级的部署次数。</p>
-<p>此外，为了测试 data efficiency，论文采用的方法是训练一个 SAC 后用该 policy 采集一个 dataset 并用该 dataset 训练各种离线算法，根据下述结果可以看出 BREMEN 能在很小的数据集下就能超越 BC 的 baseline，而其余类似 BCQ 等的方法甚至无法超越 baseline，这说明了 BREMEN 不仅 deployment efficient 而且是 data efficient 的：</p>
-<p><img src="/uploads/paper-2022-09/8.png" /></p>
-<h2 id="final-analysis-1">Final analysis</h2>
-<p>说实话由于 RL 基础还是有点欠缺，自己不是很了解信任域相关方法的数学基础，所以对其数学论证也没看很细致，尤其是涉及到 implicit KL regularization 的部分。</p>
-<p>但总体而言这篇文章提出的核心思想是需要考虑部署带来的开销，并且提出了利用 BC 等方法来强化模型的 exploitation 能力并且尝试使用信任域的想法约束 agent 的行为，总体上依然符合离线 RL 的两大思路。</p>
-<p>数学证明之类的可能真的要等到补补 TRPO 之类 RL 方法之后写，目前打算基于 Sutton 把博客里面这些有关 RL 的一些东西串起来。</p>
-]]></content>
-      <categories>
-        <category>【论文笔记】计算机</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>2022 年 12 月论文笔记</title>
-    <url>/2022/12/06/paper-2022-12/</url>
-    <content><![CDATA[<p>12 月开始就得准备做毕设了，先要充分阅读文献，确定自己要做的方向有什么要解决的问题，以及目前已经有的探索和目前还存在的困难。</p>
-<p><span class="math display">\[
-\newcommand{\b}{\boldsymbol}
-\]</span></p>
-<span id="more"></span>
-<h1 id="learning-tailored-adaptive-bitrate-algorithms-to-heterogeneous-network-conditions---a-domain-specific-priors-and-meta-reinforcement-learning-approach">Learning Tailored Adaptive Bitrate Algorithms to Heterogeneous Network Conditions - A Domain-Specific Priors and Meta-Reinforcement Learning Approach</h1>
-<p>黄老师的文章，作为起手还是需要好好看看的。</p>
-<p>这篇文章的基本概念是，基于学习的 ABR 已经能够实现一个平均而言优秀的 ABR 算法，但是对于部分特殊的网络环境其依然表现不佳，而这也就是所谓的个性化。然后这篇文章使用了 meta RL 的方式实现了 AABR（其实应当是 <span class="math inline">\(A^2BR\)</span>，但是我真的不想打公式了，AABR 表示 Adaptation of ABR）。</p>
-<p>AABR 首先离线学习一个元算法，之后再在在线的个性化环境下学习一个针对当前网络环境的个性化算法。另外，还需要不断优化离线学习来保证元算法的优势。</p>
-<h2 id="introduction">Introduction</h2>
-<p>首先对 ABR 算法做了总结，启发式算法根据当前网络情况和一部分状态变量给出决策，但是只有在选定较好的算法参数的时候这种算法才能表现较好。基于学习的算法则根据网络情况学习这些参数。然而总而言之，这些算法都不会自动调节自己的算法参数，尤其在面对变化较多的网络环境下时，这些算法表现较差。</p>
-<p>之后是通过实验说明了现在的网络状况不仅是多样性（diverse）的，更多的是独一无二（unique）的。基于这一点，这篇文章认为做用户个性化是一个重要的提升。</p>
-<p>所以基于 Input-driven Markov Decision Process (IMDP)，本文提出了 AABR。分为离线和在线两步，具体的训练方式见后续。</p>
-<p>总结一下这篇文章的工作就是确认了当今网络环境的独特性，并通过 meta RL 解决了 ABR 的个性化问题。</p>
-<h2 id="background-motivation">Background &amp; Motivation</h2>
-<p>关于 ABR 之类的介绍这里忽略，主要看这篇文章如何论证当今网络的多样性。</p>
-<p>多样性分为三个方向去论证，即不同用户间差异、不同场景间差异以及已有的部分 ABR 算法在这些网络环境下的表现。</p>
-<p>用户间差异和场景间差异可以关注下图：</p>
-<p><img src="/uploads/paper-2022-12/1.png" /></p>
-<p>可以首先注意到网络吞吐率和 RTT 的变动是相当大的，而如果观察具体的用户，也可以发现用户之间的网络状况差异也很大，部分用户网络稳定（整体带宽 CDF 陡峭）而部分用户的网络波动较大，而且各个用户的网络指标平均值也差异较大。</p>
-<p>对于场景，也可以注意到步行、地铁、公交、汽车的网络情况也各有不同，并不能一概而论。</p>
-<p>如果从 ABR 的角度出发，这篇文章在两个不同环境下测试了若干个 ABR 算法的性能，得到的结果是：</p>
-<p><img src="/uploads/paper-2022-12/2.png" /></p>
-<p>显然可以注意到已有的算法都很难兼顾两种情况，常常顾此失彼。这就意味着不稳定的网络情况很容易导致这些算法失效，从而也难以实现用户个性化。</p>
-<h2 id="methods">Methods</h2>
-<h3 id="input-driven-markov-decision-process">Input-driven Markov Decision Process</h3>
-<p>基本而言是在正常的 MDP 中引入了 input process <span class="math inline">\(\mathcal{Z}\)</span>，这个时候环境的转移概率定义为：</p>
-<p><span class="math display">\[
-\mathbb{T}[s&#39; \mid s, a, z] := \mathbb{P}[s_{t + 1} = s&#39; \mid s_t = s, a_t = a, z_t = z]
-\]</span></p>
-<p>此外，决策依然仅仅和 <span class="math inline">\(s_t \in \mathcal{S}\)</span> 有关，也就是说具体行为 <span class="math inline">\(a_t \in \mathcal{A}\)</span> 与 <span class="math inline">\(z_t \in \mathcal{Z}\)</span> 是独立的。</p>
-<p>进一步的价值函数定义为：</p>
-<p><span class="math display">\[
-Q(s, a, z) := \sum_{s&#39; \in \mathcal{S}} \mathbb{T}[s&#39; \mid s, a, z](r(s, a, z) + \gamma V(s&#39;, z&#39;))
-\]</span></p>
-<p>在 IMDP 下，最优策略也就定义为：</p>
-<p><span class="math display">\[
-\pi^*(s, z) := \mathop{\rm argmax}_{a \in \mathcal{A}} \sum_{s&#39; \in \mathcal{S}} \mathbb{T}[s&#39;, z&#39; \mid s, a, z]\left[r(s, a, z) + \gamma \max_{a&#39; \in \mathcal{A}} Q(s&#39;, a&#39;, z&#39;)\right]
-\]</span></p>
-<p>可以注意到，如果两个 agent 运行相同的 policy <span class="math inline">\(\pi\)</span>，其不同之处仅仅是 input process <span class="math inline">\(\mathcal{Z}_{1, 2}\)</span> 不同。可以注意到这两个 agent 将会始终保持相同的决策，所以其价值函数相同当且仅当 <span class="math inline">\(\mathcal{Z}_1 = \mathcal{Z}_2\)</span>。</p>
-<p>如果在完全得知 input process <span class="math inline">\(\mathcal{Z}\)</span> 的条件下，求解最优策略相当于一般的强化学习问题，可以通过大量的强化学习方法完成。但是我们现在需要假定 input process 是完全不可感知的，在这种条件下，一般强化学习方法学习到的最优策略 <span class="math inline">\(\hat\pi^*\)</span> 的价值函数实际上是与 input process 无关的，其价值函数用 <span class="math inline">\(Q(s&#39;, a&#39;)\)</span> 表示，其满足：</p>
-<p><span class="math display">\[
-\max_{a&#39; \in \mathcal{A}} Q(s&#39;, a&#39;) = \mathbb{E}_{z&#39;} \max_{a&#39; \in \mathcal{A}} Q(s&#39;, a&#39;, z&#39;)
-\]</span></p>
-<p>所以现在解决 input process 未知条件下的最优策略求解问题就是最重要的。</p>
-<h3 id="meta-rl-with-domain-knowledge">Meta RL with Domain Knowledge</h3>
-<p>总之就是又阐述了一边 AABR 分为离线和在线两个训练过程，离线训练一个元算法之后在线训练一个个性化 ABR 算法。那么两个问题就是：</p>
-<div class="note info no-icon"><ol type="i">
-<li><p>How to obtain a good parameter initialization for fast-learning?</p></li>
-<li><p>How to efficiently learn tailor-made ABR algorithms online?</p></li>
-</ol>
-</div>
-<h3 id="model-agnostic-meta-learning">Model Agnostic Meta-Learning</h3>
-<p>总之就是选定了 MAML 作为 AABR 的核心算法，MAML 的论文后面慢慢推着看。</p>
-<p>不过这一部分也阐释了为何 MAML 适合用于这个场景，原文是：</p>
-<div class="note info no-icon"><p>We find that model agnostic meta learning (MAML) is quite suitable in personalized ABR scenarios where the network traces on each user are quite limited.</p>
-<p>Specifically, MAML consists of an inner loop and an outer loop.</p>
-</div>
-<p>也就是说从数据集的角度和训练流程的角度上说，MAML 和这个实验场景的契合度比较高。</p>
-<h3 id="leveraging-domain-knowledge">Leveraging Domain Knowledge</h3>
-<p>总体的含义是设计了一个模拟器用于生成数据以及相关的启发式算法，一方面补充了现实世界中数据量不足的问题，另外一方面其代表的启发式算法可以在 policy 无法处理某些状态的时候作为 backup 使用。</p>
-<p><strong>注：</strong>这一部分可能需要结合下面的 overview 仔细学一下，然后对这里做一些扩充，因为这里模拟器的细节应该是做数据扩充的重要部分。</p>
-<h2 id="aabr-overview">AABR Overview</h2>
-<p>系统的大致结构为：</p>
-<p><img src="/uploads/paper-2022-12/3.png" /></p>
-<h3 id="basic-training-algorithm">Basic Training Algorithm</h3>
-<p>在设计网络的输入的时候首先需要考虑的是什么才是真正需要考虑的状态，这篇文章采用的方式是首先将所有可以使用的状态都作为输入以训练一个 teacher network，之后采用类似模仿学习的方式，采用类似决策树等较为轻量级的模型去模仿神经网络的策略，之后再使用决策树剪枝的方式去获取真正有意义的非平凡状态。</p>
-<div class="note success no-icon"><p>这个方法似乎是比较好玩的一个方法，用于筛选真正有用的输入状态。</p>
-</div>
-<p>这里剪枝的目的也是为了压缩最后的成本。</p>
-<p>最后筛选出来的状态包括：</p>
-<ul>
-<li>上一次选定的视频块质量 <span class="math inline">\(q_t\)</span></li>
-<li>目前的缓冲区占用率 <span class="math inline">\(b_t\)</span></li>
-<li>前 <span class="math inline">\(k\)</span> 个视频块传输时网络吞吐率 <span class="math inline">\(C_t\)</span></li>
-<li>前 <span class="math inline">\(k\)</span> 个视频块的下载时间 <span class="math inline">\(D_t\)</span></li>
-<li>前 <span class="math inline">\(k\)</span> 个视频块的应答时间 <span class="math inline">\(P_t\)</span></li>
-</ul>
-<p>这里为了控制成本，实验中选取 <span class="math inline">\(k = 5\)</span>。</p>
-<p>另外，为了保证模型的泛化性，这里需要将参数正则化，这样至少能保证模型面对完全没有经历过的网络环境不至于将其认为非法输入。</p>
-<p>模型的输出和正常的 AC 网络没有很大的差别，都是 Actor 网络输出一个 softmax 后的概率张量表示各个行为的决策概率，而 Critic 网络输出一个标量表示对当前状态的价值评估。</p>
-<h4 id="maximum-entropy-ppo-me-ppo">Maximum Entropy PPO (ME-PPO)</h4>
-<p>这里的训练策略是 ME-PPO，其与 PPO 的差别在于最优行为的定义里纳入了熵：</p>
-<p><span class="math display">\[
-a_t^* := \mathop{\rm argmax}_a \hat{\mathbb{E}}_t\left[\sum_t \gamma^t(r_t + \lambda H^{\pi_\theta}(s_t))\right]
-\]</span></p>
-<p>这里定义熵为：</p>
-<p><span class="math display">\[
-H^{\pi_\theta}(s_t) = -\sum_{a \in \mathcal{A}} \pi_\theta(a \mid s_t) \ln\pi_\theta(a \mid s_t)
-\]</span></p>
-<p>元学习要求在离线环境下更重视 exploration 而在线环境下更重视 exploitation。这里将熵纳入考虑，如果策略 <span class="math inline">\(\pi_\theta\)</span> 对动作空间 <span class="math inline">\(\mathcal{A}\)</span> 中的所有动作给出的概率约趋向于平均，则熵越高，从而越会支持这样的选择。</p>
-<p>ME-PPO 的具体策略是基于 Dual-PPO 的 double clip 策略，具体如下：</p>
-<p><span class="math display">\[
-\begin{aligned}
-\mathcal{L}^{\rm PPO} &amp;:= \min\left(\frac{\pi_\theta(a_t \mid s_t)}{\pi_{\theta_{\rm old}}(a_t \mid s_t)}(\theta) \hat A_t, {\rm clip}\left(\frac{\pi_\theta(a_t \mid s_t)}{\pi_{\theta_{\rm old}}(a_t \mid s_t)}(\theta), 1 - \varepsilon, 1 + \varepsilon\right)\hat A_t\right) \\
-\mathcal{L}^{\rm Actor} &amp;:= \begin{cases}
-\hat{\mathbb{E}}_t[\max(\mathcal{L}^{\rm PPO}, c\hat A_t)] &amp; \hat A_t &lt; 0 \\
-\hat{\mathbb{E}}_t[\mathcal{L}^{\rm PPO}] &amp; \hat A_t \geq 0 \\
-\end{cases}
-\end{aligned}
-\]</span></p>
-<p>这里 <span class="math inline">\(\hat A_t\)</span> 是优势函数，定义为：</p>
-<p><span class="math display">\[
-\hat A_t := r_t + \gamma(V^{\pi_\theta}(s_{t + 1}) + \lambda H^{\pi_\theta}(s_{t + 1})) - V^{\pi_\theta}(s_t)
-\]</span></p>
-<p>这里 <span class="math inline">\(c, \varepsilon\)</span> 是用来控制梯度的超参数。</p>
-<p>AABR 中的 Critic 网络的训练策略就是最小化优势函数的均方误差：</p>
-<p><span class="math display">\[
-\mathcal{L}^{\rm Critic} := \frac12 \hat{\mathbb{E}}_t[A_t]^2
-\]</span></p>
-<p>从而整体的 loss 可以总结为：</p>
-<p><span class="math display">\[
-\nabla\mathcal{L}^{\rm MEPPO} := -\nabla_\theta \mathcal{L}^{\rm Actor}(\pi_\theta, \hat A_t) + \nabla_{\theta_v} \mathcal{L}^{\rm Critic}
-\]</span></p>
-<hr />
-<p>此外，由于算法对 <span class="math inline">\(\lambda\)</span> 较为敏感，我们需要在训练过程中不断调节 <span class="math inline">\(\lambda\)</span>，调节方式较为简单：</p>
-<p><span class="math display">\[
-\lambda \leftarrow \lambda + \alpha[H^{\pi_\theta}(s_t) - H^{\rm Target}]
-\]</span></p>
-<p>这个目标在于熵逐步接近目标的时候衰减 <span class="math inline">\(\lambda\)</span> 以减缓接近速度。</p>
-<h3 id="meta-learned-policies-for-offline-stage">Meta-Learned Policies for Offline Stage</h3>
-<p><strong>注：</strong>具体的训练方式后续补充。</p>
-<h1 id="model-agnostic-meta-learning-for-fast-adaptation-of-deep-networks">Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks</h1>
-<p>这是 MAML 训练方法的原始论文，看情况有没有时间做一个复现。</p>
-<p>文章的主要贡献就是一个元学习方式，并且似乎泛用性很广：</p>
-<div class="note info no-icon"><p>In this work, we propose a meta-learning algorithm that is general and model-agnostic, in the sense that it can be directly applied to any learning problem and model that is trained with a gradient descent procedure.</p>
-</div>
-<p>元学习的核心在于训练好的模型能够迅速通过少量数据学习到新的任务，并且其能够应用到大量的下游任务中。这篇文章将训练模型理解为在模型内部建立起适用于某种任务的特征表示，如果这种表示能够适合于多种任务，那么我们只需要进行合适的微调就可以迅速适应新的任务。如果从动力系统的角度理解，我们需要提高需要完成的任务的 loss 对参数的敏感度，这个敏感度越高，参数的变化对 loss 的提升的影响越大。</p>
-<h2 id="model-agnostic-meta-learning-1">Model-Agnostic Meta-Learning</h2>
-<h3 id="meta-learning-problem-set-up">Meta-Learning Problem Set-Up</h3>
-<p>这里严格定义了元学习需要解决的问题。</p>
-<p>首先我们需要形式化定义什么是任务，这篇文章定义为：</p>
-<p><span class="math display">\[
-\mathcal{T} := \{\mathcal{L}(\b x_1, \b a_1, \cdots, \b x_H, \b a_H), q(\b x_1), q(\b x_{t + 1} \mid \b x_t, \b a_t), H\}
-\]</span></p>
-<p>这里 <span class="math inline">\(\mathcal{L}\)</span> 表示 loss，<span class="math inline">\(q(\b x_1)\)</span> 是初始状态的分布，<span class="math inline">\(q(\b x_{t + 1} \mid \b x_t, \b a_t)\)</span> 是状态转移的概率分布，<span class="math inline">\(H\)</span> 是 episode 的长度。这个定义同时涵盖了普通的强化学习和监督学习，其中监督学习中 <span class="math inline">\(H = 1\)</span>。</p>
-<p>模型本身描述为一个函数 <span class="math inline">\(f\)</span>，其接受当前状态 <span class="math inline">\(\b x\)</span> 并给出输出 <span class="math inline">\(\b a\)</span>，即 <span class="math inline">\(\b a = f(\b x)\)</span>。模型不断在该任务中给定 <span class="math inline">\(\b a_1, \b a_2, \cdots, \b a_H\)</span>，而 loss <span class="math inline">\(\mathcal{L}\)</span> 则给出了实际的反馈，这种反馈可以是分类问题中的失配损失或者 Markov 决策过程中的负收益。</p>
-<p>在元学习中我们需要考虑一系列的任务的分布，这里记作 <span class="math inline">\(p(\mathcal{T})\)</span>。如果我们要求 <span class="math inline">\(K\)</span> shot learning，对于每一个从 <span class="math inline">\(p(\mathcal{T})\)</span> 抽取的具体任务 <span class="math inline">\(\mathcal{T}_i\)</span>，我们需要再通过 <span class="math inline">\(q_i\)</span> 抽取 <span class="math inline">\(K\)</span> 个样本，并且考虑 <span class="math inline">\(\mathcal{L}_{\mathcal{T}_i}\)</span> 的反馈。</p>
-<p>之后直接搬一个论文原句，也应该是论文后面算法设计的主要出发点：</p>
-<div class="note info no-icon"><p>The model <span class="math inline">\(f\)</span> is then improved by considering how the <em>test</em> error on new data from <span class="math inline">\(q_i\)</span> changes with respect to the parameters.</p>
-</div>
-<h3 id="a-model-agnostic-meta-learning-algorithm">A Model-Agnostic Meta-Learning Algorithm</h3>
-<p>这里提供了算法设计，一个关键词就是之前提到的<strong>敏感度</strong>。</p>
-<p>考虑用参数 <span class="math inline">\(\theta\)</span> 表示的模型 <span class="math inline">\(f_\theta\)</span>。在学习具体的任务 <span class="math inline">\(\mathcal{T}_i\)</span> 的时候，参数的更新方式为：</p>
-<p><span class="math display">\[
-\theta \leftarrow \theta - \alpha\nabla_\theta\mathcal{L}_{\mathcal{T}_i}(f_\theta)
-\]</span></p>
-<p>为了简化记号，我们假设在元学习之后学习具体任务仅用了一次梯度更新，此时任务 <span class="math inline">\(\mathcal{T}_i\)</span> 的最优参数就是 <span class="math inline">\(\theta_i&#39; := \theta - \alpha\nabla_\theta\mathcal{L}_{\mathcal{T}_i}(f_\theta)\)</span>，那么元学习的目标是：</p>
-<p><span class="math display">\[
-\min_\theta \sum_{\mathcal{T}_i \in p(\mathcal{T})} \mathcal{L}_{\mathcal{T}_i}(f_{\theta_i&#39;}) = \min_\theta \sum_{\mathcal{T}_i \in p(\mathcal{T})} \mathcal{L}_{\mathcal{T}_i}(f_{\theta - \alpha\nabla_\theta\mathcal{L}_{\mathcal{T}_i}(f_\theta)})
-\]</span></p>
-<p>那么还是使用简单的梯度下降，元学习中的参数更新就是：</p>
-<p><span class="math display">\[
-\theta \leftarrow \theta - \beta\nabla_\theta \sum_{\mathcal{T}_i \in p(\mathcal{T})} \mathcal{L}_{\mathcal{T}_i}(f_{\theta_i&#39;})
-\]</span></p>
-<p>在这里我们注意到出现了二阶梯度，部分深度学习框架能够支持这一操作，但本文也同样指出作一阶近似（即舍去二阶及以上的高阶项）是可行的。</p>
-<p>基于此，MAML 的整体框架为：</p>
-<p><img src="/uploads/paper-2022-12/4.png" /></p>
-<h2 id="species-of-maml">Species of MAML</h2>
-<p>本文这里举出了监督学习和强化学习中运用 MAML 的例子，这里我们只关注强化学习。</p>
-<p>强化学习特化的 MAML 主要关注的是 loss 的选定，这里选定的就是最经典的负收益。另外，此时 <span class="math inline">\(q_{\mathcal{T}_i}\)</span> 实际上就是环境中的状态转移概率分布：</p>
-<p><span class="math display">\[
-\mathcal{L}_{\mathcal{T}_i}(f_\phi) = -\mathbb{E}_{(\b x_t, \b a_t) \sim (f_\phi, q_{\mathcal{T}_i})} \left[\sum_{t = 1}^H R(\b x_t, \b a_t)\right]
-\]</span></p>
-<p>从而，强化学习特化的 MAML 算法为：</p>
-<p><img src="/uploads/paper-2022-12/5.png" /></p>
-<p>这之后就是一些实验结果了，感觉没啥意思了。</p>
-<h1 id="learning-to-adapt-in-dynamic-real-world-environments-through-meta-reinforcement-learning">Learning to Adapt in Dynamic, Real-World Environments through Meta Reinforcement Learning</h1>
-<p>这篇文章似乎没有官方的 code base，只有两个 community code base，现在可以在 <a href="https://paperswithcode.com/paper/learning-to-adapt-in-dynamic-real-world">这个链接</a> 获取，分别是 Tensorflow 和 Pytorch 版本。</p>
-<h2 id="abstract-introduction">Abstract &amp; Introduction</h2>
-<p>需要解决的问题依然是生成数据很困难以及测试环境中无法预料到的数据可能导致所训练的策略失效，引言之中也基本上叙述了人类可以很快适应自身机体发生的变化和外界环境发生的变化，提出了如果模型经历了足够多的环境微扰，其就可以很快学习适应新环境。</p>
-<p>相比较于原先的 meta RL 对任务的定义，这篇文章提出的模型能够处理每个时间步环境或者任务都在变化的情景。也就是说，原先的 meta RL 不过是提前预设好了需要解决什么样的任务，并且每一个 RL trajectory 仅会属于一个任务，而这篇文章的 RL trajectory 中可以涵盖多种任务并且任何时间都可以切换。所以这篇文章的 meta RL 更为 general。</p>
-<p>本文也是有 trade off 的，主要表达如下：</p>
-<div class="note info no-icon"><p>By specifically training a neural network model to require only a small amount of experience to adapt, we can enable effective online adaptation in complex environments while putting less pressure on needing a perfect global model.</p>
-</div>
-<p>也就是说，这篇文章为了能够在少数据条件下快速适应新环境，并不会强制要求这个模型在 global 环境下表现到 perfect。</p>
-<p>总而言之，这篇文章主要强调学得快，学习速度大约是每个新任务需要在真实世界中经历 1.5 到 3 小时，不到原有 model-free RL 方法学习时间的十分之一。并且，在同等数据量条件下，这篇文章的模型效果也比其他方法优越。此外，为了展示本文模型的学习能力，其将其真实部署在了机器人上，来学习真实世界的情况。</p>
-<h2 id="related-works">Related Works</h2>
-<p>首先提到最原始的强化学习方法没有泛用性，以及 model-free RL 往往需要大量和真是环境交互从而不实际。发展为 model-based RL 之后，就需要面临对环境建模的 model 需要在不同的任务之间调整的问题，首先否决了单一的全局模型，而先前有人尝试通过 GP 方法合并模型不确定性从而让模型能够表示不同的环境，然而这个方法做出了额外的假设且拓展性差且难以运用到高维空间，而本文提出的结果能够通过观察从而快速切换到新的环境。</p>
-<div class="note warning no-icon"><p>这里的问题就是我是真的没有太看懂这个 model 到底是对环境建模的模型还是最后要学习的 policy。</p>
-</div>
-<p>还有一种处理方式是首先学习一个全局模型，在测试的时候通过梯度下降进行微调。此外，还有工作表明不需要完美的全局模型，可以微调先验知识来处理小变化。然而，这些方法面临着模型的训练目的与测试时的使用方式之间的不匹配的问题。本文通过明确训练一个能快速有效适应的模型来弥合这一差距。</p>
-<h2 id="preliminaries">Preliminaries</h2>
-<h3 id="model-based-reinforcement-learning">Model-Based Reinforcement Learning</h3>
-<p>马尔可夫决策过程在这里建模为 <span class="math inline">\((\mathcal{S}, \mathcal{A}, p, r, \gamma, \rho_0, H)\)</span>。这里 <span class="math inline">\(\mathcal{S}\)</span> 是状态空间，<span class="math inline">\(\mathcal{A}\)</span> 是动作空间，<span class="math inline">\(p(s&#39; \mid s, a)\)</span> 是环境状态转移概率，<span class="math inline">\(r: \mathcal{S} \times \mathcal{A} \to \mathbb{R}\)</span> 是奖励函数，<span class="math inline">\(\rho_0: \mathcal{S} \to \mathbb{R}^+\)</span> 是初始状态概率分布，<span class="math inline">\(\gamma\)</span> 是奖励衰减常数，<span class="math inline">\(H\)</span> 是轨迹长度。</p>
-<p>一条轨迹描述为 <span class="math inline">\(\tau(i, j) := (s_i, a_i, \cdots, s_j, a_j, s_{j + 1})\)</span>，我们的目标是求取最优策略 <span class="math inline">\(\pi: \mathcal{S} \to \mathcal{A}\)</span> 使得累计收益期望最大。</p>
-<p>model-based RL 目标是近似处理 <span class="math inline">\(p(s&#39; \mid s, a)\)</span>，这个模型也被称为 dynamics model。</p>
-<h3 id="meta-learning">Meta Learning</h3>
-<p>一般的元学习需要给定假设，即训练用的任务和最终的测试任务都是从同一个任务分布 <span class="math inline">\(\rho(\mathcal{T})\)</span> 中抽取。元学习的目标是获取一个学习流程 <span class="math inline">\(\theta&#39; := u_\psi(\mathcal{D}^{\rm tr}_{\mathcal{T}}, \theta)\)</span> 以通过小数据集 <span class="math inline">\(\mathcal{D}^{\rm tr}_{\mathcal{T}}\)</span> 来学习任务 <span class="math inline">\(\mathcal{T}\)</span>，学习过程可以表示为：</p>
-<p><span class="math display">\[
-\min_{\theta, \psi} \mathbb{E}_{\mathcal{T} \sim \rho(\mathcal{T})}\left[\mathcal{L}(\mathcal{D}^{\rm test}_{\mathcal{T}}, \theta&#39;)\right]
-\]</span></p>
-<p>其中 <span class="math inline">\(\theta&#39; := u_\psi(\mathcal{D}^{\rm tr}_{\mathcal{T}}, \theta)\)</span>。</p>
-<div class="note info no-icon"><p>这里的记号是真的复杂，事实上训练过程应该是函数 <span class="math inline">\(u_\psi\)</span>，训练过程用参数 <span class="math inline">\(\psi\)</span> 代表，其输出为训练后的最优参数 <span class="math inline">\(\theta&#39;\)</span>，而 <span class="math inline">\(\theta\)</span> 表示初始化参数。</p>
-<p>另外注意，<span class="math inline">\(\theta\)</span> 这里是模拟环境的模型的参数，而非 policy 的参数。</p>
-</div>
-<h4 id="gradient-based-meta-learning">Gradient Based Meta Learning</h4>
-<p>MAML 就是一种基于梯度的元学习方法，其最主要的目标是学习一个较好的参数初始化保证在少数调整中即可实现较好的下游任务。</p>
-<p>MAML 的 <span class="math inline">\(u_\psi\)</span> 就是一般的梯度下降：</p>
-<p><span class="math display">\[
-u_\psi(\mathcal{D}^{\rm tr}_{\mathcal{T}}, \theta) = \theta - \alpha\nabla_\theta \mathcal{L}(\mathcal{D}^{\rm tr}_{\mathcal{T}}, \theta)
-\]</span></p>
-<p>如果学习率 <span class="math inline">\(\alpha\)</span> 是一个固定参数，那么 <span class="math inline">\(\psi = \varnothing\)</span>，如果 <span class="math inline">\(\alpha\)</span> 是一个元学习过程中需要学习的参数，那么 <span class="math inline">\(\psi = \alpha\)</span>。</p>
-<p>即使看起来 <span class="math inline">\(u_\psi\)</span> 是平凡的，但是这种方法的表达能力和下面介绍的方法是持平的。</p>
-<h4 id="recurrence-based-meta-learning">Recurrence Based Meta Learning</h4>
-<p>这里借用了 RNN 的思想，在这个方法中，更新函数 <span class="math inline">\(u_\psi\)</span> 始终需要不断学习，其中 <span class="math inline">\(\psi\)</span> 是用于更新 RNN 隐含层状态的参数，而 <span class="math inline">\(\theta\)</span> 是余下的参数。</p>
-<div class="note warning no-icon"><p>这里是真的真的真的没看懂，这在说啥？是我前置知识欠缺太多了？</p>
-<p>只能希望下面能有个稍微好一点的说明。</p>
-</div>
-<h2 id="meta-learning-for-online-model-adaptation">Meta Learning for Online Model Adaptation</h2>
-<p>之前提到过本文的 trajectory 中任务可以随着时间步推进而变化，所以本文设定的目标是根据前 <span class="math inline">\(M\)</span> 个时间步的数据预测未来 <span class="math inline">\(K\)</span> 个时间步情况，这里 <span class="math inline">\(M, K\)</span> 都是固定的超参数。</p>
-<p>所以在这样的设定下，训练目标就是：</p>
-<p><span class="math display">\[
-\begin{aligned}
-\theta_{\mathcal{E}}&#39; &amp;= u_\psi(\tau_{\mathcal{E}}(t - M, t - 1), \theta) \\
-\min_{\theta, \psi}&amp; \mathbb{E}_{\tau_{\mathcal{E}}(t - M, t + K)} [\mathcal{L}(\tau_{\mathcal{E}}(t, t + K), \theta_{\mathcal{E}}&#39;)]
-\end{aligned}
-\]</span></p>
-<p>而这里 loss 定义为：</p>
-<p><span class="math display">\[
-\mathcal{L}(\tau_{\mathcal{E}}(t, t + K), \theta_{\mathcal{E}}&#39;) := -\frac{1}{K} \sum_{k = t}^{t + K} \log\hat{p}_{\theta_{\mathcal{E}&#39;}}(s_{k + 1} \mid s_k, a_k)
-\]</span></p>
-<p>GrBAL 采取的更新策略为：</p>
-<p><span class="math display">\[
-\theta_{\mathcal{E}}&#39; = u_\psi(\tau_{\mathcal{E}}(t - M, t - 1), \theta) = \theta_{\mathcal{E}} + \psi\nabla_\theta\frac{1}{M} \sum_{m = t - M}^{t - 1} \log\hat{p}_{\theta_{\mathcal{E}}}(s_{m + 1} \mid s_m, a_m)
-\]</span></p>
-<p>ReBAL 这里又是没看懂，所以这个基于循环模型的到底是个什么东西。</p>
-<h2 id="model-based-meta-reinforcement-learning">Model Based Meta Reinforcement Learning</h2>
-<p>这一部分就是在讲解如何在线上做 adaptation，我觉得整体不如直接看算法直观：</p>
-<p><img src="/uploads/paper-2022-12/6.png" /></p>
-]]></content>
-      <categories>
-        <category>【论文笔记】计算机</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>《Petal Letter》歌词试译</title>
-    <url>/2022/10/27/petal-letter-lyrics/</url>
-    <content><![CDATA[<p>秋枫老师发来的一份歌词，感觉挺有意思就试着自己翻译看看了。</p>
-<p>歌曲的地址是 BV1Y14y1j7Fi。</p>
-<span id="more"></span>
-<p><strong><code>@ 朝日 あさひ</code>に<code>@ 溶 と</code>ける<code>@ 微睡 まどろ</code>みと<code>@ 目覚 めざ</code>めの<code>@ 狭間 はざま</code>、そっと<code>@ 口遊 くちずさ</code>む<code>@ 旋律 メロディ</code>、<code>@ 花片 はなびら</code>にのせ、<code>@ 風 かぜ</code>よ<code>@ 届 とど</code>けて、あなたが<code>@ 旅 たび</code>する<code>@ 世界 せかい</code>へ。</strong></p>
-<p>在朝阳中浅睡与苏醒的间隙中悄悄吟唱的旋律，乘上飘落的花瓣，就让微风将它传达到你所旅行的世界吧。</p>
-<p><strong><code>@ 魔法 まほう</code>で<code>@ 出逢 であ</code>った、あなたと<code>@ 私 わたし</code>、<code>@ 今 いま</code>は<code>@ 別々 べつべつ</code>の<code>@ 物語 ものがたり</code>を<code>@ 行 ゆ</code>く。</strong></p>
-<p>因魔法而相遇的你我二人，如今却向着不同的未来而去。</p>
-<p>【注释 #1】这里并没有将「<code>@ 物語 ものがたり</code>」直接翻译为“故事”，感觉并不太符合中文的语感。</p>
-<p><strong><code>@ 何 なに</code>かが<code>@ 始 はじ</code>まる<code>@ 予感 よかん</code>を<code>@ 胸 むね</code>に、<code>@ 歩 ある</code>き<code>@ 出 だ</code>してから、どれだけ<code>@ 経 た</code>ったの。</strong></p>
-<p>心中不知为何，总有着何事将至的预感。即使知道那时的分别，已经过去了不知多长时间。</p>
-<p><strong><code>@ 緩 ゆる</code>やかな<code>@ 坂道 さかみち</code>、<code>@ 登 のぼ</code>ればまた<code>@ 独 ひと</code>りきり。</strong></p>
-<p>登上平缓的山坡，依然独自一人。</p>
-<p><strong><code>@ 寂 さび</code>しさに、<code>@ 心細 こころぼそ</code>さに、<code>@ 寄 よ</code>り<code>@ 添 そ</code>ってくれる、あなたと<code>@ 交 か</code>わした<code>@ 心 こころ</code>の<code>@ 花束 はなたば</code>。</strong></p>
-<p>在这寂寞与不安中，我依偎着的，是与你交换的心之花束。</p>
-<p>【注释 #2】这里的语句结构有点怪异，歌曲中这里的断句也比较怪异，难以判定「くれる」与后续句子的关系。这里又要经典批判一遍为何现代日语的终止形和连体形合流，这显然难以判定一个动词词组究竟是修饰名词还是直接终止语句，这导致大量的歌词翻译困难。</p>
-<p><strong>いつでも<code>@ 誰 だれ</code>かが<code>@ 泣 な</code>いている<code>@ 世界 せかい</code>、<code>@ 鏡 かがみ</code>の<code>@ 向 む</code>こうに<code>@ 霞 かす</code>んだ。<code>@ 今 いま</code>は<code>@ 消 き</code>えた、<code>@ 祭 まつ</code>りの<code>@ 果 は</code>てで。</strong></p>
-<p>无论何时都有谁在哭泣着的世界，也在镜子中烟雾朦胧。现在早已在祭典的尽头，消失不见。</p>
-<p><strong><code>@ 触 ふ</code>れ<code>@ 合 あ</code>うことすら、できずに<code>@ 別 わか</code>れた。</strong></p>
-<p>我们甚至都还没有再次相遇，却又再次分别。</p>
-<p><strong>あなたを<code>@ 感 かん</code>じたい<code>@ 時 とき</code>は、<code>@ 名前 なまえ</code>をもう<code>@ 一度 いちど</code> <code>@ 呼 よ</code>ぶ。</strong></p>
-<p>每当想要感受你的温暖的时候，再一次，呼唤你的名字。</p>
-<p><strong><code>@ 青 あお</code>い<code>@ 薔薇 ローズ</code>、<code>@ 赤 あか</code>い<code>@ 椿 カメリア</code>、<code>@ 花 はな</code>は<code>@ 今日 きょう</code>も<code>@ 咲 さ</code>いてますか。</strong></p>
-<p>蓝色的玫瑰，红色的山茶花，花朵如今，也依然在绽放吗。</p>
-<p><strong><code>@ 問 と</code>いかけて<code>@ 応 こた</code>えなくても、<code>@ 同 おな</code>じ<code>@ 楽園 そら</code>を<code>@ 見上 みあ</code>げてる。</strong></p>
-<p>即使问而不答，我们也始终仰望着同一片乐园（天空）。</p>
-<p><strong>あれから<code>@ 始 はじ</code>まった<code>@ 長 なが</code>い<code>@ 旅 たび</code>も、<code>@ 終 お</code>わる、いつかは、<code>@ 消 き</code>える、<code>@ 全 すべ</code>てが。そして、<code>@ 星 ほし</code>は、<code>@ 巡 めぐ</code>る。</strong></p>
-<p>从那时开始的漫长旅途，总有一天也会结束，到那时，一切都会消逝。而后，群星依然流转。</p>
-<p><strong><code>@ 止 や</code>まない<code>@ 嵐 あらし</code>に<code>@ 足 あし</code>を<code>@ 止 と</code>められ、<code>@ 草臥 くたび</code>れた<code>@ 靴 くつ</code>の<code>@ 跡 あと</code>を<code>@ 振 ふ</code>り<code>@ 返 かえ</code>る。</strong></p>
-<p>无休无止的山林雾气中，我不得不停下脚步，回望着以往的足迹，鞋履也早因旅途破旧不堪。</p>
-<p><strong><code>@ 大事 だいじ</code>なものはまだ、<code>@ 歩 ある</code>く<code>@ 度 たび</code>に<code>@ 増 ふ</code>えるでしょう。</strong></p>
-<p>然而，那些珍贵的回忆，依然随着我们前行的每一步而积累着。</p>
-<p><strong>それでも<code>@ 俯 うつむ</code>く<code>@ 私 わたし</code>の<code>@ 背中 せなか</code>を<code>@ 押 お</code>すのは、あなたと<code>@ 交 か</code>わした、<code>@ 叶 かな</code>わぬ<code>@ 約束 やくそく</code>。</strong></p>
-<p>尽管如此，激励着早已疲惫不堪的我继续前行的，是与你定下的未竟约定。</p>
-<p>【注释 #3】这里意译了「<code>@ 俯 うつむ</code>く」，其本意是“低下头”。</p>
-<p><strong><code>@ 大 おお</code>きな<code>@ 鞄 かばん</code>に<code>@ 閉 と</code>じこめた<code>@ 願 ねが</code>い、<code>@ 鏡 かがみ</code>と<code>@ 一緒 いっしょ</code>に<code>@ 壊 こわ</code>れた。<code>@ 夢 ゆめ</code>と<code>@ 追憶 ついおく</code>が<code>@ 降 ふ</code>り<code>@ 注 そそ</code>ぐ。</strong></p>
-<p>珍藏在大大的行李箱中的愿望，也随着镜子一同破碎，梦与追忆倾泻而下。</p>
-<p><strong><code>@ 砂 すな</code>へと<code>@ 零 こぼ</code>れた<code>@ 涙 なみだ</code>を<code>@ 拭 ぬぐ</code>って、<code>@ 震 ふる</code>える<code>@ 手 て</code>が<code>@ 拾 ひろ</code>い<code>@ 上 あ</code>げた。</strong></p>
-<p>拭去飘落在沙地上的泪水，用颤抖的手将碎片拾起。</p>
-<p><strong><code>@ 光 ひかり</code>はきっと、<code>@ 同 おな</code>じ<code>@ 色 いろ</code>をした<code>@ 花 はな</code>。</strong></p>
-<p>那光芒必然是，闪耀着相同颜色的花朵。</p>
-<p><strong><code>@ 目 め</code>を<code>@ 閉 と</code>じれば、<code>@ 耳 みみ</code>を<code>@ 澄 す</code>ませば、<code>@ 花片 はなびら</code>が<code>@ 風 かぜ</code>に<code>@ 乗 の</code>って、<code>@ 旋律 メロディ</code>を<code>@ 届 とど</code>けるでしょう。</strong></p>
-<p>闭上眼睛，侧耳倾听，花瓣乘上微风，将那旋律传达给你。</p>
-<p><strong><code>@ 私 わたし</code>からあなたへの<code>@ 手紙 レター</code>。</strong></p>
-<p>这就是，我寄给你的，一封信。</p>
-]]></content>
-      <categories>
-        <category>【杂谈】日语</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>直博招生专业面试的一些</title>
-    <url>/2022/09/14/phd-interview/</url>
-    <content><![CDATA[<p>2022 年 9 月 14 日，是清华大学计算机科学与技术系 2023 级免试攻读博士生招生专业面试。Holder 参加了这一场面试，然后人炸了。</p>
-<span id="more"></span>
-<p>今天面试本来就有点不安，最大的问题就是唯一能吹的一份挂了名的 SIGGRAPH 的文章实际上自己并没有参与特别核心的工作，而且做到一半就被拒了，所以实际上最后那段时间就在摆烂，组会吹水也不去了。</p>
-<p>然而，今天就是这么时运不济，面试的评委里同时有徐昆老师和胡事民老师。没听过组会吹水不敢乱说，但胡老师就喜欢捉着这些问。他要是具体问如何实现了我负责的代码部分，我倒是可以说不少，但是问我一些 Overview，说实话倒还真的不会。</p>
-<p>Holder 的科研真的毫无意义，毕竟自己就是如丧家之犬一般到处跑路。或许 Holder 真的就不应该硬头皮读这个博士，或许就该进厂上班了。</p>
-]]></content>
-      <categories>
-        <category>【杂谈】碎碎念</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>《美少女万华镜 5 ——理与迷宫的少女》游戏测评</title>
-    <url>/2021/08/18/renge-5/</url>
-    <content><![CDATA[<p>Holder 不是一个玩 GAL 的人，能想到的 GAL 除了万华镜就是柚子社这种。但是 Holder 想了想，决定把万华镜 5 这个宣称中的最终章认真通一下，也算对我几乎唯一知晓的 GAL 致以敬意。</p>
-<p>离万华镜 5 发售差不多过去一年半了，各路汉化理论上应该充斥互联网，但 Holder 也只找到了生肉，于是也顺便当成了日语阅读练习。</p>
-<span id="more"></span>
-<h1 id="总的感想">总的感想</h1>
-<p>Holder 大概花掉了靠近三十个小时打通了所有的线，由于 H 情节在一年前实际上就已经都看过一遍而且自己也有全 CG，这次的重点就是把当时看来冗杂无比的剧情认真看一下。</p>
-<p>当然，一直都说万华镜系列就是单纯的拔作，剧情几乎可有可无，这句话我可以说认同一半。首先，针对万华镜 5，如果不走莲华线，而是没有压住枪走了月丘线，那确实没有任何剧情，平平淡淡地每晚在澡堂触发 H 情节就结束了。而你如果剧情看到一半没忍住走了绿毛线（绿毛名字是もよか，说实话不知道怎么找当て字，倒是“绿毛”这个代号挺深入人心的），那也是很快就 BE 了。而如果你认认真真把莲华线推完，就会发现若干的伏笔被回收，剧情似乎就有了那么一点的道理（Holder 整体上还是觉得这个剧情偏扯，但是莲华线稍微补了一点论述）。其次，万华镜整个系列，确实几乎都是没啥剧情的，除了 5。其他系列都是推一会就开始炮火连天，而 5 我是整整看剧情看了靠近两天之后才解锁了新天地（当然玩的莲华线）。</p>
-<p>如果说总的感想的话，就是感觉看了一个很普通的小说。撇去还算优秀的 H 情节不谈，我在玩的时候几乎全程在看底下的文字，因为图像说实话提供不了信息。比如说“ A 把 B 扶起来”，这个动作在番或者剧里面都可以画或者演出来，但是万华镜里面也仅仅是两个人的立绘贴了一下，动作则是文字给出。所以整体我还是一直在看文字，当小说看。</p>
-<p>而说它“普通”，是因为贯穿全程的就是“理”或者“命运”或者“轮回转生”，题材不是什么新颖的东西，而且能预料到莲华和男主的一些前世姻缘之类的。然后中心矛盾之一也是普通的，“我能逆天改命”和“我们只能顺应命运”的矛盾，最后认为“我能逆天改命”的人盒饭了，但却让“我们只能顺应命运”的思想少许动摇，但是为时已晚不得不继续投入到命运的轮回之中。</p>
-<p>要我说的话，论剧情，万华镜 5 就是很普通的一个小说，人物关系简单，矛盾点简单。但是论 H 情节，首先我认为绿毛连动态情节都没有是很难受的（巫女后辈啊！不配画一点动态的吗！），但是莲华在二次轮回的时候 H 情节确实作画很好，动态也不错，还是稍微给点表扬。</p>
-<h1 id="剧情简要分析">剧情简要分析</h1>
-<h2 id="莲华-轮回线">莲华-轮回线</h2>
-<p>既然核心是“理”（不得不提的就是这个“理”在游戏里面训读成ことわり，而这个读音一般写成“断り”）和“轮回转生”，那么我们应该默认天理和轮回转生的存在。</p>
-<p>剧情的主干实际上就是莲华和男主深见夏彦的前世姻缘，他们可以说每一世都会相遇相爱但由于各种不可抗力无法修成正果。先是罗马时代的奴隶主和奴隶，又是中世纪的女王和下臣，之后是猎巫人和女巫。而重点是第四世，他们是古代日本的一对恋人（这时深见夏彦的名字是“彦一”，记住，要考的），而第五世就是莲华和深见夏彦。</p>
-<p>说第四世重要，是因为这里狐妖介入了进来。实际上狐妖附身了第四世的莲华，或者在一定程度上，莲华在这个时候已经成为了狐妖。而当彦一（第四世的深见夏彦）死于战火的时候，狐妖则处于对人类的憎恨和爱人亡故的怨念火烧城池。人们最后将狐妖的怨念封印为“杀生石”，并在城中修建相当数量的狐狸雕像望向杀生石的方向以镇压，同时也在杀生石所在的山顶修建了一座规模宏大的神社。但是神社实际上在很多年之后的又一次战火中被烧毁，但是村民并没有重建的计划（多半是已经忘了这段历史）。而杀生石和狐狸雕像却保留了下来，成为了传说。</p>
-<p>这里的杀生石、狐狸雕像、神社则是第五世（现代）剧情推进的一条线索。</p>
-<p>而这个时候就必须引出绿毛了。在第五世，也就是现代，绿毛先前有一个家境优渥的家庭，但是由于他人嫉妒而故意放出的无端谣言而招致了全村人的厌恶，随后她的家人因他人纵火全部亡故，而纵火者却至今逍遥法外，绿毛也因此有了对人类的憎恨和怨念。孤身一人的她投靠了从兄弟 H（名字不想打了，但是这个人的人设和痴汉别无他样，所以就用 Hentai 的首字母代称。这里 H 是一个女子中学的音乐老师），此时绿毛沉迷于深见夏彦所在的杂志社编辑的灵异杂志，自学了很多通灵方法。最终，她独身一人走上了原来有神社和杀生石的山顶，被满是怨念的狐妖附身，开启了剧情主线。</p>
-<p>绿毛有了狐妖的力量，而狐妖的一个信念就是“我是可以逆天改命的”，或者说“我不愿意服从命运的安排”。狐妖因恋人离世而对人类憎恶，绿毛因为家人离世也对人类憎恶，两个怨念叠加，绿毛开始了复仇。她的第一步就是先转学到 H 所在的女子高中并要控制全校，因为女子高中生就是当时散布绿毛家族无端谣言的主力。绿毛看中了这所高中禁止使用手机和通信软件，利用了她们相对闭锁的信息环境，开始通过狐妖的力量诱骗她们迷信自己的占卜，随后再通过狐妖的力量对她们下诅咒。诅咒的内容就是：</p>
-<div class="note info no-icon"><p>山顶有神社可以实现你的愿望，但是在前往神社之前，你必须不停地画白狐氏（びゃっこ氏）以表虔诚，否则就会降下惩罚。</p>
-</div>
-<p>而这座神社在现实中是真的不存在的（早就烧掉了还没重建），但是狐妖的灵力可以在山顶创建一个传送门，传送到若干年前的神社，而这个神社就在狐妖（或者说绿毛）控制之下。白狐氏就是这座神社供奉的神灵（就是狐妖），而所谓的惩罚是各种莫名其妙的伤害事件（突然被钢琴盖子砸断手指，实验的时候突然自燃之类），并且惩罚的共同点就是受伤的地方毛细血管会聚集成青色的蜘蛛网的样子，而且会长一个痣。</p>
-<p>这也就是最初的最初，深见夏彦所要调查的“青蜘蛛的诅咒”事件。</p>
-<hr />
-<p>主角团是四人组，深见夏彦，他的编辑月丘香恋，同期的只相信科学的优秀作家皇公晓，以及实体化的莲华。</p>
-<p>莲华在第五世转生的时候，没有获得肉体，成为了阿紫旅馆（也就是万华镜 1-4 开头的那个旅馆，其和神社等位于同一个村子）的座敷童子。所谓座敷童子，第五世的莲华的任务就是“超度”，也就是帮助满是怨念的灵魂安宁地走向死亡，走向轮回。而完成超度的道具就是“万华镜”。</p>
-<p>所以说 1-4 里面深见夏彦透过万华镜看到的，就是那些已经被超度的魂灵的生前故事，而往往这些故事都或多或少带着点怨恨（1 是人鬼情恋的越界之恨，2 是沉溺于爱而伤害恋人的愧疚之恨，3 是文明凋亡的孤独之恨，4 则是近亲的禁忌之恨）。</p>
-<p>另外，作为灵力的持有者，莲华的能力就是能够读取和修改人的记忆。</p>
-<p>由于没有肉体，莲华无法被感知，从而也让她一直孤独一人。但深见夏彦，作为这么多次轮回之中莲华的恋人，自然是唯一一个能感知到她存在的的人。所以深见夏彦对莲华而言，简直就是世界上唯一可以交流的人类。</p>
-<p>另一方面，莲华在得知深见夏彦想要来调查“青蜘蛛的诅咒”事件，要在阿紫旅馆住上一星期左右的时候，其花费了很多的灵力为自己构筑了肉体，并且通过修改记忆让主角团和旅馆工作人员都认为莲华是真实存在的一个女高中生，这也就是实体化。这个时候的莲华就可以和正常人一样活动了。</p>
-<hr />
-<p>先前提到，第四世的莲华和狐妖实际上几乎是一体的，而在第四世到第五世的轮回之中，莲华被拆分成了两部分，狐妖的部分被封印而剩下的部分幻化成了现在的莲华，这莲华是通过触碰了一只小狐狸之后回想起来的。</p>
-<p>在主角团调查的时候，绿毛自然早已经觉察到，深见夏彦就是自己前世恋人彦一，所以绿毛对从兄弟 H 不屑一顾而单单对深见夏彦热情，而且在深见夏彦和莲华前往深山随便走走的时候将他们拉入了神社。绿毛自然也早就明白莲华和自己理论上是一体的，所以才有绿毛的“我唯一的朋友是莲华”这一句。</p>
-<p>而绿毛为了在他人面前让自己和深见夏彦亲近显得合理，她故意称其为“哥哥”（大家都知道绿毛失去家人的过往，所以因此会把她亲近深见夏彦理解为“绿毛把对哥哥的思念寄托在深见身上”）。而绿毛则不需要对莲华隐藏，所以在澡堂里直接说“深见才不是我哥哥呢”。</p>
-<p>绿毛在知道深见夏彦的存在后，除去复仇的主线，自然是尝试再构姻缘。所以她引诱深见夏彦去神社，去看杀生石，去看她舞蹈，去听铜铃的声音，给他托梦，目的就是让深见夏彦回想起自己的前世。深见夏彦在经历了若干天的噩梦和梦游（梦游去神社）之后，终于在某一天晚上回想起来了自己的一切。但是深见夏彦已经沉迷莲华，依然坚称自己是深见夏彦而非彦一。</p>
-<p>得知恋人心意的绿毛，自然是相当悲愤。我大费周章为你复仇，你却出轨我自己（莲华理论上和绿毛是一体的，可以理解为绿毛是邪恶的一面，莲华是善良的一面），于是托了一个巨大的噩梦给深见夏彦（就是那个，裂嘴黑眼圈的莲华 CG，这也是游戏发售前就流传出来的梗图），想让他忘记莲华。随后动用了巨大的灵力干趴了学校里所有的学生，尝试吸取她们的灵魂。</p>
-<p>而随着调查的深入，莲华也了解了狐妖已经附身到绿毛身上开始复仇，而这个时候绿毛也已经因为深见夏彦的背叛而暴走了。所以为了阻止这些计划，莲华只身一人前往神社和狐妖打灵力战斗去了。</p>
-<p>但是莲华毕竟力量并非很充足，最后体力渐渐不支。这个时候深见夏彦突然赶到，给莲华挡下一击。绿毛眼看自己的攻击伤到的是自己的恋人，立马停手了。随后由于巨大的自责，她没有抵挡得住莲华的最后一击而幻化为怨念，被万华镜收纳住了。</p>
-<p>绿毛是解脱了，和 H 去过平凡的女高中生生活去了。学校的诅咒也解除了，大家渐渐都回到正轨了。但是深见夏彦的灵魂却因为狐妖的一击变得支离破碎，如果不修复，就等于死亡。莲华这个时候想到了解决方式，就是和深见夏彦一起回到万华镜，让深见夏彦重新回想起来所有的回忆，补全灵魂，最后用莲华的力量让死者复生。这里显然就注意到了，死者复生是违反“理”的，也就是说，莲华最终还是走上了背离天理的路。</p>
-<p>莲华和深见夏彦两人在万华镜里遨游，把 1-4 的场景都走了一遍，深见夏彦也渐渐回想起了各种东西，灵魂也渐渐补全。在走完第一圈后，莲华认为已经可以送深见夏彦回去了，但是深见夏彦坚决要和莲华在一起，于是他们又走了第二圈。这之后，莲华并不再是询问语气，而是命令深见夏彦赶快回去。</p>
-<p>原因很简单，莲华知道自己也是狐妖的一部分，包括自己的实体化，所动用的灵力的基础都是狐妖赖以生存的力量——人类的悲痛，莲华决定自己超度自己肮脏的灵魂。而这最后的力量就是留给将深见夏彦死者复生的，违反天理的力量。但是深见夏彦最终还是不愿回去，而这个时候他需要经受身边人的各种诘难以确认自己的心意。最后在一通告白之后，两人携手走向又一次轮回。</p>
-<p>轮回到第六世的结果，就是深见夏彦成了你（这也就是游戏开头让你输入你的名字的原因），莲华成为了一个知性大姐姐和你相遇，和你相恋。两人最后渐渐回想起了前世，由于狐妖已经消逝，阻碍已经消失，所以两人修成正果，过上了炮火连天的日子。</p>
-<h2 id="莲华-非轮回线">莲华-非轮回线</h2>
-<p>狐妖的部分都是一致的，第一世到第五世都是一致的，一直到两人走进万华镜都和莲华-轮回线一样。</p>
-<p>莲华在第一圈后会询问两次深见夏彦是否愿意回去，第二圈则会再问一次。三次都回答不想回去，才会进入轮回线，只要有一次回答了想回去，就会进入非轮回线。</p>
-<p>在这里，最后深见夏彦死者复生，但是他丧失了所有和莲华有关的记忆，“青蜘蛛的诅咒”事件也被科学解释了。苏醒的深见夏彦和月丘以及皇，去和旅馆工作人员、学校老师告别后回到东京过上了平凡的生活。虽然深见夏彦时不时还是觉得自己在搜寻着什么，但是总体而言并没有想起莲华。而莲华的灵魂，也随着狐妖一起被超度，不再和深见夏彦产生任何交集。</p>
-<h2 id="绿毛线">绿毛线</h2>
-<p>应该说是很单纯的 BE。</p>
-<p>绿毛在无数若干次引诱深见夏彦，让他回想前世之后，最终有一天直接冲进澡堂色诱深见夏彦。这个时候如果选择“放任自己”，则会开启第一段绿毛 H，否则则会以绿毛无故消失结束这一天。</p>
-<p>最后某一晚，深见夏彦再一次前往神社的时候终于回想起了一切，这个时候会有选项问“你是谁”。如果先前压住了枪，这里就会有两个选项，一个是“深见夏彦”一个是“彦一”。选择深见夏彦就进入莲华线，被绿毛噩梦调戏一番后直接开始和莲华炮火连天。选择彦一则进入第二段绿毛 H。不过在一炮之后，绿毛就会以“我要将你变成我的玩物”为由杀死深见夏彦后自杀。而在现实世界中，消息就是“深见夏彦和绿毛在深山中失踪”。随后两年后，月丘香恋和皇公晓回到这个村子尝试回忆一些什么，误入了深山，看到了杀生石下两人的遗体。</p>
-<p>如果先前没有压住枪，那么在问“你是谁”的时候，只有“彦一”一个选项，后面的剧情是一样的。</p>
-<h2 id="月丘线">月丘线</h2>
-<p>最没有意思的线。</p>
-<p>月丘实际上一直喜欢着深见。在主角组前往调查之前，月丘前往深见夏彦的家交代一些工作的事情，这个时候月丘得知深见一直不会做饭，于是她决定给深见做一顿饭。在饭后，带有一点醉意的两人突然趴倒在墙角，男下女上。这个时候月丘向深见表白，会有“接受”和“拒绝”的选项。</p>
-<p>拒绝的话就正常开始调查，会调查到很多东西，会有机会进绿毛线、莲华线之类。</p>
-<p>接受的话直接开启 H 情节。而因此深见夏彦的心态就变成了“我要尝试融入‘大人’的世界，不能再沉迷于莲华的万华镜了”。而这种心态下，主角组调查的时候，莲华就一直处于很边缘的地位，而月丘和深见则会每晚定时开 H 情节。</p>
-<p>这次调查最终无疾而终，莲华在意识到深见的心意之后也只是默默留下一句“那就结束了吧”，便再也不见。主角组回到东京之后，自然是深见和月丘的炮火连天的二人世界。</p>
-<h1 id="一些其他地方的想法">一些其他地方的想法</h1>
-<p>总体而言还是贯彻了万华镜系列“压住枪的都是好儿郎”的准则，越早压不住枪就只能解锁越少的剧情，然后留下越多的没有起底的伏笔。</p>
-<p>虽然说万华镜没啥剧情，但是实际上总体看下来虽然平淡无奇，但还算是叙事完整，能看明白。而且有些伏笔也还算可以，比如说旅馆的“野干（やかん）”面具（“野干”在日语中是狐狸的一种代称），一方面暗示了这里和狐狸有千丝万缕的联系，而最终，绿毛跳舞给深见夏彦看的时候，戴的就是野干面具。另一方面，这个村子叫“薬缶”，和“野干”日语同音，应该是讹传出来的地名。</p>
-<p>此外，一定要抨击一下文案，不是说他写的东西多差，是<strong>经常把一些已经约定俗成不写汉字的关联词、虚词写成汉字</strong>，而有的时候又会把<strong>约定俗成写成汉字的词写成假名</strong>。这让我这个现代日语没学好的人读得有那么点难受。举点例子吧：</p>
-<div class="note info no-icon"><p>成程、折角、兎に角、沢山、取り敢えず、一寸、丁度、其程、是迄</p>
-</div>
-<p>他们实际上是：</p>
-<div class="note info no-icon"><p>なるほど、せっかく、とにかく、たくさん、とりあえず、ちょっと、ちょうど、それほど、ここまで</p>
-</div>
-<p>这些词可以说是，不太懂日语的人只要听到读音都能回想起来点什么的词，结果硬生生给我看不懂了。</p>
-<h1 id="最后的最后">最后的最后</h1>
-<p>万华镜系列我认为是，中下的剧情，中上的作画，虽然不知道为何如此火，但还是有点为三十个小时感到不值。</p>
-<p>但如果闲的话推推也不错，当成一个耗时间的小说吧。不过个人建议先把月丘和绿毛推了，先推莲华会很容易没有推支线的动力，因为莲华线的叙事已经很完备，其他线的逻辑就是误入歧途从而有些事情没发现最后遗憾收场。</p>
-<p>知乎上看了一句总结比较好：</p>
-<div class="note info no-icon"><p>你以为是你把卖片的上了，谁知道人家是命中注定给你卖片。</p>
-</div>
-<p>就这样吧，小学期还在等着我。</p>
-]]></content>
-      <categories>
-        <category>【杂谈】游戏 &amp; 番剧</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>一部真实的校园恋爱番《龙与虎》</title>
-    <url>/2022/12/29/toradora/</url>
-    <content><![CDATA[<p>由于新冠阳性卧病在床三天，中间某一天我一天刷完了《龙与虎》的 26 集，作为为数不多的超长校园恋爱番，在看完《龙与虎》之后，我明显感受到了这部番和当下很多恋爱番的不同。</p>
-<span id="more"></span>
-<h1 id="人物感情线">人物感情线</h1>
-<p>《龙与虎》可能最让人感到迷惑的就是错综复杂的感情线，很多观众也都评论说感情想相当扭曲。这里为了更好写读后感，还是稍微写写各个人物的感情线。</p>
-<p>这里想要探讨的是男主角团龙儿、北村和女主角团大河、实乃梨、亚美、会长的感情线。这里另外做个补充，由于大河在日语中发音为たいが，和意为老虎的タイガー读音类似，加上番里大河凶狠乖戾的性格，故大河也有老虎的外号。</p>
-<h2 id="北村与会长">北村与会长</h2>
-<p>北村为本作男二，会长为本作女四。在进入高中之后，由于对理想中的高中生活的憧憬，有点为了谈恋爱而谈恋爱地向大河表白，却遭到了拒绝。在心灰意冷之际，会长出现了，其劝说北村高中生活并不只有感情。受到鼓励的北村于是加入了学生会，在学生会的一年中，北村逐渐对会长产生了好感。由于北村确实能力卓著，会长也在自己心中确认了对北村的好感。</p>
-<p>然而转折出现在高二年级，会长作为毕业生即将毕业且计划留学。然而会长知道，北村之所以进学生会，之所以如此拼命干活，自己永远是重要乃至最重要的因素。也就是说，会长清晰地知道北村一直在追逐自己，所以即使答应了北村的感情，也注定将会是一段不平等的感情。所以会长为了防止北村不假思索追逐自己，强硬地隐瞒了留学的计划。</p>
-<p>但是计划依然暴露了，北村一蹶不振，因为对他而言，会长是他继续做下去，并接过学生会长这一身份的唯一理由，他想要追逐会长。受到打击的北村束手无策，选择了自暴自弃。先是宣布不参与学生会长竞选，后是故意违反校规校纪染发逃学，用他自己的方式阐述自己自甘堕落。会长在目睹这一切后，即使心疼，但是从自己的立场出发，依然在他人面前刻薄地评价北村为懦弱的人。</p>
-<p>在这个时间点，大河是喜欢北村的，为了拯救北村，大河宣布参加学生会长竞选，并故意宣扬自己在竞选成为学生会长后会推行相当严厉的政策毁掉所有人的高中生活。这种自爆行为，事实上是发动群众来劝说北村回到学生会长竞选中。在这一番操作之下，北村最终回到竞选，并且得到了会长的支持。</p>
-<p>在最终的竞选演讲中，北村高调面对全校向会长表白，然而会长并没有正面回应，发好人卡一样地冷处理了这一充满勇气的行为。在这之后，大河被彻底激怒了，她认为会长在玩弄北村的感情，于是提着木刀和会长线下械斗。会长自然无法是大河的对手，在落败后，会长最终情感崩溃，承认了自己喜欢北村，同时也讲出了自己的心声，讲出了不想让北村仅仅是追随自己的真实想法。</p>
-<p>最终，北村成为了学生会长，会长也按照计划前往美国留学。一年后，北村毕业，也同样规划前往美国留学，经历了高中三年的磨练，其心智更为成熟，也更加坚定了对会长的好感。</p>
-<h2 id="大河与龙儿">大河与龙儿</h2>
-<p>本作男女主。大河家庭情况较为混乱，父亲在和其生母诞下她后，不久就将其和其生母全部抛弃，除了每个月定时打入生活费外，与其生活完全没有交集。其与其生母的关系也较为冷淡，本作中是独居状态。正是因为这样的家庭背景，大河十分缺少关爱，这也是她感情线的重要基础。此外，大河的另外一个重要特征是十分缺乏生活技能和笨拙，这也和家庭背景有关联。</p>
-<p>而龙儿的家庭环境则也较为混乱，父亲是不良少年，在和龙儿生母未婚基础上诞下龙儿后人间蒸发。龙儿生母为了抚养龙儿，决定离家出走，通过陪酒女的工作支撑家庭，并且一直向龙儿隐瞒其父亲真实的情况。所以龙儿自幼缺乏父爱，又相当追求父爱。另外，由于这样的家庭背景，龙儿不得不学会了各种生活技能，主妇属性拉满。</p>
-<p>大河在刚进入高中被北村表白后，虽然其拒绝了北村，但是由于北村关注着她，在她困难的时候也会伸出援手，其得到了北村的关爱。在这样的基础上，大河萌生了对北村的好感。在某日，大河将写给北村的情书放到其书包中，但没想到不仅忘了把情书本体放到信封里，甚至还把情书错放到龙儿的书包内，这导致龙儿在回来拿书包回家的时候和大河起了争执，大河甚至在当晚为了夺回情书提着木刀来到龙儿家复仇。</p>
-<p>在那天晚上，龙儿劝说了大河，情感并非是可耻之事，并且给大河看了其为暗恋对象实乃梨写的诗乃至未来生活规划。在一番交流后，两人发现，大河暗恋的北村是龙儿的好友，而龙儿暗恋的实乃梨是大河的好友，于是两人组成龙虎同盟，帮助对方追求自己的好友。</p>
-<p>然而，由于大河严重缺乏生活技能，而龙儿又会做饭，两人家又很近，所以大河在此之后便稳定在龙儿家里吃饭，龙儿甚至还会帮助大河洗衣和打扫公寓。</p>
-<p>这个时候，大河和龙儿仅仅是一种依存关系，虽然在外人眼中看来两人已经近乎同居，但是两人均不承认和对方有超过朋友的越界行为。在龙虎同盟的约定之下，龙儿帮助大河拍北村的照片，大河也会创造龙儿和实乃梨独处的机会。</p>
-<p>其间，大河在龙儿鼓励之下向北村表白，但是被拒绝了，北村表示，其仅仅想作为朋友帮助大河。</p>
-<p>第一次转折发生在亚美的出现，作为模特，亚美身材傲人，相比之下大河的身材就显得较为弱势。这一矛盾的激发是游泳课，大河由于身材自卑于是抵触游泳课，龙儿为了帮助大河找回自信，于是帮其缝制胸垫来伪装身材。亚美在游泳课上见到这一幕后决定挑战龙虎联盟的关系，提出和大河比赛，若亚美获胜则会把龙儿带去自己的别墅过暑假。无论是出于对龙儿离去后自己生活质量下降的担忧，还是此时由于已经和龙儿相处甚久而萌生的朦胧情愫，大河都决心为了龙儿赢下比赛。比赛最终确定为五十米自由泳，然而由于大河不会游泳，所以龙儿又承担了教学游泳的任务。在两人在市民泳池练习的时候，大河第一次因为对龙儿朦胧的好感而情感爆发。</p>
-<p>比赛当场，大河在游泳过程中抽筋，龙儿立刻下水营救，但最终依然将自己搭了进去。然而这个时候群众的目光全都集中在亚美即将赢得比赛，没有多少人关注到龙儿即将陷入险境。最终，虽然在大河求救之下龙儿得救，但是大河也最终没能收束自己的情感，面对大家说出了著名的：</p>
-<div class="note info no-icon"><p>龙儿是我的，你们一个都不许碰他！</p>
-</div>
-<p>事实上，即使经历了这样的事件，大河对龙儿也依然仅仅是无法确定的朦胧好感，大河依然对北村充满热情。在此之后，由于亚美依然是实际上赢得比赛，所以亚美依然可以带龙儿前往她的别墅过暑假，然而在北村劝说之下，最终变成了主角团五人全部前往亚美的别墅。在这一过程中龙虎联盟达成了本次主要是大河帮助龙儿追求实乃梨的作战计划，大河得知实乃梨害怕灵异，于是计划故意恐吓实乃梨，让龙儿趁机营救实乃梨来创造机会。然而，这个计划非常自然地失败了，因为实乃梨实际上并不害怕灵异，反倒十分喜欢灵异。</p>
-<p>另外，这个时间段也是龙虎联盟在梦中和对方确认关系的时间点，两人都做了和对方确认关系的梦。</p>
-<p>随后，大河的父亲出现，其希望能够将大河带回抚养。作为大河的挚友，实乃梨十分清楚大河父亲的本质。然而渴望父爱的龙儿由于并不清楚大河父亲的本质，强硬地要求大河离开自己家和父亲生活。在名义上收回抚养权的基础上，大河的父亲作出了会来看女儿在学园祭上的演出的承诺，然而显然，这个承诺是空虚的，最终一条短信依然把大河甩给了龙儿。</p>
-<p>在学园祭的最后，发生了两件事。一件事是，由于大河没能等到父亲，其对家庭复原的期望再次落空，受伤的大河通过很有情感张力的演出赢下了学园祭选美比赛后，学生会追加举办了男子选拔赛，全校男子绕学校跑一圈，最快的人能够和选美比赛获胜者，也就是大河共舞。在这场比赛中，终于认识到自己没能看穿大河父亲而导致伤害了大河的龙儿为了赎罪，拼命希望抢下头名，在这过程中实乃梨也前来帮忙，两人自然地牵着手拿下第一。第二件事是，最终的篝火晚会上，北村邀请了大河一起跳舞。</p>
-<p>在这里，似乎龙虎同盟的目的即将达成，因为大河和北村，龙儿和实乃梨，这两对的关系都得到了进展。然而，转折也就随之而来，学生会长竞选事件的爆发，让大河最终认识到北村早就心有所属，其对自己的关心不过是作为朋友的关心，大河对北村的热情也随之慢慢地弱化。但是，大河先前对北村的追求，是全班都知道的，在北村表白失败后，全班为了安慰北村防止其再次自暴自弃，尝试着撮合北村和大河。另外，由于大河的学生手册中夹着在篝火晚会上她和北村共舞的照片，北村和大河的关系，在<strong>旁人眼中</strong>得到了强化。而这也让实乃梨终于敢于承认对龙儿的好感，出于龙虎同盟的约定，大河也更加卖力地帮助龙儿追求实乃梨。</p>
-<p>然而，实乃梨在亚美的质疑下，并没能成功面对自己对龙儿的好感，而是逃避着这一切。</p>
-<p>这之后，就是圣诞夜。学生会计划在圣诞夜举办派对，大河此时依然在帮助龙儿在圣诞夜向实乃梨表白，龙儿也为实乃梨准备了发卡作为礼物。但是由于实乃梨此时不断地逃避着自己的感情，不愿意面对大河和龙儿，所以并不计划参与圣诞派对，即使龙儿已经盛情邀请。大河在派对当晚，完成了演出之后立刻前往实乃梨家劝说其前往派对，并撒谎夸大了龙儿对实乃梨的承诺。大河由于此时已经逐步对龙儿产生好感，无法面对实乃梨和龙儿最终将会走到一起的现实，于是在劝说实乃梨后径直回家，没有再前往派对。</p>
-<p>在派对现场的龙儿，从亚美处了解到了大河早已回家，想到大河之前提到过想要见圣诞老人的想法，出于对大河的关心和担忧，立刻和别人借到一套戏服打扮成圣诞老人前往大河家。在和大河玩乐一圈后，大河意识到终究是要让龙儿回到派对现场，出于先前已经和实乃梨夸下海口并且龙虎同盟的约定也是如此，于是大河强硬地将龙儿赶去了派对。</p>
-<p>然而，在送走龙儿后，大河终于意识到，如果一切进展顺利，实乃梨最终和龙儿在一起，自己将无法时时刻刻呆在龙儿身边。也就是说自己已经视之平常的和龙儿的相伴，被自己亲手推向了毁灭。意识到这一切的大河情感崩溃了，赶忙出门追龙儿，但是已经为时已晚，只能无助地跪在路边痛哭。</p>
-<p>之后便是修学旅行，本年度修学旅行是前往雪山的滑雪之旅。在修学旅行中，亚美和实乃梨就情感问题爆发争执，这争执过程中，龙儿送给实乃梨的发卡掉落在悬崖下，而大河为了取回发卡，冒险滑下悬崖，最终被困。得知此事后，龙儿立刻前往营救并最终背回大河，大河在逐渐苏醒的过程中将龙儿错认为北村，并自言自语般透露了“这种时候还愿意管我的应该只有龙儿才对”并且透露了自己喜欢龙儿。龙儿听到了，但是没有戳穿自己不是北村这一事实。</p>
-<p>最后，大河为了感谢大家在自己遇难的时候帮助自己，将主角团召集在一起计划送给大家巧克力作为答谢。为了统一口径，龙儿特别叮嘱了北村，要假装成救援大河的是北村而不是自己，因为其知道大河在躲避承认感情，要是让大河知道了当晚她说的话已经被自己听到了，很有可能导致矛盾，然而龙儿忘了叮嘱知道真相的实乃梨。于是在大河送巧克力的时候，实乃梨认识到了大河并不知道真相，并且立刻明白了龙儿也在躲避大河的感情，而非正面面对。主角团其余人在此时达成共识，坚决不能让龙虎再躲避两人之间的感情，于是强硬地要求两人面对内心。大河在这样的情况下，选择了逃跑，而在追逐大河的时候，实乃梨终于不再压抑自己的情感，大声宣称自己对龙儿也是充满好感，但是由于自己还有棒球梦想，而且龙虎同盟已经事实存在了很长时间，实乃梨最终决定放弃了自己在情感上的追求。</p>
-<p>在这一连串事情后，龙虎二人最终互相表白。为了得到家长的认可，龙虎二人投奔了龙儿的祖父母，并用骗称龙儿遭遇事故将已经离家出走十余年的龙儿母亲骗回了家人身旁。大河在观察到龙儿的家庭之后，决心面对自己的家庭，在留下留言后，大河决定退学回到父母身边一段时间。面对这样的不辞而别，龙儿虽然不甘，但是依然充分理解。一年后，在毕业典礼上，大河终于回归，龙虎也终于破除了所有的感情障碍，走到了一起。</p>
-<h2 id="实乃梨">实乃梨</h2>
-<p>本作女二。其有一个弟弟，她和弟弟都擅长棒球，但是家庭却仅仅支持弟弟的棒球事业。不服输的实乃梨计划通过高中课余时间打工攒钱，在高中毕业后自给自足前往体育大学就读。实乃梨的性格对外而言是相当阳光开放的，然而其内心却相当闭塞和喜欢逃避现实。</p>
-<p>在感情上，由于这一梦想的存在，实乃梨一般并没有体现出自己的情感取向，更多的时候是以一副和感情绝缘的面貌示人。然而，由于目睹了龙儿的很多事迹之后，实乃梨慢慢对龙儿产生了好感。</p>
-<p>在暑期合宿中，龙儿在和实乃梨两人独处对话的时候，流露出了对实乃梨的好感，然而实乃梨并没有爽快承认，仅仅是搁置了这一议题。事实上，这是因为实乃梨想要维护龙虎同盟而在自己的感情上做出的让步。</p>
-<p>学园祭的男子选拔中，其和龙儿为了安慰受伤的大河，联手拿下了比赛的第一，事后，两人都收藏了和对方牵手冲线的照片。</p>
-<p>由于在她眼中看来，大河和北村的情感愈发成熟，其不需要再顾及好友的情感而不敢表达对龙儿的好感。所以在看到大河的学生手册中夹着和北村的合照之后，其松了一口气。但是这个时候，亚美发出了灵魂疑问：</p>
-<div class="note info no-icon"><p>负罪感，减少了吗？</p>
-</div>
-<p>在这样的疑问之下，实乃梨又一次对自己的情感犹豫了，她认为自己的情感牵挂的事情太多，自己选择龙儿依然被好友大河的情感牵制，于是她躲避了自己对龙儿的情感。然而在这种心不在焉的状态下，实乃梨甚至输掉了从来没想过会输的棒球比赛。</p>
-<p>在这样的低谷之下，实乃梨显然无法面对龙儿想和她一起参与圣诞派对的邀请。然而，在当晚大河的劝说下，实乃梨最终还是计划前往会场，但是，在路过大河公寓的时候，她看见了跪在地上痛哭的大河。这个时候实乃梨明白了实际上大河依然和自己想的一样喜欢着龙儿，大河依然还是出于朋友之间的情谊，将龙儿让给了自己，而大河自己却在忍耐着这些痛苦。实乃梨最终在遇到了龙儿的时候，还未等他开口，便拒绝了龙儿的所有好意。</p>
-<p>实乃梨对自己感情的极端逃避引来了亚美的不满，而这也是修学旅行中两人争吵的根本原因。在争吵导致大河遇难等一系列事情后，最终在大河送巧克力的时候，实乃梨终于鼓起勇气面对自己的感情，承认了龙儿终究不会选择和自己走到一起，那么自己就要更为棒球梦想努力。而正式与自己的感情告别的标志是另外一个名场景，实乃梨为了激励龙儿去追逐大河，伸出拳头给龙儿打气，结果碰到了龙儿的嘴唇，当时并没有发生什么，但是当龙儿下定决心飞奔去追逐大河之后，实乃梨偷偷亲吻了刚刚碰到龙儿嘴唇的拳头。</p>
-<p>然而，即使鼓起勇气，实乃梨依然改变不了自己的挚友和自己喜欢的人最终走到了一起，最终会离自己远去的事实，在痛哭一顿后，实乃梨最终接受了现实。</p>
-<h2 id="亚美">亚美</h2>
-<p>本作女三，是北村的青梅竹马。亚美是职业模特，因为跟踪狂的原因被迫放弃工作并转学，并且在工作中磨练了一套伪装术，也就是所谓人前一套人后一套。有着丰富的社会阅历，对主角团的这些情感问题看得最为透彻，甚至接近上帝视角，然而涉及到如何去解决的时候，又缺乏和青春期少年少女交流的能力，很容易触发意料之外的矛盾冲突。</p>
-<p>亚美的感情线较为简单，即在龙儿劝说她放弃伪装和大河暴打跟踪狂后，亚美就对龙儿产生了好感。但是亚美作为主角团中心态最为成熟的一人，其对龙儿的依赖感是最弱的，仅仅是保持了好感和希望其多关心自己的愿望。</p>
-<p>相对地，龙儿则几乎完全将亚美作为自己的朋友看待，在各种对话中也不会将自己和亚美并称。</p>
-<h1 id="一些想说的话">一些想说的话</h1>
-<p>这个作品的感情线是真的扭曲，尤其是圣诞夜，如果加上前夕的话，这一段时间主角团五人全部失恋。首先是北村表白被会长冷处理，之后是亚美向龙儿示好也被龙儿忽视，再然后是大河亲手将自己和龙儿相伴的机会毁灭而痛哭，其后是实乃梨看到大河对龙儿的热烈的情感而决心放弃自己的感情，最后是龙儿甚至没有表白就被实乃梨回绝。</p>
-<p>虽然虽然，龙儿和大河在当时已经几乎快要两情相悦，但就是这么阴差阳错让两人到了更晚才确定互相的心意。</p>
-<p>不过，我为什么还是觉得这部番相当优秀，是因为这部番的感情线虽然很扭曲，但是却真实。虽说不能忽视艺术加工，但是这部番对青春期的少年少女朦胧青涩、飘忽不定的情感，以及在此基础上对自己情感的逃避，对友情和爱情之间的抉择，对家庭的理解等等的刻画十分真实。就以我自己为例，我中学时期对爱情的认识也不过是一种飘忽的感情，大多时候并没有区分一场随便的恋爱和需要承诺和责任附加的一场恋爱，所以即使有观众认为不真实，但我认为大河到最后，到真正将龙儿推给实乃梨的时候才真正认识到一直支撑、关注自己的并非是北村而是龙儿，这样的认知变化也并不虚假，而且前期就已经铺垫了大河是笨拙迟钝的。事实上，就我个人而言，2021 年的时候我的情感动荡，直到 Sakana 离我远去才真正敢于面对自己内心对 Sakana 的情感而自责为何之前会冷处理两人的关系长达两三年。说实话，大河在圣诞夜的痛哭，我是觉得相当真实的，因为人真的是不见棺材不落泪，不到真的要失去了，都不会正视自己的情感。</p>
-<p>但要说这部番的情感刻画上的问题，说实话我觉得对龙儿的情感刻画还有些欠缺，尤其是其一直到圣诞都还对实乃梨保持好感，那他究竟出于什么样的契机就爱上了大河呢？这一点实际上并没有描绘得很好。不过实际上也是可以理解的，就和大河认知转变一样，在实乃梨拒绝自己之后，龙儿这才回归了理智，缓慢认识到自己陪伴良久的大河才真正让自己动心。但这个说法也有问题，因为龙儿本身就有主妇属性，长期照顾的女性可以是母亲，可以是女儿，并不一定是恋人。所以正因此，这部番也有不少人调侃龙虎之间更像是父女。</p>
-<p>但整体依然瑕不掩瑜，整部番很长，大河从开头的乖戾逐步变得善解人意和温柔，这样的成长和转变无疑让我钦佩作者对大河这个人物的刻画的深度，如此大的性格转变却不显得突兀。整部番的泪点很多，因为本身就设定在类似单亲家庭等并不健全的环境上，很容易凸显人物的伟大之处，无论是将龙儿抚养成人的母亲，还是最终决定重返家庭的大河，这些人物的光芒就显得相当耀眼。</p>
-<p>整体上来看，我是真的觉得这部番和《中二病》可以并称我最喜欢的恋爱番，因为他们都不止是简单发糖，他们都让我看到了爱情对一个人的改变，让我看到了两个人互相支持应当是什么样的。虽然《龙与虎》对男女主之间的感情刻画并没有多少篇幅，但是这种从无感走到一起的长途跋涉却又是另外一番有趣。</p>
-<p>总之，很好的一部番，很真实很有共鸣的一部番，让我能够一时脱离当下充斥的快节奏工业糖精恋爱番，重新想一想两个人应当如何建构感情，两个人应当如何面对各种现实问题，无论是家庭还是未来。</p>
-]]></content>
-      <categories>
-        <category>【杂谈】游戏 &amp; 番剧</category>
       </categories>
   </entry>
   <entry>
@@ -17628,6 +17140,515 @@ u_\psi(\mathcal{D}^{\rm tr}_{\mathcal{T}}, \theta) = \theta - \alpha\nabla_\thet
 ]]></content>
       <categories>
         <category>【杂谈】碎碎念</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>2022 年 9 月论文笔记</title>
+    <url>/2022/09/20/paper-2022-09/</url>
+    <content><![CDATA[<p>这个月正式参与进入了实验室和快手的一个合作项目，依然还是需要从论文先开始。</p>
+<span id="more"></span>
+<h1 id="causalsim---unbiased-trace-driven-network-simulation">CausalSim - Unbiased Trace-Driven Network Simulation</h1>
+<h2 id="abstract-introduction">Abstract &amp; Introduction</h2>
+<p>在测评网络协议在线上的实际性能的时候，虽然 RCT 方法是最为标准的，但是由于其极其昂贵，对周边基础设施的要求也很高，所以只有若干大型网络运营方才能支持这种测评方法。基于此，一般的研究所会选择网络模拟器或者 trace-based simulation。但是网络模拟器往往难以模拟出真实网络环境中的复杂情况，并且这类模拟器需要对网络环境的极其详细的掌握。而 trace-based simulation 又常常因为数据质量不高或者有偏导致测评不精确。</p>
+<p>【RCT 方法之后看论文】</p>
+<p>应用反事实模拟以利用离线历史数据的主要思路为，首先获取在某一个给定网络条件下使用某一个网络协议时的 trajectory，而我们需要训练一个模型来预测在这个网络条件下使用其他网络协议的时候的 trajectory。基于这个模型，我们只需要已知一个协议的性能，就能够得知新协议的性能表现而不需要实际部署该协议。</p>
+<p>使用反事实模拟的好处包括：</p>
+<ul>
+<li>节省部署协议和使用 RCT 方法评测的成本</li>
+<li>能够在完全一致的网络条件下比较不同协议的差异</li>
+<li>使用模型进行反事实模拟得到的数据可在社区内交流，帮助无法访问大型网络以测试其协议设计的开发者</li>
+</ul>
+<p>当然，反事实模拟的方法是困难的，原因之一是用于采集观测数据的策略可能破坏无偏性，这一点我们后续阐述。</p>
+<p>那么本文的核心成果就是：</p>
+<div class="note info no-icon"><p>We present CausalSim, a framework for learning <strong>unbiased trace-driven counterfactual simulation models</strong> for network protocols.</p>
+</div>
+<h2 id="motivation">Motivation</h2>
+<p>总体而言，该文章尝试解决的问题依然是，考虑到直接线上测试算法性能较为耗时且代价较大，能否：</p>
+<ul>
+<li>使用历史数据预测算法的性能</li>
+<li>服务运营商能否使用历史数据构建一个模拟器使得开发者可以在不接触实际网络环境的条件下评测算法</li>
+</ul>
+<h3 id="the-problem-of-trace-driven-network-simulation">The problem of trace-driven network simulation</h3>
+<p>这一部分假设了一个新算法 FabABR，然后在 Puffer 数据集上收集了类似 BOLA-BASIC、BBA、Fugu 等已知的算法在给定的网络条件下的 buffer occupancy，令 BOLA-BASIC v1 充当新算法 FabABR，之后构建了两个模型来通过其他已知算法的 buffer occupancy 预测 FabABR 的 buffer occupancy，并和 ground truth 比较。</p>
+<p>当然，在实际环境中，我们是没有 ground truth 的，因为我们没有新算法通过 RCT 方法评测得到的 buffer occupancy 作为 ground truth。</p>
+<p>第一个模型是 ExpertSim。其原理为，在某个网络条件下，如果某个算法在时刻 <span class="math inline">\(t\)</span> 达成的吞吐率为 <span class="math inline">\(\hat c_t\)</span>，那么我们假设在该网络条件下，新算法达成的吞吐率也是 <span class="math inline">\(\hat c_t\)</span>。这也是该模型的首要假设，即不同算法对码率的决策不影响观测到的网络吞吐率，而这个假设广泛应用于各种模型。</p>
+<p>在这个假设下，记时刻 <span class="math inline">\(t\)</span> 时的 buffer size 为 <span class="math inline">\(b_t\)</span>，而时刻 <span class="math inline">\(t + 1\)</span> 时的 buffer size 为 <span class="math inline">\(b_{t + 1}\)</span>，时刻 <span class="math inline">\(t\)</span> 的视频块时间为 <span class="math inline">\(T\)</span>，根据 FabABR 选择的码率该视频块的大小为 <span class="math inline">\(s_t\)</span>，那么：</p>
+<p><span class="math display">\[
+b_{t + 1} = \max\left(0, b_t - \frac{s_t}{\hat c_t}\right) + T
+\]</span></p>
+<p>第二个模型为 SLSim。其模型为两层全链接层，每层 128 个 ReLU 激活的神经元。该网络的输入为 <span class="math inline">\(b_t, \hat c_t, s_t\)</span>，输出为 <span class="math inline">\(b_{t + 1}\)</span>，符号的意义同上。由于我们具有 ground truth，我们就将其作为 supervisor 进行训练，loss 设定为 L2 loss。最后的实验结果为：</p>
+<p><img src="/uploads/paper-2022-09/1.png" height="50%" width="50%" /></p>
+<p>这里可以看见两种模型都不及 CausalSim 做出的预测。而这一差距的本质就是这两个模型都默认了不同算法对码率的决策不影响观测到的网络吞吐率，但实际上由于类似于 TCP 慢启动、和其他流量竞争等因素，不同的码率选择实际上会影响实际的吞吐率。而 Puffer 数据集实际上就能证明该假设错误：</p>
+<p><img src="/uploads/paper-2022-09/2.png" height="50%" width="50%" /></p>
+<p>可见不同算法影响了吞吐率的分布。这种错误的假设导致了数据的有偏。</p>
+<h3 id="causal-inference-to-the-rescue">Causal inference to the rescue</h3>
+<p>如果我们能够获取更深层次的网络情况而非仅仅是表层的吞吐率，我们完全就能修正原先的错误假设，这是因为我们可以将这些底层的网络情况视作独立于 ABR 算法的因素。</p>
+<p>但是这些底层网络情况并不出现在数据集中，我们需要通过表层数据推测这些底层情况，而这也就是反事实推理介入的地方。</p>
+<p>具体的设计见下述部分。</p>
+<h2 id="model">Model</h2>
+<h3 id="causal-dynamics">Causal dynamics</h3>
+<p>我们给出这样的建模，令 <span class="math inline">\(o_t^\star\)</span> 表示时刻 <span class="math inline">\(t\)</span> 的时候系统观测到的表层数据，<span class="math inline">\(u_t\)</span> 表示时刻 <span class="math inline">\(t\)</span> 的时候系统的底层数据，<span class="math inline">\(a_t\)</span> 表示时刻 <span class="math inline">\(t\)</span> 时我们对系统做出的决策，那么系统行为可以建模为：</p>
+<p><span class="math display">\[
+o_{t + 1}^\star = \mathcal{F}_{\rm evolution}(o_t^\star, u_t, a_t)
+\]</span></p>
+<p>在 ABR 问题中，<span class="math inline">\(o_t^\star\)</span> 包括的因素有 buffer size、实际吞吐率、Min RTT、可选视频块大小，而 <span class="math inline">\(u_t\)</span> 包括的因素有瓶颈连接时间、竞争流量的数量、竞争流量的 congestion control。</p>
+<p>此外，我们可以将 <span class="math inline">\(o_t^\star\)</span> 拆分为 <span class="math inline">\(o_t\)</span> 和 <span class="math inline">\(m_t\)</span>，这里 <span class="math inline">\(m_t\)</span> 是观测数据中受到底层数据所影响的部分，从而我们可以拆分出纯外部数据 <span class="math inline">\(o_t\)</span>，而后续我们所称呼的“观测数据”即指代 <span class="math inline">\(o_t\)</span>。这一步拆分后，建模可以变为：</p>
+<p><span class="math display">\[
+\begin{aligned}
+m_t &amp;= \mathcal{F}_{\rm mediation}(a_t, u_t) \\
+o_{t + 1} &amp;= \mathcal{F}_{\rm system}(o_t, m_t, a_t) \\
+o_t^\star &amp;= [o_t, m_t]
+\end{aligned}
+\]</span></p>
+<p>这里，我们需要说明的是 <span class="math inline">\(m_t\)</span> 是可观测的，而 <span class="math inline">\(u_t\)</span> 是潜在而不可观测的。另外，<span class="math inline">\(m_t\)</span> 受到决策的影响，而 <span class="math inline">\(u_t\)</span> 不受到决策的影响。</p>
+<p>在 ABR 问题中，<span class="math inline">\(m_t\)</span> 就是我们实现的吞吐率，其不仅受到潜在网络环境影响，还受到 ABR 码率决策的影响，而这也就是先前两个策略失败的核心原因。此外，根据该建模，在得知吞吐率 <span class="math inline">\(m_t\)</span> 的信息之后，我们完全不需要了解其他信息即可推断出其他可观测的信息 <span class="math inline">\(o_t\)</span>。</p>
+<h3 id="trace-driven-simulation-is-counterfactual-estimation">Trace-driven simulation is counterfactual estimation</h3>
+<p>首先统一符号，我们假设数据集一共采用了 <span class="math inline">\(K\)</span> 种不同算法，一共生成了 <span class="math inline">\(N\)</span> 条 trajectory，我们记第 <span class="math inline">\(i\)</span> 个 trajectory 的长度为 <span class="math inline">\(H_i\)</span>。</p>
+<p>那么我们的训练策略可以描述为，首先对于任何 <span class="math inline">\(i\)</span>，我们给出决策序列 <span class="math inline">\(\{\tilde a_t^i\}_{t = 1}^{H_i}\)</span>，给定初始观测 <span class="math inline">\(o_1^i\)</span>，并且我们确定所有 trajectory 均基于同一个潜在状态序列 <span class="math inline">\(\{u_t^i\}_{t = 1}^{H_i}\)</span>，我们的目的是预测出观测序列 <span class="math inline">\(\{\tilde o_t^i\}_{t = 1}^{H_i}\)</span>。</p>
+<p>此外，我们注意到学习 <span class="math inline">\(\mathcal{F}_{\rm system}\)</span> 是完全监督的，因为所有需要的数据均可以观测。所以最终的困难点在于估计 <span class="math inline">\(\{u_t^i\}_{t = 1}^{H_i}, \{m_t^i\}_{t = 1}^{H_i}\)</span> 以及学习 <span class="math inline">\(\mathcal{F}_{\rm mediation}\)</span>。</p>
+<h2 id="causalsim---key-insights">CausalSim - Key insights</h2>
+<h3 id="counterfactual-estimation-as-matrix-completion">Counterfactual estimation as matrix completion</h3>
+<p>这一步的核心在于将反事实推理等效为矩阵填充问题。我们假设动作空间大小为 <span class="math inline">\(A\)</span>，即 <span class="math inline">\(a_t^i \in \{1, 2, \cdots, A\}\)</span>，另外记：</p>
+<p><span class="math display">\[
+U := \sum_{i = 1}^NH_i
+\]</span></p>
+<p>那么我们考虑一个 <span class="math inline">\(A \times U\)</span> 的矩阵，其中每一行代表一种决策，每一列代表潜在状态。这里我们将第 <span class="math inline">\(i\)</span> 个 trajectory 的第 <span class="math inline">\(t\)</span> 时刻中所有的 <span class="math inline">\((i, t)\)</span> 按 <span class="math inline">\(i\)</span> 为主序数排列为长度为 <span class="math inline">\(U\)</span> 的序列，从而每一个 <span class="math inline">\((i, t)\)</span> 都能对应到 <span class="math inline">\(M\)</span> 中的某一列。</p>
+<p>在第 <span class="math inline">\(i\)</span> 个 trajectory 的第 <span class="math inline">\(t\)</span> 时刻，我们观测到 <span class="math inline">\(m_t^i = \mathcal{F}_{\rm mediation}(a_t^i, u_t^i)\)</span>，而 <span class="math inline">\(m_t^i\)</span> 就是矩阵 <span class="math inline">\(M\)</span> 中 <span class="math inline">\(a_t^i\)</span> 所对应的行和 <span class="math inline">\((i, t)\)</span> 所对应的列处的已知元素，该列其余元素均为未知元素。也就是说我们在初始条件下，每一列都会有一个已知元素。</p>
+<p>而现有的矩阵填充算法并不能直接应用到本问题上，因为本问题中的 <span class="math inline">\(M\)</span> 元素缺失的 pattern 并不随机并且缺失元素数量过多。但是另外一方面，矩阵 <span class="math inline">\(M\)</span> 显然具有更为优越的结构，因为元素缺失的 pattern 和已知的 ABR 算法决策流程相关，并且 <span class="math inline">\(N\)</span> 个 trajectory 的网络潜在条件是一致的。</p>
+<h3 id="exploiting-the-policy-invarience-of-latent-factors">Exploiting the policy invarience of latent factors</h3>
+<p>我们这里考虑一个简单情况，即 <span class="math inline">\(A = 2, U = 2n\)</span>，并且矩阵 <span class="math inline">\(M\)</span> 秩为 <span class="math inline">\(1\)</span>。这说明存在 <span class="math inline">\(a \in \mathbb{R}^2, u \in \mathbb{R}^{2n}\)</span> 满足 <span class="math inline">\(M = au^T\)</span>。之后我们令 <span class="math inline">\(K = 2\)</span>。</p>
+<p>考虑到：</p>
+<p><span class="math display">\[
+\frac{M_{1, j}}{M_{2, j}} = \frac{a_1u_j}{a_2u_j} = \frac{a_1}{a_2}
+\]</span></p>
+<p>并且每一列必然有一个已知元素，所以我们只需要估计 <span class="math inline">\(a_1 / a_2\)</span>。</p>
+<p>另外，基于两个 trajectory 均基于一致的网络潜在条件，所以对于较大的 <span class="math inline">\(n\)</span>，每一列的期望应当类似，所以有以下估计（这个估计我感觉比较奇怪，说理也比较不充分）：</p>
+<p><span class="math display">\[
+\frac{1}{n}\sum_{j = 1}^n u_j \approx \frac{1}{n}\sum_{j = n + 1}^{2n} u_j
+\]</span></p>
+<p>之后我们就可以得到下述估计：</p>
+<p><span class="math display">\[
+\frac{\sum_{j = 1}^n M_{1, j}}{\sum_{j = n + 1}^{2n} M_{2, j}} = \frac{\sum_{j = 1}^n a_1u_j}{\sum_{j = n + 1}^{2n} a_2u_j} \approx \frac{a_1}{a_2}
+\]</span></p>
+<p>从而我们得到了我们需要的估计，从而我们就能补充完整整个矩阵。</p>
+<h2 id="causalsim---details">CausalSim - Details</h2>
+<p>最后采用了这样的一个网络结构：</p>
+<p><img src="/uploads/paper-2022-09/3.png" height="50%" width="50%" /></p>
+<p>该网络的目标是为了获取不变的潜在条件 <span class="math inline">\(\{u_t^i\}_{t = 1}^{H_i}\)</span>，而完成这项任务的网络是 Policy Discriminator，其接受 <span class="math inline">\(\{u_t^i\}_{t = 1}^{H_i}\)</span> 作为输入，输出为其认为该行为决策是由哪一个算法做出的。由于其为一个简单的多分类任务，所以其 loss 就采用简单的交叉熵表示为：</p>
+<p><span class="math display">\[
+\mathcal{L}_{\rm disc} := \mathbb{E}_D[-\ln \mathbb{P}(\pi \mid \hat u)]
+\]</span></p>
+<p>而我们的目标是让 Policy Discriminator 的 loss 尽可能大，从而通过分类器无法区分各类算法保证抽取的潜在不变条件确实和具体的算法无关。</p>
+<p>整个网络采用的 loss 为：</p>
+<p><span class="math display">\[
+\mathcal{L}_{\rm total} := \mathbb{E}_D[\delta(m_t^i - \hat m_t^i)^2 + (o_t^i - \hat o_t^i)^2] - \kappa\mathcal{L}_{\rm disc}
+\]</span></p>
+<h2 id="evaluation">Evaluation</h2>
+<h3 id="a-real-world-abr-experiment">A real-world ABR experiment</h3>
+<p>实验过程比较简单，问题出现在如何评测。因为 Puffer 数据集里每一个 trajectory 仅使用了一种算法跑过，所以实际上是无法对多个新算法进行评测的。所以其采用了评价变量分布的方式进行评测。即，不同的算法在不同的 trajectory 上运行，只要潜在网络因素不变，各类变量的分布应该是类似的。那么基于此，我们只要再做一次模拟，之后指定一个变量，评价两次模拟中该变量分布之间的差距。这里评价分布的差距使用 EMD：</p>
+<p><span class="math display">\[
+{\rm EMD}(\mathcal{P}, \mathcal{Q}) := \int_{-\infty}^{+\infty} |\mathcal{P}(x) - \mathcal{Q}(x)| {\rm d}x
+\]</span></p>
+<p>这里 <span class="math inline">\(\mathcal{P}, \mathcal{Q}\)</span> 都是累积分布函数。</p>
+<p>评测结果自然是 CausalSim 很厉害：</p>
+<p><img src="/uploads/paper-2022-09/4.png" height="50%" width="50%" /></p>
+<h3 id="learning-abr-policies-with-causalsim">Learning ABR policies with CausalSim</h3>
+<p>既然现在已经具有了工作良好的模拟器，我们就可以利用该模拟器训练 ABR，具体的过程不阐述，结果如下：</p>
+<p><img src="/uploads/paper-2022-09/5.png" height="70%" width="70%" /></p>
+<p>总体而言，CausalSim 显然和真实环境下训练的结果贴近，而其他的模拟器均有很大偏差。并且对于高 RTT 的 Agent，这个差距更大。这个差距的根本原因依然是其他模拟器都是有偏的，在例如慢启动等条件下，容易选择保守的码率。</p>
+<h3 id="server-load-balancing">Server load balancing</h3>
+<p>【PASS】</p>
+<h2 id="final-analysis">Final analysis</h2>
+<p>读这一篇论文目的是为了研究怎么离线评测算法，也就是训练一个合理的环境模拟器出来。但感觉本文的一个核心思想为将网络吞吐率等因素视作和 ABR 决策有关的变量，将其纳入考虑。严格而言就是更新了对环境内部逻辑的建模，使之更为贴近真实环境。而如果不把网络吞吐率纳入考虑，则前一时刻无论做出什么选择，下一时刻环境都会要求算法实现同样的吞吐率，从而导致算法趋近于保守，在高 RTT Agent 上表现出仅选择较低码率。</p>
+<p>方法上的话，感觉 Policy Discriminator 没有太见过，是一个训练无关性的好方法。</p>
+<h1 id="deployment-efficient-reinforcement-learning-via-model-based-offline-optimization">Deployment-Efficient Reinforcement Learning via Model-Based Offline Optimization</h1>
+<h2 id="abstract-introduction-1">Abstract &amp; Introduction</h2>
+<p>离线 RL 的问题在于在线和环境交互可能导致较大开销，为了解决这一问题，主要的策略分为：</p>
+<ul>
+<li>限制 agent 的行为，防止其做出错误举动。这里 BCQ 就采用了这样的做法（但是 BCQ 论文实在是需要慢慢看）</li>
+<li>强化 agent 的 exploitation 能力，令其最大化利用有限的数据</li>
+</ul>
+<p>本文的成果是提出了衡量 RL 算法的一个指标，即 deployment efficiency，其基于了 RL 学习过程中数据采集策略发生变化的次数（因为策略发生变化意味着需要一次新的部署）。完全离线的 RL 算法如 BCQ、BRAC 具有很高的 deployment efficiency，而完全在线的 RL 算法如 DDPG、SAC 则较低。</p>
+<p>论文特别指出，deployment efficiency 和已有的 data efficiency 并不完全类似，这里后者衡量了 RL 学习过程中采集数据的次数。这意味着，即使 data efficiency 很低（数据采样次数极大），只要收集数据的策略没变，那么 deployment efficiency 依然较高。</p>
+<p>目前大部分的离线 RL 算法都在大数据集上进行训练和评测，以保证 deployment efficiency 和 data efficiency 都很高。但实际上我们注意到由于 extrapolation error，这种简单直接的算法其实并不优越。而对于在线算法，虽然可以克服数据集数据分布不符合真实数据分布的问题，但实际上会限制 policy 的表达能力【Question #1：这里没有特别明白】。</p>
+<p>此外，本文还提出了 BREMEN，即 Behavior Regularized Model ENsemble。</p>
+<div class="note info no-icon"><p>We propose Behavior-Regularized Model-ENsemble (BREMEN), which learns an ensemble of dynamics models in conjunction with a policy using imaginary rollouts while implicitly regularizing the learned policy via appropriate parameter initialization and conservative trust-region learning updates.</p>
+</div>
+<p>自然，BREMEN 在高维连续决策空间上也表现很好。</p>
+<h2 id="preliminaries">Preliminaries</h2>
+<p>首先定义 MDP <span class="math inline">\((\mathcal{S}, \mathcal{A}, p, r, \gamma)\)</span>，而 policy <span class="math inline">\(\pi\)</span> 定义了 agent 的行为，<span class="math inline">\(\pi\)</span> 接受一个状态，输出一个状态空间 <span class="math inline">\(\mathcal{A}\)</span> 上的概率分布，表示 agent 做出给定行为的概率。我们的目标是获取下述最优 policy：</p>
+<p><span class="math display">\[
+\pi^* = \mathop{\rm argmax}_\pi \eta[\pi] = \mathop{\rm argmax}_\pi \mathbb{E}_\pi\left[\sum_{t = 0}^{+\infty} \gamma^tr(s_t)\right]
+\]</span></p>
+<p>而所谓 model-based 的 RL 方法，就需要对 MDP 中的 <span class="math inline">\(p(s&#39; \mid s, a)\)</span> 建模估计。</p>
+<p>RL 的学习过程中包含两种行为，分别为获取 MDP 转移对（即 deployment）与更新 policy 参数（即 learning）。如果学习过程中每次更新参数后均将收集到的数据舍弃，那么该学习就是 on-policy 的。反之，如果不断积累数据形成 replay dataset <span class="math inline">\(\mathcal{D}\)</span>，那么该学习就是 off-policy 的，因为用于更新 policy 的数据并不一定通过当前 policy 收集。</p>
+<p>但是上述的学习过程都是 online 的，因为其 deployment 和 learning 是混合进行的，而纯 offline 算法中 agent 不会直接与环境进行任何的交互，agent 只能从固定的数据集之中学习。当然，介于 online 和 offline 之间有 semi-batch RL，其实现了较高的 deployment efficiency，当然这种方法并没有完全研究过。</p>
+<h2 id="deployment-efficiency">Deployment efficiency</h2>
+<p>这里主要阐述这样的观点，即对于 online RL，无论其是 on-policy 还是 off-policy，在一次迭代之后，必然会部署新的 policy 并获取数据，这显然是 deployment unefficient 的。相反，纯 offline RL 只会学习一次部署得到的数据。而一个理想的平衡算法应当位于这两个极端之间。</p>
+<p>论文认为现在的 RL 算法忽视了 deployment efficiency，并且现行的部分 SOTA 算法甚至需要百万量级的部署次数（如 SAC）。本文提出了只需要五次到十次部署即可有效学习的算法。</p>
+<h2 id="behavior-regularized-model-ensemble">Behavior regularized model ensemble</h2>
+<h3 id="imaginary-rollout-from-model-ensemble">Imaginary rollout from model ensemble</h3>
+<p>为了解决 model bias 的问题，BREMEN 使用了包含 <span class="math inline">\(K\)</span> 个 deterministic dynamic model 的 <span class="math inline">\(\hat f_\phi := \left\{\hat f_{\phi_1}, \cdots, \hat f_{\phi_K}\right\}\)</span>，其中 <span class="math inline">\(\phi_i\)</span> 表示模型参数。这些模型的训练方式都是最小化下述均方误差，即 model 预测的后续状态和数据集 <span class="math inline">\(\mathcal{D}\)</span> 指示的后续状态：</p>
+<p><span class="math display">\[
+\min_{\phi_i} \frac{1}{|\mathcal{D}|} \sum_{(s_t, a_t; s_{t + 1}) \in \mathcal{D}} \frac{1}{2} \left\|s_{t + 1} - \hat f_{\phi_i}(s_t, a_t)\right\|_2^2
+\]</span></p>
+<p>在实际训练 policy <span class="math inline">\(\pi_\theta\)</span> 的时候，会从这 <span class="math inline">\(K\)</span> 个 model 中随机选择一个来提供下一状态：</p>
+<p><span class="math display">\[
+a_t \sim \pi_\theta(\cdot \mid \hat s_t), \hat s_{t + 1} = \hat f_{\phi_t}(\hat s_t, a_t), i \sim \{1, 2, \cdots, K\}
+\]</span></p>
+<h3 id="policy-update-with-behavior-regularization">Policy update with behavior regularization</h3>
+<p>这里训练具体的 policy 的时候，需要使用置信区间约束来解决 distribution shift 的问题，即在每一次部署之后都使用 behavior clone 得到的 policy <span class="math inline">\(\hat\pi_\beta\)</span> 对 <span class="math inline">\(\pi_\theta\)</span> 重新初始化。具体而言，在每一次部署之后我们都能得到一个更新过的数据集 <span class="math inline">\(\mathcal{D}\)</span>，从而我们使用 BC 对真实的 policy <span class="math inline">\(\pi_b\)</span> 进行估计。具体的训练方式为下述，这里论文作了 fixed variance 假设：</p>
+<p><span class="math display">\[
+\min_\beta \frac{1}{|\mathcal{D}|} \sum_{(s_t, a_t) \in \mathcal{D}} \frac{1}{2} \left\|a_t - \hat\pi_\beta(s_t)\right\|_2^2
+\]</span></p>
+<div class="note info no-icon"><p>好像 behavior clone 和 distribution shift 都是模仿学习的东西，这里还真的不太会，后面补。</p>
+<p>一个可能有用的 <a href="https://wensun.github.io/CS4789_data/Imitation_Learning_April_8_annotated.pdf">slide</a>。</p>
+<hr />
+<p>似乎学明白了一点东西，模仿学习是一种改进的 RL，其面对的是无法合理得到 reward signal 的 RL 环境，但是其可以获得部分专家数据，那么我们就可以模仿专家数据进行学习，这就是 behavior clone。</p>
+<p>behavior clone 的基本思想借鉴了监督学习。例如我们获得了专家数据集 <span class="math inline">\(\mathcal{D}\)</span>，那么我们的训练方式就是：</p>
+<p><span class="math display">\[
+\theta^* := \mathop{\rm argmin}_\theta \mathbb{E}_{(s, a) \sim \mathcal{D}} \mathcal{L}(\pi_\theta(s), a)
+\]</span></p>
+<p>这里 <span class="math inline">\(\mathcal{L}\)</span> 是 loss，可以设定为负 reward 等。</p>
+<p>但这个方法有很多问题，包括在数据集较小的时候学习效率极低、无法分辨真正导致 reward 上升的行为等，但是更为致命的问题是 distribution shift。</p>
+<p>这个问题指的是专家数据和实际数据分布不一致，尤其指训练集和测试集分布之间有偏差。由于我们参考了监督学习的思想，behavior clone 实际上也继承了监督学习的一个假设，即数据集分布和真实数据分布一致。但是，即使这个假设并不严格成立，监督学习也是可以忽略的，因为监督学习的各个数据之间独立，可以忽略。然而 RL 是逐步决策的，某一步的偏差可能导致后续误差的累积导致后续决策的极大偏移。</p>
+<p>有一种解决方式是数据聚合，这里就和论文无关了，故不做讨论。</p>
+</div>
+<p>而通过 <span class="math inline">\(\hat\pi_\beta\)</span> 重新初始化 <span class="math inline">\(\pi_\theta\)</span> 的方式为正态分布初始化，均值设定为 <span class="math inline">\(\hat\pi_\beta\)</span> 而标准差置 <span class="math inline">\(1\)</span>。论文认为在这里将 BC 和普通的梯度下降相结合可以使得 <span class="math inline">\(\pi_\theta\)</span> 趋向于新数据集 <span class="math inline">\(\mathcal{D}\)</span> 代表的 policy，可以认为是一种 distribution shift 问题的补救措施。</p>
+<p>为了进一步补救，其进一步使用 KL-based trust region optimization。总体上 BREMEN 的 policy 更新策略就是：</p>
+<p><span class="math display">\[
+\theta_{k + 1} = \mathop{\rm argmax}_\theta \mathbb{E}_{(s, a) \sim (\pi_{\theta_k}, \hat f_{\phi_i})} \left[\frac{\pi_\theta(a \mid s)}{\pi_{\theta_k}(a \mid s)} A^{\pi_{\theta_k}}(s, a)\right]
+\]</span></p>
+<p>这里要求：</p>
+<p><span class="math display">\[
+\mathbb{E}_{s \sim (\pi_{\theta_k}, \hat f_{\phi_i})} D_{\rm KL}(\pi_\theta(\cdot \mid s) \parallel \pi_{\theta_k}(\cdot \mid s)) \leq \delta
+\]</span></p>
+<p>此外定义初始值：</p>
+<p><span class="math display">\[
+\pi_{\theta_0} := \mathcal{N}(\hat\pi_\beta, 1)
+\]</span></p>
+<p>得到的 BREMEN 算法流程为：</p>
+<p><img src="/uploads/paper-2022-09/6.png" /></p>
+<p>总体来看，简化了部署的过程，然后使用类似 TRPO 中信任域的方式约束了 agent 的行为。</p>
+<h2 id="experiments">Experiments</h2>
+<p>既然 BREMEN 的优势在于少量部署条件下能高效学习，其第一个实验就是和其余 RL 在约束部署次数的条件下比较 reward，效果是明显的：</p>
+<p><img src="/uploads/paper-2022-09/7.png" /></p>
+<p>这里每一条竖直虚线都代表一次部署，部署次数约束在五次到十次之间，每次 batch size 约束在 200k 到 100k。可见 BREMEN 明显优于大部分算法，而几乎仅劣于完全在线的 SAC，但是 SAC 可能需要近百万量级的部署次数。</p>
+<p>此外，为了测试 data efficiency，论文采用的方法是训练一个 SAC 后用该 policy 采集一个 dataset 并用该 dataset 训练各种离线算法，根据下述结果可以看出 BREMEN 能在很小的数据集下就能超越 BC 的 baseline，而其余类似 BCQ 等的方法甚至无法超越 baseline，这说明了 BREMEN 不仅 deployment efficient 而且是 data efficient 的：</p>
+<p><img src="/uploads/paper-2022-09/8.png" /></p>
+<h2 id="final-analysis-1">Final analysis</h2>
+<p>说实话由于 RL 基础还是有点欠缺，自己不是很了解信任域相关方法的数学基础，所以对其数学论证也没看很细致，尤其是涉及到 implicit KL regularization 的部分。</p>
+<p>但总体而言这篇文章提出的核心思想是需要考虑部署带来的开销，并且提出了利用 BC 等方法来强化模型的 exploitation 能力并且尝试使用信任域的想法约束 agent 的行为，总体上依然符合离线 RL 的两大思路。</p>
+<p>数学证明之类的可能真的要等到补补 TRPO 之类 RL 方法之后写，目前打算基于 Sutton 把博客里面这些有关 RL 的一些东西串起来。</p>
+]]></content>
+      <categories>
+        <category>【论文笔记】计算机</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>2022 年 12 月论文笔记</title>
+    <url>/2022/12/06/paper-2022-12/</url>
+    <content><![CDATA[<p>12 月开始就得准备做毕设了，先要充分阅读文献，确定自己要做的方向有什么要解决的问题，以及目前已经有的探索和目前还存在的困难。</p>
+<p><span class="math display">\[
+\newcommand{\b}{\boldsymbol}
+\]</span></p>
+<span id="more"></span>
+<h1 id="learning-tailored-adaptive-bitrate-algorithms-to-heterogeneous-network-conditions---a-domain-specific-priors-and-meta-reinforcement-learning-approach">Learning Tailored Adaptive Bitrate Algorithms to Heterogeneous Network Conditions - A Domain-Specific Priors and Meta-Reinforcement Learning Approach</h1>
+<p>黄老师的文章，作为起手还是需要好好看看的。</p>
+<p>这篇文章的基本概念是，基于学习的 ABR 已经能够实现一个平均而言优秀的 ABR 算法，但是对于部分特殊的网络环境其依然表现不佳，而这也就是所谓的个性化。然后这篇文章使用了 meta RL 的方式实现了 AABR（其实应当是 <span class="math inline">\(A^2BR\)</span>，但是我真的不想打公式了，AABR 表示 Adaptation of ABR）。</p>
+<p>AABR 首先离线学习一个元算法，之后再在在线的个性化环境下学习一个针对当前网络环境的个性化算法。另外，还需要不断优化离线学习来保证元算法的优势。</p>
+<h2 id="introduction">Introduction</h2>
+<p>首先对 ABR 算法做了总结，启发式算法根据当前网络情况和一部分状态变量给出决策，但是只有在选定较好的算法参数的时候这种算法才能表现较好。基于学习的算法则根据网络情况学习这些参数。然而总而言之，这些算法都不会自动调节自己的算法参数，尤其在面对变化较多的网络环境下时，这些算法表现较差。</p>
+<p>之后是通过实验说明了现在的网络状况不仅是多样性（diverse）的，更多的是独一无二（unique）的。基于这一点，这篇文章认为做用户个性化是一个重要的提升。</p>
+<p>所以基于 Input-driven Markov Decision Process (IMDP)，本文提出了 AABR。分为离线和在线两步，具体的训练方式见后续。</p>
+<p>总结一下这篇文章的工作就是确认了当今网络环境的独特性，并通过 meta RL 解决了 ABR 的个性化问题。</p>
+<h2 id="background-motivation">Background &amp; Motivation</h2>
+<p>关于 ABR 之类的介绍这里忽略，主要看这篇文章如何论证当今网络的多样性。</p>
+<p>多样性分为三个方向去论证，即不同用户间差异、不同场景间差异以及已有的部分 ABR 算法在这些网络环境下的表现。</p>
+<p>用户间差异和场景间差异可以关注下图：</p>
+<p><img src="/uploads/paper-2022-12/1.png" /></p>
+<p>可以首先注意到网络吞吐率和 RTT 的变动是相当大的，而如果观察具体的用户，也可以发现用户之间的网络状况差异也很大，部分用户网络稳定（整体带宽 CDF 陡峭）而部分用户的网络波动较大，而且各个用户的网络指标平均值也差异较大。</p>
+<p>对于场景，也可以注意到步行、地铁、公交、汽车的网络情况也各有不同，并不能一概而论。</p>
+<p>如果从 ABR 的角度出发，这篇文章在两个不同环境下测试了若干个 ABR 算法的性能，得到的结果是：</p>
+<p><img src="/uploads/paper-2022-12/2.png" /></p>
+<p>显然可以注意到已有的算法都很难兼顾两种情况，常常顾此失彼。这就意味着不稳定的网络情况很容易导致这些算法失效，从而也难以实现用户个性化。</p>
+<h2 id="methods">Methods</h2>
+<h3 id="input-driven-markov-decision-process">Input-driven Markov Decision Process</h3>
+<p>基本而言是在正常的 MDP 中引入了 input process <span class="math inline">\(\mathcal{Z}\)</span>，这个时候环境的转移概率定义为：</p>
+<p><span class="math display">\[
+\mathbb{T}[s&#39; \mid s, a, z] := \mathbb{P}[s_{t + 1} = s&#39; \mid s_t = s, a_t = a, z_t = z]
+\]</span></p>
+<p>此外，决策依然仅仅和 <span class="math inline">\(s_t \in \mathcal{S}\)</span> 有关，也就是说具体行为 <span class="math inline">\(a_t \in \mathcal{A}\)</span> 与 <span class="math inline">\(z_t \in \mathcal{Z}\)</span> 是独立的。</p>
+<p>进一步的价值函数定义为：</p>
+<p><span class="math display">\[
+Q(s, a, z) := \sum_{s&#39; \in \mathcal{S}} \mathbb{T}[s&#39; \mid s, a, z](r(s, a, z) + \gamma V(s&#39;, z&#39;))
+\]</span></p>
+<p>在 IMDP 下，最优策略也就定义为：</p>
+<p><span class="math display">\[
+\pi^*(s, z) := \mathop{\rm argmax}_{a \in \mathcal{A}} \sum_{s&#39; \in \mathcal{S}} \mathbb{T}[s&#39;, z&#39; \mid s, a, z]\left[r(s, a, z) + \gamma \max_{a&#39; \in \mathcal{A}} Q(s&#39;, a&#39;, z&#39;)\right]
+\]</span></p>
+<p>可以注意到，如果两个 agent 运行相同的 policy <span class="math inline">\(\pi\)</span>，其不同之处仅仅是 input process <span class="math inline">\(\mathcal{Z}_{1, 2}\)</span> 不同。可以注意到这两个 agent 将会始终保持相同的决策，所以其价值函数相同当且仅当 <span class="math inline">\(\mathcal{Z}_1 = \mathcal{Z}_2\)</span>。</p>
+<p>如果在完全得知 input process <span class="math inline">\(\mathcal{Z}\)</span> 的条件下，求解最优策略相当于一般的强化学习问题，可以通过大量的强化学习方法完成。但是我们现在需要假定 input process 是完全不可感知的，在这种条件下，一般强化学习方法学习到的最优策略 <span class="math inline">\(\hat\pi^*\)</span> 的价值函数实际上是与 input process 无关的，其价值函数用 <span class="math inline">\(Q(s&#39;, a&#39;)\)</span> 表示，其满足：</p>
+<p><span class="math display">\[
+\max_{a&#39; \in \mathcal{A}} Q(s&#39;, a&#39;) = \mathbb{E}_{z&#39;} \max_{a&#39; \in \mathcal{A}} Q(s&#39;, a&#39;, z&#39;)
+\]</span></p>
+<p>所以现在解决 input process 未知条件下的最优策略求解问题就是最重要的。</p>
+<h3 id="meta-rl-with-domain-knowledge">Meta RL with Domain Knowledge</h3>
+<p>总之就是又阐述了一边 AABR 分为离线和在线两个训练过程，离线训练一个元算法之后在线训练一个个性化 ABR 算法。那么两个问题就是：</p>
+<div class="note info no-icon"><ol type="i">
+<li><p>How to obtain a good parameter initialization for fast-learning?</p></li>
+<li><p>How to efficiently learn tailor-made ABR algorithms online?</p></li>
+</ol>
+</div>
+<h3 id="model-agnostic-meta-learning">Model Agnostic Meta-Learning</h3>
+<p>总之就是选定了 MAML 作为 AABR 的核心算法，MAML 的论文后面慢慢推着看。</p>
+<p>不过这一部分也阐释了为何 MAML 适合用于这个场景，原文是：</p>
+<div class="note info no-icon"><p>We find that model agnostic meta learning (MAML) is quite suitable in personalized ABR scenarios where the network traces on each user are quite limited.</p>
+<p>Specifically, MAML consists of an inner loop and an outer loop.</p>
+</div>
+<p>也就是说从数据集的角度和训练流程的角度上说，MAML 和这个实验场景的契合度比较高。</p>
+<h3 id="leveraging-domain-knowledge">Leveraging Domain Knowledge</h3>
+<p>总体的含义是设计了一个模拟器用于生成数据以及相关的启发式算法，一方面补充了现实世界中数据量不足的问题，另外一方面其代表的启发式算法可以在 policy 无法处理某些状态的时候作为 backup 使用。</p>
+<p><strong>注：</strong>这一部分可能需要结合下面的 overview 仔细学一下，然后对这里做一些扩充，因为这里模拟器的细节应该是做数据扩充的重要部分。</p>
+<h2 id="aabr-overview">AABR Overview</h2>
+<p>系统的大致结构为：</p>
+<p><img src="/uploads/paper-2022-12/3.png" /></p>
+<h3 id="basic-training-algorithm">Basic Training Algorithm</h3>
+<p>在设计网络的输入的时候首先需要考虑的是什么才是真正需要考虑的状态，这篇文章采用的方式是首先将所有可以使用的状态都作为输入以训练一个 teacher network，之后采用类似模仿学习的方式，采用类似决策树等较为轻量级的模型去模仿神经网络的策略，之后再使用决策树剪枝的方式去获取真正有意义的非平凡状态。</p>
+<div class="note success no-icon"><p>这个方法似乎是比较好玩的一个方法，用于筛选真正有用的输入状态。</p>
+</div>
+<p>这里剪枝的目的也是为了压缩最后的成本。</p>
+<p>最后筛选出来的状态包括：</p>
+<ul>
+<li>上一次选定的视频块质量 <span class="math inline">\(q_t\)</span></li>
+<li>目前的缓冲区占用率 <span class="math inline">\(b_t\)</span></li>
+<li>前 <span class="math inline">\(k\)</span> 个视频块传输时网络吞吐率 <span class="math inline">\(C_t\)</span></li>
+<li>前 <span class="math inline">\(k\)</span> 个视频块的下载时间 <span class="math inline">\(D_t\)</span></li>
+<li>前 <span class="math inline">\(k\)</span> 个视频块的应答时间 <span class="math inline">\(P_t\)</span></li>
+</ul>
+<p>这里为了控制成本，实验中选取 <span class="math inline">\(k = 5\)</span>。</p>
+<p>另外，为了保证模型的泛化性，这里需要将参数正则化，这样至少能保证模型面对完全没有经历过的网络环境不至于将其认为非法输入。</p>
+<p>模型的输出和正常的 AC 网络没有很大的差别，都是 Actor 网络输出一个 softmax 后的概率张量表示各个行为的决策概率，而 Critic 网络输出一个标量表示对当前状态的价值评估。</p>
+<h4 id="maximum-entropy-ppo-me-ppo">Maximum Entropy PPO (ME-PPO)</h4>
+<p>这里的训练策略是 ME-PPO，其与 PPO 的差别在于最优行为的定义里纳入了熵：</p>
+<p><span class="math display">\[
+a_t^* := \mathop{\rm argmax}_a \hat{\mathbb{E}}_t\left[\sum_t \gamma^t(r_t + \lambda H^{\pi_\theta}(s_t))\right]
+\]</span></p>
+<p>这里定义熵为：</p>
+<p><span class="math display">\[
+H^{\pi_\theta}(s_t) = -\sum_{a \in \mathcal{A}} \pi_\theta(a \mid s_t) \ln\pi_\theta(a \mid s_t)
+\]</span></p>
+<p>元学习要求在离线环境下更重视 exploration 而在线环境下更重视 exploitation。这里将熵纳入考虑，如果策略 <span class="math inline">\(\pi_\theta\)</span> 对动作空间 <span class="math inline">\(\mathcal{A}\)</span> 中的所有动作给出的概率约趋向于平均，则熵越高，从而越会支持这样的选择。</p>
+<p>ME-PPO 的具体策略是基于 Dual-PPO 的 double clip 策略，具体如下：</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathcal{L}^{\rm PPO} &amp;:= \min\left(\frac{\pi_\theta(a_t \mid s_t)}{\pi_{\theta_{\rm old}}(a_t \mid s_t)}(\theta) \hat A_t, {\rm clip}\left(\frac{\pi_\theta(a_t \mid s_t)}{\pi_{\theta_{\rm old}}(a_t \mid s_t)}(\theta), 1 - \varepsilon, 1 + \varepsilon\right)\hat A_t\right) \\
+\mathcal{L}^{\rm Actor} &amp;:= \begin{cases}
+\hat{\mathbb{E}}_t[\max(\mathcal{L}^{\rm PPO}, c\hat A_t)] &amp; \hat A_t &lt; 0 \\
+\hat{\mathbb{E}}_t[\mathcal{L}^{\rm PPO}] &amp; \hat A_t \geq 0 \\
+\end{cases}
+\end{aligned}
+\]</span></p>
+<p>这里 <span class="math inline">\(\hat A_t\)</span> 是优势函数，定义为：</p>
+<p><span class="math display">\[
+\hat A_t := r_t + \gamma(V^{\pi_\theta}(s_{t + 1}) + \lambda H^{\pi_\theta}(s_{t + 1})) - V^{\pi_\theta}(s_t)
+\]</span></p>
+<p>这里 <span class="math inline">\(c, \varepsilon\)</span> 是用来控制梯度的超参数。</p>
+<p>AABR 中的 Critic 网络的训练策略就是最小化优势函数的均方误差：</p>
+<p><span class="math display">\[
+\mathcal{L}^{\rm Critic} := \frac12 \hat{\mathbb{E}}_t[A_t]^2
+\]</span></p>
+<p>从而整体的 loss 可以总结为：</p>
+<p><span class="math display">\[
+\nabla\mathcal{L}^{\rm MEPPO} := -\nabla_\theta \mathcal{L}^{\rm Actor}(\pi_\theta, \hat A_t) + \nabla_{\theta_v} \mathcal{L}^{\rm Critic}
+\]</span></p>
+<hr />
+<p>此外，由于算法对 <span class="math inline">\(\lambda\)</span> 较为敏感，我们需要在训练过程中不断调节 <span class="math inline">\(\lambda\)</span>，调节方式较为简单：</p>
+<p><span class="math display">\[
+\lambda \leftarrow \lambda + \alpha[H^{\pi_\theta}(s_t) - H^{\rm Target}]
+\]</span></p>
+<p>这个目标在于熵逐步接近目标的时候衰减 <span class="math inline">\(\lambda\)</span> 以减缓接近速度。</p>
+<h3 id="meta-learned-policies-for-offline-stage">Meta-Learned Policies for Offline Stage</h3>
+<p><strong>注：</strong>具体的训练方式后续补充。</p>
+<h1 id="model-agnostic-meta-learning-for-fast-adaptation-of-deep-networks">Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks</h1>
+<p>这是 MAML 训练方法的原始论文，看情况有没有时间做一个复现。</p>
+<p>文章的主要贡献就是一个元学习方式，并且似乎泛用性很广：</p>
+<div class="note info no-icon"><p>In this work, we propose a meta-learning algorithm that is general and model-agnostic, in the sense that it can be directly applied to any learning problem and model that is trained with a gradient descent procedure.</p>
+</div>
+<p>元学习的核心在于训练好的模型能够迅速通过少量数据学习到新的任务，并且其能够应用到大量的下游任务中。这篇文章将训练模型理解为在模型内部建立起适用于某种任务的特征表示，如果这种表示能够适合于多种任务，那么我们只需要进行合适的微调就可以迅速适应新的任务。如果从动力系统的角度理解，我们需要提高需要完成的任务的 loss 对参数的敏感度，这个敏感度越高，参数的变化对 loss 的提升的影响越大。</p>
+<h2 id="model-agnostic-meta-learning-1">Model-Agnostic Meta-Learning</h2>
+<h3 id="meta-learning-problem-set-up">Meta-Learning Problem Set-Up</h3>
+<p>这里严格定义了元学习需要解决的问题。</p>
+<p>首先我们需要形式化定义什么是任务，这篇文章定义为：</p>
+<p><span class="math display">\[
+\mathcal{T} := \{\mathcal{L}(\b x_1, \b a_1, \cdots, \b x_H, \b a_H), q(\b x_1), q(\b x_{t + 1} \mid \b x_t, \b a_t), H\}
+\]</span></p>
+<p>这里 <span class="math inline">\(\mathcal{L}\)</span> 表示 loss，<span class="math inline">\(q(\b x_1)\)</span> 是初始状态的分布，<span class="math inline">\(q(\b x_{t + 1} \mid \b x_t, \b a_t)\)</span> 是状态转移的概率分布，<span class="math inline">\(H\)</span> 是 episode 的长度。这个定义同时涵盖了普通的强化学习和监督学习，其中监督学习中 <span class="math inline">\(H = 1\)</span>。</p>
+<p>模型本身描述为一个函数 <span class="math inline">\(f\)</span>，其接受当前状态 <span class="math inline">\(\b x\)</span> 并给出输出 <span class="math inline">\(\b a\)</span>，即 <span class="math inline">\(\b a = f(\b x)\)</span>。模型不断在该任务中给定 <span class="math inline">\(\b a_1, \b a_2, \cdots, \b a_H\)</span>，而 loss <span class="math inline">\(\mathcal{L}\)</span> 则给出了实际的反馈，这种反馈可以是分类问题中的失配损失或者 Markov 决策过程中的负收益。</p>
+<p>在元学习中我们需要考虑一系列的任务的分布，这里记作 <span class="math inline">\(p(\mathcal{T})\)</span>。如果我们要求 <span class="math inline">\(K\)</span> shot learning，对于每一个从 <span class="math inline">\(p(\mathcal{T})\)</span> 抽取的具体任务 <span class="math inline">\(\mathcal{T}_i\)</span>，我们需要再通过 <span class="math inline">\(q_i\)</span> 抽取 <span class="math inline">\(K\)</span> 个样本，并且考虑 <span class="math inline">\(\mathcal{L}_{\mathcal{T}_i}\)</span> 的反馈。</p>
+<p>之后直接搬一个论文原句，也应该是论文后面算法设计的主要出发点：</p>
+<div class="note info no-icon"><p>The model <span class="math inline">\(f\)</span> is then improved by considering how the <em>test</em> error on new data from <span class="math inline">\(q_i\)</span> changes with respect to the parameters.</p>
+</div>
+<h3 id="a-model-agnostic-meta-learning-algorithm">A Model-Agnostic Meta-Learning Algorithm</h3>
+<p>这里提供了算法设计，一个关键词就是之前提到的<strong>敏感度</strong>。</p>
+<p>考虑用参数 <span class="math inline">\(\theta\)</span> 表示的模型 <span class="math inline">\(f_\theta\)</span>。在学习具体的任务 <span class="math inline">\(\mathcal{T}_i\)</span> 的时候，参数的更新方式为：</p>
+<p><span class="math display">\[
+\theta \leftarrow \theta - \alpha\nabla_\theta\mathcal{L}_{\mathcal{T}_i}(f_\theta)
+\]</span></p>
+<p>为了简化记号，我们假设在元学习之后学习具体任务仅用了一次梯度更新，此时任务 <span class="math inline">\(\mathcal{T}_i\)</span> 的最优参数就是 <span class="math inline">\(\theta_i&#39; := \theta - \alpha\nabla_\theta\mathcal{L}_{\mathcal{T}_i}(f_\theta)\)</span>，那么元学习的目标是：</p>
+<p><span class="math display">\[
+\min_\theta \sum_{\mathcal{T}_i \in p(\mathcal{T})} \mathcal{L}_{\mathcal{T}_i}(f_{\theta_i&#39;}) = \min_\theta \sum_{\mathcal{T}_i \in p(\mathcal{T})} \mathcal{L}_{\mathcal{T}_i}(f_{\theta - \alpha\nabla_\theta\mathcal{L}_{\mathcal{T}_i}(f_\theta)})
+\]</span></p>
+<p>那么还是使用简单的梯度下降，元学习中的参数更新就是：</p>
+<p><span class="math display">\[
+\theta \leftarrow \theta - \beta\nabla_\theta \sum_{\mathcal{T}_i \in p(\mathcal{T})} \mathcal{L}_{\mathcal{T}_i}(f_{\theta_i&#39;})
+\]</span></p>
+<p>在这里我们注意到出现了二阶梯度，部分深度学习框架能够支持这一操作，但本文也同样指出作一阶近似（即舍去二阶及以上的高阶项）是可行的。</p>
+<p>基于此，MAML 的整体框架为：</p>
+<p><img src="/uploads/paper-2022-12/4.png" /></p>
+<h2 id="species-of-maml">Species of MAML</h2>
+<p>本文这里举出了监督学习和强化学习中运用 MAML 的例子，这里我们只关注强化学习。</p>
+<p>强化学习特化的 MAML 主要关注的是 loss 的选定，这里选定的就是最经典的负收益。另外，此时 <span class="math inline">\(q_{\mathcal{T}_i}\)</span> 实际上就是环境中的状态转移概率分布：</p>
+<p><span class="math display">\[
+\mathcal{L}_{\mathcal{T}_i}(f_\phi) = -\mathbb{E}_{(\b x_t, \b a_t) \sim (f_\phi, q_{\mathcal{T}_i})} \left[\sum_{t = 1}^H R(\b x_t, \b a_t)\right]
+\]</span></p>
+<p>从而，强化学习特化的 MAML 算法为：</p>
+<p><img src="/uploads/paper-2022-12/5.png" /></p>
+<p>这之后就是一些实验结果了，感觉没啥意思了。</p>
+<h1 id="learning-to-adapt-in-dynamic-real-world-environments-through-meta-reinforcement-learning">Learning to Adapt in Dynamic, Real-World Environments through Meta Reinforcement Learning</h1>
+<p>这篇文章似乎没有官方的 code base，只有两个 community code base，现在可以在 <a href="https://paperswithcode.com/paper/learning-to-adapt-in-dynamic-real-world">这个链接</a> 获取，分别是 Tensorflow 和 Pytorch 版本。</p>
+<h2 id="abstract-introduction">Abstract &amp; Introduction</h2>
+<p>需要解决的问题依然是生成数据很困难以及测试环境中无法预料到的数据可能导致所训练的策略失效，引言之中也基本上叙述了人类可以很快适应自身机体发生的变化和外界环境发生的变化，提出了如果模型经历了足够多的环境微扰，其就可以很快学习适应新环境。</p>
+<p>相比较于原先的 meta RL 对任务的定义，这篇文章提出的模型能够处理每个时间步环境或者任务都在变化的情景。也就是说，原先的 meta RL 不过是提前预设好了需要解决什么样的任务，并且每一个 RL trajectory 仅会属于一个任务，而这篇文章的 RL trajectory 中可以涵盖多种任务并且任何时间都可以切换。所以这篇文章的 meta RL 更为 general。</p>
+<p>本文也是有 trade off 的，主要表达如下：</p>
+<div class="note info no-icon"><p>By specifically training a neural network model to require only a small amount of experience to adapt, we can enable effective online adaptation in complex environments while putting less pressure on needing a perfect global model.</p>
+</div>
+<p>也就是说，这篇文章为了能够在少数据条件下快速适应新环境，并不会强制要求这个模型在 global 环境下表现到 perfect。</p>
+<p>总而言之，这篇文章主要强调学得快，学习速度大约是每个新任务需要在真实世界中经历 1.5 到 3 小时，不到原有 model-free RL 方法学习时间的十分之一。并且，在同等数据量条件下，这篇文章的模型效果也比其他方法优越。此外，为了展示本文模型的学习能力，其将其真实部署在了机器人上，来学习真实世界的情况。</p>
+<h2 id="related-works">Related Works</h2>
+<p>首先提到最原始的强化学习方法没有泛用性，以及 model-free RL 往往需要大量和真是环境交互从而不实际。发展为 model-based RL 之后，就需要面临对环境建模的 model 需要在不同的任务之间调整的问题，首先否决了单一的全局模型，而先前有人尝试通过 GP 方法合并模型不确定性从而让模型能够表示不同的环境，然而这个方法做出了额外的假设且拓展性差且难以运用到高维空间，而本文提出的结果能够通过观察从而快速切换到新的环境。</p>
+<div class="note warning no-icon"><p>这里的问题就是我是真的没有太看懂这个 model 到底是对环境建模的模型还是最后要学习的 policy。</p>
+</div>
+<p>还有一种处理方式是首先学习一个全局模型，在测试的时候通过梯度下降进行微调。此外，还有工作表明不需要完美的全局模型，可以微调先验知识来处理小变化。然而，这些方法面临着模型的训练目的与测试时的使用方式之间的不匹配的问题。本文通过明确训练一个能快速有效适应的模型来弥合这一差距。</p>
+<h2 id="preliminaries">Preliminaries</h2>
+<h3 id="model-based-reinforcement-learning">Model-Based Reinforcement Learning</h3>
+<p>马尔可夫决策过程在这里建模为 <span class="math inline">\((\mathcal{S}, \mathcal{A}, p, r, \gamma, \rho_0, H)\)</span>。这里 <span class="math inline">\(\mathcal{S}\)</span> 是状态空间，<span class="math inline">\(\mathcal{A}\)</span> 是动作空间，<span class="math inline">\(p(s&#39; \mid s, a)\)</span> 是环境状态转移概率，<span class="math inline">\(r: \mathcal{S} \times \mathcal{A} \to \mathbb{R}\)</span> 是奖励函数，<span class="math inline">\(\rho_0: \mathcal{S} \to \mathbb{R}^+\)</span> 是初始状态概率分布，<span class="math inline">\(\gamma\)</span> 是奖励衰减常数，<span class="math inline">\(H\)</span> 是轨迹长度。</p>
+<p>一条轨迹描述为 <span class="math inline">\(\tau(i, j) := (s_i, a_i, \cdots, s_j, a_j, s_{j + 1})\)</span>，我们的目标是求取最优策略 <span class="math inline">\(\pi: \mathcal{S} \to \mathcal{A}\)</span> 使得累计收益期望最大。</p>
+<p>model-based RL 目标是近似处理 <span class="math inline">\(p(s&#39; \mid s, a)\)</span>，这个模型也被称为 dynamics model。</p>
+<h3 id="meta-learning">Meta Learning</h3>
+<p>一般的元学习需要给定假设，即训练用的任务和最终的测试任务都是从同一个任务分布 <span class="math inline">\(\rho(\mathcal{T})\)</span> 中抽取。元学习的目标是获取一个学习流程 <span class="math inline">\(\theta&#39; := u_\psi(\mathcal{D}^{\rm tr}_{\mathcal{T}}, \theta)\)</span> 以通过小数据集 <span class="math inline">\(\mathcal{D}^{\rm tr}_{\mathcal{T}}\)</span> 来学习任务 <span class="math inline">\(\mathcal{T}\)</span>，学习过程可以表示为：</p>
+<p><span class="math display">\[
+\min_{\theta, \psi} \mathbb{E}_{\mathcal{T} \sim \rho(\mathcal{T})}\left[\mathcal{L}(\mathcal{D}^{\rm test}_{\mathcal{T}}, \theta&#39;)\right]
+\]</span></p>
+<p>其中 <span class="math inline">\(\theta&#39; := u_\psi(\mathcal{D}^{\rm tr}_{\mathcal{T}}, \theta)\)</span>。</p>
+<div class="note info no-icon"><p>这里的记号是真的复杂，事实上训练过程应该是函数 <span class="math inline">\(u_\psi\)</span>，训练过程用参数 <span class="math inline">\(\psi\)</span> 代表，其输出为训练后的最优参数 <span class="math inline">\(\theta&#39;\)</span>，而 <span class="math inline">\(\theta\)</span> 表示初始化参数。</p>
+<p>另外注意，<span class="math inline">\(\theta\)</span> 这里是模拟环境的模型的参数，而非 policy 的参数。</p>
+</div>
+<h4 id="gradient-based-meta-learning">Gradient Based Meta Learning</h4>
+<p>MAML 就是一种基于梯度的元学习方法，其最主要的目标是学习一个较好的参数初始化保证在少数调整中即可实现较好的下游任务。</p>
+<p>MAML 的 <span class="math inline">\(u_\psi\)</span> 就是一般的梯度下降：</p>
+<p><span class="math display">\[
+u_\psi(\mathcal{D}^{\rm tr}_{\mathcal{T}}, \theta) = \theta - \alpha\nabla_\theta \mathcal{L}(\mathcal{D}^{\rm tr}_{\mathcal{T}}, \theta)
+\]</span></p>
+<p>如果学习率 <span class="math inline">\(\alpha\)</span> 是一个固定参数，那么 <span class="math inline">\(\psi = \varnothing\)</span>，如果 <span class="math inline">\(\alpha\)</span> 是一个元学习过程中需要学习的参数，那么 <span class="math inline">\(\psi = \alpha\)</span>。</p>
+<p>即使看起来 <span class="math inline">\(u_\psi\)</span> 是平凡的，但是这种方法的表达能力和下面介绍的方法是持平的。</p>
+<h4 id="recurrence-based-meta-learning">Recurrence Based Meta Learning</h4>
+<p>这里借用了 RNN 的思想，在这个方法中，更新函数 <span class="math inline">\(u_\psi\)</span> 始终需要不断学习，其中 <span class="math inline">\(\psi\)</span> 是用于更新 RNN 隐含层状态的参数，而 <span class="math inline">\(\theta\)</span> 是余下的参数。</p>
+<div class="note warning no-icon"><p>这里是真的真的真的没看懂，这在说啥？是我前置知识欠缺太多了？</p>
+<p>只能希望下面能有个稍微好一点的说明。</p>
+</div>
+<h2 id="meta-learning-for-online-model-adaptation">Meta Learning for Online Model Adaptation</h2>
+<p>之前提到过本文的 trajectory 中任务可以随着时间步推进而变化，所以本文设定的目标是根据前 <span class="math inline">\(M\)</span> 个时间步的数据预测未来 <span class="math inline">\(K\)</span> 个时间步情况，这里 <span class="math inline">\(M, K\)</span> 都是固定的超参数。</p>
+<p>所以在这样的设定下，训练目标就是：</p>
+<p><span class="math display">\[
+\begin{aligned}
+\theta_{\mathcal{E}}&#39; &amp;= u_\psi(\tau_{\mathcal{E}}(t - M, t - 1), \theta) \\
+\min_{\theta, \psi}&amp; \mathbb{E}_{\tau_{\mathcal{E}}(t - M, t + K)} [\mathcal{L}(\tau_{\mathcal{E}}(t, t + K), \theta_{\mathcal{E}}&#39;)]
+\end{aligned}
+\]</span></p>
+<p>而这里 loss 定义为：</p>
+<p><span class="math display">\[
+\mathcal{L}(\tau_{\mathcal{E}}(t, t + K), \theta_{\mathcal{E}}&#39;) := -\frac{1}{K} \sum_{k = t}^{t + K} \log\hat{p}_{\theta_{\mathcal{E}&#39;}}(s_{k + 1} \mid s_k, a_k)
+\]</span></p>
+<p>GrBAL 采取的更新策略为：</p>
+<p><span class="math display">\[
+\theta_{\mathcal{E}}&#39; = u_\psi(\tau_{\mathcal{E}}(t - M, t - 1), \theta) = \theta_{\mathcal{E}} + \psi\nabla_\theta\frac{1}{M} \sum_{m = t - M}^{t - 1} \log\hat{p}_{\theta_{\mathcal{E}}}(s_{m + 1} \mid s_m, a_m)
+\]</span></p>
+<p>ReBAL 这里又是没看懂，所以这个基于循环模型的到底是个什么东西。</p>
+<h2 id="model-based-meta-reinforcement-learning">Model Based Meta Reinforcement Learning</h2>
+<p>这一部分就是在讲解如何在线上做 adaptation，我觉得整体不如直接看算法直观：</p>
+<p><img src="/uploads/paper-2022-12/6.png" /></p>
+]]></content>
+      <categories>
+        <category>【论文笔记】计算机</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>一部真实的校园恋爱番《龙与虎》</title>
+    <url>/2022/12/29/toradora/</url>
+    <content><![CDATA[<p>由于新冠阳性卧病在床三天，中间某一天我一天刷完了《龙与虎》的 26 集，作为为数不多的超长校园恋爱番，在看完《龙与虎》之后，我明显感受到了这部番和当下很多恋爱番的不同。</p>
+<span id="more"></span>
+<h1 id="人物感情线">人物感情线</h1>
+<p>《龙与虎》可能最让人感到迷惑的就是错综复杂的感情线，很多观众也都评论说感情想相当扭曲。这里为了更好写读后感，还是稍微写写各个人物的感情线。</p>
+<p>这里想要探讨的是男主角团龙儿、北村和女主角团大河、实乃梨、亚美、会长的感情线。这里另外做个补充，由于大河在日语中发音为たいが，和意为老虎的タイガー读音类似，加上番里大河凶狠乖戾的性格，故大河也有老虎的外号。</p>
+<h2 id="北村与会长">北村与会长</h2>
+<p>北村为本作男二，会长为本作女四。在进入高中之后，由于对理想中的高中生活的憧憬，有点为了谈恋爱而谈恋爱地向大河表白，却遭到了拒绝。在心灰意冷之际，会长出现了，其劝说北村高中生活并不只有感情。受到鼓励的北村于是加入了学生会，在学生会的一年中，北村逐渐对会长产生了好感。由于北村确实能力卓著，会长也在自己心中确认了对北村的好感。</p>
+<p>然而转折出现在高二年级，会长作为毕业生即将毕业且计划留学。然而会长知道，北村之所以进学生会，之所以如此拼命干活，自己永远是重要乃至最重要的因素。也就是说，会长清晰地知道北村一直在追逐自己，所以即使答应了北村的感情，也注定将会是一段不平等的感情。所以会长为了防止北村不假思索追逐自己，强硬地隐瞒了留学的计划。</p>
+<p>但是计划依然暴露了，北村一蹶不振，因为对他而言，会长是他继续做下去，并接过学生会长这一身份的唯一理由，他想要追逐会长。受到打击的北村束手无策，选择了自暴自弃。先是宣布不参与学生会长竞选，后是故意违反校规校纪染发逃学，用他自己的方式阐述自己自甘堕落。会长在目睹这一切后，即使心疼，但是从自己的立场出发，依然在他人面前刻薄地评价北村为懦弱的人。</p>
+<p>在这个时间点，大河是喜欢北村的，为了拯救北村，大河宣布参加学生会长竞选，并故意宣扬自己在竞选成为学生会长后会推行相当严厉的政策毁掉所有人的高中生活。这种自爆行为，事实上是发动群众来劝说北村回到学生会长竞选中。在这一番操作之下，北村最终回到竞选，并且得到了会长的支持。</p>
+<p>在最终的竞选演讲中，北村高调面对全校向会长表白，然而会长并没有正面回应，发好人卡一样地冷处理了这一充满勇气的行为。在这之后，大河被彻底激怒了，她认为会长在玩弄北村的感情，于是提着木刀和会长线下械斗。会长自然无法是大河的对手，在落败后，会长最终情感崩溃，承认了自己喜欢北村，同时也讲出了自己的心声，讲出了不想让北村仅仅是追随自己的真实想法。</p>
+<p>最终，北村成为了学生会长，会长也按照计划前往美国留学。一年后，北村毕业，也同样规划前往美国留学，经历了高中三年的磨练，其心智更为成熟，也更加坚定了对会长的好感。</p>
+<h2 id="大河与龙儿">大河与龙儿</h2>
+<p>本作男女主。大河家庭情况较为混乱，父亲在和其生母诞下她后，不久就将其和其生母全部抛弃，除了每个月定时打入生活费外，与其生活完全没有交集。其与其生母的关系也较为冷淡，本作中是独居状态。正是因为这样的家庭背景，大河十分缺少关爱，这也是她感情线的重要基础。此外，大河的另外一个重要特征是十分缺乏生活技能和笨拙，这也和家庭背景有关联。</p>
+<p>而龙儿的家庭环境则也较为混乱，父亲是不良少年，在和龙儿生母未婚基础上诞下龙儿后人间蒸发。龙儿生母为了抚养龙儿，决定离家出走，通过陪酒女的工作支撑家庭，并且一直向龙儿隐瞒其父亲真实的情况。所以龙儿自幼缺乏父爱，又相当追求父爱。另外，由于这样的家庭背景，龙儿不得不学会了各种生活技能，主妇属性拉满。</p>
+<p>大河在刚进入高中被北村表白后，虽然其拒绝了北村，但是由于北村关注着她，在她困难的时候也会伸出援手，其得到了北村的关爱。在这样的基础上，大河萌生了对北村的好感。在某日，大河将写给北村的情书放到其书包中，但没想到不仅忘了把情书本体放到信封里，甚至还把情书错放到龙儿的书包内，这导致龙儿在回来拿书包回家的时候和大河起了争执，大河甚至在当晚为了夺回情书提着木刀来到龙儿家复仇。</p>
+<p>在那天晚上，龙儿劝说了大河，情感并非是可耻之事，并且给大河看了其为暗恋对象实乃梨写的诗乃至未来生活规划。在一番交流后，两人发现，大河暗恋的北村是龙儿的好友，而龙儿暗恋的实乃梨是大河的好友，于是两人组成龙虎同盟，帮助对方追求自己的好友。</p>
+<p>然而，由于大河严重缺乏生活技能，而龙儿又会做饭，两人家又很近，所以大河在此之后便稳定在龙儿家里吃饭，龙儿甚至还会帮助大河洗衣和打扫公寓。</p>
+<p>这个时候，大河和龙儿仅仅是一种依存关系，虽然在外人眼中看来两人已经近乎同居，但是两人均不承认和对方有超过朋友的越界行为。在龙虎同盟的约定之下，龙儿帮助大河拍北村的照片，大河也会创造龙儿和实乃梨独处的机会。</p>
+<p>其间，大河在龙儿鼓励之下向北村表白，但是被拒绝了，北村表示，其仅仅想作为朋友帮助大河。</p>
+<p>第一次转折发生在亚美的出现，作为模特，亚美身材傲人，相比之下大河的身材就显得较为弱势。这一矛盾的激发是游泳课，大河由于身材自卑于是抵触游泳课，龙儿为了帮助大河找回自信，于是帮其缝制胸垫来伪装身材。亚美在游泳课上见到这一幕后决定挑战龙虎联盟的关系，提出和大河比赛，若亚美获胜则会把龙儿带去自己的别墅过暑假。无论是出于对龙儿离去后自己生活质量下降的担忧，还是此时由于已经和龙儿相处甚久而萌生的朦胧情愫，大河都决心为了龙儿赢下比赛。比赛最终确定为五十米自由泳，然而由于大河不会游泳，所以龙儿又承担了教学游泳的任务。在两人在市民泳池练习的时候，大河第一次因为对龙儿朦胧的好感而情感爆发。</p>
+<p>比赛当场，大河在游泳过程中抽筋，龙儿立刻下水营救，但最终依然将自己搭了进去。然而这个时候群众的目光全都集中在亚美即将赢得比赛，没有多少人关注到龙儿即将陷入险境。最终，虽然在大河求救之下龙儿得救，但是大河也最终没能收束自己的情感，面对大家说出了著名的：</p>
+<div class="note info no-icon"><p>龙儿是我的，你们一个都不许碰他！</p>
+</div>
+<p>事实上，即使经历了这样的事件，大河对龙儿也依然仅仅是无法确定的朦胧好感，大河依然对北村充满热情。在此之后，由于亚美依然是实际上赢得比赛，所以亚美依然可以带龙儿前往她的别墅过暑假，然而在北村劝说之下，最终变成了主角团五人全部前往亚美的别墅。在这一过程中龙虎联盟达成了本次主要是大河帮助龙儿追求实乃梨的作战计划，大河得知实乃梨害怕灵异，于是计划故意恐吓实乃梨，让龙儿趁机营救实乃梨来创造机会。然而，这个计划非常自然地失败了，因为实乃梨实际上并不害怕灵异，反倒十分喜欢灵异。</p>
+<p>另外，这个时间段也是龙虎联盟在梦中和对方确认关系的时间点，两人都做了和对方确认关系的梦。</p>
+<p>随后，大河的父亲出现，其希望能够将大河带回抚养。作为大河的挚友，实乃梨十分清楚大河父亲的本质。然而渴望父爱的龙儿由于并不清楚大河父亲的本质，强硬地要求大河离开自己家和父亲生活。在名义上收回抚养权的基础上，大河的父亲作出了会来看女儿在学园祭上的演出的承诺，然而显然，这个承诺是空虚的，最终一条短信依然把大河甩给了龙儿。</p>
+<p>在学园祭的最后，发生了两件事。一件事是，由于大河没能等到父亲，其对家庭复原的期望再次落空，受伤的大河通过很有情感张力的演出赢下了学园祭选美比赛后，学生会追加举办了男子选拔赛，全校男子绕学校跑一圈，最快的人能够和选美比赛获胜者，也就是大河共舞。在这场比赛中，终于认识到自己没能看穿大河父亲而导致伤害了大河的龙儿为了赎罪，拼命希望抢下头名，在这过程中实乃梨也前来帮忙，两人自然地牵着手拿下第一。第二件事是，最终的篝火晚会上，北村邀请了大河一起跳舞。</p>
+<p>在这里，似乎龙虎同盟的目的即将达成，因为大河和北村，龙儿和实乃梨，这两对的关系都得到了进展。然而，转折也就随之而来，学生会长竞选事件的爆发，让大河最终认识到北村早就心有所属，其对自己的关心不过是作为朋友的关心，大河对北村的热情也随之慢慢地弱化。但是，大河先前对北村的追求，是全班都知道的，在北村表白失败后，全班为了安慰北村防止其再次自暴自弃，尝试着撮合北村和大河。另外，由于大河的学生手册中夹着在篝火晚会上她和北村共舞的照片，北村和大河的关系，在<strong>旁人眼中</strong>得到了强化。而这也让实乃梨终于敢于承认对龙儿的好感，出于龙虎同盟的约定，大河也更加卖力地帮助龙儿追求实乃梨。</p>
+<p>然而，实乃梨在亚美的质疑下，并没能成功面对自己对龙儿的好感，而是逃避着这一切。</p>
+<p>这之后，就是圣诞夜。学生会计划在圣诞夜举办派对，大河此时依然在帮助龙儿在圣诞夜向实乃梨表白，龙儿也为实乃梨准备了发卡作为礼物。但是由于实乃梨此时不断地逃避着自己的感情，不愿意面对大河和龙儿，所以并不计划参与圣诞派对，即使龙儿已经盛情邀请。大河在派对当晚，完成了演出之后立刻前往实乃梨家劝说其前往派对，并撒谎夸大了龙儿对实乃梨的承诺。大河由于此时已经逐步对龙儿产生好感，无法面对实乃梨和龙儿最终将会走到一起的现实，于是在劝说实乃梨后径直回家，没有再前往派对。</p>
+<p>在派对现场的龙儿，从亚美处了解到了大河早已回家，想到大河之前提到过想要见圣诞老人的想法，出于对大河的关心和担忧，立刻和别人借到一套戏服打扮成圣诞老人前往大河家。在和大河玩乐一圈后，大河意识到终究是要让龙儿回到派对现场，出于先前已经和实乃梨夸下海口并且龙虎同盟的约定也是如此，于是大河强硬地将龙儿赶去了派对。</p>
+<p>然而，在送走龙儿后，大河终于意识到，如果一切进展顺利，实乃梨最终和龙儿在一起，自己将无法时时刻刻呆在龙儿身边。也就是说自己已经视之平常的和龙儿的相伴，被自己亲手推向了毁灭。意识到这一切的大河情感崩溃了，赶忙出门追龙儿，但是已经为时已晚，只能无助地跪在路边痛哭。</p>
+<p>之后便是修学旅行，本年度修学旅行是前往雪山的滑雪之旅。在修学旅行中，亚美和实乃梨就情感问题爆发争执，这争执过程中，龙儿送给实乃梨的发卡掉落在悬崖下，而大河为了取回发卡，冒险滑下悬崖，最终被困。得知此事后，龙儿立刻前往营救并最终背回大河，大河在逐渐苏醒的过程中将龙儿错认为北村，并自言自语般透露了“这种时候还愿意管我的应该只有龙儿才对”并且透露了自己喜欢龙儿。龙儿听到了，但是没有戳穿自己不是北村这一事实。</p>
+<p>最后，大河为了感谢大家在自己遇难的时候帮助自己，将主角团召集在一起计划送给大家巧克力作为答谢。为了统一口径，龙儿特别叮嘱了北村，要假装成救援大河的是北村而不是自己，因为其知道大河在躲避承认感情，要是让大河知道了当晚她说的话已经被自己听到了，很有可能导致矛盾，然而龙儿忘了叮嘱知道真相的实乃梨。于是在大河送巧克力的时候，实乃梨认识到了大河并不知道真相，并且立刻明白了龙儿也在躲避大河的感情，而非正面面对。主角团其余人在此时达成共识，坚决不能让龙虎再躲避两人之间的感情，于是强硬地要求两人面对内心。大河在这样的情况下，选择了逃跑，而在追逐大河的时候，实乃梨终于不再压抑自己的情感，大声宣称自己对龙儿也是充满好感，但是由于自己还有棒球梦想，而且龙虎同盟已经事实存在了很长时间，实乃梨最终决定放弃了自己在情感上的追求。</p>
+<p>在这一连串事情后，龙虎二人最终互相表白。为了得到家长的认可，龙虎二人投奔了龙儿的祖父母，并用骗称龙儿遭遇事故将已经离家出走十余年的龙儿母亲骗回了家人身旁。大河在观察到龙儿的家庭之后，决心面对自己的家庭，在留下留言后，大河决定退学回到父母身边一段时间。面对这样的不辞而别，龙儿虽然不甘，但是依然充分理解。一年后，在毕业典礼上，大河终于回归，龙虎也终于破除了所有的感情障碍，走到了一起。</p>
+<h2 id="实乃梨">实乃梨</h2>
+<p>本作女二。其有一个弟弟，她和弟弟都擅长棒球，但是家庭却仅仅支持弟弟的棒球事业。不服输的实乃梨计划通过高中课余时间打工攒钱，在高中毕业后自给自足前往体育大学就读。实乃梨的性格对外而言是相当阳光开放的，然而其内心却相当闭塞和喜欢逃避现实。</p>
+<p>在感情上，由于这一梦想的存在，实乃梨一般并没有体现出自己的情感取向，更多的时候是以一副和感情绝缘的面貌示人。然而，由于目睹了龙儿的很多事迹之后，实乃梨慢慢对龙儿产生了好感。</p>
+<p>在暑期合宿中，龙儿在和实乃梨两人独处对话的时候，流露出了对实乃梨的好感，然而实乃梨并没有爽快承认，仅仅是搁置了这一议题。事实上，这是因为实乃梨想要维护龙虎同盟而在自己的感情上做出的让步。</p>
+<p>学园祭的男子选拔中，其和龙儿为了安慰受伤的大河，联手拿下了比赛的第一，事后，两人都收藏了和对方牵手冲线的照片。</p>
+<p>由于在她眼中看来，大河和北村的情感愈发成熟，其不需要再顾及好友的情感而不敢表达对龙儿的好感。所以在看到大河的学生手册中夹着和北村的合照之后，其松了一口气。但是这个时候，亚美发出了灵魂疑问：</p>
+<div class="note info no-icon"><p>负罪感，减少了吗？</p>
+</div>
+<p>在这样的疑问之下，实乃梨又一次对自己的情感犹豫了，她认为自己的情感牵挂的事情太多，自己选择龙儿依然被好友大河的情感牵制，于是她躲避了自己对龙儿的情感。然而在这种心不在焉的状态下，实乃梨甚至输掉了从来没想过会输的棒球比赛。</p>
+<p>在这样的低谷之下，实乃梨显然无法面对龙儿想和她一起参与圣诞派对的邀请。然而，在当晚大河的劝说下，实乃梨最终还是计划前往会场，但是，在路过大河公寓的时候，她看见了跪在地上痛哭的大河。这个时候实乃梨明白了实际上大河依然和自己想的一样喜欢着龙儿，大河依然还是出于朋友之间的情谊，将龙儿让给了自己，而大河自己却在忍耐着这些痛苦。实乃梨最终在遇到了龙儿的时候，还未等他开口，便拒绝了龙儿的所有好意。</p>
+<p>实乃梨对自己感情的极端逃避引来了亚美的不满，而这也是修学旅行中两人争吵的根本原因。在争吵导致大河遇难等一系列事情后，最终在大河送巧克力的时候，实乃梨终于鼓起勇气面对自己的感情，承认了龙儿终究不会选择和自己走到一起，那么自己就要更为棒球梦想努力。而正式与自己的感情告别的标志是另外一个名场景，实乃梨为了激励龙儿去追逐大河，伸出拳头给龙儿打气，结果碰到了龙儿的嘴唇，当时并没有发生什么，但是当龙儿下定决心飞奔去追逐大河之后，实乃梨偷偷亲吻了刚刚碰到龙儿嘴唇的拳头。</p>
+<p>然而，即使鼓起勇气，实乃梨依然改变不了自己的挚友和自己喜欢的人最终走到了一起，最终会离自己远去的事实，在痛哭一顿后，实乃梨最终接受了现实。</p>
+<h2 id="亚美">亚美</h2>
+<p>本作女三，是北村的青梅竹马。亚美是职业模特，因为跟踪狂的原因被迫放弃工作并转学，并且在工作中磨练了一套伪装术，也就是所谓人前一套人后一套。有着丰富的社会阅历，对主角团的这些情感问题看得最为透彻，甚至接近上帝视角，然而涉及到如何去解决的时候，又缺乏和青春期少年少女交流的能力，很容易触发意料之外的矛盾冲突。</p>
+<p>亚美的感情线较为简单，即在龙儿劝说她放弃伪装和大河暴打跟踪狂后，亚美就对龙儿产生了好感。但是亚美作为主角团中心态最为成熟的一人，其对龙儿的依赖感是最弱的，仅仅是保持了好感和希望其多关心自己的愿望。</p>
+<p>相对地，龙儿则几乎完全将亚美作为自己的朋友看待，在各种对话中也不会将自己和亚美并称。</p>
+<h1 id="一些想说的话">一些想说的话</h1>
+<p>这个作品的感情线是真的扭曲，尤其是圣诞夜，如果加上前夕的话，这一段时间主角团五人全部失恋。首先是北村表白被会长冷处理，之后是亚美向龙儿示好也被龙儿忽视，再然后是大河亲手将自己和龙儿相伴的机会毁灭而痛哭，其后是实乃梨看到大河对龙儿的热烈的情感而决心放弃自己的感情，最后是龙儿甚至没有表白就被实乃梨回绝。</p>
+<p>虽然虽然，龙儿和大河在当时已经几乎快要两情相悦，但就是这么阴差阳错让两人到了更晚才确定互相的心意。</p>
+<p>不过，我为什么还是觉得这部番相当优秀，是因为这部番的感情线虽然很扭曲，但是却真实。虽说不能忽视艺术加工，但是这部番对青春期的少年少女朦胧青涩、飘忽不定的情感，以及在此基础上对自己情感的逃避，对友情和爱情之间的抉择，对家庭的理解等等的刻画十分真实。就以我自己为例，我中学时期对爱情的认识也不过是一种飘忽的感情，大多时候并没有区分一场随便的恋爱和需要承诺和责任附加的一场恋爱，所以即使有观众认为不真实，但我认为大河到最后，到真正将龙儿推给实乃梨的时候才真正认识到一直支撑、关注自己的并非是北村而是龙儿，这样的认知变化也并不虚假，而且前期就已经铺垫了大河是笨拙迟钝的。事实上，就我个人而言，2021 年的时候我的情感动荡，直到 Sakana 离我远去才真正敢于面对自己内心对 Sakana 的情感而自责为何之前会冷处理两人的关系长达两三年。说实话，大河在圣诞夜的痛哭，我是觉得相当真实的，因为人真的是不见棺材不落泪，不到真的要失去了，都不会正视自己的情感。</p>
+<p>但要说这部番的情感刻画上的问题，说实话我觉得对龙儿的情感刻画还有些欠缺，尤其是其一直到圣诞都还对实乃梨保持好感，那他究竟出于什么样的契机就爱上了大河呢？这一点实际上并没有描绘得很好。不过实际上也是可以理解的，就和大河认知转变一样，在实乃梨拒绝自己之后，龙儿这才回归了理智，缓慢认识到自己陪伴良久的大河才真正让自己动心。但这个说法也有问题，因为龙儿本身就有主妇属性，长期照顾的女性可以是母亲，可以是女儿，并不一定是恋人。所以正因此，这部番也有不少人调侃龙虎之间更像是父女。</p>
+<p>但整体依然瑕不掩瑜，整部番很长，大河从开头的乖戾逐步变得善解人意和温柔，这样的成长和转变无疑让我钦佩作者对大河这个人物的刻画的深度，如此大的性格转变却不显得突兀。整部番的泪点很多，因为本身就设定在类似单亲家庭等并不健全的环境上，很容易凸显人物的伟大之处，无论是将龙儿抚养成人的母亲，还是最终决定重返家庭的大河，这些人物的光芒就显得相当耀眼。</p>
+<p>整体上来看，我是真的觉得这部番和《中二病》可以并称我最喜欢的恋爱番，因为他们都不止是简单发糖，他们都让我看到了爱情对一个人的改变，让我看到了两个人互相支持应当是什么样的。虽然《龙与虎》对男女主之间的感情刻画并没有多少篇幅，但是这种从无感走到一起的长途跋涉却又是另外一番有趣。</p>
+<p>总之，很好的一部番，很真实很有共鸣的一部番，让我能够一时脱离当下充斥的快节奏工业糖精恋爱番，重新想一想两个人应当如何建构感情，两个人应当如何面对各种现实问题，无论是家庭还是未来。</p>
+]]></content>
+      <categories>
+        <category>【杂谈】游戏 &amp; 番剧</category>
       </categories>
   </entry>
 </search>
