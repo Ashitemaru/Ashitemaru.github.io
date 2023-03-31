@@ -829,6 +829,532 @@
       </categories>
   </entry>
   <entry>
+    <title>2023 春季学期记录</title>
+    <url>/2023/02/20/2023-spring-record/</url>
+    <content><![CDATA[<p>应该是本科的最后一个学期了，最近事情也比较多，头绪也没完全理清楚，不如效仿之前假期通过日记的方式强迫自己认真工作，也写些学期中的日记算了。</p>
+<p>目前应该是毕设、先前和快手的项目以及软工助教三件长期的事情，另外有一份可能短期较忙后期平缓的实习。</p>
+<span id="more"></span>
+<h1 id="section">2023.02.20</h1>
+<p>学期的第一天，滚去上了韩语课，没想到的是韩语课居然不让使用电脑，本来还打算以后还可以在课上少说干点活的，看起来也不行了。中午偷摸去五道口出勤，结果还是一堆人，下午只能来工位，把预定中的几件事做了：</p>
+<ul>
+<li>迁移好服务器上的数据，跑上实验</li>
+<li>确认小程序的商品列表页面写完，check 一下 yfgg 那边给的信息</li>
+</ul>
+<p>本来以为迁移数据是小工作，结果发现还挺麻烦，在经历了实验室机子硬盘满了换挂载之后，我发现我测试集好像没了，现在只能想办法去把这个测试集找出来了。</p>
+<p>最终还是把测试集找出来了，之前写 Pensieve PyTorch 的时候用了这个数据集然后忘了 ignore 传到了 Github 上，只能说感谢当时比较粗心了。</p>
+<p>另外就是老师又把我拉到了一个项目的工作群里面，事情又要多起来。之后就是用新 Puffer 数据训练出来的模型依然是炸裂状态，洗数据的脚本不知道为什么很慢，而且估计还是有问题。自己个人网站的 CI 也不知道为啥停了三个星期没动。我现在真的是，完全不知道从哪里下手。</p>
+<hr />
+<p>现在洗数据的脚本慢的问题居然莫名其妙解决了，并且顺带学了一个 Python 的小知识。</p>
+<p>洗数据有个非常经典的操作，就是不断向一个列表之中 append 数据，正常都会这么写：</p>
+<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line">batch = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> data <span class="keyword">in</span> tqdm(data_reader):</span><br><span class="line">    <span class="comment"># Process</span></span><br><span class="line"></span><br><span class="line">    batch.append(data_item)</span><br></pre></td></tr></table></figure>
+<p>然而由于取字段运算符（就是 <code>batch.append</code> 中的 <code>.</code> 运算符）事实上在 Python 中占用的资源很大，所以事实上用下面的写法速度会快很多很多：</p>
+<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line">batch = []</span><br><span class="line">add_data = batch.append</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> data <span class="keyword">in</span> tqdm(data_reader):</span><br><span class="line">    <span class="comment"># Process</span></span><br><span class="line"></span><br><span class="line">    add_data(data_item)</span><br></pre></td></tr></table></figure>
+<p>我的数据大约是 <span class="math inline">\(10^6\)</span> 量级，然后每次都需要对四个列表 append，改用这个写法直接让洗数据时间从近三个小时变成了两分钟左右。</p>
+<p>这种改进方法有个需要注意的地方就是不能改变 <code>batch</code> 所指向的内存，否则先前的 <code>add_data</code> 将无法正确修改 <code>batch</code> 中的内容。比如 <code>batch = batch[: -1]</code> 之类的重新指向的写法就不能在循环体内出现。</p>
+<hr />
+<p>最后发现个人网站 CI 不动的原因是 Travis CI 收费了，而我自然是欠费的。那么，只能用免费的 Github Actions 了，虽然要把仓库内容给 Github 去训练 Copilot，但反正我这个个人网站他能学到个什么呢？</p>
+<h1 id="section-1">2023.02.21</h1>
+<p>今天早上又得早起，去软工课堂上讲小作业，不过因为学堂路堵车了稍微晚了点到，结果前排位置已经没了，只能坐到角落里。不过，由于高老板已经把小作业的 Slides 发出来了，所以我发现坐我前面的同学已经开始做了。要说实话的话，看到他能够非常顺利地把前端小作业运行起来我还是觉得挺欣慰的，毕竟没在这种地方出锅。</p>
+<p>软工课还是一如既往的无聊，周围的同学要么打牌，要么写小作业，要么复习自动机，而我因为没法给电脑充电所以没办法去做实习里的开发，只能坐牢睡觉。</p>
+<p>中午依然是偷偷出勤，现在疫情放开之后，五道口机厅就连工作日的下午往往也有近十个人在打。今天尝试推了推几个 13+ 的鸟，未果，随后因为又来了至少三四个人于是想了想就撤退回工位了。</p>
+<p>回到工位没想到第一件事情是有同学报告了 THUInfo 的 bug，虽然没花多少时间就排查出来是课程信息缓存策略有问题，如果退课并选择另一位老师同样的课的话就会导致无法正确更新缓存中的数据。然而即使是小事，这件事情也花了我一些时间。之后就是正常拉新的 Puffer 数据然后跑实验，但是现在实验室机子的存储空间大概是不够了，不能像之前那样一跑几天，几千个几千个 epoch 那样玩了，现在差不多收敛之后跑到 1000 epoch 左右就得停了。</p>
+<p>昨天挂上去的实验结果不是很好，最高的 reward 也只能达到 12 左右，甚至达不到启发式的 15，今天换了一个新的、更大的数据集看看，希望能够收获一点正常的结果。</p>
+<p>以及实习那边又开始催了，感觉是该找个时间好好卷卷实习了，然而最近晚上都不太好 308 直接干，因为连着三天需要早上十点钟去上课，还挺麻烦的。</p>
+<p>晚上和 xjj 他们去鹤一吃了顿烤肉，结果回来困到直接在椅子上睡着了，本来还想晚上做做事情的。</p>
+<p>另外让我惊讶的是，晚上居然有位同学来问软工小作业相关的东西，一看他都做下去不少了，感觉现在一字班果然还是不可小觑，说不定再过两三天就有人做完了。</p>
+<h1 id="section-2">2023.02.22</h1>
+<p>今天早上依然是韩语课，今天讲松紧辅音，然而我并不太会。下课之后依然是偷偷去五道口出勤一会然后赶回来上下午的强化学习。</p>
+<p>强化学习我记得课容量应该是四十几左右，结果不仅是微信群里就有一百四五十人，线下教室里也有快两百人，而我这个稍微晚到的就只能站在后面听了一节课。比较难绷的是，因为这堂课的内容我已经基本学过了，所以我就没怎么听，结果还被喊起来回答问题，还要用英语，这就很麻烦。不过说实话，这门课很符合我对大学课堂的想象，一个能有强交互性的、老师能和你保持交流的课堂，比单纯念 PPT 的单向授课不知道好了多少，可能也是因为这位老师也并没有大我们多少岁数，交流起来比较没有障碍吧。</p>
+<p>现在计划把目前这个网站上和 RL 相关的东西按照这堂课的 outline 给整理好，因为我发现这堂课所使用的符号系统之类的比较贴合我所用的，正好也不要废多大的力气。</p>
+<p>下午继续来工位，然后等一手 SOA 课程的消息，如果事情多、不好混分的话就赶快退了，本来大四也就想摆烂混个及格分赶快毕业得了。结果就是立刻从同学那边听闻课程大作业要求基于 ChatGPT 做开发，这已经完全超出我所需要了解的内容了，于是立刻退课跑路。</p>
+<hr />
+<p>今天看了一下用新一天的 Puffer 的 fox channel 训练的情况，更是爆炸，甚至到最后都负 reward，根本没收敛，我现在真的是在怀疑我的数据处理真的存在问题，然而我也是真的不知道怎么往下处理了，但这毕竟总是要结项的，我这边也要给结果的。</p>
+<p>今天估计要做的事情差不多是：</p>
+<ul>
+<li>收拾一下强化学习的笔记</li>
+<li>写实习那边的小程序</li>
+<li>毕设看看能不能推进点东西出来</li>
+</ul>
+<h1 id="section-3">2023.02.23</h1>
+<p>周四终于是没有要我十点钟就要起床的事情了，前三天连续早起让我精神状况相当不好，于是周三晚直接很早就睡了，结果一路睡了快十二个小时。</p>
+<p>周四恢复了组会，一点半准时赶到会议室。组会本身是没有什么很大意思的，比较有意思的有两件事，一件是和我一起做毕设的同学好像已经进展很快，这让我比较焦虑，另外一件就是我和老师说了我寒假在实习的事情，他感叹了一句“年轻人忙点好，但是我每周该查你毕设还是查”。总之就是这波组会开下来就让我感觉毕设再不做出点东西好像就得挂了。</p>
+<p>开完组会稍微收拾了点东西，把实习那边微信小程序开发者工具的一个 bug 修好之后就去上地出勤，不过因为状态不咋样就没怎么打。</p>
+<p>晚上回来之后实习那边的学长也在说我最近事情实在是太多，计划再找一个来帮忙的人，虽然可能需要我让渡部分回报（工资、股份之类的）。我感觉我最近确实也不太想继续推进实习了，实在是太累了，于是就答应了下来。结果他们很快就找来了两位似乎比较有意愿的同学。</p>
+<p>另外就是软工助教那边讨论大作业给分的事情，本来说很快的会，愣是开了一个多小时，就为了讨论应该怎么给同学们解释我们改革的动机和尽力阻止内卷。最后讨论下来，是和同学们明确给出过程评分要求（比如 Git 开发 comment 管理之类的评分），并且说明“完成拓展功能很容易导致在过程评分上失分，甚至可能得不偿失”，以此来尽力阻止过度追求满分的行为。</p>
+<p>开完会洗完澡来到 308 本来计划好好写写实习那边的东西，结果却是一躺就睡着了，一直睡到了周五的十二点，看来这几天是真的困了。</p>
+<h1 id="section-4">2023.02.24</h1>
+<p>从 308 的沙发上醒来之后，就简单点了个外卖，然后和 return 讨论了一波日语中助词「は、が」的用法，这些东西稍后整理到自学手册里。外卖到后吃完了就继续推实习那边的事情了。</p>
+<p>结果说是好好做实习的事情的，因为空间里刷到了一条以椭圆曲线加密算法为背景的高中题，就研究了大概几个小时的椭圆曲线。只能说完全不能集中做实习这边的事情。</p>
+<p>好摸啊，今天一整天感觉一直到晚上六点都没做出来什么实际的东西，果然还是得 push 一下自己。结果就这样一直到了晚上八点，还是没有做出来什么实质性的东西，倒是实习那边的学长似乎有一些想找我的事情，先来了解一下吧。</p>
+<p>和实习那边新找的技术团队简单见了一个面，看起来他们确实是很有经验的开发团队，至少对商业开发的流程把握比我这种随便写写玩玩的人实在是高到不知道哪里去了，如果可以的话还希望能把我这边接手过去我就可以稍微歇歇了。这里还是得感谢一下实习的 leader 还是帮我在投资人那里保住了一些利益，至少原先约定的现金工资还是能给出，这就还可以了，因为我确实没有作出那么多的贡献。</p>
+<p>讨论下来最终我应该就只要在一周内完成：</p>
+<ul>
+<li>“我的”页面以及订单详情页</li>
+<li>自定义导航栏</li>
+<li>询问学校和手机的 PageContainer</li>
+</ul>
+<p>这三个应该就可以暂且休整了，感觉整体安排还是很好的。</p>
+<p>晚上稍微花了点时间修正了一下主页相关的一些东西，目前来看问题不大。</p>
+<p>另外，最近不少人软工小作业前后端都做得七七八八了，目前也没什么大的 bug report，还算是心里安稳了不少，希望 CI/CD 也不会出大锅。</p>
+<h1 id="section-5">2023.02.25</h1>
+<p>今天大概是实习那边简单开一个会，把团队所有的同学召集起来互相认识。不过说实话，我这个做开发的，确实不太了解运营那边，倒是 yfgg 需要和运营那边对接后端管理，反倒是需要经常接触。</p>
+<p>中午出去吃牛肉面，结果那家店既不能在线下单，而且还需要自己取餐，还没有防丢包机制，属于是当下互联网应用普及背景下的漏网之鱼了。</p>
+<p>下午于是就正常工作把“我的”页面赶快写完，说是今晚就打算验收，那总之认真干干吧。</p>
+<p>然而微信小程序这种东西就是很折磨，写了一整天还是有些逻辑上的问题。另外，在写这玩意的时候还有一位上软工的同学一直在找我答疑，然而这位同学似乎对一些计算机的基础知识都不是特别熟练，确实也弄得我有点麻烦。</p>
+<p>晚上就直接摸鱼了，打了一晚上德州，然后早早睡了。</p>
+<h1 id="section-6">2023.02.26</h1>
+<p>一点没睡好，因为突然出现了一点点的感冒症状，喉咙发痒然后咳痰，我在怀疑是冬春之交的流感，或者是我复阳了，顺带着精神状况也不是特别好，有点头晕且没啥精神，口干舌燥的很难受。</p>
+<p>十一点左右就醒了，打了一把牌之后就去看 KOP maimai 决赛，yoshiki 还是很稳健地拿下优胜，确实也没啥特别可以说得上是悬念的东西。然而最主要的是在国际服比赛之前三位主持人透露了似乎 SBGA 终于要把国服 UI 更新到 festival 的信息：</p>
+<ul>
+<li>マイマイは日本でも人気なんですけれども、海外でも...</li>
+<li>中国で、あのマイマイみたいな...</li>
+<li>せっかくで、バージョンアップ、言ってもいい？</li>
+<li>バージョンアップしなかったですけど、近々、システムはフェスティバルにと...</li>
+</ul>
+<p>然而这完全不像是一次正式通告，虽然后面也提到了最近会发布正式公告，但这暧昧的态度和语气确实也很 SBGA。只能说如果真的给更新的话，maimai 暂且是一款我的问题。</p>
+<p>下午实在是拿不出来任何做事的干劲，直接去上地出勤了，然而上地一直保持着至少八人的规模，所以说实话也没打到多少把。感冒的症状说实话出勤的时候在缓慢加重，毕竟只穿了短袖而且还在不断流汗，很有可能受凉。一直到了晚上，本来想吃一顿萨利亚就回去的，结果是萨利亚居然卖完了主食，啥都吃不了，只能去上地华联地下那些不咋样的饭店随便吃吃，就这样还吃了我六七十，啥都没吃着。</p>
+<p>晚上回到宿舍拿到了美团上买的感冒药，结果上楼梯的时候就已经开始感受到极端的疲惫感，到了宿舍坐下来，立刻感觉好了不少，于是赶紧吃了颗药。</p>
+<p>今天本来想做的事情那是一件都没有做，这一周刚开始的时候干劲满满，每天除了日常工作还能出勤，心情也一直很不错。但是到了今天，周日，因为这个感冒症状，真的弄得我非常难受，希望明天起来能够快快好起来，这样至少不会影响我下一周的时间安排。</p>
+<h1 id="section-7">2023.02.27</h1>
+<p>果然症状没有好多少，依然是喉咙有点疼然后头很昏，整天处于疲劳状态，可能还有一点点低热。早上强撑着还去上了韩语课，虽然迟到了。韩语课目前在讲发音，没有什么特别有意思的东西。</p>
+<p>中午按照平常的饭量点了一套粥和配粥的小菜，结果发现自己完全吃不下，虽然吃了七八成，但还有些是完全没吃的，比如三个豆沙包。下午按照道理要准备开始干活了，然而这个状况是真的一点都没法工作，于是爬上床睡觉了，除了途中上了趟厕所之外，一直到七点左右我一直在床上睡觉。比较麻烦的是，我醒过来发现四肢有点冰凉然后还有点热，这说明症状严重了。</p>
+<p>为了防止我是新冠复阳，我去 308 里面拿了一份之前囤着的抗原，自测了一下是阴性，这就说明我得甲型流感的概率很高，前几天宿舍楼群里面也有人问有没有体温计之类的。</p>
+<p>就这样一直磨到了晚上八点，请舍友帮忙带了饭，结果发现还是没什么特别大的胃口。但这个时候我意识到很多事情再不做来不及了，比如第二天就要在课上讲的 React 前端小作业讲稿，还有大作业文档之类的也得稍微调整一下。就在我极不情愿地坐到桌前准备工作，这种疲劳感和不集中又袭来，而且实习那边还在 push 一些事情。</p>
+<p>怎么会变成这样的呢？我思考可能是先前太疲劳，毕竟连续早起了很多天，虽然只是十点起，但我平均得到四五点睡，这就很不好。于是想着该找机会调整作息和运动了，然而目前事情还得赶快推。</p>
+<h1 id="section-8">2023.02.28</h1>
+<p>二月的最后一天了，昨天晚上吃完药之后明显感到全身发烫，然后开始冒汗，最终到了凌晨五点左右退烧了。然而，喉咙疼和咳嗽确实是一点没有见好转，甚至还有恶化的感觉。</p>
+<p>强撑着去软工课堂上讲完了两节课，回来之后自然又是睡了整整一个下午，起来就已经是晚上了，点了个外卖，胃口依然没有恢复。</p>
+<p>晚上首先是我爸妈得知了消息，他们简单关照了几句，问了问药物的情况。然后我发了个朋友圈说已经甲流第三天，结果各种关心就都过来了，先是 rls，然后是之前一直有联系的学弟，一起打牌的学长，湖中，甚至贾珈老师都来关心，一时间受宠若惊。</p>
+<p>不过总的来说吃了颗药然后洗了个澡之后现在精神状况恢复不少，至少现在四肢都是温暖的，然后也几乎没有疲劳感，喉咙虽然沙哑但至少也只是微微发涩，估摸着明天，应该也就能正式好转了吧。</p>
+<p>期间 rls 提到了还有一个月薪两千的前端单子问我要不要接，我只能回一句“狗命要紧”，赶快回绝了。</p>
+<p>以及突然很想吃水果，尤其是苹果和梨，那种清甜的口感，不知道为啥现在特别想念。</p>
+<p>过了一遍 DRL 的 recitation，PyTorch 的简单入门，讲得还可以，但之前就学过了，不好说对初学者而言友不友好。比较好玩的一点是，我听完 recitation 之后，突然感觉神清气爽，有种大病初愈的感觉，难道 DRL 还有这个好处？</p>
+<p>不过看这样子，明天确实可以开始正常生活了，先是得把这几天没洗的衣服给洗了，然后给自己买点水果解个馋。工作上的话，软工助教一时半会是没啥大事了，实习估计这周也会结束，毕设已经请了一周假，这周组会应该也很好过去。</p>
+<p>三月了，希望能全新开始吧。</p>
+<h1 id="section-9">2023.03.01</h1>
+<p>今天起床之后发现好了不少，除了喉咙还是有点不舒服之外，其他应该基本都好差不多了，然后也第一次韩语课没有迟到。韩语课没啥值得记忆的，只是 zz 居然被老师听出来他的韩语有日语口音。</p>
+<p>中午点了麻辣烫，虽然这次没要酱料，毕竟现在还不太能吃辛辣，于是就吃了清水煮肉片，但是比较好的事情就是发现自己饭量已经差不多恢复了。此外去猫超买了黄瓜、菠萝蜜和哈密瓜，其他的还好，就是菠萝蜜难吃出了一种境界。</p>
+<p>下午摆烂没去 DRL，但是老师发 slides 真的很慢，我还打算至少看看 slides 来学点东西的。</p>
+<p>结果还是摆烂了一个下午，最终还是决定去洗个衣服，至少做点什么像样的事情吧。</p>
+<h1 id="section-10">2023.03.02</h1>
+<p>昨晚据我舍友说睡觉的时候连续咳嗽了一个多小时，说是真怕我睡着睡着人咳没了。</p>
+<p>中午爬起来去开组会，为了防止传染所以戴了个口罩去了实验室，实验室的学长们见到我这阵仗都纷纷戴上了口罩。老师看到这个状况，于是劝我还是等身体完全好了再来实验室，组会少一两次问题不大。于是我就从命地回去了，回去的路上顺手去吃了个午饭。</p>
+<p>吃完午饭才发现这几天的温度已经回升到了十几度了，天气最近也一直是晴天，这两天正好又是春季百团大战，于是就去逛了一下摊位。不过由于春季百团本来就不是重点战场，各个社团也没有拿出家底，所以摊位比较一般，没啥意思。但是，这次逛了摊位之后突然发现，只是走了百十米之后就开始喘气，我自己都没发现现在身子已经虚弱到了这个程度。</p>
+<p>回到宿舍坐了一会喝了口水之后瞬间就恢复了不少，甚至感觉和康复了毫无区别。果然只有出门才会意识到现在自己身体依然十分虚弱，即使没有很明显的症状。算了，先好好把 DRL 笔记整理完吧。</p>
+<h1 id="section-11">2023.03.03</h1>
+<p>身体看起来已经是完全好了，下午先是出门去做软工小作业答疑，但是就在这过程中不断被催实习那边的事情。目前预定下来要做的事情应该还就是之前定下来的那几个页面，然后预计还要去做后台管理应用的一些后端开发。</p>
+<p>因为现在身体好了不少于是直接去上地出勤，虽然状态依然没有完全回来，但是基本上已经是能活动开了。不过打了一晚上一分没上，还是很难受的。</p>
+<p>本来是打算和舍友一起去海底捞的，但是考虑到我出了勤得去洗澡，然后当晚还有韩语作业，只能偷摸溜回来。然而回来发现的第一件事就是我自行车被偷了，我明明好好锁了车，却依然被偷了。本来是打算报警的，但以前也被偷过车的一位同学提醒我这事报警挺麻烦，毕竟你也没法拿出什么很重要的证据说明这车就一定是你的，而且很多行政流程可能还挺麻烦。</p>
+<p>回到宿舍本来打算稍微做点事情的，结果是相当困，写完韩语作业之后就直接摸鱼了。</p>
+<h1 id="section-12">2023.03.04</h1>
+<p>今天起来先是收到了 SECoder 因为网段限制无法满足给所有同学开两个部署容器的麻烦消息，这代表我们对小作业框架要做大改。急急匆匆和高老板、mfy 商议了解决方案之后，我把作业文档和课程公告写好了，就等高老板那边把 code base 修改好，然后开好容器就可以准备谢罪了。</p>
+<p>此外不少同学的软工答疑我还暂且没解决，在此之外实习的事情理应今天解决我还没做。</p>
+<p>不过说实话，现在我对这份实习是越来越不想上心，因为自己毕设真的是没有进度，现在也已经是三月的开头过去三四天了，四月中期拿不出东西是真的要收拾东西走人的。</p>
+<p>有个题外话就是我考研的舍友似乎想来我们组，看上去还真有可能。如果是这样的话，至少几年内有个一起在组里的也不错。</p>
+<p>晚上稍微摸了鱼，打了一晚上德州扑克。这一把非常有意思的一局是，我起手 AK 方片，然后直接冲刺了，翻牌是三张方片，我直接中天顶同花，于是也不演了，打退几家。令我惊讶的是，即使是这样居然还有一家和我对着下注，我看后续牌没有对子，就说明没四条或者葫芦了，结果那一家还在和我对着下注一直到 All in，我这手牌自然是一击把他打飞了。后面我还拿到过天葫芦，天顶两对等好牌，只能说这一把太运势好了。</p>
+<p>其实晚上最主要的还是把软工小作业的问题解决了，更新了文档，发布了课程公告，也终于给大家开好了容器，这件事情也算是平稳过去了。</p>
+<h1 id="section-13">2023.03.05</h1>
+<p>周日，本来想好好做点实习的事情的，结果直接在宿舍开始摸鱼。现在气温开始回升了，慢慢有春天的感觉了，最近心情大好。</p>
+<p>不过下午却是摸鱼摸过去了，中途 c7w 给我转发了 ouuan 在自己 blog 上对软工小作业的批评，怎么说呢，别人说的没错那就只能立正挨打。硬伤就是计时器资源和网络请求并没有设置在组件卸载的时候取消，这一点怎么说呢，因为曾经的项目没有使用过定时器，也没有过于管 abort 网络请求的事情，所以就没这方面的经验，确乎是得学。然后就是 ESLint 配置的事情，怎么说呢，一是 holder 确实 prefer 一个并非大众喜爱的码风，然后 ESLint 没好好配也差不多是为了同学写的时候别真的红一片，我当时第一次开始写代码就经常被 lint 干到崩溃，明明会写的逻辑硬要跟着 lint 后面走。嘛，不过也确实是在想要不从众用 2 space 缩紧和单引号算了，但是说实话 holder 真的是单引号极端厌恶。</p>
+<p>整体要说的话，实际上问题也就是一个，就是“简陋”，不符合当下的一些约束或者说惯例，而且为了零基础也能上手，省掉了一堆东西还几乎没多少填空。</p>
+<p>算了，还是等 ouuan 来好好调教一番吧，我摆烂了，我只想毕业了。</p>
+<p>但是说实话，还是赶快做点事情从周一开始恢复到第一周的工作状态吧，否则实在是有点太摸了。</p>
+<hr />
+<p>总之今天整体还是太摸鱼了，实习那边的东西没有一发调出来也是真的没绷住，然后还时不时被 ouuan 拷打，包括各种可以优化的地方。看来 holder 还需要再稍微锻炼一下抗压能力，这点抗压能力完全不能应付啊，包括之前被 cyr 拷打毕设也是，完全做不到坦然面对面前的问题呢，遇到问题只想摆烂和找借口嘴硬，这实在是有点过分了。</p>
+<h1 id="section-14">2023.03.06</h1>
+<p>今天早上起来就发现已经十点了，已经过了韩语课的签到，于是也懒得去了，看到湖中在说想出勤，于是直接去了五道口。没有想到的是，即使是星期一的上午，五道口依然充满了人，完全打不了多少，只能随便糊糊作罢。</p>
+<p>下午精神终于回来了一点，昨天摆烂加上被拷打真的是完全绷不住，但还是得赶快调整。到了工位，整理了一下自己的东西，结果发现耳机的耳塞又掉了，没有办法只能赶快下单新耳机，不能再将就着用这个破耳机了。下午依然是随便跑了一下 Puffer 的实验，可喜的是这一次实验居然似乎有了点看起来能行的样子，因为现在至少能打过启发式了，至少不是智障了。在等实验的过程中帮 abmfy 修了一下日语作文，然后准备还是赶快把实习那边的事情给做完，少一件事终究是好事。</p>
+<p>今早在出勤的时候顺手把当前前端小作业存在的问题给罗列了一下，整体来讲虽然有点绷不住但还是感谢 ouuan 提供了这么多的改进意见。</p>
+<h1 id="section-15">2023.03.07</h1>
+<p>7 号真实地没有任何可以记录的事情，因为早上起来之后随手在群里发了一个“礼问上几”，得到上地机厅只有一人的答复之后，立刻收拾东西去出勤了。然后原本是打算随便打打就下午回来的，结果因为手感好到离谱，直接上了四十几底分，于是就这样一直打下去了。最后快要闭店的时候，随手开了一把高桥名人，结果 24 分纵连全打上了，鸟加 13.2 吃分。</p>
+<p>但是事情总是得做的，因为和实习那边说了已经写完了订单页面，所以这个坑得填上，最终还是来到了 308 开夜班，一路做到早上六点，真实做到了三四个小时糊完整个页面。</p>
+<h1 id="section-16">2023.03.08</h1>
+<p>7 号晚上写完订单页面之后我意识到周三 8 号的韩语课多半是起不来了，于是和老师说明了情况，打算韩语课退课自学了。</p>
+<p>8 号的话，起来之后先是去了 DRL，下课后结果兴致来了就去吃了顿麦当劳然后五道口出勤，出到了晚上回来和舍友吃了顿饭，308 睡了一觉之后就是软工的课咨委启动会，开完之后就十一点了，直到这个时候才准备开始做毕设。</p>
+<p>这两天属实没有什么特别有意思的事情，也没有什么有意思的新闻，只是很平淡地摸鱼了两天，只能赶快把毕设启动了，不然太摸鱼了。然后韩语的收音和今天 DRL 的课程内容还得整理一下，不过还是毕设为重，这些可以明天开完会之后慢慢摸索。</p>
+<h1 id="section-17">2023.03.09</h1>
+<p>昨天为了赶快干活，晚上做毕设做到三四点，但是实在是顶不住了赶快去睡觉了。但是这一觉也没睡多好，中间醒了几回。早上起来就看见导师要去参加另外一场会于是组会交给我们自行组织，绝佳摸鱼机会。</p>
+<p>于是下午的组会也只进行了半个小时就结束了，然后我们就在讨论导师参加的那一场会会开到什么时候，毕竟我们还得装作认真讨论的样子，至少不能让组会比导师的会提早结束。结果是没讨论出任何有价值的结果，就直接回实验室摸鱼聊天，没想到的是，导师已经回来坐到实验室了。</p>
+<p>今天机厅据说人并不多，但是说实话事情还是不少的，还是稍微做做吧，大不了周五出勤出一整天。</p>
+<h1 id="section-18">2023.03.10</h1>
+<p>周五似乎并没有什么安排，因为周四理论上已经大体解决了问题，我也成功在周五凌晨六点前把实习的代码交掉了，虽然我知道里面还有不少的错误，但这些错误也不是我写的，我真的很难去帮别人补天。</p>
+<p>然而下午毕竟是要验收的，验收这就发现这玩意几乎没有办法用，功能上欠缺了一堆东西，实习那边的学长能看得出来很着急，于是急忙安排我们前端开发的两拨人赶快开会对接。我迅速把一些比较严重的问题扔到了群里，但是他们的答复也比较暧昧不清，不太能对实际解决问题起到什么作用。</p>
+<p>晚上稍微开了个会，我直接对着他们的代码指指点点了一通，总之就是他们那边出了不少问题（虽然感觉我也可能出问题），导致现在功能上完全用不了。在这之前事实上我已经和 yfgg 吐槽了很多他们代码上的错误之类的，总之就是血压超级高。</p>
+<p>开会的时候我直接说我周末不奉陪了，你们的问题你们慢慢解决，然后我就开始心安理得地摆烂，打了一晚上德州扑克之后就早早睡了。</p>
+<h1 id="section-19">2023.03.11</h1>
+<p>周六是约好先去麦当劳吃饭然后 V+ 群群 K 的，我定好了十一点的闹钟，虽然被闹醒了但是小小眯了一会，没想到就直接迟到半小时。</p>
+<p>因为这次参加的群友相当之多，最终我们是分为中 V 和日 V 两边举行，我一直在日 V 这边，确实也唱了相当多的 V 曲，嗓子已经炸裂了。</p>
+<p>晚上本来是打算聚餐的，但是还是和湖中、秋枫老师临时起意去窝出了一小会勤，只是没想到窝现在十点钟就会关门，于是也没玩很长时间就只能回来了。</p>
+<p>回来洗了个澡，准备稍微干点活。在今天玩的时候实习那边还在说打算周日把 bug 修好，但总之我有点不想再陪他们玩下去了，我把我的工作做好，这周，我必须把那里的事情放下来做毕设了，后面软工助教会还得开，不能再这样拖泥带水了。</p>
+<hr />
+<p>今天还是主要配置了一下 DRL 的环境，因为手上的 Mac 说实话已经很不好用了，很怕后面要做深度神经网络的时候撑不住，于是直接把代码拉到服务器上去了。但是这有一个重要的问题，DRL 的作业是基于 Gymnasium 的，这是需要渲染图形界面的，那我就需要通过 X11 转发图形界面到我的 Mac 上。但是刚配置完 X11，就报错了：</p>
+<figure class="highlight shell"><figcaption><span>ZSH</span></figcaption><table><tr><td class="code"><pre><span class="line">X Error of failed request:  BadValue (integer parameter out of range for operation)</span><br><span class="line">  Major opcode of failed request:  149 (GLX)</span><br><span class="line">  Minor opcode of failed request:  3 (X_GLXCreateContext)</span><br><span class="line">  Value in failed request:  0x0</span><br><span class="line">  Serial number of failed request:  143</span><br><span class="line">  Current serial number in output stream:  144</span><br></pre></td></tr></table></figure>
+<p>我查了半天终于在 StackOverflow 上找到了解决方案，只需要在 MacOS 的客户端这边运行下述命令启用 IGLX 即可：</p>
+<figure class="highlight shell"><figcaption><span>ZSH</span></figcaption><table><tr><td class="code"><pre><span class="line">defaults write `quartz-wm --help | awk &#x27;/default:.*X11/ &#123; gsub(/\)/, &quot;&quot;, $2); print $2; &#125;&#x27;` enable_iglx -bool true</span><br></pre></td></tr></table></figure>
+<p>然后普通地 <code>ssh -Y</code> 连接到 Linux 服务器端就可以了。如果是 VSCode 的话，需要在 SSH config 里面加上下面两行来保证 X11 启用：</p>
+<figure class="highlight shell"><figcaption><span>SSH config</span></figcaption><table><tr><td class="code"><pre><span class="line">ForwardX11 yes</span><br><span class="line">ForwardX11Trusted yes</span><br></pre></td></tr></table></figure>
+<h1 id="section-20">2023.03.12</h1>
+<p>今天是周日，按照道理是和实习那边对前端的任务的，不过下午我都用来搬迁毕设代码框架里面的一个第三方框架了。我毕设真的是，毫无进展，真的得速速做点东西出来了，尤其是下一次组会真的得说点什么东西出来了，不然这也太慢了。</p>
+<p>晚上临时起意去了胜博殿去吃炸猪排，不得不说，特别好吃，超出想象的好吃。猪排我点的千层锦，切面可以看到是一层层猪肉叠起来，最后炸出来居然不散开，居然还能保持猪排的形状，这也太惊艳了。小菜比如说包菜丝、茶水、金枪鱼拌饭、味增汤之类的就没有那么惊艳，但绝对也是平均向上的水平。</p>
+<p>今晚吃饭的地方旁边就有 maimai，于是就去打了几把，差点鸟掉 Big Daddy，但是尾杀崩盘了就没办法了。这个机厅最大的问题就是游戏币原价太贵了，两块钱一币，maimai 1pc 要五币，原价的话十块钱 1pc，实在是离谱。</p>
+<p>晚上回来发现自己 B 站六级了，于是做了一下硬核会员考试，擦边通过，关于鬼畜的一些东西真的已经是考的都是边边角角完全不知道了。做完这些迅速过了一下实习那边的代码，把订单列表页的按钮都写上了回调函数，我这边工作基本就相当于结束了。交了一些 Bug report，和学长说了自己可能得做毕设之后，就暂且告一段落吧。</p>
+<h1 id="section-21">2023.03.13</h1>
+<p>周一，因为已经退掉了韩语，所以没有早起，起来之后按照以往的规划去了五道口出一小会勤。本来是打算出一两个小时就回去去工位做毕设的，结果是一直打到了闭店。</p>
+<p>不过这一次出勤实在是太值当了，不仅杀掉了心心念念的捕物帐、纵连派对、跳舞狗三个 13+，还 AP 了海底谭和弱虫。最经典的事情则是，因为我已经连续出勤了七个小时已经累得不行，但是最后快闭店的时候我同学拉着我说再来一把。我秉持着已经这么累了，再累点也没事的态度开了一把 DX 奶，没想到的是我把这玩意杀了。而正好，同学帮我录下来了最后十秒钟，当了一次战地记者。</p>
+<p>回来之后就把这个视频上传到了 B 站，还是很有意思的。</p>
+<h1 id="section-22">2023.03.14</h1>
+<p>今天决定好好做毕设了，不过这次我打算换方向了，我不打算完整复现论文了，而是直接用 community code base，在这个基础上先跑起来 Pensieve 作为 baseline。感谢贾老师的建议。</p>
+<p>不过这次在跑起来这个 code base 的过程中遇到了相当多的困难。我一开始打算在服务器上运行起来这套代码，首先遇到的问题是导入自己编写的模块会导致 Python 找不到模块，这也算是个经典问题了，不过这次我找到了这样一套 Python 引言代码，感觉可以后期长期使用这样一套引言来解决自己编写模块之间互引的问题：</p>
+<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">current_path = os.path.dirname(os.path.abspath(__file__))</span><br><span class="line">sys.path.append(os.path.join(current_path, <span class="string">&quot;..&quot;</span>))</span><br></pre></td></tr></table></figure>
+<p>之后遇到的问题是服务器上没有 OpenMPI，这个简单，直接 <code>sudo apt-get</code> 就可以了。然后还有一点就是没有装 Mujoco 131，这个也不难。</p>
+<p>然而后面的就是大问题了，因为这个代码框架还是涉及到图形界面，所以还是会涉及到 SSH X11 转发图形界面，然而我本以为配置好了，结果这次运行的时候炸了 <code>No specified protocol</code>。我上网找了一下，基本都是说没有权限的问题，用 <code>xhost +</code> 命令就可以解决问题，然而我无论怎么尝试都不行。于是我放弃了，我决定先在我 Mac 本地跑起来这一套玩意。</p>
+<p>然而在 Mac 本地上就有另外的问题，OpenGL 找不到。我尝试了很多方法安装 OpenGL，但都不行，最后还是找到了相当邪道的解决方式，即直接修改第三方 <code>pyopengl</code> 里面寻找 OpenGL 的代码。代码位于 <code>platform/ctypesloader.py</code> 中，里面函数 <code>_loadLibraryWindows</code> 中有一段如下的代码：</p>
+<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line">fullName = <span class="literal">None</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    fullName = util.find_library(name)</span><br><span class="line">    <span class="keyword">if</span> fullName <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">        name = fullName</span><br><span class="line">    <span class="keyword">elif</span> os.path.isfile(os.path.join(DLL_DIRECTORY, name + <span class="string">&#x27;.dll&#x27;</span>)):</span><br><span class="line">        name = os.path.join(DLL_DIRECTORY, name + <span class="string">&#x27;.dll&#x27;</span>)</span><br><span class="line"><span class="keyword">except</span> Exception <span class="keyword">as</span> err:</span><br><span class="line">    _log.info(<span class="string">&#x27;&#x27;&#x27;Failed on util.find_library(%r): %s&#x27;&#x27;&#x27;</span>, name, err)</span><br><span class="line">    <span class="comment"># Should the call fail, we just try to load the base filename...</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<p>这里直接把 <code>fullName</code> 变量硬设置为 <code>"/System/Library/Frameworks/OpenGL.framework/OpenGL"</code> 即可（在 MacOS 上），这样的话似乎就能通过检查了。</p>
+<p>之后也是 Mac 上装一下 OpenMPI，直接 <code>brew install openmpi</code> 就行，然后就跑起来了。然而我 Mac 究竟是老了，所以跑的时候风扇直接起飞，还是得放到服务器上。不过我发现一件事就是这玩意完全没有生成什么图形界面，意思就是说理论上根本碰不到 X11 转发的问题，所以我就打算今天至少得把这玩意在服务器上跑起来才行。</p>
+<hr />
+<p>在服务器上二分了一下确认了是 <code>mpi4py</code> 这个包在 import 的时候会爆炸，不过我也用不到这个东西所以直接注释掉就没有那么多事情了。</p>
+<p>这个框架另外还附赠了一个用 Flask 编写的前端用来可视化训练数据，不过看起来这个前端目前也是炸得不轻，啥地方都是 500 Internal Server Error，还得一步步修理。</p>
+<p>最终还是找到了前端的问题，是因为我以为代码里面的 <code>viskit</code> 是个需要安装的第三方，所以直接用 <code>pip install viskit</code> 装了一下，结果这个 <code>viskit</code> 事实上是自己写的一个 <code>viskit.py</code> 模块。而碰巧的是用 <code>pip</code> 装的时候装了个很老的依赖，现在更新到了 v3 而我装的是 v1，恰巧这个依赖还真的在 <code>viskit.py</code> 里面引用了，所以直接爆炸了。</p>
+<p>我比较怀疑这个框架里的 <code>viskit.py</code> 是一个 self modified 的魔改版第三方，所以才不能从 <code>pip</code> 直接下载。</p>
+<p>最后他还有一个用来展示训练结果的 Python 文件，里面读取了缓存的模型参数然后用了 Gymnasium 渲染一个图像出来，不过这里又是涉及到图像 X11 转发，于是又理所应当地炸掉了，但今晚我也懒得调试这个东西了，明天要帮黄老师找他博士毕业论文的错别字还得尽量把 Pensieve 写上去。</p>
+<h1 id="section-23">2023.03.15</h1>
+<p>今天真的没睡好，本来昨晚看完了《シノハユ》漫画之后已经五六点，结果还有点失眠了一下子没睡着，最后七点才昏昏沉沉睡过去。结果早上十点钟就有人来清洗空调，直接把我弄睡不着了，只睡了三个小时直接让我整个早上极端暴躁。</p>
+<p>结果先去偷摸出勤了，勤到了三点多，决定回工位帮黄老师看论文。然而今天在工位说实话黄老师论文也没看进去多少，反倒是软工因为周四要开第一次大例会所以拉群、加好友、发注意事项弄得热火朝天，最忙碌的时候我同时在和五位同学保持联系。</p>
+<p>晚上在实验室和学长们吹了一会 GPT-4 的水，没想到一路吹到晚上十一点，于是赶快收拾东西回宿舍。路上遇到了 lzj，于是和他两个人边聊天边走回宿舍。</p>
+<p>回来之后决定先把目前复现的 GrBAL 挂到服务器上跑着，昨天虽然跑了一些，但是试验结果相当炸裂，reward 都是负的，我完全不敢相信这是目前最常用的 community code base。然后仔细想了想，终究还是得做点什么出来，于是决定用 MPC Controller 作为 policy 跑一下 Pensieve 看看结果，本想晚上就把代码迁移好的，结果还是电脑没电，终究只能作罢。</p>
+<p>明天需要同时开组会和软工大例会，晚上还有学生节技术支持的会，还是挺忙的。不过目前来看周五是空闲的，估计找个时间把 Pensieve 赶快挂上去，跑点结果出来做分析最好。</p>
+<h1 id="section-24">2023.03.16</h1>
+<p>今天开组会的路倒是比较波折，我现在已经习惯点午饭的外卖到 FIT，然后在 FIT 吃完正好去开组会。然而今天的午饭早到了，于是起床后收拾自己又得加速，出门后扫了一辆共享单车，但是因为现在共享单车有一部分没有物理锁只能用手机控制电磁上锁，而且现在共享单车有的时候似乎还不能随处停车，这次我骑到 FIT 楼之后居然一直没法上锁。没办法，我只能投诉然后强行关锁，就这样浪费了二十分钟，午饭时间就很短了。</p>
+<p>匆匆忙忙吃完午饭上楼开会，只能说勉强赶上。在组会上简单把 Pensieve 的环境搬到了新框架里面，不得不说这个框架设计得很好，可拓展性很强，我搬过来 Pensieve 也没有什么卡住的地方。下面就是尝试研究一下用 MPC Controller 解 Pensieve 可不可行了，如果这个结果打得比较好的话，至少就能当个事情说了。</p>
+<p>另外似乎还得做一下 baseline，把数据集按照网络情况切分一下，把 Pensieve 也顺手跑一下，这个下一周做完吧。</p>
+<hr />
+<p>组会之后去开软工的第一次大例会，本来以为是个小会议室的，没想到随堂助教给我租了个 FIT 楼的大会议室，还不让吃零食和喝有色饮料，我准备的小零食也完全用不上了。例会本身没啥好说的，就是强调一下例会规范、开发规范，然后提一下下一周大家准备做多少和大家对给分的心理预期。例会效果整体不算差，甚至可以说不错，总之和大家交流下来感觉都挺好的，应该后面也会顺利吧。</p>
+<p>回来之后和贾老师讨论了一下毕设下面的计划，他建议先认真检查一下论文中方法到底可不可行。检验方法有几种，一种是发邮件问作者要 code base，一种是看看有没有引用这篇论文的工作是开源代码，还有就是我感觉应该可以再 debug 看看。</p>
+<p>后续就是我提到了我想做的一些，首先是做 baseline，这里就需要问黄老师要一点各种环境下的 trace 去剪切生成环境切换的数据集。然后是继续在现在的 code base 上迁移 Pensieve，然后用 MPC 求解观察一下结果。</p>
+<p>总之后面还得是毕设为重，今天听说毕设中期有可能提前到三月底瞬间就很紧张，希望不要这样，最好推迟到四月中旬。今晚还同时有学生节技术支持的会和实习那边的 bug report 会，算是很忙了。</p>
+<h1 id="section-25">2023.03.17</h1>
+<p>昨晚晚上回来之后迅速开完了几场会，学生节技术支持弄明白了，实习那边的 bug 基本修完了，小作业思考题评分细则也定下来了。晚上就借着劲改完了一大半思考题，期间有很多很模糊的答案，十分难给分，但是最终还是睁一只眼闭一只眼给过了。说实话我现在还算是有点担心会不会后面来给我要分的同学会很多。</p>
+<p>因为太晚了所以周四晚就睡 308 了，起来之后和实习那边再对了一下目前的进展，他们打算再把一些弹窗精修一下，我还得等等设计稿。然后我把软工小作业思考题改完大半之后就基本上闲下来了，没有特别大的很急的事情。约了晚上游泳和打牌，摸鱼摸一个周末。</p>
+<p>晚上基本上实习那边的东西已经写完了，舍友喊我去游泳，最终是五个人一并去了游泳馆，八点钟游泳到九点半，然后出水去吃了个夜宵。夜宵吃到了心心念念的杨枝甘露麦旋风，说实话味道确实不错。吃完后赶忙回来打牌，雀魂规则不太想打，于是玩起了无一发无杠宝无里宝的 A 规，但是没想到的是依然有人能在 A 规下和出立直、混全、三色、宝牌二的跳满。</p>
+<p>打完牌已经是一点半了，赶忙赶到 308 和 yfgg 看了一眼直播机和弹幕机，准备开始摸鱼了。</p>
+<h1 id="section-26">2023.03.18</h1>
+<p>今天一起床就去学生节现场了，当时网线等物资已经都运到了。学生节的任务基本分为搭建 WiFi、搭建弹幕机、搭建直播机三个部分。WiFi 则是最重要也是最麻烦的，不仅需要调通网络拓扑结构，更主要的是需要一堆人去拉线。</p>
+<p>这次拉 WiFi 最值得记录的就是有个 NUC 是 Windows 宿主机，Debian 虚拟机，但是所有公网 IP 全都被虚拟机持有，并且虚拟机上运行着软件路由器，而宿主机则是通过 AP 的无线网络上网。这个神奇的虚拟化设计还让我们研究了一通，当时为了设置 IP 地址我们直接扫了一遍网段，就是没扫到 Windows 宿主机，指导向编导要了一个显示器硬登录进去看了一遍才知道原来是这么回事。另外，祖传的八个 AP 也老了，交换机甚至还是百兆的，只能说这套设备还是得赶快换掉。</p>
+<p>之后是弹幕机，弹幕机更麻烦，似乎因为硬件已经老旧，其完全撑不住 60Hz 的刷新率，直接会导致主投黑屏。在彩排过程中这个弹幕机没少出锅，但是在最后通过降频到 30Hz 勉强稳住了三十分钟，于是大家都觉得没啥事了就直接上线。结果没想到在教师视频部分，弹幕机直接挂了，导致正式现场黑屏，最后只能下线弹幕机。比较好玩的一点是，Harry 实际上是知道这个机子是有问题的，他的意思是生产环境反正没出过事，这话只能说我很难绷，明知开发环境出过事情却一直没跟我们说过这件事，只能说运气差被我们撞到了。</p>
+<p>直播机没啥好说的，按照惯例设置了一通就行了。</p>
+<p>学生节结束之后，工作人员都打算去吃海底捞庆功宴，我因为约好了周日的丰泽园就没去，加上还得回去看一眼软工小作业的批改状况。</p>
+<h1 id="section-27">2023.03.19</h1>
+<p>早上还是睡过了，没赶得上和大部队一起去丰泽园。但不得不说，丰泽园是真的好吃，九转大肠和葱烧海参绝对的招牌菜，干炸丸子也绝对是一流水平。</p>
+<p>下午按照规划，四个人坐车去昌平泡温泉，不过那个温泉我感觉有点简陋，但整体还算舒服。娱乐设施也不算完备，只有简单的棋牌、台球、乒乓球，设备也有点老旧。最主要的是，下午黄老师催促我帮他审核论文，于是我整个下午实际上都在断断续续看论文，不过最终还算是把这事做掉了。</p>
+<p>回来之后和人约了周一早上去上地堵门，于是就决定早早睡觉吧。明天开始还是得做毕设，毕竟看起来三月底中期很像是真事。</p>
+<p>目前毕设的计划：</p>
+<ul>
+<li>验证原框架是否可用
+<ul>
+<li>重新拉取原框架，完全不修改直接运行，确认其效果</li>
+<li>若原框架可用，则 debug，若不可用，换框架</li>
+<li>换框架可能流程
+<ul>
+<li>通过邮件联系作者获取 code base</li>
+<li>找寻引用这篇论文的开源 code base</li>
+</ul></li>
+<li>需要研读 code base，形成完整的 paper report 和 code doc</li>
+</ul></li>
+<li>Pensieve 迁移
+<ul>
+<li>写完通过 MPC 求解 Pensieve 的代码并运行</li>
+<li>研究 Pensieve environment（在线直播环境）</li>
+</ul></li>
+<li>数据集生成
+<ul>
+<li>获取黄老师的 network trace data repo</li>
+<li>准备数据剪切脚本</li>
+<li>训练 baseline Pensieve</li>
+</ul></li>
+</ul>
+<h1 id="section-28">2023.03.20</h1>
+<p>今天又是周一了，和群友约了上地堵门，于是真的就去了，而且一去就是一天。一整天鸟了 Selector 和吹爆，吃了一点点分，然后把不少 13+ 推到了 SS+，尤其是待宵夜虫和管弦乐，相当难受。</p>
+<p>今天出勤的意外就是左手食指被售货机夹到了，结果掀开了一层皮，还好不深，简单消毒之后用了一下创口贴，晚上基本就可以自由活动了。</p>
+<p>但是今天最烦的莫过于实习那边又发来了 bug report，本来以为都是小问题，结果一看甚至还要写一个新的页面，还要和后端对接。最终还是晚上稍微花了点时间把这事干掉了，干完已经是凌晨四点。</p>
+<p>此外，我也是今天才知道今年从计算机系考研本系只有两人通过了，而恰好就是我两位考研的舍友。zd 预计会去朱军组，指导老师是苏航，ky 似乎和我导师联系过，但是具体也不知道。他们应该是明天周二早上面试，具体情况就在这之后再说了。</p>
+<h1 id="section-29">2023.03.21</h1>
+<p>今天起来先把实习那边的一些小 bug 修了，衣服洗了，然后匆匆忙忙来实验室做毕设相关的，而且 DRL HW1 就要截止了，还要花点时间写那边的东西。现在麻烦的一点就是实验室的机子硬盘可能已经不太够了，我可能还得做一些迁移工作。</p>
+<p>由于现在用的机子硬盘基本快耗尽了，所以上服务器列表找了一个稍微空一点的机子，搬迁了一下实验环境。这次好就好在我终于用上了 Anaconda environment export 来做依赖管理，所以这次把代码跑起来基本上没有耗费多长时间。之后就是先做了比较简单的一件事，就是把 Learning to Adapt 的 code base 原封不动地跑了一下，结果发现 reward 也是真的烂，这我就相当难绷了。</p>
+<p>不过还有发现一件事，就是似乎在我配置的环境下代码运行速度相当之慢，运行时间逼近原先 code base 的三倍，这让我十分困惑，因为我基本没做什么改动。</p>
+<p>鉴于原框架也不算多好用，于是就打算邮件问问作者有没有 code base 了。</p>
+<p>整个下午其实也没做到什么事情，把实验挂上去之后做完了 DRL 作业去吃两位舍友考研面试的饭，吃完之后简单把实习那里补了一点代码。</p>
+<p>不过最难受的莫过于似乎这个代码框架把服务器的内存跑炸了，500G 内存我都没有一点头绪怎么能炸掉的。不过今晚已经很困了，不如先睡觉。</p>
+<h1 id="section-30">2023.03.22</h1>
+<p>今天是沙尘暴，没法出门了，只能在宿舍好好干活了。</p>
+<p>基本上还是在折腾原先 code base，尝试了很多种方法，也调节过超参，但总之最后出来的结果并没有那么理想，尤其是 GrBAL 方法，Avaerage return 一直稳定在零附近震荡，反倒是之前没有尝试过的 ReBAL 方法，似乎能够上升到 1000 左右的 Average return，虽说没有论文中说的那么厉害，但似乎已经能够打败一众 baseline 了。</p>
+<p>下面就是努力生成一篇 code doc 或者 report，迁移好 Pensieve 以及做好 baseline 了。目前中期确认在下周三，只能说希望人能活着过中期。</p>
+<p>不过现在有一点疑惑的是，似乎现在并没有写好一个比较完整的线上环境切换来做实验，可能还得找个时间写完这一块东西。</p>
+<p>今晚最麻烦的事情就是我才了解到微信又禁用了一些接口，导致实习那边的代码几乎要重写很大一部分。晚上电脑实在没电，只能又去了 308，迅速干完活，结果有已经是四五点了。真的，这份实习给我带来的开发体验是相当不好的，不仅是微信小程序这个东西本身就很麻烦和丑陋，而且给我找的帮手水平也是真的不行，代码各种乱写，码风一言难尽，不管 TypeScript 报错，还经常在代码里面写死数据，导致后面各种排查，React 框架也不熟悉，能写出各种惊为天人的异世界操作。另外，开发的时候产品那边给的需求也没有一下子说清楚，和产品那边的沟通还是有了点障碍，确实有点难绷了。</p>
+<h1 id="section-31">2023.03.23</h1>
+<p>今天组会，整体上汇报没什么问题，就是似乎进度还是不是很理想，老师们都建议考虑先至少把实验跑起来然后试着简化一下目标来混过中期。</p>
+<p>对着之前写的毕设目标记录一下最近的工作吧：</p>
+<ul>
+<li>验证原框架是否可用
+<ul>
+<li>(Completed) 重新拉取原框架，完全不修改直接运行，确认其效果</li>
+<li>若原框架可用，则 debug，若不可用，换框架</li>
+<li>换框架可能流程
+<ul>
+<li>(Completed) 通过邮件联系作者获取 code base</li>
+<li>(Aborted) 找寻引用这篇论文的开源 code base</li>
+</ul></li>
+<li>(In progress) 需要研读 code base，形成完整的 paper report 和 code doc</li>
+</ul></li>
+<li>Pensieve 迁移
+<ul>
+<li>(In progress) 写完通过 MPC 求解 Pensieve 的代码并运行</li>
+<li>(Completed) 研究 Pensieve environment（在线直播环境）</li>
+</ul></li>
+<li>数据集生成
+<ul>
+<li>(Completed) 获取黄老师的 network trace data repo</li>
+<li>(In progress) 准备数据剪切脚本</li>
+<li>(Planned) 训练 baseline Pensieve</li>
+</ul></li>
+</ul>
+<p>总之今天黄老师帮忙鉴定了一下我想参考的论文之后，得出了这个方法是基于 MAML 的结论，并且断言这个方法至少一定能用，所以这个 code base 应该依然是可以使用的，只是超参数设定等需要调整一下。而这个超参数设定的事情，我在 HalfCheetah 和 Ant 两个环境下使用了论文给出的超参数，但是都没有获取到相当理想的结果，但也不差，至少能优于传统的 MAML。不过为了保险还是给作者发了邮件问了一下超参数的设定，好玩的是，这个 code base 的 repo 里面还有有关超参数设置的 open issue，作者似乎在里面回复了一个很快就来，但是已经两年多过去了还是没点动静。这个框架的 code report 自然还在路上。</p>
+<p>Pensieve 迁移遇到的问题是如何建立一个较为合理的 Pensieve environment 并合并到 code base 里面，而这个合并中最难的就是如何描述 Pensieve 的状态和决策空间，一般而言 Pensieve 的状态空间和决策空间都并不是传统意义上的高维空间，而更像是 hand craft 出来的一堆 tensor 构成的离散集合。而我参考的这个 code base 里面的环境基本都是描述成高维空间中的 Box 的，这不难理解，因为这篇文章主要在做动作连续控制，所以状态、决策空间基本上都是 Box 描述。而这里黄老师也给了我一份代码 repo，这份代码将 Pensieve 的状态、决策空间做了转换，即也用 Box 描述，恰好可以解决我目前遇到的问题。</p>
+<p>然后就是 baseline 构建的问题，现在我似乎并不打算构建很多复杂的 trace，先从简单的规律性切换开始吧，数据集造完之后就可以准备上手测试了。</p>
+<p>今晚约了麦当劳和游泳，明天打算去看电影，而且还有一个非常麻烦的毕设动员会，干活的时间确实不太多了。</p>
+<hr />
+<p>今天开了软工小例会，也没有什么好说的，手下的四个组进度都比较符合预期，看看大家下周 Sprint1 能交上来什么东西吧。</p>
+<h1 id="section-32">2023.03.24</h1>
+<p>周五，本来就约好了去西单出勤，于是就去了西西友谊机厅出勤，那里有一台最新最热。整体而言出勤不太理想，没有上分也没打爽，因为人实在是太多了，大概一直维持在八九个人的高位。</p>
+<p>由于和学弟约了七点半的电影，于是六点半赶忙从西单往海淀黄庄赶，然而我错误估计了周五晚的北京晚高峰，我真的完全堵在西二环上半个小时。最终电影自然是赶不上了，到达新中关的时候已经是电影开场半小时，想了想也没必要去看这个了，所以坐了地铁两站路去了万柳机厅出勤。万柳机厅最大的问题就是只有一台机子却整整有六七个人的规模，然后还没买水的自动售货机，所以又是不太舒服的出勤体验。</p>
+<p>晚上回到宿舍就是打打德州扑克摸摸鱼，然后自然就这样结束了摸鱼的一整天。</p>
+<h1 id="section-33">2023.03.25</h1>
+<p>来工位赶中期，没想到贾老师也在。似乎今天还正好是全高赛开赛，zsj 开了直播间直播你清海选第一轮，于是就边看边做事了。比赛的走势整体没什么特别的，所以也没怎么重点观看，还是以做事为主。</p>
+<p>今天主要是写完了 Data loader，写完了 network trace 切换的代码，然后生成了一份训练集和测试集用在训练 Pensieve baseline 上。另外由于目前的数据集并不太充足，当时突然想到可以用两条位于同一环境的 trace 之间做切换来做数据集扩充，这样的话勉强够使用了。目前 baseline 的设计是，三类训练集和四部分的测试集：</p>
+<ul>
+<li>训练集
+<ul>
+<li>#1. 由无切换的 4G 行走、4G 驾驶 trace 组成的训练集（使用数据扩充保证数据集规模一致）</li>
+<li>#2. 所有无切换 4G trace 与 3 次等间隔环境切换 trace 3:2 混合</li>
+<li>#3. 所有无切换 4G trace 与 3 次等间隔环境切换 trace 与随机环境切换 trace 3:1:1 混合</li>
+</ul></li>
+<li>测试集
+<ul>
+<li>#1. 4G 行走 trace</li>
+<li>#2. 4G 驾驶 trace</li>
+<li>#3. 3 次等间隔环境切换 trace</li>
+</ul></li>
+</ul>
+<p>数据集弄好之后，从黄老师的 Pensieve 5G repo 那里弄来一份超参数设置，然后就开始训练了。比较好玩的一点，不知道为什么，似乎使用 #1 数据集训练的似乎在一开始（3k epoch 以内）反倒在有切换的环境下表现很好，甚至在 #3 测试集上达到了较为明显的正向 reward，而在 #1 和 #2 测试集上甚至还是负 reward。</p>
+<p>现在这个实验跑一次七八个小时，三种训练集全都跑完估计得一两天，所以结果汇报还得再等等，我先放个占位表格在这里。这里均是训练 100k epoch 之后的结果汇报。另外还把黄老师那边的 PPO 的 Penseive 拉出来玩玩，自己手上的这个是基于 A3C 的，还写的不是很好：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">无切换训练集</th>
+<th style="text-align: center;">等间隔切换训练集</th>
+<th style="text-align: center;">随机切换训练集</th>
+<th style="text-align: center;">PPO 版本 Pensieve</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">4G 行走测试</td>
+<td style="text-align: center;">12.99</td>
+<td style="text-align: center;">14.35</td>
+<td style="text-align: center;">19.28</td>
+<td style="text-align: center;"><strong>19.81</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4G 驾驶测试</td>
+<td style="text-align: center;">16.88</td>
+<td style="text-align: center;"><strong>17.66</strong></td>
+<td style="text-align: center;">16.25</td>
+<td style="text-align: center;">14.82</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">等间隔切换测试</td>
+<td style="text-align: center;">7.16</td>
+<td style="text-align: center;"><strong>7.42</strong></td>
+<td style="text-align: center;">5.91</td>
+<td style="text-align: center;">5.39</td>
+</tr>
+</tbody>
+</table>
+<p>此外 26 号获得的一个训练曲线就报告在这里吧，这是等间隔切换训练集的训练曲线：</p>
+<p><img src="/uploads/2023-spring-record/1.png" /></p>
+<p>随机切换的训练曲线是：</p>
+<p><img src="/uploads/2023-spring-record/3.png" /></p>
+<p>目前总之是能明显观察到仅仅通过扩充数据集是不能完全解决这个问题的，扩充数据集确实可以提升结果，但是极其有限，在有切换的测试集上的表现依然和无切换的存在段差。另外，更换 RL 算法也不完全能够解决问题。</p>
+<p>另外，根据 AABR 论文的结果，即使 4G 网络在驾驶和行走这两个环境间差距并没有如此之大：</p>
+<p><img src="/uploads/2023-spring-record/2.png" /></p>
+<p>而这里使用的训练集中：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">4G 行走</th>
+<th style="text-align: center;">4G 驾驶</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">均值</td>
+<td style="text-align: center;">32.13</td>
+<td style="text-align: center;">39.34</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">方差</td>
+<td style="text-align: center;">860.32</td>
+<td style="text-align: center;">839.72</td>
+</tr>
+</tbody>
+</table>
+<p>可以发现事实上差距并没有想象中那么大，但其之间的切换依然会导致 Naive Pensieve 完全无法适应。</p>
+<p>不过这里我有一个想法，既然差距并没有这么大，那么这两个网络的特征到底是什么的呢？到底是什么决定了这个 trace 更像是行走时测出来的还是驾驶时测出来的，这个我觉得应该要画几个 trace 出来研究一下。</p>
+<hr />
+<p>这里应该还需要辅以部分 log 分析，log 分析的话就等第三个随机切换训练集弄完后基于那个 log 做一些分析。这些分析应该就构成了下述论点的证明：</p>
+<div class="note info no-icon"><p>Naive Pensieve 仅仅依靠于<strong>扩充训练集</strong>或者<strong>更换 RL 算法</strong>是无法解决线上环境切换的问题的。</p>
+</div>
+<p>这也就否定了简单的传统方法在这里的应用，从而构成了解决方案<strong>必要性</strong>的验证，下面毕设中期可能就缺一个比较好的方案<strong>可行性</strong>验证了。</p>
+<h1 id="section-34">2023.03.26</h1>
+<p>先前买的日语中高级语法教程到了，于是取了快递准备带去 FIT，但是偶然发现今天天气极其舒服，于是把骑着的共享单车扔在清芬，边看书边走去 FIT 了。到了 FIT 之后依然是一点点做事的心情也没有，Pensieve baseline 还在训练，按理说现在就应该准备写 code doc 然后做好迁移工作放上去训练，但是显然我摸鱼摸鱼到了现在。</p>
+<p>现在比较难受的一件事情就是我似乎不太清楚迁移到 Pensieve 之后应该用什么数据集做训练，现在还有点难绷，我可能还真的得好好思考一下这个问题。这个问题的思路就是好好阅读一下代码框架，研究一下原先基于 Gymnasium 环境的训练算法策略，基于此将 Pensieve 中的概念与框架代码做一下一一对应，之后就应该能摸明白最后的逻辑了。</p>
+<p>晚上是真的没心情继续做事了，于是偷摸去了五道口出勤，出到闭店之后回来继续干活。不过似乎实习那边的 bug 一直还要我修，基础技能培训我也得准备，现在总之就是事情还挺麻烦的。</p>
+<hr />
+<p>目前仔细阅读了一下 GrBAL 代码框架，有一些笔记就写在这里了，这里都是备忘：</p>
+<ul>
+<li><code>config</code> 里面的 <code>meta_batch_size</code> 应该代表的是目前训练多少个 meta task，似乎就是论文里的 #Task/itr，或者说 <span class="math inline">\(N\)</span></li>
+<li><code>config</code> 里面的 <code>adapt_batch_size</code> 应该基本对应采样的时候使用多少的 trajectory 节点通过元学习策略 <span class="math inline">\(u_{\psi_*}\)</span> 来更新 dynamic model 的参数 <span class="math inline">\(\theta\)</span>，也就是论文中的 <span class="math inline">\(M\)</span></li>
+<li>似乎代码框架内没有设置 <span class="math inline">\(n_S\)</span> 参数的地方，其 MB trainer 之中每一个 iteration 都会通过 Algorithm 2 收集 rollouts</li>
+<li><code>MetaMLPDynamics</code> 中的 <code>self.learning_rate</code> 就是 Algorithm 1 中的参数 <span class="math inline">\(\beta\)</span>，另外其中定义的 <code>self.train_op</code> 就是以学习率 <span class="math inline">\(\beta\)</span> 优化 <code>self.post_loss</code>，而这就是 <span class="math inline">\(1/N \sum_{i = 1}^N \mathcal{L}_j\)</span></li>
+</ul>
+<p>这里我们就直接研究一下 Meta MLP Dynamics 的结构究竟如何。首先他为每一个 meta task 都建立了一个 pre MLP 和一个 post MLP，用来预测一个代码中名为 <code>delta_pred</code> 的变量。而这个变量参与了下述 loss 的计算：</p>
+<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line">pre_delta_pred = pre_mlp.output_var</span><br><span class="line">pre_loss = tf.reduce_mean(tf.square(pre_delta_per_task[idx] - pre_delta_pred))</span><br><span class="line"></span><br><span class="line"><span class="comment"># ...</span></span><br><span class="line"></span><br><span class="line">post_delta_pred = post_mlp.output_var</span><br><span class="line">post_loss = tf.reduce_mean(tf.square(post_delta_per_task[idx] - post_delta_pred))</span><br></pre></td></tr></table></figure>
+<p>这里就是简单的 MSE 均方误差，这里观察一下论文给出的 loss function，这是一个刻画当前 trajectory slice 和 dynamics 所希望的（或者说所预测的）trajectory slice 的吻合程度的 loss，最小化这个 loss 的效果就是让 dynamics 学习采样到的 trajectory，使得其模拟出来的 trajectory 贴合实际采样：</p>
+<p><span class="math display">\[
+\mathcal{L}(\tau_{\mathcal{E}}(t, t + K), \theta_{\mathcal{E}}&#39;) := -\frac{1}{K} \sum_{k = t}^{t + K} \ln \hat{p}_{\theta_{\mathcal{E}}&#39;}(s_{k + 1} \mid s_k, a_k)
+\]</span></p>
+<p>这里的 <span class="math inline">\(\theta_{\mathcal{E}}&#39;\)</span> 表示已经在环境 <span class="math inline">\(\mathcal{E}\)</span> 下 adapt 过的 dynamics 参数。</p>
+<p>这里代码和论文矛盾的点有一，即论文中 loss function 是基于一个非确定的 dynamics，即 <span class="math inline">\(p := \hat{p}_{\theta_{\mathcal{E}}&#39;}(s_{k + 1} \mid s_k, a_k)\)</span>。然而代码中接受 <code>self.obs_ph</code> 以及 <code>self.act_ph</code> 并输出 <code>self.delta_pred</code> 的 MLP 却显然更像确定性 dynamics，即 <span class="math inline">\(s_{k + 1} := \hat{p}_{\theta_{\mathcal{E}}&#39;}(s_k, a_k)\)</span>。</p>
+<p>post loss 的用处就是用来更新 dynamics 的参数 <span class="math inline">\(\theta\)</span>，学习率为 <span class="math inline">\(\beta\)</span>。pre loss 则似乎和元学习策略有关，但后续没在代码框架内寻找到这个变量的引用。</p>
+<hr />
+<p>决定换个思路了，在内部兜兜转转不如直接一点点剥开代码框架，把每个张量维度算清楚。论文中的算法有个相当明显的接口点，就是 Algorithm 1 和 Algorithm 2 之间通过 sampler 沟通，所以首先先去把握 sampler 给出的样本的尺寸。</p>
+<p>sampler 给出的 observation sample 尺寸为 <code>(n_rollouts, n_timestep, obs_dim)</code>，action sample 尺寸为 <code>(n_rollouts, n_timestep, act_dim)</code>。总体是符合想象的，也就是给出了 <code>n_rollout</code> 个轨迹，轨迹长度（总时间步）为 <code>n_timestep</code>，然后第三个维度就是具体的每个时间步的观测状态和决策。</p>
+<p>进入 dynamics 的 <code>fit</code> 函数，首先是把这个数据集划分成训练集和验证集，这个划分是在第一个维度上进行的，也就是把 <code>n_rollout</code> 个轨迹按照比例拆分。拆分完了就堆叠到训练集 <code>self._dataset_train</code> 和验证集 <code>self._dataset_test</code> 上。</p>
+<p>下面就是看他的 batch 生成。对每一个 meta task，首先在 <code>[0, n_rollout)</code> 里随机一个 trajectory，之后选择一个中间点，向前截取 <span class="math inline">\(M\)</span> 个时间步，向后截取 <span class="math inline">\(M\)</span> 个时间步。这里就出现了问题，代码中明显假设了 <span class="math inline">\(M = K\)</span>，也就是说在 trajectory 上前向和后向截取了相同的长度，这一点显然和论文中是不一样的。</p>
+<p>然后还有一点更为疑惑：</p>
+<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line">num_paths, len_path = self._dataset_train[<span class="string">&quot;obs&quot;</span>].shape[:<span class="number">2</span>]</span><br><span class="line">idx_path = np.random.randint(<span class="number">0</span>, num_paths, size=self.meta_batch_size)</span><br><span class="line">idx_batch = np.random.randint(self.batch_size, len_path - self.batch_size, size=self.meta_batch_size)</span><br><span class="line"></span><br><span class="line">obs_batch = np.concatenate(</span><br><span class="line">    [</span><br><span class="line">        self._dataset_train[<span class="string">&quot;obs&quot;</span>][ip, ib - self.batch_size : ib + self.batch_size, :]</span><br><span class="line">            <span class="keyword">for</span> ip, ib <span class="keyword">in</span> <span class="built_in">zip</span>(idx_path, idx_batch)</span><br><span class="line">    ],</span><br><span class="line">    axis=<span class="number">0</span>,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>这里关注他如何访问 <code>self._dataset_train["obs"]</code>，第一个维度其直接写了一个标量 <code>ip</code> 上去，这样会导致第一个维度消失，虽说后面指定的是 <code>axis=0</code>，实际上是在第二个维度上做合并的。由于 <code>idx_path</code> 长度为 <code>self.meta_batch_size</code>，也就是 <span class="math inline">\(N\)</span>，而第二个维度每个 trajectory 取用了 <span class="math inline">\(2M\)</span> 的长度，所以最后得到的 <code>obs_batch</code> 尺寸为 <code>(2MN, obs_dim)</code>。</p>
+<p>这里明显做了很多的混同处理，比如根本体现不出来任务的差别，也体现不出来截取的作用。然而有个好处在于虽然融合了，但是这个 batch 第一个维度上的有序性至少保证我们之后可以再次把这个 batch 按照不同 meta task 拆分，虽然这也太丑陋了。</p>
+<p>另外补充一句，<code>delta</code> 的含义就是 <code>obs_next - obs</code>，就是后续状态减去前置状态，即决策后的状态变化量。</p>
+<p>获取 batch 之后就是喂到网络里算 post loss、pre loss，然后用优化器反传 post loss 更新网络。这里的认识就和上面的对上了，没什么新的，就不再写一遍了。</p>
+<hr />
+<p>把这些看明白之后我终于看明白了原先构建网络的时候的下面这段代码：</p>
+<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line">nn_input_per_task = tf.split(self.nn_input, self.meta_batch_size, axis=<span class="number">0</span>)</span><br><span class="line">delta_per_task = tf.split(self.delta_ph, self.meta_batch_size, axis=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">pre_input_per_task, post_input_per_task = <span class="built_in">zip</span>(</span><br><span class="line">    *[tf.split(nn_input, <span class="number">2</span>, axis=<span class="number">0</span>) <span class="keyword">for</span> nn_input <span class="keyword">in</span> nn_input_per_task]</span><br><span class="line">)</span><br><span class="line">pre_delta_per_task, post_delta_per_task = <span class="built_in">zip</span>(</span><br><span class="line">    *[tf.split(delta, <span class="number">2</span>, axis=<span class="number">0</span>) <span class="keyword">for</span> delta <span class="keyword">in</span> delta_per_task]</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>他真的是我想的那样，依靠着那若有若无的有序性，先在生成 batch 的时候消失掉一个维度，然后再在这里凭空 split 出来。</p>
+<p>这里 <code>self.delta_ph</code> 尺寸是 <code>(2MN, obs_dim)</code>，在第一个维度上按照 meta batch size，即 <span class="math inline">\(N\)</span>，等分，得到的张量尺寸为 <code>(N, 2M, obs_dim)</code>，并且恰好恢复了各个 meta task 的区别。然后遍历，列表产生式之中的 <code>delta</code> 尺寸为 <code>(2M, obs_dim)</code>，再将其沿第一个维度两等份，前半自然是 pre，后者自然是 post，尺寸变为 <code>(2, M, obs_dim)</code>。之后用 <code>zip</code> 函数重新组合一下，这里 <code>zip</code> 接受了 <span class="math inline">\(N\)</span> 个尺寸为 <code>(2, M, obs_dim)</code> 的张量作为参数，最后传出 <span class="math inline">\(2\)</span> 个尺寸为 <code>(N, M, obs_dim)</code> 的张量。</p>
+<p>取 <code>obs_dim=1</code> 以及 <span class="math inline">\(N = 3, M = 2\)</span> 演示一下这个过程。下述 <code>self.delta_ph</code> 中 <code>0, 1, 2, 3</code> 属于 meta task #0，以此类推。并且 <code>0, 1</code> 是 pre observation，<code>2, 3</code> 是 post observation：</p>
+<figure class="highlight plaintext"><figcaption><span>Text</span></figcaption><table><tr><td class="code"><pre><span class="line">self.delta_ph = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]</span><br><span class="line">-&gt;</span><br><span class="line">delta_per_task = [[0, 1, 2, 3], [4, 5, 6, 7], [8, 9, 10, 11]]</span><br><span class="line">-&gt;</span><br><span class="line">delta (example) = [4, 5, 6, 7]</span><br><span class="line">tf.split(delta, 2, axis=0) = [[4, 5], [6, 7]]</span><br><span class="line">*[tf.split(delta, 2, axis=0) for delta in delta_per_task] =</span><br><span class="line">    [[0, 1], [2, 3]], [[4, 5], [6, 7]], [[8, 9], [10, 11]]</span><br><span class="line">-&gt;</span><br><span class="line">pre_delta_per_task = [[0, 1], [4, 5], [8, 9]]</span><br><span class="line">post_delta_per_task = [[2, 3], [6, 7], [10, 11]]</span><br></pre></td></tr></table></figure>
+<p>这样确实同时完成了按 meta task 分割以及按 pre/post 分割两个任务，实在是高。</p>
+<hr />
+<p>把这些都看明白之后，就可以明白这里 loss function 实际上和论文不一样。代码里写的事实上是一个 deterministic dynamics，建模是 <span class="math inline">\(\delta_t := \hat{p}_{\theta_{\mathcal{E}}&#39;}(s_t, a_t)\)</span>，也就是用 MLP 预测状态的变化量，再与实际的状态变化量作 MSE（符号就随便用了，我看得懂就行）：</p>
+<p><span class="math display">\[
+\mathcal{L}(\tau_{\mathcal{E}}(t, t + K), \theta_{\mathcal{E}}&#39;) := \frac{1}{K \cdot \dim\mathcal{S}} \sum_{k = t}^{t + K} \bigoplus_{\mathcal{S}} [\hat{p}_{\theta_{\mathcal{E}}&#39;}(s_k, a_k) - (s_{t + 1} - s_t)]^{\otimes 2}
+\]</span></p>
+<p>这里上标 <span class="math inline">\(\otimes 2\)</span> 表示按元素平方，符号 <span class="math inline">\(\bigoplus_{\mathcal{S}}\)</span> 表示求所有元素的和。</p>
+<h1 id="section-35">2023.03.27</h1>
+<p>昨天太累了，今天就起得很晚，到 FIT 的时候已经是四点多五点了，草草吃了晚饭就开始干活。</p>
+<p>昨天看了大半 GrBAL 之后，现在又有个未解之谜就是 <span class="math inline">\(\psi\)</span> 在哪里，这个元学习参数居然一下子没找到，而且我现在也暂且不太明白到底什么时候 <span class="math inline">\(\theta\)</span> 通过元学习被优化到了 <span class="math inline">\(\theta_{\mathcal{E}}&#39;\)</span>。</p>
+<p>不过最终还是给我挖出来了，在构建网络的时候有这么一段代码：</p>
+<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, ...</span>):</span></span><br><span class="line">    <span class="comment"># ...</span></span><br><span class="line"></span><br><span class="line">    pre_delta_pred = pre_mlp.output_var</span><br><span class="line">    pre_loss = tf.reduce_mean(tf.square(pre_delta_per_task[idx] - pre_delta_pred))</span><br><span class="line">    adapted_params = self._adapt_sym(pre_loss, pre_mlp.get_params())</span><br><span class="line">    self._adapted_params.append(adapted_params)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># ...</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_adapt_sym</span>(<span class="params">self, loss, params_var</span>):</span></span><br><span class="line">    update_param_keys = <span class="built_in">list</span>(params_var.keys())</span><br><span class="line"></span><br><span class="line">    grads = tf.gradients(loss, [params_var[key] <span class="keyword">for</span> key <span class="keyword">in</span> update_param_keys])</span><br><span class="line">    gradients = <span class="built_in">dict</span>(<span class="built_in">zip</span>(update_param_keys, grads))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Gradient descent</span></span><br><span class="line">    adapted_policy_params = [</span><br><span class="line">        params_var[key] - tf.multiply(self.inner_learning_rate, gradients[key])</span><br><span class="line">            <span class="keyword">for</span> key <span class="keyword">in</span> update_param_keys</span><br><span class="line">    ]</span><br><span class="line"></span><br><span class="line">    adapted_policy_params_dict = OrderedDict(<span class="built_in">zip</span>(update_param_keys, adapted_policy_params))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> adapted_policy_params_dict</span><br></pre></td></tr></table></figure>
+<p>这里就是非常简单的，把 pre MLP 参数和 pre loss 扔到 <code>self._adapt_sym</code> 里面去，而这个函数里面构建的就是：</p>
+<p><span class="math display">\[
+\theta_{\mathcal{E}}&#39; \leftarrow u_\psi(\tau_{\mathcal{E}}(t - M, t - 1), \theta)
+\]</span></p>
+<p>的 adapt 过程。这个 adapt 过程在论文中具体定义为：</p>
+<p><span class="math display">\[
+\theta_{\mathcal{E}}&#39; = \theta_{\mathcal{E}} + \psi\nabla_{\theta}\frac{1}{M}\sum_{m = t - M}^{t - 1}\ln\hat{p}_{\theta_{\mathcal{E}}}(s_{m + 1} \mid s_m, a_m)
+\]</span></p>
+<p>这里显然还是和昨天提到的问题一样，论文和代码没有对的上，dynamics 是确定性的，pre loss 也更像是 MSE。不过这里根据代码实现看，<code>self.inner_learning_rate</code> 就是元学习参数 <span class="math inline">\(\psi\)</span>。下面一步就是找这个量究竟什么时候被实际计算，另外，何时其更新了元学习参数 <span class="math inline">\(\psi\)</span>。可以注意到这些要被更新的参数全都压入了 <code>self._adapted_params</code>，找寻这个变量的引用就可确定出 adapt 实际执行的位置。</p>
+<p>简单找一下就能找到这个类里面的 <code>self.adapt</code> 方法就是实际执行的地方，继续找这个成员函数调用的地方，就会发现其仅仅在 <code>sim_policy.py</code> 中调用，那么就可以确定这个函数是用于线上 adapt dynamics 的。</p>
+<p>说实话目前这个框架里面还有很多地方我没有研究明白，比如说到现在我都不知道其构建这么多 MLP 的用处是什么，以及论文里的 <span class="math inline">\(\theta, \psi\)</span> 是否就如我理解这样，包括 <span class="math inline">\(\psi\)</span> 的训练究竟在哪里之类的问题。但是由于数据集加载策略我已经弄明白了，所以说实话可以先去载入数据集跑一跑看看结果了。</p>
+<hr />
+<p>今晚偷摸去五道口出勤 2pc 之后回来，说起来昨天因为有人扒防盗门晚勤，导致商场领导直接下令禁止晚勤，所以现在晚上真的只能打到十点，反倒是帮我自律了。</p>
+<p>回来之后去了 C 楼继续写毕设，Pensieve 的迁移工作总之还是有点麻烦的，reward function 要自己补写一点，然后由于 Pensieve 是离散决策空间，导致有些地方需要自己做一点适配。适配的过程中最大的修改就是把 <code>PensieveEnvPark</code> 里的 <code>self._action_space</code> 从离散的改成了连续的，也就是从 <code>Discrete</code> 修改为了 <code>Box</code>。这样做的原因是整个代码框架都是基于连续决策空间的，所以为了最小化修改，我直接把决策空间改为连续，而在实际处理 network trace 或者 video chunk 之前会把连续决策空间采样向下取整到离散空间内。</p>
+<p>不过这些都还好，主要有一个 bug 是 logger 炸了，简单而言 logger 里面有这样的一段代码：</p>
+<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Logger</span>:</span></span><br><span class="line">    CURRENT = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, ...</span>):</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">configure</span>(<span class="params">...</span>):</span></span><br><span class="line">    <span class="comment"># ...</span></span><br><span class="line">    </span><br><span class="line">    Logger.CURRENT = Logger(...)</span><br></pre></td></tr></table></figure>
+<p>这段代码的语义并不难理解，就是在 <code>Logger</code> 类里面的静态成员中存储了当前要使用的 logger 的引用，这个引用的初始化是在 <code>configure</code> 函数中进行的，这个函数会在所有训练脚本的最开始就调用。然而这个在我跑实验的过程中却出现了问题，我把新加的脚本、环境等代码都放在了根目录下另外一个目录 <code>src</code> 里面，以与位于根目录下 <code>learning_to_adapt</code> 目录中的原先的实验脚本作区分，logger 的代码也位于 <code>learning_to_adapt</code> 目录下。结果，我在 <code>src</code> 目录下的实验脚本调用 <code>configure</code> 初始化 logger，在 <code>learning_to_adapt</code> 目录下的代码文件中访问 <code>logger.CURRENT</code> 的时候却只能获得 <code>None</code>，即使我在 <code>src</code> 目录下访问 logger 一切正常。我猜测是不同目录 import 同样的东西的时候，事实上 Python 创建了不同的引用。不过我现在也没有精力去找这种小问题的解答了，我直接合并了两个目录然后把实验挂了上去就准备睡觉了。</p>
+<hr />
+<p>最近很喜欢这句话：</p>
+<ul>
+<li>思ひつつ寝ればや人の見えつらむ、夢と知りせば覚めざらましを。</li>
+</ul>
+<p>这是出自小野小町的一句古日语和歌，翻译成现代日语和汉语的话：</p>
+<ul>
+<li>恋しい人のことを思いながら寝てしまったらあの人の夢を見たわ、夢とわかっていたなら覚めなかったろうに。</li>
+<li>（王向远译）思君方入梦，若知相逢在梦境，但愿长眠不复醒。</li>
+</ul>
+<p>这句和歌也算是我学古日语的时候很早就遇到的一句例文，是在讲解过去助动词「き」的未然形「せ」可以与表示反事实假想的助动词「まし」构成表示假想的句式「〜せば〜まし」这一知识点的时候提到的。当然要说语法点的话，这里还有很多可以讲的，包括少见的单音节下二段动词「<code>@ 寝 ぬ</code>」，表示完了的助动词「つ」、表示现在推测的助动词「らむ」、表示否定的助动词「ざる」等等。</p>
+<p>然而这句话确实也很有意境，如果知道我们只有可能在梦中相遇，那么即使不可能，我也愿意长眠不醒。现代日语中没有专门表达反事实假想的词语或句式，只能用通用的表达愿望的句式「〜だろう、〜たろう、〜でしょう、〜ましょう、〜ように」等等，这个与现实抗争的感觉就没出来。</p>
+<p>不过我现在确实很累，确实希望长眠不醒了。</p>
+<h1 id="section-36">2023.03.28</h1>
+<p>又是一天八点睡下午四点起，今天实在是忍不下去了，把攒了一周的胡子刮干净，头发太长就随他去吧，就这样收拾了一下自己，到工位开始工作的时候已经是晚上六点。不过要我说，最近的精神状态非常怪异，明明身心都很劳累，但是似乎却有种奇妙的满足感和：</p>
+<ul>
+<li>この生活こそおれのほしいものって、いまこそおれは確実に生きていると感じている、疲れていても。</li>
+</ul>
+<p>这句话是前天大晚上熬夜的时候听到香椎老师的歌的时候突然想到然后写在草稿纸上的，草稿纸的另一半是潦草的神经网络设计图，倒也有种莫名的不调和感。</p>
+<p>昨天跑下来 Pensieve，至少训练没崩盘，是一个正常的训练曲线，今天就是得调试一下 reward 函数让其与 baseline 做一个公平竞争，这样就能构成方案的可行性验证。</p>
+<p>现在在尝试着把训练过程中的 reward 弄出来。总体来说，sampler 使用 Algorithm 2 采样数据的时候，事实上就已经在做测试了，就已经在和训练集同样的环境下（Pensieve 环境生成 trace 的逻辑一致）测试 MPC Controller 的性能了，因为其基本就是基本在循环下述过程：</p>
+<ul>
+<li>收集采样数据，对 dynamics 做 adaptation</li>
+<li>adaptation 之后用 MPC Controller 做决策</li>
+<li>用这个决策 step environment，获取新的环境状态，作为新的采样</li>
+</ul>
+<p>而在 Meta MLP Dynamics 里面做的训练集和验证机切分是用来算 loss 的，他有训练集 loss 和验证集 loss。</p>
+<p>也就是说，实际上用来做验证集 reward 的，应该就是采样时返回的那些 reward 信号，现在我已经把这些信号接入到 logger 里面了。</p>
+<p>然而做好这些之后挂了一下实验，发现验证集上 reward 能打到 50 上下，这显然太离谱了，因为即使 GrBAL 再怎么强，比 Pensieve 高出 400% 左右多少是不太对的。回到宿舍后思考了一下，觉得是验证集不可信，因为验证集毕竟和训练集来自同样的数据池，很有可能过拟合。所以迅速写了一个在另外的数据池上测试的脚本，挂了上去，顺便增加了一个把所有决策和环境信息输出出来的 logger。</p>
+<p>最后看完 logger 的记录后，总算是明白了。MPC Controller 似乎是相当激进的，其特别喜欢拉高码率，即使在低带宽环境下。这就导致在带宽还可以的环境下就能拉满 QoE，然而由于数据集低带宽环境毕竟有限（得益于现在的网络基础设施优化），所以 rebuffer 并没有预想中那么多，rebuffer penalty 也就没有把 reward 拉到很低。然而如果从直观上来讲，虽然其 reward 达到了 50 左右，其经常会在低带宽下出现十几秒的卡顿，这显然是不可接受的行为，所以这也就是 average QoE 的评价缺陷了。</p>
+<p>既然整体实验框架没啥问题我就打算一直跑着了，目前的话，reward 大概也是十几，至少达到了一般水平吧。这么说中期至少是有内容可以汇报的了，现在就差做一个 PPT 出来了，最后还是决定明天再做了，正好看一眼训练结果。然后一定要记住还要做一下 baseline log 的详细分析。</p>
+<h1 id="section-37">2023.03.29</h1>
+<p>中午稍微起早了点赶到工位开始做中期 PPT，在这之中还花了点时间查看了一下软工小组的工作进度，目前来看还都一切正常。</p>
+<p>在做 PPT 的过程中和黄老师交流了一下目前的毕设，大家似乎都比较震惊于 Pensieve 真的打不过 model based 方法。不过基本上看了一眼 log 之后都反应过来 Pensieve 决策保守了，而 GrBAL 实在是太激进了。</p>
+<p>中期整体上没有什么大问题，黄老师过了一下我的 PPT 后也觉得没有大问题，提了一下多加几张图的建议，然后给我推荐了 LUMOS 5G dataset 以及一位名为 Qian Feng 的 scholar，大概也是做环境切换相关的，可以后半段尝试去学习一下这些材料。</p>
+<hr />
+<p>中期答辩基本上平稳地过去了，把实验结果汇报了之后，三位评审老师也没有什么很尖锐的问题，只有一位老师问了点简单的问题就放我走了。然而现在的问题就在于，我目前做出来的结果到底可不可信，因为确实感觉和大家长久以来的经验有不相符的地方，至少目前有几个值得验证的疑点：</p>
+<ul>
+<li>baseline 过弱，训练错误等问题</li>
+<li>数据集设计有问题，应当多随机生成几次重复实验</li>
+<li>GrBAL 实验成果不一定稳定，dynamics model 的预测效果也应当重复确认</li>
+</ul>
+<p>至少在进行中期答辩 PPT 上所写的未来研究之前，我还是打算把这些问题给思考清楚。</p>
+<p>然后就是其他的一些杂事了，现在安排如下：</p>
+<ul>
+<li>周四组会、软工 Sprint1 组会，晚上出勤</li>
+<li>周五 LVS 会议，预计早起前往</li>
+<li>周六 LVS 会议，预计晚归</li>
+<li>周日基础技能培训线下授课</li>
+<li>有 DDL 的任务
+<ul>
+<li>提出不再负责微信小程序开发，转 Rust 后台开发</li>
+<li>周六晚前完成基础技能培训课件供审核</li>
+</ul></li>
+</ul>
+<p>最近确实是没有什么很重要的任务了，确实可以计划摆烂了，毕竟最终答辩差不多得到六月，中间两个月可以自由摆烂。目前日语中高级教程还想自学，日语自学笔记也还有很多想写的，DRL 的任务也想好好做，也想出勤、打雀、旅游，总之就是什么都想做，毕竟没有什么硬性要求了。</p>
+<h1 id="section-38">2023.03.30</h1>
+<p>周四，安排中有相当多的会议，首先是下午的组会，然后是软工 Sprint1 的验收会，然后是实习那边要有个需求对接会。一起床我就在赶场子，三场会总算是赶完了。</p>
+<p>然后最后一场会开完之后，收到了坐标想要出勤的申请，于是立刻放下活计跑去上地先吃萨莉亚后出勤。然而周四晚上的上地也是一堆人，完全没打到几把就只能悻悻离场。</p>
+<p>晚上就简单摸鱼，然后就要早睡早起去 LVS 了。周四真的是一点值得记录的事情都没有呢。</p>
+<h1 id="section-39">2023.03.31</h1>
+<p>早起去 LVS，路上还遇到了前来访华的马来西亚总理的车队，警察暂时管制了一个路口的交通，让我小等了几分钟。</p>
+<p>LVS 说实话感觉并没有想象中的有趣，上午的开场致辞很有意思，然而紧接着后面的，就是一个很像民科发言一般的 ChatGPT 威胁论演讲，其中不乏人工智能已经逼近人类智能云云。而第三场是一位浙大教授的演讲，其提出了可以在传输视频的时候用语义编码代替字节编码，也就是不再逐帧逐字节编码视频内容，而是直接描述视频内容以编码，这个观点倒是第一次听，还挺有意思的。</p>
+<p>之后就没什么有趣的了，午饭期待值很高但是最终也只能说无功无过，和学长说了打算提前跑之后，就溜到了四道口的机厅去出勤了。四道口机厅有 WiFi、有插座、有自动贩卖机而且人还不多，简直是出勤圣地，然而离学校确实是太远了。</p>
+]]></content>
+      <categories>
+        <category>【生活记录】日记</category>
+      </categories>
+  </entry>
+  <entry>
     <title>安卓前端开发杂谈</title>
     <url>/2021/09/01/android-dev-exp-1/</url>
     <content><![CDATA[<p>安卓的移动端开发，属实让我血压高了一小段时间。毕竟已经接触过类似于 React Native 那种基于 TypeScript 语言的、优秀的跨平台移动端框架，再去尝试用繁琐的 Java 语言写安卓前端自然是不适应且感到烦躁。</p>
@@ -16056,6 +16582,244 @@ a_t \sim \pi_\theta(\cdot \mid \hat s_t), \hat s_{t + 1} = \hat f_{\phi_t}(\hat 
       </categories>
   </entry>
   <entry>
+    <title>2022 年 12 月论文笔记</title>
+    <url>/2022/12/06/paper-2022-12/</url>
+    <content><![CDATA[<p>12 月开始就得准备做毕设了，先要充分阅读文献，确定自己要做的方向有什么要解决的问题，以及目前已经有的探索和目前还存在的困难。</p>
+<p><span class="math display">\[
+\newcommand{\b}{\boldsymbol}
+\]</span></p>
+<span id="more"></span>
+<h1 id="learning-tailored-adaptive-bitrate-algorithms-to-heterogeneous-network-conditions---a-domain-specific-priors-and-meta-reinforcement-learning-approach">Learning Tailored Adaptive Bitrate Algorithms to Heterogeneous Network Conditions - A Domain-Specific Priors and Meta-Reinforcement Learning Approach</h1>
+<p>黄老师的文章，作为起手还是需要好好看看的。</p>
+<p>这篇文章的基本概念是，基于学习的 ABR 已经能够实现一个平均而言优秀的 ABR 算法，但是对于部分特殊的网络环境其依然表现不佳，而这也就是所谓的个性化。然后这篇文章使用了 meta RL 的方式实现了 AABR（其实应当是 <span class="math inline">\(A^2BR\)</span>，但是我真的不想打公式了，AABR 表示 Adaptation of ABR）。</p>
+<p>AABR 首先离线学习一个元算法，之后再在在线的个性化环境下学习一个针对当前网络环境的个性化算法。另外，还需要不断优化离线学习来保证元算法的优势。</p>
+<h2 id="introduction">Introduction</h2>
+<p>首先对 ABR 算法做了总结，启发式算法根据当前网络情况和一部分状态变量给出决策，但是只有在选定较好的算法参数的时候这种算法才能表现较好。基于学习的算法则根据网络情况学习这些参数。然而总而言之，这些算法都不会自动调节自己的算法参数，尤其在面对变化较多的网络环境下时，这些算法表现较差。</p>
+<p>之后是通过实验说明了现在的网络状况不仅是多样性（diverse）的，更多的是独一无二（unique）的。基于这一点，这篇文章认为做用户个性化是一个重要的提升。</p>
+<p>所以基于 Input-driven Markov Decision Process (IMDP)，本文提出了 AABR。分为离线和在线两步，具体的训练方式见后续。</p>
+<p>总结一下这篇文章的工作就是确认了当今网络环境的独特性，并通过 meta RL 解决了 ABR 的个性化问题。</p>
+<h2 id="background-motivation">Background &amp; Motivation</h2>
+<p>关于 ABR 之类的介绍这里忽略，主要看这篇文章如何论证当今网络的多样性。</p>
+<p>多样性分为三个方向去论证，即不同用户间差异、不同场景间差异以及已有的部分 ABR 算法在这些网络环境下的表现。</p>
+<p>用户间差异和场景间差异可以关注下图：</p>
+<p><img src="/uploads/paper-2022-12/1.png" /></p>
+<p>可以首先注意到网络吞吐率和 RTT 的变动是相当大的，而如果观察具体的用户，也可以发现用户之间的网络状况差异也很大，部分用户网络稳定（整体带宽 CDF 陡峭）而部分用户的网络波动较大，而且各个用户的网络指标平均值也差异较大。</p>
+<p>对于场景，也可以注意到步行、地铁、公交、汽车的网络情况也各有不同，并不能一概而论。</p>
+<p>如果从 ABR 的角度出发，这篇文章在两个不同环境下测试了若干个 ABR 算法的性能，得到的结果是：</p>
+<p><img src="/uploads/paper-2022-12/2.png" /></p>
+<p>显然可以注意到已有的算法都很难兼顾两种情况，常常顾此失彼。这就意味着不稳定的网络情况很容易导致这些算法失效，从而也难以实现用户个性化。</p>
+<h2 id="methods">Methods</h2>
+<h3 id="input-driven-markov-decision-process">Input-driven Markov Decision Process</h3>
+<p>基本而言是在正常的 MDP 中引入了 input process <span class="math inline">\(\mathcal{Z}\)</span>，这个时候环境的转移概率定义为：</p>
+<p><span class="math display">\[
+\mathbb{T}[s&#39; \mid s, a, z] := \mathbb{P}[s_{t + 1} = s&#39; \mid s_t = s, a_t = a, z_t = z]
+\]</span></p>
+<p>此外，决策依然仅仅和 <span class="math inline">\(s_t \in \mathcal{S}\)</span> 有关，也就是说具体行为 <span class="math inline">\(a_t \in \mathcal{A}\)</span> 与 <span class="math inline">\(z_t \in \mathcal{Z}\)</span> 是独立的。</p>
+<p>进一步的价值函数定义为：</p>
+<p><span class="math display">\[
+Q(s, a, z) := \sum_{s&#39; \in \mathcal{S}} \mathbb{T}[s&#39; \mid s, a, z](r(s, a, z) + \gamma V(s&#39;, z&#39;))
+\]</span></p>
+<p>在 IMDP 下，最优策略也就定义为：</p>
+<p><span class="math display">\[
+\pi^*(s, z) := \mathop{\rm argmax}_{a \in \mathcal{A}} \sum_{s&#39; \in \mathcal{S}} \mathbb{T}[s&#39;, z&#39; \mid s, a, z]\left[r(s, a, z) + \gamma \max_{a&#39; \in \mathcal{A}} Q(s&#39;, a&#39;, z&#39;)\right]
+\]</span></p>
+<p>可以注意到，如果两个 agent 运行相同的 policy <span class="math inline">\(\pi\)</span>，其不同之处仅仅是 input process <span class="math inline">\(\mathcal{Z}_{1, 2}\)</span> 不同。可以注意到这两个 agent 将会始终保持相同的决策，所以其价值函数相同当且仅当 <span class="math inline">\(\mathcal{Z}_1 = \mathcal{Z}_2\)</span>。</p>
+<p>如果在完全得知 input process <span class="math inline">\(\mathcal{Z}\)</span> 的条件下，求解最优策略相当于一般的强化学习问题，可以通过大量的强化学习方法完成。但是我们现在需要假定 input process 是完全不可感知的，在这种条件下，一般强化学习方法学习到的最优策略 <span class="math inline">\(\hat\pi^*\)</span> 的价值函数实际上是与 input process 无关的，其价值函数用 <span class="math inline">\(Q(s&#39;, a&#39;)\)</span> 表示，其满足：</p>
+<p><span class="math display">\[
+\max_{a&#39; \in \mathcal{A}} Q(s&#39;, a&#39;) = \mathbb{E}_{z&#39;} \max_{a&#39; \in \mathcal{A}} Q(s&#39;, a&#39;, z&#39;)
+\]</span></p>
+<p>所以现在解决 input process 未知条件下的最优策略求解问题就是最重要的。</p>
+<h3 id="meta-rl-with-domain-knowledge">Meta RL with Domain Knowledge</h3>
+<p>总之就是又阐述了一边 AABR 分为离线和在线两个训练过程，离线训练一个元算法之后在线训练一个个性化 ABR 算法。那么两个问题就是：</p>
+<div class="note info no-icon"><ol type="i">
+<li><p>How to obtain a good parameter initialization for fast-learning?</p></li>
+<li><p>How to efficiently learn tailor-made ABR algorithms online?</p></li>
+</ol>
+</div>
+<h3 id="model-agnostic-meta-learning">Model Agnostic Meta-Learning</h3>
+<p>总之就是选定了 MAML 作为 AABR 的核心算法，MAML 的论文后面慢慢推着看。</p>
+<p>不过这一部分也阐释了为何 MAML 适合用于这个场景，原文是：</p>
+<div class="note info no-icon"><p>We find that model agnostic meta learning (MAML) is quite suitable in personalized ABR scenarios where the network traces on each user are quite limited.</p>
+<p>Specifically, MAML consists of an inner loop and an outer loop.</p>
+</div>
+<p>也就是说从数据集的角度和训练流程的角度上说，MAML 和这个实验场景的契合度比较高。</p>
+<h3 id="leveraging-domain-knowledge">Leveraging Domain Knowledge</h3>
+<p>总体的含义是设计了一个模拟器用于生成数据以及相关的启发式算法，一方面补充了现实世界中数据量不足的问题，另外一方面其代表的启发式算法可以在 policy 无法处理某些状态的时候作为 backup 使用。</p>
+<p><strong>注：</strong>这一部分可能需要结合下面的 overview 仔细学一下，然后对这里做一些扩充，因为这里模拟器的细节应该是做数据扩充的重要部分。</p>
+<h2 id="aabr-overview">AABR Overview</h2>
+<p>系统的大致结构为：</p>
+<p><img src="/uploads/paper-2022-12/3.png" /></p>
+<h3 id="basic-training-algorithm">Basic Training Algorithm</h3>
+<p>在设计网络的输入的时候首先需要考虑的是什么才是真正需要考虑的状态，这篇文章采用的方式是首先将所有可以使用的状态都作为输入以训练一个 teacher network，之后采用类似模仿学习的方式，采用类似决策树等较为轻量级的模型去模仿神经网络的策略，之后再使用决策树剪枝的方式去获取真正有意义的非平凡状态。</p>
+<div class="note success no-icon"><p>这个方法似乎是比较好玩的一个方法，用于筛选真正有用的输入状态。</p>
+</div>
+<p>这里剪枝的目的也是为了压缩最后的成本。</p>
+<p>最后筛选出来的状态包括：</p>
+<ul>
+<li>上一次选定的视频块质量 <span class="math inline">\(q_t\)</span></li>
+<li>目前的缓冲区占用率 <span class="math inline">\(b_t\)</span></li>
+<li>前 <span class="math inline">\(k\)</span> 个视频块传输时网络吞吐率 <span class="math inline">\(C_t\)</span></li>
+<li>前 <span class="math inline">\(k\)</span> 个视频块的下载时间 <span class="math inline">\(D_t\)</span></li>
+<li>前 <span class="math inline">\(k\)</span> 个视频块的应答时间 <span class="math inline">\(P_t\)</span></li>
+</ul>
+<p>这里为了控制成本，实验中选取 <span class="math inline">\(k = 5\)</span>。</p>
+<p>另外，为了保证模型的泛化性，这里需要将参数正则化，这样至少能保证模型面对完全没有经历过的网络环境不至于将其认为非法输入。</p>
+<p>模型的输出和正常的 AC 网络没有很大的差别，都是 Actor 网络输出一个 softmax 后的概率张量表示各个行为的决策概率，而 Critic 网络输出一个标量表示对当前状态的价值评估。</p>
+<h4 id="maximum-entropy-ppo-me-ppo">Maximum Entropy PPO (ME-PPO)</h4>
+<p>这里的训练策略是 ME-PPO，其与 PPO 的差别在于最优行为的定义里纳入了熵：</p>
+<p><span class="math display">\[
+a_t^* := \mathop{\rm argmax}_a \hat{\mathbb{E}}_t\left[\sum_t \gamma^t(r_t + \lambda H^{\pi_\theta}(s_t))\right]
+\]</span></p>
+<p>这里定义熵为：</p>
+<p><span class="math display">\[
+H^{\pi_\theta}(s_t) = -\sum_{a \in \mathcal{A}} \pi_\theta(a \mid s_t) \ln\pi_\theta(a \mid s_t)
+\]</span></p>
+<p>元学习要求在离线环境下更重视 exploration 而在线环境下更重视 exploitation。这里将熵纳入考虑，如果策略 <span class="math inline">\(\pi_\theta\)</span> 对动作空间 <span class="math inline">\(\mathcal{A}\)</span> 中的所有动作给出的概率约趋向于平均，则熵越高，从而越会支持这样的选择。</p>
+<p>ME-PPO 的具体策略是基于 Dual-PPO 的 double clip 策略，具体如下：</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathcal{L}^{\rm PPO} &amp;:= \min\left(\frac{\pi_\theta(a_t \mid s_t)}{\pi_{\theta_{\rm old}}(a_t \mid s_t)}(\theta) \hat A_t, {\rm clip}\left(\frac{\pi_\theta(a_t \mid s_t)}{\pi_{\theta_{\rm old}}(a_t \mid s_t)}(\theta), 1 - \varepsilon, 1 + \varepsilon\right)\hat A_t\right) \\
+\mathcal{L}^{\rm Actor} &amp;:= \begin{cases}
+\hat{\mathbb{E}}_t[\max(\mathcal{L}^{\rm PPO}, c\hat A_t)] &amp; \hat A_t &lt; 0 \\
+\hat{\mathbb{E}}_t[\mathcal{L}^{\rm PPO}] &amp; \hat A_t \geq 0 \\
+\end{cases}
+\end{aligned}
+\]</span></p>
+<p>这里 <span class="math inline">\(\hat A_t\)</span> 是优势函数，定义为：</p>
+<p><span class="math display">\[
+\hat A_t := r_t + \gamma(V^{\pi_\theta}(s_{t + 1}) + \lambda H^{\pi_\theta}(s_{t + 1})) - V^{\pi_\theta}(s_t)
+\]</span></p>
+<p>这里 <span class="math inline">\(c, \varepsilon\)</span> 是用来控制梯度的超参数。</p>
+<p>AABR 中的 Critic 网络的训练策略就是最小化优势函数的均方误差：</p>
+<p><span class="math display">\[
+\mathcal{L}^{\rm Critic} := \frac12 \hat{\mathbb{E}}_t[A_t]^2
+\]</span></p>
+<p>从而整体的 loss 可以总结为：</p>
+<p><span class="math display">\[
+\nabla\mathcal{L}^{\rm MEPPO} := -\nabla_\theta \mathcal{L}^{\rm Actor}(\pi_\theta, \hat A_t) + \nabla_{\theta_v} \mathcal{L}^{\rm Critic}
+\]</span></p>
+<hr />
+<p>此外，由于算法对 <span class="math inline">\(\lambda\)</span> 较为敏感，我们需要在训练过程中不断调节 <span class="math inline">\(\lambda\)</span>，调节方式较为简单：</p>
+<p><span class="math display">\[
+\lambda \leftarrow \lambda + \alpha[H^{\pi_\theta}(s_t) - H^{\rm Target}]
+\]</span></p>
+<p>这个目标在于熵逐步接近目标的时候衰减 <span class="math inline">\(\lambda\)</span> 以减缓接近速度。</p>
+<h3 id="meta-learned-policies-for-offline-stage">Meta-Learned Policies for Offline Stage</h3>
+<p><strong>注：</strong>具体的训练方式后续补充。</p>
+<h1 id="model-agnostic-meta-learning-for-fast-adaptation-of-deep-networks">Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks</h1>
+<p>这是 MAML 训练方法的原始论文，看情况有没有时间做一个复现。</p>
+<p>文章的主要贡献就是一个元学习方式，并且似乎泛用性很广：</p>
+<div class="note info no-icon"><p>In this work, we propose a meta-learning algorithm that is general and model-agnostic, in the sense that it can be directly applied to any learning problem and model that is trained with a gradient descent procedure.</p>
+</div>
+<p>元学习的核心在于训练好的模型能够迅速通过少量数据学习到新的任务，并且其能够应用到大量的下游任务中。这篇文章将训练模型理解为在模型内部建立起适用于某种任务的特征表示，如果这种表示能够适合于多种任务，那么我们只需要进行合适的微调就可以迅速适应新的任务。如果从动力系统的角度理解，我们需要提高需要完成的任务的 loss 对参数的敏感度，这个敏感度越高，参数的变化对 loss 的提升的影响越大。</p>
+<h2 id="model-agnostic-meta-learning-1">Model-Agnostic Meta-Learning</h2>
+<h3 id="meta-learning-problem-set-up">Meta-Learning Problem Set-Up</h3>
+<p>这里严格定义了元学习需要解决的问题。</p>
+<p>首先我们需要形式化定义什么是任务，这篇文章定义为：</p>
+<p><span class="math display">\[
+\mathcal{T} := \{\mathcal{L}(\b x_1, \b a_1, \cdots, \b x_H, \b a_H), q(\b x_1), q(\b x_{t + 1} \mid \b x_t, \b a_t), H\}
+\]</span></p>
+<p>这里 <span class="math inline">\(\mathcal{L}\)</span> 表示 loss，<span class="math inline">\(q(\b x_1)\)</span> 是初始状态的分布，<span class="math inline">\(q(\b x_{t + 1} \mid \b x_t, \b a_t)\)</span> 是状态转移的概率分布，<span class="math inline">\(H\)</span> 是 episode 的长度。这个定义同时涵盖了普通的强化学习和监督学习，其中监督学习中 <span class="math inline">\(H = 1\)</span>。</p>
+<p>模型本身描述为一个函数 <span class="math inline">\(f\)</span>，其接受当前状态 <span class="math inline">\(\b x\)</span> 并给出输出 <span class="math inline">\(\b a\)</span>，即 <span class="math inline">\(\b a = f(\b x)\)</span>。模型不断在该任务中给定 <span class="math inline">\(\b a_1, \b a_2, \cdots, \b a_H\)</span>，而 loss <span class="math inline">\(\mathcal{L}\)</span> 则给出了实际的反馈，这种反馈可以是分类问题中的失配损失或者 Markov 决策过程中的负收益。</p>
+<p>在元学习中我们需要考虑一系列的任务的分布，这里记作 <span class="math inline">\(p(\mathcal{T})\)</span>。如果我们要求 <span class="math inline">\(K\)</span> shot learning，对于每一个从 <span class="math inline">\(p(\mathcal{T})\)</span> 抽取的具体任务 <span class="math inline">\(\mathcal{T}_i\)</span>，我们需要再通过 <span class="math inline">\(q_i\)</span> 抽取 <span class="math inline">\(K\)</span> 个样本，并且考虑 <span class="math inline">\(\mathcal{L}_{\mathcal{T}_i}\)</span> 的反馈。</p>
+<p>之后直接搬一个论文原句，也应该是论文后面算法设计的主要出发点：</p>
+<div class="note info no-icon"><p>The model <span class="math inline">\(f\)</span> is then improved by considering how the <em>test</em> error on new data from <span class="math inline">\(q_i\)</span> changes with respect to the parameters.</p>
+</div>
+<h3 id="a-model-agnostic-meta-learning-algorithm">A Model-Agnostic Meta-Learning Algorithm</h3>
+<p>这里提供了算法设计，一个关键词就是之前提到的<strong>敏感度</strong>。</p>
+<p>考虑用参数 <span class="math inline">\(\theta\)</span> 表示的模型 <span class="math inline">\(f_\theta\)</span>。在学习具体的任务 <span class="math inline">\(\mathcal{T}_i\)</span> 的时候，参数的更新方式为：</p>
+<p><span class="math display">\[
+\theta \leftarrow \theta - \alpha\nabla_\theta\mathcal{L}_{\mathcal{T}_i}(f_\theta)
+\]</span></p>
+<p>为了简化记号，我们假设在元学习之后学习具体任务仅用了一次梯度更新，此时任务 <span class="math inline">\(\mathcal{T}_i\)</span> 的最优参数就是 <span class="math inline">\(\theta_i&#39; := \theta - \alpha\nabla_\theta\mathcal{L}_{\mathcal{T}_i}(f_\theta)\)</span>，那么元学习的目标是：</p>
+<p><span class="math display">\[
+\min_\theta \sum_{\mathcal{T}_i \in p(\mathcal{T})} \mathcal{L}_{\mathcal{T}_i}(f_{\theta_i&#39;}) = \min_\theta \sum_{\mathcal{T}_i \in p(\mathcal{T})} \mathcal{L}_{\mathcal{T}_i}(f_{\theta - \alpha\nabla_\theta\mathcal{L}_{\mathcal{T}_i}(f_\theta)})
+\]</span></p>
+<p>那么还是使用简单的梯度下降，元学习中的参数更新就是：</p>
+<p><span class="math display">\[
+\theta \leftarrow \theta - \beta\nabla_\theta \sum_{\mathcal{T}_i \in p(\mathcal{T})} \mathcal{L}_{\mathcal{T}_i}(f_{\theta_i&#39;})
+\]</span></p>
+<p>在这里我们注意到出现了二阶梯度，部分深度学习框架能够支持这一操作，但本文也同样指出作一阶近似（即舍去二阶及以上的高阶项）是可行的。</p>
+<p>基于此，MAML 的整体框架为：</p>
+<p><img src="/uploads/paper-2022-12/4.png" /></p>
+<h2 id="species-of-maml">Species of MAML</h2>
+<p>本文这里举出了监督学习和强化学习中运用 MAML 的例子，这里我们只关注强化学习。</p>
+<p>强化学习特化的 MAML 主要关注的是 loss 的选定，这里选定的就是最经典的负收益。另外，此时 <span class="math inline">\(q_{\mathcal{T}_i}\)</span> 实际上就是环境中的状态转移概率分布：</p>
+<p><span class="math display">\[
+\mathcal{L}_{\mathcal{T}_i}(f_\phi) = -\mathbb{E}_{(\b x_t, \b a_t) \sim (f_\phi, q_{\mathcal{T}_i})} \left[\sum_{t = 1}^H R(\b x_t, \b a_t)\right]
+\]</span></p>
+<p>从而，强化学习特化的 MAML 算法为：</p>
+<p><img src="/uploads/paper-2022-12/5.png" /></p>
+<p>这之后就是一些实验结果了，感觉没啥意思了。</p>
+<h1 id="learning-to-adapt-in-dynamic-real-world-environments-through-meta-reinforcement-learning">Learning to Adapt in Dynamic, Real-World Environments through Meta Reinforcement Learning</h1>
+<p>这篇文章似乎没有官方的 code base，只有两个 community code base，现在可以在 <a href="https://paperswithcode.com/paper/learning-to-adapt-in-dynamic-real-world">这个链接</a> 获取，分别是 Tensorflow 和 Pytorch 版本。</p>
+<h2 id="abstract-introduction">Abstract &amp; Introduction</h2>
+<p>需要解决的问题依然是生成数据很困难以及测试环境中无法预料到的数据可能导致所训练的策略失效，引言之中也基本上叙述了人类可以很快适应自身机体发生的变化和外界环境发生的变化，提出了如果模型经历了足够多的环境微扰，其就可以很快学习适应新环境。</p>
+<p>相比较于原先的 meta RL 对任务的定义，这篇文章提出的模型能够处理每个时间步环境或者任务都在变化的情景。也就是说，原先的 meta RL 不过是提前预设好了需要解决什么样的任务，并且每一个 RL trajectory 仅会属于一个任务，而这篇文章的 RL trajectory 中可以涵盖多种任务并且任何时间都可以切换。所以这篇文章的 meta RL 更为 general。</p>
+<p>本文也是有 trade off 的，主要表达如下：</p>
+<div class="note info no-icon"><p>By specifically training a neural network model to require only a small amount of experience to adapt, we can enable effective online adaptation in complex environments while putting less pressure on needing a perfect global model.</p>
+</div>
+<p>也就是说，这篇文章为了能够在少数据条件下快速适应新环境，并不会强制要求这个模型在 global 环境下表现到 perfect。</p>
+<p>总而言之，这篇文章主要强调学得快，学习速度大约是每个新任务需要在真实世界中经历 1.5 到 3 小时，不到原有 model-free RL 方法学习时间的十分之一。并且，在同等数据量条件下，这篇文章的模型效果也比其他方法优越。此外，为了展示本文模型的学习能力，其将其真实部署在了机器人上，来学习真实世界的情况。</p>
+<h2 id="related-works">Related Works</h2>
+<p>首先提到最原始的强化学习方法没有泛用性，以及 model-free RL 往往需要大量和真是环境交互从而不实际。发展为 model-based RL 之后，就需要面临对环境建模的 model 需要在不同的任务之间调整的问题，首先否决了单一的全局模型，而先前有人尝试通过 GP 方法合并模型不确定性从而让模型能够表示不同的环境，然而这个方法做出了额外的假设且拓展性差且难以运用到高维空间，而本文提出的结果能够通过观察从而快速切换到新的环境。</p>
+<div class="note warning no-icon"><p>这里的问题就是我是真的没有太看懂这个 model 到底是对环境建模的模型还是最后要学习的 policy。</p>
+</div>
+<p>还有一种处理方式是首先学习一个全局模型，在测试的时候通过梯度下降进行微调。此外，还有工作表明不需要完美的全局模型，可以微调先验知识来处理小变化。然而，这些方法面临着模型的训练目的与测试时的使用方式之间的不匹配的问题。本文通过明确训练一个能快速有效适应的模型来弥合这一差距。</p>
+<h2 id="preliminaries">Preliminaries</h2>
+<h3 id="model-based-reinforcement-learning">Model-Based Reinforcement Learning</h3>
+<p>马尔可夫决策过程在这里建模为 <span class="math inline">\((\mathcal{S}, \mathcal{A}, p, r, \gamma, \rho_0, H)\)</span>。这里 <span class="math inline">\(\mathcal{S}\)</span> 是状态空间，<span class="math inline">\(\mathcal{A}\)</span> 是动作空间，<span class="math inline">\(p(s&#39; \mid s, a)\)</span> 是环境状态转移概率，<span class="math inline">\(r: \mathcal{S} \times \mathcal{A} \to \mathbb{R}\)</span> 是奖励函数，<span class="math inline">\(\rho_0: \mathcal{S} \to \mathbb{R}^+\)</span> 是初始状态概率分布，<span class="math inline">\(\gamma\)</span> 是奖励衰减常数，<span class="math inline">\(H\)</span> 是轨迹长度。</p>
+<p>一条轨迹描述为 <span class="math inline">\(\tau(i, j) := (s_i, a_i, \cdots, s_j, a_j, s_{j + 1})\)</span>，我们的目标是求取最优策略 <span class="math inline">\(\pi: \mathcal{S} \to \mathcal{A}\)</span> 使得累计收益期望最大。</p>
+<p>model-based RL 目标是近似处理 <span class="math inline">\(p(s&#39; \mid s, a)\)</span>，这个模型也被称为 dynamics model。</p>
+<h3 id="meta-learning">Meta Learning</h3>
+<p>一般的元学习需要给定假设，即训练用的任务和最终的测试任务都是从同一个任务分布 <span class="math inline">\(\rho(\mathcal{T})\)</span> 中抽取。元学习的目标是获取一个学习流程 <span class="math inline">\(\theta&#39; := u_\psi(\mathcal{D}^{\rm tr}_{\mathcal{T}}, \theta)\)</span> 以通过小数据集 <span class="math inline">\(\mathcal{D}^{\rm tr}_{\mathcal{T}}\)</span> 来学习任务 <span class="math inline">\(\mathcal{T}\)</span>，学习过程可以表示为：</p>
+<p><span class="math display">\[
+\min_{\theta, \psi} \mathbb{E}_{\mathcal{T} \sim \rho(\mathcal{T})}\left[\mathcal{L}(\mathcal{D}^{\rm test}_{\mathcal{T}}, \theta&#39;)\right]
+\]</span></p>
+<p>其中 <span class="math inline">\(\theta&#39; := u_\psi(\mathcal{D}^{\rm tr}_{\mathcal{T}}, \theta)\)</span>。</p>
+<div class="note info no-icon"><p>这里的记号是真的复杂，事实上训练过程应该是函数 <span class="math inline">\(u_\psi\)</span>，训练过程用参数 <span class="math inline">\(\psi\)</span> 代表，其输出为训练后的最优参数 <span class="math inline">\(\theta&#39;\)</span>，而 <span class="math inline">\(\theta\)</span> 表示初始化参数。</p>
+<p>另外注意，<span class="math inline">\(\theta\)</span> 这里是模拟环境的模型的参数，而非 policy 的参数。</p>
+</div>
+<h4 id="gradient-based-meta-learning">Gradient Based Meta Learning</h4>
+<p>MAML 就是一种基于梯度的元学习方法，其最主要的目标是学习一个较好的参数初始化保证在少数调整中即可实现较好的下游任务。</p>
+<p>MAML 的 <span class="math inline">\(u_\psi\)</span> 就是一般的梯度下降：</p>
+<p><span class="math display">\[
+u_\psi(\mathcal{D}^{\rm tr}_{\mathcal{T}}, \theta) = \theta - \alpha\nabla_\theta \mathcal{L}(\mathcal{D}^{\rm tr}_{\mathcal{T}}, \theta)
+\]</span></p>
+<p>如果学习率 <span class="math inline">\(\alpha\)</span> 是一个固定参数，那么 <span class="math inline">\(\psi = \varnothing\)</span>，如果 <span class="math inline">\(\alpha\)</span> 是一个元学习过程中需要学习的参数，那么 <span class="math inline">\(\psi = \alpha\)</span>。</p>
+<p>即使看起来 <span class="math inline">\(u_\psi\)</span> 是平凡的，但是这种方法的表达能力和下面介绍的方法是持平的。</p>
+<h4 id="recurrence-based-meta-learning">Recurrence Based Meta Learning</h4>
+<p>这里借用了 RNN 的思想，在这个方法中，更新函数 <span class="math inline">\(u_\psi\)</span> 始终需要不断学习，其中 <span class="math inline">\(\psi\)</span> 是用于更新 RNN 隐含层状态的参数，而 <span class="math inline">\(\theta\)</span> 是余下的参数。</p>
+<div class="note warning no-icon"><p>这里是真的真的真的没看懂，这在说啥？是我前置知识欠缺太多了？</p>
+<p>只能希望下面能有个稍微好一点的说明。</p>
+</div>
+<h2 id="meta-learning-for-online-model-adaptation">Meta Learning for Online Model Adaptation</h2>
+<p>之前提到过本文的 trajectory 中任务可以随着时间步推进而变化，所以本文设定的目标是根据前 <span class="math inline">\(M\)</span> 个时间步的数据预测未来 <span class="math inline">\(K\)</span> 个时间步情况，这里 <span class="math inline">\(M, K\)</span> 都是固定的超参数。</p>
+<p>所以在这样的设定下，训练目标就是：</p>
+<p><span class="math display">\[
+\begin{aligned}
+\theta_{\mathcal{E}}&#39; &amp;= u_\psi(\tau_{\mathcal{E}}(t - M, t - 1), \theta) \\
+\min_{\theta, \psi}&amp; \mathbb{E}_{\tau_{\mathcal{E}}(t - M, t + K)} [\mathcal{L}(\tau_{\mathcal{E}}(t, t + K), \theta_{\mathcal{E}}&#39;)]
+\end{aligned}
+\]</span></p>
+<p>而这里 loss 定义为：</p>
+<p><span class="math display">\[
+\mathcal{L}(\tau_{\mathcal{E}}(t, t + K), \theta_{\mathcal{E}}&#39;) := -\frac{1}{K} \sum_{k = t}^{t + K} \log\hat{p}_{\theta_{\mathcal{E}&#39;}}(s_{k + 1} \mid s_k, a_k)
+\]</span></p>
+<p>GrBAL 采取的更新策略为：</p>
+<p><span class="math display">\[
+\theta_{\mathcal{E}}&#39; = u_\psi(\tau_{\mathcal{E}}(t - M, t - 1), \theta) = \theta_{\mathcal{E}} + \psi\nabla_\theta\frac{1}{M} \sum_{m = t - M}^{t - 1} \log\hat{p}_{\theta_{\mathcal{E}}}(s_{m + 1} \mid s_m, a_m)
+\]</span></p>
+<p>ReBAL 这里又是没看懂，所以这个基于循环模型的到底是个什么东西。</p>
+<h2 id="model-based-meta-reinforcement-learning">Model Based Meta Reinforcement Learning</h2>
+<p>这一部分就是在讲解如何在线上做 adaptation，我觉得整体不如直接看算法直观：</p>
+<p><img src="/uploads/paper-2022-12/6.png" /></p>
+]]></content>
+      <categories>
+        <category>【论文笔记】计算机</category>
+      </categories>
+  </entry>
+  <entry>
     <title>《Petal Letter》歌词试译</title>
     <url>/2022/10/27/petal-letter-lyrics/</url>
     <content><![CDATA[<p>秋枫老师发来的一份歌词，感觉挺有意思就试着自己翻译看看了。</p>
@@ -16897,762 +17661,6 @@ a_t \sim \pi_\theta(\cdot \mid \hat s_t), \hat s_{t + 1} = \hat f_{\phi_t}(\hat 
 ]]></content>
       <categories>
         <category>【杂谈】碎碎念</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>2023 春季学期记录</title>
-    <url>/2023/02/20/2023-spring-record/</url>
-    <content><![CDATA[<p>应该是本科的最后一个学期了，最近事情也比较多，头绪也没完全理清楚，不如效仿之前假期通过日记的方式强迫自己认真工作，也写些学期中的日记算了。</p>
-<p>目前应该是毕设、先前和快手的项目以及软工助教三件长期的事情，另外有一份可能短期较忙后期平缓的实习。</p>
-<span id="more"></span>
-<h1 id="section">2023.02.20</h1>
-<p>学期的第一天，滚去上了韩语课，没想到的是韩语课居然不让使用电脑，本来还打算以后还可以在课上少说干点活的，看起来也不行了。中午偷摸去五道口出勤，结果还是一堆人，下午只能来工位，把预定中的几件事做了：</p>
-<ul>
-<li>迁移好服务器上的数据，跑上实验</li>
-<li>确认小程序的商品列表页面写完，check 一下 yfgg 那边给的信息</li>
-</ul>
-<p>本来以为迁移数据是小工作，结果发现还挺麻烦，在经历了实验室机子硬盘满了换挂载之后，我发现我测试集好像没了，现在只能想办法去把这个测试集找出来了。</p>
-<p>最终还是把测试集找出来了，之前写 Pensieve PyTorch 的时候用了这个数据集然后忘了 ignore 传到了 Github 上，只能说感谢当时比较粗心了。</p>
-<p>另外就是老师又把我拉到了一个项目的工作群里面，事情又要多起来。之后就是用新 Puffer 数据训练出来的模型依然是炸裂状态，洗数据的脚本不知道为什么很慢，而且估计还是有问题。自己个人网站的 CI 也不知道为啥停了三个星期没动。我现在真的是，完全不知道从哪里下手。</p>
-<hr />
-<p>现在洗数据的脚本慢的问题居然莫名其妙解决了，并且顺带学了一个 Python 的小知识。</p>
-<p>洗数据有个非常经典的操作，就是不断向一个列表之中 append 数据，正常都会这么写：</p>
-<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line">batch = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> data <span class="keyword">in</span> tqdm(data_reader):</span><br><span class="line">    <span class="comment"># Process</span></span><br><span class="line"></span><br><span class="line">    batch.append(data_item)</span><br></pre></td></tr></table></figure>
-<p>然而由于取字段运算符（就是 <code>batch.append</code> 中的 <code>.</code> 运算符）事实上在 Python 中占用的资源很大，所以事实上用下面的写法速度会快很多很多：</p>
-<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line">batch = []</span><br><span class="line">add_data = batch.append</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> data <span class="keyword">in</span> tqdm(data_reader):</span><br><span class="line">    <span class="comment"># Process</span></span><br><span class="line"></span><br><span class="line">    add_data(data_item)</span><br></pre></td></tr></table></figure>
-<p>我的数据大约是 <span class="math inline">\(10^6\)</span> 量级，然后每次都需要对四个列表 append，改用这个写法直接让洗数据时间从近三个小时变成了两分钟左右。</p>
-<p>这种改进方法有个需要注意的地方就是不能改变 <code>batch</code> 所指向的内存，否则先前的 <code>add_data</code> 将无法正确修改 <code>batch</code> 中的内容。比如 <code>batch = batch[: -1]</code> 之类的重新指向的写法就不能在循环体内出现。</p>
-<hr />
-<p>最后发现个人网站 CI 不动的原因是 Travis CI 收费了，而我自然是欠费的。那么，只能用免费的 Github Actions 了，虽然要把仓库内容给 Github 去训练 Copilot，但反正我这个个人网站他能学到个什么呢？</p>
-<h1 id="section-1">2023.02.21</h1>
-<p>今天早上又得早起，去软工课堂上讲小作业，不过因为学堂路堵车了稍微晚了点到，结果前排位置已经没了，只能坐到角落里。不过，由于高老板已经把小作业的 Slides 发出来了，所以我发现坐我前面的同学已经开始做了。要说实话的话，看到他能够非常顺利地把前端小作业运行起来我还是觉得挺欣慰的，毕竟没在这种地方出锅。</p>
-<p>软工课还是一如既往的无聊，周围的同学要么打牌，要么写小作业，要么复习自动机，而我因为没法给电脑充电所以没办法去做实习里的开发，只能坐牢睡觉。</p>
-<p>中午依然是偷偷出勤，现在疫情放开之后，五道口机厅就连工作日的下午往往也有近十个人在打。今天尝试推了推几个 13+ 的鸟，未果，随后因为又来了至少三四个人于是想了想就撤退回工位了。</p>
-<p>回到工位没想到第一件事情是有同学报告了 THUInfo 的 bug，虽然没花多少时间就排查出来是课程信息缓存策略有问题，如果退课并选择另一位老师同样的课的话就会导致无法正确更新缓存中的数据。然而即使是小事，这件事情也花了我一些时间。之后就是正常拉新的 Puffer 数据然后跑实验，但是现在实验室机子的存储空间大概是不够了，不能像之前那样一跑几天，几千个几千个 epoch 那样玩了，现在差不多收敛之后跑到 1000 epoch 左右就得停了。</p>
-<p>昨天挂上去的实验结果不是很好，最高的 reward 也只能达到 12 左右，甚至达不到启发式的 15，今天换了一个新的、更大的数据集看看，希望能够收获一点正常的结果。</p>
-<p>以及实习那边又开始催了，感觉是该找个时间好好卷卷实习了，然而最近晚上都不太好 308 直接干，因为连着三天需要早上十点钟去上课，还挺麻烦的。</p>
-<p>晚上和 xjj 他们去鹤一吃了顿烤肉，结果回来困到直接在椅子上睡着了，本来还想晚上做做事情的。</p>
-<p>另外让我惊讶的是，晚上居然有位同学来问软工小作业相关的东西，一看他都做下去不少了，感觉现在一字班果然还是不可小觑，说不定再过两三天就有人做完了。</p>
-<h1 id="section-2">2023.02.22</h1>
-<p>今天早上依然是韩语课，今天讲松紧辅音，然而我并不太会。下课之后依然是偷偷去五道口出勤一会然后赶回来上下午的强化学习。</p>
-<p>强化学习我记得课容量应该是四十几左右，结果不仅是微信群里就有一百四五十人，线下教室里也有快两百人，而我这个稍微晚到的就只能站在后面听了一节课。比较难绷的是，因为这堂课的内容我已经基本学过了，所以我就没怎么听，结果还被喊起来回答问题，还要用英语，这就很麻烦。不过说实话，这门课很符合我对大学课堂的想象，一个能有强交互性的、老师能和你保持交流的课堂，比单纯念 PPT 的单向授课不知道好了多少，可能也是因为这位老师也并没有大我们多少岁数，交流起来比较没有障碍吧。</p>
-<p>现在计划把目前这个网站上和 RL 相关的东西按照这堂课的 outline 给整理好，因为我发现这堂课所使用的符号系统之类的比较贴合我所用的，正好也不要废多大的力气。</p>
-<p>下午继续来工位，然后等一手 SOA 课程的消息，如果事情多、不好混分的话就赶快退了，本来大四也就想摆烂混个及格分赶快毕业得了。结果就是立刻从同学那边听闻课程大作业要求基于 ChatGPT 做开发，这已经完全超出我所需要了解的内容了，于是立刻退课跑路。</p>
-<hr />
-<p>今天看了一下用新一天的 Puffer 的 fox channel 训练的情况，更是爆炸，甚至到最后都负 reward，根本没收敛，我现在真的是在怀疑我的数据处理真的存在问题，然而我也是真的不知道怎么往下处理了，但这毕竟总是要结项的，我这边也要给结果的。</p>
-<p>今天估计要做的事情差不多是：</p>
-<ul>
-<li>收拾一下强化学习的笔记</li>
-<li>写实习那边的小程序</li>
-<li>毕设看看能不能推进点东西出来</li>
-</ul>
-<h1 id="section-3">2023.02.23</h1>
-<p>周四终于是没有要我十点钟就要起床的事情了，前三天连续早起让我精神状况相当不好，于是周三晚直接很早就睡了，结果一路睡了快十二个小时。</p>
-<p>周四恢复了组会，一点半准时赶到会议室。组会本身是没有什么很大意思的，比较有意思的有两件事，一件是和我一起做毕设的同学好像已经进展很快，这让我比较焦虑，另外一件就是我和老师说了我寒假在实习的事情，他感叹了一句“年轻人忙点好，但是我每周该查你毕设还是查”。总之就是这波组会开下来就让我感觉毕设再不做出点东西好像就得挂了。</p>
-<p>开完组会稍微收拾了点东西，把实习那边微信小程序开发者工具的一个 bug 修好之后就去上地出勤，不过因为状态不咋样就没怎么打。</p>
-<p>晚上回来之后实习那边的学长也在说我最近事情实在是太多，计划再找一个来帮忙的人，虽然可能需要我让渡部分回报（工资、股份之类的）。我感觉我最近确实也不太想继续推进实习了，实在是太累了，于是就答应了下来。结果他们很快就找来了两位似乎比较有意愿的同学。</p>
-<p>另外就是软工助教那边讨论大作业给分的事情，本来说很快的会，愣是开了一个多小时，就为了讨论应该怎么给同学们解释我们改革的动机和尽力阻止内卷。最后讨论下来，是和同学们明确给出过程评分要求（比如 Git 开发 comment 管理之类的评分），并且说明“完成拓展功能很容易导致在过程评分上失分，甚至可能得不偿失”，以此来尽力阻止过度追求满分的行为。</p>
-<p>开完会洗完澡来到 308 本来计划好好写写实习那边的东西，结果却是一躺就睡着了，一直睡到了周五的十二点，看来这几天是真的困了。</p>
-<h1 id="section-4">2023.02.24</h1>
-<p>从 308 的沙发上醒来之后，就简单点了个外卖，然后和 return 讨论了一波日语中助词「は、が」的用法，这些东西稍后整理到自学手册里。外卖到后吃完了就继续推实习那边的事情了。</p>
-<p>结果说是好好做实习的事情的，因为空间里刷到了一条以椭圆曲线加密算法为背景的高中题，就研究了大概几个小时的椭圆曲线。只能说完全不能集中做实习这边的事情。</p>
-<p>好摸啊，今天一整天感觉一直到晚上六点都没做出来什么实际的东西，果然还是得 push 一下自己。结果就这样一直到了晚上八点，还是没有做出来什么实质性的东西，倒是实习那边的学长似乎有一些想找我的事情，先来了解一下吧。</p>
-<p>和实习那边新找的技术团队简单见了一个面，看起来他们确实是很有经验的开发团队，至少对商业开发的流程把握比我这种随便写写玩玩的人实在是高到不知道哪里去了，如果可以的话还希望能把我这边接手过去我就可以稍微歇歇了。这里还是得感谢一下实习的 leader 还是帮我在投资人那里保住了一些利益，至少原先约定的现金工资还是能给出，这就还可以了，因为我确实没有作出那么多的贡献。</p>
-<p>讨论下来最终我应该就只要在一周内完成：</p>
-<ul>
-<li>“我的”页面以及订单详情页</li>
-<li>自定义导航栏</li>
-<li>询问学校和手机的 PageContainer</li>
-</ul>
-<p>这三个应该就可以暂且休整了，感觉整体安排还是很好的。</p>
-<p>晚上稍微花了点时间修正了一下主页相关的一些东西，目前来看问题不大。</p>
-<p>另外，最近不少人软工小作业前后端都做得七七八八了，目前也没什么大的 bug report，还算是心里安稳了不少，希望 CI/CD 也不会出大锅。</p>
-<h1 id="section-5">2023.02.25</h1>
-<p>今天大概是实习那边简单开一个会，把团队所有的同学召集起来互相认识。不过说实话，我这个做开发的，确实不太了解运营那边，倒是 yfgg 需要和运营那边对接后端管理，反倒是需要经常接触。</p>
-<p>中午出去吃牛肉面，结果那家店既不能在线下单，而且还需要自己取餐，还没有防丢包机制，属于是当下互联网应用普及背景下的漏网之鱼了。</p>
-<p>下午于是就正常工作把“我的”页面赶快写完，说是今晚就打算验收，那总之认真干干吧。</p>
-<p>然而微信小程序这种东西就是很折磨，写了一整天还是有些逻辑上的问题。另外，在写这玩意的时候还有一位上软工的同学一直在找我答疑，然而这位同学似乎对一些计算机的基础知识都不是特别熟练，确实也弄得我有点麻烦。</p>
-<p>晚上就直接摸鱼了，打了一晚上德州，然后早早睡了。</p>
-<h1 id="section-6">2023.02.26</h1>
-<p>一点没睡好，因为突然出现了一点点的感冒症状，喉咙发痒然后咳痰，我在怀疑是冬春之交的流感，或者是我复阳了，顺带着精神状况也不是特别好，有点头晕且没啥精神，口干舌燥的很难受。</p>
-<p>十一点左右就醒了，打了一把牌之后就去看 KOP maimai 决赛，yoshiki 还是很稳健地拿下优胜，确实也没啥特别可以说得上是悬念的东西。然而最主要的是在国际服比赛之前三位主持人透露了似乎 SBGA 终于要把国服 UI 更新到 festival 的信息：</p>
-<ul>
-<li>マイマイは日本でも人気なんですけれども、海外でも...</li>
-<li>中国で、あのマイマイみたいな...</li>
-<li>せっかくで、バージョンアップ、言ってもいい？</li>
-<li>バージョンアップしなかったですけど、近々、システムはフェスティバルにと...</li>
-</ul>
-<p>然而这完全不像是一次正式通告，虽然后面也提到了最近会发布正式公告，但这暧昧的态度和语气确实也很 SBGA。只能说如果真的给更新的话，maimai 暂且是一款我的问题。</p>
-<p>下午实在是拿不出来任何做事的干劲，直接去上地出勤了，然而上地一直保持着至少八人的规模，所以说实话也没打到多少把。感冒的症状说实话出勤的时候在缓慢加重，毕竟只穿了短袖而且还在不断流汗，很有可能受凉。一直到了晚上，本来想吃一顿萨利亚就回去的，结果是萨利亚居然卖完了主食，啥都吃不了，只能去上地华联地下那些不咋样的饭店随便吃吃，就这样还吃了我六七十，啥都没吃着。</p>
-<p>晚上回到宿舍拿到了美团上买的感冒药，结果上楼梯的时候就已经开始感受到极端的疲惫感，到了宿舍坐下来，立刻感觉好了不少，于是赶紧吃了颗药。</p>
-<p>今天本来想做的事情那是一件都没有做，这一周刚开始的时候干劲满满，每天除了日常工作还能出勤，心情也一直很不错。但是到了今天，周日，因为这个感冒症状，真的弄得我非常难受，希望明天起来能够快快好起来，这样至少不会影响我下一周的时间安排。</p>
-<h1 id="section-7">2023.02.27</h1>
-<p>果然症状没有好多少，依然是喉咙有点疼然后头很昏，整天处于疲劳状态，可能还有一点点低热。早上强撑着还去上了韩语课，虽然迟到了。韩语课目前在讲发音，没有什么特别有意思的东西。</p>
-<p>中午按照平常的饭量点了一套粥和配粥的小菜，结果发现自己完全吃不下，虽然吃了七八成，但还有些是完全没吃的，比如三个豆沙包。下午按照道理要准备开始干活了，然而这个状况是真的一点都没法工作，于是爬上床睡觉了，除了途中上了趟厕所之外，一直到七点左右我一直在床上睡觉。比较麻烦的是，我醒过来发现四肢有点冰凉然后还有点热，这说明症状严重了。</p>
-<p>为了防止我是新冠复阳，我去 308 里面拿了一份之前囤着的抗原，自测了一下是阴性，这就说明我得甲型流感的概率很高，前几天宿舍楼群里面也有人问有没有体温计之类的。</p>
-<p>就这样一直磨到了晚上八点，请舍友帮忙带了饭，结果发现还是没什么特别大的胃口。但这个时候我意识到很多事情再不做来不及了，比如第二天就要在课上讲的 React 前端小作业讲稿，还有大作业文档之类的也得稍微调整一下。就在我极不情愿地坐到桌前准备工作，这种疲劳感和不集中又袭来，而且实习那边还在 push 一些事情。</p>
-<p>怎么会变成这样的呢？我思考可能是先前太疲劳，毕竟连续早起了很多天，虽然只是十点起，但我平均得到四五点睡，这就很不好。于是想着该找机会调整作息和运动了，然而目前事情还得赶快推。</p>
-<h1 id="section-8">2023.02.28</h1>
-<p>二月的最后一天了，昨天晚上吃完药之后明显感到全身发烫，然后开始冒汗，最终到了凌晨五点左右退烧了。然而，喉咙疼和咳嗽确实是一点没有见好转，甚至还有恶化的感觉。</p>
-<p>强撑着去软工课堂上讲完了两节课，回来之后自然又是睡了整整一个下午，起来就已经是晚上了，点了个外卖，胃口依然没有恢复。</p>
-<p>晚上首先是我爸妈得知了消息，他们简单关照了几句，问了问药物的情况。然后我发了个朋友圈说已经甲流第三天，结果各种关心就都过来了，先是 rls，然后是之前一直有联系的学弟，一起打牌的学长，湖中，甚至贾珈老师都来关心，一时间受宠若惊。</p>
-<p>不过总的来说吃了颗药然后洗了个澡之后现在精神状况恢复不少，至少现在四肢都是温暖的，然后也几乎没有疲劳感，喉咙虽然沙哑但至少也只是微微发涩，估摸着明天，应该也就能正式好转了吧。</p>
-<p>期间 rls 提到了还有一个月薪两千的前端单子问我要不要接，我只能回一句“狗命要紧”，赶快回绝了。</p>
-<p>以及突然很想吃水果，尤其是苹果和梨，那种清甜的口感，不知道为啥现在特别想念。</p>
-<p>过了一遍 DRL 的 recitation，PyTorch 的简单入门，讲得还可以，但之前就学过了，不好说对初学者而言友不友好。比较好玩的一点是，我听完 recitation 之后，突然感觉神清气爽，有种大病初愈的感觉，难道 DRL 还有这个好处？</p>
-<p>不过看这样子，明天确实可以开始正常生活了，先是得把这几天没洗的衣服给洗了，然后给自己买点水果解个馋。工作上的话，软工助教一时半会是没啥大事了，实习估计这周也会结束，毕设已经请了一周假，这周组会应该也很好过去。</p>
-<p>三月了，希望能全新开始吧。</p>
-<h1 id="section-9">2023.03.01</h1>
-<p>今天起床之后发现好了不少，除了喉咙还是有点不舒服之外，其他应该基本都好差不多了，然后也第一次韩语课没有迟到。韩语课没啥值得记忆的，只是 zz 居然被老师听出来他的韩语有日语口音。</p>
-<p>中午点了麻辣烫，虽然这次没要酱料，毕竟现在还不太能吃辛辣，于是就吃了清水煮肉片，但是比较好的事情就是发现自己饭量已经差不多恢复了。此外去猫超买了黄瓜、菠萝蜜和哈密瓜，其他的还好，就是菠萝蜜难吃出了一种境界。</p>
-<p>下午摆烂没去 DRL，但是老师发 slides 真的很慢，我还打算至少看看 slides 来学点东西的。</p>
-<p>结果还是摆烂了一个下午，最终还是决定去洗个衣服，至少做点什么像样的事情吧。</p>
-<h1 id="section-10">2023.03.02</h1>
-<p>昨晚据我舍友说睡觉的时候连续咳嗽了一个多小时，说是真怕我睡着睡着人咳没了。</p>
-<p>中午爬起来去开组会，为了防止传染所以戴了个口罩去了实验室，实验室的学长们见到我这阵仗都纷纷戴上了口罩。老师看到这个状况，于是劝我还是等身体完全好了再来实验室，组会少一两次问题不大。于是我就从命地回去了，回去的路上顺手去吃了个午饭。</p>
-<p>吃完午饭才发现这几天的温度已经回升到了十几度了，天气最近也一直是晴天，这两天正好又是春季百团大战，于是就去逛了一下摊位。不过由于春季百团本来就不是重点战场，各个社团也没有拿出家底，所以摊位比较一般，没啥意思。但是，这次逛了摊位之后突然发现，只是走了百十米之后就开始喘气，我自己都没发现现在身子已经虚弱到了这个程度。</p>
-<p>回到宿舍坐了一会喝了口水之后瞬间就恢复了不少，甚至感觉和康复了毫无区别。果然只有出门才会意识到现在自己身体依然十分虚弱，即使没有很明显的症状。算了，先好好把 DRL 笔记整理完吧。</p>
-<h1 id="section-11">2023.03.03</h1>
-<p>身体看起来已经是完全好了，下午先是出门去做软工小作业答疑，但是就在这过程中不断被催实习那边的事情。目前预定下来要做的事情应该还就是之前定下来的那几个页面，然后预计还要去做后台管理应用的一些后端开发。</p>
-<p>因为现在身体好了不少于是直接去上地出勤，虽然状态依然没有完全回来，但是基本上已经是能活动开了。不过打了一晚上一分没上，还是很难受的。</p>
-<p>本来是打算和舍友一起去海底捞的，但是考虑到我出了勤得去洗澡，然后当晚还有韩语作业，只能偷摸溜回来。然而回来发现的第一件事就是我自行车被偷了，我明明好好锁了车，却依然被偷了。本来是打算报警的，但以前也被偷过车的一位同学提醒我这事报警挺麻烦，毕竟你也没法拿出什么很重要的证据说明这车就一定是你的，而且很多行政流程可能还挺麻烦。</p>
-<p>回到宿舍本来打算稍微做点事情的，结果是相当困，写完韩语作业之后就直接摸鱼了。</p>
-<h1 id="section-12">2023.03.04</h1>
-<p>今天起来先是收到了 SECoder 因为网段限制无法满足给所有同学开两个部署容器的麻烦消息，这代表我们对小作业框架要做大改。急急匆匆和高老板、mfy 商议了解决方案之后，我把作业文档和课程公告写好了，就等高老板那边把 code base 修改好，然后开好容器就可以准备谢罪了。</p>
-<p>此外不少同学的软工答疑我还暂且没解决，在此之外实习的事情理应今天解决我还没做。</p>
-<p>不过说实话，现在我对这份实习是越来越不想上心，因为自己毕设真的是没有进度，现在也已经是三月的开头过去三四天了，四月中期拿不出东西是真的要收拾东西走人的。</p>
-<p>有个题外话就是我考研的舍友似乎想来我们组，看上去还真有可能。如果是这样的话，至少几年内有个一起在组里的也不错。</p>
-<p>晚上稍微摸了鱼，打了一晚上德州扑克。这一把非常有意思的一局是，我起手 AK 方片，然后直接冲刺了，翻牌是三张方片，我直接中天顶同花，于是也不演了，打退几家。令我惊讶的是，即使是这样居然还有一家和我对着下注，我看后续牌没有对子，就说明没四条或者葫芦了，结果那一家还在和我对着下注一直到 All in，我这手牌自然是一击把他打飞了。后面我还拿到过天葫芦，天顶两对等好牌，只能说这一把太运势好了。</p>
-<p>其实晚上最主要的还是把软工小作业的问题解决了，更新了文档，发布了课程公告，也终于给大家开好了容器，这件事情也算是平稳过去了。</p>
-<h1 id="section-13">2023.03.05</h1>
-<p>周日，本来想好好做点实习的事情的，结果直接在宿舍开始摸鱼。现在气温开始回升了，慢慢有春天的感觉了，最近心情大好。</p>
-<p>不过下午却是摸鱼摸过去了，中途 c7w 给我转发了 ouuan 在自己 blog 上对软工小作业的批评，怎么说呢，别人说的没错那就只能立正挨打。硬伤就是计时器资源和网络请求并没有设置在组件卸载的时候取消，这一点怎么说呢，因为曾经的项目没有使用过定时器，也没有过于管 abort 网络请求的事情，所以就没这方面的经验，确乎是得学。然后就是 ESLint 配置的事情，怎么说呢，一是 holder 确实 prefer 一个并非大众喜爱的码风，然后 ESLint 没好好配也差不多是为了同学写的时候别真的红一片，我当时第一次开始写代码就经常被 lint 干到崩溃，明明会写的逻辑硬要跟着 lint 后面走。嘛，不过也确实是在想要不从众用 2 space 缩紧和单引号算了，但是说实话 holder 真的是单引号极端厌恶。</p>
-<p>整体要说的话，实际上问题也就是一个，就是“简陋”，不符合当下的一些约束或者说惯例，而且为了零基础也能上手，省掉了一堆东西还几乎没多少填空。</p>
-<p>算了，还是等 ouuan 来好好调教一番吧，我摆烂了，我只想毕业了。</p>
-<p>但是说实话，还是赶快做点事情从周一开始恢复到第一周的工作状态吧，否则实在是有点太摸了。</p>
-<hr />
-<p>总之今天整体还是太摸鱼了，实习那边的东西没有一发调出来也是真的没绷住，然后还时不时被 ouuan 拷打，包括各种可以优化的地方。看来 holder 还需要再稍微锻炼一下抗压能力，这点抗压能力完全不能应付啊，包括之前被 cyr 拷打毕设也是，完全做不到坦然面对面前的问题呢，遇到问题只想摆烂和找借口嘴硬，这实在是有点过分了。</p>
-<h1 id="section-14">2023.03.06</h1>
-<p>今天早上起来就发现已经十点了，已经过了韩语课的签到，于是也懒得去了，看到湖中在说想出勤，于是直接去了五道口。没有想到的是，即使是星期一的上午，五道口依然充满了人，完全打不了多少，只能随便糊糊作罢。</p>
-<p>下午精神终于回来了一点，昨天摆烂加上被拷打真的是完全绷不住，但还是得赶快调整。到了工位，整理了一下自己的东西，结果发现耳机的耳塞又掉了，没有办法只能赶快下单新耳机，不能再将就着用这个破耳机了。下午依然是随便跑了一下 Puffer 的实验，可喜的是这一次实验居然似乎有了点看起来能行的样子，因为现在至少能打过启发式了，至少不是智障了。在等实验的过程中帮 abmfy 修了一下日语作文，然后准备还是赶快把实习那边的事情给做完，少一件事终究是好事。</p>
-<p>今早在出勤的时候顺手把当前前端小作业存在的问题给罗列了一下，整体来讲虽然有点绷不住但还是感谢 ouuan 提供了这么多的改进意见。</p>
-<h1 id="section-15">2023.03.07</h1>
-<p>7 号真实地没有任何可以记录的事情，因为早上起来之后随手在群里发了一个“礼问上几”，得到上地机厅只有一人的答复之后，立刻收拾东西去出勤了。然后原本是打算随便打打就下午回来的，结果因为手感好到离谱，直接上了四十几底分，于是就这样一直打下去了。最后快要闭店的时候，随手开了一把高桥名人，结果 24 分纵连全打上了，鸟加 13.2 吃分。</p>
-<p>但是事情总是得做的，因为和实习那边说了已经写完了订单页面，所以这个坑得填上，最终还是来到了 308 开夜班，一路做到早上六点，真实做到了三四个小时糊完整个页面。</p>
-<h1 id="section-16">2023.03.08</h1>
-<p>7 号晚上写完订单页面之后我意识到周三 8 号的韩语课多半是起不来了，于是和老师说明了情况，打算韩语课退课自学了。</p>
-<p>8 号的话，起来之后先是去了 DRL，下课后结果兴致来了就去吃了顿麦当劳然后五道口出勤，出到了晚上回来和舍友吃了顿饭，308 睡了一觉之后就是软工的课咨委启动会，开完之后就十一点了，直到这个时候才准备开始做毕设。</p>
-<p>这两天属实没有什么特别有意思的事情，也没有什么有意思的新闻，只是很平淡地摸鱼了两天，只能赶快把毕设启动了，不然太摸鱼了。然后韩语的收音和今天 DRL 的课程内容还得整理一下，不过还是毕设为重，这些可以明天开完会之后慢慢摸索。</p>
-<h1 id="section-17">2023.03.09</h1>
-<p>昨天为了赶快干活，晚上做毕设做到三四点，但是实在是顶不住了赶快去睡觉了。但是这一觉也没睡多好，中间醒了几回。早上起来就看见导师要去参加另外一场会于是组会交给我们自行组织，绝佳摸鱼机会。</p>
-<p>于是下午的组会也只进行了半个小时就结束了，然后我们就在讨论导师参加的那一场会会开到什么时候，毕竟我们还得装作认真讨论的样子，至少不能让组会比导师的会提早结束。结果是没讨论出任何有价值的结果，就直接回实验室摸鱼聊天，没想到的是，导师已经回来坐到实验室了。</p>
-<p>今天机厅据说人并不多，但是说实话事情还是不少的，还是稍微做做吧，大不了周五出勤出一整天。</p>
-<h1 id="section-18">2023.03.10</h1>
-<p>周五似乎并没有什么安排，因为周四理论上已经大体解决了问题，我也成功在周五凌晨六点前把实习的代码交掉了，虽然我知道里面还有不少的错误，但这些错误也不是我写的，我真的很难去帮别人补天。</p>
-<p>然而下午毕竟是要验收的，验收这就发现这玩意几乎没有办法用，功能上欠缺了一堆东西，实习那边的学长能看得出来很着急，于是急忙安排我们前端开发的两拨人赶快开会对接。我迅速把一些比较严重的问题扔到了群里，但是他们的答复也比较暧昧不清，不太能对实际解决问题起到什么作用。</p>
-<p>晚上稍微开了个会，我直接对着他们的代码指指点点了一通，总之就是他们那边出了不少问题（虽然感觉我也可能出问题），导致现在功能上完全用不了。在这之前事实上我已经和 yfgg 吐槽了很多他们代码上的错误之类的，总之就是血压超级高。</p>
-<p>开会的时候我直接说我周末不奉陪了，你们的问题你们慢慢解决，然后我就开始心安理得地摆烂，打了一晚上德州扑克之后就早早睡了。</p>
-<h1 id="section-19">2023.03.11</h1>
-<p>周六是约好先去麦当劳吃饭然后 V+ 群群 K 的，我定好了十一点的闹钟，虽然被闹醒了但是小小眯了一会，没想到就直接迟到半小时。</p>
-<p>因为这次参加的群友相当之多，最终我们是分为中 V 和日 V 两边举行，我一直在日 V 这边，确实也唱了相当多的 V 曲，嗓子已经炸裂了。</p>
-<p>晚上本来是打算聚餐的，但是还是和湖中、秋枫老师临时起意去窝出了一小会勤，只是没想到窝现在十点钟就会关门，于是也没玩很长时间就只能回来了。</p>
-<p>回来洗了个澡，准备稍微干点活。在今天玩的时候实习那边还在说打算周日把 bug 修好，但总之我有点不想再陪他们玩下去了，我把我的工作做好，这周，我必须把那里的事情放下来做毕设了，后面软工助教会还得开，不能再这样拖泥带水了。</p>
-<hr />
-<p>今天还是主要配置了一下 DRL 的环境，因为手上的 Mac 说实话已经很不好用了，很怕后面要做深度神经网络的时候撑不住，于是直接把代码拉到服务器上去了。但是这有一个重要的问题，DRL 的作业是基于 Gymnasium 的，这是需要渲染图形界面的，那我就需要通过 X11 转发图形界面到我的 Mac 上。但是刚配置完 X11，就报错了：</p>
-<figure class="highlight shell"><figcaption><span>ZSH</span></figcaption><table><tr><td class="code"><pre><span class="line">X Error of failed request:  BadValue (integer parameter out of range for operation)</span><br><span class="line">  Major opcode of failed request:  149 (GLX)</span><br><span class="line">  Minor opcode of failed request:  3 (X_GLXCreateContext)</span><br><span class="line">  Value in failed request:  0x0</span><br><span class="line">  Serial number of failed request:  143</span><br><span class="line">  Current serial number in output stream:  144</span><br></pre></td></tr></table></figure>
-<p>我查了半天终于在 StackOverflow 上找到了解决方案，只需要在 MacOS 的客户端这边运行下述命令启用 IGLX 即可：</p>
-<figure class="highlight shell"><figcaption><span>ZSH</span></figcaption><table><tr><td class="code"><pre><span class="line">defaults write `quartz-wm --help | awk &#x27;/default:.*X11/ &#123; gsub(/\)/, &quot;&quot;, $2); print $2; &#125;&#x27;` enable_iglx -bool true</span><br></pre></td></tr></table></figure>
-<p>然后普通地 <code>ssh -Y</code> 连接到 Linux 服务器端就可以了。如果是 VSCode 的话，需要在 SSH config 里面加上下面两行来保证 X11 启用：</p>
-<figure class="highlight shell"><figcaption><span>SSH config</span></figcaption><table><tr><td class="code"><pre><span class="line">ForwardX11 yes</span><br><span class="line">ForwardX11Trusted yes</span><br></pre></td></tr></table></figure>
-<h1 id="section-20">2023.03.12</h1>
-<p>今天是周日，按照道理是和实习那边对前端的任务的，不过下午我都用来搬迁毕设代码框架里面的一个第三方框架了。我毕设真的是，毫无进展，真的得速速做点东西出来了，尤其是下一次组会真的得说点什么东西出来了，不然这也太慢了。</p>
-<p>晚上临时起意去了胜博殿去吃炸猪排，不得不说，特别好吃，超出想象的好吃。猪排我点的千层锦，切面可以看到是一层层猪肉叠起来，最后炸出来居然不散开，居然还能保持猪排的形状，这也太惊艳了。小菜比如说包菜丝、茶水、金枪鱼拌饭、味增汤之类的就没有那么惊艳，但绝对也是平均向上的水平。</p>
-<p>今晚吃饭的地方旁边就有 maimai，于是就去打了几把，差点鸟掉 Big Daddy，但是尾杀崩盘了就没办法了。这个机厅最大的问题就是游戏币原价太贵了，两块钱一币，maimai 1pc 要五币，原价的话十块钱 1pc，实在是离谱。</p>
-<p>晚上回来发现自己 B 站六级了，于是做了一下硬核会员考试，擦边通过，关于鬼畜的一些东西真的已经是考的都是边边角角完全不知道了。做完这些迅速过了一下实习那边的代码，把订单列表页的按钮都写上了回调函数，我这边工作基本就相当于结束了。交了一些 Bug report，和学长说了自己可能得做毕设之后，就暂且告一段落吧。</p>
-<h1 id="section-21">2023.03.13</h1>
-<p>周一，因为已经退掉了韩语，所以没有早起，起来之后按照以往的规划去了五道口出一小会勤。本来是打算出一两个小时就回去去工位做毕设的，结果是一直打到了闭店。</p>
-<p>不过这一次出勤实在是太值当了，不仅杀掉了心心念念的捕物帐、纵连派对、跳舞狗三个 13+，还 AP 了海底谭和弱虫。最经典的事情则是，因为我已经连续出勤了七个小时已经累得不行，但是最后快闭店的时候我同学拉着我说再来一把。我秉持着已经这么累了，再累点也没事的态度开了一把 DX 奶，没想到的是我把这玩意杀了。而正好，同学帮我录下来了最后十秒钟，当了一次战地记者。</p>
-<p>回来之后就把这个视频上传到了 B 站，还是很有意思的。</p>
-<h1 id="section-22">2023.03.14</h1>
-<p>今天决定好好做毕设了，不过这次我打算换方向了，我不打算完整复现论文了，而是直接用 community code base，在这个基础上先跑起来 Pensieve 作为 baseline。感谢贾老师的建议。</p>
-<p>不过这次在跑起来这个 code base 的过程中遇到了相当多的困难。我一开始打算在服务器上运行起来这套代码，首先遇到的问题是导入自己编写的模块会导致 Python 找不到模块，这也算是个经典问题了，不过这次我找到了这样一套 Python 引言代码，感觉可以后期长期使用这样一套引言来解决自己编写模块之间互引的问题：</p>
-<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">current_path = os.path.dirname(os.path.abspath(__file__))</span><br><span class="line">sys.path.append(os.path.join(current_path, <span class="string">&quot;..&quot;</span>))</span><br></pre></td></tr></table></figure>
-<p>之后遇到的问题是服务器上没有 OpenMPI，这个简单，直接 <code>sudo apt-get</code> 就可以了。然后还有一点就是没有装 Mujoco 131，这个也不难。</p>
-<p>然而后面的就是大问题了，因为这个代码框架还是涉及到图形界面，所以还是会涉及到 SSH X11 转发图形界面，然而我本以为配置好了，结果这次运行的时候炸了 <code>No specified protocol</code>。我上网找了一下，基本都是说没有权限的问题，用 <code>xhost +</code> 命令就可以解决问题，然而我无论怎么尝试都不行。于是我放弃了，我决定先在我 Mac 本地跑起来这一套玩意。</p>
-<p>然而在 Mac 本地上就有另外的问题，OpenGL 找不到。我尝试了很多方法安装 OpenGL，但都不行，最后还是找到了相当邪道的解决方式，即直接修改第三方 <code>pyopengl</code> 里面寻找 OpenGL 的代码。代码位于 <code>platform/ctypesloader.py</code> 中，里面函数 <code>_loadLibraryWindows</code> 中有一段如下的代码：</p>
-<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line">fullName = <span class="literal">None</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    fullName = util.find_library(name)</span><br><span class="line">    <span class="keyword">if</span> fullName <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">        name = fullName</span><br><span class="line">    <span class="keyword">elif</span> os.path.isfile(os.path.join(DLL_DIRECTORY, name + <span class="string">&#x27;.dll&#x27;</span>)):</span><br><span class="line">        name = os.path.join(DLL_DIRECTORY, name + <span class="string">&#x27;.dll&#x27;</span>)</span><br><span class="line"><span class="keyword">except</span> Exception <span class="keyword">as</span> err:</span><br><span class="line">    _log.info(<span class="string">&#x27;&#x27;&#x27;Failed on util.find_library(%r): %s&#x27;&#x27;&#x27;</span>, name, err)</span><br><span class="line">    <span class="comment"># Should the call fail, we just try to load the base filename...</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
-<p>这里直接把 <code>fullName</code> 变量硬设置为 <code>"/System/Library/Frameworks/OpenGL.framework/OpenGL"</code> 即可（在 MacOS 上），这样的话似乎就能通过检查了。</p>
-<p>之后也是 Mac 上装一下 OpenMPI，直接 <code>brew install openmpi</code> 就行，然后就跑起来了。然而我 Mac 究竟是老了，所以跑的时候风扇直接起飞，还是得放到服务器上。不过我发现一件事就是这玩意完全没有生成什么图形界面，意思就是说理论上根本碰不到 X11 转发的问题，所以我就打算今天至少得把这玩意在服务器上跑起来才行。</p>
-<hr />
-<p>在服务器上二分了一下确认了是 <code>mpi4py</code> 这个包在 import 的时候会爆炸，不过我也用不到这个东西所以直接注释掉就没有那么多事情了。</p>
-<p>这个框架另外还附赠了一个用 Flask 编写的前端用来可视化训练数据，不过看起来这个前端目前也是炸得不轻，啥地方都是 500 Internal Server Error，还得一步步修理。</p>
-<p>最终还是找到了前端的问题，是因为我以为代码里面的 <code>viskit</code> 是个需要安装的第三方，所以直接用 <code>pip install viskit</code> 装了一下，结果这个 <code>viskit</code> 事实上是自己写的一个 <code>viskit.py</code> 模块。而碰巧的是用 <code>pip</code> 装的时候装了个很老的依赖，现在更新到了 v3 而我装的是 v1，恰巧这个依赖还真的在 <code>viskit.py</code> 里面引用了，所以直接爆炸了。</p>
-<p>我比较怀疑这个框架里的 <code>viskit.py</code> 是一个 self modified 的魔改版第三方，所以才不能从 <code>pip</code> 直接下载。</p>
-<p>最后他还有一个用来展示训练结果的 Python 文件，里面读取了缓存的模型参数然后用了 Gymnasium 渲染一个图像出来，不过这里又是涉及到图像 X11 转发，于是又理所应当地炸掉了，但今晚我也懒得调试这个东西了，明天要帮黄老师找他博士毕业论文的错别字还得尽量把 Pensieve 写上去。</p>
-<h1 id="section-23">2023.03.15</h1>
-<p>今天真的没睡好，本来昨晚看完了《シノハユ》漫画之后已经五六点，结果还有点失眠了一下子没睡着，最后七点才昏昏沉沉睡过去。结果早上十点钟就有人来清洗空调，直接把我弄睡不着了，只睡了三个小时直接让我整个早上极端暴躁。</p>
-<p>结果先去偷摸出勤了，勤到了三点多，决定回工位帮黄老师看论文。然而今天在工位说实话黄老师论文也没看进去多少，反倒是软工因为周四要开第一次大例会所以拉群、加好友、发注意事项弄得热火朝天，最忙碌的时候我同时在和五位同学保持联系。</p>
-<p>晚上在实验室和学长们吹了一会 GPT-4 的水，没想到一路吹到晚上十一点，于是赶快收拾东西回宿舍。路上遇到了 lzj，于是和他两个人边聊天边走回宿舍。</p>
-<p>回来之后决定先把目前复现的 GrBAL 挂到服务器上跑着，昨天虽然跑了一些，但是试验结果相当炸裂，reward 都是负的，我完全不敢相信这是目前最常用的 community code base。然后仔细想了想，终究还是得做点什么出来，于是决定用 MPC Controller 作为 policy 跑一下 Pensieve 看看结果，本想晚上就把代码迁移好的，结果还是电脑没电，终究只能作罢。</p>
-<p>明天需要同时开组会和软工大例会，晚上还有学生节技术支持的会，还是挺忙的。不过目前来看周五是空闲的，估计找个时间把 Pensieve 赶快挂上去，跑点结果出来做分析最好。</p>
-<h1 id="section-24">2023.03.16</h1>
-<p>今天开组会的路倒是比较波折，我现在已经习惯点午饭的外卖到 FIT，然后在 FIT 吃完正好去开组会。然而今天的午饭早到了，于是起床后收拾自己又得加速，出门后扫了一辆共享单车，但是因为现在共享单车有一部分没有物理锁只能用手机控制电磁上锁，而且现在共享单车有的时候似乎还不能随处停车，这次我骑到 FIT 楼之后居然一直没法上锁。没办法，我只能投诉然后强行关锁，就这样浪费了二十分钟，午饭时间就很短了。</p>
-<p>匆匆忙忙吃完午饭上楼开会，只能说勉强赶上。在组会上简单把 Pensieve 的环境搬到了新框架里面，不得不说这个框架设计得很好，可拓展性很强，我搬过来 Pensieve 也没有什么卡住的地方。下面就是尝试研究一下用 MPC Controller 解 Pensieve 可不可行了，如果这个结果打得比较好的话，至少就能当个事情说了。</p>
-<p>另外似乎还得做一下 baseline，把数据集按照网络情况切分一下，把 Pensieve 也顺手跑一下，这个下一周做完吧。</p>
-<hr />
-<p>组会之后去开软工的第一次大例会，本来以为是个小会议室的，没想到随堂助教给我租了个 FIT 楼的大会议室，还不让吃零食和喝有色饮料，我准备的小零食也完全用不上了。例会本身没啥好说的，就是强调一下例会规范、开发规范，然后提一下下一周大家准备做多少和大家对给分的心理预期。例会效果整体不算差，甚至可以说不错，总之和大家交流下来感觉都挺好的，应该后面也会顺利吧。</p>
-<p>回来之后和贾老师讨论了一下毕设下面的计划，他建议先认真检查一下论文中方法到底可不可行。检验方法有几种，一种是发邮件问作者要 code base，一种是看看有没有引用这篇论文的工作是开源代码，还有就是我感觉应该可以再 debug 看看。</p>
-<p>后续就是我提到了我想做的一些，首先是做 baseline，这里就需要问黄老师要一点各种环境下的 trace 去剪切生成环境切换的数据集。然后是继续在现在的 code base 上迁移 Pensieve，然后用 MPC 求解观察一下结果。</p>
-<p>总之后面还得是毕设为重，今天听说毕设中期有可能提前到三月底瞬间就很紧张，希望不要这样，最好推迟到四月中旬。今晚还同时有学生节技术支持的会和实习那边的 bug report 会，算是很忙了。</p>
-<h1 id="section-25">2023.03.17</h1>
-<p>昨晚晚上回来之后迅速开完了几场会，学生节技术支持弄明白了，实习那边的 bug 基本修完了，小作业思考题评分细则也定下来了。晚上就借着劲改完了一大半思考题，期间有很多很模糊的答案，十分难给分，但是最终还是睁一只眼闭一只眼给过了。说实话我现在还算是有点担心会不会后面来给我要分的同学会很多。</p>
-<p>因为太晚了所以周四晚就睡 308 了，起来之后和实习那边再对了一下目前的进展，他们打算再把一些弹窗精修一下，我还得等等设计稿。然后我把软工小作业思考题改完大半之后就基本上闲下来了，没有特别大的很急的事情。约了晚上游泳和打牌，摸鱼摸一个周末。</p>
-<p>晚上基本上实习那边的东西已经写完了，舍友喊我去游泳，最终是五个人一并去了游泳馆，八点钟游泳到九点半，然后出水去吃了个夜宵。夜宵吃到了心心念念的杨枝甘露麦旋风，说实话味道确实不错。吃完后赶忙回来打牌，雀魂规则不太想打，于是玩起了无一发无杠宝无里宝的 A 规，但是没想到的是依然有人能在 A 规下和出立直、混全、三色、宝牌二的跳满。</p>
-<p>打完牌已经是一点半了，赶忙赶到 308 和 yfgg 看了一眼直播机和弹幕机，准备开始摸鱼了。</p>
-<h1 id="section-26">2023.03.18</h1>
-<p>今天一起床就去学生节现场了，当时网线等物资已经都运到了。学生节的任务基本分为搭建 WiFi、搭建弹幕机、搭建直播机三个部分。WiFi 则是最重要也是最麻烦的，不仅需要调通网络拓扑结构，更主要的是需要一堆人去拉线。</p>
-<p>这次拉 WiFi 最值得记录的就是有个 NUC 是 Windows 宿主机，Debian 虚拟机，但是所有公网 IP 全都被虚拟机持有，并且虚拟机上运行着软件路由器，而宿主机则是通过 AP 的无线网络上网。这个神奇的虚拟化设计还让我们研究了一通，当时为了设置 IP 地址我们直接扫了一遍网段，就是没扫到 Windows 宿主机，指导向编导要了一个显示器硬登录进去看了一遍才知道原来是这么回事。另外，祖传的八个 AP 也老了，交换机甚至还是百兆的，只能说这套设备还是得赶快换掉。</p>
-<p>之后是弹幕机，弹幕机更麻烦，似乎因为硬件已经老旧，其完全撑不住 60Hz 的刷新率，直接会导致主投黑屏。在彩排过程中这个弹幕机没少出锅，但是在最后通过降频到 30Hz 勉强稳住了三十分钟，于是大家都觉得没啥事了就直接上线。结果没想到在教师视频部分，弹幕机直接挂了，导致正式现场黑屏，最后只能下线弹幕机。比较好玩的一点是，Harry 实际上是知道这个机子是有问题的，他的意思是生产环境反正没出过事，这话只能说我很难绷，明知开发环境出过事情却一直没跟我们说过这件事，只能说运气差被我们撞到了。</p>
-<p>直播机没啥好说的，按照惯例设置了一通就行了。</p>
-<p>学生节结束之后，工作人员都打算去吃海底捞庆功宴，我因为约好了周日的丰泽园就没去，加上还得回去看一眼软工小作业的批改状况。</p>
-<h1 id="section-27">2023.03.19</h1>
-<p>早上还是睡过了，没赶得上和大部队一起去丰泽园。但不得不说，丰泽园是真的好吃，九转大肠和葱烧海参绝对的招牌菜，干炸丸子也绝对是一流水平。</p>
-<p>下午按照规划，四个人坐车去昌平泡温泉，不过那个温泉我感觉有点简陋，但整体还算舒服。娱乐设施也不算完备，只有简单的棋牌、台球、乒乓球，设备也有点老旧。最主要的是，下午黄老师催促我帮他审核论文，于是我整个下午实际上都在断断续续看论文，不过最终还算是把这事做掉了。</p>
-<p>回来之后和人约了周一早上去上地堵门，于是就决定早早睡觉吧。明天开始还是得做毕设，毕竟看起来三月底中期很像是真事。</p>
-<p>目前毕设的计划：</p>
-<ul>
-<li>验证原框架是否可用
-<ul>
-<li>重新拉取原框架，完全不修改直接运行，确认其效果</li>
-<li>若原框架可用，则 debug，若不可用，换框架</li>
-<li>换框架可能流程
-<ul>
-<li>通过邮件联系作者获取 code base</li>
-<li>找寻引用这篇论文的开源 code base</li>
-</ul></li>
-<li>需要研读 code base，形成完整的 paper report 和 code doc</li>
-</ul></li>
-<li>Pensieve 迁移
-<ul>
-<li>写完通过 MPC 求解 Pensieve 的代码并运行</li>
-<li>研究 Pensieve environment（在线直播环境）</li>
-</ul></li>
-<li>数据集生成
-<ul>
-<li>获取黄老师的 network trace data repo</li>
-<li>准备数据剪切脚本</li>
-<li>训练 baseline Pensieve</li>
-</ul></li>
-</ul>
-<h1 id="section-28">2023.03.20</h1>
-<p>今天又是周一了，和群友约了上地堵门，于是真的就去了，而且一去就是一天。一整天鸟了 Selector 和吹爆，吃了一点点分，然后把不少 13+ 推到了 SS+，尤其是待宵夜虫和管弦乐，相当难受。</p>
-<p>今天出勤的意外就是左手食指被售货机夹到了，结果掀开了一层皮，还好不深，简单消毒之后用了一下创口贴，晚上基本就可以自由活动了。</p>
-<p>但是今天最烦的莫过于实习那边又发来了 bug report，本来以为都是小问题，结果一看甚至还要写一个新的页面，还要和后端对接。最终还是晚上稍微花了点时间把这事干掉了，干完已经是凌晨四点。</p>
-<p>此外，我也是今天才知道今年从计算机系考研本系只有两人通过了，而恰好就是我两位考研的舍友。zd 预计会去朱军组，指导老师是苏航，ky 似乎和我导师联系过，但是具体也不知道。他们应该是明天周二早上面试，具体情况就在这之后再说了。</p>
-<h1 id="section-29">2023.03.21</h1>
-<p>今天起来先把实习那边的一些小 bug 修了，衣服洗了，然后匆匆忙忙来实验室做毕设相关的，而且 DRL HW1 就要截止了，还要花点时间写那边的东西。现在麻烦的一点就是实验室的机子硬盘可能已经不太够了，我可能还得做一些迁移工作。</p>
-<p>由于现在用的机子硬盘基本快耗尽了，所以上服务器列表找了一个稍微空一点的机子，搬迁了一下实验环境。这次好就好在我终于用上了 Anaconda environment export 来做依赖管理，所以这次把代码跑起来基本上没有耗费多长时间。之后就是先做了比较简单的一件事，就是把 Learning to Adapt 的 code base 原封不动地跑了一下，结果发现 reward 也是真的烂，这我就相当难绷了。</p>
-<p>不过还有发现一件事，就是似乎在我配置的环境下代码运行速度相当之慢，运行时间逼近原先 code base 的三倍，这让我十分困惑，因为我基本没做什么改动。</p>
-<p>鉴于原框架也不算多好用，于是就打算邮件问问作者有没有 code base 了。</p>
-<p>整个下午其实也没做到什么事情，把实验挂上去之后做完了 DRL 作业去吃两位舍友考研面试的饭，吃完之后简单把实习那里补了一点代码。</p>
-<p>不过最难受的莫过于似乎这个代码框架把服务器的内存跑炸了，500G 内存我都没有一点头绪怎么能炸掉的。不过今晚已经很困了，不如先睡觉。</p>
-<h1 id="section-30">2023.03.22</h1>
-<p>今天是沙尘暴，没法出门了，只能在宿舍好好干活了。</p>
-<p>基本上还是在折腾原先 code base，尝试了很多种方法，也调节过超参，但总之最后出来的结果并没有那么理想，尤其是 GrBAL 方法，Avaerage return 一直稳定在零附近震荡，反倒是之前没有尝试过的 ReBAL 方法，似乎能够上升到 1000 左右的 Average return，虽说没有论文中说的那么厉害，但似乎已经能够打败一众 baseline 了。</p>
-<p>下面就是努力生成一篇 code doc 或者 report，迁移好 Pensieve 以及做好 baseline 了。目前中期确认在下周三，只能说希望人能活着过中期。</p>
-<p>不过现在有一点疑惑的是，似乎现在并没有写好一个比较完整的线上环境切换来做实验，可能还得找个时间写完这一块东西。</p>
-<p>今晚最麻烦的事情就是我才了解到微信又禁用了一些接口，导致实习那边的代码几乎要重写很大一部分。晚上电脑实在没电，只能又去了 308，迅速干完活，结果有已经是四五点了。真的，这份实习给我带来的开发体验是相当不好的，不仅是微信小程序这个东西本身就很麻烦和丑陋，而且给我找的帮手水平也是真的不行，代码各种乱写，码风一言难尽，不管 TypeScript 报错，还经常在代码里面写死数据，导致后面各种排查，React 框架也不熟悉，能写出各种惊为天人的异世界操作。另外，开发的时候产品那边给的需求也没有一下子说清楚，和产品那边的沟通还是有了点障碍，确实有点难绷了。</p>
-<h1 id="section-31">2023.03.23</h1>
-<p>今天组会，整体上汇报没什么问题，就是似乎进度还是不是很理想，老师们都建议考虑先至少把实验跑起来然后试着简化一下目标来混过中期。</p>
-<p>对着之前写的毕设目标记录一下最近的工作吧：</p>
-<ul>
-<li>验证原框架是否可用
-<ul>
-<li>(Completed) 重新拉取原框架，完全不修改直接运行，确认其效果</li>
-<li>若原框架可用，则 debug，若不可用，换框架</li>
-<li>换框架可能流程
-<ul>
-<li>(Completed) 通过邮件联系作者获取 code base</li>
-<li>(Aborted) 找寻引用这篇论文的开源 code base</li>
-</ul></li>
-<li>(In progress) 需要研读 code base，形成完整的 paper report 和 code doc</li>
-</ul></li>
-<li>Pensieve 迁移
-<ul>
-<li>(In progress) 写完通过 MPC 求解 Pensieve 的代码并运行</li>
-<li>(Completed) 研究 Pensieve environment（在线直播环境）</li>
-</ul></li>
-<li>数据集生成
-<ul>
-<li>(Completed) 获取黄老师的 network trace data repo</li>
-<li>(In progress) 准备数据剪切脚本</li>
-<li>(Planned) 训练 baseline Pensieve</li>
-</ul></li>
-</ul>
-<p>总之今天黄老师帮忙鉴定了一下我想参考的论文之后，得出了这个方法是基于 MAML 的结论，并且断言这个方法至少一定能用，所以这个 code base 应该依然是可以使用的，只是超参数设定等需要调整一下。而这个超参数设定的事情，我在 HalfCheetah 和 Ant 两个环境下使用了论文给出的超参数，但是都没有获取到相当理想的结果，但也不差，至少能优于传统的 MAML。不过为了保险还是给作者发了邮件问了一下超参数的设定，好玩的是，这个 code base 的 repo 里面还有有关超参数设置的 open issue，作者似乎在里面回复了一个很快就来，但是已经两年多过去了还是没点动静。这个框架的 code report 自然还在路上。</p>
-<p>Pensieve 迁移遇到的问题是如何建立一个较为合理的 Pensieve environment 并合并到 code base 里面，而这个合并中最难的就是如何描述 Pensieve 的状态和决策空间，一般而言 Pensieve 的状态空间和决策空间都并不是传统意义上的高维空间，而更像是 hand craft 出来的一堆 tensor 构成的离散集合。而我参考的这个 code base 里面的环境基本都是描述成高维空间中的 Box 的，这不难理解，因为这篇文章主要在做动作连续控制，所以状态、决策空间基本上都是 Box 描述。而这里黄老师也给了我一份代码 repo，这份代码将 Pensieve 的状态、决策空间做了转换，即也用 Box 描述，恰好可以解决我目前遇到的问题。</p>
-<p>然后就是 baseline 构建的问题，现在我似乎并不打算构建很多复杂的 trace，先从简单的规律性切换开始吧，数据集造完之后就可以准备上手测试了。</p>
-<p>今晚约了麦当劳和游泳，明天打算去看电影，而且还有一个非常麻烦的毕设动员会，干活的时间确实不太多了。</p>
-<hr />
-<p>今天开了软工小例会，也没有什么好说的，手下的四个组进度都比较符合预期，看看大家下周 Sprint1 能交上来什么东西吧。</p>
-<h1 id="section-32">2023.03.24</h1>
-<p>周五，本来就约好了去西单出勤，于是就去了西西友谊机厅出勤，那里有一台最新最热。整体而言出勤不太理想，没有上分也没打爽，因为人实在是太多了，大概一直维持在八九个人的高位。</p>
-<p>由于和学弟约了七点半的电影，于是六点半赶忙从西单往海淀黄庄赶，然而我错误估计了周五晚的北京晚高峰，我真的完全堵在西二环上半个小时。最终电影自然是赶不上了，到达新中关的时候已经是电影开场半小时，想了想也没必要去看这个了，所以坐了地铁两站路去了万柳机厅出勤。万柳机厅最大的问题就是只有一台机子却整整有六七个人的规模，然后还没买水的自动售货机，所以又是不太舒服的出勤体验。</p>
-<p>晚上回到宿舍就是打打德州扑克摸摸鱼，然后自然就这样结束了摸鱼的一整天。</p>
-<h1 id="section-33">2023.03.25</h1>
-<p>来工位赶中期，没想到贾老师也在。似乎今天还正好是全高赛开赛，zsj 开了直播间直播你清海选第一轮，于是就边看边做事了。比赛的走势整体没什么特别的，所以也没怎么重点观看，还是以做事为主。</p>
-<p>今天主要是写完了 Data loader，写完了 network trace 切换的代码，然后生成了一份训练集和测试集用在训练 Pensieve baseline 上。另外由于目前的数据集并不太充足，当时突然想到可以用两条位于同一环境的 trace 之间做切换来做数据集扩充，这样的话勉强够使用了。目前 baseline 的设计是，三类训练集和四部分的测试集：</p>
-<ul>
-<li>训练集
-<ul>
-<li>#1. 由无切换的 4G 行走、4G 驾驶 trace 组成的训练集（使用数据扩充保证数据集规模一致）</li>
-<li>#2. 所有无切换 4G trace 与 3 次等间隔环境切换 trace 3:2 混合</li>
-<li>#3. 所有无切换 4G trace 与 3 次等间隔环境切换 trace 与随机环境切换 trace 3:1:1 混合</li>
-</ul></li>
-<li>测试集
-<ul>
-<li>#1. 4G 行走 trace</li>
-<li>#2. 4G 驾驶 trace</li>
-<li>#3. 3 次等间隔环境切换 trace</li>
-</ul></li>
-</ul>
-<p>数据集弄好之后，从黄老师的 Pensieve 5G repo 那里弄来一份超参数设置，然后就开始训练了。比较好玩的一点，不知道为什么，似乎使用 #1 数据集训练的似乎在一开始（3k epoch 以内）反倒在有切换的环境下表现很好，甚至在 #3 测试集上达到了较为明显的正向 reward，而在 #1 和 #2 测试集上甚至还是负 reward。</p>
-<p>现在这个实验跑一次七八个小时，三种训练集全都跑完估计得一两天，所以结果汇报还得再等等，我先放个占位表格在这里。这里均是训练 100k epoch 之后的结果汇报。另外还把黄老师那边的 PPO 的 Penseive 拉出来玩玩，自己手上的这个是基于 A3C 的，还写的不是很好：</p>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;"></th>
-<th style="text-align: center;">无切换训练集</th>
-<th style="text-align: center;">等间隔切换训练集</th>
-<th style="text-align: center;">随机切换训练集</th>
-<th style="text-align: center;">PPO 版本 Pensieve</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">4G 行走测试</td>
-<td style="text-align: center;">12.99</td>
-<td style="text-align: center;">14.35</td>
-<td style="text-align: center;">19.28</td>
-<td style="text-align: center;"><strong>19.81</strong></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">4G 驾驶测试</td>
-<td style="text-align: center;">16.88</td>
-<td style="text-align: center;"><strong>17.66</strong></td>
-<td style="text-align: center;">16.25</td>
-<td style="text-align: center;">14.82</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">等间隔切换测试</td>
-<td style="text-align: center;">7.16</td>
-<td style="text-align: center;"><strong>7.42</strong></td>
-<td style="text-align: center;">5.91</td>
-<td style="text-align: center;">5.39</td>
-</tr>
-</tbody>
-</table>
-<p>此外 26 号获得的一个训练曲线就报告在这里吧，这是等间隔切换训练集的训练曲线：</p>
-<p><img src="/uploads/2023-spring-record/1.png" /></p>
-<p>随机切换的训练曲线是：</p>
-<p><img src="/uploads/2023-spring-record/3.png" /></p>
-<p>目前总之是能明显观察到仅仅通过扩充数据集是不能完全解决这个问题的，扩充数据集确实可以提升结果，但是极其有限，在有切换的测试集上的表现依然和无切换的存在段差。另外，更换 RL 算法也不完全能够解决问题。</p>
-<p>另外，根据 AABR 论文的结果，即使 4G 网络在驾驶和行走这两个环境间差距并没有如此之大：</p>
-<p><img src="/uploads/2023-spring-record/2.png" /></p>
-<p>而这里使用的训练集中：</p>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;"></th>
-<th style="text-align: center;">4G 行走</th>
-<th style="text-align: center;">4G 驾驶</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">均值</td>
-<td style="text-align: center;">32.13</td>
-<td style="text-align: center;">39.34</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">方差</td>
-<td style="text-align: center;">860.32</td>
-<td style="text-align: center;">839.72</td>
-</tr>
-</tbody>
-</table>
-<p>可以发现事实上差距并没有想象中那么大，但其之间的切换依然会导致 Naive Pensieve 完全无法适应。</p>
-<p>不过这里我有一个想法，既然差距并没有这么大，那么这两个网络的特征到底是什么的呢？到底是什么决定了这个 trace 更像是行走时测出来的还是驾驶时测出来的，这个我觉得应该要画几个 trace 出来研究一下。</p>
-<hr />
-<p>这里应该还需要辅以部分 log 分析，log 分析的话就等第三个随机切换训练集弄完后基于那个 log 做一些分析。这些分析应该就构成了下述论点的证明：</p>
-<div class="note info no-icon"><p>Naive Pensieve 仅仅依靠于<strong>扩充训练集</strong>或者<strong>更换 RL 算法</strong>是无法解决线上环境切换的问题的。</p>
-</div>
-<p>这也就否定了简单的传统方法在这里的应用，从而构成了解决方案<strong>必要性</strong>的验证，下面毕设中期可能就缺一个比较好的方案<strong>可行性</strong>验证了。</p>
-<h1 id="section-34">2023.03.26</h1>
-<p>先前买的日语中高级语法教程到了，于是取了快递准备带去 FIT，但是偶然发现今天天气极其舒服，于是把骑着的共享单车扔在清芬，边看书边走去 FIT 了。到了 FIT 之后依然是一点点做事的心情也没有，Pensieve baseline 还在训练，按理说现在就应该准备写 code doc 然后做好迁移工作放上去训练，但是显然我摸鱼摸鱼到了现在。</p>
-<p>现在比较难受的一件事情就是我似乎不太清楚迁移到 Pensieve 之后应该用什么数据集做训练，现在还有点难绷，我可能还真的得好好思考一下这个问题。这个问题的思路就是好好阅读一下代码框架，研究一下原先基于 Gymnasium 环境的训练算法策略，基于此将 Pensieve 中的概念与框架代码做一下一一对应，之后就应该能摸明白最后的逻辑了。</p>
-<p>晚上是真的没心情继续做事了，于是偷摸去了五道口出勤，出到闭店之后回来继续干活。不过似乎实习那边的 bug 一直还要我修，基础技能培训我也得准备，现在总之就是事情还挺麻烦的。</p>
-<hr />
-<p>目前仔细阅读了一下 GrBAL 代码框架，有一些笔记就写在这里了，这里都是备忘：</p>
-<ul>
-<li><code>config</code> 里面的 <code>meta_batch_size</code> 应该代表的是目前训练多少个 meta task，似乎就是论文里的 #Task/itr，或者说 <span class="math inline">\(N\)</span></li>
-<li><code>config</code> 里面的 <code>adapt_batch_size</code> 应该基本对应采样的时候使用多少的 trajectory 节点通过元学习策略 <span class="math inline">\(u_{\psi_*}\)</span> 来更新 dynamic model 的参数 <span class="math inline">\(\theta\)</span>，也就是论文中的 <span class="math inline">\(M\)</span></li>
-<li>似乎代码框架内没有设置 <span class="math inline">\(n_S\)</span> 参数的地方，其 MB trainer 之中每一个 iteration 都会通过 Algorithm 2 收集 rollouts</li>
-<li><code>MetaMLPDynamics</code> 中的 <code>self.learning_rate</code> 就是 Algorithm 1 中的参数 <span class="math inline">\(\beta\)</span>，另外其中定义的 <code>self.train_op</code> 就是以学习率 <span class="math inline">\(\beta\)</span> 优化 <code>self.post_loss</code>，而这就是 <span class="math inline">\(1/N \sum_{i = 1}^N \mathcal{L}_j\)</span></li>
-</ul>
-<p>这里我们就直接研究一下 Meta MLP Dynamics 的结构究竟如何。首先他为每一个 meta task 都建立了一个 pre MLP 和一个 post MLP，用来预测一个代码中名为 <code>delta_pred</code> 的变量。而这个变量参与了下述 loss 的计算：</p>
-<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line">pre_delta_pred = pre_mlp.output_var</span><br><span class="line">pre_loss = tf.reduce_mean(tf.square(pre_delta_per_task[idx] - pre_delta_pred))</span><br><span class="line"></span><br><span class="line"><span class="comment"># ...</span></span><br><span class="line"></span><br><span class="line">post_delta_pred = post_mlp.output_var</span><br><span class="line">post_loss = tf.reduce_mean(tf.square(post_delta_per_task[idx] - post_delta_pred))</span><br></pre></td></tr></table></figure>
-<p>这里就是简单的 MSE 均方误差，这里观察一下论文给出的 loss function，这是一个刻画当前 trajectory slice 和 dynamics 所希望的（或者说所预测的）trajectory slice 的吻合程度的 loss，最小化这个 loss 的效果就是让 dynamics 学习采样到的 trajectory，使得其模拟出来的 trajectory 贴合实际采样：</p>
-<p><span class="math display">\[
-\mathcal{L}(\tau_{\mathcal{E}}(t, t + K), \theta_{\mathcal{E}}&#39;) := -\frac{1}{K} \sum_{k = t}^{t + K} \ln \hat{p}_{\theta_{\mathcal{E}}&#39;}(s_{k + 1} \mid s_k, a_k)
-\]</span></p>
-<p>这里的 <span class="math inline">\(\theta_{\mathcal{E}}&#39;\)</span> 表示已经在环境 <span class="math inline">\(\mathcal{E}\)</span> 下 adapt 过的 dynamics 参数。</p>
-<p>这里代码和论文矛盾的点有一，即论文中 loss function 是基于一个非确定的 dynamics，即 <span class="math inline">\(p := \hat{p}_{\theta_{\mathcal{E}}&#39;}(s_{k + 1} \mid s_k, a_k)\)</span>。然而代码中接受 <code>self.obs_ph</code> 以及 <code>self.act_ph</code> 并输出 <code>self.delta_pred</code> 的 MLP 却显然更像确定性 dynamics，即 <span class="math inline">\(s_{k + 1} := \hat{p}_{\theta_{\mathcal{E}}&#39;}(s_k, a_k)\)</span>。</p>
-<p>post loss 的用处就是用来更新 dynamics 的参数 <span class="math inline">\(\theta\)</span>，学习率为 <span class="math inline">\(\beta\)</span>。pre loss 则似乎和元学习策略有关，但后续没在代码框架内寻找到这个变量的引用。</p>
-<hr />
-<p>决定换个思路了，在内部兜兜转转不如直接一点点剥开代码框架，把每个张量维度算清楚。论文中的算法有个相当明显的接口点，就是 Algorithm 1 和 Algorithm 2 之间通过 sampler 沟通，所以首先先去把握 sampler 给出的样本的尺寸。</p>
-<p>sampler 给出的 observation sample 尺寸为 <code>(n_rollouts, n_timestep, obs_dim)</code>，action sample 尺寸为 <code>(n_rollouts, n_timestep, act_dim)</code>。总体是符合想象的，也就是给出了 <code>n_rollout</code> 个轨迹，轨迹长度（总时间步）为 <code>n_timestep</code>，然后第三个维度就是具体的每个时间步的观测状态和决策。</p>
-<p>进入 dynamics 的 <code>fit</code> 函数，首先是把这个数据集划分成训练集和验证集，这个划分是在第一个维度上进行的，也就是把 <code>n_rollout</code> 个轨迹按照比例拆分。拆分完了就堆叠到训练集 <code>self._dataset_train</code> 和验证集 <code>self._dataset_test</code> 上。</p>
-<p>下面就是看他的 batch 生成。对每一个 meta task，首先在 <code>[0, n_rollout)</code> 里随机一个 trajectory，之后选择一个中间点，向前截取 <span class="math inline">\(M\)</span> 个时间步，向后截取 <span class="math inline">\(M\)</span> 个时间步。这里就出现了问题，代码中明显假设了 <span class="math inline">\(M = K\)</span>，也就是说在 trajectory 上前向和后向截取了相同的长度，这一点显然和论文中是不一样的。</p>
-<p>然后还有一点更为疑惑：</p>
-<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line">num_paths, len_path = self._dataset_train[<span class="string">&quot;obs&quot;</span>].shape[:<span class="number">2</span>]</span><br><span class="line">idx_path = np.random.randint(<span class="number">0</span>, num_paths, size=self.meta_batch_size)</span><br><span class="line">idx_batch = np.random.randint(self.batch_size, len_path - self.batch_size, size=self.meta_batch_size)</span><br><span class="line"></span><br><span class="line">obs_batch = np.concatenate(</span><br><span class="line">    [</span><br><span class="line">        self._dataset_train[<span class="string">&quot;obs&quot;</span>][ip, ib - self.batch_size : ib + self.batch_size, :]</span><br><span class="line">            <span class="keyword">for</span> ip, ib <span class="keyword">in</span> <span class="built_in">zip</span>(idx_path, idx_batch)</span><br><span class="line">    ],</span><br><span class="line">    axis=<span class="number">0</span>,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p>这里关注他如何访问 <code>self._dataset_train["obs"]</code>，第一个维度其直接写了一个标量 <code>ip</code> 上去，这样会导致第一个维度消失，虽说后面指定的是 <code>axis=0</code>，实际上是在第二个维度上做合并的。由于 <code>idx_path</code> 长度为 <code>self.meta_batch_size</code>，也就是 <span class="math inline">\(N\)</span>，而第二个维度每个 trajectory 取用了 <span class="math inline">\(2M\)</span> 的长度，所以最后得到的 <code>obs_batch</code> 尺寸为 <code>(2MN, obs_dim)</code>。</p>
-<p>这里明显做了很多的混同处理，比如根本体现不出来任务的差别，也体现不出来截取的作用。然而有个好处在于虽然融合了，但是这个 batch 第一个维度上的有序性至少保证我们之后可以再次把这个 batch 按照不同 meta task 拆分，虽然这也太丑陋了。</p>
-<p>另外补充一句，<code>delta</code> 的含义就是 <code>obs_next - obs</code>，就是后续状态减去前置状态，即决策后的状态变化量。</p>
-<p>获取 batch 之后就是喂到网络里算 post loss、pre loss，然后用优化器反传 post loss 更新网络。这里的认识就和上面的对上了，没什么新的，就不再写一遍了。</p>
-<hr />
-<p>把这些看明白之后我终于看明白了原先构建网络的时候的下面这段代码：</p>
-<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line">nn_input_per_task = tf.split(self.nn_input, self.meta_batch_size, axis=<span class="number">0</span>)</span><br><span class="line">delta_per_task = tf.split(self.delta_ph, self.meta_batch_size, axis=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">pre_input_per_task, post_input_per_task = <span class="built_in">zip</span>(</span><br><span class="line">    *[tf.split(nn_input, <span class="number">2</span>, axis=<span class="number">0</span>) <span class="keyword">for</span> nn_input <span class="keyword">in</span> nn_input_per_task]</span><br><span class="line">)</span><br><span class="line">pre_delta_per_task, post_delta_per_task = <span class="built_in">zip</span>(</span><br><span class="line">    *[tf.split(delta, <span class="number">2</span>, axis=<span class="number">0</span>) <span class="keyword">for</span> delta <span class="keyword">in</span> delta_per_task]</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p>他真的是我想的那样，依靠着那若有若无的有序性，先在生成 batch 的时候消失掉一个维度，然后再在这里凭空 split 出来。</p>
-<p>这里 <code>self.delta_ph</code> 尺寸是 <code>(2MN, obs_dim)</code>，在第一个维度上按照 meta batch size，即 <span class="math inline">\(N\)</span>，等分，得到的张量尺寸为 <code>(N, 2M, obs_dim)</code>，并且恰好恢复了各个 meta task 的区别。然后遍历，列表产生式之中的 <code>delta</code> 尺寸为 <code>(2M, obs_dim)</code>，再将其沿第一个维度两等份，前半自然是 pre，后者自然是 post，尺寸变为 <code>(2, M, obs_dim)</code>。之后用 <code>zip</code> 函数重新组合一下，这里 <code>zip</code> 接受了 <span class="math inline">\(N\)</span> 个尺寸为 <code>(2, M, obs_dim)</code> 的张量作为参数，最后传出 <span class="math inline">\(2\)</span> 个尺寸为 <code>(N, M, obs_dim)</code> 的张量。</p>
-<p>取 <code>obs_dim=1</code> 以及 <span class="math inline">\(N = 3, M = 2\)</span> 演示一下这个过程。下述 <code>self.delta_ph</code> 中 <code>0, 1, 2, 3</code> 属于 meta task #0，以此类推。并且 <code>0, 1</code> 是 pre observation，<code>2, 3</code> 是 post observation：</p>
-<figure class="highlight plaintext"><figcaption><span>Text</span></figcaption><table><tr><td class="code"><pre><span class="line">self.delta_ph = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]</span><br><span class="line">-&gt;</span><br><span class="line">delta_per_task = [[0, 1, 2, 3], [4, 5, 6, 7], [8, 9, 10, 11]]</span><br><span class="line">-&gt;</span><br><span class="line">delta (example) = [4, 5, 6, 7]</span><br><span class="line">tf.split(delta, 2, axis=0) = [[4, 5], [6, 7]]</span><br><span class="line">*[tf.split(delta, 2, axis=0) for delta in delta_per_task] =</span><br><span class="line">    [[0, 1], [2, 3]], [[4, 5], [6, 7]], [[8, 9], [10, 11]]</span><br><span class="line">-&gt;</span><br><span class="line">pre_delta_per_task = [[0, 1], [4, 5], [8, 9]]</span><br><span class="line">post_delta_per_task = [[2, 3], [6, 7], [10, 11]]</span><br></pre></td></tr></table></figure>
-<p>这样确实同时完成了按 meta task 分割以及按 pre/post 分割两个任务，实在是高。</p>
-<hr />
-<p>把这些都看明白之后，就可以明白这里 loss function 实际上和论文不一样。代码里写的事实上是一个 deterministic dynamics，建模是 <span class="math inline">\(\delta_t := \hat{p}_{\theta_{\mathcal{E}}&#39;}(s_t, a_t)\)</span>，也就是用 MLP 预测状态的变化量，再与实际的状态变化量作 MSE（符号就随便用了，我看得懂就行）：</p>
-<p><span class="math display">\[
-\mathcal{L}(\tau_{\mathcal{E}}(t, t + K), \theta_{\mathcal{E}}&#39;) := \frac{1}{K \cdot \dim\mathcal{S}} \sum_{k = t}^{t + K} \bigoplus_{\mathcal{S}} [\hat{p}_{\theta_{\mathcal{E}}&#39;}(s_k, a_k) - (s_{t + 1} - s_t)]^{\otimes 2}
-\]</span></p>
-<p>这里上标 <span class="math inline">\(\otimes 2\)</span> 表示按元素平方，符号 <span class="math inline">\(\bigoplus_{\mathcal{S}}\)</span> 表示求所有元素的和。</p>
-<h1 id="section-35">2023.03.27</h1>
-<p>昨天太累了，今天就起得很晚，到 FIT 的时候已经是四点多五点了，草草吃了晚饭就开始干活。</p>
-<p>昨天看了大半 GrBAL 之后，现在又有个未解之谜就是 <span class="math inline">\(\psi\)</span> 在哪里，这个元学习参数居然一下子没找到，而且我现在也暂且不太明白到底什么时候 <span class="math inline">\(\theta\)</span> 通过元学习被优化到了 <span class="math inline">\(\theta_{\mathcal{E}}&#39;\)</span>。</p>
-<p>不过最终还是给我挖出来了，在构建网络的时候有这么一段代码：</p>
-<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, ...</span>):</span></span><br><span class="line">    <span class="comment"># ...</span></span><br><span class="line"></span><br><span class="line">    pre_delta_pred = pre_mlp.output_var</span><br><span class="line">    pre_loss = tf.reduce_mean(tf.square(pre_delta_per_task[idx] - pre_delta_pred))</span><br><span class="line">    adapted_params = self._adapt_sym(pre_loss, pre_mlp.get_params())</span><br><span class="line">    self._adapted_params.append(adapted_params)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># ...</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_adapt_sym</span>(<span class="params">self, loss, params_var</span>):</span></span><br><span class="line">    update_param_keys = <span class="built_in">list</span>(params_var.keys())</span><br><span class="line"></span><br><span class="line">    grads = tf.gradients(loss, [params_var[key] <span class="keyword">for</span> key <span class="keyword">in</span> update_param_keys])</span><br><span class="line">    gradients = <span class="built_in">dict</span>(<span class="built_in">zip</span>(update_param_keys, grads))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Gradient descent</span></span><br><span class="line">    adapted_policy_params = [</span><br><span class="line">        params_var[key] - tf.multiply(self.inner_learning_rate, gradients[key])</span><br><span class="line">            <span class="keyword">for</span> key <span class="keyword">in</span> update_param_keys</span><br><span class="line">    ]</span><br><span class="line"></span><br><span class="line">    adapted_policy_params_dict = OrderedDict(<span class="built_in">zip</span>(update_param_keys, adapted_policy_params))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> adapted_policy_params_dict</span><br></pre></td></tr></table></figure>
-<p>这里就是非常简单的，把 pre MLP 参数和 pre loss 扔到 <code>self._adapt_sym</code> 里面去，而这个函数里面构建的就是：</p>
-<p><span class="math display">\[
-\theta_{\mathcal{E}}&#39; \leftarrow u_\psi(\tau_{\mathcal{E}}(t - M, t - 1), \theta)
-\]</span></p>
-<p>的 adapt 过程。这个 adapt 过程在论文中具体定义为：</p>
-<p><span class="math display">\[
-\theta_{\mathcal{E}}&#39; = \theta_{\mathcal{E}} + \psi\nabla_{\theta}\frac{1}{M}\sum_{m = t - M}^{t - 1}\ln\hat{p}_{\theta_{\mathcal{E}}}(s_{m + 1} \mid s_m, a_m)
-\]</span></p>
-<p>这里显然还是和昨天提到的问题一样，论文和代码没有对的上，dynamics 是确定性的，pre loss 也更像是 MSE。不过这里根据代码实现看，<code>self.inner_learning_rate</code> 就是元学习参数 <span class="math inline">\(\psi\)</span>。下面一步就是找这个量究竟什么时候被实际计算，另外，何时其更新了元学习参数 <span class="math inline">\(\psi\)</span>。可以注意到这些要被更新的参数全都压入了 <code>self._adapted_params</code>，找寻这个变量的引用就可确定出 adapt 实际执行的位置。</p>
-<p>简单找一下就能找到这个类里面的 <code>self.adapt</code> 方法就是实际执行的地方，继续找这个成员函数调用的地方，就会发现其仅仅在 <code>sim_policy.py</code> 中调用，那么就可以确定这个函数是用于线上 adapt dynamics 的。</p>
-<p>说实话目前这个框架里面还有很多地方我没有研究明白，比如说到现在我都不知道其构建这么多 MLP 的用处是什么，以及论文里的 <span class="math inline">\(\theta, \psi\)</span> 是否就如我理解这样，包括 <span class="math inline">\(\psi\)</span> 的训练究竟在哪里之类的问题。但是由于数据集加载策略我已经弄明白了，所以说实话可以先去载入数据集跑一跑看看结果了。</p>
-<hr />
-<p>今晚偷摸去五道口出勤 2pc 之后回来，说起来昨天因为有人扒防盗门晚勤，导致商场领导直接下令禁止晚勤，所以现在晚上真的只能打到十点，反倒是帮我自律了。</p>
-<p>回来之后去了 C 楼继续写毕设，Pensieve 的迁移工作总之还是有点麻烦的，reward function 要自己补写一点，然后由于 Pensieve 是离散决策空间，导致有些地方需要自己做一点适配。适配的过程中最大的修改就是把 <code>PensieveEnvPark</code> 里的 <code>self._action_space</code> 从离散的改成了连续的，也就是从 <code>Discrete</code> 修改为了 <code>Box</code>。这样做的原因是整个代码框架都是基于连续决策空间的，所以为了最小化修改，我直接把决策空间改为连续，而在实际处理 network trace 或者 video chunk 之前会把连续决策空间采样向下取整到离散空间内。</p>
-<p>不过这些都还好，主要有一个 bug 是 logger 炸了，简单而言 logger 里面有这样的一段代码：</p>
-<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Logger</span>:</span></span><br><span class="line">    CURRENT = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, ...</span>):</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">configure</span>(<span class="params">...</span>):</span></span><br><span class="line">    <span class="comment"># ...</span></span><br><span class="line">    </span><br><span class="line">    Logger.CURRENT = Logger(...)</span><br></pre></td></tr></table></figure>
-<p>这段代码的语义并不难理解，就是在 <code>Logger</code> 类里面的静态成员中存储了当前要使用的 logger 的引用，这个引用的初始化是在 <code>configure</code> 函数中进行的，这个函数会在所有训练脚本的最开始就调用。然而这个在我跑实验的过程中却出现了问题，我把新加的脚本、环境等代码都放在了根目录下另外一个目录 <code>src</code> 里面，以与位于根目录下 <code>learning_to_adapt</code> 目录中的原先的实验脚本作区分，logger 的代码也位于 <code>learning_to_adapt</code> 目录下。结果，我在 <code>src</code> 目录下的实验脚本调用 <code>configure</code> 初始化 logger，在 <code>learning_to_adapt</code> 目录下的代码文件中访问 <code>logger.CURRENT</code> 的时候却只能获得 <code>None</code>，即使我在 <code>src</code> 目录下访问 logger 一切正常。我猜测是不同目录 import 同样的东西的时候，事实上 Python 创建了不同的引用。不过我现在也没有精力去找这种小问题的解答了，我直接合并了两个目录然后把实验挂了上去就准备睡觉了。</p>
-<hr />
-<p>最近很喜欢这句话：</p>
-<ul>
-<li>思ひつつ寝ればや人の見えつらむ、夢と知りせば覚めざらましを。</li>
-</ul>
-<p>这是出自小野小町的一句古日语和歌，翻译成现代日语和汉语的话：</p>
-<ul>
-<li>恋しい人のことを思いながら寝てしまったらあの人の夢を見たわ、夢とわかっていたなら覚めなかったろうに。</li>
-<li>（王向远译）思君方入梦，若知相逢在梦境，但愿长眠不复醒。</li>
-</ul>
-<p>这句和歌也算是我学古日语的时候很早就遇到的一句例文，是在讲解过去助动词「き」的未然形「せ」可以与表示反事实假想的助动词「まし」构成表示假想的句式「〜せば〜まし」这一知识点的时候提到的。当然要说语法点的话，这里还有很多可以讲的，包括少见的单音节下二段动词「<code>@ 寝 ぬ</code>」，表示完了的助动词「つ」、表示现在推测的助动词「らむ」、表示否定的助动词「ざる」等等。</p>
-<p>然而这句话确实也很有意境，如果知道我们只有可能在梦中相遇，那么即使不可能，我也愿意长眠不醒。现代日语中没有专门表达反事实假想的词语或句式，只能用通用的表达愿望的句式「〜だろう、〜たろう、〜でしょう、〜ましょう、〜ように」等等，这个与现实抗争的感觉就没出来。</p>
-<p>不过我现在确实很累，确实希望长眠不醒了。</p>
-<h1 id="section-36">2023.03.28</h1>
-<p>又是一天八点睡下午四点起，今天实在是忍不下去了，把攒了一周的胡子刮干净，头发太长就随他去吧，就这样收拾了一下自己，到工位开始工作的时候已经是晚上六点。不过要我说，最近的精神状态非常怪异，明明身心都很劳累，但是似乎却有种奇妙的满足感和：</p>
-<ul>
-<li>この生活こそおれのほしいものって、いまこそおれは確実に生きていると感じている、疲れていても。</li>
-</ul>
-<p>这句话是前天大晚上熬夜的时候听到香椎老师的歌的时候突然想到然后写在草稿纸上的，草稿纸的另一半是潦草的神经网络设计图，倒也有种莫名的不调和感。</p>
-<p>昨天跑下来 Pensieve，至少训练没崩盘，是一个正常的训练曲线，今天就是得调试一下 reward 函数让其与 baseline 做一个公平竞争，这样就能构成方案的可行性验证。</p>
-<p>现在在尝试着把训练过程中的 reward 弄出来。总体来说，sampler 使用 Algorithm 2 采样数据的时候，事实上就已经在做测试了，就已经在和训练集同样的环境下（Pensieve 环境生成 trace 的逻辑一致）测试 MPC Controller 的性能了，因为其基本就是基本在循环下述过程：</p>
-<ul>
-<li>收集采样数据，对 dynamics 做 adaptation</li>
-<li>adaptation 之后用 MPC Controller 做决策</li>
-<li>用这个决策 step environment，获取新的环境状态，作为新的采样</li>
-</ul>
-<p>而在 Meta MLP Dynamics 里面做的训练集和验证机切分是用来算 loss 的，他有训练集 loss 和验证集 loss。</p>
-<p>也就是说，实际上用来做验证集 reward 的，应该就是采样时返回的那些 reward 信号，现在我已经把这些信号接入到 logger 里面了。</p>
-<p>然而做好这些之后挂了一下实验，发现验证集上 reward 能打到 50 上下，这显然太离谱了，因为即使 GrBAL 再怎么强，比 Pensieve 高出 400% 左右多少是不太对的。回到宿舍后思考了一下，觉得是验证集不可信，因为验证集毕竟和训练集来自同样的数据池，很有可能过拟合。所以迅速写了一个在另外的数据池上测试的脚本，挂了上去，顺便增加了一个把所有决策和环境信息输出出来的 logger。</p>
-<p>最后看完 logger 的记录后，总算是明白了。MPC Controller 似乎是相当激进的，其特别喜欢拉高码率，即使在低带宽环境下。这就导致在带宽还可以的环境下就能拉满 QoE，然而由于数据集低带宽环境毕竟有限（得益于现在的网络基础设施优化），所以 rebuffer 并没有预想中那么多，rebuffer penalty 也就没有把 reward 拉到很低。然而如果从直观上来讲，虽然其 reward 达到了 50 左右，其经常会在低带宽下出现十几秒的卡顿，这显然是不可接受的行为，所以这也就是 average QoE 的评价缺陷了。</p>
-<p>既然整体实验框架没啥问题我就打算一直跑着了，目前的话，reward 大概也是十几，至少达到了一般水平吧。这么说中期至少是有内容可以汇报的了，现在就差做一个 PPT 出来了，最后还是决定明天再做了，正好看一眼训练结果。然后一定要记住还要做一下 baseline log 的详细分析。</p>
-<h1 id="section-37">2023.03.29</h1>
-<p>中午稍微起早了点赶到工位开始做中期 PPT，在这之中还花了点时间查看了一下软工小组的工作进度，目前来看还都一切正常。</p>
-<p>在做 PPT 的过程中和黄老师交流了一下目前的毕设，大家似乎都比较震惊于 Pensieve 真的打不过 model based 方法。不过基本上看了一眼 log 之后都反应过来 Pensieve 决策保守了，而 GrBAL 实在是太激进了。</p>
-<p>中期整体上没有什么大问题，黄老师过了一下我的 PPT 后也觉得没有大问题，提了一下多加几张图的建议，然后给我推荐了 LUMOS 5G dataset 以及一位名为 Qian Feng 的 scholar，大概也是做环境切换相关的，可以后半段尝试去学习一下这些材料。</p>
-<hr />
-<p>中期答辩基本上平稳地过去了，把实验结果汇报了之后，三位评审老师也没有什么很尖锐的问题，只有一位老师问了点简单的问题就放我走了。然而现在的问题就在于，我目前做出来的结果到底可不可信，因为确实感觉和大家长久以来的经验有不相符的地方，至少目前有几个值得验证的疑点：</p>
-<ul>
-<li>baseline 过弱，训练错误等问题</li>
-<li>数据集设计有问题，应当多随机生成几次重复实验</li>
-<li>GrBAL 实验成果不一定稳定，dynamics model 的预测效果也应当重复确认</li>
-</ul>
-<p>至少在进行中期答辩 PPT 上所写的未来研究之前，我还是打算把这些问题给思考清楚。</p>
-<p>然后就是其他的一些杂事了，现在安排如下：</p>
-<ul>
-<li>周四组会、软工 Sprint1 组会，晚上出勤</li>
-<li>周五 LVS 会议，预计早起前往</li>
-<li>周六 LVS 会议，预计晚归</li>
-<li>周日基础技能培训线下授课</li>
-<li>有 DDL 的任务
-<ul>
-<li>提出不再负责微信小程序开发，转 Rust 后台开发</li>
-<li>周六晚前完成基础技能培训课件供审核</li>
-</ul></li>
-</ul>
-<p>最近确实是没有什么很重要的任务了，确实可以计划摆烂了，毕竟最终答辩差不多得到六月，中间两个月可以自由摆烂。目前日语中高级教程还想自学，日语自学笔记也还有很多想写的，DRL 的任务也想好好做，也想出勤、打雀、旅游，总之就是什么都想做，毕竟没有什么硬性要求了。</p>
-]]></content>
-      <categories>
-        <category>【生活记录】日记</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>2022 年 12 月论文笔记</title>
-    <url>/2022/12/06/paper-2022-12/</url>
-    <content><![CDATA[<p>12 月开始就得准备做毕设了，先要充分阅读文献，确定自己要做的方向有什么要解决的问题，以及目前已经有的探索和目前还存在的困难。</p>
-<p><span class="math display">\[
-\newcommand{\b}{\boldsymbol}
-\]</span></p>
-<span id="more"></span>
-<h1 id="learning-tailored-adaptive-bitrate-algorithms-to-heterogeneous-network-conditions---a-domain-specific-priors-and-meta-reinforcement-learning-approach">Learning Tailored Adaptive Bitrate Algorithms to Heterogeneous Network Conditions - A Domain-Specific Priors and Meta-Reinforcement Learning Approach</h1>
-<p>黄老师的文章，作为起手还是需要好好看看的。</p>
-<p>这篇文章的基本概念是，基于学习的 ABR 已经能够实现一个平均而言优秀的 ABR 算法，但是对于部分特殊的网络环境其依然表现不佳，而这也就是所谓的个性化。然后这篇文章使用了 meta RL 的方式实现了 AABR（其实应当是 <span class="math inline">\(A^2BR\)</span>，但是我真的不想打公式了，AABR 表示 Adaptation of ABR）。</p>
-<p>AABR 首先离线学习一个元算法，之后再在在线的个性化环境下学习一个针对当前网络环境的个性化算法。另外，还需要不断优化离线学习来保证元算法的优势。</p>
-<h2 id="introduction">Introduction</h2>
-<p>首先对 ABR 算法做了总结，启发式算法根据当前网络情况和一部分状态变量给出决策，但是只有在选定较好的算法参数的时候这种算法才能表现较好。基于学习的算法则根据网络情况学习这些参数。然而总而言之，这些算法都不会自动调节自己的算法参数，尤其在面对变化较多的网络环境下时，这些算法表现较差。</p>
-<p>之后是通过实验说明了现在的网络状况不仅是多样性（diverse）的，更多的是独一无二（unique）的。基于这一点，这篇文章认为做用户个性化是一个重要的提升。</p>
-<p>所以基于 Input-driven Markov Decision Process (IMDP)，本文提出了 AABR。分为离线和在线两步，具体的训练方式见后续。</p>
-<p>总结一下这篇文章的工作就是确认了当今网络环境的独特性，并通过 meta RL 解决了 ABR 的个性化问题。</p>
-<h2 id="background-motivation">Background &amp; Motivation</h2>
-<p>关于 ABR 之类的介绍这里忽略，主要看这篇文章如何论证当今网络的多样性。</p>
-<p>多样性分为三个方向去论证，即不同用户间差异、不同场景间差异以及已有的部分 ABR 算法在这些网络环境下的表现。</p>
-<p>用户间差异和场景间差异可以关注下图：</p>
-<p><img src="/uploads/paper-2022-12/1.png" /></p>
-<p>可以首先注意到网络吞吐率和 RTT 的变动是相当大的，而如果观察具体的用户，也可以发现用户之间的网络状况差异也很大，部分用户网络稳定（整体带宽 CDF 陡峭）而部分用户的网络波动较大，而且各个用户的网络指标平均值也差异较大。</p>
-<p>对于场景，也可以注意到步行、地铁、公交、汽车的网络情况也各有不同，并不能一概而论。</p>
-<p>如果从 ABR 的角度出发，这篇文章在两个不同环境下测试了若干个 ABR 算法的性能，得到的结果是：</p>
-<p><img src="/uploads/paper-2022-12/2.png" /></p>
-<p>显然可以注意到已有的算法都很难兼顾两种情况，常常顾此失彼。这就意味着不稳定的网络情况很容易导致这些算法失效，从而也难以实现用户个性化。</p>
-<h2 id="methods">Methods</h2>
-<h3 id="input-driven-markov-decision-process">Input-driven Markov Decision Process</h3>
-<p>基本而言是在正常的 MDP 中引入了 input process <span class="math inline">\(\mathcal{Z}\)</span>，这个时候环境的转移概率定义为：</p>
-<p><span class="math display">\[
-\mathbb{T}[s&#39; \mid s, a, z] := \mathbb{P}[s_{t + 1} = s&#39; \mid s_t = s, a_t = a, z_t = z]
-\]</span></p>
-<p>此外，决策依然仅仅和 <span class="math inline">\(s_t \in \mathcal{S}\)</span> 有关，也就是说具体行为 <span class="math inline">\(a_t \in \mathcal{A}\)</span> 与 <span class="math inline">\(z_t \in \mathcal{Z}\)</span> 是独立的。</p>
-<p>进一步的价值函数定义为：</p>
-<p><span class="math display">\[
-Q(s, a, z) := \sum_{s&#39; \in \mathcal{S}} \mathbb{T}[s&#39; \mid s, a, z](r(s, a, z) + \gamma V(s&#39;, z&#39;))
-\]</span></p>
-<p>在 IMDP 下，最优策略也就定义为：</p>
-<p><span class="math display">\[
-\pi^*(s, z) := \mathop{\rm argmax}_{a \in \mathcal{A}} \sum_{s&#39; \in \mathcal{S}} \mathbb{T}[s&#39;, z&#39; \mid s, a, z]\left[r(s, a, z) + \gamma \max_{a&#39; \in \mathcal{A}} Q(s&#39;, a&#39;, z&#39;)\right]
-\]</span></p>
-<p>可以注意到，如果两个 agent 运行相同的 policy <span class="math inline">\(\pi\)</span>，其不同之处仅仅是 input process <span class="math inline">\(\mathcal{Z}_{1, 2}\)</span> 不同。可以注意到这两个 agent 将会始终保持相同的决策，所以其价值函数相同当且仅当 <span class="math inline">\(\mathcal{Z}_1 = \mathcal{Z}_2\)</span>。</p>
-<p>如果在完全得知 input process <span class="math inline">\(\mathcal{Z}\)</span> 的条件下，求解最优策略相当于一般的强化学习问题，可以通过大量的强化学习方法完成。但是我们现在需要假定 input process 是完全不可感知的，在这种条件下，一般强化学习方法学习到的最优策略 <span class="math inline">\(\hat\pi^*\)</span> 的价值函数实际上是与 input process 无关的，其价值函数用 <span class="math inline">\(Q(s&#39;, a&#39;)\)</span> 表示，其满足：</p>
-<p><span class="math display">\[
-\max_{a&#39; \in \mathcal{A}} Q(s&#39;, a&#39;) = \mathbb{E}_{z&#39;} \max_{a&#39; \in \mathcal{A}} Q(s&#39;, a&#39;, z&#39;)
-\]</span></p>
-<p>所以现在解决 input process 未知条件下的最优策略求解问题就是最重要的。</p>
-<h3 id="meta-rl-with-domain-knowledge">Meta RL with Domain Knowledge</h3>
-<p>总之就是又阐述了一边 AABR 分为离线和在线两个训练过程，离线训练一个元算法之后在线训练一个个性化 ABR 算法。那么两个问题就是：</p>
-<div class="note info no-icon"><ol type="i">
-<li><p>How to obtain a good parameter initialization for fast-learning?</p></li>
-<li><p>How to efficiently learn tailor-made ABR algorithms online?</p></li>
-</ol>
-</div>
-<h3 id="model-agnostic-meta-learning">Model Agnostic Meta-Learning</h3>
-<p>总之就是选定了 MAML 作为 AABR 的核心算法，MAML 的论文后面慢慢推着看。</p>
-<p>不过这一部分也阐释了为何 MAML 适合用于这个场景，原文是：</p>
-<div class="note info no-icon"><p>We find that model agnostic meta learning (MAML) is quite suitable in personalized ABR scenarios where the network traces on each user are quite limited.</p>
-<p>Specifically, MAML consists of an inner loop and an outer loop.</p>
-</div>
-<p>也就是说从数据集的角度和训练流程的角度上说，MAML 和这个实验场景的契合度比较高。</p>
-<h3 id="leveraging-domain-knowledge">Leveraging Domain Knowledge</h3>
-<p>总体的含义是设计了一个模拟器用于生成数据以及相关的启发式算法，一方面补充了现实世界中数据量不足的问题，另外一方面其代表的启发式算法可以在 policy 无法处理某些状态的时候作为 backup 使用。</p>
-<p><strong>注：</strong>这一部分可能需要结合下面的 overview 仔细学一下，然后对这里做一些扩充，因为这里模拟器的细节应该是做数据扩充的重要部分。</p>
-<h2 id="aabr-overview">AABR Overview</h2>
-<p>系统的大致结构为：</p>
-<p><img src="/uploads/paper-2022-12/3.png" /></p>
-<h3 id="basic-training-algorithm">Basic Training Algorithm</h3>
-<p>在设计网络的输入的时候首先需要考虑的是什么才是真正需要考虑的状态，这篇文章采用的方式是首先将所有可以使用的状态都作为输入以训练一个 teacher network，之后采用类似模仿学习的方式，采用类似决策树等较为轻量级的模型去模仿神经网络的策略，之后再使用决策树剪枝的方式去获取真正有意义的非平凡状态。</p>
-<div class="note success no-icon"><p>这个方法似乎是比较好玩的一个方法，用于筛选真正有用的输入状态。</p>
-</div>
-<p>这里剪枝的目的也是为了压缩最后的成本。</p>
-<p>最后筛选出来的状态包括：</p>
-<ul>
-<li>上一次选定的视频块质量 <span class="math inline">\(q_t\)</span></li>
-<li>目前的缓冲区占用率 <span class="math inline">\(b_t\)</span></li>
-<li>前 <span class="math inline">\(k\)</span> 个视频块传输时网络吞吐率 <span class="math inline">\(C_t\)</span></li>
-<li>前 <span class="math inline">\(k\)</span> 个视频块的下载时间 <span class="math inline">\(D_t\)</span></li>
-<li>前 <span class="math inline">\(k\)</span> 个视频块的应答时间 <span class="math inline">\(P_t\)</span></li>
-</ul>
-<p>这里为了控制成本，实验中选取 <span class="math inline">\(k = 5\)</span>。</p>
-<p>另外，为了保证模型的泛化性，这里需要将参数正则化，这样至少能保证模型面对完全没有经历过的网络环境不至于将其认为非法输入。</p>
-<p>模型的输出和正常的 AC 网络没有很大的差别，都是 Actor 网络输出一个 softmax 后的概率张量表示各个行为的决策概率，而 Critic 网络输出一个标量表示对当前状态的价值评估。</p>
-<h4 id="maximum-entropy-ppo-me-ppo">Maximum Entropy PPO (ME-PPO)</h4>
-<p>这里的训练策略是 ME-PPO，其与 PPO 的差别在于最优行为的定义里纳入了熵：</p>
-<p><span class="math display">\[
-a_t^* := \mathop{\rm argmax}_a \hat{\mathbb{E}}_t\left[\sum_t \gamma^t(r_t + \lambda H^{\pi_\theta}(s_t))\right]
-\]</span></p>
-<p>这里定义熵为：</p>
-<p><span class="math display">\[
-H^{\pi_\theta}(s_t) = -\sum_{a \in \mathcal{A}} \pi_\theta(a \mid s_t) \ln\pi_\theta(a \mid s_t)
-\]</span></p>
-<p>元学习要求在离线环境下更重视 exploration 而在线环境下更重视 exploitation。这里将熵纳入考虑，如果策略 <span class="math inline">\(\pi_\theta\)</span> 对动作空间 <span class="math inline">\(\mathcal{A}\)</span> 中的所有动作给出的概率约趋向于平均，则熵越高，从而越会支持这样的选择。</p>
-<p>ME-PPO 的具体策略是基于 Dual-PPO 的 double clip 策略，具体如下：</p>
-<p><span class="math display">\[
-\begin{aligned}
-\mathcal{L}^{\rm PPO} &amp;:= \min\left(\frac{\pi_\theta(a_t \mid s_t)}{\pi_{\theta_{\rm old}}(a_t \mid s_t)}(\theta) \hat A_t, {\rm clip}\left(\frac{\pi_\theta(a_t \mid s_t)}{\pi_{\theta_{\rm old}}(a_t \mid s_t)}(\theta), 1 - \varepsilon, 1 + \varepsilon\right)\hat A_t\right) \\
-\mathcal{L}^{\rm Actor} &amp;:= \begin{cases}
-\hat{\mathbb{E}}_t[\max(\mathcal{L}^{\rm PPO}, c\hat A_t)] &amp; \hat A_t &lt; 0 \\
-\hat{\mathbb{E}}_t[\mathcal{L}^{\rm PPO}] &amp; \hat A_t \geq 0 \\
-\end{cases}
-\end{aligned}
-\]</span></p>
-<p>这里 <span class="math inline">\(\hat A_t\)</span> 是优势函数，定义为：</p>
-<p><span class="math display">\[
-\hat A_t := r_t + \gamma(V^{\pi_\theta}(s_{t + 1}) + \lambda H^{\pi_\theta}(s_{t + 1})) - V^{\pi_\theta}(s_t)
-\]</span></p>
-<p>这里 <span class="math inline">\(c, \varepsilon\)</span> 是用来控制梯度的超参数。</p>
-<p>AABR 中的 Critic 网络的训练策略就是最小化优势函数的均方误差：</p>
-<p><span class="math display">\[
-\mathcal{L}^{\rm Critic} := \frac12 \hat{\mathbb{E}}_t[A_t]^2
-\]</span></p>
-<p>从而整体的 loss 可以总结为：</p>
-<p><span class="math display">\[
-\nabla\mathcal{L}^{\rm MEPPO} := -\nabla_\theta \mathcal{L}^{\rm Actor}(\pi_\theta, \hat A_t) + \nabla_{\theta_v} \mathcal{L}^{\rm Critic}
-\]</span></p>
-<hr />
-<p>此外，由于算法对 <span class="math inline">\(\lambda\)</span> 较为敏感，我们需要在训练过程中不断调节 <span class="math inline">\(\lambda\)</span>，调节方式较为简单：</p>
-<p><span class="math display">\[
-\lambda \leftarrow \lambda + \alpha[H^{\pi_\theta}(s_t) - H^{\rm Target}]
-\]</span></p>
-<p>这个目标在于熵逐步接近目标的时候衰减 <span class="math inline">\(\lambda\)</span> 以减缓接近速度。</p>
-<h3 id="meta-learned-policies-for-offline-stage">Meta-Learned Policies for Offline Stage</h3>
-<p><strong>注：</strong>具体的训练方式后续补充。</p>
-<h1 id="model-agnostic-meta-learning-for-fast-adaptation-of-deep-networks">Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks</h1>
-<p>这是 MAML 训练方法的原始论文，看情况有没有时间做一个复现。</p>
-<p>文章的主要贡献就是一个元学习方式，并且似乎泛用性很广：</p>
-<div class="note info no-icon"><p>In this work, we propose a meta-learning algorithm that is general and model-agnostic, in the sense that it can be directly applied to any learning problem and model that is trained with a gradient descent procedure.</p>
-</div>
-<p>元学习的核心在于训练好的模型能够迅速通过少量数据学习到新的任务，并且其能够应用到大量的下游任务中。这篇文章将训练模型理解为在模型内部建立起适用于某种任务的特征表示，如果这种表示能够适合于多种任务，那么我们只需要进行合适的微调就可以迅速适应新的任务。如果从动力系统的角度理解，我们需要提高需要完成的任务的 loss 对参数的敏感度，这个敏感度越高，参数的变化对 loss 的提升的影响越大。</p>
-<h2 id="model-agnostic-meta-learning-1">Model-Agnostic Meta-Learning</h2>
-<h3 id="meta-learning-problem-set-up">Meta-Learning Problem Set-Up</h3>
-<p>这里严格定义了元学习需要解决的问题。</p>
-<p>首先我们需要形式化定义什么是任务，这篇文章定义为：</p>
-<p><span class="math display">\[
-\mathcal{T} := \{\mathcal{L}(\b x_1, \b a_1, \cdots, \b x_H, \b a_H), q(\b x_1), q(\b x_{t + 1} \mid \b x_t, \b a_t), H\}
-\]</span></p>
-<p>这里 <span class="math inline">\(\mathcal{L}\)</span> 表示 loss，<span class="math inline">\(q(\b x_1)\)</span> 是初始状态的分布，<span class="math inline">\(q(\b x_{t + 1} \mid \b x_t, \b a_t)\)</span> 是状态转移的概率分布，<span class="math inline">\(H\)</span> 是 episode 的长度。这个定义同时涵盖了普通的强化学习和监督学习，其中监督学习中 <span class="math inline">\(H = 1\)</span>。</p>
-<p>模型本身描述为一个函数 <span class="math inline">\(f\)</span>，其接受当前状态 <span class="math inline">\(\b x\)</span> 并给出输出 <span class="math inline">\(\b a\)</span>，即 <span class="math inline">\(\b a = f(\b x)\)</span>。模型不断在该任务中给定 <span class="math inline">\(\b a_1, \b a_2, \cdots, \b a_H\)</span>，而 loss <span class="math inline">\(\mathcal{L}\)</span> 则给出了实际的反馈，这种反馈可以是分类问题中的失配损失或者 Markov 决策过程中的负收益。</p>
-<p>在元学习中我们需要考虑一系列的任务的分布，这里记作 <span class="math inline">\(p(\mathcal{T})\)</span>。如果我们要求 <span class="math inline">\(K\)</span> shot learning，对于每一个从 <span class="math inline">\(p(\mathcal{T})\)</span> 抽取的具体任务 <span class="math inline">\(\mathcal{T}_i\)</span>，我们需要再通过 <span class="math inline">\(q_i\)</span> 抽取 <span class="math inline">\(K\)</span> 个样本，并且考虑 <span class="math inline">\(\mathcal{L}_{\mathcal{T}_i}\)</span> 的反馈。</p>
-<p>之后直接搬一个论文原句，也应该是论文后面算法设计的主要出发点：</p>
-<div class="note info no-icon"><p>The model <span class="math inline">\(f\)</span> is then improved by considering how the <em>test</em> error on new data from <span class="math inline">\(q_i\)</span> changes with respect to the parameters.</p>
-</div>
-<h3 id="a-model-agnostic-meta-learning-algorithm">A Model-Agnostic Meta-Learning Algorithm</h3>
-<p>这里提供了算法设计，一个关键词就是之前提到的<strong>敏感度</strong>。</p>
-<p>考虑用参数 <span class="math inline">\(\theta\)</span> 表示的模型 <span class="math inline">\(f_\theta\)</span>。在学习具体的任务 <span class="math inline">\(\mathcal{T}_i\)</span> 的时候，参数的更新方式为：</p>
-<p><span class="math display">\[
-\theta \leftarrow \theta - \alpha\nabla_\theta\mathcal{L}_{\mathcal{T}_i}(f_\theta)
-\]</span></p>
-<p>为了简化记号，我们假设在元学习之后学习具体任务仅用了一次梯度更新，此时任务 <span class="math inline">\(\mathcal{T}_i\)</span> 的最优参数就是 <span class="math inline">\(\theta_i&#39; := \theta - \alpha\nabla_\theta\mathcal{L}_{\mathcal{T}_i}(f_\theta)\)</span>，那么元学习的目标是：</p>
-<p><span class="math display">\[
-\min_\theta \sum_{\mathcal{T}_i \in p(\mathcal{T})} \mathcal{L}_{\mathcal{T}_i}(f_{\theta_i&#39;}) = \min_\theta \sum_{\mathcal{T}_i \in p(\mathcal{T})} \mathcal{L}_{\mathcal{T}_i}(f_{\theta - \alpha\nabla_\theta\mathcal{L}_{\mathcal{T}_i}(f_\theta)})
-\]</span></p>
-<p>那么还是使用简单的梯度下降，元学习中的参数更新就是：</p>
-<p><span class="math display">\[
-\theta \leftarrow \theta - \beta\nabla_\theta \sum_{\mathcal{T}_i \in p(\mathcal{T})} \mathcal{L}_{\mathcal{T}_i}(f_{\theta_i&#39;})
-\]</span></p>
-<p>在这里我们注意到出现了二阶梯度，部分深度学习框架能够支持这一操作，但本文也同样指出作一阶近似（即舍去二阶及以上的高阶项）是可行的。</p>
-<p>基于此，MAML 的整体框架为：</p>
-<p><img src="/uploads/paper-2022-12/4.png" /></p>
-<h2 id="species-of-maml">Species of MAML</h2>
-<p>本文这里举出了监督学习和强化学习中运用 MAML 的例子，这里我们只关注强化学习。</p>
-<p>强化学习特化的 MAML 主要关注的是 loss 的选定，这里选定的就是最经典的负收益。另外，此时 <span class="math inline">\(q_{\mathcal{T}_i}\)</span> 实际上就是环境中的状态转移概率分布：</p>
-<p><span class="math display">\[
-\mathcal{L}_{\mathcal{T}_i}(f_\phi) = -\mathbb{E}_{(\b x_t, \b a_t) \sim (f_\phi, q_{\mathcal{T}_i})} \left[\sum_{t = 1}^H R(\b x_t, \b a_t)\right]
-\]</span></p>
-<p>从而，强化学习特化的 MAML 算法为：</p>
-<p><img src="/uploads/paper-2022-12/5.png" /></p>
-<p>这之后就是一些实验结果了，感觉没啥意思了。</p>
-<h1 id="learning-to-adapt-in-dynamic-real-world-environments-through-meta-reinforcement-learning">Learning to Adapt in Dynamic, Real-World Environments through Meta Reinforcement Learning</h1>
-<p>这篇文章似乎没有官方的 code base，只有两个 community code base，现在可以在 <a href="https://paperswithcode.com/paper/learning-to-adapt-in-dynamic-real-world">这个链接</a> 获取，分别是 Tensorflow 和 Pytorch 版本。</p>
-<h2 id="abstract-introduction">Abstract &amp; Introduction</h2>
-<p>需要解决的问题依然是生成数据很困难以及测试环境中无法预料到的数据可能导致所训练的策略失效，引言之中也基本上叙述了人类可以很快适应自身机体发生的变化和外界环境发生的变化，提出了如果模型经历了足够多的环境微扰，其就可以很快学习适应新环境。</p>
-<p>相比较于原先的 meta RL 对任务的定义，这篇文章提出的模型能够处理每个时间步环境或者任务都在变化的情景。也就是说，原先的 meta RL 不过是提前预设好了需要解决什么样的任务，并且每一个 RL trajectory 仅会属于一个任务，而这篇文章的 RL trajectory 中可以涵盖多种任务并且任何时间都可以切换。所以这篇文章的 meta RL 更为 general。</p>
-<p>本文也是有 trade off 的，主要表达如下：</p>
-<div class="note info no-icon"><p>By specifically training a neural network model to require only a small amount of experience to adapt, we can enable effective online adaptation in complex environments while putting less pressure on needing a perfect global model.</p>
-</div>
-<p>也就是说，这篇文章为了能够在少数据条件下快速适应新环境，并不会强制要求这个模型在 global 环境下表现到 perfect。</p>
-<p>总而言之，这篇文章主要强调学得快，学习速度大约是每个新任务需要在真实世界中经历 1.5 到 3 小时，不到原有 model-free RL 方法学习时间的十分之一。并且，在同等数据量条件下，这篇文章的模型效果也比其他方法优越。此外，为了展示本文模型的学习能力，其将其真实部署在了机器人上，来学习真实世界的情况。</p>
-<h2 id="related-works">Related Works</h2>
-<p>首先提到最原始的强化学习方法没有泛用性，以及 model-free RL 往往需要大量和真是环境交互从而不实际。发展为 model-based RL 之后，就需要面临对环境建模的 model 需要在不同的任务之间调整的问题，首先否决了单一的全局模型，而先前有人尝试通过 GP 方法合并模型不确定性从而让模型能够表示不同的环境，然而这个方法做出了额外的假设且拓展性差且难以运用到高维空间，而本文提出的结果能够通过观察从而快速切换到新的环境。</p>
-<div class="note warning no-icon"><p>这里的问题就是我是真的没有太看懂这个 model 到底是对环境建模的模型还是最后要学习的 policy。</p>
-</div>
-<p>还有一种处理方式是首先学习一个全局模型，在测试的时候通过梯度下降进行微调。此外，还有工作表明不需要完美的全局模型，可以微调先验知识来处理小变化。然而，这些方法面临着模型的训练目的与测试时的使用方式之间的不匹配的问题。本文通过明确训练一个能快速有效适应的模型来弥合这一差距。</p>
-<h2 id="preliminaries">Preliminaries</h2>
-<h3 id="model-based-reinforcement-learning">Model-Based Reinforcement Learning</h3>
-<p>马尔可夫决策过程在这里建模为 <span class="math inline">\((\mathcal{S}, \mathcal{A}, p, r, \gamma, \rho_0, H)\)</span>。这里 <span class="math inline">\(\mathcal{S}\)</span> 是状态空间，<span class="math inline">\(\mathcal{A}\)</span> 是动作空间，<span class="math inline">\(p(s&#39; \mid s, a)\)</span> 是环境状态转移概率，<span class="math inline">\(r: \mathcal{S} \times \mathcal{A} \to \mathbb{R}\)</span> 是奖励函数，<span class="math inline">\(\rho_0: \mathcal{S} \to \mathbb{R}^+\)</span> 是初始状态概率分布，<span class="math inline">\(\gamma\)</span> 是奖励衰减常数，<span class="math inline">\(H\)</span> 是轨迹长度。</p>
-<p>一条轨迹描述为 <span class="math inline">\(\tau(i, j) := (s_i, a_i, \cdots, s_j, a_j, s_{j + 1})\)</span>，我们的目标是求取最优策略 <span class="math inline">\(\pi: \mathcal{S} \to \mathcal{A}\)</span> 使得累计收益期望最大。</p>
-<p>model-based RL 目标是近似处理 <span class="math inline">\(p(s&#39; \mid s, a)\)</span>，这个模型也被称为 dynamics model。</p>
-<h3 id="meta-learning">Meta Learning</h3>
-<p>一般的元学习需要给定假设，即训练用的任务和最终的测试任务都是从同一个任务分布 <span class="math inline">\(\rho(\mathcal{T})\)</span> 中抽取。元学习的目标是获取一个学习流程 <span class="math inline">\(\theta&#39; := u_\psi(\mathcal{D}^{\rm tr}_{\mathcal{T}}, \theta)\)</span> 以通过小数据集 <span class="math inline">\(\mathcal{D}^{\rm tr}_{\mathcal{T}}\)</span> 来学习任务 <span class="math inline">\(\mathcal{T}\)</span>，学习过程可以表示为：</p>
-<p><span class="math display">\[
-\min_{\theta, \psi} \mathbb{E}_{\mathcal{T} \sim \rho(\mathcal{T})}\left[\mathcal{L}(\mathcal{D}^{\rm test}_{\mathcal{T}}, \theta&#39;)\right]
-\]</span></p>
-<p>其中 <span class="math inline">\(\theta&#39; := u_\psi(\mathcal{D}^{\rm tr}_{\mathcal{T}}, \theta)\)</span>。</p>
-<div class="note info no-icon"><p>这里的记号是真的复杂，事实上训练过程应该是函数 <span class="math inline">\(u_\psi\)</span>，训练过程用参数 <span class="math inline">\(\psi\)</span> 代表，其输出为训练后的最优参数 <span class="math inline">\(\theta&#39;\)</span>，而 <span class="math inline">\(\theta\)</span> 表示初始化参数。</p>
-<p>另外注意，<span class="math inline">\(\theta\)</span> 这里是模拟环境的模型的参数，而非 policy 的参数。</p>
-</div>
-<h4 id="gradient-based-meta-learning">Gradient Based Meta Learning</h4>
-<p>MAML 就是一种基于梯度的元学习方法，其最主要的目标是学习一个较好的参数初始化保证在少数调整中即可实现较好的下游任务。</p>
-<p>MAML 的 <span class="math inline">\(u_\psi\)</span> 就是一般的梯度下降：</p>
-<p><span class="math display">\[
-u_\psi(\mathcal{D}^{\rm tr}_{\mathcal{T}}, \theta) = \theta - \alpha\nabla_\theta \mathcal{L}(\mathcal{D}^{\rm tr}_{\mathcal{T}}, \theta)
-\]</span></p>
-<p>如果学习率 <span class="math inline">\(\alpha\)</span> 是一个固定参数，那么 <span class="math inline">\(\psi = \varnothing\)</span>，如果 <span class="math inline">\(\alpha\)</span> 是一个元学习过程中需要学习的参数，那么 <span class="math inline">\(\psi = \alpha\)</span>。</p>
-<p>即使看起来 <span class="math inline">\(u_\psi\)</span> 是平凡的，但是这种方法的表达能力和下面介绍的方法是持平的。</p>
-<h4 id="recurrence-based-meta-learning">Recurrence Based Meta Learning</h4>
-<p>这里借用了 RNN 的思想，在这个方法中，更新函数 <span class="math inline">\(u_\psi\)</span> 始终需要不断学习，其中 <span class="math inline">\(\psi\)</span> 是用于更新 RNN 隐含层状态的参数，而 <span class="math inline">\(\theta\)</span> 是余下的参数。</p>
-<div class="note warning no-icon"><p>这里是真的真的真的没看懂，这在说啥？是我前置知识欠缺太多了？</p>
-<p>只能希望下面能有个稍微好一点的说明。</p>
-</div>
-<h2 id="meta-learning-for-online-model-adaptation">Meta Learning for Online Model Adaptation</h2>
-<p>之前提到过本文的 trajectory 中任务可以随着时间步推进而变化，所以本文设定的目标是根据前 <span class="math inline">\(M\)</span> 个时间步的数据预测未来 <span class="math inline">\(K\)</span> 个时间步情况，这里 <span class="math inline">\(M, K\)</span> 都是固定的超参数。</p>
-<p>所以在这样的设定下，训练目标就是：</p>
-<p><span class="math display">\[
-\begin{aligned}
-\theta_{\mathcal{E}}&#39; &amp;= u_\psi(\tau_{\mathcal{E}}(t - M, t - 1), \theta) \\
-\min_{\theta, \psi}&amp; \mathbb{E}_{\tau_{\mathcal{E}}(t - M, t + K)} [\mathcal{L}(\tau_{\mathcal{E}}(t, t + K), \theta_{\mathcal{E}}&#39;)]
-\end{aligned}
-\]</span></p>
-<p>而这里 loss 定义为：</p>
-<p><span class="math display">\[
-\mathcal{L}(\tau_{\mathcal{E}}(t, t + K), \theta_{\mathcal{E}}&#39;) := -\frac{1}{K} \sum_{k = t}^{t + K} \log\hat{p}_{\theta_{\mathcal{E}&#39;}}(s_{k + 1} \mid s_k, a_k)
-\]</span></p>
-<p>GrBAL 采取的更新策略为：</p>
-<p><span class="math display">\[
-\theta_{\mathcal{E}}&#39; = u_\psi(\tau_{\mathcal{E}}(t - M, t - 1), \theta) = \theta_{\mathcal{E}} + \psi\nabla_\theta\frac{1}{M} \sum_{m = t - M}^{t - 1} \log\hat{p}_{\theta_{\mathcal{E}}}(s_{m + 1} \mid s_m, a_m)
-\]</span></p>
-<p>ReBAL 这里又是没看懂，所以这个基于循环模型的到底是个什么东西。</p>
-<h2 id="model-based-meta-reinforcement-learning">Model Based Meta Reinforcement Learning</h2>
-<p>这一部分就是在讲解如何在线上做 adaptation，我觉得整体不如直接看算法直观：</p>
-<p><img src="/uploads/paper-2022-12/6.png" /></p>
-]]></content>
-      <categories>
-        <category>【论文笔记】计算机</category>
       </categories>
   </entry>
 </search>
