@@ -228,7 +228,7 @@ $(function () {
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E4%B8%8E%E5%9F%BA%E6%9C%AC%E4%BC%98%E5%8C%96%E7%90%86%E8%AE%BA"><span class="nav-number">1.</span> <span class="nav-text">强化学习的基本概念与基本优化理论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E4%B8%8E%E7%AD%96%E7%95%A5"><span class="nav-number">1.1.</span> <span class="nav-text">环境与策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%AF%E8%AE%A1%E6%94%B6%E7%9B%8A%E4%B8%8E%E4%BB%B7%E5%80%BC%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.</span> <span class="nav-text">累计收益与价值函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E4%BC%98%E5%8C%96%E7%90%86%E8%AE%BA"><span class="nav-number">1.3.</span> <span class="nav-text">基本优化理论</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dynamic-programming-dp"><span class="nav-number">2.</span> <span class="nav-text">Dynamic Programming (DP)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#policy-iteration-pi"><span class="nav-number">2.1.</span> <span class="nav-text">Policy Iteration (PI)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#value-iteration-vi"><span class="nav-number">2.2.</span> <span class="nav-text">Value Iteration (VI)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%E5%85%B3-pi-%E5%92%8C-vi-%E7%9A%84%E4%B8%80%E4%BA%9B%E5%AF%B9%E6%AF%94"><span class="nav-number">2.3.</span> <span class="nav-text">有关 PI 和 VI 的一些对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%E5%85%B3-bellman-%E7%AE%97%E5%AD%90%E7%9A%84%E6%8B%93%E5%B1%95"><span class="nav-number">2.4.</span> <span class="nav-text">有关 Bellman 算子的拓展</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#monte-carlo-%E6%96%B9%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">Monte-Carlo 方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#temporal-difference-%E6%96%B9%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">Temporal-Difference 方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E6%AD%A5-td-target-%E4%B8%8E-tdlambda"><span class="nav-number">4.1.</span> <span class="nav-text">多步 TD target 与 TD(\(\lambda\))</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E4%B8%8E%E5%9F%BA%E6%9C%AC%E4%BC%98%E5%8C%96%E7%90%86%E8%AE%BA"><span class="nav-number">1.</span> <span class="nav-text">强化学习的基本概念与基本优化理论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E4%B8%8E%E7%AD%96%E7%95%A5"><span class="nav-number">1.1.</span> <span class="nav-text">环境与策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%AF%E8%AE%A1%E6%94%B6%E7%9B%8A%E4%B8%8E%E4%BB%B7%E5%80%BC%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.</span> <span class="nav-text">累计收益与价值函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E4%BC%98%E5%8C%96%E7%90%86%E8%AE%BA"><span class="nav-number">1.3.</span> <span class="nav-text">基本优化理论</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E5%AE%8C%E5%85%A8%E7%8E%AF%E5%A2%83%E7%9F%A5%E8%AF%86%E7%9A%84-rl-%E6%96%B9%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">基于完全环境知识的 RL 方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#policy-iteration-pi"><span class="nav-number">2.1.</span> <span class="nav-text">Policy Iteration (PI)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#value-iteration-vi"><span class="nav-number">2.2.</span> <span class="nav-text">Value Iteration (VI)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%E5%85%B3-pi-%E5%92%8C-vi-%E7%9A%84%E4%B8%80%E4%BA%9B%E5%AF%B9%E6%AF%94"><span class="nav-number">2.3.</span> <span class="nav-text">有关 PI 和 VI 的一些对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%E5%85%B3-bellman-%E7%AE%97%E5%AD%90%E7%9A%84%E6%8B%93%E5%B1%95"><span class="nav-number">2.4.</span> <span class="nav-text">有关 Bellman 算子的拓展</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E7%8E%AF%E5%A2%83%E4%BA%A4%E4%BA%92%E7%9A%84-rl-%E6%96%B9%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">基于环境交互的 RL 方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AD%96%E7%95%A5%E8%AF%84%E4%BC%B0"><span class="nav-number">3.1.</span> <span class="nav-text">策略评估</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#monte-carlo-mc"><span class="nav-number">3.1.1.</span> <span class="nav-text">Monte-Carlo (MC)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#temporal-difference-td"><span class="nav-number">3.1.2.</span> <span class="nav-text">Temporal-Difference (TD)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E6%AD%A5-td-target-%E4%B8%8E-tdlambda"><span class="nav-number">3.1.2.1.</span> <span class="nav-text">多步 TD target 与 TD(\(\lambda\))</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#backward-view-tdlambda-eligibility-traces"><span class="nav-number">3.1.2.2.</span> <span class="nav-text">Backward-view TD(\(\lambda\)) &amp; Eligibility Traces</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AD%96%E7%95%A5%E6%94%B9%E8%BF%9B"><span class="nav-number">3.2.</span> <span class="nav-text">策略改进</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%B6%E5%BA%8F%E5%B7%AE%E5%88%86%E6%8E%A7%E5%88%B6"><span class="nav-number">4.</span> <span class="nav-text">时序差分控制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8C%E8%BD%A8%E6%97%B6%E5%BA%8F%E5%B7%AE%E5%88%86%E6%8E%A7%E5%88%B6sarsa"><span class="nav-number">4.1.</span> <span class="nav-text">同轨时序差分控制（SARSA）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%82%E8%BD%A8%E6%97%B6%E5%BA%8F%E5%B7%AE%E5%88%86%E6%8E%A7%E5%88%B6q-learning"><span class="nav-number">4.2.</span> <span class="nav-text">异轨时序差分控制（Q learning）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E4%BC%B0%E8%AE%A1%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0"><span class="nav-number">5.</span> <span class="nav-text">函数估计与深度学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#deep-q-network-dqn"><span class="nav-number">5.1.</span> <span class="nav-text">Deep Q Network (DQN)</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -398,14 +398,14 @@ $(function () {
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>19k</span>
+      <span>26k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>17 分钟</span>
+      <span>23 分钟</span>
     </span>
 </div>
 
@@ -440,16 +440,16 @@ $(function () {
 <li>收益函数 <span class="math inline">\(r\)</span>。收益函数为从 <span class="math inline">\(\S \times \A \times \S\)</span> 到 <span class="math inline">\(\R\)</span> 的映射。<span class="math inline">\(r(s, a, s&#39;)\)</span> 表示环境在状态 <span class="math inline">\(s \in \S\)</span> 且智能体做出决策 <span class="math inline">\(a \in \A\)</span> 并转移到新状态 <span class="math inline">\(s&#39; \in \S\)</span> 的时候环境给予智能体的收益。</li>
 <li>收益衰减系数 <span class="math inline">\(\gamma\)</span>。这里 <span class="math inline">\(\gamma \in [0, 1]\)</span>。该参数代表收益随着时间步衰减的系数，具体含义将会在后续定义累计收益的时候展开。</li>
 </ul>
-<p>另外需要说明的是，状态 <span class="math inline">\(s \in \mathcal{S}\)</span> 可能并不是完全可以观测的，如果 <span class="math inline">\(s\)</span> 不能完全观测，我们会将 <span class="math inline">\(s\)</span> 中能观测的部分记作 <span class="math inline">\(o\)</span>，称为<strong>观测</strong>，即 observation。所有观测构成的集合记作 <span class="math inline">\(\mathcal{O}\)</span>。这种部分可以观测的 MDP 称为 <strong>P</strong>artially <strong>O</strong>bservable MDP，缩写 POMDP。</p>
-<p>而智能体内部所使用的策略一般表现为 <span class="math inline">\(\pi_{\b\theta}(a \mid s)\)</span>。这里策略 <span class="math inline">\(\pi_{\b\theta}\)</span> 的下标 <span class="math inline">\(\b\theta\)</span> 表示该策略由参数 <span class="math inline">\(\b\theta \in \R^n\)</span> 建模。另外 <span class="math inline">\(\pi_{\b\theta}(a \mid s)\)</span> 表示了智能体在该策略条件下，在状态 <span class="math inline">\(s\)</span> 时做出决策 <span class="math inline">\(a\)</span> 的概率。</p>
-<p>上述的策略往往称为<strong>非确定性策略</strong>，因为其对于某个状态给出的是做出某一种决策的概率，是不确定的。而另外一类策略，即<strong>确定性策略</strong>，会对于某个状态给出具体的某一种决策。确定性策略的记号，为了和非确定性策略的 <span class="math inline">\(\pi_{\b\theta}\)</span> 区别，往往使用 <span class="math inline">\(\mu_{\b\theta}\)</span>。而 <span class="math inline">\(a := \mu_{\b\theta}(s)\)</span> 就表示了智能体在该策略条件下，在状态 <span class="math inline">\(s\)</span> 时会做出决策 <span class="math inline">\(a\)</span>。</p>
-<p>一条<strong>轨迹</strong>，或者 <strong>trajectory</strong>，指的是智能体和环境不断交互的过程的记录。具体而言，环境首先位于状态 <span class="math inline">\(s_0\)</span>，智能体做出决策 <span class="math inline">\(a_0\)</span>，环境返回收益 <span class="math inline">\(r_1\)</span> 后转入新状态 <span class="math inline">\(s_1\)</span>。以此类推形成 <span class="math inline">\(s_0, a_0, r_1; s_1, a_1, r_2; \cdots\)</span>。轨迹常常使用记号 <span class="math inline">\(\tau\)</span> 表示。</p>
-<p>显然根据 Markov 的特性，我们可以得到在策略 <span class="math inline">\(\pi_{\b\theta}\)</span> 的条件下某一条轨迹 <span class="math inline">\(\tau = (s_0, a_0, r_1; s_1, a_1, r_2; \cdots)\)</span> 出现的概率为：</p>
+<p>另外需要说明的是，状态 <span class="math inline">\(s \in \S\)</span> 可能并不是完全可以观测的，如果 <span class="math inline">\(s\)</span> 不能完全观测，我们会将 <span class="math inline">\(s\)</span> 中能观测的部分记作 <span class="math inline">\(o\)</span>，称为<strong>观测</strong>，即 observation。所有观测构成的集合记作 <span class="math inline">\(\mathcal{O}\)</span>。这种部分可以观测的 MDP 称为 <strong>P</strong>artially <strong>O</strong>bservable MDP，缩写 POMDP。</p>
+<p>而智能体内部所使用的策略一般表现为 <span class="math inline">\(\pi(a \mid s)\)</span>，其表示了智能体在该策略条件下，在状态 <span class="math inline">\(s\)</span> 时做出决策 <span class="math inline">\(a\)</span> 的概率。</p>
+<p>上述的策略往往称为<strong>非确定性策略</strong>，因为其对于某个状态给出的是做出某一种决策的概率，是不确定的。而另外一类策略，即<strong>确定性策略</strong>，会对于某个状态给出具体的某一种决策。确定性策略的记号，为了和非确定性策略的 <span class="math inline">\(\pi\)</span> 区别，往往使用 <span class="math inline">\(\mu\)</span>。而 <span class="math inline">\(a := \mu(s)\)</span> 就表示了智能体在该策略条件下，在状态 <span class="math inline">\(s\)</span> 时会做出决策 <span class="math inline">\(a\)</span>。</p>
+<p>一条<strong>轨迹（Trajectory）</strong>，指的是智能体和环境不断交互的过程的记录。具体而言，环境首先位于状态 <span class="math inline">\(s_0\)</span>，智能体做出决策 <span class="math inline">\(a_0\)</span>，环境返回收益 <span class="math inline">\(r_1\)</span> 后转入新状态 <span class="math inline">\(s_1\)</span>。以此类推形成 <span class="math inline">\(s_0, a_0, r_1; s_1, a_1, r_2; \cdots\)</span>。轨迹常常使用记号 <span class="math inline">\(\tau\)</span> 表示。</p>
+<p>显然根据 Markov 的特性，我们可以得到在策略 <span class="math inline">\(\pi\)</span> 的条件下某一条轨迹 <span class="math inline">\(\tau = (s_0, a_0, r_1; s_1, a_1, r_2; \cdots)\)</span> 出现的概率为：</p>
 <p><span class="math display">\[
-\P_{\b\theta}(\tau) = \Pe(s_0)\prod_{t = 0}^{+\infty} \pi_{\b\theta}(a_t \mid s_t)\Pe(s_{t + 1} \mid s_t, a_t)
+\P_\pi(\tau) = \Pe(s_0)\prod_{t = 0}^{+\infty} \pi(a_t \mid s_t)\Pe(s_{t + 1} \mid s_t, a_t)
 \]</span></p>
 <p>这里 <span class="math inline">\(\Pe(s_0)\)</span> 表示环境初始状态为 <span class="math inline">\(s_0\)</span> 的概率。</p>
-<p>我们表示轨迹 <span class="math inline">\(\tau\)</span> 服从上述概率分布的时候，可以写成多种符号，包括 <span class="math inline">\(\tau \sim \P_{\b\theta}(\tau)\)</span> 或者 <span class="math inline">\(\tau \sim \pi_{\b\theta}\)</span> 等等，本文会使用第二种表达。</p>
+<p>我们表示轨迹 <span class="math inline">\(\tau\)</span> 服从上述概率分布的时候，可以写成多种符号，包括 <span class="math inline">\(\tau \sim \P_\pi(\tau)\)</span> 或者 <span class="math inline">\(\tau \sim \pi\)</span> 等等，本文会使用第二种表达。</p>
 <h2 id="累计收益与价值函数">累计收益与价值函数</h2>
 <p>对一条轨迹，<strong>累计收益（Utility）</strong>的定义为：</p>
 <p><span class="math display">\[
@@ -458,19 +458,19 @@ R_t(\tau) := \sum_{k = 0}^{+\infty} \gamma^k r_{t + k + 1}
 <p>这里注意到我们累加收益的时候需要不断使用衰减因子进行衰减，这一操作主要是为了拟合现实中距离现在越远的行为对当前决策的影响越小的特征，这一操作同时也保证了收敛性。</p>
 <p>之后，我们进一步定义<strong>价值函数</strong>。首先需要定义<strong>状态行为价值函数</strong>：</p>
 <p><span class="math display">\[
-Q^{\pi_{\b\theta}}(s, a) := \Eop_{\tau \sim \pi_{\b\theta}}[R_t(\tau) \mid s_t = s, a_t = a]
+Q^\pi(s, a) := \Eop_{\tau \sim \pi}[R_t(\tau) \mid s_t = s, a_t = a]
 \]</span></p>
 <p>可以注意到上述期望中 <span class="math inline">\(t\)</span> 的分布并没有指定，这里一般认为是等概率地选择一个自然数即可。</p>
 <p>进一步即可有<strong>状态价值函数</strong>：</p>
 <p><span class="math display">\[
-V^{\pi_{\b\theta}}(s) := \Eop_{\tau \sim \pi_{\b\theta}}[R_t(\tau) \mid s_t = s]
+V^\pi(s) := \Eop_{\tau \sim \pi}[R_t(\tau) \mid s_t = s]
 \]</span></p>
 <p>我们可以发现状态行为价值函数描述了在状态 <span class="math inline">\(s\)</span> 下做出决策 <span class="math inline">\(a\)</span> 后期望的累计收益，也就是说该价值函数评价了给定状态下的某个决策的期望收益，所以我们常常使用状态行为价值函数辅助决策。而状态价值函数则和具体的决策无关，是衡量从某一个状态出发，能够获得的期望收益。</p>
 <p>显然这两个价值函数之间存在相互推出关系，而这种关系描述如下：</p>
 <div class="note info no-icon"><p><strong>Theorem 1.01</strong> 对于任何 MDP 与其上的策略 <span class="math inline">\(\pi\)</span>，该策略的状态价值函数与状态行为价值函数满足：</p>
 <p><span class="math display">\[
 \begin{aligned}
-{\color{red} V^\pi(s)} &amp;= \sum_{a \in \mathcal{A}} \pi(a \mid s){\color{red} Q^\pi(s, a)} \\
+{\color{red} V^\pi(s)} &amp;= \sum_{a \in \A} \pi(a \mid s){\color{red} Q^\pi(s, a)} \\
 {\color{red} Q^\pi(s, a)} &amp;= \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a)[r(s, a, s&#39;) + \gamma {\color{red} V^\pi(s&#39;)}] \\
 \end{aligned}
 \]</span></p>
@@ -479,12 +479,12 @@ V^{\pi_{\b\theta}}(s) := \Eop_{\tau \sim \pi_{\b\theta}}[R_t(\tau) \mid s_t = s]
 <p><span class="math display">\[
 \begin{aligned}
 V^\pi(s) &amp;= \Eop_{\tau \sim \pi}[R_t(\tau) \mid s_t = s] \\
-&amp;= \sum_{\tau} \P_{\b\theta}(\tau \mid s_t = s)R_t(\tau) \\
-&amp;= \sum_{\tau} \left(\sum_{a \in \mathcal{A}} \P_{\b\theta}(\tau, a_t = a \mid s_t = s)\right)R_t(\tau) \\
-&amp;= \sum_{\tau} \left(\sum_{a \in \mathcal{A}} \P_{\b\theta}(\tau \mid s_t = s, a_t = a)\P_{\b\theta}(a_t = a \mid s_t = s)\right)R_t(\tau) \\
-&amp;= \sum_{a \in \mathcal{A}} \P_{\b\theta}(a_t = a \mid s_t = s) \left(\sum_{\tau} \P_{\b\theta}(\tau \mid s_t = s, a_t = a) R_t(\tau)\right) \\
-&amp;= \sum_{a \in \mathcal{A}} \pi(a \mid s)\Eop_{\tau \sim \pi}[R_t(\tau) \mid s_t = s, a_t = a] \\
-&amp;= \sum_{a \in \mathcal{A}} \pi(a \mid s)Q^\pi(s, a) \\
+&amp;= \sum_{\tau} \P_\pi(\tau \mid s_t = s)R_t(\tau) \\
+&amp;= \sum_{\tau} \left(\sum_{a \in \A} \P_\pi(\tau, a_t = a \mid s_t = s)\right)R_t(\tau) \\
+&amp;= \sum_{\tau} \left(\sum_{a \in \A} \P_\pi(\tau \mid s_t = s, a_t = a)\P_\pi(a_t = a \mid s_t = s)\right)R_t(\tau) \\
+&amp;= \sum_{a \in \A} \P_\pi(a_t = a \mid s_t = s) \left(\sum_{\tau} \P_\pi(\tau \mid s_t = s, a_t = a) R_t(\tau)\right) \\
+&amp;= \sum_{a \in \A} \pi(a \mid s)\Eop_{\tau \sim \pi}[R_t(\tau) \mid s_t = s, a_t = a] \\
+&amp;= \sum_{a \in \A} \pi(a \mid s)Q^\pi(s, a) \\
 \end{aligned}
 \]</span></p>
 <p>第二个等式是由 <span class="math inline">\(V^\pi\)</span> 推出 <span class="math inline">\(Q^\pi\)</span> 的路径，其涉及到了后续状态，从而实际上描述出了价值函数之间的递推关系。</p>
@@ -548,7 +548,7 @@ V^\star(s) &amp;:= \max_\pi V^\pi(s) \\
 <div class="note info no-icon"><p><strong>Theorem 1.03</strong> 对于任何 MDP，其最优状态价值函数与最优状态行为价值函数满足：</p>
 <p><span class="math display">\[
 \begin{aligned}
-{\color{red} V^\star(s)} &amp;= \max_{a \in \mathcal{A}} {\color{red} Q^\star(s, a)} \\
+{\color{red} V^\star(s)} &amp;= \max_{a \in \A} {\color{red} Q^\star(s, a)} \\
 {\color{red} Q^\star(s, a)} &amp;= \sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a)[r(s, a, s&#39;) + \gamma {\color{red} V^\star(s&#39;)}] \\
 \end{aligned}
 \]</span></p>
@@ -567,7 +567,8 @@ V^\star(s) = V^{\pi^\star}(s) = \sum_{a \in \A} \pi^\star(a \mid s)Q^{\pi^\star}
 {\color{red} V^\star(s)} = \max_{a \in \A} \left[\sum_{s&#39; \in \S} \Pe(s&#39; \mid s, a)[r(s, a, s&#39;) + \gamma {\color{red} V^\star(s&#39;)}]\right]
 \]</span></p>
 <p>理论上我们可以求解最优 Bellman 方程得到 <span class="math inline">\(V^\star\)</span>，从而就能够反推出 <span class="math inline">\(\pi^\star\)</span>。然而求解最优 Bellman 方程是计算困难的，现行的强化学习方法就是在尝试近似求解最优 Bellman 方程。</p>
-<h1 id="dynamic-programming-dp">Dynamic Programming (DP)</h1>
+<h1 id="基于完全环境知识的-rl-方法">基于完全环境知识的 RL 方法</h1>
+<p>如果我们能够完全掌握环境，即完全掌握转移概率 <span class="math inline">\(\Pe\)</span> 和收益函数 <span class="math inline">\(r\)</span>，那么我们可以使用<strong>动态规划（Dynamic Programming, DP）</strong>来求解最优策略。DP 方法有两种类别，分别是<strong>策略迭代（Policy Iteration, PI）</strong>和<strong>值迭代（Value Iteration, VI）</strong>。</p>
 <h2 id="policy-iteration-pi">Policy Iteration (PI)</h2>
 <p>如果我们已经对环境有了完整的建模，我们完全可以使用迭代的方式求解最优 Bellman 方程。</p>
 <p>具体的迭代过程分为两步，分别为<strong>策略评估（Policy Evaluation）</strong>和<strong>策略提升（Policy Improvement）</strong>，这两步会交替进行。具体而言，策略评估是在已知 <span class="math inline">\(\pi\)</span> 的条件下计算其状态价值函数 <span class="math inline">\(V^\pi\)</span>。而策略提升为在得知状态价值函数的基础上优化策略 <span class="math inline">\(\pi\)</span>。</p>
@@ -649,7 +650,7 @@ V^\pi(s) \leq \Eop_{\tau \sim \pi&#39;}[{\color{red} r_{t + 1} + \gamma r^{t + 2
 \]</span></p>
 <p>重复该迭代直到收敛，即可获得最优状态价值函数。基于最优状态价值函数，可以推知最优策略，从而算法求解完毕。</p>
 <p>这里需要说明的一点是，使用值迭代求解的时候，策略是比价值函数先收敛的。这一点是显然的，因为通过价值函数获取对应的策略是贪心的。从而，在价值函数还未实际完全收敛的时候，各个状态的价值大小关系很有可能已经确定且不变化，从而从这一时间点开始，推知的策略都不会发生变化，理论上都是最优策略。</p>
-<p>值迭代的时间复杂度为 <span class="math inline">\(O(|\mathcal{S}|^2|\mathcal{A}|)\)</span>。</p>
+<p>值迭代的时间复杂度为 <span class="math inline">\(O(|\S|^2|\A|)\)</span>。</p>
 <h2 id="有关-pi-和-vi-的一些对比">有关 PI 和 VI 的一些对比</h2>
 <p>事实上基于 Bellman 方程而言，VI 方法是最直观也是最容易想到的，因为通过迭代法求解有递归结构的方程确实是一种很常见的方法。然而 VI 的两个特点也是限制其运用的缺陷，即<strong>策略早于价值函数收敛</strong>和<strong>复杂度较高</strong>。</p>
 <p>前者事实上是 VI 的一个致命缺陷，因为从根本上而言我们需要获取的是最优策略，具体的价值函数可能并不关注，或者至少不是最主要目标。另外，高复杂度也让 VI 的实际运算难度较高，而这也一定程度上催生了 PI 方法。</p>
@@ -671,12 +672,12 @@ r^\pi(s) &amp;:= \sum_{a \in \A} \pi(a \mid s) \sum_{s&#39; \in \S} \Pe(s&#39; \
 <p><span class="math display">\[
 {\color{red} V^\pi(s)} = r^\pi(s) + \gamma\sum_{s&#39; \in \S} \P^\pi(s&#39; \mid s){\color{red} V^\pi(s&#39;)}
 \]</span></p>
-<p>如果记 <span class="math inline">\(\S = \{s_1, s_2, \cdots, s_n\}, n = |\mathcal{S}|\)</span>，并定义矩阵：</p>
+<p>如果记 <span class="math inline">\(\S = \{s_1, s_2, \cdots, s_n\}, n = |\S|\)</span>，并定义矩阵：</p>
 <p><span class="math display">\[
 \begin{aligned}
-\b{V}^\pi &amp;:= (v^\pi_i)^T_{n} \in \mathbb{R}^n &amp;&amp; v^\pi_i := V^\pi(s_i) \\
-\b{R}^\pi &amp;:= (r^\pi_i)^T_{n} \in \mathbb{R}^n &amp;&amp; r^\pi_i := r^\pi(s_i) \\
-\b{P}^\pi &amp;:= (p^\pi_{ij})_{n \times n} \in \mathbb{R}^{n \times n} &amp;&amp; p^\pi_{ij} := \P^\pi(s_j \mid s_i) \\
+\b{V}^\pi &amp;:= (v^\pi_i)^T_{n} \in \R^n &amp;&amp; v^\pi_i := V^\pi(s_i) \\
+\b{R}^\pi &amp;:= (r^\pi_i)^T_{n} \in \R^n &amp;&amp; r^\pi_i := r^\pi(s_i) \\
+\b{P}^\pi &amp;:= (p^\pi_{ij})_{n \times n} \in \R^{n \times n} &amp;&amp; p^\pi_{ij} := \P^\pi(s_j \mid s_i) \\
 \end{aligned}
 \]</span></p>
 <p>那么 Bellman 方程等价于：</p>
@@ -691,9 +692,9 @@ r^\pi(s) &amp;:= \sum_{a \in \A} \pi(a \mid s) \sum_{s&#39; \in \S} \Pe(s&#39; \
 <p>除了 Bellman 算子，还可以从最优 Bellman 方程引入最优 Bellman 算子。首先依然是定义矩阵：</p>
 <p><span class="math display">\[
 \begin{aligned}
-\b{V}^\star &amp;:= (v^\star_i)^T_{n} \in \mathbb{R}^n &amp;&amp; v^\star_i := V^\star(s_i) \\
-\b{R}(a) &amp;:= (r_i(a))^T_{n} \in \mathbb{R}^n &amp;&amp; r_i(a) := \sum_{s_j \in \S} \Pe(s_j \mid s_i, a)r(s_i, a, s_j) \\
-\b{P}(a) &amp;:= (p_{ij}(a))_{n \times n} \in \mathbb{R}^{n \times n} &amp;&amp; p_{ij}(a) := \Pe(s_j \mid s_i, a) \\
+\b{V}^\star &amp;:= (v^\star_i)^T_{n} \in \R^n &amp;&amp; v^\star_i := V^\star(s_i) \\
+\b{R}(a) &amp;:= (r_i(a))^T_{n} \in \R^n &amp;&amp; r_i(a) := \sum_{s_j \in \S} \Pe(s_j \mid s_i, a)r(s_i, a, s_j) \\
+\b{P}(a) &amp;:= (p_{ij}(a))_{n \times n} \in \R^{n \times n} &amp;&amp; p_{ij}(a) := \Pe(s_j \mid s_i, a) \\
 \end{aligned}
 \]</span></p>
 <p>那么最优 Bellman 算子就定义为：</p>
@@ -729,7 +730,7 @@ d(x^*, y) = d(f(x^*), f(y)) \leq \gamma d(x^*, y) \Rightarrow (1 - \gamma)d(x^*,
 \]</span></p>
 <p>上述约束仅有 <span class="math inline">\(y = x^*\)</span> 时成立，唯一性得证。</p>
 <hr />
-<p>基于该引理，我们只需要说明最优 Bellman 算子也满足引理所述条件即可。在空间 <span class="math inline">\(\mathcal{S}\)</span> 上取其 <span class="math inline">\(L^{\infty}\)</span> 范数（即各分量最大值）。我们证明最优 Bellman 算子是压缩的：</p>
+<p>基于该引理，我们只需要说明最优 Bellman 算子也满足引理所述条件即可。在空间 <span class="math inline">\(\S\)</span> 上取其 <span class="math inline">\(L^{\infty}\)</span> 范数（即各分量最大值）。我们证明最优 Bellman 算子是压缩的：</p>
 <p><span class="math display">\[
 \begin{aligned}
 \|\mathcal{T}^\star(\b{V}_1) - \mathcal{T}^\star(\b{V}_2)\|_\infty &amp;= \left\|\max_{a \in \A}(\b{R}(a) + \gamma\b{P}(a)\b{V}_1) - \max_{a \in \A}(\b{R}(a) + \gamma\b{P}(a)\b{V}_2)\right\|_\infty \\
@@ -744,17 +745,32 @@ d(x^*, y) = d(f(x^*), f(y)) \leq \gamma d(x^*, y) \Rightarrow (1 - \gamma)d(x^*,
 <p><span class="math display">\[
 \lim_{n \to \infty} \mathcal{T}^{\pi(n)}\b{V}_0 = \b{V}^\pi, \lim_{n \to \infty} \mathcal{T}^{\star(n)}\b{V}_0 = \b{V}^\star
 \]</span></p>
-<h1 id="monte-carlo-方法">Monte-Carlo 方法</h1>
+<h1 id="基于环境交互的-rl-方法">基于环境交互的 RL 方法</h1>
+<p>如果我们无法掌握环境的信息，我们就需要令智能体与环境交互以收集信息。而这也是当前绝大多数 RL 问题需要采用的方法，因为我们完全能掌握的环境几乎不存在。</p>
+<p>一般这类 RL 方法的流程事实上近似于策略迭代，也被称为<strong>广义策略迭代（General Policy Iteration, GPI）</strong>。GPI 的流程是首先初始化一个价值函数和策略 <span class="math inline">\(V, \pi\)</span>，并不断重复下述两个操作：</p>
+<ul>
+<li>（策略评估）更新价值函数使得其符合当前的策略，即 <span class="math inline">\(V = V^\pi\)</span></li>
+<li>（策略改进）根据当前价值函数贪心地更新策略，即 <span class="math inline">\(\pi = {\rm greedy}(V)\)</span></li>
+</ul>
+<p>当然，这里是以状态价值函数 <span class="math inline">\(V\)</span> 作为比方，事实上状态行为价值函数 <span class="math inline">\(Q\)</span> 也可以应用到上述流程中。</p>
+<p>具体讲解之前，首先引入<strong>同轨（On-policy）</strong>和<strong>异轨（Off-policy）</strong>的概念。这类 RL 方法中智能体所执行的策略一般有两种用途，其一是用于与环境交互收集转移轨迹，这个策略称为<strong>采样策略（Sample Policy）</strong>或者<strong>行为策略（Behavioral Policy）</strong>，其二是用于在环境中获取收益，这个策略称为<strong>目标策略（Target Policy）</strong>。如果一个智能体的行为策略和目标策略是不一致的，那这个方法就是异轨的，相对应地，行为策略和目标策略一致的时候这个方法是同轨的。</p>
+<p>如果采用同轨方法，那么策略评估、策略改进的流程就是简单的，也就是按照描述迭代即可。然而如果采用异轨方法，通用的方法是：</p>
+<ul>
+<li>策略评估时应当估算<strong>目标策略</strong>的价值函数</li>
+<li>策略改进时应当贪心地生成<strong>行为策略</strong></li>
+</ul>
+<h2 id="策略评估">策略评估</h2>
+<h3 id="monte-carlo-mc">Monte-Carlo (MC)</h3>
 <p>DP 方法的一个重要局限在于，其必须要对环境有完整的了解，也就是对 <span class="math inline">\(\Pe, r\)</span> 有完整的理解才能进行，然而对于现实的问题，这是完全不可能的。这也就是需要让智能体不断和环境交互的原因，因为我们需要通过智能体的探索来获取环境的信息。</p>
-<p>这里简单提一下 model-free RL 与 model-based RL 的概念。在智能体和环境交互的过程中，事实上我们有两种选择，其一是让智能体去和真实的环境作交互，这就是 model-free RL 方法。其二是我们事先使用另外一个模型去拟合环境，让智能体和这个模型交互，这就是 model-based RL 方法。model-based RL 方法的优势在于，如果智能体和真实的环境交互成本高昂或者环境响应较慢，则可以用于大幅降低实验成本。但相应地，model-based RL 方法也需要一个相当优越的和环境契合的模型才能让智能体真正学习到最优策略。</p>
-<p>这里提到的 Monte-Carlo 方法是 model-free RL 方法，其核心是不断让智能体和环境交互采样，用样本均值拟合价值函数。</p>
+<p>这里简单提一下<strong>无模型（Model-free）</strong>与<strong>基于模型（Model-based）</strong>的概念。在智能体和环境交互的过程中，事实上我们有两种选择，其一是让智能体去和真实的环境作交互，这就是无模型方法。其二是我们事先使用另外一个模型去拟合环境，让智能体和这个模型交互，这就是基于模型方法。基于模型方法的优势在于，如果智能体和真实的环境交互成本高昂或者环境响应较慢，则可以用于大幅降低实验成本。但相应地，基于模型方法也需要一个相当优越的和环境契合的模型才能让智能体真正学习到最优策略。</p>
+<p>这里提到的 Monte-Carlo 方法是无模型方法，其核心是不断让智能体和环境交互采样，用样本均值拟合价值函数。</p>
 <p>其算法思想极其简单，流程如下：</p>
 <ul>
 <li>获取待评测的策略 <span class="math inline">\(\pi\)</span></li>
 <li>初始化访问计数器 <span class="math inline">\(N(s) \leftarrow 0, s \in \S\)</span>，以及价值函数估计值 <span class="math inline">\(V(s), s \in \S\)</span></li>
 <li>不断重复下述
 <ul>
-<li>使用策略 <span class="math inline">\(\pi\)</span> 获取 trajectory <span class="math inline">\(\tau\)</span></li>
+<li>使用策略 <span class="math inline">\(\pi\)</span> 获取轨迹 <span class="math inline">\(\tau\)</span></li>
 <li>对每一个 <span class="math inline">\(s \in \tau\)</span> 以及其在 <span class="math inline">\(\tau\)</span> 中出现的时刻 <span class="math inline">\(t\)</span> 进行下述
 <ul>
 <li>递增计数器 <span class="math inline">\(N(s) \leftarrow N(s) + 1\)</span></li>
@@ -768,7 +784,9 @@ V(s) \leftarrow V(s) + \alpha(G_t(\tau) - V(s))
 \]</span></p>
 <p>理论而言，Monte-Carlo 方法相当简易且不涉及到 bootstrap。这里 bootstrap 指的是一类“利用估计值本身更新估计值”的更新策略，在后续 TD 方法中展开说明。</p>
 <p>另一方面，Monte-Carlo 方法也因为低效和并没有充分利用 Bellman 方程而具有缺陷。</p>
-<h1 id="temporal-difference-方法">Temporal-Difference 方法</h1>
+<div class="note info no-icon"><p>GPI 中使用 MC 方法做策略评估的算法一般称为 <strong>Monte-Carlo 控制算法</strong>。</p>
+</div>
+<h3 id="temporal-difference-td">Temporal-Difference (TD)</h3>
 <p>TD 方法与 MC 方法目标是一致的，也是尽力取得价值函数的准确估计。但是两者的核心差别在于，TD 方法是一个更新力度更小的 bootstrap 方法，TD 方法会在每一次决策后进行更新。这种逐步更新的问题在于我们无法精确获取某一个状态的累计收益，所以我们需要虚化一个更新目标，这也就是所谓的 TD target。</p>
 <p>假设我们在时刻 <span class="math inline">\(t\)</span> 时位于状态 <span class="math inline">\(s_t\)</span>，我们通过决策行为 <span class="math inline">\(a_t\)</span> 迁移到了状态 <span class="math inline">\(s_{t + 1}\)</span>，并且获取收益 <span class="math inline">\(r_{t + 1}\)</span>。另外，我们保存有一个所有状态的价值函数估计值表 <span class="math inline">\(V(s), s \in \S\)</span>。那么 TD target 指的是：</p>
 <p><span class="math display">\[
@@ -787,8 +805,10 @@ V(s_t) \leftarrow V(s_t) + \alpha\delta_t = V(s_t) + \alpha(r_{t + 1} + \gamma V
 <p>如果简单总结上述方法，可以使用下述图：</p>
 <p><img src="/uploads/note-of-rl/1.webp" /></p>
 <p>简而言之，MC 方法较 TD 方法而言有着更深的探索。而 DP 方法（尤其是 VI）则是遍历所有可能的后继状态进行更新，从而具有更广泛的视角，也就拥有广度。与这三者均不同的则是搜索，其需要完整探索整个决策树，但这自然是相当浪费资源的。</p>
-<h2 id="多步-td-target-与-tdlambda">多步 TD target 与 TD(<span class="math inline">\(\lambda\)</span>)</h2>
-<p>TD target 事实上可以设置为多步的。传统的 TD target 是单步的，即仅仅考虑 trajectory 上的一步转移。考虑多步 TD target，不妨考虑三步，假定 trajectory 上有三步转移片段 <span class="math inline">\(s_t, a_t, r_{t + 1}; s_{t + 1}, a_{t + 1}, r_{t + 2}; s_{t + 2}, a_{t + 2}, r_{t + 3}; s_{t + 3}\)</span>，那么 TD target 可以定义为：</p>
+<div class="note info no-icon"><p>GPI 中使用 TD 方法做策略评估的算法一般称为 <strong>TD 控制算法</strong>或者<strong>时序差分控制算法</strong>。</p>
+</div>
+<h4 id="多步-td-target-与-tdlambda">多步 TD target 与 TD(<span class="math inline">\(\lambda\)</span>)</h4>
+<p>TD target 事实上可以设置为多步的。传统的 TD target 是单步的，即仅仅考虑轨迹上的一步转移。考虑多步 TD target，不妨考虑三步，假定轨迹上有三步转移片段 <span class="math inline">\(s_t, a_t, r_{t + 1}; s_{t + 1}, a_{t + 1}, r_{t + 2}; s_{t + 2}, a_{t + 2}, r_{t + 3}; s_{t + 3}\)</span>，那么 TD target 可以定义为：</p>
 <p><span class="math display">\[
 {\rm TD\ target} := r_{t + 1} + \gamma r_{t + 2} + \gamma^2 r_{t + 3} + \gamma^3 V(s_{t + 3})
 \]</span></p>
@@ -799,6 +819,146 @@ V(s_t) \leftarrow V(s_t) + \alpha\delta_t = V(s_t) + \alpha(r_{t + 1} + \gamma V
 G^\lambda_t := (1 - \lambda)\sum_{n = 1}^{+\infty}\lambda^{n - 1}G_t^{(n)}
 \]</span></p>
 <p>传统的 TD 方法即 <span class="math inline">\(\lambda = 0\)</span> 的 TD(<span class="math inline">\(\lambda\)</span>) 方法。</p>
+<h4 id="backward-view-tdlambda-eligibility-traces">Backward-view TD(<span class="math inline">\(\lambda\)</span>) &amp; Eligibility Traces</h4>
+<p>然而使用 <span class="math inline">\(\lambda \neq 0\)</span> 的 TD(<span class="math inline">\(\lambda\)</span>) 方法的时候显然存在一个问题，那就是由于 <span class="math inline">\(G^\lambda_t\)</span> 的求和上限是 <span class="math inline">\(+\infty\)</span>，这就代表我们需要让智能体在环境中一直采样到轨迹终止。这样的话事实上就违背了使用 TD(<span class="math inline">\(\lambda\)</span>) 方法的初衷，我们希望在保持 TD 方法的效率的基础上引入多步实际采样来做到更精准的估计，所以要求采样到轨迹终止是不能容忍的。</p>
+<p>一种简单的解决方式，那就是用 Backward-view TD(<span class="math inline">\(\lambda\)</span>) 取代上面的 Forward-view TD(<span class="math inline">\(\lambda\)</span>)。Forward-view 的含义是通过未来的 <span class="math inline">\(s_{t + 1}, s_{t + 2}, \cdots\)</span> 来更新 <span class="math inline">\(V(s_t)\)</span> 的估计。而 Backward-view 与之相反，其通过之前经历的状态和轨迹确定价值函数估计。</p>
+<p>一种直观的解释是，Backward-view 就是反思先前的哪一个决策是导致到达当前状态的核心原因。</p>
+<p>我们定义<strong>效用函数（Eligibility）</strong>为 <span class="math inline">\(E_t(s), s \in \S\)</span>，这里下标 <span class="math inline">\(t\)</span> 表示不同的时间的效用函数都是不同的。我们引入效用函数的目的是将其作为权重引入价值函数更新流程中，表示 TD error 以多大程度影响价值函数估计：</p>
+<p><span class="math display">\[
+V(s_t) \leftarrow V(s_t) + \alpha\delta_tE_t(s_t) = V(s_t) + \alpha E_t(s_t)(r_{t + 1} + \gamma V(s_{t + 1}) - V(s_t))
+\]</span></p>
+<p>然后，定义效用函数的初始化和更新原则：</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;E_0(s) = 0, \forall s \in \S \\
+&amp;E_t(s) = \gamma\lambda E_{t - 1}(s) + \b{1}(s_t = s), \forall t \in \mathbb{N}^+, s \in \S \\
+\end{aligned}
+\]</span></p>
+<p>现在简单从数学角度说明使用效用函数的 Backward-view TD(<span class="math inline">\(\lambda\)</span>) 与 Forward-view TD(<span class="math inline">\(\lambda\)</span>) 方法等价。为了简化，这里假设轨迹中经历过的状态后续不在经过。假设我们在 <span class="math inline">\(k\)</span> 时刻到达了状态 <span class="math inline">\(s_k\)</span>，那么：</p>
+<p><span class="math display">\[
+E_t(s_k) = \begin{cases}
+0 &amp; t &lt; k \\
+(\gamma\lambda)^{t - k} &amp; t \geq k \\
+\end{cases}
+\]</span></p>
+<p>那么使用效用函数时，我们在迭代终止时得到的状态 <span class="math inline">\(s_k\)</span> 的价值函数估计为（价值函数上标 <span class="math inline">\({\rm B}\)</span> 表示后向视角）：</p>
+<p><span class="math display">\[
+V_{+\infty}^{\rm B}(s_k) = V_0(s_k) + \sum_{t = 1}^{+\infty} \alpha\delta_tE_t(s_k) = V_0(s_k) + \alpha\sum_{t = k}^{+\infty} (\gamma\lambda)^{t - k}\delta_t = V_0(s_k) + \alpha\sum_{t = 0}^{+\infty} (\gamma\lambda)^t\delta_{t + k}
+\]</span></p>
+<p>考虑下述计算：</p>
+<p><span class="math display">\[
+\begin{aligned}
+G_t^\lambda - V_t(s_t) &amp;= -V_t(s_t) + (1 - \lambda)\sum_{n = 1}^{+\infty}\lambda^{n - 1}G_t^{(n)} \\
+&amp;= -V_t(s_t) + (1 - \lambda)\sum_{n = 1}^{+\infty}\lambda^{n - 1}\left(\gamma^nV_t(s_{t + n}) + \sum_{i = 1}^n \gamma^{i - 1}r_{t + i}\right) \\
+&amp;= -V_t(s_t) + \sum_{n = 1}^{+\infty}\lambda^{n - 1}\left(\gamma^nV_t(s_{t + n}) + \sum_{i = 1}^n \gamma^{i - 1}r_{t + i}\right) -  \sum_{n = 1}^{+\infty}\lambda^n\left(\gamma^nV_t(s_{t + n}) + \sum_{i = 1}^n \gamma^{i - 1}r_{t + i}\right) \\
+&amp;= -V_t(s_t) + \sum_{n = 0}^{+\infty}\lambda^n\left(\gamma^{n + 1}V_t(s_{t + n + 1}) + \sum_{i = 1}^{n + 1} \gamma^{i - 1}r_{t + i}\right) -  \sum_{n = 1}^{+\infty}\lambda^n\left(\gamma^nV_t(s_{t + n}) + \sum_{i = 1}^n \gamma^{i - 1}r_{t + i}\right) \\
+&amp;= -V_t(s_t) + \gamma V_t(s_{t + 1}) + r_{t + 1} + \sum_{n = 1}^{+\infty} \lambda^n\left(\gamma^{n + 1}V_t(s_{t + n + 1}) - \gamma^nV_t(s_{t + n}) + \gamma^nr_{t + n + 1}\right) \\
+&amp;= \sum_{n = 0}^{+\infty} \lambda^n\left(\gamma^{n + 1}V_t(s_{t + n + 1}) - \gamma^nV_t(s_{t + n}) + \gamma^nr_{t + n + 1}\right) \\
+&amp;= \sum_{n = 0}^{+\infty} \gamma^n\lambda^n\left(\gamma V_t(s_{t + n + 1}) - V_t(s_{t + n}) + r_{t + n + 1}\right) \\
+&amp;\approx \sum_{n = 0}^{+\infty} \gamma^n\lambda^n\left(\gamma V_{t + n}(s_{t + n + 1}) - V_{t + n}(s_{t + n}) + r_{t + n + 1}\right) \\
+&amp;= \sum_{n = 0}^{+\infty} (\gamma\lambda)^n\delta_{t + n}
+\end{aligned}
+\]</span></p>
+<p>这就说明通过效用函数，我们最终得到的状态 <span class="math inline">\(s_k\)</span> 的价值函数估计为：</p>
+<p><span class="math display">\[
+V_{+\infty}^{\rm B}(s_k) = V_0(s_k) + \alpha(G_k^\lambda - V_k(s_k))
+\]</span></p>
+<p>而如果通过 Forward-view TD(<span class="math inline">\(\lambda\)</span>)，由于后续不在经历 <span class="math inline">\(s_k\)</span>，那么 <span class="math inline">\(s_k\)</span> 的价值函数只会在时刻 <span class="math inline">\(k\)</span> 发生一步更新，其余时刻并不更新。而在时刻 <span class="math inline">\(k\)</span>，TD target 为 <span class="math inline">\(G_k^\lambda\)</span>，即可得到最终的价值函数估计（价值函数上标 <span class="math inline">\({\rm F}\)</span> 表示前向视角）：</p>
+<p><span class="math display">\[
+V_{+\infty}^{\rm F}(s_k) = V_0(s_k) + \alpha(G_k^\lambda - V_k(s_k))
+\]</span></p>
+<p>从而证明完毕。事实上，如果去掉状态不重复的假设，也只是把每次经过该状态时的状态函数值变化拆开，每一部分都可以通过上面的过程证明两个视角的等价性，从而求和后依然是等价的。</p>
+<div class="note info no-icon"><p>这里简单说明 RL 中<strong>在线（Online）</strong>和<strong>离线（Offline）</strong>的区别。在线指的是智能体通过策略收集环境信息和通过这些信息更新策略是同时的，而离线则指的是通过某个固定策略在环境中收集信息，然后离线通过这些数据更新策略。</p>
+<p>在线算法的特征在于价值函数估计在每个时间步都会发生更新。而离线算法由于已经事先采集若干条轨迹，所以更新的粒度是整条轨迹，即完整考虑一条轨迹，每次完整读取完一条轨迹后做一次价值函数估计更新。</p>
+<p>上述推理中使用了约等于，这仅限于在线场景，而对于离线场景，价值函数 <span class="math inline">\(V_t\)</span> 中下标 <span class="math inline">\(t\)</span> 即失效（不再每个时间步更新），此时约等于变为严格等于。这也就说明两个视角在离线条件下是严格等价，在在线条件下是大致等价。</p>
+</div>
+<h2 id="策略改进">策略改进</h2>
+<p>策略改进的方式实际上不拘一格，这和策略评估相对手段有限形成对比的原因是，策略评估严格要求价值函数收敛到当前策略（采用异轨方法时是当前目标策略）的真实价值函数，而策略改进仅仅是要求贪心地生成，并没有严格要求生成方式。</p>
+<p>常见的策略改进之一就是<strong>完全贪心策略（Greedy Policy）</strong>，最优 Bellman 方程 <span class="math inline">\(V^\star(s) = \max_{a \in \A} Q^\star(s, a)\)</span> 保证了完全贪心策略依然可以收敛到最优策略：</p>
+<p><span class="math display">\[
+\pi(a \mid s) := \begin{cases}
+1 &amp; a = \argmax_{a&#39; \in \A} Q(s, a&#39;) \\
+0 &amp; {\rm otherwise} \\
+\end{cases}
+\]</span></p>
+<p>然而这种方法并不一定在实际上优越，这是因为一个策略往往需要同时考虑下面两种相对立的优化目标：</p>
+<ul>
+<li>（Exploration）能够充分探索未知的状态和行为，增加对环境的认识</li>
+<li>（Exploitation）能够充分利用已经掌握的环境信息，获取尽可能高的累计收益</li>
+</ul>
+<p>Exploration 会要求目标策略更加激进而 Exploitation 会要求目标策略更加保守，如何平衡这两者以获取高收益也就是这一类 RL 方法的核心。</p>
+<p>一种简单的方式是 <strong><span class="math inline">\(\varepsilon\)</span> 贪心策略（<span class="math inline">\(\varepsilon\)</span> Greedy Policy）</strong>，其表现为：</p>
+<p><span class="math display">\[
+\pi(a \mid s) := \begin{cases}
+\varepsilon / |\A| + 1 - \varepsilon &amp; a = \argmax_{a&#39; \in \A} Q(s, a&#39;) \\
+\varepsilon / |\A| &amp; {\rm otherwise} \\
+\end{cases}
+\]</span></p>
+<p>当然，还会有类似 <strong>Boltzman 探索</strong>之类的并不常见的策略改进：</p>
+<p><span class="math display">\[
+\pi(a \mid s) := \frac{\exp(Q(s, a) / T)}{\sum_{a&#39; \in \A} \exp(Q(s, a&#39;) / T)}
+\]</span></p>
+<div class="note success no-icon"><p><strong>Definition 3.01 (GLIE)</strong> 假设第 <span class="math inline">\(k\)</span> 时刻策略改进得到策略 <span class="math inline">\(\pi_k\)</span>，状态行为价值函数 <span class="math inline">\(Q_k\)</span>，记经过 <span class="math inline">\(k\)</span> 时长后策略在状态 <span class="math inline">\(s\)</span> 处做出决策 <span class="math inline">\(a\)</span> 的次数为 <span class="math inline">\(N(s, a)\)</span>。我们称该策略改进是 <strong>Greedy in the Limit with Infinite Exploration (GLIE)</strong>，如果：</p>
+<ul>
+<li>充分长时间后所有状态决策对均探索无穷次</li>
+</ul>
+<p><span class="math display">\[
+\lim_{k \to +\infty} N_k(s, a) = +\infty, \forall s \in \S, a \in \A
+\]</span></p>
+<ul>
+<li>策略最终收敛到贪心策略</li>
+</ul>
+<p><span class="math display">\[
+\lim_{k \to +\infty} \pi_k(a \mid s) = \b{1}\left(a = \argmax_{a&#39; \in \A} Q_k(s, a&#39;)\right), \forall s \in \S, a \in \A
+\]</span></p>
+</div>
+<p>Boltzman 探索是 GLIE，而 <span class="math inline">\(\varepsilon\)</span> 贪心策略则可能不是 GLIE。</p>
+<p>现在我们将会介绍以 TD 方法的策略评估为基础的几种 RL 方法。</p>
+<h1 id="时序差分控制">时序差分控制</h1>
+<h2 id="同轨时序差分控制sarsa">同轨时序差分控制（SARSA）</h2>
+<p>在同轨时序差分控制之中使用 <span class="math inline">\(\varepsilon\)</span> 贪心策略即可得到 SARSA 算法。若令时刻 <span class="math inline">\(t\)</span> 智能体位于状态 <span class="math inline">\(s_t\)</span>，做出决策 <span class="math inline">\(a_t\)</span> 转移到状态 <span class="math inline">\(s_{t + 1}\)</span> 并获得收益 <span class="math inline">\(r_{t + 1}\)</span>，如果其下一时刻做出决策 <span class="math inline">\(a_{t + 1}\)</span>，可以得到其策略评估阶段所采用的更新为：</p>
+<p><span class="math display">\[
+Q(s_t, a_t) \leftarrow Q(s_t, a_t) + \alpha[r_{t + 1} + \gamma Q(s_{t + 1}, a_{t + 1}) - Q(s_t, a_t)]
+\]</span></p>
+<p>每次更新后利用价值函数的估计通过 <span class="math inline">\(\varepsilon\)</span> 贪心策略即可完成策略改进阶段。</p>
+<h2 id="异轨时序差分控制q-learning">异轨时序差分控制（Q learning）</h2>
+<p>在异轨时序差分控制中，令目标策略为完全贪心策略，行为策略为 <span class="math inline">\(\varepsilon\)</span> 贪心策略即可得到 Q learning 算法。若令时刻 <span class="math inline">\(t\)</span> 智能体位于状态 <span class="math inline">\(s_t\)</span>，做出决策 <span class="math inline">\(a_t\)</span> 转移到状态 <span class="math inline">\(s_{t + 1}\)</span> 并获得收益 <span class="math inline">\(r_{t + 1}\)</span>，可以得到其策略评估阶段所采用的更新为：</p>
+<p><span class="math display">\[
+Q(s_t, a_t) \leftarrow Q(s_t, a_t) + \alpha\left[r_{t + 1} + \gamma\max_{a \in \A} Q(s_{t + 1}, a) - Q(s_t, a_t)\right]
+\]</span></p>
+<p>每次更新后利用价值函数的估计通过 <span class="math inline">\(\varepsilon\)</span> 贪心策略即可完成策略改进阶段。</p>
+<h1 id="函数估计与深度学习">函数估计与深度学习</h1>
+<p>我们可以注意到上述介绍的所有算法，如果直接运用的话可能面临一些困难，这是因为现实问题的状态空间和决策空间都是巨大的，我们很难如实记录每一次迭代时价值函数在每个状态、每个行为上的值，这会需要大量的存储空间。</p>
+<p>解决这一问题的最常用方案就是构造函数估计。例如，我们需要拟合一个难以直接计算的函数 <span class="math inline">\(f\)</span>，我们可以使用一系列较小的参数 <span class="math inline">\(\b w\)</span> 构造一个相对容易计算的函数 <span class="math inline">\(f_{\b w}\)</span>，尝试通过某种方式调整参数 <span class="math inline">\(\b w\)</span> 以令 <span class="math inline">\(f_{\b w} \approx f\)</span>。这样就可以使用 <span class="math inline">\(f_{\b w}\)</span> 来代替 <span class="math inline">\(f\)</span> 使用。</p>
+<p>函数估计的方式是多样的，可行的方式包括线性拟合、决策树、最近邻等。当然，目前最为普遍的方式是使用神经网络，而调整参数的方式一般是梯度下降算法。</p>
+<p>假设我们现在需要使用神经网络学习策略 <span class="math inline">\(\pi\)</span> 的状态价值函数 <span class="math inline">\(V^\pi\)</span>，我们使用参数 <span class="math inline">\(\b w\)</span> 构建一个函数 <span class="math inline">\(V_{\b w}\)</span>。我们可以利用 MSE 来构建一个简单的衡量拟合效果的损失函数：</p>
+<p><span class="math display">\[
+\mathcal{J}(\b w) := \Eop_{\tau \sim \pi} \left[\frac{1}{|\tau|} \sum_{s \in \tau} (V^\pi(s) - V_{\b w}(s))^2\right]
+\]</span></p>
+<p>之后我们计算其梯度：</p>
+<p><span class="math display">\[
+\begin{aligned}
+\nabla_{\b w}\mathcal{J}(\b w) &amp;= \nabla_{\b w}\Eop_{\tau \sim \pi} \left[\frac{1}{|\tau|} \sum_{s \in \tau} (V^\pi(s) - V_{\b w}(s))^2\right] \\
+&amp;= \Eop_{\tau \sim \pi} \left[\frac{1}{|\tau|} \sum_{s \in \tau} \nabla_{\b w}(V^\pi(s) - V_{\b w}(s))^2\right] \\
+&amp;= -2\Eop_{\tau \sim \pi} \left[\frac{1}{|\tau|} \sum_{s \in \tau} (V^\pi(s) - V_{\b w}(s))\nabla_{\b w}V_{\b w}(s)\right]
+\end{aligned}
+\]</span></p>
+<p>设定学习率为 <span class="math inline">\(-1/2 \cdot \alpha\)</span>，即可得到参数 <span class="math inline">\(\b w\)</span> 的更新方式：</p>
+<p><span class="math display">\[
+\b w \leftarrow \b w - \frac{1}{2}\alpha\nabla_{\b w}\mathcal{J}(\b w) = \b w + \alpha\Eop_{\tau \sim \pi} \left[\frac{1}{|\tau|} \sum_{s \in \tau} ({\color{red} V^\pi(s)} - V_{\b w}(s))\nabla_{\b w}V_{\b w}(s)\right]
+\]</span></p>
+<p>这里注意上述策略中标红项，显然这里我们需要得到真实值，或者可靠的真实值估计才能更新参数。而由于强化学习非监督学习，这里不存在标签，所以只能通过采样或者估计的方式处理这一项。</p>
+<p>如果采用 MC 方法，这一项就可以使用轨迹累计收益：</p>
+<p><span class="math display">\[
+\b w \leftarrow \b w + \alpha\Eop_{\tau \sim \pi} \left[\frac{1}{|\tau|} \sum_{s \in \tau} ({\color{red} G_t(\tau)} - V_{\b w}(s))\nabla_{\b w}V_{\b w}(s)\right]
+\]</span></p>
+<p>如果采用 TD 方法，这一项就可以使用 bootstrap 的 TD target：</p>
+<p><span class="math display">\[
+\b w \leftarrow \b w + \alpha\Eop_{\tau \sim \pi} \left[\frac{1}{|\tau|} \sum_{(s, r, s&#39;) \in \tau} ({\color{red} r + \gamma V_{\b w}(s&#39;)} - V_{\b w}(s))\nabla_{\b w}V_{\b w}(s)\right]
+\]</span></p>
+<p>当然如果使用 TD(<span class="math inline">\(\lambda\)</span>)，这一项就是相应的 TD target。</p>
+<p>目前基于通过神经网络实现的函数估计，我们可以将 Q learning 转换为深度学习算法 DQN。</p>
+<h2 id="deep-q-network-dqn">Deep Q Network (DQN)</h2>
 
     </div>
 
@@ -852,13 +1012,13 @@ G^\lambda_t := (1 - \lambda)\sum_{n = 1}^{+\infty}\lambda^{n - 1}G_t^{(n)}
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">418k</span>
+    <span title="站点总字数">428k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">6:20</span>
+    <span title="站点阅读时长">6:30</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
