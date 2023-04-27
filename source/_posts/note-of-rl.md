@@ -36,23 +36,23 @@ $$
 - 收益函数 $r$。收益函数为从 $\S \times \A \times \S$ 到 $\R$ 的映射。$r(s, a, s')$ 表示环境在状态 $s \in \S$ 且智能体做出决策 $a \in \A$ 并转移到新状态 $s' \in \S$ 的时候环境给予智能体的收益。
 - 收益衰减系数 $\gamma$。这里 $\gamma \in [0, 1]$。该参数代表收益随着时间步衰减的系数，具体含义将会在后续定义累计收益的时候展开。
 
-另外需要说明的是，状态 $s \in \mathcal{S}$ 可能并不是完全可以观测的，如果 $s$ 不能完全观测，我们会将 $s$ 中能观测的部分记作 $o$，称为**观测**，即 observation。所有观测构成的集合记作 $\mathcal{O}$。这种部分可以观测的 MDP 称为 **P**artially **O**bservable MDP，缩写 POMDP。
+另外需要说明的是，状态 $s \in \S$ 可能并不是完全可以观测的，如果 $s$ 不能完全观测，我们会将 $s$ 中能观测的部分记作 $o$，称为**观测**，即 observation。所有观测构成的集合记作 $\mathcal{O}$。这种部分可以观测的 MDP 称为 **P**artially **O**bservable MDP，缩写 POMDP。
 
-而智能体内部所使用的策略一般表现为 $\pi_{\b\theta}(a \mid s)$。这里策略 $\pi_{\b\theta}$ 的下标 $\b\theta$ 表示该策略由参数 $\b\theta \in \R^n$ 建模。另外 $\pi_{\b\theta}(a \mid s)$ 表示了智能体在该策略条件下，在状态 $s$ 时做出决策 $a$ 的概率。
+而智能体内部所使用的策略一般表现为 $\pi(a \mid s)$，其表示了智能体在该策略条件下，在状态 $s$ 时做出决策 $a$ 的概率。
 
-上述的策略往往称为**非确定性策略**，因为其对于某个状态给出的是做出某一种决策的概率，是不确定的。而另外一类策略，即**确定性策略**，会对于某个状态给出具体的某一种决策。确定性策略的记号，为了和非确定性策略的 $\pi_{\b\theta}$ 区别，往往使用 $\mu_{\b\theta}$。而 $a := \mu_{\b\theta}(s)$ 就表示了智能体在该策略条件下，在状态 $s$ 时会做出决策 $a$。
+上述的策略往往称为**非确定性策略**，因为其对于某个状态给出的是做出某一种决策的概率，是不确定的。而另外一类策略，即**确定性策略**，会对于某个状态给出具体的某一种决策。确定性策略的记号，为了和非确定性策略的 $\pi$ 区别，往往使用 $\mu$。而 $a := \mu(s)$ 就表示了智能体在该策略条件下，在状态 $s$ 时会做出决策 $a$。
 
-一条**轨迹**，或者 **trajectory**，指的是智能体和环境不断交互的过程的记录。具体而言，环境首先位于状态 $s_0$，智能体做出决策 $a_0$，环境返回收益 $r_1$ 后转入新状态 $s_1$。以此类推形成 $s_0, a_0, r_1; s_1, a_1, r_2; \cdots$。轨迹常常使用记号 $\tau$ 表示。
+一条**轨迹（Trajectory）**，指的是智能体和环境不断交互的过程的记录。具体而言，环境首先位于状态 $s_0$，智能体做出决策 $a_0$，环境返回收益 $r_1$ 后转入新状态 $s_1$。以此类推形成 $s_0, a_0, r_1; s_1, a_1, r_2; \cdots$。轨迹常常使用记号 $\tau$ 表示。
 
-显然根据 Markov 的特性，我们可以得到在策略 $\pi_{\b\theta}$ 的条件下某一条轨迹 $\tau = (s_0, a_0, r_1; s_1, a_1, r_2; \cdots)$ 出现的概率为：
+显然根据 Markov 的特性，我们可以得到在策略 $\pi$ 的条件下某一条轨迹 $\tau = (s_0, a_0, r_1; s_1, a_1, r_2; \cdots)$ 出现的概率为：
 
 $$
-\P_{\b\theta}(\tau) = \Pe(s_0)\prod_{t = 0}^{+\infty} \pi_{\b\theta}(a_t \mid s_t)\Pe(s_{t + 1} \mid s_t, a_t)
+\P_\pi(\tau) = \Pe(s_0)\prod_{t = 0}^{+\infty} \pi(a_t \mid s_t)\Pe(s_{t + 1} \mid s_t, a_t)
 $$
 
 这里 $\Pe(s_0)$ 表示环境初始状态为 $s_0$ 的概率。
 
-我们表示轨迹 $\tau$ 服从上述概率分布的时候，可以写成多种符号，包括 $\tau \sim \P_{\b\theta}(\tau)$ 或者 $\tau \sim \pi_{\b\theta}$ 等等，本文会使用第二种表达。
+我们表示轨迹 $\tau$ 服从上述概率分布的时候，可以写成多种符号，包括 $\tau \sim \P_\pi(\tau)$ 或者 $\tau \sim \pi$ 等等，本文会使用第二种表达。
 
 ## 累计收益与价值函数
 
@@ -67,7 +67,7 @@ $$
 之后，我们进一步定义**价值函数**。首先需要定义**状态行为价值函数**：
 
 $$
-Q^{\pi_{\b\theta}}(s, a) := \Eop_{\tau \sim \pi_{\b\theta}}[R_t(\tau) \mid s_t = s, a_t = a]
+Q^\pi(s, a) := \Eop_{\tau \sim \pi}[R_t(\tau) \mid s_t = s, a_t = a]
 $$
 
 可以注意到上述期望中 $t$ 的分布并没有指定，这里一般认为是等概率地选择一个自然数即可。
@@ -75,7 +75,7 @@ $$
 进一步即可有**状态价值函数**：
 
 $$
-V^{\pi_{\b\theta}}(s) := \Eop_{\tau \sim \pi_{\b\theta}}[R_t(\tau) \mid s_t = s]
+V^\pi(s) := \Eop_{\tau \sim \pi}[R_t(\tau) \mid s_t = s]
 $$
 
 我们可以发现状态行为价值函数描述了在状态 $s$ 下做出决策 $a$ 后期望的累计收益，也就是说该价值函数评价了给定状态下的某个决策的期望收益，所以我们常常使用状态行为价值函数辅助决策。而状态价值函数则和具体的决策无关，是衡量从某一个状态出发，能够获得的期望收益。
@@ -87,7 +87,7 @@ $$
 
 $$
 \begin{aligned}
-{\color{red} V^\pi(s)} &= \sum_{a \in \mathcal{A}} \pi(a \mid s){\color{red} Q^\pi(s, a)} \\
+{\color{red} V^\pi(s)} &= \sum_{a \in \A} \pi(a \mid s){\color{red} Q^\pi(s, a)} \\
 {\color{red} Q^\pi(s, a)} &= \sum_{s' \in \S} \Pe(s' \mid s, a)[r(s, a, s') + \gamma {\color{red} V^\pi(s')}] \\
 \end{aligned}
 $$
@@ -98,12 +98,12 @@ $$
 $$
 \begin{aligned}
 V^\pi(s) &= \Eop_{\tau \sim \pi}[R_t(\tau) \mid s_t = s] \\
-&= \sum_{\tau} \P_{\b\theta}(\tau \mid s_t = s)R_t(\tau) \\
-&= \sum_{\tau} \left(\sum_{a \in \mathcal{A}} \P_{\b\theta}(\tau, a_t = a \mid s_t = s)\right)R_t(\tau) \\
-&= \sum_{\tau} \left(\sum_{a \in \mathcal{A}} \P_{\b\theta}(\tau \mid s_t = s, a_t = a)\P_{\b\theta}(a_t = a \mid s_t = s)\right)R_t(\tau) \\
-&= \sum_{a \in \mathcal{A}} \P_{\b\theta}(a_t = a \mid s_t = s) \left(\sum_{\tau} \P_{\b\theta}(\tau \mid s_t = s, a_t = a) R_t(\tau)\right) \\
-&= \sum_{a \in \mathcal{A}} \pi(a \mid s)\Eop_{\tau \sim \pi}[R_t(\tau) \mid s_t = s, a_t = a] \\
-&= \sum_{a \in \mathcal{A}} \pi(a \mid s)Q^\pi(s, a) \\
+&= \sum_{\tau} \P_\pi(\tau \mid s_t = s)R_t(\tau) \\
+&= \sum_{\tau} \left(\sum_{a \in \A} \P_\pi(\tau, a_t = a \mid s_t = s)\right)R_t(\tau) \\
+&= \sum_{\tau} \left(\sum_{a \in \A} \P_\pi(\tau \mid s_t = s, a_t = a)\P_\pi(a_t = a \mid s_t = s)\right)R_t(\tau) \\
+&= \sum_{a \in \A} \P_\pi(a_t = a \mid s_t = s) \left(\sum_{\tau} \P_\pi(\tau \mid s_t = s, a_t = a) R_t(\tau)\right) \\
+&= \sum_{a \in \A} \pi(a \mid s)\Eop_{\tau \sim \pi}[R_t(\tau) \mid s_t = s, a_t = a] \\
+&= \sum_{a \in \A} \pi(a \mid s)Q^\pi(s, a) \\
 \end{aligned}
 $$
 
@@ -195,7 +195,7 @@ $$
 
 $$
 \begin{aligned}
-{\color{red} V^\star(s)} &= \max_{a \in \mathcal{A}} {\color{red} Q^\star(s, a)} \\
+{\color{red} V^\star(s)} &= \max_{a \in \A} {\color{red} Q^\star(s, a)} \\
 {\color{red} Q^\star(s, a)} &= \sum_{s' \in \S} \Pe(s' \mid s, a)[r(s, a, s') + \gamma {\color{red} V^\star(s')}] \\
 \end{aligned}
 $$
@@ -223,7 +223,9 @@ $$
 
 理论上我们可以求解最优 Bellman 方程得到 $V^\star$，从而就能够反推出 $\pi^\star$。然而求解最优 Bellman 方程是计算困难的，现行的强化学习方法就是在尝试近似求解最优 Bellman 方程。
 
-# Dynamic Programming (DP)
+# 基于完全环境知识的 RL 方法
+
+如果我们能够完全掌握环境，即完全掌握转移概率 $\Pe$ 和收益函数 $r$，那么我们可以使用**动态规划（Dynamic Programming, DP）**来求解最优策略。DP 方法有两种类别，分别是**策略迭代（Policy Iteration, PI）**和**值迭代（Value Iteration, VI）**。
 
 ## Policy Iteration (PI)
 
@@ -347,7 +349,7 @@ $$
 
 这里需要说明的一点是，使用值迭代求解的时候，策略是比价值函数先收敛的。这一点是显然的，因为通过价值函数获取对应的策略是贪心的。从而，在价值函数还未实际完全收敛的时候，各个状态的价值大小关系很有可能已经确定且不变化，从而从这一时间点开始，推知的策略都不会发生变化，理论上都是最优策略。
 
-值迭代的时间复杂度为 $O(|\mathcal{S}|^2|\mathcal{A}|)$。
+值迭代的时间复杂度为 $O(|\S|^2|\A|)$。
 
 ## 有关 PI 和 VI 的一些对比
 
@@ -382,13 +384,13 @@ $$
 {\color{red} V^\pi(s)} = r^\pi(s) + \gamma\sum_{s' \in \S} \P^\pi(s' \mid s){\color{red} V^\pi(s')}
 $$
 
-如果记 $\S = \{s_1, s_2, \cdots, s_n\}, n = |\mathcal{S}|$，并定义矩阵：
+如果记 $\S = \{s_1, s_2, \cdots, s_n\}, n = |\S|$，并定义矩阵：
 
 $$
 \begin{aligned}
-\b{V}^\pi &:= (v^\pi_i)^T_{n} \in \mathbb{R}^n && v^\pi_i := V^\pi(s_i) \\
-\b{R}^\pi &:= (r^\pi_i)^T_{n} \in \mathbb{R}^n && r^\pi_i := r^\pi(s_i) \\
-\b{P}^\pi &:= (p^\pi_{ij})_{n \times n} \in \mathbb{R}^{n \times n} && p^\pi_{ij} := \P^\pi(s_j \mid s_i) \\
+\b{V}^\pi &:= (v^\pi_i)^T_{n} \in \R^n && v^\pi_i := V^\pi(s_i) \\
+\b{R}^\pi &:= (r^\pi_i)^T_{n} \in \R^n && r^\pi_i := r^\pi(s_i) \\
+\b{P}^\pi &:= (p^\pi_{ij})_{n \times n} \in \R^{n \times n} && p^\pi_{ij} := \P^\pi(s_j \mid s_i) \\
 \end{aligned}
 $$
 
@@ -410,9 +412,9 @@ $$
 
 $$
 \begin{aligned}
-\b{V}^\star &:= (v^\star_i)^T_{n} \in \mathbb{R}^n && v^\star_i := V^\star(s_i) \\
-\b{R}(a) &:= (r_i(a))^T_{n} \in \mathbb{R}^n && r_i(a) := \sum_{s_j \in \S} \Pe(s_j \mid s_i, a)r(s_i, a, s_j) \\
-\b{P}(a) &:= (p_{ij}(a))_{n \times n} \in \mathbb{R}^{n \times n} && p_{ij}(a) := \Pe(s_j \mid s_i, a) \\
+\b{V}^\star &:= (v^\star_i)^T_{n} \in \R^n && v^\star_i := V^\star(s_i) \\
+\b{R}(a) &:= (r_i(a))^T_{n} \in \R^n && r_i(a) := \sum_{s_j \in \S} \Pe(s_j \mid s_i, a)r(s_i, a, s_j) \\
+\b{P}(a) &:= (p_{ij}(a))_{n \times n} \in \R^{n \times n} && p_{ij}(a) := \Pe(s_j \mid s_i, a) \\
 \end{aligned}
 $$
 
@@ -468,7 +470,7 @@ $$
 
 ---
 
-基于该引理，我们只需要说明最优 Bellman 算子也满足引理所述条件即可。在空间 $\mathcal{S}$ 上取其 $L^{\infty}$ 范数（即各分量最大值）。我们证明最优 Bellman 算子是压缩的：
+基于该引理，我们只需要说明最优 Bellman 算子也满足引理所述条件即可。在空间 $\S$ 上取其 $L^{\infty}$ 范数（即各分量最大值）。我们证明最优 Bellman 算子是压缩的：
 
 $$
 \begin{aligned}
@@ -489,20 +491,40 @@ $$
 \lim_{n \to \infty} \mathcal{T}^{\pi(n)}\b{V}_0 = \b{V}^\pi, \lim_{n \to \infty} \mathcal{T}^{\star(n)}\b{V}_0 = \b{V}^\star
 $$
 
-# Monte-Carlo 方法
+# 基于环境交互的 RL 方法
+
+如果我们无法掌握环境的信息，我们就需要令智能体与环境交互以收集信息。而这也是当前绝大多数 RL 问题需要采用的方法，因为我们完全能掌握的环境几乎不存在。
+
+一般这类 RL 方法的流程事实上近似于策略迭代，也被称为**广义策略迭代（General Policy Iteration, GPI）**。GPI 的流程是首先初始化一个价值函数和策略 $V, \pi$，并不断重复下述两个操作：
+
+- （策略评估）更新价值函数使得其符合当前的策略，即 $V = V^\pi$
+- （策略改进）根据当前价值函数贪心地更新策略，即 $\pi = {\rm greedy}(V)$
+
+当然，这里是以状态价值函数 $V$ 作为比方，事实上状态行为价值函数 $Q$ 也可以应用到上述流程中。
+
+具体讲解之前，首先引入**同轨（On-policy）**和**异轨（Off-policy）**的概念。这类 RL 方法中智能体所执行的策略一般有两种用途，其一是用于与环境交互收集转移轨迹，这个策略称为**采样策略（Sample Policy）**或者**行为策略（Behavioral Policy）**，其二是用于在环境中获取收益，这个策略称为**目标策略（Target Policy）**。如果一个智能体的行为策略和目标策略是不一致的，那这个方法就是异轨的，相对应地，行为策略和目标策略一致的时候这个方法是同轨的。
+
+如果采用同轨方法，那么策略评估、策略改进的流程就是简单的，也就是按照描述迭代即可。然而如果采用异轨方法，通用的方法是：
+
+- 策略评估时应当估算**目标策略**的价值函数
+- 策略改进时应当贪心地生成**行为策略**
+
+## 策略评估
+
+### Monte-Carlo (MC)
 
 DP 方法的一个重要局限在于，其必须要对环境有完整的了解，也就是对 $\Pe, r$ 有完整的理解才能进行，然而对于现实的问题，这是完全不可能的。这也就是需要让智能体不断和环境交互的原因，因为我们需要通过智能体的探索来获取环境的信息。
 
-这里简单提一下 model-free RL 与 model-based RL 的概念。在智能体和环境交互的过程中，事实上我们有两种选择，其一是让智能体去和真实的环境作交互，这就是 model-free RL 方法。其二是我们事先使用另外一个模型去拟合环境，让智能体和这个模型交互，这就是 model-based RL 方法。model-based RL 方法的优势在于，如果智能体和真实的环境交互成本高昂或者环境响应较慢，则可以用于大幅降低实验成本。但相应地，model-based RL 方法也需要一个相当优越的和环境契合的模型才能让智能体真正学习到最优策略。
+这里简单提一下**无模型（Model-free）**与**基于模型（Model-based）**的概念。在智能体和环境交互的过程中，事实上我们有两种选择，其一是让智能体去和真实的环境作交互，这就是无模型方法。其二是我们事先使用另外一个模型去拟合环境，让智能体和这个模型交互，这就是基于模型方法。基于模型方法的优势在于，如果智能体和真实的环境交互成本高昂或者环境响应较慢，则可以用于大幅降低实验成本。但相应地，基于模型方法也需要一个相当优越的和环境契合的模型才能让智能体真正学习到最优策略。
 
-这里提到的 Monte-Carlo 方法是 model-free RL 方法，其核心是不断让智能体和环境交互采样，用样本均值拟合价值函数。
+这里提到的 Monte-Carlo 方法是无模型方法，其核心是不断让智能体和环境交互采样，用样本均值拟合价值函数。
 
 其算法思想极其简单，流程如下：
 
 - 获取待评测的策略 $\pi$
 - 初始化访问计数器 $N(s) \leftarrow 0, s \in \S$，以及价值函数估计值 $V(s), s \in \S$
 - 不断重复下述
-    - 使用策略 $\pi$ 获取 trajectory $\tau$
+    - 使用策略 $\pi$ 获取轨迹 $\tau$
     - 对每一个 $s \in \tau$ 以及其在 $\tau$ 中出现的时刻 $t$ 进行下述
         - 递增计数器 $N(s) \leftarrow N(s) + 1$
         - 更新价值函数估计 $V(s) \leftarrow V(s) + \dfrac{1}{N(s)}(G_t(\tau) - V(s))$
@@ -517,7 +539,11 @@ $$
 
 另一方面，Monte-Carlo 方法也因为低效和并没有充分利用 Bellman 方程而具有缺陷。
 
-# Temporal-Difference 方法
+{% note info no-icon %}
+GPI 中使用 MC 方法做策略评估的算法一般称为 **Monte-Carlo 控制算法**。
+{% endnote %}
+
+### Temporal-Difference (TD)
 
 TD 方法与 MC 方法目标是一致的，也是尽力取得价值函数的准确估计。但是两者的核心差别在于，TD 方法是一个更新力度更小的 bootstrap 方法，TD 方法会在每一次决策后进行更新。这种逐步更新的问题在于我们无法精确获取某一个状态的累计收益，所以我们需要虚化一个更新目标，这也就是所谓的 TD target。
 
@@ -549,9 +575,13 @@ $$
 
 简而言之，MC 方法较 TD 方法而言有着更深的探索。而 DP 方法（尤其是 VI）则是遍历所有可能的后继状态进行更新，从而具有更广泛的视角，也就拥有广度。与这三者均不同的则是搜索，其需要完整探索整个决策树，但这自然是相当浪费资源的。
 
-## 多步 TD target 与 TD($\lambda$)
+{% note info no-icon %}
+GPI 中使用 TD 方法做策略评估的算法一般称为 **TD 控制算法**或者**时序差分控制算法**。
+{% endnote %}
 
-TD target 事实上可以设置为多步的。传统的 TD target 是单步的，即仅仅考虑 trajectory 上的一步转移。考虑多步 TD target，不妨考虑三步，假定 trajectory 上有三步转移片段 $s_t, a_t, r_{t + 1}; s_{t + 1}, a_{t + 1}, r_{t + 2}; s_{t + 2}, a_{t + 2}, r_{t + 3}; s_{t + 3}$，那么 TD target 可以定义为：
+#### 多步 TD target 与 TD($\lambda$)
+
+TD target 事实上可以设置为多步的。传统的 TD target 是单步的，即仅仅考虑轨迹上的一步转移。考虑多步 TD target，不妨考虑三步，假定轨迹上有三步转移片段 $s_t, a_t, r_{t + 1}; s_{t + 1}, a_{t + 1}, r_{t + 2}; s_{t + 2}, a_{t + 2}, r_{t + 3}; s_{t + 3}$，那么 TD target 可以定义为：
 
 $$
 {\rm TD\ target} := r_{t + 1} + \gamma r_{t + 2} + \gamma^2 r_{t + 3} + \gamma^3 V(s_{t + 3})
@@ -568,3 +598,206 @@ G^\lambda_t := (1 - \lambda)\sum_{n = 1}^{+\infty}\lambda^{n - 1}G_t^{(n)}
 $$
 
 传统的 TD 方法即 $\lambda = 0$ 的 TD($\lambda$) 方法。
+
+#### Backward-view TD($\lambda$) & Eligibility Traces
+
+然而使用 $\lambda \neq 0$ 的 TD($\lambda$) 方法的时候显然存在一个问题，那就是由于 $G^\lambda_t$ 的求和上限是 $+\infty$，这就代表我们需要让智能体在环境中一直采样到轨迹终止。这样的话事实上就违背了使用 TD($\lambda$) 方法的初衷，我们希望在保持 TD 方法的效率的基础上引入多步实际采样来做到更精准的估计，所以要求采样到轨迹终止是不能容忍的。
+
+一种简单的解决方式，那就是用 Backward-view TD($\lambda$) 取代上面的 Forward-view TD($\lambda$)。Forward-view 的含义是通过未来的 $s_{t + 1}, s_{t + 2}, \cdots$ 来更新 $V(s_t)$ 的估计。而 Backward-view 与之相反，其通过之前经历的状态和轨迹确定价值函数估计。
+
+一种直观的解释是，Backward-view 就是反思先前的哪一个决策是导致到达当前状态的核心原因。
+
+我们定义**效用函数（Eligibility）**为 $E_t(s), s \in \S$，这里下标 $t$ 表示不同的时间的效用函数都是不同的。我们引入效用函数的目的是将其作为权重引入价值函数更新流程中，表示 TD error 以多大程度影响价值函数估计：
+
+$$
+V(s_t) \leftarrow V(s_t) + \alpha\delta_tE_t(s_t) = V(s_t) + \alpha E_t(s_t)(r_{t + 1} + \gamma V(s_{t + 1}) - V(s_t))
+$$
+
+然后，定义效用函数的初始化和更新原则：
+
+$$
+\begin{aligned}
+&E_0(s) = 0, \forall s \in \S \\
+&E_t(s) = \gamma\lambda E_{t - 1}(s) + \b{1}(s_t = s), \forall t \in \mathbb{N}^+, s \in \S \\
+\end{aligned}
+$$
+
+现在简单从数学角度说明使用效用函数的 Backward-view TD($\lambda$) 与 Forward-view TD($\lambda$) 方法等价。为了简化，这里假设轨迹中经历过的状态后续不在经过。假设我们在 $k$ 时刻到达了状态 $s_k$，那么：
+
+$$
+E_t(s_k) = \begin{cases}
+0 & t < k \\
+(\gamma\lambda)^{t - k} & t \geq k \\
+\end{cases}
+$$
+
+那么使用效用函数时，我们在迭代终止时得到的状态 $s_k$ 的价值函数估计为（价值函数上标 ${\rm B}$ 表示后向视角）：
+
+$$
+V_{+\infty}^{\rm B}(s_k) = V_0(s_k) + \sum_{t = 1}^{+\infty} \alpha\delta_tE_t(s_k) = V_0(s_k) + \alpha\sum_{t = k}^{+\infty} (\gamma\lambda)^{t - k}\delta_t = V_0(s_k) + \alpha\sum_{t = 0}^{+\infty} (\gamma\lambda)^t\delta_{t + k}
+$$
+
+考虑下述计算：
+
+$$
+\begin{aligned}
+G_t^\lambda - V_t(s_t) &= -V_t(s_t) + (1 - \lambda)\sum_{n = 1}^{+\infty}\lambda^{n - 1}G_t^{(n)} \\
+&= -V_t(s_t) + (1 - \lambda)\sum_{n = 1}^{+\infty}\lambda^{n - 1}\left(\gamma^nV_t(s_{t + n}) + \sum_{i = 1}^n \gamma^{i - 1}r_{t + i}\right) \\
+&= -V_t(s_t) + \sum_{n = 1}^{+\infty}\lambda^{n - 1}\left(\gamma^nV_t(s_{t + n}) + \sum_{i = 1}^n \gamma^{i - 1}r_{t + i}\right) -  \sum_{n = 1}^{+\infty}\lambda^n\left(\gamma^nV_t(s_{t + n}) + \sum_{i = 1}^n \gamma^{i - 1}r_{t + i}\right) \\
+&= -V_t(s_t) + \sum_{n = 0}^{+\infty}\lambda^n\left(\gamma^{n + 1}V_t(s_{t + n + 1}) + \sum_{i = 1}^{n + 1} \gamma^{i - 1}r_{t + i}\right) -  \sum_{n = 1}^{+\infty}\lambda^n\left(\gamma^nV_t(s_{t + n}) + \sum_{i = 1}^n \gamma^{i - 1}r_{t + i}\right) \\
+&= -V_t(s_t) + \gamma V_t(s_{t + 1}) + r_{t + 1} + \sum_{n = 1}^{+\infty} \lambda^n\left(\gamma^{n + 1}V_t(s_{t + n + 1}) - \gamma^nV_t(s_{t + n}) + \gamma^nr_{t + n + 1}\right) \\
+&= \sum_{n = 0}^{+\infty} \lambda^n\left(\gamma^{n + 1}V_t(s_{t + n + 1}) - \gamma^nV_t(s_{t + n}) + \gamma^nr_{t + n + 1}\right) \\
+&= \sum_{n = 0}^{+\infty} \gamma^n\lambda^n\left(\gamma V_t(s_{t + n + 1}) - V_t(s_{t + n}) + r_{t + n + 1}\right) \\
+&\approx \sum_{n = 0}^{+\infty} \gamma^n\lambda^n\left(\gamma V_{t + n}(s_{t + n + 1}) - V_{t + n}(s_{t + n}) + r_{t + n + 1}\right) \\
+&= \sum_{n = 0}^{+\infty} (\gamma\lambda)^n\delta_{t + n}
+\end{aligned}
+$$
+
+这就说明通过效用函数，我们最终得到的状态 $s_k$ 的价值函数估计为：
+
+$$
+V_{+\infty}^{\rm B}(s_k) = V_0(s_k) + \alpha(G_k^\lambda - V_k(s_k))
+$$
+
+而如果通过 Forward-view TD($\lambda$)，由于后续不在经历 $s_k$，那么 $s_k$ 的价值函数只会在时刻 $k$ 发生一步更新，其余时刻并不更新。而在时刻 $k$，TD target 为 $G_k^\lambda$，即可得到最终的价值函数估计（价值函数上标 ${\rm F}$ 表示前向视角）：
+
+$$
+V_{+\infty}^{\rm F}(s_k) = V_0(s_k) + \alpha(G_k^\lambda - V_k(s_k))
+$$
+
+从而证明完毕。事实上，如果去掉状态不重复的假设，也只是把每次经过该状态时的状态函数值变化拆开，每一部分都可以通过上面的过程证明两个视角的等价性，从而求和后依然是等价的。
+
+{% note info no-icon %}
+这里简单说明 RL 中**在线（Online）**和**离线（Offline）**的区别。在线指的是智能体通过策略收集环境信息和通过这些信息更新策略是同时的，而离线则指的是通过某个固定策略在环境中收集信息，然后离线通过这些数据更新策略。
+
+在线算法的特征在于价值函数估计在每个时间步都会发生更新。而离线算法由于已经事先采集若干条轨迹，所以更新的粒度是整条轨迹，即完整考虑一条轨迹，每次完整读取完一条轨迹后做一次价值函数估计更新。
+
+上述推理中使用了约等于，这仅限于在线场景，而对于离线场景，价值函数 $V_t$ 中下标 $t$ 即失效（不再每个时间步更新），此时约等于变为严格等于。这也就说明两个视角在离线条件下是严格等价，在在线条件下是大致等价。
+{% endnote %}
+
+## 策略改进
+
+策略改进的方式实际上不拘一格，这和策略评估相对手段有限形成对比的原因是，策略评估严格要求价值函数收敛到当前策略（采用异轨方法时是当前目标策略）的真实价值函数，而策略改进仅仅是要求贪心地生成，并没有严格要求生成方式。
+
+常见的策略改进之一就是**完全贪心策略（Greedy Policy）**，最优 Bellman 方程 $V^\star(s) = \max_{a \in \A} Q^\star(s, a)$ 保证了完全贪心策略依然可以收敛到最优策略：
+
+$$
+\pi(a \mid s) := \begin{cases}
+1 & a = \argmax_{a' \in \A} Q(s, a') \\
+0 & {\rm otherwise} \\
+\end{cases}
+$$
+
+然而这种方法并不一定在实际上优越，这是因为一个策略往往需要同时考虑下面两种相对立的优化目标：
+
+- （Exploration）能够充分探索未知的状态和行为，增加对环境的认识
+- （Exploitation）能够充分利用已经掌握的环境信息，获取尽可能高的累计收益
+
+Exploration 会要求目标策略更加激进而 Exploitation 会要求目标策略更加保守，如何平衡这两者以获取高收益也就是这一类 RL 方法的核心。
+
+一种简单的方式是 **$\varepsilon$ 贪心策略（$\varepsilon$ Greedy Policy）**，其表现为：
+
+$$
+\pi(a \mid s) := \begin{cases}
+\varepsilon / |\A| + 1 - \varepsilon & a = \argmax_{a' \in \A} Q(s, a') \\
+\varepsilon / |\A| & {\rm otherwise} \\
+\end{cases}
+$$
+
+当然，还会有类似 **Boltzman 探索**之类的并不常见的策略改进：
+
+$$
+\pi(a \mid s) := \frac{\exp(Q(s, a) / T)}{\sum_{a' \in \A} \exp(Q(s, a') / T)}
+$$
+
+{% note success no-icon %}
+**Definition 3.01 (GLIE)** 假设第 $k$ 时刻策略改进得到策略 $\pi_k$，状态行为价值函数 $Q_k$，记经过 $k$ 时长后策略在状态 $s$ 处做出决策 $a$ 的次数为 $N(s, a)$。我们称该策略改进是 **Greedy in the Limit with Infinite Exploration (GLIE)**，如果：
+
+- 充分长时间后所有状态决策对均探索无穷次
+
+$$
+\lim_{k \to +\infty} N_k(s, a) = +\infty, \forall s \in \S, a \in \A
+$$
+
+- 策略最终收敛到贪心策略
+
+$$
+\lim_{k \to +\infty} \pi_k(a \mid s) = \b{1}\left(a = \argmax_{a' \in \A} Q_k(s, a')\right), \forall s \in \S, a \in \A
+$$
+{% endnote %}
+
+Boltzman 探索是 GLIE，而 $\varepsilon$ 贪心策略则可能不是 GLIE。
+
+现在我们将会介绍以 TD 方法的策略评估为基础的几种 RL 方法。
+
+# 时序差分控制
+
+## 同轨时序差分控制（SARSA）
+
+在同轨时序差分控制之中使用 $\varepsilon$ 贪心策略即可得到 SARSA 算法。若令时刻 $t$ 智能体位于状态 $s_t$，做出决策 $a_t$ 转移到状态 $s_{t + 1}$ 并获得收益 $r_{t + 1}$，如果其下一时刻做出决策 $a_{t + 1}$，可以得到其策略评估阶段所采用的更新为：
+
+$$
+Q(s_t, a_t) \leftarrow Q(s_t, a_t) + \alpha[r_{t + 1} + \gamma Q(s_{t + 1}, a_{t + 1}) - Q(s_t, a_t)]
+$$
+
+每次更新后利用价值函数的估计通过 $\varepsilon$ 贪心策略即可完成策略改进阶段。
+
+## 异轨时序差分控制（Q learning）
+
+在异轨时序差分控制中，令目标策略为完全贪心策略，行为策略为 $\varepsilon$ 贪心策略即可得到 Q learning 算法。若令时刻 $t$ 智能体位于状态 $s_t$，做出决策 $a_t$ 转移到状态 $s_{t + 1}$ 并获得收益 $r_{t + 1}$，可以得到其策略评估阶段所采用的更新为：
+
+$$
+Q(s_t, a_t) \leftarrow Q(s_t, a_t) + \alpha\left[r_{t + 1} + \gamma\max_{a \in \A} Q(s_{t + 1}, a) - Q(s_t, a_t)\right]
+$$
+
+每次更新后利用价值函数的估计通过 $\varepsilon$ 贪心策略即可完成策略改进阶段。
+
+# 函数估计与深度学习
+
+我们可以注意到上述介绍的所有算法，如果直接运用的话可能面临一些困难，这是因为现实问题的状态空间和决策空间都是巨大的，我们很难如实记录每一次迭代时价值函数在每个状态、每个行为上的值，这会需要大量的存储空间。
+
+解决这一问题的最常用方案就是构造函数估计。例如，我们需要拟合一个难以直接计算的函数 $f$，我们可以使用一系列较小的参数 $\b w$ 构造一个相对容易计算的函数 $f_{\b w}$，尝试通过某种方式调整参数 $\b w$ 以令 $f_{\b w} \approx f$。这样就可以使用 $f_{\b w}$ 来代替 $f$ 使用。
+
+函数估计的方式是多样的，可行的方式包括线性拟合、决策树、最近邻等。当然，目前最为普遍的方式是使用神经网络，而调整参数的方式一般是梯度下降算法。
+
+假设我们现在需要使用神经网络学习策略 $\pi$ 的状态价值函数 $V^\pi$，我们使用参数 $\b w$ 构建一个函数 $V_{\b w}$。我们可以利用 MSE 来构建一个简单的衡量拟合效果的损失函数：
+
+$$
+\mathcal{J}(\b w) := \Eop_{\tau \sim \pi} \left[\frac{1}{|\tau|} \sum_{s \in \tau} (V^\pi(s) - V_{\b w}(s))^2\right]
+$$
+
+之后我们计算其梯度：
+
+$$
+\begin{aligned}
+\nabla_{\b w}\mathcal{J}(\b w) &= \nabla_{\b w}\Eop_{\tau \sim \pi} \left[\frac{1}{|\tau|} \sum_{s \in \tau} (V^\pi(s) - V_{\b w}(s))^2\right] \\
+&= \Eop_{\tau \sim \pi} \left[\frac{1}{|\tau|} \sum_{s \in \tau} \nabla_{\b w}(V^\pi(s) - V_{\b w}(s))^2\right] \\
+&= -2\Eop_{\tau \sim \pi} \left[\frac{1}{|\tau|} \sum_{s \in \tau} (V^\pi(s) - V_{\b w}(s))\nabla_{\b w}V_{\b w}(s)\right]
+\end{aligned}
+$$
+
+设定学习率为 $-1/2 \cdot \alpha$，即可得到参数 $\b w$ 的更新方式：
+
+$$
+\b w \leftarrow \b w - \frac{1}{2}\alpha\nabla_{\b w}\mathcal{J}(\b w) = \b w + \alpha\Eop_{\tau \sim \pi} \left[\frac{1}{|\tau|} \sum_{s \in \tau} ({\color{red} V^\pi(s)} - V_{\b w}(s))\nabla_{\b w}V_{\b w}(s)\right]
+$$
+
+这里注意上述策略中标红项，显然这里我们需要得到真实值，或者可靠的真实值估计才能更新参数。而由于强化学习非监督学习，这里不存在标签，所以只能通过采样或者估计的方式处理这一项。
+
+如果采用 MC 方法，这一项就可以使用轨迹累计收益：
+
+$$
+\b w \leftarrow \b w + \alpha\Eop_{\tau \sim \pi} \left[\frac{1}{|\tau|} \sum_{s \in \tau} ({\color{red} G_t(\tau)} - V_{\b w}(s))\nabla_{\b w}V_{\b w}(s)\right]
+$$
+
+如果采用 TD 方法，这一项就可以使用 bootstrap 的 TD target：
+
+$$
+\b w \leftarrow \b w + \alpha\Eop_{\tau \sim \pi} \left[\frac{1}{|\tau|} \sum_{(s, r, s') \in \tau} ({\color{red} r + \gamma V_{\b w}(s')} - V_{\b w}(s))\nabla_{\b w}V_{\b w}(s)\right]
+$$
+
+当然如果使用 TD($\lambda$)，这一项就是相应的 TD target。
+
+目前基于通过神经网络实现的函数估计，我们可以将 Q learning 转换为深度学习算法 DQN。
+
+## Deep Q Network (DQN)
