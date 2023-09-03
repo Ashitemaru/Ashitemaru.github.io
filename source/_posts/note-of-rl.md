@@ -19,6 +19,7 @@ $$
 \newcommand{\A}{\mathcal{A}}
 \newcommand{\Eop}{\mathop{\mathbb{E}}}
 \newcommand{\b}{\boldsymbol}
+\newcommand{\d}{\mathrm{d}}
 \newcommand{\argmax}{\mathop{\rm argmax}}
 $$
 
@@ -59,23 +60,23 @@ $$
 对一条轨迹，**累计收益（Utility）**的定义为：
 
 $$
-R_t(\tau) := \sum_{k = 0}^{+\infty} \gamma^k r_{t + k + 1}
+G_t(\tau) := \sum_{k = 0}^{+\infty} \gamma^k r_{t + k + 1}
 $$
+
+其中 $t = 0$ 时，$G_0$ 可以简写为 $G$。
 
 这里注意到我们累加收益的时候需要不断使用衰减因子进行衰减，这一操作主要是为了拟合现实中距离现在越远的行为对当前决策的影响越小的特征，这一操作同时也保证了收敛性。
 
 之后，我们进一步定义**价值函数**。首先需要定义**状态行为价值函数**：
 
 $$
-Q^\pi(s, a) := \Eop_{\tau \sim \pi}[R_t(\tau) \mid s_t = s, a_t = a]
+Q^\pi(s, a) := \Eop_{\tau \sim \pi}[G(\tau) \mid s_0 = s, a_0 = a]
 $$
-
-可以注意到上述期望中 $t$ 的分布并没有指定，这里一般认为是等概率地选择一个自然数即可。
 
 进一步即可有**状态价值函数**：
 
 $$
-V^\pi(s) := \Eop_{\tau \sim \pi}[R_t(\tau) \mid s_t = s]
+V^\pi(s) := \Eop_{\tau \sim \pi}[G(\tau) \mid s_0 = s]
 $$
 
 我们可以发现状态行为价值函数描述了在状态 $s$ 下做出决策 $a$ 后期望的累计收益，也就是说该价值函数评价了给定状态下的某个决策的期望收益，所以我们常常使用状态行为价值函数辅助决策。而状态价值函数则和具体的决策无关，是衡量从某一个状态出发，能够获得的期望收益。
@@ -97,12 +98,12 @@ $$
 
 $$
 \begin{aligned}
-V^\pi(s) &= \Eop_{\tau \sim \pi}[R_t(\tau) \mid s_t = s] \\
-&= \sum_{\tau} \P_\pi(\tau \mid s_t = s)R_t(\tau) \\
-&= \sum_{\tau} \left(\sum_{a \in \A} \P_\pi(\tau, a_t = a \mid s_t = s)\right)R_t(\tau) \\
-&= \sum_{\tau} \left(\sum_{a \in \A} \P_\pi(\tau \mid s_t = s, a_t = a)\P_\pi(a_t = a \mid s_t = s)\right)R_t(\tau) \\
-&= \sum_{a \in \A} \P_\pi(a_t = a \mid s_t = s) \left(\sum_{\tau} \P_\pi(\tau \mid s_t = s, a_t = a) R_t(\tau)\right) \\
-&= \sum_{a \in \A} \pi(a \mid s)\Eop_{\tau \sim \pi}[R_t(\tau) \mid s_t = s, a_t = a] \\
+V^\pi(s) &= \Eop_{\tau \sim \pi}[G(\tau) \mid s_0 = s] \\
+&= \sum_{\tau} \P_\pi(\tau \mid s_0 = s)G(\tau) \\
+&= \sum_{\tau} \left(\sum_{a \in \A} \P_\pi(\tau, a_0 = a \mid s_0 = s)\right)G(\tau) \\
+&= \sum_{\tau} \left(\sum_{a \in \A} \P_\pi(\tau \mid s_0 = s, a_0 = a)\P_\pi(a_0 = a \mid s_0 = s)\right)G(\tau) \\
+&= \sum_{a \in \A} \P_\pi(a_0 = a \mid s_0 = s) \left(\sum_{\tau} \P_\pi(\tau \mid s_0 = s, a_0 = a) G(\tau)\right) \\
+&= \sum_{a \in \A} \pi(a \mid s)\Eop_{\tau \sim \pi}[G(\tau) \mid s_0 = s, a_0 = a] \\
 &= \sum_{a \in \A} \pi(a \mid s)Q^\pi(s, a) \\
 \end{aligned}
 $$
@@ -112,19 +113,19 @@ $$
 我们考虑其证明，首先我们显然有这个等式：
 
 $$
-r(s, a, s') = \Eop_{\tau \sim \pi}[r_{t + 1} \mid s_t = s, a_t = a, s_{t + 1} = s']
+r(s, a, s') = \Eop_{\tau \sim \pi}[r_1 \mid s_0 = s, a_0 = a, s_1 = s']
 $$
 
 之后考虑对状态行为价值函数的单步展开：
 
 $$
 \begin{aligned}
-Q^\pi(s) &= \Eop_{\tau \sim \pi}[R_t(\tau) \mid s_t = s, a_t = a] \\
-&= \Eop_{\tau \sim \pi}\left[\sum_{k = 0}^{+\infty} \gamma^k r_{t + k + 1} \middle| s_t = s, a_t = a\right] \\
-&= \Eop_{\tau \sim \pi}\left[r_{t + 1} + \sum_{k = 1}^{+\infty} \gamma^k r_{t + k + 1} \middle| s_t = s, a_t = a\right] \\
-&= \Eop_{\tau \sim \pi}\left[r_{t + 1} + \gamma\sum_{k = 0}^{+\infty} \gamma^k r_{t + k + 2} \middle| s_t = s, a_t = a\right] \\
-&= \Eop_{\tau \sim \pi}[r_{t + 1} \mid s_t = s, a_t = a] + \Eop_{\tau \sim \pi}\left[\gamma\sum_{k = 0}^{+\infty} \gamma^k r_{(t + 1) + k + 1} \middle| s_t = s, a_t = a\right] \\
-&= \Eop_{\tau \sim \pi}[r_{t + 1} \mid s_t = s, a_t = a] + \gamma\Eop_{\tau \sim \pi}[R_{t + 1}(\tau) \mid s_t = s, a_t = a] \\
+Q^\pi(s) &= \Eop_{\tau \sim \pi}[G(\tau) \mid s_0 = s, a_0 = a] \\
+&= \Eop_{\tau \sim \pi}\left[\sum_{k = 0}^{+\infty} \gamma^k r_{k + 1} \middle| s_0 = s, a_0 = a\right] \\
+&= \Eop_{\tau \sim \pi}\left[r_1 + \sum_{k = 1}^{+\infty} \gamma^k r_{k + 1} \middle| s_0 = s, a_0 = a\right] \\
+&= \Eop_{\tau \sim \pi}\left[r_1 + \gamma\sum_{k = 0}^{+\infty} \gamma^k r_{k + 2} \middle| s_0 = s, a_0 = a\right] \\
+&= \Eop_{\tau \sim \pi}[r_1 \mid s_0 = s, a_0 = a] + \Eop_{\tau \sim \pi}\left[\gamma\sum_{k = 0}^{+\infty} \gamma^k r_{k + 2} \middle| s_0 = s, a_0 = a\right] \\
+&= \Eop_{\tau \sim \pi}[r_1 \mid s_0 = s, a_0 = a] + \gamma\Eop_{\tau \sim \pi}[G_1(\tau) \mid s_0 = s, a_0 = a] \\
 \end{aligned}
 $$
 
@@ -132,15 +133,15 @@ $$
 
 $$
 \begin{aligned}
-\Eop_{\tau \sim \pi}[r_{t + 1} \mid s_t = s, a_t = a] &= \sum_{s' \in \S} \Pe(s' \mid s, a) \Eop_{\tau \sim \pi}[r_{t + 1} \mid s_t = s, a_t = a, s_{t + 1} = s'] \\
+\Eop_{\tau \sim \pi}[r_1 \mid s_0 = s, a_0 = a] &= \sum_{s' \in \S} \Pe(s' \mid s, a) \Eop_{\tau \sim \pi}[r_1 \mid s_0 = s, a_0 = a, s_1 = s'] \\
 &= \sum_{s' \in \S} \Pe(s' \mid s, a)r(s, a, s') \\
-\Eop_{\tau \sim \pi}[R_{t + 1}(\tau) \mid s_t = s, a_t = a] &= \sum_{s' \in \S} \Pe(s' \mid s, a) \Eop_{\tau \sim \pi}[R_{t + 1}(\tau) \mid s_t = s, a_t = a, s_{t + 1} = s'] \\
-&= \sum_{s' \in \S} \Pe(s' \mid s, a) \Eop_{\tau \sim \pi}[R_{t + 1}(\tau) \mid s_{t + 1} = s'] \\
+\Eop_{\tau \sim \pi}[G_1(\tau) \mid s_0 = s, a_0 = a] &= \sum_{s' \in \S} \Pe(s' \mid s, a) \Eop_{\tau \sim \pi}[G_1(\tau) \mid s_0 = s, a_0 = a, s_1 = s'] \\
+&= \sum_{s' \in \S} \Pe(s' \mid s, a) \Eop_{\tau \sim \pi}[G_1(\tau) \mid s_1 = s'] \\
 &= \sum_{s' \in \S} \Pe(s' \mid s, a)V^\pi(s') \\
 \end{aligned}
 $$
 
-这里注意到处理第二个条件期望的时候，直接删去了 $s_t = s$ 和 $a_t = a$ 两个条件，这是因为 $R_{t + 1}(\tau)$ 与 $s_t, a_t$ 无关，可以直接删去而不影响最后的期望。
+这里注意到处理第二个条件期望的时候，直接删去了 $s_0 = s$ 和 $a_0 = a$ 两个条件，这是因为 $G_1(\tau)$ 与 $s_0, a_0$ 无关，可以直接删去而不影响最后的期望。
 
 将此代入原有展开式即可证明完毕。
 
@@ -283,44 +284,44 @@ $$
 $$
 \begin{aligned}
 &\sum_{s' \in \S} \Pe(s' \mid s, \pi'(s))r(s, \pi'(s), s') \\
-=& \sum_{s' \in \S} \Pe(s' \mid s, \pi'(s))\Eop_{\tau \sim \pi'}[r_{t + 1} \mid s_t = s, a_t = \pi'(s), s_{t + 1} = s'] \\
-=& \sum_{a \in \A} \pi'(a \mid s)\sum_{s' \in \S} \Pe(s' \mid s, a)\Eop_{\tau \sim \pi'}[r_{t + 1} \mid s_t = s, a_t = a, s_{t + 1} = s'] \\
-=& \Eop_{\tau \sim \pi'}[r_{t + 1} \mid s_t = s]
+=& \sum_{s' \in \S} \Pe(s' \mid s, \pi'(s))\Eop_{\tau \sim \pi'}[r_1 \mid s_0 = s, a_0 = \pi'(s), s_1 = s'] \\
+=& \sum_{a \in \A} \pi'(a \mid s)\sum_{s' \in \S} \Pe(s' \mid s, a)\Eop_{\tau \sim \pi'}[r_1 \mid s_0 = s, a_0 = a, s_1 = s'] \\
+=& \Eop_{\tau \sim \pi'}[r_1 \mid s_0 = s]
 \end{aligned}
 $$
 
 即得到：
 
 $$
-V^\pi(s) \leq \Eop_{\tau \sim \pi'}[r_{t + 1} \mid s_t = s] + \gamma\sum_{s' \in \S} \Pe(s' \mid s, \pi'(s)) V^\pi(s')
+V^\pi(s) \leq \Eop_{\tau \sim \pi'}[r_1 \mid s_0 = s] + \gamma\sum_{s' \in \S} \Pe(s' \mid s, \pi'(s)) V^\pi(s')
 $$
 
 对这个不等式迭代展开：
 
 $$
 \begin{aligned}
-V^\pi(s) &\leq \Eop_{\tau \sim \pi'}[r_{t + 1} \mid s_t = s] + \gamma\sum_{s' \in \S} \Pe(s' \mid s, \pi'(s)) V^\pi(s') \\
-&\leq \Eop_{\tau \sim \pi'}[r_{t + 1} \mid s_t = s] + \gamma\sum_{s' \in \S} \Pe(s' \mid s, \pi'(s)) \left[\Eop_{\tau \sim \pi'}[r_{t + 2} \mid s_{t + 1} = s'] + \gamma\sum_{s'' \in \S} \Pe(s'' \mid s', \pi'(s')) V^\pi(s'')\right] \\
-&= \Eop_{\tau \sim \pi'}[r_{t + 1} \mid s_t = s] + \gamma{\color{red} \sum_{s' \in \S} \Pe(s' \mid s, \pi'(s))\Eop_{\tau \sim \pi'}[r_{t + 2} \mid s_{t + 1} = s']} + \gamma^2\sum_{s' \in \S}\sum_{s'' \in \S}\Pe(s'' \mid s', \pi'(s')) V^\pi(s'') \\
+V^\pi(s) &\leq \Eop_{\tau \sim \pi'}[r_1 \mid s_0 = s] + \gamma\sum_{s' \in \S} \Pe(s' \mid s, \pi'(s)) V^\pi(s') \\
+&\leq \Eop_{\tau \sim \pi'}[r_1 \mid s_0 = s] + \gamma\sum_{s' \in \S} \Pe(s' \mid s, \pi'(s)) \left[\Eop_{\tau \sim \pi'}[r_2 \mid s_1 = s'] + \gamma\sum_{s'' \in \S} \Pe(s'' \mid s', \pi'(s')) V^\pi(s'')\right] \\
+&= \Eop_{\tau \sim \pi'}[r_1 \mid s_0 = s] + \gamma{\color{red} \sum_{s' \in \S} \Pe(s' \mid s, \pi'(s))\Eop_{\tau \sim \pi'}[r_2 \mid s_1 = s']} + \gamma^2\sum_{s' \in \S}\sum_{s'' \in \S}\Pe(s'' \mid s', \pi'(s')) V^\pi(s'') \\
 \end{aligned}
 $$
 
-对于红色部分，我们容易发现 $s_t = s$ 对于 $r_{t + 2}$ 的期望是无效条件，所以：
+对于红色部分，我们容易发现 $s_0 = s$ 对于 $r_2$ 的期望是无效条件，所以：
 
 $$
-\sum_{s' \in \S} \Pe(s' \mid s, \pi'(s))\Eop_{\tau \sim \pi'}[r_{t + 2} \mid s_{t + 1} = s'] = \sum_{s' \in \S} \Pe(s' \mid s, \pi'(s))\Eop_{\tau \sim \pi'}[r_{t + 2} \mid s_t = s, s_{t + 1} = s'] = \Eop_{\tau \sim \pi'}[r_{t + 2} \mid s_t = s]
+\sum_{s' \in \S} \Pe(s' \mid s, \pi'(s))\Eop_{\tau \sim \pi'}[r_2 \mid s_1 = s'] = \sum_{s' \in \S} \Pe(s' \mid s, \pi'(s))\Eop_{\tau \sim \pi'}[r_2 \mid s_0 = s, s_1 = s'] = \Eop_{\tau \sim \pi'}[r_2 \mid s_0 = s]
 $$
 
 所以：
 
 $$
-V^\pi(s) \leq \Eop_{\tau \sim \pi'}[{\color{red} r_{t + 1} + \gamma r^{t + 2}} \mid s_t = s] + {\color{green} \gamma^2\sum_{s' \in \S}\sum_{s'' \in \S}\Pe(s'' \mid s', \pi'(s')) V^\pi(s'')}
+V^\pi(s) \leq \Eop_{\tau \sim \pi'}[{\color{red} r_1 + \gamma r_2} \mid s_0 = s] + {\color{green} \gamma^2\sum_{s' \in \S}\sum_{s'' \in \S}\Pe(s'' \mid s', \pi'(s')) V^\pi(s'')}
 $$
 
-我们接下来展开绿色部分的时候，可以注意到我们需要为 $r_{t + 3}$ 的条件期望补上 $s_t = s$ 和 $s_{t + 1} = s'$ 两个无效条件，然后两个求和号通过全期望公式消去 $s_{t + 1} = s'$ 以及 $s_{t + 2} = s''$ 两个条件，故剩余的条件仅有 $s_t = s$，从而可以进一步合并到红色部分。以此类推，我们就能够说明该不等式的迭代展开是可行的，从而得到：
+我们接下来展开绿色部分的时候，可以注意到我们需要为 $r_3$ 的条件期望补上 $s_0 = s$ 和 $s_1 = s'$ 两个无效条件，然后两个求和号通过全期望公式消去 $s_1 = s'$ 以及 $s_2 = s''$ 两个条件，故剩余的条件仅有 $s_0 = s$，从而可以进一步合并到红色部分。以此类推，我们就能够说明该不等式的迭代展开是可行的，从而得到：
 
 $$
-V^\pi(s) \leq \Eop_{\tau \sim \pi'}[{\color{red} r_{t + 1} + \gamma r^{t + 2} + \gamma^2r_{t + 3} + \cdots} \mid s_t = s] = V^{\pi'}(s)
+V^\pi(s) \leq \Eop_{\tau \sim \pi'}[{\color{red} r_1 + \gamma r_2 + \gamma^2r_3 + \cdots} \mid s_0 = s] = V^{\pi'}(s)
 $$
 
 从而欲证明的不等式成立。
@@ -495,7 +496,9 @@ $$
 
 如果我们无法掌握环境的信息，我们就需要令智能体与环境交互以收集信息。而这也是当前绝大多数 RL 问题需要采用的方法，因为我们完全能掌握的环境几乎不存在。
 
-一般这类 RL 方法的流程事实上近似于策略迭代，也被称为**广义策略迭代（General Policy Iteration, GPI）**。GPI 的流程是首先初始化一个价值函数和策略 $V, \pi$，并不断重复下述两个操作：
+这里简单提一下**无模型（Model-free）**与**基于模型（Model-based）**的概念。在智能体和环境交互的过程中，事实上我们有两种选择，其一是让智能体去和真实的环境作交互，这就是无模型方法。其二是我们事先使用另外一个模型去拟合环境，让智能体和这个模型交互，这就是基于模型方法。基于模型方法的优势在于，如果智能体和真实的环境交互成本高昂或者环境响应较慢，则可以用于大幅降低实验成本。但相应地，基于模型方法也需要一个相当优越的和环境契合的模型才能让智能体真正学习到最优策略。
+
+基于环境交互的 RL 方法的流程事实上近似于策略迭代，也被称为**广义策略迭代（General Policy Iteration, GPI）**。GPI 的流程是首先初始化一个价值函数和策略 $V, \pi$，并不断重复下述两个操作：
 
 - （策略评估）更新价值函数使得其符合当前的策略，即 $V = V^\pi$
 - （策略改进）根据当前价值函数贪心地更新策略，即 $\pi = {\rm greedy}(V)$
@@ -513,34 +516,16 @@ $$
 
 ### Monte-Carlo (MC)
 
-DP 方法的一个重要局限在于，其必须要对环境有完整的了解，也就是对 $\Pe, r$ 有完整的理解才能进行，然而对于现实的问题，这是完全不可能的。这也就是需要让智能体不断和环境交互的原因，因为我们需要通过智能体的探索来获取环境的信息。
-
-这里简单提一下**无模型（Model-free）**与**基于模型（Model-based）**的概念。在智能体和环境交互的过程中，事实上我们有两种选择，其一是让智能体去和真实的环境作交互，这就是无模型方法。其二是我们事先使用另外一个模型去拟合环境，让智能体和这个模型交互，这就是基于模型方法。基于模型方法的优势在于，如果智能体和真实的环境交互成本高昂或者环境响应较慢，则可以用于大幅降低实验成本。但相应地，基于模型方法也需要一个相当优越的和环境契合的模型才能让智能体真正学习到最优策略。
-
-这里提到的 Monte-Carlo 方法是无模型方法，其核心是不断让智能体和环境交互采样，用样本均值拟合价值函数。
-
-其算法思想极其简单，流程如下：
-
-- 获取待评测的策略 $\pi$
-- 初始化访问计数器 $N(s) \leftarrow 0, s \in \S$，以及价值函数估计值 $V(s), s \in \S$
-- 不断重复下述
-    - 使用策略 $\pi$ 获取轨迹 $\tau$
-    - 对每一个 $s \in \tau$ 以及其在 $\tau$ 中出现的时刻 $t$ 进行下述
-        - 递增计数器 $N(s) \leftarrow N(s) + 1$
-        - 更新价值函数估计 $V(s) \leftarrow V(s) + \dfrac{1}{N(s)}(G_t(\tau) - V(s))$
-
-当然，还有一种并不完全使用样本均值的更新策略是，设定固定的学习率 $\alpha$，更新策略设定为：
+MC 方法计算目标策略的价值函数的方法非常简单，即使用行为策略直接采样一整条轨迹，利用这一条轨迹上的信息更新价值函数。更新方式也相对简单，直接使用算术平均值或者利用学习率更新即可。设定固定的学习率 $\alpha$，若行为策略采样得到的轨迹为 $\tau$，对该轨迹上任何一个状态 $s_t$，MC 方法的更新公式为：
 
 $$
-V(s) \leftarrow V(s) + \alpha(G_t(\tau) - V(s))
+V(s_t) \leftarrow V(s_t) + \alpha(G_t(\tau) - V(s_t))
 $$
 
-理论而言，Monte-Carlo 方法相当简易且不涉及到 bootstrap。这里 bootstrap 指的是一类“利用估计值本身更新估计值”的更新策略，在后续 TD 方法中展开说明。
-
-另一方面，Monte-Carlo 方法也因为低效和并没有充分利用 Bellman 方程而具有缺陷。
+理论而言，MC 方法相当简易且不涉及到 bootstrap。这里 bootstrap 指的是一类“利用估计值本身更新估计值”的更新策略，在后续 TD 方法中展开说明。另一方面，MC 方法也因为低效和并没有充分利用 Bellman 方程而具有缺陷。
 
 {% note info no-icon %}
-GPI 中使用 MC 方法做策略评估的算法一般称为 **Monte-Carlo 控制算法**。
+GPI 中使用 MC 方法做策略评估的算法一般称为 **蒙特卡洛控制算法**。
 {% endnote %}
 
 ### Temporal-Difference (TD)
@@ -693,7 +678,7 @@ $$
 - （Exploration）能够充分探索未知的状态和行为，增加对环境的认识
 - （Exploitation）能够充分利用已经掌握的环境信息，获取尽可能高的累计收益
 
-Exploration 会要求目标策略更加激进而 Exploitation 会要求目标策略更加保守，如何平衡这两者以获取高收益也就是这一类 RL 方法的核心。
+Exploration 会要求行为策略更加激进而 Exploitation 会要求目标策略更加保守，如何平衡这两者以获取高收益也就是这一类 RL 方法的核心。
 
 一种简单的方式是 **$\varepsilon$ 贪心策略（$\varepsilon$ Greedy Policy）**，其表现为：
 
@@ -728,9 +713,14 @@ $$
 
 Boltzman 探索是 GLIE，而 $\varepsilon$ 贪心策略则可能不是 GLIE。
 
-现在我们将会介绍以 TD 方法的策略评估为基础的几种 RL 方法。
-
 # 时序差分控制
+
+时序差分控制的一般流程如下所示：
+
+- 初始化目标策略 $\pi$ 以及价值函数 $Q^\pi$
+- 循环执行下述步骤直到收敛
+    - 【策略改进】利用 $Q^\pi$ 生成**行为策略**并执行**一次**，采样得到**一步状态转移**
+    - 【策略评估】根据行为策略得到的一步状态转移更新**目标策略** $\pi$ 的价值函数 $Q^\pi$
 
 ## 同轨时序差分控制（SARSA）
 
@@ -740,8 +730,6 @@ $$
 Q(s_t, a_t) \leftarrow Q(s_t, a_t) + \alpha[r_{t + 1} + \gamma Q(s_{t + 1}, a_{t + 1}) - Q(s_t, a_t)]
 $$
 
-每次更新后利用价值函数的估计通过 $\varepsilon$ 贪心策略即可完成策略改进阶段。
-
 ## 异轨时序差分控制（Q learning）
 
 在异轨时序差分控制中，令目标策略为完全贪心策略，行为策略为 $\varepsilon$ 贪心策略即可得到 Q learning 算法。若令时刻 $t$ 智能体位于状态 $s_t$，做出决策 $a_t$ 转移到状态 $s_{t + 1}$ 并获得收益 $r_{t + 1}$，可以得到其策略评估阶段所采用的更新为：
@@ -750,7 +738,90 @@ $$
 Q(s_t, a_t) \leftarrow Q(s_t, a_t) + \alpha\left[r_{t + 1} + \gamma\max_{a \in \A} Q(s_{t + 1}, a) - Q(s_t, a_t)\right]
 $$
 
-每次更新后利用价值函数的估计通过 $\varepsilon$ 贪心策略即可完成策略改进阶段。
+# 蒙特卡洛控制
+
+蒙特卡洛控制的一般流程如下所示：
+
+- 初始化目标策略 $\pi$ 以及价值函数 $Q^\pi$
+- 循环执行下述步骤直到收敛
+    - 【策略改进】利用 $Q^\pi$ 生成**行为策略**并执行**至终止**，采样得到**一条完整轨迹**
+    - 【策略评估】根据行为策略得到的轨迹更新**目标策略** $\pi$ 的价值函数 $Q^\pi$
+
+## 同轨蒙特卡洛控制
+
+若在采样得到的轨迹 $\tau$ 中，时刻 $t$ 智能体位于状态 $s_t$，做出决策 $a_t$ 转移到状态 $s_{t + 1}$ 并获得收益 $r_{t + 1}$，可以得到其策略评估阶段所采用的更新为：
+
+$$
+Q(s_t, a_t) \leftarrow Q(s_t, a_t) + \alpha[G_t(\tau) - Q(s_t, a_t)]
+$$
+
+## 异轨蒙特卡洛控制
+
+现在我们需要考虑异轨带来的一个重要问题，我们通过行为策略采样得到的数据直接更新目标策略的价值函数估计是否合理。在时序差分控制中我们并没有思考这一问题，仅仅是由于时序差分控制中，行为策略和目标策略的更新每步都在进行，两者可以认为相对接近，从而可以忽略这一问题，并不是说明时序差分控制中不存在这一问题。例如，Q learning 的更新公式中：
+
+$$
+Q(s_t, a_t) \leftarrow Q(s_t, a_t) + \alpha\left[r_{t + 1} + \gamma{\color{red} \max_{a \in \A} Q(s_{t + 1}, a)} - Q(s_t, a_t)\right]
+$$
+
+这里 $s_{t + 1}$ 是通过行为策略确定的，然而在更新的时候则直接使用其计算目标策略（完全贪心策略）价值函数的 TD target。
+
+然而在蒙特卡洛控制中这一问题则较为明显，因为行为策略会直接采样得到一整条轨迹，其会导致目标策略价值函数的大批量更新。
+
+该问题可以形式化定义为，已知行为策略 $b$ 与目标策略 $\pi$，以及使用行为策略 $b$ 采样得到的轨迹 $\tau$，我们应当如何拟合计算目标策略的价值函数 $Q^\pi$。
+
+此时一般会使用**重要性采样**方法。我们考虑随机变量 $X$ 以及其概率密度函数 $f_X(x) := \P(X = x)$，随机变量 $X$ 的期望显然定义为：
+
+$$
+\Eop_{x \sim X}[x] := \int_{\mathbb R} xf_X(x) \d x
+$$
+
+并且对于任何实数集上的函数 $\varphi$ 都有：
+
+$$
+\Eop_{x \sim X}[\varphi(x)] := \int_{\mathbb R} \varphi(x)f_X(x) \d x
+$$
+
+为了估算 $\E[\varphi(X)]$，我们可以使用采样并利用样本均值作为数学期望的估计值。例如我们采样获取了 $X$ 的 $N$ 个值 $x_1, x_2, \cdots, x_N$，那么：
+
+$$
+\Eop_{x \sim X}[\varphi(x)] \approx \frac{1}{N}\sum_{k = 1}^N \varphi(x_k)
+$$
+
+然而如果分布 $f_X$ 并不容易采样，那么这一条路线就有可能出现问题。此时，如果我们有一个容易采样的分布 $f_Y$，则我们考虑：
+
+$$
+\Eop_{x \sim X}[\varphi(x)] := \int_{\mathbb R} \varphi(x)f_X(x) \d x = \int_{\mathbb R} \varphi(x)\frac{f_X(x)}{f_Y(x)} f_Y(x) \d x = \Eop_{y \sim Y}\left[\frac{f_X(y)}{f_Y(y)}\varphi(y)\right]
+$$
+
+这样，我们不需要直接采样 $f_X$，仅需要得知 $f_X$ 的表达，即可通过采样 $f_Y$ 得到样本 $y_1, y_2, \cdots, y_M$ 即可作出下述估算：
+
+$$
+\Eop_{x \sim X}[\varphi(x)] = \Eop_{y \sim Y}\left[\frac{f_X(y)}{f_Y(y)}\varphi(y)\right] \approx \frac{1}{M}\sum_{k = 1}^M \frac{f_X(y_k)}{f_Y(y_k)}\varphi(y_k)
+$$
+
+回到原先的问题，我们首先得到：
+
+$$
+\frac{\P_\pi(\tau)}{\P_b(\tau)} = \frac{\prod_{(s, a, s') \in \tau} \pi(a \mid s)\Pe(s' \mid s, a)}{\prod_{(s, a, s') \in \tau} b(a \mid s)\Pe(s' \mid s, a)} = \prod_{(s, a) \in \tau} \frac{\pi(a \mid s)}{b(a \mid s)}
+$$
+
+那么对于任意的 $s_{\rm param} \in \mathcal{S}, a_{\rm param} \in \mathcal{A}$，我们作下述计算：
+
+$$
+\begin{aligned}
+Q^\pi(s_{\rm param}, a_{\rm param}) &= \Eop_{\tau \sim \pi}[G(\tau) \mid s_0 = s_{\rm param}, a_0 = a_{\rm param}] \\
+&= \Eop_{\tau \sim b}\left[\frac{\P_\pi(\tau)}{\P_b(\tau)}G(\tau) \middle| s_0 = s_{\rm param}, a_0 = a_{\rm param}\right] \\
+&= \Eop_{\tau \sim b}\left[G(\tau)\prod_{(s, a) \in \tau} \frac{\pi(a \mid s)}{b(a \mid s)} \middle| s_0 = s_{\rm param}, a_0 = a_{\rm param}\right] \\
+\end{aligned}
+$$
+
+那么，若在利用行为策略 $b$ 采样得到的轨迹 $\tau$ 中，时刻 $t$ 智能体位于状态 $s_t$，做出决策 $a_t$ 转移到状态 $s_{t + 1}$ 并获得收益 $r_{t + 1}$，可以得到其策略评估阶段所采用的更新为：
+
+$$
+Q(s_t, a_t) \leftarrow Q(s_t, a_t) + \alpha\left[G_t(\tau)\prod_{k = t}^{+\infty} \frac{\pi(a_k \mid s_k)}{b(a_k \mid s_k)} - Q(s_t, a_t)\right]
+$$
+
+我们也很容易发现若 $\pi = b$，则异轨蒙特卡洛控制退化为同轨蒙特卡洛控制。
 
 # 函数估计与深度学习
 
@@ -801,3 +872,18 @@ $$
 目前基于通过神经网络实现的函数估计，我们可以将 Q learning 转换为深度学习算法 DQN。
 
 ## Deep Q Network (DQN)
+
+使用神经网络后，Q learning 的基本算法框架不变，依然与上一节中所示一致，仅需要将价值函数 $Q^\pi$ 替换为一个神经网络 $f_{\b w}: \mathcal{S} \to \mathbb{R}^{|\mathcal{A}|}$。该神经网络结构的语义为，其接受当前的状态 $s \in \mathcal{S}$，输出这个状态下所有可能的行为带来的价值函数估计，即 $f_{\b w}(s) = [Q^\pi(s, a_1), Q^\pi(s, a_2), \cdots, Q^\pi(s, a_{|\mathcal{A}|})]$。
+
+此外，基于上述神经网络设计，策略改进过程中利用价值函数生成行为策略的方式在代码上是显然的，只需要将神经网络输出的数组求最大值后直接应用 $\varepsilon$ 贪心方式即可，所以不需要另开辟内存存储策略本身。
+
+现在我们考虑策略评估过程，
+
+故基本的 DQN 算法流程为：
+
+- 初始化估计价值函数的神经网络 $f_{\b w}$
+- 循环执行下述步骤直到收敛
+    - 【策略改进】求取 $a_{\rm max} = \argmax f_{\b w}(s)$ 并利用 $\varepsilon$ 贪心方式生成行为策略决策执行
+    - 【策略评估】利用梯度更新神经网络参数
+
+至于如何求解梯度，我们
