@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,300italic,400,400italic,700,700italic%7CNoto+Serif+KR:300,300italic,400,400italic,700,700italic%7CMS+PMincho:300,300italic,400,400italic,700,700italic%7CFira+Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext" referrerpolicy="no-referrer">
+
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;ashitemaru.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Muse&quot;,&quot;version&quot;:&quot;8.5.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;width&quot;:320,&quot;display&quot;:&quot;always&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:&quot;disqusjs&quot;,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;},&quot;path&quot;:&quot;&#x2F;search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;manual&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="本来就有点想学一下 Rust 语言，但是一直也想不出来用来干什么，于是只能从最简单的地方开始了，就是写一个 Web 应用。目前大概计划使用 Yew 作为前端框架而 Actix 作为后端框架，至于什么时候能写完，那就看我的心情了。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用 Rust 写一个 Web 应用踩坑记录">
+<meta property="og:url" content="https://ashitemaru.github.io/2023/07/24/rust-web/index.html">
+<meta property="og:site_name" content="Ashitemaru">
+<meta property="og:description" content="本来就有点想学一下 Rust 语言，但是一直也想不出来用来干什么，于是只能从最简单的地方开始了，就是写一个 Web 应用。目前大概计划使用 Yew 作为前端框架而 Actix 作为后端框架，至于什么时候能写完，那就看我的心情了。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ashitemaru.github.io/uploads/rust-web/1.png">
+<meta property="article:published_time" content="2023-07-24T14:53:03.000Z">
+<meta property="article:modified_time" content="2023-07-24T14:53:03.000Z">
+<meta property="article:author" content="Ashitemaru">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ashitemaru.github.io/uploads/rust-web/1.png">
+
+
+<link rel="canonical" href="https://ashitemaru.github.io/2023/07/24/rust-web/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;ashitemaru.github.io&#x2F;2023&#x2F;07&#x2F;24&#x2F;rust-web&#x2F;&quot;,&quot;path&quot;:&quot;2023&#x2F;07&#x2F;24&#x2F;rust-web&#x2F;&quot;,&quot;title&quot;:&quot;用 Rust 写一个 Web 应用踩坑记录&quot;}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
+<title>用 Rust 写一个 Web 应用踩坑记录 | Ashitemaru</title>
+  
+
+
+
+<link rel="stylesheet" href="https://www.unpkg.com/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<script defer src="https://www.unpkg.com/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+<script defer src="https://www.unpkg.com/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+<script src="https://www.unpkg.com/twikoo@1.4.1/dist/twikoo.all.min.js"></script>
+<script src="/js/jquery.min.js"></script>
+<script>
+function getURL(e) {
+    var http = e.slice(0, 4)
+    var https = e.slice(0, 5)
+    if (http == "http" || https == "https") {
+        return e
+    } else if (e == "" || e == null || e == undefined) {
+        return e
+    } else {
+        e = 'http://' + e
+        return e
+    }
+}
+
+function newComment() {
+    twikoo.getRecentComments({
+        envId: 'https://vercel-deploy-two.vercel.app',
+        pageSize: 10,
+        includeReply: false
+    }).then(function (res) {
+        var hotComments = $("#hot-comments");
+        for (var i = 0; i < res.length; i++) {
+            var nick = res[i].nick;
+            var content = res[i].commentText;
+            var newcontent = content.substring(0, 50);
+            var url = res[i].url;
+            var avatar = res[i].avatar;
+            var link = getURL(res[i].link);
+            var updatedAt = res[i].relativeTime;
+            var commentId = '#' + res[i].id;
+            hotComments.append(
+                `<li class="px1 pb2 flex items-center">
+                    <img style="width:40px;height:40px" class="circle mx1 listavatar" src="${avatar}">
+                    <div style="display:flex;flex-direction:column;width:100%;">
+                        <div style="display:flex;justify-content:space-between;flex-direction:row;align-items:center;">
+                            <div class="h5 listauthor overflow-hidden" title="${nick}">
+                                <a target="_blank" rel="noopener external nofollow noreferrer" href="${link}">${nick}</a>
+                            </div>
+                            <div class="h6 mr1 listdate wenzi hang1" style="color:#777777;">${updatedAt}</div>
+                        </div>
+                        <div style="display:flex;flex-direction:row;width:100%;">
+                            <a class="h5 list-comcontent" style="overflow:hidden;display:flex;border-bottom:0px;text-overflow:ellipsis;line-height:1.5;text-align:left" href="${url}${commentId}">${newcontent}</a>
+                        </div>
+                    </div>
+                </li>`
+            );
+        }
+    }).catch(function (err) {
+        console.error(err);
+    });
+}
+
+function replaceRuby() {
+    $('code')
+        .filter((_, node) => {
+            var list = $(node).text().split(' ');
+            return list.length === 3 && list[0] === "@";
+        })
+        .replaceWith((_, text) => {
+            var list = text.split(' ');
+            var written = list[1];
+            var read = list[2];
+            return $(`<ruby>${written}<rp>(</rp><rt>${read}</rt><rp>)</rp></ruby>`);
+        });
+}
+
+$(function () {
+    newComment();
+    replaceRuby();
+});
+</script>
+
+<!-- CSS -->
+<link href="/css/app.min.css" rel="stylesheet">
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Ashitemaru</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">11</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">51</span></a></li>
+        <li class="menu-item menu-item-skill-docs"><a href="https://sast-skill-docers.github.io/sast-skill-docs/" rel="noopener" target="_blank"><i class="fa fa-book fa-fw"></i>技能引导文档</a></li>
+        <li class="menu-item menu-item-thuinfo"><a href="https://www.thuinfo.net/" rel="noopener" target="_blank"><i class="fa fa-sitemap fa-fw"></i>THUInfo</a></li>
+        <li class="menu-item menu-item-se-index"><a href="https://thuse-course.github.io/course-index/" rel="noopener" target="_blank"><i class="fa fa-calendar fa-fw"></i>软工课程主页</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%93%E9%AA%8C-yew-%E6%A1%86%E6%9E%B6"><span class="nav-number">1.</span> <span class="nav-text">安装和体验 Yew 框架</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Ashitemaru"
+      src="/uploads/avatar.png">
+  <p class="site-author-name" itemprop="name">Ashitemaru</p>
+  <div class="site-description" itemprop="description">人は自分の全部を把握することない。</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Ashitemaru" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Ashitemaru" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:qhd19@mails.tsinghua.edu.cn" title="E-Mail → mailto:qhd19@mails.tsinghua.edu.cn" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/Ashitemaru" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;Ashitemaru" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Friends
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.unidy.cn/" title="https:&#x2F;&#x2F;www.unidy.cn" rel="noopener" target="_blank">UNIDY</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.dilant.cn/" title="https:&#x2F;&#x2F;www.dilant.cn" rel="noopener" target="_blank">Dilant</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://zcy.moe/" title="https:&#x2F;&#x2F;zcy.moe" rel="noopener" target="_blank">猫猫</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://c7w.tech/" title="https:&#x2F;&#x2F;c7w.tech" rel="noopener" target="_blank">c7w</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.leenldk.top/" title="http:&#x2F;&#x2F;www.leenldk.top&#x2F;" rel="noopener" target="_blank">leenldk (20)</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://sun80449.github.io/" title="https:&#x2F;&#x2F;sun80449.github.io" rel="noopener" target="_blank">lcr</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://pwe.cat/" title="https:&#x2F;&#x2F;pwe.cat" rel="noopener" target="_blank">索尔</a>
+        </li>
+    </ul>
+  </div>
+<div class="sidebar-1 mybox relative">
+    <div class="p2">
+        <i class="fab fa-facebook-messenger mr1"></i>
+        Latest Comments
+    </div>
+    <div id="hot-comments"></div>
+</div>
+          </div>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/Ashitemaru" class="github-corner" title="Come here for fun." aria-label="Come here for fun." rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ashitemaru.github.io/2023/07/24/rust-web/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="Ashitemaru">
+      <meta itemprop="description" content="人は自分の全部を把握することない。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ashitemaru">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          用 Rust 写一个 Web 应用踩坑记录
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-07-24 14:53:03" itemprop="dateCreated datePublished" datetime="2023-07-24T14:53:03+00:00">2023-07-24</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2023-07-24 14:53:03" itemprop="dateModified" datetime="2023-07-24T14:53:03+00:00">2023-07-24</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E3%80%90%E6%9D%82%E8%B0%88%E3%80%91%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">【杂谈】开发</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2023/07/24/rust-web/" class="post-meta-item twikoo_visitors" data-flag-title="用 Rust 写一个 Web 应用踩坑记录" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="twikoo_visitors"></span>
+    </span>
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.8k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>本来就有点想学一下 Rust 语言，但是一直也想不出来用来干什么，于是只能从最简单的地方开始了，就是写一个 Web 应用。目前大概计划使用 Yew 作为前端框架而 Actix 作为后端框架，至于什么时候能写完，那就看我的心情了。</p>
+<span id="more"></span>
+<h1 id="安装和体验-yew-框架">安装和体验 Yew 框架</h1>
+<p>整体上安装 Yew 是很简单的，但是运行的时候还是出现了一些问题，主函数里面 panic 了。经典一波翻找 Google 之后找到了一条 issue 链接：</p>
+<ul>
+<li>https://github.com/koute/cargo-web/issues/251</li>
+</ul>
+<p>这里面魔改了 Cargo Web，但是比较令我害怕的是这个魔改版在 2021 年就停止更新了。然而除了用这个版本之外，我也没找到这一问题的其他解决方案，于是只能提心吊胆安装了这个魔改版的 Cargo Web。</p>
+<hr />
+<p>在这之后就是让我最为暴躁的一件事情。昨晚我配置完 Yew 环境之后直接去睡觉了，结果今天起床发现 <code>cargo install</code> 命令完全用不了了，一直提示权限不足。我本来以为这个挺好解决的，然而即使我重新设置了文件夹运行权限，这个问题也一直存在。我在 Rust 社区里面翻箱倒柜也找不到任何相关提示，直到我找到某一个 issue 的回帖下面提到安装东西的时候最好把 360 关掉。</p>
+<p>当时我还没太当回事情，因为 360 毕竟是知名流氓软件，而且我自己也没装。然而转念一想，不对，我电脑里有之前美团实习的时候被迫装的卡巴斯基。我立刻就去翻卡巴斯基的日志，果不其然，给我找到了下面的东西：</p>
+<p><img src="/uploads/rust-web/1.png" /></p>
+<p>也就是说，我所有由 Cargo 发起的执行全都被卡巴斯基给拦截了，然后还删掉了一堆东西。</p>
+<p>这我怎么能忍？但是还真就没办法，因为我很早就想删掉这个卡巴斯基，然而就是删不掉。删不掉的原因也很简单，美团让我安装的时候莫名其妙要求了设置密码，现在想要结束卡巴斯基的运行的话，必须要通过这个密码，而一年前的密码显然我早忘掉了。之前删不掉最多就是哀叹一下，忍着呗，现在是真的忍不下去了。于是立刻 Google 翻丢失密码下删卡巴斯基的方式，发现大家基本都是两条路，一条是通过官方提供的 Password Reseter 重置密码，一条是通过官方提供的 Remover 强制删去。</p>
+<p>但是，令我震惊的是，这两条路我都没走通。Password Reseter 在我这里疯狂报错表示无能为力。最不能忍的是，简介里面写着<strong>无需密码</strong>的<strong>官方</strong> Remover 打开后，居然要求我提供密码。</p>
+<p>我顿时恼火了，因为互联网差不多已经被我翻了个遍，差不多就这两条路，还有一条改注册表的野路子试了一下也没成功。于是，走投无路的我只能给客服发邮件请求帮助。</p>
+<p>在这段期间里，有位同学提醒我，你既然在他运行后无法终止，有什么办法让他就运行不起来呢？这个时候我突然莫名其妙想到一个怪方法。我打开卡巴斯基主程序所在目录，把他主程序给重命名了。结果，在我重启之后，这玩意果然没能运行起来，因此我的 Cargo 开始正常工作。</p>
+<p>然而这显然不是长久之计，如果客服实在没法给出什么比较好的方案，我应该要考虑重装系统了。</p>
+<hr />
+<p>在折腾完上面一大通之后，我又开始摸索 Yew。结果发现，我一开始参考的 Yew 的文档居然是 14.4 的爆炸老版本的，于是赶快切换到 20.0 最新版文档，结果发现写法基本上已经被推翻重来了。</p>
+<p>现在 Yew 文档里面推荐的 startup code 大概是：</p>
+<figure class="highlight rust"><figcaption><span>Rust Yew</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> yew::prelude::*;</span><br><span class="line"></span><br><span class="line"><span class="meta">#[function_component(App)]</span></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">app</span></span>() -&gt; Html &#123;</span><br><span class="line">    html! &#123;</span><br><span class="line">        &lt;h1&gt;&#123; <span class="string">&quot;Hello world!&quot;</span> &#125;&lt;/h1&gt;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    yew::Renderer::&lt;App&gt;::new().render();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>另外，Yew 似乎采用了 Trunk 将 Rust 代码编译为 WASM，而废弃了先前使用的 Cargo Web（当然这也是我猜的），于是先前提心吊胆的 2021 老版本 Cargo Web 也可以心安理得卸载掉了。</p>
+<hr />
+<p>研究了一下 Yew 的 startup code，感觉确实和 React 很像。一个组件就是接受属性并产出 HTML 结构的函数，然后主流程就是渲染根组件挂到 <code>index.html</code> 的 <code>&lt;body /&gt;</code> 下。</p>
+<p>除此之外，就是 <code>#[function_component(...)]</code> 这个语法实在是不是特别适应。</p>
+<p>之后简单摸索了一下如何自己写一个组件。果然还是从可以调颜色和尺寸的正方形开始比较有意思：</p>
+<figure class="highlight rust"><figcaption><span>Rust Yew</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> yew::prelude::*;</span><br><span class="line"></span><br><span class="line"><span class="meta">#[derive(Properties, PartialEq)]</span></span><br><span class="line"><span class="keyword">pub</span> <span class="class"><span class="keyword">struct</span> <span class="title">SquareProps</span></span> &#123;</span><br><span class="line">    <span class="keyword">pub</span> size: <span class="built_in">usize</span>,</span><br><span class="line">    <span class="keyword">pub</span> color: <span class="built_in">String</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#[function_component(Square)]</span></span><br><span class="line"><span class="keyword">pub</span> <span class="function"><span class="keyword">fn</span> <span class="title">square</span></span>(props: &amp;SquareProps) -&gt; Html &#123;</span><br><span class="line">    html! &#123;</span><br><span class="line">        &lt;div style=&#123;<span class="built_in">format!</span>(</span><br><span class="line">            <span class="string">&quot;background-color: &#123;&#125;; width: &#123;&#125;px; height: &#123;&#125;px;&quot;</span>,</span><br><span class="line">            props.color,</span><br><span class="line">            props.size,</span><br><span class="line">            props.size,</span><br><span class="line">        )&#125; /&gt;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里看得出来，写法和 React 也几乎是一样的。作为对比，React 的话我会这么写：</p>
+<figure class="highlight typescript"><figcaption><span>TypeScript React</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> SquareProps &#123;</span><br><span class="line">    <span class="attr">size</span>: <span class="built_in">number</span>;</span><br><span class="line">    color: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">Square</span>(<span class="params">props: SquareProps</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> squareStyle = &#123;</span><br><span class="line">        <span class="attr">backgroundColor</span>: props.color,</span><br><span class="line">        <span class="attr">width</span>: props.size,</span><br><span class="line">        <span class="attr">height</span>: props.size,</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&#123;squareStyle&#125;</span> /&gt;</span></span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>其实就已经看出来了，代码结构几乎是一模一样的。首先定义参数的格式，之后定义一个函数写渲染逻辑就行了。然而 Yew 相较于 React，对 CSS 或者说内嵌的 <code>style</code> 字段支持并不好。目前这种规模的组件看起来用 <code>format!</code> 宏先顶一下没啥问题，但感觉后面真的写起来，还是得去找格式表支持。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/05/26/ancient-ja/" rel="prev" title="古日语语法笔记">
+                  <i class="fa fa-chevron-left"></i> 古日语语法笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/09/01/paper-2023-09/" rel="next" title="2023 年 9 月论文笔记">
+                  2023 年 9 月论文笔记 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments"><div id="twikoo-comments"></div></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2021 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ashitemaru</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">455k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">6:53</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{&quot;enable&quot;:true,&quot;theme&quot;:&quot;default&quot;,&quot;js&quot;:{&quot;url&quot;:&quot;https:&#x2F;&#x2F;unpkg.com&#x2F;mermaid@8.9.3&#x2F;dist&#x2F;mermaid.min.js&quot;,&quot;integrity&quot;:&quot;sha256-OyJHvRcZHaRR6Ig73ppxF4QXk8HzvfgTprRWkulCkfY&#x3D;&quot;}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;tags&quot;:&quot;none&quot;,&quot;js&quot;:{&quot;url&quot;:&quot;https:&#x2F;&#x2F;unpkg.com&#x2F;mathjax@3.1.4&#x2F;es5&#x2F;tex-mml-chtml.js&quot;,&quot;integrity&quot;:&quot;sha256-ncNI9OXOS5Ek4tzVYiOMmN&#x2F;KKCPZ6V0Cpv2P&#x2F;zHntiA&#x3D;&quot;}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="twikoo" type="application/json">{&quot;enable&quot;:true,&quot;visitor&quot;:true,&quot;envId&quot;:&quot;https:&#x2F;&#x2F;vercel-deploy-two.vercel.app&quot;,&quot;el&quot;:&quot;#twikoo-comments&quot;}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.twikoo.el)
+    .then(() => NexT.utils.getScript(
+      'https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js',
+      { condition: window.twikoo }
+    ))
+    .then(() => {
+      twikoo.init(CONFIG.twikoo);
+    });
+});
+</script>
+
+</body>
+</html>
