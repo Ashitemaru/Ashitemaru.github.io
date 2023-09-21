@@ -230,7 +230,7 @@ $(function () {
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9E%82%E7%9B%B4%E5%90%8C%E6%AD%A5%E4%B8%8E-g-sync"><span class="nav-number">1.</span> <span class="nav-text">垂直同步与 G-sync</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9E%82%E7%9B%B4%E5%90%8C%E6%AD%A5%E4%B8%8E-g-sync"><span class="nav-number">1.</span> <span class="nav-text">垂直同步与 G-sync</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9E%82%E7%9B%B4%E5%90%8C%E6%AD%A5"><span class="nav-number">1.0.1.</span> <span class="nav-text">垂直同步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E9%87%8D%E7%BC%93%E5%86%B2"><span class="nav-number">1.0.2.</span> <span class="nav-text">三重缓冲</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#g-sync-%E4%B8%8E-freesync"><span class="nav-number">1.0.3.</span> <span class="nav-text">G-sync 与 Freesync</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#webrtc-jitter-buffer"><span class="nav-number">2.</span> <span class="nav-text">WebRTC jitter buffer</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -400,14 +400,14 @@ $(function () {
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1.3k</span>
+      <span>2.9k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
+      <span>3 分钟</span>
     </span>
 </div>
 
@@ -430,13 +430,29 @@ $(function () {
 <p>总之，在这一策略之下，只要刷新率不等于帧率就会出现画面撕裂问题：</p>
 <p><img src="/uploads/note-of-media/1.png" /></p>
 <p>这里显示的是显示器角度的时间轴，A 到 F 各个色块则显示各个帧在前缓冲区中存续的时间。可以看到，无论是帧率高于刷新率还是低于刷新率，显示器所显示的画面都会有撕裂现象。</p>
-<p>而所谓的垂直同步策略，则是在帧率高于刷新率的时候，强制令显卡空转等待 VBlank 到来后才触发帧交换。简而言之，就是强制令显卡等待显示器：</p>
+<h3 id="垂直同步">垂直同步</h3>
+<p>所谓的垂直同步策略，是在帧率高于刷新率的时候，强制令显卡空转等待 VBlank 到来后才触发帧交换。简而言之，就是强制令显卡等待显示器：</p>
 <p><img src="/uploads/note-of-media/2.png" /></p>
 <p>这里 G 区域就是强制令显卡等待的时间块。</p>
 <p>而在帧率低于刷新率的时候，则强制令显示器再显示一次旧帧，若显示完显卡依然没有绘制完毕则一直显示，直到某一次显示的时候显卡绘制完了。此时显卡空转等待 VBlank 触发帧交换。简而言之，就是等效降低显示器刷新率，将问题化归为帧率高于刷新率的问题，再强制令显卡等待显示器：</p>
 <p><img src="/uploads/note-of-media/3.png" /></p>
 <p>这里 G 区域就是强制令显卡等待的时间块。</p>
 <p>然而垂直同步的弊端也是显而易见的，即实际帧率一定会被锁定在显示器刷新率以下，事实上是一种卡死显卡性能换画面完整的交易。</p>
+<p>在这个基础上，Nvidia 推出了<strong>自适应垂直同步</strong>方案，事实上就是在垂直同步系统之前加一个是否开启垂直同步的判断器。当显卡帧率高于刷新率的时候，该系统打开垂直同步令显卡空转等待显示器，而显卡帧率低于刷新率的时候，则关闭垂直同步，立即触发帧传递而不让显示器重复绘制先前帧。</p>
+<p>但是无论如何改进，依然无法改变垂直同步具有延迟的缺陷，即 MTP latency 过高。简而言之，当场景变化较大的时候，即使显卡已经快速绘制出来还是有可能因为垂直同步被迫稍晚传递给显示器，导致用户操作和屏幕反应之间存在较大延迟。这对实时性高的游戏（如 FPS、Moba）是致命的。</p>
+<h3 id="三重缓冲">三重缓冲</h3>
+<p>为了解决垂直同步的延迟问题，有一种方式是将一般的前缓冲区和后缓冲区设计中加入新的中缓冲区构成三重缓冲。简单而言就是再设置一个缓冲区来存放显卡提前绘制好的帧，可以一定程度缓解显卡帧率突涨的问题。然而这是治标不治本的，也就是说当显卡性能保持在高位过长时间后，后缓冲区和中缓冲区都已经满了，此时显卡依然不得不空转等待显示器。</p>
+<p>Nvidia 为了解决三重缓冲这种治标不治本的问题，提出了<strong>快速垂直同步（无阻塞垂直同步）</strong>方案，即允许中缓冲区和后缓冲区交换，当中后缓冲区全满的时候再次交换中后缓冲区，显卡用新的帧覆盖掉本应该交给显示器绘制的帧。此时中缓冲区始终有一个可以交给前缓冲区，即显示器绘制的帧，而显卡也始终没有等待显示器。</p>
+<p>无阻塞垂直同步虽然做到了显示器和显卡都处于满负荷状态，但是两者之间不同步的差距则代偿给了帧丢失，也就是先前说的，如果中后缓冲区都满了，就会用新帧覆盖掉原本交给显示器的帧，从而导致实际的丢帧。</p>
+<h3 id="g-sync-与-freesync">G-sync 与 Freesync</h3>
+<p>实际上上述所有方案都有治标不治本的问题。为了从根源上解决画面撕裂又不产生过分的延迟，Nvidia 直接从显示器一侧尝试解决问题，即 G-sync 方案（该方案核心为<strong>自适应显示器刷新率</strong>，即 VRR，所以有时也称为 VRR 方案）。该方案的核心是令显示器可以调节 VBlank 时长，从而在显卡帧率较低的时候通过长 VBlank 时间来让“显示器等显卡”。</p>
+<p>也就是说，垂直同步核心是显卡空转等显示器，而 G-sync 则是显示器空转等显卡。</p>
+<p>然而在实际情况下，即使通过 VRR 也不可能让刷新率超越额定刷新率，所以当显卡帧率高于刷新率的时候依然会出现画面撕裂（也就是所说的 VRR 只能解决显卡帧率低于刷新率的情况）。所以厂家会推荐打开 G-sync 的时候同时打开垂直同步。</p>
+<p>另外一个角度，过长时间的 VBlank 有时也不现实，因为显示器主板也有最低刷新率要求。这意味着如果帧率显著低于刷新率，打开 G-sync 甚至可能因刷新率锚定帧率导致更严重的后果。这个时候只能打开<strong>低帧补偿（Low Frame Compensation / LFC）</strong>，即通过多次扫描显示一帧，等效倍增显示器刷新率。然而 LFC 需要预测显卡的性能，因为毕竟需要提前决定到底下一帧需要几次扫描，一旦预测失误，依然会遇到问题。</p>
+<p>所以 VRR 技术即使可以做到在一定范围内让刷新率锚定帧率，但是这依然需要帧率相对稳定。这时候就有个有趣的矛盾，既然能做到帧率相对稳定，那么即使画面撕裂也都会出现在屏幕上下方贴近边框的地方，那我为什么不能直接接受垂直同步之类的方案呢？</p>
+<p>所以现今的解决方案中就是不能在低延迟、无撕裂上面做到兼顾，G-sync 也只是众多权衡中的一种。</p>
+<p>最后，说明一下 Freesync。事实上 G-sync 是 Nvidia 授权部分显示器型号内置 Nvidia 芯片来达成的技术，是一种需要 Nvidia 官方认证才能采用的技术。而 Freesync 是开源的技术标准，所有显示器均可以使用，目前由 AMD 主要采用。而两者的技术框架几乎一致，仅仅在细节上有一定差别。</p>
+<h1 id="webrtc-jitter-buffer">WebRTC jitter buffer</h1>
 
     </div>
 
@@ -487,13 +503,13 @@ $(function () {
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">479k</span>
+    <span title="站点总字数">480k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">7:15</span>
+    <span title="站点阅读时长">7:17</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
