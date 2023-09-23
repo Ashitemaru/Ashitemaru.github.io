@@ -12,6 +12,8 @@ category:
 
 # 垂直同步与 G-sync
 
+https://www.youtube.com/watch?v=dnsPyyaNCWc&list=PL7mmImi_1wpMVhVpBWr3Bob7kdchdDEoX&index=23
+
 主要分析了游戏之中画面撕裂的问题成因和相关的解决方案，这里也就主要关注显卡和显示器的配合问题。
 
 首先需要明确的是，在游戏过程中，每一帧都是显卡负责绘制的，而显卡每秒绘制出的帧的数目就是**帧率**，简称 **FPS**。而显示器在接收到显卡所提供的帧的时候，需要在屏幕上绘制帧。当前所有的显示器采用的绘制方法都是**逐行扫描**，即光标从屏幕左上角开始向右向下逐个扫过像素点绘制帧，在扫描到右下角的时候，一帧绘制完成。绘制完一帧之后，显示器将光标从右下角重置到左上角的过程称为 **VBlank**。此外，显示器一秒内能够在屏幕上逐行扫描出的帧的数量称为**刷新率**。
@@ -30,7 +32,7 @@ category:
 
 这里显示的是显示器角度的时间轴，A 到 F 各个色块则显示各个帧在前缓冲区中存续的时间。可以看到，无论是帧率高于刷新率还是低于刷新率，显示器所显示的画面都会有撕裂现象。
 
-### 垂直同步
+## 垂直同步
 
 所谓的垂直同步策略，是在帧率高于刷新率的时候，强制令显卡空转等待 VBlank 到来后才触发帧交换。简而言之，就是强制令显卡等待显示器：
 
@@ -50,7 +52,7 @@ category:
 
 但是无论如何改进，依然无法改变垂直同步具有延迟的缺陷，即 MTP latency 过高。简而言之，当场景变化较大的时候，即使显卡已经快速绘制出来还是有可能因为垂直同步被迫稍晚传递给显示器，导致用户操作和屏幕反应之间存在较大延迟。这对实时性高的游戏（如 FPS、Moba）是致命的。
 
-### 三重缓冲
+## 三重缓冲
 
 为了解决垂直同步的延迟问题，有一种方式是将一般的前缓冲区和后缓冲区设计中加入新的中缓冲区构成三重缓冲。简单而言就是再设置一个缓冲区来存放显卡提前绘制好的帧，可以一定程度缓解显卡帧率突涨的问题。然而这是治标不治本的，也就是说当显卡性能保持在高位过长时间后，后缓冲区和中缓冲区都已经满了，此时显卡依然不得不空转等待显示器。
 
@@ -58,7 +60,7 @@ Nvidia 为了解决三重缓冲这种治标不治本的问题，提出了**快�
 
 无阻塞垂直同步虽然做到了显示器和显卡都处于满负荷状态，但是两者之间不同步的差距则代偿给了帧丢失，也就是先前说的，如果中后缓冲区都满了，就会用新帧覆盖掉原本交给显示器的帧，从而导致实际的丢帧。
 
-### G-sync 与 Freesync
+## G-sync 与 Freesync
 
 实际上上述所有方案都有治标不治本的问题。为了从根源上解决画面撕裂又不产生过分的延迟，Nvidia 直接从显示器一侧尝试解决问题，即 G-sync 方案（该方案核心为**自适应显示器刷新率**，即 VRR，所以有时也称为 VRR 方案）。该方案的核心是令显示器可以调节 VBlank 时长，从而在显卡帧率较低的时候通过长 VBlank 时间来让“显示器等显卡”。
 
@@ -73,5 +75,73 @@ Nvidia 为了解决三重缓冲这种治标不治本的问题，提出了**快�
 所以现今的解决方案中就是不能在低延迟、无撕裂上面做到兼顾，G-sync 也只是众多权衡中的一种。
 
 最后，说明一下 Freesync。事实上 G-sync 是 Nvidia 授权部分显示器型号内置 Nvidia 芯片来达成的技术，是一种需要 Nvidia 官方认证才能采用的技术。而 Freesync 是开源的技术标准，所有显示器均可以使用，目前由 AMD 主要采用。而两者的技术框架几乎一致，仅仅在细节上有一定差别。
+
+# WebRTC Kalman filter render time estimation
+
+参考文章：https://www.jianshu.com/p/0bc6a4998b32
+
+由于这篇文章已经是 2020 年的文章了，感觉 WebRTC 源码也已经做了很大的更新，所以还是以 2023.09 的最新源码为准，文章终究是参考。
+
+这篇文章主要介绍的是 WebRTC playout delay 的计算原理。WebRTC 源码之中 playout delay 表示为两个 `double` 浮点数构成的元组，分别表示最小播放延迟和最大播放延迟。一般而言，playout delay 会携带在 RTC 扩展头之中，如果没有携带，则默认初始化为 `{-1, -1}`。
+
+源码上的体现是：
+
+{% codeblock lang:c++ C++ %}
+// rtp_video_header.h
+struct RTPVideoHeader {
+    // ...
+    PlayoutDelay playout_delay = {-1, -1};
+    // ...
+};
+
+// encoded_image.h
+class RTC_EXPORT EncodedImage {
+public:
+    // ...
+    PlayoutDelay playout_delay_ = {-1, -1};
+    // ...
+};
+
+RtpFrameObject::RtpFrameObject(/* ... */)
+    : first_seq_num_(first_seq_num),
+      last_seq_num_(last_seq_num),
+      last_packet_receive_time_(last_packet_receive_time),
+      times_nacked_(times_nacked) {
+    // ...
+    SetPlayoutDelay(rtp_video_header_.playout_delay);
+    // ...
+}
+{% endcodeblock %}
+
+这里主要观察最后一个构造函数的逻辑，在 `PacketBuffer` 模块将数据包排列组合出一帧的最后会创建一个 `RtpFrameObject` 实例来管理这一帧，此时会使用 `SetPlayoutDelay` 函数设定播放延迟。同时可以注意到，`RTPVideoHeader` 结构体中如果没有设定播放延迟，则默认为 `{-1, -1}`，也就是说创建帧对象的时候如果没有设定播放延迟则默认设定为 `{-1, -1}`。
+
+在帧构建完成之后会调用 `VideoReceiveStream2::OnCompleteFrame` 函数将新帧插入帧队列：
+
+{% codeblock lang:c++ C++ %}
+void VideoReceiveStream2::OnCompleteFrame(
+    std::unique_ptr<video_encoding::EncodedFrame> frame,
+) {
+    // ...
+
+    const PlayoutDelay &playout_delay = frame->EncodedImage().playout_delay_;
+
+    if (playout_delay.min_ms >= 0) {
+        frame_minimum_playout_delay_ms_ = playout_delay.min_ms;
+        UpdatePlayoutDelays();
+    }
+
+    if (playout_delay.max_ms >= 0) {
+        frame_maximum_playout_delay_ms_ = playout_delay.max_ms;
+        UpdatePlayoutDelays();
+    }
+
+    // ...
+}
+{% endcodeblock %}
+
+这里可以注意当 `playout_delay_` 是非默认值的时候会做两件事：
+
+- 更新 `VideoReceiveStream2` 之中的 `frame_minimum_playout_delay_ms_` 等成员变量
+- 调用 `UpdatePlayoutDelays` 函数更新 `VCMTiming` 类中的数据
 
 # WebRTC jitter buffer
