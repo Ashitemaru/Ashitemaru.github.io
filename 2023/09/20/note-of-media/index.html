@@ -230,7 +230,7 @@ $(function () {
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9E%82%E7%9B%B4%E5%90%8C%E6%AD%A5%E4%B8%8E-g-sync"><span class="nav-number">1.</span> <span class="nav-text">垂直同步与 G-sync</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9E%82%E7%9B%B4%E5%90%8C%E6%AD%A5"><span class="nav-number">1.0.1.</span> <span class="nav-text">垂直同步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E9%87%8D%E7%BC%93%E5%86%B2"><span class="nav-number">1.0.2.</span> <span class="nav-text">三重缓冲</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#g-sync-%E4%B8%8E-freesync"><span class="nav-number">1.0.3.</span> <span class="nav-text">G-sync 与 Freesync</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#webrtc-jitter-buffer"><span class="nav-number">2.</span> <span class="nav-text">WebRTC jitter buffer</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9E%82%E7%9B%B4%E5%90%8C%E6%AD%A5%E4%B8%8E-g-sync"><span class="nav-number">1.</span> <span class="nav-text">垂直同步与 G-sync</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9E%82%E7%9B%B4%E5%90%8C%E6%AD%A5"><span class="nav-number">1.1.</span> <span class="nav-text">垂直同步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E9%87%8D%E7%BC%93%E5%86%B2"><span class="nav-number">1.2.</span> <span class="nav-text">三重缓冲</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#g-sync-%E4%B8%8E-freesync"><span class="nav-number">1.3.</span> <span class="nav-text">G-sync 与 Freesync</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#webrtc-kalman-filter-render-time-estimation"><span class="nav-number">2.</span> <span class="nav-text">WebRTC Kalman filter render time estimation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#webrtc-jitter-buffer"><span class="nav-number">3.</span> <span class="nav-text">WebRTC jitter buffer</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -400,14 +400,14 @@ $(function () {
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>2.9k</span>
+      <span>4.7k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>3 分钟</span>
+      <span>4 分钟</span>
     </span>
 </div>
 
@@ -421,6 +421,7 @@ $(function () {
         <p>在正式加入云游戏相关项目之前，学长还是扔了一些学习材料过来让我补一下基础，这里就正常开一个笔记来记录一下学习过程了。大概先从显示器的一些工作原理和 WebRTC 相关知识开始吧。</p>
 <span id="more"></span>
 <h1 id="垂直同步与-g-sync">垂直同步与 G-sync</h1>
+<p>https://www.youtube.com/watch?v=dnsPyyaNCWc&amp;list=PL7mmImi_1wpMVhVpBWr3Bob7kdchdDEoX&amp;index=23</p>
 <p>主要分析了游戏之中画面撕裂的问题成因和相关的解决方案，这里也就主要关注显卡和显示器的配合问题。</p>
 <p>首先需要明确的是，在游戏过程中，每一帧都是显卡负责绘制的，而显卡每秒绘制出的帧的数目就是<strong>帧率</strong>，简称 <strong>FPS</strong>。而显示器在接收到显卡所提供的帧的时候，需要在屏幕上绘制帧。当前所有的显示器采用的绘制方法都是<strong>逐行扫描</strong>，即光标从屏幕左上角开始向右向下逐个扫过像素点绘制帧，在扫描到右下角的时候，一帧绘制完成。绘制完一帧之后，显示器将光标从右下角重置到左上角的过程称为 <strong>VBlank</strong>。此外，显示器一秒内能够在屏幕上逐行扫描出的帧的数量称为<strong>刷新率</strong>。</p>
 <p>这里有两个比较重要的概念，就是帧率和刷新率。需要注意的是，帧率描述显卡绘制帧的性能，刷新率描述显示器扫描帧的性能。</p>
@@ -430,7 +431,7 @@ $(function () {
 <p>总之，在这一策略之下，只要刷新率不等于帧率就会出现画面撕裂问题：</p>
 <p><img src="/uploads/note-of-media/1.png" /></p>
 <p>这里显示的是显示器角度的时间轴，A 到 F 各个色块则显示各个帧在前缓冲区中存续的时间。可以看到，无论是帧率高于刷新率还是低于刷新率，显示器所显示的画面都会有撕裂现象。</p>
-<h3 id="垂直同步">垂直同步</h3>
+<h2 id="垂直同步">垂直同步</h2>
 <p>所谓的垂直同步策略，是在帧率高于刷新率的时候，强制令显卡空转等待 VBlank 到来后才触发帧交换。简而言之，就是强制令显卡等待显示器：</p>
 <p><img src="/uploads/note-of-media/2.png" /></p>
 <p>这里 G 区域就是强制令显卡等待的时间块。</p>
@@ -440,11 +441,11 @@ $(function () {
 <p>然而垂直同步的弊端也是显而易见的，即实际帧率一定会被锁定在显示器刷新率以下，事实上是一种卡死显卡性能换画面完整的交易。</p>
 <p>在这个基础上，Nvidia 推出了<strong>自适应垂直同步</strong>方案，事实上就是在垂直同步系统之前加一个是否开启垂直同步的判断器。当显卡帧率高于刷新率的时候，该系统打开垂直同步令显卡空转等待显示器，而显卡帧率低于刷新率的时候，则关闭垂直同步，立即触发帧传递而不让显示器重复绘制先前帧。</p>
 <p>但是无论如何改进，依然无法改变垂直同步具有延迟的缺陷，即 MTP latency 过高。简而言之，当场景变化较大的时候，即使显卡已经快速绘制出来还是有可能因为垂直同步被迫稍晚传递给显示器，导致用户操作和屏幕反应之间存在较大延迟。这对实时性高的游戏（如 FPS、Moba）是致命的。</p>
-<h3 id="三重缓冲">三重缓冲</h3>
+<h2 id="三重缓冲">三重缓冲</h2>
 <p>为了解决垂直同步的延迟问题，有一种方式是将一般的前缓冲区和后缓冲区设计中加入新的中缓冲区构成三重缓冲。简单而言就是再设置一个缓冲区来存放显卡提前绘制好的帧，可以一定程度缓解显卡帧率突涨的问题。然而这是治标不治本的，也就是说当显卡性能保持在高位过长时间后，后缓冲区和中缓冲区都已经满了，此时显卡依然不得不空转等待显示器。</p>
 <p>Nvidia 为了解决三重缓冲这种治标不治本的问题，提出了<strong>快速垂直同步（无阻塞垂直同步）</strong>方案，即允许中缓冲区和后缓冲区交换，当中后缓冲区全满的时候再次交换中后缓冲区，显卡用新的帧覆盖掉本应该交给显示器绘制的帧。此时中缓冲区始终有一个可以交给前缓冲区，即显示器绘制的帧，而显卡也始终没有等待显示器。</p>
 <p>无阻塞垂直同步虽然做到了显示器和显卡都处于满负荷状态，但是两者之间不同步的差距则代偿给了帧丢失，也就是先前说的，如果中后缓冲区都满了，就会用新帧覆盖掉原本交给显示器的帧，从而导致实际的丢帧。</p>
-<h3 id="g-sync-与-freesync">G-sync 与 Freesync</h3>
+<h2 id="g-sync-与-freesync">G-sync 与 Freesync</h2>
 <p>实际上上述所有方案都有治标不治本的问题。为了从根源上解决画面撕裂又不产生过分的延迟，Nvidia 直接从显示器一侧尝试解决问题，即 G-sync 方案（该方案核心为<strong>自适应显示器刷新率</strong>，即 VRR，所以有时也称为 VRR 方案）。该方案的核心是令显示器可以调节 VBlank 时长，从而在显卡帧率较低的时候通过长 VBlank 时间来让“显示器等显卡”。</p>
 <p>也就是说，垂直同步核心是显卡空转等显示器，而 G-sync 则是显示器空转等显卡。</p>
 <p>然而在实际情况下，即使通过 VRR 也不可能让刷新率超越额定刷新率，所以当显卡帧率高于刷新率的时候依然会出现画面撕裂（也就是所说的 VRR 只能解决显卡帧率低于刷新率的情况）。所以厂家会推荐打开 G-sync 的时候同时打开垂直同步。</p>
@@ -452,6 +453,20 @@ $(function () {
 <p>所以 VRR 技术即使可以做到在一定范围内让刷新率锚定帧率，但是这依然需要帧率相对稳定。这时候就有个有趣的矛盾，既然能做到帧率相对稳定，那么即使画面撕裂也都会出现在屏幕上下方贴近边框的地方，那我为什么不能直接接受垂直同步之类的方案呢？</p>
 <p>所以现今的解决方案中就是不能在低延迟、无撕裂上面做到兼顾，G-sync 也只是众多权衡中的一种。</p>
 <p>最后，说明一下 Freesync。事实上 G-sync 是 Nvidia 授权部分显示器型号内置 Nvidia 芯片来达成的技术，是一种需要 Nvidia 官方认证才能采用的技术。而 Freesync 是开源的技术标准，所有显示器均可以使用，目前由 AMD 主要采用。而两者的技术框架几乎一致，仅仅在细节上有一定差别。</p>
+<h1 id="webrtc-kalman-filter-render-time-estimation">WebRTC Kalman filter render time estimation</h1>
+<p>参考文章：https://www.jianshu.com/p/0bc6a4998b32</p>
+<p>由于这篇文章已经是 2020 年的文章了，感觉 WebRTC 源码也已经做了很大的更新，所以还是以 2023.09 的最新源码为准，文章终究是参考。</p>
+<p>这篇文章主要介绍的是 WebRTC playout delay 的计算原理。WebRTC 源码之中 playout delay 表示为两个 <code>double</code> 浮点数构成的元组，分别表示最小播放延迟和最大播放延迟。一般而言，playout delay 会携带在 RTC 扩展头之中，如果没有携带，则默认初始化为 <code>&#123;-1, -1&#125;</code>。</p>
+<p>源码上的体现是：</p>
+<figure class="highlight c++"><figcaption><span>C++</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// rtp_video_header.h</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">RTPVideoHeader</span> &#123;</span></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    PlayoutDelay playout_delay = &#123;<span class="number">-1</span>, <span class="number">-1</span>&#125;;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// encoded_image.h</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RTC_EXPORT</span> <span class="title">EncodedImage</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    PlayoutDelay playout_delay_ = &#123;<span class="number">-1</span>, <span class="number">-1</span>&#125;;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">RtpFrameObject::<span class="built_in">RtpFrameObject</span>(<span class="comment">/* ... */</span>)</span><br><span class="line">    : <span class="built_in">first_seq_num_</span>(first_seq_num),</span><br><span class="line">      <span class="built_in">last_seq_num_</span>(last_seq_num),</span><br><span class="line">      <span class="built_in">last_packet_receive_time_</span>(last_packet_receive_time),</span><br><span class="line">      <span class="built_in">times_nacked_</span>(times_nacked) &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="built_in">SetPlayoutDelay</span>(rtp_video_header_.playout_delay);</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里主要观察最后一个构造函数的逻辑，在 <code>PacketBuffer</code> 模块将数据包排列组合出一帧的最后会创建一个 <code>RtpFrameObject</code> 实例来管理这一帧，此时会使用 <code>SetPlayoutDelay</code> 函数设定播放延迟。同时可以注意到，<code>RTPVideoHeader</code> 结构体中如果没有设定播放延迟，则默认为 <code>&#123;-1, -1&#125;</code>，也就是说创建帧对象的时候如果没有设定播放延迟则默认设定为 <code>&#123;-1, -1&#125;</code>。</p>
+<p>在帧构建完成之后会调用 <code>VideoReceiveStream2::OnCompleteFrame</code> 函数将新帧插入帧队列：</p>
+<figure class="highlight c++"><figcaption><span>C++</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">VideoReceiveStream2::OnCompleteFrame</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">    std::unique_ptr&lt;video_encoding::EncodedFrame&gt; frame,</span></span></span><br><span class="line"><span class="params"><span class="function">)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> PlayoutDelay &amp;playout_delay = frame-&gt;<span class="built_in">EncodedImage</span>().playout_delay_;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (playout_delay.min_ms &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">        frame_minimum_playout_delay_ms_ = playout_delay.min_ms;</span><br><span class="line">        <span class="built_in">UpdatePlayoutDelays</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (playout_delay.max_ms &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">        frame_maximum_playout_delay_ms_ = playout_delay.max_ms;</span><br><span class="line">        <span class="built_in">UpdatePlayoutDelays</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里可以注意当 <code>playout_delay_</code> 是非默认值的时候会做两件事：</p>
+<ul>
+<li>更新 <code>VideoReceiveStream2</code> 之中的 <code>frame_minimum_playout_delay_ms_</code> 等成员变量</li>
+<li>调用 <code>UpdatePlayoutDelays</code> 函数更新 <code>VCMTiming</code> 类中的数据</li>
+</ul>
 <h1 id="webrtc-jitter-buffer">WebRTC jitter buffer</h1>
 
     </div>
@@ -503,13 +518,13 @@ $(function () {
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">480k</span>
+    <span title="站点总字数">482k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">7:17</span>
+    <span title="站点阅读时长">7:18</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
