@@ -345,8 +345,27 @@ Timestamp VCMTiming::RenderTimeInternal(uint32_t frame_timestamp, Timestamp now)
 
 在此之后，首先会通过 `TimestampExtrapolator::ExtrapolateLocalTime` 函数，利用 Kalman filter 估计应当何时将这一帧送入渲染器队列。之后将 `current_delay_` 通过上下界 `[min_playout_delay_, max_playout_delay_]` 截断生成渲染过程耗时的估计，而这里的上下界则是上一阶段之中所获得的。`current_delay_` 本身的计算方式则在后面给出说明。
 
+---
+
+由于最新代码框架已经和参考文章中的框架大为不同，这里重新叙述一下一个帧构建完毕后的函数调用链：
+
+- 构建帧的时候将播放延迟设置到 `VCMTiming` 类之中
+- 帧构建完成后触发 `VideoReceiveStream2::OnCompleteFrame` 回调函数
+- 上述回调函数之中触发 `VideoStreamBufferController::InsertFrame` 函数将帧插入帧缓冲区
+- 帧插入操作通过 controller 最终交给 `FrameBuffer::InsertFrame` 实际完成
+- 正常插入完毕后，非重传帧通过 `VCMTiming::IncomingTimestamp` 函数进入 Kalman filter 流程
+- 正常插入完毕后，帧缓冲通过 `VideoStreamBufferController::MaybeScheduleFrameForRelease` 函数对后续帧作预测和规划
+- 预测未来帧的时候调用 `FrameDecodeTiming::OnFrameBufferUpdated` 回调
+- 该回调中通过 `VCMTiming::RenderTime` 预测渲染完毕时间戳，在此之后通过 `VCMTiming::MaxWaitingTime` 获取最大容忍等待时间
+
 ## Kalman filter
 
+首先，WebRTC 之中的 RTP 时间戳并非是 Unix 时间戳，而是按照 90kHz 的采样率计算采样次数。在 90kHz 之下每秒采样 90000 次，所以如果帧率为 60FPS，则每一帧之间相距 1/60 秒，即 1500 个采样点，也就是说 60FPS 之下相邻两帧之间的 RTP 时间戳相差值为 1500。
 
+Kalman filter 的目标是，在已知起始帧到达时间 $t_0$ 的基础上预测第 $k$ 帧的到达时间 $t_k$。如果将第 $k$ 帧的 RTP 时间戳记为 $T_k$，从起始帧到第 $k$ 帧间因网络发生的 RTP 时间戳抖动记为 $\Delta_k$，第 $k$ 帧的采样率记为 $s_k$，那么：
+
+$$
+t_k = t_0 + \frac{(T_k - T_0) - \Delta_k}{s_k}
+$$
 
 # WebRTC jitter buffer
