@@ -400,14 +400,14 @@ $(function () {
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>12k</span>
+      <span>13k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>11 分钟</span>
+      <span>12 分钟</span>
     </span>
 </div>
 
@@ -496,7 +496,24 @@ $(function () {
 <figure class="highlight c++"><figcaption><span>C++</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Timestamp <span class="title">VCMTiming::RenderTimeInternal</span><span class="params">(<span class="keyword">uint32_t</span> frame_timestamp, Timestamp now)</span> <span class="keyword">const</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">UseLowLatencyRendering</span>()) &#123;</span><br><span class="line">        <span class="comment">// Render as soon as possible or with low-latency renderer algorithm.</span></span><br><span class="line">        <span class="keyword">return</span> Timestamp::<span class="built_in">Zero</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// Note that TimestampExtrapolator::ExtrapolateLocalTime is not a const</span></span><br><span class="line">    <span class="comment">// method; it mutates the object&#x27;s wraparound state.</span></span><br><span class="line">    Timestamp estimated_complete_time =</span><br><span class="line">        ts_extrapolator_-&gt;<span class="built_in">ExtrapolateLocalTime</span>(frame_timestamp).<span class="built_in">value_or</span>(now);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Make sure the actual delay stays in the range of `min_playout_delay_`</span></span><br><span class="line">    <span class="comment">// and `max_playout_delay_`.</span></span><br><span class="line">    TimeDelta actual_delay =</span><br><span class="line">        current_delay_.<span class="built_in">Clamped</span>(min_playout_delay_, max_playout_delay_);</span><br><span class="line">    <span class="keyword">return</span> estimated_complete_time + actual_delay;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这里主要在预测某一帧何时应该被渲染完毕，事实上返回的就是上一个函数中的 <code>render_time</code> 时间戳参数。首先，判断是否是低延迟渲染模式，如果采用了低延迟模式，则直接返回零表示要求立刻渲染。</p>
 <p>在此之后，首先会通过 <code>TimestampExtrapolator::ExtrapolateLocalTime</code> 函数，利用 Kalman filter 估计应当何时将这一帧送入渲染器队列。之后将 <code>current_delay_</code> 通过上下界 <code>[min_playout_delay_, max_playout_delay_]</code> 截断生成渲染过程耗时的估计，而这里的上下界则是上一阶段之中所获得的。<code>current_delay_</code> 本身的计算方式则在后面给出说明。</p>
+<hr />
+<p>由于最新代码框架已经和参考文章中的框架大为不同，这里重新叙述一下一个帧构建完毕后的函数调用链：</p>
+<ul>
+<li>构建帧的时候将播放延迟设置到 <code>VCMTiming</code> 类之中</li>
+<li>帧构建完成后触发 <code>VideoReceiveStream2::OnCompleteFrame</code> 回调函数</li>
+<li>上述回调函数之中触发 <code>VideoStreamBufferController::InsertFrame</code> 函数将帧插入帧缓冲区</li>
+<li>帧插入操作通过 controller 最终交给 <code>FrameBuffer::InsertFrame</code> 实际完成</li>
+<li>正常插入完毕后，非重传帧通过 <code>VCMTiming::IncomingTimestamp</code> 函数进入 Kalman filter 流程</li>
+<li>正常插入完毕后，帧缓冲通过 <code>VideoStreamBufferController::MaybeScheduleFrameForRelease</code> 函数对后续帧作预测和规划</li>
+<li>预测未来帧的时候调用 <code>FrameDecodeTiming::OnFrameBufferUpdated</code> 回调</li>
+<li>该回调中通过 <code>VCMTiming::RenderTime</code> 预测渲染完毕时间戳，在此之后通过 <code>VCMTiming::MaxWaitingTime</code> 获取最大容忍等待时间</li>
+</ul>
 <h2 id="kalman-filter">Kalman filter</h2>
+<p>首先，WebRTC 之中的 RTP 时间戳并非是 Unix 时间戳，而是按照 90kHz 的采样率计算采样次数。在 90kHz 之下每秒采样 90000 次，所以如果帧率为 60FPS，则每一帧之间相距 1/60 秒，即 1500 个采样点，也就是说 60FPS 之下相邻两帧之间的 RTP 时间戳相差值为 1500。</p>
+<p>Kalman filter 的目标是，在已知起始帧到达时间 <span class="math inline">\(t_0\)</span> 的基础上预测第 <span class="math inline">\(k\)</span> 帧的到达时间 <span class="math inline">\(t_k\)</span>。如果将第 <span class="math inline">\(k\)</span> 帧的 RTP 时间戳记为 <span class="math inline">\(T_k\)</span>，从起始帧到第 <span class="math inline">\(k\)</span> 帧间因网络发生的 RTP 时间戳抖动记为 <span class="math inline">\(\Delta_k\)</span>，第 <span class="math inline">\(k\)</span> 帧的采样率记为 <span class="math inline">\(s_k\)</span>，那么：</p>
+<p><span class="math display">\[
+t_k = t_0 + \frac{(T_k - T_0) - \Delta_k}{s_k}
+\]</span></p>
 <h1 id="webrtc-jitter-buffer">WebRTC jitter buffer</h1>
 
     </div>
@@ -548,13 +565,13 @@ $(function () {
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">490k</span>
+    <span title="站点总字数">492k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">7:26</span>
+    <span title="站点阅读时长">7:27</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
