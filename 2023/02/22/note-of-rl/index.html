@@ -1009,9 +1009,12 @@ Q(s_t, a_t) \leftarrow Q(s_t, a_t) + \alpha\left[G_t(\tau)\prod_{k = t}^{+\infty
 <p>当然如果使用 TD(<span class="math inline">\(\lambda\)</span>)，这一项就是相应的 TD target。</p>
 <p>目前基于通过神经网络实现的函数估计，我们可以将 Q learning 转换为深度学习算法 DQN。</p>
 <h2 id="deep-q-network-dqn">Deep Q Network (DQN)</h2>
-<p>使用神经网络后，Q learning 的基本算法框架不变，依然与上一节中所示一致，仅需要将价值函数 <span class="math inline">\(Q^\pi\)</span> 替换为一个神经网络 <span class="math inline">\(f_{\b w}: \mathcal{S} \to \mathbb{R}^{|\mathcal{A}|}\)</span>。该神经网络结构的语义为，其接受当前的状态 <span class="math inline">\(s \in \mathcal{S}\)</span>，输出这个状态下所有可能的行为带来的价值函数估计，即 <span class="math inline">\(f_{\b w}(s) = [Q^\pi(s, a_1), Q^\pi(s, a_2), \cdots, Q^\pi(s, a_{|\mathcal{A}|})]\)</span>。</p>
+<p>使用神经网络后，Q learning 的基本算法框架不变，依然与上一节中所示一致，仅需要将价值函数 <span class="math inline">\(Q^\pi\)</span> 替换为一个神经网络 <span class="math inline">\(f_{\b w}: \mathcal{S} \to \mathbb{R}^{|\mathcal{A}|}\)</span>。该神经网络结构的语义为，其接受当前的状态 <span class="math inline">\(s \in \mathcal{S}\)</span>，输出这个状态下所有可能的行为带来的价值函数估计，即 <span class="math inline">\(f_{\b w}(s) = [Q_{\b w}(s, a_1), Q_{\b w}(s, a_2), \cdots, Q_{\b w}(s, a_{|\mathcal{A}|})]\)</span>。</p>
 <p>此外，基于上述神经网络设计，策略改进过程中利用价值函数生成行为策略的方式在代码上是显然的，只需要将神经网络输出的数组求最大值后直接应用 <span class="math inline">\(\varepsilon\)</span> 贪心方式即可，所以不需要另开辟内存存储策略本身。</p>
-<p>现在我们考虑策略评估过程，</p>
+<p>而策略评估过程则为上一部分所介绍的梯度下降算法：</p>
+<p><span class="math display">\[
+\b w \leftarrow \b w + \alpha\Eop_{\tau \sim \pi} \left[\frac{1}{|\tau|} \sum_{(s, a) \in \tau} ({\color{red} Q^\pi(s, a)} - Q_{\b w}(s, a))\nabla_{\b w}Q_{\b w}(s, a)\right]
+\]</span></p>
 <p>故基本的 DQN 算法流程为：</p>
 <ul>
 <li>初始化估计价值函数的神经网络 <span class="math inline">\(f_{\b w}\)</span></li>
@@ -1075,13 +1078,13 @@ Q(s_t, a_t) \leftarrow Q(s_t, a_t) + \alpha\left[G_t(\tau)\prod_{k = t}^{+\infty
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">493k</span>
+    <span title="站点总字数">495k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">7:28</span>
+    <span title="站点阅读时长">7:30</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
