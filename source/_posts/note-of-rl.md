@@ -873,11 +873,15 @@ $$
 
 ## Deep Q Network (DQN)
 
-使用神经网络后，Q learning 的基本算法框架不变，依然与上一节中所示一致，仅需要将价值函数 $Q^\pi$ 替换为一个神经网络 $f_{\b w}: \mathcal{S} \to \mathbb{R}^{|\mathcal{A}|}$。该神经网络结构的语义为，其接受当前的状态 $s \in \mathcal{S}$，输出这个状态下所有可能的行为带来的价值函数估计，即 $f_{\b w}(s) = [Q^\pi(s, a_1), Q^\pi(s, a_2), \cdots, Q^\pi(s, a_{|\mathcal{A}|})]$。
+使用神经网络后，Q learning 的基本算法框架不变，依然与上一节中所示一致，仅需要将价值函数 $Q^\pi$ 替换为一个神经网络 $f_{\b w}: \mathcal{S} \to \mathbb{R}^{|\mathcal{A}|}$。该神经网络结构的语义为，其接受当前的状态 $s \in \mathcal{S}$，输出这个状态下所有可能的行为带来的价值函数估计，即 $f_{\b w}(s) = [Q_{\b w}(s, a_1), Q_{\b w}(s, a_2), \cdots, Q_{\b w}(s, a_{|\mathcal{A}|})]$。
 
 此外，基于上述神经网络设计，策略改进过程中利用价值函数生成行为策略的方式在代码上是显然的，只需要将神经网络输出的数组求最大值后直接应用 $\varepsilon$ 贪心方式即可，所以不需要另开辟内存存储策略本身。
 
-现在我们考虑策略评估过程，
+而策略评估过程则为上一部分所介绍的梯度下降算法：
+
+$$
+\b w \leftarrow \b w + \alpha\Eop_{\tau \sim \pi} \left[\frac{1}{|\tau|} \sum_{(s, a) \in \tau} ({\color{red} Q^\pi(s, a)} - Q_{\b w}(s, a))\nabla_{\b w}Q_{\b w}(s, a)\right]
+$$
 
 故基本的 DQN 算法流程为：
 
