@@ -226,7 +226,7 @@ $(function () {
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#zgaming---zero-latency-3d-cloud-gaming-by-image-prediction"><span class="nav-number">1.</span> <span class="nav-text">ZGaming - Zero-Latency 3D Cloud Gaming by Image Prediction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction"><span class="nav-number">1.1.</span> <span class="nav-text">Introduction</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#zgaming---zero-latency-3d-cloud-gaming-by-image-prediction"><span class="nav-number">1.</span> <span class="nav-text">ZGaming - Zero-Latency 3D Cloud Gaming by Image Prediction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction"><span class="nav-number">1.1.</span> <span class="nav-text">Introduction</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ekho---synchronizing-cloud-gaming-media-across-multiple-endpoints"><span class="nav-number">2.</span> <span class="nav-text">Ekho - Synchronizing cloud gaming media across multiple endpoints</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction-1"><span class="nav-number">2.1.</span> <span class="nav-text">Introduction</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -293,6 +293,9 @@ $(function () {
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://pwe.cat/" title="https:&#x2F;&#x2F;pwe.cat" rel="noopener" target="_blank">索尔</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://kokic.github.io/" title="https:&#x2F;&#x2F;kokic.github.io&#x2F;" rel="noopener" target="_blank">kokic</a>
         </li>
     </ul>
   </div>
@@ -396,7 +399,7 @@ $(function () {
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>587</span>
+      <span>1.2k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -427,6 +430,20 @@ $(function () {
 <li>商用云游戏大部分依然采用用户动作后再渲染的方案，工业界适配困难较大</li>
 </ul>
 <p>如果难以直接修改当前的工作流水线，那么一种可能的方案为基于图像的预测，常用的方法就是 DIBR。在具有 DIBR 的系统中，当用户做出操作的时候，该系统会根据最近接收到的 RGBD（即 RGB 色彩以及深度信息）</p>
+<h1 id="ekho---synchronizing-cloud-gaming-media-across-multiple-endpoints">Ekho - Synchronizing cloud gaming media across multiple endpoints</h1>
+<p>简而言之就是以往的工作都把云游戏简单化为视频画面的传输，而忽略了音频等多媒体的可能。多媒体事实上意味着需要做到媒体之间的同步，例如游戏画面需要与游戏音效同步。Ekho 则通过伪噪声的方式实现了多媒体之间的同步。</p>
+<h2 id="introduction-1">Introduction</h2>
+<p>简单来说，就是注意到现在常用的云游戏系统往往除了视频流之外还会有一个反馈流，这个反馈流一般作用于各种游戏配件，作用包括：</p>
+<ul>
+<li>在多人语音游戏的条件下混合其他玩家的声音，并提供给专用的游戏耳机等</li>
+<li>对玩家的操作给出触觉反馈，如手柄震动等</li>
+</ul>
+<p>这里容易出现的问题在于，视频流和反馈流作用到不同的终端（一个是显示器一个是各种其他配件），这导致这两个流会使用不同的网络连接传输，从而两者之间的同步就成为了问题。</p>
+<p>事实上，在有观众的游戏中，除了玩家本人的耳机会有一道音频流外，普通视频流中还会负载另一道音频流，这个音频流会对外播放给观众。这一道音频流播放之后还会被玩家耳机的麦克风捕捉。所以说云游戏除了多种流的同步问题外，还需要处理多道音频流之间的同步。</p>
+<p>一般而言，流之间会产生 100 毫秒左右的流间延迟（Inter Stream Delay / ISD），具体取决于网络情况、终端类型、连接方式甚至玩家到屏幕的距离。但是总体而言，延迟的影响因素大概可以归纳为：</p>
+<ul>
+<li>网络延迟。</li>
+</ul>
 
     </div>
 
@@ -477,13 +494,13 @@ $(function () {
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">500k</span>
+    <span title="站点总字数">501k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">7:34</span>
+    <span title="站点阅读时长">7:35</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
