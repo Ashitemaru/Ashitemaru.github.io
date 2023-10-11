@@ -27,10 +27,15 @@
 <meta property="og:site_name" content="Ashitemaru">
 <meta property="og:description" content="说是加入腾讯做云游戏，但是似乎一个月过去了暂且都没有等来信息，果然还是继续积累吧。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ashitemaru.github.io/uploads/paper-2023-10/1.png">
+<meta property="og:image" content="https://ashitemaru.github.io/uploads/paper-2023-10/2.png">
+<meta property="og:image" content="https://ashitemaru.github.io/uploads/paper-2023-10/3.png">
+<meta property="og:image" content="https://ashitemaru.github.io/uploads/paper-2023-10/4.png">
 <meta property="article:published_time" content="2023-10-08T10:54:54.000Z">
 <meta property="article:modified_time" content="2023-10-08T10:54:54.000Z">
 <meta property="article:author" content="Ashitemaru">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ashitemaru.github.io/uploads/paper-2023-10/1.png">
 
 
 <link rel="canonical" href="https://ashitemaru.github.io/2023/10/08/paper-2023-10/">
@@ -226,7 +231,7 @@ $(function () {
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#zgaming---zero-latency-3d-cloud-gaming-by-image-prediction"><span class="nav-number">1.</span> <span class="nav-text">ZGaming - Zero-Latency 3D Cloud Gaming by Image Prediction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction"><span class="nav-number">1.1.</span> <span class="nav-text">Introduction</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ekho---synchronizing-cloud-gaming-media-across-multiple-endpoints"><span class="nav-number">2.</span> <span class="nav-text">Ekho - Synchronizing cloud gaming media across multiple endpoints</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction-1"><span class="nav-number">2.1.</span> <span class="nav-text">Introduction</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#zgaming---zero-latency-3d-cloud-gaming-by-image-prediction"><span class="nav-number">1.</span> <span class="nav-text">ZGaming - Zero-Latency 3D Cloud Gaming by Image Prediction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction"><span class="nav-number">1.1.</span> <span class="nav-text">Introduction</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ekho---synchronizing-cloud-gaming-media-across-multiple-endpoints"><span class="nav-number">2.</span> <span class="nav-text">Ekho - Synchronizing cloud gaming media across multiple endpoints</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction-1"><span class="nav-number">2.1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#related-work"><span class="nav-number">2.2.</span> <span class="nav-text">Related Work</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#background-motivation"><span class="nav-number">2.3.</span> <span class="nav-text">Background &amp; Motivation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#time-synchronization-requirements"><span class="nav-number">2.3.1.</span> <span class="nav-text">Time Synchronization Requirements</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#inter-stream-delay"><span class="nav-number">2.3.2.</span> <span class="nav-text">Inter Stream Delay</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#isd-variation"><span class="nav-number">2.3.3.</span> <span class="nav-text">ISD Variation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ekho"><span class="nav-number">2.4.</span> <span class="nav-text">Ekho</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#overview-of-isd-measurement-in-ekho"><span class="nav-number">2.4.1.</span> <span class="nav-text">Overview of ISD Measurement in Ekho</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reliable-marker-detection-in-ekho"><span class="nav-number">2.4.2.</span> <span class="nav-text">Reliable Marker Detection in Ekho</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -399,14 +404,14 @@ $(function () {
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1.2k</span>
+      <span>4.1k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
+      <span>4 分钟</span>
     </span>
 </div>
 
@@ -442,8 +447,70 @@ $(function () {
 <p>事实上，在有观众的游戏中，除了玩家本人的耳机会有一道音频流外，普通视频流中还会负载另一道音频流，这个音频流会对外播放给观众。这一道音频流播放之后还会被玩家耳机的麦克风捕捉。所以说云游戏除了多种流的同步问题外，还需要处理多道音频流之间的同步。</p>
 <p>一般而言，流之间会产生 100 毫秒左右的流间延迟（Inter Stream Delay / ISD），具体取决于网络情况、终端类型、连接方式甚至玩家到屏幕的距离。但是总体而言，延迟的影响因素大概可以归纳为：</p>
 <ul>
-<li>网络延迟。</li>
+<li>网络延迟。大概来说就是网络延迟是相当复杂的，首先多设备的网络接入点不一定一样（屏幕直接通过以太网连接到路由器而控制器通过 AP 连接到 WiFi 等）。其次，不同设备可能使用不同的网络协议（屏幕使用 WebRTC 而控制器使用 URCP 协议）。最后，互联网提供商可能对不同端口的流量做不同的优先级处理，这也可能导致网络延迟</li>
+<li>设备播放延迟。音频和视频在不同的设备上有不同的缓存管理措施，不同的播放策略也可能导致数十毫秒的 ISD</li>
+<li>声音传播延迟。玩家从屏幕和耳机接收到的声音的 ISD 和玩家到屏幕的距离有关（毕竟声速也不过 340 米每秒），这可能带来十毫秒左右的延迟</li>
 </ul>
+<p>本文的目标是将 ISD 限制到 10 毫秒一下，考虑到 ISD 是波动的，所以需要在游戏进程中不断观测和动态调整来平稳 ISD。事实上，测量 ISD 就足够困难，主要挑战是：</p>
+<ul>
+<li>RTT 的测量本身会因为网络往返路径不同，测量值本身具有十几毫秒的误差</li>
+<li>解码、播放、声音传播延迟等影响 ISD 的重要因素往往因为缺乏合适的 API 或者硬件而难以测量</li>
+</ul>
+<p>以往的设备间同步有三种常见方案：</p>
+<ul>
+<li>通过共享的网络组件建立专用链接完成时间同步。然而云游戏系统并不强制要求各个终端共享网络组件</li>
+<li>通过网络时间协议同步时间。然而该协议往往测量不精准，甚至会有百毫秒的误差</li>
+<li>通过记录设备播放的声音测量误差。然而这对硬件要求较高，此外还要求周围环境噪声较低</li>
+</ul>
+<p>而本文提出 Ekho，其可以在亚毫秒级别测量 ISD 并且做出调节。简要而言，Ekho 通过伪噪声序列的方式对齐各种流，并且在服务端根据测量结果调整发送序列来同步各种流。</p>
+<h2 id="related-work">Related Work</h2>
+<p>相关工作曾经研究过两路相似音频最大能够达到多大错位而不被用户感知，以前的研究结果认为单调、突发的信号音在错位超过 5 毫秒时就会被感知，而复杂语音则需要达到 16 毫秒左右才会感知。本文拓展了这些工作，并且通过数据论述了：</p>
+<ul>
+<li>音频之间的错位最大为 10 毫秒</li>
+<li>视频与音频之间的错位，最多允许音频提前视频 15 毫秒或视频提前音频 45 毫秒</li>
+<li>触觉反馈与音频之间错位最大为 24 毫秒</li>
+<li>触觉反馈与视频之间错位可以宽容到 30 至 100 毫秒</li>
+</ul>
+<p>另外一部分的相关工作为媒体同步，指的是在一定范围的终端内同步媒体内容。现有的工作往往要求了下述前提（然后本文基于此做了点优化）：</p>
+<ul>
+<li>设备有准确的时钟。然而用于同步设备时钟的网络时间协议具有不可容忍的误差</li>
+<li>支持 PTP 的设备可以通过连接到同一路由器实现同步。然而 PTP 并非广泛采用的协议</li>
+<li>利用这些设备往往物理距离较近的特征，通过在一个设备上记录另一个设备声音的方式实现流之间的延迟测量。然而由于环境噪声、硬件设备等问题，这一方案在先前工作中没有获得很好的效果，而本文基于此，做出了一步重要的拓展（伪噪声打点）</li>
+</ul>
+<h2 id="background-motivation">Background &amp; Motivation</h2>
+<h3 id="time-synchronization-requirements">Time Synchronization Requirements</h3>
+<p>为了研究音频之间的错位阈值，这一章设计了用户实验。用户实验的基本方案是 ITU-T P.808 标准中规定的 DCR 测试方法。测试中使用的音频为 30 个长度为 15 秒的游戏录音，每个录音均加上了 0 到 300 毫秒不等的 ISD。</p>
+<p>测试流程就直接翻译原文了。</p>
+<div class="note info no-icon"><p>人类测试者首先听取没有回声的参考音频片段，然后听取带有未知延迟量的回声的相同片段，包括 0 毫秒，即没有回声。测试者需要选择由于回声引起的注意力分散程度。此外，每个测试者会定期进行训练，即按照 P.808 标准听取带有不同回声量的六个片段，以确保标准化。</p>
+<p>我们总共收集了 3555 个评分，根据 ITU-T P.808 的规定，去除了低质量的回应（总数据的 33%）。每个片段被评分约 10 次，每个延迟级别有 30 个不同的片段，共计每个延迟级别约 296 个投票。受访者池由 17% 的年轻人（18-25 岁）、43% 的成年人（26-35 岁）、32% 的中年人（36-50 岁）和 8% 的老年人（51 岁及以上）组成，他们的母语是英语。按照伦理准则，调查是匿名的，我们在参与之前告知受访者有关调查过程和刺激类型。我们对受访者进行了补偿，并避免了可能被认为是令人不悦的刺激。Microsoft IRB 审查并批准了这项调查。</p>
+</div>
+<p>最后的具体结果事实上已经在先前提到了，即根据音频的不同类别，玩家的忍受阈值是不同的，但最后大体可以用 10 毫秒作为阈值。</p>
+<p><img src="/uploads/paper-2023-10/1.png" /></p>
+<div class="note success no-icon"><p>首先需要学一下 ITU 用户测试到底是个什么标准。</p>
+<p>其次的话，这篇文章的 user study 给的启示大概就是如果要设立对比或者是五分量表类似的测试的话，需要定期通过所谓的 training phase 来保证测试者没有被“带偏”。</p>
+<p>如果说要测试云游戏条件下画面撕裂更为显著的话，其实也可以借鉴这种主观评分模式。不同的游戏，不同的撕裂程度（或者说不同幅度的 jitter？）之下受访者到底能够容忍多少。如果发现云游戏条件下测试者的评分有显著下降，应该能说明问题了？</p>
+<p>以及最好能提供一些现有的解决方案，证明现在的方案还不够解决这一问题？</p>
+</div>
+<p>上述实验是音频和音频之间的错位，其余种类流之间的错位本文似乎没有展开说明。</p>
+<h3 id="inter-stream-delay">Inter Stream Delay</h3>
+<p>这一部分主要是 ISD 的建模：</p>
+<p><img src="/uploads/paper-2023-10/2.png" /></p>
+<p>可以看到基本和 Introduction 中提出的一致，分为网络延迟、解码延迟、播放延迟、声音传播延迟。</p>
+<p>网络延迟的测量也和先前一样，否定了 NTP 协议和对称 RTT 测量两种方案。解码延迟则理论可以测量（通过对目标设备和音频格式类型的仔细测量来分析这些延迟），然而受限于终端种类繁多，API 也不总是可用，这种测量几乎实际不可行。播放延迟则来源于硬件的 jitter buffer，这种延迟几乎无法测量。声音传播延迟自然因为硬件问题无法测量。</p>
+<p>最终归纳为下表：</p>
+<p><img src="/uploads/paper-2023-10/3.png" /></p>
+<p>总而言之，目前的测量方法的误差都过大，根本无法做到从各个环节上把握 ISD，更不用谈以此为基础控制 ISD 了（这一部分就是用于说明问题的挑战性和本文方案的创新性的）。</p>
+<h3 id="isd-variation">ISD Variation</h3>
+<p>大概的意思是继续说现有方案解决不了问题，原因是 ISD 是动态的。简而言之，ISD 的组成成分中，包含了低概率发生的 IP 路径更改或者显卡调度更改导致的大幅度震荡，以及更常见的因为网络波动和 jitter buffer 耗尽导致的小幅度震荡。</p>
+<p>也就是说，ISD 的校正需要尽快且足够频繁以应对这些变化。实践证明，Ekho 最多间隔 15 秒测量一次 ISD 足以应对这些震荡。</p>
+<h2 id="ekho">Ekho</h2>
+<h3 id="overview-of-isd-measurement-in-ekho">Overview of ISD Measurement in Ekho</h3>
+<p>简而言之，Ekho 采用了端到端的测量方案，即忽略掉中途环节，直接在端侧考虑延迟：</p>
+<p><img src="/uploads/paper-2023-10/4.png" /></p>
+<p>这里两路音频指的是屏幕音频和耳机音频，由于屏幕音频最终会被耳机捕捉，所以可以在耳机中直接比较两路音频得到 ISD 的估算。</p>
+<p>这一方案的问题在于，一般的游戏音频内部没有标志点，无法快速供算法分析捕捉。其次，屏幕音频在经过空气传播削弱之后，加上环境噪声，会导致两路音频更难对齐，这还没有考虑传输过程中两路音频均可能经过了有损压缩。</p>
+<p>所以，一种简单的解决方案是在服务器端发送音频的时候，在其内部均匀地（实验中使用 1 秒作为间隔）插入伪噪声标记，这些标记会用来对齐两路音频。这种伪噪声标记需要精心设计，因为其不能影响到玩家正常游戏，需要尽力做到不可察觉。</p>
+<h3 id="reliable-marker-detection-in-ekho">Reliable Marker Detection in Ekho</h3>
 
     </div>
 
@@ -494,13 +561,13 @@ $(function () {
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">501k</span>
+    <span title="站点总字数">504k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">7:35</span>
+    <span title="站点阅读时长">7:38</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
