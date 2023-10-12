@@ -957,6 +957,8 @@
 <h1 id="section-38">2023.10.09</h1>
 <p>今天出勤，主要目标是白 FLOWER，结果不明不白地打完了鸟加打上了 15700，在这之后推了两把 Never Get Over，顺利鸟了之后鸟加没能拿下。晚上回来又开始摆烂。</p>
 <h1 id="section-39">2023.10.10</h1>
+<p>说是要好好学习的一天，不过下午也确实好好学了一下午，但是晚上涵涵过生日喊去吃饭，还是没忍住去了。结果几个人从下午五点开始一直玩到快凌晨五点，吃饭唱歌聊天啥的，确实比较欢乐。不过到宿舍了之后，又开始陷入那种我怎么啥事没干的 emo 循环，有的时候感觉自己还是太控制不了自己了。</p>
+<p>于是先给自己定了一些小目标，希望能够尽快完成吧。大概就是两天内清掉目前手上的任务，其实手上真的没啥真的难的任务，只是自己实在是有点摆烂。</p>
 ]]></content>
       <categories>
         <category>【生活记录】日记</category>
@@ -20050,6 +20052,70 @@ c_a = \frac{\sigma_a}{\mu_a}, c_s = \frac{\sigma_s}{\mu_s}, \rho = \frac{\mu_a}{
 <p>这一方案的问题在于，一般的游戏音频内部没有标志点，无法快速供算法分析捕捉。其次，屏幕音频在经过空气传播削弱之后，加上环境噪声，会导致两路音频更难对齐，这还没有考虑传输过程中两路音频均可能经过了有损压缩。</p>
 <p>所以，一种简单的解决方案是在服务器端发送音频的时候，在其内部均匀地（实验中使用 1 秒作为间隔）插入伪噪声标记，这些标记会用来对齐两路音频。这种伪噪声标记需要精心设计，因为其不能影响到玩家正常游戏，需要尽力做到不可察觉。</p>
 <h3 id="reliable-marker-detection-in-ekho">Reliable Marker Detection in Ekho</h3>
+<p>这里就详细介绍了伪噪声序列的构造方式和检测方式。首先分析游戏音频的频谱特征，可以看到载波的频率基本都在 12 kHz 以上，而重要游戏信息内容基本都位于 6 kHz 以下，所以伪噪声的频率范围需要限制在 6-12 kHz 范围内。此外，由于可探测性取决于振幅，这里的目标是不断探测游戏本体音频的振幅并控制伪噪声标记振幅与其的比值尽可能恒定（游戏声音小标记振幅就小，反之亦然）。</p>
+<p>假设 <span class="math inline">\(x[t]\)</span> 是游戏音频，<span class="math inline">\(w[t]\)</span> 为长度为 <span class="math inline">\(L\)</span> 的伪噪声序列，那么最终的带标记音频序列 <span class="math inline">\(x_m[t]\)</span> 为：</p>
+<p><span class="math display">\[
+\begin{aligned}
+x_m[t] &amp;= x[t] + C\alpha_k w[t] \\
+\alpha_k &amp;= \gamma\alpha_{k - 1} + (1 - \gamma)\rho(x[(k - 1)T : kT])
+\end{aligned}
+\]</span></p>
+<p>参数 <span class="math inline">\(L\)</span> 影响 ISD 测量的速度和最大可测量的 ISD，一般的话设置为 48000（对应一秒音频，说明生成频率为 21 MHz 左右）。<span class="math inline">\(\rho(x[(k - 1)T : kT])\)</span> 则表示了在 <span class="math inline">\((k - 1)T\)</span> 到 <span class="math inline">\(kT\)</span> 范围内的游戏音频功率，实验中选择 <span class="math inline">\(T = 960\)</span>，这是 48 kHz 下的 20 毫秒音频。</p>
+<p>这个公式的原理在于每 20 毫秒通过功率测算调整混入比例 <span class="math inline">\(\alpha_k\)</span>，而 <span class="math inline">\(\alpha_k\)</span> 采用的软更新参数 <span class="math inline">\(\gamma\)</span> 在实验中取 0.4。</p>
+<p>在上述混入的基础上就可以介绍检测算法了，假设耳机的录音序列为 <span class="math inline">\(x_{\rm rec}[x]\)</span>，我们计算其交叉相关 <span class="math inline">\(Z[t]\)</span> 如下：</p>
+<p><span class="math display">\[
+Z[t] = \sum_{i = 1}^L x_{\rm rec}[t + i]w[i]
+\]</span></p>
+<p>可以注意到这里不断让录音和标记信号对齐，当标记对齐的时候 <span class="math inline">\(Z[t]\)</span> 应当在此处出现峰值。为了让峰值检测更为可靠，需要做下述归一化：</p>
+<p><span class="math display">\[
+Z^*[t] = \left|\frac{Z[t]}{\sqrt{\dfrac{1}{S}\sum_{i = 1}^S Z[t + i]^2}}\right|
+\]</span></p>
+<p>通过归一化后的 <span class="math inline">\(Z^*[t]\)</span> 会有比较好的包络线。实际测量中会使用 <span class="math inline">\(S\)</span> 为 100 毫秒，这个参数的来源大致是游戏音效大约都持续 100 毫秒。</p>
+<p>为了更好检测峰值，下一步需要具体计算包络线：</p>
+<p><span class="math display">\[
+R[t] = \begin{cases}
+|Z^*[t]| &amp; R[t - 1] \leq |Z^*[t]| \\
+\beta R[t - 1] &amp; {\rm otherwise} \\
+\end{cases}
+\]</span></p>
+<p>原理是简单的，如果出现峰值则设定峰值，如果没有出现则按照等比数列衰减包络线。这样操作可以过滤掉除了峰值之外的大量无用数据。实验中 <span class="math inline">\(\beta = 0.99995\)</span>。在上述计算的基础上，所有 <span class="math inline">\(R[t] &gt; \theta = 5\)</span> 的值都认为是一次峰值。</p>
+<p>峰值更具体的计算为：</p>
+<p><span class="math display">\[
+P[t] = \begin{cases}
+R[t] &amp; R[t \pm 1] &lt; R[t], R[t] &gt; \theta \\
+0 &amp; {\rm otherwise} \\
+\end{cases}
+\]</span></p>
+<p>此时 <span class="math inline">\(P[t]\)</span> 已经提取出了所有的峰值并且过滤掉了较低峰值。此外，由于峰值的间隔至少应当是 <span class="math inline">\(L\)</span>（峰值间隔应当是伪噪声间隔，如果有较近的峰值应当是游戏本身的峰值，需要过滤），所以给出了下述进一步过滤：</p>
+<p><span class="math display">\[
+P^*[t] = \begin{cases}
+P[t] &amp; P[t] = \max_{|j| &lt; \delta}P[t + j] &gt; 0, \max_{|j| &lt; \delta}P[t + j + L] &gt; 0 \\
+0 &amp; {\rm otherwise} \\
+\end{cases}
+\]</span></p>
+<p>全检测流程如下：</p>
+<p><img src="/uploads/paper-2023-10/5.png" /></p>
+<h3 id="isd-estimation">ISD Estimation</h3>
+<p>由于 <span class="math inline">\(L\)</span> 选择了一秒，所以这里假定 ISD 不会超越 500 毫秒。在此基础上，将过滤过后的屏幕音频和耳机音频做对比，将距离最小的两个峰值之差作为 ISD 的估计：</p>
+<p><img src="/uploads/paper-2023-10/6.png" /></p>
+<h3 id="ekho-delay-compensation">Ekho Delay Compensation</h3>
+<p>调节的方式很简单，就是塞零音频来强制同步（毕竟已经算出来 ISD 了），本文未来计划通过数据包丢失掩盖技术来做（毕竟插入零音频实在是有点粗暴），但是至少现在没做。</p>
+<h2 id="design-implementation">Design &amp; Implementation</h2>
+<p>结构是这样的：</p>
+<p><img src="/uploads/paper-2023-10/7.png" /></p>
+<p>总体来说的话，终端设备基本上仅仅承担了录音的任务，所有的计算负载依然放在云端。云端估算 ISD 的时候依赖于终端传回的音频数据。</p>
+<p>具体的实现这里就不涉及了。</p>
+<h2 id="evaluation">Evaluation</h2>
+<p>评估的话大概包括如下部分：</p>
+<ol type="1">
+<li>Ekho 是否成功在端到端系统中同步音频流？</li>
+<li>什么样的标记音量足以准确估算 ISD，同时又不被人察觉？</li>
+<li>在标记辅助的 ISD 测量方面，Ekho 与先前的工作相比如何？</li>
+<li>当屏幕音频流静音时，Ekho 是否可以用于视频与音频的同步？</li>
+</ol>
+<p>同步音频流的实验很简单，直接把 Ekho 开起来然后在每个终端开一个 log 来记录每一帧音频的播放时间，两个设备的时钟会在实验开始前同步：</p>
+<p><img src="/uploads/paper-2023-10/8.png" /></p>
+<p>总之可以看到 Ekho 将 ISD 控制在 10 毫秒内，而不用 Ekho 的时候几乎做不到压到 10 毫秒的可能。</p>
 ]]></content>
       <categories>
         <category>【论文笔记】计算机</category>
