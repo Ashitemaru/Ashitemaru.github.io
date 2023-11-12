@@ -1067,6 +1067,16 @@
 <p>回来的时候路过万柳机厅，于是小小出勤一把，把标奶推到了 100.37，打了一个暴力扳机的四星 AP，除此以外就没有出分了。</p>
 <h1 id="section-68">2023.11.08</h1>
 <p>今天就是上课，看论文，写作业。今天事情其实还真的不少，中马的 pre 材料准备到了 ddl，然后学长问我加紧要了 ITU-T 用户测试的材料，明天组会要讲的论文也还没准备，周四还得交高级机器学习的 proposal，总之就是一直在忙，到了一点多还没完全搞完。</p>
+<h1 id="section-69">2023.11.09</h1>
+<p>周四，还是一样的简单混完组会和软工会，但是这次不能出勤了，因为得赶快回去搞 proposal。不过比较好的一件事情是，回去之后 yuki 和我说他大概知道要干什么了，于是 proposal 整体写得也就比较顺利，早早完工早早交掉。</p>
+<p>晚上本来是要和学长聊用户实验相关的东西的，但是学长肺炎在休息说另找时间，也就先搁置了。</p>
+<h1 id="section-70">2023.11.10</h1>
+<p>今天就是非常单纯睡了一个大觉然后出勤，手感比较好，AP 了白火花然后鸟加了 HERA2 和福瑞火箭，晚上本来想迅速解决白死镰的，结果粉了好几次绝赞痛失鸟加，到了闭店也没打完，于是只能赶快回去准备和学长开会。</p>
+<p>这次开会基本上没有什么有意思的东西，大概就是这周末稍微思考一下用户实验怎么尽可能地在保持真实交互的条件下又符合 ITU 标准，然后约了周一再开一次会交流一下线上算法和用户实验设计，周四周五再找老板聊一下。总之就是，有了点事情要做，但是确实也一下子没啥思路。</p>
+<p>好玩的一件事就是，今天早上我才发现上周五数据挖掘小测了，于是总评高高兴兴减了 10 分，不过研究生的绩点终究是随便搞搞，所以估计混个 3.6 也就随随便便过去了。但是，麻烦就在，以后真的不能翘课了，再缺一次小测成绩就实在是太难看了。</p>
+<h1 id="section-71">2023.11.11</h1>
+<p>出勤，去了东直门，很快解决了白死镰之后瑞文皇帝打了个 100.52 进结尾绿绝赞。哎，真的是觉得绝赞是我的一生之敌，UniTas 和 Aiolos 也是掉绝赞，白死镰之前也是掉绝赞。</p>
+<p>晚上是高老板的特奖饭，吃完在五道口又小出了一会回来准备写作业。不过说实话确实挺纠结明天出不出勤的，因为瑞文皇帝确实还是比较手痒，但是手上又有一门作业、Approval9 以及实验室的东西。比较好的一种安排就是今晚早点睡明早早点起把作业和 Approval9 初步给清理掉，然后下午五点这样去新奥出勤。</p>
 ]]></content>
       <categories>
         <category>【生活记录】日记</category>
@@ -13288,6 +13298,48 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
       </categories>
   </entry>
   <entry>
+    <title>马尔可夫随机过程杂谈</title>
+    <url>/2023/11/13/markov-process/</url>
+    <content><![CDATA[<p>最近学网络建模，发现随机过程真的应用太广了，尤其是马尔可夫过程，在之前的 RL 笔记里面也有提到但是没写很多，这次想着还是稍微做点总结比较好。</p>
+<span id="more"></span>
+<h1 id="随机过程与马尔可夫性质">随机过程与马尔可夫性质</h1>
+<p>所谓随机过程实际上就是一个随机变量的序列 <span class="math inline">\(\{X_t\}, t \in T\)</span>，<span class="math inline">\(t\)</span> 一般都解释为时间，体现随机过程随时间的推移。如果 <span class="math inline">\(T\)</span> 是一个可数集（一般都是自然数集 <span class="math inline">\(\mathbb{N}\)</span>），那么这就是<strong>离散时间随机过程</strong>。如果 <span class="math inline">\(T\)</span> 是 <span class="math inline">\(\mathbb{R}\)</span> 上的一段区间，那么这就是<strong>连续时间随机过程</strong>。随机变量 <span class="math inline">\(X_t\)</span> 的所有可能取值构成的集合称为<strong>状态空间</strong>。</p>
+<p>考虑一个状态空间 <span class="math inline">\(\mathcal{S}\)</span> 至多可数的离散时间随机过程 <span class="math inline">\(\{X_t\}_{t \in \mathbb{N}}\)</span>。该随机过程的<strong>马尔可夫性质</strong>是指，对于任意 <span class="math inline">\(t \in \mathbb{N}\)</span>，如果已知 <span class="math inline">\(X_t\)</span> 的取值，那么 <span class="math inline">\(X_{t + 1}\)</span> 的取值与 <span class="math inline">\(X_0, X_1, \cdots, X_{t - 1}\)</span> 的取值都是独立的。这个性质可以用下面的式子来表示：</p>
+<p><span class="math display">\[
+\mathbb{P}(X_{t + 1} = j \mid X_t = i, X_{t - 1} = i_{t - 1}, \cdots, X_0 = i_0) = \mathbb{P}(X_{t + 1} = j \mid X_t = i)
+\]</span></p>
+<p>这里 <span class="math inline">\(i, j, i_0, \cdots, i_{t - 1} \in \mathcal{S}\)</span> 均为任意的状态。</p>
+<p>鉴于此，一个马尔可夫随机过程可以定义一个<strong>转移概率矩阵</strong> <span class="math inline">\(P = (p_{ij})_{n \times n}\)</span>，这里 <span class="math inline">\(n\)</span> 为状态空间 <span class="math inline">\(\mathcal{S}\)</span> 的大小，其各元素定义为 <span class="math inline">\(p_{ij} := \mathbb{P}(X_{t + 1} = j \mid X_t = i)\)</span>。</p>
+<p>这个矩阵的重要性质是，每一行的和为 <span class="math inline">\(1\)</span>：</p>
+<p><span class="math display">\[
+\sum_{k = 1}^n p_{ik} = \sum_{k = 1}^n \mathbb{P}(X_{t + 1} = k \mid X_t = i) = 1
+\]</span></p>
+<div class="note info no-icon"><p>一个满足马尔可夫性质的状态空间可数离散时间随机过程一般称为<strong>马尔可夫链</strong>。</p>
+<p>任何马尔可夫链均可以按照上述过程定义转移概率矩阵。然而在一些特别的实际问题中，转移概率矩阵可能是与时间相关的，而我们上述的讨论中矩阵并不随时间推移而改变，这类马尔可夫链称为<strong>时间齐次马尔可夫链</strong>，也是强化学习问题中最常见的建模。</p>
+<p>时间不齐次的马尔可夫链则会在后面提及连续时间马尔可夫链时讨论。</p>
+</div>
+<p>如果考虑多步转移，我们可以通过概率运算发现：</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathbb{P}(X_{t + r + 1} = j \mid X_t = i) &amp;= \sum_{k = 1}^n \mathbb{P}(X_{t + r + 1} = j \mid X_{t + 1} = k) \mathbb{P}(X_{t + 1} = k \mid X_t = i) \\
+&amp;= \sum_{k = 1}^n \mathbb{P}(X_{t + r} = j \mid X_t = k) \mathbb{P}(X_{t + 1} = k \mid X_t = i)
+\end{aligned}
+\]</span></p>
+<p>这里最后一个等号利用了时间齐次的特性。利用上述式子，我们可以发现马尔可夫链的多步状态转移可以通过矩阵的幂次表现。具体而言，记 <span class="math inline">\(P^r\)</span> 的第 <span class="math inline">\((i, j)\)</span> 位置上的元素为 <span class="math inline">\(p^{(r)}_{ij}\)</span>，则：</p>
+<p><span class="math display">\[
+p^{(r)}_{ij} = \mathbb{P}(X_{t + r} = j \mid X_t = i)
+\]</span></p>
+<h1 id="马尔可夫链的可达性与可约性">马尔可夫链的可达性与可约性</h1>
+<p>首先我们来定义<strong>可达性</strong>。如果对于任意的 <span class="math inline">\(i, j \in \mathcal{S}\)</span>，存在 <span class="math inline">\(r \in \mathbb{N}\)</span> 使得 <span class="math inline">\(p^{(r)}_{ij} = \mathbb{P}(X_{t + r} = j \mid X_t = i) &gt; 0\)</span>，那么称 <span class="math inline">\(j\)</span> 是从 <span class="math inline">\(i\)</span> 可达的，记作 <span class="math inline">\(i \to j\)</span>。如果 <span class="math inline">\(i \to j\)</span> 且 <span class="math inline">\(j \to i\)</span>，那么称 <span class="math inline">\(i\)</span> 和 <span class="math inline">\(j\)</span> 是<strong>互达</strong>的，记作 <span class="math inline">\(i \leftrightarrow j\)</span>。</p>
+<p>可达性的直观理解是简单的。<span class="math inline">\(i \to j\)</span> 的含义即为，从状态 <span class="math inline">\(i\)</span> 出发，经过有限步转移，可以到达状态 <span class="math inline">\(j\)</span>。</p>
+<p>不难验证互达的自反性、对称性和传递性，从而互达构成状态空间上的等价关系，这意味着可以据此划分等价类。从而，若一个马尔可夫链的状态空间在互达关系上仅有一个等价类，则该马尔可夫链<strong>不可约</strong>。</p>
+<p>不可约性的直观理解也是简单的。不可约的马尔可夫链的所有状态之间都能通过有限步的状态转移两两互达。</p>
+]]></content>
+      <categories>
+        <category>【杂谈】数学</category>
+      </categories>
+  </entry>
+  <entry>
     <title>早安、可能是午安、或者是晚安</title>
     <url>/2021/09/17/navigation/</url>
     <content><![CDATA[<p>关于我更多的信息，请见 <a href="/about">关于页</a>。</p>
@@ -16404,696 +16456,6 @@ t_k = t_0 + \frac{(T_k - T_0) - \Delta_k}{s_k}
       </categories>
   </entry>
   <entry>
-    <title>《计算机网络原理》学习笔记</title>
-    <url>/2021/09/13/note-of-net/</url>
-    <content><![CDATA[<p>网原总之是一个没打算认真学的专业课，因为真的对网络没有很大的兴趣。再加上上学期曾经看着迅哥哥他们被网原折磨，自己也没什么信心能学好这门专业课。</p>
-<p>这个笔记完全基于上一届流传下来的《网原干饭背诵》，在此基础上对重点做一些标记做一些讲解，反正是个背书课，那么就只能一点一点背了。根据前人经验，这个笔记会把比较重要的东西用星号标注出来。</p>
-<span id="more"></span>
-<h1 id="计算机网络的历史和新进展">计算机网络的历史和新进展</h1>
-<h2 id="背诵-1-网络基础">【背诵 1 】网络基础</h2>
-<ul>
-<li><p>网络所提供的最基本服务为<strong>信息传递</strong>，不同的网络依据其提供的服务进行区分。而区分服务的依据则包括功能、延迟、带宽等各种<strong>外部特性</strong>。</p></li>
-<li><p>网络依据<strong>空间距离</strong>可以分为局域网（LAN）、城域网（MAN）、广域网（WAN）和个域网（PAN）。依据<strong>信息类型</strong>可以分为数据网络、电话网络。依据<strong>应用类型</strong>可以分为专用网络、通用网络。依据<strong>使用权</strong>可以分为私有网络、公用网络。同时，网络也可以按照使用的协议进行分类，如 IP 协议等。</p></li>
-</ul>
-<h2 id="背诵-2-计算机网络发展历史">【背诵 2 】计算机网络发展历史</h2>
-<p>计算机网络的历史可以大致描述为：</p>
-<ul>
-<li>1940 年代，第一个计算机 ENIAC 诞生</li>
-<li>1950 年代，大型机和多终端系统诞生</li>
-<li>1960 - 1964 年，分组交换网络诞生（Paul Baran）</li>
-<li>1960 年代，计算机网络研究开始</li>
-<li>* 1969 年，ARPANET 研究启动</li>
-<li>1970 年代，计算机网络发展
-<ul>
-<li>各国电信部门建设运行 X.25 分组交换网</li>
-<li>SNA 以及 DNA 等专用网络体系结构出现</li>
-<li>Internet 的前身 ARPANET 进行实验运行，带宽小且仅有不到 100 台计算机接入</li>
-<li>* 以太网和 Telnet 出现</li>
-<li>* 1979 年，TCP/IP 协议成熟</li>
-</ul></li>
-<li>1980 年代，计算机网络逐步成型
-<ul>
-<li>标准化的计算机网络体系结构 ISO/OSI 出现</li>
-<li>局域网 LAN 技术发展</li>
-<li>FTP、NFS、E-mail、USENET 等技术出现</li>
-<li>1980 - 1983 年，ARPANET 和 MILNET 分离，前者采用 TCP/IP 协议</li>
-<li>1983 年，BSD UNIX 内置 TCP/IP 协议</li>
-<li>1985 - 1986 年，NSFNET 建成，用于连接 6 个超级计算中心</li>
-<li>1987 - 1990 年，NSFNET 开始连接地区网络</li>
-<li>Internet 初具规模，1987 年，中国第一个电子邮件发送到 Internet</li>
-<li>中国开始依赖电话线建立低速广域网</li>
-</ul></li>
-<li>1990 年代，计算机网络进一步发展
-<ul>
-<li>Internet 商业化，在中国也得到了广泛应用</li>
-<li>Web 技术在 Internet 上得到广泛应用</li>
-<li>中国出现局域网，如 Novell 等</li>
-<li>1990 - 1992 年，NSFNET 带宽提高，连接了 16 个地区网络</li>
-<li>1994 年，NSFNET 骨干网解体，出现了若干其他的商用骨干网</li>
-<li>1995 年，中国教育和科研网 CERNET 出现</li>
-</ul></li>
-<li>2000 年代，计算机网络广泛应用
-<ul>
-<li>网络应用发展迅速，搜索引擎和社交网络出现</li>
-<li>移动互联网产业快速发展</li>
-<li>2006 年，与 IPv6 相关的 CNGI-CERNET2 出现</li>
-</ul></li>
-<li>最近，数据中心网络、天地一体化网络、 IPv6 技术等快速发展
-<ul>
-<li>2011 年开始设立 World IPv6 Day</li>
-<li>2011 年 2 月 3 日，全球互联网名称与数字地址分配机构 ICANN 宣布 IPv4 地址耗尽</li>
-</ul></li>
-</ul>
-<h2 id="背诵-3-internet-技术">【背诵 3 】 Internet 技术</h2>
-<ul>
-<li>Internet 是全球范围的、通用的、异构的公用计算机网络</li>
-<li>Internet 是其他类型的计算机网络技术的基础，如企业内部网（Intranet）</li>
-<li>Internet 开放的标准由 IETF 负责制定、维护和协调。其他类似 IRTF、IAB、IESG 等机构也参与了标准的维护
-<ul>
-<li>IETF 全称 Internet Engineering Task Force，其分为若干个工作组（WG），其提交的 Internet 标准被称为 RFC，即 Request For Comments</li>
-<li>IRTF 全称 Internet Researching Task Force，由各类专注某一个领域的研究小组组成</li>
-<li>IAB 全称 Internet Architecture Board，负责定义 Internet 的大体框架，为 IETF 提供方向上的指导</li>
-<li>IESG 全称 Internet Engineering Steering Group，负责在技术方面上管理 IETF 的活动</li>
-</ul></li>
-<li>Internet 是历史上发展最快的一种技术，其发展速度甚至超越摩尔定律</li>
-</ul>
-<h2 id="背诵-4-网络时代三大定律">【背诵 4 】网络时代三大定律</h2>
-<ul>
-<li>【摩尔定律】 CPU 性能每 18 个月会翻番，每 10 年翻 100 倍</li>
-<li>【光纤定律】也称超摩尔定律，骨干网带宽每 9 个月会翻番。每 10 年翻 10000 倍</li>
-<li>【麦特卡菲定律】也称联网定律，网络价值和用户数量的平方成正比</li>
-</ul>
-<h2 id="理解-1-分组交换技术">【理解 1 】分组交换技术</h2>
-<p>Paul Baran 在设计能承受核攻击的通信系统的时候，确立了三个设计准则。</p>
-<ul>
-<li>自适应系统的<strong>热土豆路由策略</strong>（能够学习并适应各种新的环境）
-<ul>
-<li>如果不知道正确的路由，就将分组转发给所有邻居</li>
-<li>通过观察路过的分组来更新路由表，旧的路由表项会被删除</li>
-<li>尽可能快地转发分组，分组途径的路径并不一定是最短路径</li>
-</ul></li>
-<li>分组发送策略（端节点能够容忍错误并恢复）
-<ul>
-<li>每个节点根据自我的路由表决定如何转发分组</li>
-<li>每个分组的转发完全独立于其他的分组</li>
-<li>交换节点不保存端节点信息，这一点让网络的可拓展性大大增强</li>
-</ul></li>
-<li>分布式策略
-<ul>
-<li>所有交换节点平等，避免单一节点失效问题</li>
-<li>通过物理硬件冗余和自适应路由实现系统稳健性</li>
-</ul></li>
-</ul>
-<p>而 Internet 就是这一类网络。Internet 连接了各种异构的子网，提供两个最基本的功能，即全球唯一地址和分组通过动态路由传输。</p>
-<p>分组交换技术具有相当多的优点，包括：</p>
-<ul>
-<li>简单性
-<ul>
-<li>每个分组自身携带信息</li>
-<li>一个路由表可以为所有的流量服务</li>
-<li>可以适应快速增长的网络规模</li>
-</ul></li>
-<li>灵活性
-<ul>
-<li>可以在各种物理底层上运行</li>
-<li>可以支持各种网络应用</li>
-</ul></li>
-<li>可扩展性
-<ul>
-<li>可以应对端系统的增加</li>
-<li>可以应对流量的增加</li>
-<li>可以应对网络规模增大带来的路由表增大和路由频繁变化</li>
-</ul></li>
-<li>健壮性
-<ul>
-<li>默认了网络结构变化是正常现象</li>
-<li>牺牲一定的效率换取网络的稳定</li>
-</ul></li>
-</ul>
-<h2 id="背诵-5-今日互联网">【背诵 5 】今日互联网</h2>
-<ul>
-<li>今日的互联网具有更大的规模和更多的用户，而且支持更多的功能，具有更高的价值，但是其健壮性、适应性和互联程度都下降了</li>
-<li>当今互联网面临的一个问题就是 IPv4 地址耗尽，而目前缓解这个问题地方案是<strong>网络地址转换协议（Network Address Translation / NAT）</strong>
-<ul>
-<li>NAT 缓解了地址耗尽的问题，增强了安全性和控制性</li>
-<li>但是另外一方面却打破了 Internet 中地址唯一的假设</li>
-<li>端到端的分组传输路径变成多个 NAT 域的级联，相当于虚电路</li>
-<li>为了恢复 Internet 的原有结构，目前正在推进 IPv6 技术</li>
-</ul></li>
-</ul>
-<h2 id="杂项-1-未分类知识点">【杂项 1 】未分类知识点</h2>
-<ul>
-<li>二十世纪后期人类两项最伟大的战略工程为<strong>星球大战计划</strong>和<strong>互联网计划</strong>。目前互联网已经发展为继海、陆、空、天之后的<strong>第五空间</strong>。</li>
-</ul>
-<h1 id="计算机网络体系结构">计算机网络体系结构</h1>
-<h2 id="背诵-6-计算机网络的定义和组成">【背诵 6 】计算机网络的定义和组成</h2>
-<ul>
-<li>计算机网络定义为若干独立自治的计算机系统的互联集合体
-<ul>
-<li>计算机网络和分布式系统不同，分布式系统虽然也是由若干个计算机系统组成，但其具有<strong>内聚性</strong>和<strong>透明性</strong>，故分布式系统呈现给用户的更像是一台计算机。计算机网络则明显分立，在用户的视角依然是若干不同的计算机</li>
-<li>目前分布式系统和计算机网络有合流的趋势，两者正在走向统一</li>
-</ul></li>
-<li>计算机网络有两级组成，即<strong>资源子网</strong>和<strong>通信子网</strong>。资源子网常常是服务器或者用户计算机，而通信子网常常是通信线路等信道和路由器、交换机等网络互联设备</li>
-<li>计算机网络之中的通信通常有两种，即<strong>交换式通信</strong>和<strong>广播式通信</strong>
-<ul>
-<li>交换式通信又称<strong>点对点通信</strong>
-<ul>
-<li>需要经过交换设备，将消息转发给一个或一组结点</li>
-<li>交换设备根据需要选择输出</li>
-<li>网络典型的拓扑结构包括 star / ring(loop) / tree / complete / intersecting rings / irregular</li>
-<li>关键技术是<strong>路由选择</strong></li>
-</ul></li>
-<li>广播式通信
-<ul>
-<li>多台计算机共享通信线路</li>
-<li>任一台计算机发出的信息可以直接被其它计算机接收</li>
-<li>网络典型的拓扑结构包括 bus / ring(loop)</li>
-<li>关键技术是<strong>通道分配</strong>
-<ul>
-<li>静态分配，即分时间片。特点是控制简单，但通道利用率低</li>
-<li>动态分配，即各站点动态使用通道。特点是控制复杂，但通道利用率高。通道分配方法有两种。集中式指的是只有一个仲裁机构，分布式指的是各站点均有仲裁机构</li>
-</ul></li>
-</ul></li>
-<li>传统的 LAN 一般使用广播式通信，而 MAN 和 WAN 一般使用交换式通信。现代的 LAN 中交换式通信的应用正在增多</li>
-</ul></li>
-</ul>
-<h2 id="理解-2-计算机网络体系结构">【理解 2 】计算机网络体系结构</h2>
-<ul>
-<li>计算机网络体系结构指的是对计算机网络及其部件所完成功能的比较精确的定义，即从功能的角度描述计算机网络的结构，是<strong>层次和层间关系</strong>的集合。但体系结构只会从功能上定义网络，并不会定义协议的细节和接口关系
-<ul>
-<li>现代计算机网络体系架构指出，计算机网络的基本功能是为地理位置不同的计算机用户之间提供访问通路，并且应当提供若干功能（具体功能列表见 PPT），这些功能中最重要的是<strong>通信功能</strong></li>
-<li>这些功能的特征是<strong>分层</strong>，也就是说计算机网络中提供的功能是分成层次的</li>
-<li>位于不同计算机上进行对话的同一层通信各方可分别看成是一种进程，称为<strong>对等（同等）进程</strong></li>
-</ul></li>
-<li>计算机网络分层的体系结构有三个重要的概念，即协议、服务和接口
-<ul>
-<li>计算机网络体系结构定义了计算机网络的功能是分层次的，而协议（Protocol）就是计算机网络同等层次中，通信双方进行信息交换时必须遵守的规则
-<ul>
-<li>协议由三部分组成
-<ul>
-<li>语法（Syntax）部分。即以二进制形式表示的命令和相应的结构</li>
-<li>语义（Semantics）部分。即发出的命令请求，完成的动作和回送的响应组成的集合</li>
-<li>定时关系（Timing）部分。即有关事件顺序的说明</li>
-</ul></li>
-<li>网络体系结构的分层决定了协议的分层，协议的分层构成了<strong>洋葱结构</strong>
-<ul>
-<li>目的主机某一层收到的报文与源主机同一层发出的报文相同</li>
-<li>协议分层要保证整个通信系统功能完备高效</li>
-</ul></li>
-</ul></li>
-<li>协议定义了不同计算机同层次之间的关系，而服务（Service）定义同一个计算机的上下层之间的交换信息时必须遵守的规则
-<ul>
-<li>服务有两种，即面向连接的服务和无连接服务。
-<ul>
-<li>在使用面向连接的服务进行传输的时候，首先需要建立连接，然后使用这个连接传递数据，使用完毕需要关闭连接。这类服务的顺序性较好</li>
-<li>在使用无连接服务的时候，不建立连接，直接通过服务发送数据每个包都需要独立确定路由。这类服务的顺序性较差</li>
-<li>需要注意，连接并不意味着可靠，可靠性依然需要通过确认、重传等机制进行保证</li>
-</ul></li>
-<li>服务在形式上需要通过一组服务原语（Primitive）规定。原语可以分为四类，即请求、指示、响应、确认</li>
-</ul></li>
-<li>在同一个计算机之中相邻层之间都有一个接口（Interface），它定义了下层向上层提供的原语操作和服务</li>
-</ul></li>
-<li>基于三大基本概念，计算机网络体系结构的具体实现大致为
-<ul>
-<li>服务访问点（Service Access Point / SAP）
-<ul>
-<li>任何的层间服务都是在接口的 SAP 上完成的</li>
-<li>每一个 SAP 都有唯一的识别地址</li>
-<li>每一个层间接口可以具有多个 SAP</li>
-</ul></li>
-<li>接口数据单元（Interface Data Unit / IDU）
-<ul>
-<li>IDU 是通过 SAP 传递的层间信息单元（上下传输）</li>
-<li>IDU 的构成是上一层的服务数据单元（Service Data Unit / SDU）和接口控制信息（Interface Control Information / ICI）的拼接</li>
-</ul></li>
-<li>协议数据单元（Protocol Data Unit / PDU）
-<ul>
-<li>PDU 是在同层实体之间通过网络传输的信息单元（水平传输）</li>
-<li>PDU 的构成是上一层的 SDU 或其分段和协议控制信息（Protocol Control Information / PCI）的拼接</li>
-</ul></li>
-<li>基于上述定义，计算机网络的工作类似于下述
-<ul>
-<li>当本层需要水平传输的时候，首先获得上层通过 SAP 传递的，由 SDU 和 ICI 拼接得到的 IDU。然后本层删除 ICI，将剩余的 SDU 拼接上 PCI 获得 PDU 并通过本层网络协议传输</li>
-<li>当本层需要继续向下层传输的时候，首先获得上层的 IDU，这个从上层获得到本层的 IDU 在下层看来就是一个新的 SDU。本层随后直接拼接上新的 ICI 获得新的 IDU 向下传输。所以说，最上层产生的数据包向下传播的时候，会逐层添加各层控制信息。而底层接收的数据包向上传播的时候，会逐层把这些控制信息删去，获取最后的数据</li>
-</ul></li>
-</ul></li>
-<li>分层的优点包括模块化、功能抽象、可复用。缺点是数据隐藏会导致可能的低效</li>
-<li>计算机网络体系结构的设计中还有两个原则，分别称为<strong>端到端原则</strong>和 <strong>Rule of thumb</strong>
-<ul>
-<li>端到端原则的思想是底层需要尽可能简单，但是上层应用可以较为复杂（完成验证、纠错等工作），只有当这样的功能明显能提升功能的时候才会放在底层</li>
-<li>Rule of thumb 的思想是，底层的新功能不能影响其他不使用这个新功能的部分</li>
-</ul></li>
-</ul>
-<h2 id="理解-3-osi-和-tcpip-模型及其他网络模型">【理解 3 】 OSI 和 TCP/IP 模型及其他网络模型</h2>
-<ul>
-<li>模型建立的历史事件见 PPT</li>
-<li>OSI 模型在 1983 年提出，模型分为七层，从下至上为
-<ul>
-<li>物理层，这一层包含基础网络硬件，在物理通信线路上传输二进制位（Bit）</li>
-<li>数据链路层，这一层目标是在有差错的物理线路上传输无差错的数据帧（Frame）</li>
-<li>网络层，这一层控制通信子网提供数据包（Packet）传输功能</li>
-<li>传输层，这一层为用户提供端到端的数据传输功能</li>
-<li>会话层，这一层为用户提供类似安全认证等会话控制服务</li>
-<li>表示层，这一层为用户提供数据表示和数据转换功能</li>
-<li>应用层</li>
-</ul></li>
-<li>TCP/IP 模型的提出早于 OSI 模型，且仅有四层：
-<ul>
-<li>Host-to-Internet 层，相当于 OSI 的物理层和数据链路层</li>
-<li>Internet 层（网络层），控制通信子网提供源点到目的点的 IP 包传送，实现异构网络互联</li>
-<li>传输层，提供端到端的数据传送服务，如 TCP 和 UDP</li>
-<li>应用层，内部包含了 OSI 的会话层和表示层</li>
-</ul></li>
-<li>X.25 分组交换网在 70 年代提出，早于 OSI 模型，为公用包交换网与用户之间提供接口
-<ul>
-<li>该模型面向连接，支持交换虚电路和永久虚电路</li>
-<li>物理层使用协议 X.21 以及 X.3 / X.28 / X.29</li>
-<li>数据链路层使用协议 LAP 和 LAPB</li>
-<li>网络层使用协议 PLP</li>
-<li>该模型提出了以下名词 -（用户侧）数据终端设备（Digital Terminal Equipment / DTE）
-<ul>
-<li>数字线路设备（Digital Circuit Terminating Equipment / DCE）</li>
-<li>打包解包设备（Packet Assembler and Disassembler / PAD）</li>
-</ul></li>
-</ul></li>
-<li>Novell Netware 在 1983 年提出，在 2005 年终止开发
-<ul>
-<li>模型基于 client-server 结构，设计的基本思想是<strong>文件共享</strong>（同时期其它系统还基于磁盘共享，所以模型有一定先进性）</li>
-<li>基于 XNS（Xeror Network System），网络层协议是不可靠无连接协议 IPX（Internet Packet Exchange），传输层协议是面向连接的 NCP（Netware Core Protocol）和 SPX（Sequenced Package Exchange）</li>
-</ul></li>
-<li>B-ISDN 即宽带综合业务数字网，其技术基础为 ATM 异步传输模式（Asynchronous Transfer Mode）
-<ul>
-<li>ATM 也是分组交换技术
-<ul>
-<li>异步传输，即不具有主时钟</li>
-<li>传输单元为短而定长的信元（cell）</li>
-<li>采用虚电路，面向连接</li>
-<li>常见速率包括 155M 和 622M</li>
-</ul></li>
-</ul></li>
-</ul>
-<h2 id="杂项-2-未分类知识点">【杂项 2 】未分类知识点</h2>
-<ul>
-<li>美国的标准化组织包括 ANSI 和 NIST，中国的标准化组织包括 CCSA，行业标准则是 IEEE</li>
-<li>计算机网络标准化，电信标准为 ITU 而国际标准则是 ISO</li>
-<li>Internet 的标准是自发的，并非政府干预，每个标准诞生前都需要提出请求意见稿，即 RFC</li>
-</ul>
-<h1 id="数据通信基本原理">数据通信基本原理</h1>
-<h2 id="理解-4-信号的傅里叶分析">【理解 4 】信号的傅里叶分析</h2>
-<ul>
-<li>注意网原里傅里叶级数的定义为：</li>
-</ul>
-<p><span class="math display">\[
-g(t) = \frac12 c + \sum_{n = 1}^{+\infty} a_n\sin(2\pi f nt) + \sum_{n = 1}^{+\infty} b_n\cos(2\pi f nt)
-\]</span></p>
-<p>所以：</p>
-<p><span class="math display">\[
-\begin{aligned}
-c &amp;= \frac2T \int_0^T g(t) {\rm d}t \\
-a_n &amp;= \frac2T \int_0^T g(t)\sin(2\pi f nt) {\rm d}t \\
-b_n &amp;= \frac2T \int_0^T g(t)\cos(2\pi f nt) {\rm d}t \\
-\end{aligned}
-\]</span></p>
-<ul>
-<li>一个信号所包含的信号频率范围为频谱（Spectrum），其宽度称为信号的绝对带宽（Definite bandwidth）。大部分信号有无穷的绝对带宽，但是其能量可能仅集中于某一个频段，这个频带的宽度称为有效带宽（Effective bandwidth），简称带宽</li>
-<li>带宽越宽，信号的信息承载能力越强</li>
-<li>信号在给定截止频率 <span class="math inline">\(f_c\)</span> 的信道传输的过程中，高于截止频率的频率分量的振幅衰减明显大于低于截止频率的</li>
-<li>通过信道的谐波次数越多，信号越逼真</li>
-</ul>
-<h2 id="计算-1-信号传输基础计算">【计算 1 】信号传输基础计算</h2>
-<ul>
-<li>波特率指的是信号每秒钟变化的次数，也称调制速率</li>
-<li>比特率指的是信号每秒钟传输的二进制位个数</li>
-<li>波特率和比特率的关系取决于信号值与比特位的关系，如果每个信号值能表示 <span class="math inline">\(N\)</span> 个二进制位，那么比特率为波特率的 <span class="math inline">\(N\)</span> 倍</li>
-<li>对于比特率为 <span class="math inline">\(B({\rm bps})\)</span> 的信道，如果 <span class="math inline">\(M\)</span> 个二进制位为一个周期，则波特率为 <span class="math inline">\(B/M({\rm baud})\)</span>，一次谐波的频率为 <span class="math inline">\(f_1 = B/M({\rm Hz})\)</span>（一次谐波指的是信号傅里叶级数中周期等于原信号周期的分量），能通过信道的最高次谐波次数为 <span class="math inline">\(N = f_c / f_1\)</span>，这里 <span class="math inline">\(f_c\)</span> 为信道的截止频率</li>
-<li>信道的有限带宽限制了信号的传输速率，<strong>无噪声</strong>带宽为 <span class="math inline">\(H\)</span> 的信道传输有 <span class="math inline">\(V\)</span> 种电平状态的信号时，最高传输速率为：</li>
-</ul>
-<p><span class="math display">\[
-v = 2H\log_2 V({\rm bps})
-\]</span></p>
-<ul>
-<li>对于<strong>有噪声</strong>信道，其噪声功率为 <span class="math inline">\(N\)</span>，信号功率为 <span class="math inline">\(S\)</span>，其<strong>信噪比</strong>为：</li>
-</ul>
-<p><span class="math display">\[
-x = 10\log_{10}\frac{S}{N}({\rm dB})
-\]</span></p>
-<p>一般电话系统的典型信噪比为 <span class="math inline">\(30({\rm dB})\)</span>。</p>
-<p>带宽为 <span class="math inline">\(H({\rm Hz})\)</span>，信噪比为 <span class="math inline">\(S/N\)</span> 的任何信道的最大传输速率为：</p>
-<p><span class="math display">\[
-v = H\log_2\left(1 + \frac{S}{N}\right)({\rm bps})
-\]</span></p>
-<p>该传输速率为理论上限，实际很难达到。该传输速率与电平级数和采样速度无关</p>
-<h2 id="背诵-7-传输方式分类">【背诵 7 】传输方式分类</h2>
-<ul>
-<li>数字传输、模拟传输
-<ul>
-<li>数字传输的优点是成本低，对噪声不敏感，缺点是易受衰减（频率越高越严重）</li>
-</ul></li>
-<li>并行传输、串行传输</li>
-<li>点到点传输、点到多点传输
-<ul>
-<li>为适应不同的需要，通信线路采用不同的连接方式</li>
-</ul></li>
-<li>单工、半双工和全双工传输
-<ul>
-<li>单工传输：信息只能单向传输，监视信号可回送</li>
-<li>半双工传输：信息可以双向传输，但在某一时刻只能单向传输</li>
-<li>全双工传输：信息可以同时双向传输</li>
-</ul></li>
-<li>同步传输、异步传输
-<ul>
-<li>同步传输
-<ul>
-<li>传输以报文为基本单位</li>
-<li>传输开始的时候需要传输<strong>同步字符</strong>让双方同步</li>
-<li>可以不间断传输，传输效率较高但是需要<strong>透明传输处理</strong>，即传输的信息中不存在同步字符</li>
-<li>接收方必须知道每一位信号的开始及其持续时间，以便正确的采样接收</li>
-<li>基于<strong>二进制位</strong>的传输一般使用同步传输，信息以<strong>二进制位流</strong>为单位传送，传输过程中以<strong>位</strong>为单位同步，传输的开始和结束以特定的<strong>八位二进制位</strong>同步</li>
-</ul></li>
-<li>异步传输
-<ul>
-<li>需要辅助位，如起始位、奇偶校验位、终止位</li>
-<li>传输效率低，主要用于字符终端与计算机之间的通信</li>
-<li>传输字符时，信息传送以字符为单位</li>
-</ul></li>
-</ul></li>
-</ul>
-<h2 id="背诵-8-信号发送方式">【背诵 8 】信号发送方式</h2>
-<ul>
-<li>数据表示分为两种，即模拟数据和数字数据</li>
-<li>数据传输方式中以信号为载体，分为模拟信号（模拟信道）和数字信号（数字信道）两种（见【背诵 7 】）</li>
-<li>两种数据表示和两种数据传输方式对应形成四种信号发送方式：</li>
-</ul>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;"></th>
-<th style="text-align: center;">模拟数据</th>
-<th style="text-align: center;">数字数据</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">模拟信道</td>
-<td style="text-align: center;">电话系统</td>
-<td style="text-align: center;">频带传输、调制解调器（Modem）</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">数字信道</td>
-<td style="text-align: center;">编码解码器（Codec）</td>
-<td style="text-align: center;">基带传输、数字编码解码器</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>数字数据的数字传输
-<ul>
-<li>基带传输
-<ul>
-<li>基带指的是传输变换前所占用的频带，是原始信号所固有的频带</li>
-<li>基带传输指的是在传输时直接使用基带信号，是一种基本的传输方式，适用于高速低速各种情况</li>
-<li>其限制为因基带信号所带的频率成分很宽，所以对传输线有一定的要求</li>
-</ul></li>
-<li>编码方式
-<ul>
-<li>不归零制码（NRZ）
-<ul>
-<li>用高电平表示 1，用低电平表示 0</li>
-<li>难以分辨某一位的开始或结束，所以发送和接受方都需要时钟同步</li>
-<li>如果信号中 0 或者 1 连续出现，直流电平会叠加</li>
-<li>容易产生传播错误</li>
-</ul></li>
-<li>曼彻斯特码（相位编码）
-<ul>
-<li>每个周期中间有一个跳变，由低到高为 0，由高到低为 1</li>
-<li>克服了 NRZ 的不足，并且每个周期中间的跳变既是信息又是时钟，可以自同步</li>
-</ul></li>
-<li>差分曼彻斯特码
-<ul>
-<li>每个周期中间有一个跳变作为时钟</li>
-<li>每个周期开始有跳变表示 0，没有跳变表示 1</li>
-<li>时钟、数据相分离，便于提取</li>
-<li>差分曼彻斯特注意分类讨论初始时是高电平还是低电平</li>
-</ul></li>
-<li>逢 0 变化 NRZ
-<ul>
-<li>每个周期开始有跳变表示 0，没有跳变表示 1</li>
-<li>每个周期中间没有跳变</li>
-<li>注意讨论初始时的电平</li>
-</ul></li>
-<li>逢 1 变化 NRZ
-<ul>
-<li>每个周期开始有跳变表示 1，没有跳变表示 0</li>
-<li>每个周期中间没有跳变</li>
-<li>注意讨论初始时的电平</li>
-</ul></li>
-</ul></li>
-</ul></li>
-<li>数字数据的模拟传输
-<ul>
-<li>频带传输
-<ul>
-<li>在一定频率范围内的线路上，进行载波传输</li>
-<li>用基带信号对载波进行调制，使其变为适合于线路传送的信号</li>
-<li>调制指的是用基带脉冲控制载波参数，使得这些参数反应基带脉冲信息</li>
-<li>使用调制解调器</li>
-</ul></li>
-<li>调制技术
-<ul>
-<li>幅移键控法（调幅 / ASK），即根据基带脉冲调整载波振幅</li>
-<li>频移键控法（调频 / FSK），即根据基带脉冲调整载波频率</li>
-<li>相移键控法（调相 / PSK），即根据基带脉冲调整载波相位</li>
-</ul></li>
-</ul></li>
-<li>模拟数据的数字传输
-<ul>
-<li>脉冲代码调制 PCM 技术
-<ul>
-<li>根据 Nyquist 原理进行采样</li>
-<li>将模拟信号的振幅分为 <span class="math inline">\(2^n\)</span> 级，每一个采样点用 <span class="math inline">\(n\)</span> 位二进制位表示</li>
-<li>贝尔系统的 T1 载波每个采样点用 7 位二进制表示</li>
-</ul></li>
-<li>差分脉冲代码调制
-<ul>
-<li>与 PCM 数字化振幅不同，差分脉冲代码调制数字化的是相邻采样点的振幅差值</li>
-<li>可以使用较少的二进制位表示</li>
-</ul></li>
-<li><span class="math inline">\(\delta\)</span> 调制
-<ul>
-<li>根据每个采样值与前一个值之间的差来决定输出 1 还是 0</li>
-<li>编码速度可能无法跟上变化较快的模拟信号</li>
-</ul></li>
-</ul></li>
-</ul>
-<h2 id="背诵-9-多路复用技术">【背诵 9 】多路复用技术</h2>
-<ul>
-<li>使得多路信号同时使用一条物理线路的技术,允许用户使用一个共享信道进行通信，避免相互干扰，降低成本，提高利用率</li>
-<li>多路复用技术分类
-<ul>
-<li>时分复用（TDM）
-<ul>
-<li>T1 载波电话系统分为 24 个信道，每个 <span class="math inline">\(64({\rm Kbps})\)</span>，一共 <span class="math inline">\(1.544({\rm Mbps})\)</span>，控制信息带内传输</li>
-</ul></li>
-<li>频分复用（FDM）
-<ul>
-<li>频率分割为频段，多用于手机通信</li>
-</ul></li>
-<li>波分复用（WDM）
-<ul>
-<li>光传输使用，对波长分段，是特殊的频分复用</li>
-</ul></li>
-</ul></li>
-</ul>
-<h2 id="背诵-10-交换技术">【背诵 10 】交换技术</h2>
-<ul>
-<li>计算机网络通信分为交换式和广播式</li>
-<li>交换是在多结点通信网络中，为有效利用通信设备和线路，动态接通、断开、切换通信线路</li>
-<li>交换技术分类
-<ul>
-<li>电路交换
-<ul>
-<li>直接利用可以切换的物理电路动态调整通信线路</li>
-<li>分为建立电路、传输数据、拆除电路三个阶段</li>
-<li>在发送数据前，必须建立起点到点的物理通路。建立物理通路时间较长，数据传送延迟较短</li>
-<li>电话网和 ISDN 采用电路交换</li>
-<li>电路交换一般采用时分复用
-<ul>
-<li>时间被分为帧（Frame），帧被分为时槽（Slot）</li>
-<li>时槽在帧内的相对位置决定这个槽所传输数据所属的会话</li>
-<li>发送方和接收方间需要同步</li>
-<li>非永久会话需要动态绑定时槽到一个会话</li>
-</ul></li>
-</ul></li>
-<li>报文交换（存储转发方式）
-<ul>
-<li>信息以报文（逻辑上完整的信息段）为单位进行存储转发</li>
-<li>线路利用率高、要求中间结点（网络通信设备）缓冲大、延迟时间长</li>
-</ul></li>
-<li>分组交换（包交换）
-<ul>
-<li>分组是一种报文还小的信息段，可定长也可变长。分组交换中信息以分组为单位进行存储转发。源结点把报文分为分组，在中间结点存储转发，目的结点把分组合成报文。用附加的分组头来区分数据</li>
-<li>特点
-<ul>
-<li>每个分组头包括源地址和目的地址，独立进行路由选择
-<ul>
-<li>所以不保证到达顺序</li>
-</ul></li>
-<li>网络结点设备中不预先分配资源，使用统计复用，线路利用率高
-<ul>
-<li>相比于电路交换最明显的优势</li>
-</ul></li>
-<li>易于重传，可靠性高</li>
-<li>易于开始新的传输，让紧急信息优先通过</li>
-<li>开销增加</li>
-<li>需要处理拥塞问题
-<ul>
-<li>需要复杂的路由器，难以保证端到端的服务质量</li>
-</ul></li>
-</ul></li>
-<li>分组交换分为虚电路分组交换和数据报分组交换
-<ul>
-<li>数据报分组交换（如 IP Networks）
-<ul>
-<li>每个分组均带有网络地址（源、目的），可走不同的路径</li>
-</ul></li>
-<li>虚电路分组交换（如 ATM Networks）
-<ul>
-<li>其是电路交换和分组交换的结合
-<ul>
-<li>数据以分组形式传输，来自同一流的分组通过一个预先建立的路径（虚电路）传输</li>
-<li>确保分组的顺序，但是来自不同虚电路的分组可能会交错在一起</li>
-</ul></li>
-<li>分三个阶段
-<ul>
-<li>建立：发带有全称网络地址的呼叫分组，建立虚电路</li>
-<li>传输：沿建立好的虚电路传输数据</li>
-<li>拆除：拆除虚电路</li>
-</ul></li>
-<li>分组头不需要包含完整的地址信息，路由器需要维护虚电路的状态信息</li>
-</ul></li>
-</ul></li>
-</ul></li>
-</ul></li>
-<li>电路交换、报文交换、分组交换的时序图如下。其中电路交换要逐层申请预留占用资源，这段申请时间用于<strong>寻找出境中继线</strong>，申请完毕后节点会占用这段传输线</li>
-</ul>
-<p><img src="/uploads/note-of-net/1.png" /></p>
-<ul>
-<li>三类交换技术的特点
-<ul>
-<li>电路交换适用于实时信息和模拟信号传送，在线路带宽比较低的情况下使用比较经济</li>
-<li>报文交换适用于线路带宽比较高的情况，可靠灵活，但延迟大</li>
-<li>分组交换缩短了延迟，也能满足一般的实时信息传送。在高带宽的通信中更为经济、合理、可靠。是目前公认较好的一种交换技术</li>
-<li>电路交换和分组交换可以结合，如 IP over SONET 以及 IP over Frame Relay</li>
-</ul></li>
-</ul>
-<h2 id="背诵-11-交换结构">【背诵 11 】交换结构</h2>
-<ul>
-<li>Crossbar 交换结构：无阻塞内部交换</li>
-<li>空分交换：多个 Crossbar 互联，有无阻塞均可</li>
-<li>时分交换：高效处理</li>
-</ul>
-<h2 id="杂项-3-未分类知识点">【杂项 3 】未分类知识点</h2>
-<ul>
-<li>数据通信技术由编码技术、多路复用和交换技术构成</li>
-</ul>
-<h1 id="物理层接口及其协议">物理层接口及其协议</h1>
-<h2 id="背诵-12-物理层的定义与功能">【背诵 12 】物理层的定义与功能</h2>
-<ul>
-<li>物理层提供机械的、电气的、功能的和规程的特性，目的是启动、维护和关闭<strong>数据链路实体</strong>之间进行<strong>比特传输</strong>的<strong>物理连接</strong>。这种连接可能通过中继系统，在中继系统内的传输也是在物理层</li>
-<li>物理层的功能是在两个网络设备之间提供透明的比特流传输</li>
-<li>物理层的传输方式
-<ul>
-<li>连接方式（点到点，点到多点）</li>
-<li>通信方式（单工，半双工，全双工）</li>
-<li>位传输方式（串行，并行）</li>
-</ul></li>
-<li>物理层的重要特性
-<ul>
-<li>机械特性（Mechanical characteristics）
-<ul>
-<li>定义物理连接的边界点，即接插装置</li>
-<li>规定物理连接时所采用的规格、引脚的数量和排列情况</li>
-</ul></li>
-<li>电气特性（Electrical characteristics）
-<ul>
-<li>规定传输二进制位时，线路上信号的电压高低、阻抗匹配、传输速率和距离限制</li>
-</ul></li>
-<li>功能特性（Functional characteristics）
-<ul>
-<li>主要定义各条物理线路的功能，比如数据、控制、定时、地线</li>
-</ul></li>
-<li>规程特性（Procedural characteristics）
-<ul>
-<li>主要定义各条物理线路的工作规程和时序关系</li>
-</ul></li>
-</ul></li>
-</ul>
-<h2 id="背诵-13-物理层传输介质">【背诵 13 】物理层传输介质</h2>
-<ul>
-<li>双绞线。既可以用于模拟传输，也可以用于数字传输，带宽依赖于线的类型和传输距离</li>
-<li>同轴电缆
-<ul>
-<li>基带同轴电缆，用于数字传输（数字数据数字传输用基带传输）</li>
-<li>宽带同轴电缆，用于模拟传输（模拟数据数字传输用频带传输）</li>
-</ul></li>
-<li>光纤
-<ul>
-<li>分为单模光纤和多模光纤，两者都支持波分复用，使用的波长越长衰减越小，但成本也越高
-<ul>
-<li>单模光纤只有一个入射角度，半径小，适合<strong>长距离传输</strong></li>
-<li>多模光纤有多个入射角度，半径大，适合短距离传输</li>
-</ul></li>
-<li>光纤组网
-<ul>
-<li>点到点，使用四根线，两根用于保护倒换</li>
-<li>环，使用两根线，一根用于保护倒换</li>
-</ul></li>
-<li>光纤中继器。分为光电光式和全光式
-<ul>
-<li>全光网具有光因特网论坛 OIF</li>
-</ul></li>
-</ul></li>
-</ul>
-<h2 id="背诵-14-sonet-sdh-网络传输技术">【背诵 14 】 SONET / SDH 网络传输技术</h2>
-<ul>
-<li>80 年代提出，应用<strong>时分复用</strong>技术，同步传输，有主时钟控制</li>
-<li>SONET 路径为：路径（Path）、线路（Line）、段（Section）</li>
-<li>基于<strong>字节</strong>的复用。但是 OC-3c 中的 c 表示<strong>级联</strong>而非复用</li>
-</ul>
-<h2 id="背诵-15-移动电话网络传输技术">【背诵 15 】移动电话网络传输技术</h2>
-<ul>
-<li>单方向的寻呼系统
-<ul>
-<li>寻呼过程
-<ul>
-<li>打电话给寻呼公司，输入寻呼机号码</li>
-<li>寻呼公司的计算机收到请求，通过线路传到高处的天线</li>
-<li>天线直接广播信号（本地寻呼），或传递给卫星（异地寻呼），卫星再广播</li>
-</ul></li>
-<li>单向系统</li>
-<li>需要很小的带宽</li>
-</ul></li>
-<li>蜂窝电话
-<ul>
-<li>1G：模拟蜂窝电话，只能传送话音</li>
-<li>2G：数字蜂窝电话，主要传送话音，相关概念有 GSM 和 CDMA</li>
-<li>3G / 4G：可以传送话音和数据</li>
-</ul></li>
-<li>模拟蜂窝电话
-<ul>
-<li>Push-to-talk system。早期用于军事通信，单信道，半双工系统</li>
-<li>IMTS。双频，全双工系统</li>
-<li>AMPS。使用小蜂窝，蜂窝中心有基站，不相邻且相近的蜂窝中<strong>重用频率</strong></li>
-</ul></li>
-</ul>
-<div class="note warning"><p>网原实在是看不会了，这个笔记也就到此为止吧。</p>
-</div>
-]]></content>
-      <categories>
-        <category>【学习笔记】计算机</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Next.js 框架摸索实录</title>
     <url>/2022/11/24/note-of-next/</url>
     <content><![CDATA[<p>在出软工小作业的时候遇到了 React Router 配置和跨域问题，虽然这两个都不是什么大问题，我也不是不会解决，但是要是出到作业里面，势必会导致我要写好多文档还要写很多讲解。这个时候 yfgg 告诉我 Next.js 框架好之又好，昨天稍微试了一下感觉确实不错，所以就吃了安利迁移到了 Next.js 框架。但是今天接着写的时候，还是发现不少细节是需要注意的，这里就当备忘了。</p>
@@ -17876,131 +17238,6 @@ I_{i, S} = \mathcal{A}_O(\{\mathcal{D}_j\}) := 1 - \prod_j (1 - \mathcal{D}_{i, 
       </categories>
   </entry>
   <entry>
-    <title>2022 年 8 月论文笔记</title>
-    <url>/2022/06/10/paper-2022-08/</url>
-    <content><![CDATA[<p>这个月主要是刚刚进入流媒体相关的方向，需要阅读一些论文来了解目前的发展。</p>
-<span id="more"></span>
-<h1 id="stick---a-harmonious-fusion-of-buffer-based-and-learning-based-approach-for-adaptive-streaming">Stick - A Harmonious Fusion of Buffer-based and Learning-based Approach for Adaptive Streaming</h1>
-<h2 id="introduction">Introduction</h2>
-<p>首先考虑到现实应用背景，视频流传输已经占据了大部分的网络传输带宽。但视频传输的问题在于视频内容的多样性和可能的网络波动。一种可能的解决方案是使用 Adaptive bitrate (ABR) 算法，这些算法已经被证实可以提供高 QoE 的传输服务。</p>
-<p>传统的 ABR 算法往往是 buffer-based 的（例如 BBA 和 BOLA），这些算法通过固定的 buffer 和参数来选定下一个视频块的码率，这可能难以在波动网络环境下保证 QoE。</p>
-<p>另一方面，基于深度强化学习（DRL）的 ABR 算法 Pensieve 却给出了 state-of-the-art 的表现。在实践上，这类算法也常常部署在服务器侧以避免客户端的高计算开销。但是考虑到 ABR 算法往往需要部署在前端以避免连接后端的网络延迟，这使得这类算法理论可用但是并不实际。</p>
-<p>那么我们可以将这两种方法结合起来，使用 DRL 来强化 buffer-based 的方法，同时使用固定的缓冲区限制来限制计算开销。从而该论文提出了 Stick 框架，该框架将 QoE 参数、网络状态、视频特征作为输入参数，而缓冲区限制（连续的标量）作为其输出。</p>
-<p>考虑到连续的动作空间，我们计划使用 Deep deterministic policy gradient (DDPG) 来从头开始训练模型。此外，Stick 在无假设条件下通过和 ABR 环境交互来学习策略。</p>
-<p>为了保证计算效率，我们进一步提出了 Trigger。Trigger 会观测当前和先前的缓冲区限制，只在必要的时候激活 Stick 来更新缓冲区限制。Trigger 使用 imitation learing 方法来学习专家行为。同时，为了克服数据的无偏分布【Question #1】，我们使用了 prioritized experience replay 来存储专家策略。同时，该论文还提出了一种可以让其他 ABR 算法框架接入 Trigger 的方法。</p>
-<p>这篇论文的重点在于：</p>
-<ul>
-<li>首次提出结合 buffer-based 方法和 learning-based 方法</li>
-<li>通过 Stick，可以使用更小的模型实现比已有方法更好的效果</li>
-<li>通过 Trigger，证明轻量级模型可以有效降低计算开销</li>
-</ul>
-<h2 id="buffer-based-learning-based-abr-algorithm">Buffer-based &amp; learning-based ABR algorithm</h2>
-<p>BBA 只根据当前缓冲区限制来选定下一个视频块的码率。具体而言，其将对吞吐量的估计固定为启动态额吞吐量以克服吞吐量的波动，之后在稳定态时，使用缓冲区限制 <span class="math inline">\(\{B_{\rm min}, B_{\rm max}\}\)</span> 来获取块映射，块映射的作用是将缓冲区占用情况映射为码率。</p>
-<p>而这个映射也是简单的分块线性映射，缓冲区占用低于 <span class="math inline">\(B_{\rm min}\)</span> 时下一个视频块码率为低码率 <span class="math inline">\(R_{\rm min}\)</span>，缓冲区占用高于 <span class="math inline">\(B_{\rm max}\)</span> 时下一个视频块码率为高码率 <span class="math inline">\(R_{\rm max}\)</span>，位于这两者之间的时候使用线性函数决定。</p>
-<p>这个方法大部分情况下简单且有效，但是也在许多条件下效果不理想。原因是 BBA 使用的固定参数应当根据应用环境做出相应的调整。</p>
-<p>而 learning-based ABR，例如 Pensieve 则给出了较好的理论结果，但是该方案并不容易应用到现实中。此外，Pensieve 也在部分应用环境下效果不理想。</p>
-<h2 id="key-ideas">Key ideas</h2>
-<p>总结起来是这样的几点：</p>
-<ul>
-<li>使用 DRL 的方法调整 ABR 的参数，避免使用查表或者预训练模型造成的过大存储和计算成本</li>
-<li>模型的状态空间需要考虑全面，不仅包括当前缓冲区限制，还要包括网络状况和视频特征
-<ul>
-<li>此外，实验发现 Stick 可以仅使用一个参数控制缓冲区，而非两个参数</li>
-</ul></li>
-<li>QoE 要求会被作为 goal 输入模型，该参数会随机初始化，这会让模型意识到 QoE 参数和 feedback reward 之间的关系</li>
-<li>使用轻量级的 Trigger 来决定是否需要通过 Stick 更新缓冲区限制，以降低计算成本</li>
-</ul>
-<h2 id="system-overview">System overview</h2>
-<p>整体的框架可以表现为：</p>
-<p><img src="/uploads/paper-2022-08/1.png" /></p>
-<h3 id="stick-mechanism">Stick mechanism</h3>
-<p>Stick 的结构图可以表示为：</p>
-<p><img src="/uploads/paper-2022-08/2.png" /></p>
-<h4 id="design">Design</h4>
-<p>首先叙述状态空间的构造：</p>
-<ul>
-<li><span class="math inline">\(T\)</span> 为由客户端测量的前 <span class="math inline">\(k\)</span> 个序列的吞吐量</li>
-<li><span class="math inline">\(d\)</span> 为前 <span class="math inline">\(k\)</span> 个序列的下载时间</li>
-<li><span class="math inline">\(q\)</span> 为上一个视频块选定的码率</li>
-<li><span class="math inline">\(r\)</span> 为视频剩余播放时间</li>
-<li><span class="math inline">\(b\)</span> 为当前缓冲区占有情况</li>
-<li><span class="math inline">\(S\)</span> 为表示下一个视频块大小的向量</li>
-<li><span class="math inline">\(g\)</span> 为 QoE goal 参数，由 <span class="math inline">\(\mu, \tau\)</span> 构成</li>
-</ul>
-<p>动作空间则是一个连续标量 <span class="math inline">\(B \in [0, {\rm buffer}_{\rm max}]\)</span>，用于控制缓冲区限制。</p>
-<p>奖励函数则根据不同的 <span class="math inline">\(g\)</span>，使用经典的线性 QoE 指标来构造。</p>
-<h4 id="training-methodology-implementation">Training methodology &amp; Implementation</h4>
-<p>【这一部分在阅读完 DPG 相关论文之后再具体展开】</p>
-<h3 id="trigger">Trigger</h3>
-<p>Trigger 的一个核心思想在于，如果 Stick 在连续两个视频块上给出相同的结果，那么其第二次计算是无用的。而实验证明，无用操作可能占比达到 30%，所以我们的目标就是用 Trigger 去判别哪些操作是无用的。</p>
-<p>现在考量 Trigger 的状态空间。根据 Related work，网络吞吐量是我们需要考虑的重要参数。但是我们也发现了，先前的缓冲区占用情况也是一个重要特征，其可以揭示网络环境状态和视频块大小之间的隐藏关系。</p>
-<p>所以我们最终令 Trigger 的输入是先前的网络吞吐量、缓冲区大小和现在的缓冲区限制。而输出是一个二维向量，表示 Stick 保持或者改变当前缓冲区限制的概率。</p>
-<hr />
-<p>使用 imitation learning 来训练 Trigger，这种方法能够根据 expert demonstration 给出预期的结果。训练的算法可以表示为：</p>
-<p><img src="/uploads/paper-2022-08/3.png" /></p>
-<hr />
-<p>另外，我们需要关注训练数据集分布的问题。论文使用的数据集中有 83% 的操作是无用操作，这种分布不均匀的数据集和理想的 50%-50% 数据集差距过大，可能导致特征训练不均衡。所以这里使用了 Prioritized experience replay 方法来重新平衡数据集。</p>
-<p>关于这个方法的介绍可以参考 <a href="https://paperswithcode.com/method/prioritized-experience-replay">这篇文章</a>。</p>
-<p>之后讨论如何将 Trigger 应用到其他的 ABR 算法上。</p>
-<p>【这一部分在阅读完 DPG 相关论文之后再具体展开】</p>
-<h2 id="evaluation">Evaluation</h2>
-<p>介绍了使用的实验环境、数据集、训练方式、Baseline 的选取、QoE 指标的计算公式等等。</p>
-<p>首先在一个数据集上，实验证明了 Stick 输出单参数的表现并不比双参数差很多，甚至在一些条件下能得到更好的 QoE 指标。</p>
-<p>之后通过实验说明了 Stick 在各种数据集上都表现出了比 buffer-based 方法更为优秀的性能。</p>
-<p>有关比较性能，论文里面有这样一句被强调的话：</p>
-<div class="note success"><p>Note that Stick only utilize onequarter number of neurons that of Pensieve.</p>
-<p>感觉是一种简单的强大。</p>
-</div>
-<p>之后还探讨了不同 QoE 指标下 Stick 的表现，探讨了 Trigger 的网络结构（全连接、LSTM 还是 CNN），做了一些进一步的 Evaluation，这里就不具体展开了。</p>
-<h1 id="neural-adaptive-video-streaming-with-pensieve">Neural Adaptive Video Streaming with Pensieve</h1>
-<h2 id="introduction-1">Introduction</h2>
-<p>现行的 ABR 算法在选择下一个视频块的码率的时候往往面临下述四个问题：</p>
-<ul>
-<li>网络吞吐量的不稳定</li>
-<li>部分 QoE 指标内存在相互矛盾的要求（如高质量和尽可能减少缓冲）</li>
-<li>当前码率选择可能对未来的选择产生影响</li>
-<li>ABR 的决策可能是粗粒度的</li>
-</ul>
-<p>现行的大部分 ABR 方法都依赖于对网络吞吐的估计或者对缓冲区大小的估计，所以其难以应对网络吞吐的不稳定。比如说 SOTA 方法 MPC 依赖于对网络吞吐量的预估，原文：</p>
-<div class="note info no-icon"><p>However, MPC’s performance relies on an accurate model of the system dynamics - particularly, a forecast of future network throughput.</p>
-</div>
-<p>这样的限制使得 MPC 对预测结果的偏差十分敏感。</p>
-<p>从而本文提出了 Pensieve，该方法会自动学习 ABR 算法，而不需要任何的预训练的控制规则或者对运行环境的假设条件。Pensieve 是基于强化学习的，其完全通过其与环境交互的经验学习。Pensieve 的核心为一个神经网络，该神经网络代表了 Pensieve 所采取的针对网络环境的策略。该网络接受的输入为各种对网络环境的原始观测数据（吞吐量采样、回放缓冲区占用率、视频块尺寸等），而其输出则为下一个视频块应当采取的码率。该网络的训练方式为 A3C。</p>
-<p>Pensieve 的训练方式的核心则是一个模拟器，用于将大规模的网络跟踪信息数据库回放给 Pensieve，其划分粒度可以是块级别的，也可以是包级别的或者其他。Pensieve 的评测方式为将算法部署在一个 ABR 服务器上，令算法不断给出下一个视频块应当采取的码率，这样做可以避免在客户端上进行繁重的神经网络计算。</p>
-<p>最后 Pensieve 在几乎所有的网络环境和 QoE 指标上持平或超过现有最佳的 ABR 算法。</p>
-<h2 id="background">Background</h2>
-<p>当前占主导地位的视频分发策略为 HTTP-based adaptive streaming，而其标准化技术为 DASH，即 Dynamic Adaptive Streaming over HTTP。而 DASH 的流程可以大致描述为下图：</p>
-<p><img src="/uploads/paper-2022-08/4.png" /></p>
-<ul>
-<li>首先播放器向服务器获得认证</li>
-<li>服务器应答一个保存有实际视频数据的 CDN 地址，并且列出所有可选码率</li>
-<li>播放器使用 ABR 算法逐个请求视频块，视频块下载完成后渲染到屏幕上播放</li>
-</ul>
-<p>这里 ABR 算法几乎决定了整体的视频传输性能，其面临的若干挑战已经在 Introduction 部分给出了基本的介绍，这里稍加详细叙述。</p>
-<ol type="1">
-<li><p>ABR 算法并不能仅考虑网络情况，因为在类似蜂窝移动网络等不稳定网络条件下，我们难以预测未来的网络吞吐，最后往往仅能够获取到保守估计导致性能浪费，或者过高估计导致传输延迟。从而 ABR 也应当考虑缓冲区占有率等更为稳定的参数。</p></li>
-<li><p>QoE 指标可能是相互冲突的。在带宽有限的网络环境中持续以最高码率请求视频可以保证视频质量，但是会升高缓冲率。相反，在不稳定的网络环境中，在任何时候选取当前网络环境能提供的最高码率会导致视频播放不平滑。</p></li>
-<li><p>当前视频块的选择会对后续视频块的码率选择产生影响。其一，高码率视频块常常会导致后续视频块难以维持该高码率，因为可能导致缓冲。其二，为了保证视频播放平滑，ABR 算法不倾向于突然改变码率，所以后续视频块的码率并不会在当前码率基础上改变很大。</p></li>
-<li><p>由于 ABR 算法能选择的码率范围被服务器给出的 Manifest file 限制，所以其选择往往是粗粒度的。有时网络环境会恰好落在某一个低码率过于浪费资源而稍高的码率就会导致缓冲的临界区域。</p></li>
-</ol>
-<h2 id="learning-abr-algorithms">Learning ABR Algorithms</h2>
-<p>其首先将 Pensieve 和 Robust MPC 进行了对比，指出了 Robust MPC 的部分缺陷（基本还是先前部分提到的缺陷，只是使用了实验数据做了支持）。</p>
-<p>这一部分似乎并没有写出很多新东西，还是先前部分的重复。</p>
-<h2 id="design-1">Design</h2>
-<h3 id="training-methodology">Training Methodology</h3>
-<p>训练策略的核心是一个模拟视频下载流程的模拟器。其对于每一个视频块，模拟器会根据该视频块的码率以及网络状况生成下载耗时。在这一段时间，模拟器会缓慢消耗缓冲区内已经存在的视频块以模拟视频播放，之后再将该视频块压入缓冲区。模拟器会跟踪所有可能导致重新缓冲的事件，比如缓冲区剩余视频块长度小于正在下载的视频块需要的时间（这会导致已经缓冲的视频播放完成后新的视频块还未下载完毕）。另外一方面，如果当前缓冲区无法容纳新的视频块，那么模拟器会暂停下载 500 毫秒，之后重新开始请求。</p>
-<p>在完成下载之后，模拟器会给出若干参数，比如当前缓冲区占有率、重新缓冲时间、视频块下载时间、（在所有可选码率下）下一个视频块的大小、该视频剩余的视频块数量等。这些参数的具体使用方式见后。</p>
-<p>基于该模拟器，Pensieve 可以在很短的时间内学习一个本应占用长时间的视频下载流程。</p>
-<p>虽然上述基于应用层行为的建模简单直接，但是实际上由于传输层复杂的行为，上述建模有可能并不精确。例如，播放器在缓冲区已满的条件下可能并不会在视频块下载完成后立刻请求下一个视频块，这可能导致传输层 TCP 回退到慢启动状态，这样可能并不能充分利用带宽。该问题实际上让 ABR 算法需要考虑的方面增多了，因为通常意义上快速填满缓冲区的策略会导致 TCP 慢启动从而造成事实上的低效率。</p>
-<p>为了了解 TCP 慢启动造成的影响，设计的实验为在带宽 6 Mbps 的条件下不断以某一个恒定的码率请求视频块。得出的结论为，在启用 TCP 慢启动的条件下请求的码率越低带宽利用率越低，而不启用 TCP 慢启动的条件下所有码率均充分利用了带宽。</p>
-<p>所以为了让模拟贴合现实，我们可以关闭服务器的 TCP 慢启动。虽然这可能导致流量的突变，但目前可以有其他的解决方案解决这一问题而不需要 Pensieve 来处理。</p>
-<p>事实上上述模拟依然是不精确的，但是我们发现 Pensieve 依然可以通过上述不完整的模拟学习到高质量的 ABR 算法，这可能是由于 Pensieve 强大的泛用能力。</p>
-]]></content>
-      <categories>
-        <category>【论文笔记】计算机</category>
-      </categories>
-  </entry>
-  <entry>
     <title>2022 年 9 月论文笔记</title>
     <url>/2022/09/20/paper-2022-09/</url>
     <content><![CDATA[<p>这个月正式参与进入了实验室和快手的一个合作项目，依然还是需要从论文先开始。</p>
@@ -18201,6 +17438,1208 @@ a_t \sim \pi_\theta(\cdot \mid \hat s_t), \hat s_{t + 1} = \hat f_{\phi_t}(\hat 
 ]]></content>
       <categories>
         <category>【论文笔记】计算机</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>《计算机网络原理》学习笔记</title>
+    <url>/2021/09/13/note-of-net/</url>
+    <content><![CDATA[<p>网原总之是一个没打算认真学的专业课，因为真的对网络没有很大的兴趣。再加上上学期曾经看着迅哥哥他们被网原折磨，自己也没什么信心能学好这门专业课。</p>
+<p>这个笔记完全基于上一届流传下来的《网原干饭背诵》，在此基础上对重点做一些标记做一些讲解，反正是个背书课，那么就只能一点一点背了。根据前人经验，这个笔记会把比较重要的东西用星号标注出来。</p>
+<span id="more"></span>
+<h1 id="计算机网络的历史和新进展">计算机网络的历史和新进展</h1>
+<h2 id="背诵-1-网络基础">【背诵 1 】网络基础</h2>
+<ul>
+<li><p>网络所提供的最基本服务为<strong>信息传递</strong>，不同的网络依据其提供的服务进行区分。而区分服务的依据则包括功能、延迟、带宽等各种<strong>外部特性</strong>。</p></li>
+<li><p>网络依据<strong>空间距离</strong>可以分为局域网（LAN）、城域网（MAN）、广域网（WAN）和个域网（PAN）。依据<strong>信息类型</strong>可以分为数据网络、电话网络。依据<strong>应用类型</strong>可以分为专用网络、通用网络。依据<strong>使用权</strong>可以分为私有网络、公用网络。同时，网络也可以按照使用的协议进行分类，如 IP 协议等。</p></li>
+</ul>
+<h2 id="背诵-2-计算机网络发展历史">【背诵 2 】计算机网络发展历史</h2>
+<p>计算机网络的历史可以大致描述为：</p>
+<ul>
+<li>1940 年代，第一个计算机 ENIAC 诞生</li>
+<li>1950 年代，大型机和多终端系统诞生</li>
+<li>1960 - 1964 年，分组交换网络诞生（Paul Baran）</li>
+<li>1960 年代，计算机网络研究开始</li>
+<li>* 1969 年，ARPANET 研究启动</li>
+<li>1970 年代，计算机网络发展
+<ul>
+<li>各国电信部门建设运行 X.25 分组交换网</li>
+<li>SNA 以及 DNA 等专用网络体系结构出现</li>
+<li>Internet 的前身 ARPANET 进行实验运行，带宽小且仅有不到 100 台计算机接入</li>
+<li>* 以太网和 Telnet 出现</li>
+<li>* 1979 年，TCP/IP 协议成熟</li>
+</ul></li>
+<li>1980 年代，计算机网络逐步成型
+<ul>
+<li>标准化的计算机网络体系结构 ISO/OSI 出现</li>
+<li>局域网 LAN 技术发展</li>
+<li>FTP、NFS、E-mail、USENET 等技术出现</li>
+<li>1980 - 1983 年，ARPANET 和 MILNET 分离，前者采用 TCP/IP 协议</li>
+<li>1983 年，BSD UNIX 内置 TCP/IP 协议</li>
+<li>1985 - 1986 年，NSFNET 建成，用于连接 6 个超级计算中心</li>
+<li>1987 - 1990 年，NSFNET 开始连接地区网络</li>
+<li>Internet 初具规模，1987 年，中国第一个电子邮件发送到 Internet</li>
+<li>中国开始依赖电话线建立低速广域网</li>
+</ul></li>
+<li>1990 年代，计算机网络进一步发展
+<ul>
+<li>Internet 商业化，在中国也得到了广泛应用</li>
+<li>Web 技术在 Internet 上得到广泛应用</li>
+<li>中国出现局域网，如 Novell 等</li>
+<li>1990 - 1992 年，NSFNET 带宽提高，连接了 16 个地区网络</li>
+<li>1994 年，NSFNET 骨干网解体，出现了若干其他的商用骨干网</li>
+<li>1995 年，中国教育和科研网 CERNET 出现</li>
+</ul></li>
+<li>2000 年代，计算机网络广泛应用
+<ul>
+<li>网络应用发展迅速，搜索引擎和社交网络出现</li>
+<li>移动互联网产业快速发展</li>
+<li>2006 年，与 IPv6 相关的 CNGI-CERNET2 出现</li>
+</ul></li>
+<li>最近，数据中心网络、天地一体化网络、 IPv6 技术等快速发展
+<ul>
+<li>2011 年开始设立 World IPv6 Day</li>
+<li>2011 年 2 月 3 日，全球互联网名称与数字地址分配机构 ICANN 宣布 IPv4 地址耗尽</li>
+</ul></li>
+</ul>
+<h2 id="背诵-3-internet-技术">【背诵 3 】 Internet 技术</h2>
+<ul>
+<li>Internet 是全球范围的、通用的、异构的公用计算机网络</li>
+<li>Internet 是其他类型的计算机网络技术的基础，如企业内部网（Intranet）</li>
+<li>Internet 开放的标准由 IETF 负责制定、维护和协调。其他类似 IRTF、IAB、IESG 等机构也参与了标准的维护
+<ul>
+<li>IETF 全称 Internet Engineering Task Force，其分为若干个工作组（WG），其提交的 Internet 标准被称为 RFC，即 Request For Comments</li>
+<li>IRTF 全称 Internet Researching Task Force，由各类专注某一个领域的研究小组组成</li>
+<li>IAB 全称 Internet Architecture Board，负责定义 Internet 的大体框架，为 IETF 提供方向上的指导</li>
+<li>IESG 全称 Internet Engineering Steering Group，负责在技术方面上管理 IETF 的活动</li>
+</ul></li>
+<li>Internet 是历史上发展最快的一种技术，其发展速度甚至超越摩尔定律</li>
+</ul>
+<h2 id="背诵-4-网络时代三大定律">【背诵 4 】网络时代三大定律</h2>
+<ul>
+<li>【摩尔定律】 CPU 性能每 18 个月会翻番，每 10 年翻 100 倍</li>
+<li>【光纤定律】也称超摩尔定律，骨干网带宽每 9 个月会翻番。每 10 年翻 10000 倍</li>
+<li>【麦特卡菲定律】也称联网定律，网络价值和用户数量的平方成正比</li>
+</ul>
+<h2 id="理解-1-分组交换技术">【理解 1 】分组交换技术</h2>
+<p>Paul Baran 在设计能承受核攻击的通信系统的时候，确立了三个设计准则。</p>
+<ul>
+<li>自适应系统的<strong>热土豆路由策略</strong>（能够学习并适应各种新的环境）
+<ul>
+<li>如果不知道正确的路由，就将分组转发给所有邻居</li>
+<li>通过观察路过的分组来更新路由表，旧的路由表项会被删除</li>
+<li>尽可能快地转发分组，分组途径的路径并不一定是最短路径</li>
+</ul></li>
+<li>分组发送策略（端节点能够容忍错误并恢复）
+<ul>
+<li>每个节点根据自我的路由表决定如何转发分组</li>
+<li>每个分组的转发完全独立于其他的分组</li>
+<li>交换节点不保存端节点信息，这一点让网络的可拓展性大大增强</li>
+</ul></li>
+<li>分布式策略
+<ul>
+<li>所有交换节点平等，避免单一节点失效问题</li>
+<li>通过物理硬件冗余和自适应路由实现系统稳健性</li>
+</ul></li>
+</ul>
+<p>而 Internet 就是这一类网络。Internet 连接了各种异构的子网，提供两个最基本的功能，即全球唯一地址和分组通过动态路由传输。</p>
+<p>分组交换技术具有相当多的优点，包括：</p>
+<ul>
+<li>简单性
+<ul>
+<li>每个分组自身携带信息</li>
+<li>一个路由表可以为所有的流量服务</li>
+<li>可以适应快速增长的网络规模</li>
+</ul></li>
+<li>灵活性
+<ul>
+<li>可以在各种物理底层上运行</li>
+<li>可以支持各种网络应用</li>
+</ul></li>
+<li>可扩展性
+<ul>
+<li>可以应对端系统的增加</li>
+<li>可以应对流量的增加</li>
+<li>可以应对网络规模增大带来的路由表增大和路由频繁变化</li>
+</ul></li>
+<li>健壮性
+<ul>
+<li>默认了网络结构变化是正常现象</li>
+<li>牺牲一定的效率换取网络的稳定</li>
+</ul></li>
+</ul>
+<h2 id="背诵-5-今日互联网">【背诵 5 】今日互联网</h2>
+<ul>
+<li>今日的互联网具有更大的规模和更多的用户，而且支持更多的功能，具有更高的价值，但是其健壮性、适应性和互联程度都下降了</li>
+<li>当今互联网面临的一个问题就是 IPv4 地址耗尽，而目前缓解这个问题地方案是<strong>网络地址转换协议（Network Address Translation / NAT）</strong>
+<ul>
+<li>NAT 缓解了地址耗尽的问题，增强了安全性和控制性</li>
+<li>但是另外一方面却打破了 Internet 中地址唯一的假设</li>
+<li>端到端的分组传输路径变成多个 NAT 域的级联，相当于虚电路</li>
+<li>为了恢复 Internet 的原有结构，目前正在推进 IPv6 技术</li>
+</ul></li>
+</ul>
+<h2 id="杂项-1-未分类知识点">【杂项 1 】未分类知识点</h2>
+<ul>
+<li>二十世纪后期人类两项最伟大的战略工程为<strong>星球大战计划</strong>和<strong>互联网计划</strong>。目前互联网已经发展为继海、陆、空、天之后的<strong>第五空间</strong>。</li>
+</ul>
+<h1 id="计算机网络体系结构">计算机网络体系结构</h1>
+<h2 id="背诵-6-计算机网络的定义和组成">【背诵 6 】计算机网络的定义和组成</h2>
+<ul>
+<li>计算机网络定义为若干独立自治的计算机系统的互联集合体
+<ul>
+<li>计算机网络和分布式系统不同，分布式系统虽然也是由若干个计算机系统组成，但其具有<strong>内聚性</strong>和<strong>透明性</strong>，故分布式系统呈现给用户的更像是一台计算机。计算机网络则明显分立，在用户的视角依然是若干不同的计算机</li>
+<li>目前分布式系统和计算机网络有合流的趋势，两者正在走向统一</li>
+</ul></li>
+<li>计算机网络有两级组成，即<strong>资源子网</strong>和<strong>通信子网</strong>。资源子网常常是服务器或者用户计算机，而通信子网常常是通信线路等信道和路由器、交换机等网络互联设备</li>
+<li>计算机网络之中的通信通常有两种，即<strong>交换式通信</strong>和<strong>广播式通信</strong>
+<ul>
+<li>交换式通信又称<strong>点对点通信</strong>
+<ul>
+<li>需要经过交换设备，将消息转发给一个或一组结点</li>
+<li>交换设备根据需要选择输出</li>
+<li>网络典型的拓扑结构包括 star / ring(loop) / tree / complete / intersecting rings / irregular</li>
+<li>关键技术是<strong>路由选择</strong></li>
+</ul></li>
+<li>广播式通信
+<ul>
+<li>多台计算机共享通信线路</li>
+<li>任一台计算机发出的信息可以直接被其它计算机接收</li>
+<li>网络典型的拓扑结构包括 bus / ring(loop)</li>
+<li>关键技术是<strong>通道分配</strong>
+<ul>
+<li>静态分配，即分时间片。特点是控制简单，但通道利用率低</li>
+<li>动态分配，即各站点动态使用通道。特点是控制复杂，但通道利用率高。通道分配方法有两种。集中式指的是只有一个仲裁机构，分布式指的是各站点均有仲裁机构</li>
+</ul></li>
+</ul></li>
+<li>传统的 LAN 一般使用广播式通信，而 MAN 和 WAN 一般使用交换式通信。现代的 LAN 中交换式通信的应用正在增多</li>
+</ul></li>
+</ul>
+<h2 id="理解-2-计算机网络体系结构">【理解 2 】计算机网络体系结构</h2>
+<ul>
+<li>计算机网络体系结构指的是对计算机网络及其部件所完成功能的比较精确的定义，即从功能的角度描述计算机网络的结构，是<strong>层次和层间关系</strong>的集合。但体系结构只会从功能上定义网络，并不会定义协议的细节和接口关系
+<ul>
+<li>现代计算机网络体系架构指出，计算机网络的基本功能是为地理位置不同的计算机用户之间提供访问通路，并且应当提供若干功能（具体功能列表见 PPT），这些功能中最重要的是<strong>通信功能</strong></li>
+<li>这些功能的特征是<strong>分层</strong>，也就是说计算机网络中提供的功能是分成层次的</li>
+<li>位于不同计算机上进行对话的同一层通信各方可分别看成是一种进程，称为<strong>对等（同等）进程</strong></li>
+</ul></li>
+<li>计算机网络分层的体系结构有三个重要的概念，即协议、服务和接口
+<ul>
+<li>计算机网络体系结构定义了计算机网络的功能是分层次的，而协议（Protocol）就是计算机网络同等层次中，通信双方进行信息交换时必须遵守的规则
+<ul>
+<li>协议由三部分组成
+<ul>
+<li>语法（Syntax）部分。即以二进制形式表示的命令和相应的结构</li>
+<li>语义（Semantics）部分。即发出的命令请求，完成的动作和回送的响应组成的集合</li>
+<li>定时关系（Timing）部分。即有关事件顺序的说明</li>
+</ul></li>
+<li>网络体系结构的分层决定了协议的分层，协议的分层构成了<strong>洋葱结构</strong>
+<ul>
+<li>目的主机某一层收到的报文与源主机同一层发出的报文相同</li>
+<li>协议分层要保证整个通信系统功能完备高效</li>
+</ul></li>
+</ul></li>
+<li>协议定义了不同计算机同层次之间的关系，而服务（Service）定义同一个计算机的上下层之间的交换信息时必须遵守的规则
+<ul>
+<li>服务有两种，即面向连接的服务和无连接服务。
+<ul>
+<li>在使用面向连接的服务进行传输的时候，首先需要建立连接，然后使用这个连接传递数据，使用完毕需要关闭连接。这类服务的顺序性较好</li>
+<li>在使用无连接服务的时候，不建立连接，直接通过服务发送数据每个包都需要独立确定路由。这类服务的顺序性较差</li>
+<li>需要注意，连接并不意味着可靠，可靠性依然需要通过确认、重传等机制进行保证</li>
+</ul></li>
+<li>服务在形式上需要通过一组服务原语（Primitive）规定。原语可以分为四类，即请求、指示、响应、确认</li>
+</ul></li>
+<li>在同一个计算机之中相邻层之间都有一个接口（Interface），它定义了下层向上层提供的原语操作和服务</li>
+</ul></li>
+<li>基于三大基本概念，计算机网络体系结构的具体实现大致为
+<ul>
+<li>服务访问点（Service Access Point / SAP）
+<ul>
+<li>任何的层间服务都是在接口的 SAP 上完成的</li>
+<li>每一个 SAP 都有唯一的识别地址</li>
+<li>每一个层间接口可以具有多个 SAP</li>
+</ul></li>
+<li>接口数据单元（Interface Data Unit / IDU）
+<ul>
+<li>IDU 是通过 SAP 传递的层间信息单元（上下传输）</li>
+<li>IDU 的构成是上一层的服务数据单元（Service Data Unit / SDU）和接口控制信息（Interface Control Information / ICI）的拼接</li>
+</ul></li>
+<li>协议数据单元（Protocol Data Unit / PDU）
+<ul>
+<li>PDU 是在同层实体之间通过网络传输的信息单元（水平传输）</li>
+<li>PDU 的构成是上一层的 SDU 或其分段和协议控制信息（Protocol Control Information / PCI）的拼接</li>
+</ul></li>
+<li>基于上述定义，计算机网络的工作类似于下述
+<ul>
+<li>当本层需要水平传输的时候，首先获得上层通过 SAP 传递的，由 SDU 和 ICI 拼接得到的 IDU。然后本层删除 ICI，将剩余的 SDU 拼接上 PCI 获得 PDU 并通过本层网络协议传输</li>
+<li>当本层需要继续向下层传输的时候，首先获得上层的 IDU，这个从上层获得到本层的 IDU 在下层看来就是一个新的 SDU。本层随后直接拼接上新的 ICI 获得新的 IDU 向下传输。所以说，最上层产生的数据包向下传播的时候，会逐层添加各层控制信息。而底层接收的数据包向上传播的时候，会逐层把这些控制信息删去，获取最后的数据</li>
+</ul></li>
+</ul></li>
+<li>分层的优点包括模块化、功能抽象、可复用。缺点是数据隐藏会导致可能的低效</li>
+<li>计算机网络体系结构的设计中还有两个原则，分别称为<strong>端到端原则</strong>和 <strong>Rule of thumb</strong>
+<ul>
+<li>端到端原则的思想是底层需要尽可能简单，但是上层应用可以较为复杂（完成验证、纠错等工作），只有当这样的功能明显能提升功能的时候才会放在底层</li>
+<li>Rule of thumb 的思想是，底层的新功能不能影响其他不使用这个新功能的部分</li>
+</ul></li>
+</ul>
+<h2 id="理解-3-osi-和-tcpip-模型及其他网络模型">【理解 3 】 OSI 和 TCP/IP 模型及其他网络模型</h2>
+<ul>
+<li>模型建立的历史事件见 PPT</li>
+<li>OSI 模型在 1983 年提出，模型分为七层，从下至上为
+<ul>
+<li>物理层，这一层包含基础网络硬件，在物理通信线路上传输二进制位（Bit）</li>
+<li>数据链路层，这一层目标是在有差错的物理线路上传输无差错的数据帧（Frame）</li>
+<li>网络层，这一层控制通信子网提供数据包（Packet）传输功能</li>
+<li>传输层，这一层为用户提供端到端的数据传输功能</li>
+<li>会话层，这一层为用户提供类似安全认证等会话控制服务</li>
+<li>表示层，这一层为用户提供数据表示和数据转换功能</li>
+<li>应用层</li>
+</ul></li>
+<li>TCP/IP 模型的提出早于 OSI 模型，且仅有四层：
+<ul>
+<li>Host-to-Internet 层，相当于 OSI 的物理层和数据链路层</li>
+<li>Internet 层（网络层），控制通信子网提供源点到目的点的 IP 包传送，实现异构网络互联</li>
+<li>传输层，提供端到端的数据传送服务，如 TCP 和 UDP</li>
+<li>应用层，内部包含了 OSI 的会话层和表示层</li>
+</ul></li>
+<li>X.25 分组交换网在 70 年代提出，早于 OSI 模型，为公用包交换网与用户之间提供接口
+<ul>
+<li>该模型面向连接，支持交换虚电路和永久虚电路</li>
+<li>物理层使用协议 X.21 以及 X.3 / X.28 / X.29</li>
+<li>数据链路层使用协议 LAP 和 LAPB</li>
+<li>网络层使用协议 PLP</li>
+<li>该模型提出了以下名词 -（用户侧）数据终端设备（Digital Terminal Equipment / DTE）
+<ul>
+<li>数字线路设备（Digital Circuit Terminating Equipment / DCE）</li>
+<li>打包解包设备（Packet Assembler and Disassembler / PAD）</li>
+</ul></li>
+</ul></li>
+<li>Novell Netware 在 1983 年提出，在 2005 年终止开发
+<ul>
+<li>模型基于 client-server 结构，设计的基本思想是<strong>文件共享</strong>（同时期其它系统还基于磁盘共享，所以模型有一定先进性）</li>
+<li>基于 XNS（Xeror Network System），网络层协议是不可靠无连接协议 IPX（Internet Packet Exchange），传输层协议是面向连接的 NCP（Netware Core Protocol）和 SPX（Sequenced Package Exchange）</li>
+</ul></li>
+<li>B-ISDN 即宽带综合业务数字网，其技术基础为 ATM 异步传输模式（Asynchronous Transfer Mode）
+<ul>
+<li>ATM 也是分组交换技术
+<ul>
+<li>异步传输，即不具有主时钟</li>
+<li>传输单元为短而定长的信元（cell）</li>
+<li>采用虚电路，面向连接</li>
+<li>常见速率包括 155M 和 622M</li>
+</ul></li>
+</ul></li>
+</ul>
+<h2 id="杂项-2-未分类知识点">【杂项 2 】未分类知识点</h2>
+<ul>
+<li>美国的标准化组织包括 ANSI 和 NIST，中国的标准化组织包括 CCSA，行业标准则是 IEEE</li>
+<li>计算机网络标准化，电信标准为 ITU 而国际标准则是 ISO</li>
+<li>Internet 的标准是自发的，并非政府干预，每个标准诞生前都需要提出请求意见稿，即 RFC</li>
+</ul>
+<h1 id="数据通信基本原理">数据通信基本原理</h1>
+<h2 id="理解-4-信号的傅里叶分析">【理解 4 】信号的傅里叶分析</h2>
+<ul>
+<li>注意网原里傅里叶级数的定义为：</li>
+</ul>
+<p><span class="math display">\[
+g(t) = \frac12 c + \sum_{n = 1}^{+\infty} a_n\sin(2\pi f nt) + \sum_{n = 1}^{+\infty} b_n\cos(2\pi f nt)
+\]</span></p>
+<p>所以：</p>
+<p><span class="math display">\[
+\begin{aligned}
+c &amp;= \frac2T \int_0^T g(t) {\rm d}t \\
+a_n &amp;= \frac2T \int_0^T g(t)\sin(2\pi f nt) {\rm d}t \\
+b_n &amp;= \frac2T \int_0^T g(t)\cos(2\pi f nt) {\rm d}t \\
+\end{aligned}
+\]</span></p>
+<ul>
+<li>一个信号所包含的信号频率范围为频谱（Spectrum），其宽度称为信号的绝对带宽（Definite bandwidth）。大部分信号有无穷的绝对带宽，但是其能量可能仅集中于某一个频段，这个频带的宽度称为有效带宽（Effective bandwidth），简称带宽</li>
+<li>带宽越宽，信号的信息承载能力越强</li>
+<li>信号在给定截止频率 <span class="math inline">\(f_c\)</span> 的信道传输的过程中，高于截止频率的频率分量的振幅衰减明显大于低于截止频率的</li>
+<li>通过信道的谐波次数越多，信号越逼真</li>
+</ul>
+<h2 id="计算-1-信号传输基础计算">【计算 1 】信号传输基础计算</h2>
+<ul>
+<li>波特率指的是信号每秒钟变化的次数，也称调制速率</li>
+<li>比特率指的是信号每秒钟传输的二进制位个数</li>
+<li>波特率和比特率的关系取决于信号值与比特位的关系，如果每个信号值能表示 <span class="math inline">\(N\)</span> 个二进制位，那么比特率为波特率的 <span class="math inline">\(N\)</span> 倍</li>
+<li>对于比特率为 <span class="math inline">\(B({\rm bps})\)</span> 的信道，如果 <span class="math inline">\(M\)</span> 个二进制位为一个周期，则波特率为 <span class="math inline">\(B/M({\rm baud})\)</span>，一次谐波的频率为 <span class="math inline">\(f_1 = B/M({\rm Hz})\)</span>（一次谐波指的是信号傅里叶级数中周期等于原信号周期的分量），能通过信道的最高次谐波次数为 <span class="math inline">\(N = f_c / f_1\)</span>，这里 <span class="math inline">\(f_c\)</span> 为信道的截止频率</li>
+<li>信道的有限带宽限制了信号的传输速率，<strong>无噪声</strong>带宽为 <span class="math inline">\(H\)</span> 的信道传输有 <span class="math inline">\(V\)</span> 种电平状态的信号时，最高传输速率为：</li>
+</ul>
+<p><span class="math display">\[
+v = 2H\log_2 V({\rm bps})
+\]</span></p>
+<ul>
+<li>对于<strong>有噪声</strong>信道，其噪声功率为 <span class="math inline">\(N\)</span>，信号功率为 <span class="math inline">\(S\)</span>，其<strong>信噪比</strong>为：</li>
+</ul>
+<p><span class="math display">\[
+x = 10\log_{10}\frac{S}{N}({\rm dB})
+\]</span></p>
+<p>一般电话系统的典型信噪比为 <span class="math inline">\(30({\rm dB})\)</span>。</p>
+<p>带宽为 <span class="math inline">\(H({\rm Hz})\)</span>，信噪比为 <span class="math inline">\(S/N\)</span> 的任何信道的最大传输速率为：</p>
+<p><span class="math display">\[
+v = H\log_2\left(1 + \frac{S}{N}\right)({\rm bps})
+\]</span></p>
+<p>该传输速率为理论上限，实际很难达到。该传输速率与电平级数和采样速度无关</p>
+<h2 id="背诵-7-传输方式分类">【背诵 7 】传输方式分类</h2>
+<ul>
+<li>数字传输、模拟传输
+<ul>
+<li>数字传输的优点是成本低，对噪声不敏感，缺点是易受衰减（频率越高越严重）</li>
+</ul></li>
+<li>并行传输、串行传输</li>
+<li>点到点传输、点到多点传输
+<ul>
+<li>为适应不同的需要，通信线路采用不同的连接方式</li>
+</ul></li>
+<li>单工、半双工和全双工传输
+<ul>
+<li>单工传输：信息只能单向传输，监视信号可回送</li>
+<li>半双工传输：信息可以双向传输，但在某一时刻只能单向传输</li>
+<li>全双工传输：信息可以同时双向传输</li>
+</ul></li>
+<li>同步传输、异步传输
+<ul>
+<li>同步传输
+<ul>
+<li>传输以报文为基本单位</li>
+<li>传输开始的时候需要传输<strong>同步字符</strong>让双方同步</li>
+<li>可以不间断传输，传输效率较高但是需要<strong>透明传输处理</strong>，即传输的信息中不存在同步字符</li>
+<li>接收方必须知道每一位信号的开始及其持续时间，以便正确的采样接收</li>
+<li>基于<strong>二进制位</strong>的传输一般使用同步传输，信息以<strong>二进制位流</strong>为单位传送，传输过程中以<strong>位</strong>为单位同步，传输的开始和结束以特定的<strong>八位二进制位</strong>同步</li>
+</ul></li>
+<li>异步传输
+<ul>
+<li>需要辅助位，如起始位、奇偶校验位、终止位</li>
+<li>传输效率低，主要用于字符终端与计算机之间的通信</li>
+<li>传输字符时，信息传送以字符为单位</li>
+</ul></li>
+</ul></li>
+</ul>
+<h2 id="背诵-8-信号发送方式">【背诵 8 】信号发送方式</h2>
+<ul>
+<li>数据表示分为两种，即模拟数据和数字数据</li>
+<li>数据传输方式中以信号为载体，分为模拟信号（模拟信道）和数字信号（数字信道）两种（见【背诵 7 】）</li>
+<li>两种数据表示和两种数据传输方式对应形成四种信号发送方式：</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">模拟数据</th>
+<th style="text-align: center;">数字数据</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">模拟信道</td>
+<td style="text-align: center;">电话系统</td>
+<td style="text-align: center;">频带传输、调制解调器（Modem）</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">数字信道</td>
+<td style="text-align: center;">编码解码器（Codec）</td>
+<td style="text-align: center;">基带传输、数字编码解码器</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>数字数据的数字传输
+<ul>
+<li>基带传输
+<ul>
+<li>基带指的是传输变换前所占用的频带，是原始信号所固有的频带</li>
+<li>基带传输指的是在传输时直接使用基带信号，是一种基本的传输方式，适用于高速低速各种情况</li>
+<li>其限制为因基带信号所带的频率成分很宽，所以对传输线有一定的要求</li>
+</ul></li>
+<li>编码方式
+<ul>
+<li>不归零制码（NRZ）
+<ul>
+<li>用高电平表示 1，用低电平表示 0</li>
+<li>难以分辨某一位的开始或结束，所以发送和接受方都需要时钟同步</li>
+<li>如果信号中 0 或者 1 连续出现，直流电平会叠加</li>
+<li>容易产生传播错误</li>
+</ul></li>
+<li>曼彻斯特码（相位编码）
+<ul>
+<li>每个周期中间有一个跳变，由低到高为 0，由高到低为 1</li>
+<li>克服了 NRZ 的不足，并且每个周期中间的跳变既是信息又是时钟，可以自同步</li>
+</ul></li>
+<li>差分曼彻斯特码
+<ul>
+<li>每个周期中间有一个跳变作为时钟</li>
+<li>每个周期开始有跳变表示 0，没有跳变表示 1</li>
+<li>时钟、数据相分离，便于提取</li>
+<li>差分曼彻斯特注意分类讨论初始时是高电平还是低电平</li>
+</ul></li>
+<li>逢 0 变化 NRZ
+<ul>
+<li>每个周期开始有跳变表示 0，没有跳变表示 1</li>
+<li>每个周期中间没有跳变</li>
+<li>注意讨论初始时的电平</li>
+</ul></li>
+<li>逢 1 变化 NRZ
+<ul>
+<li>每个周期开始有跳变表示 1，没有跳变表示 0</li>
+<li>每个周期中间没有跳变</li>
+<li>注意讨论初始时的电平</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>数字数据的模拟传输
+<ul>
+<li>频带传输
+<ul>
+<li>在一定频率范围内的线路上，进行载波传输</li>
+<li>用基带信号对载波进行调制，使其变为适合于线路传送的信号</li>
+<li>调制指的是用基带脉冲控制载波参数，使得这些参数反应基带脉冲信息</li>
+<li>使用调制解调器</li>
+</ul></li>
+<li>调制技术
+<ul>
+<li>幅移键控法（调幅 / ASK），即根据基带脉冲调整载波振幅</li>
+<li>频移键控法（调频 / FSK），即根据基带脉冲调整载波频率</li>
+<li>相移键控法（调相 / PSK），即根据基带脉冲调整载波相位</li>
+</ul></li>
+</ul></li>
+<li>模拟数据的数字传输
+<ul>
+<li>脉冲代码调制 PCM 技术
+<ul>
+<li>根据 Nyquist 原理进行采样</li>
+<li>将模拟信号的振幅分为 <span class="math inline">\(2^n\)</span> 级，每一个采样点用 <span class="math inline">\(n\)</span> 位二进制位表示</li>
+<li>贝尔系统的 T1 载波每个采样点用 7 位二进制表示</li>
+</ul></li>
+<li>差分脉冲代码调制
+<ul>
+<li>与 PCM 数字化振幅不同，差分脉冲代码调制数字化的是相邻采样点的振幅差值</li>
+<li>可以使用较少的二进制位表示</li>
+</ul></li>
+<li><span class="math inline">\(\delta\)</span> 调制
+<ul>
+<li>根据每个采样值与前一个值之间的差来决定输出 1 还是 0</li>
+<li>编码速度可能无法跟上变化较快的模拟信号</li>
+</ul></li>
+</ul></li>
+</ul>
+<h2 id="背诵-9-多路复用技术">【背诵 9 】多路复用技术</h2>
+<ul>
+<li>使得多路信号同时使用一条物理线路的技术,允许用户使用一个共享信道进行通信，避免相互干扰，降低成本，提高利用率</li>
+<li>多路复用技术分类
+<ul>
+<li>时分复用（TDM）
+<ul>
+<li>T1 载波电话系统分为 24 个信道，每个 <span class="math inline">\(64({\rm Kbps})\)</span>，一共 <span class="math inline">\(1.544({\rm Mbps})\)</span>，控制信息带内传输</li>
+</ul></li>
+<li>频分复用（FDM）
+<ul>
+<li>频率分割为频段，多用于手机通信</li>
+</ul></li>
+<li>波分复用（WDM）
+<ul>
+<li>光传输使用，对波长分段，是特殊的频分复用</li>
+</ul></li>
+</ul></li>
+</ul>
+<h2 id="背诵-10-交换技术">【背诵 10 】交换技术</h2>
+<ul>
+<li>计算机网络通信分为交换式和广播式</li>
+<li>交换是在多结点通信网络中，为有效利用通信设备和线路，动态接通、断开、切换通信线路</li>
+<li>交换技术分类
+<ul>
+<li>电路交换
+<ul>
+<li>直接利用可以切换的物理电路动态调整通信线路</li>
+<li>分为建立电路、传输数据、拆除电路三个阶段</li>
+<li>在发送数据前，必须建立起点到点的物理通路。建立物理通路时间较长，数据传送延迟较短</li>
+<li>电话网和 ISDN 采用电路交换</li>
+<li>电路交换一般采用时分复用
+<ul>
+<li>时间被分为帧（Frame），帧被分为时槽（Slot）</li>
+<li>时槽在帧内的相对位置决定这个槽所传输数据所属的会话</li>
+<li>发送方和接收方间需要同步</li>
+<li>非永久会话需要动态绑定时槽到一个会话</li>
+</ul></li>
+</ul></li>
+<li>报文交换（存储转发方式）
+<ul>
+<li>信息以报文（逻辑上完整的信息段）为单位进行存储转发</li>
+<li>线路利用率高、要求中间结点（网络通信设备）缓冲大、延迟时间长</li>
+</ul></li>
+<li>分组交换（包交换）
+<ul>
+<li>分组是一种报文还小的信息段，可定长也可变长。分组交换中信息以分组为单位进行存储转发。源结点把报文分为分组，在中间结点存储转发，目的结点把分组合成报文。用附加的分组头来区分数据</li>
+<li>特点
+<ul>
+<li>每个分组头包括源地址和目的地址，独立进行路由选择
+<ul>
+<li>所以不保证到达顺序</li>
+</ul></li>
+<li>网络结点设备中不预先分配资源，使用统计复用，线路利用率高
+<ul>
+<li>相比于电路交换最明显的优势</li>
+</ul></li>
+<li>易于重传，可靠性高</li>
+<li>易于开始新的传输，让紧急信息优先通过</li>
+<li>开销增加</li>
+<li>需要处理拥塞问题
+<ul>
+<li>需要复杂的路由器，难以保证端到端的服务质量</li>
+</ul></li>
+</ul></li>
+<li>分组交换分为虚电路分组交换和数据报分组交换
+<ul>
+<li>数据报分组交换（如 IP Networks）
+<ul>
+<li>每个分组均带有网络地址（源、目的），可走不同的路径</li>
+</ul></li>
+<li>虚电路分组交换（如 ATM Networks）
+<ul>
+<li>其是电路交换和分组交换的结合
+<ul>
+<li>数据以分组形式传输，来自同一流的分组通过一个预先建立的路径（虚电路）传输</li>
+<li>确保分组的顺序，但是来自不同虚电路的分组可能会交错在一起</li>
+</ul></li>
+<li>分三个阶段
+<ul>
+<li>建立：发带有全称网络地址的呼叫分组，建立虚电路</li>
+<li>传输：沿建立好的虚电路传输数据</li>
+<li>拆除：拆除虚电路</li>
+</ul></li>
+<li>分组头不需要包含完整的地址信息，路由器需要维护虚电路的状态信息</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>电路交换、报文交换、分组交换的时序图如下。其中电路交换要逐层申请预留占用资源，这段申请时间用于<strong>寻找出境中继线</strong>，申请完毕后节点会占用这段传输线</li>
+</ul>
+<p><img src="/uploads/note-of-net/1.png" /></p>
+<ul>
+<li>三类交换技术的特点
+<ul>
+<li>电路交换适用于实时信息和模拟信号传送，在线路带宽比较低的情况下使用比较经济</li>
+<li>报文交换适用于线路带宽比较高的情况，可靠灵活，但延迟大</li>
+<li>分组交换缩短了延迟，也能满足一般的实时信息传送。在高带宽的通信中更为经济、合理、可靠。是目前公认较好的一种交换技术</li>
+<li>电路交换和分组交换可以结合，如 IP over SONET 以及 IP over Frame Relay</li>
+</ul></li>
+</ul>
+<h2 id="背诵-11-交换结构">【背诵 11 】交换结构</h2>
+<ul>
+<li>Crossbar 交换结构：无阻塞内部交换</li>
+<li>空分交换：多个 Crossbar 互联，有无阻塞均可</li>
+<li>时分交换：高效处理</li>
+</ul>
+<h2 id="杂项-3-未分类知识点">【杂项 3 】未分类知识点</h2>
+<ul>
+<li>数据通信技术由编码技术、多路复用和交换技术构成</li>
+</ul>
+<h1 id="物理层接口及其协议">物理层接口及其协议</h1>
+<h2 id="背诵-12-物理层的定义与功能">【背诵 12 】物理层的定义与功能</h2>
+<ul>
+<li>物理层提供机械的、电气的、功能的和规程的特性，目的是启动、维护和关闭<strong>数据链路实体</strong>之间进行<strong>比特传输</strong>的<strong>物理连接</strong>。这种连接可能通过中继系统，在中继系统内的传输也是在物理层</li>
+<li>物理层的功能是在两个网络设备之间提供透明的比特流传输</li>
+<li>物理层的传输方式
+<ul>
+<li>连接方式（点到点，点到多点）</li>
+<li>通信方式（单工，半双工，全双工）</li>
+<li>位传输方式（串行，并行）</li>
+</ul></li>
+<li>物理层的重要特性
+<ul>
+<li>机械特性（Mechanical characteristics）
+<ul>
+<li>定义物理连接的边界点，即接插装置</li>
+<li>规定物理连接时所采用的规格、引脚的数量和排列情况</li>
+</ul></li>
+<li>电气特性（Electrical characteristics）
+<ul>
+<li>规定传输二进制位时，线路上信号的电压高低、阻抗匹配、传输速率和距离限制</li>
+</ul></li>
+<li>功能特性（Functional characteristics）
+<ul>
+<li>主要定义各条物理线路的功能，比如数据、控制、定时、地线</li>
+</ul></li>
+<li>规程特性（Procedural characteristics）
+<ul>
+<li>主要定义各条物理线路的工作规程和时序关系</li>
+</ul></li>
+</ul></li>
+</ul>
+<h2 id="背诵-13-物理层传输介质">【背诵 13 】物理层传输介质</h2>
+<ul>
+<li>双绞线。既可以用于模拟传输，也可以用于数字传输，带宽依赖于线的类型和传输距离</li>
+<li>同轴电缆
+<ul>
+<li>基带同轴电缆，用于数字传输（数字数据数字传输用基带传输）</li>
+<li>宽带同轴电缆，用于模拟传输（模拟数据数字传输用频带传输）</li>
+</ul></li>
+<li>光纤
+<ul>
+<li>分为单模光纤和多模光纤，两者都支持波分复用，使用的波长越长衰减越小，但成本也越高
+<ul>
+<li>单模光纤只有一个入射角度，半径小，适合<strong>长距离传输</strong></li>
+<li>多模光纤有多个入射角度，半径大，适合短距离传输</li>
+</ul></li>
+<li>光纤组网
+<ul>
+<li>点到点，使用四根线，两根用于保护倒换</li>
+<li>环，使用两根线，一根用于保护倒换</li>
+</ul></li>
+<li>光纤中继器。分为光电光式和全光式
+<ul>
+<li>全光网具有光因特网论坛 OIF</li>
+</ul></li>
+</ul></li>
+</ul>
+<h2 id="背诵-14-sonet-sdh-网络传输技术">【背诵 14 】 SONET / SDH 网络传输技术</h2>
+<ul>
+<li>80 年代提出，应用<strong>时分复用</strong>技术，同步传输，有主时钟控制</li>
+<li>SONET 路径为：路径（Path）、线路（Line）、段（Section）</li>
+<li>基于<strong>字节</strong>的复用。但是 OC-3c 中的 c 表示<strong>级联</strong>而非复用</li>
+</ul>
+<h2 id="背诵-15-移动电话网络传输技术">【背诵 15 】移动电话网络传输技术</h2>
+<ul>
+<li>单方向的寻呼系统
+<ul>
+<li>寻呼过程
+<ul>
+<li>打电话给寻呼公司，输入寻呼机号码</li>
+<li>寻呼公司的计算机收到请求，通过线路传到高处的天线</li>
+<li>天线直接广播信号（本地寻呼），或传递给卫星（异地寻呼），卫星再广播</li>
+</ul></li>
+<li>单向系统</li>
+<li>需要很小的带宽</li>
+</ul></li>
+<li>蜂窝电话
+<ul>
+<li>1G：模拟蜂窝电话，只能传送话音</li>
+<li>2G：数字蜂窝电话，主要传送话音，相关概念有 GSM 和 CDMA</li>
+<li>3G / 4G：可以传送话音和数据</li>
+</ul></li>
+<li>模拟蜂窝电话
+<ul>
+<li>Push-to-talk system。早期用于军事通信，单信道，半双工系统</li>
+<li>IMTS。双频，全双工系统</li>
+<li>AMPS。使用小蜂窝，蜂窝中心有基站，不相邻且相近的蜂窝中<strong>重用频率</strong></li>
+</ul></li>
+</ul>
+<div class="note warning"><p>网原实在是看不会了，这个笔记也就到此为止吧。</p>
+</div>
+]]></content>
+      <categories>
+        <category>【学习笔记】计算机</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>2022 年 12 月论文笔记</title>
+    <url>/2022/12/06/paper-2022-12/</url>
+    <content><![CDATA[<p>12 月开始就得准备做毕设了，先要充分阅读文献，确定自己要做的方向有什么要解决的问题，以及目前已经有的探索和目前还存在的困难。</p>
+<p><span class="math display">\[
+\newcommand{\b}{\boldsymbol}
+\]</span></p>
+<span id="more"></span>
+<h1 id="learning-tailored-adaptive-bitrate-algorithms-to-heterogeneous-network-conditions---a-domain-specific-priors-and-meta-reinforcement-learning-approach">Learning Tailored Adaptive Bitrate Algorithms to Heterogeneous Network Conditions - A Domain-Specific Priors and Meta-Reinforcement Learning Approach</h1>
+<p>黄老师的文章，作为起手还是需要好好看看的。</p>
+<p>这篇文章的基本概念是，基于学习的 ABR 已经能够实现一个平均而言优秀的 ABR 算法，但是对于部分特殊的网络环境其依然表现不佳，而这也就是所谓的个性化。然后这篇文章使用了 meta RL 的方式实现了 AABR（其实应当是 <span class="math inline">\(A^2BR\)</span>，但是我真的不想打公式了，AABR 表示 Adaptation of ABR）。</p>
+<p>AABR 首先离线学习一个元算法，之后再在在线的个性化环境下学习一个针对当前网络环境的个性化算法。另外，还需要不断优化离线学习来保证元算法的优势。</p>
+<h2 id="introduction">Introduction</h2>
+<p>首先对 ABR 算法做了总结，启发式算法根据当前网络情况和一部分状态变量给出决策，但是只有在选定较好的算法参数的时候这种算法才能表现较好。基于学习的算法则根据网络情况学习这些参数。然而总而言之，这些算法都不会自动调节自己的算法参数，尤其在面对变化较多的网络环境下时，这些算法表现较差。</p>
+<p>之后是通过实验说明了现在的网络状况不仅是多样性（diverse）的，更多的是独一无二（unique）的。基于这一点，这篇文章认为做用户个性化是一个重要的提升。</p>
+<p>所以基于 Input-driven Markov Decision Process (IMDP)，本文提出了 AABR。分为离线和在线两步，具体的训练方式见后续。</p>
+<p>总结一下这篇文章的工作就是确认了当今网络环境的独特性，并通过 meta RL 解决了 ABR 的个性化问题。</p>
+<h2 id="background-motivation">Background &amp; Motivation</h2>
+<p>关于 ABR 之类的介绍这里忽略，主要看这篇文章如何论证当今网络的多样性。</p>
+<p>多样性分为三个方向去论证，即不同用户间差异、不同场景间差异以及已有的部分 ABR 算法在这些网络环境下的表现。</p>
+<p>用户间差异和场景间差异可以关注下图：</p>
+<p><img src="/uploads/paper-2022-12/1.png" /></p>
+<p>可以首先注意到网络吞吐率和 RTT 的变动是相当大的，而如果观察具体的用户，也可以发现用户之间的网络状况差异也很大，部分用户网络稳定（整体带宽 CDF 陡峭）而部分用户的网络波动较大，而且各个用户的网络指标平均值也差异较大。</p>
+<p>对于场景，也可以注意到步行、地铁、公交、汽车的网络情况也各有不同，并不能一概而论。</p>
+<p>如果从 ABR 的角度出发，这篇文章在两个不同环境下测试了若干个 ABR 算法的性能，得到的结果是：</p>
+<p><img src="/uploads/paper-2022-12/2.png" /></p>
+<p>显然可以注意到已有的算法都很难兼顾两种情况，常常顾此失彼。这就意味着不稳定的网络情况很容易导致这些算法失效，从而也难以实现用户个性化。</p>
+<h2 id="methods">Methods</h2>
+<h3 id="input-driven-markov-decision-process">Input-driven Markov Decision Process</h3>
+<p>基本而言是在正常的 MDP 中引入了 input process <span class="math inline">\(\mathcal{Z}\)</span>，这个时候环境的转移概率定义为：</p>
+<p><span class="math display">\[
+\mathbb{T}[s&#39; \mid s, a, z] := \mathbb{P}[s_{t + 1} = s&#39; \mid s_t = s, a_t = a, z_t = z]
+\]</span></p>
+<p>此外，决策依然仅仅和 <span class="math inline">\(s_t \in \mathcal{S}\)</span> 有关，也就是说具体行为 <span class="math inline">\(a_t \in \mathcal{A}\)</span> 与 <span class="math inline">\(z_t \in \mathcal{Z}\)</span> 是独立的。</p>
+<p>进一步的价值函数定义为：</p>
+<p><span class="math display">\[
+Q(s, a, z) := \sum_{s&#39; \in \mathcal{S}} \mathbb{T}[s&#39; \mid s, a, z](r(s, a, z) + \gamma V(s&#39;, z&#39;))
+\]</span></p>
+<p>在 IMDP 下，最优策略也就定义为：</p>
+<p><span class="math display">\[
+\pi^*(s, z) := \mathop{\rm argmax}_{a \in \mathcal{A}} \sum_{s&#39; \in \mathcal{S}} \mathbb{T}[s&#39;, z&#39; \mid s, a, z]\left[r(s, a, z) + \gamma \max_{a&#39; \in \mathcal{A}} Q(s&#39;, a&#39;, z&#39;)\right]
+\]</span></p>
+<p>可以注意到，如果两个 agent 运行相同的 policy <span class="math inline">\(\pi\)</span>，其不同之处仅仅是 input process <span class="math inline">\(\mathcal{Z}_{1, 2}\)</span> 不同。可以注意到这两个 agent 将会始终保持相同的决策，所以其价值函数相同当且仅当 <span class="math inline">\(\mathcal{Z}_1 = \mathcal{Z}_2\)</span>。</p>
+<p>如果在完全得知 input process <span class="math inline">\(\mathcal{Z}\)</span> 的条件下，求解最优策略相当于一般的强化学习问题，可以通过大量的强化学习方法完成。但是我们现在需要假定 input process 是完全不可感知的，在这种条件下，一般强化学习方法学习到的最优策略 <span class="math inline">\(\hat\pi^*\)</span> 的价值函数实际上是与 input process 无关的，其价值函数用 <span class="math inline">\(Q(s&#39;, a&#39;)\)</span> 表示，其满足：</p>
+<p><span class="math display">\[
+\max_{a&#39; \in \mathcal{A}} Q(s&#39;, a&#39;) = \mathbb{E}_{z&#39;} \max_{a&#39; \in \mathcal{A}} Q(s&#39;, a&#39;, z&#39;)
+\]</span></p>
+<p>所以现在解决 input process 未知条件下的最优策略求解问题就是最重要的。</p>
+<h3 id="meta-rl-with-domain-knowledge">Meta RL with Domain Knowledge</h3>
+<p>总之就是又阐述了一边 AABR 分为离线和在线两个训练过程，离线训练一个元算法之后在线训练一个个性化 ABR 算法。那么两个问题就是：</p>
+<div class="note info no-icon"><ol type="i">
+<li><p>How to obtain a good parameter initialization for fast-learning?</p></li>
+<li><p>How to efficiently learn tailor-made ABR algorithms online?</p></li>
+</ol>
+</div>
+<h3 id="model-agnostic-meta-learning">Model Agnostic Meta-Learning</h3>
+<p>总之就是选定了 MAML 作为 AABR 的核心算法，MAML 的论文后面慢慢推着看。</p>
+<p>不过这一部分也阐释了为何 MAML 适合用于这个场景，原文是：</p>
+<div class="note info no-icon"><p>We find that model agnostic meta learning (MAML) is quite suitable in personalized ABR scenarios where the network traces on each user are quite limited.</p>
+<p>Specifically, MAML consists of an inner loop and an outer loop.</p>
+</div>
+<p>也就是说从数据集的角度和训练流程的角度上说，MAML 和这个实验场景的契合度比较高。</p>
+<h3 id="leveraging-domain-knowledge">Leveraging Domain Knowledge</h3>
+<p>总体的含义是设计了一个模拟器用于生成数据以及相关的启发式算法，一方面补充了现实世界中数据量不足的问题，另外一方面其代表的启发式算法可以在 policy 无法处理某些状态的时候作为 backup 使用。</p>
+<p><strong>注：</strong>这一部分可能需要结合下面的 overview 仔细学一下，然后对这里做一些扩充，因为这里模拟器的细节应该是做数据扩充的重要部分。</p>
+<h2 id="aabr-overview">AABR Overview</h2>
+<p>系统的大致结构为：</p>
+<p><img src="/uploads/paper-2022-12/3.png" /></p>
+<h3 id="basic-training-algorithm">Basic Training Algorithm</h3>
+<p>在设计网络的输入的时候首先需要考虑的是什么才是真正需要考虑的状态，这篇文章采用的方式是首先将所有可以使用的状态都作为输入以训练一个 teacher network，之后采用类似模仿学习的方式，采用类似决策树等较为轻量级的模型去模仿神经网络的策略，之后再使用决策树剪枝的方式去获取真正有意义的非平凡状态。</p>
+<div class="note success no-icon"><p>这个方法似乎是比较好玩的一个方法，用于筛选真正有用的输入状态。</p>
+</div>
+<p>这里剪枝的目的也是为了压缩最后的成本。</p>
+<p>最后筛选出来的状态包括：</p>
+<ul>
+<li>上一次选定的视频块质量 <span class="math inline">\(q_t\)</span></li>
+<li>目前的缓冲区占用率 <span class="math inline">\(b_t\)</span></li>
+<li>前 <span class="math inline">\(k\)</span> 个视频块传输时网络吞吐率 <span class="math inline">\(C_t\)</span></li>
+<li>前 <span class="math inline">\(k\)</span> 个视频块的下载时间 <span class="math inline">\(D_t\)</span></li>
+<li>前 <span class="math inline">\(k\)</span> 个视频块的应答时间 <span class="math inline">\(P_t\)</span></li>
+</ul>
+<p>这里为了控制成本，实验中选取 <span class="math inline">\(k = 5\)</span>。</p>
+<p>另外，为了保证模型的泛化性，这里需要将参数正则化，这样至少能保证模型面对完全没有经历过的网络环境不至于将其认为非法输入。</p>
+<p>模型的输出和正常的 AC 网络没有很大的差别，都是 Actor 网络输出一个 softmax 后的概率张量表示各个行为的决策概率，而 Critic 网络输出一个标量表示对当前状态的价值评估。</p>
+<h4 id="maximum-entropy-ppo-me-ppo">Maximum Entropy PPO (ME-PPO)</h4>
+<p>这里的训练策略是 ME-PPO，其与 PPO 的差别在于最优行为的定义里纳入了熵：</p>
+<p><span class="math display">\[
+a_t^* := \mathop{\rm argmax}_a \hat{\mathbb{E}}_t\left[\sum_t \gamma^t(r_t + \lambda H^{\pi_\theta}(s_t))\right]
+\]</span></p>
+<p>这里定义熵为：</p>
+<p><span class="math display">\[
+H^{\pi_\theta}(s_t) = -\sum_{a \in \mathcal{A}} \pi_\theta(a \mid s_t) \ln\pi_\theta(a \mid s_t)
+\]</span></p>
+<p>元学习要求在离线环境下更重视 exploration 而在线环境下更重视 exploitation。这里将熵纳入考虑，如果策略 <span class="math inline">\(\pi_\theta\)</span> 对动作空间 <span class="math inline">\(\mathcal{A}\)</span> 中的所有动作给出的概率约趋向于平均，则熵越高，从而越会支持这样的选择。</p>
+<p>ME-PPO 的具体策略是基于 Dual-PPO 的 double clip 策略，具体如下：</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathcal{L}^{\rm PPO} &amp;:= \min\left(\frac{\pi_\theta(a_t \mid s_t)}{\pi_{\theta_{\rm old}}(a_t \mid s_t)}(\theta) \hat A_t, {\rm clip}\left(\frac{\pi_\theta(a_t \mid s_t)}{\pi_{\theta_{\rm old}}(a_t \mid s_t)}(\theta), 1 - \varepsilon, 1 + \varepsilon\right)\hat A_t\right) \\
+\mathcal{L}^{\rm Actor} &amp;:= \begin{cases}
+\hat{\mathbb{E}}_t[\max(\mathcal{L}^{\rm PPO}, c\hat A_t)] &amp; \hat A_t &lt; 0 \\
+\hat{\mathbb{E}}_t[\mathcal{L}^{\rm PPO}] &amp; \hat A_t \geq 0 \\
+\end{cases}
+\end{aligned}
+\]</span></p>
+<p>这里 <span class="math inline">\(\hat A_t\)</span> 是优势函数，定义为：</p>
+<p><span class="math display">\[
+\hat A_t := r_t + \gamma(V^{\pi_\theta}(s_{t + 1}) + \lambda H^{\pi_\theta}(s_{t + 1})) - V^{\pi_\theta}(s_t)
+\]</span></p>
+<p>这里 <span class="math inline">\(c, \varepsilon\)</span> 是用来控制梯度的超参数。</p>
+<p>AABR 中的 Critic 网络的训练策略就是最小化优势函数的均方误差：</p>
+<p><span class="math display">\[
+\mathcal{L}^{\rm Critic} := \frac12 \hat{\mathbb{E}}_t[A_t]^2
+\]</span></p>
+<p>从而整体的 loss 可以总结为：</p>
+<p><span class="math display">\[
+\nabla\mathcal{L}^{\rm MEPPO} := -\nabla_\theta \mathcal{L}^{\rm Actor}(\pi_\theta, \hat A_t) + \nabla_{\theta_v} \mathcal{L}^{\rm Critic}
+\]</span></p>
+<hr />
+<p>此外，由于算法对 <span class="math inline">\(\lambda\)</span> 较为敏感，我们需要在训练过程中不断调节 <span class="math inline">\(\lambda\)</span>，调节方式较为简单：</p>
+<p><span class="math display">\[
+\lambda \leftarrow \lambda + \alpha[H^{\pi_\theta}(s_t) - H^{\rm Target}]
+\]</span></p>
+<p>这个目标在于熵逐步接近目标的时候衰减 <span class="math inline">\(\lambda\)</span> 以减缓接近速度。</p>
+<h3 id="meta-learned-policies-for-offline-stage">Meta-Learned Policies for Offline Stage</h3>
+<p><strong>注：</strong>具体的训练方式后续补充。</p>
+<h1 id="model-agnostic-meta-learning-for-fast-adaptation-of-deep-networks">Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks</h1>
+<p>这是 MAML 训练方法的原始论文，看情况有没有时间做一个复现。</p>
+<p>文章的主要贡献就是一个元学习方式，并且似乎泛用性很广：</p>
+<div class="note info no-icon"><p>In this work, we propose a meta-learning algorithm that is general and model-agnostic, in the sense that it can be directly applied to any learning problem and model that is trained with a gradient descent procedure.</p>
+</div>
+<p>元学习的核心在于训练好的模型能够迅速通过少量数据学习到新的任务，并且其能够应用到大量的下游任务中。这篇文章将训练模型理解为在模型内部建立起适用于某种任务的特征表示，如果这种表示能够适合于多种任务，那么我们只需要进行合适的微调就可以迅速适应新的任务。如果从动力系统的角度理解，我们需要提高需要完成的任务的 loss 对参数的敏感度，这个敏感度越高，参数的变化对 loss 的提升的影响越大。</p>
+<h2 id="model-agnostic-meta-learning-1">Model-Agnostic Meta-Learning</h2>
+<h3 id="meta-learning-problem-set-up">Meta-Learning Problem Set-Up</h3>
+<p>这里严格定义了元学习需要解决的问题。</p>
+<p>首先我们需要形式化定义什么是任务，这篇文章定义为：</p>
+<p><span class="math display">\[
+\mathcal{T} := \{\mathcal{L}(\b x_1, \b a_1, \cdots, \b x_H, \b a_H), q(\b x_1), q(\b x_{t + 1} \mid \b x_t, \b a_t), H\}
+\]</span></p>
+<p>这里 <span class="math inline">\(\mathcal{L}\)</span> 表示 loss，<span class="math inline">\(q(\b x_1)\)</span> 是初始状态的分布，<span class="math inline">\(q(\b x_{t + 1} \mid \b x_t, \b a_t)\)</span> 是状态转移的概率分布，<span class="math inline">\(H\)</span> 是 episode 的长度。这个定义同时涵盖了普通的强化学习和监督学习，其中监督学习中 <span class="math inline">\(H = 1\)</span>。</p>
+<p>模型本身描述为一个函数 <span class="math inline">\(f\)</span>，其接受当前状态 <span class="math inline">\(\b x\)</span> 并给出输出 <span class="math inline">\(\b a\)</span>，即 <span class="math inline">\(\b a = f(\b x)\)</span>。模型不断在该任务中给定 <span class="math inline">\(\b a_1, \b a_2, \cdots, \b a_H\)</span>，而 loss <span class="math inline">\(\mathcal{L}\)</span> 则给出了实际的反馈，这种反馈可以是分类问题中的失配损失或者 Markov 决策过程中的负收益。</p>
+<p>在元学习中我们需要考虑一系列的任务的分布，这里记作 <span class="math inline">\(p(\mathcal{T})\)</span>。如果我们要求 <span class="math inline">\(K\)</span> shot learning，对于每一个从 <span class="math inline">\(p(\mathcal{T})\)</span> 抽取的具体任务 <span class="math inline">\(\mathcal{T}_i\)</span>，我们需要再通过 <span class="math inline">\(q_i\)</span> 抽取 <span class="math inline">\(K\)</span> 个样本，并且考虑 <span class="math inline">\(\mathcal{L}_{\mathcal{T}_i}\)</span> 的反馈。</p>
+<p>之后直接搬一个论文原句，也应该是论文后面算法设计的主要出发点：</p>
+<div class="note info no-icon"><p>The model <span class="math inline">\(f\)</span> is then improved by considering how the <em>test</em> error on new data from <span class="math inline">\(q_i\)</span> changes with respect to the parameters.</p>
+</div>
+<h3 id="a-model-agnostic-meta-learning-algorithm">A Model-Agnostic Meta-Learning Algorithm</h3>
+<p>这里提供了算法设计，一个关键词就是之前提到的<strong>敏感度</strong>。</p>
+<p>考虑用参数 <span class="math inline">\(\theta\)</span> 表示的模型 <span class="math inline">\(f_\theta\)</span>。在学习具体的任务 <span class="math inline">\(\mathcal{T}_i\)</span> 的时候，参数的更新方式为：</p>
+<p><span class="math display">\[
+\theta \leftarrow \theta - \alpha\nabla_\theta\mathcal{L}_{\mathcal{T}_i}(f_\theta)
+\]</span></p>
+<p>为了简化记号，我们假设在元学习之后学习具体任务仅用了一次梯度更新，此时任务 <span class="math inline">\(\mathcal{T}_i\)</span> 的最优参数就是 <span class="math inline">\(\theta_i&#39; := \theta - \alpha\nabla_\theta\mathcal{L}_{\mathcal{T}_i}(f_\theta)\)</span>，那么元学习的目标是：</p>
+<p><span class="math display">\[
+\min_\theta \sum_{\mathcal{T}_i \in p(\mathcal{T})} \mathcal{L}_{\mathcal{T}_i}(f_{\theta_i&#39;}) = \min_\theta \sum_{\mathcal{T}_i \in p(\mathcal{T})} \mathcal{L}_{\mathcal{T}_i}(f_{\theta - \alpha\nabla_\theta\mathcal{L}_{\mathcal{T}_i}(f_\theta)})
+\]</span></p>
+<p>那么还是使用简单的梯度下降，元学习中的参数更新就是：</p>
+<p><span class="math display">\[
+\theta \leftarrow \theta - \beta\nabla_\theta \sum_{\mathcal{T}_i \in p(\mathcal{T})} \mathcal{L}_{\mathcal{T}_i}(f_{\theta_i&#39;})
+\]</span></p>
+<p>在这里我们注意到出现了二阶梯度，部分深度学习框架能够支持这一操作，但本文也同样指出作一阶近似（即舍去二阶及以上的高阶项）是可行的。</p>
+<p>基于此，MAML 的整体框架为：</p>
+<p><img src="/uploads/paper-2022-12/4.png" /></p>
+<h2 id="species-of-maml">Species of MAML</h2>
+<p>本文这里举出了监督学习和强化学习中运用 MAML 的例子，这里我们只关注强化学习。</p>
+<p>强化学习特化的 MAML 主要关注的是 loss 的选定，这里选定的就是最经典的负收益。另外，此时 <span class="math inline">\(q_{\mathcal{T}_i}\)</span> 实际上就是环境中的状态转移概率分布：</p>
+<p><span class="math display">\[
+\mathcal{L}_{\mathcal{T}_i}(f_\phi) = -\mathbb{E}_{(\b x_t, \b a_t) \sim (f_\phi, q_{\mathcal{T}_i})} \left[\sum_{t = 1}^H R(\b x_t, \b a_t)\right]
+\]</span></p>
+<p>从而，强化学习特化的 MAML 算法为：</p>
+<p><img src="/uploads/paper-2022-12/5.png" /></p>
+<p>这之后就是一些实验结果了，感觉没啥意思了。</p>
+<h1 id="learning-to-adapt-in-dynamic-real-world-environments-through-meta-reinforcement-learning">Learning to Adapt in Dynamic, Real-World Environments through Meta Reinforcement Learning</h1>
+<p>这篇文章似乎没有官方的 code base，只有两个 community code base，现在可以在 <a href="https://paperswithcode.com/paper/learning-to-adapt-in-dynamic-real-world">这个链接</a> 获取，分别是 Tensorflow 和 Pytorch 版本。</p>
+<h2 id="abstract-introduction">Abstract &amp; Introduction</h2>
+<p>需要解决的问题依然是生成数据很困难以及测试环境中无法预料到的数据可能导致所训练的策略失效，引言之中也基本上叙述了人类可以很快适应自身机体发生的变化和外界环境发生的变化，提出了如果模型经历了足够多的环境微扰，其就可以很快学习适应新环境。</p>
+<p>相比较于原先的 meta RL 对任务的定义，这篇文章提出的模型能够处理每个时间步环境或者任务都在变化的情景。也就是说，原先的 meta RL 不过是提前预设好了需要解决什么样的任务，并且每一个 RL trajectory 仅会属于一个任务，而这篇文章的 RL trajectory 中可以涵盖多种任务并且任何时间都可以切换。所以这篇文章的 meta RL 更为 general。</p>
+<p>本文也是有 trade off 的，主要表达如下：</p>
+<div class="note info no-icon"><p>By specifically training a neural network model to require only a small amount of experience to adapt, we can enable effective online adaptation in complex environments while putting less pressure on needing a perfect global model.</p>
+</div>
+<p>也就是说，这篇文章为了能够在少数据条件下快速适应新环境，并不会强制要求这个模型在 global 环境下表现到 perfect。</p>
+<p>总而言之，这篇文章主要强调学得快，学习速度大约是每个新任务需要在真实世界中经历 1.5 到 3 小时，不到原有 model-free RL 方法学习时间的十分之一。并且，在同等数据量条件下，这篇文章的模型效果也比其他方法优越。此外，为了展示本文模型的学习能力，其将其真实部署在了机器人上，来学习真实世界的情况。</p>
+<h2 id="related-works">Related Works</h2>
+<p>首先提到最原始的强化学习方法没有泛用性，以及 model-free RL 往往需要大量和真是环境交互从而不实际。发展为 model-based RL 之后，就需要面临对环境建模的 model 需要在不同的任务之间调整的问题，首先否决了单一的全局模型，而先前有人尝试通过 GP 方法合并模型不确定性从而让模型能够表示不同的环境，然而这个方法做出了额外的假设且拓展性差且难以运用到高维空间，而本文提出的结果能够通过观察从而快速切换到新的环境。</p>
+<div class="note warning no-icon"><p>这里的问题就是我是真的没有太看懂这个 model 到底是对环境建模的模型还是最后要学习的 policy。</p>
+</div>
+<p>还有一种处理方式是首先学习一个全局模型，在测试的时候通过梯度下降进行微调。此外，还有工作表明不需要完美的全局模型，可以微调先验知识来处理小变化。然而，这些方法面临着模型的训练目的与测试时的使用方式之间的不匹配的问题。本文通过明确训练一个能快速有效适应的模型来弥合这一差距。</p>
+<h2 id="preliminaries">Preliminaries</h2>
+<h3 id="model-based-reinforcement-learning">Model-Based Reinforcement Learning</h3>
+<p>马尔可夫决策过程在这里建模为 <span class="math inline">\((\mathcal{S}, \mathcal{A}, p, r, \gamma, \rho_0, H)\)</span>。这里 <span class="math inline">\(\mathcal{S}\)</span> 是状态空间，<span class="math inline">\(\mathcal{A}\)</span> 是动作空间，<span class="math inline">\(p(s&#39; \mid s, a)\)</span> 是环境状态转移概率，<span class="math inline">\(r: \mathcal{S} \times \mathcal{A} \to \mathbb{R}\)</span> 是奖励函数，<span class="math inline">\(\rho_0: \mathcal{S} \to \mathbb{R}^+\)</span> 是初始状态概率分布，<span class="math inline">\(\gamma\)</span> 是奖励衰减常数，<span class="math inline">\(H\)</span> 是轨迹长度。</p>
+<p>一条轨迹描述为 <span class="math inline">\(\tau(i, j) := (s_i, a_i, \cdots, s_j, a_j, s_{j + 1})\)</span>，我们的目标是求取最优策略 <span class="math inline">\(\pi: \mathcal{S} \to \mathcal{A}\)</span> 使得累计收益期望最大。</p>
+<p>model-based RL 目标是近似处理 <span class="math inline">\(p(s&#39; \mid s, a)\)</span>，这个模型也被称为 dynamics model。</p>
+<h3 id="meta-learning">Meta Learning</h3>
+<p>一般的元学习需要给定假设，即训练用的任务和最终的测试任务都是从同一个任务分布 <span class="math inline">\(\rho(\mathcal{T})\)</span> 中抽取。元学习的目标是获取一个学习流程 <span class="math inline">\(\theta&#39; := u_\psi(\mathcal{D}^{\rm tr}_{\mathcal{T}}, \theta)\)</span> 以通过小数据集 <span class="math inline">\(\mathcal{D}^{\rm tr}_{\mathcal{T}}\)</span> 来学习任务 <span class="math inline">\(\mathcal{T}\)</span>，学习过程可以表示为：</p>
+<p><span class="math display">\[
+\min_{\theta, \psi} \mathbb{E}_{\mathcal{T} \sim \rho(\mathcal{T})}\left[\mathcal{L}(\mathcal{D}^{\rm test}_{\mathcal{T}}, \theta&#39;)\right]
+\]</span></p>
+<p>其中 <span class="math inline">\(\theta&#39; := u_\psi(\mathcal{D}^{\rm tr}_{\mathcal{T}}, \theta)\)</span>。</p>
+<div class="note info no-icon"><p>这里的记号是真的复杂，事实上训练过程应该是函数 <span class="math inline">\(u_\psi\)</span>，训练过程用参数 <span class="math inline">\(\psi\)</span> 代表，其输出为训练后的最优参数 <span class="math inline">\(\theta&#39;\)</span>，而 <span class="math inline">\(\theta\)</span> 表示初始化参数。</p>
+<p>另外注意，<span class="math inline">\(\theta\)</span> 这里是模拟环境的模型的参数，而非 policy 的参数。</p>
+</div>
+<h4 id="gradient-based-meta-learning">Gradient Based Meta Learning</h4>
+<p>MAML 就是一种基于梯度的元学习方法，其最主要的目标是学习一个较好的参数初始化保证在少数调整中即可实现较好的下游任务。</p>
+<p>MAML 的 <span class="math inline">\(u_\psi\)</span> 就是一般的梯度下降：</p>
+<p><span class="math display">\[
+u_\psi(\mathcal{D}^{\rm tr}_{\mathcal{T}}, \theta) = \theta - \alpha\nabla_\theta \mathcal{L}(\mathcal{D}^{\rm tr}_{\mathcal{T}}, \theta)
+\]</span></p>
+<p>如果学习率 <span class="math inline">\(\alpha\)</span> 是一个固定参数，那么 <span class="math inline">\(\psi = \varnothing\)</span>，如果 <span class="math inline">\(\alpha\)</span> 是一个元学习过程中需要学习的参数，那么 <span class="math inline">\(\psi = \alpha\)</span>。</p>
+<p>即使看起来 <span class="math inline">\(u_\psi\)</span> 是平凡的，但是这种方法的表达能力和下面介绍的方法是持平的。</p>
+<h4 id="recurrence-based-meta-learning">Recurrence Based Meta Learning</h4>
+<p>这里借用了 RNN 的思想，在这个方法中，更新函数 <span class="math inline">\(u_\psi\)</span> 始终需要不断学习，其中 <span class="math inline">\(\psi\)</span> 是用于更新 RNN 隐含层状态的参数，而 <span class="math inline">\(\theta\)</span> 是余下的参数。</p>
+<div class="note warning no-icon"><p>这里是真的真的真的没看懂，这在说啥？是我前置知识欠缺太多了？</p>
+<p>只能希望下面能有个稍微好一点的说明。</p>
+</div>
+<h2 id="meta-learning-for-online-model-adaptation">Meta Learning for Online Model Adaptation</h2>
+<p>之前提到过本文的 trajectory 中任务可以随着时间步推进而变化，所以本文设定的目标是根据前 <span class="math inline">\(M\)</span> 个时间步的数据预测未来 <span class="math inline">\(K\)</span> 个时间步情况，这里 <span class="math inline">\(M, K\)</span> 都是固定的超参数。</p>
+<p>所以在这样的设定下，训练目标就是：</p>
+<p><span class="math display">\[
+\begin{aligned}
+\theta_{\mathcal{E}}&#39; &amp;= u_\psi(\tau_{\mathcal{E}}(t - M, t - 1), \theta) \\
+\min_{\theta, \psi}&amp; \mathbb{E}_{\tau_{\mathcal{E}}(t - M, t + K)} [\mathcal{L}(\tau_{\mathcal{E}}(t, t + K), \theta_{\mathcal{E}}&#39;)]
+\end{aligned}
+\]</span></p>
+<p>而这里 loss 定义为：</p>
+<p><span class="math display">\[
+\mathcal{L}(\tau_{\mathcal{E}}(t, t + K), \theta_{\mathcal{E}}&#39;) := -\frac{1}{K} \sum_{k = t}^{t + K} \log\hat{p}_{\theta_{\mathcal{E}&#39;}}(s_{k + 1} \mid s_k, a_k)
+\]</span></p>
+<p>GrBAL 采取的更新策略为：</p>
+<p><span class="math display">\[
+\theta_{\mathcal{E}}&#39; = u_\psi(\tau_{\mathcal{E}}(t - M, t - 1), \theta) = \theta_{\mathcal{E}} + \psi\nabla_\theta\frac{1}{M} \sum_{m = t - M}^{t - 1} \log\hat{p}_{\theta_{\mathcal{E}}}(s_{m + 1} \mid s_m, a_m)
+\]</span></p>
+<p>ReBAL 这里又是没看懂，所以这个基于循环模型的到底是个什么东西。</p>
+<h2 id="model-based-meta-reinforcement-learning">Model Based Meta Reinforcement Learning</h2>
+<p>这一部分就是在讲解如何在线上做 adaptation，我觉得整体不如直接看算法直观：</p>
+<p><img src="/uploads/paper-2022-12/6.png" /></p>
+]]></content>
+      <categories>
+        <category>【论文笔记】计算机</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>2023 年 10 月论文笔记</title>
+    <url>/2023/10/08/paper-2023-10/</url>
+    <content><![CDATA[<p>说是加入腾讯做云游戏，但是似乎一个月过去了暂且都没有等来信息，果然还是继续积累吧。</p>
+<span id="more"></span>
+<h1 id="zgaming---zero-latency-3d-cloud-gaming-by-image-prediction">ZGaming - Zero-Latency 3D Cloud Gaming by Image Prediction</h1>
+<p>现在论文都直接吹零延迟的吗，不过如果说 Abstract 里面这句话是真的，那确实足够猛：</p>
+<div class="note info no-icon"><p>与现有方法相比，ZGaming 在提供相同视频质量时，将互动延迟从 23 毫秒减少到 0 毫秒，或者在保持互动延迟为 0 毫秒时，提高了 5.4 分贝的视频质量。</p>
+</div>
+<h2 id="introduction">Introduction</h2>
+<p>先讲了一下云游戏对 MTP 延迟很敏感，然后提出本文的目标是实现零延迟的云游戏系统。有关其他工作的部分，本文首先指出了单纯在系统上做优化的方案终究会因为网络的存在而至少具有一个 RTT 的延迟，从而零延迟的系统必定一定程度上涉及到预测操作，其中一个著名的工作是动作预取。动作预取的工作原理是对所有的可能潜在动作，都在服务端渲染下一帧，然后将这些帧发送到客户端，客户端上一旦执行操作即可直接访问到动作结果帧。但是动作预取面临两个困难：</p>
+<ul>
+<li>用户动作的随机性极高，很容易遭遇预测未命中的情况</li>
+<li>商用云游戏大部分依然采用用户动作后再渲染的方案，工业界适配困难较大</li>
+</ul>
+<p>如果难以直接修改当前的工作流水线，那么一种可能的方案为基于图像的预测，常用的方法就是 DIBR。在具有 DIBR 的系统中，当用户做出操作的时候，该系统会根据最近接收到的 RGBD（即 RGB 色彩以及深度信息）直接预测接下来的视频帧，用户在此基础上几乎感知不到任何延迟。</p>
+<p>本文基于上述方法，希望进一步精细化图像预测，主要面临的挑战有：</p>
+<ul>
+<li>预测图像中存在伪影，即像素缺失。例如出现了遮挡和视野外，此时由于缺失图像信息，无法准确预测该部分的像素信息导致缺失。目前已经有一部分针对伪影的解决方案</li>
+<li>DIBR 不能应用于预测动态对象，因为动态对象的运动几乎无法通过静态的像素信息观察到，从而 DIBR 很难给出合理的预测值</li>
+<li>码率和网络的匹配问题（有点奇怪，为什么这里需要考虑 ABR 相关的问题）</li>
+</ul>
+<p>ZGaming 的设计在于，首先通过 DIBR 预测出静态对象的图像，然后通过运动预测模型预测动态对象的图像（本文采用了 LSTM，我严格觉得 LSTM 做不了这种任务），最后将两者结合起来得到最终的预测图像。具体而言的工作：</p>
+<ul>
+<li>基于质量的静态场景缓存。如果完全存储所有历史静态场景则很有可能导致巨大的开销，所以 ZGaming 采用了基于质量的缓存，即只缓存质量较高的静态场景，而质量较低的场景则直接丢弃</li>
+<li>服务器辅助的 LSTM 预测。在服务器端部署 LSTM 以预测动态物体的运动趋势，并预取到客户端</li>
+<li>ABR。我不评价这一部分</li>
+</ul>
+<h2 id="motivation">Motivation</h2>
+<p>首先说了一下云游戏条件下互动延迟的要求极高，大概限制在 60 毫秒左右。然后介绍了一下 DIBR 能够通过预测静态场景的方式做到一定程度上的零延迟，并且在工程的角度上可以增量式地连接到现有系统而不需要调整当下的云游戏渲染管线。</p>
+<p>但是 DIBR 是有缺陷的：</p>
+<p><img src="/uploads/paper-2023-10/9.png" /></p>
+<p>简而言之本文的解决方法为：</p>
+<ul>
+<li>重用历史帧。本文的论据是大量的场景都有可能在历史场景中出现过，所以加大追溯历史的深度可以有效缓解空洞伪影（但是全新的场景怎么办呢）</li>
+<li>利用 LSTM 预测动态对象的运动模式</li>
+<li>ABR？（为什么 DIBR 的优化策略里面有 ABR？）</li>
+</ul>
+<h2 id="overview">Overview</h2>
+<p>总之就是上面三个部分一个对应一个模块，也就是说 ZGaming 包括一个场景缓存，一个动态物体 LSTM 模型，一个 ABR 算法。</p>
+<h2 id="quality-driven-3d-block-cache">Quality Driven 3D Block Cache</h2>
+<p>其认为，一般的缓存设计方法无法直接应用到云游戏之中，因为传统的全量缓存会占用巨大的内存空间。一种方法是一定程度上限制缓存条目的大小，并且设计有效的缓存替换策略保证高效利用有限的内存资源。在考虑缓存替换策略的时候有以下需要注意的点：</p>
+<ul>
+<li>不同光照条件下，同样坐标处的材质并不能直接应用于恢复。这是显然的，阳光直射的墙壁图像显然无法直接应用于恢复夜晚墙壁的空洞</li>
+<li>非缓存算法的竞争。事实上，缓存并非处处是最优方法，例如墙壁、地面等较为单调的场景中，一般的插值恢复法甚至会比缓存更好。这里本文认为优先执行历史缓存恢复是合理的，如果缓存内容依然无法完全填充空缺部分，那么再通过插值方法恢复</li>
+<li>用户操作会使得缓存本身具有不均衡特性，部分场景明显会比其他场景有更高频的访问次数</li>
+</ul>
+<p>本文采用的策略为，将每一帧分为 <span class="math inline">\(64 \times 64\)</span> 的块，这样做可以避免全量缓存，并且可以避免重复场景的重复存储。对每一个块 <span class="math inline">\(b\)</span>，定义其质量为 <span class="math inline">\(U_b\)</span>，质量越高则越有可能被缓存。质量的计算方式为：</p>
+<p><span class="math display">\[
+U_b := \frac{1}{T_{\rm now} - t_b}\sum_{i = 1}^{N_b} ({\rm PSNR}_{b, i} - {\rm PSNR}_{b, i}&#39;)
+\]</span></p>
+<p>这里 <span class="math inline">\(N_b\)</span> 表示块 <span class="math inline">\(b\)</span> 在缓存中被使用的次数，求和项中的 PSNR 的差表示的是第 <span class="math inline">\(i\)</span> 次使用的时候相较于插值算法，用缓存修复所能得到的 PSNR 增益，之后使用块 <span class="math inline">\(b\)</span> 在缓存中持续的时间 <span class="math inline">\(T_{\rm now} - t_b\)</span> 归一化收益即可得到缓存块质量。可以注意到该函数的逻辑就是，单位时间内该缓存块相较于插值算法能够获得多高的额外收益。</p>
+<p>在此基础上，缓存的替换策略为当存储满时交换出 30% 的缓存块，并且定期逐出质量为负数的块。这里的负数质量表示该块在缓存中的收益不如插值算法，所以应当逐出。</p>
+<p>性能评价就不说了，基本就是形势大好。</p>
+<h2 id="server-assisted-lstm-predicting-foreground">Server Assisted LSTM Predicting Foreground</h2>
+<p>首先区分背景和前景，其实就是静态部分和动态部分。本文认为，即使某一些 NPC 在交互逻辑上不应该归类为背景，但是在渲染逻辑上其不会发生相对位置移动，所以应当归类为背景。在这一部分首先需要的是区分背景和前景，然后对前景进行预测。区分前景的逻辑就是将前一帧和后一帧对齐，比较是否发生了位置偏移，发生偏移则意味着是动态对象。</p>
+<p>而为了预测动态物体的运动，这里使用了 LSTM。然而直接使用 LSTM 会遇到渲染帧模糊的问题，所以在 LSTM 后面本文加上了一个图像超分模块（RefSR）。</p>
+<p><img src="/uploads/paper-2023-10/10.png" /></p>
+<p>工程上，另外提到了一下 LSTM 是部署在服务端的，数据传输方面则把 LSTM 预测的动态部分作为高优先级数据附加上 FEC 传输到客户端，由客户端组装具体的帧。</p>
+<h2 id="prediction-performance-driven-adaptive-bitrate">Prediction Performance Driven Adaptive Bitrate</h2>
+<p>这一部分整体没看明白想要做什么，似乎是根据网络情况调节预测性能？然而云游戏里面考虑网络的话还是不太会单独拉出来一个 ABR？不是很懂，这样总觉得 ABR 很孤立。</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>感觉和吴成磊学长说的一样，这篇文章总体给的感觉是很割裂，有种头痛医头脚痛医脚的感觉。而且我觉得这篇文章的 LSTM 部分一言难尽，LSTM 本身的能力不好说能不能完成这类预测任务，而且使用历史帧填充未知空洞也显得很没有道理。</p>
+<p>总之，从 idea 到 writing 来看都不是很适合借鉴学习。</p>
+<h1 id="ekho---synchronizing-cloud-gaming-media-across-multiple-endpoints">Ekho - Synchronizing cloud gaming media across multiple endpoints</h1>
+<p>简而言之就是以往的工作都把云游戏简单化为视频画面的传输，而忽略了音频等多媒体的可能。多媒体事实上意味着需要做到媒体之间的同步，例如游戏画面需要与游戏音效同步。Ekho 则通过伪噪声的方式实现了多媒体之间的同步。</p>
+<h2 id="introduction-1">Introduction</h2>
+<p>简单来说，就是注意到现在常用的云游戏系统往往除了视频流之外还会有一个反馈流，这个反馈流一般作用于各种游戏配件，作用包括：</p>
+<ul>
+<li>在多人语音游戏的条件下混合其他玩家的声音，并提供给专用的游戏耳机等</li>
+<li>对玩家的操作给出触觉反馈，如手柄震动等</li>
+</ul>
+<p>这里容易出现的问题在于，视频流和反馈流作用到不同的终端（一个是显示器一个是各种其他配件），这导致这两个流会使用不同的网络连接传输，从而两者之间的同步就成为了问题。</p>
+<p>事实上，在有观众的游戏中，除了玩家本人的耳机会有一道音频流外，普通视频流中还会负载另一道音频流，这个音频流会对外播放给观众。这一道音频流播放之后还会被玩家耳机的麦克风捕捉。所以说云游戏除了多种流的同步问题外，还需要处理多道音频流之间的同步。</p>
+<p>一般而言，流之间会产生 100 毫秒左右的流间延迟（Inter Stream Delay / ISD），具体取决于网络情况、终端类型、连接方式甚至玩家到屏幕的距离。但是总体而言，延迟的影响因素大概可以归纳为：</p>
+<ul>
+<li>网络延迟。大概来说就是网络延迟是相当复杂的，首先多设备的网络接入点不一定一样（屏幕直接通过以太网连接到路由器而控制器通过 AP 连接到 WiFi 等）。其次，不同设备可能使用不同的网络协议（屏幕使用 WebRTC 而控制器使用 URCP 协议）。最后，互联网提供商可能对不同端口的流量做不同的优先级处理，这也可能导致网络延迟</li>
+<li>设备播放延迟。音频和视频在不同的设备上有不同的缓存管理措施，不同的播放策略也可能导致数十毫秒的 ISD</li>
+<li>声音传播延迟。玩家从屏幕和耳机接收到的声音的 ISD 和玩家到屏幕的距离有关（毕竟声速也不过 340 米每秒），这可能带来十毫秒左右的延迟</li>
+</ul>
+<p>本文的目标是将 ISD 限制到 10 毫秒一下，考虑到 ISD 是波动的，所以需要在游戏进程中不断观测和动态调整来平稳 ISD。事实上，测量 ISD 就足够困难，主要挑战是：</p>
+<ul>
+<li>RTT 的测量本身会因为网络往返路径不同，测量值本身具有十几毫秒的误差</li>
+<li>解码、播放、声音传播延迟等影响 ISD 的重要因素往往因为缺乏合适的 API 或者硬件而难以测量</li>
+</ul>
+<p>以往的设备间同步有三种常见方案：</p>
+<ul>
+<li>通过共享的网络组件建立专用链接完成时间同步。然而云游戏系统并不强制要求各个终端共享网络组件</li>
+<li>通过网络时间协议同步时间。然而该协议往往测量不精准，甚至会有百毫秒的误差</li>
+<li>通过记录设备播放的声音测量误差。然而这对硬件要求较高，此外还要求周围环境噪声较低</li>
+</ul>
+<p>而本文提出 Ekho，其可以在亚毫秒级别测量 ISD 并且做出调节。简要而言，Ekho 通过伪噪声序列的方式对齐各种流，并且在服务端根据测量结果调整发送序列来同步各种流。</p>
+<h2 id="related-work">Related Work</h2>
+<p>相关工作曾经研究过两路相似音频最大能够达到多大错位而不被用户感知，以前的研究结果认为单调、突发的信号音在错位超过 5 毫秒时就会被感知，而复杂语音则需要达到 16 毫秒左右才会感知。本文拓展了这些工作，并且通过数据论述了：</p>
+<ul>
+<li>音频之间的错位最大为 10 毫秒</li>
+<li>视频与音频之间的错位，最多允许音频提前视频 15 毫秒或视频提前音频 45 毫秒</li>
+<li>触觉反馈与音频之间错位最大为 24 毫秒</li>
+<li>触觉反馈与视频之间错位可以宽容到 30 至 100 毫秒</li>
+</ul>
+<p>另外一部分的相关工作为媒体同步，指的是在一定范围的终端内同步媒体内容。现有的工作往往要求了下述前提（然后本文基于此做了点优化）：</p>
+<ul>
+<li>设备有准确的时钟。然而用于同步设备时钟的网络时间协议具有不可容忍的误差</li>
+<li>支持 PTP 的设备可以通过连接到同一路由器实现同步。然而 PTP 并非广泛采用的协议</li>
+<li>利用这些设备往往物理距离较近的特征，通过在一个设备上记录另一个设备声音的方式实现流之间的延迟测量。然而由于环境噪声、硬件设备等问题，这一方案在先前工作中没有获得很好的效果，而本文基于此，做出了一步重要的拓展（伪噪声打点）</li>
+</ul>
+<h2 id="background-motivation">Background &amp; Motivation</h2>
+<h3 id="time-synchronization-requirements">Time Synchronization Requirements</h3>
+<p>为了研究音频之间的错位阈值，这一章设计了用户实验。用户实验的基本方案是 ITU-T P.808 标准中规定的 DCR 测试方法。测试中使用的音频为 30 个长度为 15 秒的游戏录音，每个录音均加上了 0 到 300 毫秒不等的 ISD。</p>
+<p>测试流程就直接翻译原文了。</p>
+<div class="note info no-icon"><p>人类测试者首先听取没有回声的参考音频片段，然后听取带有未知延迟量的回声的相同片段，包括 0 毫秒，即没有回声。测试者需要选择由于回声引起的注意力分散程度。此外，每个测试者会定期进行训练，即按照 P.808 标准听取带有不同回声量的六个片段，以确保标准化。</p>
+<p>我们总共收集了 3555 个评分，根据 ITU-T P.808 的规定，去除了低质量的回应（总数据的 33%）。每个片段被评分约 10 次，每个延迟级别有 30 个不同的片段，共计每个延迟级别约 296 个投票。受访者池由 17% 的年轻人（18-25 岁）、43% 的成年人（26-35 岁）、32% 的中年人（36-50 岁）和 8% 的老年人（51 岁及以上）组成，他们的母语是英语。按照伦理准则，调查是匿名的，我们在参与之前告知受访者有关调查过程和刺激类型。我们对受访者进行了补偿，并避免了可能被认为是令人不悦的刺激。Microsoft IRB 审查并批准了这项调查。</p>
+</div>
+<p>最后的具体结果事实上已经在先前提到了，即根据音频的不同类别，玩家的忍受阈值是不同的，但最后大体可以用 10 毫秒作为阈值。</p>
+<p><img src="/uploads/paper-2023-10/1.png" /></p>
+<div class="note success no-icon"><p>首先需要学一下 ITU 用户测试到底是个什么标准。</p>
+<p>其次的话，这篇文章的 user study 给的启示大概就是如果要设立对比或者是五分量表类似的测试的话，需要定期通过所谓的 training phase 来保证测试者没有被“带偏”。</p>
+<p>如果说要测试云游戏条件下画面撕裂更为显著的话，其实也可以借鉴这种主观评分模式。不同的游戏，不同的撕裂程度（或者说不同幅度的 jitter？）之下受访者到底能够容忍多少。如果发现云游戏条件下测试者的评分有显著下降，应该能说明问题了？</p>
+<p>以及最好能提供一些现有的解决方案，证明现在的方案还不够解决这一问题？</p>
+</div>
+<p>上述实验是音频和音频之间的错位，其余种类流之间的错位本文似乎没有展开说明。</p>
+<h3 id="inter-stream-delay">Inter Stream Delay</h3>
+<p>这一部分主要是 ISD 的建模：</p>
+<p><img src="/uploads/paper-2023-10/2.png" /></p>
+<p>可以看到基本和 Introduction 中提出的一致，分为网络延迟、解码延迟、播放延迟、声音传播延迟。</p>
+<p>网络延迟的测量也和先前一样，否定了 NTP 协议和对称 RTT 测量两种方案。解码延迟则理论可以测量（通过对目标设备和音频格式类型的仔细测量来分析这些延迟），然而受限于终端种类繁多，API 也不总是可用，这种测量几乎实际不可行。播放延迟则来源于硬件的 jitter buffer，这种延迟几乎无法测量。声音传播延迟自然因为硬件问题无法测量。</p>
+<p>最终归纳为下表：</p>
+<p><img src="/uploads/paper-2023-10/3.png" /></p>
+<p>总而言之，目前的测量方法的误差都过大，根本无法做到从各个环节上把握 ISD，更不用谈以此为基础控制 ISD 了（这一部分就是用于说明问题的挑战性和本文方案的创新性的）。</p>
+<h3 id="isd-variation">ISD Variation</h3>
+<p>大概的意思是继续说现有方案解决不了问题，原因是 ISD 是动态的。简而言之，ISD 的组成成分中，包含了低概率发生的 IP 路径更改或者显卡调度更改导致的大幅度震荡，以及更常见的因为网络波动和 jitter buffer 耗尽导致的小幅度震荡。</p>
+<p>也就是说，ISD 的校正需要尽快且足够频繁以应对这些变化。实践证明，Ekho 最多间隔 15 秒测量一次 ISD 足以应对这些震荡。</p>
+<h2 id="ekho">Ekho</h2>
+<h3 id="overview-of-isd-measurement-in-ekho">Overview of ISD Measurement in Ekho</h3>
+<p>简而言之，Ekho 采用了端到端的测量方案，即忽略掉中途环节，直接在端侧考虑延迟：</p>
+<p><img src="/uploads/paper-2023-10/4.png" /></p>
+<p>这里两路音频指的是屏幕音频和耳机音频，由于屏幕音频最终会被耳机捕捉，所以可以在耳机中直接比较两路音频得到 ISD 的估算。</p>
+<p>这一方案的问题在于，一般的游戏音频内部没有标志点，无法快速供算法分析捕捉。其次，屏幕音频在经过空气传播削弱之后，加上环境噪声，会导致两路音频更难对齐，这还没有考虑传输过程中两路音频均可能经过了有损压缩。</p>
+<p>所以，一种简单的解决方案是在服务器端发送音频的时候，在其内部均匀地（实验中使用 1 秒作为间隔）插入伪噪声标记，这些标记会用来对齐两路音频。这种伪噪声标记需要精心设计，因为其不能影响到玩家正常游戏，需要尽力做到不可察觉。</p>
+<h3 id="reliable-marker-detection-in-ekho">Reliable Marker Detection in Ekho</h3>
+<p>这里就详细介绍了伪噪声序列的构造方式和检测方式。首先分析游戏音频的频谱特征，可以看到载波的频率基本都在 12 kHz 以上，而重要游戏信息内容基本都位于 6 kHz 以下，所以伪噪声的频率范围需要限制在 6-12 kHz 范围内。此外，由于可探测性取决于振幅，这里的目标是不断探测游戏本体音频的振幅并控制伪噪声标记振幅与其的比值尽可能恒定（游戏声音小标记振幅就小，反之亦然）。</p>
+<p>假设 <span class="math inline">\(x[t]\)</span> 是游戏音频，<span class="math inline">\(w[t]\)</span> 为长度为 <span class="math inline">\(L\)</span> 的伪噪声序列，那么最终的带标记音频序列 <span class="math inline">\(x_m[t]\)</span> 为：</p>
+<p><span class="math display">\[
+\begin{aligned}
+x_m[t] &amp;= x[t] + C\alpha_k w[t] \\
+\alpha_k &amp;= \gamma\alpha_{k - 1} + (1 - \gamma)\rho(x[(k - 1)T : kT])
+\end{aligned}
+\]</span></p>
+<p>参数 <span class="math inline">\(L\)</span> 影响 ISD 测量的速度和最大可测量的 ISD，一般的话设置为 48000（对应一秒音频，说明生成频率为 21 MHz 左右）。<span class="math inline">\(\rho(x[(k - 1)T : kT])\)</span> 则表示了在 <span class="math inline">\((k - 1)T\)</span> 到 <span class="math inline">\(kT\)</span> 范围内的游戏音频功率，实验中选择 <span class="math inline">\(T = 960\)</span>，这是 48 kHz 下的 20 毫秒音频。</p>
+<p>这个公式的原理在于每 20 毫秒通过功率测算调整混入比例 <span class="math inline">\(\alpha_k\)</span>，而 <span class="math inline">\(\alpha_k\)</span> 采用的软更新参数 <span class="math inline">\(\gamma\)</span> 在实验中取 0.4。</p>
+<p>在上述混入的基础上就可以介绍检测算法了，假设耳机的录音序列为 <span class="math inline">\(x_{\rm rec}[x]\)</span>，我们计算其交叉相关 <span class="math inline">\(Z[t]\)</span> 如下：</p>
+<p><span class="math display">\[
+Z[t] = \sum_{i = 1}^L x_{\rm rec}[t + i]w[i]
+\]</span></p>
+<p>可以注意到这里不断让录音和标记信号对齐，当标记对齐的时候 <span class="math inline">\(Z[t]\)</span> 应当在此处出现峰值。为了让峰值检测更为可靠，需要做下述归一化：</p>
+<p><span class="math display">\[
+Z^*[t] = \left|\frac{Z[t]}{\sqrt{\dfrac{1}{S}\sum_{i = 1}^S Z[t + i]^2}}\right|
+\]</span></p>
+<p>通过归一化后的 <span class="math inline">\(Z^*[t]\)</span> 会有比较好的包络线。实际测量中会使用 <span class="math inline">\(S\)</span> 为 100 毫秒，这个参数的来源大致是游戏音效大约都持续 100 毫秒。</p>
+<p>为了更好检测峰值，下一步需要具体计算包络线：</p>
+<p><span class="math display">\[
+R[t] = \begin{cases}
+|Z^*[t]| &amp; R[t - 1] \leq |Z^*[t]| \\
+\beta R[t - 1] &amp; {\rm otherwise} \\
+\end{cases}
+\]</span></p>
+<p>原理是简单的，如果出现峰值则设定峰值，如果没有出现则按照等比数列衰减包络线。这样操作可以过滤掉除了峰值之外的大量无用数据。实验中 <span class="math inline">\(\beta = 0.99995\)</span>。在上述计算的基础上，所有 <span class="math inline">\(R[t] &gt; \theta = 5\)</span> 的值都认为是一次峰值。</p>
+<p>峰值更具体的计算为：</p>
+<p><span class="math display">\[
+P[t] = \begin{cases}
+R[t] &amp; R[t \pm 1] &lt; R[t], R[t] &gt; \theta \\
+0 &amp; {\rm otherwise} \\
+\end{cases}
+\]</span></p>
+<p>此时 <span class="math inline">\(P[t]\)</span> 已经提取出了所有的峰值并且过滤掉了较低峰值。此外，由于峰值的间隔至少应当是 <span class="math inline">\(L\)</span>（峰值间隔应当是伪噪声间隔，如果有较近的峰值应当是游戏本身的峰值，需要过滤），所以给出了下述进一步过滤：</p>
+<p><span class="math display">\[
+P^*[t] = \begin{cases}
+P[t] &amp; P[t] = \max_{|j| &lt; \delta}P[t + j] &gt; 0, \max_{|j| &lt; \delta}P[t + j + L] &gt; 0 \\
+0 &amp; {\rm otherwise} \\
+\end{cases}
+\]</span></p>
+<p>全检测流程如下：</p>
+<p><img src="/uploads/paper-2023-10/5.png" /></p>
+<h3 id="isd-estimation">ISD Estimation</h3>
+<p>由于 <span class="math inline">\(L\)</span> 选择了一秒，所以这里假定 ISD 不会超越 500 毫秒。在此基础上，将过滤过后的屏幕音频和耳机音频做对比，将距离最小的两个峰值之差作为 ISD 的估计：</p>
+<p><img src="/uploads/paper-2023-10/6.png" /></p>
+<h3 id="ekho-delay-compensation">Ekho Delay Compensation</h3>
+<p>调节的方式很简单，就是塞零音频来强制同步（毕竟已经算出来 ISD 了），本文未来计划通过数据包丢失掩盖技术来做（毕竟插入零音频实在是有点粗暴），但是至少现在没做。</p>
+<h2 id="design-implementation">Design &amp; Implementation</h2>
+<p>结构是这样的：</p>
+<p><img src="/uploads/paper-2023-10/7.png" /></p>
+<p>总体来说的话，终端设备基本上仅仅承担了录音的任务，所有的计算负载依然放在云端。云端估算 ISD 的时候依赖于终端传回的音频数据。</p>
+<p>具体的实现这里就不涉及了。</p>
+<h2 id="evaluation">Evaluation</h2>
+<p>评估的话大概包括如下部分：</p>
+<ol type="1">
+<li>Ekho 是否成功在端到端系统中同步音频流？</li>
+<li>什么样的标记音量足以准确估算 ISD，同时又不被人察觉？</li>
+<li>在标记辅助的 ISD 测量方面，Ekho 与先前的工作相比如何？</li>
+<li>当屏幕音频流静音时，Ekho 是否可以用于视频与音频的同步？</li>
+</ol>
+<p>同步音频流的实验很简单，直接把 Ekho 开起来然后在每个终端开一个 log 来记录每一帧音频的播放时间，两个设备的时钟会在实验开始前同步：</p>
+<p><img src="/uploads/paper-2023-10/8.png" /></p>
+<p>总之可以看到 Ekho 将 ISD 控制在 10 毫秒内，而不用 Ekho 的时候几乎做不到压到 10 毫秒的可能。</p>
+]]></content>
+      <categories>
+        <category>【论文笔记】计算机</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>《Petal Letter》歌词试译</title>
+    <url>/2022/10/27/petal-letter-lyrics/</url>
+    <content><![CDATA[<p>秋枫老师发来的一份歌词，感觉挺有意思就试着自己翻译看看了。</p>
+<p>歌曲的地址是 BV1Y14y1j7Fi。</p>
+<span id="more"></span>
+<p><strong><code>@ 朝日 あさひ</code>に<code>@ 溶 と</code>ける<code>@ 微睡 まどろ</code>みと<code>@ 目覚 めざ</code>めの<code>@ 狭間 はざま</code>、そっと<code>@ 口遊 くちずさ</code>む<code>@ 旋律 メロディ</code>、<code>@ 花片 はなびら</code>にのせ、<code>@ 風 かぜ</code>よ<code>@ 届 とど</code>けて、あなたが<code>@ 旅 たび</code>する<code>@ 世界 せかい</code>へ。</strong></p>
+<p>在朝阳中浅睡与苏醒的间隙中悄悄吟唱的旋律，乘上飘落的花瓣，就让微风将它传达到你所旅行的世界吧。</p>
+<p><strong><code>@ 魔法 まほう</code>で<code>@ 出逢 であ</code>った、あなたと<code>@ 私 わたし</code>、<code>@ 今 いま</code>は<code>@ 別々 べつべつ</code>の<code>@ 物語 ものがたり</code>を<code>@ 行 ゆ</code>く。</strong></p>
+<p>因魔法而相遇的你我二人，如今却向着不同的未来而去。</p>
+<p>【注释 #1】这里并没有将「<code>@ 物語 ものがたり</code>」直接翻译为“故事”，感觉并不太符合中文的语感。</p>
+<p><strong><code>@ 何 なに</code>かが<code>@ 始 はじ</code>まる<code>@ 予感 よかん</code>を<code>@ 胸 むね</code>に、<code>@ 歩 ある</code>き<code>@ 出 だ</code>してから、どれだけ<code>@ 経 た</code>ったの。</strong></p>
+<p>心中不知为何，总有着何事将至的预感。即使知道那时的分别，已经过去了不知多长时间。</p>
+<p><strong><code>@ 緩 ゆる</code>やかな<code>@ 坂道 さかみち</code>、<code>@ 登 のぼ</code>ればまた<code>@ 独 ひと</code>りきり。</strong></p>
+<p>登上平缓的山坡，依然独自一人。</p>
+<p><strong><code>@ 寂 さび</code>しさに、<code>@ 心細 こころぼそ</code>さに、<code>@ 寄 よ</code>り<code>@ 添 そ</code>ってくれる、あなたと<code>@ 交 か</code>わした<code>@ 心 こころ</code>の<code>@ 花束 はなたば</code>。</strong></p>
+<p>在这寂寞与不安中，我依偎着的，是与你交换的心之花束。</p>
+<p>【注释 #2】这里的语句结构有点怪异，歌曲中这里的断句也比较怪异，难以判定「くれる」与后续句子的关系。这里又要经典批判一遍为何现代日语的终止形和连体形合流，这显然难以判定一个动词词组究竟是修饰名词还是直接终止语句，这导致大量的歌词翻译困难。</p>
+<p><strong>いつでも<code>@ 誰 だれ</code>かが<code>@ 泣 な</code>いている<code>@ 世界 せかい</code>、<code>@ 鏡 かがみ</code>の<code>@ 向 む</code>こうに<code>@ 霞 かす</code>んだ。<code>@ 今 いま</code>は<code>@ 消 き</code>えた、<code>@ 祭 まつ</code>りの<code>@ 果 は</code>てで。</strong></p>
+<p>无论何时都有谁在哭泣着的世界，也在镜子中烟雾朦胧。现在早已在祭典的尽头，消失不见。</p>
+<p><strong><code>@ 触 ふ</code>れ<code>@ 合 あ</code>うことすら、できずに<code>@ 別 わか</code>れた。</strong></p>
+<p>我们甚至都还没有再次相遇，却又再次分别。</p>
+<p><strong>あなたを<code>@ 感 かん</code>じたい<code>@ 時 とき</code>は、<code>@ 名前 なまえ</code>をもう<code>@ 一度 いちど</code> <code>@ 呼 よ</code>ぶ。</strong></p>
+<p>每当想要感受你的温暖的时候，再一次，呼唤你的名字。</p>
+<p><strong><code>@ 青 あお</code>い<code>@ 薔薇 ローズ</code>、<code>@ 赤 あか</code>い<code>@ 椿 カメリア</code>、<code>@ 花 はな</code>は<code>@ 今日 きょう</code>も<code>@ 咲 さ</code>いてますか。</strong></p>
+<p>蓝色的玫瑰，红色的山茶花，花朵如今，也依然在绽放吗。</p>
+<p><strong><code>@ 問 と</code>いかけて<code>@ 応 こた</code>えなくても、<code>@ 同 おな</code>じ<code>@ 楽園 そら</code>を<code>@ 見上 みあ</code>げてる。</strong></p>
+<p>即使问而不答，我们也始终仰望着同一片乐园（天空）。</p>
+<p><strong>あれから<code>@ 始 はじ</code>まった<code>@ 長 なが</code>い<code>@ 旅 たび</code>も、<code>@ 終 お</code>わる、いつかは、<code>@ 消 き</code>える、<code>@ 全 すべ</code>てが。そして、<code>@ 星 ほし</code>は、<code>@ 巡 めぐ</code>る。</strong></p>
+<p>从那时开始的漫长旅途，总有一天也会结束，到那时，一切都会消逝。而后，群星依然流转。</p>
+<p><strong><code>@ 止 や</code>まない<code>@ 嵐 あらし</code>に<code>@ 足 あし</code>を<code>@ 止 と</code>められ、<code>@ 草臥 くたび</code>れた<code>@ 靴 くつ</code>の<code>@ 跡 あと</code>を<code>@ 振 ふ</code>り<code>@ 返 かえ</code>る。</strong></p>
+<p>无休无止的山林雾气中，我不得不停下脚步，回望着以往的足迹，鞋履也早因旅途破旧不堪。</p>
+<p><strong><code>@ 大事 だいじ</code>なものはまだ、<code>@ 歩 ある</code>く<code>@ 度 たび</code>に<code>@ 増 ふ</code>えるでしょう。</strong></p>
+<p>然而，那些珍贵的回忆，依然随着我们前行的每一步而积累着。</p>
+<p><strong>それでも<code>@ 俯 うつむ</code>く<code>@ 私 わたし</code>の<code>@ 背中 せなか</code>を<code>@ 押 お</code>すのは、あなたと<code>@ 交 か</code>わした、<code>@ 叶 かな</code>わぬ<code>@ 約束 やくそく</code>。</strong></p>
+<p>尽管如此，激励着早已疲惫不堪的我继续前行的，是与你定下的未竟约定。</p>
+<p>【注释 #3】这里意译了「<code>@ 俯 うつむ</code>く」，其本意是“低下头”。</p>
+<p><strong><code>@ 大 おお</code>きな<code>@ 鞄 かばん</code>に<code>@ 閉 と</code>じこめた<code>@ 願 ねが</code>い、<code>@ 鏡 かがみ</code>と<code>@ 一緒 いっしょ</code>に<code>@ 壊 こわ</code>れた。<code>@ 夢 ゆめ</code>と<code>@ 追憶 ついおく</code>が<code>@ 降 ふ</code>り<code>@ 注 そそ</code>ぐ。</strong></p>
+<p>珍藏在大大的行李箱中的愿望，也随着镜子一同破碎，梦与追忆倾泻而下。</p>
+<p><strong><code>@ 砂 すな</code>へと<code>@ 零 こぼ</code>れた<code>@ 涙 なみだ</code>を<code>@ 拭 ぬぐ</code>って、<code>@ 震 ふる</code>える<code>@ 手 て</code>が<code>@ 拾 ひろ</code>い<code>@ 上 あ</code>げた。</strong></p>
+<p>拭去飘落在沙地上的泪水，用颤抖的手将碎片拾起。</p>
+<p><strong><code>@ 光 ひかり</code>はきっと、<code>@ 同 おな</code>じ<code>@ 色 いろ</code>をした<code>@ 花 はな</code>。</strong></p>
+<p>那光芒必然是，闪耀着相同颜色的花朵。</p>
+<p><strong><code>@ 目 め</code>を<code>@ 閉 と</code>じれば、<code>@ 耳 みみ</code>を<code>@ 澄 す</code>ませば、<code>@ 花片 はなびら</code>が<code>@ 風 かぜ</code>に<code>@ 乗 の</code>って、<code>@ 旋律 メロディ</code>を<code>@ 届 とど</code>けるでしょう。</strong></p>
+<p>闭上眼睛，侧耳倾听，花瓣乘上微风，将那旋律传达给你。</p>
+<p><strong><code>@ 私 わたし</code>からあなたへの<code>@ 手紙 レター</code>。</strong></p>
+<p>这就是，我寄给你的，一封信。</p>
+]]></content>
+      <categories>
+        <category>【杂谈】日语</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>直博招生专业面试的一些</title>
+    <url>/2022/09/14/phd-interview/</url>
+    <content><![CDATA[<p>2022 年 9 月 14 日，是清华大学计算机科学与技术系 2023 级免试攻读博士生招生专业面试。Holder 参加了这一场面试，然后人炸了。</p>
+<span id="more"></span>
+<p>今天面试本来就有点不安，最大的问题就是唯一能吹的一份挂了名的 SIGGRAPH 的文章实际上自己并没有参与特别核心的工作，而且做到一半就被拒了，所以实际上最后那段时间就在摆烂，组会吹水也不去了。</p>
+<p>然而，今天就是这么时运不济，面试的评委里同时有徐昆老师和胡事民老师。没听过组会吹水不敢乱说，但胡老师就喜欢捉着这些问。他要是具体问如何实现了我负责的代码部分，我倒是可以说不少，但是问我一些 Overview，说实话倒还真的不会。</p>
+<p>Holder 的科研真的毫无意义，毕竟自己就是如丧家之犬一般到处跑路。或许 Holder 真的就不应该硬头皮读这个博士，或许就该进厂上班了。</p>
+]]></content>
+      <categories>
+        <category>【杂谈】碎碎念</category>
       </categories>
   </entry>
   <entry>
@@ -18591,309 +19030,6 @@ c_a = \frac{\sigma_a}{\mu_a}, c_s = \frac{\sigma_s}{\mu_s}, \rho = \frac{\mu_a}{
 ]]></content>
       <categories>
         <category>【论文笔记】计算机</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>2022 年 12 月论文笔记</title>
-    <url>/2022/12/06/paper-2022-12/</url>
-    <content><![CDATA[<p>12 月开始就得准备做毕设了，先要充分阅读文献，确定自己要做的方向有什么要解决的问题，以及目前已经有的探索和目前还存在的困难。</p>
-<p><span class="math display">\[
-\newcommand{\b}{\boldsymbol}
-\]</span></p>
-<span id="more"></span>
-<h1 id="learning-tailored-adaptive-bitrate-algorithms-to-heterogeneous-network-conditions---a-domain-specific-priors-and-meta-reinforcement-learning-approach">Learning Tailored Adaptive Bitrate Algorithms to Heterogeneous Network Conditions - A Domain-Specific Priors and Meta-Reinforcement Learning Approach</h1>
-<p>黄老师的文章，作为起手还是需要好好看看的。</p>
-<p>这篇文章的基本概念是，基于学习的 ABR 已经能够实现一个平均而言优秀的 ABR 算法，但是对于部分特殊的网络环境其依然表现不佳，而这也就是所谓的个性化。然后这篇文章使用了 meta RL 的方式实现了 AABR（其实应当是 <span class="math inline">\(A^2BR\)</span>，但是我真的不想打公式了，AABR 表示 Adaptation of ABR）。</p>
-<p>AABR 首先离线学习一个元算法，之后再在在线的个性化环境下学习一个针对当前网络环境的个性化算法。另外，还需要不断优化离线学习来保证元算法的优势。</p>
-<h2 id="introduction">Introduction</h2>
-<p>首先对 ABR 算法做了总结，启发式算法根据当前网络情况和一部分状态变量给出决策，但是只有在选定较好的算法参数的时候这种算法才能表现较好。基于学习的算法则根据网络情况学习这些参数。然而总而言之，这些算法都不会自动调节自己的算法参数，尤其在面对变化较多的网络环境下时，这些算法表现较差。</p>
-<p>之后是通过实验说明了现在的网络状况不仅是多样性（diverse）的，更多的是独一无二（unique）的。基于这一点，这篇文章认为做用户个性化是一个重要的提升。</p>
-<p>所以基于 Input-driven Markov Decision Process (IMDP)，本文提出了 AABR。分为离线和在线两步，具体的训练方式见后续。</p>
-<p>总结一下这篇文章的工作就是确认了当今网络环境的独特性，并通过 meta RL 解决了 ABR 的个性化问题。</p>
-<h2 id="background-motivation">Background &amp; Motivation</h2>
-<p>关于 ABR 之类的介绍这里忽略，主要看这篇文章如何论证当今网络的多样性。</p>
-<p>多样性分为三个方向去论证，即不同用户间差异、不同场景间差异以及已有的部分 ABR 算法在这些网络环境下的表现。</p>
-<p>用户间差异和场景间差异可以关注下图：</p>
-<p><img src="/uploads/paper-2022-12/1.png" /></p>
-<p>可以首先注意到网络吞吐率和 RTT 的变动是相当大的，而如果观察具体的用户，也可以发现用户之间的网络状况差异也很大，部分用户网络稳定（整体带宽 CDF 陡峭）而部分用户的网络波动较大，而且各个用户的网络指标平均值也差异较大。</p>
-<p>对于场景，也可以注意到步行、地铁、公交、汽车的网络情况也各有不同，并不能一概而论。</p>
-<p>如果从 ABR 的角度出发，这篇文章在两个不同环境下测试了若干个 ABR 算法的性能，得到的结果是：</p>
-<p><img src="/uploads/paper-2022-12/2.png" /></p>
-<p>显然可以注意到已有的算法都很难兼顾两种情况，常常顾此失彼。这就意味着不稳定的网络情况很容易导致这些算法失效，从而也难以实现用户个性化。</p>
-<h2 id="methods">Methods</h2>
-<h3 id="input-driven-markov-decision-process">Input-driven Markov Decision Process</h3>
-<p>基本而言是在正常的 MDP 中引入了 input process <span class="math inline">\(\mathcal{Z}\)</span>，这个时候环境的转移概率定义为：</p>
-<p><span class="math display">\[
-\mathbb{T}[s&#39; \mid s, a, z] := \mathbb{P}[s_{t + 1} = s&#39; \mid s_t = s, a_t = a, z_t = z]
-\]</span></p>
-<p>此外，决策依然仅仅和 <span class="math inline">\(s_t \in \mathcal{S}\)</span> 有关，也就是说具体行为 <span class="math inline">\(a_t \in \mathcal{A}\)</span> 与 <span class="math inline">\(z_t \in \mathcal{Z}\)</span> 是独立的。</p>
-<p>进一步的价值函数定义为：</p>
-<p><span class="math display">\[
-Q(s, a, z) := \sum_{s&#39; \in \mathcal{S}} \mathbb{T}[s&#39; \mid s, a, z](r(s, a, z) + \gamma V(s&#39;, z&#39;))
-\]</span></p>
-<p>在 IMDP 下，最优策略也就定义为：</p>
-<p><span class="math display">\[
-\pi^*(s, z) := \mathop{\rm argmax}_{a \in \mathcal{A}} \sum_{s&#39; \in \mathcal{S}} \mathbb{T}[s&#39;, z&#39; \mid s, a, z]\left[r(s, a, z) + \gamma \max_{a&#39; \in \mathcal{A}} Q(s&#39;, a&#39;, z&#39;)\right]
-\]</span></p>
-<p>可以注意到，如果两个 agent 运行相同的 policy <span class="math inline">\(\pi\)</span>，其不同之处仅仅是 input process <span class="math inline">\(\mathcal{Z}_{1, 2}\)</span> 不同。可以注意到这两个 agent 将会始终保持相同的决策，所以其价值函数相同当且仅当 <span class="math inline">\(\mathcal{Z}_1 = \mathcal{Z}_2\)</span>。</p>
-<p>如果在完全得知 input process <span class="math inline">\(\mathcal{Z}\)</span> 的条件下，求解最优策略相当于一般的强化学习问题，可以通过大量的强化学习方法完成。但是我们现在需要假定 input process 是完全不可感知的，在这种条件下，一般强化学习方法学习到的最优策略 <span class="math inline">\(\hat\pi^*\)</span> 的价值函数实际上是与 input process 无关的，其价值函数用 <span class="math inline">\(Q(s&#39;, a&#39;)\)</span> 表示，其满足：</p>
-<p><span class="math display">\[
-\max_{a&#39; \in \mathcal{A}} Q(s&#39;, a&#39;) = \mathbb{E}_{z&#39;} \max_{a&#39; \in \mathcal{A}} Q(s&#39;, a&#39;, z&#39;)
-\]</span></p>
-<p>所以现在解决 input process 未知条件下的最优策略求解问题就是最重要的。</p>
-<h3 id="meta-rl-with-domain-knowledge">Meta RL with Domain Knowledge</h3>
-<p>总之就是又阐述了一边 AABR 分为离线和在线两个训练过程，离线训练一个元算法之后在线训练一个个性化 ABR 算法。那么两个问题就是：</p>
-<div class="note info no-icon"><ol type="i">
-<li><p>How to obtain a good parameter initialization for fast-learning?</p></li>
-<li><p>How to efficiently learn tailor-made ABR algorithms online?</p></li>
-</ol>
-</div>
-<h3 id="model-agnostic-meta-learning">Model Agnostic Meta-Learning</h3>
-<p>总之就是选定了 MAML 作为 AABR 的核心算法，MAML 的论文后面慢慢推着看。</p>
-<p>不过这一部分也阐释了为何 MAML 适合用于这个场景，原文是：</p>
-<div class="note info no-icon"><p>We find that model agnostic meta learning (MAML) is quite suitable in personalized ABR scenarios where the network traces on each user are quite limited.</p>
-<p>Specifically, MAML consists of an inner loop and an outer loop.</p>
-</div>
-<p>也就是说从数据集的角度和训练流程的角度上说，MAML 和这个实验场景的契合度比较高。</p>
-<h3 id="leveraging-domain-knowledge">Leveraging Domain Knowledge</h3>
-<p>总体的含义是设计了一个模拟器用于生成数据以及相关的启发式算法，一方面补充了现实世界中数据量不足的问题，另外一方面其代表的启发式算法可以在 policy 无法处理某些状态的时候作为 backup 使用。</p>
-<p><strong>注：</strong>这一部分可能需要结合下面的 overview 仔细学一下，然后对这里做一些扩充，因为这里模拟器的细节应该是做数据扩充的重要部分。</p>
-<h2 id="aabr-overview">AABR Overview</h2>
-<p>系统的大致结构为：</p>
-<p><img src="/uploads/paper-2022-12/3.png" /></p>
-<h3 id="basic-training-algorithm">Basic Training Algorithm</h3>
-<p>在设计网络的输入的时候首先需要考虑的是什么才是真正需要考虑的状态，这篇文章采用的方式是首先将所有可以使用的状态都作为输入以训练一个 teacher network，之后采用类似模仿学习的方式，采用类似决策树等较为轻量级的模型去模仿神经网络的策略，之后再使用决策树剪枝的方式去获取真正有意义的非平凡状态。</p>
-<div class="note success no-icon"><p>这个方法似乎是比较好玩的一个方法，用于筛选真正有用的输入状态。</p>
-</div>
-<p>这里剪枝的目的也是为了压缩最后的成本。</p>
-<p>最后筛选出来的状态包括：</p>
-<ul>
-<li>上一次选定的视频块质量 <span class="math inline">\(q_t\)</span></li>
-<li>目前的缓冲区占用率 <span class="math inline">\(b_t\)</span></li>
-<li>前 <span class="math inline">\(k\)</span> 个视频块传输时网络吞吐率 <span class="math inline">\(C_t\)</span></li>
-<li>前 <span class="math inline">\(k\)</span> 个视频块的下载时间 <span class="math inline">\(D_t\)</span></li>
-<li>前 <span class="math inline">\(k\)</span> 个视频块的应答时间 <span class="math inline">\(P_t\)</span></li>
-</ul>
-<p>这里为了控制成本，实验中选取 <span class="math inline">\(k = 5\)</span>。</p>
-<p>另外，为了保证模型的泛化性，这里需要将参数正则化，这样至少能保证模型面对完全没有经历过的网络环境不至于将其认为非法输入。</p>
-<p>模型的输出和正常的 AC 网络没有很大的差别，都是 Actor 网络输出一个 softmax 后的概率张量表示各个行为的决策概率，而 Critic 网络输出一个标量表示对当前状态的价值评估。</p>
-<h4 id="maximum-entropy-ppo-me-ppo">Maximum Entropy PPO (ME-PPO)</h4>
-<p>这里的训练策略是 ME-PPO，其与 PPO 的差别在于最优行为的定义里纳入了熵：</p>
-<p><span class="math display">\[
-a_t^* := \mathop{\rm argmax}_a \hat{\mathbb{E}}_t\left[\sum_t \gamma^t(r_t + \lambda H^{\pi_\theta}(s_t))\right]
-\]</span></p>
-<p>这里定义熵为：</p>
-<p><span class="math display">\[
-H^{\pi_\theta}(s_t) = -\sum_{a \in \mathcal{A}} \pi_\theta(a \mid s_t) \ln\pi_\theta(a \mid s_t)
-\]</span></p>
-<p>元学习要求在离线环境下更重视 exploration 而在线环境下更重视 exploitation。这里将熵纳入考虑，如果策略 <span class="math inline">\(\pi_\theta\)</span> 对动作空间 <span class="math inline">\(\mathcal{A}\)</span> 中的所有动作给出的概率约趋向于平均，则熵越高，从而越会支持这样的选择。</p>
-<p>ME-PPO 的具体策略是基于 Dual-PPO 的 double clip 策略，具体如下：</p>
-<p><span class="math display">\[
-\begin{aligned}
-\mathcal{L}^{\rm PPO} &amp;:= \min\left(\frac{\pi_\theta(a_t \mid s_t)}{\pi_{\theta_{\rm old}}(a_t \mid s_t)}(\theta) \hat A_t, {\rm clip}\left(\frac{\pi_\theta(a_t \mid s_t)}{\pi_{\theta_{\rm old}}(a_t \mid s_t)}(\theta), 1 - \varepsilon, 1 + \varepsilon\right)\hat A_t\right) \\
-\mathcal{L}^{\rm Actor} &amp;:= \begin{cases}
-\hat{\mathbb{E}}_t[\max(\mathcal{L}^{\rm PPO}, c\hat A_t)] &amp; \hat A_t &lt; 0 \\
-\hat{\mathbb{E}}_t[\mathcal{L}^{\rm PPO}] &amp; \hat A_t \geq 0 \\
-\end{cases}
-\end{aligned}
-\]</span></p>
-<p>这里 <span class="math inline">\(\hat A_t\)</span> 是优势函数，定义为：</p>
-<p><span class="math display">\[
-\hat A_t := r_t + \gamma(V^{\pi_\theta}(s_{t + 1}) + \lambda H^{\pi_\theta}(s_{t + 1})) - V^{\pi_\theta}(s_t)
-\]</span></p>
-<p>这里 <span class="math inline">\(c, \varepsilon\)</span> 是用来控制梯度的超参数。</p>
-<p>AABR 中的 Critic 网络的训练策略就是最小化优势函数的均方误差：</p>
-<p><span class="math display">\[
-\mathcal{L}^{\rm Critic} := \frac12 \hat{\mathbb{E}}_t[A_t]^2
-\]</span></p>
-<p>从而整体的 loss 可以总结为：</p>
-<p><span class="math display">\[
-\nabla\mathcal{L}^{\rm MEPPO} := -\nabla_\theta \mathcal{L}^{\rm Actor}(\pi_\theta, \hat A_t) + \nabla_{\theta_v} \mathcal{L}^{\rm Critic}
-\]</span></p>
-<hr />
-<p>此外，由于算法对 <span class="math inline">\(\lambda\)</span> 较为敏感，我们需要在训练过程中不断调节 <span class="math inline">\(\lambda\)</span>，调节方式较为简单：</p>
-<p><span class="math display">\[
-\lambda \leftarrow \lambda + \alpha[H^{\pi_\theta}(s_t) - H^{\rm Target}]
-\]</span></p>
-<p>这个目标在于熵逐步接近目标的时候衰减 <span class="math inline">\(\lambda\)</span> 以减缓接近速度。</p>
-<h3 id="meta-learned-policies-for-offline-stage">Meta-Learned Policies for Offline Stage</h3>
-<p><strong>注：</strong>具体的训练方式后续补充。</p>
-<h1 id="model-agnostic-meta-learning-for-fast-adaptation-of-deep-networks">Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks</h1>
-<p>这是 MAML 训练方法的原始论文，看情况有没有时间做一个复现。</p>
-<p>文章的主要贡献就是一个元学习方式，并且似乎泛用性很广：</p>
-<div class="note info no-icon"><p>In this work, we propose a meta-learning algorithm that is general and model-agnostic, in the sense that it can be directly applied to any learning problem and model that is trained with a gradient descent procedure.</p>
-</div>
-<p>元学习的核心在于训练好的模型能够迅速通过少量数据学习到新的任务，并且其能够应用到大量的下游任务中。这篇文章将训练模型理解为在模型内部建立起适用于某种任务的特征表示，如果这种表示能够适合于多种任务，那么我们只需要进行合适的微调就可以迅速适应新的任务。如果从动力系统的角度理解，我们需要提高需要完成的任务的 loss 对参数的敏感度，这个敏感度越高，参数的变化对 loss 的提升的影响越大。</p>
-<h2 id="model-agnostic-meta-learning-1">Model-Agnostic Meta-Learning</h2>
-<h3 id="meta-learning-problem-set-up">Meta-Learning Problem Set-Up</h3>
-<p>这里严格定义了元学习需要解决的问题。</p>
-<p>首先我们需要形式化定义什么是任务，这篇文章定义为：</p>
-<p><span class="math display">\[
-\mathcal{T} := \{\mathcal{L}(\b x_1, \b a_1, \cdots, \b x_H, \b a_H), q(\b x_1), q(\b x_{t + 1} \mid \b x_t, \b a_t), H\}
-\]</span></p>
-<p>这里 <span class="math inline">\(\mathcal{L}\)</span> 表示 loss，<span class="math inline">\(q(\b x_1)\)</span> 是初始状态的分布，<span class="math inline">\(q(\b x_{t + 1} \mid \b x_t, \b a_t)\)</span> 是状态转移的概率分布，<span class="math inline">\(H\)</span> 是 episode 的长度。这个定义同时涵盖了普通的强化学习和监督学习，其中监督学习中 <span class="math inline">\(H = 1\)</span>。</p>
-<p>模型本身描述为一个函数 <span class="math inline">\(f\)</span>，其接受当前状态 <span class="math inline">\(\b x\)</span> 并给出输出 <span class="math inline">\(\b a\)</span>，即 <span class="math inline">\(\b a = f(\b x)\)</span>。模型不断在该任务中给定 <span class="math inline">\(\b a_1, \b a_2, \cdots, \b a_H\)</span>，而 loss <span class="math inline">\(\mathcal{L}\)</span> 则给出了实际的反馈，这种反馈可以是分类问题中的失配损失或者 Markov 决策过程中的负收益。</p>
-<p>在元学习中我们需要考虑一系列的任务的分布，这里记作 <span class="math inline">\(p(\mathcal{T})\)</span>。如果我们要求 <span class="math inline">\(K\)</span> shot learning，对于每一个从 <span class="math inline">\(p(\mathcal{T})\)</span> 抽取的具体任务 <span class="math inline">\(\mathcal{T}_i\)</span>，我们需要再通过 <span class="math inline">\(q_i\)</span> 抽取 <span class="math inline">\(K\)</span> 个样本，并且考虑 <span class="math inline">\(\mathcal{L}_{\mathcal{T}_i}\)</span> 的反馈。</p>
-<p>之后直接搬一个论文原句，也应该是论文后面算法设计的主要出发点：</p>
-<div class="note info no-icon"><p>The model <span class="math inline">\(f\)</span> is then improved by considering how the <em>test</em> error on new data from <span class="math inline">\(q_i\)</span> changes with respect to the parameters.</p>
-</div>
-<h3 id="a-model-agnostic-meta-learning-algorithm">A Model-Agnostic Meta-Learning Algorithm</h3>
-<p>这里提供了算法设计，一个关键词就是之前提到的<strong>敏感度</strong>。</p>
-<p>考虑用参数 <span class="math inline">\(\theta\)</span> 表示的模型 <span class="math inline">\(f_\theta\)</span>。在学习具体的任务 <span class="math inline">\(\mathcal{T}_i\)</span> 的时候，参数的更新方式为：</p>
-<p><span class="math display">\[
-\theta \leftarrow \theta - \alpha\nabla_\theta\mathcal{L}_{\mathcal{T}_i}(f_\theta)
-\]</span></p>
-<p>为了简化记号，我们假设在元学习之后学习具体任务仅用了一次梯度更新，此时任务 <span class="math inline">\(\mathcal{T}_i\)</span> 的最优参数就是 <span class="math inline">\(\theta_i&#39; := \theta - \alpha\nabla_\theta\mathcal{L}_{\mathcal{T}_i}(f_\theta)\)</span>，那么元学习的目标是：</p>
-<p><span class="math display">\[
-\min_\theta \sum_{\mathcal{T}_i \in p(\mathcal{T})} \mathcal{L}_{\mathcal{T}_i}(f_{\theta_i&#39;}) = \min_\theta \sum_{\mathcal{T}_i \in p(\mathcal{T})} \mathcal{L}_{\mathcal{T}_i}(f_{\theta - \alpha\nabla_\theta\mathcal{L}_{\mathcal{T}_i}(f_\theta)})
-\]</span></p>
-<p>那么还是使用简单的梯度下降，元学习中的参数更新就是：</p>
-<p><span class="math display">\[
-\theta \leftarrow \theta - \beta\nabla_\theta \sum_{\mathcal{T}_i \in p(\mathcal{T})} \mathcal{L}_{\mathcal{T}_i}(f_{\theta_i&#39;})
-\]</span></p>
-<p>在这里我们注意到出现了二阶梯度，部分深度学习框架能够支持这一操作，但本文也同样指出作一阶近似（即舍去二阶及以上的高阶项）是可行的。</p>
-<p>基于此，MAML 的整体框架为：</p>
-<p><img src="/uploads/paper-2022-12/4.png" /></p>
-<h2 id="species-of-maml">Species of MAML</h2>
-<p>本文这里举出了监督学习和强化学习中运用 MAML 的例子，这里我们只关注强化学习。</p>
-<p>强化学习特化的 MAML 主要关注的是 loss 的选定，这里选定的就是最经典的负收益。另外，此时 <span class="math inline">\(q_{\mathcal{T}_i}\)</span> 实际上就是环境中的状态转移概率分布：</p>
-<p><span class="math display">\[
-\mathcal{L}_{\mathcal{T}_i}(f_\phi) = -\mathbb{E}_{(\b x_t, \b a_t) \sim (f_\phi, q_{\mathcal{T}_i})} \left[\sum_{t = 1}^H R(\b x_t, \b a_t)\right]
-\]</span></p>
-<p>从而，强化学习特化的 MAML 算法为：</p>
-<p><img src="/uploads/paper-2022-12/5.png" /></p>
-<p>这之后就是一些实验结果了，感觉没啥意思了。</p>
-<h1 id="learning-to-adapt-in-dynamic-real-world-environments-through-meta-reinforcement-learning">Learning to Adapt in Dynamic, Real-World Environments through Meta Reinforcement Learning</h1>
-<p>这篇文章似乎没有官方的 code base，只有两个 community code base，现在可以在 <a href="https://paperswithcode.com/paper/learning-to-adapt-in-dynamic-real-world">这个链接</a> 获取，分别是 Tensorflow 和 Pytorch 版本。</p>
-<h2 id="abstract-introduction">Abstract &amp; Introduction</h2>
-<p>需要解决的问题依然是生成数据很困难以及测试环境中无法预料到的数据可能导致所训练的策略失效，引言之中也基本上叙述了人类可以很快适应自身机体发生的变化和外界环境发生的变化，提出了如果模型经历了足够多的环境微扰，其就可以很快学习适应新环境。</p>
-<p>相比较于原先的 meta RL 对任务的定义，这篇文章提出的模型能够处理每个时间步环境或者任务都在变化的情景。也就是说，原先的 meta RL 不过是提前预设好了需要解决什么样的任务，并且每一个 RL trajectory 仅会属于一个任务，而这篇文章的 RL trajectory 中可以涵盖多种任务并且任何时间都可以切换。所以这篇文章的 meta RL 更为 general。</p>
-<p>本文也是有 trade off 的，主要表达如下：</p>
-<div class="note info no-icon"><p>By specifically training a neural network model to require only a small amount of experience to adapt, we can enable effective online adaptation in complex environments while putting less pressure on needing a perfect global model.</p>
-</div>
-<p>也就是说，这篇文章为了能够在少数据条件下快速适应新环境，并不会强制要求这个模型在 global 环境下表现到 perfect。</p>
-<p>总而言之，这篇文章主要强调学得快，学习速度大约是每个新任务需要在真实世界中经历 1.5 到 3 小时，不到原有 model-free RL 方法学习时间的十分之一。并且，在同等数据量条件下，这篇文章的模型效果也比其他方法优越。此外，为了展示本文模型的学习能力，其将其真实部署在了机器人上，来学习真实世界的情况。</p>
-<h2 id="related-works">Related Works</h2>
-<p>首先提到最原始的强化学习方法没有泛用性，以及 model-free RL 往往需要大量和真是环境交互从而不实际。发展为 model-based RL 之后，就需要面临对环境建模的 model 需要在不同的任务之间调整的问题，首先否决了单一的全局模型，而先前有人尝试通过 GP 方法合并模型不确定性从而让模型能够表示不同的环境，然而这个方法做出了额外的假设且拓展性差且难以运用到高维空间，而本文提出的结果能够通过观察从而快速切换到新的环境。</p>
-<div class="note warning no-icon"><p>这里的问题就是我是真的没有太看懂这个 model 到底是对环境建模的模型还是最后要学习的 policy。</p>
-</div>
-<p>还有一种处理方式是首先学习一个全局模型，在测试的时候通过梯度下降进行微调。此外，还有工作表明不需要完美的全局模型，可以微调先验知识来处理小变化。然而，这些方法面临着模型的训练目的与测试时的使用方式之间的不匹配的问题。本文通过明确训练一个能快速有效适应的模型来弥合这一差距。</p>
-<h2 id="preliminaries">Preliminaries</h2>
-<h3 id="model-based-reinforcement-learning">Model-Based Reinforcement Learning</h3>
-<p>马尔可夫决策过程在这里建模为 <span class="math inline">\((\mathcal{S}, \mathcal{A}, p, r, \gamma, \rho_0, H)\)</span>。这里 <span class="math inline">\(\mathcal{S}\)</span> 是状态空间，<span class="math inline">\(\mathcal{A}\)</span> 是动作空间，<span class="math inline">\(p(s&#39; \mid s, a)\)</span> 是环境状态转移概率，<span class="math inline">\(r: \mathcal{S} \times \mathcal{A} \to \mathbb{R}\)</span> 是奖励函数，<span class="math inline">\(\rho_0: \mathcal{S} \to \mathbb{R}^+\)</span> 是初始状态概率分布，<span class="math inline">\(\gamma\)</span> 是奖励衰减常数，<span class="math inline">\(H\)</span> 是轨迹长度。</p>
-<p>一条轨迹描述为 <span class="math inline">\(\tau(i, j) := (s_i, a_i, \cdots, s_j, a_j, s_{j + 1})\)</span>，我们的目标是求取最优策略 <span class="math inline">\(\pi: \mathcal{S} \to \mathcal{A}\)</span> 使得累计收益期望最大。</p>
-<p>model-based RL 目标是近似处理 <span class="math inline">\(p(s&#39; \mid s, a)\)</span>，这个模型也被称为 dynamics model。</p>
-<h3 id="meta-learning">Meta Learning</h3>
-<p>一般的元学习需要给定假设，即训练用的任务和最终的测试任务都是从同一个任务分布 <span class="math inline">\(\rho(\mathcal{T})\)</span> 中抽取。元学习的目标是获取一个学习流程 <span class="math inline">\(\theta&#39; := u_\psi(\mathcal{D}^{\rm tr}_{\mathcal{T}}, \theta)\)</span> 以通过小数据集 <span class="math inline">\(\mathcal{D}^{\rm tr}_{\mathcal{T}}\)</span> 来学习任务 <span class="math inline">\(\mathcal{T}\)</span>，学习过程可以表示为：</p>
-<p><span class="math display">\[
-\min_{\theta, \psi} \mathbb{E}_{\mathcal{T} \sim \rho(\mathcal{T})}\left[\mathcal{L}(\mathcal{D}^{\rm test}_{\mathcal{T}}, \theta&#39;)\right]
-\]</span></p>
-<p>其中 <span class="math inline">\(\theta&#39; := u_\psi(\mathcal{D}^{\rm tr}_{\mathcal{T}}, \theta)\)</span>。</p>
-<div class="note info no-icon"><p>这里的记号是真的复杂，事实上训练过程应该是函数 <span class="math inline">\(u_\psi\)</span>，训练过程用参数 <span class="math inline">\(\psi\)</span> 代表，其输出为训练后的最优参数 <span class="math inline">\(\theta&#39;\)</span>，而 <span class="math inline">\(\theta\)</span> 表示初始化参数。</p>
-<p>另外注意，<span class="math inline">\(\theta\)</span> 这里是模拟环境的模型的参数，而非 policy 的参数。</p>
-</div>
-<h4 id="gradient-based-meta-learning">Gradient Based Meta Learning</h4>
-<p>MAML 就是一种基于梯度的元学习方法，其最主要的目标是学习一个较好的参数初始化保证在少数调整中即可实现较好的下游任务。</p>
-<p>MAML 的 <span class="math inline">\(u_\psi\)</span> 就是一般的梯度下降：</p>
-<p><span class="math display">\[
-u_\psi(\mathcal{D}^{\rm tr}_{\mathcal{T}}, \theta) = \theta - \alpha\nabla_\theta \mathcal{L}(\mathcal{D}^{\rm tr}_{\mathcal{T}}, \theta)
-\]</span></p>
-<p>如果学习率 <span class="math inline">\(\alpha\)</span> 是一个固定参数，那么 <span class="math inline">\(\psi = \varnothing\)</span>，如果 <span class="math inline">\(\alpha\)</span> 是一个元学习过程中需要学习的参数，那么 <span class="math inline">\(\psi = \alpha\)</span>。</p>
-<p>即使看起来 <span class="math inline">\(u_\psi\)</span> 是平凡的，但是这种方法的表达能力和下面介绍的方法是持平的。</p>
-<h4 id="recurrence-based-meta-learning">Recurrence Based Meta Learning</h4>
-<p>这里借用了 RNN 的思想，在这个方法中，更新函数 <span class="math inline">\(u_\psi\)</span> 始终需要不断学习，其中 <span class="math inline">\(\psi\)</span> 是用于更新 RNN 隐含层状态的参数，而 <span class="math inline">\(\theta\)</span> 是余下的参数。</p>
-<div class="note warning no-icon"><p>这里是真的真的真的没看懂，这在说啥？是我前置知识欠缺太多了？</p>
-<p>只能希望下面能有个稍微好一点的说明。</p>
-</div>
-<h2 id="meta-learning-for-online-model-adaptation">Meta Learning for Online Model Adaptation</h2>
-<p>之前提到过本文的 trajectory 中任务可以随着时间步推进而变化，所以本文设定的目标是根据前 <span class="math inline">\(M\)</span> 个时间步的数据预测未来 <span class="math inline">\(K\)</span> 个时间步情况，这里 <span class="math inline">\(M, K\)</span> 都是固定的超参数。</p>
-<p>所以在这样的设定下，训练目标就是：</p>
-<p><span class="math display">\[
-\begin{aligned}
-\theta_{\mathcal{E}}&#39; &amp;= u_\psi(\tau_{\mathcal{E}}(t - M, t - 1), \theta) \\
-\min_{\theta, \psi}&amp; \mathbb{E}_{\tau_{\mathcal{E}}(t - M, t + K)} [\mathcal{L}(\tau_{\mathcal{E}}(t, t + K), \theta_{\mathcal{E}}&#39;)]
-\end{aligned}
-\]</span></p>
-<p>而这里 loss 定义为：</p>
-<p><span class="math display">\[
-\mathcal{L}(\tau_{\mathcal{E}}(t, t + K), \theta_{\mathcal{E}}&#39;) := -\frac{1}{K} \sum_{k = t}^{t + K} \log\hat{p}_{\theta_{\mathcal{E}&#39;}}(s_{k + 1} \mid s_k, a_k)
-\]</span></p>
-<p>GrBAL 采取的更新策略为：</p>
-<p><span class="math display">\[
-\theta_{\mathcal{E}}&#39; = u_\psi(\tau_{\mathcal{E}}(t - M, t - 1), \theta) = \theta_{\mathcal{E}} + \psi\nabla_\theta\frac{1}{M} \sum_{m = t - M}^{t - 1} \log\hat{p}_{\theta_{\mathcal{E}}}(s_{m + 1} \mid s_m, a_m)
-\]</span></p>
-<p>ReBAL 这里又是没看懂，所以这个基于循环模型的到底是个什么东西。</p>
-<h2 id="model-based-meta-reinforcement-learning">Model Based Meta Reinforcement Learning</h2>
-<p>这一部分就是在讲解如何在线上做 adaptation，我觉得整体不如直接看算法直观：</p>
-<p><img src="/uploads/paper-2022-12/6.png" /></p>
-]]></content>
-      <categories>
-        <category>【论文笔记】计算机</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>《Petal Letter》歌词试译</title>
-    <url>/2022/10/27/petal-letter-lyrics/</url>
-    <content><![CDATA[<p>秋枫老师发来的一份歌词，感觉挺有意思就试着自己翻译看看了。</p>
-<p>歌曲的地址是 BV1Y14y1j7Fi。</p>
-<span id="more"></span>
-<p><strong><code>@ 朝日 あさひ</code>に<code>@ 溶 と</code>ける<code>@ 微睡 まどろ</code>みと<code>@ 目覚 めざ</code>めの<code>@ 狭間 はざま</code>、そっと<code>@ 口遊 くちずさ</code>む<code>@ 旋律 メロディ</code>、<code>@ 花片 はなびら</code>にのせ、<code>@ 風 かぜ</code>よ<code>@ 届 とど</code>けて、あなたが<code>@ 旅 たび</code>する<code>@ 世界 せかい</code>へ。</strong></p>
-<p>在朝阳中浅睡与苏醒的间隙中悄悄吟唱的旋律，乘上飘落的花瓣，就让微风将它传达到你所旅行的世界吧。</p>
-<p><strong><code>@ 魔法 まほう</code>で<code>@ 出逢 であ</code>った、あなたと<code>@ 私 わたし</code>、<code>@ 今 いま</code>は<code>@ 別々 べつべつ</code>の<code>@ 物語 ものがたり</code>を<code>@ 行 ゆ</code>く。</strong></p>
-<p>因魔法而相遇的你我二人，如今却向着不同的未来而去。</p>
-<p>【注释 #1】这里并没有将「<code>@ 物語 ものがたり</code>」直接翻译为“故事”，感觉并不太符合中文的语感。</p>
-<p><strong><code>@ 何 なに</code>かが<code>@ 始 はじ</code>まる<code>@ 予感 よかん</code>を<code>@ 胸 むね</code>に、<code>@ 歩 ある</code>き<code>@ 出 だ</code>してから、どれだけ<code>@ 経 た</code>ったの。</strong></p>
-<p>心中不知为何，总有着何事将至的预感。即使知道那时的分别，已经过去了不知多长时间。</p>
-<p><strong><code>@ 緩 ゆる</code>やかな<code>@ 坂道 さかみち</code>、<code>@ 登 のぼ</code>ればまた<code>@ 独 ひと</code>りきり。</strong></p>
-<p>登上平缓的山坡，依然独自一人。</p>
-<p><strong><code>@ 寂 さび</code>しさに、<code>@ 心細 こころぼそ</code>さに、<code>@ 寄 よ</code>り<code>@ 添 そ</code>ってくれる、あなたと<code>@ 交 か</code>わした<code>@ 心 こころ</code>の<code>@ 花束 はなたば</code>。</strong></p>
-<p>在这寂寞与不安中，我依偎着的，是与你交换的心之花束。</p>
-<p>【注释 #2】这里的语句结构有点怪异，歌曲中这里的断句也比较怪异，难以判定「くれる」与后续句子的关系。这里又要经典批判一遍为何现代日语的终止形和连体形合流，这显然难以判定一个动词词组究竟是修饰名词还是直接终止语句，这导致大量的歌词翻译困难。</p>
-<p><strong>いつでも<code>@ 誰 だれ</code>かが<code>@ 泣 な</code>いている<code>@ 世界 せかい</code>、<code>@ 鏡 かがみ</code>の<code>@ 向 む</code>こうに<code>@ 霞 かす</code>んだ。<code>@ 今 いま</code>は<code>@ 消 き</code>えた、<code>@ 祭 まつ</code>りの<code>@ 果 は</code>てで。</strong></p>
-<p>无论何时都有谁在哭泣着的世界，也在镜子中烟雾朦胧。现在早已在祭典的尽头，消失不见。</p>
-<p><strong><code>@ 触 ふ</code>れ<code>@ 合 あ</code>うことすら、できずに<code>@ 別 わか</code>れた。</strong></p>
-<p>我们甚至都还没有再次相遇，却又再次分别。</p>
-<p><strong>あなたを<code>@ 感 かん</code>じたい<code>@ 時 とき</code>は、<code>@ 名前 なまえ</code>をもう<code>@ 一度 いちど</code> <code>@ 呼 よ</code>ぶ。</strong></p>
-<p>每当想要感受你的温暖的时候，再一次，呼唤你的名字。</p>
-<p><strong><code>@ 青 あお</code>い<code>@ 薔薇 ローズ</code>、<code>@ 赤 あか</code>い<code>@ 椿 カメリア</code>、<code>@ 花 はな</code>は<code>@ 今日 きょう</code>も<code>@ 咲 さ</code>いてますか。</strong></p>
-<p>蓝色的玫瑰，红色的山茶花，花朵如今，也依然在绽放吗。</p>
-<p><strong><code>@ 問 と</code>いかけて<code>@ 応 こた</code>えなくても、<code>@ 同 おな</code>じ<code>@ 楽園 そら</code>を<code>@ 見上 みあ</code>げてる。</strong></p>
-<p>即使问而不答，我们也始终仰望着同一片乐园（天空）。</p>
-<p><strong>あれから<code>@ 始 はじ</code>まった<code>@ 長 なが</code>い<code>@ 旅 たび</code>も、<code>@ 終 お</code>わる、いつかは、<code>@ 消 き</code>える、<code>@ 全 すべ</code>てが。そして、<code>@ 星 ほし</code>は、<code>@ 巡 めぐ</code>る。</strong></p>
-<p>从那时开始的漫长旅途，总有一天也会结束，到那时，一切都会消逝。而后，群星依然流转。</p>
-<p><strong><code>@ 止 や</code>まない<code>@ 嵐 あらし</code>に<code>@ 足 あし</code>を<code>@ 止 と</code>められ、<code>@ 草臥 くたび</code>れた<code>@ 靴 くつ</code>の<code>@ 跡 あと</code>を<code>@ 振 ふ</code>り<code>@ 返 かえ</code>る。</strong></p>
-<p>无休无止的山林雾气中，我不得不停下脚步，回望着以往的足迹，鞋履也早因旅途破旧不堪。</p>
-<p><strong><code>@ 大事 だいじ</code>なものはまだ、<code>@ 歩 ある</code>く<code>@ 度 たび</code>に<code>@ 増 ふ</code>えるでしょう。</strong></p>
-<p>然而，那些珍贵的回忆，依然随着我们前行的每一步而积累着。</p>
-<p><strong>それでも<code>@ 俯 うつむ</code>く<code>@ 私 わたし</code>の<code>@ 背中 せなか</code>を<code>@ 押 お</code>すのは、あなたと<code>@ 交 か</code>わした、<code>@ 叶 かな</code>わぬ<code>@ 約束 やくそく</code>。</strong></p>
-<p>尽管如此，激励着早已疲惫不堪的我继续前行的，是与你定下的未竟约定。</p>
-<p>【注释 #3】这里意译了「<code>@ 俯 うつむ</code>く」，其本意是“低下头”。</p>
-<p><strong><code>@ 大 おお</code>きな<code>@ 鞄 かばん</code>に<code>@ 閉 と</code>じこめた<code>@ 願 ねが</code>い、<code>@ 鏡 かがみ</code>と<code>@ 一緒 いっしょ</code>に<code>@ 壊 こわ</code>れた。<code>@ 夢 ゆめ</code>と<code>@ 追憶 ついおく</code>が<code>@ 降 ふ</code>り<code>@ 注 そそ</code>ぐ。</strong></p>
-<p>珍藏在大大的行李箱中的愿望，也随着镜子一同破碎，梦与追忆倾泻而下。</p>
-<p><strong><code>@ 砂 すな</code>へと<code>@ 零 こぼ</code>れた<code>@ 涙 なみだ</code>を<code>@ 拭 ぬぐ</code>って、<code>@ 震 ふる</code>える<code>@ 手 て</code>が<code>@ 拾 ひろ</code>い<code>@ 上 あ</code>げた。</strong></p>
-<p>拭去飘落在沙地上的泪水，用颤抖的手将碎片拾起。</p>
-<p><strong><code>@ 光 ひかり</code>はきっと、<code>@ 同 おな</code>じ<code>@ 色 いろ</code>をした<code>@ 花 はな</code>。</strong></p>
-<p>那光芒必然是，闪耀着相同颜色的花朵。</p>
-<p><strong><code>@ 目 め</code>を<code>@ 閉 と</code>じれば、<code>@ 耳 みみ</code>を<code>@ 澄 す</code>ませば、<code>@ 花片 はなびら</code>が<code>@ 風 かぜ</code>に<code>@ 乗 の</code>って、<code>@ 旋律 メロディ</code>を<code>@ 届 とど</code>けるでしょう。</strong></p>
-<p>闭上眼睛，侧耳倾听，花瓣乘上微风，将那旋律传达给你。</p>
-<p><strong><code>@ 私 わたし</code>からあなたへの<code>@ 手紙 レター</code>。</strong></p>
-<p>这就是，我寄给你的，一封信。</p>
-]]></content>
-      <categories>
-        <category>【杂谈】日语</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>直博招生专业面试的一些</title>
-    <url>/2022/09/14/phd-interview/</url>
-    <content><![CDATA[<p>2022 年 9 月 14 日，是清华大学计算机科学与技术系 2023 级免试攻读博士生招生专业面试。Holder 参加了这一场面试，然后人炸了。</p>
-<span id="more"></span>
-<p>今天面试本来就有点不安，最大的问题就是唯一能吹的一份挂了名的 SIGGRAPH 的文章实际上自己并没有参与特别核心的工作，而且做到一半就被拒了，所以实际上最后那段时间就在摆烂，组会吹水也不去了。</p>
-<p>然而，今天就是这么时运不济，面试的评委里同时有徐昆老师和胡事民老师。没听过组会吹水不敢乱说，但胡老师就喜欢捉着这些问。他要是具体问如何实现了我负责的代码部分，我倒是可以说不少，但是问我一些 Overview，说实话倒还真的不会。</p>
-<p>Holder 的科研真的毫无意义，毕竟自己就是如丧家之犬一般到处跑路。或许 Holder 真的就不应该硬头皮读这个博士，或许就该进厂上班了。</p>
-]]></content>
-      <categories>
-        <category>【杂谈】碎碎念</category>
       </categories>
   </entry>
   <entry>
@@ -19676,6 +19812,131 @@ u_\psi(\mathcal{D}^{\rm tr}_{\mathcal{T}}, \theta) = \theta - \alpha\nabla_\thet
       </categories>
   </entry>
   <entry>
+    <title>2022 年 8 月论文笔记</title>
+    <url>/2022/06/10/paper-2022-08/</url>
+    <content><![CDATA[<p>这个月主要是刚刚进入流媒体相关的方向，需要阅读一些论文来了解目前的发展。</p>
+<span id="more"></span>
+<h1 id="stick---a-harmonious-fusion-of-buffer-based-and-learning-based-approach-for-adaptive-streaming">Stick - A Harmonious Fusion of Buffer-based and Learning-based Approach for Adaptive Streaming</h1>
+<h2 id="introduction">Introduction</h2>
+<p>首先考虑到现实应用背景，视频流传输已经占据了大部分的网络传输带宽。但视频传输的问题在于视频内容的多样性和可能的网络波动。一种可能的解决方案是使用 Adaptive bitrate (ABR) 算法，这些算法已经被证实可以提供高 QoE 的传输服务。</p>
+<p>传统的 ABR 算法往往是 buffer-based 的（例如 BBA 和 BOLA），这些算法通过固定的 buffer 和参数来选定下一个视频块的码率，这可能难以在波动网络环境下保证 QoE。</p>
+<p>另一方面，基于深度强化学习（DRL）的 ABR 算法 Pensieve 却给出了 state-of-the-art 的表现。在实践上，这类算法也常常部署在服务器侧以避免客户端的高计算开销。但是考虑到 ABR 算法往往需要部署在前端以避免连接后端的网络延迟，这使得这类算法理论可用但是并不实际。</p>
+<p>那么我们可以将这两种方法结合起来，使用 DRL 来强化 buffer-based 的方法，同时使用固定的缓冲区限制来限制计算开销。从而该论文提出了 Stick 框架，该框架将 QoE 参数、网络状态、视频特征作为输入参数，而缓冲区限制（连续的标量）作为其输出。</p>
+<p>考虑到连续的动作空间，我们计划使用 Deep deterministic policy gradient (DDPG) 来从头开始训练模型。此外，Stick 在无假设条件下通过和 ABR 环境交互来学习策略。</p>
+<p>为了保证计算效率，我们进一步提出了 Trigger。Trigger 会观测当前和先前的缓冲区限制，只在必要的时候激活 Stick 来更新缓冲区限制。Trigger 使用 imitation learing 方法来学习专家行为。同时，为了克服数据的无偏分布【Question #1】，我们使用了 prioritized experience replay 来存储专家策略。同时，该论文还提出了一种可以让其他 ABR 算法框架接入 Trigger 的方法。</p>
+<p>这篇论文的重点在于：</p>
+<ul>
+<li>首次提出结合 buffer-based 方法和 learning-based 方法</li>
+<li>通过 Stick，可以使用更小的模型实现比已有方法更好的效果</li>
+<li>通过 Trigger，证明轻量级模型可以有效降低计算开销</li>
+</ul>
+<h2 id="buffer-based-learning-based-abr-algorithm">Buffer-based &amp; learning-based ABR algorithm</h2>
+<p>BBA 只根据当前缓冲区限制来选定下一个视频块的码率。具体而言，其将对吞吐量的估计固定为启动态额吞吐量以克服吞吐量的波动，之后在稳定态时，使用缓冲区限制 <span class="math inline">\(\{B_{\rm min}, B_{\rm max}\}\)</span> 来获取块映射，块映射的作用是将缓冲区占用情况映射为码率。</p>
+<p>而这个映射也是简单的分块线性映射，缓冲区占用低于 <span class="math inline">\(B_{\rm min}\)</span> 时下一个视频块码率为低码率 <span class="math inline">\(R_{\rm min}\)</span>，缓冲区占用高于 <span class="math inline">\(B_{\rm max}\)</span> 时下一个视频块码率为高码率 <span class="math inline">\(R_{\rm max}\)</span>，位于这两者之间的时候使用线性函数决定。</p>
+<p>这个方法大部分情况下简单且有效，但是也在许多条件下效果不理想。原因是 BBA 使用的固定参数应当根据应用环境做出相应的调整。</p>
+<p>而 learning-based ABR，例如 Pensieve 则给出了较好的理论结果，但是该方案并不容易应用到现实中。此外，Pensieve 也在部分应用环境下效果不理想。</p>
+<h2 id="key-ideas">Key ideas</h2>
+<p>总结起来是这样的几点：</p>
+<ul>
+<li>使用 DRL 的方法调整 ABR 的参数，避免使用查表或者预训练模型造成的过大存储和计算成本</li>
+<li>模型的状态空间需要考虑全面，不仅包括当前缓冲区限制，还要包括网络状况和视频特征
+<ul>
+<li>此外，实验发现 Stick 可以仅使用一个参数控制缓冲区，而非两个参数</li>
+</ul></li>
+<li>QoE 要求会被作为 goal 输入模型，该参数会随机初始化，这会让模型意识到 QoE 参数和 feedback reward 之间的关系</li>
+<li>使用轻量级的 Trigger 来决定是否需要通过 Stick 更新缓冲区限制，以降低计算成本</li>
+</ul>
+<h2 id="system-overview">System overview</h2>
+<p>整体的框架可以表现为：</p>
+<p><img src="/uploads/paper-2022-08/1.png" /></p>
+<h3 id="stick-mechanism">Stick mechanism</h3>
+<p>Stick 的结构图可以表示为：</p>
+<p><img src="/uploads/paper-2022-08/2.png" /></p>
+<h4 id="design">Design</h4>
+<p>首先叙述状态空间的构造：</p>
+<ul>
+<li><span class="math inline">\(T\)</span> 为由客户端测量的前 <span class="math inline">\(k\)</span> 个序列的吞吐量</li>
+<li><span class="math inline">\(d\)</span> 为前 <span class="math inline">\(k\)</span> 个序列的下载时间</li>
+<li><span class="math inline">\(q\)</span> 为上一个视频块选定的码率</li>
+<li><span class="math inline">\(r\)</span> 为视频剩余播放时间</li>
+<li><span class="math inline">\(b\)</span> 为当前缓冲区占有情况</li>
+<li><span class="math inline">\(S\)</span> 为表示下一个视频块大小的向量</li>
+<li><span class="math inline">\(g\)</span> 为 QoE goal 参数，由 <span class="math inline">\(\mu, \tau\)</span> 构成</li>
+</ul>
+<p>动作空间则是一个连续标量 <span class="math inline">\(B \in [0, {\rm buffer}_{\rm max}]\)</span>，用于控制缓冲区限制。</p>
+<p>奖励函数则根据不同的 <span class="math inline">\(g\)</span>，使用经典的线性 QoE 指标来构造。</p>
+<h4 id="training-methodology-implementation">Training methodology &amp; Implementation</h4>
+<p>【这一部分在阅读完 DPG 相关论文之后再具体展开】</p>
+<h3 id="trigger">Trigger</h3>
+<p>Trigger 的一个核心思想在于，如果 Stick 在连续两个视频块上给出相同的结果，那么其第二次计算是无用的。而实验证明，无用操作可能占比达到 30%，所以我们的目标就是用 Trigger 去判别哪些操作是无用的。</p>
+<p>现在考量 Trigger 的状态空间。根据 Related work，网络吞吐量是我们需要考虑的重要参数。但是我们也发现了，先前的缓冲区占用情况也是一个重要特征，其可以揭示网络环境状态和视频块大小之间的隐藏关系。</p>
+<p>所以我们最终令 Trigger 的输入是先前的网络吞吐量、缓冲区大小和现在的缓冲区限制。而输出是一个二维向量，表示 Stick 保持或者改变当前缓冲区限制的概率。</p>
+<hr />
+<p>使用 imitation learning 来训练 Trigger，这种方法能够根据 expert demonstration 给出预期的结果。训练的算法可以表示为：</p>
+<p><img src="/uploads/paper-2022-08/3.png" /></p>
+<hr />
+<p>另外，我们需要关注训练数据集分布的问题。论文使用的数据集中有 83% 的操作是无用操作，这种分布不均匀的数据集和理想的 50%-50% 数据集差距过大，可能导致特征训练不均衡。所以这里使用了 Prioritized experience replay 方法来重新平衡数据集。</p>
+<p>关于这个方法的介绍可以参考 <a href="https://paperswithcode.com/method/prioritized-experience-replay">这篇文章</a>。</p>
+<p>之后讨论如何将 Trigger 应用到其他的 ABR 算法上。</p>
+<p>【这一部分在阅读完 DPG 相关论文之后再具体展开】</p>
+<h2 id="evaluation">Evaluation</h2>
+<p>介绍了使用的实验环境、数据集、训练方式、Baseline 的选取、QoE 指标的计算公式等等。</p>
+<p>首先在一个数据集上，实验证明了 Stick 输出单参数的表现并不比双参数差很多，甚至在一些条件下能得到更好的 QoE 指标。</p>
+<p>之后通过实验说明了 Stick 在各种数据集上都表现出了比 buffer-based 方法更为优秀的性能。</p>
+<p>有关比较性能，论文里面有这样一句被强调的话：</p>
+<div class="note success"><p>Note that Stick only utilize onequarter number of neurons that of Pensieve.</p>
+<p>感觉是一种简单的强大。</p>
+</div>
+<p>之后还探讨了不同 QoE 指标下 Stick 的表现，探讨了 Trigger 的网络结构（全连接、LSTM 还是 CNN），做了一些进一步的 Evaluation，这里就不具体展开了。</p>
+<h1 id="neural-adaptive-video-streaming-with-pensieve">Neural Adaptive Video Streaming with Pensieve</h1>
+<h2 id="introduction-1">Introduction</h2>
+<p>现行的 ABR 算法在选择下一个视频块的码率的时候往往面临下述四个问题：</p>
+<ul>
+<li>网络吞吐量的不稳定</li>
+<li>部分 QoE 指标内存在相互矛盾的要求（如高质量和尽可能减少缓冲）</li>
+<li>当前码率选择可能对未来的选择产生影响</li>
+<li>ABR 的决策可能是粗粒度的</li>
+</ul>
+<p>现行的大部分 ABR 方法都依赖于对网络吞吐的估计或者对缓冲区大小的估计，所以其难以应对网络吞吐的不稳定。比如说 SOTA 方法 MPC 依赖于对网络吞吐量的预估，原文：</p>
+<div class="note info no-icon"><p>However, MPC’s performance relies on an accurate model of the system dynamics - particularly, a forecast of future network throughput.</p>
+</div>
+<p>这样的限制使得 MPC 对预测结果的偏差十分敏感。</p>
+<p>从而本文提出了 Pensieve，该方法会自动学习 ABR 算法，而不需要任何的预训练的控制规则或者对运行环境的假设条件。Pensieve 是基于强化学习的，其完全通过其与环境交互的经验学习。Pensieve 的核心为一个神经网络，该神经网络代表了 Pensieve 所采取的针对网络环境的策略。该网络接受的输入为各种对网络环境的原始观测数据（吞吐量采样、回放缓冲区占用率、视频块尺寸等），而其输出则为下一个视频块应当采取的码率。该网络的训练方式为 A3C。</p>
+<p>Pensieve 的训练方式的核心则是一个模拟器，用于将大规模的网络跟踪信息数据库回放给 Pensieve，其划分粒度可以是块级别的，也可以是包级别的或者其他。Pensieve 的评测方式为将算法部署在一个 ABR 服务器上，令算法不断给出下一个视频块应当采取的码率，这样做可以避免在客户端上进行繁重的神经网络计算。</p>
+<p>最后 Pensieve 在几乎所有的网络环境和 QoE 指标上持平或超过现有最佳的 ABR 算法。</p>
+<h2 id="background">Background</h2>
+<p>当前占主导地位的视频分发策略为 HTTP-based adaptive streaming，而其标准化技术为 DASH，即 Dynamic Adaptive Streaming over HTTP。而 DASH 的流程可以大致描述为下图：</p>
+<p><img src="/uploads/paper-2022-08/4.png" /></p>
+<ul>
+<li>首先播放器向服务器获得认证</li>
+<li>服务器应答一个保存有实际视频数据的 CDN 地址，并且列出所有可选码率</li>
+<li>播放器使用 ABR 算法逐个请求视频块，视频块下载完成后渲染到屏幕上播放</li>
+</ul>
+<p>这里 ABR 算法几乎决定了整体的视频传输性能，其面临的若干挑战已经在 Introduction 部分给出了基本的介绍，这里稍加详细叙述。</p>
+<ol type="1">
+<li><p>ABR 算法并不能仅考虑网络情况，因为在类似蜂窝移动网络等不稳定网络条件下，我们难以预测未来的网络吞吐，最后往往仅能够获取到保守估计导致性能浪费，或者过高估计导致传输延迟。从而 ABR 也应当考虑缓冲区占有率等更为稳定的参数。</p></li>
+<li><p>QoE 指标可能是相互冲突的。在带宽有限的网络环境中持续以最高码率请求视频可以保证视频质量，但是会升高缓冲率。相反，在不稳定的网络环境中，在任何时候选取当前网络环境能提供的最高码率会导致视频播放不平滑。</p></li>
+<li><p>当前视频块的选择会对后续视频块的码率选择产生影响。其一，高码率视频块常常会导致后续视频块难以维持该高码率，因为可能导致缓冲。其二，为了保证视频播放平滑，ABR 算法不倾向于突然改变码率，所以后续视频块的码率并不会在当前码率基础上改变很大。</p></li>
+<li><p>由于 ABR 算法能选择的码率范围被服务器给出的 Manifest file 限制，所以其选择往往是粗粒度的。有时网络环境会恰好落在某一个低码率过于浪费资源而稍高的码率就会导致缓冲的临界区域。</p></li>
+</ol>
+<h2 id="learning-abr-algorithms">Learning ABR Algorithms</h2>
+<p>其首先将 Pensieve 和 Robust MPC 进行了对比，指出了 Robust MPC 的部分缺陷（基本还是先前部分提到的缺陷，只是使用了实验数据做了支持）。</p>
+<p>这一部分似乎并没有写出很多新东西，还是先前部分的重复。</p>
+<h2 id="design-1">Design</h2>
+<h3 id="training-methodology">Training Methodology</h3>
+<p>训练策略的核心是一个模拟视频下载流程的模拟器。其对于每一个视频块，模拟器会根据该视频块的码率以及网络状况生成下载耗时。在这一段时间，模拟器会缓慢消耗缓冲区内已经存在的视频块以模拟视频播放，之后再将该视频块压入缓冲区。模拟器会跟踪所有可能导致重新缓冲的事件，比如缓冲区剩余视频块长度小于正在下载的视频块需要的时间（这会导致已经缓冲的视频播放完成后新的视频块还未下载完毕）。另外一方面，如果当前缓冲区无法容纳新的视频块，那么模拟器会暂停下载 500 毫秒，之后重新开始请求。</p>
+<p>在完成下载之后，模拟器会给出若干参数，比如当前缓冲区占有率、重新缓冲时间、视频块下载时间、（在所有可选码率下）下一个视频块的大小、该视频剩余的视频块数量等。这些参数的具体使用方式见后。</p>
+<p>基于该模拟器，Pensieve 可以在很短的时间内学习一个本应占用长时间的视频下载流程。</p>
+<p>虽然上述基于应用层行为的建模简单直接，但是实际上由于传输层复杂的行为，上述建模有可能并不精确。例如，播放器在缓冲区已满的条件下可能并不会在视频块下载完成后立刻请求下一个视频块，这可能导致传输层 TCP 回退到慢启动状态，这样可能并不能充分利用带宽。该问题实际上让 ABR 算法需要考虑的方面增多了，因为通常意义上快速填满缓冲区的策略会导致 TCP 慢启动从而造成事实上的低效率。</p>
+<p>为了了解 TCP 慢启动造成的影响，设计的实验为在带宽 6 Mbps 的条件下不断以某一个恒定的码率请求视频块。得出的结论为，在启用 TCP 慢启动的条件下请求的码率越低带宽利用率越低，而不启用 TCP 慢启动的条件下所有码率均充分利用了带宽。</p>
+<p>所以为了让模拟贴合现实，我们可以关闭服务器的 TCP 慢启动。虽然这可能导致流量的突变，但目前可以有其他的解决方案解决这一问题而不需要 Pensieve 来处理。</p>
+<p>事实上上述模拟依然是不精确的，但是我们发现 Pensieve 依然可以通过上述不完整的模拟学习到高质量的 ABR 算法，这可能是由于 Pensieve 强大的泛用能力。</p>
+]]></content>
+      <categories>
+        <category>【论文笔记】计算机</category>
+      </categories>
+  </entry>
+  <entry>
     <title>强化学习入门笔记</title>
     <url>/2023/02/22/note-of-rl/</url>
     <content><![CDATA[<p>这学期选了一门深度强化学习，也正好趁此机会系统性质地把强化学习理论基础过一下，如果可以的话可能还打算过一下深度学习基础扩展一下视野之类的。</p>
@@ -20290,215 +20551,6 @@ Q(s_t, a_t) \leftarrow Q(s_t, a_t) + \alpha\left[G_t(\tau)\prod_{k = t}^{+\infty
 ]]></content>
       <categories>
         <category>【学习笔记】计算机</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>2023 年 10 月论文笔记</title>
-    <url>/2023/10/08/paper-2023-10/</url>
-    <content><![CDATA[<p>说是加入腾讯做云游戏，但是似乎一个月过去了暂且都没有等来信息，果然还是继续积累吧。</p>
-<span id="more"></span>
-<h1 id="zgaming---zero-latency-3d-cloud-gaming-by-image-prediction">ZGaming - Zero-Latency 3D Cloud Gaming by Image Prediction</h1>
-<p>现在论文都直接吹零延迟的吗，不过如果说 Abstract 里面这句话是真的，那确实足够猛：</p>
-<div class="note info no-icon"><p>与现有方法相比，ZGaming 在提供相同视频质量时，将互动延迟从 23 毫秒减少到 0 毫秒，或者在保持互动延迟为 0 毫秒时，提高了 5.4 分贝的视频质量。</p>
-</div>
-<h2 id="introduction">Introduction</h2>
-<p>先讲了一下云游戏对 MTP 延迟很敏感，然后提出本文的目标是实现零延迟的云游戏系统。有关其他工作的部分，本文首先指出了单纯在系统上做优化的方案终究会因为网络的存在而至少具有一个 RTT 的延迟，从而零延迟的系统必定一定程度上涉及到预测操作，其中一个著名的工作是动作预取。动作预取的工作原理是对所有的可能潜在动作，都在服务端渲染下一帧，然后将这些帧发送到客户端，客户端上一旦执行操作即可直接访问到动作结果帧。但是动作预取面临两个困难：</p>
-<ul>
-<li>用户动作的随机性极高，很容易遭遇预测未命中的情况</li>
-<li>商用云游戏大部分依然采用用户动作后再渲染的方案，工业界适配困难较大</li>
-</ul>
-<p>如果难以直接修改当前的工作流水线，那么一种可能的方案为基于图像的预测，常用的方法就是 DIBR。在具有 DIBR 的系统中，当用户做出操作的时候，该系统会根据最近接收到的 RGBD（即 RGB 色彩以及深度信息）直接预测接下来的视频帧，用户在此基础上几乎感知不到任何延迟。</p>
-<p>本文基于上述方法，希望进一步精细化图像预测，主要面临的挑战有：</p>
-<ul>
-<li>预测图像中存在伪影，即像素缺失。例如出现了遮挡和视野外，此时由于缺失图像信息，无法准确预测该部分的像素信息导致缺失。目前已经有一部分针对伪影的解决方案</li>
-<li>DIBR 不能应用于预测动态对象，因为动态对象的运动几乎无法通过静态的像素信息观察到，从而 DIBR 很难给出合理的预测值</li>
-<li>码率和网络的匹配问题（有点奇怪，为什么这里需要考虑 ABR 相关的问题）</li>
-</ul>
-<p>ZGaming 的设计在于，首先通过 DIBR 预测出静态对象的图像，然后通过运动预测模型预测动态对象的图像（本文采用了 LSTM，我严格觉得 LSTM 做不了这种任务），最后将两者结合起来得到最终的预测图像。具体而言的工作：</p>
-<ul>
-<li>基于质量的静态场景缓存。如果完全存储所有历史静态场景则很有可能导致巨大的开销，所以 ZGaming 采用了基于质量的缓存，即只缓存质量较高的静态场景，而质量较低的场景则直接丢弃</li>
-<li>服务器辅助的 LSTM 预测。在服务器端部署 LSTM 以预测动态物体的运动趋势，并预取到客户端</li>
-<li>ABR。我不评价这一部分</li>
-</ul>
-<h2 id="motivation">Motivation</h2>
-<p>首先说了一下云游戏条件下互动延迟的要求极高，大概限制在 60 毫秒左右。然后介绍了一下 DIBR 能够通过预测静态场景的方式做到一定程度上的零延迟，并且在工程的角度上可以增量式地连接到现有系统而不需要调整当下的云游戏渲染管线。</p>
-<p>但是 DIBR 是有缺陷的：</p>
-<p><img src="/uploads/paper-2023-10/9.png" /></p>
-<p>简而言之本文的解决方法为：</p>
-<ul>
-<li>重用历史帧。本文的论据是大量的场景都有可能在历史场景中出现过，所以加大追溯历史的深度可以有效缓解空洞伪影（但是全新的场景怎么办呢）</li>
-<li>利用 LSTM 预测动态对象的运动模式</li>
-<li>ABR？（为什么 DIBR 的优化策略里面有 ABR？）</li>
-</ul>
-<h2 id="overview">Overview</h2>
-<p>总之就是上面三个部分一个对应一个模块，也就是说 ZGaming 包括一个场景缓存，一个动态物体 LSTM 模型，一个 ABR 算法。</p>
-<h2 id="quality-driven-3d-block-cache">Quality Driven 3D Block Cache</h2>
-<p>其认为，一般的缓存设计方法无法直接应用到云游戏之中，因为传统的全量缓存会占用巨大的内存空间。一种方法是一定程度上限制缓存条目的大小，并且设计有效的缓存替换策略保证高效利用有限的内存资源。在考虑缓存替换策略的时候有以下需要注意的点：</p>
-<ul>
-<li>不同光照条件下，同样坐标处的材质并不能直接应用于恢复。这是显然的，阳光直射的墙壁图像显然无法直接应用于恢复夜晚墙壁的空洞</li>
-<li>非缓存算法的竞争。事实上，缓存并非处处是最优方法，例如墙壁、地面等较为单调的场景中，一般的插值恢复法甚至会比缓存更好。这里本文认为优先执行历史缓存恢复是合理的，如果缓存内容依然无法完全填充空缺部分，那么再通过插值方法恢复</li>
-<li>用户操作会使得缓存本身具有不均衡特性，部分场景明显会比其他场景有更高频的访问次数</li>
-</ul>
-<p>本文采用的策略为，将每一帧分为 <span class="math inline">\(64 \times 64\)</span> 的块，这样做可以避免全量缓存，并且可以避免重复场景的重复存储。对每一个块 <span class="math inline">\(b\)</span>，定义其质量为 <span class="math inline">\(U_b\)</span>，质量越高则越有可能被缓存。质量的计算方式为：</p>
-<p><span class="math display">\[
-U_b := \frac{1}{T_{\rm now} - t_b}\sum_{i = 1}^{N_b} ({\rm PSNR}_{b, i} - {\rm PSNR}_{b, i}&#39;)
-\]</span></p>
-<p>这里 <span class="math inline">\(N_b\)</span> 表示块 <span class="math inline">\(b\)</span> 在缓存中被使用的次数，求和项中的 PSNR 的差表示的是第 <span class="math inline">\(i\)</span> 次使用的时候相较于插值算法，用缓存修复所能得到的 PSNR 增益，之后使用块 <span class="math inline">\(b\)</span> 在缓存中持续的时间 <span class="math inline">\(T_{\rm now} - t_b\)</span> 归一化收益即可得到缓存块质量。可以注意到该函数的逻辑就是，单位时间内该缓存块相较于插值算法能够获得多高的额外收益。</p>
-<p>在此基础上，缓存的替换策略为当存储满时交换出 30% 的缓存块，并且定期逐出质量为负数的块。这里的负数质量表示该块在缓存中的收益不如插值算法，所以应当逐出。</p>
-<p>性能评价就不说了，基本就是形势大好。</p>
-<h2 id="server-assisted-lstm-predicting-foreground">Server Assisted LSTM Predicting Foreground</h2>
-<p>首先区分背景和前景，其实就是静态部分和动态部分。本文认为，即使某一些 NPC 在交互逻辑上不应该归类为背景，但是在渲染逻辑上其不会发生相对位置移动，所以应当归类为背景。在这一部分首先需要的是区分背景和前景，然后对前景进行预测。区分前景的逻辑就是将前一帧和后一帧对齐，比较是否发生了位置偏移，发生偏移则意味着是动态对象。</p>
-<p>而为了预测动态物体的运动，这里使用了 LSTM。然而直接使用 LSTM 会遇到渲染帧模糊的问题，所以在 LSTM 后面本文加上了一个图像超分模块（RefSR）。</p>
-<p><img src="/uploads/paper-2023-10/10.png" /></p>
-<p>工程上，另外提到了一下 LSTM 是部署在服务端的，数据传输方面则把 LSTM 预测的动态部分作为高优先级数据附加上 FEC 传输到客户端，由客户端组装具体的帧。</p>
-<h2 id="prediction-performance-driven-adaptive-bitrate">Prediction Performance Driven Adaptive Bitrate</h2>
-<p>这一部分整体没看明白想要做什么，似乎是根据网络情况调节预测性能？然而云游戏里面考虑网络的话还是不太会单独拉出来一个 ABR？不是很懂，这样总觉得 ABR 很孤立。</p>
-<h2 id="conclusion">Conclusion</h2>
-<p>感觉和吴成磊学长说的一样，这篇文章总体给的感觉是很割裂，有种头痛医头脚痛医脚的感觉。而且我觉得这篇文章的 LSTM 部分一言难尽，LSTM 本身的能力不好说能不能完成这类预测任务，而且使用历史帧填充未知空洞也显得很没有道理。</p>
-<p>总之，从 idea 到 writing 来看都不是很适合借鉴学习。</p>
-<h1 id="ekho---synchronizing-cloud-gaming-media-across-multiple-endpoints">Ekho - Synchronizing cloud gaming media across multiple endpoints</h1>
-<p>简而言之就是以往的工作都把云游戏简单化为视频画面的传输，而忽略了音频等多媒体的可能。多媒体事实上意味着需要做到媒体之间的同步，例如游戏画面需要与游戏音效同步。Ekho 则通过伪噪声的方式实现了多媒体之间的同步。</p>
-<h2 id="introduction-1">Introduction</h2>
-<p>简单来说，就是注意到现在常用的云游戏系统往往除了视频流之外还会有一个反馈流，这个反馈流一般作用于各种游戏配件，作用包括：</p>
-<ul>
-<li>在多人语音游戏的条件下混合其他玩家的声音，并提供给专用的游戏耳机等</li>
-<li>对玩家的操作给出触觉反馈，如手柄震动等</li>
-</ul>
-<p>这里容易出现的问题在于，视频流和反馈流作用到不同的终端（一个是显示器一个是各种其他配件），这导致这两个流会使用不同的网络连接传输，从而两者之间的同步就成为了问题。</p>
-<p>事实上，在有观众的游戏中，除了玩家本人的耳机会有一道音频流外，普通视频流中还会负载另一道音频流，这个音频流会对外播放给观众。这一道音频流播放之后还会被玩家耳机的麦克风捕捉。所以说云游戏除了多种流的同步问题外，还需要处理多道音频流之间的同步。</p>
-<p>一般而言，流之间会产生 100 毫秒左右的流间延迟（Inter Stream Delay / ISD），具体取决于网络情况、终端类型、连接方式甚至玩家到屏幕的距离。但是总体而言，延迟的影响因素大概可以归纳为：</p>
-<ul>
-<li>网络延迟。大概来说就是网络延迟是相当复杂的，首先多设备的网络接入点不一定一样（屏幕直接通过以太网连接到路由器而控制器通过 AP 连接到 WiFi 等）。其次，不同设备可能使用不同的网络协议（屏幕使用 WebRTC 而控制器使用 URCP 协议）。最后，互联网提供商可能对不同端口的流量做不同的优先级处理，这也可能导致网络延迟</li>
-<li>设备播放延迟。音频和视频在不同的设备上有不同的缓存管理措施，不同的播放策略也可能导致数十毫秒的 ISD</li>
-<li>声音传播延迟。玩家从屏幕和耳机接收到的声音的 ISD 和玩家到屏幕的距离有关（毕竟声速也不过 340 米每秒），这可能带来十毫秒左右的延迟</li>
-</ul>
-<p>本文的目标是将 ISD 限制到 10 毫秒一下，考虑到 ISD 是波动的，所以需要在游戏进程中不断观测和动态调整来平稳 ISD。事实上，测量 ISD 就足够困难，主要挑战是：</p>
-<ul>
-<li>RTT 的测量本身会因为网络往返路径不同，测量值本身具有十几毫秒的误差</li>
-<li>解码、播放、声音传播延迟等影响 ISD 的重要因素往往因为缺乏合适的 API 或者硬件而难以测量</li>
-</ul>
-<p>以往的设备间同步有三种常见方案：</p>
-<ul>
-<li>通过共享的网络组件建立专用链接完成时间同步。然而云游戏系统并不强制要求各个终端共享网络组件</li>
-<li>通过网络时间协议同步时间。然而该协议往往测量不精准，甚至会有百毫秒的误差</li>
-<li>通过记录设备播放的声音测量误差。然而这对硬件要求较高，此外还要求周围环境噪声较低</li>
-</ul>
-<p>而本文提出 Ekho，其可以在亚毫秒级别测量 ISD 并且做出调节。简要而言，Ekho 通过伪噪声序列的方式对齐各种流，并且在服务端根据测量结果调整发送序列来同步各种流。</p>
-<h2 id="related-work">Related Work</h2>
-<p>相关工作曾经研究过两路相似音频最大能够达到多大错位而不被用户感知，以前的研究结果认为单调、突发的信号音在错位超过 5 毫秒时就会被感知，而复杂语音则需要达到 16 毫秒左右才会感知。本文拓展了这些工作，并且通过数据论述了：</p>
-<ul>
-<li>音频之间的错位最大为 10 毫秒</li>
-<li>视频与音频之间的错位，最多允许音频提前视频 15 毫秒或视频提前音频 45 毫秒</li>
-<li>触觉反馈与音频之间错位最大为 24 毫秒</li>
-<li>触觉反馈与视频之间错位可以宽容到 30 至 100 毫秒</li>
-</ul>
-<p>另外一部分的相关工作为媒体同步，指的是在一定范围的终端内同步媒体内容。现有的工作往往要求了下述前提（然后本文基于此做了点优化）：</p>
-<ul>
-<li>设备有准确的时钟。然而用于同步设备时钟的网络时间协议具有不可容忍的误差</li>
-<li>支持 PTP 的设备可以通过连接到同一路由器实现同步。然而 PTP 并非广泛采用的协议</li>
-<li>利用这些设备往往物理距离较近的特征，通过在一个设备上记录另一个设备声音的方式实现流之间的延迟测量。然而由于环境噪声、硬件设备等问题，这一方案在先前工作中没有获得很好的效果，而本文基于此，做出了一步重要的拓展（伪噪声打点）</li>
-</ul>
-<h2 id="background-motivation">Background &amp; Motivation</h2>
-<h3 id="time-synchronization-requirements">Time Synchronization Requirements</h3>
-<p>为了研究音频之间的错位阈值，这一章设计了用户实验。用户实验的基本方案是 ITU-T P.808 标准中规定的 DCR 测试方法。测试中使用的音频为 30 个长度为 15 秒的游戏录音，每个录音均加上了 0 到 300 毫秒不等的 ISD。</p>
-<p>测试流程就直接翻译原文了。</p>
-<div class="note info no-icon"><p>人类测试者首先听取没有回声的参考音频片段，然后听取带有未知延迟量的回声的相同片段，包括 0 毫秒，即没有回声。测试者需要选择由于回声引起的注意力分散程度。此外，每个测试者会定期进行训练，即按照 P.808 标准听取带有不同回声量的六个片段，以确保标准化。</p>
-<p>我们总共收集了 3555 个评分，根据 ITU-T P.808 的规定，去除了低质量的回应（总数据的 33%）。每个片段被评分约 10 次，每个延迟级别有 30 个不同的片段，共计每个延迟级别约 296 个投票。受访者池由 17% 的年轻人（18-25 岁）、43% 的成年人（26-35 岁）、32% 的中年人（36-50 岁）和 8% 的老年人（51 岁及以上）组成，他们的母语是英语。按照伦理准则，调查是匿名的，我们在参与之前告知受访者有关调查过程和刺激类型。我们对受访者进行了补偿，并避免了可能被认为是令人不悦的刺激。Microsoft IRB 审查并批准了这项调查。</p>
-</div>
-<p>最后的具体结果事实上已经在先前提到了，即根据音频的不同类别，玩家的忍受阈值是不同的，但最后大体可以用 10 毫秒作为阈值。</p>
-<p><img src="/uploads/paper-2023-10/1.png" /></p>
-<div class="note success no-icon"><p>首先需要学一下 ITU 用户测试到底是个什么标准。</p>
-<p>其次的话，这篇文章的 user study 给的启示大概就是如果要设立对比或者是五分量表类似的测试的话，需要定期通过所谓的 training phase 来保证测试者没有被“带偏”。</p>
-<p>如果说要测试云游戏条件下画面撕裂更为显著的话，其实也可以借鉴这种主观评分模式。不同的游戏，不同的撕裂程度（或者说不同幅度的 jitter？）之下受访者到底能够容忍多少。如果发现云游戏条件下测试者的评分有显著下降，应该能说明问题了？</p>
-<p>以及最好能提供一些现有的解决方案，证明现在的方案还不够解决这一问题？</p>
-</div>
-<p>上述实验是音频和音频之间的错位，其余种类流之间的错位本文似乎没有展开说明。</p>
-<h3 id="inter-stream-delay">Inter Stream Delay</h3>
-<p>这一部分主要是 ISD 的建模：</p>
-<p><img src="/uploads/paper-2023-10/2.png" /></p>
-<p>可以看到基本和 Introduction 中提出的一致，分为网络延迟、解码延迟、播放延迟、声音传播延迟。</p>
-<p>网络延迟的测量也和先前一样，否定了 NTP 协议和对称 RTT 测量两种方案。解码延迟则理论可以测量（通过对目标设备和音频格式类型的仔细测量来分析这些延迟），然而受限于终端种类繁多，API 也不总是可用，这种测量几乎实际不可行。播放延迟则来源于硬件的 jitter buffer，这种延迟几乎无法测量。声音传播延迟自然因为硬件问题无法测量。</p>
-<p>最终归纳为下表：</p>
-<p><img src="/uploads/paper-2023-10/3.png" /></p>
-<p>总而言之，目前的测量方法的误差都过大，根本无法做到从各个环节上把握 ISD，更不用谈以此为基础控制 ISD 了（这一部分就是用于说明问题的挑战性和本文方案的创新性的）。</p>
-<h3 id="isd-variation">ISD Variation</h3>
-<p>大概的意思是继续说现有方案解决不了问题，原因是 ISD 是动态的。简而言之，ISD 的组成成分中，包含了低概率发生的 IP 路径更改或者显卡调度更改导致的大幅度震荡，以及更常见的因为网络波动和 jitter buffer 耗尽导致的小幅度震荡。</p>
-<p>也就是说，ISD 的校正需要尽快且足够频繁以应对这些变化。实践证明，Ekho 最多间隔 15 秒测量一次 ISD 足以应对这些震荡。</p>
-<h2 id="ekho">Ekho</h2>
-<h3 id="overview-of-isd-measurement-in-ekho">Overview of ISD Measurement in Ekho</h3>
-<p>简而言之，Ekho 采用了端到端的测量方案，即忽略掉中途环节，直接在端侧考虑延迟：</p>
-<p><img src="/uploads/paper-2023-10/4.png" /></p>
-<p>这里两路音频指的是屏幕音频和耳机音频，由于屏幕音频最终会被耳机捕捉，所以可以在耳机中直接比较两路音频得到 ISD 的估算。</p>
-<p>这一方案的问题在于，一般的游戏音频内部没有标志点，无法快速供算法分析捕捉。其次，屏幕音频在经过空气传播削弱之后，加上环境噪声，会导致两路音频更难对齐，这还没有考虑传输过程中两路音频均可能经过了有损压缩。</p>
-<p>所以，一种简单的解决方案是在服务器端发送音频的时候，在其内部均匀地（实验中使用 1 秒作为间隔）插入伪噪声标记，这些标记会用来对齐两路音频。这种伪噪声标记需要精心设计，因为其不能影响到玩家正常游戏，需要尽力做到不可察觉。</p>
-<h3 id="reliable-marker-detection-in-ekho">Reliable Marker Detection in Ekho</h3>
-<p>这里就详细介绍了伪噪声序列的构造方式和检测方式。首先分析游戏音频的频谱特征，可以看到载波的频率基本都在 12 kHz 以上，而重要游戏信息内容基本都位于 6 kHz 以下，所以伪噪声的频率范围需要限制在 6-12 kHz 范围内。此外，由于可探测性取决于振幅，这里的目标是不断探测游戏本体音频的振幅并控制伪噪声标记振幅与其的比值尽可能恒定（游戏声音小标记振幅就小，反之亦然）。</p>
-<p>假设 <span class="math inline">\(x[t]\)</span> 是游戏音频，<span class="math inline">\(w[t]\)</span> 为长度为 <span class="math inline">\(L\)</span> 的伪噪声序列，那么最终的带标记音频序列 <span class="math inline">\(x_m[t]\)</span> 为：</p>
-<p><span class="math display">\[
-\begin{aligned}
-x_m[t] &amp;= x[t] + C\alpha_k w[t] \\
-\alpha_k &amp;= \gamma\alpha_{k - 1} + (1 - \gamma)\rho(x[(k - 1)T : kT])
-\end{aligned}
-\]</span></p>
-<p>参数 <span class="math inline">\(L\)</span> 影响 ISD 测量的速度和最大可测量的 ISD，一般的话设置为 48000（对应一秒音频，说明生成频率为 21 MHz 左右）。<span class="math inline">\(\rho(x[(k - 1)T : kT])\)</span> 则表示了在 <span class="math inline">\((k - 1)T\)</span> 到 <span class="math inline">\(kT\)</span> 范围内的游戏音频功率，实验中选择 <span class="math inline">\(T = 960\)</span>，这是 48 kHz 下的 20 毫秒音频。</p>
-<p>这个公式的原理在于每 20 毫秒通过功率测算调整混入比例 <span class="math inline">\(\alpha_k\)</span>，而 <span class="math inline">\(\alpha_k\)</span> 采用的软更新参数 <span class="math inline">\(\gamma\)</span> 在实验中取 0.4。</p>
-<p>在上述混入的基础上就可以介绍检测算法了，假设耳机的录音序列为 <span class="math inline">\(x_{\rm rec}[x]\)</span>，我们计算其交叉相关 <span class="math inline">\(Z[t]\)</span> 如下：</p>
-<p><span class="math display">\[
-Z[t] = \sum_{i = 1}^L x_{\rm rec}[t + i]w[i]
-\]</span></p>
-<p>可以注意到这里不断让录音和标记信号对齐，当标记对齐的时候 <span class="math inline">\(Z[t]\)</span> 应当在此处出现峰值。为了让峰值检测更为可靠，需要做下述归一化：</p>
-<p><span class="math display">\[
-Z^*[t] = \left|\frac{Z[t]}{\sqrt{\dfrac{1}{S}\sum_{i = 1}^S Z[t + i]^2}}\right|
-\]</span></p>
-<p>通过归一化后的 <span class="math inline">\(Z^*[t]\)</span> 会有比较好的包络线。实际测量中会使用 <span class="math inline">\(S\)</span> 为 100 毫秒，这个参数的来源大致是游戏音效大约都持续 100 毫秒。</p>
-<p>为了更好检测峰值，下一步需要具体计算包络线：</p>
-<p><span class="math display">\[
-R[t] = \begin{cases}
-|Z^*[t]| &amp; R[t - 1] \leq |Z^*[t]| \\
-\beta R[t - 1] &amp; {\rm otherwise} \\
-\end{cases}
-\]</span></p>
-<p>原理是简单的，如果出现峰值则设定峰值，如果没有出现则按照等比数列衰减包络线。这样操作可以过滤掉除了峰值之外的大量无用数据。实验中 <span class="math inline">\(\beta = 0.99995\)</span>。在上述计算的基础上，所有 <span class="math inline">\(R[t] &gt; \theta = 5\)</span> 的值都认为是一次峰值。</p>
-<p>峰值更具体的计算为：</p>
-<p><span class="math display">\[
-P[t] = \begin{cases}
-R[t] &amp; R[t \pm 1] &lt; R[t], R[t] &gt; \theta \\
-0 &amp; {\rm otherwise} \\
-\end{cases}
-\]</span></p>
-<p>此时 <span class="math inline">\(P[t]\)</span> 已经提取出了所有的峰值并且过滤掉了较低峰值。此外，由于峰值的间隔至少应当是 <span class="math inline">\(L\)</span>（峰值间隔应当是伪噪声间隔，如果有较近的峰值应当是游戏本身的峰值，需要过滤），所以给出了下述进一步过滤：</p>
-<p><span class="math display">\[
-P^*[t] = \begin{cases}
-P[t] &amp; P[t] = \max_{|j| &lt; \delta}P[t + j] &gt; 0, \max_{|j| &lt; \delta}P[t + j + L] &gt; 0 \\
-0 &amp; {\rm otherwise} \\
-\end{cases}
-\]</span></p>
-<p>全检测流程如下：</p>
-<p><img src="/uploads/paper-2023-10/5.png" /></p>
-<h3 id="isd-estimation">ISD Estimation</h3>
-<p>由于 <span class="math inline">\(L\)</span> 选择了一秒，所以这里假定 ISD 不会超越 500 毫秒。在此基础上，将过滤过后的屏幕音频和耳机音频做对比，将距离最小的两个峰值之差作为 ISD 的估计：</p>
-<p><img src="/uploads/paper-2023-10/6.png" /></p>
-<h3 id="ekho-delay-compensation">Ekho Delay Compensation</h3>
-<p>调节的方式很简单，就是塞零音频来强制同步（毕竟已经算出来 ISD 了），本文未来计划通过数据包丢失掩盖技术来做（毕竟插入零音频实在是有点粗暴），但是至少现在没做。</p>
-<h2 id="design-implementation">Design &amp; Implementation</h2>
-<p>结构是这样的：</p>
-<p><img src="/uploads/paper-2023-10/7.png" /></p>
-<p>总体来说的话，终端设备基本上仅仅承担了录音的任务，所有的计算负载依然放在云端。云端估算 ISD 的时候依赖于终端传回的音频数据。</p>
-<p>具体的实现这里就不涉及了。</p>
-<h2 id="evaluation">Evaluation</h2>
-<p>评估的话大概包括如下部分：</p>
-<ol type="1">
-<li>Ekho 是否成功在端到端系统中同步音频流？</li>
-<li>什么样的标记音量足以准确估算 ISD，同时又不被人察觉？</li>
-<li>在标记辅助的 ISD 测量方面，Ekho 与先前的工作相比如何？</li>
-<li>当屏幕音频流静音时，Ekho 是否可以用于视频与音频的同步？</li>
-</ol>
-<p>同步音频流的实验很简单，直接把 Ekho 开起来然后在每个终端开一个 log 来记录每一帧音频的播放时间，两个设备的时钟会在实验开始前同步：</p>
-<p><img src="/uploads/paper-2023-10/8.png" /></p>
-<p>总之可以看到 Ekho 将 ISD 控制在 10 毫秒内，而不用 Ekho 的时候几乎做不到压到 10 毫秒的可能。</p>
-]]></content>
-      <categories>
-        <category>【论文笔记】计算机</category>
       </categories>
   </entry>
 </search>
