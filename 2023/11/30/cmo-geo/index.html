@@ -20,25 +20,27 @@
   <link rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;ashitemaru.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Muse&quot;,&quot;version&quot;:&quot;8.5.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;width&quot;:320,&quot;display&quot;:&quot;always&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:&quot;disqusjs&quot;,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;},&quot;path&quot;:&quot;&#x2F;search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;manual&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="Trying to be an observer of this world.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Ashitemaru">
-<meta property="og:url" content="https://ashitemaru.github.io/archives/2021/page/2/index.html">
+<meta name="description" content="本来应该干活的，结果发现 CMO 题出来了，无聊就来做了一下。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2023 CMO Day2 P5 几何试题解答">
+<meta property="og:url" content="https://ashitemaru.github.io/2023/11/30/cmo-geo/index.html">
 <meta property="og:site_name" content="Ashitemaru">
-<meta property="og:description" content="Trying to be an observer of this world.">
+<meta property="og:description" content="本来应该干活的，结果发现 CMO 题出来了，无聊就来做了一下。">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-11-30T04:09:38.000Z">
+<meta property="article:modified_time" content="2023-11-30T04:09:38.000Z">
 <meta property="article:author" content="Ashitemaru">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://ashitemaru.github.io/archives/2021/page/2/">
+<link rel="canonical" href="https://ashitemaru.github.io/2023/11/30/cmo-geo/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:false,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:&quot;&quot;,&quot;permalink&quot;:&quot;&quot;,&quot;path&quot;:&quot;archives&#x2F;2021&#x2F;page&#x2F;2&#x2F;index.html&quot;,&quot;title&quot;:&quot;&quot;}</script>
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;ashitemaru.github.io&#x2F;2023&#x2F;11&#x2F;30&#x2F;cmo-geo&#x2F;&quot;,&quot;path&quot;:&quot;2023&#x2F;11&#x2F;30&#x2F;cmo-geo&#x2F;&quot;,&quot;title&quot;:&quot;2023 CMO Day2 P5 几何试题解答&quot;}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
-<title>归档 | Ashitemaru</title>
+<title>2023 CMO Day2 P5 几何试题解答 | Ashitemaru</title>
   
 
 
@@ -211,7 +213,7 @@ $(function () {
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -224,6 +226,7 @@ $(function () {
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#analysis-solution"><span class="nav-number">2.</span> <span class="nav-text">Analysis &amp; Solution</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#comment"><span class="nav-number">3.</span> <span class="nav-text">Comment</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -329,94 +332,164 @@ $(function () {
 </noscript>
 
 
-    <div class="main-inner archive posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
+
+
+<div class="post-block">
   
   
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ashitemaru.github.io/2023/11/30/cmo-geo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="Ashitemaru">
+      <meta itemprop="description" content="Trying to be an observer of this world.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ashitemaru">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          2023 CMO Day2 P5 几何试题解答
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-11-30 04:09:38" itemprop="dateCreated datePublished" datetime="2023-11-30T04:09:38+00:00">2023-11-30</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2023-11-30 04:09:38" itemprop="dateModified" datetime="2023-11-30T04:09:38+00:00">2023-11-30</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E3%80%90%E6%9D%82%E8%B0%88%E3%80%91%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">【杂谈】数学</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2023/11/30/cmo-geo/" class="post-meta-item twikoo_visitors" data-flag-title="2023 CMO Day2 P5 几何试题解答" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="twikoo_visitors"></span>
+    </span>
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.9k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>本来应该干活的，结果发现 CMO 题出来了，无聊就来做了一下。</p>
+<span id="more"></span>
+<h1 id="problem">Problem</h1>
+<p>已知锐角三角形 <span class="math inline">\(\triangle ABC\)</span>，在 <span class="math inline">\(BC\)</span> 延长线上有点 <span class="math inline">\(K\)</span>，过 <span class="math inline">\(K\)</span> 分别作 <span class="math inline">\(AB, AC\)</span> 的平行线 <span class="math inline">\(KP, KQ\)</span> 令 <span class="math inline">\(BK = BP, CK = CQ\)</span>。<span class="math inline">\(\triangle KPQ\)</span> 的外接圆与 <span class="math inline">\(AK\)</span> 相较于点 <span class="math inline">\(T\)</span>。证明：</p>
+<ol type="1">
+<li><span class="math inline">\(\angle BTC + \angle APB = \angle CQA\)</span></li>
+<li><span class="math inline">\(AP\cdot BT\cdot CQ = AQ\cdot CT\cdot BP\)</span></li>
+</ol>
+<h1 id="analysis-solution">Analysis &amp; Solution</h1>
+<p>总之先画图：</p>
+<p><image src="/uploads/cmo-geo/1.png" style="zoom:50%;" /></p>
+<p>总之立刻从 <span class="math inline">\(P, Q\)</span> 是对应点发现，第一个要证明的角度关系应该改写为 <span class="math inline">\(\angle BTC = \angle CQA - \angle APB\)</span>。之后，很显然就要去想如何去转化 <span class="math inline">\(\angle CQA\)</span>。这里有个初中数学就知道的东西，等腰三角形 <span class="math inline">\(CQK\)</span>，然后还有 <span class="math inline">\(CA \parallel QK\)</span>，很快就有 <span class="math inline">\(CA\)</span> 平分 <span class="math inline">\(\angle BCQ\)</span>。这个平分有个相当大的作用，就是我可以把 <span class="math inline">\(Q\)</span> 给对称下来了，同理 <span class="math inline">\(P\)</span> 也可以：</p>
+<p><image src="/uploads/cmo-geo/2.png" style="zoom:50%;" /></p>
+<p>然后这里就得到了 <span class="math inline">\(\angle CQA - \angle APB = \angle CDA - \angle AEB = \angle DAE\)</span>，我们要证明的关系就从三个角变成了两个角。再来考虑 <span class="math inline">\(D, E\)</span> 的特点，不难根据刚刚的相等发现 <span class="math inline">\(B\)</span> 是 <span class="math inline">\(KE\)</span> 的中点，<span class="math inline">\(C\)</span> 是 <span class="math inline">\(KD\)</span> 的中点，那么这么多中点其实就给了我们把 <span class="math inline">\(\angle DAE\)</span> “拉到”图形里面的一个思路。找 <span class="math inline">\(KA\)</span> 的中点 <span class="math inline">\(M\)</span>，立刻就有 <span class="math inline">\(\angle DAE = \angle BMC\)</span>。这个时候我们要证明的，其实就是 <span class="math inline">\(B, C, T, M\)</span> 四点共圆：</p>
+<p><image src="/uploads/cmo-geo/3.png" style="zoom:60%;" /></p>
+<p>到这一步，找这个共圆就几乎不能走角度的路线了，因为好用的好描述的角基本都用完了，所以该去找线段关系了，显然我们要用圆幂定理，不难发现我们应该尝试去证明 <span class="math inline">\(KM\cdot KT = KB\cdot KC\)</span>，也就是 <span class="math inline">\(KA\cdot KT = 2KB\cdot KC\)</span>。比较麻烦的是 <span class="math inline">\(KT\)</span>，因为这条线段最难描述。然而思考 <span class="math inline">\(T\)</span> 的成因，不难发现 <span class="math inline">\(AK\)</span> 是 <span class="math inline">\(\triangle KPQ\)</span> 的外接圆的截线，其实可以先在 <span class="math inline">\(\triangle KPQ\)</span> 的外接圆上搞一步圆幂去把 <span class="math inline">\(T\)</span> 消掉。</p>
+<p>要去思考 <span class="math inline">\(A\)</span> 对 <span class="math inline">\(\triangle KPQ\)</span> 的外接圆的幂，其实最直接的想法就是去找 <span class="math inline">\(\triangle KPQ\)</span> 的外心，然而不难发现这个外心真的是位置太好了，这玩意就是 <span class="math inline">\(A\)</span> 关于 <span class="math inline">\(\triangle ABC\)</span> 外心的对称点。</p>
+<p><image src="/uploads/cmo-geo/4.png" style="zoom:60%;" /></p>
+<p>那么很快啊，我们就能写出来 <span class="math inline">\(AT\cdot AK = AO^2 - OK^2\)</span>。要证明 <span class="math inline">\(KA\cdot KT = 2KB\cdot KC\)</span>，我们只要证明两个式子加起来是成立的，就是只要证明 <span class="math inline">\(AT\cdot AK + KA\cdot KT = AO^2 - OK^2 + 2KB\cdot KC\)</span>，即：</p>
+<p><span class="math display">\[
+AK^2 = AO^2 - OK^2 + 2KB\cdot KC
+\]</span></p>
+<p>进一步发现 <span class="math inline">\(KB\cdot KC\)</span> 是 <span class="math inline">\(K\)</span> 对 <span class="math inline">\(\triangle ABC\)</span> 的外接圆的幂，就是 <span class="math inline">\(KR^2 - RA^2\)</span>，所以我们只要证明：</p>
+<p><span class="math display">\[
+AK^2 = AO^2 - OK^2 + 2(KR^2 - RA^2)
+\]</span></p>
+<p>而上式在 <span class="math inline">\(\triangle AOK\)</span> 中利用中线长公式显然成立，从而第一问证明完毕。</p>
+<hr />
+<p>第二问实际上在第一问基础上已经没东西了，我们直接考虑刚刚的四点共圆，这至少暗示了两对三角形相似，也就是 <span class="math inline">\(\triangle CKT \sim \triangle MKB\)</span> 以及 <span class="math inline">\(\triangle MKC \sim \triangle BKT\)</span>。这表明：</p>
+<p><span class="math display">\[
+\frac{CT}{CK} = \frac{BM}{MK}, \frac{BT}{BK} = \frac{CM}{MK}
+\]</span></p>
+<p>两个式子除一下：</p>
+<p><span class="math display">\[
+\frac{CT}{BT}\cdot\frac{BP}{CQ} = \frac{CT}{BT}\cdot\frac{BK}{CK} = \frac{BM}{CM} = \frac{AE}{AD} = \frac{AP}{AQ}
+\]</span></p>
+<p>这就证明完毕了。</p>
+<h1 id="comment">Comment</h1>
+<p>感觉，不难，除了找 <span class="math inline">\(M\)</span> 这个中间点把 <span class="math inline">\(\angle EAD\)</span> 搞进去这一步想了一段时间之外就没怎么卡过。而且看到有两问的题目我直接先把第一问中间结论不证明，拿过来证明第二问，发现是平凡的之后这道题就索然无味了。</p>
+<p>没用到什么复数、三角、反演等 fancy 的东西，感觉不如，联赛二试。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
         
-        <span class="collection-header">不错! 目前共计 54 篇日志。 继续努力。</span>
-      </div>
 
-      
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
-    </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-06-19T10:52:05+00:00"
-              content="2021-06-19">
-          06-19
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/06/19/grade-2-spring-conclusion/" itemprop="url">
-            <span itemprop="name">大二春季学期学期总结</span>
-          </a>
-      </div>
-
-      
-    </header>
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/11/13/markov-process/" rel="prev" title="马尔可夫随机过程杂谈">
+                  <i class="fa fa-chevron-left"></i> 马尔可夫随机过程杂谈
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
   </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-06-16T20:27:16+00:00"
-              content="2021-06-16">
-          06-16
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/06/16/note-of-iai/" itemprop="url">
-            <span itemprop="name">《人工智能导论》学习笔记</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-06-16T13:34:10+00:00"
-              content="2021-06-16">
-          06-16
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/06/16/hello-world/" itemprop="url">
-            <span itemprop="name">Hello world</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
+</div>
 
 
-    </div>
-  </div>
-  
-  
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/2021/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/2021/">1</a><span class="page-number current">2</span>
-  </nav>
 
+
+
+
+    <div class="comments"><div id="twikoo-comments"></div></div>
 </div>
   </main>
 
@@ -471,7 +544,7 @@ $(function () {
 
   
 
-  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;tags&quot;:&quot;none&quot;,&quot;js&quot;:{&quot;url&quot;:&quot;https:&#x2F;&#x2F;unpkg.com&#x2F;mathjax@3.1.4&#x2F;es5&#x2F;tex-mml-chtml.js&quot;,&quot;integrity&quot;:&quot;sha256-ncNI9OXOS5Ek4tzVYiOMmN&#x2F;KKCPZ6V0Cpv2P&#x2F;zHntiA&#x3D;&quot;}}</script>
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;tags&quot;:&quot;none&quot;,&quot;js&quot;:{&quot;url&quot;:&quot;https:&#x2F;&#x2F;unpkg.com&#x2F;mathjax@3.1.4&#x2F;es5&#x2F;tex-mml-chtml.js&quot;,&quot;integrity&quot;:&quot;sha256-ncNI9OXOS5Ek4tzVYiOMmN&#x2F;KKCPZ6V0Cpv2P&#x2F;zHntiA&#x3D;&quot;}}</script>
 <script src="/js/third-party/math/mathjax.js"></script>
 
 
