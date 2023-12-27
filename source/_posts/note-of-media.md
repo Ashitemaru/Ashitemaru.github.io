@@ -367,5 +367,3 @@ Kalman filter 的目标是，在已知起始帧到达时间 $t_0$ 的基础上�
 $$
 t_k = t_0 + \frac{(T_k - T_0) - \Delta_k}{s_k}
 $$
-
-# WebRTC jitter buffer
