@@ -20,27 +20,25 @@
   <link rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;ashitemaru.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Muse&quot;,&quot;version&quot;:&quot;8.5.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;width&quot;:320,&quot;display&quot;:&quot;always&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:&quot;disqusjs&quot;,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;},&quot;path&quot;:&quot;&#x2F;search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;manual&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="最近学网络建模，发现随机过程真的应用太广了，尤其是马尔可夫过程，在之前的 RL 笔记里面也有提到但是没写很多，这次想着还是稍微做点总结比较好。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="马尔可夫随机过程杂谈">
-<meta property="og:url" content="https://ashitemaru.github.io/2023/11/13/markov-process/index.html">
+<meta name="description" content="Trying to be an observer of this world.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ashitemaru">
+<meta property="og:url" content="https://ashitemaru.github.io/categories/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E6%97%A5%E8%AF%AD/page/2/index.html">
 <meta property="og:site_name" content="Ashitemaru">
-<meta property="og:description" content="最近学网络建模，发现随机过程真的应用太广了，尤其是马尔可夫过程，在之前的 RL 笔记里面也有提到但是没写很多，这次想着还是稍微做点总结比较好。">
+<meta property="og:description" content="Trying to be an observer of this world.">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-11-13T02:25:08.000Z">
-<meta property="article:modified_time" content="2023-11-13T02:25:08.000Z">
 <meta property="article:author" content="Ashitemaru">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://ashitemaru.github.io/2023/11/13/markov-process/">
+<link rel="canonical" href="https://ashitemaru.github.io/categories/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E6%97%A5%E8%AF%AD/page/2/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;ashitemaru.github.io&#x2F;2023&#x2F;11&#x2F;13&#x2F;markov-process&#x2F;&quot;,&quot;path&quot;:&quot;2023&#x2F;11&#x2F;13&#x2F;markov-process&#x2F;&quot;,&quot;title&quot;:&quot;马尔可夫随机过程杂谈&quot;}</script>
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:false,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:&quot;&quot;,&quot;permalink&quot;:&quot;&quot;,&quot;path&quot;:&quot;categories&#x2F;【学习笔记】日语&#x2F;page&#x2F;2&#x2F;index.html&quot;,&quot;title&quot;:&quot;&quot;}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
-<title>马尔可夫随机过程杂谈 | Ashitemaru</title>
+<title>分类: 【学习笔记】日语 | Ashitemaru</title>
   
 
 
@@ -165,8 +163,8 @@ $(function () {
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">11</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">54</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">12</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">56</span></a></li>
         <li class="menu-item menu-item-skill-docs"><a href="https://sast-skill-docers.github.io/sast-skill-docs/" rel="noopener" target="_blank"><i class="fa fa-book fa-fw"></i>技能引导文档</a></li>
         <li class="menu-item menu-item-thuinfo"><a href="https://www.thuinfo.net/" rel="noopener" target="_blank"><i class="fa fa-sitemap fa-fw"></i>THUInfo</a></li>
         <li class="menu-item menu-item-se-index"><a href="https://thuse-course.github.io/course-index/" rel="noopener" target="_blank"><i class="fa fa-calendar fa-fw"></i>软工课程主页</a></li>
@@ -213,7 +211,7 @@ $(function () {
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <div class="sidebar-inner sidebar-overview-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -226,7 +224,6 @@ $(function () {
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E4%B8%8E%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E6%80%A7%E8%B4%A8"><span class="nav-number">1.</span> <span class="nav-text">随机过程与马尔可夫性质</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E9%93%BE%E7%9A%84%E5%8F%AF%E8%BE%BE%E6%80%A7%E4%B8%8E%E5%8F%AF%E7%BA%A6%E6%80%A7"><span class="nav-number">2.</span> <span class="nav-text">马尔可夫链的可达性与可约性</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -243,14 +240,14 @@ $(function () {
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-count">56</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
   </nav>
@@ -332,161 +329,74 @@ $(function () {
 </noscript>
 
 
-    <div class="main-inner post posts-expand">
+    <div class="main-inner category posts-collapse">
 
 
   
-
-
-<div class="post-block">
   
   
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://ashitemaru.github.io/2023/11/13/markov-process/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="Ashitemaru">
-      <meta itemprop="description" content="Trying to be an observer of this world.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ashitemaru">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          马尔可夫随机过程杂谈
-        </h1>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-11-13 02:25:08" itemprop="dateCreated datePublished" datetime="2023-11-13T02:25:08+00:00">2023-11-13</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2023-11-13 02:25:08" itemprop="dateModified" datetime="2023-11-13T02:25:08+00:00">2023-11-13</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E3%80%90%E6%9D%82%E8%B0%88%E3%80%91%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">【杂谈】数学</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2023/11/13/markov-process/" class="post-meta-item twikoo_visitors" data-flag-title="马尔可夫随机过程杂谈" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span id="twikoo_visitors"></span>
-    </span>
-  
+  <div class="post-block">
+    <div class="post-content">
+      <div class="collection-title">
+        <h2 class="collection-header">【学习笔记】日语
+          <small>分类</small>
+        </h2>
       </div>
-      <div class="post-meta">
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.8k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
-    </span>
-</div>
 
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-        <p>最近学网络建模，发现随机过程真的应用太广了，尤其是马尔可夫过程，在之前的 RL 笔记里面也有提到但是没写很多，这次想着还是稍微做点总结比较好。</p>
-<span id="more"></span>
-<h1 id="随机过程与马尔可夫性质">随机过程与马尔可夫性质</h1>
-<p>所谓随机过程实际上就是一个随机变量的序列 <span class="math inline">\(\{X_t\}, t \in T\)</span>，<span class="math inline">\(t\)</span> 一般都解释为时间，体现随机过程随时间的推移。如果 <span class="math inline">\(T\)</span> 是一个可数集（一般都是自然数集 <span class="math inline">\(\mathbb{N}\)</span>），那么这就是<strong>离散时间随机过程</strong>。如果 <span class="math inline">\(T\)</span> 是 <span class="math inline">\(\mathbb{R}\)</span> 上的一段区间，那么这就是<strong>连续时间随机过程</strong>。随机变量 <span class="math inline">\(X_t\)</span> 的所有可能取值构成的集合称为<strong>状态空间</strong>。</p>
-<p>考虑一个状态空间 <span class="math inline">\(\mathcal{S}\)</span> 至多可数的离散时间随机过程 <span class="math inline">\(\{X_t\}_{t \in \mathbb{N}}\)</span>。该随机过程的<strong>马尔可夫性质</strong>是指，对于任意 <span class="math inline">\(t \in \mathbb{N}\)</span>，如果已知 <span class="math inline">\(X_t\)</span> 的取值，那么 <span class="math inline">\(X_{t + 1}\)</span> 的取值与 <span class="math inline">\(X_0, X_1, \cdots, X_{t - 1}\)</span> 的取值都是独立的。这个性质可以用下面的式子来表示：</p>
-<p><span class="math display">\[
-\mathbb{P}(X_{t + 1} = j \mid X_t = i, X_{t - 1} = i_{t - 1}, \cdots, X_0 = i_0) = \mathbb{P}(X_{t + 1} = j \mid X_t = i)
-\]</span></p>
-<p>这里 <span class="math inline">\(i, j, i_0, \cdots, i_{t - 1} \in \mathcal{S}\)</span> 均为任意的状态。</p>
-<p>鉴于此，一个马尔可夫随机过程可以定义一个<strong>转移概率矩阵</strong> <span class="math inline">\(P = (p_{ij})_{n \times n}\)</span>，这里 <span class="math inline">\(n\)</span> 为状态空间 <span class="math inline">\(\mathcal{S}\)</span> 的大小，其各元素定义为 <span class="math inline">\(p_{ij} := \mathbb{P}(X_{t + 1} = j \mid X_t = i)\)</span>。</p>
-<p>这个矩阵的重要性质是，每一行的和为 <span class="math inline">\(1\)</span>：</p>
-<p><span class="math display">\[
-\sum_{k = 1}^n p_{ik} = \sum_{k = 1}^n \mathbb{P}(X_{t + 1} = k \mid X_t = i) = 1
-\]</span></p>
-<div class="note info no-icon"><p>一个满足马尔可夫性质的状态空间可数离散时间随机过程一般称为<strong>马尔可夫链</strong>。</p>
-<p>任何马尔可夫链均可以按照上述过程定义转移概率矩阵。然而在一些特别的实际问题中，转移概率矩阵可能是与时间相关的，而我们上述的讨论中矩阵并不随时间推移而改变，这类马尔可夫链称为<strong>时间齐次马尔可夫链</strong>，也是强化学习问题中最常见的建模。</p>
-<p>时间不齐次的马尔可夫链则会在后面提及连续时间马尔可夫链时讨论。</p>
-</div>
-<p>如果考虑多步转移，我们可以通过概率运算发现：</p>
-<p><span class="math display">\[
-\begin{aligned}
-\mathbb{P}(X_{t + r + 1} = j \mid X_t = i) &amp;= \sum_{k = 1}^n \mathbb{P}(X_{t + r + 1} = j \mid X_{t + 1} = k) \mathbb{P}(X_{t + 1} = k \mid X_t = i) \\
-&amp;= \sum_{k = 1}^n \mathbb{P}(X_{t + r} = j \mid X_t = k) \mathbb{P}(X_{t + 1} = k \mid X_t = i)
-\end{aligned}
-\]</span></p>
-<p>这里最后一个等号利用了时间齐次的特性。利用上述式子，我们可以发现马尔可夫链的多步状态转移可以通过矩阵的幂次表现。具体而言，记 <span class="math inline">\(P^r\)</span> 的第 <span class="math inline">\((i, j)\)</span> 位置上的元素为 <span class="math inline">\(p^{(r)}_{ij}\)</span>，则：</p>
-<p><span class="math display">\[
-p^{(r)}_{ij} = \mathbb{P}(X_{t + r} = j \mid X_t = i)
-\]</span></p>
-<h1 id="马尔可夫链的可达性与可约性">马尔可夫链的可达性与可约性</h1>
-<p>首先我们来定义<strong>可达性</strong>。如果对于任意的 <span class="math inline">\(i, j \in \mathcal{S}\)</span>，存在 <span class="math inline">\(r \in \mathbb{N}\)</span> 使得 <span class="math inline">\(p^{(r)}_{ij} = \mathbb{P}(X_{t + r} = j \mid X_t = i) &gt; 0\)</span>，那么称 <span class="math inline">\(j\)</span> 是从 <span class="math inline">\(i\)</span> 可达的，记作 <span class="math inline">\(i \to j\)</span>。如果 <span class="math inline">\(i \to j\)</span> 且 <span class="math inline">\(j \to i\)</span>，那么称 <span class="math inline">\(i\)</span> 和 <span class="math inline">\(j\)</span> 是<strong>互达</strong>的，记作 <span class="math inline">\(i \leftrightarrow j\)</span>。</p>
-<p>可达性的直观理解是简单的。<span class="math inline">\(i \to j\)</span> 的含义即为，从状态 <span class="math inline">\(i\)</span> 出发，经过有限步转移，可以到达状态 <span class="math inline">\(j\)</span>。</p>
-<p>不难验证互达的自反性、对称性和传递性，从而互达构成状态空间上的等价关系，这意味着可以据此划分等价类。从而，若一个马尔可夫链的状态空间在互达关系上仅有一个等价类，则该马尔可夫链<strong>不可约</strong>。</p>
-<p>不可约性的直观理解也是简单的。不可约的马尔可夫链的所有状态之间都能通过有限步的状态转移两两互达。</p>
-
+      
+    <div class="collection-year">
+      <span class="collection-header">2022</span>
     </div>
 
-    
-    
-    
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <div class="post-meta-container">
+        <time itemprop="dateCreated"
+              datetime="2022-08-21T01:35:29+00:00"
+              content="2022-08-21">
+          08-21
+        </time>
+      </div>
 
-    <footer class="post-footer">
+      <div class="post-title">
+          <a class="post-title-link" href="/2022/08/21/ja-tutorial-ch1-vocab/" itemprop="url">
+            <span itemprop="name">简明日语自学手册 Chapter 1 生词表</span>
+          </a>
+      </div>
 
-        
-
-          <div class="post-nav">
-            <div class="post-nav-item">
-                <a href="/2023/10/08/paper-2023-10/" rel="prev" title="2023 年 10 月论文笔记">
-                  <i class="fa fa-chevron-left"></i> 2023 年 10 月论文笔记
-                </a>
-            </div>
-            <div class="post-nav-item">
-                <a href="/2023/11/30/cmo-geo/" rel="next" title="2023 CMO Day2 P5 几何试题解答">
-                  2023 CMO Day2 P5 几何试题解答 <i class="fa fa-chevron-right"></i>
-                </a>
-            </div>
-          </div>
-    </footer>
+      
+    </header>
   </article>
-</div>
 
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <div class="post-meta-container">
+        <time itemprop="dateCreated"
+              datetime="2022-08-21T01:35:28+00:00"
+              content="2022-08-21">
+          08-21
+        </time>
+      </div>
 
+      <div class="post-title">
+          <a class="post-title-link" href="/2022/08/21/ja-tutorial-ch1/" itemprop="url">
+            <span itemprop="name">简明日语自学手册 Chapter 1 日语文字系统</span>
+          </a>
+      </div>
 
+      
+    </header>
+  </article>
 
+    </div>
+  </div>
+  
+  
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/categories/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E6%97%A5%E8%AF%AD/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/categories/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E6%97%A5%E8%AF%AD/">1</a><span class="page-number current">2</span>
+  </nav>
 
-
-    <div class="comments"><div id="twikoo-comments"></div></div>
 </div>
   </main>
 
@@ -507,13 +417,13 @@ p^{(r)}_{ij} = \mathbb{P}(X_{t + r} = j \mid X_t = i)
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">528k</span>
+    <span title="站点总字数">535k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">8:01</span>
+    <span title="站点阅读时长">8:06</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
@@ -541,7 +451,7 @@ p^{(r)}_{ij} = \mathbb{P}(X_{t + r} = j \mid X_t = i)
 
   
 
-  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;tags&quot;:&quot;none&quot;,&quot;js&quot;:{&quot;url&quot;:&quot;https:&#x2F;&#x2F;unpkg.com&#x2F;mathjax@3.1.4&#x2F;es5&#x2F;tex-mml-chtml.js&quot;,&quot;integrity&quot;:&quot;sha256-ncNI9OXOS5Ek4tzVYiOMmN&#x2F;KKCPZ6V0Cpv2P&#x2F;zHntiA&#x3D;&quot;}}</script>
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;tags&quot;:&quot;none&quot;,&quot;js&quot;:{&quot;url&quot;:&quot;https:&#x2F;&#x2F;unpkg.com&#x2F;mathjax@3.1.4&#x2F;es5&#x2F;tex-mml-chtml.js&quot;,&quot;integrity&quot;:&quot;sha256-ncNI9OXOS5Ek4tzVYiOMmN&#x2F;KKCPZ6V0Cpv2P&#x2F;zHntiA&#x3D;&quot;}}</script>
 <script src="/js/third-party/math/mathjax.js"></script>
 
 
