@@ -1236,9 +1236,58 @@
 <p>最近打算做 maimai 的分表了，然后也打算好好坐工位了，希望能够有所收获吧。</p>
 <h1 id="section-9">2024.03.06</h1>
 <p>今天大量的事情都动了起来，收到了腾讯的 offer，贾老师那边第一阶段的数据处理完毕进入下一阶段，课内任务逐渐加重，实习那边催我重设背景图，软工文档需要修改，甚至我还花了点时间屏蔽了一下阿里云的推销短信和电话。果然啊，进入了事情开始堆积我开始雄心壮志的阶段，但我这次希望能够把这个状态持续久一些，不要像之前一样事情做到一半去摆烂了。</p>
+<p>结果今天下午大概是学了一整个下午的近世代数，写完了作业。晚饭和迅哥哥聊了一下把 Saiblo 引入 DRL 课程的一些事，然而目前来看还是空中楼阁，所以这个话题进行了一半就回到了吐槽日常生活。</p>
+<p>晚上工位坐牢，今天还有不少事情要去处理，希望能够尽快解决吧。</p>
 ]]></content>
       <categories>
         <category>【生活记录】日记</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>安卓前端开发杂谈</title>
+    <url>/2021/09/01/android-dev-exp-1/</url>
+    <content><![CDATA[<p>安卓的移动端开发，属实让我血压高了一小段时间。毕竟已经接触过类似于 React Native 那种基于 TypeScript 语言的、优秀的跨平台移动端框架，再去尝试用繁琐的 Java 语言写安卓前端自然是不适应且感到烦躁。</p>
+<p>但是毕竟是 Java 程序设计训练课程，安卓前端开发作为其最大的特色，不得不消受。</p>
+<span id="more"></span>
+<h1 id="关于数据绑定">关于数据绑定</h1>
+<p>如果要我说最大的不适应的地方，首先就是数据和图形界面的完全分离。在 React Native 框架之中，数据和图形界面的管理大概是这样的：</p>
+<figure class="highlight typescript"><figcaption><span>TypeScript</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> App = <span class="function">(<span class="params">props: AppProps</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// Set states &amp; initialize</span></span><br><span class="line">    <span class="keyword">const</span> [bar, setBar] = useState&lt;<span class="built_in">number</span>&gt;(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Some functions to update or rewrite data</span></span><br><span class="line">    <span class="keyword">const</span> update = <span class="function">() =&gt;</span> setBar(<span class="function">(<span class="params">o</span>) =&gt;</span> o + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Write UI with TSX, use data freely</span></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="xml"><span class="tag">&lt;<span class="name">View</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Text</span>&gt;</span> Hello world! <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;`The val of bar is $&#123;bar&#125;`&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;`Property foo is $&#123;props.foo&#125;`&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Button</span> <span class="attr">onClick</span>=<span class="string">&#123;update&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但是在安卓之中，图形界面完全定义在 <code>.xml</code> 文件之中，而且一定程度上其定义各个组件摆放方式的语法细节的繁杂程度不低于 HTML。而如果需要将数据载入图形界面，则首先要根据组件的 ID 获取组件，之后才能调用各种方法设定具体属性。</p>
+<figure class="highlight java"><figcaption><span>Java</span></figcaption><table><tr><td class="code"><pre><span class="line">((TextView) view.findViewById(R.id.entity_name)).setText(data.name);</span><br></pre></td></tr></table></figure>
+<p>这里出现的 <code>R</code> 类据说是相当厉害的。但是我第一次接触安卓的时候，这个符号给我带来的感觉就是不安，因为我再也不能像写 React Native 一样至少自认为自己掌握了程序之中的数据流。换一种说法，即使 React Native 可能做了很多背后工作，但它至少做到了让开发者在很多时候能直观引导数据流。</p>
+<p>对于按钮等组件，React Native 框架下可以直接传入回调函数。而众所周知 Java 是纯净的面向对象语言，怎么会有 lambda 这种异端呢（新版本的 Java 已经离经叛道了！）。</p>
+<p>所以你需要写监听器对象，重写其中的方法等等。</p>
+<hr />
+<p>并不是说这样不好，我还记得之前大一小学期的时候写 Qt 很多时候就是各种指针到处乱飞然后到处乱 <code>set</code> 这个那个的，最后一个 <code>draw</code> 函数里面上百行的，成块的各种格式设定、字体设定、内容设定、排列设定，然后这次写安卓让我回忆起了那一段黑暗时光。</p>
+<h1 id="并不适应的适配器模式">并不适应的适配器模式</h1>
+<p>如果只是想给一个 <code>TextView</code> 载入文字，直接几个 <code>set</code> 函数就结束了。但是给一个格式复杂的列表载入数据，则相当繁琐。比如说现在主流的 <code>RecyclerView</code>，其载入数据，就需要你自己编写一个数据适配器。</p>
+<p>我首先是上网找轮子，随后想了一下，干脆自己包装了个简单的 <code>RecyclerViewAdapter</code> 先勉强用用。</p>
+<p>将数据塞到图形界面上，最重要的三个东西是上下文、使用什么 <code>layout</code> 和数据本身，那么适配器的构造函数就需要接受这三项。然后就是平凡地重写 <code>RecyclerView.Adapter</code> 所要求的三个函数。不过这里我在重写 <code>onBindViewHolder</code> 的时候留了空，因为这里就是定义适配器最重要部分——数据如何映射到 UI 的函数。我将这一个函数设为虚函数，让子类继承重写就可以实现各种映射方式。最后的成果大致这样：</p>
+<figure class="highlight java"><figcaption><span>Java</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">RecyclerViewAdapter</span>&lt;<span class="title">T</span>&gt; <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">Adapter</span>&lt;<span class="title">RecyclerViewAdapter</span>.<span class="title">ViewHolder</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> Context mContext;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">int</span> mLayoutId;</span><br><span class="line">    <span class="keyword">protected</span> List&lt;T&gt; mData;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RecyclerViewAdapter</span><span class="params">(Context context, <span class="keyword">int</span> layoutId, List&lt;T&gt; data)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.mContext = context;</span><br><span class="line">        <span class="keyword">this</span>.mLayoutId = layoutId;</span><br><span class="line">        <span class="keyword">this</span>.mData = data;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="meta">@NonNull</span> <span class="function">ViewHolder <span class="title">onCreateViewHolder</span><span class="params">(<span class="meta">@NonNull</span> ViewGroup parent, <span class="keyword">int</span> viewType)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ViewHolder(</span><br><span class="line">                LayoutInflater.from(mContext).inflate(mLayoutId, parent, <span class="keyword">false</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBindViewHolder</span><span class="params">(<span class="meta">@NonNull</span> ViewHolder holder, <span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// <span class="doctag">TODO:</span> What is this?</span></span><br><span class="line">        <span class="comment">// holder.updatePosition(position);</span></span><br><span class="line">        <span class="keyword">this</span>.convert(holder, mData.get(position));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">convert</span><span class="params">(ViewHolder holder, T data)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getItemCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> mData.size();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ViewHolder</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">ViewHolder</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">private</span> View mConvertView;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">ViewHolder</span><span class="params">(View itemView)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>(itemView);</span><br><span class="line">            <span class="keyword">this</span>.mConvertView = itemView;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> &lt;K extends View&gt; <span class="function">K <span class="title">getViewById</span><span class="params">(<span class="keyword">int</span> viewId)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> (K) mConvertView.findViewById(viewId);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>用起来也简单，传入三个要素，之后重写 <code>convert</code> 方法定义一下数据到 UI 的映射就好了：</p>
+<figure class="highlight java"><figcaption><span>Java</span></figcaption><table><tr><td class="code"><pre><span class="line">binding.entityList.setAdapter(<span class="keyword">new</span> RecyclerViewAdapter&lt;Entity&gt;(</span><br><span class="line">    HomeFragment.<span class="keyword">this</span>.getActivity(), R.layout.home_entity_item, baseEntities</span><br><span class="line">) &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">convert</span><span class="params">(RecyclerViewAdapter.ViewHolder holder, Entity data)</span> </span>&#123;</span><br><span class="line">        ((TextView) holder.getViewById(R.id.entity_name)).setText(data.getLabel());</span><br><span class="line">        ((TextView) holder.getViewById(R.id.entity_category)).setText(data.getCategory());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>你会发现，这比 React Native 要写的东西多太多了。上面这么多需要折腾的，React Native 只需要这样写：</p>
+<figure class="highlight typescript"><figcaption><span>TypeScript</span></figcaption><table><tr><td class="code"><pre><span class="line">&lt;View&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        baseEntities.map(<span class="function">(<span class="params">val, ind</span>) =&gt;</span> (</span><br><span class="line">            <span class="xml"><span class="tag">&lt;<span class="name">View</span> <span class="attr">key</span>=<span class="string">&#123;ind&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;val.name&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;val.category&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span></span><br><span class="line">        ))</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/View&gt;</span><br></pre></td></tr></table></figure>
+<p>就可以实现一个列表了。</p>
+<p>Java 我写了一整个类，光数据转成 UI 也写了好几行长代码，这还没有算 <code>.xml</code> 文件。</p>
+]]></content>
+      <categories>
+        <category>【杂谈】开发</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>JS 文件本地化</title>
+    <url>/2022/08/20/blog-js-localize/</url>
+    <content><![CDATA[<p>自从 JSDelivr 半挂了之后就一直在为这些事情苦恼。</p>
+<span id="more"></span>
+<p>简而言之，一个静态站需要拉取一堆 JS、CSS 文件。而正常而言的 JS 文件完全可以从网络上当场获取，但是由于 JS CDN JSDelivr 半墙，我只能速速转战其他的 CDN，结果近日发现速度非常不理想，甚至仅仅是拉 jQuery 都花了 15 秒，这完全不能接受。</p>
+<p><img src="/uploads/blog-js-localize/1.png" /></p>
+<p>本来想尝试一下换其他的 CDN，但是怎么试都不算快。</p>
+<p>还是暴力解决方法比较好，我直接把 jQuery 等一系列常用的东西的 min JS 打包放在了自己博客文件夹内，每次请求只不过是访问本地文件，太完美了。</p>
+<p>虽然问题暂且是解决了，但是我还是觉得，为啥这些 CDN 会受限呢，真的和什么敏感领域有关吗。</p>
+]]></content>
+      <categories>
+        <category>【杂谈】开发</category>
       </categories>
   </entry>
   <entry>
@@ -2691,53 +2740,6 @@
       </categories>
   </entry>
   <entry>
-    <title>安卓前端开发杂谈</title>
-    <url>/2021/09/01/android-dev-exp-1/</url>
-    <content><![CDATA[<p>安卓的移动端开发，属实让我血压高了一小段时间。毕竟已经接触过类似于 React Native 那种基于 TypeScript 语言的、优秀的跨平台移动端框架，再去尝试用繁琐的 Java 语言写安卓前端自然是不适应且感到烦躁。</p>
-<p>但是毕竟是 Java 程序设计训练课程，安卓前端开发作为其最大的特色，不得不消受。</p>
-<span id="more"></span>
-<h1 id="关于数据绑定">关于数据绑定</h1>
-<p>如果要我说最大的不适应的地方，首先就是数据和图形界面的完全分离。在 React Native 框架之中，数据和图形界面的管理大概是这样的：</p>
-<figure class="highlight typescript"><figcaption><span>TypeScript</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> App = <span class="function">(<span class="params">props: AppProps</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// Set states &amp; initialize</span></span><br><span class="line">    <span class="keyword">const</span> [bar, setBar] = useState&lt;<span class="built_in">number</span>&gt;(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Some functions to update or rewrite data</span></span><br><span class="line">    <span class="keyword">const</span> update = <span class="function">() =&gt;</span> setBar(<span class="function">(<span class="params">o</span>) =&gt;</span> o + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Write UI with TSX, use data freely</span></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="xml"><span class="tag">&lt;<span class="name">View</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Text</span>&gt;</span> Hello world! <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;`The val of bar is $&#123;bar&#125;`&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;`Property foo is $&#123;props.foo&#125;`&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Button</span> <span class="attr">onClick</span>=<span class="string">&#123;update&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>但是在安卓之中，图形界面完全定义在 <code>.xml</code> 文件之中，而且一定程度上其定义各个组件摆放方式的语法细节的繁杂程度不低于 HTML。而如果需要将数据载入图形界面，则首先要根据组件的 ID 获取组件，之后才能调用各种方法设定具体属性。</p>
-<figure class="highlight java"><figcaption><span>Java</span></figcaption><table><tr><td class="code"><pre><span class="line">((TextView) view.findViewById(R.id.entity_name)).setText(data.name);</span><br></pre></td></tr></table></figure>
-<p>这里出现的 <code>R</code> 类据说是相当厉害的。但是我第一次接触安卓的时候，这个符号给我带来的感觉就是不安，因为我再也不能像写 React Native 一样至少自认为自己掌握了程序之中的数据流。换一种说法，即使 React Native 可能做了很多背后工作，但它至少做到了让开发者在很多时候能直观引导数据流。</p>
-<p>对于按钮等组件，React Native 框架下可以直接传入回调函数。而众所周知 Java 是纯净的面向对象语言，怎么会有 lambda 这种异端呢（新版本的 Java 已经离经叛道了！）。</p>
-<p>所以你需要写监听器对象，重写其中的方法等等。</p>
-<hr />
-<p>并不是说这样不好，我还记得之前大一小学期的时候写 Qt 很多时候就是各种指针到处乱飞然后到处乱 <code>set</code> 这个那个的，最后一个 <code>draw</code> 函数里面上百行的，成块的各种格式设定、字体设定、内容设定、排列设定，然后这次写安卓让我回忆起了那一段黑暗时光。</p>
-<h1 id="并不适应的适配器模式">并不适应的适配器模式</h1>
-<p>如果只是想给一个 <code>TextView</code> 载入文字，直接几个 <code>set</code> 函数就结束了。但是给一个格式复杂的列表载入数据，则相当繁琐。比如说现在主流的 <code>RecyclerView</code>，其载入数据，就需要你自己编写一个数据适配器。</p>
-<p>我首先是上网找轮子，随后想了一下，干脆自己包装了个简单的 <code>RecyclerViewAdapter</code> 先勉强用用。</p>
-<p>将数据塞到图形界面上，最重要的三个东西是上下文、使用什么 <code>layout</code> 和数据本身，那么适配器的构造函数就需要接受这三项。然后就是平凡地重写 <code>RecyclerView.Adapter</code> 所要求的三个函数。不过这里我在重写 <code>onBindViewHolder</code> 的时候留了空，因为这里就是定义适配器最重要部分——数据如何映射到 UI 的函数。我将这一个函数设为虚函数，让子类继承重写就可以实现各种映射方式。最后的成果大致这样：</p>
-<figure class="highlight java"><figcaption><span>Java</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">RecyclerViewAdapter</span>&lt;<span class="title">T</span>&gt; <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">Adapter</span>&lt;<span class="title">RecyclerViewAdapter</span>.<span class="title">ViewHolder</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> Context mContext;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">int</span> mLayoutId;</span><br><span class="line">    <span class="keyword">protected</span> List&lt;T&gt; mData;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RecyclerViewAdapter</span><span class="params">(Context context, <span class="keyword">int</span> layoutId, List&lt;T&gt; data)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.mContext = context;</span><br><span class="line">        <span class="keyword">this</span>.mLayoutId = layoutId;</span><br><span class="line">        <span class="keyword">this</span>.mData = data;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="meta">@NonNull</span> <span class="function">ViewHolder <span class="title">onCreateViewHolder</span><span class="params">(<span class="meta">@NonNull</span> ViewGroup parent, <span class="keyword">int</span> viewType)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ViewHolder(</span><br><span class="line">                LayoutInflater.from(mContext).inflate(mLayoutId, parent, <span class="keyword">false</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBindViewHolder</span><span class="params">(<span class="meta">@NonNull</span> ViewHolder holder, <span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// <span class="doctag">TODO:</span> What is this?</span></span><br><span class="line">        <span class="comment">// holder.updatePosition(position);</span></span><br><span class="line">        <span class="keyword">this</span>.convert(holder, mData.get(position));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">convert</span><span class="params">(ViewHolder holder, T data)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getItemCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> mData.size();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ViewHolder</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">ViewHolder</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">private</span> View mConvertView;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">ViewHolder</span><span class="params">(View itemView)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>(itemView);</span><br><span class="line">            <span class="keyword">this</span>.mConvertView = itemView;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> &lt;K extends View&gt; <span class="function">K <span class="title">getViewById</span><span class="params">(<span class="keyword">int</span> viewId)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> (K) mConvertView.findViewById(viewId);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>用起来也简单，传入三个要素，之后重写 <code>convert</code> 方法定义一下数据到 UI 的映射就好了：</p>
-<figure class="highlight java"><figcaption><span>Java</span></figcaption><table><tr><td class="code"><pre><span class="line">binding.entityList.setAdapter(<span class="keyword">new</span> RecyclerViewAdapter&lt;Entity&gt;(</span><br><span class="line">    HomeFragment.<span class="keyword">this</span>.getActivity(), R.layout.home_entity_item, baseEntities</span><br><span class="line">) &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">convert</span><span class="params">(RecyclerViewAdapter.ViewHolder holder, Entity data)</span> </span>&#123;</span><br><span class="line">        ((TextView) holder.getViewById(R.id.entity_name)).setText(data.getLabel());</span><br><span class="line">        ((TextView) holder.getViewById(R.id.entity_category)).setText(data.getCategory());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>你会发现，这比 React Native 要写的东西多太多了。上面这么多需要折腾的，React Native 只需要这样写：</p>
-<figure class="highlight typescript"><figcaption><span>TypeScript</span></figcaption><table><tr><td class="code"><pre><span class="line">&lt;View&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        baseEntities.map(<span class="function">(<span class="params">val, ind</span>) =&gt;</span> (</span><br><span class="line">            <span class="xml"><span class="tag">&lt;<span class="name">View</span> <span class="attr">key</span>=<span class="string">&#123;ind&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;val.name&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;val.category&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span></span><br><span class="line">        ))</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/View&gt;</span><br></pre></td></tr></table></figure>
-<p>就可以实现一个列表了。</p>
-<p>Java 我写了一整个类，光数据转成 UI 也写了好几行长代码，这还没有算 <code>.xml</code> 文件。</p>
-]]></content>
-      <categories>
-        <category>【杂谈】开发</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>JS 文件本地化</title>
-    <url>/2022/08/20/blog-js-localize/</url>
-    <content><![CDATA[<p>自从 JSDelivr 半挂了之后就一直在为这些事情苦恼。</p>
-<span id="more"></span>
-<p>简而言之，一个静态站需要拉取一堆 JS、CSS 文件。而正常而言的 JS 文件完全可以从网络上当场获取，但是由于 JS CDN JSDelivr 半墙，我只能速速转战其他的 CDN，结果近日发现速度非常不理想，甚至仅仅是拉 jQuery 都花了 15 秒，这完全不能接受。</p>
-<p><img src="/uploads/blog-js-localize/1.png" /></p>
-<p>本来想尝试一下换其他的 CDN，但是怎么试都不算快。</p>
-<p>还是暴力解决方法比较好，我直接把 jQuery 等一系列常用的东西的 min JS 打包放在了自己博客文件夹内，每次请求只不过是访问本地文件，太完美了。</p>
-<p>虽然问题暂且是解决了，但是我还是觉得，为啥这些 CDN 会受限呢，真的和什么敏感领域有关吗。</p>
-]]></content>
-      <categories>
-        <category>【杂谈】开发</category>
-      </categories>
-  </entry>
-  <entry>
     <title>2023 CMO Day2 P5 几何试题解答</title>
     <url>/2023/11/30/cmo-geo/</url>
     <content><![CDATA[<p>本来应该干活的，结果发现 CMO 题出来了，无聊就来做了一下。</p>
@@ -3546,179 +3548,6 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 ]]></content>
       <categories>
         <category>【杂谈】数学</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>大二春季学期学期总结</title>
-    <url>/2021/06/19/grade-2-spring-conclusion/</url>
-    <content><![CDATA[<p>魔幻的大二春季学期最终还是随着自动机考试的结束而落幕了，随意写一点东西来总结一下吧。</p>
-<span id="more"></span>
-<p>虽然还没有出分，但我能够预料到这一学期如果按照绩点来评判，可以说过得十分坎坷。但是，这一学期还有更多的比绩点更值得重视的一些东西。</p>
-<h2 id="课内学习">课内学习</h2>
-<p>课内总体而言过得很不平凡，即使这一学期只有 24 学分的课程。与一年前那种 OOP 作业一发下来就赶快刷榜完成，高代选讲还愿意在课外学习很多内容的热情相比，我这一学期对课内显然是淡薄了很多。标志性的事件可以罗列出来：</p>
-<ul>
-<li><p>人智导 PA2 是在黄浦江上遥控卫爷写的，PA3 是在上海桌游店里打山屋惊魂的间隙交的</p></li>
-<li><p>在各种情况下写过数电实验报告，包括在人大门口醉酒的时候、在去上海的火车上、在轰趴的自动麻将机上（除了考试，我每一次实验的代码都是抄的）</p></li>
-<li><p>一个学期没有见过数电、自动机、人智导的老师，这三门课均让我在考试周通了宵（一个大二学生用 24 小时创造一个奇迹）</p></li>
-<li><p>软件工程大作业不到最后一周都没有认真写 UI</p></li>
-<li><p>高性能一气之下决定退课，虽然从未后悔过这个决定</p></li>
-<li><p>英语课一个学期就做了一份作业，占比最大的 Task C（团队 pre）只花了三四天准备</p></li>
-<li><p>物理实验报告分数为 9, 8.5, 8.7, 8, 8.7，上学期则是 9, 9, 9, 9.3, 9</p></li>
-</ul>
-<p>总之就是这学期浪了一些，或许是认清楚你清贵系的教学水平甚至还不如高中之后的一些合理举动。如果要我来评价大二下学期这些课程的话，我只能说除了《不朽的艺术》这一门课，其他的课程我丝毫没有觉得学习到了什么有用的东西。再加上期末四门专业课考试两门可以说出事故的情况，我更是愿意给这一学期以低评价。</p>
-<p>我大概算了一下，反正现在绩点的浮动不会多大，还不如抓紧时间，做一些我觉得有意义的事情。</p>
-<h2 id="thuinfo">THUInfo</h2>
-<p>我也说过，这是我唯一拿得出来的作品。虽然之前有写过一些小型项目，它们虽然也是我探索的足迹，但总体没有 THUInfo 给我带来的成就感大。</p>
-<p>但比较愧疚的是这一学期没有给 THUInfo 作出很大的贡献。寒假的时候翻新了“计划”功能，修了几个小 bug 之后，学期中除了加了比如说“今日高亮”这种小功能之外，我也就没有作出什么贡献了。</p>
-<p>但是，暑假确实是想要做很大的事情的。一方面是和校内 iOS Club 搭上了关系，对方也恰好想要找到一个重点支持的项目，双方互相需要，何乐而不为呢。通过它我们找到了美工，目前也有了一个较为简单的 UI 效果图（不得不说，做设计的就是做设计的）。另外一方面是<a href="https://www.zhihu.com/question/63407413">栋栋</a>加入了团队，总之多一个技能熟练的人手是很不错的。</p>
-<p>敬请期待暑假过后的 THUInfo 3 系列版本。</p>
-<h2 id="社工">社工</h2>
-<p>大一下学期一番折腾之后，一个学期没有加入任何学生组织。但是一个转变的契机就是 xge 和我说他和栋栋准备开发日麻，随后将我纳入了 308（科协 &amp; 算协活动室）常驻人员之中。在 308 蹲守的过程中，我也认识了科协的许多同学（再次点名“表扬”大恶人安頔）。最后决定加入科协，大概是那天去出去散心醉酒，隔天回校的时候恰好赶上 C 楼门口的智能体嘉年华。本来是不打算去的，想着去看看也没啥问题，就突然发现科协办的东西还挺有意思。随后又去蹭了智能体决赛，还坑了 Omega Fantasy 一顿饭。</p>
-<p>随后大约是某晚和安頔夜谈，经过一番交流，决定去混一个科协副主席。</p>
-<p>怎么说呢，或许真的是如同之前一些人的评价——“你大一下学期的那种情况实属罕见，哪有人开局社工就是王炸的”一般，社工并不是我想的那么不堪。现在大概是发现，有一群志同道合的人一起做事情是多么愉悦。</p>
-<h2 id="sakana">Sakana</h2>
-<p>这一段没有什么特别想说的，总之揭开了一些过往，给一些问题作出了解答，这应该也是这个学期我应该可以说最为重视的一件事。虽然有很多的小细节，有很多的瞬间，但还是就留下我之前发在空间里的一段话吧：</p>
-<blockquote class="blockquote-center">
-<p>虽然我真的不会挑时间，不会好好规划安排行程，或许会因为冲动把事情做得很离谱。 但真的感谢包容我的愚拙。</p>
-
-</blockquote>
-<h2 id="一些总结与闲话">一些总结与闲话</h2>
-<p>这一学期的 Holder 发生了相当大的改变，应该是真的去思考过我的大学应该如何度过这个问题了。之后就确立了“<strong>我要帮助后辈们尽可能少走弯路</strong>”这样的一个简单的目标，于是和改制的科协网络部不谋而合，于是和高中班主任谈好了回高中给学弟学妹讲数学竞赛。在确立好自己的真正想做的事情之后，便是卸下一些伪装。先前的我大概因为完全不能找到我自己的目标，而将自己浸没在无意义的内卷之中，也不敢面对自己的一些感情。这一切的一切，都在稍微通透之后被瓦解了。</p>
-<p>当然我感觉需要警惕的，就是我暂且需要约束一下自己无限膨胀的野心，不能给自己捞太多的锅，接太多的任务，应该让自己慢慢达到一种平衡。</p>
-<p>不如现在，来说说之后想要做的事情吧：</p>
-<ul>
-<li><p>接着跟进在刘知远实验室的任务，努力发篇文章，发完就撤退</p></li>
-<li><p>翻新 THUInfo 的 UI，开发一些新功能</p></li>
-<li><p>在科协把“技能引导文档”这件事做好，做到宣讲会上的“为了创建一个 user-friendly 的计算机系而奋斗”</p></li>
-<li><p>好好地生活，让自己的大学不仅仅是绩点和社工</p></li>
-</ul>
-<p>还有就是一些暑假要做的事情，比如说 GRE，比如说科目二，比如说回高中讲竞赛，比如尝试一下图形学。</p>
-<p>写这篇潦草的总结的时候，我应该还因为昨晚通宵复习自动机而头晕目眩，但是我的神志却异常清醒，因为我的大学似乎是真的开始了。</p>
-<p>我有分享歌词的习惯，这里也来一句吧。但不同于之前我喜欢分享那种长长的，哲学家写散文式的歌词，这个歌词很朴素：</p>
-<blockquote class="blockquote-center">
-<p>ケーキも大好き，君も大好き。</p>
-<p>——「とある一家の御茶会議」</p>
-
-</blockquote>
-<p>祝愿我余下的一半本科时光，能过得有意义。这里是 Holder，我们一起接着走下去吧。</p>
-]]></content>
-      <categories>
-        <category>【生活记录】学期总结</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>大三秋季学期学期总结</title>
-    <url>/2022/01/05/grade-3-autumn-conclusion/</url>
-    <content><![CDATA[<p>今天考完了最后一门《编译原理》，随后参加了年级会。这样看来，我的大三上学期，这个被学长们称为渡劫的学期，就这样平平无奇结束了。</p>
-<span id="more"></span>
-<h2 id="对自己的质疑">对自己的质疑</h2>
-<p>这学期之所以被称为渡劫，是因为按照教学计划计算机系的最核心的四大原理课是在这学期修读。这四大原理是《计算机组成原理》《计算机网络原理》《编译原理》《信号处理原理》。而我所说的对自己的质疑，就是我发现我完全对这四门课里的大部分提不起任何兴趣。</p>
-<p>在成为大三学生之前，我从未质疑过我为什么要来这个专业，甚至一定程度上庆幸虽然选择计算机是随大流，但自己却也莫名其妙混得不算差。大一和大二修读的课程，我大多都能学得比较明白，再不济也能做到考前 overfit 一波混个考试分数。得益于此，我大三之前的 GPA 可以说还挺不错的。</p>
-<p>但是进入大三之后，我明显感受到力不从心。比如说造计算机，其实我早就在《数字电路实验》这门大二下学期的入门课里面认识到了我似乎对硬件设计一窍不通，或者说完全没有一种愿意学习这类知识的冲动。另外比如说计算机网络相关，我对网络只是单纯知道一些简单的概念，深入了解却让我相当抗拒，我不是抗拒特定的课程，我是对整个计算机网络这个领域感到深刻的无力，甚至是生理性不适。</p>
-<p>所以我有意无意地拖延了造机，不到最后一周没有真正开工。我有意无意地只用一下午复习网原，有意无意地没有去任何一堂除了体育之外的课。</p>
-<p>因为我抗拒，我理解不了这些知识背后的逻辑，支撑着我学习新的领域的动力不能直接迁移到计组和网原这些课程上。</p>
-<p>与此对应的，我课余在尝试着学习一些数学，研究生方向也想尽量往数学相关方向贴近一下。在学习《信号组成原理》的时候，常常痛斥其数学基础不牢靠（毕竟是工科面向应用的学问，其宁愿牺牲严谨性也要保证易用性），也曾钻牛角尖一样地和别人争执过信号这门课里的数学体系是不是矛盾的。</p>
-<p>我发现我对知识有一点奇妙的偏执，我希望我学习的东西是体系的、有逻辑的，或者说我希望学习一个由人类<strong>发现</strong>的学科，而非由人类<strong>发明</strong>的学科。比如说网络协议往往充满了历史包袱、前人的失败经历、欠考虑的机制和随后而来的零碎补丁，它不是一个等待人类来发掘的逻辑体系，它本身就是人类在实践中堆叠的经验谈。与此类似的，还有我拒绝研究 CSS 的那一堆难以理解的属性，不想深究 Web 混沌初开时的前端技术。</p>
-<p>所以我开始反思，我或许真的应该当时听从一些劝诫去学习数学什么的，但实际上我也知道这不过是虚无的懊悔，不过是这山望着那山高般的幻觉。但基于这样的自我认识，我尝试着去选择和数学关系较大的计算机领域作为研究生方向，比如说渲染。</p>
-<h2 id="课内学习">课内学习</h2>
-<p>和之前说的一样，这学期六门课，四大原理加两门限选。网原和网安都是网络方向的课程，考试几乎全都是背诵就行，但悲哀的是我厌恶计算机网络，连课件都懒得打开看两眼。不过还好网安不难，但是网原我估计差不多就是 B+ / B / B- 里面随机给分了，自我认为 3.3 绝对不亏，3.6 绝对血赚。</p>
-<p>计组确实硬核，而且我也不喜欢写硬件语言，因为它思维逻辑和我常用的软件语言相当不同，所以造机大实验着实让我一个星期没睡好觉。但是计组和网原最大的不同是，计组学不好我认为原因是客观上我能力不行，网络学不好我认为原因是主观上我厌恶。所以即使计组不简单，考试也不简单，但我依然很努力地去学了三四天，虽然感觉也没考多好。</p>
-<p>编原今年史诗级削弱，取消实验考试改为期末周后的附加实验，删减考纲，降低试题难度，提升平时作业占比。就说最明显的，今天在考场上看到 SLR(1) 文法的题选的语言竟然是 <span class="math inline">\(\{a^n: n \geq 1\}\)</span> 的时候，我已经真的深刻领悟到，什么是把分送到你手上。</p>
-<p>信号原理自己学得挺开心，毕竟自己也喜欢有事没事钻一钻所谓事物本质的东西。比如说当我期末复习的时候，把数字滤波器、传递函数、 Z 变换、收敛域与系统性质那一套在课间上混乱不堪的概念理清楚的时候，自己真的有一种豁然开朗而想继续深入学习的感觉。</p>
-<hr />
-<p>要说总体的话，就是这学期估计 GPA 还得继续往下掉，但我也只能说 Who cares。大一大二到大三，自己也经历了微积分不考 4.0 就是挂科，数据结构 3.6 就是胜利到网原 3.3 也不算亏这一路的心态变化。</p>
-<p>但似乎 Holder 还是没有摆脱那一种奇妙的思维惯性，peer pressure 还是在隐隐约约给我带来一些不愉悦。</p>
-<h2 id="科协">科协</h2>
-<p>上学期奇妙地成为了副主席，那这学期就应该做点事情了。</p>
-<p>在还没有开始造机、造路由器之前，由于课业压力暂且还不大，我便抽了一点空余时间把技能引导文档搭建起来了，并且写了一些东西进去。</p>
-<p>技能引导文档大约是一种课程前置知识的补全，因为我确实见过不少同学都已经开始上课了，却连前置技术栈都不了解，最后只能网上随便找点资料混过去。秉持着能做点什么都是好的的想法，索性借着科协这个平台，搭建起了这样的一个文档共享的网站。</p>
-<p>但是随着造机、造路由器和期末周，文档维护也就暂且搁置。现在考试完了，寒假是一大波开工的好时机。</p>
-<hr />
-<p>说到科协就必须要提到安老板，就要提到我最终估计就会采纳安老板的提议，去媒体所混日子了。</p>
-<p>现在还在绝赞学习《GAMES101》，感觉自己摸鱼摸得太过了其实。</p>
-<h2 id="摸鱼摸鱼摸">摸鱼摸鱼摸</h2>
-<p>这个学期虽然很辛苦，但依然可以忙里偷闲摸不少鱼。小学期莫名其妙搞到了一个日区 App store 账号，于是又可以开始玩 Project Sekai 了。这种又有音游难度，又能抽抽卡养养妹子看看剧情的小游戏我确实喜欢，所以这个学期也基本一直都在玩，Phigros 基本都荒废了。</p>
-<p>要说还有什么的话，就是打牌，无穷无尽的打牌。毕竟打牌确实没那么多限制，特别是打网络麻将，随时随地就开一把打着玩就行。所以 Holder 倒也经常在学累了的时候开一把，消遣消遣倒也不错。考试周其实打了不少牌，基本上一天打五六把还是有可能的。可能也是频率上来了，这学期也总算把四人麻将打上玉之间了。</p>
-<p>除了网络麻将就是宿舍里搓牌，本学期最大的进展就是大约通过次世代认识了一些八字班学长一起打牌，不过确实也算是见识到了我这类图乐子打牌和认真打牌人的水平差距。</p>
-<hr />
-<p>另外可能就是通过 V+ 吹水群认识了另外一些人，平常也是交流交流 Vocaloid 相关，吹水聊天。可能偶尔会在周末的时候组织去国贸唱 K，自己也去过两三回了，确实是放松的好机会。</p>
-<p>不过也因此渐渐喜欢上了学习的时候唱歌，虽然之前也偶尔会这样，但是真正感觉有意识地哼唱一些歌还是这个学期的事情。</p>
-<h2 id="一些碎片">一些碎片</h2>
-<h3 id="小学期的精神问题">小学期的精神问题</h3>
-<p>暑假的时候我处于一种神经敏感的状态，整个人还在五月份那一次大崩溃的余震之中喜怒无常。而八月中旬的小学期，由于众所周知的屑课《Java 语言程序设计》，以及当时一些早已遗忘的情感问题的引子，Holder 又成功经历了一次情绪崩盘。</p>
-<p>大约，那某一个夜晚，在工物馆和美院停车场之间小路上，漫无目的地晃荡着和 Sakana 哭诉着的场景，是我小学期记忆最深刻的事情。</p>
-<h3 id="无界美术馆">无界美术馆</h3>
-<p>上海的一个美术馆，在一个周末 Holder 偷偷跑去和 Sakana 到那里参观去了。</p>
-<p>Holder 向来是不太解风情的，对这个美术馆里展出的那些灯光艺术、雕塑、投影交互等等作品，我只能说“好闪”“好亮”“好鲜艳”这些明显语言贫瘠的评价。所以说 Holder 还只能读死书，或者有事没事和舍友抬抬杠，精神世界倒也是一片荒芜。</p>
-<h3 id="造机的三星期">造机的三星期</h3>
-<p>其实我也说了，虽然造机确实给了三星期，但实际上我只在最后一个星期加紧做了不少事情。当时最喜欢的工作模式就是在 308 一个人坐着，手机挑一部没有很烧脑剧情的日常番，边看番边等 Vivado 编译或者看波形图。就这样半悠闲半紧张地工作着，倒也几天内写掉了不少东西。但平心而论，我依然没能从硬件设计中获取多少快乐，虽然最终看着自己写的 CPU 上能运行自己写的贪吃蛇游戏，但要让我回到那三星期，我说还不如打两三把牌。</p>
-<h2 id="所以呢">所以呢？</h2>
-<p>所以说大三上学期也就这样结束了，课业成绩并不理想，人也过得疲惫不堪，其中一大半责任是网原。但是换一种角度，我认识了新的一起打牌的朋友，认识了能和我一起唱 V 曲的同学，Project Sekai 时不时能抽出好看的角色，打牌虽然会恶调但确实缓解了一些紧张情绪。自己也逐步和自己和解，不再纠结于一些得失，自己也在尝试着尽力做一些帮助他人的事。</p>
-<p>所以其实我也不知道我这个学期究竟是什么样的，这篇总结我也写得磕磕绊绊不知道什么是这学期的主线。传统意义上四大原理的主线在我这里断裂了，因为我精力分配中它们并不优先。</p>
-<p>但总归是看到了本科生活的尽头，自己也已经有了意向性的导师，也对自己究竟想学什么、想做些什么有了模糊的应答。虽然还是时不时感叹我真的不适合计算机系，感叹自己怎么过得这么惨，时不时在空间或者朋友圈发一些意味不明的文字，但总体上 Holder 还是履行了上个学期的诺言，尽力地享受着自己的本科生活。</p>
-<p>寒假的话，可能要做不少事了。</p>
-<ul>
-<li><p>技能引导文档寒假宣传</p></li>
-<li><p>THUInfo 翻新</p></li>
-<li><p>实验室科研的一些事务</p></li>
-<li><p>自学一些数学以及日语</p></li>
-</ul>
-<p>下学期也选了若干看起来还挺有意思的课程，希望下学期能过得更快乐一些。</p>
-<blockquote class="blockquote-center">
-<p>失うことに慣れてく中で失くさずにいた大事な思いを、</p>
-<p>抱きしめたら不意に涙が落ちたのは、</p>
-<p>この街でまだ生きていたいと思うから。</p>
-<p>——「幽霊東京」</p>
-
-</blockquote>
-]]></content>
-      <categories>
-        <category>【生活记录】学期总结</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>大三秋季学期前的一些碎话</title>
-    <url>/2021/09/12/grade-3-autumn-preview/</url>
-    <content><![CDATA[<p>自己似乎就这样莫名其妙成为了一个大三学生，其实还隐隐约约记得一年前刚进实验室的时候刘知远的一句“没想到这么快八字班也要造机了啊”。现在想来，九字班这个词语从原先的代指新生，渐渐地变成了代指一群大三老油条，而自己的一字班学弟也正在憧憬着四年的本科时光，一时间竟觉得大学原来也快结束了。</p>
-<p>今夜突然接到 Sakana 的一句“我还是好焦虑”，唐突地自己也开始陷入了一种窘迫的心理。自己，真的准备好去迎接之后的生活了么。</p>
-<span id="more"></span>
-<h1 id="学业和大三的渡劫">学业和大三的渡劫</h1>
-<p>清华大学的计算机系向来会把大三上学期称为渡劫，原因是计算机核心专业课四大原理一大工程（计算机组成原理、计算机网络原理、编译原理、信号处理原理、软件工程）将会在一个学期内学习完成。虽然自己已经提前把软件工程这门课草草了结，但是作为一个对硬件和计算机系统没有感觉的人，四大原理就足以让我恐惧。已经能够预见到，将来的 Holder 或许会被造计算机、造路由器、造编译器、写 Matlab 处理信号等各种困难的作业包围，然后还要抽出时间应付掉 VLSI 和网安两门限选课的平时学习。</p>
-<p>其实也正如一些人对我的评价所说，我不是一个害怕困难或者折磨的人，但是我在受折磨的时候会习惯性一个人顶着。我只是默默地担心着自己的心理健康情况，自己这近几个月来时不时的情绪崩溃足以让我感到害怕。</p>
-<p>但实际上，我还是在安慰着自己没有问题，劝慰着自己造机造路由器会顺利，或许还会有点乐趣。也或许会安慰自己，信号处理原理全是微积分，自己微积分学得挺明白不用担心。然而即便如此，还是抵挡不住现在的焦虑和不安。</p>
-<h1 id="科研的不顺和前途的迷茫">科研的不顺和前途的迷茫</h1>
-<p>我大一就跑到组里去了，是一个进组挺早的人，家里人一直比较关心我这么早进组会怎么样，当时还不以为意，但现在看来还是有点不大行。过早的进组让我缺少时间去打基础而过快地投入到实际工作之中，我对人工智能的理解本身就是几乎为零，和同组的那些曾经 C++ 手搓神经网络的大神相比自然不可相提并论。想到自己每周二的组会都会想尽办法编造一个自己没认真做完事情的理由的时候，那种窘迫和尴尬又涌了上来。</p>
-<p>至今还记忆犹新的一个场景就是，中期汇报的时候刘知远老师在场，到我上去汇报的时候，应该是说出了大量幼稚或者说根本不合理的想法。那个时候刘知远说了这样一句：“现在 Holder 这个样子，我们需要反思一下我们的指导方式”。</p>
-<p>这种看似自责的说法实则，看得出来他们的意见。</p>
-<p>或许从那以后，我投入了大量的精力弥补我的基础，我开始看人工智能相关网课，从全联接层开始看到 CNN / RNN，再到 Encoder-decoder 或者 Transformer，然后开始使用 HuggingFace 的 BERT 和 T5 轮子，钻研 API 设计和源码。这一定程度上牵扯了我大量本应该用于课内的时间，但收获也是不错的，我 finetune 的 BERT 模型做出了被学长们称为“promising”的成果。</p>
-<p>但是后续是无休无止的挫败，我 T5 相关的工作至今都处于停滞状态。在那段时间，我经历了第一次情绪崩溃，一时间万念俱灰，每天醒来只有想睡回去的想法。那段时间，身体也一直不是很好，时不时就会有心脏疼的感觉。这种情况下的我，选择了实质上的彻底放弃，虽然一直没有和带我的学长提出我要退出。</p>
-<p>现在我也不想继续学习人工智能了，每每看到那些曾经熟悉且能熟练运用的数学公式、轮子、模型，只会让我想起那段折磨至极的时光。但大三上学期的我，早就已经浪费了一年的时光，现在的 Holder 的后路究竟如何，完全还是未知的，我该如何面临毕业，也还是未知的。</p>
-<h1 id="或许还是有些好消息的">或许还是有些好消息的</h1>
-<p>稍微能够宽慰我的，就是我现在过得还不错。至少我身边的一切，我的学业成绩、我的感情、我的朋友们、我的家人们都处于稳定的状态上，除了我自己的出路，其余暂且不需要我过多担心。</p>
-<p>这已经足够了，如果不去太担忧未来的不确定，活在当下自然是自由而快乐的。中厅的麻将还能用，新笔记本上还有若干没有玩的游戏，Sakana 还在身边，我还是有一群能聊得来的朋友，这一切的一切，暂且能够让我不再过分担忧今后。</p>
-<h1 id="holder-的一些自述">Holder 的一些自述</h1>
-<p>在别人眼中，特别是我高中的老师眼中，我是一个特别会规划的人。然而实际上，Holder 永远是一个走到哪里算哪里的人，只不过总是喜欢回忆，总是喜欢和过去的自己斤斤计较，懊恼于一时的失误。</p>
-<p>Holder 是一个喜欢沉浸在回忆中的人，我对过去的记忆可能过于清晰。我的一个习惯性动作是，无聊的时候将记忆中的场景构建出来，比如说尝试构建出：</p>
-<blockquote class="blockquote-center">
-<p>2018 年的 8 月份，在高中的三层小楼中，Holder 和同学们正在为升入高三做准备。除去我们升高三的理科实验班同学，其他人早已放假。那座小楼已经老旧不堪，空调毫无用处，电风扇没有力气。外面是炽热的阳光和扭曲的蝉鸣。</p>
-<p>Holder 趁着下课偷偷跑出小楼，听着下课铃在早已空荡的学校中回响。</p>
-
-</blockquote>
-<p>我或许会把这个场景构建得和刚经历差不多，然后自己沉浸在这个场景里回忆当时自己的所思所想。这个习惯来源于初中睡午觉，当时为了让自己快速入睡，就会使用这种方法——在脑海中完全重建回忆的场景，这种方法消耗脑力很多，有的时候没有构建完成就慢慢睡着了。</p>
-<p>这个习惯一般会让我很难忘记一些事情，但是坏处就是：</p>
-<blockquote class="blockquote-center">
-<p>我忘不掉一些应该忘却的事情。</p>
-
-</blockquote>
-<p>所以至今我的思维包袱是很重的，回忆构建的数据库足够庞大，能够支撑我思维的快速切换跳转和联想。但是一旦联想到一些本应该忘却的场景，比如说曾经的尴尬场面、自己伤害别人的行为，那 Holder 可能就会沉溺在这里，然后一遍一遍鞭尸自己。</p>
-<p>这还是挺折磨的，这让我很难聚焦于当下应该做的事。</p>
-<h1 id="所以说">所以说？</h1>
-<p>这些文字其实没有任何意义，可能明天起来就会觉得幼稚和不成熟，但是确实是现在困困的 Holder 想要记录下来的。</p>
-<p>Holder 就要成为大三的学生了，在此之前，12 号先要去北大吃一顿烤串，这足以让我暂且安静地睡去。</p>
-<p>晚安。</p>
-]]></content>
-      <categories>
-        <category>【生活记录】学期总结</category>
       </categories>
   </entry>
   <entry>
@@ -4532,6 +4361,179 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 ]]></content>
       <categories>
         <category>【生活记录】日记</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>大二春季学期学期总结</title>
+    <url>/2021/06/19/grade-2-spring-conclusion/</url>
+    <content><![CDATA[<p>魔幻的大二春季学期最终还是随着自动机考试的结束而落幕了，随意写一点东西来总结一下吧。</p>
+<span id="more"></span>
+<p>虽然还没有出分，但我能够预料到这一学期如果按照绩点来评判，可以说过得十分坎坷。但是，这一学期还有更多的比绩点更值得重视的一些东西。</p>
+<h2 id="课内学习">课内学习</h2>
+<p>课内总体而言过得很不平凡，即使这一学期只有 24 学分的课程。与一年前那种 OOP 作业一发下来就赶快刷榜完成，高代选讲还愿意在课外学习很多内容的热情相比，我这一学期对课内显然是淡薄了很多。标志性的事件可以罗列出来：</p>
+<ul>
+<li><p>人智导 PA2 是在黄浦江上遥控卫爷写的，PA3 是在上海桌游店里打山屋惊魂的间隙交的</p></li>
+<li><p>在各种情况下写过数电实验报告，包括在人大门口醉酒的时候、在去上海的火车上、在轰趴的自动麻将机上（除了考试，我每一次实验的代码都是抄的）</p></li>
+<li><p>一个学期没有见过数电、自动机、人智导的老师，这三门课均让我在考试周通了宵（一个大二学生用 24 小时创造一个奇迹）</p></li>
+<li><p>软件工程大作业不到最后一周都没有认真写 UI</p></li>
+<li><p>高性能一气之下决定退课，虽然从未后悔过这个决定</p></li>
+<li><p>英语课一个学期就做了一份作业，占比最大的 Task C（团队 pre）只花了三四天准备</p></li>
+<li><p>物理实验报告分数为 9, 8.5, 8.7, 8, 8.7，上学期则是 9, 9, 9, 9.3, 9</p></li>
+</ul>
+<p>总之就是这学期浪了一些，或许是认清楚你清贵系的教学水平甚至还不如高中之后的一些合理举动。如果要我来评价大二下学期这些课程的话，我只能说除了《不朽的艺术》这一门课，其他的课程我丝毫没有觉得学习到了什么有用的东西。再加上期末四门专业课考试两门可以说出事故的情况，我更是愿意给这一学期以低评价。</p>
+<p>我大概算了一下，反正现在绩点的浮动不会多大，还不如抓紧时间，做一些我觉得有意义的事情。</p>
+<h2 id="thuinfo">THUInfo</h2>
+<p>我也说过，这是我唯一拿得出来的作品。虽然之前有写过一些小型项目，它们虽然也是我探索的足迹，但总体没有 THUInfo 给我带来的成就感大。</p>
+<p>但比较愧疚的是这一学期没有给 THUInfo 作出很大的贡献。寒假的时候翻新了“计划”功能，修了几个小 bug 之后，学期中除了加了比如说“今日高亮”这种小功能之外，我也就没有作出什么贡献了。</p>
+<p>但是，暑假确实是想要做很大的事情的。一方面是和校内 iOS Club 搭上了关系，对方也恰好想要找到一个重点支持的项目，双方互相需要，何乐而不为呢。通过它我们找到了美工，目前也有了一个较为简单的 UI 效果图（不得不说，做设计的就是做设计的）。另外一方面是<a href="https://www.zhihu.com/question/63407413">栋栋</a>加入了团队，总之多一个技能熟练的人手是很不错的。</p>
+<p>敬请期待暑假过后的 THUInfo 3 系列版本。</p>
+<h2 id="社工">社工</h2>
+<p>大一下学期一番折腾之后，一个学期没有加入任何学生组织。但是一个转变的契机就是 xge 和我说他和栋栋准备开发日麻，随后将我纳入了 308（科协 &amp; 算协活动室）常驻人员之中。在 308 蹲守的过程中，我也认识了科协的许多同学（再次点名“表扬”大恶人安頔）。最后决定加入科协，大概是那天去出去散心醉酒，隔天回校的时候恰好赶上 C 楼门口的智能体嘉年华。本来是不打算去的，想着去看看也没啥问题，就突然发现科协办的东西还挺有意思。随后又去蹭了智能体决赛，还坑了 Omega Fantasy 一顿饭。</p>
+<p>随后大约是某晚和安頔夜谈，经过一番交流，决定去混一个科协副主席。</p>
+<p>怎么说呢，或许真的是如同之前一些人的评价——“你大一下学期的那种情况实属罕见，哪有人开局社工就是王炸的”一般，社工并不是我想的那么不堪。现在大概是发现，有一群志同道合的人一起做事情是多么愉悦。</p>
+<h2 id="sakana">Sakana</h2>
+<p>这一段没有什么特别想说的，总之揭开了一些过往，给一些问题作出了解答，这应该也是这个学期我应该可以说最为重视的一件事。虽然有很多的小细节，有很多的瞬间，但还是就留下我之前发在空间里的一段话吧：</p>
+<blockquote class="blockquote-center">
+<p>虽然我真的不会挑时间，不会好好规划安排行程，或许会因为冲动把事情做得很离谱。 但真的感谢包容我的愚拙。</p>
+
+</blockquote>
+<h2 id="一些总结与闲话">一些总结与闲话</h2>
+<p>这一学期的 Holder 发生了相当大的改变，应该是真的去思考过我的大学应该如何度过这个问题了。之后就确立了“<strong>我要帮助后辈们尽可能少走弯路</strong>”这样的一个简单的目标，于是和改制的科协网络部不谋而合，于是和高中班主任谈好了回高中给学弟学妹讲数学竞赛。在确立好自己的真正想做的事情之后，便是卸下一些伪装。先前的我大概因为完全不能找到我自己的目标，而将自己浸没在无意义的内卷之中，也不敢面对自己的一些感情。这一切的一切，都在稍微通透之后被瓦解了。</p>
+<p>当然我感觉需要警惕的，就是我暂且需要约束一下自己无限膨胀的野心，不能给自己捞太多的锅，接太多的任务，应该让自己慢慢达到一种平衡。</p>
+<p>不如现在，来说说之后想要做的事情吧：</p>
+<ul>
+<li><p>接着跟进在刘知远实验室的任务，努力发篇文章，发完就撤退</p></li>
+<li><p>翻新 THUInfo 的 UI，开发一些新功能</p></li>
+<li><p>在科协把“技能引导文档”这件事做好，做到宣讲会上的“为了创建一个 user-friendly 的计算机系而奋斗”</p></li>
+<li><p>好好地生活，让自己的大学不仅仅是绩点和社工</p></li>
+</ul>
+<p>还有就是一些暑假要做的事情，比如说 GRE，比如说科目二，比如说回高中讲竞赛，比如尝试一下图形学。</p>
+<p>写这篇潦草的总结的时候，我应该还因为昨晚通宵复习自动机而头晕目眩，但是我的神志却异常清醒，因为我的大学似乎是真的开始了。</p>
+<p>我有分享歌词的习惯，这里也来一句吧。但不同于之前我喜欢分享那种长长的，哲学家写散文式的歌词，这个歌词很朴素：</p>
+<blockquote class="blockquote-center">
+<p>ケーキも大好き，君も大好き。</p>
+<p>——「とある一家の御茶会議」</p>
+
+</blockquote>
+<p>祝愿我余下的一半本科时光，能过得有意义。这里是 Holder，我们一起接着走下去吧。</p>
+]]></content>
+      <categories>
+        <category>【生活记录】学期总结</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>大三秋季学期学期总结</title>
+    <url>/2022/01/05/grade-3-autumn-conclusion/</url>
+    <content><![CDATA[<p>今天考完了最后一门《编译原理》，随后参加了年级会。这样看来，我的大三上学期，这个被学长们称为渡劫的学期，就这样平平无奇结束了。</p>
+<span id="more"></span>
+<h2 id="对自己的质疑">对自己的质疑</h2>
+<p>这学期之所以被称为渡劫，是因为按照教学计划计算机系的最核心的四大原理课是在这学期修读。这四大原理是《计算机组成原理》《计算机网络原理》《编译原理》《信号处理原理》。而我所说的对自己的质疑，就是我发现我完全对这四门课里的大部分提不起任何兴趣。</p>
+<p>在成为大三学生之前，我从未质疑过我为什么要来这个专业，甚至一定程度上庆幸虽然选择计算机是随大流，但自己却也莫名其妙混得不算差。大一和大二修读的课程，我大多都能学得比较明白，再不济也能做到考前 overfit 一波混个考试分数。得益于此，我大三之前的 GPA 可以说还挺不错的。</p>
+<p>但是进入大三之后，我明显感受到力不从心。比如说造计算机，其实我早就在《数字电路实验》这门大二下学期的入门课里面认识到了我似乎对硬件设计一窍不通，或者说完全没有一种愿意学习这类知识的冲动。另外比如说计算机网络相关，我对网络只是单纯知道一些简单的概念，深入了解却让我相当抗拒，我不是抗拒特定的课程，我是对整个计算机网络这个领域感到深刻的无力，甚至是生理性不适。</p>
+<p>所以我有意无意地拖延了造机，不到最后一周没有真正开工。我有意无意地只用一下午复习网原，有意无意地没有去任何一堂除了体育之外的课。</p>
+<p>因为我抗拒，我理解不了这些知识背后的逻辑，支撑着我学习新的领域的动力不能直接迁移到计组和网原这些课程上。</p>
+<p>与此对应的，我课余在尝试着学习一些数学，研究生方向也想尽量往数学相关方向贴近一下。在学习《信号组成原理》的时候，常常痛斥其数学基础不牢靠（毕竟是工科面向应用的学问，其宁愿牺牲严谨性也要保证易用性），也曾钻牛角尖一样地和别人争执过信号这门课里的数学体系是不是矛盾的。</p>
+<p>我发现我对知识有一点奇妙的偏执，我希望我学习的东西是体系的、有逻辑的，或者说我希望学习一个由人类<strong>发现</strong>的学科，而非由人类<strong>发明</strong>的学科。比如说网络协议往往充满了历史包袱、前人的失败经历、欠考虑的机制和随后而来的零碎补丁，它不是一个等待人类来发掘的逻辑体系，它本身就是人类在实践中堆叠的经验谈。与此类似的，还有我拒绝研究 CSS 的那一堆难以理解的属性，不想深究 Web 混沌初开时的前端技术。</p>
+<p>所以我开始反思，我或许真的应该当时听从一些劝诫去学习数学什么的，但实际上我也知道这不过是虚无的懊悔，不过是这山望着那山高般的幻觉。但基于这样的自我认识，我尝试着去选择和数学关系较大的计算机领域作为研究生方向，比如说渲染。</p>
+<h2 id="课内学习">课内学习</h2>
+<p>和之前说的一样，这学期六门课，四大原理加两门限选。网原和网安都是网络方向的课程，考试几乎全都是背诵就行，但悲哀的是我厌恶计算机网络，连课件都懒得打开看两眼。不过还好网安不难，但是网原我估计差不多就是 B+ / B / B- 里面随机给分了，自我认为 3.3 绝对不亏，3.6 绝对血赚。</p>
+<p>计组确实硬核，而且我也不喜欢写硬件语言，因为它思维逻辑和我常用的软件语言相当不同，所以造机大实验着实让我一个星期没睡好觉。但是计组和网原最大的不同是，计组学不好我认为原因是客观上我能力不行，网络学不好我认为原因是主观上我厌恶。所以即使计组不简单，考试也不简单，但我依然很努力地去学了三四天，虽然感觉也没考多好。</p>
+<p>编原今年史诗级削弱，取消实验考试改为期末周后的附加实验，删减考纲，降低试题难度，提升平时作业占比。就说最明显的，今天在考场上看到 SLR(1) 文法的题选的语言竟然是 <span class="math inline">\(\{a^n: n \geq 1\}\)</span> 的时候，我已经真的深刻领悟到，什么是把分送到你手上。</p>
+<p>信号原理自己学得挺开心，毕竟自己也喜欢有事没事钻一钻所谓事物本质的东西。比如说当我期末复习的时候，把数字滤波器、传递函数、 Z 变换、收敛域与系统性质那一套在课间上混乱不堪的概念理清楚的时候，自己真的有一种豁然开朗而想继续深入学习的感觉。</p>
+<hr />
+<p>要说总体的话，就是这学期估计 GPA 还得继续往下掉，但我也只能说 Who cares。大一大二到大三，自己也经历了微积分不考 4.0 就是挂科，数据结构 3.6 就是胜利到网原 3.3 也不算亏这一路的心态变化。</p>
+<p>但似乎 Holder 还是没有摆脱那一种奇妙的思维惯性，peer pressure 还是在隐隐约约给我带来一些不愉悦。</p>
+<h2 id="科协">科协</h2>
+<p>上学期奇妙地成为了副主席，那这学期就应该做点事情了。</p>
+<p>在还没有开始造机、造路由器之前，由于课业压力暂且还不大，我便抽了一点空余时间把技能引导文档搭建起来了，并且写了一些东西进去。</p>
+<p>技能引导文档大约是一种课程前置知识的补全，因为我确实见过不少同学都已经开始上课了，却连前置技术栈都不了解，最后只能网上随便找点资料混过去。秉持着能做点什么都是好的的想法，索性借着科协这个平台，搭建起了这样的一个文档共享的网站。</p>
+<p>但是随着造机、造路由器和期末周，文档维护也就暂且搁置。现在考试完了，寒假是一大波开工的好时机。</p>
+<hr />
+<p>说到科协就必须要提到安老板，就要提到我最终估计就会采纳安老板的提议，去媒体所混日子了。</p>
+<p>现在还在绝赞学习《GAMES101》，感觉自己摸鱼摸得太过了其实。</p>
+<h2 id="摸鱼摸鱼摸">摸鱼摸鱼摸</h2>
+<p>这个学期虽然很辛苦，但依然可以忙里偷闲摸不少鱼。小学期莫名其妙搞到了一个日区 App store 账号，于是又可以开始玩 Project Sekai 了。这种又有音游难度，又能抽抽卡养养妹子看看剧情的小游戏我确实喜欢，所以这个学期也基本一直都在玩，Phigros 基本都荒废了。</p>
+<p>要说还有什么的话，就是打牌，无穷无尽的打牌。毕竟打牌确实没那么多限制，特别是打网络麻将，随时随地就开一把打着玩就行。所以 Holder 倒也经常在学累了的时候开一把，消遣消遣倒也不错。考试周其实打了不少牌，基本上一天打五六把还是有可能的。可能也是频率上来了，这学期也总算把四人麻将打上玉之间了。</p>
+<p>除了网络麻将就是宿舍里搓牌，本学期最大的进展就是大约通过次世代认识了一些八字班学长一起打牌，不过确实也算是见识到了我这类图乐子打牌和认真打牌人的水平差距。</p>
+<hr />
+<p>另外可能就是通过 V+ 吹水群认识了另外一些人，平常也是交流交流 Vocaloid 相关，吹水聊天。可能偶尔会在周末的时候组织去国贸唱 K，自己也去过两三回了，确实是放松的好机会。</p>
+<p>不过也因此渐渐喜欢上了学习的时候唱歌，虽然之前也偶尔会这样，但是真正感觉有意识地哼唱一些歌还是这个学期的事情。</p>
+<h2 id="一些碎片">一些碎片</h2>
+<h3 id="小学期的精神问题">小学期的精神问题</h3>
+<p>暑假的时候我处于一种神经敏感的状态，整个人还在五月份那一次大崩溃的余震之中喜怒无常。而八月中旬的小学期，由于众所周知的屑课《Java 语言程序设计》，以及当时一些早已遗忘的情感问题的引子，Holder 又成功经历了一次情绪崩盘。</p>
+<p>大约，那某一个夜晚，在工物馆和美院停车场之间小路上，漫无目的地晃荡着和 Sakana 哭诉着的场景，是我小学期记忆最深刻的事情。</p>
+<h3 id="无界美术馆">无界美术馆</h3>
+<p>上海的一个美术馆，在一个周末 Holder 偷偷跑去和 Sakana 到那里参观去了。</p>
+<p>Holder 向来是不太解风情的，对这个美术馆里展出的那些灯光艺术、雕塑、投影交互等等作品，我只能说“好闪”“好亮”“好鲜艳”这些明显语言贫瘠的评价。所以说 Holder 还只能读死书，或者有事没事和舍友抬抬杠，精神世界倒也是一片荒芜。</p>
+<h3 id="造机的三星期">造机的三星期</h3>
+<p>其实我也说了，虽然造机确实给了三星期，但实际上我只在最后一个星期加紧做了不少事情。当时最喜欢的工作模式就是在 308 一个人坐着，手机挑一部没有很烧脑剧情的日常番，边看番边等 Vivado 编译或者看波形图。就这样半悠闲半紧张地工作着，倒也几天内写掉了不少东西。但平心而论，我依然没能从硬件设计中获取多少快乐，虽然最终看着自己写的 CPU 上能运行自己写的贪吃蛇游戏，但要让我回到那三星期，我说还不如打两三把牌。</p>
+<h2 id="所以呢">所以呢？</h2>
+<p>所以说大三上学期也就这样结束了，课业成绩并不理想，人也过得疲惫不堪，其中一大半责任是网原。但是换一种角度，我认识了新的一起打牌的朋友，认识了能和我一起唱 V 曲的同学，Project Sekai 时不时能抽出好看的角色，打牌虽然会恶调但确实缓解了一些紧张情绪。自己也逐步和自己和解，不再纠结于一些得失，自己也在尝试着尽力做一些帮助他人的事。</p>
+<p>所以其实我也不知道我这个学期究竟是什么样的，这篇总结我也写得磕磕绊绊不知道什么是这学期的主线。传统意义上四大原理的主线在我这里断裂了，因为我精力分配中它们并不优先。</p>
+<p>但总归是看到了本科生活的尽头，自己也已经有了意向性的导师，也对自己究竟想学什么、想做些什么有了模糊的应答。虽然还是时不时感叹我真的不适合计算机系，感叹自己怎么过得这么惨，时不时在空间或者朋友圈发一些意味不明的文字，但总体上 Holder 还是履行了上个学期的诺言，尽力地享受着自己的本科生活。</p>
+<p>寒假的话，可能要做不少事了。</p>
+<ul>
+<li><p>技能引导文档寒假宣传</p></li>
+<li><p>THUInfo 翻新</p></li>
+<li><p>实验室科研的一些事务</p></li>
+<li><p>自学一些数学以及日语</p></li>
+</ul>
+<p>下学期也选了若干看起来还挺有意思的课程，希望下学期能过得更快乐一些。</p>
+<blockquote class="blockquote-center">
+<p>失うことに慣れてく中で失くさずにいた大事な思いを、</p>
+<p>抱きしめたら不意に涙が落ちたのは、</p>
+<p>この街でまだ生きていたいと思うから。</p>
+<p>——「幽霊東京」</p>
+
+</blockquote>
+]]></content>
+      <categories>
+        <category>【生活记录】学期总结</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>大三秋季学期前的一些碎话</title>
+    <url>/2021/09/12/grade-3-autumn-preview/</url>
+    <content><![CDATA[<p>自己似乎就这样莫名其妙成为了一个大三学生，其实还隐隐约约记得一年前刚进实验室的时候刘知远的一句“没想到这么快八字班也要造机了啊”。现在想来，九字班这个词语从原先的代指新生，渐渐地变成了代指一群大三老油条，而自己的一字班学弟也正在憧憬着四年的本科时光，一时间竟觉得大学原来也快结束了。</p>
+<p>今夜突然接到 Sakana 的一句“我还是好焦虑”，唐突地自己也开始陷入了一种窘迫的心理。自己，真的准备好去迎接之后的生活了么。</p>
+<span id="more"></span>
+<h1 id="学业和大三的渡劫">学业和大三的渡劫</h1>
+<p>清华大学的计算机系向来会把大三上学期称为渡劫，原因是计算机核心专业课四大原理一大工程（计算机组成原理、计算机网络原理、编译原理、信号处理原理、软件工程）将会在一个学期内学习完成。虽然自己已经提前把软件工程这门课草草了结，但是作为一个对硬件和计算机系统没有感觉的人，四大原理就足以让我恐惧。已经能够预见到，将来的 Holder 或许会被造计算机、造路由器、造编译器、写 Matlab 处理信号等各种困难的作业包围，然后还要抽出时间应付掉 VLSI 和网安两门限选课的平时学习。</p>
+<p>其实也正如一些人对我的评价所说，我不是一个害怕困难或者折磨的人，但是我在受折磨的时候会习惯性一个人顶着。我只是默默地担心着自己的心理健康情况，自己这近几个月来时不时的情绪崩溃足以让我感到害怕。</p>
+<p>但实际上，我还是在安慰着自己没有问题，劝慰着自己造机造路由器会顺利，或许还会有点乐趣。也或许会安慰自己，信号处理原理全是微积分，自己微积分学得挺明白不用担心。然而即便如此，还是抵挡不住现在的焦虑和不安。</p>
+<h1 id="科研的不顺和前途的迷茫">科研的不顺和前途的迷茫</h1>
+<p>我大一就跑到组里去了，是一个进组挺早的人，家里人一直比较关心我这么早进组会怎么样，当时还不以为意，但现在看来还是有点不大行。过早的进组让我缺少时间去打基础而过快地投入到实际工作之中，我对人工智能的理解本身就是几乎为零，和同组的那些曾经 C++ 手搓神经网络的大神相比自然不可相提并论。想到自己每周二的组会都会想尽办法编造一个自己没认真做完事情的理由的时候，那种窘迫和尴尬又涌了上来。</p>
+<p>至今还记忆犹新的一个场景就是，中期汇报的时候刘知远老师在场，到我上去汇报的时候，应该是说出了大量幼稚或者说根本不合理的想法。那个时候刘知远说了这样一句：“现在 Holder 这个样子，我们需要反思一下我们的指导方式”。</p>
+<p>这种看似自责的说法实则，看得出来他们的意见。</p>
+<p>或许从那以后，我投入了大量的精力弥补我的基础，我开始看人工智能相关网课，从全联接层开始看到 CNN / RNN，再到 Encoder-decoder 或者 Transformer，然后开始使用 HuggingFace 的 BERT 和 T5 轮子，钻研 API 设计和源码。这一定程度上牵扯了我大量本应该用于课内的时间，但收获也是不错的，我 finetune 的 BERT 模型做出了被学长们称为“promising”的成果。</p>
+<p>但是后续是无休无止的挫败，我 T5 相关的工作至今都处于停滞状态。在那段时间，我经历了第一次情绪崩溃，一时间万念俱灰，每天醒来只有想睡回去的想法。那段时间，身体也一直不是很好，时不时就会有心脏疼的感觉。这种情况下的我，选择了实质上的彻底放弃，虽然一直没有和带我的学长提出我要退出。</p>
+<p>现在我也不想继续学习人工智能了，每每看到那些曾经熟悉且能熟练运用的数学公式、轮子、模型，只会让我想起那段折磨至极的时光。但大三上学期的我，早就已经浪费了一年的时光，现在的 Holder 的后路究竟如何，完全还是未知的，我该如何面临毕业，也还是未知的。</p>
+<h1 id="或许还是有些好消息的">或许还是有些好消息的</h1>
+<p>稍微能够宽慰我的，就是我现在过得还不错。至少我身边的一切，我的学业成绩、我的感情、我的朋友们、我的家人们都处于稳定的状态上，除了我自己的出路，其余暂且不需要我过多担心。</p>
+<p>这已经足够了，如果不去太担忧未来的不确定，活在当下自然是自由而快乐的。中厅的麻将还能用，新笔记本上还有若干没有玩的游戏，Sakana 还在身边，我还是有一群能聊得来的朋友，这一切的一切，暂且能够让我不再过分担忧今后。</p>
+<h1 id="holder-的一些自述">Holder 的一些自述</h1>
+<p>在别人眼中，特别是我高中的老师眼中，我是一个特别会规划的人。然而实际上，Holder 永远是一个走到哪里算哪里的人，只不过总是喜欢回忆，总是喜欢和过去的自己斤斤计较，懊恼于一时的失误。</p>
+<p>Holder 是一个喜欢沉浸在回忆中的人，我对过去的记忆可能过于清晰。我的一个习惯性动作是，无聊的时候将记忆中的场景构建出来，比如说尝试构建出：</p>
+<blockquote class="blockquote-center">
+<p>2018 年的 8 月份，在高中的三层小楼中，Holder 和同学们正在为升入高三做准备。除去我们升高三的理科实验班同学，其他人早已放假。那座小楼已经老旧不堪，空调毫无用处，电风扇没有力气。外面是炽热的阳光和扭曲的蝉鸣。</p>
+<p>Holder 趁着下课偷偷跑出小楼，听着下课铃在早已空荡的学校中回响。</p>
+
+</blockquote>
+<p>我或许会把这个场景构建得和刚经历差不多，然后自己沉浸在这个场景里回忆当时自己的所思所想。这个习惯来源于初中睡午觉，当时为了让自己快速入睡，就会使用这种方法——在脑海中完全重建回忆的场景，这种方法消耗脑力很多，有的时候没有构建完成就慢慢睡着了。</p>
+<p>这个习惯一般会让我很难忘记一些事情，但是坏处就是：</p>
+<blockquote class="blockquote-center">
+<p>我忘不掉一些应该忘却的事情。</p>
+
+</blockquote>
+<p>所以至今我的思维包袱是很重的，回忆构建的数据库足够庞大，能够支撑我思维的快速切换跳转和联想。但是一旦联想到一些本应该忘却的场景，比如说曾经的尴尬场面、自己伤害别人的行为，那 Holder 可能就会沉溺在这里，然后一遍一遍鞭尸自己。</p>
+<p>这还是挺折磨的，这让我很难聚焦于当下应该做的事。</p>
+<h1 id="所以说">所以说？</h1>
+<p>这些文字其实没有任何意义，可能明天起来就会觉得幼稚和不成熟，但是确实是现在困困的 Holder 想要记录下来的。</p>
+<p>Holder 就要成为大三的学生了，在此之前，12 号先要去北大吃一顿烤串，这足以让我暂且安静地睡去。</p>
+<p>晚安。</p>
+]]></content>
+      <categories>
+        <category>【生活记录】学期总结</category>
       </categories>
   </entry>
   <entry>
@@ -5628,6 +5630,25 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
       </categories>
   </entry>
   <entry>
+    <title>小学期深夜的废话</title>
+    <url>/2021/08/17/nonsense-at-night/</url>
+    <content><![CDATA[<p>突然有点想随便写点东西说点感受而已，写完就该睡大觉了。</p>
+<span id="more"></span>
+<p>现在是 2021 年 8 月 17 日的深夜 03:44，这个叫 Holder 的大二学生还没有睡。</p>
+<p>小学期选了整整 8 学分的课，从第二周开始每周周一到周五都是全天满课。汇编每周有作业，还有一个大作业和考试。Java 每堂课有一个小作业，还有一个看起来不是很小的大作业。量子计算作为一门新课，上来就是全英文 PPT，讲着虚张声势的线性代数，倒也真的把 Holder 愉悦送走了。</p>
+<p>但值得庆幸的是，只要不去听老师上课，自己在空调房里和 Sakana 连着麦看 PPT / CSAPP / 各路文档自学，累了就开瓶快乐水刷两眼手机或者打一小会 Project Sekai，然后慢慢写自己学习的时候的笔记和一时的感悟，这种体验简直不要太好。就是那种感觉，那种感受到了学习愉悦之处的感觉。</p>
+<p>我也不知道什么时候我变成了厌恶上课的一个人，烦躁于古板沉闷的 PPT reader 式的课堂。我宁愿自己一个人琢磨，不懂的时候就去各种翻资料或者问问同学，然后在个人网站上写下万字之多的笔记。特别是一时间想通一个很困难的问题的时候，我习惯把当时所有的思路都复盘下来写下来。</p>
+<p>这个小学期，我突然觉得自己找到了一种玄妙的乐趣，那种像想要抓住什么的一样的冲动。虽然每天都累得不成样子，到处抱怨，但是内心是充实的。</p>
+<p>虽然不知道学的东西会不会派上用场，但是就是享受到了学习这一过程之中的乐趣。</p>
+<hr />
+<p>也不知道这种斗志昂扬的状态会持续到什么时候，也不知道 Holder 未来会不会又一次陷入像今年 5 月那样沉闷的时光，但无论如何，现在的 Holder 是快乐的。</p>
+<p>Holder 或许得睡大觉了，虽然现在才睡，翘汇编是不可避免的了。</p>
+]]></content>
+      <categories>
+        <category>【杂谈】碎碎念</category>
+      </categories>
+  </entry>
+  <entry>
     <title>早安、可能是午安、或者是晚安</title>
     <url>/2021/09/17/navigation/</url>
     <content><![CDATA[<p>关于我更多的信息，请见 <a href="/about">关于页</a>。</p>
@@ -5664,25 +5685,6 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 ]]></content>
       <categories>
         <category>【导航】</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>小学期深夜的废话</title>
-    <url>/2021/08/17/nonsense-at-night/</url>
-    <content><![CDATA[<p>突然有点想随便写点东西说点感受而已，写完就该睡大觉了。</p>
-<span id="more"></span>
-<p>现在是 2021 年 8 月 17 日的深夜 03:44，这个叫 Holder 的大二学生还没有睡。</p>
-<p>小学期选了整整 8 学分的课，从第二周开始每周周一到周五都是全天满课。汇编每周有作业，还有一个大作业和考试。Java 每堂课有一个小作业，还有一个看起来不是很小的大作业。量子计算作为一门新课，上来就是全英文 PPT，讲着虚张声势的线性代数，倒也真的把 Holder 愉悦送走了。</p>
-<p>但值得庆幸的是，只要不去听老师上课，自己在空调房里和 Sakana 连着麦看 PPT / CSAPP / 各路文档自学，累了就开瓶快乐水刷两眼手机或者打一小会 Project Sekai，然后慢慢写自己学习的时候的笔记和一时的感悟，这种体验简直不要太好。就是那种感觉，那种感受到了学习愉悦之处的感觉。</p>
-<p>我也不知道什么时候我变成了厌恶上课的一个人，烦躁于古板沉闷的 PPT reader 式的课堂。我宁愿自己一个人琢磨，不懂的时候就去各种翻资料或者问问同学，然后在个人网站上写下万字之多的笔记。特别是一时间想通一个很困难的问题的时候，我习惯把当时所有的思路都复盘下来写下来。</p>
-<p>这个小学期，我突然觉得自己找到了一种玄妙的乐趣，那种像想要抓住什么的一样的冲动。虽然每天都累得不成样子，到处抱怨，但是内心是充实的。</p>
-<p>虽然不知道学的东西会不会派上用场，但是就是享受到了学习这一过程之中的乐趣。</p>
-<hr />
-<p>也不知道这种斗志昂扬的状态会持续到什么时候，也不知道 Holder 未来会不会又一次陷入像今年 5 月那样沉闷的时光，但无论如何，现在的 Holder 是快乐的。</p>
-<p>Holder 或许得睡大觉了，虽然现在才睡，翘汇编是不可避免的了。</p>
-]]></content>
-      <categories>
-        <category>【杂谈】碎碎念</category>
       </categories>
   </entry>
   <entry>
@@ -7799,6 +7801,770 @@ t_k = t_0 + \frac{(T_k - T_0) - \Delta_k}{s_k}
       </categories>
   </entry>
   <entry>
+    <title>《计算机网络原理》学习笔记</title>
+    <url>/2021/09/13/note-of-net/</url>
+    <content><![CDATA[<p>网原总之是一个没打算认真学的专业课，因为真的对网络没有很大的兴趣。再加上上学期曾经看着迅哥哥他们被网原折磨，自己也没什么信心能学好这门专业课。</p>
+<p>这个笔记完全基于上一届流传下来的《网原干饭背诵》，在此基础上对重点做一些标记做一些讲解，反正是个背书课，那么就只能一点一点背了。根据前人经验，这个笔记会把比较重要的东西用星号标注出来。</p>
+<span id="more"></span>
+<h1 id="计算机网络的历史和新进展">计算机网络的历史和新进展</h1>
+<h2 id="背诵-1-网络基础">【背诵 1 】网络基础</h2>
+<ul>
+<li><p>网络所提供的最基本服务为<strong>信息传递</strong>，不同的网络依据其提供的服务进行区分。而区分服务的依据则包括功能、延迟、带宽等各种<strong>外部特性</strong>。</p></li>
+<li><p>网络依据<strong>空间距离</strong>可以分为局域网（LAN）、城域网（MAN）、广域网（WAN）和个域网（PAN）。依据<strong>信息类型</strong>可以分为数据网络、电话网络。依据<strong>应用类型</strong>可以分为专用网络、通用网络。依据<strong>使用权</strong>可以分为私有网络、公用网络。同时，网络也可以按照使用的协议进行分类，如 IP 协议等。</p></li>
+</ul>
+<h2 id="背诵-2-计算机网络发展历史">【背诵 2 】计算机网络发展历史</h2>
+<p>计算机网络的历史可以大致描述为：</p>
+<ul>
+<li>1940 年代，第一个计算机 ENIAC 诞生</li>
+<li>1950 年代，大型机和多终端系统诞生</li>
+<li>1960 - 1964 年，分组交换网络诞生（Paul Baran）</li>
+<li>1960 年代，计算机网络研究开始</li>
+<li>* 1969 年，ARPANET 研究启动</li>
+<li>1970 年代，计算机网络发展
+<ul>
+<li>各国电信部门建设运行 X.25 分组交换网</li>
+<li>SNA 以及 DNA 等专用网络体系结构出现</li>
+<li>Internet 的前身 ARPANET 进行实验运行，带宽小且仅有不到 100 台计算机接入</li>
+<li>* 以太网和 Telnet 出现</li>
+<li>* 1979 年，TCP/IP 协议成熟</li>
+</ul></li>
+<li>1980 年代，计算机网络逐步成型
+<ul>
+<li>标准化的计算机网络体系结构 ISO/OSI 出现</li>
+<li>局域网 LAN 技术发展</li>
+<li>FTP、NFS、E-mail、USENET 等技术出现</li>
+<li>1980 - 1983 年，ARPANET 和 MILNET 分离，前者采用 TCP/IP 协议</li>
+<li>1983 年，BSD UNIX 内置 TCP/IP 协议</li>
+<li>1985 - 1986 年，NSFNET 建成，用于连接 6 个超级计算中心</li>
+<li>1987 - 1990 年，NSFNET 开始连接地区网络</li>
+<li>Internet 初具规模，1987 年，中国第一个电子邮件发送到 Internet</li>
+<li>中国开始依赖电话线建立低速广域网</li>
+</ul></li>
+<li>1990 年代，计算机网络进一步发展
+<ul>
+<li>Internet 商业化，在中国也得到了广泛应用</li>
+<li>Web 技术在 Internet 上得到广泛应用</li>
+<li>中国出现局域网，如 Novell 等</li>
+<li>1990 - 1992 年，NSFNET 带宽提高，连接了 16 个地区网络</li>
+<li>1994 年，NSFNET 骨干网解体，出现了若干其他的商用骨干网</li>
+<li>1995 年，中国教育和科研网 CERNET 出现</li>
+</ul></li>
+<li>2000 年代，计算机网络广泛应用
+<ul>
+<li>网络应用发展迅速，搜索引擎和社交网络出现</li>
+<li>移动互联网产业快速发展</li>
+<li>2006 年，与 IPv6 相关的 CNGI-CERNET2 出现</li>
+</ul></li>
+<li>最近，数据中心网络、天地一体化网络、 IPv6 技术等快速发展
+<ul>
+<li>2011 年开始设立 World IPv6 Day</li>
+<li>2011 年 2 月 3 日，全球互联网名称与数字地址分配机构 ICANN 宣布 IPv4 地址耗尽</li>
+</ul></li>
+</ul>
+<h2 id="背诵-3-internet-技术">【背诵 3 】 Internet 技术</h2>
+<ul>
+<li>Internet 是全球范围的、通用的、异构的公用计算机网络</li>
+<li>Internet 是其他类型的计算机网络技术的基础，如企业内部网（Intranet）</li>
+<li>Internet 开放的标准由 IETF 负责制定、维护和协调。其他类似 IRTF、IAB、IESG 等机构也参与了标准的维护
+<ul>
+<li>IETF 全称 Internet Engineering Task Force，其分为若干个工作组（WG），其提交的 Internet 标准被称为 RFC，即 Request For Comments</li>
+<li>IRTF 全称 Internet Researching Task Force，由各类专注某一个领域的研究小组组成</li>
+<li>IAB 全称 Internet Architecture Board，负责定义 Internet 的大体框架，为 IETF 提供方向上的指导</li>
+<li>IESG 全称 Internet Engineering Steering Group，负责在技术方面上管理 IETF 的活动</li>
+</ul></li>
+<li>Internet 是历史上发展最快的一种技术，其发展速度甚至超越摩尔定律</li>
+</ul>
+<h2 id="背诵-4-网络时代三大定律">【背诵 4 】网络时代三大定律</h2>
+<ul>
+<li>【摩尔定律】 CPU 性能每 18 个月会翻番，每 10 年翻 100 倍</li>
+<li>【光纤定律】也称超摩尔定律，骨干网带宽每 9 个月会翻番。每 10 年翻 10000 倍</li>
+<li>【麦特卡菲定律】也称联网定律，网络价值和用户数量的平方成正比</li>
+</ul>
+<h2 id="理解-1-分组交换技术">【理解 1 】分组交换技术</h2>
+<p>Paul Baran 在设计能承受核攻击的通信系统的时候，确立了三个设计准则。</p>
+<ul>
+<li>自适应系统的<strong>热土豆路由策略</strong>（能够学习并适应各种新的环境）
+<ul>
+<li>如果不知道正确的路由，就将分组转发给所有邻居</li>
+<li>通过观察路过的分组来更新路由表，旧的路由表项会被删除</li>
+<li>尽可能快地转发分组，分组途径的路径并不一定是最短路径</li>
+</ul></li>
+<li>分组发送策略（端节点能够容忍错误并恢复）
+<ul>
+<li>每个节点根据自我的路由表决定如何转发分组</li>
+<li>每个分组的转发完全独立于其他的分组</li>
+<li>交换节点不保存端节点信息，这一点让网络的可拓展性大大增强</li>
+</ul></li>
+<li>分布式策略
+<ul>
+<li>所有交换节点平等，避免单一节点失效问题</li>
+<li>通过物理硬件冗余和自适应路由实现系统稳健性</li>
+</ul></li>
+</ul>
+<p>而 Internet 就是这一类网络。Internet 连接了各种异构的子网，提供两个最基本的功能，即全球唯一地址和分组通过动态路由传输。</p>
+<p>分组交换技术具有相当多的优点，包括：</p>
+<ul>
+<li>简单性
+<ul>
+<li>每个分组自身携带信息</li>
+<li>一个路由表可以为所有的流量服务</li>
+<li>可以适应快速增长的网络规模</li>
+</ul></li>
+<li>灵活性
+<ul>
+<li>可以在各种物理底层上运行</li>
+<li>可以支持各种网络应用</li>
+</ul></li>
+<li>可扩展性
+<ul>
+<li>可以应对端系统的增加</li>
+<li>可以应对流量的增加</li>
+<li>可以应对网络规模增大带来的路由表增大和路由频繁变化</li>
+</ul></li>
+<li>健壮性
+<ul>
+<li>默认了网络结构变化是正常现象</li>
+<li>牺牲一定的效率换取网络的稳定</li>
+</ul></li>
+</ul>
+<h2 id="背诵-5-今日互联网">【背诵 5 】今日互联网</h2>
+<ul>
+<li>今日的互联网具有更大的规模和更多的用户，而且支持更多的功能，具有更高的价值，但是其健壮性、适应性和互联程度都下降了</li>
+<li>当今互联网面临的一个问题就是 IPv4 地址耗尽，而目前缓解这个问题地方案是<strong>网络地址转换协议（Network Address Translation / NAT）</strong>
+<ul>
+<li>NAT 缓解了地址耗尽的问题，增强了安全性和控制性</li>
+<li>但是另外一方面却打破了 Internet 中地址唯一的假设</li>
+<li>端到端的分组传输路径变成多个 NAT 域的级联，相当于虚电路</li>
+<li>为了恢复 Internet 的原有结构，目前正在推进 IPv6 技术</li>
+</ul></li>
+</ul>
+<h2 id="杂项-1-未分类知识点">【杂项 1 】未分类知识点</h2>
+<ul>
+<li>二十世纪后期人类两项最伟大的战略工程为<strong>星球大战计划</strong>和<strong>互联网计划</strong>。目前互联网已经发展为继海、陆、空、天之后的<strong>第五空间</strong>。</li>
+</ul>
+<h1 id="计算机网络体系结构">计算机网络体系结构</h1>
+<h2 id="背诵-6-计算机网络的定义和组成">【背诵 6 】计算机网络的定义和组成</h2>
+<ul>
+<li>计算机网络定义为若干独立自治的计算机系统的互联集合体
+<ul>
+<li>计算机网络和分布式系统不同，分布式系统虽然也是由若干个计算机系统组成，但其具有<strong>内聚性</strong>和<strong>透明性</strong>，故分布式系统呈现给用户的更像是一台计算机。计算机网络则明显分立，在用户的视角依然是若干不同的计算机</li>
+<li>目前分布式系统和计算机网络有合流的趋势，两者正在走向统一</li>
+</ul></li>
+<li>计算机网络有两级组成，即<strong>资源子网</strong>和<strong>通信子网</strong>。资源子网常常是服务器或者用户计算机，而通信子网常常是通信线路等信道和路由器、交换机等网络互联设备</li>
+<li>计算机网络之中的通信通常有两种，即<strong>交换式通信</strong>和<strong>广播式通信</strong>
+<ul>
+<li>交换式通信又称<strong>点对点通信</strong>
+<ul>
+<li>需要经过交换设备，将消息转发给一个或一组结点</li>
+<li>交换设备根据需要选择输出</li>
+<li>网络典型的拓扑结构包括 star / ring(loop) / tree / complete / intersecting rings / irregular</li>
+<li>关键技术是<strong>路由选择</strong></li>
+</ul></li>
+<li>广播式通信
+<ul>
+<li>多台计算机共享通信线路</li>
+<li>任一台计算机发出的信息可以直接被其它计算机接收</li>
+<li>网络典型的拓扑结构包括 bus / ring(loop)</li>
+<li>关键技术是<strong>通道分配</strong>
+<ul>
+<li>静态分配，即分时间片。特点是控制简单，但通道利用率低</li>
+<li>动态分配，即各站点动态使用通道。特点是控制复杂，但通道利用率高。通道分配方法有两种。集中式指的是只有一个仲裁机构，分布式指的是各站点均有仲裁机构</li>
+</ul></li>
+</ul></li>
+<li>传统的 LAN 一般使用广播式通信，而 MAN 和 WAN 一般使用交换式通信。现代的 LAN 中交换式通信的应用正在增多</li>
+</ul></li>
+</ul>
+<h2 id="理解-2-计算机网络体系结构">【理解 2 】计算机网络体系结构</h2>
+<ul>
+<li>计算机网络体系结构指的是对计算机网络及其部件所完成功能的比较精确的定义，即从功能的角度描述计算机网络的结构，是<strong>层次和层间关系</strong>的集合。但体系结构只会从功能上定义网络，并不会定义协议的细节和接口关系
+<ul>
+<li>现代计算机网络体系架构指出，计算机网络的基本功能是为地理位置不同的计算机用户之间提供访问通路，并且应当提供若干功能（具体功能列表见 PPT），这些功能中最重要的是<strong>通信功能</strong></li>
+<li>这些功能的特征是<strong>分层</strong>，也就是说计算机网络中提供的功能是分成层次的</li>
+<li>位于不同计算机上进行对话的同一层通信各方可分别看成是一种进程，称为<strong>对等（同等）进程</strong></li>
+</ul></li>
+<li>计算机网络分层的体系结构有三个重要的概念，即协议、服务和接口
+<ul>
+<li>计算机网络体系结构定义了计算机网络的功能是分层次的，而协议（Protocol）就是计算机网络同等层次中，通信双方进行信息交换时必须遵守的规则
+<ul>
+<li>协议由三部分组成
+<ul>
+<li>语法（Syntax）部分。即以二进制形式表示的命令和相应的结构</li>
+<li>语义（Semantics）部分。即发出的命令请求，完成的动作和回送的响应组成的集合</li>
+<li>定时关系（Timing）部分。即有关事件顺序的说明</li>
+</ul></li>
+<li>网络体系结构的分层决定了协议的分层，协议的分层构成了<strong>洋葱结构</strong>
+<ul>
+<li>目的主机某一层收到的报文与源主机同一层发出的报文相同</li>
+<li>协议分层要保证整个通信系统功能完备高效</li>
+</ul></li>
+</ul></li>
+<li>协议定义了不同计算机同层次之间的关系，而服务（Service）定义同一个计算机的上下层之间的交换信息时必须遵守的规则
+<ul>
+<li>服务有两种，即面向连接的服务和无连接服务。
+<ul>
+<li>在使用面向连接的服务进行传输的时候，首先需要建立连接，然后使用这个连接传递数据，使用完毕需要关闭连接。这类服务的顺序性较好</li>
+<li>在使用无连接服务的时候，不建立连接，直接通过服务发送数据每个包都需要独立确定路由。这类服务的顺序性较差</li>
+<li>需要注意，连接并不意味着可靠，可靠性依然需要通过确认、重传等机制进行保证</li>
+</ul></li>
+<li>服务在形式上需要通过一组服务原语（Primitive）规定。原语可以分为四类，即请求、指示、响应、确认</li>
+</ul></li>
+<li>在同一个计算机之中相邻层之间都有一个接口（Interface），它定义了下层向上层提供的原语操作和服务</li>
+</ul></li>
+<li>基于三大基本概念，计算机网络体系结构的具体实现大致为
+<ul>
+<li>服务访问点（Service Access Point / SAP）
+<ul>
+<li>任何的层间服务都是在接口的 SAP 上完成的</li>
+<li>每一个 SAP 都有唯一的识别地址</li>
+<li>每一个层间接口可以具有多个 SAP</li>
+</ul></li>
+<li>接口数据单元（Interface Data Unit / IDU）
+<ul>
+<li>IDU 是通过 SAP 传递的层间信息单元（上下传输）</li>
+<li>IDU 的构成是上一层的服务数据单元（Service Data Unit / SDU）和接口控制信息（Interface Control Information / ICI）的拼接</li>
+</ul></li>
+<li>协议数据单元（Protocol Data Unit / PDU）
+<ul>
+<li>PDU 是在同层实体之间通过网络传输的信息单元（水平传输）</li>
+<li>PDU 的构成是上一层的 SDU 或其分段和协议控制信息（Protocol Control Information / PCI）的拼接</li>
+</ul></li>
+<li>基于上述定义，计算机网络的工作类似于下述
+<ul>
+<li>当本层需要水平传输的时候，首先获得上层通过 SAP 传递的，由 SDU 和 ICI 拼接得到的 IDU。然后本层删除 ICI，将剩余的 SDU 拼接上 PCI 获得 PDU 并通过本层网络协议传输</li>
+<li>当本层需要继续向下层传输的时候，首先获得上层的 IDU，这个从上层获得到本层的 IDU 在下层看来就是一个新的 SDU。本层随后直接拼接上新的 ICI 获得新的 IDU 向下传输。所以说，最上层产生的数据包向下传播的时候，会逐层添加各层控制信息。而底层接收的数据包向上传播的时候，会逐层把这些控制信息删去，获取最后的数据</li>
+</ul></li>
+</ul></li>
+<li>分层的优点包括模块化、功能抽象、可复用。缺点是数据隐藏会导致可能的低效</li>
+<li>计算机网络体系结构的设计中还有两个原则，分别称为<strong>端到端原则</strong>和 <strong>Rule of thumb</strong>
+<ul>
+<li>端到端原则的思想是底层需要尽可能简单，但是上层应用可以较为复杂（完成验证、纠错等工作），只有当这样的功能明显能提升功能的时候才会放在底层</li>
+<li>Rule of thumb 的思想是，底层的新功能不能影响其他不使用这个新功能的部分</li>
+</ul></li>
+</ul>
+<h2 id="理解-3-osi-和-tcpip-模型及其他网络模型">【理解 3 】 OSI 和 TCP/IP 模型及其他网络模型</h2>
+<ul>
+<li>模型建立的历史事件见 PPT</li>
+<li>OSI 模型在 1983 年提出，模型分为七层，从下至上为
+<ul>
+<li>物理层，这一层包含基础网络硬件，在物理通信线路上传输二进制位（Bit）</li>
+<li>数据链路层，这一层目标是在有差错的物理线路上传输无差错的数据帧（Frame）</li>
+<li>网络层，这一层控制通信子网提供数据包（Packet）传输功能</li>
+<li>传输层，这一层为用户提供端到端的数据传输功能</li>
+<li>会话层，这一层为用户提供类似安全认证等会话控制服务</li>
+<li>表示层，这一层为用户提供数据表示和数据转换功能</li>
+<li>应用层</li>
+</ul></li>
+<li>TCP/IP 模型的提出早于 OSI 模型，且仅有四层：
+<ul>
+<li>Host-to-Internet 层，相当于 OSI 的物理层和数据链路层</li>
+<li>Internet 层（网络层），控制通信子网提供源点到目的点的 IP 包传送，实现异构网络互联</li>
+<li>传输层，提供端到端的数据传送服务，如 TCP 和 UDP</li>
+<li>应用层，内部包含了 OSI 的会话层和表示层</li>
+</ul></li>
+<li>X.25 分组交换网在 70 年代提出，早于 OSI 模型，为公用包交换网与用户之间提供接口
+<ul>
+<li>该模型面向连接，支持交换虚电路和永久虚电路</li>
+<li>物理层使用协议 X.21 以及 X.3 / X.28 / X.29</li>
+<li>数据链路层使用协议 LAP 和 LAPB</li>
+<li>网络层使用协议 PLP</li>
+<li>该模型提出了以下名词 -（用户侧）数据终端设备（Digital Terminal Equipment / DTE）
+<ul>
+<li>数字线路设备（Digital Circuit Terminating Equipment / DCE）</li>
+<li>打包解包设备（Packet Assembler and Disassembler / PAD）</li>
+</ul></li>
+</ul></li>
+<li>Novell Netware 在 1983 年提出，在 2005 年终止开发
+<ul>
+<li>模型基于 client-server 结构，设计的基本思想是<strong>文件共享</strong>（同时期其它系统还基于磁盘共享，所以模型有一定先进性）</li>
+<li>基于 XNS（Xeror Network System），网络层协议是不可靠无连接协议 IPX（Internet Packet Exchange），传输层协议是面向连接的 NCP（Netware Core Protocol）和 SPX（Sequenced Package Exchange）</li>
+</ul></li>
+<li>B-ISDN 即宽带综合业务数字网，其技术基础为 ATM 异步传输模式（Asynchronous Transfer Mode）
+<ul>
+<li>ATM 也是分组交换技术
+<ul>
+<li>异步传输，即不具有主时钟</li>
+<li>传输单元为短而定长的信元（cell）</li>
+<li>采用虚电路，面向连接</li>
+<li>常见速率包括 155M 和 622M</li>
+</ul></li>
+</ul></li>
+</ul>
+<h2 id="杂项-2-未分类知识点">【杂项 2 】未分类知识点</h2>
+<ul>
+<li>美国的标准化组织包括 ANSI 和 NIST，中国的标准化组织包括 CCSA，行业标准则是 IEEE</li>
+<li>计算机网络标准化，电信标准为 ITU 而国际标准则是 ISO</li>
+<li>Internet 的标准是自发的，并非政府干预，每个标准诞生前都需要提出请求意见稿，即 RFC</li>
+</ul>
+<h1 id="数据通信基本原理">数据通信基本原理</h1>
+<h2 id="理解-4-信号的傅里叶分析">【理解 4 】信号的傅里叶分析</h2>
+<ul>
+<li>注意网原里傅里叶级数的定义为：</li>
+</ul>
+<p><span class="math display">\[
+g(t) = \frac12 c + \sum_{n = 1}^{+\infty} a_n\sin(2\pi f nt) + \sum_{n = 1}^{+\infty} b_n\cos(2\pi f nt)
+\]</span></p>
+<p>所以：</p>
+<p><span class="math display">\[
+\begin{aligned}
+c &amp;= \frac2T \int_0^T g(t) {\rm d}t \\
+a_n &amp;= \frac2T \int_0^T g(t)\sin(2\pi f nt) {\rm d}t \\
+b_n &amp;= \frac2T \int_0^T g(t)\cos(2\pi f nt) {\rm d}t \\
+\end{aligned}
+\]</span></p>
+<ul>
+<li>一个信号所包含的信号频率范围为频谱（Spectrum），其宽度称为信号的绝对带宽（Definite bandwidth）。大部分信号有无穷的绝对带宽，但是其能量可能仅集中于某一个频段，这个频带的宽度称为有效带宽（Effective bandwidth），简称带宽</li>
+<li>带宽越宽，信号的信息承载能力越强</li>
+<li>信号在给定截止频率 <span class="math inline">\(f_c\)</span> 的信道传输的过程中，高于截止频率的频率分量的振幅衰减明显大于低于截止频率的</li>
+<li>通过信道的谐波次数越多，信号越逼真</li>
+</ul>
+<h2 id="计算-1-信号传输基础计算">【计算 1 】信号传输基础计算</h2>
+<ul>
+<li>波特率指的是信号每秒钟变化的次数，也称调制速率</li>
+<li>比特率指的是信号每秒钟传输的二进制位个数</li>
+<li>波特率和比特率的关系取决于信号值与比特位的关系，如果每个信号值能表示 <span class="math inline">\(N\)</span> 个二进制位，那么比特率为波特率的 <span class="math inline">\(N\)</span> 倍</li>
+<li>对于比特率为 <span class="math inline">\(B({\rm bps})\)</span> 的信道，如果 <span class="math inline">\(M\)</span> 个二进制位为一个周期，则波特率为 <span class="math inline">\(B/M({\rm baud})\)</span>，一次谐波的频率为 <span class="math inline">\(f_1 = B/M({\rm Hz})\)</span>（一次谐波指的是信号傅里叶级数中周期等于原信号周期的分量），能通过信道的最高次谐波次数为 <span class="math inline">\(N = f_c / f_1\)</span>，这里 <span class="math inline">\(f_c\)</span> 为信道的截止频率</li>
+<li>信道的有限带宽限制了信号的传输速率，<strong>无噪声</strong>带宽为 <span class="math inline">\(H\)</span> 的信道传输有 <span class="math inline">\(V\)</span> 种电平状态的信号时，最高传输速率为：</li>
+</ul>
+<p><span class="math display">\[
+v = 2H\log_2 V({\rm bps})
+\]</span></p>
+<ul>
+<li>对于<strong>有噪声</strong>信道，其噪声功率为 <span class="math inline">\(N\)</span>，信号功率为 <span class="math inline">\(S\)</span>，其<strong>信噪比</strong>为：</li>
+</ul>
+<p><span class="math display">\[
+x = 10\log_{10}\frac{S}{N}({\rm dB})
+\]</span></p>
+<p>一般电话系统的典型信噪比为 <span class="math inline">\(30({\rm dB})\)</span>。</p>
+<p>带宽为 <span class="math inline">\(H({\rm Hz})\)</span>，信噪比为 <span class="math inline">\(S/N\)</span> 的任何信道的最大传输速率为：</p>
+<p><span class="math display">\[
+v = H\log_2\left(1 + \frac{S}{N}\right)({\rm bps})
+\]</span></p>
+<p>该传输速率为理论上限，实际很难达到。该传输速率与电平级数和采样速度无关</p>
+<h2 id="背诵-7-传输方式分类">【背诵 7 】传输方式分类</h2>
+<ul>
+<li>数字传输、模拟传输
+<ul>
+<li>数字传输的优点是成本低，对噪声不敏感，缺点是易受衰减（频率越高越严重）</li>
+</ul></li>
+<li>并行传输、串行传输</li>
+<li>点到点传输、点到多点传输
+<ul>
+<li>为适应不同的需要，通信线路采用不同的连接方式</li>
+</ul></li>
+<li>单工、半双工和全双工传输
+<ul>
+<li>单工传输：信息只能单向传输，监视信号可回送</li>
+<li>半双工传输：信息可以双向传输，但在某一时刻只能单向传输</li>
+<li>全双工传输：信息可以同时双向传输</li>
+</ul></li>
+<li>同步传输、异步传输
+<ul>
+<li>同步传输
+<ul>
+<li>传输以报文为基本单位</li>
+<li>传输开始的时候需要传输<strong>同步字符</strong>让双方同步</li>
+<li>可以不间断传输，传输效率较高但是需要<strong>透明传输处理</strong>，即传输的信息中不存在同步字符</li>
+<li>接收方必须知道每一位信号的开始及其持续时间，以便正确的采样接收</li>
+<li>基于<strong>二进制位</strong>的传输一般使用同步传输，信息以<strong>二进制位流</strong>为单位传送，传输过程中以<strong>位</strong>为单位同步，传输的开始和结束以特定的<strong>八位二进制位</strong>同步</li>
+</ul></li>
+<li>异步传输
+<ul>
+<li>需要辅助位，如起始位、奇偶校验位、终止位</li>
+<li>传输效率低，主要用于字符终端与计算机之间的通信</li>
+<li>传输字符时，信息传送以字符为单位</li>
+</ul></li>
+</ul></li>
+</ul>
+<h2 id="背诵-8-信号发送方式">【背诵 8 】信号发送方式</h2>
+<ul>
+<li>数据表示分为两种，即模拟数据和数字数据</li>
+<li>数据传输方式中以信号为载体，分为模拟信号（模拟信道）和数字信号（数字信道）两种（见【背诵 7 】）</li>
+<li>两种数据表示和两种数据传输方式对应形成四种信号发送方式：</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">模拟数据</th>
+<th style="text-align: center;">数字数据</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">模拟信道</td>
+<td style="text-align: center;">电话系统</td>
+<td style="text-align: center;">频带传输、调制解调器（Modem）</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">数字信道</td>
+<td style="text-align: center;">编码解码器（Codec）</td>
+<td style="text-align: center;">基带传输、数字编码解码器</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>数字数据的数字传输
+<ul>
+<li>基带传输
+<ul>
+<li>基带指的是传输变换前所占用的频带，是原始信号所固有的频带</li>
+<li>基带传输指的是在传输时直接使用基带信号，是一种基本的传输方式，适用于高速低速各种情况</li>
+<li>其限制为因基带信号所带的频率成分很宽，所以对传输线有一定的要求</li>
+</ul></li>
+<li>编码方式
+<ul>
+<li>不归零制码（NRZ）
+<ul>
+<li>用高电平表示 1，用低电平表示 0</li>
+<li>难以分辨某一位的开始或结束，所以发送和接受方都需要时钟同步</li>
+<li>如果信号中 0 或者 1 连续出现，直流电平会叠加</li>
+<li>容易产生传播错误</li>
+</ul></li>
+<li>曼彻斯特码（相位编码）
+<ul>
+<li>每个周期中间有一个跳变，由低到高为 0，由高到低为 1</li>
+<li>克服了 NRZ 的不足，并且每个周期中间的跳变既是信息又是时钟，可以自同步</li>
+</ul></li>
+<li>差分曼彻斯特码
+<ul>
+<li>每个周期中间有一个跳变作为时钟</li>
+<li>每个周期开始有跳变表示 0，没有跳变表示 1</li>
+<li>时钟、数据相分离，便于提取</li>
+<li>差分曼彻斯特注意分类讨论初始时是高电平还是低电平</li>
+</ul></li>
+<li>逢 0 变化 NRZ
+<ul>
+<li>每个周期开始有跳变表示 0，没有跳变表示 1</li>
+<li>每个周期中间没有跳变</li>
+<li>注意讨论初始时的电平</li>
+</ul></li>
+<li>逢 1 变化 NRZ
+<ul>
+<li>每个周期开始有跳变表示 1，没有跳变表示 0</li>
+<li>每个周期中间没有跳变</li>
+<li>注意讨论初始时的电平</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>数字数据的模拟传输
+<ul>
+<li>频带传输
+<ul>
+<li>在一定频率范围内的线路上，进行载波传输</li>
+<li>用基带信号对载波进行调制，使其变为适合于线路传送的信号</li>
+<li>调制指的是用基带脉冲控制载波参数，使得这些参数反应基带脉冲信息</li>
+<li>使用调制解调器</li>
+</ul></li>
+<li>调制技术
+<ul>
+<li>幅移键控法（调幅 / ASK），即根据基带脉冲调整载波振幅</li>
+<li>频移键控法（调频 / FSK），即根据基带脉冲调整载波频率</li>
+<li>相移键控法（调相 / PSK），即根据基带脉冲调整载波相位</li>
+</ul></li>
+</ul></li>
+<li>模拟数据的数字传输
+<ul>
+<li>脉冲代码调制 PCM 技术
+<ul>
+<li>根据 Nyquist 原理进行采样</li>
+<li>将模拟信号的振幅分为 <span class="math inline">\(2^n\)</span> 级，每一个采样点用 <span class="math inline">\(n\)</span> 位二进制位表示</li>
+<li>贝尔系统的 T1 载波每个采样点用 7 位二进制表示</li>
+</ul></li>
+<li>差分脉冲代码调制
+<ul>
+<li>与 PCM 数字化振幅不同，差分脉冲代码调制数字化的是相邻采样点的振幅差值</li>
+<li>可以使用较少的二进制位表示</li>
+</ul></li>
+<li><span class="math inline">\(\delta\)</span> 调制
+<ul>
+<li>根据每个采样值与前一个值之间的差来决定输出 1 还是 0</li>
+<li>编码速度可能无法跟上变化较快的模拟信号</li>
+</ul></li>
+</ul></li>
+</ul>
+<h2 id="背诵-9-多路复用技术">【背诵 9 】多路复用技术</h2>
+<ul>
+<li>使得多路信号同时使用一条物理线路的技术,允许用户使用一个共享信道进行通信，避免相互干扰，降低成本，提高利用率</li>
+<li>多路复用技术分类
+<ul>
+<li>时分复用（TDM）
+<ul>
+<li>T1 载波电话系统分为 24 个信道，每个 <span class="math inline">\(64({\rm Kbps})\)</span>，一共 <span class="math inline">\(1.544({\rm Mbps})\)</span>，控制信息带内传输</li>
+</ul></li>
+<li>频分复用（FDM）
+<ul>
+<li>频率分割为频段，多用于手机通信</li>
+</ul></li>
+<li>波分复用（WDM）
+<ul>
+<li>光传输使用，对波长分段，是特殊的频分复用</li>
+</ul></li>
+</ul></li>
+</ul>
+<h2 id="背诵-10-交换技术">【背诵 10 】交换技术</h2>
+<ul>
+<li>计算机网络通信分为交换式和广播式</li>
+<li>交换是在多结点通信网络中，为有效利用通信设备和线路，动态接通、断开、切换通信线路</li>
+<li>交换技术分类
+<ul>
+<li>电路交换
+<ul>
+<li>直接利用可以切换的物理电路动态调整通信线路</li>
+<li>分为建立电路、传输数据、拆除电路三个阶段</li>
+<li>在发送数据前，必须建立起点到点的物理通路。建立物理通路时间较长，数据传送延迟较短</li>
+<li>电话网和 ISDN 采用电路交换</li>
+<li>电路交换一般采用时分复用
+<ul>
+<li>时间被分为帧（Frame），帧被分为时槽（Slot）</li>
+<li>时槽在帧内的相对位置决定这个槽所传输数据所属的会话</li>
+<li>发送方和接收方间需要同步</li>
+<li>非永久会话需要动态绑定时槽到一个会话</li>
+</ul></li>
+</ul></li>
+<li>报文交换（存储转发方式）
+<ul>
+<li>信息以报文（逻辑上完整的信息段）为单位进行存储转发</li>
+<li>线路利用率高、要求中间结点（网络通信设备）缓冲大、延迟时间长</li>
+</ul></li>
+<li>分组交换（包交换）
+<ul>
+<li>分组是一种报文还小的信息段，可定长也可变长。分组交换中信息以分组为单位进行存储转发。源结点把报文分为分组，在中间结点存储转发，目的结点把分组合成报文。用附加的分组头来区分数据</li>
+<li>特点
+<ul>
+<li>每个分组头包括源地址和目的地址，独立进行路由选择
+<ul>
+<li>所以不保证到达顺序</li>
+</ul></li>
+<li>网络结点设备中不预先分配资源，使用统计复用，线路利用率高
+<ul>
+<li>相比于电路交换最明显的优势</li>
+</ul></li>
+<li>易于重传，可靠性高</li>
+<li>易于开始新的传输，让紧急信息优先通过</li>
+<li>开销增加</li>
+<li>需要处理拥塞问题
+<ul>
+<li>需要复杂的路由器，难以保证端到端的服务质量</li>
+</ul></li>
+</ul></li>
+<li>分组交换分为虚电路分组交换和数据报分组交换
+<ul>
+<li>数据报分组交换（如 IP Networks）
+<ul>
+<li>每个分组均带有网络地址（源、目的），可走不同的路径</li>
+</ul></li>
+<li>虚电路分组交换（如 ATM Networks）
+<ul>
+<li>其是电路交换和分组交换的结合
+<ul>
+<li>数据以分组形式传输，来自同一流的分组通过一个预先建立的路径（虚电路）传输</li>
+<li>确保分组的顺序，但是来自不同虚电路的分组可能会交错在一起</li>
+</ul></li>
+<li>分三个阶段
+<ul>
+<li>建立：发带有全称网络地址的呼叫分组，建立虚电路</li>
+<li>传输：沿建立好的虚电路传输数据</li>
+<li>拆除：拆除虚电路</li>
+</ul></li>
+<li>分组头不需要包含完整的地址信息，路由器需要维护虚电路的状态信息</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>电路交换、报文交换、分组交换的时序图如下。其中电路交换要逐层申请预留占用资源，这段申请时间用于<strong>寻找出境中继线</strong>，申请完毕后节点会占用这段传输线</li>
+</ul>
+<p><img src="/uploads/note-of-net/1.png" /></p>
+<ul>
+<li>三类交换技术的特点
+<ul>
+<li>电路交换适用于实时信息和模拟信号传送，在线路带宽比较低的情况下使用比较经济</li>
+<li>报文交换适用于线路带宽比较高的情况，可靠灵活，但延迟大</li>
+<li>分组交换缩短了延迟，也能满足一般的实时信息传送。在高带宽的通信中更为经济、合理、可靠。是目前公认较好的一种交换技术</li>
+<li>电路交换和分组交换可以结合，如 IP over SONET 以及 IP over Frame Relay</li>
+</ul></li>
+</ul>
+<h2 id="背诵-11-交换结构">【背诵 11 】交换结构</h2>
+<ul>
+<li>Crossbar 交换结构：无阻塞内部交换</li>
+<li>空分交换：多个 Crossbar 互联，有无阻塞均可</li>
+<li>时分交换：高效处理</li>
+</ul>
+<h2 id="杂项-3-未分类知识点">【杂项 3 】未分类知识点</h2>
+<ul>
+<li>数据通信技术由编码技术、多路复用和交换技术构成</li>
+</ul>
+<h1 id="物理层接口及其协议">物理层接口及其协议</h1>
+<h2 id="背诵-12-物理层的定义与功能">【背诵 12 】物理层的定义与功能</h2>
+<ul>
+<li>物理层提供机械的、电气的、功能的和规程的特性，目的是启动、维护和关闭<strong>数据链路实体</strong>之间进行<strong>比特传输</strong>的<strong>物理连接</strong>。这种连接可能通过中继系统，在中继系统内的传输也是在物理层</li>
+<li>物理层的功能是在两个网络设备之间提供透明的比特流传输</li>
+<li>物理层的传输方式
+<ul>
+<li>连接方式（点到点，点到多点）</li>
+<li>通信方式（单工，半双工，全双工）</li>
+<li>位传输方式（串行，并行）</li>
+</ul></li>
+<li>物理层的重要特性
+<ul>
+<li>机械特性（Mechanical characteristics）
+<ul>
+<li>定义物理连接的边界点，即接插装置</li>
+<li>规定物理连接时所采用的规格、引脚的数量和排列情况</li>
+</ul></li>
+<li>电气特性（Electrical characteristics）
+<ul>
+<li>规定传输二进制位时，线路上信号的电压高低、阻抗匹配、传输速率和距离限制</li>
+</ul></li>
+<li>功能特性（Functional characteristics）
+<ul>
+<li>主要定义各条物理线路的功能，比如数据、控制、定时、地线</li>
+</ul></li>
+<li>规程特性（Procedural characteristics）
+<ul>
+<li>主要定义各条物理线路的工作规程和时序关系</li>
+</ul></li>
+</ul></li>
+</ul>
+<h2 id="背诵-13-物理层传输介质">【背诵 13 】物理层传输介质</h2>
+<ul>
+<li>双绞线。既可以用于模拟传输，也可以用于数字传输，带宽依赖于线的类型和传输距离</li>
+<li>同轴电缆
+<ul>
+<li>基带同轴电缆，用于数字传输（数字数据数字传输用基带传输）</li>
+<li>宽带同轴电缆，用于模拟传输（模拟数据数字传输用频带传输）</li>
+</ul></li>
+<li>光纤
+<ul>
+<li>分为单模光纤和多模光纤，两者都支持波分复用，使用的波长越长衰减越小，但成本也越高
+<ul>
+<li>单模光纤只有一个入射角度，半径小，适合<strong>长距离传输</strong></li>
+<li>多模光纤有多个入射角度，半径大，适合短距离传输</li>
+</ul></li>
+<li>光纤组网
+<ul>
+<li>点到点，使用四根线，两根用于保护倒换</li>
+<li>环，使用两根线，一根用于保护倒换</li>
+</ul></li>
+<li>光纤中继器。分为光电光式和全光式
+<ul>
+<li>全光网具有光因特网论坛 OIF</li>
+</ul></li>
+</ul></li>
+</ul>
+<h2 id="背诵-14-sonet-sdh-网络传输技术">【背诵 14 】 SONET / SDH 网络传输技术</h2>
+<ul>
+<li>80 年代提出，应用<strong>时分复用</strong>技术，同步传输，有主时钟控制</li>
+<li>SONET 路径为：路径（Path）、线路（Line）、段（Section）</li>
+<li>基于<strong>字节</strong>的复用。但是 OC-3c 中的 c 表示<strong>级联</strong>而非复用</li>
+</ul>
+<h2 id="背诵-15-移动电话网络传输技术">【背诵 15 】移动电话网络传输技术</h2>
+<ul>
+<li>单方向的寻呼系统
+<ul>
+<li>寻呼过程
+<ul>
+<li>打电话给寻呼公司，输入寻呼机号码</li>
+<li>寻呼公司的计算机收到请求，通过线路传到高处的天线</li>
+<li>天线直接广播信号（本地寻呼），或传递给卫星（异地寻呼），卫星再广播</li>
+</ul></li>
+<li>单向系统</li>
+<li>需要很小的带宽</li>
+</ul></li>
+<li>蜂窝电话
+<ul>
+<li>1G：模拟蜂窝电话，只能传送话音</li>
+<li>2G：数字蜂窝电话，主要传送话音，相关概念有 GSM 和 CDMA</li>
+<li>3G / 4G：可以传送话音和数据</li>
+</ul></li>
+<li>模拟蜂窝电话
+<ul>
+<li>Push-to-talk system。早期用于军事通信，单信道，半双工系统</li>
+<li>IMTS。双频，全双工系统</li>
+<li>AMPS。使用小蜂窝，蜂窝中心有基站，不相邻且相近的蜂窝中<strong>重用频率</strong></li>
+</ul></li>
+</ul>
+<div class="note warning"><p>网原实在是看不会了，这个笔记也就到此为止吧。</p>
+</div>
+]]></content>
+      <categories>
+        <category>【学习笔记】计算机</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Next.js 框架摸索实录</title>
+    <url>/2022/11/24/note-of-next/</url>
+    <content><![CDATA[<p>在出软工小作业的时候遇到了 React Router 配置和跨域问题，虽然这两个都不是什么大问题，我也不是不会解决，但是要是出到作业里面，势必会导致我要写好多文档还要写很多讲解。这个时候 yfgg 告诉我 Next.js 框架好之又好，昨天稍微试了一下感觉确实不错，所以就吃了安利迁移到了 Next.js 框架。但是今天接着写的时候，还是发现不少细节是需要注意的，这里就当备忘了。</p>
+<span id="more"></span>
+<h1 id="初始配置">初始配置</h1>
+<p>由于 Next.js 自己带了不少初始配置，所以加东西的时候不一定每个都需要自己从头再来，完全可以用官方模板。</p>
+<p>我出的小作业采用 Next.js + TypeScript + ESLint + Jest，这一整套模板也正在编写，到时候可以开放给同学们直接下载。</p>
+<h1 id="csr-还是-ssr">CSR 还是 SSR</h1>
+<p>Next.js 框架的一大优势就在 SSR。然而说实话我自己也没有特别明白 SSR 之类的概念，所以昨晚花了点时间学了一下。</p>
+<p>最早期的前后端耦合应用实际上就采用 SSR，即 <strong>S</strong>erver <strong>S</strong>ide <strong>R</strong>ender，服务端渲染。当时严格而言就没有前端这个概念，服务器直接将渲染好的 HTML 扔给浏览器就结束了。</p>
+<p>而随着前后端分离开发概念的出现，Vue、React 等框架逐渐采用 CSR，即 <strong>C</strong>lient <strong>S</strong>ide <strong>R</strong>ender，客户端渲染。CSR 中，数据交互大致可以描述为：</p>
+<ul>
+<li>浏览器向前端服务器请求模板 HTML（或者说空缺关键数据的 HTML），这些 HTML 中携带获取关键数据的脚本</li>
+<li>浏览器渲染模板 HTML，执行获取数据的脚本，向后端服务器请求关键数据</li>
+<li>浏览器获得关键数据后，调整 DOM 展示最终页面</li>
+</ul>
+<p>CSR 比较大的问题有两点：</p>
+<ul>
+<li>如果后端服务器响应慢或者数据量大，模板 HTML 在页面上留存时间长，表现为 Loading 界面或者白屏，严重削弱用户体验</li>
+<li>爬虫难以处理这类网页，对搜索引擎的优化（<strong>S</strong>earch <strong>E</strong>ngine <strong>O</strong>pimization，简称 SEO）困难，导致网页宣传效果不佳</li>
+</ul>
+<p>但就开发环节而言，开发需要不断处理白屏问题，不断在组件中设置 <code>refreshing</code> 状态实际上比较浪费开发时间。</p>
+<p>而现代优化过的 SSR 则相应做出了部分解决，其基本思路为：</p>
+<ul>
+<li>浏览器向前端服务器请求页面</li>
+<li>前端服务器向后端服务器请求关键数据，获取数据后根据自己已有的模板 HTML 渲染出完整 HTML 发回浏览器</li>
+<li>浏览器直接渲染出完整页面</li>
+</ul>
+<p>首先，浏览器不会收到缺失数据的 HTML，这样就从根源上解决白屏问题。进一步，由于服务端的算力和内网传输速度一般高于客户端算力和外网传输速度，所以渲染出最终 HTML 的时间相应缩短。另外，由于客户端能够直接得到完整 HTML，所以 SEO 也是简单的。</p>
+<p>然而 SSR 显然也是有问题的：</p>
+<ul>
+<li>服务器端压力极大，对于多并发情况处理无力</li>
+<li>针对每个用户都需要重新渲染完整 HTML，重复计算问题严重</li>
+</ul>
+<p>其中第二个问题实际上比较重要，如果某个网页和客户端具体信息无关，也就是说任何客户端都收到相同内容，那么这种 SSR 实际上不如 CSR。CSR 可以通过 CDN 缓存模板 HTML，而 SSR 此时对每个用户的请求，每次都需要完整渲染 HTML。</p>
+<p>所以这也是 SSG，<strong>S</strong>erver <strong>S</strong>ide <strong>G</strong>eneration，服务端生成提出的契机。针对与客户端无关的、更新速度慢的页面，SSG 会在构建时直接生成页面并缓存在前端服务器，浏览器发出请求后会直接返回缓存页面，从而解决上述问题。</p>
+<p>显然，CSR、SSR、SSG 各有利弊。就目前你清的教学、科协各个成员的掌握情况看，CSR 系列的开发明显占优势。另外考虑到软工课程不少类似于后台管理页面等更重视数据时效性、用户交互体验的应用，CSR 更应当重点讲解。</p>
+<p>然而 SSR 不能因此完全废弃不讲，因为其针对用户无关页面的白屏加载问题绝对是重要的一种解决方案。SSR 依然是企业官网、个人博客等网页的首选。</p>
+<p>所以目前依然是将传统的 CSR 布置为作业，然后让他们强制将 API 睡眠，体验白屏问题后让他们叙述 SSR 的好处，用此作为思考题。</p>
+<h1 id="useeffect-重复调用问题"><code>useEffect</code> 重复调用问题</h1>
+<p>这是一个老问题，说实话也和 Next.js 没有多少关系。如果在 React 中写下述代码：</p>
+<figure class="highlight typescript"><figcaption><span>TypeScript</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> App = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    useEffect(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;useEffect called!&quot;</span>);</span><br><span class="line">    &#125;, []);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span> Test page. <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>会发现控制台里出现了两次 <code>useEffect called!</code> 的输出。</p>
+<p>虽然严格而言不会出现很大的问题，然而由于这种 <code>useEffect</code> 常常用于获取页面的初始数据（CSR 常用手法），这个问题可能导致重复请求后端数据，对于用户鉴权等需求甚至可能是危险的，后端如果不去做相应处理甚至可能打穿后端（我软工还真的差点出锅，然而当时也没在意）。</p>
+<p>然后我搜索引擎大作业里面采用了非常丑陋的写法解决了：</p>
+<p><img src="/uploads/note-of-next/1.jpeg" /></p>
+<p>今天才知道这个是 React 的严格模式的锅。严格模式下，在 dev 条件下 React 会有意重复调用这些钩子来提示可能的危险。</p>
+<p>也就是说打穿后端实际上就是 React 告诉你，你这有可能出锅，你自己不处理好不怪我。</p>
+<p>当然，release 之后 React 就不会有意重复调用了。</p>
+<p>所以解决方式就两种：</p>
+<ul>
+<li>好好写能够处理并发的代码，React 都告诉你会出事了</li>
+<li>关掉严格模式，让 React 闭嘴</li>
+</ul>
+<p>我选择了后者。</p>
+<p>参考：<a href="https://juejin.cn/post/7105652180501135367" class="uri">https://juejin.cn/post/7105652180501135367</a>。</p>
+<h1 id="useroute-与注水"><code>useRoute</code> 与注水</h1>
+<p>使用动态路由的时候，我按照 React 的开发习惯写了下述代码：</p>
+<figure class="highlight typescript"><figcaption><span>TypeScript</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> route = useRouter();</span><br><span class="line"></span><br><span class="line">useEffect(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(route.query.id);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Use route.query.id to fetch data</span></span><br><span class="line">&#125;, []);</span><br></pre></td></tr></table></figure>
+<p>令人惊讶的是，这里输出了 <code>undefined</code>。</p>
+<p>事实上这是 Next.js 预渲染的锅，原文是这样的：</p>
+<div class="note info no-icon"><p>Pages that are statically optimized by <strong>Automatic Static Optimization</strong> will be hydrated without their route parameters provided, i.e <code>query</code> will be an empty object (<code>{}</code>).</p>
+<p>After hydration, Next.js will trigger an update to your application to provide the route parameters in the <code>query</code> object.</p>
+</div>
+<p>简而言之，ASO 是一种预渲染优化，在不获取路由信息的条件下先弄出来一个页面给浏览器，然后再注水（即向 <code>query</code> 注入路由信息）并触发组件更新，也就是说页面获取到路由信息并不是一开始，从而 <code>useEffect(*, [])</code> 是拿不到路由信息的。</p>
+<p>了解这一点后，代码就应该写为：</p>
+<figure class="highlight typescript"><figcaption><span>TypeScript</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> route = useRouter();</span><br><span class="line"><span class="keyword">const</span> query = route.query;</span><br><span class="line"></span><br><span class="line">useEffect(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!route.isReady) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(route.query.id);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Use route.query.id to fetch data</span></span><br><span class="line">&#125;, [route, query]);</span><br></pre></td></tr></table></figure>
+<p>应该让 <code>useEffect</code> 检测 <code>route</code> 和 <code>query</code> 的变动，在注水完成后才能触发数据获取。</p>
+]]></content>
+      <categories>
+        <category>【杂谈】开发</category>
+      </categories>
+  </entry>
+  <entry>
     <title>《信号处理原理》学习笔记</title>
     <url>/2021/09/14/note-of-dsp/</url>
     <content><![CDATA[<p>一门纯数学课，没有什么特别有意思的地方。但也正因为它是数学课，所以我感觉我学起来会稍微轻松一些，希望是我四大原理之中最舒服的一门课。</p>
@@ -8986,770 +9752,6 @@ H(z) = \frac{Y(z)}{X(z)} = \frac{\sum_{r = 0}^M a_rz^{-r}}{\sum_{k = 0}^N b_kz^{
 ]]></content>
       <categories>
         <category>【学习笔记】计算机</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>《计算机网络原理》学习笔记</title>
-    <url>/2021/09/13/note-of-net/</url>
-    <content><![CDATA[<p>网原总之是一个没打算认真学的专业课，因为真的对网络没有很大的兴趣。再加上上学期曾经看着迅哥哥他们被网原折磨，自己也没什么信心能学好这门专业课。</p>
-<p>这个笔记完全基于上一届流传下来的《网原干饭背诵》，在此基础上对重点做一些标记做一些讲解，反正是个背书课，那么就只能一点一点背了。根据前人经验，这个笔记会把比较重要的东西用星号标注出来。</p>
-<span id="more"></span>
-<h1 id="计算机网络的历史和新进展">计算机网络的历史和新进展</h1>
-<h2 id="背诵-1-网络基础">【背诵 1 】网络基础</h2>
-<ul>
-<li><p>网络所提供的最基本服务为<strong>信息传递</strong>，不同的网络依据其提供的服务进行区分。而区分服务的依据则包括功能、延迟、带宽等各种<strong>外部特性</strong>。</p></li>
-<li><p>网络依据<strong>空间距离</strong>可以分为局域网（LAN）、城域网（MAN）、广域网（WAN）和个域网（PAN）。依据<strong>信息类型</strong>可以分为数据网络、电话网络。依据<strong>应用类型</strong>可以分为专用网络、通用网络。依据<strong>使用权</strong>可以分为私有网络、公用网络。同时，网络也可以按照使用的协议进行分类，如 IP 协议等。</p></li>
-</ul>
-<h2 id="背诵-2-计算机网络发展历史">【背诵 2 】计算机网络发展历史</h2>
-<p>计算机网络的历史可以大致描述为：</p>
-<ul>
-<li>1940 年代，第一个计算机 ENIAC 诞生</li>
-<li>1950 年代，大型机和多终端系统诞生</li>
-<li>1960 - 1964 年，分组交换网络诞生（Paul Baran）</li>
-<li>1960 年代，计算机网络研究开始</li>
-<li>* 1969 年，ARPANET 研究启动</li>
-<li>1970 年代，计算机网络发展
-<ul>
-<li>各国电信部门建设运行 X.25 分组交换网</li>
-<li>SNA 以及 DNA 等专用网络体系结构出现</li>
-<li>Internet 的前身 ARPANET 进行实验运行，带宽小且仅有不到 100 台计算机接入</li>
-<li>* 以太网和 Telnet 出现</li>
-<li>* 1979 年，TCP/IP 协议成熟</li>
-</ul></li>
-<li>1980 年代，计算机网络逐步成型
-<ul>
-<li>标准化的计算机网络体系结构 ISO/OSI 出现</li>
-<li>局域网 LAN 技术发展</li>
-<li>FTP、NFS、E-mail、USENET 等技术出现</li>
-<li>1980 - 1983 年，ARPANET 和 MILNET 分离，前者采用 TCP/IP 协议</li>
-<li>1983 年，BSD UNIX 内置 TCP/IP 协议</li>
-<li>1985 - 1986 年，NSFNET 建成，用于连接 6 个超级计算中心</li>
-<li>1987 - 1990 年，NSFNET 开始连接地区网络</li>
-<li>Internet 初具规模，1987 年，中国第一个电子邮件发送到 Internet</li>
-<li>中国开始依赖电话线建立低速广域网</li>
-</ul></li>
-<li>1990 年代，计算机网络进一步发展
-<ul>
-<li>Internet 商业化，在中国也得到了广泛应用</li>
-<li>Web 技术在 Internet 上得到广泛应用</li>
-<li>中国出现局域网，如 Novell 等</li>
-<li>1990 - 1992 年，NSFNET 带宽提高，连接了 16 个地区网络</li>
-<li>1994 年，NSFNET 骨干网解体，出现了若干其他的商用骨干网</li>
-<li>1995 年，中国教育和科研网 CERNET 出现</li>
-</ul></li>
-<li>2000 年代，计算机网络广泛应用
-<ul>
-<li>网络应用发展迅速，搜索引擎和社交网络出现</li>
-<li>移动互联网产业快速发展</li>
-<li>2006 年，与 IPv6 相关的 CNGI-CERNET2 出现</li>
-</ul></li>
-<li>最近，数据中心网络、天地一体化网络、 IPv6 技术等快速发展
-<ul>
-<li>2011 年开始设立 World IPv6 Day</li>
-<li>2011 年 2 月 3 日，全球互联网名称与数字地址分配机构 ICANN 宣布 IPv4 地址耗尽</li>
-</ul></li>
-</ul>
-<h2 id="背诵-3-internet-技术">【背诵 3 】 Internet 技术</h2>
-<ul>
-<li>Internet 是全球范围的、通用的、异构的公用计算机网络</li>
-<li>Internet 是其他类型的计算机网络技术的基础，如企业内部网（Intranet）</li>
-<li>Internet 开放的标准由 IETF 负责制定、维护和协调。其他类似 IRTF、IAB、IESG 等机构也参与了标准的维护
-<ul>
-<li>IETF 全称 Internet Engineering Task Force，其分为若干个工作组（WG），其提交的 Internet 标准被称为 RFC，即 Request For Comments</li>
-<li>IRTF 全称 Internet Researching Task Force，由各类专注某一个领域的研究小组组成</li>
-<li>IAB 全称 Internet Architecture Board，负责定义 Internet 的大体框架，为 IETF 提供方向上的指导</li>
-<li>IESG 全称 Internet Engineering Steering Group，负责在技术方面上管理 IETF 的活动</li>
-</ul></li>
-<li>Internet 是历史上发展最快的一种技术，其发展速度甚至超越摩尔定律</li>
-</ul>
-<h2 id="背诵-4-网络时代三大定律">【背诵 4 】网络时代三大定律</h2>
-<ul>
-<li>【摩尔定律】 CPU 性能每 18 个月会翻番，每 10 年翻 100 倍</li>
-<li>【光纤定律】也称超摩尔定律，骨干网带宽每 9 个月会翻番。每 10 年翻 10000 倍</li>
-<li>【麦特卡菲定律】也称联网定律，网络价值和用户数量的平方成正比</li>
-</ul>
-<h2 id="理解-1-分组交换技术">【理解 1 】分组交换技术</h2>
-<p>Paul Baran 在设计能承受核攻击的通信系统的时候，确立了三个设计准则。</p>
-<ul>
-<li>自适应系统的<strong>热土豆路由策略</strong>（能够学习并适应各种新的环境）
-<ul>
-<li>如果不知道正确的路由，就将分组转发给所有邻居</li>
-<li>通过观察路过的分组来更新路由表，旧的路由表项会被删除</li>
-<li>尽可能快地转发分组，分组途径的路径并不一定是最短路径</li>
-</ul></li>
-<li>分组发送策略（端节点能够容忍错误并恢复）
-<ul>
-<li>每个节点根据自我的路由表决定如何转发分组</li>
-<li>每个分组的转发完全独立于其他的分组</li>
-<li>交换节点不保存端节点信息，这一点让网络的可拓展性大大增强</li>
-</ul></li>
-<li>分布式策略
-<ul>
-<li>所有交换节点平等，避免单一节点失效问题</li>
-<li>通过物理硬件冗余和自适应路由实现系统稳健性</li>
-</ul></li>
-</ul>
-<p>而 Internet 就是这一类网络。Internet 连接了各种异构的子网，提供两个最基本的功能，即全球唯一地址和分组通过动态路由传输。</p>
-<p>分组交换技术具有相当多的优点，包括：</p>
-<ul>
-<li>简单性
-<ul>
-<li>每个分组自身携带信息</li>
-<li>一个路由表可以为所有的流量服务</li>
-<li>可以适应快速增长的网络规模</li>
-</ul></li>
-<li>灵活性
-<ul>
-<li>可以在各种物理底层上运行</li>
-<li>可以支持各种网络应用</li>
-</ul></li>
-<li>可扩展性
-<ul>
-<li>可以应对端系统的增加</li>
-<li>可以应对流量的增加</li>
-<li>可以应对网络规模增大带来的路由表增大和路由频繁变化</li>
-</ul></li>
-<li>健壮性
-<ul>
-<li>默认了网络结构变化是正常现象</li>
-<li>牺牲一定的效率换取网络的稳定</li>
-</ul></li>
-</ul>
-<h2 id="背诵-5-今日互联网">【背诵 5 】今日互联网</h2>
-<ul>
-<li>今日的互联网具有更大的规模和更多的用户，而且支持更多的功能，具有更高的价值，但是其健壮性、适应性和互联程度都下降了</li>
-<li>当今互联网面临的一个问题就是 IPv4 地址耗尽，而目前缓解这个问题地方案是<strong>网络地址转换协议（Network Address Translation / NAT）</strong>
-<ul>
-<li>NAT 缓解了地址耗尽的问题，增强了安全性和控制性</li>
-<li>但是另外一方面却打破了 Internet 中地址唯一的假设</li>
-<li>端到端的分组传输路径变成多个 NAT 域的级联，相当于虚电路</li>
-<li>为了恢复 Internet 的原有结构，目前正在推进 IPv6 技术</li>
-</ul></li>
-</ul>
-<h2 id="杂项-1-未分类知识点">【杂项 1 】未分类知识点</h2>
-<ul>
-<li>二十世纪后期人类两项最伟大的战略工程为<strong>星球大战计划</strong>和<strong>互联网计划</strong>。目前互联网已经发展为继海、陆、空、天之后的<strong>第五空间</strong>。</li>
-</ul>
-<h1 id="计算机网络体系结构">计算机网络体系结构</h1>
-<h2 id="背诵-6-计算机网络的定义和组成">【背诵 6 】计算机网络的定义和组成</h2>
-<ul>
-<li>计算机网络定义为若干独立自治的计算机系统的互联集合体
-<ul>
-<li>计算机网络和分布式系统不同，分布式系统虽然也是由若干个计算机系统组成，但其具有<strong>内聚性</strong>和<strong>透明性</strong>，故分布式系统呈现给用户的更像是一台计算机。计算机网络则明显分立，在用户的视角依然是若干不同的计算机</li>
-<li>目前分布式系统和计算机网络有合流的趋势，两者正在走向统一</li>
-</ul></li>
-<li>计算机网络有两级组成，即<strong>资源子网</strong>和<strong>通信子网</strong>。资源子网常常是服务器或者用户计算机，而通信子网常常是通信线路等信道和路由器、交换机等网络互联设备</li>
-<li>计算机网络之中的通信通常有两种，即<strong>交换式通信</strong>和<strong>广播式通信</strong>
-<ul>
-<li>交换式通信又称<strong>点对点通信</strong>
-<ul>
-<li>需要经过交换设备，将消息转发给一个或一组结点</li>
-<li>交换设备根据需要选择输出</li>
-<li>网络典型的拓扑结构包括 star / ring(loop) / tree / complete / intersecting rings / irregular</li>
-<li>关键技术是<strong>路由选择</strong></li>
-</ul></li>
-<li>广播式通信
-<ul>
-<li>多台计算机共享通信线路</li>
-<li>任一台计算机发出的信息可以直接被其它计算机接收</li>
-<li>网络典型的拓扑结构包括 bus / ring(loop)</li>
-<li>关键技术是<strong>通道分配</strong>
-<ul>
-<li>静态分配，即分时间片。特点是控制简单，但通道利用率低</li>
-<li>动态分配，即各站点动态使用通道。特点是控制复杂，但通道利用率高。通道分配方法有两种。集中式指的是只有一个仲裁机构，分布式指的是各站点均有仲裁机构</li>
-</ul></li>
-</ul></li>
-<li>传统的 LAN 一般使用广播式通信，而 MAN 和 WAN 一般使用交换式通信。现代的 LAN 中交换式通信的应用正在增多</li>
-</ul></li>
-</ul>
-<h2 id="理解-2-计算机网络体系结构">【理解 2 】计算机网络体系结构</h2>
-<ul>
-<li>计算机网络体系结构指的是对计算机网络及其部件所完成功能的比较精确的定义，即从功能的角度描述计算机网络的结构，是<strong>层次和层间关系</strong>的集合。但体系结构只会从功能上定义网络，并不会定义协议的细节和接口关系
-<ul>
-<li>现代计算机网络体系架构指出，计算机网络的基本功能是为地理位置不同的计算机用户之间提供访问通路，并且应当提供若干功能（具体功能列表见 PPT），这些功能中最重要的是<strong>通信功能</strong></li>
-<li>这些功能的特征是<strong>分层</strong>，也就是说计算机网络中提供的功能是分成层次的</li>
-<li>位于不同计算机上进行对话的同一层通信各方可分别看成是一种进程，称为<strong>对等（同等）进程</strong></li>
-</ul></li>
-<li>计算机网络分层的体系结构有三个重要的概念，即协议、服务和接口
-<ul>
-<li>计算机网络体系结构定义了计算机网络的功能是分层次的，而协议（Protocol）就是计算机网络同等层次中，通信双方进行信息交换时必须遵守的规则
-<ul>
-<li>协议由三部分组成
-<ul>
-<li>语法（Syntax）部分。即以二进制形式表示的命令和相应的结构</li>
-<li>语义（Semantics）部分。即发出的命令请求，完成的动作和回送的响应组成的集合</li>
-<li>定时关系（Timing）部分。即有关事件顺序的说明</li>
-</ul></li>
-<li>网络体系结构的分层决定了协议的分层，协议的分层构成了<strong>洋葱结构</strong>
-<ul>
-<li>目的主机某一层收到的报文与源主机同一层发出的报文相同</li>
-<li>协议分层要保证整个通信系统功能完备高效</li>
-</ul></li>
-</ul></li>
-<li>协议定义了不同计算机同层次之间的关系，而服务（Service）定义同一个计算机的上下层之间的交换信息时必须遵守的规则
-<ul>
-<li>服务有两种，即面向连接的服务和无连接服务。
-<ul>
-<li>在使用面向连接的服务进行传输的时候，首先需要建立连接，然后使用这个连接传递数据，使用完毕需要关闭连接。这类服务的顺序性较好</li>
-<li>在使用无连接服务的时候，不建立连接，直接通过服务发送数据每个包都需要独立确定路由。这类服务的顺序性较差</li>
-<li>需要注意，连接并不意味着可靠，可靠性依然需要通过确认、重传等机制进行保证</li>
-</ul></li>
-<li>服务在形式上需要通过一组服务原语（Primitive）规定。原语可以分为四类，即请求、指示、响应、确认</li>
-</ul></li>
-<li>在同一个计算机之中相邻层之间都有一个接口（Interface），它定义了下层向上层提供的原语操作和服务</li>
-</ul></li>
-<li>基于三大基本概念，计算机网络体系结构的具体实现大致为
-<ul>
-<li>服务访问点（Service Access Point / SAP）
-<ul>
-<li>任何的层间服务都是在接口的 SAP 上完成的</li>
-<li>每一个 SAP 都有唯一的识别地址</li>
-<li>每一个层间接口可以具有多个 SAP</li>
-</ul></li>
-<li>接口数据单元（Interface Data Unit / IDU）
-<ul>
-<li>IDU 是通过 SAP 传递的层间信息单元（上下传输）</li>
-<li>IDU 的构成是上一层的服务数据单元（Service Data Unit / SDU）和接口控制信息（Interface Control Information / ICI）的拼接</li>
-</ul></li>
-<li>协议数据单元（Protocol Data Unit / PDU）
-<ul>
-<li>PDU 是在同层实体之间通过网络传输的信息单元（水平传输）</li>
-<li>PDU 的构成是上一层的 SDU 或其分段和协议控制信息（Protocol Control Information / PCI）的拼接</li>
-</ul></li>
-<li>基于上述定义，计算机网络的工作类似于下述
-<ul>
-<li>当本层需要水平传输的时候，首先获得上层通过 SAP 传递的，由 SDU 和 ICI 拼接得到的 IDU。然后本层删除 ICI，将剩余的 SDU 拼接上 PCI 获得 PDU 并通过本层网络协议传输</li>
-<li>当本层需要继续向下层传输的时候，首先获得上层的 IDU，这个从上层获得到本层的 IDU 在下层看来就是一个新的 SDU。本层随后直接拼接上新的 ICI 获得新的 IDU 向下传输。所以说，最上层产生的数据包向下传播的时候，会逐层添加各层控制信息。而底层接收的数据包向上传播的时候，会逐层把这些控制信息删去，获取最后的数据</li>
-</ul></li>
-</ul></li>
-<li>分层的优点包括模块化、功能抽象、可复用。缺点是数据隐藏会导致可能的低效</li>
-<li>计算机网络体系结构的设计中还有两个原则，分别称为<strong>端到端原则</strong>和 <strong>Rule of thumb</strong>
-<ul>
-<li>端到端原则的思想是底层需要尽可能简单，但是上层应用可以较为复杂（完成验证、纠错等工作），只有当这样的功能明显能提升功能的时候才会放在底层</li>
-<li>Rule of thumb 的思想是，底层的新功能不能影响其他不使用这个新功能的部分</li>
-</ul></li>
-</ul>
-<h2 id="理解-3-osi-和-tcpip-模型及其他网络模型">【理解 3 】 OSI 和 TCP/IP 模型及其他网络模型</h2>
-<ul>
-<li>模型建立的历史事件见 PPT</li>
-<li>OSI 模型在 1983 年提出，模型分为七层，从下至上为
-<ul>
-<li>物理层，这一层包含基础网络硬件，在物理通信线路上传输二进制位（Bit）</li>
-<li>数据链路层，这一层目标是在有差错的物理线路上传输无差错的数据帧（Frame）</li>
-<li>网络层，这一层控制通信子网提供数据包（Packet）传输功能</li>
-<li>传输层，这一层为用户提供端到端的数据传输功能</li>
-<li>会话层，这一层为用户提供类似安全认证等会话控制服务</li>
-<li>表示层，这一层为用户提供数据表示和数据转换功能</li>
-<li>应用层</li>
-</ul></li>
-<li>TCP/IP 模型的提出早于 OSI 模型，且仅有四层：
-<ul>
-<li>Host-to-Internet 层，相当于 OSI 的物理层和数据链路层</li>
-<li>Internet 层（网络层），控制通信子网提供源点到目的点的 IP 包传送，实现异构网络互联</li>
-<li>传输层，提供端到端的数据传送服务，如 TCP 和 UDP</li>
-<li>应用层，内部包含了 OSI 的会话层和表示层</li>
-</ul></li>
-<li>X.25 分组交换网在 70 年代提出，早于 OSI 模型，为公用包交换网与用户之间提供接口
-<ul>
-<li>该模型面向连接，支持交换虚电路和永久虚电路</li>
-<li>物理层使用协议 X.21 以及 X.3 / X.28 / X.29</li>
-<li>数据链路层使用协议 LAP 和 LAPB</li>
-<li>网络层使用协议 PLP</li>
-<li>该模型提出了以下名词 -（用户侧）数据终端设备（Digital Terminal Equipment / DTE）
-<ul>
-<li>数字线路设备（Digital Circuit Terminating Equipment / DCE）</li>
-<li>打包解包设备（Packet Assembler and Disassembler / PAD）</li>
-</ul></li>
-</ul></li>
-<li>Novell Netware 在 1983 年提出，在 2005 年终止开发
-<ul>
-<li>模型基于 client-server 结构，设计的基本思想是<strong>文件共享</strong>（同时期其它系统还基于磁盘共享，所以模型有一定先进性）</li>
-<li>基于 XNS（Xeror Network System），网络层协议是不可靠无连接协议 IPX（Internet Packet Exchange），传输层协议是面向连接的 NCP（Netware Core Protocol）和 SPX（Sequenced Package Exchange）</li>
-</ul></li>
-<li>B-ISDN 即宽带综合业务数字网，其技术基础为 ATM 异步传输模式（Asynchronous Transfer Mode）
-<ul>
-<li>ATM 也是分组交换技术
-<ul>
-<li>异步传输，即不具有主时钟</li>
-<li>传输单元为短而定长的信元（cell）</li>
-<li>采用虚电路，面向连接</li>
-<li>常见速率包括 155M 和 622M</li>
-</ul></li>
-</ul></li>
-</ul>
-<h2 id="杂项-2-未分类知识点">【杂项 2 】未分类知识点</h2>
-<ul>
-<li>美国的标准化组织包括 ANSI 和 NIST，中国的标准化组织包括 CCSA，行业标准则是 IEEE</li>
-<li>计算机网络标准化，电信标准为 ITU 而国际标准则是 ISO</li>
-<li>Internet 的标准是自发的，并非政府干预，每个标准诞生前都需要提出请求意见稿，即 RFC</li>
-</ul>
-<h1 id="数据通信基本原理">数据通信基本原理</h1>
-<h2 id="理解-4-信号的傅里叶分析">【理解 4 】信号的傅里叶分析</h2>
-<ul>
-<li>注意网原里傅里叶级数的定义为：</li>
-</ul>
-<p><span class="math display">\[
-g(t) = \frac12 c + \sum_{n = 1}^{+\infty} a_n\sin(2\pi f nt) + \sum_{n = 1}^{+\infty} b_n\cos(2\pi f nt)
-\]</span></p>
-<p>所以：</p>
-<p><span class="math display">\[
-\begin{aligned}
-c &amp;= \frac2T \int_0^T g(t) {\rm d}t \\
-a_n &amp;= \frac2T \int_0^T g(t)\sin(2\pi f nt) {\rm d}t \\
-b_n &amp;= \frac2T \int_0^T g(t)\cos(2\pi f nt) {\rm d}t \\
-\end{aligned}
-\]</span></p>
-<ul>
-<li>一个信号所包含的信号频率范围为频谱（Spectrum），其宽度称为信号的绝对带宽（Definite bandwidth）。大部分信号有无穷的绝对带宽，但是其能量可能仅集中于某一个频段，这个频带的宽度称为有效带宽（Effective bandwidth），简称带宽</li>
-<li>带宽越宽，信号的信息承载能力越强</li>
-<li>信号在给定截止频率 <span class="math inline">\(f_c\)</span> 的信道传输的过程中，高于截止频率的频率分量的振幅衰减明显大于低于截止频率的</li>
-<li>通过信道的谐波次数越多，信号越逼真</li>
-</ul>
-<h2 id="计算-1-信号传输基础计算">【计算 1 】信号传输基础计算</h2>
-<ul>
-<li>波特率指的是信号每秒钟变化的次数，也称调制速率</li>
-<li>比特率指的是信号每秒钟传输的二进制位个数</li>
-<li>波特率和比特率的关系取决于信号值与比特位的关系，如果每个信号值能表示 <span class="math inline">\(N\)</span> 个二进制位，那么比特率为波特率的 <span class="math inline">\(N\)</span> 倍</li>
-<li>对于比特率为 <span class="math inline">\(B({\rm bps})\)</span> 的信道，如果 <span class="math inline">\(M\)</span> 个二进制位为一个周期，则波特率为 <span class="math inline">\(B/M({\rm baud})\)</span>，一次谐波的频率为 <span class="math inline">\(f_1 = B/M({\rm Hz})\)</span>（一次谐波指的是信号傅里叶级数中周期等于原信号周期的分量），能通过信道的最高次谐波次数为 <span class="math inline">\(N = f_c / f_1\)</span>，这里 <span class="math inline">\(f_c\)</span> 为信道的截止频率</li>
-<li>信道的有限带宽限制了信号的传输速率，<strong>无噪声</strong>带宽为 <span class="math inline">\(H\)</span> 的信道传输有 <span class="math inline">\(V\)</span> 种电平状态的信号时，最高传输速率为：</li>
-</ul>
-<p><span class="math display">\[
-v = 2H\log_2 V({\rm bps})
-\]</span></p>
-<ul>
-<li>对于<strong>有噪声</strong>信道，其噪声功率为 <span class="math inline">\(N\)</span>，信号功率为 <span class="math inline">\(S\)</span>，其<strong>信噪比</strong>为：</li>
-</ul>
-<p><span class="math display">\[
-x = 10\log_{10}\frac{S}{N}({\rm dB})
-\]</span></p>
-<p>一般电话系统的典型信噪比为 <span class="math inline">\(30({\rm dB})\)</span>。</p>
-<p>带宽为 <span class="math inline">\(H({\rm Hz})\)</span>，信噪比为 <span class="math inline">\(S/N\)</span> 的任何信道的最大传输速率为：</p>
-<p><span class="math display">\[
-v = H\log_2\left(1 + \frac{S}{N}\right)({\rm bps})
-\]</span></p>
-<p>该传输速率为理论上限，实际很难达到。该传输速率与电平级数和采样速度无关</p>
-<h2 id="背诵-7-传输方式分类">【背诵 7 】传输方式分类</h2>
-<ul>
-<li>数字传输、模拟传输
-<ul>
-<li>数字传输的优点是成本低，对噪声不敏感，缺点是易受衰减（频率越高越严重）</li>
-</ul></li>
-<li>并行传输、串行传输</li>
-<li>点到点传输、点到多点传输
-<ul>
-<li>为适应不同的需要，通信线路采用不同的连接方式</li>
-</ul></li>
-<li>单工、半双工和全双工传输
-<ul>
-<li>单工传输：信息只能单向传输，监视信号可回送</li>
-<li>半双工传输：信息可以双向传输，但在某一时刻只能单向传输</li>
-<li>全双工传输：信息可以同时双向传输</li>
-</ul></li>
-<li>同步传输、异步传输
-<ul>
-<li>同步传输
-<ul>
-<li>传输以报文为基本单位</li>
-<li>传输开始的时候需要传输<strong>同步字符</strong>让双方同步</li>
-<li>可以不间断传输，传输效率较高但是需要<strong>透明传输处理</strong>，即传输的信息中不存在同步字符</li>
-<li>接收方必须知道每一位信号的开始及其持续时间，以便正确的采样接收</li>
-<li>基于<strong>二进制位</strong>的传输一般使用同步传输，信息以<strong>二进制位流</strong>为单位传送，传输过程中以<strong>位</strong>为单位同步，传输的开始和结束以特定的<strong>八位二进制位</strong>同步</li>
-</ul></li>
-<li>异步传输
-<ul>
-<li>需要辅助位，如起始位、奇偶校验位、终止位</li>
-<li>传输效率低，主要用于字符终端与计算机之间的通信</li>
-<li>传输字符时，信息传送以字符为单位</li>
-</ul></li>
-</ul></li>
-</ul>
-<h2 id="背诵-8-信号发送方式">【背诵 8 】信号发送方式</h2>
-<ul>
-<li>数据表示分为两种，即模拟数据和数字数据</li>
-<li>数据传输方式中以信号为载体，分为模拟信号（模拟信道）和数字信号（数字信道）两种（见【背诵 7 】）</li>
-<li>两种数据表示和两种数据传输方式对应形成四种信号发送方式：</li>
-</ul>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;"></th>
-<th style="text-align: center;">模拟数据</th>
-<th style="text-align: center;">数字数据</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">模拟信道</td>
-<td style="text-align: center;">电话系统</td>
-<td style="text-align: center;">频带传输、调制解调器（Modem）</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">数字信道</td>
-<td style="text-align: center;">编码解码器（Codec）</td>
-<td style="text-align: center;">基带传输、数字编码解码器</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>数字数据的数字传输
-<ul>
-<li>基带传输
-<ul>
-<li>基带指的是传输变换前所占用的频带，是原始信号所固有的频带</li>
-<li>基带传输指的是在传输时直接使用基带信号，是一种基本的传输方式，适用于高速低速各种情况</li>
-<li>其限制为因基带信号所带的频率成分很宽，所以对传输线有一定的要求</li>
-</ul></li>
-<li>编码方式
-<ul>
-<li>不归零制码（NRZ）
-<ul>
-<li>用高电平表示 1，用低电平表示 0</li>
-<li>难以分辨某一位的开始或结束，所以发送和接受方都需要时钟同步</li>
-<li>如果信号中 0 或者 1 连续出现，直流电平会叠加</li>
-<li>容易产生传播错误</li>
-</ul></li>
-<li>曼彻斯特码（相位编码）
-<ul>
-<li>每个周期中间有一个跳变，由低到高为 0，由高到低为 1</li>
-<li>克服了 NRZ 的不足，并且每个周期中间的跳变既是信息又是时钟，可以自同步</li>
-</ul></li>
-<li>差分曼彻斯特码
-<ul>
-<li>每个周期中间有一个跳变作为时钟</li>
-<li>每个周期开始有跳变表示 0，没有跳变表示 1</li>
-<li>时钟、数据相分离，便于提取</li>
-<li>差分曼彻斯特注意分类讨论初始时是高电平还是低电平</li>
-</ul></li>
-<li>逢 0 变化 NRZ
-<ul>
-<li>每个周期开始有跳变表示 0，没有跳变表示 1</li>
-<li>每个周期中间没有跳变</li>
-<li>注意讨论初始时的电平</li>
-</ul></li>
-<li>逢 1 变化 NRZ
-<ul>
-<li>每个周期开始有跳变表示 1，没有跳变表示 0</li>
-<li>每个周期中间没有跳变</li>
-<li>注意讨论初始时的电平</li>
-</ul></li>
-</ul></li>
-</ul></li>
-<li>数字数据的模拟传输
-<ul>
-<li>频带传输
-<ul>
-<li>在一定频率范围内的线路上，进行载波传输</li>
-<li>用基带信号对载波进行调制，使其变为适合于线路传送的信号</li>
-<li>调制指的是用基带脉冲控制载波参数，使得这些参数反应基带脉冲信息</li>
-<li>使用调制解调器</li>
-</ul></li>
-<li>调制技术
-<ul>
-<li>幅移键控法（调幅 / ASK），即根据基带脉冲调整载波振幅</li>
-<li>频移键控法（调频 / FSK），即根据基带脉冲调整载波频率</li>
-<li>相移键控法（调相 / PSK），即根据基带脉冲调整载波相位</li>
-</ul></li>
-</ul></li>
-<li>模拟数据的数字传输
-<ul>
-<li>脉冲代码调制 PCM 技术
-<ul>
-<li>根据 Nyquist 原理进行采样</li>
-<li>将模拟信号的振幅分为 <span class="math inline">\(2^n\)</span> 级，每一个采样点用 <span class="math inline">\(n\)</span> 位二进制位表示</li>
-<li>贝尔系统的 T1 载波每个采样点用 7 位二进制表示</li>
-</ul></li>
-<li>差分脉冲代码调制
-<ul>
-<li>与 PCM 数字化振幅不同，差分脉冲代码调制数字化的是相邻采样点的振幅差值</li>
-<li>可以使用较少的二进制位表示</li>
-</ul></li>
-<li><span class="math inline">\(\delta\)</span> 调制
-<ul>
-<li>根据每个采样值与前一个值之间的差来决定输出 1 还是 0</li>
-<li>编码速度可能无法跟上变化较快的模拟信号</li>
-</ul></li>
-</ul></li>
-</ul>
-<h2 id="背诵-9-多路复用技术">【背诵 9 】多路复用技术</h2>
-<ul>
-<li>使得多路信号同时使用一条物理线路的技术,允许用户使用一个共享信道进行通信，避免相互干扰，降低成本，提高利用率</li>
-<li>多路复用技术分类
-<ul>
-<li>时分复用（TDM）
-<ul>
-<li>T1 载波电话系统分为 24 个信道，每个 <span class="math inline">\(64({\rm Kbps})\)</span>，一共 <span class="math inline">\(1.544({\rm Mbps})\)</span>，控制信息带内传输</li>
-</ul></li>
-<li>频分复用（FDM）
-<ul>
-<li>频率分割为频段，多用于手机通信</li>
-</ul></li>
-<li>波分复用（WDM）
-<ul>
-<li>光传输使用，对波长分段，是特殊的频分复用</li>
-</ul></li>
-</ul></li>
-</ul>
-<h2 id="背诵-10-交换技术">【背诵 10 】交换技术</h2>
-<ul>
-<li>计算机网络通信分为交换式和广播式</li>
-<li>交换是在多结点通信网络中，为有效利用通信设备和线路，动态接通、断开、切换通信线路</li>
-<li>交换技术分类
-<ul>
-<li>电路交换
-<ul>
-<li>直接利用可以切换的物理电路动态调整通信线路</li>
-<li>分为建立电路、传输数据、拆除电路三个阶段</li>
-<li>在发送数据前，必须建立起点到点的物理通路。建立物理通路时间较长，数据传送延迟较短</li>
-<li>电话网和 ISDN 采用电路交换</li>
-<li>电路交换一般采用时分复用
-<ul>
-<li>时间被分为帧（Frame），帧被分为时槽（Slot）</li>
-<li>时槽在帧内的相对位置决定这个槽所传输数据所属的会话</li>
-<li>发送方和接收方间需要同步</li>
-<li>非永久会话需要动态绑定时槽到一个会话</li>
-</ul></li>
-</ul></li>
-<li>报文交换（存储转发方式）
-<ul>
-<li>信息以报文（逻辑上完整的信息段）为单位进行存储转发</li>
-<li>线路利用率高、要求中间结点（网络通信设备）缓冲大、延迟时间长</li>
-</ul></li>
-<li>分组交换（包交换）
-<ul>
-<li>分组是一种报文还小的信息段，可定长也可变长。分组交换中信息以分组为单位进行存储转发。源结点把报文分为分组，在中间结点存储转发，目的结点把分组合成报文。用附加的分组头来区分数据</li>
-<li>特点
-<ul>
-<li>每个分组头包括源地址和目的地址，独立进行路由选择
-<ul>
-<li>所以不保证到达顺序</li>
-</ul></li>
-<li>网络结点设备中不预先分配资源，使用统计复用，线路利用率高
-<ul>
-<li>相比于电路交换最明显的优势</li>
-</ul></li>
-<li>易于重传，可靠性高</li>
-<li>易于开始新的传输，让紧急信息优先通过</li>
-<li>开销增加</li>
-<li>需要处理拥塞问题
-<ul>
-<li>需要复杂的路由器，难以保证端到端的服务质量</li>
-</ul></li>
-</ul></li>
-<li>分组交换分为虚电路分组交换和数据报分组交换
-<ul>
-<li>数据报分组交换（如 IP Networks）
-<ul>
-<li>每个分组均带有网络地址（源、目的），可走不同的路径</li>
-</ul></li>
-<li>虚电路分组交换（如 ATM Networks）
-<ul>
-<li>其是电路交换和分组交换的结合
-<ul>
-<li>数据以分组形式传输，来自同一流的分组通过一个预先建立的路径（虚电路）传输</li>
-<li>确保分组的顺序，但是来自不同虚电路的分组可能会交错在一起</li>
-</ul></li>
-<li>分三个阶段
-<ul>
-<li>建立：发带有全称网络地址的呼叫分组，建立虚电路</li>
-<li>传输：沿建立好的虚电路传输数据</li>
-<li>拆除：拆除虚电路</li>
-</ul></li>
-<li>分组头不需要包含完整的地址信息，路由器需要维护虚电路的状态信息</li>
-</ul></li>
-</ul></li>
-</ul></li>
-</ul></li>
-<li>电路交换、报文交换、分组交换的时序图如下。其中电路交换要逐层申请预留占用资源，这段申请时间用于<strong>寻找出境中继线</strong>，申请完毕后节点会占用这段传输线</li>
-</ul>
-<p><img src="/uploads/note-of-net/1.png" /></p>
-<ul>
-<li>三类交换技术的特点
-<ul>
-<li>电路交换适用于实时信息和模拟信号传送，在线路带宽比较低的情况下使用比较经济</li>
-<li>报文交换适用于线路带宽比较高的情况，可靠灵活，但延迟大</li>
-<li>分组交换缩短了延迟，也能满足一般的实时信息传送。在高带宽的通信中更为经济、合理、可靠。是目前公认较好的一种交换技术</li>
-<li>电路交换和分组交换可以结合，如 IP over SONET 以及 IP over Frame Relay</li>
-</ul></li>
-</ul>
-<h2 id="背诵-11-交换结构">【背诵 11 】交换结构</h2>
-<ul>
-<li>Crossbar 交换结构：无阻塞内部交换</li>
-<li>空分交换：多个 Crossbar 互联，有无阻塞均可</li>
-<li>时分交换：高效处理</li>
-</ul>
-<h2 id="杂项-3-未分类知识点">【杂项 3 】未分类知识点</h2>
-<ul>
-<li>数据通信技术由编码技术、多路复用和交换技术构成</li>
-</ul>
-<h1 id="物理层接口及其协议">物理层接口及其协议</h1>
-<h2 id="背诵-12-物理层的定义与功能">【背诵 12 】物理层的定义与功能</h2>
-<ul>
-<li>物理层提供机械的、电气的、功能的和规程的特性，目的是启动、维护和关闭<strong>数据链路实体</strong>之间进行<strong>比特传输</strong>的<strong>物理连接</strong>。这种连接可能通过中继系统，在中继系统内的传输也是在物理层</li>
-<li>物理层的功能是在两个网络设备之间提供透明的比特流传输</li>
-<li>物理层的传输方式
-<ul>
-<li>连接方式（点到点，点到多点）</li>
-<li>通信方式（单工，半双工，全双工）</li>
-<li>位传输方式（串行，并行）</li>
-</ul></li>
-<li>物理层的重要特性
-<ul>
-<li>机械特性（Mechanical characteristics）
-<ul>
-<li>定义物理连接的边界点，即接插装置</li>
-<li>规定物理连接时所采用的规格、引脚的数量和排列情况</li>
-</ul></li>
-<li>电气特性（Electrical characteristics）
-<ul>
-<li>规定传输二进制位时，线路上信号的电压高低、阻抗匹配、传输速率和距离限制</li>
-</ul></li>
-<li>功能特性（Functional characteristics）
-<ul>
-<li>主要定义各条物理线路的功能，比如数据、控制、定时、地线</li>
-</ul></li>
-<li>规程特性（Procedural characteristics）
-<ul>
-<li>主要定义各条物理线路的工作规程和时序关系</li>
-</ul></li>
-</ul></li>
-</ul>
-<h2 id="背诵-13-物理层传输介质">【背诵 13 】物理层传输介质</h2>
-<ul>
-<li>双绞线。既可以用于模拟传输，也可以用于数字传输，带宽依赖于线的类型和传输距离</li>
-<li>同轴电缆
-<ul>
-<li>基带同轴电缆，用于数字传输（数字数据数字传输用基带传输）</li>
-<li>宽带同轴电缆，用于模拟传输（模拟数据数字传输用频带传输）</li>
-</ul></li>
-<li>光纤
-<ul>
-<li>分为单模光纤和多模光纤，两者都支持波分复用，使用的波长越长衰减越小，但成本也越高
-<ul>
-<li>单模光纤只有一个入射角度，半径小，适合<strong>长距离传输</strong></li>
-<li>多模光纤有多个入射角度，半径大，适合短距离传输</li>
-</ul></li>
-<li>光纤组网
-<ul>
-<li>点到点，使用四根线，两根用于保护倒换</li>
-<li>环，使用两根线，一根用于保护倒换</li>
-</ul></li>
-<li>光纤中继器。分为光电光式和全光式
-<ul>
-<li>全光网具有光因特网论坛 OIF</li>
-</ul></li>
-</ul></li>
-</ul>
-<h2 id="背诵-14-sonet-sdh-网络传输技术">【背诵 14 】 SONET / SDH 网络传输技术</h2>
-<ul>
-<li>80 年代提出，应用<strong>时分复用</strong>技术，同步传输，有主时钟控制</li>
-<li>SONET 路径为：路径（Path）、线路（Line）、段（Section）</li>
-<li>基于<strong>字节</strong>的复用。但是 OC-3c 中的 c 表示<strong>级联</strong>而非复用</li>
-</ul>
-<h2 id="背诵-15-移动电话网络传输技术">【背诵 15 】移动电话网络传输技术</h2>
-<ul>
-<li>单方向的寻呼系统
-<ul>
-<li>寻呼过程
-<ul>
-<li>打电话给寻呼公司，输入寻呼机号码</li>
-<li>寻呼公司的计算机收到请求，通过线路传到高处的天线</li>
-<li>天线直接广播信号（本地寻呼），或传递给卫星（异地寻呼），卫星再广播</li>
-</ul></li>
-<li>单向系统</li>
-<li>需要很小的带宽</li>
-</ul></li>
-<li>蜂窝电话
-<ul>
-<li>1G：模拟蜂窝电话，只能传送话音</li>
-<li>2G：数字蜂窝电话，主要传送话音，相关概念有 GSM 和 CDMA</li>
-<li>3G / 4G：可以传送话音和数据</li>
-</ul></li>
-<li>模拟蜂窝电话
-<ul>
-<li>Push-to-talk system。早期用于军事通信，单信道，半双工系统</li>
-<li>IMTS。双频，全双工系统</li>
-<li>AMPS。使用小蜂窝，蜂窝中心有基站，不相邻且相近的蜂窝中<strong>重用频率</strong></li>
-</ul></li>
-</ul>
-<div class="note warning"><p>网原实在是看不会了，这个笔记也就到此为止吧。</p>
-</div>
-]]></content>
-      <categories>
-        <category>【学习笔记】计算机</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Next.js 框架摸索实录</title>
-    <url>/2022/11/24/note-of-next/</url>
-    <content><![CDATA[<p>在出软工小作业的时候遇到了 React Router 配置和跨域问题，虽然这两个都不是什么大问题，我也不是不会解决，但是要是出到作业里面，势必会导致我要写好多文档还要写很多讲解。这个时候 yfgg 告诉我 Next.js 框架好之又好，昨天稍微试了一下感觉确实不错，所以就吃了安利迁移到了 Next.js 框架。但是今天接着写的时候，还是发现不少细节是需要注意的，这里就当备忘了。</p>
-<span id="more"></span>
-<h1 id="初始配置">初始配置</h1>
-<p>由于 Next.js 自己带了不少初始配置，所以加东西的时候不一定每个都需要自己从头再来，完全可以用官方模板。</p>
-<p>我出的小作业采用 Next.js + TypeScript + ESLint + Jest，这一整套模板也正在编写，到时候可以开放给同学们直接下载。</p>
-<h1 id="csr-还是-ssr">CSR 还是 SSR</h1>
-<p>Next.js 框架的一大优势就在 SSR。然而说实话我自己也没有特别明白 SSR 之类的概念，所以昨晚花了点时间学了一下。</p>
-<p>最早期的前后端耦合应用实际上就采用 SSR，即 <strong>S</strong>erver <strong>S</strong>ide <strong>R</strong>ender，服务端渲染。当时严格而言就没有前端这个概念，服务器直接将渲染好的 HTML 扔给浏览器就结束了。</p>
-<p>而随着前后端分离开发概念的出现，Vue、React 等框架逐渐采用 CSR，即 <strong>C</strong>lient <strong>S</strong>ide <strong>R</strong>ender，客户端渲染。CSR 中，数据交互大致可以描述为：</p>
-<ul>
-<li>浏览器向前端服务器请求模板 HTML（或者说空缺关键数据的 HTML），这些 HTML 中携带获取关键数据的脚本</li>
-<li>浏览器渲染模板 HTML，执行获取数据的脚本，向后端服务器请求关键数据</li>
-<li>浏览器获得关键数据后，调整 DOM 展示最终页面</li>
-</ul>
-<p>CSR 比较大的问题有两点：</p>
-<ul>
-<li>如果后端服务器响应慢或者数据量大，模板 HTML 在页面上留存时间长，表现为 Loading 界面或者白屏，严重削弱用户体验</li>
-<li>爬虫难以处理这类网页，对搜索引擎的优化（<strong>S</strong>earch <strong>E</strong>ngine <strong>O</strong>pimization，简称 SEO）困难，导致网页宣传效果不佳</li>
-</ul>
-<p>但就开发环节而言，开发需要不断处理白屏问题，不断在组件中设置 <code>refreshing</code> 状态实际上比较浪费开发时间。</p>
-<p>而现代优化过的 SSR 则相应做出了部分解决，其基本思路为：</p>
-<ul>
-<li>浏览器向前端服务器请求页面</li>
-<li>前端服务器向后端服务器请求关键数据，获取数据后根据自己已有的模板 HTML 渲染出完整 HTML 发回浏览器</li>
-<li>浏览器直接渲染出完整页面</li>
-</ul>
-<p>首先，浏览器不会收到缺失数据的 HTML，这样就从根源上解决白屏问题。进一步，由于服务端的算力和内网传输速度一般高于客户端算力和外网传输速度，所以渲染出最终 HTML 的时间相应缩短。另外，由于客户端能够直接得到完整 HTML，所以 SEO 也是简单的。</p>
-<p>然而 SSR 显然也是有问题的：</p>
-<ul>
-<li>服务器端压力极大，对于多并发情况处理无力</li>
-<li>针对每个用户都需要重新渲染完整 HTML，重复计算问题严重</li>
-</ul>
-<p>其中第二个问题实际上比较重要，如果某个网页和客户端具体信息无关，也就是说任何客户端都收到相同内容，那么这种 SSR 实际上不如 CSR。CSR 可以通过 CDN 缓存模板 HTML，而 SSR 此时对每个用户的请求，每次都需要完整渲染 HTML。</p>
-<p>所以这也是 SSG，<strong>S</strong>erver <strong>S</strong>ide <strong>G</strong>eneration，服务端生成提出的契机。针对与客户端无关的、更新速度慢的页面，SSG 会在构建时直接生成页面并缓存在前端服务器，浏览器发出请求后会直接返回缓存页面，从而解决上述问题。</p>
-<p>显然，CSR、SSR、SSG 各有利弊。就目前你清的教学、科协各个成员的掌握情况看，CSR 系列的开发明显占优势。另外考虑到软工课程不少类似于后台管理页面等更重视数据时效性、用户交互体验的应用，CSR 更应当重点讲解。</p>
-<p>然而 SSR 不能因此完全废弃不讲，因为其针对用户无关页面的白屏加载问题绝对是重要的一种解决方案。SSR 依然是企业官网、个人博客等网页的首选。</p>
-<p>所以目前依然是将传统的 CSR 布置为作业，然后让他们强制将 API 睡眠，体验白屏问题后让他们叙述 SSR 的好处，用此作为思考题。</p>
-<h1 id="useeffect-重复调用问题"><code>useEffect</code> 重复调用问题</h1>
-<p>这是一个老问题，说实话也和 Next.js 没有多少关系。如果在 React 中写下述代码：</p>
-<figure class="highlight typescript"><figcaption><span>TypeScript</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> App = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    useEffect(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;useEffect called!&quot;</span>);</span><br><span class="line">    &#125;, []);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span> Test page. <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>会发现控制台里出现了两次 <code>useEffect called!</code> 的输出。</p>
-<p>虽然严格而言不会出现很大的问题，然而由于这种 <code>useEffect</code> 常常用于获取页面的初始数据（CSR 常用手法），这个问题可能导致重复请求后端数据，对于用户鉴权等需求甚至可能是危险的，后端如果不去做相应处理甚至可能打穿后端（我软工还真的差点出锅，然而当时也没在意）。</p>
-<p>然后我搜索引擎大作业里面采用了非常丑陋的写法解决了：</p>
-<p><img src="/uploads/note-of-next/1.jpeg" /></p>
-<p>今天才知道这个是 React 的严格模式的锅。严格模式下，在 dev 条件下 React 会有意重复调用这些钩子来提示可能的危险。</p>
-<p>也就是说打穿后端实际上就是 React 告诉你，你这有可能出锅，你自己不处理好不怪我。</p>
-<p>当然，release 之后 React 就不会有意重复调用了。</p>
-<p>所以解决方式就两种：</p>
-<ul>
-<li>好好写能够处理并发的代码，React 都告诉你会出事了</li>
-<li>关掉严格模式，让 React 闭嘴</li>
-</ul>
-<p>我选择了后者。</p>
-<p>参考：<a href="https://juejin.cn/post/7105652180501135367" class="uri">https://juejin.cn/post/7105652180501135367</a>。</p>
-<h1 id="useroute-与注水"><code>useRoute</code> 与注水</h1>
-<p>使用动态路由的时候，我按照 React 的开发习惯写了下述代码：</p>
-<figure class="highlight typescript"><figcaption><span>TypeScript</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> route = useRouter();</span><br><span class="line"></span><br><span class="line">useEffect(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(route.query.id);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Use route.query.id to fetch data</span></span><br><span class="line">&#125;, []);</span><br></pre></td></tr></table></figure>
-<p>令人惊讶的是，这里输出了 <code>undefined</code>。</p>
-<p>事实上这是 Next.js 预渲染的锅，原文是这样的：</p>
-<div class="note info no-icon"><p>Pages that are statically optimized by <strong>Automatic Static Optimization</strong> will be hydrated without their route parameters provided, i.e <code>query</code> will be an empty object (<code>{}</code>).</p>
-<p>After hydration, Next.js will trigger an update to your application to provide the route parameters in the <code>query</code> object.</p>
-</div>
-<p>简而言之，ASO 是一种预渲染优化，在不获取路由信息的条件下先弄出来一个页面给浏览器，然后再注水（即向 <code>query</code> 注入路由信息）并触发组件更新，也就是说页面获取到路由信息并不是一开始，从而 <code>useEffect(*, [])</code> 是拿不到路由信息的。</p>
-<p>了解这一点后，代码就应该写为：</p>
-<figure class="highlight typescript"><figcaption><span>TypeScript</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> route = useRouter();</span><br><span class="line"><span class="keyword">const</span> query = route.query;</span><br><span class="line"></span><br><span class="line">useEffect(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!route.isReady) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(route.query.id);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Use route.query.id to fetch data</span></span><br><span class="line">&#125;, [route, query]);</span><br></pre></td></tr></table></figure>
-<p>应该让 <code>useEffect</code> 检测 <code>route</code> 和 <code>query</code> 的变动，在注水完成后才能触发数据获取。</p>
-]]></content>
-      <categories>
-        <category>【杂谈】开发</category>
       </categories>
   </entry>
   <entry>
@@ -11644,6 +11646,267 @@ u_\psi(\mathcal{D}^{\rm tr}_{\mathcal{T}}, \theta) = \theta - \alpha\nabla_\thet
       </categories>
   </entry>
   <entry>
+    <title>2023 年 10 月论文笔记</title>
+    <url>/2023/10/08/paper-2023-10/</url>
+    <content><![CDATA[<p>说是加入腾讯做云游戏，但是似乎一个月过去了暂且都没有等来信息，果然还是继续积累吧。</p>
+<span id="more"></span>
+<h1 id="zgaming---zero-latency-3d-cloud-gaming-by-image-prediction">ZGaming - Zero-Latency 3D Cloud Gaming by Image Prediction</h1>
+<p>现在论文都直接吹零延迟的吗，不过如果说 Abstract 里面这句话是真的，那确实足够猛：</p>
+<div class="note info no-icon"><p>与现有方法相比，ZGaming 在提供相同视频质量时，将互动延迟从 23 毫秒减少到 0 毫秒，或者在保持互动延迟为 0 毫秒时，提高了 5.4 分贝的视频质量。</p>
+</div>
+<h2 id="introduction">Introduction</h2>
+<p>先讲了一下云游戏对 MTP 延迟很敏感，然后提出本文的目标是实现零延迟的云游戏系统。有关其他工作的部分，本文首先指出了单纯在系统上做优化的方案终究会因为网络的存在而至少具有一个 RTT 的延迟，从而零延迟的系统必定一定程度上涉及到预测操作，其中一个著名的工作是动作预取。动作预取的工作原理是对所有的可能潜在动作，都在服务端渲染下一帧，然后将这些帧发送到客户端，客户端上一旦执行操作即可直接访问到动作结果帧。但是动作预取面临两个困难：</p>
+<ul>
+<li>用户动作的随机性极高，很容易遭遇预测未命中的情况</li>
+<li>商用云游戏大部分依然采用用户动作后再渲染的方案，工业界适配困难较大</li>
+</ul>
+<p>如果难以直接修改当前的工作流水线，那么一种可能的方案为基于图像的预测，常用的方法就是 DIBR。在具有 DIBR 的系统中，当用户做出操作的时候，该系统会根据最近接收到的 RGBD（即 RGB 色彩以及深度信息）直接预测接下来的视频帧，用户在此基础上几乎感知不到任何延迟。</p>
+<p>本文基于上述方法，希望进一步精细化图像预测，主要面临的挑战有：</p>
+<ul>
+<li>预测图像中存在伪影，即像素缺失。例如出现了遮挡和视野外，此时由于缺失图像信息，无法准确预测该部分的像素信息导致缺失。目前已经有一部分针对伪影的解决方案</li>
+<li>DIBR 不能应用于预测动态对象，因为动态对象的运动几乎无法通过静态的像素信息观察到，从而 DIBR 很难给出合理的预测值</li>
+<li>码率和网络的匹配问题（有点奇怪，为什么这里需要考虑 ABR 相关的问题）</li>
+</ul>
+<p>ZGaming 的设计在于，首先通过 DIBR 预测出静态对象的图像，然后通过运动预测模型预测动态对象的图像（本文采用了 LSTM，我严格觉得 LSTM 做不了这种任务），最后将两者结合起来得到最终的预测图像。具体而言的工作：</p>
+<ul>
+<li>基于质量的静态场景缓存。如果完全存储所有历史静态场景则很有可能导致巨大的开销，所以 ZGaming 采用了基于质量的缓存，即只缓存质量较高的静态场景，而质量较低的场景则直接丢弃</li>
+<li>服务器辅助的 LSTM 预测。在服务器端部署 LSTM 以预测动态物体的运动趋势，并预取到客户端</li>
+<li>ABR。我不评价这一部分</li>
+</ul>
+<h2 id="motivation">Motivation</h2>
+<p>首先说了一下云游戏条件下互动延迟的要求极高，大概限制在 60 毫秒左右。然后介绍了一下 DIBR 能够通过预测静态场景的方式做到一定程度上的零延迟，并且在工程的角度上可以增量式地连接到现有系统而不需要调整当下的云游戏渲染管线。</p>
+<p>但是 DIBR 是有缺陷的：</p>
+<p><img src="/uploads/paper-2023-10/9.png" /></p>
+<p>简而言之本文的解决方法为：</p>
+<ul>
+<li>重用历史帧。本文的论据是大量的场景都有可能在历史场景中出现过，所以加大追溯历史的深度可以有效缓解空洞伪影（但是全新的场景怎么办呢）</li>
+<li>利用 LSTM 预测动态对象的运动模式</li>
+<li>ABR？（为什么 DIBR 的优化策略里面有 ABR？）</li>
+</ul>
+<h2 id="overview">Overview</h2>
+<p>总之就是上面三个部分一个对应一个模块，也就是说 ZGaming 包括一个场景缓存，一个动态物体 LSTM 模型，一个 ABR 算法。</p>
+<h2 id="quality-driven-3d-block-cache">Quality Driven 3D Block Cache</h2>
+<p>其认为，一般的缓存设计方法无法直接应用到云游戏之中，因为传统的全量缓存会占用巨大的内存空间。一种方法是一定程度上限制缓存条目的大小，并且设计有效的缓存替换策略保证高效利用有限的内存资源。在考虑缓存替换策略的时候有以下需要注意的点：</p>
+<ul>
+<li>不同光照条件下，同样坐标处的材质并不能直接应用于恢复。这是显然的，阳光直射的墙壁图像显然无法直接应用于恢复夜晚墙壁的空洞</li>
+<li>非缓存算法的竞争。事实上，缓存并非处处是最优方法，例如墙壁、地面等较为单调的场景中，一般的插值恢复法甚至会比缓存更好。这里本文认为优先执行历史缓存恢复是合理的，如果缓存内容依然无法完全填充空缺部分，那么再通过插值方法恢复</li>
+<li>用户操作会使得缓存本身具有不均衡特性，部分场景明显会比其他场景有更高频的访问次数</li>
+</ul>
+<p>本文采用的策略为，将每一帧分为 <span class="math inline">\(64 \times 64\)</span> 的块，这样做可以避免全量缓存，并且可以避免重复场景的重复存储。对每一个块 <span class="math inline">\(b\)</span>，定义其质量为 <span class="math inline">\(U_b\)</span>，质量越高则越有可能被缓存。质量的计算方式为：</p>
+<p><span class="math display">\[
+U_b := \frac{1}{T_{\rm now} - t_b}\sum_{i = 1}^{N_b} ({\rm PSNR}_{b, i} - {\rm PSNR}_{b, i}&#39;)
+\]</span></p>
+<p>这里 <span class="math inline">\(N_b\)</span> 表示块 <span class="math inline">\(b\)</span> 在缓存中被使用的次数，求和项中的 PSNR 的差表示的是第 <span class="math inline">\(i\)</span> 次使用的时候相较于插值算法，用缓存修复所能得到的 PSNR 增益，之后使用块 <span class="math inline">\(b\)</span> 在缓存中持续的时间 <span class="math inline">\(T_{\rm now} - t_b\)</span> 归一化收益即可得到缓存块质量。可以注意到该函数的逻辑就是，单位时间内该缓存块相较于插值算法能够获得多高的额外收益。</p>
+<p>在此基础上，缓存的替换策略为当存储满时交换出 30% 的缓存块，并且定期逐出质量为负数的块。这里的负数质量表示该块在缓存中的收益不如插值算法，所以应当逐出。</p>
+<p>性能评价就不说了，基本就是形势大好。</p>
+<h2 id="server-assisted-lstm-predicting-foreground">Server Assisted LSTM Predicting Foreground</h2>
+<p>首先区分背景和前景，其实就是静态部分和动态部分。本文认为，即使某一些 NPC 在交互逻辑上不应该归类为背景，但是在渲染逻辑上其不会发生相对位置移动，所以应当归类为背景。在这一部分首先需要的是区分背景和前景，然后对前景进行预测。区分前景的逻辑就是将前一帧和后一帧对齐，比较是否发生了位置偏移，发生偏移则意味着是动态对象。</p>
+<p>而为了预测动态物体的运动，这里使用了 LSTM。然而直接使用 LSTM 会遇到渲染帧模糊的问题，所以在 LSTM 后面本文加上了一个图像超分模块（RefSR）。</p>
+<p><img src="/uploads/paper-2023-10/10.png" /></p>
+<p>工程上，另外提到了一下 LSTM 是部署在服务端的，数据传输方面则把 LSTM 预测的动态部分作为高优先级数据附加上 FEC 传输到客户端，由客户端组装具体的帧。</p>
+<h2 id="prediction-performance-driven-adaptive-bitrate">Prediction Performance Driven Adaptive Bitrate</h2>
+<p>这一部分整体没看明白想要做什么，似乎是根据网络情况调节预测性能？然而云游戏里面考虑网络的话还是不太会单独拉出来一个 ABR？不是很懂，这样总觉得 ABR 很孤立。</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>感觉和吴成磊学长说的一样，这篇文章总体给的感觉是很割裂，有种头痛医头脚痛医脚的感觉。而且我觉得这篇文章的 LSTM 部分一言难尽，LSTM 本身的能力不好说能不能完成这类预测任务，而且使用历史帧填充未知空洞也显得很没有道理。</p>
+<p>总之，从 idea 到 writing 来看都不是很适合借鉴学习。</p>
+<h1 id="ekho---synchronizing-cloud-gaming-media-across-multiple-endpoints">Ekho - Synchronizing cloud gaming media across multiple endpoints</h1>
+<p>简而言之就是以往的工作都把云游戏简单化为视频画面的传输，而忽略了音频等多媒体的可能。多媒体事实上意味着需要做到媒体之间的同步，例如游戏画面需要与游戏音效同步。Ekho 则通过伪噪声的方式实现了多媒体之间的同步。</p>
+<h2 id="introduction-1">Introduction</h2>
+<p>简单来说，就是注意到现在常用的云游戏系统往往除了视频流之外还会有一个反馈流，这个反馈流一般作用于各种游戏配件，作用包括：</p>
+<ul>
+<li>在多人语音游戏的条件下混合其他玩家的声音，并提供给专用的游戏耳机等</li>
+<li>对玩家的操作给出触觉反馈，如手柄震动等</li>
+</ul>
+<p>这里容易出现的问题在于，视频流和反馈流作用到不同的终端（一个是显示器一个是各种其他配件），这导致这两个流会使用不同的网络连接传输，从而两者之间的同步就成为了问题。</p>
+<p>事实上，在有观众的游戏中，除了玩家本人的耳机会有一道音频流外，普通视频流中还会负载另一道音频流，这个音频流会对外播放给观众。这一道音频流播放之后还会被玩家耳机的麦克风捕捉。所以说云游戏除了多种流的同步问题外，还需要处理多道音频流之间的同步。</p>
+<p>一般而言，流之间会产生 100 毫秒左右的流间延迟（Inter Stream Delay / ISD），具体取决于网络情况、终端类型、连接方式甚至玩家到屏幕的距离。但是总体而言，延迟的影响因素大概可以归纳为：</p>
+<ul>
+<li>网络延迟。大概来说就是网络延迟是相当复杂的，首先多设备的网络接入点不一定一样（屏幕直接通过以太网连接到路由器而控制器通过 AP 连接到 WiFi 等）。其次，不同设备可能使用不同的网络协议（屏幕使用 WebRTC 而控制器使用 URCP 协议）。最后，互联网提供商可能对不同端口的流量做不同的优先级处理，这也可能导致网络延迟</li>
+<li>设备播放延迟。音频和视频在不同的设备上有不同的缓存管理措施，不同的播放策略也可能导致数十毫秒的 ISD</li>
+<li>声音传播延迟。玩家从屏幕和耳机接收到的声音的 ISD 和玩家到屏幕的距离有关（毕竟声速也不过 340 米每秒），这可能带来十毫秒左右的延迟</li>
+</ul>
+<p>本文的目标是将 ISD 限制到 10 毫秒一下，考虑到 ISD 是波动的，所以需要在游戏进程中不断观测和动态调整来平稳 ISD。事实上，测量 ISD 就足够困难，主要挑战是：</p>
+<ul>
+<li>RTT 的测量本身会因为网络往返路径不同，测量值本身具有十几毫秒的误差</li>
+<li>解码、播放、声音传播延迟等影响 ISD 的重要因素往往因为缺乏合适的 API 或者硬件而难以测量</li>
+</ul>
+<p>以往的设备间同步有三种常见方案：</p>
+<ul>
+<li>通过共享的网络组件建立专用链接完成时间同步。然而云游戏系统并不强制要求各个终端共享网络组件</li>
+<li>通过网络时间协议同步时间。然而该协议往往测量不精准，甚至会有百毫秒的误差</li>
+<li>通过记录设备播放的声音测量误差。然而这对硬件要求较高，此外还要求周围环境噪声较低</li>
+</ul>
+<p>而本文提出 Ekho，其可以在亚毫秒级别测量 ISD 并且做出调节。简要而言，Ekho 通过伪噪声序列的方式对齐各种流，并且在服务端根据测量结果调整发送序列来同步各种流。</p>
+<h2 id="related-work">Related Work</h2>
+<p>相关工作曾经研究过两路相似音频最大能够达到多大错位而不被用户感知，以前的研究结果认为单调、突发的信号音在错位超过 5 毫秒时就会被感知，而复杂语音则需要达到 16 毫秒左右才会感知。本文拓展了这些工作，并且通过数据论述了：</p>
+<ul>
+<li>音频之间的错位最大为 10 毫秒</li>
+<li>视频与音频之间的错位，最多允许音频提前视频 15 毫秒或视频提前音频 45 毫秒</li>
+<li>触觉反馈与音频之间错位最大为 24 毫秒</li>
+<li>触觉反馈与视频之间错位可以宽容到 30 至 100 毫秒</li>
+</ul>
+<p>另外一部分的相关工作为媒体同步，指的是在一定范围的终端内同步媒体内容。现有的工作往往要求了下述前提（然后本文基于此做了点优化）：</p>
+<ul>
+<li>设备有准确的时钟。然而用于同步设备时钟的网络时间协议具有不可容忍的误差</li>
+<li>支持 PTP 的设备可以通过连接到同一路由器实现同步。然而 PTP 并非广泛采用的协议</li>
+<li>利用这些设备往往物理距离较近的特征，通过在一个设备上记录另一个设备声音的方式实现流之间的延迟测量。然而由于环境噪声、硬件设备等问题，这一方案在先前工作中没有获得很好的效果，而本文基于此，做出了一步重要的拓展（伪噪声打点）</li>
+</ul>
+<h2 id="background-motivation">Background &amp; Motivation</h2>
+<h3 id="time-synchronization-requirements">Time Synchronization Requirements</h3>
+<p>为了研究音频之间的错位阈值，这一章设计了用户实验。用户实验的基本方案是 ITU-T P.808 标准中规定的 DCR 测试方法。测试中使用的音频为 30 个长度为 15 秒的游戏录音，每个录音均加上了 0 到 300 毫秒不等的 ISD。</p>
+<p>测试流程就直接翻译原文了。</p>
+<div class="note info no-icon"><p>人类测试者首先听取没有回声的参考音频片段，然后听取带有未知延迟量的回声的相同片段，包括 0 毫秒，即没有回声。测试者需要选择由于回声引起的注意力分散程度。此外，每个测试者会定期进行训练，即按照 P.808 标准听取带有不同回声量的六个片段，以确保标准化。</p>
+<p>我们总共收集了 3555 个评分，根据 ITU-T P.808 的规定，去除了低质量的回应（总数据的 33%）。每个片段被评分约 10 次，每个延迟级别有 30 个不同的片段，共计每个延迟级别约 296 个投票。受访者池由 17% 的年轻人（18-25 岁）、43% 的成年人（26-35 岁）、32% 的中年人（36-50 岁）和 8% 的老年人（51 岁及以上）组成，他们的母语是英语。按照伦理准则，调查是匿名的，我们在参与之前告知受访者有关调查过程和刺激类型。我们对受访者进行了补偿，并避免了可能被认为是令人不悦的刺激。Microsoft IRB 审查并批准了这项调查。</p>
+</div>
+<p>最后的具体结果事实上已经在先前提到了，即根据音频的不同类别，玩家的忍受阈值是不同的，但最后大体可以用 10 毫秒作为阈值。</p>
+<p><img src="/uploads/paper-2023-10/1.png" /></p>
+<div class="note success no-icon"><p>首先需要学一下 ITU 用户测试到底是个什么标准。</p>
+<p>其次的话，这篇文章的 user study 给的启示大概就是如果要设立对比或者是五分量表类似的测试的话，需要定期通过所谓的 training phase 来保证测试者没有被“带偏”。</p>
+<p>如果说要测试云游戏条件下画面撕裂更为显著的话，其实也可以借鉴这种主观评分模式。不同的游戏，不同的撕裂程度（或者说不同幅度的 jitter？）之下受访者到底能够容忍多少。如果发现云游戏条件下测试者的评分有显著下降，应该能说明问题了？</p>
+<p>以及最好能提供一些现有的解决方案，证明现在的方案还不够解决这一问题？</p>
+</div>
+<p>上述实验是音频和音频之间的错位，其余种类流之间的错位本文似乎没有展开说明。</p>
+<h3 id="inter-stream-delay">Inter Stream Delay</h3>
+<p>这一部分主要是 ISD 的建模：</p>
+<p><img src="/uploads/paper-2023-10/2.png" /></p>
+<p>可以看到基本和 Introduction 中提出的一致，分为网络延迟、解码延迟、播放延迟、声音传播延迟。</p>
+<p>网络延迟的测量也和先前一样，否定了 NTP 协议和对称 RTT 测量两种方案。解码延迟则理论可以测量（通过对目标设备和音频格式类型的仔细测量来分析这些延迟），然而受限于终端种类繁多，API 也不总是可用，这种测量几乎实际不可行。播放延迟则来源于硬件的 jitter buffer，这种延迟几乎无法测量。声音传播延迟自然因为硬件问题无法测量。</p>
+<p>最终归纳为下表：</p>
+<p><img src="/uploads/paper-2023-10/3.png" /></p>
+<p>总而言之，目前的测量方法的误差都过大，根本无法做到从各个环节上把握 ISD，更不用谈以此为基础控制 ISD 了（这一部分就是用于说明问题的挑战性和本文方案的创新性的）。</p>
+<h3 id="isd-variation">ISD Variation</h3>
+<p>大概的意思是继续说现有方案解决不了问题，原因是 ISD 是动态的。简而言之，ISD 的组成成分中，包含了低概率发生的 IP 路径更改或者显卡调度更改导致的大幅度震荡，以及更常见的因为网络波动和 jitter buffer 耗尽导致的小幅度震荡。</p>
+<p>也就是说，ISD 的校正需要尽快且足够频繁以应对这些变化。实践证明，Ekho 最多间隔 15 秒测量一次 ISD 足以应对这些震荡。</p>
+<h2 id="ekho">Ekho</h2>
+<h3 id="overview-of-isd-measurement-in-ekho">Overview of ISD Measurement in Ekho</h3>
+<p>简而言之，Ekho 采用了端到端的测量方案，即忽略掉中途环节，直接在端侧考虑延迟：</p>
+<p><img src="/uploads/paper-2023-10/4.png" /></p>
+<p>这里两路音频指的是屏幕音频和耳机音频，由于屏幕音频最终会被耳机捕捉，所以可以在耳机中直接比较两路音频得到 ISD 的估算。</p>
+<p>这一方案的问题在于，一般的游戏音频内部没有标志点，无法快速供算法分析捕捉。其次，屏幕音频在经过空气传播削弱之后，加上环境噪声，会导致两路音频更难对齐，这还没有考虑传输过程中两路音频均可能经过了有损压缩。</p>
+<p>所以，一种简单的解决方案是在服务器端发送音频的时候，在其内部均匀地（实验中使用 1 秒作为间隔）插入伪噪声标记，这些标记会用来对齐两路音频。这种伪噪声标记需要精心设计，因为其不能影响到玩家正常游戏，需要尽力做到不可察觉。</p>
+<h3 id="reliable-marker-detection-in-ekho">Reliable Marker Detection in Ekho</h3>
+<p>这里就详细介绍了伪噪声序列的构造方式和检测方式。首先分析游戏音频的频谱特征，可以看到载波的频率基本都在 12 kHz 以上，而重要游戏信息内容基本都位于 6 kHz 以下，所以伪噪声的频率范围需要限制在 6-12 kHz 范围内。此外，由于可探测性取决于振幅，这里的目标是不断探测游戏本体音频的振幅并控制伪噪声标记振幅与其的比值尽可能恒定（游戏声音小标记振幅就小，反之亦然）。</p>
+<p>假设 <span class="math inline">\(x[t]\)</span> 是游戏音频，<span class="math inline">\(w[t]\)</span> 为长度为 <span class="math inline">\(L\)</span> 的伪噪声序列，那么最终的带标记音频序列 <span class="math inline">\(x_m[t]\)</span> 为：</p>
+<p><span class="math display">\[
+\begin{aligned}
+x_m[t] &amp;= x[t] + C\alpha_k w[t] \\
+\alpha_k &amp;= \gamma\alpha_{k - 1} + (1 - \gamma)\rho(x[(k - 1)T : kT])
+\end{aligned}
+\]</span></p>
+<p>参数 <span class="math inline">\(L\)</span> 影响 ISD 测量的速度和最大可测量的 ISD，一般的话设置为 48000（对应一秒音频，说明生成频率为 21 MHz 左右）。<span class="math inline">\(\rho(x[(k - 1)T : kT])\)</span> 则表示了在 <span class="math inline">\((k - 1)T\)</span> 到 <span class="math inline">\(kT\)</span> 范围内的游戏音频功率，实验中选择 <span class="math inline">\(T = 960\)</span>，这是 48 kHz 下的 20 毫秒音频。</p>
+<p>这个公式的原理在于每 20 毫秒通过功率测算调整混入比例 <span class="math inline">\(\alpha_k\)</span>，而 <span class="math inline">\(\alpha_k\)</span> 采用的软更新参数 <span class="math inline">\(\gamma\)</span> 在实验中取 0.4。</p>
+<p>在上述混入的基础上就可以介绍检测算法了，假设耳机的录音序列为 <span class="math inline">\(x_{\rm rec}[x]\)</span>，我们计算其交叉相关 <span class="math inline">\(Z[t]\)</span> 如下：</p>
+<p><span class="math display">\[
+Z[t] = \sum_{i = 1}^L x_{\rm rec}[t + i]w[i]
+\]</span></p>
+<p>可以注意到这里不断让录音和标记信号对齐，当标记对齐的时候 <span class="math inline">\(Z[t]\)</span> 应当在此处出现峰值。为了让峰值检测更为可靠，需要做下述归一化：</p>
+<p><span class="math display">\[
+Z^*[t] = \left|\frac{Z[t]}{\sqrt{\dfrac{1}{S}\sum_{i = 1}^S Z[t + i]^2}}\right|
+\]</span></p>
+<p>通过归一化后的 <span class="math inline">\(Z^*[t]\)</span> 会有比较好的包络线。实际测量中会使用 <span class="math inline">\(S\)</span> 为 100 毫秒，这个参数的来源大致是游戏音效大约都持续 100 毫秒。</p>
+<p>为了更好检测峰值，下一步需要具体计算包络线：</p>
+<p><span class="math display">\[
+R[t] = \begin{cases}
+|Z^*[t]| &amp; R[t - 1] \leq |Z^*[t]| \\
+\beta R[t - 1] &amp; {\rm otherwise} \\
+\end{cases}
+\]</span></p>
+<p>原理是简单的，如果出现峰值则设定峰值，如果没有出现则按照等比数列衰减包络线。这样操作可以过滤掉除了峰值之外的大量无用数据。实验中 <span class="math inline">\(\beta = 0.99995\)</span>。在上述计算的基础上，所有 <span class="math inline">\(R[t] &gt; \theta = 5\)</span> 的值都认为是一次峰值。</p>
+<p>峰值更具体的计算为：</p>
+<p><span class="math display">\[
+P[t] = \begin{cases}
+R[t] &amp; R[t \pm 1] &lt; R[t], R[t] &gt; \theta \\
+0 &amp; {\rm otherwise} \\
+\end{cases}
+\]</span></p>
+<p>此时 <span class="math inline">\(P[t]\)</span> 已经提取出了所有的峰值并且过滤掉了较低峰值。此外，由于峰值的间隔至少应当是 <span class="math inline">\(L\)</span>（峰值间隔应当是伪噪声间隔，如果有较近的峰值应当是游戏本身的峰值，需要过滤），所以给出了下述进一步过滤：</p>
+<p><span class="math display">\[
+P^*[t] = \begin{cases}
+P[t] &amp; P[t] = \max_{|j| &lt; \delta}P[t + j] &gt; 0, \max_{|j| &lt; \delta}P[t + j + L] &gt; 0 \\
+0 &amp; {\rm otherwise} \\
+\end{cases}
+\]</span></p>
+<p>全检测流程如下：</p>
+<p><img src="/uploads/paper-2023-10/5.png" /></p>
+<h3 id="isd-estimation">ISD Estimation</h3>
+<p>由于 <span class="math inline">\(L\)</span> 选择了一秒，所以这里假定 ISD 不会超越 500 毫秒。在此基础上，将过滤过后的屏幕音频和耳机音频做对比，将距离最小的两个峰值之差作为 ISD 的估计：</p>
+<p><img src="/uploads/paper-2023-10/6.png" /></p>
+<h3 id="ekho-delay-compensation">Ekho Delay Compensation</h3>
+<p>调节的方式很简单，就是塞零音频来强制同步（毕竟已经算出来 ISD 了），本文未来计划通过数据包丢失掩盖技术来做（毕竟插入零音频实在是有点粗暴），但是至少现在没做。</p>
+<h2 id="design-implementation">Design &amp; Implementation</h2>
+<p>结构是这样的：</p>
+<p><img src="/uploads/paper-2023-10/7.png" /></p>
+<p>总体来说的话，终端设备基本上仅仅承担了录音的任务，所有的计算负载依然放在云端。云端估算 ISD 的时候依赖于终端传回的音频数据。</p>
+<p>具体的实现这里就不涉及了。</p>
+<h2 id="evaluation">Evaluation</h2>
+<p>评估的话大概包括如下部分：</p>
+<ol type="1">
+<li>Ekho 是否成功在端到端系统中同步音频流？</li>
+<li>什么样的标记音量足以准确估算 ISD，同时又不被人察觉？</li>
+<li>在标记辅助的 ISD 测量方面，Ekho 与先前的工作相比如何？</li>
+<li>当屏幕音频流静音时，Ekho 是否可以用于视频与音频的同步？</li>
+</ol>
+<p>同步音频流的实验很简单，直接把 Ekho 开起来然后在每个终端开一个 log 来记录每一帧音频的播放时间，两个设备的时钟会在实验开始前同步：</p>
+<p><img src="/uploads/paper-2023-10/8.png" /></p>
+<p>总之可以看到 Ekho 将 ISD 控制在 10 毫秒内，而不用 Ekho 的时候几乎做不到压到 10 毫秒的可能。</p>
+]]></content>
+      <categories>
+        <category>【论文笔记】计算机</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>《Petal Letter》歌词试译</title>
+    <url>/2022/10/27/petal-letter-lyrics/</url>
+    <content><![CDATA[<p>秋枫老师发来的一份歌词，感觉挺有意思就试着自己翻译看看了。</p>
+<p>歌曲的地址是 BV1Y14y1j7Fi。</p>
+<span id="more"></span>
+<p><strong><code>@ 朝日 あさひ</code>に<code>@ 溶 と</code>ける<code>@ 微睡 まどろ</code>みと<code>@ 目覚 めざ</code>めの<code>@ 狭間 はざま</code>、そっと<code>@ 口遊 くちずさ</code>む<code>@ 旋律 メロディ</code>、<code>@ 花片 はなびら</code>にのせ、<code>@ 風 かぜ</code>よ<code>@ 届 とど</code>けて、あなたが<code>@ 旅 たび</code>する<code>@ 世界 せかい</code>へ。</strong></p>
+<p>在朝阳中浅睡与苏醒的间隙中悄悄吟唱的旋律，乘上飘落的花瓣，就让微风将它传达到你所旅行的世界吧。</p>
+<p><strong><code>@ 魔法 まほう</code>で<code>@ 出逢 であ</code>った、あなたと<code>@ 私 わたし</code>、<code>@ 今 いま</code>は<code>@ 別々 べつべつ</code>の<code>@ 物語 ものがたり</code>を<code>@ 行 ゆ</code>く。</strong></p>
+<p>因魔法而相遇的你我二人，如今却向着不同的未来而去。</p>
+<p>【注释 #1】这里并没有将「<code>@ 物語 ものがたり</code>」直接翻译为“故事”，感觉并不太符合中文的语感。</p>
+<p><strong><code>@ 何 なに</code>かが<code>@ 始 はじ</code>まる<code>@ 予感 よかん</code>を<code>@ 胸 むね</code>に、<code>@ 歩 ある</code>き<code>@ 出 だ</code>してから、どれだけ<code>@ 経 た</code>ったの。</strong></p>
+<p>心中不知为何，总有着何事将至的预感。即使知道那时的分别，已经过去了不知多长时间。</p>
+<p><strong><code>@ 緩 ゆる</code>やかな<code>@ 坂道 さかみち</code>、<code>@ 登 のぼ</code>ればまた<code>@ 独 ひと</code>りきり。</strong></p>
+<p>登上平缓的山坡，依然独自一人。</p>
+<p><strong><code>@ 寂 さび</code>しさに、<code>@ 心細 こころぼそ</code>さに、<code>@ 寄 よ</code>り<code>@ 添 そ</code>ってくれる、あなたと<code>@ 交 か</code>わした<code>@ 心 こころ</code>の<code>@ 花束 はなたば</code>。</strong></p>
+<p>在这寂寞与不安中，我依偎着的，是与你交换的心之花束。</p>
+<p>【注释 #2】这里的语句结构有点怪异，歌曲中这里的断句也比较怪异，难以判定「くれる」与后续句子的关系。这里又要经典批判一遍为何现代日语的终止形和连体形合流，这显然难以判定一个动词词组究竟是修饰名词还是直接终止语句，这导致大量的歌词翻译困难。</p>
+<p><strong>いつでも<code>@ 誰 だれ</code>かが<code>@ 泣 な</code>いている<code>@ 世界 せかい</code>、<code>@ 鏡 かがみ</code>の<code>@ 向 む</code>こうに<code>@ 霞 かす</code>んだ。<code>@ 今 いま</code>は<code>@ 消 き</code>えた、<code>@ 祭 まつ</code>りの<code>@ 果 は</code>てで。</strong></p>
+<p>无论何时都有谁在哭泣着的世界，也在镜子中烟雾朦胧。现在早已在祭典的尽头，消失不见。</p>
+<p><strong><code>@ 触 ふ</code>れ<code>@ 合 あ</code>うことすら、できずに<code>@ 別 わか</code>れた。</strong></p>
+<p>我们甚至都还没有再次相遇，却又再次分别。</p>
+<p><strong>あなたを<code>@ 感 かん</code>じたい<code>@ 時 とき</code>は、<code>@ 名前 なまえ</code>をもう<code>@ 一度 いちど</code> <code>@ 呼 よ</code>ぶ。</strong></p>
+<p>每当想要感受你的温暖的时候，再一次，呼唤你的名字。</p>
+<p><strong><code>@ 青 あお</code>い<code>@ 薔薇 ローズ</code>、<code>@ 赤 あか</code>い<code>@ 椿 カメリア</code>、<code>@ 花 はな</code>は<code>@ 今日 きょう</code>も<code>@ 咲 さ</code>いてますか。</strong></p>
+<p>蓝色的玫瑰，红色的山茶花，花朵如今，也依然在绽放吗。</p>
+<p><strong><code>@ 問 と</code>いかけて<code>@ 応 こた</code>えなくても、<code>@ 同 おな</code>じ<code>@ 楽園 そら</code>を<code>@ 見上 みあ</code>げてる。</strong></p>
+<p>即使问而不答，我们也始终仰望着同一片乐园（天空）。</p>
+<p><strong>あれから<code>@ 始 はじ</code>まった<code>@ 長 なが</code>い<code>@ 旅 たび</code>も、<code>@ 終 お</code>わる、いつかは、<code>@ 消 き</code>える、<code>@ 全 すべ</code>てが。そして、<code>@ 星 ほし</code>は、<code>@ 巡 めぐ</code>る。</strong></p>
+<p>从那时开始的漫长旅途，总有一天也会结束，到那时，一切都会消逝。而后，群星依然流转。</p>
+<p><strong><code>@ 止 や</code>まない<code>@ 嵐 あらし</code>に<code>@ 足 あし</code>を<code>@ 止 と</code>められ、<code>@ 草臥 くたび</code>れた<code>@ 靴 くつ</code>の<code>@ 跡 あと</code>を<code>@ 振 ふ</code>り<code>@ 返 かえ</code>る。</strong></p>
+<p>无休无止的山林雾气中，我不得不停下脚步，回望着以往的足迹，鞋履也早因旅途破旧不堪。</p>
+<p><strong><code>@ 大事 だいじ</code>なものはまだ、<code>@ 歩 ある</code>く<code>@ 度 たび</code>に<code>@ 増 ふ</code>えるでしょう。</strong></p>
+<p>然而，那些珍贵的回忆，依然随着我们前行的每一步而积累着。</p>
+<p><strong>それでも<code>@ 俯 うつむ</code>く<code>@ 私 わたし</code>の<code>@ 背中 せなか</code>を<code>@ 押 お</code>すのは、あなたと<code>@ 交 か</code>わした、<code>@ 叶 かな</code>わぬ<code>@ 約束 やくそく</code>。</strong></p>
+<p>尽管如此，激励着早已疲惫不堪的我继续前行的，是与你定下的未竟约定。</p>
+<p>【注释 #3】这里意译了「<code>@ 俯 うつむ</code>く」，其本意是“低下头”。</p>
+<p><strong><code>@ 大 おお</code>きな<code>@ 鞄 かばん</code>に<code>@ 閉 と</code>じこめた<code>@ 願 ねが</code>い、<code>@ 鏡 かがみ</code>と<code>@ 一緒 いっしょ</code>に<code>@ 壊 こわ</code>れた。<code>@ 夢 ゆめ</code>と<code>@ 追憶 ついおく</code>が<code>@ 降 ふ</code>り<code>@ 注 そそ</code>ぐ。</strong></p>
+<p>珍藏在大大的行李箱中的愿望，也随着镜子一同破碎，梦与追忆倾泻而下。</p>
+<p><strong><code>@ 砂 すな</code>へと<code>@ 零 こぼ</code>れた<code>@ 涙 なみだ</code>を<code>@ 拭 ぬぐ</code>って、<code>@ 震 ふる</code>える<code>@ 手 て</code>が<code>@ 拾 ひろ</code>い<code>@ 上 あ</code>げた。</strong></p>
+<p>拭去飘落在沙地上的泪水，用颤抖的手将碎片拾起。</p>
+<p><strong><code>@ 光 ひかり</code>はきっと、<code>@ 同 おな</code>じ<code>@ 色 いろ</code>をした<code>@ 花 はな</code>。</strong></p>
+<p>那光芒必然是，闪耀着相同颜色的花朵。</p>
+<p><strong><code>@ 目 め</code>を<code>@ 閉 と</code>じれば、<code>@ 耳 みみ</code>を<code>@ 澄 す</code>ませば、<code>@ 花片 はなびら</code>が<code>@ 風 かぜ</code>に<code>@ 乗 の</code>って、<code>@ 旋律 メロディ</code>を<code>@ 届 とど</code>けるでしょう。</strong></p>
+<p>闭上眼睛，侧耳倾听，花瓣乘上微风，将那旋律传达给你。</p>
+<p><strong><code>@ 私 わたし</code>からあなたへの<code>@ 手紙 レター</code>。</strong></p>
+<p>这就是，我寄给你的，一封信。</p>
+]]></content>
+      <categories>
+        <category>【杂谈】日语</category>
+      </categories>
+  </entry>
+  <entry>
     <title>2023 年 9 月论文笔记</title>
     <url>/2023/09/01/paper-2023-09/</url>
     <content><![CDATA[<p>博士生涯正式开始了，首先先看看论文吧。</p>
@@ -12034,58 +12297,6 @@ c_a = \frac{\sigma_a}{\mu_a}, c_s = \frac{\sigma_s}{\mu_s}, \rho = \frac{\mu_a}{
       </categories>
   </entry>
   <entry>
-    <title>《Petal Letter》歌词试译</title>
-    <url>/2022/10/27/petal-letter-lyrics/</url>
-    <content><![CDATA[<p>秋枫老师发来的一份歌词，感觉挺有意思就试着自己翻译看看了。</p>
-<p>歌曲的地址是 BV1Y14y1j7Fi。</p>
-<span id="more"></span>
-<p><strong><code>@ 朝日 あさひ</code>に<code>@ 溶 と</code>ける<code>@ 微睡 まどろ</code>みと<code>@ 目覚 めざ</code>めの<code>@ 狭間 はざま</code>、そっと<code>@ 口遊 くちずさ</code>む<code>@ 旋律 メロディ</code>、<code>@ 花片 はなびら</code>にのせ、<code>@ 風 かぜ</code>よ<code>@ 届 とど</code>けて、あなたが<code>@ 旅 たび</code>する<code>@ 世界 せかい</code>へ。</strong></p>
-<p>在朝阳中浅睡与苏醒的间隙中悄悄吟唱的旋律，乘上飘落的花瓣，就让微风将它传达到你所旅行的世界吧。</p>
-<p><strong><code>@ 魔法 まほう</code>で<code>@ 出逢 であ</code>った、あなたと<code>@ 私 わたし</code>、<code>@ 今 いま</code>は<code>@ 別々 べつべつ</code>の<code>@ 物語 ものがたり</code>を<code>@ 行 ゆ</code>く。</strong></p>
-<p>因魔法而相遇的你我二人，如今却向着不同的未来而去。</p>
-<p>【注释 #1】这里并没有将「<code>@ 物語 ものがたり</code>」直接翻译为“故事”，感觉并不太符合中文的语感。</p>
-<p><strong><code>@ 何 なに</code>かが<code>@ 始 はじ</code>まる<code>@ 予感 よかん</code>を<code>@ 胸 むね</code>に、<code>@ 歩 ある</code>き<code>@ 出 だ</code>してから、どれだけ<code>@ 経 た</code>ったの。</strong></p>
-<p>心中不知为何，总有着何事将至的预感。即使知道那时的分别，已经过去了不知多长时间。</p>
-<p><strong><code>@ 緩 ゆる</code>やかな<code>@ 坂道 さかみち</code>、<code>@ 登 のぼ</code>ればまた<code>@ 独 ひと</code>りきり。</strong></p>
-<p>登上平缓的山坡，依然独自一人。</p>
-<p><strong><code>@ 寂 さび</code>しさに、<code>@ 心細 こころぼそ</code>さに、<code>@ 寄 よ</code>り<code>@ 添 そ</code>ってくれる、あなたと<code>@ 交 か</code>わした<code>@ 心 こころ</code>の<code>@ 花束 はなたば</code>。</strong></p>
-<p>在这寂寞与不安中，我依偎着的，是与你交换的心之花束。</p>
-<p>【注释 #2】这里的语句结构有点怪异，歌曲中这里的断句也比较怪异，难以判定「くれる」与后续句子的关系。这里又要经典批判一遍为何现代日语的终止形和连体形合流，这显然难以判定一个动词词组究竟是修饰名词还是直接终止语句，这导致大量的歌词翻译困难。</p>
-<p><strong>いつでも<code>@ 誰 だれ</code>かが<code>@ 泣 な</code>いている<code>@ 世界 せかい</code>、<code>@ 鏡 かがみ</code>の<code>@ 向 む</code>こうに<code>@ 霞 かす</code>んだ。<code>@ 今 いま</code>は<code>@ 消 き</code>えた、<code>@ 祭 まつ</code>りの<code>@ 果 は</code>てで。</strong></p>
-<p>无论何时都有谁在哭泣着的世界，也在镜子中烟雾朦胧。现在早已在祭典的尽头，消失不见。</p>
-<p><strong><code>@ 触 ふ</code>れ<code>@ 合 あ</code>うことすら、できずに<code>@ 別 わか</code>れた。</strong></p>
-<p>我们甚至都还没有再次相遇，却又再次分别。</p>
-<p><strong>あなたを<code>@ 感 かん</code>じたい<code>@ 時 とき</code>は、<code>@ 名前 なまえ</code>をもう<code>@ 一度 いちど</code> <code>@ 呼 よ</code>ぶ。</strong></p>
-<p>每当想要感受你的温暖的时候，再一次，呼唤你的名字。</p>
-<p><strong><code>@ 青 あお</code>い<code>@ 薔薇 ローズ</code>、<code>@ 赤 あか</code>い<code>@ 椿 カメリア</code>、<code>@ 花 はな</code>は<code>@ 今日 きょう</code>も<code>@ 咲 さ</code>いてますか。</strong></p>
-<p>蓝色的玫瑰，红色的山茶花，花朵如今，也依然在绽放吗。</p>
-<p><strong><code>@ 問 と</code>いかけて<code>@ 応 こた</code>えなくても、<code>@ 同 おな</code>じ<code>@ 楽園 そら</code>を<code>@ 見上 みあ</code>げてる。</strong></p>
-<p>即使问而不答，我们也始终仰望着同一片乐园（天空）。</p>
-<p><strong>あれから<code>@ 始 はじ</code>まった<code>@ 長 なが</code>い<code>@ 旅 たび</code>も、<code>@ 終 お</code>わる、いつかは、<code>@ 消 き</code>える、<code>@ 全 すべ</code>てが。そして、<code>@ 星 ほし</code>は、<code>@ 巡 めぐ</code>る。</strong></p>
-<p>从那时开始的漫长旅途，总有一天也会结束，到那时，一切都会消逝。而后，群星依然流转。</p>
-<p><strong><code>@ 止 や</code>まない<code>@ 嵐 あらし</code>に<code>@ 足 あし</code>を<code>@ 止 と</code>められ、<code>@ 草臥 くたび</code>れた<code>@ 靴 くつ</code>の<code>@ 跡 あと</code>を<code>@ 振 ふ</code>り<code>@ 返 かえ</code>る。</strong></p>
-<p>无休无止的山林雾气中，我不得不停下脚步，回望着以往的足迹，鞋履也早因旅途破旧不堪。</p>
-<p><strong><code>@ 大事 だいじ</code>なものはまだ、<code>@ 歩 ある</code>く<code>@ 度 たび</code>に<code>@ 増 ふ</code>えるでしょう。</strong></p>
-<p>然而，那些珍贵的回忆，依然随着我们前行的每一步而积累着。</p>
-<p><strong>それでも<code>@ 俯 うつむ</code>く<code>@ 私 わたし</code>の<code>@ 背中 せなか</code>を<code>@ 押 お</code>すのは、あなたと<code>@ 交 か</code>わした、<code>@ 叶 かな</code>わぬ<code>@ 約束 やくそく</code>。</strong></p>
-<p>尽管如此，激励着早已疲惫不堪的我继续前行的，是与你定下的未竟约定。</p>
-<p>【注释 #3】这里意译了「<code>@ 俯 うつむ</code>く」，其本意是“低下头”。</p>
-<p><strong><code>@ 大 おお</code>きな<code>@ 鞄 かばん</code>に<code>@ 閉 と</code>じこめた<code>@ 願 ねが</code>い、<code>@ 鏡 かがみ</code>と<code>@ 一緒 いっしょ</code>に<code>@ 壊 こわ</code>れた。<code>@ 夢 ゆめ</code>と<code>@ 追憶 ついおく</code>が<code>@ 降 ふ</code>り<code>@ 注 そそ</code>ぐ。</strong></p>
-<p>珍藏在大大的行李箱中的愿望，也随着镜子一同破碎，梦与追忆倾泻而下。</p>
-<p><strong><code>@ 砂 すな</code>へと<code>@ 零 こぼ</code>れた<code>@ 涙 なみだ</code>を<code>@ 拭 ぬぐ</code>って、<code>@ 震 ふる</code>える<code>@ 手 て</code>が<code>@ 拾 ひろ</code>い<code>@ 上 あ</code>げた。</strong></p>
-<p>拭去飘落在沙地上的泪水，用颤抖的手将碎片拾起。</p>
-<p><strong><code>@ 光 ひかり</code>はきっと、<code>@ 同 おな</code>じ<code>@ 色 いろ</code>をした<code>@ 花 はな</code>。</strong></p>
-<p>那光芒必然是，闪耀着相同颜色的花朵。</p>
-<p><strong><code>@ 目 め</code>を<code>@ 閉 と</code>じれば、<code>@ 耳 みみ</code>を<code>@ 澄 す</code>ませば、<code>@ 花片 はなびら</code>が<code>@ 風 かぜ</code>に<code>@ 乗 の</code>って、<code>@ 旋律 メロディ</code>を<code>@ 届 とど</code>けるでしょう。</strong></p>
-<p>闭上眼睛，侧耳倾听，花瓣乘上微风，将那旋律传达给你。</p>
-<p><strong><code>@ 私 わたし</code>からあなたへの<code>@ 手紙 レター</code>。</strong></p>
-<p>这就是，我寄给你的，一封信。</p>
-]]></content>
-      <categories>
-        <category>【杂谈】日语</category>
-      </categories>
-  </entry>
-  <entry>
     <title>直博招生专业面试的一些</title>
     <url>/2022/09/14/phd-interview/</url>
     <content><![CDATA[<p>2022 年 9 月 14 日，是清华大学计算机科学与技术系 2023 级免试攻读博士生招生专业面试。Holder 参加了这一场面试，然后人炸了。</p>
@@ -12096,215 +12307,6 @@ c_a = \frac{\sigma_a}{\mu_a}, c_s = \frac{\sigma_s}{\mu_s}, \rho = \frac{\mu_a}{
 ]]></content>
       <categories>
         <category>【杂谈】碎碎念</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>2023 年 10 月论文笔记</title>
-    <url>/2023/10/08/paper-2023-10/</url>
-    <content><![CDATA[<p>说是加入腾讯做云游戏，但是似乎一个月过去了暂且都没有等来信息，果然还是继续积累吧。</p>
-<span id="more"></span>
-<h1 id="zgaming---zero-latency-3d-cloud-gaming-by-image-prediction">ZGaming - Zero-Latency 3D Cloud Gaming by Image Prediction</h1>
-<p>现在论文都直接吹零延迟的吗，不过如果说 Abstract 里面这句话是真的，那确实足够猛：</p>
-<div class="note info no-icon"><p>与现有方法相比，ZGaming 在提供相同视频质量时，将互动延迟从 23 毫秒减少到 0 毫秒，或者在保持互动延迟为 0 毫秒时，提高了 5.4 分贝的视频质量。</p>
-</div>
-<h2 id="introduction">Introduction</h2>
-<p>先讲了一下云游戏对 MTP 延迟很敏感，然后提出本文的目标是实现零延迟的云游戏系统。有关其他工作的部分，本文首先指出了单纯在系统上做优化的方案终究会因为网络的存在而至少具有一个 RTT 的延迟，从而零延迟的系统必定一定程度上涉及到预测操作，其中一个著名的工作是动作预取。动作预取的工作原理是对所有的可能潜在动作，都在服务端渲染下一帧，然后将这些帧发送到客户端，客户端上一旦执行操作即可直接访问到动作结果帧。但是动作预取面临两个困难：</p>
-<ul>
-<li>用户动作的随机性极高，很容易遭遇预测未命中的情况</li>
-<li>商用云游戏大部分依然采用用户动作后再渲染的方案，工业界适配困难较大</li>
-</ul>
-<p>如果难以直接修改当前的工作流水线，那么一种可能的方案为基于图像的预测，常用的方法就是 DIBR。在具有 DIBR 的系统中，当用户做出操作的时候，该系统会根据最近接收到的 RGBD（即 RGB 色彩以及深度信息）直接预测接下来的视频帧，用户在此基础上几乎感知不到任何延迟。</p>
-<p>本文基于上述方法，希望进一步精细化图像预测，主要面临的挑战有：</p>
-<ul>
-<li>预测图像中存在伪影，即像素缺失。例如出现了遮挡和视野外，此时由于缺失图像信息，无法准确预测该部分的像素信息导致缺失。目前已经有一部分针对伪影的解决方案</li>
-<li>DIBR 不能应用于预测动态对象，因为动态对象的运动几乎无法通过静态的像素信息观察到，从而 DIBR 很难给出合理的预测值</li>
-<li>码率和网络的匹配问题（有点奇怪，为什么这里需要考虑 ABR 相关的问题）</li>
-</ul>
-<p>ZGaming 的设计在于，首先通过 DIBR 预测出静态对象的图像，然后通过运动预测模型预测动态对象的图像（本文采用了 LSTM，我严格觉得 LSTM 做不了这种任务），最后将两者结合起来得到最终的预测图像。具体而言的工作：</p>
-<ul>
-<li>基于质量的静态场景缓存。如果完全存储所有历史静态场景则很有可能导致巨大的开销，所以 ZGaming 采用了基于质量的缓存，即只缓存质量较高的静态场景，而质量较低的场景则直接丢弃</li>
-<li>服务器辅助的 LSTM 预测。在服务器端部署 LSTM 以预测动态物体的运动趋势，并预取到客户端</li>
-<li>ABR。我不评价这一部分</li>
-</ul>
-<h2 id="motivation">Motivation</h2>
-<p>首先说了一下云游戏条件下互动延迟的要求极高，大概限制在 60 毫秒左右。然后介绍了一下 DIBR 能够通过预测静态场景的方式做到一定程度上的零延迟，并且在工程的角度上可以增量式地连接到现有系统而不需要调整当下的云游戏渲染管线。</p>
-<p>但是 DIBR 是有缺陷的：</p>
-<p><img src="/uploads/paper-2023-10/9.png" /></p>
-<p>简而言之本文的解决方法为：</p>
-<ul>
-<li>重用历史帧。本文的论据是大量的场景都有可能在历史场景中出现过，所以加大追溯历史的深度可以有效缓解空洞伪影（但是全新的场景怎么办呢）</li>
-<li>利用 LSTM 预测动态对象的运动模式</li>
-<li>ABR？（为什么 DIBR 的优化策略里面有 ABR？）</li>
-</ul>
-<h2 id="overview">Overview</h2>
-<p>总之就是上面三个部分一个对应一个模块，也就是说 ZGaming 包括一个场景缓存，一个动态物体 LSTM 模型，一个 ABR 算法。</p>
-<h2 id="quality-driven-3d-block-cache">Quality Driven 3D Block Cache</h2>
-<p>其认为，一般的缓存设计方法无法直接应用到云游戏之中，因为传统的全量缓存会占用巨大的内存空间。一种方法是一定程度上限制缓存条目的大小，并且设计有效的缓存替换策略保证高效利用有限的内存资源。在考虑缓存替换策略的时候有以下需要注意的点：</p>
-<ul>
-<li>不同光照条件下，同样坐标处的材质并不能直接应用于恢复。这是显然的，阳光直射的墙壁图像显然无法直接应用于恢复夜晚墙壁的空洞</li>
-<li>非缓存算法的竞争。事实上，缓存并非处处是最优方法，例如墙壁、地面等较为单调的场景中，一般的插值恢复法甚至会比缓存更好。这里本文认为优先执行历史缓存恢复是合理的，如果缓存内容依然无法完全填充空缺部分，那么再通过插值方法恢复</li>
-<li>用户操作会使得缓存本身具有不均衡特性，部分场景明显会比其他场景有更高频的访问次数</li>
-</ul>
-<p>本文采用的策略为，将每一帧分为 <span class="math inline">\(64 \times 64\)</span> 的块，这样做可以避免全量缓存，并且可以避免重复场景的重复存储。对每一个块 <span class="math inline">\(b\)</span>，定义其质量为 <span class="math inline">\(U_b\)</span>，质量越高则越有可能被缓存。质量的计算方式为：</p>
-<p><span class="math display">\[
-U_b := \frac{1}{T_{\rm now} - t_b}\sum_{i = 1}^{N_b} ({\rm PSNR}_{b, i} - {\rm PSNR}_{b, i}&#39;)
-\]</span></p>
-<p>这里 <span class="math inline">\(N_b\)</span> 表示块 <span class="math inline">\(b\)</span> 在缓存中被使用的次数，求和项中的 PSNR 的差表示的是第 <span class="math inline">\(i\)</span> 次使用的时候相较于插值算法，用缓存修复所能得到的 PSNR 增益，之后使用块 <span class="math inline">\(b\)</span> 在缓存中持续的时间 <span class="math inline">\(T_{\rm now} - t_b\)</span> 归一化收益即可得到缓存块质量。可以注意到该函数的逻辑就是，单位时间内该缓存块相较于插值算法能够获得多高的额外收益。</p>
-<p>在此基础上，缓存的替换策略为当存储满时交换出 30% 的缓存块，并且定期逐出质量为负数的块。这里的负数质量表示该块在缓存中的收益不如插值算法，所以应当逐出。</p>
-<p>性能评价就不说了，基本就是形势大好。</p>
-<h2 id="server-assisted-lstm-predicting-foreground">Server Assisted LSTM Predicting Foreground</h2>
-<p>首先区分背景和前景，其实就是静态部分和动态部分。本文认为，即使某一些 NPC 在交互逻辑上不应该归类为背景，但是在渲染逻辑上其不会发生相对位置移动，所以应当归类为背景。在这一部分首先需要的是区分背景和前景，然后对前景进行预测。区分前景的逻辑就是将前一帧和后一帧对齐，比较是否发生了位置偏移，发生偏移则意味着是动态对象。</p>
-<p>而为了预测动态物体的运动，这里使用了 LSTM。然而直接使用 LSTM 会遇到渲染帧模糊的问题，所以在 LSTM 后面本文加上了一个图像超分模块（RefSR）。</p>
-<p><img src="/uploads/paper-2023-10/10.png" /></p>
-<p>工程上，另外提到了一下 LSTM 是部署在服务端的，数据传输方面则把 LSTM 预测的动态部分作为高优先级数据附加上 FEC 传输到客户端，由客户端组装具体的帧。</p>
-<h2 id="prediction-performance-driven-adaptive-bitrate">Prediction Performance Driven Adaptive Bitrate</h2>
-<p>这一部分整体没看明白想要做什么，似乎是根据网络情况调节预测性能？然而云游戏里面考虑网络的话还是不太会单独拉出来一个 ABR？不是很懂，这样总觉得 ABR 很孤立。</p>
-<h2 id="conclusion">Conclusion</h2>
-<p>感觉和吴成磊学长说的一样，这篇文章总体给的感觉是很割裂，有种头痛医头脚痛医脚的感觉。而且我觉得这篇文章的 LSTM 部分一言难尽，LSTM 本身的能力不好说能不能完成这类预测任务，而且使用历史帧填充未知空洞也显得很没有道理。</p>
-<p>总之，从 idea 到 writing 来看都不是很适合借鉴学习。</p>
-<h1 id="ekho---synchronizing-cloud-gaming-media-across-multiple-endpoints">Ekho - Synchronizing cloud gaming media across multiple endpoints</h1>
-<p>简而言之就是以往的工作都把云游戏简单化为视频画面的传输，而忽略了音频等多媒体的可能。多媒体事实上意味着需要做到媒体之间的同步，例如游戏画面需要与游戏音效同步。Ekho 则通过伪噪声的方式实现了多媒体之间的同步。</p>
-<h2 id="introduction-1">Introduction</h2>
-<p>简单来说，就是注意到现在常用的云游戏系统往往除了视频流之外还会有一个反馈流，这个反馈流一般作用于各种游戏配件，作用包括：</p>
-<ul>
-<li>在多人语音游戏的条件下混合其他玩家的声音，并提供给专用的游戏耳机等</li>
-<li>对玩家的操作给出触觉反馈，如手柄震动等</li>
-</ul>
-<p>这里容易出现的问题在于，视频流和反馈流作用到不同的终端（一个是显示器一个是各种其他配件），这导致这两个流会使用不同的网络连接传输，从而两者之间的同步就成为了问题。</p>
-<p>事实上，在有观众的游戏中，除了玩家本人的耳机会有一道音频流外，普通视频流中还会负载另一道音频流，这个音频流会对外播放给观众。这一道音频流播放之后还会被玩家耳机的麦克风捕捉。所以说云游戏除了多种流的同步问题外，还需要处理多道音频流之间的同步。</p>
-<p>一般而言，流之间会产生 100 毫秒左右的流间延迟（Inter Stream Delay / ISD），具体取决于网络情况、终端类型、连接方式甚至玩家到屏幕的距离。但是总体而言，延迟的影响因素大概可以归纳为：</p>
-<ul>
-<li>网络延迟。大概来说就是网络延迟是相当复杂的，首先多设备的网络接入点不一定一样（屏幕直接通过以太网连接到路由器而控制器通过 AP 连接到 WiFi 等）。其次，不同设备可能使用不同的网络协议（屏幕使用 WebRTC 而控制器使用 URCP 协议）。最后，互联网提供商可能对不同端口的流量做不同的优先级处理，这也可能导致网络延迟</li>
-<li>设备播放延迟。音频和视频在不同的设备上有不同的缓存管理措施，不同的播放策略也可能导致数十毫秒的 ISD</li>
-<li>声音传播延迟。玩家从屏幕和耳机接收到的声音的 ISD 和玩家到屏幕的距离有关（毕竟声速也不过 340 米每秒），这可能带来十毫秒左右的延迟</li>
-</ul>
-<p>本文的目标是将 ISD 限制到 10 毫秒一下，考虑到 ISD 是波动的，所以需要在游戏进程中不断观测和动态调整来平稳 ISD。事实上，测量 ISD 就足够困难，主要挑战是：</p>
-<ul>
-<li>RTT 的测量本身会因为网络往返路径不同，测量值本身具有十几毫秒的误差</li>
-<li>解码、播放、声音传播延迟等影响 ISD 的重要因素往往因为缺乏合适的 API 或者硬件而难以测量</li>
-</ul>
-<p>以往的设备间同步有三种常见方案：</p>
-<ul>
-<li>通过共享的网络组件建立专用链接完成时间同步。然而云游戏系统并不强制要求各个终端共享网络组件</li>
-<li>通过网络时间协议同步时间。然而该协议往往测量不精准，甚至会有百毫秒的误差</li>
-<li>通过记录设备播放的声音测量误差。然而这对硬件要求较高，此外还要求周围环境噪声较低</li>
-</ul>
-<p>而本文提出 Ekho，其可以在亚毫秒级别测量 ISD 并且做出调节。简要而言，Ekho 通过伪噪声序列的方式对齐各种流，并且在服务端根据测量结果调整发送序列来同步各种流。</p>
-<h2 id="related-work">Related Work</h2>
-<p>相关工作曾经研究过两路相似音频最大能够达到多大错位而不被用户感知，以前的研究结果认为单调、突发的信号音在错位超过 5 毫秒时就会被感知，而复杂语音则需要达到 16 毫秒左右才会感知。本文拓展了这些工作，并且通过数据论述了：</p>
-<ul>
-<li>音频之间的错位最大为 10 毫秒</li>
-<li>视频与音频之间的错位，最多允许音频提前视频 15 毫秒或视频提前音频 45 毫秒</li>
-<li>触觉反馈与音频之间错位最大为 24 毫秒</li>
-<li>触觉反馈与视频之间错位可以宽容到 30 至 100 毫秒</li>
-</ul>
-<p>另外一部分的相关工作为媒体同步，指的是在一定范围的终端内同步媒体内容。现有的工作往往要求了下述前提（然后本文基于此做了点优化）：</p>
-<ul>
-<li>设备有准确的时钟。然而用于同步设备时钟的网络时间协议具有不可容忍的误差</li>
-<li>支持 PTP 的设备可以通过连接到同一路由器实现同步。然而 PTP 并非广泛采用的协议</li>
-<li>利用这些设备往往物理距离较近的特征，通过在一个设备上记录另一个设备声音的方式实现流之间的延迟测量。然而由于环境噪声、硬件设备等问题，这一方案在先前工作中没有获得很好的效果，而本文基于此，做出了一步重要的拓展（伪噪声打点）</li>
-</ul>
-<h2 id="background-motivation">Background &amp; Motivation</h2>
-<h3 id="time-synchronization-requirements">Time Synchronization Requirements</h3>
-<p>为了研究音频之间的错位阈值，这一章设计了用户实验。用户实验的基本方案是 ITU-T P.808 标准中规定的 DCR 测试方法。测试中使用的音频为 30 个长度为 15 秒的游戏录音，每个录音均加上了 0 到 300 毫秒不等的 ISD。</p>
-<p>测试流程就直接翻译原文了。</p>
-<div class="note info no-icon"><p>人类测试者首先听取没有回声的参考音频片段，然后听取带有未知延迟量的回声的相同片段，包括 0 毫秒，即没有回声。测试者需要选择由于回声引起的注意力分散程度。此外，每个测试者会定期进行训练，即按照 P.808 标准听取带有不同回声量的六个片段，以确保标准化。</p>
-<p>我们总共收集了 3555 个评分，根据 ITU-T P.808 的规定，去除了低质量的回应（总数据的 33%）。每个片段被评分约 10 次，每个延迟级别有 30 个不同的片段，共计每个延迟级别约 296 个投票。受访者池由 17% 的年轻人（18-25 岁）、43% 的成年人（26-35 岁）、32% 的中年人（36-50 岁）和 8% 的老年人（51 岁及以上）组成，他们的母语是英语。按照伦理准则，调查是匿名的，我们在参与之前告知受访者有关调查过程和刺激类型。我们对受访者进行了补偿，并避免了可能被认为是令人不悦的刺激。Microsoft IRB 审查并批准了这项调查。</p>
-</div>
-<p>最后的具体结果事实上已经在先前提到了，即根据音频的不同类别，玩家的忍受阈值是不同的，但最后大体可以用 10 毫秒作为阈值。</p>
-<p><img src="/uploads/paper-2023-10/1.png" /></p>
-<div class="note success no-icon"><p>首先需要学一下 ITU 用户测试到底是个什么标准。</p>
-<p>其次的话，这篇文章的 user study 给的启示大概就是如果要设立对比或者是五分量表类似的测试的话，需要定期通过所谓的 training phase 来保证测试者没有被“带偏”。</p>
-<p>如果说要测试云游戏条件下画面撕裂更为显著的话，其实也可以借鉴这种主观评分模式。不同的游戏，不同的撕裂程度（或者说不同幅度的 jitter？）之下受访者到底能够容忍多少。如果发现云游戏条件下测试者的评分有显著下降，应该能说明问题了？</p>
-<p>以及最好能提供一些现有的解决方案，证明现在的方案还不够解决这一问题？</p>
-</div>
-<p>上述实验是音频和音频之间的错位，其余种类流之间的错位本文似乎没有展开说明。</p>
-<h3 id="inter-stream-delay">Inter Stream Delay</h3>
-<p>这一部分主要是 ISD 的建模：</p>
-<p><img src="/uploads/paper-2023-10/2.png" /></p>
-<p>可以看到基本和 Introduction 中提出的一致，分为网络延迟、解码延迟、播放延迟、声音传播延迟。</p>
-<p>网络延迟的测量也和先前一样，否定了 NTP 协议和对称 RTT 测量两种方案。解码延迟则理论可以测量（通过对目标设备和音频格式类型的仔细测量来分析这些延迟），然而受限于终端种类繁多，API 也不总是可用，这种测量几乎实际不可行。播放延迟则来源于硬件的 jitter buffer，这种延迟几乎无法测量。声音传播延迟自然因为硬件问题无法测量。</p>
-<p>最终归纳为下表：</p>
-<p><img src="/uploads/paper-2023-10/3.png" /></p>
-<p>总而言之，目前的测量方法的误差都过大，根本无法做到从各个环节上把握 ISD，更不用谈以此为基础控制 ISD 了（这一部分就是用于说明问题的挑战性和本文方案的创新性的）。</p>
-<h3 id="isd-variation">ISD Variation</h3>
-<p>大概的意思是继续说现有方案解决不了问题，原因是 ISD 是动态的。简而言之，ISD 的组成成分中，包含了低概率发生的 IP 路径更改或者显卡调度更改导致的大幅度震荡，以及更常见的因为网络波动和 jitter buffer 耗尽导致的小幅度震荡。</p>
-<p>也就是说，ISD 的校正需要尽快且足够频繁以应对这些变化。实践证明，Ekho 最多间隔 15 秒测量一次 ISD 足以应对这些震荡。</p>
-<h2 id="ekho">Ekho</h2>
-<h3 id="overview-of-isd-measurement-in-ekho">Overview of ISD Measurement in Ekho</h3>
-<p>简而言之，Ekho 采用了端到端的测量方案，即忽略掉中途环节，直接在端侧考虑延迟：</p>
-<p><img src="/uploads/paper-2023-10/4.png" /></p>
-<p>这里两路音频指的是屏幕音频和耳机音频，由于屏幕音频最终会被耳机捕捉，所以可以在耳机中直接比较两路音频得到 ISD 的估算。</p>
-<p>这一方案的问题在于，一般的游戏音频内部没有标志点，无法快速供算法分析捕捉。其次，屏幕音频在经过空气传播削弱之后，加上环境噪声，会导致两路音频更难对齐，这还没有考虑传输过程中两路音频均可能经过了有损压缩。</p>
-<p>所以，一种简单的解决方案是在服务器端发送音频的时候，在其内部均匀地（实验中使用 1 秒作为间隔）插入伪噪声标记，这些标记会用来对齐两路音频。这种伪噪声标记需要精心设计，因为其不能影响到玩家正常游戏，需要尽力做到不可察觉。</p>
-<h3 id="reliable-marker-detection-in-ekho">Reliable Marker Detection in Ekho</h3>
-<p>这里就详细介绍了伪噪声序列的构造方式和检测方式。首先分析游戏音频的频谱特征，可以看到载波的频率基本都在 12 kHz 以上，而重要游戏信息内容基本都位于 6 kHz 以下，所以伪噪声的频率范围需要限制在 6-12 kHz 范围内。此外，由于可探测性取决于振幅，这里的目标是不断探测游戏本体音频的振幅并控制伪噪声标记振幅与其的比值尽可能恒定（游戏声音小标记振幅就小，反之亦然）。</p>
-<p>假设 <span class="math inline">\(x[t]\)</span> 是游戏音频，<span class="math inline">\(w[t]\)</span> 为长度为 <span class="math inline">\(L\)</span> 的伪噪声序列，那么最终的带标记音频序列 <span class="math inline">\(x_m[t]\)</span> 为：</p>
-<p><span class="math display">\[
-\begin{aligned}
-x_m[t] &amp;= x[t] + C\alpha_k w[t] \\
-\alpha_k &amp;= \gamma\alpha_{k - 1} + (1 - \gamma)\rho(x[(k - 1)T : kT])
-\end{aligned}
-\]</span></p>
-<p>参数 <span class="math inline">\(L\)</span> 影响 ISD 测量的速度和最大可测量的 ISD，一般的话设置为 48000（对应一秒音频，说明生成频率为 21 MHz 左右）。<span class="math inline">\(\rho(x[(k - 1)T : kT])\)</span> 则表示了在 <span class="math inline">\((k - 1)T\)</span> 到 <span class="math inline">\(kT\)</span> 范围内的游戏音频功率，实验中选择 <span class="math inline">\(T = 960\)</span>，这是 48 kHz 下的 20 毫秒音频。</p>
-<p>这个公式的原理在于每 20 毫秒通过功率测算调整混入比例 <span class="math inline">\(\alpha_k\)</span>，而 <span class="math inline">\(\alpha_k\)</span> 采用的软更新参数 <span class="math inline">\(\gamma\)</span> 在实验中取 0.4。</p>
-<p>在上述混入的基础上就可以介绍检测算法了，假设耳机的录音序列为 <span class="math inline">\(x_{\rm rec}[x]\)</span>，我们计算其交叉相关 <span class="math inline">\(Z[t]\)</span> 如下：</p>
-<p><span class="math display">\[
-Z[t] = \sum_{i = 1}^L x_{\rm rec}[t + i]w[i]
-\]</span></p>
-<p>可以注意到这里不断让录音和标记信号对齐，当标记对齐的时候 <span class="math inline">\(Z[t]\)</span> 应当在此处出现峰值。为了让峰值检测更为可靠，需要做下述归一化：</p>
-<p><span class="math display">\[
-Z^*[t] = \left|\frac{Z[t]}{\sqrt{\dfrac{1}{S}\sum_{i = 1}^S Z[t + i]^2}}\right|
-\]</span></p>
-<p>通过归一化后的 <span class="math inline">\(Z^*[t]\)</span> 会有比较好的包络线。实际测量中会使用 <span class="math inline">\(S\)</span> 为 100 毫秒，这个参数的来源大致是游戏音效大约都持续 100 毫秒。</p>
-<p>为了更好检测峰值，下一步需要具体计算包络线：</p>
-<p><span class="math display">\[
-R[t] = \begin{cases}
-|Z^*[t]| &amp; R[t - 1] \leq |Z^*[t]| \\
-\beta R[t - 1] &amp; {\rm otherwise} \\
-\end{cases}
-\]</span></p>
-<p>原理是简单的，如果出现峰值则设定峰值，如果没有出现则按照等比数列衰减包络线。这样操作可以过滤掉除了峰值之外的大量无用数据。实验中 <span class="math inline">\(\beta = 0.99995\)</span>。在上述计算的基础上，所有 <span class="math inline">\(R[t] &gt; \theta = 5\)</span> 的值都认为是一次峰值。</p>
-<p>峰值更具体的计算为：</p>
-<p><span class="math display">\[
-P[t] = \begin{cases}
-R[t] &amp; R[t \pm 1] &lt; R[t], R[t] &gt; \theta \\
-0 &amp; {\rm otherwise} \\
-\end{cases}
-\]</span></p>
-<p>此时 <span class="math inline">\(P[t]\)</span> 已经提取出了所有的峰值并且过滤掉了较低峰值。此外，由于峰值的间隔至少应当是 <span class="math inline">\(L\)</span>（峰值间隔应当是伪噪声间隔，如果有较近的峰值应当是游戏本身的峰值，需要过滤），所以给出了下述进一步过滤：</p>
-<p><span class="math display">\[
-P^*[t] = \begin{cases}
-P[t] &amp; P[t] = \max_{|j| &lt; \delta}P[t + j] &gt; 0, \max_{|j| &lt; \delta}P[t + j + L] &gt; 0 \\
-0 &amp; {\rm otherwise} \\
-\end{cases}
-\]</span></p>
-<p>全检测流程如下：</p>
-<p><img src="/uploads/paper-2023-10/5.png" /></p>
-<h3 id="isd-estimation">ISD Estimation</h3>
-<p>由于 <span class="math inline">\(L\)</span> 选择了一秒，所以这里假定 ISD 不会超越 500 毫秒。在此基础上，将过滤过后的屏幕音频和耳机音频做对比，将距离最小的两个峰值之差作为 ISD 的估计：</p>
-<p><img src="/uploads/paper-2023-10/6.png" /></p>
-<h3 id="ekho-delay-compensation">Ekho Delay Compensation</h3>
-<p>调节的方式很简单，就是塞零音频来强制同步（毕竟已经算出来 ISD 了），本文未来计划通过数据包丢失掩盖技术来做（毕竟插入零音频实在是有点粗暴），但是至少现在没做。</p>
-<h2 id="design-implementation">Design &amp; Implementation</h2>
-<p>结构是这样的：</p>
-<p><img src="/uploads/paper-2023-10/7.png" /></p>
-<p>总体来说的话，终端设备基本上仅仅承担了录音的任务，所有的计算负载依然放在云端。云端估算 ISD 的时候依赖于终端传回的音频数据。</p>
-<p>具体的实现这里就不涉及了。</p>
-<h2 id="evaluation">Evaluation</h2>
-<p>评估的话大概包括如下部分：</p>
-<ol type="1">
-<li>Ekho 是否成功在端到端系统中同步音频流？</li>
-<li>什么样的标记音量足以准确估算 ISD，同时又不被人察觉？</li>
-<li>在标记辅助的 ISD 测量方面，Ekho 与先前的工作相比如何？</li>
-<li>当屏幕音频流静音时，Ekho 是否可以用于视频与音频的同步？</li>
-</ol>
-<p>同步音频流的实验很简单，直接把 Ekho 开起来然后在每个终端开一个 log 来记录每一帧音频的播放时间，两个设备的时钟会在实验开始前同步：</p>
-<p><img src="/uploads/paper-2023-10/8.png" /></p>
-<p>总之可以看到 Ekho 将 ISD 控制在 10 毫秒内，而不用 Ekho 的时候几乎做不到压到 10 毫秒的可能。</p>
-]]></content>
-      <categories>
-        <category>【论文笔记】计算机</category>
       </categories>
   </entry>
   <entry>
