@@ -226,7 +226,7 @@ $(function () {
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#section"><span class="nav-number">1.</span> <span class="nav-text">2024.02.26</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-1"><span class="nav-number">2.</span> <span class="nav-text">2024.02.27</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-2"><span class="nav-number">3.</span> <span class="nav-text">2024.02.28</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-3"><span class="nav-number">4.</span> <span class="nav-text">2024.02.29</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-4"><span class="nav-number">5.</span> <span class="nav-text">2024.03.01</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-5"><span class="nav-number">6.</span> <span class="nav-text">2024.03.02</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-6"><span class="nav-number">7.</span> <span class="nav-text">2024.03.03</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-7"><span class="nav-number">8.</span> <span class="nav-text">2024.03.04</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-8"><span class="nav-number">9.</span> <span class="nav-text">2024.03.05</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-9"><span class="nav-number">10.</span> <span class="nav-text">2024.03.06</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-10"><span class="nav-number">11.</span> <span class="nav-text">2024.03.07</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#section"><span class="nav-number">1.</span> <span class="nav-text">2024.02.26</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-1"><span class="nav-number">2.</span> <span class="nav-text">2024.02.27</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-2"><span class="nav-number">3.</span> <span class="nav-text">2024.02.28</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-3"><span class="nav-number">4.</span> <span class="nav-text">2024.02.29</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-4"><span class="nav-number">5.</span> <span class="nav-text">2024.03.01</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-5"><span class="nav-number">6.</span> <span class="nav-text">2024.03.02</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-6"><span class="nav-number">7.</span> <span class="nav-text">2024.03.03</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-7"><span class="nav-number">8.</span> <span class="nav-text">2024.03.04</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-8"><span class="nav-number">9.</span> <span class="nav-text">2024.03.05</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-9"><span class="nav-number">10.</span> <span class="nav-text">2024.03.06</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-10"><span class="nav-number">11.</span> <span class="nav-text">2024.03.07</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-11"><span class="nav-number">12.</span> <span class="nav-text">2024.03.08</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-12"><span class="nav-number">13.</span> <span class="nav-text">2024.03.09</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -402,14 +402,14 @@ $(function () {
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>4.8k</span>
+      <span>5.1k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>4 分钟</span>
+      <span>5 分钟</span>
     </span>
 </div>
 
@@ -482,6 +482,13 @@ $(function () {
 <p>下午的组会说实话没啥好汇报的，总觉得自己很忙但是没啥好说的，只说了一句“在帮贾老师跑实验”似乎就没了，果然还是得在自己手上的项目上再下一些功夫，不然实在显得有点没有成果。</p>
 <p>今天整体来说还算干了不少事情的，主要的一件事还是和吴老师那边对了一下腾讯的工作。目前来看大方向需要做一些调整，先前我们一直希望聚焦于，或者至少侧重于将帧从解码器送往显示器的控制算法，然而这一部分面临两个问题，一个是优化空间实在太小，二个是评测指标很难完全规避 QoE 建模以及繁杂的用户实验。最终考虑下来，还是希望把 story 讲成比较全流程的送显优化，侧重于如何提高出解码器时间戳的预测准确度。这样的话，我目前要做的，就是多做点 WebRTC 等相关技术的调研工作了。</p>
 <p>晚上把 maimai 分表做了，然后还需要搞软工的事情以及 TON 的事情，希望能够尽快解决吧。</p>
+<h1 id="section-11">2024.03.08</h1>
+<p>今天是软工试讲，本来以为是随便搞搞的事情，但没有想到的是裴老师提出了很多很多的意见，甚至建议把授课结构都重组一下。虽然说哪怕没有裴老师的意见我也得重新洗一遍 PPT，只不过有了这个意见之后工作量肉眼可见地高了。</p>
+<p>讲完软工忍不住了，去出勤了，但是好久没有出勤手感冰凉，几乎什么都打不上，最后也只能遗憾退勤。</p>
+<p>实习那边似乎还是得我来处理静态资源的事情，TON 实验那边也开始回收实验结果，总之慢慢事情又堆起来了。</p>
+<h1 id="section-12">2024.03.09</h1>
+<p>周六，例行堵门出勤，本来打算解决雷切，结果今天打得头昏脑胀还没解决。</p>
+<p>工作稍微推进了一点吧，把小作业的 code base 搞好了，总之接下来的周日，又是辛苦的一天。</p>
 
     </div>
 
