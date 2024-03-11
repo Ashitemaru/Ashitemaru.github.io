@@ -829,6 +829,93 @@
       </categories>
   </entry>
   <entry>
+    <title>2024 春季学期记录</title>
+    <url>/2024/02/26/2024-spring-record/</url>
+    <content><![CDATA[<p>虽然有预感这一学期可能和之前一样每天都是无聊的重复，但是还是开个日记，以免真的有什么想要记录的时候却苦恼于没有地方写。</p>
+<span id="more"></span>
+<h1 id="section">2024.02.26</h1>
+<p>这一学期的第一天，然而今天就要处理掉不少工作：</p>
+<ul>
+<li>THUInfo 一些信息需要提交掉</li>
+<li>软工那边需要拉一些人</li>
+<li>TON 实验的打表还没做</li>
+</ul>
+<p>虽然都是一些很零碎的小工作，可能一个下午也就做完了，但不知道为什么最近我的拖延症越来越明显，以往是有那么点拖延但也不至于现在这样。</p>
+<hr />
+<p>忙活了一整天，软工那边似乎暂且不需要我参与什么，THUInfo 那边迅哥哥也暂且不急，所以今天就几乎全用来跑 TON 的实验，然后因为接到了第二天有腾讯 HR 面试的通知，还稍微做了点准备。</p>
+<p>TON 这边实验的想法很简单，因为学长想要收集一些真实网络拥塞控制的情况来做 RL 训练，然而 RL 训练时现跑网络发包会导致训练大幅度延迟，所以不得不去思考怎么缩时间。那么，有个想法就是打表，针对所有可能的参数把 baseline CC 的 performance 都打表打出来，训练的时候直接读取就行。</p>
+<p>然而参数空间不得不说还是挺大的，所以可能需要多机打表，目前讨论确定使用 50 台机子打表，那么就需要一个中心机来 assign task，而这就是我需要做的。</p>
+<p>最初我觉得直接在 SSH 后面附上命令就可以了，然而如果直接使用 <code>os.system("ssh [name]@[ip] '[cmd]')</code> 的方式，就和串行没有什么区别了，而且这一方法需要保持 SSH 连接，以我现在的知识来说，我还真不知道如何让中心机和其他 50 台机子同时保持 SSH 连接。</p>
+<p>所以最终采用的方式是让中心机发指令给边缘机，令其开一个 tmux 后台运行，之后就可以直接断开 SSH 了。</p>
+<p>不过说起来简单，操作的时候事情还不少。首先边缘机上没装 tmux，需要手动装，然而要装就需要 sudo，sudo 又需要手动输密码，怎么在代码里面模拟终端交互行为当时卡了有段时间。不过最后还是找到了 paramiko 这个库，其 <code>invoke_shell</code> 方法可以模拟终端，大概类似于：</p>
+<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># Connect to remote server</span></span><br><span class="line">client = paramiko.SSHClient()</span><br><span class="line">client.set_missing_host_key_policy(paramiko.AutoAddPolicy())</span><br><span class="line">client.connect(ip, username=<span class="string">&quot;[name]&quot;</span>, password=<span class="string">&quot;[password]&quot;</span>, port=<span class="number">22</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Run script</span></span><br><span class="line">channel = client.invoke_shell()</span><br><span class="line">channel.send(<span class="string">&quot;cd ~/pantheon &amp;&amp; tmux new-session -d -s ton &#x27;[command]&#x27;\n&quot;</span>)</span><br><span class="line">output = channel.recv(<span class="number">65535</span>).decode(<span class="string">&quot;utf-8&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>整体用起来还是比较舒服的。</p>
+<p>然而就在我以为一切都已经解决了的时候，我发现 loss rate 一直为零，这意味着我有参数没有设置正确。这个时候，我得知了一个令我震惊的东西：<strong>Python2 的除法对整数是向下取整的</strong>。写惯了 Python3 里面默认返回浮点数的除法，这个 bug 我完全没有注意到，找了大概有一整个晚上才发现。</p>
+<p>不过就算这样还是有无法理解的地方，那就是现在依然存在有的时候程序随机爆炸，打表打到一半突然死亡，这个更是我不知道原因到底在哪里，明天和贾老师联系一下再来思考。</p>
+<h1 id="section-1">2024.02.27</h1>
+<p>今天是约定了的腾讯那边 HR 面试的日子，本来以为这个面试应该多正式，结果就是线上和 HR 聊了一些我也不知道有关还是无关的问题也就结束了，晚上上传了一下身份信息之后似乎就只要等 offer 就可以了。</p>
+<p>昨天出勤的时候无意中把鸢尾花打到了 100.45，今天自然就没有忍住出勤去了，手感确实不算差，大概三把左右就把鸢尾花鸟加拿下。</p>
+<p>晚上回来主要是因为要给 fyk 他们简单讲一节日语课，九点钟讲到十二点左右，本来想着赶快开始把贾老师和腾讯那边工作启动的，还是因为太累了，就先睡了。</p>
+<p>目前看来生活还是比较 under control 的，希望这种势头能够保持下去吧。</p>
+<h1 id="section-2">2024.02.28</h1>
+<p>下午有导师的课程，但是十一点就已经从床上爬起来了。爬起来之后简单折腾了一下腾讯那边的工作，把 code base 基本修好了之后就算是启动工作了，忙完这些清理了一下宿舍垃圾就去上课了。</p>
+<p>课程本身是没啥意思的，不过有意思的事情是明明这是计算机系的专业课程，却莫名其妙吸引了不少来自美院、教育学院的文科同学来上课，我对这一现象暂且找不到合理的解释。</p>
+<p>上完课就去工位坐牢，腾讯那边的工作启动起来了之后目前来看还都是比较顺畅的，新的 baseline algorithm 已经跑起来了，确实比之前有相当大的提升。现在的核心任务就是统计 1% low FPS 这个指标，然后针对这个指标做一些简单的文献调研。除此以外，大概就是得花时间手搓一下 QoE，看一眼离线最优算法能够搞出来什么东西，远期的话 code base 应该需要对窗口延迟等指标做一些调整，但是这些已经是后话了。</p>
+<p>另外就是 TON 实验现在完全没有动，感觉还是得找个时间去工位好好坐牢一下。</p>
+<h1 id="section-3">2024.02.29</h1>
+<p>今天主要就用来出勤了，不过出勤也是收获颇丰，把风神和白香水都鸟加了，于是顺利取得 14.5 全鸟加的成绩。大概，3 月更新之后把那几首歌打完，b15 侧地板也就差不多来到 14.3，这样的话就可以简单做个分表了。后续一方面吃下位 14+ 的分，一方面打算打 14.3 的全鸟加。</p>
+<p>工作上的话，THUInfo 那边因为拖延惹得迅哥哥有点生气，所以赶快把信息交掉了。腾讯那边 1% low FPS 的数字有点奇异难看，可能还是得对着 log 再去想想有没有什么地方出现问题，因为最多延迟两帧，再怎么说也不太可能出现那么大的帧持续时间，除非就是送显时间戳本身距离就很离谱。TON 那边还在尝试 debug，也不知道什么时候能够搞出来，暂且先搞着吧。</p>
+<h1 id="section-4">2024.03.01</h1>
+<p>今天早上看了一眼服务器，大概挂掉了 5 台，感觉还是可以控制的。然而我现在最懊悔的事情是我居然在程序里面没有存储中间结果，这导致我要是挂程序了就必须从头开始。现在决定就是，递进式地更换程序，哪台服务器挂了我就把哪台的换成能保存中间结果的，没挂的就最好。然后我还得写一个监控程序观察哪台服务器挂了，这就得去找找阿里云相关的 API 了。</p>
+<p>下午混掉组会，简单思考了一下那个脚本的写法，发觉需要研究阿里云 API，然而一顿折腾我发现阿里云的 API 实在是难以使用，所以只能搁置。晚上吃了顿饭心灰意冷决定摸鱼，打了一晚上麻将和舍友刚教我的湖南跑胡子，然后顺利发现服务器欠费停机，所有的实验结果全都没保存下来。</p>
+<p>至此，我只能说，我又一次被这玩意打败了，反正已经这样了，不如赶快睡觉保命。</p>
+<h1 id="section-5">2024.03.02</h1>
+<p>今天的任务只有一个，就是出勤，迅速解决掉本次更新里面的两个 14，电光石火以及华为。然而今天实在是有点诸事不顺，早上堵门来到上地的时候人数就已经逼近 10 人，蹭了一下非律的华为迅速解决掉之后，来了个来上地团建的小团体，人数直接突破 20，这完全没法打了，而且这个时候我电光石火甚至还没鸟，手感爆炸烂。退勤之后越想越气，于是立刻转战天通苑机厅，结果人也完全说不上少。然而还好在场的人还都比较友善地让我反复刷电光石火，最终终于在快闭店的时候，鏖战 30 把拿下电光石火。</p>
+<p>晚上回去的时候精神状态实际上就已经很不好了，主要是太疲劳，前一天晚上没睡多长时间今天又奋战了一整天，于是只能赶快计划着回去睡大头觉。</p>
+<h1 id="section-6">2024.03.03</h1>
+<p>睡得很晚才起，大概到了晚上四五点钟才从床上下来，今天得立刻前往工位开始赶事情。周一约了 mfy 把软工课上的事情准备好，那今天已经得尽力拿下手上的工作。</p>
+<p>现在 TON 的实验暂且写了一个每隔 15 分钟监控一下并且看情况重启的版本，现在也不是很清楚是不是能用的下去，至少目前为止所有事情都暂且按着我想的方式发展，希望最终没事。以及虽然这个实验的经费最终是要走报销渠道，但是毕竟现在暂且是从我手上出钱，或多或少还是有点心疼的。过了一段时间，我观察了一下那个脚本的运作情况，果然有一次检查到了死机子，并且很成功地重启了这台机子，也就是说目前为止理论上应该能支撑到这个实验跑完了。</p>
+<h1 id="section-7">2024.03.04</h1>
+<p>今天主要还是折腾了一下 TON 实验的事情，因为我发现过了一晚上运行进度只有 5%，按这个估算，需要十天才能跑完，这完全不能容忍。和贾老师一波讨论之后决定降低参数采样率，减小遍历空间来控制实验时间，这样操作之后目前预计明天就能拿到第一波试验结果。</p>
+<p>晚上和 mfy 讨论了一下软工的课前准备，目前也已经有了基本的 timeline，希望一切正常推进吧。</p>
+<p>然而最让人烦心的事情就是，大四的那个实习写的小程序，因为里面有些静态图片我挂在了腾讯云上，而这个存储桶似乎因为欠费已经释放掉了，导致现在小程序已经几乎没法使用。但是，我对这个实习实在是有点厌恶，真的很毁坏我现在 under control 的心情。</p>
+<h1 id="section-8">2024.03.05</h1>
+<p>昨晚睡得超级晚，到了快六点钟才上床，于是早上九点半赶去上课的时候人已经完全不是人样了。软工课这波改革之后，前三周的课程变成了助教讲解技术细节，然后学生课上实操，其余助教答疑。不得不说，这个模式其实我还挺支持的，但是对助教的要求也就随之高了起来，辛苦今天已经不成人样的我坚守完了第一次答疑。</p>
+<p>然后，实习那边找到了问题原因是 CDN 欠费，也就是说实际上和我没有关系，那真是可喜可贺。</p>
+<p>下午按照计划出勤，很快就解决了标准 8bit，但是毕竟只睡了三四个小时，下午出勤的时候还是很不在状态，完全打不出来什么有意义的分数，于是早早回来把事情清理了一下，包括布置了软工预习作业，把最近实验结果总结了一下之类的。</p>
+<p>最近打算做 maimai 的分表了，然后也打算好好坐工位了，希望能够有所收获吧。</p>
+<h1 id="section-9">2024.03.06</h1>
+<p>今天大量的事情都动了起来，收到了腾讯的 offer，贾老师那边第一阶段的数据处理完毕进入下一阶段，课内任务逐渐加重，实习那边催我重设背景图，软工文档需要修改，甚至我还花了点时间屏蔽了一下阿里云的推销短信和电话。果然啊，进入了事情开始堆积我开始雄心壮志的阶段，但我这次希望能够把这个状态持续久一些，不要像之前一样事情做到一半去摆烂了。</p>
+<p>结果今天下午大概是学了一整个下午的近世代数，写完了作业。晚饭和迅哥哥聊了一下把 Saiblo 引入 DRL 课程的一些事，然而目前来看还是空中楼阁，所以这个话题进行了一半就回到了吐槽日常生活。</p>
+<p>晚上工位坐牢，今天还有不少事情要去处理，希望能够尽快解决吧。</p>
+<h1 id="section-10">2024.03.07</h1>
+<p>昨晚睡得很晚，因为没忍住开始做 maimai 分表了，这次学习了如何用 PPT 做视频，意外地还挺好用，效果也不错。唯一的坏处是，七点钟才爬上床。</p>
+<p>下午的组会说实话没啥好汇报的，总觉得自己很忙但是没啥好说的，只说了一句“在帮贾老师跑实验”似乎就没了，果然还是得在自己手上的项目上再下一些功夫，不然实在显得有点没有成果。</p>
+<p>今天整体来说还算干了不少事情的，主要的一件事还是和吴老师那边对了一下腾讯的工作。目前来看大方向需要做一些调整，先前我们一直希望聚焦于，或者至少侧重于将帧从解码器送往显示器的控制算法，然而这一部分面临两个问题，一个是优化空间实在太小，二个是评测指标很难完全规避 QoE 建模以及繁杂的用户实验。最终考虑下来，还是希望把 story 讲成比较全流程的送显优化，侧重于如何提高出解码器时间戳的预测准确度。这样的话，我目前要做的，就是多做点 WebRTC 等相关技术的调研工作了。</p>
+<p>晚上把 maimai 分表做了，然后还需要搞软工的事情以及 TON 的事情，希望能够尽快解决吧。</p>
+<h1 id="section-11">2024.03.08</h1>
+<p>今天是软工试讲，本来以为是随便搞搞的事情，但没有想到的是裴老师提出了很多很多的意见，甚至建议把授课结构都重组一下。虽然说哪怕没有裴老师的意见我也得重新洗一遍 PPT，只不过有了这个意见之后工作量肉眼可见地高了。</p>
+<p>讲完软工忍不住了，去出勤了，但是好久没有出勤手感冰凉，几乎什么都打不上，最后也只能遗憾退勤。</p>
+<p>实习那边似乎还是得我来处理静态资源的事情，TON 实验那边也开始回收实验结果，总之慢慢事情又堆起来了。</p>
+<h1 id="section-12">2024.03.09</h1>
+<p>周六，例行堵门出勤，本来打算解决雷切，结果今天打得头昏脑胀还没解决。</p>
+<p>工作稍微推进了一点吧，把小作业的 code base 搞好了，总之接下来的周日，又是辛苦的一天。</p>
+<h1 id="section-13">2024.03.10</h1>
+<p>现在有些不太好的征兆，就是渐渐地我开始拖延了，必须要想办法遏制住这一点。简单来说现在要干的事情也不少，但是似乎开始逐渐有了一些畏难情绪，不是很想把手放下来，这不行。</p>
+<p>今天在宿舍做了一天软工的 PPT，整体问题不大，但确实是花费了太多时间，晚上又是靠近五点多才睡觉。</p>
+<h1 id="section-14">2024.03.11</h1>
+<p>最近被雷切搞得心烦意乱，又没忍住决定出勤了，然而今天即使状态不错，雷切还是一直没能出分，现在 pc 数已经破百，我又开始质疑自己能否完成这一任务了。我一直都是把 maimai 当成自己发泄情绪的地方，用简单的身体运动和放空的大脑来休息，然而现在面临的问题就是似乎如果我 maimai 进度卡住，就会连带着一些负面情绪，反倒影响了自己的工作。</p>
+<p>想到这里，决定还是重整一下心情，迅速把手头一些简单的工作做掉，然后继续堆尸雷切。我自己毫不在意通过无数若干次的糊和抽奖来获得成绩，毕竟我的本质目的是放松心情而已。</p>
+<p>手上把实习的事情先解决掉吧，不算什么大事，但是不能一直烦我。</p>
+<hr />
+<p>不知不觉紫雷切的 pc 数来到了 146，说实话，在我推的时候已经隐隐约约有先前焦虑症复发的感觉了，直到店员闭店把电拔了才如梦初醒。</p>
+<p>似乎真的，最近 maimai 先放一放吧，至少这一周就先到此为止了，下一周把事情搞得七七八八再来摸索。</p>
+]]></content>
+      <categories>
+        <category>【生活记录】日记</category>
+      </categories>
+  </entry>
+  <entry>
     <title>2023 秋季学期记录</title>
     <url>/2023/09/01/2023-autumn-record/</url>
     <content><![CDATA[<p>博士生涯正式开始了，还是和之前一样，开一个日记来记录自己的生活吧。博士的第一份事情应该是和吴成磊学长一起做一个云游戏相关的系统，希望能至少攒出来一篇 paper。</p>
@@ -1176,115 +1263,6 @@
 ]]></content>
       <categories>
         <category>【生活记录】日记</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>2024 春季学期记录</title>
-    <url>/2024/02/26/2024-spring-record/</url>
-    <content><![CDATA[<p>虽然有预感这一学期可能和之前一样每天都是无聊的重复，但是还是开个日记，以免真的有什么想要记录的时候却苦恼于没有地方写。</p>
-<span id="more"></span>
-<h1 id="section">2024.02.26</h1>
-<p>这一学期的第一天，然而今天就要处理掉不少工作：</p>
-<ul>
-<li>THUInfo 一些信息需要提交掉</li>
-<li>软工那边需要拉一些人</li>
-<li>TON 实验的打表还没做</li>
-</ul>
-<p>虽然都是一些很零碎的小工作，可能一个下午也就做完了，但不知道为什么最近我的拖延症越来越明显，以往是有那么点拖延但也不至于现在这样。</p>
-<hr />
-<p>忙活了一整天，软工那边似乎暂且不需要我参与什么，THUInfo 那边迅哥哥也暂且不急，所以今天就几乎全用来跑 TON 的实验，然后因为接到了第二天有腾讯 HR 面试的通知，还稍微做了点准备。</p>
-<p>TON 这边实验的想法很简单，因为学长想要收集一些真实网络拥塞控制的情况来做 RL 训练，然而 RL 训练时现跑网络发包会导致训练大幅度延迟，所以不得不去思考怎么缩时间。那么，有个想法就是打表，针对所有可能的参数把 baseline CC 的 performance 都打表打出来，训练的时候直接读取就行。</p>
-<p>然而参数空间不得不说还是挺大的，所以可能需要多机打表，目前讨论确定使用 50 台机子打表，那么就需要一个中心机来 assign task，而这就是我需要做的。</p>
-<p>最初我觉得直接在 SSH 后面附上命令就可以了，然而如果直接使用 <code>os.system("ssh [name]@[ip] '[cmd]')</code> 的方式，就和串行没有什么区别了，而且这一方法需要保持 SSH 连接，以我现在的知识来说，我还真不知道如何让中心机和其他 50 台机子同时保持 SSH 连接。</p>
-<p>所以最终采用的方式是让中心机发指令给边缘机，令其开一个 tmux 后台运行，之后就可以直接断开 SSH 了。</p>
-<p>不过说起来简单，操作的时候事情还不少。首先边缘机上没装 tmux，需要手动装，然而要装就需要 sudo，sudo 又需要手动输密码，怎么在代码里面模拟终端交互行为当时卡了有段时间。不过最后还是找到了 paramiko 这个库，其 <code>invoke_shell</code> 方法可以模拟终端，大概类似于：</p>
-<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># Connect to remote server</span></span><br><span class="line">client = paramiko.SSHClient()</span><br><span class="line">client.set_missing_host_key_policy(paramiko.AutoAddPolicy())</span><br><span class="line">client.connect(ip, username=<span class="string">&quot;[name]&quot;</span>, password=<span class="string">&quot;[password]&quot;</span>, port=<span class="number">22</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Run script</span></span><br><span class="line">channel = client.invoke_shell()</span><br><span class="line">channel.send(<span class="string">&quot;cd ~/pantheon &amp;&amp; tmux new-session -d -s ton &#x27;[command]&#x27;\n&quot;</span>)</span><br><span class="line">output = channel.recv(<span class="number">65535</span>).decode(<span class="string">&quot;utf-8&quot;</span>)</span><br></pre></td></tr></table></figure>
-<p>整体用起来还是比较舒服的。</p>
-<p>然而就在我以为一切都已经解决了的时候，我发现 loss rate 一直为零，这意味着我有参数没有设置正确。这个时候，我得知了一个令我震惊的东西：<strong>Python2 的除法对整数是向下取整的</strong>。写惯了 Python3 里面默认返回浮点数的除法，这个 bug 我完全没有注意到，找了大概有一整个晚上才发现。</p>
-<p>不过就算这样还是有无法理解的地方，那就是现在依然存在有的时候程序随机爆炸，打表打到一半突然死亡，这个更是我不知道原因到底在哪里，明天和贾老师联系一下再来思考。</p>
-<h1 id="section-1">2024.02.27</h1>
-<p>今天是约定了的腾讯那边 HR 面试的日子，本来以为这个面试应该多正式，结果就是线上和 HR 聊了一些我也不知道有关还是无关的问题也就结束了，晚上上传了一下身份信息之后似乎就只要等 offer 就可以了。</p>
-<p>昨天出勤的时候无意中把鸢尾花打到了 100.45，今天自然就没有忍住出勤去了，手感确实不算差，大概三把左右就把鸢尾花鸟加拿下。</p>
-<p>晚上回来主要是因为要给 fyk 他们简单讲一节日语课，九点钟讲到十二点左右，本来想着赶快开始把贾老师和腾讯那边工作启动的，还是因为太累了，就先睡了。</p>
-<p>目前看来生活还是比较 under control 的，希望这种势头能够保持下去吧。</p>
-<h1 id="section-2">2024.02.28</h1>
-<p>下午有导师的课程，但是十一点就已经从床上爬起来了。爬起来之后简单折腾了一下腾讯那边的工作，把 code base 基本修好了之后就算是启动工作了，忙完这些清理了一下宿舍垃圾就去上课了。</p>
-<p>课程本身是没啥意思的，不过有意思的事情是明明这是计算机系的专业课程，却莫名其妙吸引了不少来自美院、教育学院的文科同学来上课，我对这一现象暂且找不到合理的解释。</p>
-<p>上完课就去工位坐牢，腾讯那边的工作启动起来了之后目前来看还都是比较顺畅的，新的 baseline algorithm 已经跑起来了，确实比之前有相当大的提升。现在的核心任务就是统计 1% low FPS 这个指标，然后针对这个指标做一些简单的文献调研。除此以外，大概就是得花时间手搓一下 QoE，看一眼离线最优算法能够搞出来什么东西，远期的话 code base 应该需要对窗口延迟等指标做一些调整，但是这些已经是后话了。</p>
-<p>另外就是 TON 实验现在完全没有动，感觉还是得找个时间去工位好好坐牢一下。</p>
-<h1 id="section-3">2024.02.29</h1>
-<p>今天主要就用来出勤了，不过出勤也是收获颇丰，把风神和白香水都鸟加了，于是顺利取得 14.5 全鸟加的成绩。大概，3 月更新之后把那几首歌打完，b15 侧地板也就差不多来到 14.3，这样的话就可以简单做个分表了。后续一方面吃下位 14+ 的分，一方面打算打 14.3 的全鸟加。</p>
-<p>工作上的话，THUInfo 那边因为拖延惹得迅哥哥有点生气，所以赶快把信息交掉了。腾讯那边 1% low FPS 的数字有点奇异难看，可能还是得对着 log 再去想想有没有什么地方出现问题，因为最多延迟两帧，再怎么说也不太可能出现那么大的帧持续时间，除非就是送显时间戳本身距离就很离谱。TON 那边还在尝试 debug，也不知道什么时候能够搞出来，暂且先搞着吧。</p>
-<h1 id="section-4">2024.03.01</h1>
-<p>今天早上看了一眼服务器，大概挂掉了 5 台，感觉还是可以控制的。然而我现在最懊悔的事情是我居然在程序里面没有存储中间结果，这导致我要是挂程序了就必须从头开始。现在决定就是，递进式地更换程序，哪台服务器挂了我就把哪台的换成能保存中间结果的，没挂的就最好。然后我还得写一个监控程序观察哪台服务器挂了，这就得去找找阿里云相关的 API 了。</p>
-<p>下午混掉组会，简单思考了一下那个脚本的写法，发觉需要研究阿里云 API，然而一顿折腾我发现阿里云的 API 实在是难以使用，所以只能搁置。晚上吃了顿饭心灰意冷决定摸鱼，打了一晚上麻将和舍友刚教我的湖南跑胡子，然后顺利发现服务器欠费停机，所有的实验结果全都没保存下来。</p>
-<p>至此，我只能说，我又一次被这玩意打败了，反正已经这样了，不如赶快睡觉保命。</p>
-<h1 id="section-5">2024.03.02</h1>
-<p>今天的任务只有一个，就是出勤，迅速解决掉本次更新里面的两个 14，电光石火以及华为。然而今天实在是有点诸事不顺，早上堵门来到上地的时候人数就已经逼近 10 人，蹭了一下非律的华为迅速解决掉之后，来了个来上地团建的小团体，人数直接突破 20，这完全没法打了，而且这个时候我电光石火甚至还没鸟，手感爆炸烂。退勤之后越想越气，于是立刻转战天通苑机厅，结果人也完全说不上少。然而还好在场的人还都比较友善地让我反复刷电光石火，最终终于在快闭店的时候，鏖战 30 把拿下电光石火。</p>
-<p>晚上回去的时候精神状态实际上就已经很不好了，主要是太疲劳，前一天晚上没睡多长时间今天又奋战了一整天，于是只能赶快计划着回去睡大头觉。</p>
-<h1 id="section-6">2024.03.03</h1>
-<p>睡得很晚才起，大概到了晚上四五点钟才从床上下来，今天得立刻前往工位开始赶事情。周一约了 mfy 把软工课上的事情准备好，那今天已经得尽力拿下手上的工作。</p>
-<p>现在 TON 的实验暂且写了一个每隔 15 分钟监控一下并且看情况重启的版本，现在也不是很清楚是不是能用的下去，至少目前为止所有事情都暂且按着我想的方式发展，希望最终没事。以及虽然这个实验的经费最终是要走报销渠道，但是毕竟现在暂且是从我手上出钱，或多或少还是有点心疼的。过了一段时间，我观察了一下那个脚本的运作情况，果然有一次检查到了死机子，并且很成功地重启了这台机子，也就是说目前为止理论上应该能支撑到这个实验跑完了。</p>
-<h1 id="section-7">2024.03.04</h1>
-<p>今天主要还是折腾了一下 TON 实验的事情，因为我发现过了一晚上运行进度只有 5%，按这个估算，需要十天才能跑完，这完全不能容忍。和贾老师一波讨论之后决定降低参数采样率，减小遍历空间来控制实验时间，这样操作之后目前预计明天就能拿到第一波试验结果。</p>
-<p>晚上和 mfy 讨论了一下软工的课前准备，目前也已经有了基本的 timeline，希望一切正常推进吧。</p>
-<p>然而最让人烦心的事情就是，大四的那个实习写的小程序，因为里面有些静态图片我挂在了腾讯云上，而这个存储桶似乎因为欠费已经释放掉了，导致现在小程序已经几乎没法使用。但是，我对这个实习实在是有点厌恶，真的很毁坏我现在 under control 的心情。</p>
-<h1 id="section-8">2024.03.05</h1>
-<p>昨晚睡得超级晚，到了快六点钟才上床，于是早上九点半赶去上课的时候人已经完全不是人样了。软工课这波改革之后，前三周的课程变成了助教讲解技术细节，然后学生课上实操，其余助教答疑。不得不说，这个模式其实我还挺支持的，但是对助教的要求也就随之高了起来，辛苦今天已经不成人样的我坚守完了第一次答疑。</p>
-<p>然后，实习那边找到了问题原因是 CDN 欠费，也就是说实际上和我没有关系，那真是可喜可贺。</p>
-<p>下午按照计划出勤，很快就解决了标准 8bit，但是毕竟只睡了三四个小时，下午出勤的时候还是很不在状态，完全打不出来什么有意义的分数，于是早早回来把事情清理了一下，包括布置了软工预习作业，把最近实验结果总结了一下之类的。</p>
-<p>最近打算做 maimai 的分表了，然后也打算好好坐工位了，希望能够有所收获吧。</p>
-<h1 id="section-9">2024.03.06</h1>
-<p>今天大量的事情都动了起来，收到了腾讯的 offer，贾老师那边第一阶段的数据处理完毕进入下一阶段，课内任务逐渐加重，实习那边催我重设背景图，软工文档需要修改，甚至我还花了点时间屏蔽了一下阿里云的推销短信和电话。果然啊，进入了事情开始堆积我开始雄心壮志的阶段，但我这次希望能够把这个状态持续久一些，不要像之前一样事情做到一半去摆烂了。</p>
-<p>结果今天下午大概是学了一整个下午的近世代数，写完了作业。晚饭和迅哥哥聊了一下把 Saiblo 引入 DRL 课程的一些事，然而目前来看还是空中楼阁，所以这个话题进行了一半就回到了吐槽日常生活。</p>
-<p>晚上工位坐牢，今天还有不少事情要去处理，希望能够尽快解决吧。</p>
-<h1 id="section-10">2024.03.07</h1>
-<p>昨晚睡得很晚，因为没忍住开始做 maimai 分表了，这次学习了如何用 PPT 做视频，意外地还挺好用，效果也不错。唯一的坏处是，七点钟才爬上床。</p>
-<p>下午的组会说实话没啥好汇报的，总觉得自己很忙但是没啥好说的，只说了一句“在帮贾老师跑实验”似乎就没了，果然还是得在自己手上的项目上再下一些功夫，不然实在显得有点没有成果。</p>
-<p>今天整体来说还算干了不少事情的，主要的一件事还是和吴老师那边对了一下腾讯的工作。目前来看大方向需要做一些调整，先前我们一直希望聚焦于，或者至少侧重于将帧从解码器送往显示器的控制算法，然而这一部分面临两个问题，一个是优化空间实在太小，二个是评测指标很难完全规避 QoE 建模以及繁杂的用户实验。最终考虑下来，还是希望把 story 讲成比较全流程的送显优化，侧重于如何提高出解码器时间戳的预测准确度。这样的话，我目前要做的，就是多做点 WebRTC 等相关技术的调研工作了。</p>
-<p>晚上把 maimai 分表做了，然后还需要搞软工的事情以及 TON 的事情，希望能够尽快解决吧。</p>
-<h1 id="section-11">2024.03.08</h1>
-<p>今天是软工试讲，本来以为是随便搞搞的事情，但没有想到的是裴老师提出了很多很多的意见，甚至建议把授课结构都重组一下。虽然说哪怕没有裴老师的意见我也得重新洗一遍 PPT，只不过有了这个意见之后工作量肉眼可见地高了。</p>
-<p>讲完软工忍不住了，去出勤了，但是好久没有出勤手感冰凉，几乎什么都打不上，最后也只能遗憾退勤。</p>
-<p>实习那边似乎还是得我来处理静态资源的事情，TON 实验那边也开始回收实验结果，总之慢慢事情又堆起来了。</p>
-<h1 id="section-12">2024.03.09</h1>
-<p>周六，例行堵门出勤，本来打算解决雷切，结果今天打得头昏脑胀还没解决。</p>
-<p>工作稍微推进了一点吧，把小作业的 code base 搞好了，总之接下来的周日，又是辛苦的一天。</p>
-]]></content>
-      <categories>
-        <category>【生活记录】日记</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>安卓前端开发杂谈</title>
-    <url>/2021/09/01/android-dev-exp-1/</url>
-    <content><![CDATA[<p>安卓的移动端开发，属实让我血压高了一小段时间。毕竟已经接触过类似于 React Native 那种基于 TypeScript 语言的、优秀的跨平台移动端框架，再去尝试用繁琐的 Java 语言写安卓前端自然是不适应且感到烦躁。</p>
-<p>但是毕竟是 Java 程序设计训练课程，安卓前端开发作为其最大的特色，不得不消受。</p>
-<span id="more"></span>
-<h1 id="关于数据绑定">关于数据绑定</h1>
-<p>如果要我说最大的不适应的地方，首先就是数据和图形界面的完全分离。在 React Native 框架之中，数据和图形界面的管理大概是这样的：</p>
-<figure class="highlight typescript"><figcaption><span>TypeScript</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> App = <span class="function">(<span class="params">props: AppProps</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// Set states &amp; initialize</span></span><br><span class="line">    <span class="keyword">const</span> [bar, setBar] = useState&lt;<span class="built_in">number</span>&gt;(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Some functions to update or rewrite data</span></span><br><span class="line">    <span class="keyword">const</span> update = <span class="function">() =&gt;</span> setBar(<span class="function">(<span class="params">o</span>) =&gt;</span> o + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Write UI with TSX, use data freely</span></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="xml"><span class="tag">&lt;<span class="name">View</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Text</span>&gt;</span> Hello world! <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;`The val of bar is $&#123;bar&#125;`&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;`Property foo is $&#123;props.foo&#125;`&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Button</span> <span class="attr">onClick</span>=<span class="string">&#123;update&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>但是在安卓之中，图形界面完全定义在 <code>.xml</code> 文件之中，而且一定程度上其定义各个组件摆放方式的语法细节的繁杂程度不低于 HTML。而如果需要将数据载入图形界面，则首先要根据组件的 ID 获取组件，之后才能调用各种方法设定具体属性。</p>
-<figure class="highlight java"><figcaption><span>Java</span></figcaption><table><tr><td class="code"><pre><span class="line">((TextView) view.findViewById(R.id.entity_name)).setText(data.name);</span><br></pre></td></tr></table></figure>
-<p>这里出现的 <code>R</code> 类据说是相当厉害的。但是我第一次接触安卓的时候，这个符号给我带来的感觉就是不安，因为我再也不能像写 React Native 一样至少自认为自己掌握了程序之中的数据流。换一种说法，即使 React Native 可能做了很多背后工作，但它至少做到了让开发者在很多时候能直观引导数据流。</p>
-<p>对于按钮等组件，React Native 框架下可以直接传入回调函数。而众所周知 Java 是纯净的面向对象语言，怎么会有 lambda 这种异端呢（新版本的 Java 已经离经叛道了！）。</p>
-<p>所以你需要写监听器对象，重写其中的方法等等。</p>
-<hr />
-<p>并不是说这样不好，我还记得之前大一小学期的时候写 Qt 很多时候就是各种指针到处乱飞然后到处乱 <code>set</code> 这个那个的，最后一个 <code>draw</code> 函数里面上百行的，成块的各种格式设定、字体设定、内容设定、排列设定，然后这次写安卓让我回忆起了那一段黑暗时光。</p>
-<h1 id="并不适应的适配器模式">并不适应的适配器模式</h1>
-<p>如果只是想给一个 <code>TextView</code> 载入文字，直接几个 <code>set</code> 函数就结束了。但是给一个格式复杂的列表载入数据，则相当繁琐。比如说现在主流的 <code>RecyclerView</code>，其载入数据，就需要你自己编写一个数据适配器。</p>
-<p>我首先是上网找轮子，随后想了一下，干脆自己包装了个简单的 <code>RecyclerViewAdapter</code> 先勉强用用。</p>
-<p>将数据塞到图形界面上，最重要的三个东西是上下文、使用什么 <code>layout</code> 和数据本身，那么适配器的构造函数就需要接受这三项。然后就是平凡地重写 <code>RecyclerView.Adapter</code> 所要求的三个函数。不过这里我在重写 <code>onBindViewHolder</code> 的时候留了空，因为这里就是定义适配器最重要部分——数据如何映射到 UI 的函数。我将这一个函数设为虚函数，让子类继承重写就可以实现各种映射方式。最后的成果大致这样：</p>
-<figure class="highlight java"><figcaption><span>Java</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">RecyclerViewAdapter</span>&lt;<span class="title">T</span>&gt; <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">Adapter</span>&lt;<span class="title">RecyclerViewAdapter</span>.<span class="title">ViewHolder</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> Context mContext;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">int</span> mLayoutId;</span><br><span class="line">    <span class="keyword">protected</span> List&lt;T&gt; mData;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RecyclerViewAdapter</span><span class="params">(Context context, <span class="keyword">int</span> layoutId, List&lt;T&gt; data)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.mContext = context;</span><br><span class="line">        <span class="keyword">this</span>.mLayoutId = layoutId;</span><br><span class="line">        <span class="keyword">this</span>.mData = data;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="meta">@NonNull</span> <span class="function">ViewHolder <span class="title">onCreateViewHolder</span><span class="params">(<span class="meta">@NonNull</span> ViewGroup parent, <span class="keyword">int</span> viewType)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ViewHolder(</span><br><span class="line">                LayoutInflater.from(mContext).inflate(mLayoutId, parent, <span class="keyword">false</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBindViewHolder</span><span class="params">(<span class="meta">@NonNull</span> ViewHolder holder, <span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// <span class="doctag">TODO:</span> What is this?</span></span><br><span class="line">        <span class="comment">// holder.updatePosition(position);</span></span><br><span class="line">        <span class="keyword">this</span>.convert(holder, mData.get(position));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">convert</span><span class="params">(ViewHolder holder, T data)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getItemCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> mData.size();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ViewHolder</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">ViewHolder</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">private</span> View mConvertView;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">ViewHolder</span><span class="params">(View itemView)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>(itemView);</span><br><span class="line">            <span class="keyword">this</span>.mConvertView = itemView;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> &lt;K extends View&gt; <span class="function">K <span class="title">getViewById</span><span class="params">(<span class="keyword">int</span> viewId)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> (K) mConvertView.findViewById(viewId);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>用起来也简单，传入三个要素，之后重写 <code>convert</code> 方法定义一下数据到 UI 的映射就好了：</p>
-<figure class="highlight java"><figcaption><span>Java</span></figcaption><table><tr><td class="code"><pre><span class="line">binding.entityList.setAdapter(<span class="keyword">new</span> RecyclerViewAdapter&lt;Entity&gt;(</span><br><span class="line">    HomeFragment.<span class="keyword">this</span>.getActivity(), R.layout.home_entity_item, baseEntities</span><br><span class="line">) &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">convert</span><span class="params">(RecyclerViewAdapter.ViewHolder holder, Entity data)</span> </span>&#123;</span><br><span class="line">        ((TextView) holder.getViewById(R.id.entity_name)).setText(data.getLabel());</span><br><span class="line">        ((TextView) holder.getViewById(R.id.entity_category)).setText(data.getCategory());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>你会发现，这比 React Native 要写的东西多太多了。上面这么多需要折腾的，React Native 只需要这样写：</p>
-<figure class="highlight typescript"><figcaption><span>TypeScript</span></figcaption><table><tr><td class="code"><pre><span class="line">&lt;View&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        baseEntities.map(<span class="function">(<span class="params">val, ind</span>) =&gt;</span> (</span><br><span class="line">            <span class="xml"><span class="tag">&lt;<span class="name">View</span> <span class="attr">key</span>=<span class="string">&#123;ind&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;val.name&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;val.category&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span></span><br><span class="line">        ))</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/View&gt;</span><br></pre></td></tr></table></figure>
-<p>就可以实现一个列表了。</p>
-<p>Java 我写了一整个类，光数据转成 UI 也写了好几行长代码，这还没有算 <code>.xml</code> 文件。</p>
-]]></content>
-      <categories>
-        <category>【杂谈】开发</category>
       </categories>
   </entry>
   <entry>
@@ -2734,6 +2712,38 @@
 ]]></content>
       <categories>
         <category>【学习笔记】日语</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>安卓前端开发杂谈</title>
+    <url>/2021/09/01/android-dev-exp-1/</url>
+    <content><![CDATA[<p>安卓的移动端开发，属实让我血压高了一小段时间。毕竟已经接触过类似于 React Native 那种基于 TypeScript 语言的、优秀的跨平台移动端框架，再去尝试用繁琐的 Java 语言写安卓前端自然是不适应且感到烦躁。</p>
+<p>但是毕竟是 Java 程序设计训练课程，安卓前端开发作为其最大的特色，不得不消受。</p>
+<span id="more"></span>
+<h1 id="关于数据绑定">关于数据绑定</h1>
+<p>如果要我说最大的不适应的地方，首先就是数据和图形界面的完全分离。在 React Native 框架之中，数据和图形界面的管理大概是这样的：</p>
+<figure class="highlight typescript"><figcaption><span>TypeScript</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> App = <span class="function">(<span class="params">props: AppProps</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// Set states &amp; initialize</span></span><br><span class="line">    <span class="keyword">const</span> [bar, setBar] = useState&lt;<span class="built_in">number</span>&gt;(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Some functions to update or rewrite data</span></span><br><span class="line">    <span class="keyword">const</span> update = <span class="function">() =&gt;</span> setBar(<span class="function">(<span class="params">o</span>) =&gt;</span> o + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Write UI with TSX, use data freely</span></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="xml"><span class="tag">&lt;<span class="name">View</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Text</span>&gt;</span> Hello world! <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;`The val of bar is $&#123;bar&#125;`&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;`Property foo is $&#123;props.foo&#125;`&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Button</span> <span class="attr">onClick</span>=<span class="string">&#123;update&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但是在安卓之中，图形界面完全定义在 <code>.xml</code> 文件之中，而且一定程度上其定义各个组件摆放方式的语法细节的繁杂程度不低于 HTML。而如果需要将数据载入图形界面，则首先要根据组件的 ID 获取组件，之后才能调用各种方法设定具体属性。</p>
+<figure class="highlight java"><figcaption><span>Java</span></figcaption><table><tr><td class="code"><pre><span class="line">((TextView) view.findViewById(R.id.entity_name)).setText(data.name);</span><br></pre></td></tr></table></figure>
+<p>这里出现的 <code>R</code> 类据说是相当厉害的。但是我第一次接触安卓的时候，这个符号给我带来的感觉就是不安，因为我再也不能像写 React Native 一样至少自认为自己掌握了程序之中的数据流。换一种说法，即使 React Native 可能做了很多背后工作，但它至少做到了让开发者在很多时候能直观引导数据流。</p>
+<p>对于按钮等组件，React Native 框架下可以直接传入回调函数。而众所周知 Java 是纯净的面向对象语言，怎么会有 lambda 这种异端呢（新版本的 Java 已经离经叛道了！）。</p>
+<p>所以你需要写监听器对象，重写其中的方法等等。</p>
+<hr />
+<p>并不是说这样不好，我还记得之前大一小学期的时候写 Qt 很多时候就是各种指针到处乱飞然后到处乱 <code>set</code> 这个那个的，最后一个 <code>draw</code> 函数里面上百行的，成块的各种格式设定、字体设定、内容设定、排列设定，然后这次写安卓让我回忆起了那一段黑暗时光。</p>
+<h1 id="并不适应的适配器模式">并不适应的适配器模式</h1>
+<p>如果只是想给一个 <code>TextView</code> 载入文字，直接几个 <code>set</code> 函数就结束了。但是给一个格式复杂的列表载入数据，则相当繁琐。比如说现在主流的 <code>RecyclerView</code>，其载入数据，就需要你自己编写一个数据适配器。</p>
+<p>我首先是上网找轮子，随后想了一下，干脆自己包装了个简单的 <code>RecyclerViewAdapter</code> 先勉强用用。</p>
+<p>将数据塞到图形界面上，最重要的三个东西是上下文、使用什么 <code>layout</code> 和数据本身，那么适配器的构造函数就需要接受这三项。然后就是平凡地重写 <code>RecyclerView.Adapter</code> 所要求的三个函数。不过这里我在重写 <code>onBindViewHolder</code> 的时候留了空，因为这里就是定义适配器最重要部分——数据如何映射到 UI 的函数。我将这一个函数设为虚函数，让子类继承重写就可以实现各种映射方式。最后的成果大致这样：</p>
+<figure class="highlight java"><figcaption><span>Java</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">RecyclerViewAdapter</span>&lt;<span class="title">T</span>&gt; <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">Adapter</span>&lt;<span class="title">RecyclerViewAdapter</span>.<span class="title">ViewHolder</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> Context mContext;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">int</span> mLayoutId;</span><br><span class="line">    <span class="keyword">protected</span> List&lt;T&gt; mData;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RecyclerViewAdapter</span><span class="params">(Context context, <span class="keyword">int</span> layoutId, List&lt;T&gt; data)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.mContext = context;</span><br><span class="line">        <span class="keyword">this</span>.mLayoutId = layoutId;</span><br><span class="line">        <span class="keyword">this</span>.mData = data;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="meta">@NonNull</span> <span class="function">ViewHolder <span class="title">onCreateViewHolder</span><span class="params">(<span class="meta">@NonNull</span> ViewGroup parent, <span class="keyword">int</span> viewType)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ViewHolder(</span><br><span class="line">                LayoutInflater.from(mContext).inflate(mLayoutId, parent, <span class="keyword">false</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBindViewHolder</span><span class="params">(<span class="meta">@NonNull</span> ViewHolder holder, <span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// <span class="doctag">TODO:</span> What is this?</span></span><br><span class="line">        <span class="comment">// holder.updatePosition(position);</span></span><br><span class="line">        <span class="keyword">this</span>.convert(holder, mData.get(position));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">convert</span><span class="params">(ViewHolder holder, T data)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getItemCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> mData.size();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ViewHolder</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">ViewHolder</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">private</span> View mConvertView;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">ViewHolder</span><span class="params">(View itemView)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>(itemView);</span><br><span class="line">            <span class="keyword">this</span>.mConvertView = itemView;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> &lt;K extends View&gt; <span class="function">K <span class="title">getViewById</span><span class="params">(<span class="keyword">int</span> viewId)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> (K) mConvertView.findViewById(viewId);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>用起来也简单，传入三个要素，之后重写 <code>convert</code> 方法定义一下数据到 UI 的映射就好了：</p>
+<figure class="highlight java"><figcaption><span>Java</span></figcaption><table><tr><td class="code"><pre><span class="line">binding.entityList.setAdapter(<span class="keyword">new</span> RecyclerViewAdapter&lt;Entity&gt;(</span><br><span class="line">    HomeFragment.<span class="keyword">this</span>.getActivity(), R.layout.home_entity_item, baseEntities</span><br><span class="line">) &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">convert</span><span class="params">(RecyclerViewAdapter.ViewHolder holder, Entity data)</span> </span>&#123;</span><br><span class="line">        ((TextView) holder.getViewById(R.id.entity_name)).setText(data.getLabel());</span><br><span class="line">        ((TextView) holder.getViewById(R.id.entity_category)).setText(data.getCategory());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>你会发现，这比 React Native 要写的东西多太多了。上面这么多需要折腾的，React Native 只需要这样写：</p>
+<figure class="highlight typescript"><figcaption><span>TypeScript</span></figcaption><table><tr><td class="code"><pre><span class="line">&lt;View&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        baseEntities.map(<span class="function">(<span class="params">val, ind</span>) =&gt;</span> (</span><br><span class="line">            <span class="xml"><span class="tag">&lt;<span class="name">View</span> <span class="attr">key</span>=<span class="string">&#123;ind&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;val.name&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;val.category&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span></span><br><span class="line">        ))</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/View&gt;</span><br></pre></td></tr></table></figure>
+<p>就可以实现一个列表了。</p>
+<p>Java 我写了一整个类，光数据转成 UI 也写了好几行长代码，这还没有算 <code>.xml</code> 文件。</p>
+]]></content>
+      <categories>
+        <category>【杂谈】开发</category>
       </categories>
   </entry>
   <entry>
@@ -4434,51 +4444,6 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
       </categories>
   </entry>
   <entry>
-    <title>大三秋季学期前的一些碎话</title>
-    <url>/2021/09/12/grade-3-autumn-preview/</url>
-    <content><![CDATA[<p>自己似乎就这样莫名其妙成为了一个大三学生，其实还隐隐约约记得一年前刚进实验室的时候刘知远的一句“没想到这么快八字班也要造机了啊”。现在想来，九字班这个词语从原先的代指新生，渐渐地变成了代指一群大三老油条，而自己的一字班学弟也正在憧憬着四年的本科时光，一时间竟觉得大学原来也快结束了。</p>
-<p>今夜突然接到 Sakana 的一句“我还是好焦虑”，唐突地自己也开始陷入了一种窘迫的心理。自己，真的准备好去迎接之后的生活了么。</p>
-<span id="more"></span>
-<h1 id="学业和大三的渡劫">学业和大三的渡劫</h1>
-<p>清华大学的计算机系向来会把大三上学期称为渡劫，原因是计算机核心专业课四大原理一大工程（计算机组成原理、计算机网络原理、编译原理、信号处理原理、软件工程）将会在一个学期内学习完成。虽然自己已经提前把软件工程这门课草草了结，但是作为一个对硬件和计算机系统没有感觉的人，四大原理就足以让我恐惧。已经能够预见到，将来的 Holder 或许会被造计算机、造路由器、造编译器、写 Matlab 处理信号等各种困难的作业包围，然后还要抽出时间应付掉 VLSI 和网安两门限选课的平时学习。</p>
-<p>其实也正如一些人对我的评价所说，我不是一个害怕困难或者折磨的人，但是我在受折磨的时候会习惯性一个人顶着。我只是默默地担心着自己的心理健康情况，自己这近几个月来时不时的情绪崩溃足以让我感到害怕。</p>
-<p>但实际上，我还是在安慰着自己没有问题，劝慰着自己造机造路由器会顺利，或许还会有点乐趣。也或许会安慰自己，信号处理原理全是微积分，自己微积分学得挺明白不用担心。然而即便如此，还是抵挡不住现在的焦虑和不安。</p>
-<h1 id="科研的不顺和前途的迷茫">科研的不顺和前途的迷茫</h1>
-<p>我大一就跑到组里去了，是一个进组挺早的人，家里人一直比较关心我这么早进组会怎么样，当时还不以为意，但现在看来还是有点不大行。过早的进组让我缺少时间去打基础而过快地投入到实际工作之中，我对人工智能的理解本身就是几乎为零，和同组的那些曾经 C++ 手搓神经网络的大神相比自然不可相提并论。想到自己每周二的组会都会想尽办法编造一个自己没认真做完事情的理由的时候，那种窘迫和尴尬又涌了上来。</p>
-<p>至今还记忆犹新的一个场景就是，中期汇报的时候刘知远老师在场，到我上去汇报的时候，应该是说出了大量幼稚或者说根本不合理的想法。那个时候刘知远说了这样一句：“现在 Holder 这个样子，我们需要反思一下我们的指导方式”。</p>
-<p>这种看似自责的说法实则，看得出来他们的意见。</p>
-<p>或许从那以后，我投入了大量的精力弥补我的基础，我开始看人工智能相关网课，从全联接层开始看到 CNN / RNN，再到 Encoder-decoder 或者 Transformer，然后开始使用 HuggingFace 的 BERT 和 T5 轮子，钻研 API 设计和源码。这一定程度上牵扯了我大量本应该用于课内的时间，但收获也是不错的，我 finetune 的 BERT 模型做出了被学长们称为“promising”的成果。</p>
-<p>但是后续是无休无止的挫败，我 T5 相关的工作至今都处于停滞状态。在那段时间，我经历了第一次情绪崩溃，一时间万念俱灰，每天醒来只有想睡回去的想法。那段时间，身体也一直不是很好，时不时就会有心脏疼的感觉。这种情况下的我，选择了实质上的彻底放弃，虽然一直没有和带我的学长提出我要退出。</p>
-<p>现在我也不想继续学习人工智能了，每每看到那些曾经熟悉且能熟练运用的数学公式、轮子、模型，只会让我想起那段折磨至极的时光。但大三上学期的我，早就已经浪费了一年的时光，现在的 Holder 的后路究竟如何，完全还是未知的，我该如何面临毕业，也还是未知的。</p>
-<h1 id="或许还是有些好消息的">或许还是有些好消息的</h1>
-<p>稍微能够宽慰我的，就是我现在过得还不错。至少我身边的一切，我的学业成绩、我的感情、我的朋友们、我的家人们都处于稳定的状态上，除了我自己的出路，其余暂且不需要我过多担心。</p>
-<p>这已经足够了，如果不去太担忧未来的不确定，活在当下自然是自由而快乐的。中厅的麻将还能用，新笔记本上还有若干没有玩的游戏，Sakana 还在身边，我还是有一群能聊得来的朋友，这一切的一切，暂且能够让我不再过分担忧今后。</p>
-<h1 id="holder-的一些自述">Holder 的一些自述</h1>
-<p>在别人眼中，特别是我高中的老师眼中，我是一个特别会规划的人。然而实际上，Holder 永远是一个走到哪里算哪里的人，只不过总是喜欢回忆，总是喜欢和过去的自己斤斤计较，懊恼于一时的失误。</p>
-<p>Holder 是一个喜欢沉浸在回忆中的人，我对过去的记忆可能过于清晰。我的一个习惯性动作是，无聊的时候将记忆中的场景构建出来，比如说尝试构建出：</p>
-<blockquote class="blockquote-center">
-<p>2018 年的 8 月份，在高中的三层小楼中，Holder 和同学们正在为升入高三做准备。除去我们升高三的理科实验班同学，其他人早已放假。那座小楼已经老旧不堪，空调毫无用处，电风扇没有力气。外面是炽热的阳光和扭曲的蝉鸣。</p>
-<p>Holder 趁着下课偷偷跑出小楼，听着下课铃在早已空荡的学校中回响。</p>
-
-</blockquote>
-<p>我或许会把这个场景构建得和刚经历差不多，然后自己沉浸在这个场景里回忆当时自己的所思所想。这个习惯来源于初中睡午觉，当时为了让自己快速入睡，就会使用这种方法——在脑海中完全重建回忆的场景，这种方法消耗脑力很多，有的时候没有构建完成就慢慢睡着了。</p>
-<p>这个习惯一般会让我很难忘记一些事情，但是坏处就是：</p>
-<blockquote class="blockquote-center">
-<p>我忘不掉一些应该忘却的事情。</p>
-
-</blockquote>
-<p>所以至今我的思维包袱是很重的，回忆构建的数据库足够庞大，能够支撑我思维的快速切换跳转和联想。但是一旦联想到一些本应该忘却的场景，比如说曾经的尴尬场面、自己伤害别人的行为，那 Holder 可能就会沉溺在这里，然后一遍一遍鞭尸自己。</p>
-<p>这还是挺折磨的，这让我很难聚焦于当下应该做的事。</p>
-<h1 id="所以说">所以说？</h1>
-<p>这些文字其实没有任何意义，可能明天起来就会觉得幼稚和不成熟，但是确实是现在困困的 Holder 想要记录下来的。</p>
-<p>Holder 就要成为大三的学生了，在此之前，12 号先要去北大吃一顿烤串，这足以让我暂且安静地睡去。</p>
-<p>晚安。</p>
-]]></content>
-      <categories>
-        <category>【生活记录】学期总结</category>
-      </categories>
-  </entry>
-  <entry>
     <title>大三秋季学期学期总结</title>
     <url>/2022/01/05/grade-3-autumn-conclusion/</url>
     <content><![CDATA[<p>今天考完了最后一门《编译原理》，随后参加了年级会。这样看来，我的大三上学期，这个被学长们称为渡劫的学期，就这样平平无奇结束了。</p>
@@ -4543,6 +4508,51 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <p>——「幽霊東京」</p>
 
 </blockquote>
+]]></content>
+      <categories>
+        <category>【生活记录】学期总结</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>大三秋季学期前的一些碎话</title>
+    <url>/2021/09/12/grade-3-autumn-preview/</url>
+    <content><![CDATA[<p>自己似乎就这样莫名其妙成为了一个大三学生，其实还隐隐约约记得一年前刚进实验室的时候刘知远的一句“没想到这么快八字班也要造机了啊”。现在想来，九字班这个词语从原先的代指新生，渐渐地变成了代指一群大三老油条，而自己的一字班学弟也正在憧憬着四年的本科时光，一时间竟觉得大学原来也快结束了。</p>
+<p>今夜突然接到 Sakana 的一句“我还是好焦虑”，唐突地自己也开始陷入了一种窘迫的心理。自己，真的准备好去迎接之后的生活了么。</p>
+<span id="more"></span>
+<h1 id="学业和大三的渡劫">学业和大三的渡劫</h1>
+<p>清华大学的计算机系向来会把大三上学期称为渡劫，原因是计算机核心专业课四大原理一大工程（计算机组成原理、计算机网络原理、编译原理、信号处理原理、软件工程）将会在一个学期内学习完成。虽然自己已经提前把软件工程这门课草草了结，但是作为一个对硬件和计算机系统没有感觉的人，四大原理就足以让我恐惧。已经能够预见到，将来的 Holder 或许会被造计算机、造路由器、造编译器、写 Matlab 处理信号等各种困难的作业包围，然后还要抽出时间应付掉 VLSI 和网安两门限选课的平时学习。</p>
+<p>其实也正如一些人对我的评价所说，我不是一个害怕困难或者折磨的人，但是我在受折磨的时候会习惯性一个人顶着。我只是默默地担心着自己的心理健康情况，自己这近几个月来时不时的情绪崩溃足以让我感到害怕。</p>
+<p>但实际上，我还是在安慰着自己没有问题，劝慰着自己造机造路由器会顺利，或许还会有点乐趣。也或许会安慰自己，信号处理原理全是微积分，自己微积分学得挺明白不用担心。然而即便如此，还是抵挡不住现在的焦虑和不安。</p>
+<h1 id="科研的不顺和前途的迷茫">科研的不顺和前途的迷茫</h1>
+<p>我大一就跑到组里去了，是一个进组挺早的人，家里人一直比较关心我这么早进组会怎么样，当时还不以为意，但现在看来还是有点不大行。过早的进组让我缺少时间去打基础而过快地投入到实际工作之中，我对人工智能的理解本身就是几乎为零，和同组的那些曾经 C++ 手搓神经网络的大神相比自然不可相提并论。想到自己每周二的组会都会想尽办法编造一个自己没认真做完事情的理由的时候，那种窘迫和尴尬又涌了上来。</p>
+<p>至今还记忆犹新的一个场景就是，中期汇报的时候刘知远老师在场，到我上去汇报的时候，应该是说出了大量幼稚或者说根本不合理的想法。那个时候刘知远说了这样一句：“现在 Holder 这个样子，我们需要反思一下我们的指导方式”。</p>
+<p>这种看似自责的说法实则，看得出来他们的意见。</p>
+<p>或许从那以后，我投入了大量的精力弥补我的基础，我开始看人工智能相关网课，从全联接层开始看到 CNN / RNN，再到 Encoder-decoder 或者 Transformer，然后开始使用 HuggingFace 的 BERT 和 T5 轮子，钻研 API 设计和源码。这一定程度上牵扯了我大量本应该用于课内的时间，但收获也是不错的，我 finetune 的 BERT 模型做出了被学长们称为“promising”的成果。</p>
+<p>但是后续是无休无止的挫败，我 T5 相关的工作至今都处于停滞状态。在那段时间，我经历了第一次情绪崩溃，一时间万念俱灰，每天醒来只有想睡回去的想法。那段时间，身体也一直不是很好，时不时就会有心脏疼的感觉。这种情况下的我，选择了实质上的彻底放弃，虽然一直没有和带我的学长提出我要退出。</p>
+<p>现在我也不想继续学习人工智能了，每每看到那些曾经熟悉且能熟练运用的数学公式、轮子、模型，只会让我想起那段折磨至极的时光。但大三上学期的我，早就已经浪费了一年的时光，现在的 Holder 的后路究竟如何，完全还是未知的，我该如何面临毕业，也还是未知的。</p>
+<h1 id="或许还是有些好消息的">或许还是有些好消息的</h1>
+<p>稍微能够宽慰我的，就是我现在过得还不错。至少我身边的一切，我的学业成绩、我的感情、我的朋友们、我的家人们都处于稳定的状态上，除了我自己的出路，其余暂且不需要我过多担心。</p>
+<p>这已经足够了，如果不去太担忧未来的不确定，活在当下自然是自由而快乐的。中厅的麻将还能用，新笔记本上还有若干没有玩的游戏，Sakana 还在身边，我还是有一群能聊得来的朋友，这一切的一切，暂且能够让我不再过分担忧今后。</p>
+<h1 id="holder-的一些自述">Holder 的一些自述</h1>
+<p>在别人眼中，特别是我高中的老师眼中，我是一个特别会规划的人。然而实际上，Holder 永远是一个走到哪里算哪里的人，只不过总是喜欢回忆，总是喜欢和过去的自己斤斤计较，懊恼于一时的失误。</p>
+<p>Holder 是一个喜欢沉浸在回忆中的人，我对过去的记忆可能过于清晰。我的一个习惯性动作是，无聊的时候将记忆中的场景构建出来，比如说尝试构建出：</p>
+<blockquote class="blockquote-center">
+<p>2018 年的 8 月份，在高中的三层小楼中，Holder 和同学们正在为升入高三做准备。除去我们升高三的理科实验班同学，其他人早已放假。那座小楼已经老旧不堪，空调毫无用处，电风扇没有力气。外面是炽热的阳光和扭曲的蝉鸣。</p>
+<p>Holder 趁着下课偷偷跑出小楼，听着下课铃在早已空荡的学校中回响。</p>
+
+</blockquote>
+<p>我或许会把这个场景构建得和刚经历差不多，然后自己沉浸在这个场景里回忆当时自己的所思所想。这个习惯来源于初中睡午觉，当时为了让自己快速入睡，就会使用这种方法——在脑海中完全重建回忆的场景，这种方法消耗脑力很多，有的时候没有构建完成就慢慢睡着了。</p>
+<p>这个习惯一般会让我很难忘记一些事情，但是坏处就是：</p>
+<blockquote class="blockquote-center">
+<p>我忘不掉一些应该忘却的事情。</p>
+
+</blockquote>
+<p>所以至今我的思维包袱是很重的，回忆构建的数据库足够庞大，能够支撑我思维的快速切换跳转和联想。但是一旦联想到一些本应该忘却的场景，比如说曾经的尴尬场面、自己伤害别人的行为，那 Holder 可能就会沉溺在这里，然后一遍一遍鞭尸自己。</p>
+<p>这还是挺折磨的，这让我很难聚焦于当下应该做的事。</p>
+<h1 id="所以说">所以说？</h1>
+<p>这些文字其实没有任何意义，可能明天起来就会觉得幼稚和不成熟，但是确实是现在困困的 Holder 想要记录下来的。</p>
+<p>Holder 就要成为大三的学生了，在此之前，12 号先要去北大吃一顿烤串，这足以让我暂且安静地睡去。</p>
+<p>晚安。</p>
 ]]></content>
       <categories>
         <category>【生活记录】学期总结</category>
@@ -4778,6 +4788,94 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 ]]></content>
       <categories>
         <category>【导航】</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>摸索 NexT 注入实录与实现振假名渲染</title>
+    <url>/2022/08/20/inject-ruby/</url>
+    <content><![CDATA[<p>由于日语文本中经常出现振假名（可以理解为国内小学课本上汉字上的拼音），但是 Markdown 并没有方便的振假名语法，所以只能摸索了。</p>
+<span id="more"></span>
+<p>首先是我们注意到 HTML 是有振假名相关的标签的，但是实在是太长了：</p>
+<figure class="highlight html"><figcaption><span>HTML</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ruby</span>&gt;</span> WRITTEN <span class="tag">&lt;<span class="name">rp</span>&gt;</span>(<span class="tag">&lt;/<span class="name">rp</span>&gt;</span><span class="tag">&lt;<span class="name">rt</span>&gt;</span> READ <span class="tag">&lt;/<span class="name">rt</span>&gt;</span><span class="tag">&lt;<span class="name">rp</span>&gt;</span>)<span class="tag">&lt;/<span class="name">rp</span>&gt;</span><span class="tag">&lt;/<span class="name">ruby</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>那么为了解决这个问题，有两种选择：</p>
+<ul>
+<li>定义一种新的 Markdown 语法，在将 Raw Markdown 传入解释器之前先做一步正则替换，将自定义的语法替换为 HTML 标签</li>
+<li>在渲染后的 HTML 标签中找到所有打过标记的节点，将其替换为 <code>&lt;ruby&gt;</code> 标签</li>
+</ul>
+<p>我一开始是摸索第一种解决方式的，然后遍历了一波 Hexo 的 Markdown Parser 的文档，没有找到如何解决这个问题。</p>
+<p>我之所以想到这个解决方案，是因为之前有一个 VSCode 的 Markdown 插件提供了一个 <code>onWillParseMarkdown</code> 的函数，用户可以通过其参数获得 Raw Markdown，然后自行处理后返回交给解释器。</p>
+<p>但是 Hexo 似乎并没有给我开这个后门。</p>
+<hr />
+<p>于是只能思考第二种解决方案，这个时候我想到了 NexT 注入。</p>
+<p>因为先前编写过 Twikoo Recent Comments，就是现在我的网站侧边栏上展现的最近评论，其就是在 <code>sidebar.njk</code> 内注入一个指定 <code>class</code> 的容器，然后在 <code>head.njk</code> 内部利用 jQuery 首先拉取最近评论然后再处理为列表项塞到指定容器中的。</p>
+<p>那么我们考虑到，Markdown 的代码块会被渲染为 <code>&lt;code&gt;</code> 标签，我们完全可以利用此特性。而我们为这些需要替换的标签打的标记就是其以 <code>@</code> 开头并且用空格分为三块，我们识别到这个标记就进行替换。</p>
+<p>我们只需要注入这样一段代码：</p>
+<figure class="highlight javascript"><figcaption><span>JavaScript</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">replaceRuby</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    $(<span class="string">&#x27;code&#x27;</span>)</span><br><span class="line">        .filter(<span class="function">(<span class="params">_, node</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">var</span> list = $(node).text().split(<span class="string">&#x27; &#x27;</span>);</span><br><span class="line">            <span class="keyword">return</span> list.length === <span class="number">3</span> &amp;&amp; list[<span class="number">0</span>] === <span class="string">&quot;@&quot;</span>;</span><br><span class="line">        &#125;)</span><br><span class="line">        .replaceWith(<span class="function">(<span class="params">_, text</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">var</span> list = text.split(<span class="string">&#x27; &#x27;</span>);</span><br><span class="line">            <span class="keyword">var</span> written = list[<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">var</span> read = list[<span class="number">2</span>];</span><br><span class="line">            <span class="keyword">return</span> $(<span class="string">`&lt;ruby&gt;<span class="subst">$&#123;written&#125;</span>&lt;rp&gt;(&lt;/rp&gt;&lt;rt&gt;<span class="subst">$&#123;read&#125;</span>&lt;/rt&gt;&lt;rp&gt;)&lt;/rp&gt;&lt;/ruby&gt;`</span>);</span><br><span class="line">        &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样我们就可以用类似：</p>
+<figure class="highlight markdown"><figcaption><span>Markdown</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="code">`@ WRITTEN READ`</span></span><br></pre></td></tr></table></figure>
+<p>的语法书写振假名。</p>
+<p>效果的话可以看下述歌词的渲染效果：</p>
+<div class="note info no-icon"><p><code>@ 言葉 ことば</code>より<code>@ 単純 たんじゅん</code>な<code>@ 方法 ほうほう</code>で、いますぐ<code>@ 地獄 じごく</code>に<code>@ 落 お</code>としてくれよ。さよならはあんたも<code>@ 知 し</code>っている、<code>@ 笑 わら</code>ってくれよ、<code>@ 笑 わら</code>ってくれよ、いますぐに。</p>
+</div>
+<p>总之，这样就可以很方便地写振假名了，之后应该会逐步在涉及到日语的地方把之前的旧写法更换成新写法。</p>
+<hr />
+<p>另外还有一个小细节，似乎部署后访问字体会出现 403，根据 <a href="https://github.com/theme-next/hexo-theme-next/issues/613">相关 Issue 的提示</a>，应该是 Referrer 的问题。</p>
+]]></content>
+      <categories>
+        <category>【杂谈】开发</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>简明日语自学手册 Chapter 9 句式与常用固定表达</title>
+    <url>/2022/08/22/ja-tutorial-ch9/</url>
+    <content><![CDATA[<p>本文将在基本了解日语语句构成的条件下总结各类常见的日语语句表达方式，基于此，读者应当可以自行书写符合语法且自然的日语语句。</p>
+<span id="more"></span>
+<h1 id="状态变迁">状态变迁</h1>
+<p>有关状态变迁的表达相当之多，先前也讲解过部分。虽然涉及状态变迁的句式很多，但基本上均分为自然变迁和强制变迁两种，分别对应「なる、する」两个动词。</p>
+<p>这里讲解的时候直接引用了先前章节的例句。</p>
+<p>如果描述状态的是形容词（类形容词助动词），则一般使用「～くなる、～くする」句式：</p>
+<ul>
+<li>彼女は化粧すると<strong>かわいくなる</strong>。（她化妆了就会很可爱）</li>
+<li>辛いものが苦手なので、料理はいつも<strong>甘くする</strong>。（因为吃不了辣所以总是把菜做甜）</li>
+</ul>
+<p>如果描述状态的是形容动词（类形容动词助动词）或者体言，则一般使用「～になる、～にする」句式：</p>
+<ul>
+<li>気づいたら彼が<strong>好きになっ</strong>ていた。（等发觉的时候已经喜欢上他了）</li>
+<li>やっと<strong>大人になっ</strong>た。（终于长大了）</li>
+<li>練習は不可能を<strong>可能にする</strong>。（练习能把不可能变为可能）</li>
+<li>プレゼンは誰でも分かりやすいように簡単な<strong>内容にし</strong>た。（为了让所有人都容易理解我的讲解，我尽量选择了简单的内容）</li>
+</ul>
+<p>如果描述状态的是动词，则可以使用「～ことになる、～ことにする」，其中「～ことになる」强调事态自然而然发展到了某个情况，而「～ことにする」一般用于描述说话者作出了某种决定：</p>
+<ul>
+<li>会議の結果、部長の案を<strong>採用することになっ</strong>た。（会议的结果是采用了部长的提议）</li>
+<li>拾った子猫を<strong>飼うことにし</strong>た。（决定收养捡到的小猫）</li>
+</ul>
+<p>同时，也可以使用「～ようになる、～ようにする」，其中「～ようになる」强调能力的变化，而「～ようにする」一般用于描述为了达到某一种目的而做的努力。特别地，「～ようにしている」用于描述为了达到某一种目的而养成的习惯：</p>
+<ul>
+<li><strong>できるようになる</strong>と楽しいだが、そこまでの道は長い。（能做得到的话自然很开心，但是为了学会要走过的路还是很长）</li>
+<li>きれいな服を買いたい、髪型とかもそれに<strong>似合うようにし</strong>たい。（想买好看的衣服，那么也要做个搭配的发型）</li>
+<li>毎日日本語の番組を<strong>見るようにしている</strong>。（我每天都会看日语节目）</li>
+</ul>
+<p>另外，形容动词、体言以及动词接续「こと」后还可以使用「～となる」句式，该句式相对于对应的使用助词「に」的句式语义整体并无变化但是语气较为生硬，适合正式行文：</p>
+<ul>
+<li><strong>冷静となっ</strong>て考えてみよう。（冷静下来再想想看）</li>
+<li>年取って<strong>病気となっ</strong>た。（年纪大了开始生病了）</li>
+<li>明日は<strong>出勤することとなっ</strong>た。（明天得上班了）</li>
+</ul>
+<p><strong>注意</strong>，该句式不能描述理所当然、物理规律使然的自然变化，比如时间的推移，只能使用「七時になる」而不能用「七時となる」。</p>
+<p>而动词还能使用「～こととする」句式，该句式相对于「～ことにする」语义整体并无变化但是语气较为生硬，适合正式行文：</p>
+<ul>
+<li>地球温暖化防止のため、化石燃料を使う代わりに自然エネルギーを<strong>利用することとし</strong>た。（为了防止全球变暖，决定用清洁能源代替化石燃料）</li>
+</ul>
+<p><strong>注意</strong>，该句式不能描述他人的决定。</p>
+<p>在涉及到动词的「～ことになる、～ことにする、～ようになる、～ようにする、～こととなる、～こととする」句式中表否定均是否定接续在这些句式前面的动词，即形成「～<strong>ない</strong>ことになる、～<strong>ない</strong>ことにする、～<strong>ない</strong>ようになる、～<strong>ない</strong>ようにする、～<strong>ない</strong>こととなる、～<strong>ない</strong>こととする」。</p>
+<p>另外注意，这类句式之中涉及到的时态全部都是<strong>现在时</strong>，如果采用过去时则这些句式的含义可能有所变化。</p>
+<h1 id="反复构文">反复构文</h1>
+<p>参考文献：https://www.jstage.jst.go.jp/article/nihongonokenkyu/14/2/14_126/_pdf/-char/ja</p>
+<p>参考文献：https://www.lang.nagoya-u.ac.jp/nichigen/issue/pdf/10/10-04.pdf</p>
+]]></content>
+      <categories>
+        <category>【学习笔记】日语</category>
       </categories>
   </entry>
   <entry>
@@ -5031,94 +5129,6 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <li>見てる<strong>だけ</strong>なんだから。（我就看看而已）</li>
 </ul>
 <p>这里第一个例子实际上是格助词缺位的，</p>
-]]></content>
-      <categories>
-        <category>【学习笔记】日语</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>摸索 NexT 注入实录与实现振假名渲染</title>
-    <url>/2022/08/20/inject-ruby/</url>
-    <content><![CDATA[<p>由于日语文本中经常出现振假名（可以理解为国内小学课本上汉字上的拼音），但是 Markdown 并没有方便的振假名语法，所以只能摸索了。</p>
-<span id="more"></span>
-<p>首先是我们注意到 HTML 是有振假名相关的标签的，但是实在是太长了：</p>
-<figure class="highlight html"><figcaption><span>HTML</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ruby</span>&gt;</span> WRITTEN <span class="tag">&lt;<span class="name">rp</span>&gt;</span>(<span class="tag">&lt;/<span class="name">rp</span>&gt;</span><span class="tag">&lt;<span class="name">rt</span>&gt;</span> READ <span class="tag">&lt;/<span class="name">rt</span>&gt;</span><span class="tag">&lt;<span class="name">rp</span>&gt;</span>)<span class="tag">&lt;/<span class="name">rp</span>&gt;</span><span class="tag">&lt;/<span class="name">ruby</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>那么为了解决这个问题，有两种选择：</p>
-<ul>
-<li>定义一种新的 Markdown 语法，在将 Raw Markdown 传入解释器之前先做一步正则替换，将自定义的语法替换为 HTML 标签</li>
-<li>在渲染后的 HTML 标签中找到所有打过标记的节点，将其替换为 <code>&lt;ruby&gt;</code> 标签</li>
-</ul>
-<p>我一开始是摸索第一种解决方式的，然后遍历了一波 Hexo 的 Markdown Parser 的文档，没有找到如何解决这个问题。</p>
-<p>我之所以想到这个解决方案，是因为之前有一个 VSCode 的 Markdown 插件提供了一个 <code>onWillParseMarkdown</code> 的函数，用户可以通过其参数获得 Raw Markdown，然后自行处理后返回交给解释器。</p>
-<p>但是 Hexo 似乎并没有给我开这个后门。</p>
-<hr />
-<p>于是只能思考第二种解决方案，这个时候我想到了 NexT 注入。</p>
-<p>因为先前编写过 Twikoo Recent Comments，就是现在我的网站侧边栏上展现的最近评论，其就是在 <code>sidebar.njk</code> 内注入一个指定 <code>class</code> 的容器，然后在 <code>head.njk</code> 内部利用 jQuery 首先拉取最近评论然后再处理为列表项塞到指定容器中的。</p>
-<p>那么我们考虑到，Markdown 的代码块会被渲染为 <code>&lt;code&gt;</code> 标签，我们完全可以利用此特性。而我们为这些需要替换的标签打的标记就是其以 <code>@</code> 开头并且用空格分为三块，我们识别到这个标记就进行替换。</p>
-<p>我们只需要注入这样一段代码：</p>
-<figure class="highlight javascript"><figcaption><span>JavaScript</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">replaceRuby</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    $(<span class="string">&#x27;code&#x27;</span>)</span><br><span class="line">        .filter(<span class="function">(<span class="params">_, node</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">var</span> list = $(node).text().split(<span class="string">&#x27; &#x27;</span>);</span><br><span class="line">            <span class="keyword">return</span> list.length === <span class="number">3</span> &amp;&amp; list[<span class="number">0</span>] === <span class="string">&quot;@&quot;</span>;</span><br><span class="line">        &#125;)</span><br><span class="line">        .replaceWith(<span class="function">(<span class="params">_, text</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">var</span> list = text.split(<span class="string">&#x27; &#x27;</span>);</span><br><span class="line">            <span class="keyword">var</span> written = list[<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">var</span> read = list[<span class="number">2</span>];</span><br><span class="line">            <span class="keyword">return</span> $(<span class="string">`&lt;ruby&gt;<span class="subst">$&#123;written&#125;</span>&lt;rp&gt;(&lt;/rp&gt;&lt;rt&gt;<span class="subst">$&#123;read&#125;</span>&lt;/rt&gt;&lt;rp&gt;)&lt;/rp&gt;&lt;/ruby&gt;`</span>);</span><br><span class="line">        &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这样我们就可以用类似：</p>
-<figure class="highlight markdown"><figcaption><span>Markdown</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="code">`@ WRITTEN READ`</span></span><br></pre></td></tr></table></figure>
-<p>的语法书写振假名。</p>
-<p>效果的话可以看下述歌词的渲染效果：</p>
-<div class="note info no-icon"><p><code>@ 言葉 ことば</code>より<code>@ 単純 たんじゅん</code>な<code>@ 方法 ほうほう</code>で、いますぐ<code>@ 地獄 じごく</code>に<code>@ 落 お</code>としてくれよ。さよならはあんたも<code>@ 知 し</code>っている、<code>@ 笑 わら</code>ってくれよ、<code>@ 笑 わら</code>ってくれよ、いますぐに。</p>
-</div>
-<p>总之，这样就可以很方便地写振假名了，之后应该会逐步在涉及到日语的地方把之前的旧写法更换成新写法。</p>
-<hr />
-<p>另外还有一个小细节，似乎部署后访问字体会出现 403，根据 <a href="https://github.com/theme-next/hexo-theme-next/issues/613">相关 Issue 的提示</a>，应该是 Referrer 的问题。</p>
-]]></content>
-      <categories>
-        <category>【杂谈】开发</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>简明日语自学手册 Chapter 9 句式与常用固定表达</title>
-    <url>/2022/08/22/ja-tutorial-ch9/</url>
-    <content><![CDATA[<p>本文将在基本了解日语语句构成的条件下总结各类常见的日语语句表达方式，基于此，读者应当可以自行书写符合语法且自然的日语语句。</p>
-<span id="more"></span>
-<h1 id="状态变迁">状态变迁</h1>
-<p>有关状态变迁的表达相当之多，先前也讲解过部分。虽然涉及状态变迁的句式很多，但基本上均分为自然变迁和强制变迁两种，分别对应「なる、する」两个动词。</p>
-<p>这里讲解的时候直接引用了先前章节的例句。</p>
-<p>如果描述状态的是形容词（类形容词助动词），则一般使用「～くなる、～くする」句式：</p>
-<ul>
-<li>彼女は化粧すると<strong>かわいくなる</strong>。（她化妆了就会很可爱）</li>
-<li>辛いものが苦手なので、料理はいつも<strong>甘くする</strong>。（因为吃不了辣所以总是把菜做甜）</li>
-</ul>
-<p>如果描述状态的是形容动词（类形容动词助动词）或者体言，则一般使用「～になる、～にする」句式：</p>
-<ul>
-<li>気づいたら彼が<strong>好きになっ</strong>ていた。（等发觉的时候已经喜欢上他了）</li>
-<li>やっと<strong>大人になっ</strong>た。（终于长大了）</li>
-<li>練習は不可能を<strong>可能にする</strong>。（练习能把不可能变为可能）</li>
-<li>プレゼンは誰でも分かりやすいように簡単な<strong>内容にし</strong>た。（为了让所有人都容易理解我的讲解，我尽量选择了简单的内容）</li>
-</ul>
-<p>如果描述状态的是动词，则可以使用「～ことになる、～ことにする」，其中「～ことになる」强调事态自然而然发展到了某个情况，而「～ことにする」一般用于描述说话者作出了某种决定：</p>
-<ul>
-<li>会議の結果、部長の案を<strong>採用することになっ</strong>た。（会议的结果是采用了部长的提议）</li>
-<li>拾った子猫を<strong>飼うことにし</strong>た。（决定收养捡到的小猫）</li>
-</ul>
-<p>同时，也可以使用「～ようになる、～ようにする」，其中「～ようになる」强调能力的变化，而「～ようにする」一般用于描述为了达到某一种目的而做的努力。特别地，「～ようにしている」用于描述为了达到某一种目的而养成的习惯：</p>
-<ul>
-<li><strong>できるようになる</strong>と楽しいだが、そこまでの道は長い。（能做得到的话自然很开心，但是为了学会要走过的路还是很长）</li>
-<li>きれいな服を買いたい、髪型とかもそれに<strong>似合うようにし</strong>たい。（想买好看的衣服，那么也要做个搭配的发型）</li>
-<li>毎日日本語の番組を<strong>見るようにしている</strong>。（我每天都会看日语节目）</li>
-</ul>
-<p>另外，形容动词、体言以及动词接续「こと」后还可以使用「～となる」句式，该句式相对于对应的使用助词「に」的句式语义整体并无变化但是语气较为生硬，适合正式行文：</p>
-<ul>
-<li><strong>冷静となっ</strong>て考えてみよう。（冷静下来再想想看）</li>
-<li>年取って<strong>病気となっ</strong>た。（年纪大了开始生病了）</li>
-<li>明日は<strong>出勤することとなっ</strong>た。（明天得上班了）</li>
-</ul>
-<p><strong>注意</strong>，该句式不能描述理所当然、物理规律使然的自然变化，比如时间的推移，只能使用「七時になる」而不能用「七時となる」。</p>
-<p>而动词还能使用「～こととする」句式，该句式相对于「～ことにする」语义整体并无变化但是语气较为生硬，适合正式行文：</p>
-<ul>
-<li>地球温暖化防止のため、化石燃料を使う代わりに自然エネルギーを<strong>利用することとし</strong>た。（为了防止全球变暖，决定用清洁能源代替化石燃料）</li>
-</ul>
-<p><strong>注意</strong>，该句式不能描述他人的决定。</p>
-<p>在涉及到动词的「～ことになる、～ことにする、～ようになる、～ようにする、～こととなる、～こととする」句式中表否定均是否定接续在这些句式前面的动词，即形成「～<strong>ない</strong>ことになる、～<strong>ない</strong>ことにする、～<strong>ない</strong>ようになる、～<strong>ない</strong>ようにする、～<strong>ない</strong>こととなる、～<strong>ない</strong>こととする」。</p>
-<p>另外注意，这类句式之中涉及到的时态全部都是<strong>现在时</strong>，如果采用过去时则这些句式的含义可能有所变化。</p>
-<h1 id="反复构文">反复构文</h1>
-<p>参考文献：https://www.jstage.jst.go.jp/article/nihongonokenkyu/14/2/14_126/_pdf/-char/ja</p>
-<p>参考文献：https://www.lang.nagoya-u.ac.jp/nichigen/issue/pdf/10/10-04.pdf</p>
 ]]></content>
       <categories>
         <category>【学习笔记】日语</category>
@@ -9003,80 +9013,6 @@ H(z) = \frac{Y(z)}{X(z)} = \frac{\sum_{r = 0}^M a_rz^{-r}}{\sum_{k = 0}^N b_kz^{
       </categories>
   </entry>
   <entry>
-    <title>Next.js 框架摸索实录</title>
-    <url>/2022/11/24/note-of-next/</url>
-    <content><![CDATA[<p>在出软工小作业的时候遇到了 React Router 配置和跨域问题，虽然这两个都不是什么大问题，我也不是不会解决，但是要是出到作业里面，势必会导致我要写好多文档还要写很多讲解。这个时候 yfgg 告诉我 Next.js 框架好之又好，昨天稍微试了一下感觉确实不错，所以就吃了安利迁移到了 Next.js 框架。但是今天接着写的时候，还是发现不少细节是需要注意的，这里就当备忘了。</p>
-<span id="more"></span>
-<h1 id="初始配置">初始配置</h1>
-<p>由于 Next.js 自己带了不少初始配置，所以加东西的时候不一定每个都需要自己从头再来，完全可以用官方模板。</p>
-<p>我出的小作业采用 Next.js + TypeScript + ESLint + Jest，这一整套模板也正在编写，到时候可以开放给同学们直接下载。</p>
-<h1 id="csr-还是-ssr">CSR 还是 SSR</h1>
-<p>Next.js 框架的一大优势就在 SSR。然而说实话我自己也没有特别明白 SSR 之类的概念，所以昨晚花了点时间学了一下。</p>
-<p>最早期的前后端耦合应用实际上就采用 SSR，即 <strong>S</strong>erver <strong>S</strong>ide <strong>R</strong>ender，服务端渲染。当时严格而言就没有前端这个概念，服务器直接将渲染好的 HTML 扔给浏览器就结束了。</p>
-<p>而随着前后端分离开发概念的出现，Vue、React 等框架逐渐采用 CSR，即 <strong>C</strong>lient <strong>S</strong>ide <strong>R</strong>ender，客户端渲染。CSR 中，数据交互大致可以描述为：</p>
-<ul>
-<li>浏览器向前端服务器请求模板 HTML（或者说空缺关键数据的 HTML），这些 HTML 中携带获取关键数据的脚本</li>
-<li>浏览器渲染模板 HTML，执行获取数据的脚本，向后端服务器请求关键数据</li>
-<li>浏览器获得关键数据后，调整 DOM 展示最终页面</li>
-</ul>
-<p>CSR 比较大的问题有两点：</p>
-<ul>
-<li>如果后端服务器响应慢或者数据量大，模板 HTML 在页面上留存时间长，表现为 Loading 界面或者白屏，严重削弱用户体验</li>
-<li>爬虫难以处理这类网页，对搜索引擎的优化（<strong>S</strong>earch <strong>E</strong>ngine <strong>O</strong>pimization，简称 SEO）困难，导致网页宣传效果不佳</li>
-</ul>
-<p>但就开发环节而言，开发需要不断处理白屏问题，不断在组件中设置 <code>refreshing</code> 状态实际上比较浪费开发时间。</p>
-<p>而现代优化过的 SSR 则相应做出了部分解决，其基本思路为：</p>
-<ul>
-<li>浏览器向前端服务器请求页面</li>
-<li>前端服务器向后端服务器请求关键数据，获取数据后根据自己已有的模板 HTML 渲染出完整 HTML 发回浏览器</li>
-<li>浏览器直接渲染出完整页面</li>
-</ul>
-<p>首先，浏览器不会收到缺失数据的 HTML，这样就从根源上解决白屏问题。进一步，由于服务端的算力和内网传输速度一般高于客户端算力和外网传输速度，所以渲染出最终 HTML 的时间相应缩短。另外，由于客户端能够直接得到完整 HTML，所以 SEO 也是简单的。</p>
-<p>然而 SSR 显然也是有问题的：</p>
-<ul>
-<li>服务器端压力极大，对于多并发情况处理无力</li>
-<li>针对每个用户都需要重新渲染完整 HTML，重复计算问题严重</li>
-</ul>
-<p>其中第二个问题实际上比较重要，如果某个网页和客户端具体信息无关，也就是说任何客户端都收到相同内容，那么这种 SSR 实际上不如 CSR。CSR 可以通过 CDN 缓存模板 HTML，而 SSR 此时对每个用户的请求，每次都需要完整渲染 HTML。</p>
-<p>所以这也是 SSG，<strong>S</strong>erver <strong>S</strong>ide <strong>G</strong>eneration，服务端生成提出的契机。针对与客户端无关的、更新速度慢的页面，SSG 会在构建时直接生成页面并缓存在前端服务器，浏览器发出请求后会直接返回缓存页面，从而解决上述问题。</p>
-<p>显然，CSR、SSR、SSG 各有利弊。就目前你清的教学、科协各个成员的掌握情况看，CSR 系列的开发明显占优势。另外考虑到软工课程不少类似于后台管理页面等更重视数据时效性、用户交互体验的应用，CSR 更应当重点讲解。</p>
-<p>然而 SSR 不能因此完全废弃不讲，因为其针对用户无关页面的白屏加载问题绝对是重要的一种解决方案。SSR 依然是企业官网、个人博客等网页的首选。</p>
-<p>所以目前依然是将传统的 CSR 布置为作业，然后让他们强制将 API 睡眠，体验白屏问题后让他们叙述 SSR 的好处，用此作为思考题。</p>
-<h1 id="useeffect-重复调用问题"><code>useEffect</code> 重复调用问题</h1>
-<p>这是一个老问题，说实话也和 Next.js 没有多少关系。如果在 React 中写下述代码：</p>
-<figure class="highlight typescript"><figcaption><span>TypeScript</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> App = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    useEffect(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;useEffect called!&quot;</span>);</span><br><span class="line">    &#125;, []);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span> Test page. <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>会发现控制台里出现了两次 <code>useEffect called!</code> 的输出。</p>
-<p>虽然严格而言不会出现很大的问题，然而由于这种 <code>useEffect</code> 常常用于获取页面的初始数据（CSR 常用手法），这个问题可能导致重复请求后端数据，对于用户鉴权等需求甚至可能是危险的，后端如果不去做相应处理甚至可能打穿后端（我软工还真的差点出锅，然而当时也没在意）。</p>
-<p>然后我搜索引擎大作业里面采用了非常丑陋的写法解决了：</p>
-<p><img src="/uploads/note-of-next/1.jpeg" /></p>
-<p>今天才知道这个是 React 的严格模式的锅。严格模式下，在 dev 条件下 React 会有意重复调用这些钩子来提示可能的危险。</p>
-<p>也就是说打穿后端实际上就是 React 告诉你，你这有可能出锅，你自己不处理好不怪我。</p>
-<p>当然，release 之后 React 就不会有意重复调用了。</p>
-<p>所以解决方式就两种：</p>
-<ul>
-<li>好好写能够处理并发的代码，React 都告诉你会出事了</li>
-<li>关掉严格模式，让 React 闭嘴</li>
-</ul>
-<p>我选择了后者。</p>
-<p>参考：<a href="https://juejin.cn/post/7105652180501135367" class="uri">https://juejin.cn/post/7105652180501135367</a>。</p>
-<h1 id="useroute-与注水"><code>useRoute</code> 与注水</h1>
-<p>使用动态路由的时候，我按照 React 的开发习惯写了下述代码：</p>
-<figure class="highlight typescript"><figcaption><span>TypeScript</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> route = useRouter();</span><br><span class="line"></span><br><span class="line">useEffect(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(route.query.id);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Use route.query.id to fetch data</span></span><br><span class="line">&#125;, []);</span><br></pre></td></tr></table></figure>
-<p>令人惊讶的是，这里输出了 <code>undefined</code>。</p>
-<p>事实上这是 Next.js 预渲染的锅，原文是这样的：</p>
-<div class="note info no-icon"><p>Pages that are statically optimized by <strong>Automatic Static Optimization</strong> will be hydrated without their route parameters provided, i.e <code>query</code> will be an empty object (<code>{}</code>).</p>
-<p>After hydration, Next.js will trigger an update to your application to provide the route parameters in the <code>query</code> object.</p>
-</div>
-<p>简而言之，ASO 是一种预渲染优化，在不获取路由信息的条件下先弄出来一个页面给浏览器，然后再注水（即向 <code>query</code> 注入路由信息）并触发组件更新，也就是说页面获取到路由信息并不是一开始，从而 <code>useEffect(*, [])</code> 是拿不到路由信息的。</p>
-<p>了解这一点后，代码就应该写为：</p>
-<figure class="highlight typescript"><figcaption><span>TypeScript</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> route = useRouter();</span><br><span class="line"><span class="keyword">const</span> query = route.query;</span><br><span class="line"></span><br><span class="line">useEffect(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!route.isReady) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(route.query.id);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Use route.query.id to fetch data</span></span><br><span class="line">&#125;, [route, query]);</span><br></pre></td></tr></table></figure>
-<p>应该让 <code>useEffect</code> 检测 <code>route</code> 和 <code>query</code> 的变动，在注水完成后才能触发数据获取。</p>
-]]></content>
-      <categories>
-        <category>【杂谈】开发</category>
-      </categories>
-  </entry>
-  <entry>
     <title>《计算机网络原理》学习笔记</title>
     <url>/2021/09/13/note-of-net/</url>
     <content><![CDATA[<p>网原总之是一个没打算认真学的专业课，因为真的对网络没有很大的兴趣。再加上上学期曾经看着迅哥哥他们被网原折磨，自己也没什么信心能学好这门专业课。</p>
@@ -9767,532 +9703,77 @@ v = H\log_2\left(1 + \frac{S}{N}\right)({\rm bps})
       </categories>
   </entry>
   <entry>
-    <title>原创数学题集</title>
-    <url>/2022/07/12/orginal-problems/</url>
-    <content><![CDATA[<p>一些奇妙的数学想法而已，可能是初中、高中、大学题，反正是弄着玩的。</p>
+    <title>Next.js 框架摸索实录</title>
+    <url>/2022/11/24/note-of-next/</url>
+    <content><![CDATA[<p>在出软工小作业的时候遇到了 React Router 配置和跨域问题，虽然这两个都不是什么大问题，我也不是不会解决，但是要是出到作业里面，势必会导致我要写好多文档还要写很多讲解。这个时候 yfgg 告诉我 Next.js 框架好之又好，昨天稍微试了一下感觉确实不错，所以就吃了安利迁移到了 Next.js 框架。但是今天接着写的时候，还是发现不少细节是需要注意的，这里就当备忘了。</p>
 <span id="more"></span>
-<p><span class="math display">\[
-\newcommand{\i}{\mathop{\rm i}}
-\]</span></p>
-<h1 id="problem-1">Problem 1</h1>
-<p>已知函数 <span class="math inline">\(f(x) = [x](x - [x]), x \geq 0\)</span>，这里 <span class="math inline">\([x]\)</span> 表示不大于 <span class="math inline">\(x\)</span> 的最大整数。</p>
-<p>另外定义函数迭代符号 <span class="math inline">\(f^{(n)}\)</span> 如下：</p>
-<p><span class="math display">\[
-\begin{cases}
-f^{(1)}(x) = f(x) \\
-f^{(k + 1)}(x) = f(f^{(k)}(x)), k \in \mathbb{N}^*
-\end{cases}
-\]</span></p>
-<p>证明：对于任何 <span class="math inline">\(x \geq 0\)</span>，都有：</p>
-<p><span class="math display">\[
-\lim_{n \to \infty} f^{(n)}(x) = 0
-\]</span></p>
-<h2 id="solution">Solution</h2>
-<p>首先证明，<span class="math inline">\(x \geq 1\)</span> 时 <span class="math inline">\(f(x) \leq x - 1\)</span>。</p>
-<p>我们不妨记 <span class="math inline">\(\{x\} := x - [x]\)</span>，显然有 <span class="math inline">\(0 \leq \{x\} &lt; 1\)</span>。进一步，根据 <span class="math inline">\(x \geq 1\)</span> 得知 <span class="math inline">\([x] \geq 1\)</span>，那么显然：</p>
-<p><span class="math display">\[
-([x] - 1)(\{x\} - 1) \leq 0
-\]</span></p>
-<p>展开得到：</p>
-<p><span class="math display">\[
-f(x) = [x]\{x\} \leq [x] + \{x\} - 1 = x - 1
-\]</span></p>
-<p>引理证明完毕，回到原题。</p>
-<p>此外，我们需要了解，若 <span class="math inline">\(x \in [0, 1)\)</span>，则有 <span class="math inline">\([x] = 0\)</span>，即 <span class="math inline">\(f(x) = 0\)</span>。</p>
-<p>那么我们考虑下述数列，我们即需要证明下述数列极限为零：</p>
-<p><span class="math display">\[
-x, f(x), f^{(2)}(x), \cdots, f^{(n)}(x), \cdots
-\]</span></p>
-<p>若 <span class="math inline">\(x \in [0, 1)\)</span>，显然 <span class="math inline">\(f(x) = 0\)</span>，且根据 <span class="math inline">\(f(0) = 0\)</span> 得到 <span class="math inline">\(\forall n \in \mathbb{N}^*\)</span> 有 <span class="math inline">\(f^{(n)}(x) = 0\)</span>，上述数列极限显然为零。</p>
-<p>若 <span class="math inline">\(x \geq 1\)</span>，我们只需要证明必然存在 <span class="math inline">\(k \in \mathbb{N}^*\)</span> 使得 <span class="math inline">\(f^{(k)}(x) &lt; 1\)</span> 即可，因为只要该结论成立，就说明 <span class="math inline">\(f^{(k + 1)}(x) = 0\)</span>，从而之后的所有项均为零，结论成立。</p>
-<p>使用反证法，如果结论不成立，即 <span class="math inline">\(\forall k \in \mathbb{N}^*\)</span> 有 <span class="math inline">\(f^{(k)}(x) \geq 1\)</span>。那么根据引理：</p>
-<p><span class="math display">\[
-f^{(k + 1)}(x) \leq f^{(k)}(x) - 1, k \in \mathbb{N}^*
-\]</span></p>
-<p>所以：</p>
-<p><span class="math display">\[
-f^{([x])}(x) \leq f^{([x] - 1)}(x) - 1 \leq \cdots \leq f^{(0)}(x) - [x] = x - [x] \in [0, 1)
-\]</span></p>
-<p>和假设矛盾，故原结论成立。</p>
-<p>至此，结论证明完毕。</p>
-<h1 id="problem-2">Problem 2</h1>
-<p>已知凸多边形 <span class="math inline">\(\mathcal{A}, \mathcal{B}\)</span> 没有公共点，且 <span class="math inline">\(\mathcal{A}\)</span> 的任何一边不平行于 <span class="math inline">\(\mathcal{B}\)</span> 的任何一边。</p>
-<p>已知点 <span class="math inline">\(A \in \mathcal{A}, B \in \mathcal{B}\)</span>。给出已知向量 <span class="math inline">\(\boldsymbol t\)</span>，且已知 <span class="math inline">\(\vec{AB} \parallel \boldsymbol{t}\)</span>。</p>
-<p>证明：当 <span class="math inline">\(\vec{AB}\)</span> 的长度最小的时候，点 <span class="math inline">\(A, B\)</span> 中必有一个为其所在凸多边形的顶点。</p>
-<h2 id="solution-1">Solution</h2>
-<p>使用反证法。假设当 <span class="math inline">\(\|\vec{AB}\|_2\)</span> 取到最小值的时候 <span class="math inline">\(A, B\)</span> 中至少有一点位于其所在多边形的内部（即不位于其所在多边形的边界），不妨令 <span class="math inline">\(A\)</span> 位于 <span class="math inline">\(\mathcal{A}\)</span> 的内部。由于 <span class="math inline">\(\mathcal{A} \cap \mathcal{B} = \varnothing\)</span> 与 <span class="math inline">\(B \in \mathcal{B}\)</span>，可以得知 <span class="math inline">\(B\)</span> 位于多边形 <span class="math inline">\(\mathcal{A}\)</span> 的外部。那么线段 <span class="math inline">\(AB\)</span> 显然与 <span class="math inline">\(\mathcal{A}\)</span> 的边界 <span class="math inline">\(\partial\mathcal{A}\)</span> 有交点，不妨记为 <span class="math inline">\(A&#39;\)</span>。那么我们显然得到 <span class="math inline">\(\|\vec{A&#39;B}\|_2 &lt; \|\vec{AB}\|_2\)</span>，这与最小性假设矛盾，假设不成立。故当 <span class="math inline">\(\|\vec{AB}\|_2\)</span> 取到最小值的时候 <span class="math inline">\(A, B\)</span> 均应当位于其所在多边形的边界上。</p>
-<p>继续使用反证法。假设当 <span class="math inline">\(\|\vec{AB}\|_2\)</span> 取到最小值的时候 <span class="math inline">\(A, B\)</span> 均不位于其所在多边形的顶点。此时不妨假设 <span class="math inline">\(A\)</span> 所在的 <span class="math inline">\(\mathcal{A}\)</span> 的边为线段 <span class="math inline">\(a\)</span>，<span class="math inline">\(B\)</span> 所在的 <span class="math inline">\(\mathcal{B}\)</span> 的边为线段 <span class="math inline">\(b\)</span>。由 <span class="math inline">\(\mathcal{A}\)</span> 的任何一条边不平行于 <span class="math inline">\(\mathcal{B}\)</span> 的任何一条边知 <span class="math inline">\(a\)</span> 不平行于 <span class="math inline">\(b\)</span>，且据假设知 <span class="math inline">\(A\)</span> 不位于 <span class="math inline">\(a\)</span> 的顶点，<span class="math inline">\(B\)</span> 不位于 <span class="math inline">\(b\)</span> 的顶点。</p>
-<p>由于 <span class="math inline">\(a\)</span> 不平行于 <span class="math inline">\(b\)</span>，记 <span class="math inline">\(a\)</span> 所在直线和 <span class="math inline">\(b\)</span> 所在直线的交点为 <span class="math inline">\(C\)</span>，令点 <span class="math inline">\(A&#39;\)</span> 为线段 <span class="math inline">\(AC\)</span> 上一点，过 <span class="math inline">\(A&#39;\)</span> 作 <span class="math inline">\(A&#39;B&#39; \parallel AB\)</span> 与 <span class="math inline">\(b\)</span> 所在直线相交于 <span class="math inline">\(B&#39;\)</span>。显然无论 <span class="math inline">\(A&#39;\)</span> 如何取，均能够满足 <span class="math inline">\(\|\vec{A&#39;B&#39;}\|_2 &lt; \|\vec{AB}\|_2\)</span>。</p>
-<p>由于 <span class="math inline">\(A, B\)</span> 均不是其所在线段的顶点，那么存在一个 <span class="math inline">\(\delta_A &gt; 0\)</span> 满足 <span class="math inline">\(\|\vec{AA&#39;}\|_2 &lt; \delta_A\)</span> 时即有 <span class="math inline">\(A&#39; \in a\)</span>，即 <span class="math inline">\(A&#39; \in \mathcal{A}\)</span>。同理也存在类似的 <span class="math inline">\(\delta_B &gt; 0\)</span> 满足 <span class="math inline">\(\|\vec{BB&#39;}\|_2 &lt; \delta_B\)</span> 时即有 <span class="math inline">\(B&#39; \in \mathcal{B}\)</span>。</p>
-<p>考虑到 <span class="math inline">\(\triangle CAB \backsim \triangle CA&#39;B&#39;\)</span>，我们有下述关系：</p>
-<p><span class="math display">\[
-\frac{\|\vec{AA&#39;}\|_2}{\|\vec{BB&#39;}\|_2} = \frac{\|\vec{CA}\|_2}{\|\vec{CB}\|_2} \iff\|\vec{AA&#39;}\|_2 = \frac{\|\vec{CA}\|_2 \cdot \|\vec{BB&#39;}\|_2}{\|\vec{CB}\|_2}
-\]</span></p>
-<p>故我们只需要令：</p>
-<p><span class="math display">\[
-0 &lt; \|\vec{AA&#39;}\|_2 &lt; \min\left\{\delta_A, \frac{\|\vec{CA}\|_2 \cdot \delta_B}{\|\vec{CB}\|_2}\right\}
-\]</span></p>
-<p>即可保证 <span class="math inline">\(\|\vec{AA&#39;}\|_2 &lt; \delta_A\)</span> 且 <span class="math inline">\(\|\vec{BB&#39;}\|_2 &lt; \delta_B\)</span>，这就保证了 <span class="math inline">\(A&#39; \in \mathcal{A}, B&#39; \in \mathcal{B}\)</span>，并且有 <span class="math inline">\(\|\vec{A&#39;B&#39;}\|_2 &lt; \|\vec{AB}\|_2\)</span>。这样就与最小性假设矛盾，假设不成立。故当 <span class="math inline">\(\|\vec{AB}\|_2\)</span> 取到最小值的时候 <span class="math inline">\(A, B\)</span> 中至少有一个点为其所在多边形的顶点。</p>
-<h1 id="problem-3">Problem 3</h1>
-<p>(Credit to PKU 零之审判)</p>
-<p>边长为 <span class="math inline">\(2\)</span> 的正方形 <span class="math inline">\(ABCD\)</span> 内有四条长度为 <span class="math inline">\(1\)</span> 的线段 <span class="math inline">\(l_{1, 2, 3, 4}\)</span>，这四条线段满足：</p>
+<h1 id="初始配置">初始配置</h1>
+<p>由于 Next.js 自己带了不少初始配置，所以加东西的时候不一定每个都需要自己从头再来，完全可以用官方模板。</p>
+<p>我出的小作业采用 Next.js + TypeScript + ESLint + Jest，这一整套模板也正在编写，到时候可以开放给同学们直接下载。</p>
+<h1 id="csr-还是-ssr">CSR 还是 SSR</h1>
+<p>Next.js 框架的一大优势就在 SSR。然而说实话我自己也没有特别明白 SSR 之类的概念，所以昨晚花了点时间学了一下。</p>
+<p>最早期的前后端耦合应用实际上就采用 SSR，即 <strong>S</strong>erver <strong>S</strong>ide <strong>R</strong>ender，服务端渲染。当时严格而言就没有前端这个概念，服务器直接将渲染好的 HTML 扔给浏览器就结束了。</p>
+<p>而随着前后端分离开发概念的出现，Vue、React 等框架逐渐采用 CSR，即 <strong>C</strong>lient <strong>S</strong>ide <strong>R</strong>ender，客户端渲染。CSR 中，数据交互大致可以描述为：</p>
 <ul>
-<li><span class="math inline">\(l_i\)</span> 与 <span class="math inline">\(l_{i + 1}\)</span> 相交但其内部不相交（即交点为 <span class="math inline">\(l_i\)</span> 或 <span class="math inline">\(l_{i + 1}\)</span> 的端点）</li>
-<li><span class="math inline">\(l_1, l_3\)</span> 没有公共点且 <span class="math inline">\(l_2, l_4\)</span> 没有公共点</li>
-<li><span class="math inline">\(l_i\)</span> 垂直于 <span class="math inline">\(l_{i + 1}\)</span></li>
+<li>浏览器向前端服务器请求模板 HTML（或者说空缺关键数据的 HTML），这些 HTML 中携带获取关键数据的脚本</li>
+<li>浏览器渲染模板 HTML，执行获取数据的脚本，向后端服务器请求关键数据</li>
+<li>浏览器获得关键数据后，调整 DOM 展示最终页面</li>
 </ul>
-<p>上述陈述中 <span class="math inline">\(i \in \{1, 2, 3, 4\}\)</span>，并且定义 <span class="math inline">\(l_5 := l_1\)</span>。</p>
-<p>记 <span class="math inline">\(S = l_1 \cup l_2 \cup l_3 \cup l_4\)</span>，<span class="math inline">\(V\)</span> 为正方形 <span class="math inline">\(ABCD\)</span> 四边中点构成的集合，定义：</p>
-<p><span class="math display">\[
-d := \max_{v \in V, s \in S} |v - s|
-\]</span></p>
-<p>求 <span class="math inline">\(d\)</span> 的最小值。</p>
-<h2 id="solution-2">Solution</h2>
-<p>考虑如下图所示的 <span class="math inline">\(l_{1, 2, 3, 4}\)</span>：</p>
-<p><img src="/uploads/original-problems/1.png" height="20%" width="20%" /></p>
-<p>这里 <span class="math inline">\(l_{1, 2, 3, 4}\)</span> 构成边长为 <span class="math inline">\(1\)</span> 的正方形，该正方形与正方形 <span class="math inline">\(ABCD\)</span> 有共同中心且 <span class="math inline">\(l_1 \parallel AD\)</span>。不难看出若令 <span class="math inline">\(M\)</span> 为 <span class="math inline">\(CD\)</span> 中点，<span class="math inline">\(N\)</span> 为 <span class="math inline">\(l_1, l_2\)</span> 交点，则 <span class="math inline">\(d = MN = \dfrac{\sqrt{10}}{2}\)</span>。</p>
-<p>下面我们证明 <span class="math inline">\(d \geq \dfrac{\sqrt{10}}{2}\)</span>。为了证明该结论，我们考虑下述圆 <span class="math inline">\(P\)</span>：</p>
-<p><img src="/uploads/original-problems/3.png" height="20%" width="20%" /></p>
-<p>圆 <span class="math inline">\(P\)</span> 以正方形 <span class="math inline">\(ABCD\)</span> 的中心 <span class="math inline">\(O\)</span> 为圆心，半径为 <span class="math inline">\(\dfrac{\sqrt{2}}{2}\)</span>。</p>
-<p>我们首先证明下述引理，即如果 <span class="math inline">\(l_{1, 2, 3, 4}\)</span> 上有点 <span class="math inline">\(X\)</span> 在圆 <span class="math inline">\(P\)</span> 外或者在圆 <span class="math inline">\(P\)</span> 边界上，那么 <span class="math inline">\(d \geq \dfrac{\sqrt{10}}{2}\)</span>。</p>
-<p>我们考虑下述图形：</p>
-<p><img src="/uploads/original-problems/4.png" height="35%" width="35%" /></p>
-<p>这里的四个虚线圆为以正方形 <span class="math inline">\(ABCD\)</span> 各边中点为圆心，以 <span class="math inline">\(\dfrac{\sqrt{10}}{2}\)</span> 为半径所作的。注意到由于这四个圆的内部（不包含边界）的交集完全位于圆 <span class="math inline">\(P\)</span> 的内部，这说明 <span class="math inline">\(X\)</span> 必然在这四个虚线圆中的某个之外或者这四个虚线圆中的某个的边界上。也就是说必然存在某个 <span class="math inline">\(M \in V\)</span> 使得 <span class="math inline">\(MX \geq \dfrac{\sqrt{10}}{2}\)</span>，从而：</p>
-<p><span class="math display">\[
-d \geq MX \geq \dfrac{\sqrt{10}}{2}
-\]</span></p>
-<p>引理证明完毕，回到原题。</p>
-<p>根据引理我们得知，如果 <span class="math inline">\(l_{1, 2, 3, 4}\)</span> 上有点在圆 <span class="math inline">\(P\)</span> 外，则欲证命题成立，所以现在只需要考虑 <span class="math inline">\(S \subseteq P\)</span>。</p>
-<p>根据题设对四条线段的约束，我们可以得知这四条线段仅有下述两种可能：</p>
-<p><img src="/uploads/original-problems/2.png" height="50%" width="50%" /></p>
-<p>上述两种情况的旋转、镜面对称等视为同种情况。</p>
-<p>首先考虑左边的情况，这里记 <span class="math inline">\(A&#39;D&#39; = B&#39;C&#39; =: a, A&#39;B&#39; = C&#39;D&#39; =: b\)</span>，我们有 <span class="math inline">\(0 &lt; a, b \leq 1\)</span>。根据 <span class="math inline">\(S \subseteq P\)</span> 此时必然有下述两条虚线段长度不大于 <span class="math inline">\(\sqrt{2}\)</span>：</p>
-<p><img src="/uploads/original-problems/5.png" height="25%" width="25%" /></p>
-<p>从而有下述约束：</p>
-<p><span class="math display">\[
-\begin{cases}
-a^2 + (2 - b)^2 \leq 2 \Rightarrow a^2 + b^2 - 4b + 2 \leq 0 \\
-b^2 + (2 - a)^2 \leq 2 \Rightarrow a^2 + b^2 - 4a + 2 \leq 0 \\
-\end{cases}
-\]</span></p>
-<p>两式相加并整理得到：</p>
-<p><span class="math display">\[
-(a - 1)^2 + (b - 1)^2 \leq 0
-\]</span></p>
-<p>可知 <span class="math inline">\(a = b = 1\)</span>，此时 <span class="math inline">\(A&#39;, B&#39;, C&#39;, D&#39;\)</span> 构成边长为 <span class="math inline">\(1\)</span> 的正方形。考虑到边长为 <span class="math inline">\(1\)</span> 的正方形的外接圆半径为 <span class="math inline">\(\dfrac{\sqrt{2}}{2}\)</span>，所以为了 <span class="math inline">\(S \subseteq P\)</span>，只能有该正方形内接于圆 <span class="math inline">\(P\)</span>。</p>
-<p>之后考虑右边的情况，根据 <span class="math inline">\(S \subseteq P\)</span> 此时必然有下述两条虚线段长度不大于 <span class="math inline">\(\sqrt{2}\)</span>。</p>
-<p>这里记 <span class="math inline">\(A&#39;B&#39; = C&#39;D&#39; =: a, A&#39;A&#39;&#39; =: b, D&#39;D&#39;&#39; =: c\)</span>，我们有 <span class="math inline">\(0 &lt; a \leq 1\)</span> 以及 <span class="math inline">\(0 \leq b, c \leq 1 - a\)</span>：</p>
-<p><img src="/uploads/original-problems/6.png" height="20%" width="20%" /></p>
-<p>从而有下述约束：</p>
-<p><span class="math display">\[
-\begin{cases}
-D&#39;&#39;C&#39; + B&#39;B&#39;&#39; \leq 1 \Rightarrow b - c + 1 \leq 1 \\
-A&#39;&#39;B&#39; + C&#39;C&#39;&#39; \leq 1 \Rightarrow c - b + 1 \leq 1 \\
-\end{cases}
-\]</span></p>
-<p>可知 <span class="math inline">\(b = c\)</span>，此时 <span class="math inline">\(A&#39;&#39;, B&#39;&#39;, C&#39;&#39;, D&#39;&#39;\)</span> 构成边长为 <span class="math inline">\(1\)</span> 的正方形。考虑到边长为 <span class="math inline">\(1\)</span> 的正方形的外接圆半径为 <span class="math inline">\(\dfrac{\sqrt{2}}{2}\)</span>，所以为了 <span class="math inline">\(S \subseteq P\)</span>，只能有该正方形内接于圆 <span class="math inline">\(P\)</span>。</p>
-<p>综上所述，此时无论如何均存在四个 <span class="math inline">\(S\)</span> 内的点构成内接于圆 <span class="math inline">\(P\)</span> 的正方形，至少说明 <span class="math inline">\(S\)</span> 中存在某一个点 <span class="math inline">\(X\)</span> 在圆 <span class="math inline">\(P\)</span> 边界上。根据引理，原命题证明完毕。</p>
-<p>综上所述，<span class="math inline">\(d\)</span> 的最小值为 <span class="math inline">\(\dfrac{\sqrt{10}}{2}\)</span>。</p>
-<h1 id="problem-4">Problem 4</h1>
-<p>记 <span class="math inline">\(\theta_{n, k} := \dfrac{(2k + 1)\pi}{2^n}\)</span>，证明：</p>
-<p><span class="math display">\[
-\sum_{k = 0}^{2^n - 1} \frac{1}{1 - \cos\theta_{n, k}} = 2^{2n - 1}
-\]</span></p>
-<h2 id="solution-3">Solution</h2>
-<p>我们注意到下述恒等式：</p>
-<p><span class="math display">\[
-\frac{4}{1 - \cos 2\theta} = \frac{1}{1 - \cos\theta} + \frac{1}{1 + \cos\theta}
-\]</span></p>
-<p>证明如下：</p>
-<p><span class="math display">\[
-\frac{1}{1 - \cos\theta} + \frac{1}{1 + \cos\theta} = \frac{2}{1 - \cos^2\theta} = \frac{4}{1 - (2\cos^2\theta - 1)} = \frac{4}{1 - \cos 2\theta}
-\]</span></p>
-<p>基于上述恒等式，我们令：</p>
-<p><span class="math display">\[
-S_n := \sum_{k = 0}^{2^n - 1} \frac{1}{1 - \cos\theta_{n, k}}
-\]</span></p>
-<p>我们即可得到：</p>
-<p><span class="math display">\[
-S_{n + 1} = \sum_{k = 0}^{2^{n + 1} - 1} \frac{1}{1 - \cos\theta_{n + 1, k}} = \sum_{k = 0}^{2^n - 1} \left(\frac{1}{1 - \cos\theta_{n + 1, k}} + \frac{1}{1 - \cos\theta_{n + 1, 2^n + k}}\right) \\
-\]</span></p>
-<p>这里注意到：</p>
-<p><span class="math display">\[
-\cos\theta_{n + 1, 2^n + k} = \cos\dfrac{[2(2^n + k) + 1]\pi}{2^{n + 1}} = \cos\left(1 + \frac{2k + 1}{2^{n + 1}}\right)\pi = -\cos\theta_{n + 1, k}
-\]</span></p>
-<p>另外注意到：</p>
-<p><span class="math display">\[
-\theta_{n, k} = \dfrac{(2k + 1)\pi}{2^n} = 2\theta_{n + 1, k}
-\]</span></p>
-<p>那么：</p>
-<p><span class="math display">\[
-\begin{aligned}
-S_{n + 1} &amp;= \sum_{k = 0}^{2^n - 1} \left(\frac{1}{1 - \cos\theta_{n + 1, k}} + \frac{1}{1 - \cos\theta_{n + 1, 2^n + k}}\right) \\
-&amp;= \sum_{k = 0}^{2^n - 1} \left(\frac{1}{1 - \cos\theta_{n + 1, k}} + \frac{1}{1 + \cos\theta_{n + 1, k}}\right) \\
-&amp;= \sum_{k = 0}^{2^n - 1} \frac{4}{1 - \cos2\theta_{n + 1, k}} \\
-&amp;= 4\sum_{k = 0}^{2^n - 1} \frac{1}{1 - \cos\theta_{n, k}} \\
-&amp;= 4S_n
-\end{aligned}
-\]</span></p>
-<p>而显然有 <span class="math inline">\(S_1 = 2\)</span>，从而命题证明完毕。</p>
-<h1 id="problem-5">Problem 5</h1>
-<p>已知正整数 <span class="math inline">\(n\)</span> 与实数 <span class="math inline">\(x\)</span>，证明：</p>
-<p><span class="math display">\[
-\sum_{k = 0}^n C_n^k\sin kx = 2^n\cos^n\frac{x}{2}\sin\frac{nx}{2}
-\]</span></p>
-<h2 id="solution-4">Solution</h2>
-<p>考虑 <span class="math inline">\((\cos x + \i\sin x + 1)^n \in \mathbb{C}\)</span> 的虚部。</p>
-<p>一方面：</p>
-<p><span class="math display">\[
-\begin{aligned}
-(\cos x + \i\sin x + 1)^n &amp;= \left[\left(2\cos^2\frac{x}{2} - 1\right) + 2\i\sin\frac{x}{2}\cos\frac{x}{2} + 1\right]^n \\
-&amp;= 2^n\cos^n\frac{x}{2}\left(\cos\frac{x}{2} + \i\sin\frac{x}{2}\right)^n \\
-&amp;= 2^n\cos^n\frac{x}{2}\cos\frac{nx}{2} + \i2^n\cos^n\frac{x}{2}\sin\frac{nx}{2}
-\end{aligned}
-\]</span></p>
-<p>可知该复数的虚部即为欲证等式的右侧。</p>
-<p>另一方面：</p>
-<p><span class="math display">\[
-\begin{aligned}
-(\cos x + \i\sin x + 1)^n &amp;= \sum_{k = 0}^n C_n^k(\cos x + \i\sin x)^k \\
-&amp;= \sum_{k = 0}^n C_n^k(\cos kx + \i\sin kx) \\
-&amp;= \sum_{k = 0}^n C_n^k\cos kx + \i\sum_{k = 0}^n C_n^k\sin kx
-\end{aligned}
-\]</span></p>
-<p>可知该复数的虚部即为欲证等式的左侧。</p>
-<p>综上所述，证明完毕。</p>
-<h1 id="problem-6">Problem 6</h1>
-<p>已知数列 <span class="math inline">\(\{a_n\}_{n \geq 0}\)</span> 满足 <span class="math inline">\(a_0 = 1, a_1 = 0\)</span> 且 <span class="math inline">\(a_{n + 2} = (n + 1)(a_{n + 1} + a_n)\)</span>。证明：</p>
-<p><span class="math display">\[
-\sum_{k = 0}^n C_n^ka_k = n!
-\]</span></p>
-<h2 id="solution-5">Solution</h2>
-<p>定义命题 <span class="math inline">\(A_n\)</span> 表示下述等式成立：</p>
-<p><span class="math display">\[
-\sum_{k = 0}^{n + 1} C_{n + 1}^ka_k = (n + 1)\sum_{k = 0}^n C_n^ka_k
-\]</span></p>
-<p>命题 <span class="math inline">\(B_n\)</span> 表示下述等式成立：</p>
-<p><span class="math display">\[
-\sum_{k = 0}^n C_n^ka_{k + 1} = n\sum_{k = 0}^n C_n^ka_k
-\]</span></p>
-<p>首先我们证明由 <span class="math inline">\(B_n\)</span> 能推出 <span class="math inline">\(A_n\)</span>。现在在 <span class="math inline">\(B_n\)</span> 成立的基础上，考虑下述计算：</p>
-<p><span class="math display">\[
-\begin{aligned}
-&amp;(n + 1)\sum_{k = 0}^n C_n^ka_k = n\sum_{k = 0}^n C_n^ka_k + \sum_{k = 0}^n C_n^ka_k = \sum_{k = 0}^n C_n^ka_{k + 1} + \sum_{k = 0}^n C_n^ka_k \\
-=&amp; C_n^na_{n + 1} + \left(\sum_{k = 1}^n C_n^{k - 1}a_k + \sum_{k = 1}^n C_n^ka_k\right) + C_n^0a_0 = C_n^na_{n + 1} + \sum_{k = 1}^n (C_n^{k - 1} + C_n^k)a_k + C_n^0a_0 \\
-=&amp; C_{n + 1}^{n + 1}a_{n + 1} + \sum_{k = 1}^n C_{n + 1}^ka_k + C_{n + 1}^0a_0 = \sum_{k = 0}^{n + 1} C_{n + 1}^ka_k
-\end{aligned}
-\]</span></p>
-<p>这就说明了在 <span class="math inline">\(B_n\)</span> 成立的基础上 <span class="math inline">\(A_n\)</span> 成立，其中第二个等号的依据为 <span class="math inline">\(B_n\)</span> 成立。</p>
-<p>之后我们证明 <span class="math inline">\(A_n, B_n\)</span> 能推出 <span class="math inline">\(B_{n + 1}\)</span>。现在在 <span class="math inline">\(A_n, B_n\)</span> 均成立的基础上，考虑下述计算：</p>
-<p><span class="math display">\[
-\begin{aligned}
-&amp;\sum_{k = 0}^{n + 1} C_{n + 1}^ka_{k + 1} = C_{n + 1}^0a_1 + \sum_{k = 1}^{n + 1} C_{n + 1}^ka_{k + 1} = \sum_{k = 1}^{n + 1} \frac{n + 1}{k}C_{n}^{k - 1}a_{k + 1} \\
-=&amp; (n + 1)\sum_{k = 0}^{n} \frac{1}{k + 1}C_{n}^{k} \cdot (k + 1)(a_{k + 1} + a_k) = (n + 1)\left(\sum_{k = 0}^{n} C_{n}^{k}a_{k + 1} + \sum_{k = 0}^{n} C_{n}^{k}a_k\right) \\
-=&amp; (n + 1)\left(n\sum_{k = 0}^{n} C_{n}^{k}a_k + \sum_{k = 0}^{n} C_{n}^{k}a_k\right) = (n + 1)\left[(n + 1)\sum_{k = 0}^{n} C_{n}^{k}a_k\right] = (n + 1)\sum_{k = 0}^{n + 1} C_{n + 1}^ka_k\\
-\end{aligned}
-\]</span></p>
-<p>这就说明了在 <span class="math inline">\(A_n, B_n\)</span> 成立的基础上 <span class="math inline">\(B_{n + 1}\)</span> 成立，其中倒数第二个等号的依据为 <span class="math inline">\(B_n\)</span> 成立，倒数第一个等号的依据为 <span class="math inline">\(A_n\)</span> 成立。</p>
-<p>而我们显然可以计算出 <span class="math inline">\(a_2 = 1\)</span>，从而得知命题 <span class="math inline">\(B_1\)</span> 成立，进而据归纳法得到对任何的正整数 <span class="math inline">\(n\)</span>，都有命题 <span class="math inline">\(A_n\)</span> 成立。据命题 <span class="math inline">\(A_n\)</span> 成立即可得到本问题欲证命题成立。</p>
-<h1 id="problem-7">Problem 7</h1>
-<p>已知正数数列 <span class="math inline">\(\{x_k\}_{0 \leq k \leq n}\)</span> 满足：</p>
-<p><span class="math display">\[
-x_0 = \sum_{k = 1}^n x_k
-\]</span></p>
-<p>定义数列 <span class="math inline">\(\{y_k\}_{1 \leq k \leq n}\)</span> 为：</p>
-<p><span class="math display">\[
-y_k := \sqrt{\sum_{i = 0}^{k - 1} x_i} \sqrt{\sum_{i = k}^n x_i}
-\]</span></p>
-<p>证明：</p>
-<p><span class="math display">\[
-1 &lt; \sum_{k = 1}^n \frac{x_k}{y_k} &lt; \frac{\pi}{2}
-\]</span></p>
-<h2 id="solution-6">Solution</h2>
-<p>根据均值不等式显然有：</p>
-<p><span class="math display">\[
-y_k = \sqrt{\sum_{i = 0}^{k - 1} x_i} \sqrt{\sum_{i = k}^n x_i} \leq \frac{1}{2}\left(\sum_{i = 0}^{k - 1} x_i + \sum_{i = k}^n x_i\right) = \frac{1}{2}\left(x_0 + \sum_{i = 1}^n x_i\right) = x_0
-\]</span></p>
-<p>并且由于：</p>
-<p><span class="math display">\[
-\sum_{i = 0}^{k - 1} x_i &gt; x_0 = \sum_{i = 1}^n x_i &gt; \sum_{i = k}^n x_i
-\]</span></p>
-<p>得知上述等号无法取到，那么：</p>
-<p><span class="math display">\[
-\sum_{k = 1}^n \frac{x_k}{y_k} &gt; \sum_{k = 1}^n \frac{x_k}{x_0} = 1
-\]</span></p>
-<p>从而不等式左侧得证。</p>
-<p>为了证明不等式右侧，我们考虑下述数列 <span class="math inline">\(\{S_k\}_{0 \leq k \leq n}\)</span>，其在 <span class="math inline">\(k = 0\)</span> 的时候定义为 <span class="math inline">\(S_0 := 0\)</span>，在 <span class="math inline">\(k &gt; 0\)</span> 的时候定义为：</p>
-<p><span class="math display">\[
-S_k := \sum_{i = 1}^k \frac{x_k}{x_0}
-\]</span></p>
-<p>考虑到 <span class="math inline">\(\{x_k\}_{0 \leq k \leq n}\)</span> 是正数数列，可以得知 <span class="math inline">\(\{S_k\}_{0 \leq k \leq n}\)</span> 是递增数列。另一方面，我们可以得知 <span class="math inline">\(S_n = 1\)</span>。综合上述条件我们可以得知 <span class="math inline">\(\{S_k\}_{0 \leq k \leq n}\)</span> 各项均落在区间 <span class="math inline">\([0, 1]\)</span> 上。</p>
-<p>那么即存在所有项均落在区间 <span class="math inline">\(\left[0, \dfrac{\pi}{2}\right]\)</span> 上的数列 <span class="math inline">\(\{\theta_k\}_{0 \leq k \leq n}\)</span> 使得 <span class="math inline">\(\sin\theta_k = S_k\)</span> 对所有 <span class="math inline">\(0 \leq k \leq n\)</span> 成立。此时 <span class="math inline">\(\theta_0 = 0\)</span> 并且 <span class="math inline">\(\theta_n = \dfrac{\pi}{2}\)</span>。另一方面，据 <span class="math inline">\(\{S_k\}_{0 \leq k \leq n}\)</span> 是递增数列得知 <span class="math inline">\(\{\theta_k\}_{0 \leq k \leq n}\)</span> 是递增数列。</p>
-<p>从而我们得知：</p>
-<p><span class="math display">\[
-\begin{aligned}
-y_k &amp;= \sqrt{\sum_{i = 0}^{k - 1} x_i} \sqrt{\sum_{i = k}^n x_i} = x_0 \sqrt{\sum_{i = 0}^{k - 1} \frac{x_i}{x_0}} \sqrt{\sum_{i = k}^n \frac{x_i}{x_0}} = x_0 \sqrt{1 + S_{k - 1}} \sqrt{S_n - S_{k - 1}} \\
-&amp;= x_0 \sqrt{1 - S^2_{k - 1}} = x_0 \sqrt{1 - \sin^2\theta_{k - 1}} = x_0\cos\theta_{k - 1}
-\end{aligned}
-\]</span></p>
-<p>从而：</p>
-<p><span class="math display">\[
-\begin{aligned}
-\sum_{k = 1}^n \frac{x_k}{y_k} &amp;= \sum_{k = 1}^n \frac{x_k}{x_0\cos\theta_{k - 1}} = \sum_{k = 1}^n \frac{S_k - S_{k - 1}}{\cos\theta_{k - 1}} = \sum_{k = 1}^n \frac{\sin\theta_k - \sin\theta_{k - 1}}{\cos\theta_{k - 1}} \\
-&amp;= \sum_{k = 1}^n \frac{2\cos\dfrac{\theta_k + \theta_{k - 1}}{2}\sin\dfrac{\theta_k - \theta_{k - 1}}{2}}{\cos\theta_{k - 1}} &lt; 2\sum_{k = 1}^n\sin\dfrac{\theta_k - \theta_{k - 1}}{2}
-\end{aligned}
-\]</span></p>
-<p>这里的不等号考虑到 <span class="math inline">\(\{\theta_k\}_{0 \leq k \leq n}\)</span> 是递增数列，从而 <span class="math inline">\(\theta_k &gt; \theta_{k - 1}\)</span>。</p>
-<p>应用不等式 <span class="math inline">\(\sin x &lt; x, x &gt; 0\)</span> 得到：</p>
-<p><span class="math display">\[
-\sum_{k = 1}^n \frac{x_k}{y_k} &lt; 2\sum_{k = 1}^n\sin\dfrac{\theta_k - \theta_{k - 1}}{2} &lt; \sum_{k = 1}^n \theta_k - \theta_{k - 1} = \theta_n - \theta_0 = \frac{\pi}{2}
-\]</span></p>
-<p>综上所述，证明完毕。</p>
-<h1 id="problem-8">Problem 8</h1>
-<p>已知函数：</p>
-<p><span class="math display">\[
-f(x) = \frac{1}{[x] - \{x\} + 1}
-\]</span></p>
-<p>定义数列 <span class="math inline">\(a_1 = 1\)</span> 以及 <span class="math inline">\(a_{n + 1} = f(a_n), n \geq 1\)</span>。证明：所有正有理数在数列 <span class="math inline">\(\{a_n\}_{n \geq 1}\)</span> 中均出现且仅出现一次。</p>
-<h2 id="solution-7">Solution</h2>
-<p>若 <span class="math inline">\(x \in \mathbb{N}^+\)</span>，显然：</p>
-<p><span class="math display">\[
-f(x) = \frac{1}{x + 1} \in \mathbb{Q}^+
-\]</span></p>
-<p>若 <span class="math inline">\(x \in \mathbb{Q}^+ \backslash \mathbb{N}^+\)</span>，记 <span class="math inline">\(n := [x], \dfrac{p}{q} := \{x\}\)</span>，这里 <span class="math inline">\(p, q \in \mathbb{N}^+, p &lt; q, \mathop{\rm gcd}(p, q) = 1\)</span>，那么：</p>
-<p><span class="math display">\[
-f(x) = \frac{q}{nq - p + q} \in \mathbb{Q}
-\]</span></p>
-<p>注意到 <span class="math inline">\(nq - p + q = (n + 1)q - p \geq q - p &gt; 0\)</span>，所以 <span class="math inline">\(f(x) \in \mathbb{Q}^+\)</span>。</p>
-<p>所以若 <span class="math inline">\(x \in \mathbb{Q}^+\)</span> 则 <span class="math inline">\(f(x) \in \mathbb{Q}^+\)</span>，据归纳法得知 <span class="math inline">\(\{a_n\}_{n \geq 1}\)</span> 中项均是正有理数。</p>
-<p>下面说明数列 <span class="math inline">\(\{a_n\}_{n \geq 1}\)</span> 中没有重复项，即不存在 <span class="math inline">\(m \neq n, m, n \in \mathbb{N}^+\)</span> 使得 <span class="math inline">\(a_m = a_n\)</span>。</p>
-<p>首先说明 <span class="math inline">\(f\)</span> 是单射，即不存在 <span class="math inline">\(x \neq y\)</span> 使得 <span class="math inline">\(f(x) = f(y)\)</span>。使用反证法，如果存在 <span class="math inline">\(x \neq y\)</span> 使得 <span class="math inline">\(f(x) = f(y)\)</span>，那么：</p>
-<p><span class="math display">\[
-\frac{1}{[x] - \{x\} + 1} = \frac{1}{[y] - \{y\} + 1} \iff [x] - [y] = \{x\} - \{y\}
-\]</span></p>
-<p>那么：</p>
-<p><span class="math display">\[
-\mathbb{Z} \ni |[x] - [y]| = |\{x\} - \{y\}| &lt; 1
-\]</span></p>
-<p>从而 <span class="math inline">\([x] = [y]\)</span>，进一步 <span class="math inline">\(\{x\} = \{y\}\)</span>，也就是说 <span class="math inline">\(x = y\)</span>，矛盾。故 <span class="math inline">\(f\)</span> 是单射。</p>
-<p>回到原先证明，使用反证法。如果存在 <span class="math inline">\(m \neq n, m, n \in \mathbb{N}^+\)</span> 使得 <span class="math inline">\(a_m = a_n\)</span>，考虑到 <span class="math inline">\(f(0) = 1\)</span>，记函数迭代符号为 <span class="math inline">\(f^{(n)}\)</span>，可以得到 <span class="math inline">\(f^{(m)}(0) = f^{(n)}(0)\)</span>。考虑到 <span class="math inline">\(f\)</span> 是单射，所以 <span class="math inline">\(f^{(|m - n|)}(0) = 0\)</span>，即 <span class="math inline">\(a_{|m - n|} = 0\)</span>。这与先前证明的该数列均为正有理数矛盾。故数列 <span class="math inline">\(\{a_n\}_{n \geq 1}\)</span> 中没有重复项。</p>
-<p>现在我们仅需要说明任何正有理数均出现在该数列中即可。</p>
-<p>我们令 <span class="math inline">\(g(x) := x + 1, h(x) := \dfrac{x}{x + 1}\)</span>。我们证明 <span class="math inline">\(g(a_n) = a_{2n + 1}, h(a_n) = a_{2n}\)</span>。</p>
-<p>使用归纳法，<span class="math inline">\(n = 1\)</span> 时上述命题的成立是显然的，假设 <span class="math inline">\(n = k\)</span> 时上述命题成立，考虑 <span class="math inline">\(n = k + 1\)</span>。此时：</p>
-<p><span class="math display">\[
-a_{2k + 2} = f(a_{2k + 1}) = f(g(a_k)) = f(a_k + 1) = \frac{1}{[a_k + 1] - \{a_k + 1\} + 1} = \frac{1}{[a_k] - \{a_k\} + 2}
-\]</span></p>
-<p>而：</p>
-<p><span class="math display">\[
-h(a_{k + 1}) = \frac{a_{k + 1}}{a_{k + 1} + 1} = \frac{1}{1 + a_{k + 1}^{-1}} = \frac{1}{1 + (f(a_k))^{-1}} = \frac{1}{1 + ([a_k] - \{a_k\} + 1)} = \frac{1}{[a_k] - \{a_k\} + 2}
-\]</span></p>
-<p>故 <span class="math inline">\(h(a_{k + 1}) = a_{2k + 2}\)</span>，此时：</p>
-<p><span class="math display">\[
-a_{2k + 3} = f(a_{2k + 2}) = f(h(a_{k + 1})) = \frac{1}{[h(a_{k + 1})] - \{h(a_{k + 1})\} + 1}
-\]</span></p>
-<p>由于 <span class="math inline">\(x &gt; 0\)</span> 时 <span class="math inline">\(0 &lt; h(x) &lt; 1\)</span>，所以：</p>
-<p><span class="math display">\[
-a_{2k + 3} = \frac{1}{1 - h(a_{k + 1})} = \frac{1}{1 - \dfrac{a_{k + 1}}{a_{k + 1} + 1}} = a_{k + 1} + 1 = g(a_{k + 1})
-\]</span></p>
-<p>故 <span class="math inline">\(g(a_{k + 1}) = a_{2k + 3}\)</span>。据归纳法，证明完毕。</p>
-<p>定义函数：</p>
-<p><span class="math display">\[
-\varphi(x) := \begin{cases}
-g^{-1}(x) &amp; x \geq 1 \\
-h^{-1}(x) &amp; x &lt; 1 \\
-\end{cases} = \begin{cases}
-x - 1 &amp; x \geq 1 \\
-\dfrac{x}{1 - x} &amp; x &lt; 1 \\
-\end{cases}
-\]</span></p>
-<p>对于既约分数 <span class="math inline">\(\dfrac{p}{q} \in \mathbb{Q}^+\)</span>，显然有：</p>
-<p><span class="math display">\[
-\varphi\left(\dfrac{p}{q}\right) = \begin{cases}
-\dfrac{p - q}{q} &amp; p \geq q \\
-\dfrac{p}{q - p} &amp; p &lt; q \\
-\end{cases}
-\]</span></p>
-<p>显然任何正既约分数经过 <span class="math inline">\(\varphi\)</span> 映射后依然既约且分子和分母的和严格减少（特别规定 <span class="math inline">\(0\)</span> 的分子分母和为 <span class="math inline">\(0\)</span>），而 <span class="math inline">\(\varphi(0) = 0\)</span>，分子和分母的和保持不变。</p>
-<p>对任何正既约分数 <span class="math inline">\(\dfrac{p}{q}\)</span>，考虑序列 <span class="math inline">\(\dfrac{p}{q}, \varphi\left(\dfrac{p}{q}\right), \varphi^{(2)}\left(\dfrac{p}{q}\right), \cdots, \varphi^{(n)}\left(\dfrac{p}{q}\right), \cdots\)</span>，序列中分子和分母的和显然始终非负且不增，这意味着从某一项开始分子分母和始终不变，而此时序列的项仅有可能全零。考虑到 <span class="math inline">\(\varphi(x) = 0\)</span> 的解仅有 <span class="math inline">\(x = 0\)</span> 或者 <span class="math inline">\(x = 1\)</span>，这意味着序列中必然有 <span class="math inline">\(1\)</span>。</p>
-<p>这说明对任何正既约分数 <span class="math inline">\(\dfrac{p}{q}\)</span> 存在某一个 <span class="math inline">\(g^{-1}, h^{-1}\)</span> 组成的有限序列使得，这里 <span class="math inline">\(\circ\)</span> 是映射复合符号：</p>
-<p><span class="math display">\[
-g^{-1} \circ h^{-1} \circ h^{-1} \circ \cdots \circ g^{-1}\left(\dfrac{p}{q}\right) = 1
-\]</span></p>
-<p>也就是存在某一个 <span class="math inline">\(g, h\)</span> 组成的有限序列使得：</p>
-<p><span class="math display">\[
-g \circ \cdots \circ h \circ h \circ g(1) = \dfrac{p}{q}
-\]</span></p>
-<p>据之前的证明，<span class="math inline">\(g \circ \cdots \circ h \circ h \circ g(1)\)</span> 显然在数列 <span class="math inline">\(\{a_n\}_{n \geq 1}\)</span> 内，证明完毕。</p>
-<h1 id="problem-9">Problem 9</h1>
-<p>(Credit to 2023 某四省联考数学试卷)</p>
-<p>椭圆曲线可以用于区块链等技术中的加密环节。</p>
-<p>定义椭圆曲线 <span class="math inline">\(C\)</span>：</p>
-<p><span class="math display">\[
-C := \{(x, y): y^2 = x^3 + ax + b, 4a^3 + 27b^2 \neq 0\}
-\]</span></p>
-<p>定义两个运算：</p>
+<p>CSR 比较大的问题有两点：</p>
 <ul>
-<li>运算 <span class="math inline">\(\tilde{\cdot}: C \to C\)</span>。令 <span class="math inline">\(\tilde{P} \in C\)</span> 是 <span class="math inline">\(P \in C\)</span> 关于 <span class="math inline">\(x\)</span> 轴的对称点</li>
-<li>运算 <span class="math inline">\(\oplus: C^2 \to C\)</span>。对 <span class="math inline">\(P, Q \in C\)</span>：
-<ul>
-<li>若直线 <span class="math inline">\(PQ\)</span> 与 <span class="math inline">\(C\)</span> 有第三个交点 <span class="math inline">\(R \in C\)</span>，令 <span class="math inline">\(P \oplus Q = \tilde{R}\)</span></li>
-<li>若直线 <span class="math inline">\(PQ\)</span> 与 <span class="math inline">\(C\)</span> 相切且切点为 <span class="math inline">\(P\)</span>，定义 <span class="math inline">\(P \oplus Q = \tilde{P}\)</span></li>
-<li>定义 <span class="math inline">\(P \oplus \tilde{P} = 0^*\)</span> 以及 <span class="math inline">\(P \oplus 0^* = 0^* \oplus P = 0^*\)</span></li>
-</ul></li>
+<li>如果后端服务器响应慢或者数据量大，模板 HTML 在页面上留存时间长，表现为 Loading 界面或者白屏，严重削弱用户体验</li>
+<li>爬虫难以处理这类网页，对搜索引擎的优化（<strong>S</strong>earch <strong>E</strong>ngine <strong>O</strong>pimization，简称 SEO）困难，导致网页宣传效果不佳</li>
 </ul>
-<ol type="1">
-<li>已知 <span class="math inline">\(\oplus\)</span> 满足交换律、结合律，对于与曲线 <span class="math inline">\(C\)</span> 相切于 <span class="math inline">\(P\)</span> 的直线 <span class="math inline">\(PQ\)</span>，其中 <span class="math inline">\(P, Q \in C\)</span>，证明 <span class="math inline">\(P \oplus P = \tilde{Q}\)</span></li>
-<li>已知 <span class="math inline">\(P(x_1, y_1), Q(x_2, y_2) \in C\)</span>，且 <span class="math inline">\(PQ\)</span> 与 <span class="math inline">\(C\)</span> 有第三个交点，求 <span class="math inline">\(P \oplus Q\)</span> 坐标</li>
-</ol>
-<h2 id="solution-8">Solution</h2>
-<p>Subproblem 1.</p>
-<p>我们考虑式子 <span class="math inline">\(P \oplus P \oplus Q \oplus \tilde{Q}\)</span>，据结合律：</p>
-<p><span class="math display">\[
-\begin{aligned}
-P \oplus P \oplus Q \oplus \tilde{Q} &amp;= (P \oplus P) \oplus (Q \oplus \tilde{Q}) = (P \oplus P) \oplus 0^* = P \oplus P
-\end{aligned}
-\]</span></p>
-<p>另据结合律：</p>
-<p><span class="math display">\[
-\begin{aligned}
-P \oplus P \oplus Q \oplus \tilde{Q} &amp;= P \oplus (P \oplus Q) \oplus \tilde{Q}
-\end{aligned}
-\]</span></p>
-<p>又 <span class="math inline">\(PQ\)</span> 与 <span class="math inline">\(C\)</span> 相切于 <span class="math inline">\(P\)</span>，故 <span class="math inline">\(P \oplus Q = \tilde{P}\)</span>，所以：</p>
-<p><span class="math display">\[
-\begin{aligned}
-P \oplus P \oplus Q \oplus \tilde{Q} &amp;= P \oplus \tilde{P} \oplus \tilde{Q} = 0^* \oplus \tilde{Q} = \tilde{Q}
-\end{aligned}
-\]</span></p>
-<p>Subproblem 2.</p>
-<p>设 <span class="math inline">\(PQ\)</span> 与曲线 <span class="math inline">\(C\)</span> 的第三个交点 <span class="math inline">\(R\)</span> 坐标为 <span class="math inline">\((x_3, y_3)\)</span>，那么 <span class="math inline">\(P \oplus Q\)</span> 的坐标为 <span class="math inline">\((x_3, -y_3)\)</span>。</p>
-<p>从而 <span class="math inline">\(y_i^2 = x_i^3 + ax_i + b, i \in \{1, 2, 3\}\)</span>。作差：</p>
-<p><span class="math display">\[
-\begin{cases}
-y_3^2 - y_2^2 = (x_3^3 - x_2^3) + a(x_3 - x_2) \\
-y_3^2 - y_1^2 = (x_3^3 - x_1^3) + a(x_3 - x_1) \\
-\end{cases}
-\]</span></p>
-<p>若令 <span class="math inline">\(PQ\)</span> 的斜率为 <span class="math inline">\(k\)</span>（斜率必然存在，否则 <span class="math inline">\(R\)</span> 不存在），则有：</p>
-<p><span class="math display">\[
-\begin{cases}
-k(y_3 + y_2) = x_3^2 + x_2x_3 + x_2^2 + a \\
-k(y_3 + y_1) = x_3^2 + x_1x_3 + x_1^2 + a \\
-\end{cases}
-\]</span></p>
-<p>再作差：</p>
-<p><span class="math display">\[
-k(y_2 - y_1) = x_3(x_2 - x_1) + (x_2^2 - x_1^2) \Rightarrow k^2 = x_1 + x_2 + x_3
-\]</span></p>
-<p>从而就可以得到 <span class="math inline">\(x_3\)</span>，基于此得到 <span class="math inline">\(y_3\)</span> 的计算则很简单了。</p>
-<h2 id="comment">Comment</h2>
-<p>这题我还是有些话想说的，我感觉这道题出得很新，但我并不觉得很好。因为很多学生会对这个运算是否是良定义产生疑问，进而在解题的时候对一些地方畏手畏脚，尤其是优等生会产生这种现象。</p>
-<p>而且基于一个很新的背景出运算题，说实话，没什么意思。</p>
-<h1 id="problem-10">Problem 10</h1>
-<p>定义一个非负整数 <span class="math inline">\(n\)</span> 的二进制表示 <span class="math inline">\((a_ka_{k - 1} \cdots a_0)_2\)</span>，其需要满足：</p>
+<p>但就开发环节而言，开发需要不断处理白屏问题，不断在组件中设置 <code>refreshing</code> 状态实际上比较浪费开发时间。</p>
+<p>而现代优化过的 SSR 则相应做出了部分解决，其基本思路为：</p>
 <ul>
-<li>对于所有 <span class="math inline">\(0 \leq i \leq k\)</span>，都有 <span class="math inline">\(a_i \in \{0, 1\}\)</span></li>
-<li>等式 <span class="math inline">\(\sum_{i = 0}^k 2^ia_i = n\)</span> 成立</li>
-<li><span class="math inline">\(0\)</span> 的二进制表示为 <span class="math inline">\((0)_2\)</span>，并且 <span class="math inline">\(n \neq 0\)</span> 时有 <span class="math inline">\(a_k = 1\)</span></li>
+<li>浏览器向前端服务器请求页面</li>
+<li>前端服务器向后端服务器请求关键数据，获取数据后根据自己已有的模板 HTML 渲染出完整 HTML 发回浏览器</li>
+<li>浏览器直接渲染出完整页面</li>
 </ul>
-<p>例如，<span class="math inline">\(9\)</span> 的二进制表示为 <span class="math inline">\((1001)_2\)</span>，二进制表示 <span class="math inline">\((101)_2\)</span> 所代表的非负整数为 <span class="math inline">\(5\)</span>。</p>
-<ol type="1">
-<li>证明对于任意 <span class="math inline">\(n \in \mathbb{N}\)</span>，其二进制表示存在且唯一</li>
-<li>对非负整数定义满足交换律与结合律的运算 <span class="math inline">\(\oplus\)</span> 如下：</li>
-</ol>
+<p>首先，浏览器不会收到缺失数据的 HTML，这样就从根源上解决白屏问题。进一步，由于服务端的算力和内网传输速度一般高于客户端算力和外网传输速度，所以渲染出最终 HTML 的时间相应缩短。另外，由于客户端能够直接得到完整 HTML，所以 SEO 也是简单的。</p>
+<p>然而 SSR 显然也是有问题的：</p>
 <ul>
-<li>若 <span class="math inline">\(x, y \in \{0, 1\}\)</span>，若 <span class="math inline">\(x = y\)</span>，那么 <span class="math inline">\(x \oplus y = 0\)</span>，否则 <span class="math inline">\(x \oplus y = 1\)</span></li>
-<li>若 <span class="math inline">\(x, y\)</span> 中有一个不属于 <span class="math inline">\(\{0, 1\}\)</span>，记 <span class="math inline">\(x\)</span> 的二进制表示为 <span class="math inline">\((x_px_{p - 1} \cdots x_0)_2\)</span>，<span class="math inline">\(y\)</span> 的二进制表示为 <span class="math inline">\((y_qy_{q - 1} \cdots y_0)_2\)</span>。不妨 <span class="math inline">\(p \geq q\)</span>，并额外约定 <span class="math inline">\(i &gt; q\)</span> 时 <span class="math inline">\(y_i = 0\)</span>，定义：</li>
+<li>服务器端压力极大，对于多并发情况处理无力</li>
+<li>针对每个用户都需要重新渲染完整 HTML，重复计算问题严重</li>
 </ul>
-<p><span class="math display">\[
-x \oplus y = \sum_{i = 0}^p 2^i(x_i \oplus y_i)
-\]</span></p>
-<p>计算 <span class="math inline">\(0 \oplus 1 \oplus \cdots \oplus n (n \in \mathbb{N})\)</span> 的值</p>
-<h2 id="solution-9">Solution</h2>
-<p>Subproblem 1.</p>
-<p>首先说明存在性，我们使用归纳法说明所有非负整数都存在二进制表示。首先容易看出 <span class="math inline">\(0\)</span> 的二进制表示唯一为 <span class="math inline">\((0)_2\)</span>，<span class="math inline">\(1\)</span> 的二进制表示唯一为 <span class="math inline">\((1)_2\)</span>。</p>
-<p>假设任意 <span class="math inline">\(n \leq 2^k - 1, k \in \mathbb{N}\)</span> 的 <span class="math inline">\(n\)</span> 都具有二进制表示，下面证明所有 <span class="math inline">\(n \leq 2^{k + 1} - 1\)</span> 的 <span class="math inline">\(n\)</span> 都具有二进制表示。</p>
-<p>显然得知 <span class="math inline">\(n = 2^k\)</span> 有二进制表示 <span class="math inline">\((100 \cdots 0)_2\)</span>。取 <span class="math inline">\(2^k &lt; n \leq 2^{k + 1} - 1\)</span>，显然有 <span class="math inline">\(n - 2^k \leq 2^k - 1\)</span>，所以根据归纳假设 <span class="math inline">\(n - 2^k\)</span> 具有二进制表示 <span class="math inline">\((a_pa_{p - 1} \cdots a_0)_2\)</span>，根据定义有 <span class="math inline">\(a_p = 1\)</span>。显然 <span class="math inline">\(p &lt; k\)</span>，否则：</p>
-<p><span class="math display">\[
-n - 2^k = \sum_{i = 0}^p 2^ia_i \geq 2^p \geq 2^k
-\]</span></p>
-<p>矛盾，故 <span class="math inline">\(p &lt; k\)</span>。</p>
-<p>作二进制表示 <span class="math inline">\((b_kb_{k - 1} \cdots b_0)_2\)</span>，其中 <span class="math inline">\(b_k = 1\)</span>，并且 <span class="math inline">\(i \leq p\)</span> 时 <span class="math inline">\(b_i = a_i\)</span>，<span class="math inline">\(p &lt; i &lt; k\)</span> 时 <span class="math inline">\(b_i = 0\)</span>。显然其满足二进制表示的第一和第三个条件，第二个条件验证如下：</p>
-<p><span class="math display">\[
-\sum_{i = 0}^k 2^ib_i = 2^k + \sum_{i = 0}^p 2^ia_i = 2^k + (n - 2^k) = n
-\]</span></p>
-<p>成立。据归纳法得知所有非负整数都有二进制表示。</p>
-<p>之后说明唯一性，我们使用归纳法说明所有非负整数二进制表示唯一。首先容易看出 <span class="math inline">\(0\)</span> 的二进制表示唯一为 <span class="math inline">\((0)_2\)</span>，<span class="math inline">\(1\)</span> 的二进制表示唯一为 <span class="math inline">\((1)_2\)</span>。</p>
-<p>假设任意 <span class="math inline">\(n \leq 2^k - 1, k \in \mathbb{N}\)</span> 的 <span class="math inline">\(n\)</span> 二进制表示唯一，下面证明所有 <span class="math inline">\(n \leq 2^{k + 1} - 1\)</span> 的 <span class="math inline">\(n\)</span> 二进制表示唯一。</p>
-<p>对于 <span class="math inline">\(2^k \leq n \leq 2^{k + 1} - 1\)</span>，假设其具有两个不同的二进制表示 <span class="math inline">\((a_pa_{p - 1} \cdots a_0)_2, (b_qb_{q - 1} \cdots b_0)_2\)</span>，根据定义 <span class="math inline">\(a_p = b_q = 1\)</span>。这里不妨令 <span class="math inline">\(p \geq q\)</span>。</p>
-<p>如果 <span class="math inline">\(p \neq q\)</span>，那么我们有：</p>
-<p><span class="math display">\[
-n = \sum_{i = 0}^q 2^ib_i \leq \sum_{i = 0}^q 2^i = 2^{q + 1} - 1 &lt; 2^p \leq \sum_{i = 0}^p 2^ia_i = n
-\]</span></p>
-<p>矛盾，故 <span class="math inline">\(p = q\)</span>。</p>
-<p>另外，如果 <span class="math inline">\(p &gt; k\)</span>，则有：</p>
-<p><span class="math display">\[
-n = \sum_{i = 0}^p 2^ia_i \geq 2^p \geq 2^{k + 1}
-\]</span></p>
-<p>如果 <span class="math inline">\(p &lt; k\)</span>，则有：</p>
-<p><span class="math display">\[
-n = \sum_{i = 0}^p 2^ia_i \leq \sum_{i = 0}^p 2^i = 2^{p + 1} - 1 \leq 2^k - 1
-\]</span></p>
-<p>均矛盾，所以 <span class="math inline">\(p = q = k\)</span>。</p>
-<p>那么 <span class="math inline">\((a_{k - 1}a_{k - 2} \cdots a_0)_2, (b_{k - 1}b_{k - 2} \cdots b_0)_2\)</span> 应当构成了 <span class="math inline">\(n - 2^k\)</span> 的两个不同的二进制表示，然而 <span class="math inline">\(n - 2^k \leq 2^k - 1\)</span>，这与归纳假设矛盾。</p>
-<p>据归纳法得知所有非负整数二进制表示唯一。</p>
-<p>Subproblem 2.</p>
-<p>我们归纳地证明：</p>
-<p><span class="math display">\[
-0 \oplus 1 \oplus \cdots \oplus n = \begin{cases}
-n &amp; n = 4k \\
-1 &amp; n = 4k + 1 \\
-n + 1 &amp; n = 4k + 2 \\
-0 &amp; n = 4k + 3 \\
-\end{cases} \ (k \in \mathbb{N})
-\]</span></p>
-<p>在此之前，我们需要指出该运算具有以下性质：</p>
-<p><span class="math display">\[
-0 \oplus n = n, n \oplus n = 0, 2n \oplus 1 = 2n + 1, n \in \mathbb{N}^+
-\]</span></p>
-<p>不妨记 <span class="math inline">\(n\)</span> 的二进制表示为 <span class="math inline">\((a_ka_{k - 1} \cdots a_0)_2\)</span>，那么：</p>
-<p><span class="math display">\[
-\begin{aligned}
-0 \oplus n &amp;= \sum_{i = 0}^k 2^k(0 \oplus a_i) = \sum_{i = 0}^k 2^ka_i = n \\
-n \oplus n &amp;= \sum_{i = 0}^k 2^k(a_i \oplus a_i) = 0 \\
-\end{aligned}
-\]</span></p>
-<p>另外考虑二进制表示 <span class="math inline">\((a_ka_{k - 1} \cdots a_00)_2\)</span>，其所代表的正整数为：</p>
-<p><span class="math display">\[
-\sum_{i = 1}^{k + 1} 2^ia_{i - 1} = 2\sum_{i = 0}^k 2^ia_i = 2n
-\]</span></p>
-<p>所以：</p>
-<p><span class="math display">\[
-2n \oplus 1 = (0 \oplus 1) + \sum_{i = 1}^{k + 1} 2^i(a_{i - 1} \oplus 0) = 1 + 2\sum_{i = 0}^k 2^ia_i = 2n + 1
-\]</span></p>
-<p>回到原题，我们首先计算出：</p>
-<p><span class="math display">\[
-\begin{aligned}
-0 &amp;= 0 \\
-0 \oplus 1 &amp;= 1 \\
-0 \oplus 1 \oplus 2 &amp;= 1 \oplus 2 = (1)_2 \oplus (10)_2 = (11)_2 = 3 \\
-0 \oplus 1 \oplus 2 \oplus 3 &amp;= 3 \oplus 3 = (11)_2 \oplus (11)_2 = 0 \\
-\end{aligned}
-\]</span></p>
-<p>为简化记号，定义 <span class="math inline">\(f(n) := 0 \oplus 1 \oplus \cdots \oplus n\)</span>。</p>
-<p>假设 <span class="math inline">\(n = 4(k - 1), 4(k - 1) + 1, 4(k - 1) + 2, 4(k - 1) + 3 (k \in \mathbb{N}^+)\)</span> 时结论成立。</p>
-<p>下证明 <span class="math inline">\(n = 4k, 4k + 1, 4k + 2, 4k + 3\)</span> 时结论成立。</p>
-<p>不难根据先前得到的运算性质运算出：</p>
-<p><span class="math display">\[
-\begin{aligned}
-f(4k) &amp;= 0 \oplus 4k = 4k \\
-f(4k + 1) &amp;= 4k \oplus (4k + 1) = 4k \oplus (4k \oplus 1) = (4k \oplus 4k) \oplus 1 = 0 \oplus 1 = 1 \\
-f(4k + 2) &amp;= 1 \oplus (4k + 2) = 4k + 3 \\
-f(4k + 3) &amp;= (4k + 3) \oplus (4k + 3) = 0 \\
-\end{aligned}
-\]</span></p>
-<p>据此，证明完毕。</p>
+<p>其中第二个问题实际上比较重要，如果某个网页和客户端具体信息无关，也就是说任何客户端都收到相同内容，那么这种 SSR 实际上不如 CSR。CSR 可以通过 CDN 缓存模板 HTML，而 SSR 此时对每个用户的请求，每次都需要完整渲染 HTML。</p>
+<p>所以这也是 SSG，<strong>S</strong>erver <strong>S</strong>ide <strong>G</strong>eneration，服务端生成提出的契机。针对与客户端无关的、更新速度慢的页面，SSG 会在构建时直接生成页面并缓存在前端服务器，浏览器发出请求后会直接返回缓存页面，从而解决上述问题。</p>
+<p>显然，CSR、SSR、SSG 各有利弊。就目前你清的教学、科协各个成员的掌握情况看，CSR 系列的开发明显占优势。另外考虑到软工课程不少类似于后台管理页面等更重视数据时效性、用户交互体验的应用，CSR 更应当重点讲解。</p>
+<p>然而 SSR 不能因此完全废弃不讲，因为其针对用户无关页面的白屏加载问题绝对是重要的一种解决方案。SSR 依然是企业官网、个人博客等网页的首选。</p>
+<p>所以目前依然是将传统的 CSR 布置为作业，然后让他们强制将 API 睡眠，体验白屏问题后让他们叙述 SSR 的好处，用此作为思考题。</p>
+<h1 id="useeffect-重复调用问题"><code>useEffect</code> 重复调用问题</h1>
+<p>这是一个老问题，说实话也和 Next.js 没有多少关系。如果在 React 中写下述代码：</p>
+<figure class="highlight typescript"><figcaption><span>TypeScript</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> App = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    useEffect(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;useEffect called!&quot;</span>);</span><br><span class="line">    &#125;, []);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span> Test page. <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>会发现控制台里出现了两次 <code>useEffect called!</code> 的输出。</p>
+<p>虽然严格而言不会出现很大的问题，然而由于这种 <code>useEffect</code> 常常用于获取页面的初始数据（CSR 常用手法），这个问题可能导致重复请求后端数据，对于用户鉴权等需求甚至可能是危险的，后端如果不去做相应处理甚至可能打穿后端（我软工还真的差点出锅，然而当时也没在意）。</p>
+<p>然后我搜索引擎大作业里面采用了非常丑陋的写法解决了：</p>
+<p><img src="/uploads/note-of-next/1.jpeg" /></p>
+<p>今天才知道这个是 React 的严格模式的锅。严格模式下，在 dev 条件下 React 会有意重复调用这些钩子来提示可能的危险。</p>
+<p>也就是说打穿后端实际上就是 React 告诉你，你这有可能出锅，你自己不处理好不怪我。</p>
+<p>当然，release 之后 React 就不会有意重复调用了。</p>
+<p>所以解决方式就两种：</p>
+<ul>
+<li>好好写能够处理并发的代码，React 都告诉你会出事了</li>
+<li>关掉严格模式，让 React 闭嘴</li>
+</ul>
+<p>我选择了后者。</p>
+<p>参考：<a href="https://juejin.cn/post/7105652180501135367" class="uri">https://juejin.cn/post/7105652180501135367</a>。</p>
+<h1 id="useroute-与注水"><code>useRoute</code> 与注水</h1>
+<p>使用动态路由的时候，我按照 React 的开发习惯写了下述代码：</p>
+<figure class="highlight typescript"><figcaption><span>TypeScript</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> route = useRouter();</span><br><span class="line"></span><br><span class="line">useEffect(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(route.query.id);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Use route.query.id to fetch data</span></span><br><span class="line">&#125;, []);</span><br></pre></td></tr></table></figure>
+<p>令人惊讶的是，这里输出了 <code>undefined</code>。</p>
+<p>事实上这是 Next.js 预渲染的锅，原文是这样的：</p>
+<div class="note info no-icon"><p>Pages that are statically optimized by <strong>Automatic Static Optimization</strong> will be hydrated without their route parameters provided, i.e <code>query</code> will be an empty object (<code>{}</code>).</p>
+<p>After hydration, Next.js will trigger an update to your application to provide the route parameters in the <code>query</code> object.</p>
+</div>
+<p>简而言之，ASO 是一种预渲染优化，在不获取路由信息的条件下先弄出来一个页面给浏览器，然后再注水（即向 <code>query</code> 注入路由信息）并触发组件更新，也就是说页面获取到路由信息并不是一开始，从而 <code>useEffect(*, [])</code> 是拿不到路由信息的。</p>
+<p>了解这一点后，代码就应该写为：</p>
+<figure class="highlight typescript"><figcaption><span>TypeScript</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> route = useRouter();</span><br><span class="line"><span class="keyword">const</span> query = route.query;</span><br><span class="line"></span><br><span class="line">useEffect(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!route.isReady) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(route.query.id);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Use route.query.id to fetch data</span></span><br><span class="line">&#125;, [route, query]);</span><br></pre></td></tr></table></figure>
+<p>应该让 <code>useEffect</code> 检测 <code>route</code> 和 <code>query</code> 的变动，在注水完成后才能触发数据获取。</p>
 ]]></content>
       <categories>
-        <category>【杂谈】数学</category>
+        <category>【杂谈】开发</category>
       </categories>
   </entry>
   <entry>
@@ -10910,6 +10391,535 @@ Q(s_t, a_t) \leftarrow Q(s_t, a_t) + \alpha\left[G_t(\tau)\prod_{k = t}^{+\infty
 ]]></content>
       <categories>
         <category>【学习笔记】计算机</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>原创数学题集</title>
+    <url>/2022/07/12/orginal-problems/</url>
+    <content><![CDATA[<p>一些奇妙的数学想法而已，可能是初中、高中、大学题，反正是弄着玩的。</p>
+<span id="more"></span>
+<p><span class="math display">\[
+\newcommand{\i}{\mathop{\rm i}}
+\]</span></p>
+<h1 id="problem-1">Problem 1</h1>
+<p>已知函数 <span class="math inline">\(f(x) = [x](x - [x]), x \geq 0\)</span>，这里 <span class="math inline">\([x]\)</span> 表示不大于 <span class="math inline">\(x\)</span> 的最大整数。</p>
+<p>另外定义函数迭代符号 <span class="math inline">\(f^{(n)}\)</span> 如下：</p>
+<p><span class="math display">\[
+\begin{cases}
+f^{(1)}(x) = f(x) \\
+f^{(k + 1)}(x) = f(f^{(k)}(x)), k \in \mathbb{N}^*
+\end{cases}
+\]</span></p>
+<p>证明：对于任何 <span class="math inline">\(x \geq 0\)</span>，都有：</p>
+<p><span class="math display">\[
+\lim_{n \to \infty} f^{(n)}(x) = 0
+\]</span></p>
+<h2 id="solution">Solution</h2>
+<p>首先证明，<span class="math inline">\(x \geq 1\)</span> 时 <span class="math inline">\(f(x) \leq x - 1\)</span>。</p>
+<p>我们不妨记 <span class="math inline">\(\{x\} := x - [x]\)</span>，显然有 <span class="math inline">\(0 \leq \{x\} &lt; 1\)</span>。进一步，根据 <span class="math inline">\(x \geq 1\)</span> 得知 <span class="math inline">\([x] \geq 1\)</span>，那么显然：</p>
+<p><span class="math display">\[
+([x] - 1)(\{x\} - 1) \leq 0
+\]</span></p>
+<p>展开得到：</p>
+<p><span class="math display">\[
+f(x) = [x]\{x\} \leq [x] + \{x\} - 1 = x - 1
+\]</span></p>
+<p>引理证明完毕，回到原题。</p>
+<p>此外，我们需要了解，若 <span class="math inline">\(x \in [0, 1)\)</span>，则有 <span class="math inline">\([x] = 0\)</span>，即 <span class="math inline">\(f(x) = 0\)</span>。</p>
+<p>那么我们考虑下述数列，我们即需要证明下述数列极限为零：</p>
+<p><span class="math display">\[
+x, f(x), f^{(2)}(x), \cdots, f^{(n)}(x), \cdots
+\]</span></p>
+<p>若 <span class="math inline">\(x \in [0, 1)\)</span>，显然 <span class="math inline">\(f(x) = 0\)</span>，且根据 <span class="math inline">\(f(0) = 0\)</span> 得到 <span class="math inline">\(\forall n \in \mathbb{N}^*\)</span> 有 <span class="math inline">\(f^{(n)}(x) = 0\)</span>，上述数列极限显然为零。</p>
+<p>若 <span class="math inline">\(x \geq 1\)</span>，我们只需要证明必然存在 <span class="math inline">\(k \in \mathbb{N}^*\)</span> 使得 <span class="math inline">\(f^{(k)}(x) &lt; 1\)</span> 即可，因为只要该结论成立，就说明 <span class="math inline">\(f^{(k + 1)}(x) = 0\)</span>，从而之后的所有项均为零，结论成立。</p>
+<p>使用反证法，如果结论不成立，即 <span class="math inline">\(\forall k \in \mathbb{N}^*\)</span> 有 <span class="math inline">\(f^{(k)}(x) \geq 1\)</span>。那么根据引理：</p>
+<p><span class="math display">\[
+f^{(k + 1)}(x) \leq f^{(k)}(x) - 1, k \in \mathbb{N}^*
+\]</span></p>
+<p>所以：</p>
+<p><span class="math display">\[
+f^{([x])}(x) \leq f^{([x] - 1)}(x) - 1 \leq \cdots \leq f^{(0)}(x) - [x] = x - [x] \in [0, 1)
+\]</span></p>
+<p>和假设矛盾，故原结论成立。</p>
+<p>至此，结论证明完毕。</p>
+<h1 id="problem-2">Problem 2</h1>
+<p>已知凸多边形 <span class="math inline">\(\mathcal{A}, \mathcal{B}\)</span> 没有公共点，且 <span class="math inline">\(\mathcal{A}\)</span> 的任何一边不平行于 <span class="math inline">\(\mathcal{B}\)</span> 的任何一边。</p>
+<p>已知点 <span class="math inline">\(A \in \mathcal{A}, B \in \mathcal{B}\)</span>。给出已知向量 <span class="math inline">\(\boldsymbol t\)</span>，且已知 <span class="math inline">\(\vec{AB} \parallel \boldsymbol{t}\)</span>。</p>
+<p>证明：当 <span class="math inline">\(\vec{AB}\)</span> 的长度最小的时候，点 <span class="math inline">\(A, B\)</span> 中必有一个为其所在凸多边形的顶点。</p>
+<h2 id="solution-1">Solution</h2>
+<p>使用反证法。假设当 <span class="math inline">\(\|\vec{AB}\|_2\)</span> 取到最小值的时候 <span class="math inline">\(A, B\)</span> 中至少有一点位于其所在多边形的内部（即不位于其所在多边形的边界），不妨令 <span class="math inline">\(A\)</span> 位于 <span class="math inline">\(\mathcal{A}\)</span> 的内部。由于 <span class="math inline">\(\mathcal{A} \cap \mathcal{B} = \varnothing\)</span> 与 <span class="math inline">\(B \in \mathcal{B}\)</span>，可以得知 <span class="math inline">\(B\)</span> 位于多边形 <span class="math inline">\(\mathcal{A}\)</span> 的外部。那么线段 <span class="math inline">\(AB\)</span> 显然与 <span class="math inline">\(\mathcal{A}\)</span> 的边界 <span class="math inline">\(\partial\mathcal{A}\)</span> 有交点，不妨记为 <span class="math inline">\(A&#39;\)</span>。那么我们显然得到 <span class="math inline">\(\|\vec{A&#39;B}\|_2 &lt; \|\vec{AB}\|_2\)</span>，这与最小性假设矛盾，假设不成立。故当 <span class="math inline">\(\|\vec{AB}\|_2\)</span> 取到最小值的时候 <span class="math inline">\(A, B\)</span> 均应当位于其所在多边形的边界上。</p>
+<p>继续使用反证法。假设当 <span class="math inline">\(\|\vec{AB}\|_2\)</span> 取到最小值的时候 <span class="math inline">\(A, B\)</span> 均不位于其所在多边形的顶点。此时不妨假设 <span class="math inline">\(A\)</span> 所在的 <span class="math inline">\(\mathcal{A}\)</span> 的边为线段 <span class="math inline">\(a\)</span>，<span class="math inline">\(B\)</span> 所在的 <span class="math inline">\(\mathcal{B}\)</span> 的边为线段 <span class="math inline">\(b\)</span>。由 <span class="math inline">\(\mathcal{A}\)</span> 的任何一条边不平行于 <span class="math inline">\(\mathcal{B}\)</span> 的任何一条边知 <span class="math inline">\(a\)</span> 不平行于 <span class="math inline">\(b\)</span>，且据假设知 <span class="math inline">\(A\)</span> 不位于 <span class="math inline">\(a\)</span> 的顶点，<span class="math inline">\(B\)</span> 不位于 <span class="math inline">\(b\)</span> 的顶点。</p>
+<p>由于 <span class="math inline">\(a\)</span> 不平行于 <span class="math inline">\(b\)</span>，记 <span class="math inline">\(a\)</span> 所在直线和 <span class="math inline">\(b\)</span> 所在直线的交点为 <span class="math inline">\(C\)</span>，令点 <span class="math inline">\(A&#39;\)</span> 为线段 <span class="math inline">\(AC\)</span> 上一点，过 <span class="math inline">\(A&#39;\)</span> 作 <span class="math inline">\(A&#39;B&#39; \parallel AB\)</span> 与 <span class="math inline">\(b\)</span> 所在直线相交于 <span class="math inline">\(B&#39;\)</span>。显然无论 <span class="math inline">\(A&#39;\)</span> 如何取，均能够满足 <span class="math inline">\(\|\vec{A&#39;B&#39;}\|_2 &lt; \|\vec{AB}\|_2\)</span>。</p>
+<p>由于 <span class="math inline">\(A, B\)</span> 均不是其所在线段的顶点，那么存在一个 <span class="math inline">\(\delta_A &gt; 0\)</span> 满足 <span class="math inline">\(\|\vec{AA&#39;}\|_2 &lt; \delta_A\)</span> 时即有 <span class="math inline">\(A&#39; \in a\)</span>，即 <span class="math inline">\(A&#39; \in \mathcal{A}\)</span>。同理也存在类似的 <span class="math inline">\(\delta_B &gt; 0\)</span> 满足 <span class="math inline">\(\|\vec{BB&#39;}\|_2 &lt; \delta_B\)</span> 时即有 <span class="math inline">\(B&#39; \in \mathcal{B}\)</span>。</p>
+<p>考虑到 <span class="math inline">\(\triangle CAB \backsim \triangle CA&#39;B&#39;\)</span>，我们有下述关系：</p>
+<p><span class="math display">\[
+\frac{\|\vec{AA&#39;}\|_2}{\|\vec{BB&#39;}\|_2} = \frac{\|\vec{CA}\|_2}{\|\vec{CB}\|_2} \iff\|\vec{AA&#39;}\|_2 = \frac{\|\vec{CA}\|_2 \cdot \|\vec{BB&#39;}\|_2}{\|\vec{CB}\|_2}
+\]</span></p>
+<p>故我们只需要令：</p>
+<p><span class="math display">\[
+0 &lt; \|\vec{AA&#39;}\|_2 &lt; \min\left\{\delta_A, \frac{\|\vec{CA}\|_2 \cdot \delta_B}{\|\vec{CB}\|_2}\right\}
+\]</span></p>
+<p>即可保证 <span class="math inline">\(\|\vec{AA&#39;}\|_2 &lt; \delta_A\)</span> 且 <span class="math inline">\(\|\vec{BB&#39;}\|_2 &lt; \delta_B\)</span>，这就保证了 <span class="math inline">\(A&#39; \in \mathcal{A}, B&#39; \in \mathcal{B}\)</span>，并且有 <span class="math inline">\(\|\vec{A&#39;B&#39;}\|_2 &lt; \|\vec{AB}\|_2\)</span>。这样就与最小性假设矛盾，假设不成立。故当 <span class="math inline">\(\|\vec{AB}\|_2\)</span> 取到最小值的时候 <span class="math inline">\(A, B\)</span> 中至少有一个点为其所在多边形的顶点。</p>
+<h1 id="problem-3">Problem 3</h1>
+<p>(Credit to PKU 零之审判)</p>
+<p>边长为 <span class="math inline">\(2\)</span> 的正方形 <span class="math inline">\(ABCD\)</span> 内有四条长度为 <span class="math inline">\(1\)</span> 的线段 <span class="math inline">\(l_{1, 2, 3, 4}\)</span>，这四条线段满足：</p>
+<ul>
+<li><span class="math inline">\(l_i\)</span> 与 <span class="math inline">\(l_{i + 1}\)</span> 相交但其内部不相交（即交点为 <span class="math inline">\(l_i\)</span> 或 <span class="math inline">\(l_{i + 1}\)</span> 的端点）</li>
+<li><span class="math inline">\(l_1, l_3\)</span> 没有公共点且 <span class="math inline">\(l_2, l_4\)</span> 没有公共点</li>
+<li><span class="math inline">\(l_i\)</span> 垂直于 <span class="math inline">\(l_{i + 1}\)</span></li>
+</ul>
+<p>上述陈述中 <span class="math inline">\(i \in \{1, 2, 3, 4\}\)</span>，并且定义 <span class="math inline">\(l_5 := l_1\)</span>。</p>
+<p>记 <span class="math inline">\(S = l_1 \cup l_2 \cup l_3 \cup l_4\)</span>，<span class="math inline">\(V\)</span> 为正方形 <span class="math inline">\(ABCD\)</span> 四边中点构成的集合，定义：</p>
+<p><span class="math display">\[
+d := \max_{v \in V, s \in S} |v - s|
+\]</span></p>
+<p>求 <span class="math inline">\(d\)</span> 的最小值。</p>
+<h2 id="solution-2">Solution</h2>
+<p>考虑如下图所示的 <span class="math inline">\(l_{1, 2, 3, 4}\)</span>：</p>
+<p><img src="/uploads/original-problems/1.png" height="20%" width="20%" /></p>
+<p>这里 <span class="math inline">\(l_{1, 2, 3, 4}\)</span> 构成边长为 <span class="math inline">\(1\)</span> 的正方形，该正方形与正方形 <span class="math inline">\(ABCD\)</span> 有共同中心且 <span class="math inline">\(l_1 \parallel AD\)</span>。不难看出若令 <span class="math inline">\(M\)</span> 为 <span class="math inline">\(CD\)</span> 中点，<span class="math inline">\(N\)</span> 为 <span class="math inline">\(l_1, l_2\)</span> 交点，则 <span class="math inline">\(d = MN = \dfrac{\sqrt{10}}{2}\)</span>。</p>
+<p>下面我们证明 <span class="math inline">\(d \geq \dfrac{\sqrt{10}}{2}\)</span>。为了证明该结论，我们考虑下述圆 <span class="math inline">\(P\)</span>：</p>
+<p><img src="/uploads/original-problems/3.png" height="20%" width="20%" /></p>
+<p>圆 <span class="math inline">\(P\)</span> 以正方形 <span class="math inline">\(ABCD\)</span> 的中心 <span class="math inline">\(O\)</span> 为圆心，半径为 <span class="math inline">\(\dfrac{\sqrt{2}}{2}\)</span>。</p>
+<p>我们首先证明下述引理，即如果 <span class="math inline">\(l_{1, 2, 3, 4}\)</span> 上有点 <span class="math inline">\(X\)</span> 在圆 <span class="math inline">\(P\)</span> 外或者在圆 <span class="math inline">\(P\)</span> 边界上，那么 <span class="math inline">\(d \geq \dfrac{\sqrt{10}}{2}\)</span>。</p>
+<p>我们考虑下述图形：</p>
+<p><img src="/uploads/original-problems/4.png" height="35%" width="35%" /></p>
+<p>这里的四个虚线圆为以正方形 <span class="math inline">\(ABCD\)</span> 各边中点为圆心，以 <span class="math inline">\(\dfrac{\sqrt{10}}{2}\)</span> 为半径所作的。注意到由于这四个圆的内部（不包含边界）的交集完全位于圆 <span class="math inline">\(P\)</span> 的内部，这说明 <span class="math inline">\(X\)</span> 必然在这四个虚线圆中的某个之外或者这四个虚线圆中的某个的边界上。也就是说必然存在某个 <span class="math inline">\(M \in V\)</span> 使得 <span class="math inline">\(MX \geq \dfrac{\sqrt{10}}{2}\)</span>，从而：</p>
+<p><span class="math display">\[
+d \geq MX \geq \dfrac{\sqrt{10}}{2}
+\]</span></p>
+<p>引理证明完毕，回到原题。</p>
+<p>根据引理我们得知，如果 <span class="math inline">\(l_{1, 2, 3, 4}\)</span> 上有点在圆 <span class="math inline">\(P\)</span> 外，则欲证命题成立，所以现在只需要考虑 <span class="math inline">\(S \subseteq P\)</span>。</p>
+<p>根据题设对四条线段的约束，我们可以得知这四条线段仅有下述两种可能：</p>
+<p><img src="/uploads/original-problems/2.png" height="50%" width="50%" /></p>
+<p>上述两种情况的旋转、镜面对称等视为同种情况。</p>
+<p>首先考虑左边的情况，这里记 <span class="math inline">\(A&#39;D&#39; = B&#39;C&#39; =: a, A&#39;B&#39; = C&#39;D&#39; =: b\)</span>，我们有 <span class="math inline">\(0 &lt; a, b \leq 1\)</span>。根据 <span class="math inline">\(S \subseteq P\)</span> 此时必然有下述两条虚线段长度不大于 <span class="math inline">\(\sqrt{2}\)</span>：</p>
+<p><img src="/uploads/original-problems/5.png" height="25%" width="25%" /></p>
+<p>从而有下述约束：</p>
+<p><span class="math display">\[
+\begin{cases}
+a^2 + (2 - b)^2 \leq 2 \Rightarrow a^2 + b^2 - 4b + 2 \leq 0 \\
+b^2 + (2 - a)^2 \leq 2 \Rightarrow a^2 + b^2 - 4a + 2 \leq 0 \\
+\end{cases}
+\]</span></p>
+<p>两式相加并整理得到：</p>
+<p><span class="math display">\[
+(a - 1)^2 + (b - 1)^2 \leq 0
+\]</span></p>
+<p>可知 <span class="math inline">\(a = b = 1\)</span>，此时 <span class="math inline">\(A&#39;, B&#39;, C&#39;, D&#39;\)</span> 构成边长为 <span class="math inline">\(1\)</span> 的正方形。考虑到边长为 <span class="math inline">\(1\)</span> 的正方形的外接圆半径为 <span class="math inline">\(\dfrac{\sqrt{2}}{2}\)</span>，所以为了 <span class="math inline">\(S \subseteq P\)</span>，只能有该正方形内接于圆 <span class="math inline">\(P\)</span>。</p>
+<p>之后考虑右边的情况，根据 <span class="math inline">\(S \subseteq P\)</span> 此时必然有下述两条虚线段长度不大于 <span class="math inline">\(\sqrt{2}\)</span>。</p>
+<p>这里记 <span class="math inline">\(A&#39;B&#39; = C&#39;D&#39; =: a, A&#39;A&#39;&#39; =: b, D&#39;D&#39;&#39; =: c\)</span>，我们有 <span class="math inline">\(0 &lt; a \leq 1\)</span> 以及 <span class="math inline">\(0 \leq b, c \leq 1 - a\)</span>：</p>
+<p><img src="/uploads/original-problems/6.png" height="20%" width="20%" /></p>
+<p>从而有下述约束：</p>
+<p><span class="math display">\[
+\begin{cases}
+D&#39;&#39;C&#39; + B&#39;B&#39;&#39; \leq 1 \Rightarrow b - c + 1 \leq 1 \\
+A&#39;&#39;B&#39; + C&#39;C&#39;&#39; \leq 1 \Rightarrow c - b + 1 \leq 1 \\
+\end{cases}
+\]</span></p>
+<p>可知 <span class="math inline">\(b = c\)</span>，此时 <span class="math inline">\(A&#39;&#39;, B&#39;&#39;, C&#39;&#39;, D&#39;&#39;\)</span> 构成边长为 <span class="math inline">\(1\)</span> 的正方形。考虑到边长为 <span class="math inline">\(1\)</span> 的正方形的外接圆半径为 <span class="math inline">\(\dfrac{\sqrt{2}}{2}\)</span>，所以为了 <span class="math inline">\(S \subseteq P\)</span>，只能有该正方形内接于圆 <span class="math inline">\(P\)</span>。</p>
+<p>综上所述，此时无论如何均存在四个 <span class="math inline">\(S\)</span> 内的点构成内接于圆 <span class="math inline">\(P\)</span> 的正方形，至少说明 <span class="math inline">\(S\)</span> 中存在某一个点 <span class="math inline">\(X\)</span> 在圆 <span class="math inline">\(P\)</span> 边界上。根据引理，原命题证明完毕。</p>
+<p>综上所述，<span class="math inline">\(d\)</span> 的最小值为 <span class="math inline">\(\dfrac{\sqrt{10}}{2}\)</span>。</p>
+<h1 id="problem-4">Problem 4</h1>
+<p>记 <span class="math inline">\(\theta_{n, k} := \dfrac{(2k + 1)\pi}{2^n}\)</span>，证明：</p>
+<p><span class="math display">\[
+\sum_{k = 0}^{2^n - 1} \frac{1}{1 - \cos\theta_{n, k}} = 2^{2n - 1}
+\]</span></p>
+<h2 id="solution-3">Solution</h2>
+<p>我们注意到下述恒等式：</p>
+<p><span class="math display">\[
+\frac{4}{1 - \cos 2\theta} = \frac{1}{1 - \cos\theta} + \frac{1}{1 + \cos\theta}
+\]</span></p>
+<p>证明如下：</p>
+<p><span class="math display">\[
+\frac{1}{1 - \cos\theta} + \frac{1}{1 + \cos\theta} = \frac{2}{1 - \cos^2\theta} = \frac{4}{1 - (2\cos^2\theta - 1)} = \frac{4}{1 - \cos 2\theta}
+\]</span></p>
+<p>基于上述恒等式，我们令：</p>
+<p><span class="math display">\[
+S_n := \sum_{k = 0}^{2^n - 1} \frac{1}{1 - \cos\theta_{n, k}}
+\]</span></p>
+<p>我们即可得到：</p>
+<p><span class="math display">\[
+S_{n + 1} = \sum_{k = 0}^{2^{n + 1} - 1} \frac{1}{1 - \cos\theta_{n + 1, k}} = \sum_{k = 0}^{2^n - 1} \left(\frac{1}{1 - \cos\theta_{n + 1, k}} + \frac{1}{1 - \cos\theta_{n + 1, 2^n + k}}\right) \\
+\]</span></p>
+<p>这里注意到：</p>
+<p><span class="math display">\[
+\cos\theta_{n + 1, 2^n + k} = \cos\dfrac{[2(2^n + k) + 1]\pi}{2^{n + 1}} = \cos\left(1 + \frac{2k + 1}{2^{n + 1}}\right)\pi = -\cos\theta_{n + 1, k}
+\]</span></p>
+<p>另外注意到：</p>
+<p><span class="math display">\[
+\theta_{n, k} = \dfrac{(2k + 1)\pi}{2^n} = 2\theta_{n + 1, k}
+\]</span></p>
+<p>那么：</p>
+<p><span class="math display">\[
+\begin{aligned}
+S_{n + 1} &amp;= \sum_{k = 0}^{2^n - 1} \left(\frac{1}{1 - \cos\theta_{n + 1, k}} + \frac{1}{1 - \cos\theta_{n + 1, 2^n + k}}\right) \\
+&amp;= \sum_{k = 0}^{2^n - 1} \left(\frac{1}{1 - \cos\theta_{n + 1, k}} + \frac{1}{1 + \cos\theta_{n + 1, k}}\right) \\
+&amp;= \sum_{k = 0}^{2^n - 1} \frac{4}{1 - \cos2\theta_{n + 1, k}} \\
+&amp;= 4\sum_{k = 0}^{2^n - 1} \frac{1}{1 - \cos\theta_{n, k}} \\
+&amp;= 4S_n
+\end{aligned}
+\]</span></p>
+<p>而显然有 <span class="math inline">\(S_1 = 2\)</span>，从而命题证明完毕。</p>
+<h1 id="problem-5">Problem 5</h1>
+<p>已知正整数 <span class="math inline">\(n\)</span> 与实数 <span class="math inline">\(x\)</span>，证明：</p>
+<p><span class="math display">\[
+\sum_{k = 0}^n C_n^k\sin kx = 2^n\cos^n\frac{x}{2}\sin\frac{nx}{2}
+\]</span></p>
+<h2 id="solution-4">Solution</h2>
+<p>考虑 <span class="math inline">\((\cos x + \i\sin x + 1)^n \in \mathbb{C}\)</span> 的虚部。</p>
+<p>一方面：</p>
+<p><span class="math display">\[
+\begin{aligned}
+(\cos x + \i\sin x + 1)^n &amp;= \left[\left(2\cos^2\frac{x}{2} - 1\right) + 2\i\sin\frac{x}{2}\cos\frac{x}{2} + 1\right]^n \\
+&amp;= 2^n\cos^n\frac{x}{2}\left(\cos\frac{x}{2} + \i\sin\frac{x}{2}\right)^n \\
+&amp;= 2^n\cos^n\frac{x}{2}\cos\frac{nx}{2} + \i2^n\cos^n\frac{x}{2}\sin\frac{nx}{2}
+\end{aligned}
+\]</span></p>
+<p>可知该复数的虚部即为欲证等式的右侧。</p>
+<p>另一方面：</p>
+<p><span class="math display">\[
+\begin{aligned}
+(\cos x + \i\sin x + 1)^n &amp;= \sum_{k = 0}^n C_n^k(\cos x + \i\sin x)^k \\
+&amp;= \sum_{k = 0}^n C_n^k(\cos kx + \i\sin kx) \\
+&amp;= \sum_{k = 0}^n C_n^k\cos kx + \i\sum_{k = 0}^n C_n^k\sin kx
+\end{aligned}
+\]</span></p>
+<p>可知该复数的虚部即为欲证等式的左侧。</p>
+<p>综上所述，证明完毕。</p>
+<h1 id="problem-6">Problem 6</h1>
+<p>已知数列 <span class="math inline">\(\{a_n\}_{n \geq 0}\)</span> 满足 <span class="math inline">\(a_0 = 1, a_1 = 0\)</span> 且 <span class="math inline">\(a_{n + 2} = (n + 1)(a_{n + 1} + a_n)\)</span>。证明：</p>
+<p><span class="math display">\[
+\sum_{k = 0}^n C_n^ka_k = n!
+\]</span></p>
+<h2 id="solution-5">Solution</h2>
+<p>定义命题 <span class="math inline">\(A_n\)</span> 表示下述等式成立：</p>
+<p><span class="math display">\[
+\sum_{k = 0}^{n + 1} C_{n + 1}^ka_k = (n + 1)\sum_{k = 0}^n C_n^ka_k
+\]</span></p>
+<p>命题 <span class="math inline">\(B_n\)</span> 表示下述等式成立：</p>
+<p><span class="math display">\[
+\sum_{k = 0}^n C_n^ka_{k + 1} = n\sum_{k = 0}^n C_n^ka_k
+\]</span></p>
+<p>首先我们证明由 <span class="math inline">\(B_n\)</span> 能推出 <span class="math inline">\(A_n\)</span>。现在在 <span class="math inline">\(B_n\)</span> 成立的基础上，考虑下述计算：</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;(n + 1)\sum_{k = 0}^n C_n^ka_k = n\sum_{k = 0}^n C_n^ka_k + \sum_{k = 0}^n C_n^ka_k = \sum_{k = 0}^n C_n^ka_{k + 1} + \sum_{k = 0}^n C_n^ka_k \\
+=&amp; C_n^na_{n + 1} + \left(\sum_{k = 1}^n C_n^{k - 1}a_k + \sum_{k = 1}^n C_n^ka_k\right) + C_n^0a_0 = C_n^na_{n + 1} + \sum_{k = 1}^n (C_n^{k - 1} + C_n^k)a_k + C_n^0a_0 \\
+=&amp; C_{n + 1}^{n + 1}a_{n + 1} + \sum_{k = 1}^n C_{n + 1}^ka_k + C_{n + 1}^0a_0 = \sum_{k = 0}^{n + 1} C_{n + 1}^ka_k
+\end{aligned}
+\]</span></p>
+<p>这就说明了在 <span class="math inline">\(B_n\)</span> 成立的基础上 <span class="math inline">\(A_n\)</span> 成立，其中第二个等号的依据为 <span class="math inline">\(B_n\)</span> 成立。</p>
+<p>之后我们证明 <span class="math inline">\(A_n, B_n\)</span> 能推出 <span class="math inline">\(B_{n + 1}\)</span>。现在在 <span class="math inline">\(A_n, B_n\)</span> 均成立的基础上，考虑下述计算：</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;\sum_{k = 0}^{n + 1} C_{n + 1}^ka_{k + 1} = C_{n + 1}^0a_1 + \sum_{k = 1}^{n + 1} C_{n + 1}^ka_{k + 1} = \sum_{k = 1}^{n + 1} \frac{n + 1}{k}C_{n}^{k - 1}a_{k + 1} \\
+=&amp; (n + 1)\sum_{k = 0}^{n} \frac{1}{k + 1}C_{n}^{k} \cdot (k + 1)(a_{k + 1} + a_k) = (n + 1)\left(\sum_{k = 0}^{n} C_{n}^{k}a_{k + 1} + \sum_{k = 0}^{n} C_{n}^{k}a_k\right) \\
+=&amp; (n + 1)\left(n\sum_{k = 0}^{n} C_{n}^{k}a_k + \sum_{k = 0}^{n} C_{n}^{k}a_k\right) = (n + 1)\left[(n + 1)\sum_{k = 0}^{n} C_{n}^{k}a_k\right] = (n + 1)\sum_{k = 0}^{n + 1} C_{n + 1}^ka_k\\
+\end{aligned}
+\]</span></p>
+<p>这就说明了在 <span class="math inline">\(A_n, B_n\)</span> 成立的基础上 <span class="math inline">\(B_{n + 1}\)</span> 成立，其中倒数第二个等号的依据为 <span class="math inline">\(B_n\)</span> 成立，倒数第一个等号的依据为 <span class="math inline">\(A_n\)</span> 成立。</p>
+<p>而我们显然可以计算出 <span class="math inline">\(a_2 = 1\)</span>，从而得知命题 <span class="math inline">\(B_1\)</span> 成立，进而据归纳法得到对任何的正整数 <span class="math inline">\(n\)</span>，都有命题 <span class="math inline">\(A_n\)</span> 成立。据命题 <span class="math inline">\(A_n\)</span> 成立即可得到本问题欲证命题成立。</p>
+<h1 id="problem-7">Problem 7</h1>
+<p>已知正数数列 <span class="math inline">\(\{x_k\}_{0 \leq k \leq n}\)</span> 满足：</p>
+<p><span class="math display">\[
+x_0 = \sum_{k = 1}^n x_k
+\]</span></p>
+<p>定义数列 <span class="math inline">\(\{y_k\}_{1 \leq k \leq n}\)</span> 为：</p>
+<p><span class="math display">\[
+y_k := \sqrt{\sum_{i = 0}^{k - 1} x_i} \sqrt{\sum_{i = k}^n x_i}
+\]</span></p>
+<p>证明：</p>
+<p><span class="math display">\[
+1 &lt; \sum_{k = 1}^n \frac{x_k}{y_k} &lt; \frac{\pi}{2}
+\]</span></p>
+<h2 id="solution-6">Solution</h2>
+<p>根据均值不等式显然有：</p>
+<p><span class="math display">\[
+y_k = \sqrt{\sum_{i = 0}^{k - 1} x_i} \sqrt{\sum_{i = k}^n x_i} \leq \frac{1}{2}\left(\sum_{i = 0}^{k - 1} x_i + \sum_{i = k}^n x_i\right) = \frac{1}{2}\left(x_0 + \sum_{i = 1}^n x_i\right) = x_0
+\]</span></p>
+<p>并且由于：</p>
+<p><span class="math display">\[
+\sum_{i = 0}^{k - 1} x_i &gt; x_0 = \sum_{i = 1}^n x_i &gt; \sum_{i = k}^n x_i
+\]</span></p>
+<p>得知上述等号无法取到，那么：</p>
+<p><span class="math display">\[
+\sum_{k = 1}^n \frac{x_k}{y_k} &gt; \sum_{k = 1}^n \frac{x_k}{x_0} = 1
+\]</span></p>
+<p>从而不等式左侧得证。</p>
+<p>为了证明不等式右侧，我们考虑下述数列 <span class="math inline">\(\{S_k\}_{0 \leq k \leq n}\)</span>，其在 <span class="math inline">\(k = 0\)</span> 的时候定义为 <span class="math inline">\(S_0 := 0\)</span>，在 <span class="math inline">\(k &gt; 0\)</span> 的时候定义为：</p>
+<p><span class="math display">\[
+S_k := \sum_{i = 1}^k \frac{x_k}{x_0}
+\]</span></p>
+<p>考虑到 <span class="math inline">\(\{x_k\}_{0 \leq k \leq n}\)</span> 是正数数列，可以得知 <span class="math inline">\(\{S_k\}_{0 \leq k \leq n}\)</span> 是递增数列。另一方面，我们可以得知 <span class="math inline">\(S_n = 1\)</span>。综合上述条件我们可以得知 <span class="math inline">\(\{S_k\}_{0 \leq k \leq n}\)</span> 各项均落在区间 <span class="math inline">\([0, 1]\)</span> 上。</p>
+<p>那么即存在所有项均落在区间 <span class="math inline">\(\left[0, \dfrac{\pi}{2}\right]\)</span> 上的数列 <span class="math inline">\(\{\theta_k\}_{0 \leq k \leq n}\)</span> 使得 <span class="math inline">\(\sin\theta_k = S_k\)</span> 对所有 <span class="math inline">\(0 \leq k \leq n\)</span> 成立。此时 <span class="math inline">\(\theta_0 = 0\)</span> 并且 <span class="math inline">\(\theta_n = \dfrac{\pi}{2}\)</span>。另一方面，据 <span class="math inline">\(\{S_k\}_{0 \leq k \leq n}\)</span> 是递增数列得知 <span class="math inline">\(\{\theta_k\}_{0 \leq k \leq n}\)</span> 是递增数列。</p>
+<p>从而我们得知：</p>
+<p><span class="math display">\[
+\begin{aligned}
+y_k &amp;= \sqrt{\sum_{i = 0}^{k - 1} x_i} \sqrt{\sum_{i = k}^n x_i} = x_0 \sqrt{\sum_{i = 0}^{k - 1} \frac{x_i}{x_0}} \sqrt{\sum_{i = k}^n \frac{x_i}{x_0}} = x_0 \sqrt{1 + S_{k - 1}} \sqrt{S_n - S_{k - 1}} \\
+&amp;= x_0 \sqrt{1 - S^2_{k - 1}} = x_0 \sqrt{1 - \sin^2\theta_{k - 1}} = x_0\cos\theta_{k - 1}
+\end{aligned}
+\]</span></p>
+<p>从而：</p>
+<p><span class="math display">\[
+\begin{aligned}
+\sum_{k = 1}^n \frac{x_k}{y_k} &amp;= \sum_{k = 1}^n \frac{x_k}{x_0\cos\theta_{k - 1}} = \sum_{k = 1}^n \frac{S_k - S_{k - 1}}{\cos\theta_{k - 1}} = \sum_{k = 1}^n \frac{\sin\theta_k - \sin\theta_{k - 1}}{\cos\theta_{k - 1}} \\
+&amp;= \sum_{k = 1}^n \frac{2\cos\dfrac{\theta_k + \theta_{k - 1}}{2}\sin\dfrac{\theta_k - \theta_{k - 1}}{2}}{\cos\theta_{k - 1}} &lt; 2\sum_{k = 1}^n\sin\dfrac{\theta_k - \theta_{k - 1}}{2}
+\end{aligned}
+\]</span></p>
+<p>这里的不等号考虑到 <span class="math inline">\(\{\theta_k\}_{0 \leq k \leq n}\)</span> 是递增数列，从而 <span class="math inline">\(\theta_k &gt; \theta_{k - 1}\)</span>。</p>
+<p>应用不等式 <span class="math inline">\(\sin x &lt; x, x &gt; 0\)</span> 得到：</p>
+<p><span class="math display">\[
+\sum_{k = 1}^n \frac{x_k}{y_k} &lt; 2\sum_{k = 1}^n\sin\dfrac{\theta_k - \theta_{k - 1}}{2} &lt; \sum_{k = 1}^n \theta_k - \theta_{k - 1} = \theta_n - \theta_0 = \frac{\pi}{2}
+\]</span></p>
+<p>综上所述，证明完毕。</p>
+<h1 id="problem-8">Problem 8</h1>
+<p>已知函数：</p>
+<p><span class="math display">\[
+f(x) = \frac{1}{[x] - \{x\} + 1}
+\]</span></p>
+<p>定义数列 <span class="math inline">\(a_1 = 1\)</span> 以及 <span class="math inline">\(a_{n + 1} = f(a_n), n \geq 1\)</span>。证明：所有正有理数在数列 <span class="math inline">\(\{a_n\}_{n \geq 1}\)</span> 中均出现且仅出现一次。</p>
+<h2 id="solution-7">Solution</h2>
+<p>若 <span class="math inline">\(x \in \mathbb{N}^+\)</span>，显然：</p>
+<p><span class="math display">\[
+f(x) = \frac{1}{x + 1} \in \mathbb{Q}^+
+\]</span></p>
+<p>若 <span class="math inline">\(x \in \mathbb{Q}^+ \backslash \mathbb{N}^+\)</span>，记 <span class="math inline">\(n := [x], \dfrac{p}{q} := \{x\}\)</span>，这里 <span class="math inline">\(p, q \in \mathbb{N}^+, p &lt; q, \mathop{\rm gcd}(p, q) = 1\)</span>，那么：</p>
+<p><span class="math display">\[
+f(x) = \frac{q}{nq - p + q} \in \mathbb{Q}
+\]</span></p>
+<p>注意到 <span class="math inline">\(nq - p + q = (n + 1)q - p \geq q - p &gt; 0\)</span>，所以 <span class="math inline">\(f(x) \in \mathbb{Q}^+\)</span>。</p>
+<p>所以若 <span class="math inline">\(x \in \mathbb{Q}^+\)</span> 则 <span class="math inline">\(f(x) \in \mathbb{Q}^+\)</span>，据归纳法得知 <span class="math inline">\(\{a_n\}_{n \geq 1}\)</span> 中项均是正有理数。</p>
+<p>下面说明数列 <span class="math inline">\(\{a_n\}_{n \geq 1}\)</span> 中没有重复项，即不存在 <span class="math inline">\(m \neq n, m, n \in \mathbb{N}^+\)</span> 使得 <span class="math inline">\(a_m = a_n\)</span>。</p>
+<p>首先说明 <span class="math inline">\(f\)</span> 是单射，即不存在 <span class="math inline">\(x \neq y\)</span> 使得 <span class="math inline">\(f(x) = f(y)\)</span>。使用反证法，如果存在 <span class="math inline">\(x \neq y\)</span> 使得 <span class="math inline">\(f(x) = f(y)\)</span>，那么：</p>
+<p><span class="math display">\[
+\frac{1}{[x] - \{x\} + 1} = \frac{1}{[y] - \{y\} + 1} \iff [x] - [y] = \{x\} - \{y\}
+\]</span></p>
+<p>那么：</p>
+<p><span class="math display">\[
+\mathbb{Z} \ni |[x] - [y]| = |\{x\} - \{y\}| &lt; 1
+\]</span></p>
+<p>从而 <span class="math inline">\([x] = [y]\)</span>，进一步 <span class="math inline">\(\{x\} = \{y\}\)</span>，也就是说 <span class="math inline">\(x = y\)</span>，矛盾。故 <span class="math inline">\(f\)</span> 是单射。</p>
+<p>回到原先证明，使用反证法。如果存在 <span class="math inline">\(m \neq n, m, n \in \mathbb{N}^+\)</span> 使得 <span class="math inline">\(a_m = a_n\)</span>，考虑到 <span class="math inline">\(f(0) = 1\)</span>，记函数迭代符号为 <span class="math inline">\(f^{(n)}\)</span>，可以得到 <span class="math inline">\(f^{(m)}(0) = f^{(n)}(0)\)</span>。考虑到 <span class="math inline">\(f\)</span> 是单射，所以 <span class="math inline">\(f^{(|m - n|)}(0) = 0\)</span>，即 <span class="math inline">\(a_{|m - n|} = 0\)</span>。这与先前证明的该数列均为正有理数矛盾。故数列 <span class="math inline">\(\{a_n\}_{n \geq 1}\)</span> 中没有重复项。</p>
+<p>现在我们仅需要说明任何正有理数均出现在该数列中即可。</p>
+<p>我们令 <span class="math inline">\(g(x) := x + 1, h(x) := \dfrac{x}{x + 1}\)</span>。我们证明 <span class="math inline">\(g(a_n) = a_{2n + 1}, h(a_n) = a_{2n}\)</span>。</p>
+<p>使用归纳法，<span class="math inline">\(n = 1\)</span> 时上述命题的成立是显然的，假设 <span class="math inline">\(n = k\)</span> 时上述命题成立，考虑 <span class="math inline">\(n = k + 1\)</span>。此时：</p>
+<p><span class="math display">\[
+a_{2k + 2} = f(a_{2k + 1}) = f(g(a_k)) = f(a_k + 1) = \frac{1}{[a_k + 1] - \{a_k + 1\} + 1} = \frac{1}{[a_k] - \{a_k\} + 2}
+\]</span></p>
+<p>而：</p>
+<p><span class="math display">\[
+h(a_{k + 1}) = \frac{a_{k + 1}}{a_{k + 1} + 1} = \frac{1}{1 + a_{k + 1}^{-1}} = \frac{1}{1 + (f(a_k))^{-1}} = \frac{1}{1 + ([a_k] - \{a_k\} + 1)} = \frac{1}{[a_k] - \{a_k\} + 2}
+\]</span></p>
+<p>故 <span class="math inline">\(h(a_{k + 1}) = a_{2k + 2}\)</span>，此时：</p>
+<p><span class="math display">\[
+a_{2k + 3} = f(a_{2k + 2}) = f(h(a_{k + 1})) = \frac{1}{[h(a_{k + 1})] - \{h(a_{k + 1})\} + 1}
+\]</span></p>
+<p>由于 <span class="math inline">\(x &gt; 0\)</span> 时 <span class="math inline">\(0 &lt; h(x) &lt; 1\)</span>，所以：</p>
+<p><span class="math display">\[
+a_{2k + 3} = \frac{1}{1 - h(a_{k + 1})} = \frac{1}{1 - \dfrac{a_{k + 1}}{a_{k + 1} + 1}} = a_{k + 1} + 1 = g(a_{k + 1})
+\]</span></p>
+<p>故 <span class="math inline">\(g(a_{k + 1}) = a_{2k + 3}\)</span>。据归纳法，证明完毕。</p>
+<p>定义函数：</p>
+<p><span class="math display">\[
+\varphi(x) := \begin{cases}
+g^{-1}(x) &amp; x \geq 1 \\
+h^{-1}(x) &amp; x &lt; 1 \\
+\end{cases} = \begin{cases}
+x - 1 &amp; x \geq 1 \\
+\dfrac{x}{1 - x} &amp; x &lt; 1 \\
+\end{cases}
+\]</span></p>
+<p>对于既约分数 <span class="math inline">\(\dfrac{p}{q} \in \mathbb{Q}^+\)</span>，显然有：</p>
+<p><span class="math display">\[
+\varphi\left(\dfrac{p}{q}\right) = \begin{cases}
+\dfrac{p - q}{q} &amp; p \geq q \\
+\dfrac{p}{q - p} &amp; p &lt; q \\
+\end{cases}
+\]</span></p>
+<p>显然任何正既约分数经过 <span class="math inline">\(\varphi\)</span> 映射后依然既约且分子和分母的和严格减少（特别规定 <span class="math inline">\(0\)</span> 的分子分母和为 <span class="math inline">\(0\)</span>），而 <span class="math inline">\(\varphi(0) = 0\)</span>，分子和分母的和保持不变。</p>
+<p>对任何正既约分数 <span class="math inline">\(\dfrac{p}{q}\)</span>，考虑序列 <span class="math inline">\(\dfrac{p}{q}, \varphi\left(\dfrac{p}{q}\right), \varphi^{(2)}\left(\dfrac{p}{q}\right), \cdots, \varphi^{(n)}\left(\dfrac{p}{q}\right), \cdots\)</span>，序列中分子和分母的和显然始终非负且不增，这意味着从某一项开始分子分母和始终不变，而此时序列的项仅有可能全零。考虑到 <span class="math inline">\(\varphi(x) = 0\)</span> 的解仅有 <span class="math inline">\(x = 0\)</span> 或者 <span class="math inline">\(x = 1\)</span>，这意味着序列中必然有 <span class="math inline">\(1\)</span>。</p>
+<p>这说明对任何正既约分数 <span class="math inline">\(\dfrac{p}{q}\)</span> 存在某一个 <span class="math inline">\(g^{-1}, h^{-1}\)</span> 组成的有限序列使得，这里 <span class="math inline">\(\circ\)</span> 是映射复合符号：</p>
+<p><span class="math display">\[
+g^{-1} \circ h^{-1} \circ h^{-1} \circ \cdots \circ g^{-1}\left(\dfrac{p}{q}\right) = 1
+\]</span></p>
+<p>也就是存在某一个 <span class="math inline">\(g, h\)</span> 组成的有限序列使得：</p>
+<p><span class="math display">\[
+g \circ \cdots \circ h \circ h \circ g(1) = \dfrac{p}{q}
+\]</span></p>
+<p>据之前的证明，<span class="math inline">\(g \circ \cdots \circ h \circ h \circ g(1)\)</span> 显然在数列 <span class="math inline">\(\{a_n\}_{n \geq 1}\)</span> 内，证明完毕。</p>
+<h1 id="problem-9">Problem 9</h1>
+<p>(Credit to 2023 某四省联考数学试卷)</p>
+<p>椭圆曲线可以用于区块链等技术中的加密环节。</p>
+<p>定义椭圆曲线 <span class="math inline">\(C\)</span>：</p>
+<p><span class="math display">\[
+C := \{(x, y): y^2 = x^3 + ax + b, 4a^3 + 27b^2 \neq 0\}
+\]</span></p>
+<p>定义两个运算：</p>
+<ul>
+<li>运算 <span class="math inline">\(\tilde{\cdot}: C \to C\)</span>。令 <span class="math inline">\(\tilde{P} \in C\)</span> 是 <span class="math inline">\(P \in C\)</span> 关于 <span class="math inline">\(x\)</span> 轴的对称点</li>
+<li>运算 <span class="math inline">\(\oplus: C^2 \to C\)</span>。对 <span class="math inline">\(P, Q \in C\)</span>：
+<ul>
+<li>若直线 <span class="math inline">\(PQ\)</span> 与 <span class="math inline">\(C\)</span> 有第三个交点 <span class="math inline">\(R \in C\)</span>，令 <span class="math inline">\(P \oplus Q = \tilde{R}\)</span></li>
+<li>若直线 <span class="math inline">\(PQ\)</span> 与 <span class="math inline">\(C\)</span> 相切且切点为 <span class="math inline">\(P\)</span>，定义 <span class="math inline">\(P \oplus Q = \tilde{P}\)</span></li>
+<li>定义 <span class="math inline">\(P \oplus \tilde{P} = 0^*\)</span> 以及 <span class="math inline">\(P \oplus 0^* = 0^* \oplus P = 0^*\)</span></li>
+</ul></li>
+</ul>
+<ol type="1">
+<li>已知 <span class="math inline">\(\oplus\)</span> 满足交换律、结合律，对于与曲线 <span class="math inline">\(C\)</span> 相切于 <span class="math inline">\(P\)</span> 的直线 <span class="math inline">\(PQ\)</span>，其中 <span class="math inline">\(P, Q \in C\)</span>，证明 <span class="math inline">\(P \oplus P = \tilde{Q}\)</span></li>
+<li>已知 <span class="math inline">\(P(x_1, y_1), Q(x_2, y_2) \in C\)</span>，且 <span class="math inline">\(PQ\)</span> 与 <span class="math inline">\(C\)</span> 有第三个交点，求 <span class="math inline">\(P \oplus Q\)</span> 坐标</li>
+</ol>
+<h2 id="solution-8">Solution</h2>
+<p>Subproblem 1.</p>
+<p>我们考虑式子 <span class="math inline">\(P \oplus P \oplus Q \oplus \tilde{Q}\)</span>，据结合律：</p>
+<p><span class="math display">\[
+\begin{aligned}
+P \oplus P \oplus Q \oplus \tilde{Q} &amp;= (P \oplus P) \oplus (Q \oplus \tilde{Q}) = (P \oplus P) \oplus 0^* = P \oplus P
+\end{aligned}
+\]</span></p>
+<p>另据结合律：</p>
+<p><span class="math display">\[
+\begin{aligned}
+P \oplus P \oplus Q \oplus \tilde{Q} &amp;= P \oplus (P \oplus Q) \oplus \tilde{Q}
+\end{aligned}
+\]</span></p>
+<p>又 <span class="math inline">\(PQ\)</span> 与 <span class="math inline">\(C\)</span> 相切于 <span class="math inline">\(P\)</span>，故 <span class="math inline">\(P \oplus Q = \tilde{P}\)</span>，所以：</p>
+<p><span class="math display">\[
+\begin{aligned}
+P \oplus P \oplus Q \oplus \tilde{Q} &amp;= P \oplus \tilde{P} \oplus \tilde{Q} = 0^* \oplus \tilde{Q} = \tilde{Q}
+\end{aligned}
+\]</span></p>
+<p>Subproblem 2.</p>
+<p>设 <span class="math inline">\(PQ\)</span> 与曲线 <span class="math inline">\(C\)</span> 的第三个交点 <span class="math inline">\(R\)</span> 坐标为 <span class="math inline">\((x_3, y_3)\)</span>，那么 <span class="math inline">\(P \oplus Q\)</span> 的坐标为 <span class="math inline">\((x_3, -y_3)\)</span>。</p>
+<p>从而 <span class="math inline">\(y_i^2 = x_i^3 + ax_i + b, i \in \{1, 2, 3\}\)</span>。作差：</p>
+<p><span class="math display">\[
+\begin{cases}
+y_3^2 - y_2^2 = (x_3^3 - x_2^3) + a(x_3 - x_2) \\
+y_3^2 - y_1^2 = (x_3^3 - x_1^3) + a(x_3 - x_1) \\
+\end{cases}
+\]</span></p>
+<p>若令 <span class="math inline">\(PQ\)</span> 的斜率为 <span class="math inline">\(k\)</span>（斜率必然存在，否则 <span class="math inline">\(R\)</span> 不存在），则有：</p>
+<p><span class="math display">\[
+\begin{cases}
+k(y_3 + y_2) = x_3^2 + x_2x_3 + x_2^2 + a \\
+k(y_3 + y_1) = x_3^2 + x_1x_3 + x_1^2 + a \\
+\end{cases}
+\]</span></p>
+<p>再作差：</p>
+<p><span class="math display">\[
+k(y_2 - y_1) = x_3(x_2 - x_1) + (x_2^2 - x_1^2) \Rightarrow k^2 = x_1 + x_2 + x_3
+\]</span></p>
+<p>从而就可以得到 <span class="math inline">\(x_3\)</span>，基于此得到 <span class="math inline">\(y_3\)</span> 的计算则很简单了。</p>
+<h2 id="comment">Comment</h2>
+<p>这题我还是有些话想说的，我感觉这道题出得很新，但我并不觉得很好。因为很多学生会对这个运算是否是良定义产生疑问，进而在解题的时候对一些地方畏手畏脚，尤其是优等生会产生这种现象。</p>
+<p>而且基于一个很新的背景出运算题，说实话，没什么意思。</p>
+<h1 id="problem-10">Problem 10</h1>
+<p>定义一个非负整数 <span class="math inline">\(n\)</span> 的二进制表示 <span class="math inline">\((a_ka_{k - 1} \cdots a_0)_2\)</span>，其需要满足：</p>
+<ul>
+<li>对于所有 <span class="math inline">\(0 \leq i \leq k\)</span>，都有 <span class="math inline">\(a_i \in \{0, 1\}\)</span></li>
+<li>等式 <span class="math inline">\(\sum_{i = 0}^k 2^ia_i = n\)</span> 成立</li>
+<li><span class="math inline">\(0\)</span> 的二进制表示为 <span class="math inline">\((0)_2\)</span>，并且 <span class="math inline">\(n \neq 0\)</span> 时有 <span class="math inline">\(a_k = 1\)</span></li>
+</ul>
+<p>例如，<span class="math inline">\(9\)</span> 的二进制表示为 <span class="math inline">\((1001)_2\)</span>，二进制表示 <span class="math inline">\((101)_2\)</span> 所代表的非负整数为 <span class="math inline">\(5\)</span>。</p>
+<ol type="1">
+<li>证明对于任意 <span class="math inline">\(n \in \mathbb{N}\)</span>，其二进制表示存在且唯一</li>
+<li>对非负整数定义满足交换律与结合律的运算 <span class="math inline">\(\oplus\)</span> 如下：</li>
+</ol>
+<ul>
+<li>若 <span class="math inline">\(x, y \in \{0, 1\}\)</span>，若 <span class="math inline">\(x = y\)</span>，那么 <span class="math inline">\(x \oplus y = 0\)</span>，否则 <span class="math inline">\(x \oplus y = 1\)</span></li>
+<li>若 <span class="math inline">\(x, y\)</span> 中有一个不属于 <span class="math inline">\(\{0, 1\}\)</span>，记 <span class="math inline">\(x\)</span> 的二进制表示为 <span class="math inline">\((x_px_{p - 1} \cdots x_0)_2\)</span>，<span class="math inline">\(y\)</span> 的二进制表示为 <span class="math inline">\((y_qy_{q - 1} \cdots y_0)_2\)</span>。不妨 <span class="math inline">\(p \geq q\)</span>，并额外约定 <span class="math inline">\(i &gt; q\)</span> 时 <span class="math inline">\(y_i = 0\)</span>，定义：</li>
+</ul>
+<p><span class="math display">\[
+x \oplus y = \sum_{i = 0}^p 2^i(x_i \oplus y_i)
+\]</span></p>
+<p>计算 <span class="math inline">\(0 \oplus 1 \oplus \cdots \oplus n (n \in \mathbb{N})\)</span> 的值</p>
+<h2 id="solution-9">Solution</h2>
+<p>Subproblem 1.</p>
+<p>首先说明存在性，我们使用归纳法说明所有非负整数都存在二进制表示。首先容易看出 <span class="math inline">\(0\)</span> 的二进制表示唯一为 <span class="math inline">\((0)_2\)</span>，<span class="math inline">\(1\)</span> 的二进制表示唯一为 <span class="math inline">\((1)_2\)</span>。</p>
+<p>假设任意 <span class="math inline">\(n \leq 2^k - 1, k \in \mathbb{N}\)</span> 的 <span class="math inline">\(n\)</span> 都具有二进制表示，下面证明所有 <span class="math inline">\(n \leq 2^{k + 1} - 1\)</span> 的 <span class="math inline">\(n\)</span> 都具有二进制表示。</p>
+<p>显然得知 <span class="math inline">\(n = 2^k\)</span> 有二进制表示 <span class="math inline">\((100 \cdots 0)_2\)</span>。取 <span class="math inline">\(2^k &lt; n \leq 2^{k + 1} - 1\)</span>，显然有 <span class="math inline">\(n - 2^k \leq 2^k - 1\)</span>，所以根据归纳假设 <span class="math inline">\(n - 2^k\)</span> 具有二进制表示 <span class="math inline">\((a_pa_{p - 1} \cdots a_0)_2\)</span>，根据定义有 <span class="math inline">\(a_p = 1\)</span>。显然 <span class="math inline">\(p &lt; k\)</span>，否则：</p>
+<p><span class="math display">\[
+n - 2^k = \sum_{i = 0}^p 2^ia_i \geq 2^p \geq 2^k
+\]</span></p>
+<p>矛盾，故 <span class="math inline">\(p &lt; k\)</span>。</p>
+<p>作二进制表示 <span class="math inline">\((b_kb_{k - 1} \cdots b_0)_2\)</span>，其中 <span class="math inline">\(b_k = 1\)</span>，并且 <span class="math inline">\(i \leq p\)</span> 时 <span class="math inline">\(b_i = a_i\)</span>，<span class="math inline">\(p &lt; i &lt; k\)</span> 时 <span class="math inline">\(b_i = 0\)</span>。显然其满足二进制表示的第一和第三个条件，第二个条件验证如下：</p>
+<p><span class="math display">\[
+\sum_{i = 0}^k 2^ib_i = 2^k + \sum_{i = 0}^p 2^ia_i = 2^k + (n - 2^k) = n
+\]</span></p>
+<p>成立。据归纳法得知所有非负整数都有二进制表示。</p>
+<p>之后说明唯一性，我们使用归纳法说明所有非负整数二进制表示唯一。首先容易看出 <span class="math inline">\(0\)</span> 的二进制表示唯一为 <span class="math inline">\((0)_2\)</span>，<span class="math inline">\(1\)</span> 的二进制表示唯一为 <span class="math inline">\((1)_2\)</span>。</p>
+<p>假设任意 <span class="math inline">\(n \leq 2^k - 1, k \in \mathbb{N}\)</span> 的 <span class="math inline">\(n\)</span> 二进制表示唯一，下面证明所有 <span class="math inline">\(n \leq 2^{k + 1} - 1\)</span> 的 <span class="math inline">\(n\)</span> 二进制表示唯一。</p>
+<p>对于 <span class="math inline">\(2^k \leq n \leq 2^{k + 1} - 1\)</span>，假设其具有两个不同的二进制表示 <span class="math inline">\((a_pa_{p - 1} \cdots a_0)_2, (b_qb_{q - 1} \cdots b_0)_2\)</span>，根据定义 <span class="math inline">\(a_p = b_q = 1\)</span>。这里不妨令 <span class="math inline">\(p \geq q\)</span>。</p>
+<p>如果 <span class="math inline">\(p \neq q\)</span>，那么我们有：</p>
+<p><span class="math display">\[
+n = \sum_{i = 0}^q 2^ib_i \leq \sum_{i = 0}^q 2^i = 2^{q + 1} - 1 &lt; 2^p \leq \sum_{i = 0}^p 2^ia_i = n
+\]</span></p>
+<p>矛盾，故 <span class="math inline">\(p = q\)</span>。</p>
+<p>另外，如果 <span class="math inline">\(p &gt; k\)</span>，则有：</p>
+<p><span class="math display">\[
+n = \sum_{i = 0}^p 2^ia_i \geq 2^p \geq 2^{k + 1}
+\]</span></p>
+<p>如果 <span class="math inline">\(p &lt; k\)</span>，则有：</p>
+<p><span class="math display">\[
+n = \sum_{i = 0}^p 2^ia_i \leq \sum_{i = 0}^p 2^i = 2^{p + 1} - 1 \leq 2^k - 1
+\]</span></p>
+<p>均矛盾，所以 <span class="math inline">\(p = q = k\)</span>。</p>
+<p>那么 <span class="math inline">\((a_{k - 1}a_{k - 2} \cdots a_0)_2, (b_{k - 1}b_{k - 2} \cdots b_0)_2\)</span> 应当构成了 <span class="math inline">\(n - 2^k\)</span> 的两个不同的二进制表示，然而 <span class="math inline">\(n - 2^k \leq 2^k - 1\)</span>，这与归纳假设矛盾。</p>
+<p>据归纳法得知所有非负整数二进制表示唯一。</p>
+<p>Subproblem 2.</p>
+<p>我们归纳地证明：</p>
+<p><span class="math display">\[
+0 \oplus 1 \oplus \cdots \oplus n = \begin{cases}
+n &amp; n = 4k \\
+1 &amp; n = 4k + 1 \\
+n + 1 &amp; n = 4k + 2 \\
+0 &amp; n = 4k + 3 \\
+\end{cases} \ (k \in \mathbb{N})
+\]</span></p>
+<p>在此之前，我们需要指出该运算具有以下性质：</p>
+<p><span class="math display">\[
+0 \oplus n = n, n \oplus n = 0, 2n \oplus 1 = 2n + 1, n \in \mathbb{N}^+
+\]</span></p>
+<p>不妨记 <span class="math inline">\(n\)</span> 的二进制表示为 <span class="math inline">\((a_ka_{k - 1} \cdots a_0)_2\)</span>，那么：</p>
+<p><span class="math display">\[
+\begin{aligned}
+0 \oplus n &amp;= \sum_{i = 0}^k 2^k(0 \oplus a_i) = \sum_{i = 0}^k 2^ka_i = n \\
+n \oplus n &amp;= \sum_{i = 0}^k 2^k(a_i \oplus a_i) = 0 \\
+\end{aligned}
+\]</span></p>
+<p>另外考虑二进制表示 <span class="math inline">\((a_ka_{k - 1} \cdots a_00)_2\)</span>，其所代表的正整数为：</p>
+<p><span class="math display">\[
+\sum_{i = 1}^{k + 1} 2^ia_{i - 1} = 2\sum_{i = 0}^k 2^ia_i = 2n
+\]</span></p>
+<p>所以：</p>
+<p><span class="math display">\[
+2n \oplus 1 = (0 \oplus 1) + \sum_{i = 1}^{k + 1} 2^i(a_{i - 1} \oplus 0) = 1 + 2\sum_{i = 0}^k 2^ia_i = 2n + 1
+\]</span></p>
+<p>回到原题，我们首先计算出：</p>
+<p><span class="math display">\[
+\begin{aligned}
+0 &amp;= 0 \\
+0 \oplus 1 &amp;= 1 \\
+0 \oplus 1 \oplus 2 &amp;= 1 \oplus 2 = (1)_2 \oplus (10)_2 = (11)_2 = 3 \\
+0 \oplus 1 \oplus 2 \oplus 3 &amp;= 3 \oplus 3 = (11)_2 \oplus (11)_2 = 0 \\
+\end{aligned}
+\]</span></p>
+<p>为简化记号，定义 <span class="math inline">\(f(n) := 0 \oplus 1 \oplus \cdots \oplus n\)</span>。</p>
+<p>假设 <span class="math inline">\(n = 4(k - 1), 4(k - 1) + 1, 4(k - 1) + 2, 4(k - 1) + 3 (k \in \mathbb{N}^+)\)</span> 时结论成立。</p>
+<p>下证明 <span class="math inline">\(n = 4k, 4k + 1, 4k + 2, 4k + 3\)</span> 时结论成立。</p>
+<p>不难根据先前得到的运算性质运算出：</p>
+<p><span class="math display">\[
+\begin{aligned}
+f(4k) &amp;= 0 \oplus 4k = 4k \\
+f(4k + 1) &amp;= 4k \oplus (4k + 1) = 4k \oplus (4k \oplus 1) = (4k \oplus 4k) \oplus 1 = 0 \oplus 1 = 1 \\
+f(4k + 2) &amp;= 1 \oplus (4k + 2) = 4k + 3 \\
+f(4k + 3) &amp;= (4k + 3) \oplus (4k + 3) = 0 \\
+\end{aligned}
+\]</span></p>
+<p>据此，证明完毕。</p>
+]]></content>
+      <categories>
+        <category>【杂谈】数学</category>
       </categories>
   </entry>
   <entry>
