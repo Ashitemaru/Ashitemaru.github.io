@@ -226,7 +226,7 @@ $(function () {
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%95%E8%A8%80%E4%B8%8E%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86"><span class="nav-number">1.</span> <span class="nav-text">引言与预备知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9B%86%E5%90%88%E4%B8%8E%E6%98%A0%E5%B0%84"><span class="nav-number">1.1.</span> <span class="nav-text">集合与映射</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E5%85%83%E5%85%B3%E7%B3%BB"><span class="nav-number">1.2.</span> <span class="nav-text">二元关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B4%E6%95%B0%E4%B8%8E%E5%90%8C%E4%BD%99%E6%96%B9%E7%A8%8B"><span class="nav-number">1.3.</span> <span class="nav-text">整数与同余方程</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%95%E8%A8%80%E4%B8%8E%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86"><span class="nav-number">1.</span> <span class="nav-text">引言与预备知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9B%86%E5%90%88%E4%B8%8E%E6%98%A0%E5%B0%84"><span class="nav-number">1.1.</span> <span class="nav-text">集合与映射</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E5%85%83%E5%85%B3%E7%B3%BB"><span class="nav-number">1.2.</span> <span class="nav-text">二元关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B4%E6%95%B0%E4%B8%8E%E5%90%8C%E4%BD%99%E6%96%B9%E7%A8%8B"><span class="nav-number">1.3.</span> <span class="nav-text">整数与同余方程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BE%A4"><span class="nav-number">2.</span> <span class="nav-text">群</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">2.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%90%E7%BE%A4"><span class="nav-number">2.2.</span> <span class="nav-text">子群</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -402,14 +402,14 @@ $(function () {
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>4.2k</span>
+      <span>6.6k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>4 分钟</span>
+      <span>6 分钟</span>
     </span>
 </div>
 
@@ -433,7 +433,7 @@ A&#39; = \overline{A} := U\backslash A
 A\triangle B := (A\backslash B) \cup(B\backslash A)
 \]</span></p>
 <p>集合的部分运算性质 trivial，略去。</p>
-<div class="note info no-icon"><p><strong>Theorem 1.1.1 (Inclusion &amp; Exclusion Principle)</strong> 容斥原理表述为：</p>
+<div class="note info no-icon"><p><strong>Theorem 1.1 (Inclusion &amp; Exclusion Principle)</strong> 容斥原理表述为：</p>
 <p><span class="math display">\[
 \begin{aligned}
 \left|\bigcup_{i = 1}^n A_i\right| &amp;= \sum_{k = 1}^n (-1)^{k-1}\sum_{1\leq i_1 &lt; i_2 &lt; \cdots &lt; i_k\leq n}\left|\bigcap_{j = 1}^k A_{i_j}\right| \\
@@ -443,9 +443,9 @@ A\triangle B := (A\backslash B) \cup(B\backslash A)
 </div>
 <p>证明据对 <span class="math inline">\(n\)</span> 的归纳法平凡，略去。</p>
 <p>映射相关的基本定义和概念与先前一致。</p>
-<div class="note success no-icon"><p><strong>Definition 1.1.1</strong> 若集合 <span class="math inline">\(A, B\)</span> 间存在一个双射，则称 <span class="math inline">\(A, B\)</span> <strong>等势</strong>。与自然数集 <span class="math inline">\(\mathbb{N}^+\)</span> 等势的无限集称为<strong>可数集</strong>，否则称为<strong>不可数集</strong>。</p>
+<div class="note success no-icon"><p><strong>Definition 1.1</strong> 若集合 <span class="math inline">\(A, B\)</span> 间存在一个双射，则称 <span class="math inline">\(A, B\)</span> <strong>等势</strong>。与自然数集 <span class="math inline">\(\mathbb{N}^+\)</span> 等势的无限集称为<strong>可数集</strong>，否则称为<strong>不可数集</strong>。</p>
 </div>
-<div class="note info no-icon"><p><strong>Theorem 1.1.2</strong> 已知映射 <span class="math inline">\(f: A \to B\)</span>，我们有：</p>
+<div class="note info no-icon"><p><strong>Theorem 1.2</strong> 已知映射 <span class="math inline">\(f: A \to B\)</span>，我们有：</p>
 <ul>
 <li><span class="math inline">\(f\)</span> 有左逆等价于 <span class="math inline">\(f\)</span> 是单射</li>
 <li><span class="math inline">\(f\)</span> 有右逆等价于 <span class="math inline">\(f\)</span> 是满射</li>
@@ -456,12 +456,12 @@ A\triangle B := (A\backslash B) \cup(B\backslash A)
 <h2 id="二元关系">二元关系</h2>
 <p>集合 <span class="math inline">\(A, B\)</span> 上的一个二元关系 <span class="math inline">\(R\)</span> 是笛卡尔积 <span class="math inline">\(A \times B\)</span> 的子集，<span class="math inline">\(a \in A, b \in B\)</span> 具有关系 <span class="math inline">\(R\)</span> 定义为 <span class="math inline">\((a, b) \in R\)</span>。</p>
 <p>等价关系、等价类、代表元的定义从略，不难有任何集合上的等价关系与集合的划分一一对应。</p>
-<div class="note success no-icon"><p><strong>Definition 1.1.2</strong> 已知集合 <span class="math inline">\(A\)</span> 上的等价关系 <span class="math inline">\(\sim\)</span>，定义 <span class="math inline">\(A\)</span> 对 <span class="math inline">\(\sim\)</span> 的商集为等价类构成的集合：</p>
+<div class="note success no-icon"><p><strong>Definition 1.2</strong> 已知集合 <span class="math inline">\(A\)</span> 上的等价关系 <span class="math inline">\(\sim\)</span>，定义 <span class="math inline">\(A\)</span> 对 <span class="math inline">\(\sim\)</span> 的商集为等价类构成的集合：</p>
 <p><span class="math display">\[
 A/\sim := \{\overline{a} : a \in A\}
 \]</span></p>
 </div>
-<div class="note success no-icon"><p><strong>Definition 1.1.3 (Partially &amp; Totally Ordered Set)</strong> 如果集合 <span class="math inline">\(S\)</span> 上存在一个二元关系 <span class="math inline">\(\leq\)</span> 满足：</p>
+<div class="note success no-icon"><p><strong>Definition 1.3 (Partially &amp; Totally Ordered Set)</strong> 如果集合 <span class="math inline">\(S\)</span> 上存在一个二元关系 <span class="math inline">\(\leq\)</span> 满足：</p>
 <ul>
 <li>对任意 <span class="math inline">\(x \in S\)</span> 都有 <span class="math inline">\(x \leq x\)</span></li>
 <li>对任意 <span class="math inline">\(x, y \in S\)</span>，只要 <span class="math inline">\(x \leq y\)</span> 且 <span class="math inline">\(y \leq x\)</span> 就有 <span class="math inline">\(x = y\)</span></li>
@@ -475,7 +475,7 @@ A/\sim := \{\overline{a} : a \in A\}
 <p>则称 <span class="math inline">\(\leq\)</span> 是 <span class="math inline">\(S\)</span> 上的一个<strong>全序</strong>，<span class="math inline">\((S, \leq)\)</span> 为<strong>全序集</strong>。</p>
 </div>
 <p>一个偏序集总是可以用 Hasse 图表示，Hasse 图是一个无向图，其顶点集为 <span class="math inline">\(S\)</span>，边集为 <span class="math inline">\(\{(x, y) : x &lt; y, (\not\exists u)x &lt; u &lt; y\}\)</span>。</p>
-<div class="note success no-icon"><p><strong>Definition 1.1.4</strong> 在偏序集 <span class="math inline">\((S, \leq)\)</span> 上定义：</p>
+<div class="note success no-icon"><p><strong>Definition 1.4</strong> 在偏序集 <span class="math inline">\((S, \leq)\)</span> 上定义：</p>
 <ul>
 <li>若存在 <span class="math inline">\(a \in S\)</span> 满足任意 <span class="math inline">\(x \in S\)</span> 都有 <span class="math inline">\(x \leq a\)</span>，则 <span class="math inline">\(a\)</span> 是 <span class="math inline">\(S\)</span> 的<strong>最大元</strong>，同理定义<strong>最小元</strong></li>
 <li>若存在 <span class="math inline">\(a \in S\)</span> 满足只要 <span class="math inline">\(x \geq a\)</span> 就有 <span class="math inline">\(x = a\)</span>，则 <span class="math inline">\(a\)</span> 是 <span class="math inline">\(S\)</span> 的<strong>极大元</strong>，同理定义<strong>极小元</strong></li>
@@ -483,25 +483,25 @@ A/\sim := \{\overline{a} : a \in A\}
 <li>对 <span class="math inline">\(T \subseteq S\)</span>，若存在 <span class="math inline">\(T\)</span> 的某个上界 <span class="math inline">\(a\)</span>，令 <span class="math inline">\(T\)</span> 的任意上界 <span class="math inline">\(a&#39;\)</span> 都有 <span class="math inline">\(a \leq a&#39;\)</span>，则 <span class="math inline">\(a\)</span> 是 <span class="math inline">\(T\)</span> 的<strong>最小上界</strong>，同理定义<strong>最大下界</strong></li>
 </ul>
 </div>
-<div class="note success no-icon"><p><strong>Definition 1.1.5 (Well Ordered Set)</strong> 如果全序集 <span class="math inline">\((S, \leq)\)</span> 满足对任意 <span class="math inline">\(T \subseteq S, T \neq \varnothing\)</span> 都有 <span class="math inline">\(T\)</span> 具有最小元，那么该全序集为<strong>良序集</strong>。</p>
+<div class="note success no-icon"><p><strong>Definition 1.5 (Well Ordered Set)</strong> 如果全序集 <span class="math inline">\((S, \leq)\)</span> 满足对任意 <span class="math inline">\(T \subseteq S, T \neq \varnothing\)</span> 都有 <span class="math inline">\(T\)</span> 具有最小元，那么该全序集为<strong>良序集</strong>。</p>
 </div>
 <p>整数集 <span class="math inline">\(\mathbb{Z}\)</span> 在一般的整数序意义上不良序，例如取负整数集 <span class="math inline">\(\mathbb{Z}^- \subseteq \mathbb{Z}\)</span>，而负整数集不具有最小元。</p>
 <p>良序性保证了数学归纳法的有效性，或者说数学归纳法可以应用在任意良序集上：</p>
-<div class="note info no-icon"><p><strong>Theorem 1.1.3</strong> 已知 <span class="math inline">\(M \subseteq \mathbb{Z}^+\)</span>，若有 <span class="math inline">\(1 \in M\)</span>，并且只要有 <span class="math inline">\(n - 1 \in M\)</span> 就有 <span class="math inline">\(n \in M\)</span>，那么 <span class="math inline">\(M = \mathbb{Z}^+\)</span>。</p>
+<div class="note info no-icon"><p><strong>Theorem 1.3</strong> 已知 <span class="math inline">\(M \subseteq \mathbb{Z}^+\)</span>，若有 <span class="math inline">\(1 \in M\)</span>，并且只要有 <span class="math inline">\(n - 1 \in M\)</span> 就有 <span class="math inline">\(n \in M\)</span>，那么 <span class="math inline">\(M = \mathbb{Z}^+\)</span>。</p>
 </div>
 <p>【证明】利用反证法，据 <span class="math inline">\(\mathbb{Z}^+\)</span> 的良序性，取 <span class="math inline">\(N = \mathbb{Z}^+\backslash M \neq\varnothing\)</span>，<span class="math inline">\(N\)</span> 具有最小元 <span class="math inline">\(a\)</span>。由 <span class="math inline">\(1 \in M\)</span> 得到 <span class="math inline">\(a \neq 1\)</span>，所以 <span class="math inline">\(a - 1 \in \mathbb{Z}^+\)</span>。据 <span class="math inline">\(a - 1 &lt; a\)</span> 和 <span class="math inline">\(a\)</span> 在 <span class="math inline">\(N\)</span> 中的最小性得到 <span class="math inline">\(a - 1 \in M\)</span>，因而得到 <span class="math inline">\(a \in M\)</span>，矛盾。<span class="math inline">\(\blacksquare\)</span></p>
 <h2 id="整数与同余方程">整数与同余方程</h2>
 <p>整数的带余除法、素因子分解这里不赘述。</p>
-<div class="note info no-icon"><p><strong>Theorem 1.1.4 (Bezout Theorem)</strong> 对不全为零的整数 <span class="math inline">\(a, b\)</span>，其最大公因数为 <span class="math inline">\(d\)</span>，那么存在 <span class="math inline">\(p, q\in\mathbb{Z}\)</span> 令 <span class="math inline">\(pa + qb = d\)</span>。</p>
+<div class="note info no-icon"><p><strong>Theorem 1.4 (Bezout Theorem)</strong> 对不全为零的整数 <span class="math inline">\(a, b\)</span>，其最大公因数为 <span class="math inline">\(d\)</span>，那么存在 <span class="math inline">\(p, q\in\mathbb{Z}\)</span> 令 <span class="math inline">\(pa + qb = d\)</span>。</p>
 </div>
 <p>证明方式为证明 <span class="math inline">\(\min\{pa + qb \in \mathbb{Z}^+: p, q \in \mathbb{Z}\} = d\)</span>，这里略去。</p>
 <p>我感觉本质就在 <span class="math inline">\(a\mathbb{Z} + b\mathbb{Z}\)</span> 依然是整数的子群，而 <span class="math inline">\(d\)</span> 是 <span class="math inline">\(a\mathbb{Z} + b\mathbb{Z}\)</span> 的最小正元素。</p>
-<div class="note success no-icon"><p><strong>Definition 1.1.6 (Euler Function)</strong> 对正整数 <span class="math inline">\(n\)</span>，定义 <span class="math inline">\(\varphi(n)\)</span> 为小于 <span class="math inline">\(n\)</span> 且与 <span class="math inline">\(n\)</span> 互素的正整数的个数。不难据容斥原理计算得到：</p>
+<div class="note success no-icon"><p><strong>Definition 1.6 (Euler Function)</strong> 对正整数 <span class="math inline">\(n\)</span>，定义 <span class="math inline">\(\varphi(n)\)</span> 为小于 <span class="math inline">\(n\)</span> 且与 <span class="math inline">\(n\)</span> 互素的正整数的个数。不难据容斥原理计算得到：</p>
 <p><span class="math display">\[
 \varphi(n) = n\prod_{p\mid n}\left(1 - \frac{1}{p}\right)
 \]</span></p>
 </div>
-<div class="note info no-icon"><p><strong>Theorem 1.1.5</strong> 一次同余方程 <span class="math inline">\(ax \equiv b (\mathop{\rm mod} m), m \nmid a\)</span> 有解的充要条件为 <span class="math inline">\((a, m) \mid b\)</span>。</p>
+<div class="note info no-icon"><p><strong>Theorem 1.5</strong> 一次同余方程 <span class="math inline">\(ax \equiv b (\mathop{\rm mod} m), m \nmid a\)</span> 有解的充要条件为 <span class="math inline">\((a, m) \mid b\)</span>。</p>
 </div>
 <p>【证明】若方程有解 <span class="math inline">\(x\)</span>，则存在 <span class="math inline">\(y \in \mathbb{Z}\)</span> 有 <span class="math inline">\(ax + ym = b\)</span>，据 Bezout 定理得到 <span class="math inline">\((a, m) \mid b\)</span>。</p>
 <p>若 <span class="math inline">\((a, m) \mid b\)</span>，分别记 <span class="math inline">\(a = a_1(a, m), m = m_1(a, m), b = b_1(a, m)\)</span>，这里我们显然有 <span class="math inline">\((a_1, m_1) = 1\)</span>，从而据 Bezout 定理得到存在 <span class="math inline">\(r, s \in \mathbb{Z}\)</span> 有 <span class="math inline">\(ra_1 + sm_1 = 1\)</span>，从而 <span class="math inline">\(ra_1b_1 + sm_1b_1 = b_1\)</span>，即：</p>
@@ -518,7 +518,7 @@ ra_1b_1 \equiv b_1 (\mathop{\rm mod} m_1)
 \end{aligned}
 \]</span></p>
 <p>从而我们已经得到了原方程的一个解 <span class="math inline">\(x = rb_1\)</span>，从而我们可以得到原方程的所有解 <span class="math inline">\(x = rb_1 + lm_1\)</span>，这里 <span class="math inline">\(l \in \mathbb{Z}\)</span>。<span class="math inline">\(\blacksquare\)</span></p>
-<div class="note info no-icon"><p><strong>Theorem 1.1.6 (Chinese Remainder Theorem)</strong> 同余方程组</p>
+<div class="note info no-icon"><p><strong>Theorem 1.6 (Chinese Remainder Theorem)</strong> 同余方程组</p>
 <p><span class="math display">\[
 \begin{cases}
 x\equiv a_1(\mathop{\rm mod} m_1) \\
@@ -542,7 +542,85 @@ x \equiv \sum_{i = 1}^n a_ic_iM_i(\mathop{\rm mod} M)
 x = kM + \sum_{i = 1}^n a_ic_iM_i = m_p\left(kM_p + \sum_{i \neq p}a_ic_i\frac{M_i}{m_p}\right) + a_pc_pM_p \equiv a_pc_pM_p(\mathop{\rm mod} m_p)
 \]</span></p>
 <p>据 <span class="math inline">\(M_pc_p \equiv 1(\mathop{\rm mod} m_p)\)</span> 即验证完毕。</p>
-<p>之后证明同余方程组任意解都满足上述形式。取任意一个解 <span class="math inline">\(y\)</span>，由于我们验证了所有满足上述形式的 <span class="math inline">\(x\)</span> 都是方程组的解，我们任取其中一个 <span class="math inline">\(x\)</span>，总有 <span class="math inline">\(x \equiv y (\mathop{\rm mod} m_p) \iff x - y \mid m_p\)</span>。据 <span class="math inline">\(m_p\)</span> 之间互素，不难得到 <span class="math inline">\(x - y \mid M\)</span>，证明完毕。</p>
+<p>之后证明同余方程组任意解都满足上述形式。取任意一个解 <span class="math inline">\(y\)</span>，由于我们验证了所有满足上述形式的 <span class="math inline">\(x\)</span> 都是方程组的解，我们任取其中一个 <span class="math inline">\(x\)</span>，总有 <span class="math inline">\(x \equiv y (\mathop{\rm mod} m_p) \iff x - y \mid m_p\)</span>。据 <span class="math inline">\(m_p\)</span> 之间互素，不难得到 <span class="math inline">\(x - y \mid M\)</span>，证明完毕。<span class="math inline">\(\blacksquare\)</span></p>
+<h1 id="群">群</h1>
+<h2 id="基本概念">基本概念</h2>
+<div class="note success no-icon"><p><strong>Definition 2.1 (Group)</strong> 在集合 <span class="math inline">\(G\)</span> 上定义了一个二元运算 <span class="math inline">\(\cdot: G^2 \to G\)</span>，若满足：</p>
+<ul>
+<li><strong>结合律</strong>：对任意 <span class="math inline">\(a, b, c \in G\)</span>，有 <span class="math inline">\((ab)c = a(bc)\)</span></li>
+</ul>
+<p>那么称 <span class="math inline">\((G, \cdot)\)</span> 为一个<strong>半群</strong>。如果还满足：</p>
+<ul>
+<li><strong>单位元</strong>：存在 <span class="math inline">\(e \in G\)</span> 使得对任意 <span class="math inline">\(a \in G\)</span> 都有 <span class="math inline">\(ea = ae = a\)</span></li>
+</ul>
+<p>那么称 <span class="math inline">\((G, \cdot)\)</span> 为一个<strong>幺半群</strong>。如果还满足：</p>
+<ul>
+<li><strong>逆元</strong>：对任意 <span class="math inline">\(a \in G\)</span> 都存在 <span class="math inline">\(a^{-1} \in G\)</span> 使得 <span class="math inline">\(aa^{-1} = a^{-1}a = e\)</span></li>
+</ul>
+<p>那么称 <span class="math inline">\((G, \cdot)\)</span> 为一个<strong>群</strong>。如果还满足：</p>
+<ul>
+<li><strong>交换律</strong>：对任意 <span class="math inline">\(a, b \in G\)</span> 都有 <span class="math inline">\(ab = ba\)</span></li>
+</ul>
+<p>那么称 <span class="math inline">\((G, \cdot)\)</span> 为一个<strong>交换群（Abel 群）</strong>。</p>
+<p>有限群、无限群、群的阶的概念这里不表述。</p>
+</div>
+<p>关于半群，我们有下述性质：</p>
+<div class="note info no-icon"><p><strong>Theorem 2.1</strong> 在半群 <span class="math inline">\((G, \cdot)\)</span> 内定义左右单位元 <span class="math inline">\(e_{\rm L}, e_{\rm R}\)</span>。如果一个半群同时具有左右单位元，则 <span class="math inline">\(G\)</span> 的左右单位元相等，均为 <span class="math inline">\(G\)</span> 的单位元且单位元唯一。</p>
+</div>
+<p>仅需考虑乘积 <span class="math inline">\(e_{\rm L}e_{\rm R}\)</span> 即可证明单位元相等。单位元唯一性则根据反证法，假定有两个单位元 <span class="math inline">\(e_{1, 2}\)</span>，考虑乘积 <span class="math inline">\(e_1e_2\)</span> 即可。<span class="math inline">\(\blacksquare\)</span></p>
+<div class="note info no-icon"><p><strong>Theorem 2.2</strong> 在幺半群 <span class="math inline">\((G, \cdot)\)</span> 内对 <span class="math inline">\(a \in G\)</span> 定义左右逆 <span class="math inline">\(a_{\rm L}^{-1}, a_{\rm R}^{-1}\)</span>。如果一个幺半群的某元素同时具有左右逆，则其左右逆相等，均为其逆元且逆元唯一。</p>
+</div>
+<p>左右逆相等根据下述计算保证：</p>
+<p><span class="math display">\[
+a_{\rm L}^{-1} = a_{\rm L}^{-1}e = a_{\rm L}^{-1}(aa_{\rm R}^{-1}) = (a_{\rm L}^{-1}a)a_{\rm R}^{-1} = ea_{\rm R}^{-1} = a_{\rm R}^{-1}
+\]</span></p>
+<p>逆元的唯一性根据下述计算保证，假定 <span class="math inline">\(a\)</span> 有两个逆元 <span class="math inline">\(a_{1, 2}^{-1}\)</span>：</p>
+<p><span class="math display">\[
+a_1^{-1} = a_1^{-1}e = a_1^{-1}(aa_2^{-1}) = (a_1^{-1}a)a_2^{-1} = ea_2^{-1} = a_2^{-1}
+\]</span></p>
+<p><span class="math inline">\(\blacksquare\)</span></p>
+<p>上述定理保证的事情大概可以描述为，一个非含幺的半群，单位元不能“左右开弓”，否则必可得到唯一单位元，一个非群的幺半群，逆元不能“左右开弓”，否则必可得到唯一逆元。当然和非含幺的半群一旦“左右开弓”就能升格为幺半群不一样，非群的幺半群内逆元“左右开弓”仅限于具体的元素，要升格为群还是需要所有的元素都具有逆。</p>
+<p>之后我们需要指出半群升格为群的一些条件：</p>
+<div class="note info no-icon"><p><strong>Theorem 2.3</strong> 半群 <span class="math inline">\((G, \cdot)\)</span> 满足下述两个条件时即为群：</p>
+<ul>
+<li><strong>左单位元</strong>：存在 <span class="math inline">\(e_{\rm L} \in G\)</span>，对任意 <span class="math inline">\(a \in G\)</span> 都有 <span class="math inline">\(e_{\rm L}a = a\)</span></li>
+<li><strong>对左单位元的左逆元</strong>：对任意 <span class="math inline">\(a \in G\)</span> 都存在 <span class="math inline">\(a_{\rm LL}^{-1} \in G\)</span> 使得 <span class="math inline">\(a_{\rm LL}^{-1}a = e_{\rm L}\)</span></li>
+</ul>
+</div>
+<p>首先证明对左单位元的左逆元也是对左单位元的右逆元。取 <span class="math inline">\(a_{\rm LL}^{-1}\)</span> 的左逆 <span class="math inline">\((a_{\rm LL}^{-1})_{\rm LL}^{-1}\)</span>，那么：</p>
+<p><span class="math display">\[
+aa_{\rm LL}^{-1} = e_{\rm L}aa_{\rm LL}^{-1} = (a_{\rm LL}^{-1})_{\rm LL}^{-1}(a_{\rm LL}^{-1}a)a_{\rm LL}^{-1} = (a_{\rm LL}^{-1})_{\rm LL}^{-1}(e_{\rm L}a_{\rm LL}^{-1}) = e_{\rm L}
+\]</span></p>
+<p>则现在将任意 <span class="math inline">\(a \in G\)</span> 对 <span class="math inline">\(e_{\rm L}\)</span> 的逆记作 <span class="math inline">\(a_{\rm BL}^{-1}\)</span>。</p>
+<p>下面只需要说明左单位元也是右单位元，则不难得到该半群是群。考虑下述运算：</p>
+<p><span class="math display">\[
+ae_{\rm L} = a(a_{\rm BL}^{-1}a) = (aa_{\rm BL}^{-1})a = e_{\rm L}a = a
+\]</span></p>
+<p>据此证明完毕。<span class="math inline">\(\blacksquare\)</span></p>
+<p>这个定理说明了半群升格为群并不需要单位元和逆左右同时满足，只需要满足一侧即可。</p>
+<p>在此基础上我们可以得到更通用的半群升格为群的条件：</p>
+<div class="note info no-icon"><p><strong>Theorem 2.4</strong> 半群 <span class="math inline">\((G, \cdot)\)</span> 满足对 <span class="math inline">\(a, b\in G\)</span>，方程 <span class="math inline">\(ax = b, xa = b\)</span> 都有解时为群。</p>
+</div>
+<p>首先证明左单位元存在。任取一 <span class="math inline">\(g\)</span>，取 <span class="math inline">\(xg = g\)</span> 的解 <span class="math inline">\(e_{\rm L}\)</span>。之后任取 <span class="math inline">\(a\)</span>，取 <span class="math inline">\(gx = a\)</span> 的解 <span class="math inline">\(b\)</span>，则：</p>
+<p><span class="math display">\[
+e_{\rm L}a = e_{\rm L}(gb) = (e_{\rm L}g)b = gb = a
+\]</span></p>
+<p>左逆元根据 <span class="math inline">\(xa = e_{\rm L}\)</span> 总有解保证。<span class="math inline">\(\blacksquare\)</span></p>
+<div class="note info no-icon"><p><strong>Theorem 2.4</strong> <strong>有限</strong>半群 <span class="math inline">\((G, \cdot)\)</span> 满足左右消去律时为群：</p>
+<p><span class="math display">\[
+\begin{cases}
+xa = ya \Rightarrow x = y \\
+ax = ay \Rightarrow x = y \\
+\end{cases}
+\]</span></p>
+</div>
+<p>取集合 <span class="math inline">\(aG = \{ax: x \in G\}\)</span>，显然 <span class="math inline">\(aG \subseteq G\)</span>。由于 <span class="math inline">\(ax = ay \iff x = y\)</span>，说明 <span class="math inline">\(|aG| = |G|\)</span>，得到 <span class="math inline">\(aG = G\)</span>。这说明 <span class="math inline">\(ax = b\)</span> 总有解。同理 <span class="math inline">\(xa = b\)</span> 总有解，证明完毕。<span class="math inline">\(\blacksquare\)</span></p>
+<p>记几个重要的群：</p>
+<ul>
+<li><span class="math inline">\(GL_n(F)\)</span> 是数域 <span class="math inline">\(F\)</span> 上所有 <span class="math inline">\(n\)</span> 阶可逆线性变换对变换复合构成的群</li>
+<li><span class="math inline">\(S_A\)</span> 是所有可逆的 <span class="math inline">\(f: A\to A\)</span> 对映射复合构成的群，称为 <span class="math inline">\(A\)</span> 上的<strong>对称群</strong></li>
+</ul>
+<h2 id="子群">子群</h2>
 
     </div>
 
@@ -593,13 +671,13 @@ x = kM + \sum_{i = 1}^n a_ic_iM_i = m_p\left(kM_p + \sum_{i \neq p}a_ic_i\frac{M
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">444k</span>
+    <span title="站点总字数">447k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">6:44</span>
+    <span title="站点阅读时长">6:46</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
