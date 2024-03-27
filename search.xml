@@ -1319,9 +1319,45 @@
 <p>今天决定翘班，但说是翘班，只不过是打算今天不上班明天补上而已。上午的软工线下辅导，说实话实在是有点不对味，相比较于之前能有一个完整的教室和时间段，在课上嘈杂的环境中尝试教学，说实话真的收效甚微，最后我也算是放弃了，混过去之后就开始做一些自己的事情。</p>
 <p>下午出勤，速速解决掉削除鬼叫之后随手开了 End Time，本来只是想试试内屏会怎么样，结果直接飞上 100.48，后面又打了几把却一直没能复现当时完美的尾杀发挥。之后大概练了练图灵和 AMABIE 也就退勤了，14.6 剩下的果然一点都不好惹。</p>
 <p>晚上回来就是做事了，现在就是希望在 maimai 能稳步推进的时候工作也能有条不紊的进行。</p>
+<h1 id="section-30">2024.03.27</h1>
+<p>上班，然后做事，然后下班，然后出勤。之后就发现今天交的近世代数作业没做完，赶快回来补上。</p>
+<p>很郁闷，因为工作我一直不知道做的算好还是坏，也不知道未来到底是个什么样，这个博士读得一点没有底气。不过感觉，之前本科第一年的时候我也差不多是这么个样子，完全不知道自己应该去做些什么，然而当时大一的暑假还算是勇敢地拓宽了一下自己，但是博一目前来看好像还没有这样的契机。</p>
+<p>明天组会取消了，正好去打理一下自己吧。</p>
 ]]></content>
       <categories>
         <category>【生活记录】日记</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>安卓前端开发杂谈</title>
+    <url>/2021/09/01/android-dev-exp-1/</url>
+    <content><![CDATA[<p>安卓的移动端开发，属实让我血压高了一小段时间。毕竟已经接触过类似于 React Native 那种基于 TypeScript 语言的、优秀的跨平台移动端框架，再去尝试用繁琐的 Java 语言写安卓前端自然是不适应且感到烦躁。</p>
+<p>但是毕竟是 Java 程序设计训练课程，安卓前端开发作为其最大的特色，不得不消受。</p>
+<span id="more"></span>
+<h1 id="关于数据绑定">关于数据绑定</h1>
+<p>如果要我说最大的不适应的地方，首先就是数据和图形界面的完全分离。在 React Native 框架之中，数据和图形界面的管理大概是这样的：</p>
+<figure class="highlight typescript"><figcaption><span>TypeScript</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> App = <span class="function">(<span class="params">props: AppProps</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// Set states &amp; initialize</span></span><br><span class="line">    <span class="keyword">const</span> [bar, setBar] = useState&lt;<span class="built_in">number</span>&gt;(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Some functions to update or rewrite data</span></span><br><span class="line">    <span class="keyword">const</span> update = <span class="function">() =&gt;</span> setBar(<span class="function">(<span class="params">o</span>) =&gt;</span> o + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Write UI with TSX, use data freely</span></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="xml"><span class="tag">&lt;<span class="name">View</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Text</span>&gt;</span> Hello world! <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;`The val of bar is $&#123;bar&#125;`&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;`Property foo is $&#123;props.foo&#125;`&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Button</span> <span class="attr">onClick</span>=<span class="string">&#123;update&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但是在安卓之中，图形界面完全定义在 <code>.xml</code> 文件之中，而且一定程度上其定义各个组件摆放方式的语法细节的繁杂程度不低于 HTML。而如果需要将数据载入图形界面，则首先要根据组件的 ID 获取组件，之后才能调用各种方法设定具体属性。</p>
+<figure class="highlight java"><figcaption><span>Java</span></figcaption><table><tr><td class="code"><pre><span class="line">((TextView) view.findViewById(R.id.entity_name)).setText(data.name);</span><br></pre></td></tr></table></figure>
+<p>这里出现的 <code>R</code> 类据说是相当厉害的。但是我第一次接触安卓的时候，这个符号给我带来的感觉就是不安，因为我再也不能像写 React Native 一样至少自认为自己掌握了程序之中的数据流。换一种说法，即使 React Native 可能做了很多背后工作，但它至少做到了让开发者在很多时候能直观引导数据流。</p>
+<p>对于按钮等组件，React Native 框架下可以直接传入回调函数。而众所周知 Java 是纯净的面向对象语言，怎么会有 lambda 这种异端呢（新版本的 Java 已经离经叛道了！）。</p>
+<p>所以你需要写监听器对象，重写其中的方法等等。</p>
+<hr />
+<p>并不是说这样不好，我还记得之前大一小学期的时候写 Qt 很多时候就是各种指针到处乱飞然后到处乱 <code>set</code> 这个那个的，最后一个 <code>draw</code> 函数里面上百行的，成块的各种格式设定、字体设定、内容设定、排列设定，然后这次写安卓让我回忆起了那一段黑暗时光。</p>
+<h1 id="并不适应的适配器模式">并不适应的适配器模式</h1>
+<p>如果只是想给一个 <code>TextView</code> 载入文字，直接几个 <code>set</code> 函数就结束了。但是给一个格式复杂的列表载入数据，则相当繁琐。比如说现在主流的 <code>RecyclerView</code>，其载入数据，就需要你自己编写一个数据适配器。</p>
+<p>我首先是上网找轮子，随后想了一下，干脆自己包装了个简单的 <code>RecyclerViewAdapter</code> 先勉强用用。</p>
+<p>将数据塞到图形界面上，最重要的三个东西是上下文、使用什么 <code>layout</code> 和数据本身，那么适配器的构造函数就需要接受这三项。然后就是平凡地重写 <code>RecyclerView.Adapter</code> 所要求的三个函数。不过这里我在重写 <code>onBindViewHolder</code> 的时候留了空，因为这里就是定义适配器最重要部分——数据如何映射到 UI 的函数。我将这一个函数设为虚函数，让子类继承重写就可以实现各种映射方式。最后的成果大致这样：</p>
+<figure class="highlight java"><figcaption><span>Java</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">RecyclerViewAdapter</span>&lt;<span class="title">T</span>&gt; <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">Adapter</span>&lt;<span class="title">RecyclerViewAdapter</span>.<span class="title">ViewHolder</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> Context mContext;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">int</span> mLayoutId;</span><br><span class="line">    <span class="keyword">protected</span> List&lt;T&gt; mData;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RecyclerViewAdapter</span><span class="params">(Context context, <span class="keyword">int</span> layoutId, List&lt;T&gt; data)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.mContext = context;</span><br><span class="line">        <span class="keyword">this</span>.mLayoutId = layoutId;</span><br><span class="line">        <span class="keyword">this</span>.mData = data;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="meta">@NonNull</span> <span class="function">ViewHolder <span class="title">onCreateViewHolder</span><span class="params">(<span class="meta">@NonNull</span> ViewGroup parent, <span class="keyword">int</span> viewType)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ViewHolder(</span><br><span class="line">                LayoutInflater.from(mContext).inflate(mLayoutId, parent, <span class="keyword">false</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBindViewHolder</span><span class="params">(<span class="meta">@NonNull</span> ViewHolder holder, <span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// <span class="doctag">TODO:</span> What is this?</span></span><br><span class="line">        <span class="comment">// holder.updatePosition(position);</span></span><br><span class="line">        <span class="keyword">this</span>.convert(holder, mData.get(position));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">convert</span><span class="params">(ViewHolder holder, T data)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getItemCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> mData.size();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ViewHolder</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">ViewHolder</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">private</span> View mConvertView;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">ViewHolder</span><span class="params">(View itemView)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>(itemView);</span><br><span class="line">            <span class="keyword">this</span>.mConvertView = itemView;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> &lt;K extends View&gt; <span class="function">K <span class="title">getViewById</span><span class="params">(<span class="keyword">int</span> viewId)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> (K) mConvertView.findViewById(viewId);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>用起来也简单，传入三个要素，之后重写 <code>convert</code> 方法定义一下数据到 UI 的映射就好了：</p>
+<figure class="highlight java"><figcaption><span>Java</span></figcaption><table><tr><td class="code"><pre><span class="line">binding.entityList.setAdapter(<span class="keyword">new</span> RecyclerViewAdapter&lt;Entity&gt;(</span><br><span class="line">    HomeFragment.<span class="keyword">this</span>.getActivity(), R.layout.home_entity_item, baseEntities</span><br><span class="line">) &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">convert</span><span class="params">(RecyclerViewAdapter.ViewHolder holder, Entity data)</span> </span>&#123;</span><br><span class="line">        ((TextView) holder.getViewById(R.id.entity_name)).setText(data.getLabel());</span><br><span class="line">        ((TextView) holder.getViewById(R.id.entity_category)).setText(data.getCategory());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>你会发现，这比 React Native 要写的东西多太多了。上面这么多需要折腾的，React Native 只需要这样写：</p>
+<figure class="highlight typescript"><figcaption><span>TypeScript</span></figcaption><table><tr><td class="code"><pre><span class="line">&lt;View&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        baseEntities.map(<span class="function">(<span class="params">val, ind</span>) =&gt;</span> (</span><br><span class="line">            <span class="xml"><span class="tag">&lt;<span class="name">View</span> <span class="attr">key</span>=<span class="string">&#123;ind&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;val.name&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;val.category&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span></span><br><span class="line">        ))</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/View&gt;</span><br></pre></td></tr></table></figure>
+<p>就可以实现一个列表了。</p>
+<p>Java 我写了一整个类，光数据转成 UI 也写了好几行长代码，这还没有算 <code>.xml</code> 文件。</p>
+]]></content>
+      <categories>
+        <category>【杂谈】开发</category>
       </categories>
   </entry>
   <entry>
@@ -2774,38 +2810,6 @@
       </categories>
   </entry>
   <entry>
-    <title>安卓前端开发杂谈</title>
-    <url>/2021/09/01/android-dev-exp-1/</url>
-    <content><![CDATA[<p>安卓的移动端开发，属实让我血压高了一小段时间。毕竟已经接触过类似于 React Native 那种基于 TypeScript 语言的、优秀的跨平台移动端框架，再去尝试用繁琐的 Java 语言写安卓前端自然是不适应且感到烦躁。</p>
-<p>但是毕竟是 Java 程序设计训练课程，安卓前端开发作为其最大的特色，不得不消受。</p>
-<span id="more"></span>
-<h1 id="关于数据绑定">关于数据绑定</h1>
-<p>如果要我说最大的不适应的地方，首先就是数据和图形界面的完全分离。在 React Native 框架之中，数据和图形界面的管理大概是这样的：</p>
-<figure class="highlight typescript"><figcaption><span>TypeScript</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> App = <span class="function">(<span class="params">props: AppProps</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// Set states &amp; initialize</span></span><br><span class="line">    <span class="keyword">const</span> [bar, setBar] = useState&lt;<span class="built_in">number</span>&gt;(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Some functions to update or rewrite data</span></span><br><span class="line">    <span class="keyword">const</span> update = <span class="function">() =&gt;</span> setBar(<span class="function">(<span class="params">o</span>) =&gt;</span> o + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Write UI with TSX, use data freely</span></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="xml"><span class="tag">&lt;<span class="name">View</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Text</span>&gt;</span> Hello world! <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;`The val of bar is $&#123;bar&#125;`&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;`Property foo is $&#123;props.foo&#125;`&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Button</span> <span class="attr">onClick</span>=<span class="string">&#123;update&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>但是在安卓之中，图形界面完全定义在 <code>.xml</code> 文件之中，而且一定程度上其定义各个组件摆放方式的语法细节的繁杂程度不低于 HTML。而如果需要将数据载入图形界面，则首先要根据组件的 ID 获取组件，之后才能调用各种方法设定具体属性。</p>
-<figure class="highlight java"><figcaption><span>Java</span></figcaption><table><tr><td class="code"><pre><span class="line">((TextView) view.findViewById(R.id.entity_name)).setText(data.name);</span><br></pre></td></tr></table></figure>
-<p>这里出现的 <code>R</code> 类据说是相当厉害的。但是我第一次接触安卓的时候，这个符号给我带来的感觉就是不安，因为我再也不能像写 React Native 一样至少自认为自己掌握了程序之中的数据流。换一种说法，即使 React Native 可能做了很多背后工作，但它至少做到了让开发者在很多时候能直观引导数据流。</p>
-<p>对于按钮等组件，React Native 框架下可以直接传入回调函数。而众所周知 Java 是纯净的面向对象语言，怎么会有 lambda 这种异端呢（新版本的 Java 已经离经叛道了！）。</p>
-<p>所以你需要写监听器对象，重写其中的方法等等。</p>
-<hr />
-<p>并不是说这样不好，我还记得之前大一小学期的时候写 Qt 很多时候就是各种指针到处乱飞然后到处乱 <code>set</code> 这个那个的，最后一个 <code>draw</code> 函数里面上百行的，成块的各种格式设定、字体设定、内容设定、排列设定，然后这次写安卓让我回忆起了那一段黑暗时光。</p>
-<h1 id="并不适应的适配器模式">并不适应的适配器模式</h1>
-<p>如果只是想给一个 <code>TextView</code> 载入文字，直接几个 <code>set</code> 函数就结束了。但是给一个格式复杂的列表载入数据，则相当繁琐。比如说现在主流的 <code>RecyclerView</code>，其载入数据，就需要你自己编写一个数据适配器。</p>
-<p>我首先是上网找轮子，随后想了一下，干脆自己包装了个简单的 <code>RecyclerViewAdapter</code> 先勉强用用。</p>
-<p>将数据塞到图形界面上，最重要的三个东西是上下文、使用什么 <code>layout</code> 和数据本身，那么适配器的构造函数就需要接受这三项。然后就是平凡地重写 <code>RecyclerView.Adapter</code> 所要求的三个函数。不过这里我在重写 <code>onBindViewHolder</code> 的时候留了空，因为这里就是定义适配器最重要部分——数据如何映射到 UI 的函数。我将这一个函数设为虚函数，让子类继承重写就可以实现各种映射方式。最后的成果大致这样：</p>
-<figure class="highlight java"><figcaption><span>Java</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">RecyclerViewAdapter</span>&lt;<span class="title">T</span>&gt; <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">Adapter</span>&lt;<span class="title">RecyclerViewAdapter</span>.<span class="title">ViewHolder</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> Context mContext;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">int</span> mLayoutId;</span><br><span class="line">    <span class="keyword">protected</span> List&lt;T&gt; mData;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RecyclerViewAdapter</span><span class="params">(Context context, <span class="keyword">int</span> layoutId, List&lt;T&gt; data)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.mContext = context;</span><br><span class="line">        <span class="keyword">this</span>.mLayoutId = layoutId;</span><br><span class="line">        <span class="keyword">this</span>.mData = data;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="meta">@NonNull</span> <span class="function">ViewHolder <span class="title">onCreateViewHolder</span><span class="params">(<span class="meta">@NonNull</span> ViewGroup parent, <span class="keyword">int</span> viewType)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ViewHolder(</span><br><span class="line">                LayoutInflater.from(mContext).inflate(mLayoutId, parent, <span class="keyword">false</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBindViewHolder</span><span class="params">(<span class="meta">@NonNull</span> ViewHolder holder, <span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// <span class="doctag">TODO:</span> What is this?</span></span><br><span class="line">        <span class="comment">// holder.updatePosition(position);</span></span><br><span class="line">        <span class="keyword">this</span>.convert(holder, mData.get(position));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">convert</span><span class="params">(ViewHolder holder, T data)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getItemCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> mData.size();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ViewHolder</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">ViewHolder</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">private</span> View mConvertView;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">ViewHolder</span><span class="params">(View itemView)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>(itemView);</span><br><span class="line">            <span class="keyword">this</span>.mConvertView = itemView;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> &lt;K extends View&gt; <span class="function">K <span class="title">getViewById</span><span class="params">(<span class="keyword">int</span> viewId)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> (K) mConvertView.findViewById(viewId);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>用起来也简单，传入三个要素，之后重写 <code>convert</code> 方法定义一下数据到 UI 的映射就好了：</p>
-<figure class="highlight java"><figcaption><span>Java</span></figcaption><table><tr><td class="code"><pre><span class="line">binding.entityList.setAdapter(<span class="keyword">new</span> RecyclerViewAdapter&lt;Entity&gt;(</span><br><span class="line">    HomeFragment.<span class="keyword">this</span>.getActivity(), R.layout.home_entity_item, baseEntities</span><br><span class="line">) &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">convert</span><span class="params">(RecyclerViewAdapter.ViewHolder holder, Entity data)</span> </span>&#123;</span><br><span class="line">        ((TextView) holder.getViewById(R.id.entity_name)).setText(data.getLabel());</span><br><span class="line">        ((TextView) holder.getViewById(R.id.entity_category)).setText(data.getCategory());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>你会发现，这比 React Native 要写的东西多太多了。上面这么多需要折腾的，React Native 只需要这样写：</p>
-<figure class="highlight typescript"><figcaption><span>TypeScript</span></figcaption><table><tr><td class="code"><pre><span class="line">&lt;View&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        baseEntities.map(<span class="function">(<span class="params">val, ind</span>) =&gt;</span> (</span><br><span class="line">            <span class="xml"><span class="tag">&lt;<span class="name">View</span> <span class="attr">key</span>=<span class="string">&#123;ind&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;val.name&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;val.category&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span></span><br><span class="line">        ))</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/View&gt;</span><br></pre></td></tr></table></figure>
-<p>就可以实现一个列表了。</p>
-<p>Java 我写了一整个类，光数据转成 UI 也写了好几行长代码，这还没有算 <code>.xml</code> 文件。</p>
-]]></content>
-      <categories>
-        <category>【杂谈】开发</category>
-      </categories>
-  </entry>
-  <entry>
     <title>JS 文件本地化</title>
     <url>/2022/08/20/blog-js-localize/</url>
     <content><![CDATA[<p>自从 JSDelivr 半挂了之后就一直在为这些事情苦恼。</p>
@@ -2866,6 +2870,64 @@ AK^2 = AO^2 - OK^2 + 2(KR^2 - RA^2)
 ]]></content>
       <categories>
         <category>【杂谈】数学</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>大二春季学期学期总结</title>
+    <url>/2021/06/19/grade-2-spring-conclusion/</url>
+    <content><![CDATA[<p>魔幻的大二春季学期最终还是随着自动机考试的结束而落幕了，随意写一点东西来总结一下吧。</p>
+<span id="more"></span>
+<p>虽然还没有出分，但我能够预料到这一学期如果按照绩点来评判，可以说过得十分坎坷。但是，这一学期还有更多的比绩点更值得重视的一些东西。</p>
+<h2 id="课内学习">课内学习</h2>
+<p>课内总体而言过得很不平凡，即使这一学期只有 24 学分的课程。与一年前那种 OOP 作业一发下来就赶快刷榜完成，高代选讲还愿意在课外学习很多内容的热情相比，我这一学期对课内显然是淡薄了很多。标志性的事件可以罗列出来：</p>
+<ul>
+<li><p>人智导 PA2 是在黄浦江上遥控卫爷写的，PA3 是在上海桌游店里打山屋惊魂的间隙交的</p></li>
+<li><p>在各种情况下写过数电实验报告，包括在人大门口醉酒的时候、在去上海的火车上、在轰趴的自动麻将机上（除了考试，我每一次实验的代码都是抄的）</p></li>
+<li><p>一个学期没有见过数电、自动机、人智导的老师，这三门课均让我在考试周通了宵（一个大二学生用 24 小时创造一个奇迹）</p></li>
+<li><p>软件工程大作业不到最后一周都没有认真写 UI</p></li>
+<li><p>高性能一气之下决定退课，虽然从未后悔过这个决定</p></li>
+<li><p>英语课一个学期就做了一份作业，占比最大的 Task C（团队 pre）只花了三四天准备</p></li>
+<li><p>物理实验报告分数为 9, 8.5, 8.7, 8, 8.7，上学期则是 9, 9, 9, 9.3, 9</p></li>
+</ul>
+<p>总之就是这学期浪了一些，或许是认清楚你清贵系的教学水平甚至还不如高中之后的一些合理举动。如果要我来评价大二下学期这些课程的话，我只能说除了《不朽的艺术》这一门课，其他的课程我丝毫没有觉得学习到了什么有用的东西。再加上期末四门专业课考试两门可以说出事故的情况，我更是愿意给这一学期以低评价。</p>
+<p>我大概算了一下，反正现在绩点的浮动不会多大，还不如抓紧时间，做一些我觉得有意义的事情。</p>
+<h2 id="thuinfo">THUInfo</h2>
+<p>我也说过，这是我唯一拿得出来的作品。虽然之前有写过一些小型项目，它们虽然也是我探索的足迹，但总体没有 THUInfo 给我带来的成就感大。</p>
+<p>但比较愧疚的是这一学期没有给 THUInfo 作出很大的贡献。寒假的时候翻新了“计划”功能，修了几个小 bug 之后，学期中除了加了比如说“今日高亮”这种小功能之外，我也就没有作出什么贡献了。</p>
+<p>但是，暑假确实是想要做很大的事情的。一方面是和校内 iOS Club 搭上了关系，对方也恰好想要找到一个重点支持的项目，双方互相需要，何乐而不为呢。通过它我们找到了美工，目前也有了一个较为简单的 UI 效果图（不得不说，做设计的就是做设计的）。另外一方面是<a href="https://www.zhihu.com/question/63407413">栋栋</a>加入了团队，总之多一个技能熟练的人手是很不错的。</p>
+<p>敬请期待暑假过后的 THUInfo 3 系列版本。</p>
+<h2 id="社工">社工</h2>
+<p>大一下学期一番折腾之后，一个学期没有加入任何学生组织。但是一个转变的契机就是 xge 和我说他和栋栋准备开发日麻，随后将我纳入了 308（科协 &amp; 算协活动室）常驻人员之中。在 308 蹲守的过程中，我也认识了科协的许多同学（再次点名“表扬”大恶人安頔）。最后决定加入科协，大概是那天去出去散心醉酒，隔天回校的时候恰好赶上 C 楼门口的智能体嘉年华。本来是不打算去的，想着去看看也没啥问题，就突然发现科协办的东西还挺有意思。随后又去蹭了智能体决赛，还坑了 Omega Fantasy 一顿饭。</p>
+<p>随后大约是某晚和安頔夜谈，经过一番交流，决定去混一个科协副主席。</p>
+<p>怎么说呢，或许真的是如同之前一些人的评价——“你大一下学期的那种情况实属罕见，哪有人开局社工就是王炸的”一般，社工并不是我想的那么不堪。现在大概是发现，有一群志同道合的人一起做事情是多么愉悦。</p>
+<h2 id="sakana">Sakana</h2>
+<p>这一段没有什么特别想说的，总之揭开了一些过往，给一些问题作出了解答，这应该也是这个学期我应该可以说最为重视的一件事。虽然有很多的小细节，有很多的瞬间，但还是就留下我之前发在空间里的一段话吧：</p>
+<blockquote class="blockquote-center">
+<p>虽然我真的不会挑时间，不会好好规划安排行程，或许会因为冲动把事情做得很离谱。 但真的感谢包容我的愚拙。</p>
+
+</blockquote>
+<h2 id="一些总结与闲话">一些总结与闲话</h2>
+<p>这一学期的 Holder 发生了相当大的改变，应该是真的去思考过我的大学应该如何度过这个问题了。之后就确立了“<strong>我要帮助后辈们尽可能少走弯路</strong>”这样的一个简单的目标，于是和改制的科协网络部不谋而合，于是和高中班主任谈好了回高中给学弟学妹讲数学竞赛。在确立好自己的真正想做的事情之后，便是卸下一些伪装。先前的我大概因为完全不能找到我自己的目标，而将自己浸没在无意义的内卷之中，也不敢面对自己的一些感情。这一切的一切，都在稍微通透之后被瓦解了。</p>
+<p>当然我感觉需要警惕的，就是我暂且需要约束一下自己无限膨胀的野心，不能给自己捞太多的锅，接太多的任务，应该让自己慢慢达到一种平衡。</p>
+<p>不如现在，来说说之后想要做的事情吧：</p>
+<ul>
+<li><p>接着跟进在刘知远实验室的任务，努力发篇文章，发完就撤退</p></li>
+<li><p>翻新 THUInfo 的 UI，开发一些新功能</p></li>
+<li><p>在科协把“技能引导文档”这件事做好，做到宣讲会上的“为了创建一个 user-friendly 的计算机系而奋斗”</p></li>
+<li><p>好好地生活，让自己的大学不仅仅是绩点和社工</p></li>
+</ul>
+<p>还有就是一些暑假要做的事情，比如说 GRE，比如说科目二，比如说回高中讲竞赛，比如尝试一下图形学。</p>
+<p>写这篇潦草的总结的时候，我应该还因为昨晚通宵复习自动机而头晕目眩，但是我的神志却异常清醒，因为我的大学似乎是真的开始了。</p>
+<p>我有分享歌词的习惯，这里也来一句吧。但不同于之前我喜欢分享那种长长的，哲学家写散文式的歌词，这个歌词很朴素：</p>
+<blockquote class="blockquote-center">
+<p>ケーキも大好き，君も大好き。</p>
+<p>——「とある一家の御茶会議」</p>
+
+</blockquote>
+<p>祝愿我余下的一半本科时光，能过得有意义。这里是 Holder，我们一起接着走下去吧。</p>
+]]></content>
+      <categories>
+        <category>【生活记录】学期总结</category>
       </categories>
   </entry>
   <entry>
@@ -3632,64 +3694,6 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
       </categories>
   </entry>
   <entry>
-    <title>大二春季学期学期总结</title>
-    <url>/2021/06/19/grade-2-spring-conclusion/</url>
-    <content><![CDATA[<p>魔幻的大二春季学期最终还是随着自动机考试的结束而落幕了，随意写一点东西来总结一下吧。</p>
-<span id="more"></span>
-<p>虽然还没有出分，但我能够预料到这一学期如果按照绩点来评判，可以说过得十分坎坷。但是，这一学期还有更多的比绩点更值得重视的一些东西。</p>
-<h2 id="课内学习">课内学习</h2>
-<p>课内总体而言过得很不平凡，即使这一学期只有 24 学分的课程。与一年前那种 OOP 作业一发下来就赶快刷榜完成，高代选讲还愿意在课外学习很多内容的热情相比，我这一学期对课内显然是淡薄了很多。标志性的事件可以罗列出来：</p>
-<ul>
-<li><p>人智导 PA2 是在黄浦江上遥控卫爷写的，PA3 是在上海桌游店里打山屋惊魂的间隙交的</p></li>
-<li><p>在各种情况下写过数电实验报告，包括在人大门口醉酒的时候、在去上海的火车上、在轰趴的自动麻将机上（除了考试，我每一次实验的代码都是抄的）</p></li>
-<li><p>一个学期没有见过数电、自动机、人智导的老师，这三门课均让我在考试周通了宵（一个大二学生用 24 小时创造一个奇迹）</p></li>
-<li><p>软件工程大作业不到最后一周都没有认真写 UI</p></li>
-<li><p>高性能一气之下决定退课，虽然从未后悔过这个决定</p></li>
-<li><p>英语课一个学期就做了一份作业，占比最大的 Task C（团队 pre）只花了三四天准备</p></li>
-<li><p>物理实验报告分数为 9, 8.5, 8.7, 8, 8.7，上学期则是 9, 9, 9, 9.3, 9</p></li>
-</ul>
-<p>总之就是这学期浪了一些，或许是认清楚你清贵系的教学水平甚至还不如高中之后的一些合理举动。如果要我来评价大二下学期这些课程的话，我只能说除了《不朽的艺术》这一门课，其他的课程我丝毫没有觉得学习到了什么有用的东西。再加上期末四门专业课考试两门可以说出事故的情况，我更是愿意给这一学期以低评价。</p>
-<p>我大概算了一下，反正现在绩点的浮动不会多大，还不如抓紧时间，做一些我觉得有意义的事情。</p>
-<h2 id="thuinfo">THUInfo</h2>
-<p>我也说过，这是我唯一拿得出来的作品。虽然之前有写过一些小型项目，它们虽然也是我探索的足迹，但总体没有 THUInfo 给我带来的成就感大。</p>
-<p>但比较愧疚的是这一学期没有给 THUInfo 作出很大的贡献。寒假的时候翻新了“计划”功能，修了几个小 bug 之后，学期中除了加了比如说“今日高亮”这种小功能之外，我也就没有作出什么贡献了。</p>
-<p>但是，暑假确实是想要做很大的事情的。一方面是和校内 iOS Club 搭上了关系，对方也恰好想要找到一个重点支持的项目，双方互相需要，何乐而不为呢。通过它我们找到了美工，目前也有了一个较为简单的 UI 效果图（不得不说，做设计的就是做设计的）。另外一方面是<a href="https://www.zhihu.com/question/63407413">栋栋</a>加入了团队，总之多一个技能熟练的人手是很不错的。</p>
-<p>敬请期待暑假过后的 THUInfo 3 系列版本。</p>
-<h2 id="社工">社工</h2>
-<p>大一下学期一番折腾之后，一个学期没有加入任何学生组织。但是一个转变的契机就是 xge 和我说他和栋栋准备开发日麻，随后将我纳入了 308（科协 &amp; 算协活动室）常驻人员之中。在 308 蹲守的过程中，我也认识了科协的许多同学（再次点名“表扬”大恶人安頔）。最后决定加入科协，大概是那天去出去散心醉酒，隔天回校的时候恰好赶上 C 楼门口的智能体嘉年华。本来是不打算去的，想着去看看也没啥问题，就突然发现科协办的东西还挺有意思。随后又去蹭了智能体决赛，还坑了 Omega Fantasy 一顿饭。</p>
-<p>随后大约是某晚和安頔夜谈，经过一番交流，决定去混一个科协副主席。</p>
-<p>怎么说呢，或许真的是如同之前一些人的评价——“你大一下学期的那种情况实属罕见，哪有人开局社工就是王炸的”一般，社工并不是我想的那么不堪。现在大概是发现，有一群志同道合的人一起做事情是多么愉悦。</p>
-<h2 id="sakana">Sakana</h2>
-<p>这一段没有什么特别想说的，总之揭开了一些过往，给一些问题作出了解答，这应该也是这个学期我应该可以说最为重视的一件事。虽然有很多的小细节，有很多的瞬间，但还是就留下我之前发在空间里的一段话吧：</p>
-<blockquote class="blockquote-center">
-<p>虽然我真的不会挑时间，不会好好规划安排行程，或许会因为冲动把事情做得很离谱。 但真的感谢包容我的愚拙。</p>
-
-</blockquote>
-<h2 id="一些总结与闲话">一些总结与闲话</h2>
-<p>这一学期的 Holder 发生了相当大的改变，应该是真的去思考过我的大学应该如何度过这个问题了。之后就确立了“<strong>我要帮助后辈们尽可能少走弯路</strong>”这样的一个简单的目标，于是和改制的科协网络部不谋而合，于是和高中班主任谈好了回高中给学弟学妹讲数学竞赛。在确立好自己的真正想做的事情之后，便是卸下一些伪装。先前的我大概因为完全不能找到我自己的目标，而将自己浸没在无意义的内卷之中，也不敢面对自己的一些感情。这一切的一切，都在稍微通透之后被瓦解了。</p>
-<p>当然我感觉需要警惕的，就是我暂且需要约束一下自己无限膨胀的野心，不能给自己捞太多的锅，接太多的任务，应该让自己慢慢达到一种平衡。</p>
-<p>不如现在，来说说之后想要做的事情吧：</p>
-<ul>
-<li><p>接着跟进在刘知远实验室的任务，努力发篇文章，发完就撤退</p></li>
-<li><p>翻新 THUInfo 的 UI，开发一些新功能</p></li>
-<li><p>在科协把“技能引导文档”这件事做好，做到宣讲会上的“为了创建一个 user-friendly 的计算机系而奋斗”</p></li>
-<li><p>好好地生活，让自己的大学不仅仅是绩点和社工</p></li>
-</ul>
-<p>还有就是一些暑假要做的事情，比如说 GRE，比如说科目二，比如说回高中讲竞赛，比如尝试一下图形学。</p>
-<p>写这篇潦草的总结的时候，我应该还因为昨晚通宵复习自动机而头晕目眩，但是我的神志却异常清醒，因为我的大学似乎是真的开始了。</p>
-<p>我有分享歌词的习惯，这里也来一句吧。但不同于之前我喜欢分享那种长长的，哲学家写散文式的歌词，这个歌词很朴素：</p>
-<blockquote class="blockquote-center">
-<p>ケーキも大好き，君も大好き。</p>
-<p>——「とある一家の御茶会議」</p>
-
-</blockquote>
-<p>祝愿我余下的一半本科时光，能过得有意义。这里是 Holder，我们一起接着走下去吧。</p>
-]]></content>
-      <categories>
-        <category>【生活记录】学期总结</category>
-      </categories>
-  </entry>
-  <entry>
     <title>大三秋季学期学期总结</title>
     <url>/2022/01/05/grade-3-autumn-conclusion/</url>
     <content><![CDATA[<p>今天考完了最后一门《编译原理》，随后参加了年级会。这样看来，我的大三上学期，这个被学长们称为渡劫的学期，就这样平平无奇结束了。</p>
@@ -3760,126 +3764,6 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
       </categories>
   </entry>
   <entry>
-    <title>大三春季学期学期总结</title>
-    <url>/2022/07/07/grade-3-spring-conclusion/</url>
-    <content><![CDATA[<p>这个学期说实话比较不太平凡。</p>
-<span id="more"></span>
-<h1 id="课内学习">课内学习</h1>
-<p>这学期最一开始的打算是修完培养计划，所以除了 OS、系统结构、数学实验三大必修课之外，还选了整整六门限选课，远超于正常人的两三门。</p>
-<p>学期一开始实际上没有什么体会，毕竟什么课都还没有给压力，加上当时没有封校，所以甚至还能保持每周都有出校活动，比如打四口机、打八口机、V+ 群聚、浮生群聚等等。而且当时也是刚刚加入徐昆的实验室，刚刚给我分配了工位，还在布置工位的硬件，所以过得总体而言还算快乐。</p>
-<p>但是问题就在之后慢慢出现了，我们来梳理一下我选的所有课的任务列表：</p>
-<ul>
-<li>OS。六个 Lab，期中期末考试</li>
-<li>系统结构。每周书面作业，两个 Lab，期末考试</li>
-<li>数学实验。十个 Lab，期末考试</li>
-<li>现代密码学。三个 Lab，期末考试，考勤</li>
-<li>数据挖掘。六个 Lab，大作业，考勤</li>
-<li>搜索引擎技术基础。两个 Lab，大作业</li>
-<li>计算机图形学基础。四个 Lab，大作业，考勤</li>
-<li>数据库专题训练。五个 Lab</li>
-<li>存储技术基础。两个 Lab，论文笔记</li>
-</ul>
-<p>这些东西加起来快四十个 Lab，哪怕就是平均分配到学期十六周，每周都会有两到三个 Lab 要去做。而且这些 Lab 都不太算是一天能写完的量，少的可能一天一夜，大的比如说现代密码学的 Lab2、存储技术基础的 Lab2，都是占用了半个星期乃至一整个星期没日没夜地写的。而且数学实验的 Lab 一个都几千字，写得人都发麻。</p>
-<p>再加上 OS 的 Lab 和数据库的 Lab 的截止日期一般都是某个周日，这就更加恐怖了，我有的时候周日需要快速赶工两个 Lab，然后数据库这门课的 Lab 如果不做他的很难的拓展功能是拿不到 4.0 的。</p>
-<p>在这些东西交杂之下，我不得已先是退掉了数据库，因为 OS 当时已经期中考完了。然后做存储技术基础的 Lab2 写到人都快废了之后，为了 keep 绩点也最后退掉了。</p>
-<p>我已经对这一学期的后半学期没什么印象了，因为每天都在赶工，每天都在为课内的事情折腾。再加上当时北京疫情封校，导致几乎所有的娱乐活动坍缩成为了活动室打麻将，更让这学期后半段一点记忆点都没有。</p>
-<hr />
-<p>好在你清良心发现给了记两门课 PF 的机会，我立刻记了 OS 和系统结构，这样的话我就可以摆烂到底，最后考试我也直接裸考，反正谁怕谁。</p>
-<p>不过即使如此，选课选多了的弊端还是会在期末周浮现，那就是大作业。这么多课里面，有三门课有大作业，而且在我期末逃难的时候，还有系统结构的 Lab2 没写，这些东西构成了我六月底考试全部结束之后的噩梦，这些作业成功让我四天五天左右没有碰到床，都是在自家沙发上睡过去的。</p>
-<p>这中间的插曲就是数学实验的事情，因为取消了期末考试，所以评分只能依据十次 Lab，但是这十次 Lab 大家几乎都是满分，一点区分度没有。所以当时老师就提到了需要把上课情况纳入考量，但问题就在于我是一个巨大习惯自学的人，真的是一次课没有去过。当时在政策说明的时候，老师甚至说出了考勤分可能占比到一半的政策。</p>
-<p>这就有可能导致挂科，而挂科真的会非常难弄。于是我只能去和助教说明我的情况，自证自己真的这门课学明白了。</p>
-<p>不过结局也是戏剧性的，助教最后透露了考勤分只占总评两分，但是我认识的带我一共四个一次考勤没去的同学，两个 4.0 两个 3.3，我们平时分都是几乎一样的。这就很奇怪，没有人知道老师最后怎么给分。</p>
-<hr />
-<p>就结果而言，这个学期可谓是成功的，因为我每一门都是 4.0。但是就过程而言，这段过程可谓是艰难至极，我可再也不想经历一遍。</p>
-<p>不过已经最终了，绩点排名 26%，方案内也只剩下 4 学分，体育没有挂科，专业主修也都完成，应该进推免推荐名单问题不大。加上名额也已经口头确定，我自己做实验室的事情也还不错，总之结果上而言，我的本科看起来已经快完成任务了。</p>
-<h1 id="实验室">实验室</h1>
-<p>这是这学期最大的破事。</p>
-<p>本来是在徐昆的图形学实验室的，也分配了工位，白嫖了一个台式机，自己还稍微布置了一下工位。</p>
-<p>基于此我觉得我应该就安定在徐昆这里了，不过也确实，除了猫猫之外这里没有其他九字班的同学，而猫猫打算出国，并不会和我抢名额，而且当时徐昆和他的对话也暗示着名额应该会有给我的倾向。</p>
-<p>就这么一系列的事情我就觉得问题不大了，应该就定在这里了。</p>
-<p>这里稍微给自己辩解两句，如果我真的想做好一件事，我可能会花很长时间去打基础然后去做，但这样的问题就是会有一个月乃至更长的时间没有什么明显的产出。然而实验室的组会并不会允许你一周没有什么产出。那么问题就显而易见了，我在组里的很长一段时间内，都在学 GAMES101、学习什么是可微渲染、研究学长代码的架构，而毫无可以在组会上说的东西。</p>
-<p>大约是四月底的某一天，带我的学长给我介绍了项目的新成员，一位茶园过来的九字班同学，当时我就隐约觉得不大对劲，但是也没说什么。</p>
-<p>最后也就是大家都知道的，我的名额被挤掉了，五月份的时候，还要去找新老师。先是飘到 Prof. Ji 那里打算去做量子计算，但是考虑到前景和自己兴趣，最终还是 quit 了。</p>
-<hr />
-<p>在这之后我有时间就会去看媒体所的导师介绍页面，我几乎给上面每个老师都发送了简历，但是大部分老师都因为没有名额回绝了我。然而在这些老师里面，贾珈老师虽然已经没有名额，但是她愿意把我推荐给其他老师，这样我就认识了孙立峰老师。</p>
-<p>之后便是简简单单的互相见面，我自我介绍，他分配学长和我交流。不过不得不说黄天驰学长真的好好交流，就没有什么交流障碍，很舒服的一位学长。</p>
-<p>这之后就是简简单单的流程，开组会些项目，最后在七月份我们口头确定了名额，这样这件事情才最终落定。</p>
-<p>虽然中间还有一些奇奇怪怪的经历，不过也没有什么特别值得介绍的，所以就算了。</p>
-<hr />
-<p>不过现在反思回来，徐昆那边我其实还是有点咕咕咕的，因为课内真的选太多课了。</p>
-<p>衷心建议，大三没必要选这么多课，还有大四可以选。这段时间就应该好好去和导师交流，做好他给的项目。否则真的很容易丢掉名额。</p>
-<h1 id="科协-thuinfo">科协 &amp; THUInfo</h1>
-<p>有点心怀愧疚的两件事，因为确实没有给这两方面做出什么贡献。</p>
-<p>没什么好说的了，没什么好辩解的了。</p>
-<h1 id="sakana">Sakana</h1>
-<p>本来在寒假的时候，Sakana 在计划着周末来北京玩，结果是大家都知道的四月封上海五月封北京。于是一整个学期没有线下遇到 Sakana。</p>
-<p>然而甚至连视频都没有怎么弄过，因为我课内非常之忙，她也并不空闲。</p>
-<p>说实话异地是真的痛苦，没有感情基础的话很容易因为失去共同话题、失去热情等一系列的东西直接炸裂。</p>
-<hr />
-<p>不过好事就是我和她都提前回家了，忙完期末之后我们大约是见了很多次的，她也开始打日麻，我也尝试着再次入坑王者。</p>
-<p>比较好玩的是，我每每会以出来干活的名义约她去星巴克坐一下午，然后实际情况是，我和她贴贴摸鱼一下午。想起来 Sakana 就已经说过两人在一起是不太可能干得了活的，现在确实也是这样。</p>
-<p>最近也终于有一种关系走向正轨的感觉，当贴贴变得自然的时候。</p>
-<h1 id="还有什么呢">还有什么呢</h1>
-<p>打牌，打全高赛。虽然进了所谓校队，但是你清直接在全高赛被暴打，遗憾倒数第一出局。事后也算是发生了一些奇妙的摩擦。</p>
-<p>但是确实借助这个机会认识了很多人，也和很多人加深了联系。</p>
-<p>唱歌，但是在封校之后也只是在操场上唱过几回。</p>
-<hr />
-<p>说实话，Holder 还是觉得自己好像很无趣，娱乐活动真的好稀少。</p>
-<h1 id="还有一些别的什么呢">还有一些别的什么呢</h1>
-<p>其实这一学期应该说经历了开头斗志满满，中间疲劳过度，五月陷入困境，六月初见曙光，七月挣脱这样的一个流程。就小说的故事性而言，这样的情节走向比较符合一般的小说。</p>
-<p>根据上面的描述，大家也都发现了，课内真的占据了我这个学期几乎所有时间，哪怕就是理论上最忙碌的大三上学期我也写了很多打牌、V+ 群、科协相关的一些事情。</p>
-<p>我也不止一次被学长批评没有必要把大三下学期课内塞这么满，卷卷科研争取名额才是最优解。不过即使如此，我也没怎么听进去，还是我行我素继续和课内搏斗，最终自然还是吃到苦头。</p>
-<hr />
-<p>那么，现在已经是基本确定后路的状态了，大四也选了一些好玩、对胃口的课，那么，继续享受剩下来的一年吧。</p>
-<p>不过今年的毕业季确实看得我眼馋，我好想毕业。</p>
-]]></content>
-      <categories>
-        <category>【生活记录】学期总结</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>2022 年寒假总结</title>
-    <url>/2022/02/13/grade-3-winter-conclusion/</url>
-    <content><![CDATA[<p>寒假也快结束了吧。</p>
-<p>其实依然是什么事情都没有做的一段时间。</p>
-<span id="more"></span>
-<h2 id="打牌">打牌</h2>
-<p>在放寒假之前雄心壮志地想好了很多想做的事情，从 THUInfo 到技能引导文档，乃至实验室工作甚至是学抽象代数。但实际上我的寒假大约一大半时间在打牌。</p>
-<p>在寒假回家的前一天，我打了一个通宵的雀，从那以后就莫名其妙比以往更沉浸在打雀之中。一方面可能和当时刚刚打上玉间有关，更重要的可能是当时我恰好处于绝好调的状态。那段时间我几乎是一四流选手，顺风的时候不需要读牌，不需要防守，牌局前期一般就能通过奇妙的运气和出亲跳和若干亲满奠定靠近五万点的胜局，后续哪怕铳几个子家满贯也不过洒洒水。</p>
-<p>所以我从刚进玉间到冲上豪三并未花很长时间，大约两个星期而已。但是随后而来的是恶调，那段时间牌谱屋的数据表明我的起手平均向听数直接飙升。这个时候原先漏洞百出的打法显然完全不能适应，所以掉回了豪二。</p>
-<p>在寒假快要结束的时候，接到了你清打算组织参加全高赛的信息，即使当时已经有点觉得自己过于打雀而疏忽要做的事情，但是还是毅然决定参赛。目前的结果呢，即使自己技术拉跨，但还是靠着奇妙的狗运挂边入选了代表队。</p>
-<hr />
-<p>我之前在 QQ 空间以及朋友圈都发过一个反省自己打雀水平的小短文，一定程度上也和这次选拔赛四位评委对我的评价类似。</p>
-<p>我对我自己的一个评价就是过于死板或者直线，不够灵活，这和自己面麻喜欢打快牌以及还有时在家和家里人搓牌有关。快牌的一个显著特点就是几乎没有什么读牌的时间，因为构建自己手牌的方向就足够耗时间，所以我应对快牌的方式就是不顾一切地进攻，烂牌也全牌效，抓到明显的危险张也往往手比脑子快拍出去放大炮。并且，另外一种应对就是尽早立直进入摸切，这样能获得一点休整时间。</p>
-<p>过于欠缺的防守和读牌技术使得我这一次在比赛中，即使有意识在防守，也常常会在半途发现自己没有安而侥幸着遵循“没有安就日”的信条重新回到进攻路线，然而心中的不安和紧张又会在摸到模棱两可但安全度还可以的牌的时候转为防守。我猜测这也就是评委认为我不稳定的原因之一。</p>
-<p>但其实我说没有安的时候真的没有安么？其实很多时候是可以通过读牌获取一些安度其实还可以的安的。我的防守理论只有筋牌和壁牌，我对手顺的认识是相当低的，比如说连切 64m 时一般而言 58m 铳率低，这一点我很难注意到，我只会认为 58m 是没有通过的筋而完全缩。</p>
-<p>还是想找找有无讲防守的一些书籍什么的。</p>
-<hr />
-<p>不够灵活的另外一个致命体现就是甚至可以看漏听牌，比如说名场面：</p>
-<p><img src="/uploads/winter-conclusion/1.png" /></p>
-<p>这里吃 1s 后打什么呢？实战我打了 8s，连切 3m 听牌都没有发现，这就是梦游切牌的技术。</p>
-<h2 id="技能引导文档">技能引导文档</h2>
-<p>这是我在寒假前期一直在做的事情，后期想接着做但是有点懒而且有点缺乏动力。</p>
-<p>简单来说技能引导文档的初期还是取得了不错的成绩，推送有不错的浏览量，也有一定的用户反馈，编写者们也算是很有责任心。但“这个文档是不是一个造轮子的项目？”，这个问题还一直萦绕着我。目前来看文档确实是走入了一些困境，我们编写了一些编程语言的入门指导，编写了一些简单的算法入门文档，但是我们发现我们真正需要人手来编写的 advanced topics 却恰恰没有人来写。</p>
-<p>我一开始设想的核心竞争力，一方面是面对你清这些已经有一定编程基础的学生，没有必要讲解那些相当基础的内容，也就是说，我们简洁。另外一个，就是我们有一些更为 advanced 的知识，比如图形学、人机交互、操作系统等一系列的入门指导，无论是简单的介绍还是课程、资料推荐，都是不错的。</p>
-<p>然而现在的困境就是没有人来编写这些 advanced topics。现在也渐渐有点沉默下去，不太想打理这一份文档了。</p>
-<h2 id="thuinfo-以及其他">THUInfo 以及其他</h2>
-<p>目前绝赞咕咕咕 THUInfo 的开发工作，我希望下学期开头不太忙碌的时候能做一些事情。</p>
-<p>当然，现在有点希望去做一些实习，这样的话能稍微了解一下业界和真实的软件开发环境。目前规划问问有没有去微软的实习机会吧。</p>
-<h2 id="其他的一些">其他的一些</h2>
-<p>整个寒假过得其实挺快乐，前期虽然和社区的沙雕书记起了不少摩擦，但隔离的时候也算是最认真的时候，发布了文档第一版本还确确实实提升了一些雀力。</p>
-<p>回家过年则很一般，过年也就是在各处亲戚串门，闲工夫出去看电影。初三往后去了姜堰见了同学，和 Sakana 玩了两三天，和我弟交流了不少高中相关的事务。最后回家，打牌。</p>
-<p>总而言之就是一种完全放松而不想做事情的态度。</p>
-<hr />
-<p>下学期，我打算把培养方案直接全部完成，虽然可能中途会退缩。然后 V+ 那边也会时常参加线下活动，雀的话应该也会经常约训练赛。THUInfo 那边就只能慢慢磨，实验室只能说徐老师暂且还没找我麻烦而已，但后续肯定是不能再咕咕咕了（毕竟关系到自己的后路）。</p>
-<p>总之每一个学期或者假期结束的时候都会有一种下一学期（这个假期）好好干什么什么事这样的想法，但最后往往漂亮地事与愿违，这一切最后，还是归根于 Holder 这个人的惰性和摸鱼，先给那些被我摸鱼耽误事情的人道个歉。</p>
-<p>但不管怎么说，生活还要继续过。下一步，应该是主要先应付实验室，不能真的一点事情不做了。然而在此之前，今天约了人出去吃饭，生活嘛，就是这样。</p>
-]]></content>
-      <categories>
-        <category>【生活记录】学期总结</category>
-      </categories>
-  </entry>
-  <entry>
     <title>大三秋季学期前的一些碎话</title>
     <url>/2021/09/12/grade-3-autumn-preview/</url>
     <content><![CDATA[<p>自己似乎就这样莫名其妙成为了一个大三学生，其实还隐隐约约记得一年前刚进实验室的时候刘知远的一句“没想到这么快八字班也要造机了啊”。现在想来，九字班这个词语从原先的代指新生，渐渐地变成了代指一群大三老油条，而自己的一字班学弟也正在憧憬着四年的本科时光，一时间竟觉得大学原来也快结束了。</p>
@@ -3922,118 +3806,6 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 ]]></content>
       <categories>
         <category>【生活记录】学期总结</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>大四了，要干什么呢？</title>
-    <url>/2022/08/19/grade-4-autumn-preview/</url>
-    <content><![CDATA[<p>就这样 Holder 也已经大四了，似乎自己其实还什么都没有想好。</p>
-<span id="more"></span>
-<p>8.19 的晚上，我想着不如早一些回北京，于是和家里人商量好了买好了 8.22 的火车票。但是等到现在冷静下来之后，反倒是有一点觉得，这样是不是有点太仓促了，我似乎好像还没有想好我大四应该干些什么。</p>
-<p>不过比较确定的是，我现在需要罗列一下我已经安排好的事情：</p>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;"></th>
-<th style="text-align: center;">8.20</th>
-<th style="text-align: center;">8.21</th>
-<th style="text-align: center;">8.22</th>
-<th style="text-align: center;">8.23</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">早上</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">早起去做核酸</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">注册 &amp; 收拾宿舍等事务</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">午饭</td>
-<td style="text-align: center;">在家</td>
-<td style="text-align: center;">万象城</td>
-<td style="text-align: center;">回老家</td>
-<td style="text-align: center;">食堂</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">下午</td>
-<td style="text-align: center;">寄回 MBP &amp; 摸鱼</td>
-<td style="text-align: center;">和 Sakana 贴贴、出勤</td>
-<td style="text-align: center;">收拾行李 &amp; 出发</td>
-<td style="text-align: center;">-</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">晚饭</td>
-<td style="text-align: center;">【已安排的应酬】</td>
-<td style="text-align: center;">【已安排的应酬】</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">半夜</td>
-<td style="text-align: center;">学习 &amp; 四系联赛</td>
-<td style="text-align: center;">收拾行李 &amp; 入校申请</td>
-<td style="text-align: center;">多半打雀</td>
-<td style="text-align: center;">-</td>
-</tr>
-</tbody>
-</table>
-<p>回北京之后的第一件事果然还是赶快和导师和学长见面聊聊，稍微加深一些了解，准备正式接入实验室，并且实验室应当成为下学期的主线工作。</p>
-<p>课内的预习就简单看书做题就行了，可以在下午这种精力不太充足但是又有时间的时候做。</p>
-<p>THUInfo 最近应该需要加紧做做，科协那边的 308 权限系统和两个技能引导新文档也需要做，但这些都是短程任务，不需要花很多时间。把这些做完后，科协那边可以基本放手，THUInfo 也只要做做日常维护就行了。</p>
-<p>主要还有一件事就是体育运动，我还是计划好好游泳的，可能初期还是每两天去一趟游泳馆，每天晚上去游上小几百米可能还是比较好的。</p>
-<p>然后就是下学期省钱的事情，说实话有点经济稍稍紧张了，说不定可以接一下商业单子之类的。</p>
-<p>其余的大事情其实说实话毫无想法，最多就是一些可能的娱乐活动，出勤、纯 K、打打雀什么的。生日估计就是几个人出去玩一下午，然后 ZLR 约着喝酒，国庆随便怎么过，学期中看 Sakana 情况也可以去看看她或者她来玩。</p>
-<p>总之很具体的事情还暂且不需要太去规划，毕竟也不知道后面什么情况。</p>
-<p>但是大体而言，果然还是以实验室事务、推免流程为主线，课内随便混混的生活。</p>
-]]></content>
-      <categories>
-        <category>【生活记录】学期总结</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Hello world</title>
-    <url>/2021/06/16/hello-world/</url>
-    <content><![CDATA[<p>刚刚建立好这个地方，暂且也没什么特别想说的，不如就来玩一下 hexo 的各个语法吧。</p>
-<span id="more"></span>
-<p>首先玩玩代码块，自然首先试试 CPP。</p>
-<figure class="highlight cpp"><figcaption><span>C++</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Hello world!&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>再来试一下 Python。</p>
-<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Hello world!&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<p>不如玩一下 JavaScript。</p>
-<figure class="highlight js"><figcaption><span>JavaScript</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;Hello world!&quot;</span>);</span><br></pre></td></tr></table></figure>
-<p>然后玩一下数学公式。</p>
-<p>我们可以把机器学习抽象描述为以下过程，这里 <span class="math inline">\(X\)</span> 表示输入集合，<span class="math inline">\(Y\)</span> 表示输出集合，<span class="math inline">\(L\)</span> 表示损失函数，<span class="math inline">\(\boldsymbol{w}\)</span> 表示模型参数，<span class="math inline">\(f_\boldsymbol{w}\)</span> 表示在某一系列参数之下的模型函数。</p>
-<p><span class="math display">\[
-\boldsymbol{w}^*=\mathop{\arg\min}_{\boldsymbol{w} \in \Omega}\sum_{x_i \in X, y_i \in Y} L(f_\boldsymbol{w}(x_i), y_i)
-\]</span></p>
-<p>再来试一下它自带的一些引用块。</p>
-<blockquote><p>你成功建好了自己的第一个 hexo 站点！</p>
-</blockquote>
-<p>hexo 文档里面还提到了一种奇怪的东西，来试一下。</p>
-<blockquote class="pullquote"><p>这个东西被称为 Pull Quote。</p>
-</blockquote>
-<p>似乎还有奇怪的东西。</p>
-<div class="note success"><p>这个是提示成功的引用块。</p>
-</div>
-<p>下面是一个居中引用。</p>
-<blockquote class="blockquote-center">
-<p>这里我们居中一定的文本。</p>
-
-</blockquote>
-<p>这里还似乎提供了用于查询浏览器支持方法的插件。</p>
-<iframe data-feature="fetch" src="https://caniuse.bitsofco.de/embed/index.html?feat=fetch&periods=current&accessible-colours=false" frameborder="0" width="100%" height="400px"></iframe>
-<p>暂且玩到这里吧，目前的话想要做的一些事情包括：</p>
-<ul>
-<li><p>写（搬运）点有点价值的东西</p></li>
-<li><p>有没有可能做一些类似于管理员才可访问的东西呢</p></li>
-<li><p>搞一下评论系统、浏览计数之类的</p></li>
-</ul>
-<p>当然我们知道明天下午就考数电了，所以 Holder 该滚去复习了。</p>
-]]></content>
-      <categories>
-        <category>【导航】</category>
       </categories>
   </entry>
   <entry>
@@ -4850,6 +4622,238 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
       </categories>
   </entry>
   <entry>
+    <title>大三春季学期学期总结</title>
+    <url>/2022/07/07/grade-3-spring-conclusion/</url>
+    <content><![CDATA[<p>这个学期说实话比较不太平凡。</p>
+<span id="more"></span>
+<h1 id="课内学习">课内学习</h1>
+<p>这学期最一开始的打算是修完培养计划，所以除了 OS、系统结构、数学实验三大必修课之外，还选了整整六门限选课，远超于正常人的两三门。</p>
+<p>学期一开始实际上没有什么体会，毕竟什么课都还没有给压力，加上当时没有封校，所以甚至还能保持每周都有出校活动，比如打四口机、打八口机、V+ 群聚、浮生群聚等等。而且当时也是刚刚加入徐昆的实验室，刚刚给我分配了工位，还在布置工位的硬件，所以过得总体而言还算快乐。</p>
+<p>但是问题就在之后慢慢出现了，我们来梳理一下我选的所有课的任务列表：</p>
+<ul>
+<li>OS。六个 Lab，期中期末考试</li>
+<li>系统结构。每周书面作业，两个 Lab，期末考试</li>
+<li>数学实验。十个 Lab，期末考试</li>
+<li>现代密码学。三个 Lab，期末考试，考勤</li>
+<li>数据挖掘。六个 Lab，大作业，考勤</li>
+<li>搜索引擎技术基础。两个 Lab，大作业</li>
+<li>计算机图形学基础。四个 Lab，大作业，考勤</li>
+<li>数据库专题训练。五个 Lab</li>
+<li>存储技术基础。两个 Lab，论文笔记</li>
+</ul>
+<p>这些东西加起来快四十个 Lab，哪怕就是平均分配到学期十六周，每周都会有两到三个 Lab 要去做。而且这些 Lab 都不太算是一天能写完的量，少的可能一天一夜，大的比如说现代密码学的 Lab2、存储技术基础的 Lab2，都是占用了半个星期乃至一整个星期没日没夜地写的。而且数学实验的 Lab 一个都几千字，写得人都发麻。</p>
+<p>再加上 OS 的 Lab 和数据库的 Lab 的截止日期一般都是某个周日，这就更加恐怖了，我有的时候周日需要快速赶工两个 Lab，然后数据库这门课的 Lab 如果不做他的很难的拓展功能是拿不到 4.0 的。</p>
+<p>在这些东西交杂之下，我不得已先是退掉了数据库，因为 OS 当时已经期中考完了。然后做存储技术基础的 Lab2 写到人都快废了之后，为了 keep 绩点也最后退掉了。</p>
+<p>我已经对这一学期的后半学期没什么印象了，因为每天都在赶工，每天都在为课内的事情折腾。再加上当时北京疫情封校，导致几乎所有的娱乐活动坍缩成为了活动室打麻将，更让这学期后半段一点记忆点都没有。</p>
+<hr />
+<p>好在你清良心发现给了记两门课 PF 的机会，我立刻记了 OS 和系统结构，这样的话我就可以摆烂到底，最后考试我也直接裸考，反正谁怕谁。</p>
+<p>不过即使如此，选课选多了的弊端还是会在期末周浮现，那就是大作业。这么多课里面，有三门课有大作业，而且在我期末逃难的时候，还有系统结构的 Lab2 没写，这些东西构成了我六月底考试全部结束之后的噩梦，这些作业成功让我四天五天左右没有碰到床，都是在自家沙发上睡过去的。</p>
+<p>这中间的插曲就是数学实验的事情，因为取消了期末考试，所以评分只能依据十次 Lab，但是这十次 Lab 大家几乎都是满分，一点区分度没有。所以当时老师就提到了需要把上课情况纳入考量，但问题就在于我是一个巨大习惯自学的人，真的是一次课没有去过。当时在政策说明的时候，老师甚至说出了考勤分可能占比到一半的政策。</p>
+<p>这就有可能导致挂科，而挂科真的会非常难弄。于是我只能去和助教说明我的情况，自证自己真的这门课学明白了。</p>
+<p>不过结局也是戏剧性的，助教最后透露了考勤分只占总评两分，但是我认识的带我一共四个一次考勤没去的同学，两个 4.0 两个 3.3，我们平时分都是几乎一样的。这就很奇怪，没有人知道老师最后怎么给分。</p>
+<hr />
+<p>就结果而言，这个学期可谓是成功的，因为我每一门都是 4.0。但是就过程而言，这段过程可谓是艰难至极，我可再也不想经历一遍。</p>
+<p>不过已经最终了，绩点排名 26%，方案内也只剩下 4 学分，体育没有挂科，专业主修也都完成，应该进推免推荐名单问题不大。加上名额也已经口头确定，我自己做实验室的事情也还不错，总之结果上而言，我的本科看起来已经快完成任务了。</p>
+<h1 id="实验室">实验室</h1>
+<p>这是这学期最大的破事。</p>
+<p>本来是在徐昆的图形学实验室的，也分配了工位，白嫖了一个台式机，自己还稍微布置了一下工位。</p>
+<p>基于此我觉得我应该就安定在徐昆这里了，不过也确实，除了猫猫之外这里没有其他九字班的同学，而猫猫打算出国，并不会和我抢名额，而且当时徐昆和他的对话也暗示着名额应该会有给我的倾向。</p>
+<p>就这么一系列的事情我就觉得问题不大了，应该就定在这里了。</p>
+<p>这里稍微给自己辩解两句，如果我真的想做好一件事，我可能会花很长时间去打基础然后去做，但这样的问题就是会有一个月乃至更长的时间没有什么明显的产出。然而实验室的组会并不会允许你一周没有什么产出。那么问题就显而易见了，我在组里的很长一段时间内，都在学 GAMES101、学习什么是可微渲染、研究学长代码的架构，而毫无可以在组会上说的东西。</p>
+<p>大约是四月底的某一天，带我的学长给我介绍了项目的新成员，一位茶园过来的九字班同学，当时我就隐约觉得不大对劲，但是也没说什么。</p>
+<p>最后也就是大家都知道的，我的名额被挤掉了，五月份的时候，还要去找新老师。先是飘到 Prof. Ji 那里打算去做量子计算，但是考虑到前景和自己兴趣，最终还是 quit 了。</p>
+<hr />
+<p>在这之后我有时间就会去看媒体所的导师介绍页面，我几乎给上面每个老师都发送了简历，但是大部分老师都因为没有名额回绝了我。然而在这些老师里面，贾珈老师虽然已经没有名额，但是她愿意把我推荐给其他老师，这样我就认识了孙立峰老师。</p>
+<p>之后便是简简单单的互相见面，我自我介绍，他分配学长和我交流。不过不得不说黄天驰学长真的好好交流，就没有什么交流障碍，很舒服的一位学长。</p>
+<p>这之后就是简简单单的流程，开组会些项目，最后在七月份我们口头确定了名额，这样这件事情才最终落定。</p>
+<p>虽然中间还有一些奇奇怪怪的经历，不过也没有什么特别值得介绍的，所以就算了。</p>
+<hr />
+<p>不过现在反思回来，徐昆那边我其实还是有点咕咕咕的，因为课内真的选太多课了。</p>
+<p>衷心建议，大三没必要选这么多课，还有大四可以选。这段时间就应该好好去和导师交流，做好他给的项目。否则真的很容易丢掉名额。</p>
+<h1 id="科协-thuinfo">科协 &amp; THUInfo</h1>
+<p>有点心怀愧疚的两件事，因为确实没有给这两方面做出什么贡献。</p>
+<p>没什么好说的了，没什么好辩解的了。</p>
+<h1 id="sakana">Sakana</h1>
+<p>本来在寒假的时候，Sakana 在计划着周末来北京玩，结果是大家都知道的四月封上海五月封北京。于是一整个学期没有线下遇到 Sakana。</p>
+<p>然而甚至连视频都没有怎么弄过，因为我课内非常之忙，她也并不空闲。</p>
+<p>说实话异地是真的痛苦，没有感情基础的话很容易因为失去共同话题、失去热情等一系列的东西直接炸裂。</p>
+<hr />
+<p>不过好事就是我和她都提前回家了，忙完期末之后我们大约是见了很多次的，她也开始打日麻，我也尝试着再次入坑王者。</p>
+<p>比较好玩的是，我每每会以出来干活的名义约她去星巴克坐一下午，然后实际情况是，我和她贴贴摸鱼一下午。想起来 Sakana 就已经说过两人在一起是不太可能干得了活的，现在确实也是这样。</p>
+<p>最近也终于有一种关系走向正轨的感觉，当贴贴变得自然的时候。</p>
+<h1 id="还有什么呢">还有什么呢</h1>
+<p>打牌，打全高赛。虽然进了所谓校队，但是你清直接在全高赛被暴打，遗憾倒数第一出局。事后也算是发生了一些奇妙的摩擦。</p>
+<p>但是确实借助这个机会认识了很多人，也和很多人加深了联系。</p>
+<p>唱歌，但是在封校之后也只是在操场上唱过几回。</p>
+<hr />
+<p>说实话，Holder 还是觉得自己好像很无趣，娱乐活动真的好稀少。</p>
+<h1 id="还有一些别的什么呢">还有一些别的什么呢</h1>
+<p>其实这一学期应该说经历了开头斗志满满，中间疲劳过度，五月陷入困境，六月初见曙光，七月挣脱这样的一个流程。就小说的故事性而言，这样的情节走向比较符合一般的小说。</p>
+<p>根据上面的描述，大家也都发现了，课内真的占据了我这个学期几乎所有时间，哪怕就是理论上最忙碌的大三上学期我也写了很多打牌、V+ 群、科协相关的一些事情。</p>
+<p>我也不止一次被学长批评没有必要把大三下学期课内塞这么满，卷卷科研争取名额才是最优解。不过即使如此，我也没怎么听进去，还是我行我素继续和课内搏斗，最终自然还是吃到苦头。</p>
+<hr />
+<p>那么，现在已经是基本确定后路的状态了，大四也选了一些好玩、对胃口的课，那么，继续享受剩下来的一年吧。</p>
+<p>不过今年的毕业季确实看得我眼馋，我好想毕业。</p>
+]]></content>
+      <categories>
+        <category>【生活记录】学期总结</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>2022 年寒假总结</title>
+    <url>/2022/02/13/grade-3-winter-conclusion/</url>
+    <content><![CDATA[<p>寒假也快结束了吧。</p>
+<p>其实依然是什么事情都没有做的一段时间。</p>
+<span id="more"></span>
+<h2 id="打牌">打牌</h2>
+<p>在放寒假之前雄心壮志地想好了很多想做的事情，从 THUInfo 到技能引导文档，乃至实验室工作甚至是学抽象代数。但实际上我的寒假大约一大半时间在打牌。</p>
+<p>在寒假回家的前一天，我打了一个通宵的雀，从那以后就莫名其妙比以往更沉浸在打雀之中。一方面可能和当时刚刚打上玉间有关，更重要的可能是当时我恰好处于绝好调的状态。那段时间我几乎是一四流选手，顺风的时候不需要读牌，不需要防守，牌局前期一般就能通过奇妙的运气和出亲跳和若干亲满奠定靠近五万点的胜局，后续哪怕铳几个子家满贯也不过洒洒水。</p>
+<p>所以我从刚进玉间到冲上豪三并未花很长时间，大约两个星期而已。但是随后而来的是恶调，那段时间牌谱屋的数据表明我的起手平均向听数直接飙升。这个时候原先漏洞百出的打法显然完全不能适应，所以掉回了豪二。</p>
+<p>在寒假快要结束的时候，接到了你清打算组织参加全高赛的信息，即使当时已经有点觉得自己过于打雀而疏忽要做的事情，但是还是毅然决定参赛。目前的结果呢，即使自己技术拉跨，但还是靠着奇妙的狗运挂边入选了代表队。</p>
+<hr />
+<p>我之前在 QQ 空间以及朋友圈都发过一个反省自己打雀水平的小短文，一定程度上也和这次选拔赛四位评委对我的评价类似。</p>
+<p>我对我自己的一个评价就是过于死板或者直线，不够灵活，这和自己面麻喜欢打快牌以及还有时在家和家里人搓牌有关。快牌的一个显著特点就是几乎没有什么读牌的时间，因为构建自己手牌的方向就足够耗时间，所以我应对快牌的方式就是不顾一切地进攻，烂牌也全牌效，抓到明显的危险张也往往手比脑子快拍出去放大炮。并且，另外一种应对就是尽早立直进入摸切，这样能获得一点休整时间。</p>
+<p>过于欠缺的防守和读牌技术使得我这一次在比赛中，即使有意识在防守，也常常会在半途发现自己没有安而侥幸着遵循“没有安就日”的信条重新回到进攻路线，然而心中的不安和紧张又会在摸到模棱两可但安全度还可以的牌的时候转为防守。我猜测这也就是评委认为我不稳定的原因之一。</p>
+<p>但其实我说没有安的时候真的没有安么？其实很多时候是可以通过读牌获取一些安度其实还可以的安的。我的防守理论只有筋牌和壁牌，我对手顺的认识是相当低的，比如说连切 64m 时一般而言 58m 铳率低，这一点我很难注意到，我只会认为 58m 是没有通过的筋而完全缩。</p>
+<p>还是想找找有无讲防守的一些书籍什么的。</p>
+<hr />
+<p>不够灵活的另外一个致命体现就是甚至可以看漏听牌，比如说名场面：</p>
+<p><img src="/uploads/winter-conclusion/1.png" /></p>
+<p>这里吃 1s 后打什么呢？实战我打了 8s，连切 3m 听牌都没有发现，这就是梦游切牌的技术。</p>
+<h2 id="技能引导文档">技能引导文档</h2>
+<p>这是我在寒假前期一直在做的事情，后期想接着做但是有点懒而且有点缺乏动力。</p>
+<p>简单来说技能引导文档的初期还是取得了不错的成绩，推送有不错的浏览量，也有一定的用户反馈，编写者们也算是很有责任心。但“这个文档是不是一个造轮子的项目？”，这个问题还一直萦绕着我。目前来看文档确实是走入了一些困境，我们编写了一些编程语言的入门指导，编写了一些简单的算法入门文档，但是我们发现我们真正需要人手来编写的 advanced topics 却恰恰没有人来写。</p>
+<p>我一开始设想的核心竞争力，一方面是面对你清这些已经有一定编程基础的学生，没有必要讲解那些相当基础的内容，也就是说，我们简洁。另外一个，就是我们有一些更为 advanced 的知识，比如图形学、人机交互、操作系统等一系列的入门指导，无论是简单的介绍还是课程、资料推荐，都是不错的。</p>
+<p>然而现在的困境就是没有人来编写这些 advanced topics。现在也渐渐有点沉默下去，不太想打理这一份文档了。</p>
+<h2 id="thuinfo-以及其他">THUInfo 以及其他</h2>
+<p>目前绝赞咕咕咕 THUInfo 的开发工作，我希望下学期开头不太忙碌的时候能做一些事情。</p>
+<p>当然，现在有点希望去做一些实习，这样的话能稍微了解一下业界和真实的软件开发环境。目前规划问问有没有去微软的实习机会吧。</p>
+<h2 id="其他的一些">其他的一些</h2>
+<p>整个寒假过得其实挺快乐，前期虽然和社区的沙雕书记起了不少摩擦，但隔离的时候也算是最认真的时候，发布了文档第一版本还确确实实提升了一些雀力。</p>
+<p>回家过年则很一般，过年也就是在各处亲戚串门，闲工夫出去看电影。初三往后去了姜堰见了同学，和 Sakana 玩了两三天，和我弟交流了不少高中相关的事务。最后回家，打牌。</p>
+<p>总而言之就是一种完全放松而不想做事情的态度。</p>
+<hr />
+<p>下学期，我打算把培养方案直接全部完成，虽然可能中途会退缩。然后 V+ 那边也会时常参加线下活动，雀的话应该也会经常约训练赛。THUInfo 那边就只能慢慢磨，实验室只能说徐老师暂且还没找我麻烦而已，但后续肯定是不能再咕咕咕了（毕竟关系到自己的后路）。</p>
+<p>总之每一个学期或者假期结束的时候都会有一种下一学期（这个假期）好好干什么什么事这样的想法，但最后往往漂亮地事与愿违，这一切最后，还是归根于 Holder 这个人的惰性和摸鱼，先给那些被我摸鱼耽误事情的人道个歉。</p>
+<p>但不管怎么说，生活还要继续过。下一步，应该是主要先应付实验室，不能真的一点事情不做了。然而在此之前，今天约了人出去吃饭，生活嘛，就是这样。</p>
+]]></content>
+      <categories>
+        <category>【生活记录】学期总结</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>大四了，要干什么呢？</title>
+    <url>/2022/08/19/grade-4-autumn-preview/</url>
+    <content><![CDATA[<p>就这样 Holder 也已经大四了，似乎自己其实还什么都没有想好。</p>
+<span id="more"></span>
+<p>8.19 的晚上，我想着不如早一些回北京，于是和家里人商量好了买好了 8.22 的火车票。但是等到现在冷静下来之后，反倒是有一点觉得，这样是不是有点太仓促了，我似乎好像还没有想好我大四应该干些什么。</p>
+<p>不过比较确定的是，我现在需要罗列一下我已经安排好的事情：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">8.20</th>
+<th style="text-align: center;">8.21</th>
+<th style="text-align: center;">8.22</th>
+<th style="text-align: center;">8.23</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">早上</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">早起去做核酸</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">注册 &amp; 收拾宿舍等事务</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">午饭</td>
+<td style="text-align: center;">在家</td>
+<td style="text-align: center;">万象城</td>
+<td style="text-align: center;">回老家</td>
+<td style="text-align: center;">食堂</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">下午</td>
+<td style="text-align: center;">寄回 MBP &amp; 摸鱼</td>
+<td style="text-align: center;">和 Sakana 贴贴、出勤</td>
+<td style="text-align: center;">收拾行李 &amp; 出发</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">晚饭</td>
+<td style="text-align: center;">【已安排的应酬】</td>
+<td style="text-align: center;">【已安排的应酬】</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">半夜</td>
+<td style="text-align: center;">学习 &amp; 四系联赛</td>
+<td style="text-align: center;">收拾行李 &amp; 入校申请</td>
+<td style="text-align: center;">多半打雀</td>
+<td style="text-align: center;">-</td>
+</tr>
+</tbody>
+</table>
+<p>回北京之后的第一件事果然还是赶快和导师和学长见面聊聊，稍微加深一些了解，准备正式接入实验室，并且实验室应当成为下学期的主线工作。</p>
+<p>课内的预习就简单看书做题就行了，可以在下午这种精力不太充足但是又有时间的时候做。</p>
+<p>THUInfo 最近应该需要加紧做做，科协那边的 308 权限系统和两个技能引导新文档也需要做，但这些都是短程任务，不需要花很多时间。把这些做完后，科协那边可以基本放手，THUInfo 也只要做做日常维护就行了。</p>
+<p>主要还有一件事就是体育运动，我还是计划好好游泳的，可能初期还是每两天去一趟游泳馆，每天晚上去游上小几百米可能还是比较好的。</p>
+<p>然后就是下学期省钱的事情，说实话有点经济稍稍紧张了，说不定可以接一下商业单子之类的。</p>
+<p>其余的大事情其实说实话毫无想法，最多就是一些可能的娱乐活动，出勤、纯 K、打打雀什么的。生日估计就是几个人出去玩一下午，然后 ZLR 约着喝酒，国庆随便怎么过，学期中看 Sakana 情况也可以去看看她或者她来玩。</p>
+<p>总之很具体的事情还暂且不需要太去规划，毕竟也不知道后面什么情况。</p>
+<p>但是大体而言，果然还是以实验室事务、推免流程为主线，课内随便混混的生活。</p>
+]]></content>
+      <categories>
+        <category>【生活记录】学期总结</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Hello world</title>
+    <url>/2021/06/16/hello-world/</url>
+    <content><![CDATA[<p>刚刚建立好这个地方，暂且也没什么特别想说的，不如就来玩一下 hexo 的各个语法吧。</p>
+<span id="more"></span>
+<p>首先玩玩代码块，自然首先试试 CPP。</p>
+<figure class="highlight cpp"><figcaption><span>C++</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Hello world!&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>再来试一下 Python。</p>
+<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Hello world!&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>不如玩一下 JavaScript。</p>
+<figure class="highlight js"><figcaption><span>JavaScript</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;Hello world!&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>然后玩一下数学公式。</p>
+<p>我们可以把机器学习抽象描述为以下过程，这里 <span class="math inline">\(X\)</span> 表示输入集合，<span class="math inline">\(Y\)</span> 表示输出集合，<span class="math inline">\(L\)</span> 表示损失函数，<span class="math inline">\(\boldsymbol{w}\)</span> 表示模型参数，<span class="math inline">\(f_\boldsymbol{w}\)</span> 表示在某一系列参数之下的模型函数。</p>
+<p><span class="math display">\[
+\boldsymbol{w}^*=\mathop{\arg\min}_{\boldsymbol{w} \in \Omega}\sum_{x_i \in X, y_i \in Y} L(f_\boldsymbol{w}(x_i), y_i)
+\]</span></p>
+<p>再来试一下它自带的一些引用块。</p>
+<blockquote><p>你成功建好了自己的第一个 hexo 站点！</p>
+</blockquote>
+<p>hexo 文档里面还提到了一种奇怪的东西，来试一下。</p>
+<blockquote class="pullquote"><p>这个东西被称为 Pull Quote。</p>
+</blockquote>
+<p>似乎还有奇怪的东西。</p>
+<div class="note success"><p>这个是提示成功的引用块。</p>
+</div>
+<p>下面是一个居中引用。</p>
+<blockquote class="blockquote-center">
+<p>这里我们居中一定的文本。</p>
+
+</blockquote>
+<p>这里还似乎提供了用于查询浏览器支持方法的插件。</p>
+<iframe data-feature="fetch" src="https://caniuse.bitsofco.de/embed/index.html?feat=fetch&periods=current&accessible-colours=false" frameborder="0" width="100%" height="400px"></iframe>
+<p>暂且玩到这里吧，目前的话想要做的一些事情包括：</p>
+<ul>
+<li><p>写（搬运）点有点价值的东西</p></li>
+<li><p>有没有可能做一些类似于管理员才可访问的东西呢</p></li>
+<li><p>搞一下评论系统、浏览计数之类的</p></li>
+</ul>
+<p>当然我们知道明天下午就考数电了，所以 Holder 该滚去复习了。</p>
+]]></content>
+      <categories>
+        <category>【导航】</category>
+      </categories>
+  </entry>
+  <entry>
     <title>摸索 NexT 注入实录与实现振假名渲染</title>
     <url>/2022/08/20/inject-ruby/</url>
     <content><![CDATA[<p>由于日语文本中经常出现振假名（可以理解为国内小学课本上汉字上的拼音），但是 Markdown 并没有方便的振假名语法，所以只能摸索了。</p>
@@ -5370,45 +5374,6 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
       </categories>
   </entry>
   <entry>
-    <title>早安、可能是午安、或者是晚安</title>
-    <url>/2021/09/17/navigation/</url>
-    <content><![CDATA[<p>关于我更多的信息，请见 <a href="/about">关于页</a>。</p>
-<p>这里主要是一些杂谈，正经内容主要是课程笔记、论文笔记和日语笔记。</p>
-<p>查看最近的文章可以直接向下滑动找到对应的文章，需要查看较远的文章可以通过网页上方栏目的分类页或者归档页寻找。</p>
-<p>考虑到分类页只展示分类却不展示分类内的文章列表，这里有一个简单的文章分类列表：</p>
-<ul>
-<li>学习笔记
-<ul>
-<li>大二春季学期《人工智能导论》</li>
-<li>大二夏季学期《汇编语言程序设计》</li>
-<li>大三秋季学期《信号处理原理》《计算机网络原理》</li>
-<li>大四春季学期《深度强化学习》</li>
-<li>博一春季学期《应用近世代数》</li>
-</ul></li>
-<li>各月论文笔记合集（已经停更，目前使用 Zotero 管理笔记）</li>
-<li>简明日语自学手册（正在迁移至其他页面，目前持续更新）</li>
-<li>一些生活记录和总结
-<ul>
-<li>大二春季学期、大三秋季学期、大三春季学期总结</li>
-<li>大三寒假总结</li>
-<li>大二暑假、大三暑假、大四春季学期、博一秋春季学期生活记录</li>
-<li>大三秋季学期、大四秋季学期前期感想</li>
-</ul></li>
-<li>杂七杂八
-<ul>
-<li>2022 年新高考 I 卷（江苏）数学答案</li>
-<li>一些原创数学题</li>
-<li>乱七八糟的开发感想</li>
-<li>还有一些混乱感想、游戏笔记、歌词记录本</li>
-</ul></li>
-</ul>
-<p>总之，不如自己来翻翻这里有些什么，在评论区留下足迹，个人网站不就是这个用处么。</p>
-]]></content>
-      <categories>
-        <category>【导航】</category>
-      </categories>
-  </entry>
-  <entry>
     <title>歌词记录集</title>
     <url>/2021/11/29/lyrics/</url>
     <content><![CDATA[<p>之前大一的时候打算记录各种引起共鸣的歌词，于是就时不时在 QQ 空间里面发一些。但是现在来看，一直都是零零散散的，并不方便，所以就做个总集，顺手就当回忆一些东西了。</p>
@@ -5747,6 +5712,45 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 ]]></content>
       <categories>
         <category>【杂谈】碎碎念</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>早安、可能是午安、或者是晚安</title>
+    <url>/2021/09/17/navigation/</url>
+    <content><![CDATA[<p>关于我更多的信息，请见 <a href="/about">关于页</a>。</p>
+<p>这里主要是一些杂谈，正经内容主要是课程笔记、论文笔记和日语笔记。</p>
+<p>查看最近的文章可以直接向下滑动找到对应的文章，需要查看较远的文章可以通过网页上方栏目的分类页或者归档页寻找。</p>
+<p>考虑到分类页只展示分类却不展示分类内的文章列表，这里有一个简单的文章分类列表：</p>
+<ul>
+<li>学习笔记
+<ul>
+<li>大二春季学期《人工智能导论》</li>
+<li>大二夏季学期《汇编语言程序设计》</li>
+<li>大三秋季学期《信号处理原理》《计算机网络原理》</li>
+<li>大四春季学期《深度强化学习》</li>
+<li>博一春季学期《应用近世代数》</li>
+</ul></li>
+<li>各月论文笔记合集（已经停更，目前使用 Zotero 管理笔记）</li>
+<li>简明日语自学手册（正在迁移至其他页面，目前持续更新）</li>
+<li>一些生活记录和总结
+<ul>
+<li>大二春季学期、大三秋季学期、大三春季学期总结</li>
+<li>大三寒假总结</li>
+<li>大二暑假、大三暑假、大四春季学期、博一秋春季学期生活记录</li>
+<li>大三秋季学期、大四秋季学期前期感想</li>
+</ul></li>
+<li>杂七杂八
+<ul>
+<li>2022 年新高考 I 卷（江苏）数学答案</li>
+<li>一些原创数学题</li>
+<li>乱七八糟的开发感想</li>
+<li>还有一些混乱感想、游戏笔记、歌词记录本</li>
+</ul></li>
+</ul>
+<p>总之，不如自己来翻翻这里有些什么，在评论区留下足迹，个人网站不就是这个用处么。</p>
+]]></content>
+      <categories>
+        <category>【导航】</category>
       </categories>
   </entry>
   <entry>
@@ -7856,6 +7860,800 @@ E_d(\boldsymbol w) = \frac{1}{2}\sum_k(t_k - o_k)^2 + \|\boldsymbol w\|
       </categories>
   </entry>
   <entry>
+    <title>云游戏相关知识杂谈笔记</title>
+    <url>/2023/09/20/note-of-media/</url>
+    <content><![CDATA[<p>在正式加入云游戏相关项目之前，学长还是扔了一些学习材料过来让我补一下基础，这里就正常开一个笔记来记录一下学习过程了。大概先从显示器的一些工作原理和 WebRTC 相关知识开始吧。</p>
+<span id="more"></span>
+<h1 id="垂直同步与-g-sync">垂直同步与 G-sync</h1>
+<p>https://www.youtube.com/watch?v=dnsPyyaNCWc&amp;list=PL7mmImi_1wpMVhVpBWr3Bob7kdchdDEoX&amp;index=23</p>
+<p>主要分析了游戏之中画面撕裂的问题成因和相关的解决方案，这里也就主要关注显卡和显示器的配合问题。</p>
+<p>首先需要明确的是，在游戏过程中，每一帧都是显卡负责绘制的，而显卡每秒绘制出的帧的数目就是<strong>帧率</strong>，简称 <strong>FPS</strong>。而显示器在接收到显卡所提供的帧的时候，需要在屏幕上绘制帧。当前所有的显示器采用的绘制方法都是<strong>逐行扫描</strong>，即光标从屏幕左上角开始向右向下逐个扫过像素点绘制帧，在扫描到右下角的时候，一帧绘制完成。绘制完一帧之后，显示器将光标从右下角重置到左上角的过程称为 <strong>VBlank</strong>。此外，显示器一秒内能够在屏幕上逐行扫描出的帧的数量称为<strong>刷新率</strong>。</p>
+<p>这里有两个比较重要的概念，就是帧率和刷新率。需要注意的是，帧率描述显卡绘制帧的性能，刷新率描述显示器扫描帧的性能。</p>
+<p>在真实的游戏场景中，由于游戏场景的复杂性不同，显卡所承受的渲染负载不同，显卡的帧率常常会波动。然而相对应地，显示器的刷新率一般是不波动的。这意味着，我们需要某种机制平衡波动的帧率和固定的刷新率。一般而言，常见的系统会采用<strong>帧缓冲</strong>机制来完成这一任务。</p>
+<p>帧缓冲机制中一般会设置一个前缓冲区和一个后缓冲区，显示器仅仅会读取前缓冲区之中存放的帧，显卡只会修改后缓冲区中的帧。在这个机制之下，将后缓冲区中的帧传递到前缓冲区的操作称为<strong>帧传递</strong>。显然，何时进行帧传递就构成了这个系统的核心机制。</p>
+<p>如果刷新率和帧率一致，那么我们只需要在显卡绘制完毕之后进行帧传递即可，此时显示器也应当恰好刷新完毕进入 VBlank，恰好准备绘制新帧。然而如果秉持着显卡绘制完毕即帧传递的策略，在帧率比刷新率更高的时候，后缓冲区中已经形成新的帧的时候显示器还没有进入 VBlank，此时将新帧传递入前缓冲区，显示器上则会出现上半为旧帧而下半为新帧的情况，即所谓的画面撕裂。另外，帧率低于刷新率的时候，显示器已经进入 VBlank 的时候后缓冲区依然没有触发帧传递，所以显示器只能重新绘制先前帧，此时新帧由显卡绘制完毕，帧传递后会出现显示器上上半为旧帧而下半为新帧的情况，同样也是画面撕裂。</p>
+<p>总之，在这一策略之下，只要刷新率不等于帧率就会出现画面撕裂问题：</p>
+<p><img src="/uploads/note-of-media/1.png" /></p>
+<p>这里显示的是显示器角度的时间轴，A 到 F 各个色块则显示各个帧在前缓冲区中存续的时间。可以看到，无论是帧率高于刷新率还是低于刷新率，显示器所显示的画面都会有撕裂现象。</p>
+<h2 id="垂直同步">垂直同步</h2>
+<p>所谓的垂直同步策略，是在帧率高于刷新率的时候，强制令显卡空转等待 VBlank 到来后才触发帧交换。简而言之，就是强制令显卡等待显示器：</p>
+<p><img src="/uploads/note-of-media/2.png" /></p>
+<p>这里 G 区域就是强制令显卡等待的时间块。</p>
+<p>而在帧率低于刷新率的时候，则强制令显示器再显示一次旧帧，若显示完显卡依然没有绘制完毕则一直显示，直到某一次显示的时候显卡绘制完了。此时显卡空转等待 VBlank 触发帧交换。简而言之，就是等效降低显示器刷新率，将问题化归为帧率高于刷新率的问题，再强制令显卡等待显示器：</p>
+<p><img src="/uploads/note-of-media/3.png" /></p>
+<p>这里 G 区域就是强制令显卡等待的时间块。</p>
+<p>然而垂直同步的弊端也是显而易见的，即实际帧率一定会被锁定在显示器刷新率以下，事实上是一种卡死显卡性能换画面完整的交易。</p>
+<p>在这个基础上，Nvidia 推出了<strong>自适应垂直同步</strong>方案，事实上就是在垂直同步系统之前加一个是否开启垂直同步的判断器。当显卡帧率高于刷新率的时候，该系统打开垂直同步令显卡空转等待显示器，而显卡帧率低于刷新率的时候，则关闭垂直同步，立即触发帧传递而不让显示器重复绘制先前帧。</p>
+<p>但是无论如何改进，依然无法改变垂直同步具有延迟的缺陷，即 MTP latency 过高。简而言之，当场景变化较大的时候，即使显卡已经快速绘制出来还是有可能因为垂直同步被迫稍晚传递给显示器，导致用户操作和屏幕反应之间存在较大延迟。这对实时性高的游戏（如 FPS、Moba）是致命的。</p>
+<h2 id="三重缓冲">三重缓冲</h2>
+<p>为了解决垂直同步的延迟问题，有一种方式是将一般的前缓冲区和后缓冲区设计中加入新的中缓冲区构成三重缓冲。简单而言就是再设置一个缓冲区来存放显卡提前绘制好的帧，可以一定程度缓解显卡帧率突涨的问题。然而这是治标不治本的，也就是说当显卡性能保持在高位过长时间后，后缓冲区和中缓冲区都已经满了，此时显卡依然不得不空转等待显示器。</p>
+<p>Nvidia 为了解决三重缓冲这种治标不治本的问题，提出了<strong>快速垂直同步（无阻塞垂直同步）</strong>方案，即允许中缓冲区和后缓冲区交换，当中后缓冲区全满的时候再次交换中后缓冲区，显卡用新的帧覆盖掉本应该交给显示器绘制的帧。此时中缓冲区始终有一个可以交给前缓冲区，即显示器绘制的帧，而显卡也始终没有等待显示器。</p>
+<p>无阻塞垂直同步虽然做到了显示器和显卡都处于满负荷状态，但是两者之间不同步的差距则代偿给了帧丢失，也就是先前说的，如果中后缓冲区都满了，就会用新帧覆盖掉原本交给显示器的帧，从而导致实际的丢帧。</p>
+<h2 id="g-sync-与-freesync">G-sync 与 Freesync</h2>
+<p>实际上上述所有方案都有治标不治本的问题。为了从根源上解决画面撕裂又不产生过分的延迟，Nvidia 直接从显示器一侧尝试解决问题，即 G-sync 方案（该方案核心为<strong>自适应显示器刷新率</strong>，即 VRR，所以有时也称为 VRR 方案）。该方案的核心是令显示器可以调节 VBlank 时长，从而在显卡帧率较低的时候通过长 VBlank 时间来让“显示器等显卡”。</p>
+<p>也就是说，垂直同步核心是显卡空转等显示器，而 G-sync 则是显示器空转等显卡。</p>
+<p>然而在实际情况下，即使通过 VRR 也不可能让刷新率超越额定刷新率，所以当显卡帧率高于刷新率的时候依然会出现画面撕裂（也就是所说的 VRR 只能解决显卡帧率低于刷新率的情况）。所以厂家会推荐打开 G-sync 的时候同时打开垂直同步。</p>
+<p>另外一个角度，过长时间的 VBlank 有时也不现实，因为显示器主板也有最低刷新率要求。这意味着如果帧率显著低于刷新率，打开 G-sync 甚至可能因刷新率锚定帧率导致更严重的后果。这个时候只能打开<strong>低帧补偿（Low Frame Compensation / LFC）</strong>，即通过多次扫描显示一帧，等效倍增显示器刷新率。然而 LFC 需要预测显卡的性能，因为毕竟需要提前决定到底下一帧需要几次扫描，一旦预测失误，依然会遇到问题。</p>
+<p>所以 VRR 技术即使可以做到在一定范围内让刷新率锚定帧率，但是这依然需要帧率相对稳定。这时候就有个有趣的矛盾，既然能做到帧率相对稳定，那么即使画面撕裂也都会出现在屏幕上下方贴近边框的地方，那我为什么不能直接接受垂直同步之类的方案呢？</p>
+<p>所以现今的解决方案中就是不能在低延迟、无撕裂上面做到兼顾，G-sync 也只是众多权衡中的一种。</p>
+<p>最后，说明一下 Freesync。事实上 G-sync 是 Nvidia 授权部分显示器型号内置 Nvidia 芯片来达成的技术，是一种需要 Nvidia 官方认证才能采用的技术。而 Freesync 是开源的技术标准，所有显示器均可以使用，目前由 AMD 主要采用。而两者的技术框架几乎一致，仅仅在细节上有一定差别。</p>
+<h1 id="webrtc-kalman-filter-render-time-estimation">WebRTC Kalman filter render time estimation</h1>
+<p>参考文章：https://www.jianshu.com/p/0bc6a4998b32</p>
+<p>由于这篇文章已经是 2020 年的文章了，感觉 WebRTC 源码也已经做了很大的更新，所以还是以 2023.09 的最新源码为准，文章终究是参考。</p>
+<h2 id="形成帧的过程中播放延迟的传递">形成帧的过程中播放延迟的传递</h2>
+<p>这篇文章主要介绍的是 WebRTC playout delay 的计算原理。WebRTC 源码之中 playout delay 表示为两个 <code>double</code> 浮点数构成的元组，分别表示最小播放延迟和最大播放延迟。一般而言，playout delay 会携带在 RTC 扩展头之中，如果没有携带，则使用默认初始化。</p>
+<p>源码上的体现是：</p>
+<figure class="highlight c++"><figcaption><span>C++</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">// video_timing.h</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RTC_EXPORT</span> <span class="title">VideoPlayoutDelay</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// Maximum supported value for the delay limit.</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">constexpr</span> TimeDelta kMax = TimeDelta::<span class="built_in">Millis</span>(<span class="number">10</span>) * <span class="number">0xFFF</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    TimeDelta min_ = TimeDelta::<span class="built_in">Zero</span>();</span><br><span class="line">    TimeDelta max_ = kMax;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// rtp_video_header.h</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">RTPVideoHeader</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    absl::optional&lt;VideoPlayoutDelay&gt; playout_delay;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// encoded_image.h</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RTC_EXPORT</span> <span class="title">EncodedImage</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    absl::optional&lt;VideoPlayoutDelay&gt; playout_delay_;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">RtpFrameObject::<span class="built_in">RtpFrameObject</span>(<span class="comment">/* ... */</span>)</span><br><span class="line">    : <span class="built_in">first_seq_num_</span>(first_seq_num),</span><br><span class="line">      <span class="built_in">last_seq_num_</span>(last_seq_num),</span><br><span class="line">      <span class="built_in">last_packet_receive_time_</span>(last_packet_receive_time),</span><br><span class="line">      <span class="built_in">times_nacked_</span>(times_nacked) &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="built_in">SetPlayoutDelay</span>(rtp_video_header_.playout_delay);</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里主要观察最后一个构造函数的逻辑，在 <code>PacketBuffer</code> 模块将数据包排列组合出一帧的最后会创建一个 <code>RtpFrameObject</code> 实例来管理这一帧，此时会使用 <code>SetPlayoutDelay</code> 函数设定播放延迟。同时可以注意到，<code>RTPVideoHeader</code> 结构体中如果没有设定播放延迟，则默认为 <code>&#123;0, +Infinity&#125;</code>，也就是说创建帧对象的时候如果没有设定播放延迟则默认设定为 <code>&#123;0, +Infinity&#125;</code>。</p>
+<p>在帧构建完成之后会调用 <code>VideoReceiveStream2::OnCompleteFrame</code> 函数将新帧插入帧队列：</p>
+<figure class="highlight c++"><figcaption><span>C++</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">VideoReceiveStream2::OnCompleteFrame</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">    std::unique_ptr&lt;video_encoding::EncodedFrame&gt; frame,</span></span></span><br><span class="line"><span class="params"><span class="function">)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (absl::optional&lt;VideoPlayoutDelay&gt; playout_delay =</span><br><span class="line">        frame-&gt;<span class="built_in">EncodedImage</span>().<span class="built_in">PlayoutDelay</span>()) &#123;</span><br><span class="line">        frame_minimum_playout_delay_ = playout_delay-&gt;<span class="built_in">min</span>();</span><br><span class="line">        frame_maximum_playout_delay_ = playout_delay-&gt;<span class="built_in">max</span>();</span><br><span class="line">        <span class="built_in">UpdatePlayoutDelays</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里涉及到了 <code>absl::optional</code> 的隐式类型转换，观察一下库函数就有：</p>
+<figure class="highlight c++"><figcaption><span>C++</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">// optional::operator bool()</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// Returns false if and only if the `optional` is empty.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//   if (opt) &#123;</span></span><br><span class="line"><span class="comment">//      // do something with *opt or opt-&gt;;</span></span><br><span class="line"><span class="comment">//   &#125; else &#123;</span></span><br><span class="line"><span class="comment">//      // opt is empty.</span></span><br><span class="line"><span class="comment">//   &#125;</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="function"><span class="keyword">constexpr</span> <span class="keyword">explicit</span> <span class="keyword">operator</span> <span class="title">bool</span><span class="params">()</span> <span class="keyword">const</span> <span class="keyword">noexcept</span> </span>&#123; <span class="keyword">return</span> <span class="keyword">this</span>-&gt;engaged_; &#125;</span><br></pre></td></tr></table></figure>
+<p>也就是说只有这个 <code>absl::optional</code> 容器内部没有存放任何值的时候才会返回 <code>false</code>，这也就对应着播放延迟没有在 RTC 扩展头之中携带。</p>
+<p>这里可以注意当 <code>playout_delay_</code> 是非默认值的时候会做两件事：</p>
+<ul>
+<li>更新 <code>VideoReceiveStream2</code> 之中的 <code>frame_minimum_playout_delay_ms_</code> 等成员变量</li>
+<li>调用 <code>UpdatePlayoutDelays</code> 函数更新 <code>VCMTiming</code> 类中的数据</li>
+</ul>
+<p>具体的源码为：</p>
+<figure class="highlight c++"><figcaption><span>C++</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">VideoReceiveStream2::UpdatePlayoutDelays</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123;</span><br><span class="line">    <span class="built_in">RTC_DCHECK_RUN_ON</span>(&amp;worker_sequence_checker_);</span><br><span class="line">    <span class="keyword">const</span> std::initializer_list&lt;absl::optional&lt;TimeDelta&gt;&gt; min_delays = &#123;</span><br><span class="line">        frame_minimum_playout_delay_,</span><br><span class="line">        base_minimum_playout_delay_,</span><br><span class="line">        syncable_minimum_playout_delay_&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Since nullopt &lt; anything, this will return the largest of the minumum</span></span><br><span class="line">    <span class="comment">// delays, or nullopt if all are nullopt.</span></span><br><span class="line">    absl::optional&lt;TimeDelta&gt; minimum_delay = std::<span class="built_in">max</span>(min_delays);</span><br><span class="line">    <span class="keyword">if</span> (minimum_delay) &#123;</span><br><span class="line">        <span class="keyword">auto</span> num_playout_delays_set =</span><br><span class="line">            absl::<span class="built_in">c_count_if</span>(min_delays, [](<span class="keyword">auto</span> opt) &#123; <span class="keyword">return</span> opt.<span class="built_in">has_value</span>(); &#125;);</span><br><span class="line">        <span class="keyword">if</span> (num_playout_delays_set &gt; <span class="number">1</span> &amp;&amp;</span><br><span class="line">            timing_-&gt;<span class="built_in">min_playout_delay</span>() != minimum_delay) &#123;</span><br><span class="line">            <span class="built_in">RTC_LOG</span>(LS_WARNING)</span><br><span class="line">                &lt;&lt; <span class="string">&quot;Multiple playout delays set. Actual delay value set to &quot;</span></span><br><span class="line">                &lt;&lt; *minimum_delay &lt;&lt; <span class="string">&quot; frame min delay=&quot;</span></span><br><span class="line">                &lt;&lt; <span class="built_in">OptionalDelayToLogString</span>(frame_minimum_playout_delay_)</span><br><span class="line">                &lt;&lt; <span class="string">&quot; base min delay=&quot;</span></span><br><span class="line">                &lt;&lt; <span class="built_in">OptionalDelayToLogString</span>(base_minimum_playout_delay_)</span><br><span class="line">                &lt;&lt; <span class="string">&quot; sync min delay=&quot;</span></span><br><span class="line">                &lt;&lt; <span class="built_in">OptionalDelayToLogString</span>(syncable_minimum_playout_delay_);</span><br><span class="line">        &#125;</span><br><span class="line">        timing_-&gt;<span class="built_in">set_min_playout_delay</span>(*minimum_delay);</span><br><span class="line">        <span class="keyword">if</span> (frame_minimum_playout_delay_ == TimeDelta::<span class="built_in">Zero</span>() &amp;&amp;</span><br><span class="line">            frame_maximum_playout_delay_ &gt; TimeDelta::<span class="built_in">Zero</span>()) &#123;</span><br><span class="line">            <span class="comment">// TODO(kron): Estimate frame rate from video stream.</span></span><br><span class="line">            <span class="keyword">constexpr</span> Frequency kFrameRate = Frequency::<span class="built_in">Hertz</span>(<span class="number">60</span>);</span><br><span class="line">            <span class="comment">// Convert playout delay in ms to number of frames.</span></span><br><span class="line">            <span class="keyword">int</span> max_composition_delay_in_frames =</span><br><span class="line">                std::<span class="built_in">lrint</span>(*frame_maximum_playout_delay_ * kFrameRate);</span><br><span class="line">            <span class="comment">// Subtract frames in buffer.</span></span><br><span class="line">            max_composition_delay_in_frames =</span><br><span class="line">                std::<span class="built_in">max</span>(max_composition_delay_in_frames - buffer_-&gt;<span class="built_in">Size</span>(), <span class="number">0</span>);</span><br><span class="line">            timing_-&gt;<span class="built_in">SetMaxCompositionDelayInFrames</span>(max_composition_delay_in_frames);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (frame_maximum_playout_delay_) &#123;</span><br><span class="line">        timing_-&gt;<span class="built_in">set_max_playout_delay</span>(*frame_maximum_playout_delay_);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这一段看起来有一个前提，就是 <code>min_delays</code> 列表之中最多有一个有效值，而这个有效值将会被处理为真实的播放延迟。可以看到，在第 25 行，这里调用了 <code>timimg_-&gt;set_min_playout_delay</code> 函数，而这个函数的作用就是将播放延迟设定到 <code>VCMTiming</code> 类之中。这里 <code>timing_</code> 的类型为 <code>std::unique_ptr&lt;VCMTiming&gt;</code>。</p>
+<p>再具体展开：</p>
+<figure class="highlight c++"><figcaption><span>C++</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">VCMTiming::set_min_playout_delay</span><span class="params">(TimeDelta min_playout_delay)</span> </span>&#123;</span><br><span class="line">    <span class="function">MutexLock <span class="title">lock</span><span class="params">(&amp;mutex_)</span></span>;</span><br><span class="line">    <span class="keyword">if</span> (min_playout_delay_ != min_playout_delay) &#123;</span><br><span class="line">        <span class="built_in">CheckDelaysValid</span>(min_playout_delay, max_playout_delay_);</span><br><span class="line">        min_playout_delay_ = min_playout_delay;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">VCMTiming::set_max_playout_delay</span><span class="params">(TimeDelta max_playout_delay)</span> </span>&#123;</span><br><span class="line">    <span class="function">MutexLock <span class="title">lock</span><span class="params">(&amp;mutex_)</span></span>;</span><br><span class="line">    <span class="keyword">if</span> (max_playout_delay_ != max_playout_delay) &#123;</span><br><span class="line">        <span class="built_in">CheckDelaysValid</span>(min_playout_delay_, max_playout_delay);</span><br><span class="line">        max_playout_delay_ = max_playout_delay;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>至少这里看起来是相当普通的一个 setter 代码。按这里的代码的话，<code>VCMTiming</code> 的作用在于维护帧级别的播放延迟，并作为最终存放点用于后续的延迟估计工作。</p>
+<h2 id="帧插入过程中延迟的估计">帧插入过程中延迟的估计</h2>
+<p>在形成新的一帧之后，需要通过帧插入操作将新的帧加入到帧缓冲区之中供后续解码。承接上述说明，在 <code>VideoReceiveStream2::OnCompleteFrame</code> 函数之后，会通过 <code>VideoStreamBufferController::InsertFrame</code> 函数将新帧压入缓冲区，而这个函数则进一步调用了 <code>FrameBuffer::InsertFrame</code> 函数：</p>
+<figure class="highlight c++"><figcaption><span>C++</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="function">absl::optional&lt;<span class="keyword">int64_t</span>&gt; <span class="title">VideoStreamBufferController::InsertFrame</span><span class="params">(std::unique_ptr&lt;EncodedFrame&gt; frame)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">RTC_DCHECK_RUN_ON</span>(&amp;worker_sequence_checker_);</span><br><span class="line">    <span class="function">FrameMetadata <span class="title">metadata</span><span class="params">(*frame)</span></span>;</span><br><span class="line">    <span class="keyword">int</span> complete_units = buffer_-&gt;<span class="built_in">GetTotalNumberOfContinuousTemporalUnits</span>();</span><br><span class="line">    <span class="keyword">if</span> (buffer_-&gt;<span class="built_in">InsertFrame</span>(std::<span class="built_in">move</span>(frame))) &#123;</span><br><span class="line">        <span class="built_in">RTC_DCHECK</span>(metadata.receive_time) &lt;&lt; <span class="string">&quot;Frame receive time must be set!&quot;</span>;</span><br><span class="line">        <span class="keyword">if</span> (!metadata.delayed_by_retransmission &amp;&amp; metadata.receive_time &amp;&amp;</span><br><span class="line">            (field_trials_.<span class="built_in">IsDisabled</span>(<span class="string">&quot;WebRTC-IncomingTimestampOnMarkerBitOnly&quot;</span>) ||</span><br><span class="line">            metadata.is_last_spatial_layer)) &#123;</span><br><span class="line">            timing_-&gt;<span class="built_in">IncomingTimestamp</span>(metadata.rtp_timestamp, *metadata.receive_time);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (complete_units &lt; buffer_-&gt;<span class="built_in">GetTotalNumberOfContinuousTemporalUnits</span>()) &#123;</span><br><span class="line">            stats_proxy_-&gt;<span class="built_in">OnCompleteFrame</span>(metadata.is_keyframe, metadata.size, metadata.contentType);</span><br><span class="line">            <span class="built_in">MaybeScheduleFrameForRelease</span>();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> buffer_-&gt;<span class="built_in">LastContinuousFrameId</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里 <code>FrameBuffer::InsertFrame</code> 函数具体细节不再阐述，基本上就是管理缓冲区的一些操作，我们主要看后续有关延迟的计算方式。首先，第 7 行的判定表示，如果该帧不是重传帧则进入分支内部。在此基础上，该函数会调用 <code>VCMTiming::IncomingTimestamp</code> 并立刻跳转到 <code>TimestampExtrapolator::Update</code>。在这个函数内部，框架将会根据当前帧的 RTP 时间戳估计当前帧的期望接收时间，并对 Kalman gain 进行校准（内心 OS：这一句话真的是没看懂啊，不过参考文献说后面会具体说明这个函数的目的，这里就先不深究了吧）。</p>
+<hr />
+<p>首先说明一帧从完整构成到显示到屏幕上所需要经历的阶段。在帧组装完毕之后，首先会送往解码器解码，解码完毕之后则送给渲染器渲染。</p>
+<p>这里我们关注一个函数，即 <code>VCMTiming::MaxWaitingTime</code>。这个函数的作用是给出帧组装所能容忍的最大时长，也就是说如果在给定的阈值内没有能够从网络上获取足够的数据包将这一帧组装完毕，则这一帧大概率来不及走完解码、渲染的流程并显示在屏幕上。事实上这个函数是一个预测性质的函数，用来预测当前条件下我们能等待网络延迟多长时间：</p>
+<figure class="highlight c++"><figcaption><span>C++</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="function">TimeDelta <span class="title">VCMTiming::MaxWaitingTime</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">    Timestamp render_time,</span></span></span><br><span class="line"><span class="params"><span class="function">    Timestamp now,</span></span></span><br><span class="line"><span class="params"><span class="function">    <span class="keyword">bool</span> too_many_frames_queued</span></span></span><br><span class="line"><span class="params"><span class="function">)</span> <span class="keyword">const</span> </span>&#123;</span><br><span class="line">    <span class="function">MutexLock <span class="title">lock</span><span class="params">(&amp;mutex_)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (</span><br><span class="line">        render_time.<span class="built_in">IsZero</span>() &amp;&amp;</span><br><span class="line">        zero_playout_delay_min_pacing_-&gt;<span class="built_in">us</span>() &gt; <span class="number">0</span> &amp;&amp;</span><br><span class="line">        min_playout_delay_.<span class="built_in">IsZero</span>() &amp;&amp;</span><br><span class="line">        max_playout_delay_ &gt; TimeDelta::<span class="built_in">Zero</span>()</span><br><span class="line">    ) &#123;</span><br><span class="line">        <span class="comment">// `render_time` == 0 indicates that the frame should be decoded and</span></span><br><span class="line">        <span class="comment">// rendered as soon as possible. However, the decoder can be choked if too</span></span><br><span class="line">        <span class="comment">// many frames are sent at once. Therefore, limit the interframe delay to</span></span><br><span class="line">        <span class="comment">// |zero_playout_delay_min_pacing_| unless too many frames are queued in</span></span><br><span class="line">        <span class="comment">// which case the frames are sent to the decoder at once.</span></span><br><span class="line">        <span class="keyword">if</span> (too_many_frames_queued) &#123;</span><br><span class="line">            <span class="keyword">return</span> TimeDelta::<span class="built_in">Zero</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        Timestamp earliest_next_decode_start_time =</span><br><span class="line">            last_decode_scheduled_ + zero_playout_delay_min_pacing_;</span><br><span class="line">        TimeDelta max_wait_time =</span><br><span class="line">            now &gt;= earliest_next_decode_start_time</span><br><span class="line">                ? TimeDelta::<span class="built_in">Zero</span>()</span><br><span class="line">                : earliest_next_decode_start_time - now;</span><br><span class="line">        <span class="keyword">return</span> max_wait_time;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> render_time - now - <span class="built_in">EstimatedMaxDecodeTime</span>() - render_delay_;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个函数中 <code>render_time == 0</code> 表示这一帧需要尽快显示，这里忽略这一分支。该函数接受的参数分别为：</p>
+<ul>
+<li>要求渲染完成的时间戳 <code>render_time</code>，即我们的目标是在 <code>render_time</code> 之前渲染完毕这一帧</li>
+<li>当前的时间戳 <code>now</code></li>
+</ul>
+<p>而返回值可以看到，首先我们用 <code>render_timer - now</code> 得到我们总共的容忍时长，之后减去预估的解码延迟 <code>EstimatedMaxDecodeTime()</code>，再减去预估的渲染延迟 <code>render_delay_</code>，即得到了剩余可以用来等待网络的时长。</p>
+<hr />
+<p>这里我们看另外一个函数，即 <code>VCMTiming::RenderTimeInternal</code>：</p>
+<figure class="highlight c++"><figcaption><span>C++</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="function">Timestamp <span class="title">VCMTiming::RenderTimeInternal</span><span class="params">(<span class="keyword">uint32_t</span> frame_timestamp, Timestamp now)</span> <span class="keyword">const</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">UseLowLatencyRendering</span>()) &#123;</span><br><span class="line">        <span class="comment">// Render as soon as possible or with low-latency renderer algorithm.</span></span><br><span class="line">        <span class="keyword">return</span> Timestamp::<span class="built_in">Zero</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// Note that TimestampExtrapolator::ExtrapolateLocalTime is not a const</span></span><br><span class="line">    <span class="comment">// method; it mutates the object&#x27;s wraparound state.</span></span><br><span class="line">    Timestamp estimated_complete_time =</span><br><span class="line">        ts_extrapolator_-&gt;<span class="built_in">ExtrapolateLocalTime</span>(frame_timestamp).<span class="built_in">value_or</span>(now);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Make sure the actual delay stays in the range of `min_playout_delay_`</span></span><br><span class="line">    <span class="comment">// and `max_playout_delay_`.</span></span><br><span class="line">    TimeDelta actual_delay =</span><br><span class="line">        current_delay_.<span class="built_in">Clamped</span>(min_playout_delay_, max_playout_delay_);</span><br><span class="line">    <span class="keyword">return</span> estimated_complete_time + actual_delay;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里主要在预测某一帧何时应该被渲染完毕，事实上返回的就是上一个函数中的 <code>render_time</code> 时间戳参数。首先，判断是否是低延迟渲染模式，如果采用了低延迟模式，则直接返回零表示要求立刻渲染。</p>
+<p>在此之后，首先会通过 <code>TimestampExtrapolator::ExtrapolateLocalTime</code> 函数，利用 Kalman filter 估计应当何时将这一帧送入渲染器队列。之后将 <code>current_delay_</code> 通过上下界 <code>[min_playout_delay_, max_playout_delay_]</code> 截断生成渲染过程耗时的估计，而这里的上下界则是上一阶段之中所获得的。<code>current_delay_</code> 本身的计算方式则在后面给出说明。</p>
+<hr />
+<p>由于最新代码框架已经和参考文章中的框架大为不同，这里重新叙述一下一个帧构建完毕后的函数调用链：</p>
+<ul>
+<li>构建帧的时候将播放延迟设置到 <code>VCMTiming</code> 类之中</li>
+<li>帧构建完成后触发 <code>VideoReceiveStream2::OnCompleteFrame</code> 回调函数</li>
+<li>上述回调函数之中触发 <code>VideoStreamBufferController::InsertFrame</code> 函数将帧插入帧缓冲区</li>
+<li>帧插入操作通过 controller 最终交给 <code>FrameBuffer::InsertFrame</code> 实际完成</li>
+<li>正常插入完毕后，非重传帧通过 <code>VCMTiming::IncomingTimestamp</code> 函数进入 Kalman filter 流程</li>
+<li>正常插入完毕后，帧缓冲通过 <code>VideoStreamBufferController::MaybeScheduleFrameForRelease</code> 函数对后续帧作预测和规划</li>
+<li>预测未来帧的时候调用 <code>FrameDecodeTiming::OnFrameBufferUpdated</code> 回调</li>
+<li>该回调中通过 <code>VCMTiming::RenderTime</code> 预测渲染完毕时间戳，在此之后通过 <code>VCMTiming::MaxWaitingTime</code> 获取最大容忍等待时间</li>
+</ul>
+<h2 id="kalman-filter">Kalman filter</h2>
+<p>首先，WebRTC 之中的 RTP 时间戳并非是 Unix 时间戳，而是按照 90kHz 的采样率计算采样次数。在 90kHz 之下每秒采样 90000 次，所以如果帧率为 60FPS，则每一帧之间相距 1/60 秒，即 1500 个采样点，也就是说 60FPS 之下相邻两帧之间的 RTP 时间戳相差值为 1500。</p>
+<p>Kalman filter 的目标是，在已知起始帧到达时间 <span class="math inline">\(t_0\)</span> 的基础上预测第 <span class="math inline">\(k\)</span> 帧的到达时间 <span class="math inline">\(t_k\)</span>。如果将第 <span class="math inline">\(k\)</span> 帧的 RTP 时间戳记为 <span class="math inline">\(T_k\)</span>，从起始帧到第 <span class="math inline">\(k\)</span> 帧间因网络发生的 RTP 时间戳抖动记为 <span class="math inline">\(\Delta_k\)</span>，第 <span class="math inline">\(k\)</span> 帧的采样率记为 <span class="math inline">\(s_k\)</span>，那么：</p>
+<p><span class="math display">\[
+t_k = t_0 + \frac{(T_k - T_0) - \Delta_k}{s_k}
+\]</span></p>
+]]></content>
+      <categories>
+        <category>【学习笔记】计算机</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>《计算机网络原理》学习笔记</title>
+    <url>/2021/09/13/note-of-net/</url>
+    <content><![CDATA[<p>网原总之是一个没打算认真学的专业课，因为真的对网络没有很大的兴趣。再加上上学期曾经看着迅哥哥他们被网原折磨，自己也没什么信心能学好这门专业课。</p>
+<p>这个笔记完全基于上一届流传下来的《网原干饭背诵》，在此基础上对重点做一些标记做一些讲解，反正是个背书课，那么就只能一点一点背了。根据前人经验，这个笔记会把比较重要的东西用星号标注出来。</p>
+<span id="more"></span>
+<h1 id="计算机网络的历史和新进展">计算机网络的历史和新进展</h1>
+<h2 id="背诵-1-网络基础">【背诵 1 】网络基础</h2>
+<ul>
+<li><p>网络所提供的最基本服务为<strong>信息传递</strong>，不同的网络依据其提供的服务进行区分。而区分服务的依据则包括功能、延迟、带宽等各种<strong>外部特性</strong>。</p></li>
+<li><p>网络依据<strong>空间距离</strong>可以分为局域网（LAN）、城域网（MAN）、广域网（WAN）和个域网（PAN）。依据<strong>信息类型</strong>可以分为数据网络、电话网络。依据<strong>应用类型</strong>可以分为专用网络、通用网络。依据<strong>使用权</strong>可以分为私有网络、公用网络。同时，网络也可以按照使用的协议进行分类，如 IP 协议等。</p></li>
+</ul>
+<h2 id="背诵-2-计算机网络发展历史">【背诵 2 】计算机网络发展历史</h2>
+<p>计算机网络的历史可以大致描述为：</p>
+<ul>
+<li>1940 年代，第一个计算机 ENIAC 诞生</li>
+<li>1950 年代，大型机和多终端系统诞生</li>
+<li>1960 - 1964 年，分组交换网络诞生（Paul Baran）</li>
+<li>1960 年代，计算机网络研究开始</li>
+<li>* 1969 年，ARPANET 研究启动</li>
+<li>1970 年代，计算机网络发展
+<ul>
+<li>各国电信部门建设运行 X.25 分组交换网</li>
+<li>SNA 以及 DNA 等专用网络体系结构出现</li>
+<li>Internet 的前身 ARPANET 进行实验运行，带宽小且仅有不到 100 台计算机接入</li>
+<li>* 以太网和 Telnet 出现</li>
+<li>* 1979 年，TCP/IP 协议成熟</li>
+</ul></li>
+<li>1980 年代，计算机网络逐步成型
+<ul>
+<li>标准化的计算机网络体系结构 ISO/OSI 出现</li>
+<li>局域网 LAN 技术发展</li>
+<li>FTP、NFS、E-mail、USENET 等技术出现</li>
+<li>1980 - 1983 年，ARPANET 和 MILNET 分离，前者采用 TCP/IP 协议</li>
+<li>1983 年，BSD UNIX 内置 TCP/IP 协议</li>
+<li>1985 - 1986 年，NSFNET 建成，用于连接 6 个超级计算中心</li>
+<li>1987 - 1990 年，NSFNET 开始连接地区网络</li>
+<li>Internet 初具规模，1987 年，中国第一个电子邮件发送到 Internet</li>
+<li>中国开始依赖电话线建立低速广域网</li>
+</ul></li>
+<li>1990 年代，计算机网络进一步发展
+<ul>
+<li>Internet 商业化，在中国也得到了广泛应用</li>
+<li>Web 技术在 Internet 上得到广泛应用</li>
+<li>中国出现局域网，如 Novell 等</li>
+<li>1990 - 1992 年，NSFNET 带宽提高，连接了 16 个地区网络</li>
+<li>1994 年，NSFNET 骨干网解体，出现了若干其他的商用骨干网</li>
+<li>1995 年，中国教育和科研网 CERNET 出现</li>
+</ul></li>
+<li>2000 年代，计算机网络广泛应用
+<ul>
+<li>网络应用发展迅速，搜索引擎和社交网络出现</li>
+<li>移动互联网产业快速发展</li>
+<li>2006 年，与 IPv6 相关的 CNGI-CERNET2 出现</li>
+</ul></li>
+<li>最近，数据中心网络、天地一体化网络、 IPv6 技术等快速发展
+<ul>
+<li>2011 年开始设立 World IPv6 Day</li>
+<li>2011 年 2 月 3 日，全球互联网名称与数字地址分配机构 ICANN 宣布 IPv4 地址耗尽</li>
+</ul></li>
+</ul>
+<h2 id="背诵-3-internet-技术">【背诵 3 】 Internet 技术</h2>
+<ul>
+<li>Internet 是全球范围的、通用的、异构的公用计算机网络</li>
+<li>Internet 是其他类型的计算机网络技术的基础，如企业内部网（Intranet）</li>
+<li>Internet 开放的标准由 IETF 负责制定、维护和协调。其他类似 IRTF、IAB、IESG 等机构也参与了标准的维护
+<ul>
+<li>IETF 全称 Internet Engineering Task Force，其分为若干个工作组（WG），其提交的 Internet 标准被称为 RFC，即 Request For Comments</li>
+<li>IRTF 全称 Internet Researching Task Force，由各类专注某一个领域的研究小组组成</li>
+<li>IAB 全称 Internet Architecture Board，负责定义 Internet 的大体框架，为 IETF 提供方向上的指导</li>
+<li>IESG 全称 Internet Engineering Steering Group，负责在技术方面上管理 IETF 的活动</li>
+</ul></li>
+<li>Internet 是历史上发展最快的一种技术，其发展速度甚至超越摩尔定律</li>
+</ul>
+<h2 id="背诵-4-网络时代三大定律">【背诵 4 】网络时代三大定律</h2>
+<ul>
+<li>【摩尔定律】 CPU 性能每 18 个月会翻番，每 10 年翻 100 倍</li>
+<li>【光纤定律】也称超摩尔定律，骨干网带宽每 9 个月会翻番。每 10 年翻 10000 倍</li>
+<li>【麦特卡菲定律】也称联网定律，网络价值和用户数量的平方成正比</li>
+</ul>
+<h2 id="理解-1-分组交换技术">【理解 1 】分组交换技术</h2>
+<p>Paul Baran 在设计能承受核攻击的通信系统的时候，确立了三个设计准则。</p>
+<ul>
+<li>自适应系统的<strong>热土豆路由策略</strong>（能够学习并适应各种新的环境）
+<ul>
+<li>如果不知道正确的路由，就将分组转发给所有邻居</li>
+<li>通过观察路过的分组来更新路由表，旧的路由表项会被删除</li>
+<li>尽可能快地转发分组，分组途径的路径并不一定是最短路径</li>
+</ul></li>
+<li>分组发送策略（端节点能够容忍错误并恢复）
+<ul>
+<li>每个节点根据自我的路由表决定如何转发分组</li>
+<li>每个分组的转发完全独立于其他的分组</li>
+<li>交换节点不保存端节点信息，这一点让网络的可拓展性大大增强</li>
+</ul></li>
+<li>分布式策略
+<ul>
+<li>所有交换节点平等，避免单一节点失效问题</li>
+<li>通过物理硬件冗余和自适应路由实现系统稳健性</li>
+</ul></li>
+</ul>
+<p>而 Internet 就是这一类网络。Internet 连接了各种异构的子网，提供两个最基本的功能，即全球唯一地址和分组通过动态路由传输。</p>
+<p>分组交换技术具有相当多的优点，包括：</p>
+<ul>
+<li>简单性
+<ul>
+<li>每个分组自身携带信息</li>
+<li>一个路由表可以为所有的流量服务</li>
+<li>可以适应快速增长的网络规模</li>
+</ul></li>
+<li>灵活性
+<ul>
+<li>可以在各种物理底层上运行</li>
+<li>可以支持各种网络应用</li>
+</ul></li>
+<li>可扩展性
+<ul>
+<li>可以应对端系统的增加</li>
+<li>可以应对流量的增加</li>
+<li>可以应对网络规模增大带来的路由表增大和路由频繁变化</li>
+</ul></li>
+<li>健壮性
+<ul>
+<li>默认了网络结构变化是正常现象</li>
+<li>牺牲一定的效率换取网络的稳定</li>
+</ul></li>
+</ul>
+<h2 id="背诵-5-今日互联网">【背诵 5 】今日互联网</h2>
+<ul>
+<li>今日的互联网具有更大的规模和更多的用户，而且支持更多的功能，具有更高的价值，但是其健壮性、适应性和互联程度都下降了</li>
+<li>当今互联网面临的一个问题就是 IPv4 地址耗尽，而目前缓解这个问题地方案是<strong>网络地址转换协议（Network Address Translation / NAT）</strong>
+<ul>
+<li>NAT 缓解了地址耗尽的问题，增强了安全性和控制性</li>
+<li>但是另外一方面却打破了 Internet 中地址唯一的假设</li>
+<li>端到端的分组传输路径变成多个 NAT 域的级联，相当于虚电路</li>
+<li>为了恢复 Internet 的原有结构，目前正在推进 IPv6 技术</li>
+</ul></li>
+</ul>
+<h2 id="杂项-1-未分类知识点">【杂项 1 】未分类知识点</h2>
+<ul>
+<li>二十世纪后期人类两项最伟大的战略工程为<strong>星球大战计划</strong>和<strong>互联网计划</strong>。目前互联网已经发展为继海、陆、空、天之后的<strong>第五空间</strong>。</li>
+</ul>
+<h1 id="计算机网络体系结构">计算机网络体系结构</h1>
+<h2 id="背诵-6-计算机网络的定义和组成">【背诵 6 】计算机网络的定义和组成</h2>
+<ul>
+<li>计算机网络定义为若干独立自治的计算机系统的互联集合体
+<ul>
+<li>计算机网络和分布式系统不同，分布式系统虽然也是由若干个计算机系统组成，但其具有<strong>内聚性</strong>和<strong>透明性</strong>，故分布式系统呈现给用户的更像是一台计算机。计算机网络则明显分立，在用户的视角依然是若干不同的计算机</li>
+<li>目前分布式系统和计算机网络有合流的趋势，两者正在走向统一</li>
+</ul></li>
+<li>计算机网络有两级组成，即<strong>资源子网</strong>和<strong>通信子网</strong>。资源子网常常是服务器或者用户计算机，而通信子网常常是通信线路等信道和路由器、交换机等网络互联设备</li>
+<li>计算机网络之中的通信通常有两种，即<strong>交换式通信</strong>和<strong>广播式通信</strong>
+<ul>
+<li>交换式通信又称<strong>点对点通信</strong>
+<ul>
+<li>需要经过交换设备，将消息转发给一个或一组结点</li>
+<li>交换设备根据需要选择输出</li>
+<li>网络典型的拓扑结构包括 star / ring(loop) / tree / complete / intersecting rings / irregular</li>
+<li>关键技术是<strong>路由选择</strong></li>
+</ul></li>
+<li>广播式通信
+<ul>
+<li>多台计算机共享通信线路</li>
+<li>任一台计算机发出的信息可以直接被其它计算机接收</li>
+<li>网络典型的拓扑结构包括 bus / ring(loop)</li>
+<li>关键技术是<strong>通道分配</strong>
+<ul>
+<li>静态分配，即分时间片。特点是控制简单，但通道利用率低</li>
+<li>动态分配，即各站点动态使用通道。特点是控制复杂，但通道利用率高。通道分配方法有两种。集中式指的是只有一个仲裁机构，分布式指的是各站点均有仲裁机构</li>
+</ul></li>
+</ul></li>
+<li>传统的 LAN 一般使用广播式通信，而 MAN 和 WAN 一般使用交换式通信。现代的 LAN 中交换式通信的应用正在增多</li>
+</ul></li>
+</ul>
+<h2 id="理解-2-计算机网络体系结构">【理解 2 】计算机网络体系结构</h2>
+<ul>
+<li>计算机网络体系结构指的是对计算机网络及其部件所完成功能的比较精确的定义，即从功能的角度描述计算机网络的结构，是<strong>层次和层间关系</strong>的集合。但体系结构只会从功能上定义网络，并不会定义协议的细节和接口关系
+<ul>
+<li>现代计算机网络体系架构指出，计算机网络的基本功能是为地理位置不同的计算机用户之间提供访问通路，并且应当提供若干功能（具体功能列表见 PPT），这些功能中最重要的是<strong>通信功能</strong></li>
+<li>这些功能的特征是<strong>分层</strong>，也就是说计算机网络中提供的功能是分成层次的</li>
+<li>位于不同计算机上进行对话的同一层通信各方可分别看成是一种进程，称为<strong>对等（同等）进程</strong></li>
+</ul></li>
+<li>计算机网络分层的体系结构有三个重要的概念，即协议、服务和接口
+<ul>
+<li>计算机网络体系结构定义了计算机网络的功能是分层次的，而协议（Protocol）就是计算机网络同等层次中，通信双方进行信息交换时必须遵守的规则
+<ul>
+<li>协议由三部分组成
+<ul>
+<li>语法（Syntax）部分。即以二进制形式表示的命令和相应的结构</li>
+<li>语义（Semantics）部分。即发出的命令请求，完成的动作和回送的响应组成的集合</li>
+<li>定时关系（Timing）部分。即有关事件顺序的说明</li>
+</ul></li>
+<li>网络体系结构的分层决定了协议的分层，协议的分层构成了<strong>洋葱结构</strong>
+<ul>
+<li>目的主机某一层收到的报文与源主机同一层发出的报文相同</li>
+<li>协议分层要保证整个通信系统功能完备高效</li>
+</ul></li>
+</ul></li>
+<li>协议定义了不同计算机同层次之间的关系，而服务（Service）定义同一个计算机的上下层之间的交换信息时必须遵守的规则
+<ul>
+<li>服务有两种，即面向连接的服务和无连接服务。
+<ul>
+<li>在使用面向连接的服务进行传输的时候，首先需要建立连接，然后使用这个连接传递数据，使用完毕需要关闭连接。这类服务的顺序性较好</li>
+<li>在使用无连接服务的时候，不建立连接，直接通过服务发送数据每个包都需要独立确定路由。这类服务的顺序性较差</li>
+<li>需要注意，连接并不意味着可靠，可靠性依然需要通过确认、重传等机制进行保证</li>
+</ul></li>
+<li>服务在形式上需要通过一组服务原语（Primitive）规定。原语可以分为四类，即请求、指示、响应、确认</li>
+</ul></li>
+<li>在同一个计算机之中相邻层之间都有一个接口（Interface），它定义了下层向上层提供的原语操作和服务</li>
+</ul></li>
+<li>基于三大基本概念，计算机网络体系结构的具体实现大致为
+<ul>
+<li>服务访问点（Service Access Point / SAP）
+<ul>
+<li>任何的层间服务都是在接口的 SAP 上完成的</li>
+<li>每一个 SAP 都有唯一的识别地址</li>
+<li>每一个层间接口可以具有多个 SAP</li>
+</ul></li>
+<li>接口数据单元（Interface Data Unit / IDU）
+<ul>
+<li>IDU 是通过 SAP 传递的层间信息单元（上下传输）</li>
+<li>IDU 的构成是上一层的服务数据单元（Service Data Unit / SDU）和接口控制信息（Interface Control Information / ICI）的拼接</li>
+</ul></li>
+<li>协议数据单元（Protocol Data Unit / PDU）
+<ul>
+<li>PDU 是在同层实体之间通过网络传输的信息单元（水平传输）</li>
+<li>PDU 的构成是上一层的 SDU 或其分段和协议控制信息（Protocol Control Information / PCI）的拼接</li>
+</ul></li>
+<li>基于上述定义，计算机网络的工作类似于下述
+<ul>
+<li>当本层需要水平传输的时候，首先获得上层通过 SAP 传递的，由 SDU 和 ICI 拼接得到的 IDU。然后本层删除 ICI，将剩余的 SDU 拼接上 PCI 获得 PDU 并通过本层网络协议传输</li>
+<li>当本层需要继续向下层传输的时候，首先获得上层的 IDU，这个从上层获得到本层的 IDU 在下层看来就是一个新的 SDU。本层随后直接拼接上新的 ICI 获得新的 IDU 向下传输。所以说，最上层产生的数据包向下传播的时候，会逐层添加各层控制信息。而底层接收的数据包向上传播的时候，会逐层把这些控制信息删去，获取最后的数据</li>
+</ul></li>
+</ul></li>
+<li>分层的优点包括模块化、功能抽象、可复用。缺点是数据隐藏会导致可能的低效</li>
+<li>计算机网络体系结构的设计中还有两个原则，分别称为<strong>端到端原则</strong>和 <strong>Rule of thumb</strong>
+<ul>
+<li>端到端原则的思想是底层需要尽可能简单，但是上层应用可以较为复杂（完成验证、纠错等工作），只有当这样的功能明显能提升功能的时候才会放在底层</li>
+<li>Rule of thumb 的思想是，底层的新功能不能影响其他不使用这个新功能的部分</li>
+</ul></li>
+</ul>
+<h2 id="理解-3-osi-和-tcpip-模型及其他网络模型">【理解 3 】 OSI 和 TCP/IP 模型及其他网络模型</h2>
+<ul>
+<li>模型建立的历史事件见 PPT</li>
+<li>OSI 模型在 1983 年提出，模型分为七层，从下至上为
+<ul>
+<li>物理层，这一层包含基础网络硬件，在物理通信线路上传输二进制位（Bit）</li>
+<li>数据链路层，这一层目标是在有差错的物理线路上传输无差错的数据帧（Frame）</li>
+<li>网络层，这一层控制通信子网提供数据包（Packet）传输功能</li>
+<li>传输层，这一层为用户提供端到端的数据传输功能</li>
+<li>会话层，这一层为用户提供类似安全认证等会话控制服务</li>
+<li>表示层，这一层为用户提供数据表示和数据转换功能</li>
+<li>应用层</li>
+</ul></li>
+<li>TCP/IP 模型的提出早于 OSI 模型，且仅有四层：
+<ul>
+<li>Host-to-Internet 层，相当于 OSI 的物理层和数据链路层</li>
+<li>Internet 层（网络层），控制通信子网提供源点到目的点的 IP 包传送，实现异构网络互联</li>
+<li>传输层，提供端到端的数据传送服务，如 TCP 和 UDP</li>
+<li>应用层，内部包含了 OSI 的会话层和表示层</li>
+</ul></li>
+<li>X.25 分组交换网在 70 年代提出，早于 OSI 模型，为公用包交换网与用户之间提供接口
+<ul>
+<li>该模型面向连接，支持交换虚电路和永久虚电路</li>
+<li>物理层使用协议 X.21 以及 X.3 / X.28 / X.29</li>
+<li>数据链路层使用协议 LAP 和 LAPB</li>
+<li>网络层使用协议 PLP</li>
+<li>该模型提出了以下名词 -（用户侧）数据终端设备（Digital Terminal Equipment / DTE）
+<ul>
+<li>数字线路设备（Digital Circuit Terminating Equipment / DCE）</li>
+<li>打包解包设备（Packet Assembler and Disassembler / PAD）</li>
+</ul></li>
+</ul></li>
+<li>Novell Netware 在 1983 年提出，在 2005 年终止开发
+<ul>
+<li>模型基于 client-server 结构，设计的基本思想是<strong>文件共享</strong>（同时期其它系统还基于磁盘共享，所以模型有一定先进性）</li>
+<li>基于 XNS（Xeror Network System），网络层协议是不可靠无连接协议 IPX（Internet Packet Exchange），传输层协议是面向连接的 NCP（Netware Core Protocol）和 SPX（Sequenced Package Exchange）</li>
+</ul></li>
+<li>B-ISDN 即宽带综合业务数字网，其技术基础为 ATM 异步传输模式（Asynchronous Transfer Mode）
+<ul>
+<li>ATM 也是分组交换技术
+<ul>
+<li>异步传输，即不具有主时钟</li>
+<li>传输单元为短而定长的信元（cell）</li>
+<li>采用虚电路，面向连接</li>
+<li>常见速率包括 155M 和 622M</li>
+</ul></li>
+</ul></li>
+</ul>
+<h2 id="杂项-2-未分类知识点">【杂项 2 】未分类知识点</h2>
+<ul>
+<li>美国的标准化组织包括 ANSI 和 NIST，中国的标准化组织包括 CCSA，行业标准则是 IEEE</li>
+<li>计算机网络标准化，电信标准为 ITU 而国际标准则是 ISO</li>
+<li>Internet 的标准是自发的，并非政府干预，每个标准诞生前都需要提出请求意见稿，即 RFC</li>
+</ul>
+<h1 id="数据通信基本原理">数据通信基本原理</h1>
+<h2 id="理解-4-信号的傅里叶分析">【理解 4 】信号的傅里叶分析</h2>
+<ul>
+<li>注意网原里傅里叶级数的定义为：</li>
+</ul>
+<p><span class="math display">\[
+g(t) = \frac12 c + \sum_{n = 1}^{+\infty} a_n\sin(2\pi f nt) + \sum_{n = 1}^{+\infty} b_n\cos(2\pi f nt)
+\]</span></p>
+<p>所以：</p>
+<p><span class="math display">\[
+\begin{aligned}
+c &amp;= \frac2T \int_0^T g(t) {\rm d}t \\
+a_n &amp;= \frac2T \int_0^T g(t)\sin(2\pi f nt) {\rm d}t \\
+b_n &amp;= \frac2T \int_0^T g(t)\cos(2\pi f nt) {\rm d}t \\
+\end{aligned}
+\]</span></p>
+<ul>
+<li>一个信号所包含的信号频率范围为频谱（Spectrum），其宽度称为信号的绝对带宽（Definite bandwidth）。大部分信号有无穷的绝对带宽，但是其能量可能仅集中于某一个频段，这个频带的宽度称为有效带宽（Effective bandwidth），简称带宽</li>
+<li>带宽越宽，信号的信息承载能力越强</li>
+<li>信号在给定截止频率 <span class="math inline">\(f_c\)</span> 的信道传输的过程中，高于截止频率的频率分量的振幅衰减明显大于低于截止频率的</li>
+<li>通过信道的谐波次数越多，信号越逼真</li>
+</ul>
+<h2 id="计算-1-信号传输基础计算">【计算 1 】信号传输基础计算</h2>
+<ul>
+<li>波特率指的是信号每秒钟变化的次数，也称调制速率</li>
+<li>比特率指的是信号每秒钟传输的二进制位个数</li>
+<li>波特率和比特率的关系取决于信号值与比特位的关系，如果每个信号值能表示 <span class="math inline">\(N\)</span> 个二进制位，那么比特率为波特率的 <span class="math inline">\(N\)</span> 倍</li>
+<li>对于比特率为 <span class="math inline">\(B({\rm bps})\)</span> 的信道，如果 <span class="math inline">\(M\)</span> 个二进制位为一个周期，则波特率为 <span class="math inline">\(B/M({\rm baud})\)</span>，一次谐波的频率为 <span class="math inline">\(f_1 = B/M({\rm Hz})\)</span>（一次谐波指的是信号傅里叶级数中周期等于原信号周期的分量），能通过信道的最高次谐波次数为 <span class="math inline">\(N = f_c / f_1\)</span>，这里 <span class="math inline">\(f_c\)</span> 为信道的截止频率</li>
+<li>信道的有限带宽限制了信号的传输速率，<strong>无噪声</strong>带宽为 <span class="math inline">\(H\)</span> 的信道传输有 <span class="math inline">\(V\)</span> 种电平状态的信号时，最高传输速率为：</li>
+</ul>
+<p><span class="math display">\[
+v = 2H\log_2 V({\rm bps})
+\]</span></p>
+<ul>
+<li>对于<strong>有噪声</strong>信道，其噪声功率为 <span class="math inline">\(N\)</span>，信号功率为 <span class="math inline">\(S\)</span>，其<strong>信噪比</strong>为：</li>
+</ul>
+<p><span class="math display">\[
+x = 10\log_{10}\frac{S}{N}({\rm dB})
+\]</span></p>
+<p>一般电话系统的典型信噪比为 <span class="math inline">\(30({\rm dB})\)</span>。</p>
+<p>带宽为 <span class="math inline">\(H({\rm Hz})\)</span>，信噪比为 <span class="math inline">\(S/N\)</span> 的任何信道的最大传输速率为：</p>
+<p><span class="math display">\[
+v = H\log_2\left(1 + \frac{S}{N}\right)({\rm bps})
+\]</span></p>
+<p>该传输速率为理论上限，实际很难达到。该传输速率与电平级数和采样速度无关</p>
+<h2 id="背诵-7-传输方式分类">【背诵 7 】传输方式分类</h2>
+<ul>
+<li>数字传输、模拟传输
+<ul>
+<li>数字传输的优点是成本低，对噪声不敏感，缺点是易受衰减（频率越高越严重）</li>
+</ul></li>
+<li>并行传输、串行传输</li>
+<li>点到点传输、点到多点传输
+<ul>
+<li>为适应不同的需要，通信线路采用不同的连接方式</li>
+</ul></li>
+<li>单工、半双工和全双工传输
+<ul>
+<li>单工传输：信息只能单向传输，监视信号可回送</li>
+<li>半双工传输：信息可以双向传输，但在某一时刻只能单向传输</li>
+<li>全双工传输：信息可以同时双向传输</li>
+</ul></li>
+<li>同步传输、异步传输
+<ul>
+<li>同步传输
+<ul>
+<li>传输以报文为基本单位</li>
+<li>传输开始的时候需要传输<strong>同步字符</strong>让双方同步</li>
+<li>可以不间断传输，传输效率较高但是需要<strong>透明传输处理</strong>，即传输的信息中不存在同步字符</li>
+<li>接收方必须知道每一位信号的开始及其持续时间，以便正确的采样接收</li>
+<li>基于<strong>二进制位</strong>的传输一般使用同步传输，信息以<strong>二进制位流</strong>为单位传送，传输过程中以<strong>位</strong>为单位同步，传输的开始和结束以特定的<strong>八位二进制位</strong>同步</li>
+</ul></li>
+<li>异步传输
+<ul>
+<li>需要辅助位，如起始位、奇偶校验位、终止位</li>
+<li>传输效率低，主要用于字符终端与计算机之间的通信</li>
+<li>传输字符时，信息传送以字符为单位</li>
+</ul></li>
+</ul></li>
+</ul>
+<h2 id="背诵-8-信号发送方式">【背诵 8 】信号发送方式</h2>
+<ul>
+<li>数据表示分为两种，即模拟数据和数字数据</li>
+<li>数据传输方式中以信号为载体，分为模拟信号（模拟信道）和数字信号（数字信道）两种（见【背诵 7 】）</li>
+<li>两种数据表示和两种数据传输方式对应形成四种信号发送方式：</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">模拟数据</th>
+<th style="text-align: center;">数字数据</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">模拟信道</td>
+<td style="text-align: center;">电话系统</td>
+<td style="text-align: center;">频带传输、调制解调器（Modem）</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">数字信道</td>
+<td style="text-align: center;">编码解码器（Codec）</td>
+<td style="text-align: center;">基带传输、数字编码解码器</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>数字数据的数字传输
+<ul>
+<li>基带传输
+<ul>
+<li>基带指的是传输变换前所占用的频带，是原始信号所固有的频带</li>
+<li>基带传输指的是在传输时直接使用基带信号，是一种基本的传输方式，适用于高速低速各种情况</li>
+<li>其限制为因基带信号所带的频率成分很宽，所以对传输线有一定的要求</li>
+</ul></li>
+<li>编码方式
+<ul>
+<li>不归零制码（NRZ）
+<ul>
+<li>用高电平表示 1，用低电平表示 0</li>
+<li>难以分辨某一位的开始或结束，所以发送和接受方都需要时钟同步</li>
+<li>如果信号中 0 或者 1 连续出现，直流电平会叠加</li>
+<li>容易产生传播错误</li>
+</ul></li>
+<li>曼彻斯特码（相位编码）
+<ul>
+<li>每个周期中间有一个跳变，由低到高为 0，由高到低为 1</li>
+<li>克服了 NRZ 的不足，并且每个周期中间的跳变既是信息又是时钟，可以自同步</li>
+</ul></li>
+<li>差分曼彻斯特码
+<ul>
+<li>每个周期中间有一个跳变作为时钟</li>
+<li>每个周期开始有跳变表示 0，没有跳变表示 1</li>
+<li>时钟、数据相分离，便于提取</li>
+<li>差分曼彻斯特注意分类讨论初始时是高电平还是低电平</li>
+</ul></li>
+<li>逢 0 变化 NRZ
+<ul>
+<li>每个周期开始有跳变表示 0，没有跳变表示 1</li>
+<li>每个周期中间没有跳变</li>
+<li>注意讨论初始时的电平</li>
+</ul></li>
+<li>逢 1 变化 NRZ
+<ul>
+<li>每个周期开始有跳变表示 1，没有跳变表示 0</li>
+<li>每个周期中间没有跳变</li>
+<li>注意讨论初始时的电平</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>数字数据的模拟传输
+<ul>
+<li>频带传输
+<ul>
+<li>在一定频率范围内的线路上，进行载波传输</li>
+<li>用基带信号对载波进行调制，使其变为适合于线路传送的信号</li>
+<li>调制指的是用基带脉冲控制载波参数，使得这些参数反应基带脉冲信息</li>
+<li>使用调制解调器</li>
+</ul></li>
+<li>调制技术
+<ul>
+<li>幅移键控法（调幅 / ASK），即根据基带脉冲调整载波振幅</li>
+<li>频移键控法（调频 / FSK），即根据基带脉冲调整载波频率</li>
+<li>相移键控法（调相 / PSK），即根据基带脉冲调整载波相位</li>
+</ul></li>
+</ul></li>
+<li>模拟数据的数字传输
+<ul>
+<li>脉冲代码调制 PCM 技术
+<ul>
+<li>根据 Nyquist 原理进行采样</li>
+<li>将模拟信号的振幅分为 <span class="math inline">\(2^n\)</span> 级，每一个采样点用 <span class="math inline">\(n\)</span> 位二进制位表示</li>
+<li>贝尔系统的 T1 载波每个采样点用 7 位二进制表示</li>
+</ul></li>
+<li>差分脉冲代码调制
+<ul>
+<li>与 PCM 数字化振幅不同，差分脉冲代码调制数字化的是相邻采样点的振幅差值</li>
+<li>可以使用较少的二进制位表示</li>
+</ul></li>
+<li><span class="math inline">\(\delta\)</span> 调制
+<ul>
+<li>根据每个采样值与前一个值之间的差来决定输出 1 还是 0</li>
+<li>编码速度可能无法跟上变化较快的模拟信号</li>
+</ul></li>
+</ul></li>
+</ul>
+<h2 id="背诵-9-多路复用技术">【背诵 9 】多路复用技术</h2>
+<ul>
+<li>使得多路信号同时使用一条物理线路的技术,允许用户使用一个共享信道进行通信，避免相互干扰，降低成本，提高利用率</li>
+<li>多路复用技术分类
+<ul>
+<li>时分复用（TDM）
+<ul>
+<li>T1 载波电话系统分为 24 个信道，每个 <span class="math inline">\(64({\rm Kbps})\)</span>，一共 <span class="math inline">\(1.544({\rm Mbps})\)</span>，控制信息带内传输</li>
+</ul></li>
+<li>频分复用（FDM）
+<ul>
+<li>频率分割为频段，多用于手机通信</li>
+</ul></li>
+<li>波分复用（WDM）
+<ul>
+<li>光传输使用，对波长分段，是特殊的频分复用</li>
+</ul></li>
+</ul></li>
+</ul>
+<h2 id="背诵-10-交换技术">【背诵 10 】交换技术</h2>
+<ul>
+<li>计算机网络通信分为交换式和广播式</li>
+<li>交换是在多结点通信网络中，为有效利用通信设备和线路，动态接通、断开、切换通信线路</li>
+<li>交换技术分类
+<ul>
+<li>电路交换
+<ul>
+<li>直接利用可以切换的物理电路动态调整通信线路</li>
+<li>分为建立电路、传输数据、拆除电路三个阶段</li>
+<li>在发送数据前，必须建立起点到点的物理通路。建立物理通路时间较长，数据传送延迟较短</li>
+<li>电话网和 ISDN 采用电路交换</li>
+<li>电路交换一般采用时分复用
+<ul>
+<li>时间被分为帧（Frame），帧被分为时槽（Slot）</li>
+<li>时槽在帧内的相对位置决定这个槽所传输数据所属的会话</li>
+<li>发送方和接收方间需要同步</li>
+<li>非永久会话需要动态绑定时槽到一个会话</li>
+</ul></li>
+</ul></li>
+<li>报文交换（存储转发方式）
+<ul>
+<li>信息以报文（逻辑上完整的信息段）为单位进行存储转发</li>
+<li>线路利用率高、要求中间结点（网络通信设备）缓冲大、延迟时间长</li>
+</ul></li>
+<li>分组交换（包交换）
+<ul>
+<li>分组是一种报文还小的信息段，可定长也可变长。分组交换中信息以分组为单位进行存储转发。源结点把报文分为分组，在中间结点存储转发，目的结点把分组合成报文。用附加的分组头来区分数据</li>
+<li>特点
+<ul>
+<li>每个分组头包括源地址和目的地址，独立进行路由选择
+<ul>
+<li>所以不保证到达顺序</li>
+</ul></li>
+<li>网络结点设备中不预先分配资源，使用统计复用，线路利用率高
+<ul>
+<li>相比于电路交换最明显的优势</li>
+</ul></li>
+<li>易于重传，可靠性高</li>
+<li>易于开始新的传输，让紧急信息优先通过</li>
+<li>开销增加</li>
+<li>需要处理拥塞问题
+<ul>
+<li>需要复杂的路由器，难以保证端到端的服务质量</li>
+</ul></li>
+</ul></li>
+<li>分组交换分为虚电路分组交换和数据报分组交换
+<ul>
+<li>数据报分组交换（如 IP Networks）
+<ul>
+<li>每个分组均带有网络地址（源、目的），可走不同的路径</li>
+</ul></li>
+<li>虚电路分组交换（如 ATM Networks）
+<ul>
+<li>其是电路交换和分组交换的结合
+<ul>
+<li>数据以分组形式传输，来自同一流的分组通过一个预先建立的路径（虚电路）传输</li>
+<li>确保分组的顺序，但是来自不同虚电路的分组可能会交错在一起</li>
+</ul></li>
+<li>分三个阶段
+<ul>
+<li>建立：发带有全称网络地址的呼叫分组，建立虚电路</li>
+<li>传输：沿建立好的虚电路传输数据</li>
+<li>拆除：拆除虚电路</li>
+</ul></li>
+<li>分组头不需要包含完整的地址信息，路由器需要维护虚电路的状态信息</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>电路交换、报文交换、分组交换的时序图如下。其中电路交换要逐层申请预留占用资源，这段申请时间用于<strong>寻找出境中继线</strong>，申请完毕后节点会占用这段传输线</li>
+</ul>
+<p><img src="/uploads/note-of-net/1.png" /></p>
+<ul>
+<li>三类交换技术的特点
+<ul>
+<li>电路交换适用于实时信息和模拟信号传送，在线路带宽比较低的情况下使用比较经济</li>
+<li>报文交换适用于线路带宽比较高的情况，可靠灵活，但延迟大</li>
+<li>分组交换缩短了延迟，也能满足一般的实时信息传送。在高带宽的通信中更为经济、合理、可靠。是目前公认较好的一种交换技术</li>
+<li>电路交换和分组交换可以结合，如 IP over SONET 以及 IP over Frame Relay</li>
+</ul></li>
+</ul>
+<h2 id="背诵-11-交换结构">【背诵 11 】交换结构</h2>
+<ul>
+<li>Crossbar 交换结构：无阻塞内部交换</li>
+<li>空分交换：多个 Crossbar 互联，有无阻塞均可</li>
+<li>时分交换：高效处理</li>
+</ul>
+<h2 id="杂项-3-未分类知识点">【杂项 3 】未分类知识点</h2>
+<ul>
+<li>数据通信技术由编码技术、多路复用和交换技术构成</li>
+</ul>
+<h1 id="物理层接口及其协议">物理层接口及其协议</h1>
+<h2 id="背诵-12-物理层的定义与功能">【背诵 12 】物理层的定义与功能</h2>
+<ul>
+<li>物理层提供机械的、电气的、功能的和规程的特性，目的是启动、维护和关闭<strong>数据链路实体</strong>之间进行<strong>比特传输</strong>的<strong>物理连接</strong>。这种连接可能通过中继系统，在中继系统内的传输也是在物理层</li>
+<li>物理层的功能是在两个网络设备之间提供透明的比特流传输</li>
+<li>物理层的传输方式
+<ul>
+<li>连接方式（点到点，点到多点）</li>
+<li>通信方式（单工，半双工，全双工）</li>
+<li>位传输方式（串行，并行）</li>
+</ul></li>
+<li>物理层的重要特性
+<ul>
+<li>机械特性（Mechanical characteristics）
+<ul>
+<li>定义物理连接的边界点，即接插装置</li>
+<li>规定物理连接时所采用的规格、引脚的数量和排列情况</li>
+</ul></li>
+<li>电气特性（Electrical characteristics）
+<ul>
+<li>规定传输二进制位时，线路上信号的电压高低、阻抗匹配、传输速率和距离限制</li>
+</ul></li>
+<li>功能特性（Functional characteristics）
+<ul>
+<li>主要定义各条物理线路的功能，比如数据、控制、定时、地线</li>
+</ul></li>
+<li>规程特性（Procedural characteristics）
+<ul>
+<li>主要定义各条物理线路的工作规程和时序关系</li>
+</ul></li>
+</ul></li>
+</ul>
+<h2 id="背诵-13-物理层传输介质">【背诵 13 】物理层传输介质</h2>
+<ul>
+<li>双绞线。既可以用于模拟传输，也可以用于数字传输，带宽依赖于线的类型和传输距离</li>
+<li>同轴电缆
+<ul>
+<li>基带同轴电缆，用于数字传输（数字数据数字传输用基带传输）</li>
+<li>宽带同轴电缆，用于模拟传输（模拟数据数字传输用频带传输）</li>
+</ul></li>
+<li>光纤
+<ul>
+<li>分为单模光纤和多模光纤，两者都支持波分复用，使用的波长越长衰减越小，但成本也越高
+<ul>
+<li>单模光纤只有一个入射角度，半径小，适合<strong>长距离传输</strong></li>
+<li>多模光纤有多个入射角度，半径大，适合短距离传输</li>
+</ul></li>
+<li>光纤组网
+<ul>
+<li>点到点，使用四根线，两根用于保护倒换</li>
+<li>环，使用两根线，一根用于保护倒换</li>
+</ul></li>
+<li>光纤中继器。分为光电光式和全光式
+<ul>
+<li>全光网具有光因特网论坛 OIF</li>
+</ul></li>
+</ul></li>
+</ul>
+<h2 id="背诵-14-sonet-sdh-网络传输技术">【背诵 14 】 SONET / SDH 网络传输技术</h2>
+<ul>
+<li>80 年代提出，应用<strong>时分复用</strong>技术，同步传输，有主时钟控制</li>
+<li>SONET 路径为：路径（Path）、线路（Line）、段（Section）</li>
+<li>基于<strong>字节</strong>的复用。但是 OC-3c 中的 c 表示<strong>级联</strong>而非复用</li>
+</ul>
+<h2 id="背诵-15-移动电话网络传输技术">【背诵 15 】移动电话网络传输技术</h2>
+<ul>
+<li>单方向的寻呼系统
+<ul>
+<li>寻呼过程
+<ul>
+<li>打电话给寻呼公司，输入寻呼机号码</li>
+<li>寻呼公司的计算机收到请求，通过线路传到高处的天线</li>
+<li>天线直接广播信号（本地寻呼），或传递给卫星（异地寻呼），卫星再广播</li>
+</ul></li>
+<li>单向系统</li>
+<li>需要很小的带宽</li>
+</ul></li>
+<li>蜂窝电话
+<ul>
+<li>1G：模拟蜂窝电话，只能传送话音</li>
+<li>2G：数字蜂窝电话，主要传送话音，相关概念有 GSM 和 CDMA</li>
+<li>3G / 4G：可以传送话音和数据</li>
+</ul></li>
+<li>模拟蜂窝电话
+<ul>
+<li>Push-to-talk system。早期用于军事通信，单信道，半双工系统</li>
+<li>IMTS。双频，全双工系统</li>
+<li>AMPS。使用小蜂窝，蜂窝中心有基站，不相邻且相近的蜂窝中<strong>重用频率</strong></li>
+</ul></li>
+</ul>
+<div class="note warning"><p>网原实在是看不会了，这个笔记也就到此为止吧。</p>
+</div>
+]]></content>
+      <categories>
+        <category>【学习笔记】计算机</category>
+      </categories>
+  </entry>
+  <entry>
     <title>《信号处理原理》学习笔记</title>
     <url>/2021/09/14/note-of-dsp/</url>
     <content><![CDATA[<p>一门纯数学课，没有什么特别有意思的地方。但也正因为它是数学课，所以我感觉我学起来会稍微轻松一些，希望是我四大原理之中最舒服的一门课。</p>
@@ -9046,800 +9844,6 @@ H(z) = \frac{Y(z)}{X(z)} = \frac{\sum_{r = 0}^M a_rz^{-r}}{\sum_{k = 0}^N b_kz^{
       </categories>
   </entry>
   <entry>
-    <title>云游戏相关知识杂谈笔记</title>
-    <url>/2023/09/20/note-of-media/</url>
-    <content><![CDATA[<p>在正式加入云游戏相关项目之前，学长还是扔了一些学习材料过来让我补一下基础，这里就正常开一个笔记来记录一下学习过程了。大概先从显示器的一些工作原理和 WebRTC 相关知识开始吧。</p>
-<span id="more"></span>
-<h1 id="垂直同步与-g-sync">垂直同步与 G-sync</h1>
-<p>https://www.youtube.com/watch?v=dnsPyyaNCWc&amp;list=PL7mmImi_1wpMVhVpBWr3Bob7kdchdDEoX&amp;index=23</p>
-<p>主要分析了游戏之中画面撕裂的问题成因和相关的解决方案，这里也就主要关注显卡和显示器的配合问题。</p>
-<p>首先需要明确的是，在游戏过程中，每一帧都是显卡负责绘制的，而显卡每秒绘制出的帧的数目就是<strong>帧率</strong>，简称 <strong>FPS</strong>。而显示器在接收到显卡所提供的帧的时候，需要在屏幕上绘制帧。当前所有的显示器采用的绘制方法都是<strong>逐行扫描</strong>，即光标从屏幕左上角开始向右向下逐个扫过像素点绘制帧，在扫描到右下角的时候，一帧绘制完成。绘制完一帧之后，显示器将光标从右下角重置到左上角的过程称为 <strong>VBlank</strong>。此外，显示器一秒内能够在屏幕上逐行扫描出的帧的数量称为<strong>刷新率</strong>。</p>
-<p>这里有两个比较重要的概念，就是帧率和刷新率。需要注意的是，帧率描述显卡绘制帧的性能，刷新率描述显示器扫描帧的性能。</p>
-<p>在真实的游戏场景中，由于游戏场景的复杂性不同，显卡所承受的渲染负载不同，显卡的帧率常常会波动。然而相对应地，显示器的刷新率一般是不波动的。这意味着，我们需要某种机制平衡波动的帧率和固定的刷新率。一般而言，常见的系统会采用<strong>帧缓冲</strong>机制来完成这一任务。</p>
-<p>帧缓冲机制中一般会设置一个前缓冲区和一个后缓冲区，显示器仅仅会读取前缓冲区之中存放的帧，显卡只会修改后缓冲区中的帧。在这个机制之下，将后缓冲区中的帧传递到前缓冲区的操作称为<strong>帧传递</strong>。显然，何时进行帧传递就构成了这个系统的核心机制。</p>
-<p>如果刷新率和帧率一致，那么我们只需要在显卡绘制完毕之后进行帧传递即可，此时显示器也应当恰好刷新完毕进入 VBlank，恰好准备绘制新帧。然而如果秉持着显卡绘制完毕即帧传递的策略，在帧率比刷新率更高的时候，后缓冲区中已经形成新的帧的时候显示器还没有进入 VBlank，此时将新帧传递入前缓冲区，显示器上则会出现上半为旧帧而下半为新帧的情况，即所谓的画面撕裂。另外，帧率低于刷新率的时候，显示器已经进入 VBlank 的时候后缓冲区依然没有触发帧传递，所以显示器只能重新绘制先前帧，此时新帧由显卡绘制完毕，帧传递后会出现显示器上上半为旧帧而下半为新帧的情况，同样也是画面撕裂。</p>
-<p>总之，在这一策略之下，只要刷新率不等于帧率就会出现画面撕裂问题：</p>
-<p><img src="/uploads/note-of-media/1.png" /></p>
-<p>这里显示的是显示器角度的时间轴，A 到 F 各个色块则显示各个帧在前缓冲区中存续的时间。可以看到，无论是帧率高于刷新率还是低于刷新率，显示器所显示的画面都会有撕裂现象。</p>
-<h2 id="垂直同步">垂直同步</h2>
-<p>所谓的垂直同步策略，是在帧率高于刷新率的时候，强制令显卡空转等待 VBlank 到来后才触发帧交换。简而言之，就是强制令显卡等待显示器：</p>
-<p><img src="/uploads/note-of-media/2.png" /></p>
-<p>这里 G 区域就是强制令显卡等待的时间块。</p>
-<p>而在帧率低于刷新率的时候，则强制令显示器再显示一次旧帧，若显示完显卡依然没有绘制完毕则一直显示，直到某一次显示的时候显卡绘制完了。此时显卡空转等待 VBlank 触发帧交换。简而言之，就是等效降低显示器刷新率，将问题化归为帧率高于刷新率的问题，再强制令显卡等待显示器：</p>
-<p><img src="/uploads/note-of-media/3.png" /></p>
-<p>这里 G 区域就是强制令显卡等待的时间块。</p>
-<p>然而垂直同步的弊端也是显而易见的，即实际帧率一定会被锁定在显示器刷新率以下，事实上是一种卡死显卡性能换画面完整的交易。</p>
-<p>在这个基础上，Nvidia 推出了<strong>自适应垂直同步</strong>方案，事实上就是在垂直同步系统之前加一个是否开启垂直同步的判断器。当显卡帧率高于刷新率的时候，该系统打开垂直同步令显卡空转等待显示器，而显卡帧率低于刷新率的时候，则关闭垂直同步，立即触发帧传递而不让显示器重复绘制先前帧。</p>
-<p>但是无论如何改进，依然无法改变垂直同步具有延迟的缺陷，即 MTP latency 过高。简而言之，当场景变化较大的时候，即使显卡已经快速绘制出来还是有可能因为垂直同步被迫稍晚传递给显示器，导致用户操作和屏幕反应之间存在较大延迟。这对实时性高的游戏（如 FPS、Moba）是致命的。</p>
-<h2 id="三重缓冲">三重缓冲</h2>
-<p>为了解决垂直同步的延迟问题，有一种方式是将一般的前缓冲区和后缓冲区设计中加入新的中缓冲区构成三重缓冲。简单而言就是再设置一个缓冲区来存放显卡提前绘制好的帧，可以一定程度缓解显卡帧率突涨的问题。然而这是治标不治本的，也就是说当显卡性能保持在高位过长时间后，后缓冲区和中缓冲区都已经满了，此时显卡依然不得不空转等待显示器。</p>
-<p>Nvidia 为了解决三重缓冲这种治标不治本的问题，提出了<strong>快速垂直同步（无阻塞垂直同步）</strong>方案，即允许中缓冲区和后缓冲区交换，当中后缓冲区全满的时候再次交换中后缓冲区，显卡用新的帧覆盖掉本应该交给显示器绘制的帧。此时中缓冲区始终有一个可以交给前缓冲区，即显示器绘制的帧，而显卡也始终没有等待显示器。</p>
-<p>无阻塞垂直同步虽然做到了显示器和显卡都处于满负荷状态，但是两者之间不同步的差距则代偿给了帧丢失，也就是先前说的，如果中后缓冲区都满了，就会用新帧覆盖掉原本交给显示器的帧，从而导致实际的丢帧。</p>
-<h2 id="g-sync-与-freesync">G-sync 与 Freesync</h2>
-<p>实际上上述所有方案都有治标不治本的问题。为了从根源上解决画面撕裂又不产生过分的延迟，Nvidia 直接从显示器一侧尝试解决问题，即 G-sync 方案（该方案核心为<strong>自适应显示器刷新率</strong>，即 VRR，所以有时也称为 VRR 方案）。该方案的核心是令显示器可以调节 VBlank 时长，从而在显卡帧率较低的时候通过长 VBlank 时间来让“显示器等显卡”。</p>
-<p>也就是说，垂直同步核心是显卡空转等显示器，而 G-sync 则是显示器空转等显卡。</p>
-<p>然而在实际情况下，即使通过 VRR 也不可能让刷新率超越额定刷新率，所以当显卡帧率高于刷新率的时候依然会出现画面撕裂（也就是所说的 VRR 只能解决显卡帧率低于刷新率的情况）。所以厂家会推荐打开 G-sync 的时候同时打开垂直同步。</p>
-<p>另外一个角度，过长时间的 VBlank 有时也不现实，因为显示器主板也有最低刷新率要求。这意味着如果帧率显著低于刷新率，打开 G-sync 甚至可能因刷新率锚定帧率导致更严重的后果。这个时候只能打开<strong>低帧补偿（Low Frame Compensation / LFC）</strong>，即通过多次扫描显示一帧，等效倍增显示器刷新率。然而 LFC 需要预测显卡的性能，因为毕竟需要提前决定到底下一帧需要几次扫描，一旦预测失误，依然会遇到问题。</p>
-<p>所以 VRR 技术即使可以做到在一定范围内让刷新率锚定帧率，但是这依然需要帧率相对稳定。这时候就有个有趣的矛盾，既然能做到帧率相对稳定，那么即使画面撕裂也都会出现在屏幕上下方贴近边框的地方，那我为什么不能直接接受垂直同步之类的方案呢？</p>
-<p>所以现今的解决方案中就是不能在低延迟、无撕裂上面做到兼顾，G-sync 也只是众多权衡中的一种。</p>
-<p>最后，说明一下 Freesync。事实上 G-sync 是 Nvidia 授权部分显示器型号内置 Nvidia 芯片来达成的技术，是一种需要 Nvidia 官方认证才能采用的技术。而 Freesync 是开源的技术标准，所有显示器均可以使用，目前由 AMD 主要采用。而两者的技术框架几乎一致，仅仅在细节上有一定差别。</p>
-<h1 id="webrtc-kalman-filter-render-time-estimation">WebRTC Kalman filter render time estimation</h1>
-<p>参考文章：https://www.jianshu.com/p/0bc6a4998b32</p>
-<p>由于这篇文章已经是 2020 年的文章了，感觉 WebRTC 源码也已经做了很大的更新，所以还是以 2023.09 的最新源码为准，文章终究是参考。</p>
-<h2 id="形成帧的过程中播放延迟的传递">形成帧的过程中播放延迟的传递</h2>
-<p>这篇文章主要介绍的是 WebRTC playout delay 的计算原理。WebRTC 源码之中 playout delay 表示为两个 <code>double</code> 浮点数构成的元组，分别表示最小播放延迟和最大播放延迟。一般而言，playout delay 会携带在 RTC 扩展头之中，如果没有携带，则使用默认初始化。</p>
-<p>源码上的体现是：</p>
-<figure class="highlight c++"><figcaption><span>C++</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">// video_timing.h</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RTC_EXPORT</span> <span class="title">VideoPlayoutDelay</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// Maximum supported value for the delay limit.</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">constexpr</span> TimeDelta kMax = TimeDelta::<span class="built_in">Millis</span>(<span class="number">10</span>) * <span class="number">0xFFF</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    TimeDelta min_ = TimeDelta::<span class="built_in">Zero</span>();</span><br><span class="line">    TimeDelta max_ = kMax;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// rtp_video_header.h</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">RTPVideoHeader</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    absl::optional&lt;VideoPlayoutDelay&gt; playout_delay;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// encoded_image.h</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RTC_EXPORT</span> <span class="title">EncodedImage</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    absl::optional&lt;VideoPlayoutDelay&gt; playout_delay_;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">RtpFrameObject::<span class="built_in">RtpFrameObject</span>(<span class="comment">/* ... */</span>)</span><br><span class="line">    : <span class="built_in">first_seq_num_</span>(first_seq_num),</span><br><span class="line">      <span class="built_in">last_seq_num_</span>(last_seq_num),</span><br><span class="line">      <span class="built_in">last_packet_receive_time_</span>(last_packet_receive_time),</span><br><span class="line">      <span class="built_in">times_nacked_</span>(times_nacked) &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="built_in">SetPlayoutDelay</span>(rtp_video_header_.playout_delay);</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这里主要观察最后一个构造函数的逻辑，在 <code>PacketBuffer</code> 模块将数据包排列组合出一帧的最后会创建一个 <code>RtpFrameObject</code> 实例来管理这一帧，此时会使用 <code>SetPlayoutDelay</code> 函数设定播放延迟。同时可以注意到，<code>RTPVideoHeader</code> 结构体中如果没有设定播放延迟，则默认为 <code>&#123;0, +Infinity&#125;</code>，也就是说创建帧对象的时候如果没有设定播放延迟则默认设定为 <code>&#123;0, +Infinity&#125;</code>。</p>
-<p>在帧构建完成之后会调用 <code>VideoReceiveStream2::OnCompleteFrame</code> 函数将新帧插入帧队列：</p>
-<figure class="highlight c++"><figcaption><span>C++</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">VideoReceiveStream2::OnCompleteFrame</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">    std::unique_ptr&lt;video_encoding::EncodedFrame&gt; frame,</span></span></span><br><span class="line"><span class="params"><span class="function">)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (absl::optional&lt;VideoPlayoutDelay&gt; playout_delay =</span><br><span class="line">        frame-&gt;<span class="built_in">EncodedImage</span>().<span class="built_in">PlayoutDelay</span>()) &#123;</span><br><span class="line">        frame_minimum_playout_delay_ = playout_delay-&gt;<span class="built_in">min</span>();</span><br><span class="line">        frame_maximum_playout_delay_ = playout_delay-&gt;<span class="built_in">max</span>();</span><br><span class="line">        <span class="built_in">UpdatePlayoutDelays</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这里涉及到了 <code>absl::optional</code> 的隐式类型转换，观察一下库函数就有：</p>
-<figure class="highlight c++"><figcaption><span>C++</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">// optional::operator bool()</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// Returns false if and only if the `optional` is empty.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//   if (opt) &#123;</span></span><br><span class="line"><span class="comment">//      // do something with *opt or opt-&gt;;</span></span><br><span class="line"><span class="comment">//   &#125; else &#123;</span></span><br><span class="line"><span class="comment">//      // opt is empty.</span></span><br><span class="line"><span class="comment">//   &#125;</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="function"><span class="keyword">constexpr</span> <span class="keyword">explicit</span> <span class="keyword">operator</span> <span class="title">bool</span><span class="params">()</span> <span class="keyword">const</span> <span class="keyword">noexcept</span> </span>&#123; <span class="keyword">return</span> <span class="keyword">this</span>-&gt;engaged_; &#125;</span><br></pre></td></tr></table></figure>
-<p>也就是说只有这个 <code>absl::optional</code> 容器内部没有存放任何值的时候才会返回 <code>false</code>，这也就对应着播放延迟没有在 RTC 扩展头之中携带。</p>
-<p>这里可以注意当 <code>playout_delay_</code> 是非默认值的时候会做两件事：</p>
-<ul>
-<li>更新 <code>VideoReceiveStream2</code> 之中的 <code>frame_minimum_playout_delay_ms_</code> 等成员变量</li>
-<li>调用 <code>UpdatePlayoutDelays</code> 函数更新 <code>VCMTiming</code> 类中的数据</li>
-</ul>
-<p>具体的源码为：</p>
-<figure class="highlight c++"><figcaption><span>C++</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">VideoReceiveStream2::UpdatePlayoutDelays</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123;</span><br><span class="line">    <span class="built_in">RTC_DCHECK_RUN_ON</span>(&amp;worker_sequence_checker_);</span><br><span class="line">    <span class="keyword">const</span> std::initializer_list&lt;absl::optional&lt;TimeDelta&gt;&gt; min_delays = &#123;</span><br><span class="line">        frame_minimum_playout_delay_,</span><br><span class="line">        base_minimum_playout_delay_,</span><br><span class="line">        syncable_minimum_playout_delay_&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Since nullopt &lt; anything, this will return the largest of the minumum</span></span><br><span class="line">    <span class="comment">// delays, or nullopt if all are nullopt.</span></span><br><span class="line">    absl::optional&lt;TimeDelta&gt; minimum_delay = std::<span class="built_in">max</span>(min_delays);</span><br><span class="line">    <span class="keyword">if</span> (minimum_delay) &#123;</span><br><span class="line">        <span class="keyword">auto</span> num_playout_delays_set =</span><br><span class="line">            absl::<span class="built_in">c_count_if</span>(min_delays, [](<span class="keyword">auto</span> opt) &#123; <span class="keyword">return</span> opt.<span class="built_in">has_value</span>(); &#125;);</span><br><span class="line">        <span class="keyword">if</span> (num_playout_delays_set &gt; <span class="number">1</span> &amp;&amp;</span><br><span class="line">            timing_-&gt;<span class="built_in">min_playout_delay</span>() != minimum_delay) &#123;</span><br><span class="line">            <span class="built_in">RTC_LOG</span>(LS_WARNING)</span><br><span class="line">                &lt;&lt; <span class="string">&quot;Multiple playout delays set. Actual delay value set to &quot;</span></span><br><span class="line">                &lt;&lt; *minimum_delay &lt;&lt; <span class="string">&quot; frame min delay=&quot;</span></span><br><span class="line">                &lt;&lt; <span class="built_in">OptionalDelayToLogString</span>(frame_minimum_playout_delay_)</span><br><span class="line">                &lt;&lt; <span class="string">&quot; base min delay=&quot;</span></span><br><span class="line">                &lt;&lt; <span class="built_in">OptionalDelayToLogString</span>(base_minimum_playout_delay_)</span><br><span class="line">                &lt;&lt; <span class="string">&quot; sync min delay=&quot;</span></span><br><span class="line">                &lt;&lt; <span class="built_in">OptionalDelayToLogString</span>(syncable_minimum_playout_delay_);</span><br><span class="line">        &#125;</span><br><span class="line">        timing_-&gt;<span class="built_in">set_min_playout_delay</span>(*minimum_delay);</span><br><span class="line">        <span class="keyword">if</span> (frame_minimum_playout_delay_ == TimeDelta::<span class="built_in">Zero</span>() &amp;&amp;</span><br><span class="line">            frame_maximum_playout_delay_ &gt; TimeDelta::<span class="built_in">Zero</span>()) &#123;</span><br><span class="line">            <span class="comment">// TODO(kron): Estimate frame rate from video stream.</span></span><br><span class="line">            <span class="keyword">constexpr</span> Frequency kFrameRate = Frequency::<span class="built_in">Hertz</span>(<span class="number">60</span>);</span><br><span class="line">            <span class="comment">// Convert playout delay in ms to number of frames.</span></span><br><span class="line">            <span class="keyword">int</span> max_composition_delay_in_frames =</span><br><span class="line">                std::<span class="built_in">lrint</span>(*frame_maximum_playout_delay_ * kFrameRate);</span><br><span class="line">            <span class="comment">// Subtract frames in buffer.</span></span><br><span class="line">            max_composition_delay_in_frames =</span><br><span class="line">                std::<span class="built_in">max</span>(max_composition_delay_in_frames - buffer_-&gt;<span class="built_in">Size</span>(), <span class="number">0</span>);</span><br><span class="line">            timing_-&gt;<span class="built_in">SetMaxCompositionDelayInFrames</span>(max_composition_delay_in_frames);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (frame_maximum_playout_delay_) &#123;</span><br><span class="line">        timing_-&gt;<span class="built_in">set_max_playout_delay</span>(*frame_maximum_playout_delay_);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这一段看起来有一个前提，就是 <code>min_delays</code> 列表之中最多有一个有效值，而这个有效值将会被处理为真实的播放延迟。可以看到，在第 25 行，这里调用了 <code>timimg_-&gt;set_min_playout_delay</code> 函数，而这个函数的作用就是将播放延迟设定到 <code>VCMTiming</code> 类之中。这里 <code>timing_</code> 的类型为 <code>std::unique_ptr&lt;VCMTiming&gt;</code>。</p>
-<p>再具体展开：</p>
-<figure class="highlight c++"><figcaption><span>C++</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">VCMTiming::set_min_playout_delay</span><span class="params">(TimeDelta min_playout_delay)</span> </span>&#123;</span><br><span class="line">    <span class="function">MutexLock <span class="title">lock</span><span class="params">(&amp;mutex_)</span></span>;</span><br><span class="line">    <span class="keyword">if</span> (min_playout_delay_ != min_playout_delay) &#123;</span><br><span class="line">        <span class="built_in">CheckDelaysValid</span>(min_playout_delay, max_playout_delay_);</span><br><span class="line">        min_playout_delay_ = min_playout_delay;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">VCMTiming::set_max_playout_delay</span><span class="params">(TimeDelta max_playout_delay)</span> </span>&#123;</span><br><span class="line">    <span class="function">MutexLock <span class="title">lock</span><span class="params">(&amp;mutex_)</span></span>;</span><br><span class="line">    <span class="keyword">if</span> (max_playout_delay_ != max_playout_delay) &#123;</span><br><span class="line">        <span class="built_in">CheckDelaysValid</span>(min_playout_delay_, max_playout_delay);</span><br><span class="line">        max_playout_delay_ = max_playout_delay;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>至少这里看起来是相当普通的一个 setter 代码。按这里的代码的话，<code>VCMTiming</code> 的作用在于维护帧级别的播放延迟，并作为最终存放点用于后续的延迟估计工作。</p>
-<h2 id="帧插入过程中延迟的估计">帧插入过程中延迟的估计</h2>
-<p>在形成新的一帧之后，需要通过帧插入操作将新的帧加入到帧缓冲区之中供后续解码。承接上述说明，在 <code>VideoReceiveStream2::OnCompleteFrame</code> 函数之后，会通过 <code>VideoStreamBufferController::InsertFrame</code> 函数将新帧压入缓冲区，而这个函数则进一步调用了 <code>FrameBuffer::InsertFrame</code> 函数：</p>
-<figure class="highlight c++"><figcaption><span>C++</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="function">absl::optional&lt;<span class="keyword">int64_t</span>&gt; <span class="title">VideoStreamBufferController::InsertFrame</span><span class="params">(std::unique_ptr&lt;EncodedFrame&gt; frame)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">RTC_DCHECK_RUN_ON</span>(&amp;worker_sequence_checker_);</span><br><span class="line">    <span class="function">FrameMetadata <span class="title">metadata</span><span class="params">(*frame)</span></span>;</span><br><span class="line">    <span class="keyword">int</span> complete_units = buffer_-&gt;<span class="built_in">GetTotalNumberOfContinuousTemporalUnits</span>();</span><br><span class="line">    <span class="keyword">if</span> (buffer_-&gt;<span class="built_in">InsertFrame</span>(std::<span class="built_in">move</span>(frame))) &#123;</span><br><span class="line">        <span class="built_in">RTC_DCHECK</span>(metadata.receive_time) &lt;&lt; <span class="string">&quot;Frame receive time must be set!&quot;</span>;</span><br><span class="line">        <span class="keyword">if</span> (!metadata.delayed_by_retransmission &amp;&amp; metadata.receive_time &amp;&amp;</span><br><span class="line">            (field_trials_.<span class="built_in">IsDisabled</span>(<span class="string">&quot;WebRTC-IncomingTimestampOnMarkerBitOnly&quot;</span>) ||</span><br><span class="line">            metadata.is_last_spatial_layer)) &#123;</span><br><span class="line">            timing_-&gt;<span class="built_in">IncomingTimestamp</span>(metadata.rtp_timestamp, *metadata.receive_time);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (complete_units &lt; buffer_-&gt;<span class="built_in">GetTotalNumberOfContinuousTemporalUnits</span>()) &#123;</span><br><span class="line">            stats_proxy_-&gt;<span class="built_in">OnCompleteFrame</span>(metadata.is_keyframe, metadata.size, metadata.contentType);</span><br><span class="line">            <span class="built_in">MaybeScheduleFrameForRelease</span>();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> buffer_-&gt;<span class="built_in">LastContinuousFrameId</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这里 <code>FrameBuffer::InsertFrame</code> 函数具体细节不再阐述，基本上就是管理缓冲区的一些操作，我们主要看后续有关延迟的计算方式。首先，第 7 行的判定表示，如果该帧不是重传帧则进入分支内部。在此基础上，该函数会调用 <code>VCMTiming::IncomingTimestamp</code> 并立刻跳转到 <code>TimestampExtrapolator::Update</code>。在这个函数内部，框架将会根据当前帧的 RTP 时间戳估计当前帧的期望接收时间，并对 Kalman gain 进行校准（内心 OS：这一句话真的是没看懂啊，不过参考文献说后面会具体说明这个函数的目的，这里就先不深究了吧）。</p>
-<hr />
-<p>首先说明一帧从完整构成到显示到屏幕上所需要经历的阶段。在帧组装完毕之后，首先会送往解码器解码，解码完毕之后则送给渲染器渲染。</p>
-<p>这里我们关注一个函数，即 <code>VCMTiming::MaxWaitingTime</code>。这个函数的作用是给出帧组装所能容忍的最大时长，也就是说如果在给定的阈值内没有能够从网络上获取足够的数据包将这一帧组装完毕，则这一帧大概率来不及走完解码、渲染的流程并显示在屏幕上。事实上这个函数是一个预测性质的函数，用来预测当前条件下我们能等待网络延迟多长时间：</p>
-<figure class="highlight c++"><figcaption><span>C++</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="function">TimeDelta <span class="title">VCMTiming::MaxWaitingTime</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">    Timestamp render_time,</span></span></span><br><span class="line"><span class="params"><span class="function">    Timestamp now,</span></span></span><br><span class="line"><span class="params"><span class="function">    <span class="keyword">bool</span> too_many_frames_queued</span></span></span><br><span class="line"><span class="params"><span class="function">)</span> <span class="keyword">const</span> </span>&#123;</span><br><span class="line">    <span class="function">MutexLock <span class="title">lock</span><span class="params">(&amp;mutex_)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (</span><br><span class="line">        render_time.<span class="built_in">IsZero</span>() &amp;&amp;</span><br><span class="line">        zero_playout_delay_min_pacing_-&gt;<span class="built_in">us</span>() &gt; <span class="number">0</span> &amp;&amp;</span><br><span class="line">        min_playout_delay_.<span class="built_in">IsZero</span>() &amp;&amp;</span><br><span class="line">        max_playout_delay_ &gt; TimeDelta::<span class="built_in">Zero</span>()</span><br><span class="line">    ) &#123;</span><br><span class="line">        <span class="comment">// `render_time` == 0 indicates that the frame should be decoded and</span></span><br><span class="line">        <span class="comment">// rendered as soon as possible. However, the decoder can be choked if too</span></span><br><span class="line">        <span class="comment">// many frames are sent at once. Therefore, limit the interframe delay to</span></span><br><span class="line">        <span class="comment">// |zero_playout_delay_min_pacing_| unless too many frames are queued in</span></span><br><span class="line">        <span class="comment">// which case the frames are sent to the decoder at once.</span></span><br><span class="line">        <span class="keyword">if</span> (too_many_frames_queued) &#123;</span><br><span class="line">            <span class="keyword">return</span> TimeDelta::<span class="built_in">Zero</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        Timestamp earliest_next_decode_start_time =</span><br><span class="line">            last_decode_scheduled_ + zero_playout_delay_min_pacing_;</span><br><span class="line">        TimeDelta max_wait_time =</span><br><span class="line">            now &gt;= earliest_next_decode_start_time</span><br><span class="line">                ? TimeDelta::<span class="built_in">Zero</span>()</span><br><span class="line">                : earliest_next_decode_start_time - now;</span><br><span class="line">        <span class="keyword">return</span> max_wait_time;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> render_time - now - <span class="built_in">EstimatedMaxDecodeTime</span>() - render_delay_;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这个函数中 <code>render_time == 0</code> 表示这一帧需要尽快显示，这里忽略这一分支。该函数接受的参数分别为：</p>
-<ul>
-<li>要求渲染完成的时间戳 <code>render_time</code>，即我们的目标是在 <code>render_time</code> 之前渲染完毕这一帧</li>
-<li>当前的时间戳 <code>now</code></li>
-</ul>
-<p>而返回值可以看到，首先我们用 <code>render_timer - now</code> 得到我们总共的容忍时长，之后减去预估的解码延迟 <code>EstimatedMaxDecodeTime()</code>，再减去预估的渲染延迟 <code>render_delay_</code>，即得到了剩余可以用来等待网络的时长。</p>
-<hr />
-<p>这里我们看另外一个函数，即 <code>VCMTiming::RenderTimeInternal</code>：</p>
-<figure class="highlight c++"><figcaption><span>C++</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="function">Timestamp <span class="title">VCMTiming::RenderTimeInternal</span><span class="params">(<span class="keyword">uint32_t</span> frame_timestamp, Timestamp now)</span> <span class="keyword">const</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">UseLowLatencyRendering</span>()) &#123;</span><br><span class="line">        <span class="comment">// Render as soon as possible or with low-latency renderer algorithm.</span></span><br><span class="line">        <span class="keyword">return</span> Timestamp::<span class="built_in">Zero</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// Note that TimestampExtrapolator::ExtrapolateLocalTime is not a const</span></span><br><span class="line">    <span class="comment">// method; it mutates the object&#x27;s wraparound state.</span></span><br><span class="line">    Timestamp estimated_complete_time =</span><br><span class="line">        ts_extrapolator_-&gt;<span class="built_in">ExtrapolateLocalTime</span>(frame_timestamp).<span class="built_in">value_or</span>(now);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Make sure the actual delay stays in the range of `min_playout_delay_`</span></span><br><span class="line">    <span class="comment">// and `max_playout_delay_`.</span></span><br><span class="line">    TimeDelta actual_delay =</span><br><span class="line">        current_delay_.<span class="built_in">Clamped</span>(min_playout_delay_, max_playout_delay_);</span><br><span class="line">    <span class="keyword">return</span> estimated_complete_time + actual_delay;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这里主要在预测某一帧何时应该被渲染完毕，事实上返回的就是上一个函数中的 <code>render_time</code> 时间戳参数。首先，判断是否是低延迟渲染模式，如果采用了低延迟模式，则直接返回零表示要求立刻渲染。</p>
-<p>在此之后，首先会通过 <code>TimestampExtrapolator::ExtrapolateLocalTime</code> 函数，利用 Kalman filter 估计应当何时将这一帧送入渲染器队列。之后将 <code>current_delay_</code> 通过上下界 <code>[min_playout_delay_, max_playout_delay_]</code> 截断生成渲染过程耗时的估计，而这里的上下界则是上一阶段之中所获得的。<code>current_delay_</code> 本身的计算方式则在后面给出说明。</p>
-<hr />
-<p>由于最新代码框架已经和参考文章中的框架大为不同，这里重新叙述一下一个帧构建完毕后的函数调用链：</p>
-<ul>
-<li>构建帧的时候将播放延迟设置到 <code>VCMTiming</code> 类之中</li>
-<li>帧构建完成后触发 <code>VideoReceiveStream2::OnCompleteFrame</code> 回调函数</li>
-<li>上述回调函数之中触发 <code>VideoStreamBufferController::InsertFrame</code> 函数将帧插入帧缓冲区</li>
-<li>帧插入操作通过 controller 最终交给 <code>FrameBuffer::InsertFrame</code> 实际完成</li>
-<li>正常插入完毕后，非重传帧通过 <code>VCMTiming::IncomingTimestamp</code> 函数进入 Kalman filter 流程</li>
-<li>正常插入完毕后，帧缓冲通过 <code>VideoStreamBufferController::MaybeScheduleFrameForRelease</code> 函数对后续帧作预测和规划</li>
-<li>预测未来帧的时候调用 <code>FrameDecodeTiming::OnFrameBufferUpdated</code> 回调</li>
-<li>该回调中通过 <code>VCMTiming::RenderTime</code> 预测渲染完毕时间戳，在此之后通过 <code>VCMTiming::MaxWaitingTime</code> 获取最大容忍等待时间</li>
-</ul>
-<h2 id="kalman-filter">Kalman filter</h2>
-<p>首先，WebRTC 之中的 RTP 时间戳并非是 Unix 时间戳，而是按照 90kHz 的采样率计算采样次数。在 90kHz 之下每秒采样 90000 次，所以如果帧率为 60FPS，则每一帧之间相距 1/60 秒，即 1500 个采样点，也就是说 60FPS 之下相邻两帧之间的 RTP 时间戳相差值为 1500。</p>
-<p>Kalman filter 的目标是，在已知起始帧到达时间 <span class="math inline">\(t_0\)</span> 的基础上预测第 <span class="math inline">\(k\)</span> 帧的到达时间 <span class="math inline">\(t_k\)</span>。如果将第 <span class="math inline">\(k\)</span> 帧的 RTP 时间戳记为 <span class="math inline">\(T_k\)</span>，从起始帧到第 <span class="math inline">\(k\)</span> 帧间因网络发生的 RTP 时间戳抖动记为 <span class="math inline">\(\Delta_k\)</span>，第 <span class="math inline">\(k\)</span> 帧的采样率记为 <span class="math inline">\(s_k\)</span>，那么：</p>
-<p><span class="math display">\[
-t_k = t_0 + \frac{(T_k - T_0) - \Delta_k}{s_k}
-\]</span></p>
-]]></content>
-      <categories>
-        <category>【学习笔记】计算机</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>《计算机网络原理》学习笔记</title>
-    <url>/2021/09/13/note-of-net/</url>
-    <content><![CDATA[<p>网原总之是一个没打算认真学的专业课，因为真的对网络没有很大的兴趣。再加上上学期曾经看着迅哥哥他们被网原折磨，自己也没什么信心能学好这门专业课。</p>
-<p>这个笔记完全基于上一届流传下来的《网原干饭背诵》，在此基础上对重点做一些标记做一些讲解，反正是个背书课，那么就只能一点一点背了。根据前人经验，这个笔记会把比较重要的东西用星号标注出来。</p>
-<span id="more"></span>
-<h1 id="计算机网络的历史和新进展">计算机网络的历史和新进展</h1>
-<h2 id="背诵-1-网络基础">【背诵 1 】网络基础</h2>
-<ul>
-<li><p>网络所提供的最基本服务为<strong>信息传递</strong>，不同的网络依据其提供的服务进行区分。而区分服务的依据则包括功能、延迟、带宽等各种<strong>外部特性</strong>。</p></li>
-<li><p>网络依据<strong>空间距离</strong>可以分为局域网（LAN）、城域网（MAN）、广域网（WAN）和个域网（PAN）。依据<strong>信息类型</strong>可以分为数据网络、电话网络。依据<strong>应用类型</strong>可以分为专用网络、通用网络。依据<strong>使用权</strong>可以分为私有网络、公用网络。同时，网络也可以按照使用的协议进行分类，如 IP 协议等。</p></li>
-</ul>
-<h2 id="背诵-2-计算机网络发展历史">【背诵 2 】计算机网络发展历史</h2>
-<p>计算机网络的历史可以大致描述为：</p>
-<ul>
-<li>1940 年代，第一个计算机 ENIAC 诞生</li>
-<li>1950 年代，大型机和多终端系统诞生</li>
-<li>1960 - 1964 年，分组交换网络诞生（Paul Baran）</li>
-<li>1960 年代，计算机网络研究开始</li>
-<li>* 1969 年，ARPANET 研究启动</li>
-<li>1970 年代，计算机网络发展
-<ul>
-<li>各国电信部门建设运行 X.25 分组交换网</li>
-<li>SNA 以及 DNA 等专用网络体系结构出现</li>
-<li>Internet 的前身 ARPANET 进行实验运行，带宽小且仅有不到 100 台计算机接入</li>
-<li>* 以太网和 Telnet 出现</li>
-<li>* 1979 年，TCP/IP 协议成熟</li>
-</ul></li>
-<li>1980 年代，计算机网络逐步成型
-<ul>
-<li>标准化的计算机网络体系结构 ISO/OSI 出现</li>
-<li>局域网 LAN 技术发展</li>
-<li>FTP、NFS、E-mail、USENET 等技术出现</li>
-<li>1980 - 1983 年，ARPANET 和 MILNET 分离，前者采用 TCP/IP 协议</li>
-<li>1983 年，BSD UNIX 内置 TCP/IP 协议</li>
-<li>1985 - 1986 年，NSFNET 建成，用于连接 6 个超级计算中心</li>
-<li>1987 - 1990 年，NSFNET 开始连接地区网络</li>
-<li>Internet 初具规模，1987 年，中国第一个电子邮件发送到 Internet</li>
-<li>中国开始依赖电话线建立低速广域网</li>
-</ul></li>
-<li>1990 年代，计算机网络进一步发展
-<ul>
-<li>Internet 商业化，在中国也得到了广泛应用</li>
-<li>Web 技术在 Internet 上得到广泛应用</li>
-<li>中国出现局域网，如 Novell 等</li>
-<li>1990 - 1992 年，NSFNET 带宽提高，连接了 16 个地区网络</li>
-<li>1994 年，NSFNET 骨干网解体，出现了若干其他的商用骨干网</li>
-<li>1995 年，中国教育和科研网 CERNET 出现</li>
-</ul></li>
-<li>2000 年代，计算机网络广泛应用
-<ul>
-<li>网络应用发展迅速，搜索引擎和社交网络出现</li>
-<li>移动互联网产业快速发展</li>
-<li>2006 年，与 IPv6 相关的 CNGI-CERNET2 出现</li>
-</ul></li>
-<li>最近，数据中心网络、天地一体化网络、 IPv6 技术等快速发展
-<ul>
-<li>2011 年开始设立 World IPv6 Day</li>
-<li>2011 年 2 月 3 日，全球互联网名称与数字地址分配机构 ICANN 宣布 IPv4 地址耗尽</li>
-</ul></li>
-</ul>
-<h2 id="背诵-3-internet-技术">【背诵 3 】 Internet 技术</h2>
-<ul>
-<li>Internet 是全球范围的、通用的、异构的公用计算机网络</li>
-<li>Internet 是其他类型的计算机网络技术的基础，如企业内部网（Intranet）</li>
-<li>Internet 开放的标准由 IETF 负责制定、维护和协调。其他类似 IRTF、IAB、IESG 等机构也参与了标准的维护
-<ul>
-<li>IETF 全称 Internet Engineering Task Force，其分为若干个工作组（WG），其提交的 Internet 标准被称为 RFC，即 Request For Comments</li>
-<li>IRTF 全称 Internet Researching Task Force，由各类专注某一个领域的研究小组组成</li>
-<li>IAB 全称 Internet Architecture Board，负责定义 Internet 的大体框架，为 IETF 提供方向上的指导</li>
-<li>IESG 全称 Internet Engineering Steering Group，负责在技术方面上管理 IETF 的活动</li>
-</ul></li>
-<li>Internet 是历史上发展最快的一种技术，其发展速度甚至超越摩尔定律</li>
-</ul>
-<h2 id="背诵-4-网络时代三大定律">【背诵 4 】网络时代三大定律</h2>
-<ul>
-<li>【摩尔定律】 CPU 性能每 18 个月会翻番，每 10 年翻 100 倍</li>
-<li>【光纤定律】也称超摩尔定律，骨干网带宽每 9 个月会翻番。每 10 年翻 10000 倍</li>
-<li>【麦特卡菲定律】也称联网定律，网络价值和用户数量的平方成正比</li>
-</ul>
-<h2 id="理解-1-分组交换技术">【理解 1 】分组交换技术</h2>
-<p>Paul Baran 在设计能承受核攻击的通信系统的时候，确立了三个设计准则。</p>
-<ul>
-<li>自适应系统的<strong>热土豆路由策略</strong>（能够学习并适应各种新的环境）
-<ul>
-<li>如果不知道正确的路由，就将分组转发给所有邻居</li>
-<li>通过观察路过的分组来更新路由表，旧的路由表项会被删除</li>
-<li>尽可能快地转发分组，分组途径的路径并不一定是最短路径</li>
-</ul></li>
-<li>分组发送策略（端节点能够容忍错误并恢复）
-<ul>
-<li>每个节点根据自我的路由表决定如何转发分组</li>
-<li>每个分组的转发完全独立于其他的分组</li>
-<li>交换节点不保存端节点信息，这一点让网络的可拓展性大大增强</li>
-</ul></li>
-<li>分布式策略
-<ul>
-<li>所有交换节点平等，避免单一节点失效问题</li>
-<li>通过物理硬件冗余和自适应路由实现系统稳健性</li>
-</ul></li>
-</ul>
-<p>而 Internet 就是这一类网络。Internet 连接了各种异构的子网，提供两个最基本的功能，即全球唯一地址和分组通过动态路由传输。</p>
-<p>分组交换技术具有相当多的优点，包括：</p>
-<ul>
-<li>简单性
-<ul>
-<li>每个分组自身携带信息</li>
-<li>一个路由表可以为所有的流量服务</li>
-<li>可以适应快速增长的网络规模</li>
-</ul></li>
-<li>灵活性
-<ul>
-<li>可以在各种物理底层上运行</li>
-<li>可以支持各种网络应用</li>
-</ul></li>
-<li>可扩展性
-<ul>
-<li>可以应对端系统的增加</li>
-<li>可以应对流量的增加</li>
-<li>可以应对网络规模增大带来的路由表增大和路由频繁变化</li>
-</ul></li>
-<li>健壮性
-<ul>
-<li>默认了网络结构变化是正常现象</li>
-<li>牺牲一定的效率换取网络的稳定</li>
-</ul></li>
-</ul>
-<h2 id="背诵-5-今日互联网">【背诵 5 】今日互联网</h2>
-<ul>
-<li>今日的互联网具有更大的规模和更多的用户，而且支持更多的功能，具有更高的价值，但是其健壮性、适应性和互联程度都下降了</li>
-<li>当今互联网面临的一个问题就是 IPv4 地址耗尽，而目前缓解这个问题地方案是<strong>网络地址转换协议（Network Address Translation / NAT）</strong>
-<ul>
-<li>NAT 缓解了地址耗尽的问题，增强了安全性和控制性</li>
-<li>但是另外一方面却打破了 Internet 中地址唯一的假设</li>
-<li>端到端的分组传输路径变成多个 NAT 域的级联，相当于虚电路</li>
-<li>为了恢复 Internet 的原有结构，目前正在推进 IPv6 技术</li>
-</ul></li>
-</ul>
-<h2 id="杂项-1-未分类知识点">【杂项 1 】未分类知识点</h2>
-<ul>
-<li>二十世纪后期人类两项最伟大的战略工程为<strong>星球大战计划</strong>和<strong>互联网计划</strong>。目前互联网已经发展为继海、陆、空、天之后的<strong>第五空间</strong>。</li>
-</ul>
-<h1 id="计算机网络体系结构">计算机网络体系结构</h1>
-<h2 id="背诵-6-计算机网络的定义和组成">【背诵 6 】计算机网络的定义和组成</h2>
-<ul>
-<li>计算机网络定义为若干独立自治的计算机系统的互联集合体
-<ul>
-<li>计算机网络和分布式系统不同，分布式系统虽然也是由若干个计算机系统组成，但其具有<strong>内聚性</strong>和<strong>透明性</strong>，故分布式系统呈现给用户的更像是一台计算机。计算机网络则明显分立，在用户的视角依然是若干不同的计算机</li>
-<li>目前分布式系统和计算机网络有合流的趋势，两者正在走向统一</li>
-</ul></li>
-<li>计算机网络有两级组成，即<strong>资源子网</strong>和<strong>通信子网</strong>。资源子网常常是服务器或者用户计算机，而通信子网常常是通信线路等信道和路由器、交换机等网络互联设备</li>
-<li>计算机网络之中的通信通常有两种，即<strong>交换式通信</strong>和<strong>广播式通信</strong>
-<ul>
-<li>交换式通信又称<strong>点对点通信</strong>
-<ul>
-<li>需要经过交换设备，将消息转发给一个或一组结点</li>
-<li>交换设备根据需要选择输出</li>
-<li>网络典型的拓扑结构包括 star / ring(loop) / tree / complete / intersecting rings / irregular</li>
-<li>关键技术是<strong>路由选择</strong></li>
-</ul></li>
-<li>广播式通信
-<ul>
-<li>多台计算机共享通信线路</li>
-<li>任一台计算机发出的信息可以直接被其它计算机接收</li>
-<li>网络典型的拓扑结构包括 bus / ring(loop)</li>
-<li>关键技术是<strong>通道分配</strong>
-<ul>
-<li>静态分配，即分时间片。特点是控制简单，但通道利用率低</li>
-<li>动态分配，即各站点动态使用通道。特点是控制复杂，但通道利用率高。通道分配方法有两种。集中式指的是只有一个仲裁机构，分布式指的是各站点均有仲裁机构</li>
-</ul></li>
-</ul></li>
-<li>传统的 LAN 一般使用广播式通信，而 MAN 和 WAN 一般使用交换式通信。现代的 LAN 中交换式通信的应用正在增多</li>
-</ul></li>
-</ul>
-<h2 id="理解-2-计算机网络体系结构">【理解 2 】计算机网络体系结构</h2>
-<ul>
-<li>计算机网络体系结构指的是对计算机网络及其部件所完成功能的比较精确的定义，即从功能的角度描述计算机网络的结构，是<strong>层次和层间关系</strong>的集合。但体系结构只会从功能上定义网络，并不会定义协议的细节和接口关系
-<ul>
-<li>现代计算机网络体系架构指出，计算机网络的基本功能是为地理位置不同的计算机用户之间提供访问通路，并且应当提供若干功能（具体功能列表见 PPT），这些功能中最重要的是<strong>通信功能</strong></li>
-<li>这些功能的特征是<strong>分层</strong>，也就是说计算机网络中提供的功能是分成层次的</li>
-<li>位于不同计算机上进行对话的同一层通信各方可分别看成是一种进程，称为<strong>对等（同等）进程</strong></li>
-</ul></li>
-<li>计算机网络分层的体系结构有三个重要的概念，即协议、服务和接口
-<ul>
-<li>计算机网络体系结构定义了计算机网络的功能是分层次的，而协议（Protocol）就是计算机网络同等层次中，通信双方进行信息交换时必须遵守的规则
-<ul>
-<li>协议由三部分组成
-<ul>
-<li>语法（Syntax）部分。即以二进制形式表示的命令和相应的结构</li>
-<li>语义（Semantics）部分。即发出的命令请求，完成的动作和回送的响应组成的集合</li>
-<li>定时关系（Timing）部分。即有关事件顺序的说明</li>
-</ul></li>
-<li>网络体系结构的分层决定了协议的分层，协议的分层构成了<strong>洋葱结构</strong>
-<ul>
-<li>目的主机某一层收到的报文与源主机同一层发出的报文相同</li>
-<li>协议分层要保证整个通信系统功能完备高效</li>
-</ul></li>
-</ul></li>
-<li>协议定义了不同计算机同层次之间的关系，而服务（Service）定义同一个计算机的上下层之间的交换信息时必须遵守的规则
-<ul>
-<li>服务有两种，即面向连接的服务和无连接服务。
-<ul>
-<li>在使用面向连接的服务进行传输的时候，首先需要建立连接，然后使用这个连接传递数据，使用完毕需要关闭连接。这类服务的顺序性较好</li>
-<li>在使用无连接服务的时候，不建立连接，直接通过服务发送数据每个包都需要独立确定路由。这类服务的顺序性较差</li>
-<li>需要注意，连接并不意味着可靠，可靠性依然需要通过确认、重传等机制进行保证</li>
-</ul></li>
-<li>服务在形式上需要通过一组服务原语（Primitive）规定。原语可以分为四类，即请求、指示、响应、确认</li>
-</ul></li>
-<li>在同一个计算机之中相邻层之间都有一个接口（Interface），它定义了下层向上层提供的原语操作和服务</li>
-</ul></li>
-<li>基于三大基本概念，计算机网络体系结构的具体实现大致为
-<ul>
-<li>服务访问点（Service Access Point / SAP）
-<ul>
-<li>任何的层间服务都是在接口的 SAP 上完成的</li>
-<li>每一个 SAP 都有唯一的识别地址</li>
-<li>每一个层间接口可以具有多个 SAP</li>
-</ul></li>
-<li>接口数据单元（Interface Data Unit / IDU）
-<ul>
-<li>IDU 是通过 SAP 传递的层间信息单元（上下传输）</li>
-<li>IDU 的构成是上一层的服务数据单元（Service Data Unit / SDU）和接口控制信息（Interface Control Information / ICI）的拼接</li>
-</ul></li>
-<li>协议数据单元（Protocol Data Unit / PDU）
-<ul>
-<li>PDU 是在同层实体之间通过网络传输的信息单元（水平传输）</li>
-<li>PDU 的构成是上一层的 SDU 或其分段和协议控制信息（Protocol Control Information / PCI）的拼接</li>
-</ul></li>
-<li>基于上述定义，计算机网络的工作类似于下述
-<ul>
-<li>当本层需要水平传输的时候，首先获得上层通过 SAP 传递的，由 SDU 和 ICI 拼接得到的 IDU。然后本层删除 ICI，将剩余的 SDU 拼接上 PCI 获得 PDU 并通过本层网络协议传输</li>
-<li>当本层需要继续向下层传输的时候，首先获得上层的 IDU，这个从上层获得到本层的 IDU 在下层看来就是一个新的 SDU。本层随后直接拼接上新的 ICI 获得新的 IDU 向下传输。所以说，最上层产生的数据包向下传播的时候，会逐层添加各层控制信息。而底层接收的数据包向上传播的时候，会逐层把这些控制信息删去，获取最后的数据</li>
-</ul></li>
-</ul></li>
-<li>分层的优点包括模块化、功能抽象、可复用。缺点是数据隐藏会导致可能的低效</li>
-<li>计算机网络体系结构的设计中还有两个原则，分别称为<strong>端到端原则</strong>和 <strong>Rule of thumb</strong>
-<ul>
-<li>端到端原则的思想是底层需要尽可能简单，但是上层应用可以较为复杂（完成验证、纠错等工作），只有当这样的功能明显能提升功能的时候才会放在底层</li>
-<li>Rule of thumb 的思想是，底层的新功能不能影响其他不使用这个新功能的部分</li>
-</ul></li>
-</ul>
-<h2 id="理解-3-osi-和-tcpip-模型及其他网络模型">【理解 3 】 OSI 和 TCP/IP 模型及其他网络模型</h2>
-<ul>
-<li>模型建立的历史事件见 PPT</li>
-<li>OSI 模型在 1983 年提出，模型分为七层，从下至上为
-<ul>
-<li>物理层，这一层包含基础网络硬件，在物理通信线路上传输二进制位（Bit）</li>
-<li>数据链路层，这一层目标是在有差错的物理线路上传输无差错的数据帧（Frame）</li>
-<li>网络层，这一层控制通信子网提供数据包（Packet）传输功能</li>
-<li>传输层，这一层为用户提供端到端的数据传输功能</li>
-<li>会话层，这一层为用户提供类似安全认证等会话控制服务</li>
-<li>表示层，这一层为用户提供数据表示和数据转换功能</li>
-<li>应用层</li>
-</ul></li>
-<li>TCP/IP 模型的提出早于 OSI 模型，且仅有四层：
-<ul>
-<li>Host-to-Internet 层，相当于 OSI 的物理层和数据链路层</li>
-<li>Internet 层（网络层），控制通信子网提供源点到目的点的 IP 包传送，实现异构网络互联</li>
-<li>传输层，提供端到端的数据传送服务，如 TCP 和 UDP</li>
-<li>应用层，内部包含了 OSI 的会话层和表示层</li>
-</ul></li>
-<li>X.25 分组交换网在 70 年代提出，早于 OSI 模型，为公用包交换网与用户之间提供接口
-<ul>
-<li>该模型面向连接，支持交换虚电路和永久虚电路</li>
-<li>物理层使用协议 X.21 以及 X.3 / X.28 / X.29</li>
-<li>数据链路层使用协议 LAP 和 LAPB</li>
-<li>网络层使用协议 PLP</li>
-<li>该模型提出了以下名词 -（用户侧）数据终端设备（Digital Terminal Equipment / DTE）
-<ul>
-<li>数字线路设备（Digital Circuit Terminating Equipment / DCE）</li>
-<li>打包解包设备（Packet Assembler and Disassembler / PAD）</li>
-</ul></li>
-</ul></li>
-<li>Novell Netware 在 1983 年提出，在 2005 年终止开发
-<ul>
-<li>模型基于 client-server 结构，设计的基本思想是<strong>文件共享</strong>（同时期其它系统还基于磁盘共享，所以模型有一定先进性）</li>
-<li>基于 XNS（Xeror Network System），网络层协议是不可靠无连接协议 IPX（Internet Packet Exchange），传输层协议是面向连接的 NCP（Netware Core Protocol）和 SPX（Sequenced Package Exchange）</li>
-</ul></li>
-<li>B-ISDN 即宽带综合业务数字网，其技术基础为 ATM 异步传输模式（Asynchronous Transfer Mode）
-<ul>
-<li>ATM 也是分组交换技术
-<ul>
-<li>异步传输，即不具有主时钟</li>
-<li>传输单元为短而定长的信元（cell）</li>
-<li>采用虚电路，面向连接</li>
-<li>常见速率包括 155M 和 622M</li>
-</ul></li>
-</ul></li>
-</ul>
-<h2 id="杂项-2-未分类知识点">【杂项 2 】未分类知识点</h2>
-<ul>
-<li>美国的标准化组织包括 ANSI 和 NIST，中国的标准化组织包括 CCSA，行业标准则是 IEEE</li>
-<li>计算机网络标准化，电信标准为 ITU 而国际标准则是 ISO</li>
-<li>Internet 的标准是自发的，并非政府干预，每个标准诞生前都需要提出请求意见稿，即 RFC</li>
-</ul>
-<h1 id="数据通信基本原理">数据通信基本原理</h1>
-<h2 id="理解-4-信号的傅里叶分析">【理解 4 】信号的傅里叶分析</h2>
-<ul>
-<li>注意网原里傅里叶级数的定义为：</li>
-</ul>
-<p><span class="math display">\[
-g(t) = \frac12 c + \sum_{n = 1}^{+\infty} a_n\sin(2\pi f nt) + \sum_{n = 1}^{+\infty} b_n\cos(2\pi f nt)
-\]</span></p>
-<p>所以：</p>
-<p><span class="math display">\[
-\begin{aligned}
-c &amp;= \frac2T \int_0^T g(t) {\rm d}t \\
-a_n &amp;= \frac2T \int_0^T g(t)\sin(2\pi f nt) {\rm d}t \\
-b_n &amp;= \frac2T \int_0^T g(t)\cos(2\pi f nt) {\rm d}t \\
-\end{aligned}
-\]</span></p>
-<ul>
-<li>一个信号所包含的信号频率范围为频谱（Spectrum），其宽度称为信号的绝对带宽（Definite bandwidth）。大部分信号有无穷的绝对带宽，但是其能量可能仅集中于某一个频段，这个频带的宽度称为有效带宽（Effective bandwidth），简称带宽</li>
-<li>带宽越宽，信号的信息承载能力越强</li>
-<li>信号在给定截止频率 <span class="math inline">\(f_c\)</span> 的信道传输的过程中，高于截止频率的频率分量的振幅衰减明显大于低于截止频率的</li>
-<li>通过信道的谐波次数越多，信号越逼真</li>
-</ul>
-<h2 id="计算-1-信号传输基础计算">【计算 1 】信号传输基础计算</h2>
-<ul>
-<li>波特率指的是信号每秒钟变化的次数，也称调制速率</li>
-<li>比特率指的是信号每秒钟传输的二进制位个数</li>
-<li>波特率和比特率的关系取决于信号值与比特位的关系，如果每个信号值能表示 <span class="math inline">\(N\)</span> 个二进制位，那么比特率为波特率的 <span class="math inline">\(N\)</span> 倍</li>
-<li>对于比特率为 <span class="math inline">\(B({\rm bps})\)</span> 的信道，如果 <span class="math inline">\(M\)</span> 个二进制位为一个周期，则波特率为 <span class="math inline">\(B/M({\rm baud})\)</span>，一次谐波的频率为 <span class="math inline">\(f_1 = B/M({\rm Hz})\)</span>（一次谐波指的是信号傅里叶级数中周期等于原信号周期的分量），能通过信道的最高次谐波次数为 <span class="math inline">\(N = f_c / f_1\)</span>，这里 <span class="math inline">\(f_c\)</span> 为信道的截止频率</li>
-<li>信道的有限带宽限制了信号的传输速率，<strong>无噪声</strong>带宽为 <span class="math inline">\(H\)</span> 的信道传输有 <span class="math inline">\(V\)</span> 种电平状态的信号时，最高传输速率为：</li>
-</ul>
-<p><span class="math display">\[
-v = 2H\log_2 V({\rm bps})
-\]</span></p>
-<ul>
-<li>对于<strong>有噪声</strong>信道，其噪声功率为 <span class="math inline">\(N\)</span>，信号功率为 <span class="math inline">\(S\)</span>，其<strong>信噪比</strong>为：</li>
-</ul>
-<p><span class="math display">\[
-x = 10\log_{10}\frac{S}{N}({\rm dB})
-\]</span></p>
-<p>一般电话系统的典型信噪比为 <span class="math inline">\(30({\rm dB})\)</span>。</p>
-<p>带宽为 <span class="math inline">\(H({\rm Hz})\)</span>，信噪比为 <span class="math inline">\(S/N\)</span> 的任何信道的最大传输速率为：</p>
-<p><span class="math display">\[
-v = H\log_2\left(1 + \frac{S}{N}\right)({\rm bps})
-\]</span></p>
-<p>该传输速率为理论上限，实际很难达到。该传输速率与电平级数和采样速度无关</p>
-<h2 id="背诵-7-传输方式分类">【背诵 7 】传输方式分类</h2>
-<ul>
-<li>数字传输、模拟传输
-<ul>
-<li>数字传输的优点是成本低，对噪声不敏感，缺点是易受衰减（频率越高越严重）</li>
-</ul></li>
-<li>并行传输、串行传输</li>
-<li>点到点传输、点到多点传输
-<ul>
-<li>为适应不同的需要，通信线路采用不同的连接方式</li>
-</ul></li>
-<li>单工、半双工和全双工传输
-<ul>
-<li>单工传输：信息只能单向传输，监视信号可回送</li>
-<li>半双工传输：信息可以双向传输，但在某一时刻只能单向传输</li>
-<li>全双工传输：信息可以同时双向传输</li>
-</ul></li>
-<li>同步传输、异步传输
-<ul>
-<li>同步传输
-<ul>
-<li>传输以报文为基本单位</li>
-<li>传输开始的时候需要传输<strong>同步字符</strong>让双方同步</li>
-<li>可以不间断传输，传输效率较高但是需要<strong>透明传输处理</strong>，即传输的信息中不存在同步字符</li>
-<li>接收方必须知道每一位信号的开始及其持续时间，以便正确的采样接收</li>
-<li>基于<strong>二进制位</strong>的传输一般使用同步传输，信息以<strong>二进制位流</strong>为单位传送，传输过程中以<strong>位</strong>为单位同步，传输的开始和结束以特定的<strong>八位二进制位</strong>同步</li>
-</ul></li>
-<li>异步传输
-<ul>
-<li>需要辅助位，如起始位、奇偶校验位、终止位</li>
-<li>传输效率低，主要用于字符终端与计算机之间的通信</li>
-<li>传输字符时，信息传送以字符为单位</li>
-</ul></li>
-</ul></li>
-</ul>
-<h2 id="背诵-8-信号发送方式">【背诵 8 】信号发送方式</h2>
-<ul>
-<li>数据表示分为两种，即模拟数据和数字数据</li>
-<li>数据传输方式中以信号为载体，分为模拟信号（模拟信道）和数字信号（数字信道）两种（见【背诵 7 】）</li>
-<li>两种数据表示和两种数据传输方式对应形成四种信号发送方式：</li>
-</ul>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;"></th>
-<th style="text-align: center;">模拟数据</th>
-<th style="text-align: center;">数字数据</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">模拟信道</td>
-<td style="text-align: center;">电话系统</td>
-<td style="text-align: center;">频带传输、调制解调器（Modem）</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">数字信道</td>
-<td style="text-align: center;">编码解码器（Codec）</td>
-<td style="text-align: center;">基带传输、数字编码解码器</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>数字数据的数字传输
-<ul>
-<li>基带传输
-<ul>
-<li>基带指的是传输变换前所占用的频带，是原始信号所固有的频带</li>
-<li>基带传输指的是在传输时直接使用基带信号，是一种基本的传输方式，适用于高速低速各种情况</li>
-<li>其限制为因基带信号所带的频率成分很宽，所以对传输线有一定的要求</li>
-</ul></li>
-<li>编码方式
-<ul>
-<li>不归零制码（NRZ）
-<ul>
-<li>用高电平表示 1，用低电平表示 0</li>
-<li>难以分辨某一位的开始或结束，所以发送和接受方都需要时钟同步</li>
-<li>如果信号中 0 或者 1 连续出现，直流电平会叠加</li>
-<li>容易产生传播错误</li>
-</ul></li>
-<li>曼彻斯特码（相位编码）
-<ul>
-<li>每个周期中间有一个跳变，由低到高为 0，由高到低为 1</li>
-<li>克服了 NRZ 的不足，并且每个周期中间的跳变既是信息又是时钟，可以自同步</li>
-</ul></li>
-<li>差分曼彻斯特码
-<ul>
-<li>每个周期中间有一个跳变作为时钟</li>
-<li>每个周期开始有跳变表示 0，没有跳变表示 1</li>
-<li>时钟、数据相分离，便于提取</li>
-<li>差分曼彻斯特注意分类讨论初始时是高电平还是低电平</li>
-</ul></li>
-<li>逢 0 变化 NRZ
-<ul>
-<li>每个周期开始有跳变表示 0，没有跳变表示 1</li>
-<li>每个周期中间没有跳变</li>
-<li>注意讨论初始时的电平</li>
-</ul></li>
-<li>逢 1 变化 NRZ
-<ul>
-<li>每个周期开始有跳变表示 1，没有跳变表示 0</li>
-<li>每个周期中间没有跳变</li>
-<li>注意讨论初始时的电平</li>
-</ul></li>
-</ul></li>
-</ul></li>
-<li>数字数据的模拟传输
-<ul>
-<li>频带传输
-<ul>
-<li>在一定频率范围内的线路上，进行载波传输</li>
-<li>用基带信号对载波进行调制，使其变为适合于线路传送的信号</li>
-<li>调制指的是用基带脉冲控制载波参数，使得这些参数反应基带脉冲信息</li>
-<li>使用调制解调器</li>
-</ul></li>
-<li>调制技术
-<ul>
-<li>幅移键控法（调幅 / ASK），即根据基带脉冲调整载波振幅</li>
-<li>频移键控法（调频 / FSK），即根据基带脉冲调整载波频率</li>
-<li>相移键控法（调相 / PSK），即根据基带脉冲调整载波相位</li>
-</ul></li>
-</ul></li>
-<li>模拟数据的数字传输
-<ul>
-<li>脉冲代码调制 PCM 技术
-<ul>
-<li>根据 Nyquist 原理进行采样</li>
-<li>将模拟信号的振幅分为 <span class="math inline">\(2^n\)</span> 级，每一个采样点用 <span class="math inline">\(n\)</span> 位二进制位表示</li>
-<li>贝尔系统的 T1 载波每个采样点用 7 位二进制表示</li>
-</ul></li>
-<li>差分脉冲代码调制
-<ul>
-<li>与 PCM 数字化振幅不同，差分脉冲代码调制数字化的是相邻采样点的振幅差值</li>
-<li>可以使用较少的二进制位表示</li>
-</ul></li>
-<li><span class="math inline">\(\delta\)</span> 调制
-<ul>
-<li>根据每个采样值与前一个值之间的差来决定输出 1 还是 0</li>
-<li>编码速度可能无法跟上变化较快的模拟信号</li>
-</ul></li>
-</ul></li>
-</ul>
-<h2 id="背诵-9-多路复用技术">【背诵 9 】多路复用技术</h2>
-<ul>
-<li>使得多路信号同时使用一条物理线路的技术,允许用户使用一个共享信道进行通信，避免相互干扰，降低成本，提高利用率</li>
-<li>多路复用技术分类
-<ul>
-<li>时分复用（TDM）
-<ul>
-<li>T1 载波电话系统分为 24 个信道，每个 <span class="math inline">\(64({\rm Kbps})\)</span>，一共 <span class="math inline">\(1.544({\rm Mbps})\)</span>，控制信息带内传输</li>
-</ul></li>
-<li>频分复用（FDM）
-<ul>
-<li>频率分割为频段，多用于手机通信</li>
-</ul></li>
-<li>波分复用（WDM）
-<ul>
-<li>光传输使用，对波长分段，是特殊的频分复用</li>
-</ul></li>
-</ul></li>
-</ul>
-<h2 id="背诵-10-交换技术">【背诵 10 】交换技术</h2>
-<ul>
-<li>计算机网络通信分为交换式和广播式</li>
-<li>交换是在多结点通信网络中，为有效利用通信设备和线路，动态接通、断开、切换通信线路</li>
-<li>交换技术分类
-<ul>
-<li>电路交换
-<ul>
-<li>直接利用可以切换的物理电路动态调整通信线路</li>
-<li>分为建立电路、传输数据、拆除电路三个阶段</li>
-<li>在发送数据前，必须建立起点到点的物理通路。建立物理通路时间较长，数据传送延迟较短</li>
-<li>电话网和 ISDN 采用电路交换</li>
-<li>电路交换一般采用时分复用
-<ul>
-<li>时间被分为帧（Frame），帧被分为时槽（Slot）</li>
-<li>时槽在帧内的相对位置决定这个槽所传输数据所属的会话</li>
-<li>发送方和接收方间需要同步</li>
-<li>非永久会话需要动态绑定时槽到一个会话</li>
-</ul></li>
-</ul></li>
-<li>报文交换（存储转发方式）
-<ul>
-<li>信息以报文（逻辑上完整的信息段）为单位进行存储转发</li>
-<li>线路利用率高、要求中间结点（网络通信设备）缓冲大、延迟时间长</li>
-</ul></li>
-<li>分组交换（包交换）
-<ul>
-<li>分组是一种报文还小的信息段，可定长也可变长。分组交换中信息以分组为单位进行存储转发。源结点把报文分为分组，在中间结点存储转发，目的结点把分组合成报文。用附加的分组头来区分数据</li>
-<li>特点
-<ul>
-<li>每个分组头包括源地址和目的地址，独立进行路由选择
-<ul>
-<li>所以不保证到达顺序</li>
-</ul></li>
-<li>网络结点设备中不预先分配资源，使用统计复用，线路利用率高
-<ul>
-<li>相比于电路交换最明显的优势</li>
-</ul></li>
-<li>易于重传，可靠性高</li>
-<li>易于开始新的传输，让紧急信息优先通过</li>
-<li>开销增加</li>
-<li>需要处理拥塞问题
-<ul>
-<li>需要复杂的路由器，难以保证端到端的服务质量</li>
-</ul></li>
-</ul></li>
-<li>分组交换分为虚电路分组交换和数据报分组交换
-<ul>
-<li>数据报分组交换（如 IP Networks）
-<ul>
-<li>每个分组均带有网络地址（源、目的），可走不同的路径</li>
-</ul></li>
-<li>虚电路分组交换（如 ATM Networks）
-<ul>
-<li>其是电路交换和分组交换的结合
-<ul>
-<li>数据以分组形式传输，来自同一流的分组通过一个预先建立的路径（虚电路）传输</li>
-<li>确保分组的顺序，但是来自不同虚电路的分组可能会交错在一起</li>
-</ul></li>
-<li>分三个阶段
-<ul>
-<li>建立：发带有全称网络地址的呼叫分组，建立虚电路</li>
-<li>传输：沿建立好的虚电路传输数据</li>
-<li>拆除：拆除虚电路</li>
-</ul></li>
-<li>分组头不需要包含完整的地址信息，路由器需要维护虚电路的状态信息</li>
-</ul></li>
-</ul></li>
-</ul></li>
-</ul></li>
-<li>电路交换、报文交换、分组交换的时序图如下。其中电路交换要逐层申请预留占用资源，这段申请时间用于<strong>寻找出境中继线</strong>，申请完毕后节点会占用这段传输线</li>
-</ul>
-<p><img src="/uploads/note-of-net/1.png" /></p>
-<ul>
-<li>三类交换技术的特点
-<ul>
-<li>电路交换适用于实时信息和模拟信号传送，在线路带宽比较低的情况下使用比较经济</li>
-<li>报文交换适用于线路带宽比较高的情况，可靠灵活，但延迟大</li>
-<li>分组交换缩短了延迟，也能满足一般的实时信息传送。在高带宽的通信中更为经济、合理、可靠。是目前公认较好的一种交换技术</li>
-<li>电路交换和分组交换可以结合，如 IP over SONET 以及 IP over Frame Relay</li>
-</ul></li>
-</ul>
-<h2 id="背诵-11-交换结构">【背诵 11 】交换结构</h2>
-<ul>
-<li>Crossbar 交换结构：无阻塞内部交换</li>
-<li>空分交换：多个 Crossbar 互联，有无阻塞均可</li>
-<li>时分交换：高效处理</li>
-</ul>
-<h2 id="杂项-3-未分类知识点">【杂项 3 】未分类知识点</h2>
-<ul>
-<li>数据通信技术由编码技术、多路复用和交换技术构成</li>
-</ul>
-<h1 id="物理层接口及其协议">物理层接口及其协议</h1>
-<h2 id="背诵-12-物理层的定义与功能">【背诵 12 】物理层的定义与功能</h2>
-<ul>
-<li>物理层提供机械的、电气的、功能的和规程的特性，目的是启动、维护和关闭<strong>数据链路实体</strong>之间进行<strong>比特传输</strong>的<strong>物理连接</strong>。这种连接可能通过中继系统，在中继系统内的传输也是在物理层</li>
-<li>物理层的功能是在两个网络设备之间提供透明的比特流传输</li>
-<li>物理层的传输方式
-<ul>
-<li>连接方式（点到点，点到多点）</li>
-<li>通信方式（单工，半双工，全双工）</li>
-<li>位传输方式（串行，并行）</li>
-</ul></li>
-<li>物理层的重要特性
-<ul>
-<li>机械特性（Mechanical characteristics）
-<ul>
-<li>定义物理连接的边界点，即接插装置</li>
-<li>规定物理连接时所采用的规格、引脚的数量和排列情况</li>
-</ul></li>
-<li>电气特性（Electrical characteristics）
-<ul>
-<li>规定传输二进制位时，线路上信号的电压高低、阻抗匹配、传输速率和距离限制</li>
-</ul></li>
-<li>功能特性（Functional characteristics）
-<ul>
-<li>主要定义各条物理线路的功能，比如数据、控制、定时、地线</li>
-</ul></li>
-<li>规程特性（Procedural characteristics）
-<ul>
-<li>主要定义各条物理线路的工作规程和时序关系</li>
-</ul></li>
-</ul></li>
-</ul>
-<h2 id="背诵-13-物理层传输介质">【背诵 13 】物理层传输介质</h2>
-<ul>
-<li>双绞线。既可以用于模拟传输，也可以用于数字传输，带宽依赖于线的类型和传输距离</li>
-<li>同轴电缆
-<ul>
-<li>基带同轴电缆，用于数字传输（数字数据数字传输用基带传输）</li>
-<li>宽带同轴电缆，用于模拟传输（模拟数据数字传输用频带传输）</li>
-</ul></li>
-<li>光纤
-<ul>
-<li>分为单模光纤和多模光纤，两者都支持波分复用，使用的波长越长衰减越小，但成本也越高
-<ul>
-<li>单模光纤只有一个入射角度，半径小，适合<strong>长距离传输</strong></li>
-<li>多模光纤有多个入射角度，半径大，适合短距离传输</li>
-</ul></li>
-<li>光纤组网
-<ul>
-<li>点到点，使用四根线，两根用于保护倒换</li>
-<li>环，使用两根线，一根用于保护倒换</li>
-</ul></li>
-<li>光纤中继器。分为光电光式和全光式
-<ul>
-<li>全光网具有光因特网论坛 OIF</li>
-</ul></li>
-</ul></li>
-</ul>
-<h2 id="背诵-14-sonet-sdh-网络传输技术">【背诵 14 】 SONET / SDH 网络传输技术</h2>
-<ul>
-<li>80 年代提出，应用<strong>时分复用</strong>技术，同步传输，有主时钟控制</li>
-<li>SONET 路径为：路径（Path）、线路（Line）、段（Section）</li>
-<li>基于<strong>字节</strong>的复用。但是 OC-3c 中的 c 表示<strong>级联</strong>而非复用</li>
-</ul>
-<h2 id="背诵-15-移动电话网络传输技术">【背诵 15 】移动电话网络传输技术</h2>
-<ul>
-<li>单方向的寻呼系统
-<ul>
-<li>寻呼过程
-<ul>
-<li>打电话给寻呼公司，输入寻呼机号码</li>
-<li>寻呼公司的计算机收到请求，通过线路传到高处的天线</li>
-<li>天线直接广播信号（本地寻呼），或传递给卫星（异地寻呼），卫星再广播</li>
-</ul></li>
-<li>单向系统</li>
-<li>需要很小的带宽</li>
-</ul></li>
-<li>蜂窝电话
-<ul>
-<li>1G：模拟蜂窝电话，只能传送话音</li>
-<li>2G：数字蜂窝电话，主要传送话音，相关概念有 GSM 和 CDMA</li>
-<li>3G / 4G：可以传送话音和数据</li>
-</ul></li>
-<li>模拟蜂窝电话
-<ul>
-<li>Push-to-talk system。早期用于军事通信，单信道，半双工系统</li>
-<li>IMTS。双频，全双工系统</li>
-<li>AMPS。使用小蜂窝，蜂窝中心有基站，不相邻且相近的蜂窝中<strong>重用频率</strong></li>
-</ul></li>
-</ul>
-<div class="note warning"><p>网原实在是看不会了，这个笔记也就到此为止吧。</p>
-</div>
-]]></content>
-      <categories>
-        <category>【学习笔记】计算机</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Next.js 框架摸索实录</title>
     <url>/2022/11/24/note-of-next/</url>
     <content><![CDATA[<p>在出软工小作业的时候遇到了 React Router 配置和跨域问题，虽然这两个都不是什么大问题，我也不是不会解决，但是要是出到作业里面，势必会导致我要写好多文档还要写很多讲解。这个时候 yfgg 告诉我 Next.js 框架好之又好，昨天稍微试了一下感觉确实不错，所以就吃了安利迁移到了 Next.js 框架。但是今天接着写的时候，还是发现不少细节是需要注意的，这里就当备忘了。</p>
@@ -10531,185 +10535,6 @@ Q(s_t, a_t) \leftarrow Q(s_t, a_t) + \alpha\left[G_t(\tau)\prod_{k = t}^{+\infty
       </categories>
   </entry>
   <entry>
-    <title>2022 年 2 月论文笔记</title>
-    <url>/2022/01/18/paper-2022-02/</url>
-    <content><![CDATA[<p>2022 年 2 月，主要工作为可微渲染相关方向。</p>
-<span id="more"></span>
-<h1 id="soft-rasterizer---a-differentiable-renderer-for-image-based-3d-reasoning">Soft Rasterizer - A Differentiable Renderer for Image-based 3D Reasoning</h1>
-<h2 id="工作概述">工作概述</h2>
-<p>主要思想还是想把逆向渲染管线（通过二维图像推理三维模型的参数）和神经网络结合，但是最大的问题是管线中的光栅化是离散化操作，可能导致不可微。一些其他的工作在尝试<strong>近似估算</strong>梯度，但是这个工作提出了一种真正可微的框架，能做到：</p>
-<ul>
-<li>直接用可微函数渲染染色的网格</li>
-<li>能从轮廓、阴影等各种二维图像信息有效反向传递为网格顶点参数</li>
-</ul>
-<p>这个工作的重点是把渲染过程的部分看作<strong>聚合函数（Aggregation function）</strong>，该函数联系了三维模型的网格三角形的概率分布以及其渲染出来的像素。</p>
-<div class="note info no-icon"><p>看起来标题中的 Soft 的含义就是使用概率分布的方式来把离散的光栅化变成可微的，最初始的光栅化一般会涉及到离散采样（即确定每一个离散的像素是否要显示网格上的某一个三角形），这也是不可微性的来源。</p>
-</div>
-<p>本论文主要讲述了如何通过 Soft rasterization 框架实现可微的光栅化以保证渲染管线的可微性，基于此，该渲染框架即可方便地接入神经网络以将二维图像信息反向传播到三维模型。同时，本论文也会指出近期的近似估算梯度的方式（使用 hand-crafted 的函数近似表示梯度）并不具有泛用性，且可能会降低三维模型信息更新的效率。</p>
-<h3 id="softras-与传统光栅化">SoftRas 与传统光栅化</h3>
-<p>SoftRas 在将模型投影到平面上的时候，会将模型转换为投影平面上的概率分布。而传统光栅化则是转化为具体某个像素是否染色。</p>
-<p>另外，似乎 SoftRas 对遮挡的处理也和传统渲染管线的 z-buffer 不一样。传统光栅化会使用 onehot 的方式处理遮挡（应该指的是处理为完全遮挡），而 SoftRas 也会基于概率分布做出不同处理。</p>
-<h2 id="相关工作">相关工作</h2>
-<h3 id="可微渲染">可微渲染</h3>
-<p>主要关注如何描述二维图像变化和三维模型操作的关系，主要解决如何从二维图像重建三维场景。考虑给定的二维图片 <span class="math inline">\(A\)</span>，首先粗略初始化一个三维场景 <span class="math inline">\(B&#39;\)</span>，然后通过渲染管线渲染得到二维图片 <span class="math inline">\(B\)</span>。计算 <span class="math inline">\(A\)</span> 和 <span class="math inline">\(B\)</span> 的 loss，将其梯度反向传播给三维场景 <span class="math inline">\(B&#39;\)</span> 的参数，更新之。这里反向传播就是可微渲染最重要的步骤，即如何计算梯度，因为三维场景参数更新量取决于 loss 对参数的偏导数。</p>
-<p>先前提到，这里获取梯度有困难。有些工作使用估计梯度的方式进行，有些工作可以精确计算梯度但是不具有泛用性。</p>
-<h3 id="基于图像的三维推理">基于图像的三维推理</h3>
-<p>依然考虑从二维图像重建三维场景。传统方法往往要求获得从多个角度观察得到的二维图像，而由于数据集的扩大，基于学习的重建方法可以使用一张或少量二维图像来重建场景。部分工作会将重建三维场景拆分为首先重建 2.5 维的表示（深度表等）。</p>
-<p>另外，姿态估计也是三位推理的一个重要的子任务。通过深度学习的方法，预测刚体姿态是较为简单的，而预测人体这类非刚体的姿态则较为困难。</p>
-<h2 id="softras-基本原理">SoftRas 基本原理</h2>
-<p>大约是这样的一个流程：</p>
-<p><img src="/uploads/paper-2022-02/1.png" /></p>
-<p>这里外部因素包含相机参数 <span class="math inline">\(\boldsymbol{P}\)</span> 和环境光照 <span class="math inline">\(\boldsymbol{L}\)</span>，内部因素包括网格信息 <span class="math inline">\(\boldsymbol{M}\)</span> 以及各个顶点的信息（如颜色、材质）<span class="math inline">\(\boldsymbol{A}\)</span>。</p>
-<p>这里第一步要做的是获取三个中间信息，即网格法向量 <span class="math inline">\(\boldsymbol{N}\)</span>、视图空间（投影后的空间）各点坐标 <span class="math inline">\(\boldsymbol{U}\)</span> 以及 View dependent depths <span class="math inline">\(\boldsymbol{Z}\)</span>。这三个量只需要使用相机参数和网格信息即可得到。</p>
-<p>之后可以使用例如 Phong 模型等着色模型计算出颜色 <span class="math inline">\(\boldsymbol{C}\)</span>。</p>
-<p>进行到这一步，上述这些操作都是可微的。但是如果按照传统的渲染管线，下一步应该分别确定每一个网格三角形与每一个像素的对应（即光栅化），之后还要用 z-buffer 处理遮挡，这两步都因为离散采样从而是不可微的。</p>
-<p>SoftRas 软化光栅化和 z-buffer 的方式是引入 probability maps <span class="math inline">\(\{\mathcal{D}_j\}\)</span> 和聚合函数 <span class="math inline">\(\mathcal{A}(\cdot)\)</span> 分别代替光栅化和 z-buffer。这里 <span class="math inline">\(\mathcal{D}_j\)</span> 表示的是每一个像素在网格三角形 <span class="math inline">\(f_j\)</span> 内部的概率在平面上的分布。而聚合函数 <span class="math inline">\(\mathcal{A}(\cdot)\)</span> 联系起了 probability maps 以及深度信息，作为整个后续渲染流程的代表。</p>
-<h3 id="probability-maps-计算">probability maps 计算</h3>
-<p>考虑网格三角形在屏幕上的投影 <span class="math inline">\(f_j\)</span> 和屏幕上的像素 <span class="math inline">\(p_i\)</span>，记在屏幕上 <span class="math inline">\(p_i\)</span> 到 <span class="math inline">\(f_j\)</span> 的边最近距离为 <span class="math inline">\(d(i, j)\)</span>。显然，这个距离越小的像素点，出现在内部的概率越大。由于其可以反映三角形对屏幕的影响，并且其可微，所以可以用此作为 probability maps 的代表。随后通过添加控制常数、符号标记并归一化到 <span class="math inline">\((0, 1)\)</span> 内之后，我们得到了 probability maps 的公式：</p>
-<p><span class="math display">\[
-\mathcal{D}_{i, j} = \mathrm{sigmoid}\left(\delta_{i, j}\cdot\frac{d^2(i, j)}{\sigma}\right)
-\]</span></p>
-<p>这里 <span class="math inline">\(\sigma\)</span> 是一个正常数，一般默认为 <span class="math inline">\(1\times 10^{-4}\)</span>。而 <span class="math inline">\(\delta_{i, j}\)</span> 标记了 <span class="math inline">\(p_i\)</span> 是否在 <span class="math inline">\(f_j\)</span> 之中。若在，则 <span class="math inline">\(\delta_{i, j} = 1\)</span>，否则 <span class="math inline">\(\delta_{i, j} = -1\)</span>。</p>
-<p>下图展示了 <span class="math inline">\(d(i, j)\)</span> 的定义以及 <span class="math inline">\(\sigma\)</span> 常数对概率分布的影响：</p>
-<p><img src="/uploads/paper-2022-02/2.png" /></p>
-<p>显然看出 <span class="math inline">\(\sigma\)</span> 越大，概率分布就越模糊。</p>
-<p>另外一个显然的点是 <span class="math inline">\(\sigma \to 0\)</span> 的时候概率分布中三角形外的点概率密度为 <span class="math inline">\(0\)</span>，而三角形内的点为 <span class="math inline">\(1\)</span>。此时 SoftRas 退化为一般的光栅化。</p>
-<h3 id="聚合函数">聚合函数</h3>
-<p>我们考虑最后一个阶段，这里我们需要根据深度信息、 probability maps 以及颜色信息计算出最后的渲染结果。</p>
-<p>最后渲染结果中，像素 <span class="math inline">\(p_i\)</span> 的渲染结果用聚合函数表示，定义为：</p>
-<p><span class="math display">\[
-I_i = \mathcal{A}_S(\{C_j\}) := \sum_j w_{i, j}C_{i, j} + w_{i, b}C_b
-\]</span></p>
-<p>这里渲染结果定义为一系列颜色信息的加权求和，颜色构成的集合为 <span class="math inline">\(\{C_j\}\)</span>，符号 <span class="math inline">\(C_{i, j}\)</span> 表示三角形 <span class="math inline">\(f_j\)</span> 在像素 <span class="math inline">\(p_i\)</span> 处的颜色。而 <span class="math inline">\(C_b\)</span> 表示背景颜色。</p>
-<p>权重 <span class="math inline">\(w_{i, j}\)</span> 至少满足归一化条件：</p>
-<p><span class="math display">\[
-w_{i, b} + \sum_j w_{i, j} = 1
-\]</span></p>
-<p>而权重的具体值取决于先前得到的 probability maps 以及深度信息。我们将三角形 <span class="math inline">\(f_j\)</span> 中投影到 <span class="math inline">\(p_i\)</span> 像素的点的逆深度记为 <span class="math inline">\(z_{i, j}\)</span>。概率分布沿用先前的符号。定义：</p>
-<p><span class="math display">\[
-w_{i, j} := \frac{\mathcal{D}_{i, j}\exp(z_{i, j} / \gamma)}{\sum_k \mathcal{D}_{i, k}\exp(z_{i, k} / \gamma) + \exp(\varepsilon / \gamma)}
-\]</span></p>
-<p>依据归一化条件就有：</p>
-<p><span class="math display">\[
-w_{i, b} := \frac{\exp(\varepsilon / \gamma)}{\sum_k \mathcal{D}_{i, k}\exp(z_{i, k} / \gamma) + \exp(\varepsilon / \gamma)}
-\]</span></p>
-<div class="note info no-icon"><p>可以看出权重的计算公式其实是类似 Softmax 函数：</p>
-<p><span class="math display">\[
-{\rm softmax}(z_1, z_2, \cdots, z_n)_j = \frac{e^{z_j}}{\sum_i e^{z_i}}
-\]</span></p>
-</div>
-<p>这里可以看出 <span class="math inline">\(\varepsilon\)</span> 是一个小正常数，其作用是将背景颜色纳入计算。<span class="math inline">\(\gamma\)</span> 是一个调节清晰度的正常数，与计算 probability maps 的 <span class="math inline">\(\sigma\)</span> 类似，默认值一般是 <span class="math inline">\(1 \times 10^{-4}\)</span>。</p>
-<p>可以看出，具有更大概率密度的，且离投影平面更近的（即具有更大逆深度的）三角形会获得更大的权重，这符合直觉。</p>
-<hr />
-<p>现在考虑退化。针对像素 <span class="math inline">\(p_i\)</span>，假设 <span class="math inline">\(z_{i, 1} &lt; z_{i, 2} &lt; \cdots &lt; z_{i, N}\)</span>，考虑 <span class="math inline">\(\gamma\to 0\)</span>。首先考察 <span class="math inline">\(j = N\)</span>：</p>
-<p><span class="math display">\[
-\begin{aligned}
-w_{i, N} &amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}\exp(z_{i, N} / \gamma)}{\sum_k \mathcal{D}_{i, k}\exp(z_{i, k} / \gamma) + \exp(\varepsilon / \gamma)} \\
-&amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}}{\sum_k \mathcal{D}_{i, k}\exp((z_{i, k} - z_{i, N}) / \gamma) + \exp((\varepsilon - z_{i, N}) / \gamma)} \\
-&amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}}{\sum_{k = 1}^{N - 1} \mathcal{D}_{i, k}\exp((z_{i, k} - z_{i, N}) / \gamma) + \mathcal{D}_{i, N} + \exp((\varepsilon - z_{i, N}) / \gamma)} \\
-&amp;= 1
-\end{aligned}
-\]</span></p>
-<p>最后一步注意到 <span class="math inline">\(z_{i, N}\)</span> 大于任何 <span class="math inline">\(z_{i, k}(k &lt; N)\)</span>，故有这样的结果。而对于 <span class="math inline">\(j &lt; N\)</span>：</p>
-<p><span class="math display">\[
-\begin{aligned}
-w_{i, j} &amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, j}\exp(z_{i, j} / \gamma)}{\sum_k \mathcal{D}_{i, k}\exp(z_{i, k} / \gamma) + \exp(\varepsilon / \gamma)} \\
-&amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}}{\sum_k \mathcal{D}_{i, k}\exp((z_{i, k} - z_{i, j}) / \gamma) + \exp((\varepsilon - z_{i, j}) / \gamma)} \\
-&amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}}{\left(\sum_{k = 1}^{j - 1} + \sum_{k = j + 1}^{N}\right) \mathcal{D}_{i, k}\exp((z_{i, k} - z_{i, N}) / \gamma) + \mathcal{D}_{i, N} + \exp((\varepsilon - z_{i, N}) / \gamma)} \\
-&amp;= 0
-\end{aligned}
-\]</span></p>
-<p>这里要注意到分母上 <span class="math inline">\(\sum_{k = j + 1}^{N}\)</span> 的部分最终会趋向于正无穷，整体极限为 <span class="math inline">\(0\)</span>。最后根据归一化条件也有 <span class="math inline">\(w_{i, b} = 0\)</span>。</p>
-<p>结合这样的推理，可以看出：</p>
-<p><span class="math display">\[
-I_i = \mathcal{A}_S(\{C_j\}) = C_{i, N}
-\]</span></p>
-<p>也就是说最后渲染的结果只考虑了最近的网格三角形，这也就是 z-buffer 方法。</p>
-<hr />
-<p>似乎还有一个和轮廓相关的聚合函数：</p>
-<p><span class="math display">\[
-I_{i, S} = \mathcal{A}_O(\{\mathcal{D}_j\}) := 1 - \prod_j (1 - \mathcal{D}_{i, j})
-\]</span></p>
-<p>这里没有出现颜色项，这是因为轮廓的颜色一般设定为常数。这里聚合函数形式上实际上就是计算出了像素 <span class="math inline">\(p_i\)</span> 被至少一个三角形覆盖的概率。</p>
-<h2 id="实验内容">实验内容</h2>
-<h3 id="single-view-mesh-reconstruction">Single-View Mesh Reconstruction</h3>
-<p>使用这样的结构：</p>
-<p><img src="/uploads/paper-2022-02/3.png" /></p>
-<p>这里固定了渲染管线中的外部变量，即固定了相机位置和环境光照。每一个输入图片都会进入 color generator 和 shape generator 生成三维模型参数 <span class="math inline">\(\boldsymbol{C}\)</span> 和 <span class="math inline">\(\boldsymbol{M}\)</span>。随后后续接入 SoftRas，渲染得到带颜色的图像 <span class="math inline">\(I_C\)</span> 和轮廓 <span class="math inline">\(I_S\)</span>，最后和原先图像比较计算 loss。</p>
-<p>最后定义的 loss 分为三部分。在叙述定义之前，我们将原始图像的颜色和轮廓定义为 <span class="math inline">\(\hat I_C\)</span> 以及 <span class="math inline">\(\hat I_S\)</span>：</p>
-<ul>
-<li>color loss。定义为颜色之差的 1- 范数：</li>
-</ul>
-<p><span class="math display">\[
-\mathcal{L}_C := \|I_C - \hat I_C\|_1
-\]</span></p>
-<ul>
-<li>silhouette loss。定义为，这里使用 <span class="math inline">\(\otimes\)</span> 表示逐元素求积，<span class="math inline">\(\oplus\)</span> 表示逐元素求和：</li>
-</ul>
-<p><span class="math display">\[
-\mathcal{L}_S := 1 - \frac{\|I_S \otimes \hat I_S\|_1}{\|I_S \oplus \hat I_S - I_S \otimes \hat I_S\|_1}
-\]</span></p>
-<ul>
-<li>geometry loss。作用是对 loss 进行 L1 正则化。</li>
-</ul>
-<p>最后定义的 loss 是这三部分的加权求和：</p>
-<p><span class="math display">\[
-\mathcal{L} := \mathcal{L}_S + \lambda\mathcal{L}_C + \mu\mathcal{L}_G
-\]</span></p>
-<p>这里论文主要提了一下 color generator 的结构：</p>
-<p><img src="/uploads/paper-2022-02/4.png" /></p>
-<p>似乎是提出了一种新结构，让颜色重建变为一个多分类问题，进而降低了时间复杂度。但是论文的描述中有若干的暂且不太清楚的名词，暂且把原文贴在这里以后再来看：</p>
-<div class="note info no-icon"><p>Instead of directly regressing the color value, our color generator formulates color reconstruction as a classification problem that learns to reuse the pixel colors in the input image for each sampling point. Let <span class="math inline">\(N_c\)</span> denote the number of sampling points on <span class="math inline">\(\boldsymbol{M}\)</span> and <span class="math inline">\(H, W\)</span> be the height and width of the input image respectively. However, the computational cost of a naive color selection approach is prohibitive, i.e. <span class="math inline">\(O(HWN_c)\)</span>. To address this challenge, we propose a novel approach to colorize mesh using a color palette, as shown in Figure 7. Specifically, after passing input image to a neural network, the extracted features are fed into (1) a sampling network that samples the representative colors for building the palette; and (2) a selection network that combines colors from the palette for texturing the sampling points. The color prediction is obtained by multiplying the color selections with the learned color palette. Our approach reduces the computation complexity to <span class="math inline">\(O(N_d(HW + N_c))\)</span>, where <span class="math inline">\(N_p\)</span> is the size of color palette. With a proper setting of <span class="math inline">\(N_p\)</span>, one can significantly reduce the computational cost while achieving sharp and accurate color recovery.</p>
-</div>
-<h3 id="image-based-shape-fitting">Image-based Shape Fitting</h3>
-<p>似乎依然是从图像重建模型，但是这个重建任务似乎和姿态预测有较为紧密的联系。</p>
-<p>传统方法面临的问题依然是梯度不精确的问题，这样就导致反向传播较为困难。另外，传统方法也面临这样的问题：</p>
-<ul>
-<li><p>遮挡问题。传统方法中，被遮挡的三角形无法调整参数，而 SoftRas 允许被遮挡的三角形参与到运算中，所以这个问题可以解决。</p></li>
-<li><p>局部最小值问题。我们希望误差反向传播可以传播到较大范围，即希望一次三维模型参数调整不局限于较小的局部，否则可能会导致模型收敛到局部最小值而非更优的结果。而 SoftRas 使用的概率分布算法允许全局的像素参与到运算中，所以理论上误差可以传播到较大范围，这个问题可以解决。</p></li>
-</ul>
-<p>所以最后就直接使用这样的方式训练就行了：</p>
-<p><span class="math display">\[
-\{\rho, \theta, t\} = \mathop{\mathrm{argmin}}_{\rho, \theta, t}\|R(M(\rho, \theta, t)) - I_t\|_2
-\]</span></p>
-<p>这里 <span class="math inline">\(\rho, \theta, t\)</span> 是三维模型的参数，分别是非刚体形变参数、姿态角度、转换参数（或许就是视图转换的参数），<span class="math inline">\(M(\cdot)\)</span> 将这些参数转换为网格，<span class="math inline">\(R(\cdot)\)</span> 是渲染函数，<span class="math inline">\(I_t\)</span> 则是目标图像。这个训练方式也就是机器学习的通式。</p>
-<h2 id="实验结果">实验结果</h2>
-<h3 id="single-view-mesh-reconstruction-1">Single-View Mesh Reconstruction</h3>
-<p>实验结果看确实挺好的，下面展示的是不带颜色的网格重建：</p>
-<p><img src="/uploads/paper-2022-02/5.png" /></p>
-<p>颜色似乎也重建得挺好：</p>
-<p><img src="/uploads/paper-2022-02/6.png" height="50%" width="50%" /></p>
-<p>使用的评价方法是 3D IoU，即 3D Intersection over Union。这是一种物体检测领域的评价函数。二维情况下的 IoU 定义如下图所示。这里的矩形均指代物体的包围盒，分别为实际的包围盒和模型预测的包围盒：</p>
-<p><img src="/uploads/paper-2022-02/7.png" height="50%" width="50%" /></p>
-<p>SoftRas 的平均 3D IoU 超出了 state-of-art 的 NMR 的 3D IoU 约 4.5 点，从而说明在网格重建任务上 SoftRas 的表现超出了传统方法。</p>
-<p>另外似乎还有一项称为 Ablation Study 的后续实验，这里省略。</p>
-<h3 id="image-based-shape-fitting-1">Image-based Shape Fitting</h3>
-<p>首先实验刚体结构预测，这里采用六面着不同色的正方体。给定渲染后图像，要求给出正方体应当旋转的角度。SoftRas 和 NMR 的实验结果如下：</p>
-<p><img src="/uploads/paper-2022-02/8.png" /></p>
-<p>可以发现 SoftRas 成功获得了最后的结果，而 NMR 则收敛到了一个局部最小值无法得到正确结果。</p>
-<p>论文认为 NMR 失败的原因正是因为六个面的相互遮挡，这导致了 NMR 无法越过局部最小值。</p>
-<p>另外其也做了大量实验，表明 SoftRas 预测的旋转角度误差严格优于 NMR，在不优化的情况下，SoftRas 的角度误差平均比 NMR 低 <span class="math inline">\(10.60^\circ\)</span>。</p>
-<p>这里似乎涉及到 <span class="math inline">\({\rm SO}(3)\)</span> 旋转群的一些东西，后面再来研究吧。</p>
-<hr />
-<p>非刚体结构预测则选用了人体结构预测，这里初始化时人的右手位于背后，而目标图像中右手已经移动到前面，实验目标是将手移出来。显然 NMR 依然因为无法处理遮挡，最后没有能够完成任务。而 SoftRas 完成了：</p>
-<p><img src="/uploads/paper-2022-02/9.png" /></p>
-<h2 id="附录梯度计算">附录：梯度计算</h2>
-<p>我们现在研究一下 SoftRas 渲染出来的图像 <span class="math inline">\(\boldsymbol{I}\)</span> 对网格参数 <span class="math inline">\(\boldsymbol{M}\)</span> 的梯度，这个梯度也就是在反向传播的时候要计算的值。首先显然有：</p>
-<p><span class="math display">\[
-\frac{\partial\boldsymbol{I}}{\partial\boldsymbol{M}} = \frac{\partial\boldsymbol{I}}{\partial\boldsymbol{U}}\frac{\partial\boldsymbol{U}}{\partial\boldsymbol{M}} + \frac{\partial\boldsymbol{I}}{\partial\boldsymbol{Z}}\frac{\partial\boldsymbol{Z}}{\partial\boldsymbol{M}} + \frac{\partial\boldsymbol{I}}{\partial\boldsymbol{N}}\frac{\partial\boldsymbol{N}}{\partial\boldsymbol{M}}
-\]</span></p>
-<p>这里显然可以看出 <span class="math inline">\(\dfrac{\partial\boldsymbol{U}}{\partial\boldsymbol{M}}, \dfrac{\partial\boldsymbol{Z}}{\partial\boldsymbol{M}}, \dfrac{\partial\boldsymbol{N}}{\partial\boldsymbol{M}}\)</span> 是可以简单计算的，因为 <span class="math inline">\(\boldsymbol{U}, \boldsymbol{Z}, \boldsymbol{N}\)</span> 都可以由 <span class="math inline">\(\boldsymbol{M}\)</span> 通过简单的视图变换得到，由变换矩阵即可推算偏导数。</p>
-<p>而根据着色模型，<span class="math inline">\(\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{N}}\)</span> 也是可以计算的。</p>
-<p>剩余的两个梯度中，<span class="math inline">\(\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{Z}}\)</span> 直接和聚合函数相关，而 <span class="math inline">\(\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{U}}\)</span> 经过了两层，分别是概率分布计算和聚合函数，所以我们需要拆解：</p>
-<p><span class="math display">\[
-\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{U}} = \dfrac{\partial\boldsymbol{I}}{\partial\mathcal{D}}\dfrac{\partial\mathcal{D}}{\partial\boldsymbol{U}}
-\]</span></p>
-]]></content>
-      <categories>
-        <category>【论文笔记】计算机</category>
-      </categories>
-  </entry>
-  <entry>
     <title>原创数学题集</title>
     <url>/2022/07/12/orginal-problems/</url>
     <content><![CDATA[<p>一些奇妙的数学想法而已，可能是初中、高中、大学题，反正是弄着玩的。</p>
@@ -11236,6 +11061,185 @@ f(4k + 3) &amp;= (4k + 3) \oplus (4k + 3) = 0 \\
 ]]></content>
       <categories>
         <category>【杂谈】数学</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>2022 年 2 月论文笔记</title>
+    <url>/2022/01/18/paper-2022-02/</url>
+    <content><![CDATA[<p>2022 年 2 月，主要工作为可微渲染相关方向。</p>
+<span id="more"></span>
+<h1 id="soft-rasterizer---a-differentiable-renderer-for-image-based-3d-reasoning">Soft Rasterizer - A Differentiable Renderer for Image-based 3D Reasoning</h1>
+<h2 id="工作概述">工作概述</h2>
+<p>主要思想还是想把逆向渲染管线（通过二维图像推理三维模型的参数）和神经网络结合，但是最大的问题是管线中的光栅化是离散化操作，可能导致不可微。一些其他的工作在尝试<strong>近似估算</strong>梯度，但是这个工作提出了一种真正可微的框架，能做到：</p>
+<ul>
+<li>直接用可微函数渲染染色的网格</li>
+<li>能从轮廓、阴影等各种二维图像信息有效反向传递为网格顶点参数</li>
+</ul>
+<p>这个工作的重点是把渲染过程的部分看作<strong>聚合函数（Aggregation function）</strong>，该函数联系了三维模型的网格三角形的概率分布以及其渲染出来的像素。</p>
+<div class="note info no-icon"><p>看起来标题中的 Soft 的含义就是使用概率分布的方式来把离散的光栅化变成可微的，最初始的光栅化一般会涉及到离散采样（即确定每一个离散的像素是否要显示网格上的某一个三角形），这也是不可微性的来源。</p>
+</div>
+<p>本论文主要讲述了如何通过 Soft rasterization 框架实现可微的光栅化以保证渲染管线的可微性，基于此，该渲染框架即可方便地接入神经网络以将二维图像信息反向传播到三维模型。同时，本论文也会指出近期的近似估算梯度的方式（使用 hand-crafted 的函数近似表示梯度）并不具有泛用性，且可能会降低三维模型信息更新的效率。</p>
+<h3 id="softras-与传统光栅化">SoftRas 与传统光栅化</h3>
+<p>SoftRas 在将模型投影到平面上的时候，会将模型转换为投影平面上的概率分布。而传统光栅化则是转化为具体某个像素是否染色。</p>
+<p>另外，似乎 SoftRas 对遮挡的处理也和传统渲染管线的 z-buffer 不一样。传统光栅化会使用 onehot 的方式处理遮挡（应该指的是处理为完全遮挡），而 SoftRas 也会基于概率分布做出不同处理。</p>
+<h2 id="相关工作">相关工作</h2>
+<h3 id="可微渲染">可微渲染</h3>
+<p>主要关注如何描述二维图像变化和三维模型操作的关系，主要解决如何从二维图像重建三维场景。考虑给定的二维图片 <span class="math inline">\(A\)</span>，首先粗略初始化一个三维场景 <span class="math inline">\(B&#39;\)</span>，然后通过渲染管线渲染得到二维图片 <span class="math inline">\(B\)</span>。计算 <span class="math inline">\(A\)</span> 和 <span class="math inline">\(B\)</span> 的 loss，将其梯度反向传播给三维场景 <span class="math inline">\(B&#39;\)</span> 的参数，更新之。这里反向传播就是可微渲染最重要的步骤，即如何计算梯度，因为三维场景参数更新量取决于 loss 对参数的偏导数。</p>
+<p>先前提到，这里获取梯度有困难。有些工作使用估计梯度的方式进行，有些工作可以精确计算梯度但是不具有泛用性。</p>
+<h3 id="基于图像的三维推理">基于图像的三维推理</h3>
+<p>依然考虑从二维图像重建三维场景。传统方法往往要求获得从多个角度观察得到的二维图像，而由于数据集的扩大，基于学习的重建方法可以使用一张或少量二维图像来重建场景。部分工作会将重建三维场景拆分为首先重建 2.5 维的表示（深度表等）。</p>
+<p>另外，姿态估计也是三位推理的一个重要的子任务。通过深度学习的方法，预测刚体姿态是较为简单的，而预测人体这类非刚体的姿态则较为困难。</p>
+<h2 id="softras-基本原理">SoftRas 基本原理</h2>
+<p>大约是这样的一个流程：</p>
+<p><img src="/uploads/paper-2022-02/1.png" /></p>
+<p>这里外部因素包含相机参数 <span class="math inline">\(\boldsymbol{P}\)</span> 和环境光照 <span class="math inline">\(\boldsymbol{L}\)</span>，内部因素包括网格信息 <span class="math inline">\(\boldsymbol{M}\)</span> 以及各个顶点的信息（如颜色、材质）<span class="math inline">\(\boldsymbol{A}\)</span>。</p>
+<p>这里第一步要做的是获取三个中间信息，即网格法向量 <span class="math inline">\(\boldsymbol{N}\)</span>、视图空间（投影后的空间）各点坐标 <span class="math inline">\(\boldsymbol{U}\)</span> 以及 View dependent depths <span class="math inline">\(\boldsymbol{Z}\)</span>。这三个量只需要使用相机参数和网格信息即可得到。</p>
+<p>之后可以使用例如 Phong 模型等着色模型计算出颜色 <span class="math inline">\(\boldsymbol{C}\)</span>。</p>
+<p>进行到这一步，上述这些操作都是可微的。但是如果按照传统的渲染管线，下一步应该分别确定每一个网格三角形与每一个像素的对应（即光栅化），之后还要用 z-buffer 处理遮挡，这两步都因为离散采样从而是不可微的。</p>
+<p>SoftRas 软化光栅化和 z-buffer 的方式是引入 probability maps <span class="math inline">\(\{\mathcal{D}_j\}\)</span> 和聚合函数 <span class="math inline">\(\mathcal{A}(\cdot)\)</span> 分别代替光栅化和 z-buffer。这里 <span class="math inline">\(\mathcal{D}_j\)</span> 表示的是每一个像素在网格三角形 <span class="math inline">\(f_j\)</span> 内部的概率在平面上的分布。而聚合函数 <span class="math inline">\(\mathcal{A}(\cdot)\)</span> 联系起了 probability maps 以及深度信息，作为整个后续渲染流程的代表。</p>
+<h3 id="probability-maps-计算">probability maps 计算</h3>
+<p>考虑网格三角形在屏幕上的投影 <span class="math inline">\(f_j\)</span> 和屏幕上的像素 <span class="math inline">\(p_i\)</span>，记在屏幕上 <span class="math inline">\(p_i\)</span> 到 <span class="math inline">\(f_j\)</span> 的边最近距离为 <span class="math inline">\(d(i, j)\)</span>。显然，这个距离越小的像素点，出现在内部的概率越大。由于其可以反映三角形对屏幕的影响，并且其可微，所以可以用此作为 probability maps 的代表。随后通过添加控制常数、符号标记并归一化到 <span class="math inline">\((0, 1)\)</span> 内之后，我们得到了 probability maps 的公式：</p>
+<p><span class="math display">\[
+\mathcal{D}_{i, j} = \mathrm{sigmoid}\left(\delta_{i, j}\cdot\frac{d^2(i, j)}{\sigma}\right)
+\]</span></p>
+<p>这里 <span class="math inline">\(\sigma\)</span> 是一个正常数，一般默认为 <span class="math inline">\(1\times 10^{-4}\)</span>。而 <span class="math inline">\(\delta_{i, j}\)</span> 标记了 <span class="math inline">\(p_i\)</span> 是否在 <span class="math inline">\(f_j\)</span> 之中。若在，则 <span class="math inline">\(\delta_{i, j} = 1\)</span>，否则 <span class="math inline">\(\delta_{i, j} = -1\)</span>。</p>
+<p>下图展示了 <span class="math inline">\(d(i, j)\)</span> 的定义以及 <span class="math inline">\(\sigma\)</span> 常数对概率分布的影响：</p>
+<p><img src="/uploads/paper-2022-02/2.png" /></p>
+<p>显然看出 <span class="math inline">\(\sigma\)</span> 越大，概率分布就越模糊。</p>
+<p>另外一个显然的点是 <span class="math inline">\(\sigma \to 0\)</span> 的时候概率分布中三角形外的点概率密度为 <span class="math inline">\(0\)</span>，而三角形内的点为 <span class="math inline">\(1\)</span>。此时 SoftRas 退化为一般的光栅化。</p>
+<h3 id="聚合函数">聚合函数</h3>
+<p>我们考虑最后一个阶段，这里我们需要根据深度信息、 probability maps 以及颜色信息计算出最后的渲染结果。</p>
+<p>最后渲染结果中，像素 <span class="math inline">\(p_i\)</span> 的渲染结果用聚合函数表示，定义为：</p>
+<p><span class="math display">\[
+I_i = \mathcal{A}_S(\{C_j\}) := \sum_j w_{i, j}C_{i, j} + w_{i, b}C_b
+\]</span></p>
+<p>这里渲染结果定义为一系列颜色信息的加权求和，颜色构成的集合为 <span class="math inline">\(\{C_j\}\)</span>，符号 <span class="math inline">\(C_{i, j}\)</span> 表示三角形 <span class="math inline">\(f_j\)</span> 在像素 <span class="math inline">\(p_i\)</span> 处的颜色。而 <span class="math inline">\(C_b\)</span> 表示背景颜色。</p>
+<p>权重 <span class="math inline">\(w_{i, j}\)</span> 至少满足归一化条件：</p>
+<p><span class="math display">\[
+w_{i, b} + \sum_j w_{i, j} = 1
+\]</span></p>
+<p>而权重的具体值取决于先前得到的 probability maps 以及深度信息。我们将三角形 <span class="math inline">\(f_j\)</span> 中投影到 <span class="math inline">\(p_i\)</span> 像素的点的逆深度记为 <span class="math inline">\(z_{i, j}\)</span>。概率分布沿用先前的符号。定义：</p>
+<p><span class="math display">\[
+w_{i, j} := \frac{\mathcal{D}_{i, j}\exp(z_{i, j} / \gamma)}{\sum_k \mathcal{D}_{i, k}\exp(z_{i, k} / \gamma) + \exp(\varepsilon / \gamma)}
+\]</span></p>
+<p>依据归一化条件就有：</p>
+<p><span class="math display">\[
+w_{i, b} := \frac{\exp(\varepsilon / \gamma)}{\sum_k \mathcal{D}_{i, k}\exp(z_{i, k} / \gamma) + \exp(\varepsilon / \gamma)}
+\]</span></p>
+<div class="note info no-icon"><p>可以看出权重的计算公式其实是类似 Softmax 函数：</p>
+<p><span class="math display">\[
+{\rm softmax}(z_1, z_2, \cdots, z_n)_j = \frac{e^{z_j}}{\sum_i e^{z_i}}
+\]</span></p>
+</div>
+<p>这里可以看出 <span class="math inline">\(\varepsilon\)</span> 是一个小正常数，其作用是将背景颜色纳入计算。<span class="math inline">\(\gamma\)</span> 是一个调节清晰度的正常数，与计算 probability maps 的 <span class="math inline">\(\sigma\)</span> 类似，默认值一般是 <span class="math inline">\(1 \times 10^{-4}\)</span>。</p>
+<p>可以看出，具有更大概率密度的，且离投影平面更近的（即具有更大逆深度的）三角形会获得更大的权重，这符合直觉。</p>
+<hr />
+<p>现在考虑退化。针对像素 <span class="math inline">\(p_i\)</span>，假设 <span class="math inline">\(z_{i, 1} &lt; z_{i, 2} &lt; \cdots &lt; z_{i, N}\)</span>，考虑 <span class="math inline">\(\gamma\to 0\)</span>。首先考察 <span class="math inline">\(j = N\)</span>：</p>
+<p><span class="math display">\[
+\begin{aligned}
+w_{i, N} &amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}\exp(z_{i, N} / \gamma)}{\sum_k \mathcal{D}_{i, k}\exp(z_{i, k} / \gamma) + \exp(\varepsilon / \gamma)} \\
+&amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}}{\sum_k \mathcal{D}_{i, k}\exp((z_{i, k} - z_{i, N}) / \gamma) + \exp((\varepsilon - z_{i, N}) / \gamma)} \\
+&amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}}{\sum_{k = 1}^{N - 1} \mathcal{D}_{i, k}\exp((z_{i, k} - z_{i, N}) / \gamma) + \mathcal{D}_{i, N} + \exp((\varepsilon - z_{i, N}) / \gamma)} \\
+&amp;= 1
+\end{aligned}
+\]</span></p>
+<p>最后一步注意到 <span class="math inline">\(z_{i, N}\)</span> 大于任何 <span class="math inline">\(z_{i, k}(k &lt; N)\)</span>，故有这样的结果。而对于 <span class="math inline">\(j &lt; N\)</span>：</p>
+<p><span class="math display">\[
+\begin{aligned}
+w_{i, j} &amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, j}\exp(z_{i, j} / \gamma)}{\sum_k \mathcal{D}_{i, k}\exp(z_{i, k} / \gamma) + \exp(\varepsilon / \gamma)} \\
+&amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}}{\sum_k \mathcal{D}_{i, k}\exp((z_{i, k} - z_{i, j}) / \gamma) + \exp((\varepsilon - z_{i, j}) / \gamma)} \\
+&amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}}{\left(\sum_{k = 1}^{j - 1} + \sum_{k = j + 1}^{N}\right) \mathcal{D}_{i, k}\exp((z_{i, k} - z_{i, N}) / \gamma) + \mathcal{D}_{i, N} + \exp((\varepsilon - z_{i, N}) / \gamma)} \\
+&amp;= 0
+\end{aligned}
+\]</span></p>
+<p>这里要注意到分母上 <span class="math inline">\(\sum_{k = j + 1}^{N}\)</span> 的部分最终会趋向于正无穷，整体极限为 <span class="math inline">\(0\)</span>。最后根据归一化条件也有 <span class="math inline">\(w_{i, b} = 0\)</span>。</p>
+<p>结合这样的推理，可以看出：</p>
+<p><span class="math display">\[
+I_i = \mathcal{A}_S(\{C_j\}) = C_{i, N}
+\]</span></p>
+<p>也就是说最后渲染的结果只考虑了最近的网格三角形，这也就是 z-buffer 方法。</p>
+<hr />
+<p>似乎还有一个和轮廓相关的聚合函数：</p>
+<p><span class="math display">\[
+I_{i, S} = \mathcal{A}_O(\{\mathcal{D}_j\}) := 1 - \prod_j (1 - \mathcal{D}_{i, j})
+\]</span></p>
+<p>这里没有出现颜色项，这是因为轮廓的颜色一般设定为常数。这里聚合函数形式上实际上就是计算出了像素 <span class="math inline">\(p_i\)</span> 被至少一个三角形覆盖的概率。</p>
+<h2 id="实验内容">实验内容</h2>
+<h3 id="single-view-mesh-reconstruction">Single-View Mesh Reconstruction</h3>
+<p>使用这样的结构：</p>
+<p><img src="/uploads/paper-2022-02/3.png" /></p>
+<p>这里固定了渲染管线中的外部变量，即固定了相机位置和环境光照。每一个输入图片都会进入 color generator 和 shape generator 生成三维模型参数 <span class="math inline">\(\boldsymbol{C}\)</span> 和 <span class="math inline">\(\boldsymbol{M}\)</span>。随后后续接入 SoftRas，渲染得到带颜色的图像 <span class="math inline">\(I_C\)</span> 和轮廓 <span class="math inline">\(I_S\)</span>，最后和原先图像比较计算 loss。</p>
+<p>最后定义的 loss 分为三部分。在叙述定义之前，我们将原始图像的颜色和轮廓定义为 <span class="math inline">\(\hat I_C\)</span> 以及 <span class="math inline">\(\hat I_S\)</span>：</p>
+<ul>
+<li>color loss。定义为颜色之差的 1- 范数：</li>
+</ul>
+<p><span class="math display">\[
+\mathcal{L}_C := \|I_C - \hat I_C\|_1
+\]</span></p>
+<ul>
+<li>silhouette loss。定义为，这里使用 <span class="math inline">\(\otimes\)</span> 表示逐元素求积，<span class="math inline">\(\oplus\)</span> 表示逐元素求和：</li>
+</ul>
+<p><span class="math display">\[
+\mathcal{L}_S := 1 - \frac{\|I_S \otimes \hat I_S\|_1}{\|I_S \oplus \hat I_S - I_S \otimes \hat I_S\|_1}
+\]</span></p>
+<ul>
+<li>geometry loss。作用是对 loss 进行 L1 正则化。</li>
+</ul>
+<p>最后定义的 loss 是这三部分的加权求和：</p>
+<p><span class="math display">\[
+\mathcal{L} := \mathcal{L}_S + \lambda\mathcal{L}_C + \mu\mathcal{L}_G
+\]</span></p>
+<p>这里论文主要提了一下 color generator 的结构：</p>
+<p><img src="/uploads/paper-2022-02/4.png" /></p>
+<p>似乎是提出了一种新结构，让颜色重建变为一个多分类问题，进而降低了时间复杂度。但是论文的描述中有若干的暂且不太清楚的名词，暂且把原文贴在这里以后再来看：</p>
+<div class="note info no-icon"><p>Instead of directly regressing the color value, our color generator formulates color reconstruction as a classification problem that learns to reuse the pixel colors in the input image for each sampling point. Let <span class="math inline">\(N_c\)</span> denote the number of sampling points on <span class="math inline">\(\boldsymbol{M}\)</span> and <span class="math inline">\(H, W\)</span> be the height and width of the input image respectively. However, the computational cost of a naive color selection approach is prohibitive, i.e. <span class="math inline">\(O(HWN_c)\)</span>. To address this challenge, we propose a novel approach to colorize mesh using a color palette, as shown in Figure 7. Specifically, after passing input image to a neural network, the extracted features are fed into (1) a sampling network that samples the representative colors for building the palette; and (2) a selection network that combines colors from the palette for texturing the sampling points. The color prediction is obtained by multiplying the color selections with the learned color palette. Our approach reduces the computation complexity to <span class="math inline">\(O(N_d(HW + N_c))\)</span>, where <span class="math inline">\(N_p\)</span> is the size of color palette. With a proper setting of <span class="math inline">\(N_p\)</span>, one can significantly reduce the computational cost while achieving sharp and accurate color recovery.</p>
+</div>
+<h3 id="image-based-shape-fitting">Image-based Shape Fitting</h3>
+<p>似乎依然是从图像重建模型，但是这个重建任务似乎和姿态预测有较为紧密的联系。</p>
+<p>传统方法面临的问题依然是梯度不精确的问题，这样就导致反向传播较为困难。另外，传统方法也面临这样的问题：</p>
+<ul>
+<li><p>遮挡问题。传统方法中，被遮挡的三角形无法调整参数，而 SoftRas 允许被遮挡的三角形参与到运算中，所以这个问题可以解决。</p></li>
+<li><p>局部最小值问题。我们希望误差反向传播可以传播到较大范围，即希望一次三维模型参数调整不局限于较小的局部，否则可能会导致模型收敛到局部最小值而非更优的结果。而 SoftRas 使用的概率分布算法允许全局的像素参与到运算中，所以理论上误差可以传播到较大范围，这个问题可以解决。</p></li>
+</ul>
+<p>所以最后就直接使用这样的方式训练就行了：</p>
+<p><span class="math display">\[
+\{\rho, \theta, t\} = \mathop{\mathrm{argmin}}_{\rho, \theta, t}\|R(M(\rho, \theta, t)) - I_t\|_2
+\]</span></p>
+<p>这里 <span class="math inline">\(\rho, \theta, t\)</span> 是三维模型的参数，分别是非刚体形变参数、姿态角度、转换参数（或许就是视图转换的参数），<span class="math inline">\(M(\cdot)\)</span> 将这些参数转换为网格，<span class="math inline">\(R(\cdot)\)</span> 是渲染函数，<span class="math inline">\(I_t\)</span> 则是目标图像。这个训练方式也就是机器学习的通式。</p>
+<h2 id="实验结果">实验结果</h2>
+<h3 id="single-view-mesh-reconstruction-1">Single-View Mesh Reconstruction</h3>
+<p>实验结果看确实挺好的，下面展示的是不带颜色的网格重建：</p>
+<p><img src="/uploads/paper-2022-02/5.png" /></p>
+<p>颜色似乎也重建得挺好：</p>
+<p><img src="/uploads/paper-2022-02/6.png" height="50%" width="50%" /></p>
+<p>使用的评价方法是 3D IoU，即 3D Intersection over Union。这是一种物体检测领域的评价函数。二维情况下的 IoU 定义如下图所示。这里的矩形均指代物体的包围盒，分别为实际的包围盒和模型预测的包围盒：</p>
+<p><img src="/uploads/paper-2022-02/7.png" height="50%" width="50%" /></p>
+<p>SoftRas 的平均 3D IoU 超出了 state-of-art 的 NMR 的 3D IoU 约 4.5 点，从而说明在网格重建任务上 SoftRas 的表现超出了传统方法。</p>
+<p>另外似乎还有一项称为 Ablation Study 的后续实验，这里省略。</p>
+<h3 id="image-based-shape-fitting-1">Image-based Shape Fitting</h3>
+<p>首先实验刚体结构预测，这里采用六面着不同色的正方体。给定渲染后图像，要求给出正方体应当旋转的角度。SoftRas 和 NMR 的实验结果如下：</p>
+<p><img src="/uploads/paper-2022-02/8.png" /></p>
+<p>可以发现 SoftRas 成功获得了最后的结果，而 NMR 则收敛到了一个局部最小值无法得到正确结果。</p>
+<p>论文认为 NMR 失败的原因正是因为六个面的相互遮挡，这导致了 NMR 无法越过局部最小值。</p>
+<p>另外其也做了大量实验，表明 SoftRas 预测的旋转角度误差严格优于 NMR，在不优化的情况下，SoftRas 的角度误差平均比 NMR 低 <span class="math inline">\(10.60^\circ\)</span>。</p>
+<p>这里似乎涉及到 <span class="math inline">\({\rm SO}(3)\)</span> 旋转群的一些东西，后面再来研究吧。</p>
+<hr />
+<p>非刚体结构预测则选用了人体结构预测，这里初始化时人的右手位于背后，而目标图像中右手已经移动到前面，实验目标是将手移出来。显然 NMR 依然因为无法处理遮挡，最后没有能够完成任务。而 SoftRas 完成了：</p>
+<p><img src="/uploads/paper-2022-02/9.png" /></p>
+<h2 id="附录梯度计算">附录：梯度计算</h2>
+<p>我们现在研究一下 SoftRas 渲染出来的图像 <span class="math inline">\(\boldsymbol{I}\)</span> 对网格参数 <span class="math inline">\(\boldsymbol{M}\)</span> 的梯度，这个梯度也就是在反向传播的时候要计算的值。首先显然有：</p>
+<p><span class="math display">\[
+\frac{\partial\boldsymbol{I}}{\partial\boldsymbol{M}} = \frac{\partial\boldsymbol{I}}{\partial\boldsymbol{U}}\frac{\partial\boldsymbol{U}}{\partial\boldsymbol{M}} + \frac{\partial\boldsymbol{I}}{\partial\boldsymbol{Z}}\frac{\partial\boldsymbol{Z}}{\partial\boldsymbol{M}} + \frac{\partial\boldsymbol{I}}{\partial\boldsymbol{N}}\frac{\partial\boldsymbol{N}}{\partial\boldsymbol{M}}
+\]</span></p>
+<p>这里显然可以看出 <span class="math inline">\(\dfrac{\partial\boldsymbol{U}}{\partial\boldsymbol{M}}, \dfrac{\partial\boldsymbol{Z}}{\partial\boldsymbol{M}}, \dfrac{\partial\boldsymbol{N}}{\partial\boldsymbol{M}}\)</span> 是可以简单计算的，因为 <span class="math inline">\(\boldsymbol{U}, \boldsymbol{Z}, \boldsymbol{N}\)</span> 都可以由 <span class="math inline">\(\boldsymbol{M}\)</span> 通过简单的视图变换得到，由变换矩阵即可推算偏导数。</p>
+<p>而根据着色模型，<span class="math inline">\(\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{N}}\)</span> 也是可以计算的。</p>
+<p>剩余的两个梯度中，<span class="math inline">\(\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{Z}}\)</span> 直接和聚合函数相关，而 <span class="math inline">\(\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{U}}\)</span> 经过了两层，分别是概率分布计算和聚合函数，所以我们需要拆解：</p>
+<p><span class="math display">\[
+\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{U}} = \dfrac{\partial\boldsymbol{I}}{\partial\mathcal{D}}\dfrac{\partial\mathcal{D}}{\partial\boldsymbol{U}}
+\]</span></p>
+]]></content>
+      <categories>
+        <category>【论文笔记】计算机</category>
       </categories>
   </entry>
   <entry>
@@ -12247,6 +12251,19 @@ c_a = \frac{\sigma_a}{\mu_a}, c_s = \frac{\sigma_s}{\mu_s}, \rho = \frac{\mu_a}{
       </categories>
   </entry>
   <entry>
+    <title>直博招生专业面试的一些</title>
+    <url>/2022/09/14/phd-interview/</url>
+    <content><![CDATA[<p>2022 年 9 月 14 日，是清华大学计算机科学与技术系 2023 级免试攻读博士生招生专业面试。Holder 参加了这一场面试，然后人炸了。</p>
+<span id="more"></span>
+<p>今天面试本来就有点不安，最大的问题就是唯一能吹的一份挂了名的 SIGGRAPH 的文章实际上自己并没有参与特别核心的工作，而且做到一半就被拒了，所以实际上最后那段时间就在摆烂，组会吹水也不去了。</p>
+<p>然而，今天就是这么时运不济，面试的评委里同时有徐昆老师和胡事民老师。没听过组会吹水不敢乱说，但胡老师就喜欢捉着这些问。他要是具体问如何实现了我负责的代码部分，我倒是可以说不少，但是问我一些 Overview，说实话倒还真的不会。</p>
+<p>Holder 的科研真的毫无意义，毕竟自己就是如丧家之犬一般到处跑路。或许 Holder 真的就不应该硬头皮读这个博士，或许就该进厂上班了。</p>
+]]></content>
+      <categories>
+        <category>【杂谈】碎碎念</category>
+      </categories>
+  </entry>
+  <entry>
     <title>2023 年 10 月论文笔记</title>
     <url>/2023/10/08/paper-2023-10/</url>
     <content><![CDATA[<p>说是加入腾讯做云游戏，但是似乎一个月过去了暂且都没有等来信息，果然还是继续积累吧。</p>
@@ -12453,19 +12470,6 @@ P[t] &amp; P[t] = \max_{|j| &lt; \delta}P[t + j] &gt; 0, \max_{|j| &lt; \delta}P
 ]]></content>
       <categories>
         <category>【论文笔记】计算机</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>直博招生专业面试的一些</title>
-    <url>/2022/09/14/phd-interview/</url>
-    <content><![CDATA[<p>2022 年 9 月 14 日，是清华大学计算机科学与技术系 2023 级免试攻读博士生招生专业面试。Holder 参加了这一场面试，然后人炸了。</p>
-<span id="more"></span>
-<p>今天面试本来就有点不安，最大的问题就是唯一能吹的一份挂了名的 SIGGRAPH 的文章实际上自己并没有参与特别核心的工作，而且做到一半就被拒了，所以实际上最后那段时间就在摆烂，组会吹水也不去了。</p>
-<p>然而，今天就是这么时运不济，面试的评委里同时有徐昆老师和胡事民老师。没听过组会吹水不敢乱说，但胡老师就喜欢捉着这些问。他要是具体问如何实现了我负责的代码部分，我倒是可以说不少，但是问我一些 Overview，说实话倒还真的不会。</p>
-<p>Holder 的科研真的毫无意义，毕竟自己就是如丧家之犬一般到处跑路。或许 Holder 真的就不应该硬头皮读这个博士，或许就该进厂上班了。</p>
-]]></content>
-      <categories>
-        <category>【杂谈】碎碎念</category>
       </categories>
   </entry>
   <entry>
