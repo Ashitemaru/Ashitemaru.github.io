@@ -1179,188 +1179,6 @@
       </categories>
   </entry>
   <entry>
-    <title>2024 春季学期记录</title>
-    <url>/2024/02/26/2024-spring-record/</url>
-    <content><![CDATA[<p>虽然有预感这一学期可能和之前一样每天都是无聊的重复，但是还是开个日记，以免真的有什么想要记录的时候却苦恼于没有地方写。</p>
-<span id="more"></span>
-<h1 id="section">2024.02.26</h1>
-<p>这一学期的第一天，然而今天就要处理掉不少工作：</p>
-<ul>
-<li>THUInfo 一些信息需要提交掉</li>
-<li>软工那边需要拉一些人</li>
-<li>TON 实验的打表还没做</li>
-</ul>
-<p>虽然都是一些很零碎的小工作，可能一个下午也就做完了，但不知道为什么最近我的拖延症越来越明显，以往是有那么点拖延但也不至于现在这样。</p>
-<hr />
-<p>忙活了一整天，软工那边似乎暂且不需要我参与什么，THUInfo 那边迅哥哥也暂且不急，所以今天就几乎全用来跑 TON 的实验，然后因为接到了第二天有腾讯 HR 面试的通知，还稍微做了点准备。</p>
-<p>TON 这边实验的想法很简单，因为学长想要收集一些真实网络拥塞控制的情况来做 RL 训练，然而 RL 训练时现跑网络发包会导致训练大幅度延迟，所以不得不去思考怎么缩时间。那么，有个想法就是打表，针对所有可能的参数把 baseline CC 的 performance 都打表打出来，训练的时候直接读取就行。</p>
-<p>然而参数空间不得不说还是挺大的，所以可能需要多机打表，目前讨论确定使用 50 台机子打表，那么就需要一个中心机来 assign task，而这就是我需要做的。</p>
-<p>最初我觉得直接在 SSH 后面附上命令就可以了，然而如果直接使用 <code>os.system("ssh [name]@[ip] '[cmd]')</code> 的方式，就和串行没有什么区别了，而且这一方法需要保持 SSH 连接，以我现在的知识来说，我还真不知道如何让中心机和其他 50 台机子同时保持 SSH 连接。</p>
-<p>所以最终采用的方式是让中心机发指令给边缘机，令其开一个 tmux 后台运行，之后就可以直接断开 SSH 了。</p>
-<p>不过说起来简单，操作的时候事情还不少。首先边缘机上没装 tmux，需要手动装，然而要装就需要 sudo，sudo 又需要手动输密码，怎么在代码里面模拟终端交互行为当时卡了有段时间。不过最后还是找到了 paramiko 这个库，其 <code>invoke_shell</code> 方法可以模拟终端，大概类似于：</p>
-<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># Connect to remote server</span></span><br><span class="line">client = paramiko.SSHClient()</span><br><span class="line">client.set_missing_host_key_policy(paramiko.AutoAddPolicy())</span><br><span class="line">client.connect(ip, username=<span class="string">&quot;[name]&quot;</span>, password=<span class="string">&quot;[password]&quot;</span>, port=<span class="number">22</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Run script</span></span><br><span class="line">channel = client.invoke_shell()</span><br><span class="line">channel.send(<span class="string">&quot;cd ~/pantheon &amp;&amp; tmux new-session -d -s ton &#x27;[command]&#x27;\n&quot;</span>)</span><br><span class="line">output = channel.recv(<span class="number">65535</span>).decode(<span class="string">&quot;utf-8&quot;</span>)</span><br></pre></td></tr></table></figure>
-<p>整体用起来还是比较舒服的。</p>
-<p>然而就在我以为一切都已经解决了的时候，我发现 loss rate 一直为零，这意味着我有参数没有设置正确。这个时候，我得知了一个令我震惊的东西：<strong>Python2 的除法对整数是向下取整的</strong>。写惯了 Python3 里面默认返回浮点数的除法，这个 bug 我完全没有注意到，找了大概有一整个晚上才发现。</p>
-<p>不过就算这样还是有无法理解的地方，那就是现在依然存在有的时候程序随机爆炸，打表打到一半突然死亡，这个更是我不知道原因到底在哪里，明天和贾老师联系一下再来思考。</p>
-<h1 id="section-1">2024.02.27</h1>
-<p>今天是约定了的腾讯那边 HR 面试的日子，本来以为这个面试应该多正式，结果就是线上和 HR 聊了一些我也不知道有关还是无关的问题也就结束了，晚上上传了一下身份信息之后似乎就只要等 offer 就可以了。</p>
-<p>昨天出勤的时候无意中把鸢尾花打到了 100.45，今天自然就没有忍住出勤去了，手感确实不算差，大概三把左右就把鸢尾花鸟加拿下。</p>
-<p>晚上回来主要是因为要给 fyk 他们简单讲一节日语课，九点钟讲到十二点左右，本来想着赶快开始把贾老师和腾讯那边工作启动的，还是因为太累了，就先睡了。</p>
-<p>目前看来生活还是比较 under control 的，希望这种势头能够保持下去吧。</p>
-<h1 id="section-2">2024.02.28</h1>
-<p>下午有导师的课程，但是十一点就已经从床上爬起来了。爬起来之后简单折腾了一下腾讯那边的工作，把 code base 基本修好了之后就算是启动工作了，忙完这些清理了一下宿舍垃圾就去上课了。</p>
-<p>课程本身是没啥意思的，不过有意思的事情是明明这是计算机系的专业课程，却莫名其妙吸引了不少来自美院、教育学院的文科同学来上课，我对这一现象暂且找不到合理的解释。</p>
-<p>上完课就去工位坐牢，腾讯那边的工作启动起来了之后目前来看还都是比较顺畅的，新的 baseline algorithm 已经跑起来了，确实比之前有相当大的提升。现在的核心任务就是统计 1% low FPS 这个指标，然后针对这个指标做一些简单的文献调研。除此以外，大概就是得花时间手搓一下 QoE，看一眼离线最优算法能够搞出来什么东西，远期的话 code base 应该需要对窗口延迟等指标做一些调整，但是这些已经是后话了。</p>
-<p>另外就是 TON 实验现在完全没有动，感觉还是得找个时间去工位好好坐牢一下。</p>
-<h1 id="section-3">2024.02.29</h1>
-<p>今天主要就用来出勤了，不过出勤也是收获颇丰，把风神和白香水都鸟加了，于是顺利取得 14.5 全鸟加的成绩。大概，3 月更新之后把那几首歌打完，b15 侧地板也就差不多来到 14.3，这样的话就可以简单做个分表了。后续一方面吃下位 14+ 的分，一方面打算打 14.3 的全鸟加。</p>
-<p>工作上的话，THUInfo 那边因为拖延惹得迅哥哥有点生气，所以赶快把信息交掉了。腾讯那边 1% low FPS 的数字有点奇异难看，可能还是得对着 log 再去想想有没有什么地方出现问题，因为最多延迟两帧，再怎么说也不太可能出现那么大的帧持续时间，除非就是送显时间戳本身距离就很离谱。TON 那边还在尝试 debug，也不知道什么时候能够搞出来，暂且先搞着吧。</p>
-<h1 id="section-4">2024.03.01</h1>
-<p>今天早上看了一眼服务器，大概挂掉了 5 台，感觉还是可以控制的。然而我现在最懊悔的事情是我居然在程序里面没有存储中间结果，这导致我要是挂程序了就必须从头开始。现在决定就是，递进式地更换程序，哪台服务器挂了我就把哪台的换成能保存中间结果的，没挂的就最好。然后我还得写一个监控程序观察哪台服务器挂了，这就得去找找阿里云相关的 API 了。</p>
-<p>下午混掉组会，简单思考了一下那个脚本的写法，发觉需要研究阿里云 API，然而一顿折腾我发现阿里云的 API 实在是难以使用，所以只能搁置。晚上吃了顿饭心灰意冷决定摸鱼，打了一晚上麻将和舍友刚教我的湖南跑胡子，然后顺利发现服务器欠费停机，所有的实验结果全都没保存下来。</p>
-<p>至此，我只能说，我又一次被这玩意打败了，反正已经这样了，不如赶快睡觉保命。</p>
-<h1 id="section-5">2024.03.02</h1>
-<p>今天的任务只有一个，就是出勤，迅速解决掉本次更新里面的两个 14，电光石火以及华为。然而今天实在是有点诸事不顺，早上堵门来到上地的时候人数就已经逼近 10 人，蹭了一下非律的华为迅速解决掉之后，来了个来上地团建的小团体，人数直接突破 20，这完全没法打了，而且这个时候我电光石火甚至还没鸟，手感爆炸烂。退勤之后越想越气，于是立刻转战天通苑机厅，结果人也完全说不上少。然而还好在场的人还都比较友善地让我反复刷电光石火，最终终于在快闭店的时候，鏖战 30 把拿下电光石火。</p>
-<p>晚上回去的时候精神状态实际上就已经很不好了，主要是太疲劳，前一天晚上没睡多长时间今天又奋战了一整天，于是只能赶快计划着回去睡大头觉。</p>
-<h1 id="section-6">2024.03.03</h1>
-<p>睡得很晚才起，大概到了晚上四五点钟才从床上下来，今天得立刻前往工位开始赶事情。周一约了 mfy 把软工课上的事情准备好，那今天已经得尽力拿下手上的工作。</p>
-<p>现在 TON 的实验暂且写了一个每隔 15 分钟监控一下并且看情况重启的版本，现在也不是很清楚是不是能用的下去，至少目前为止所有事情都暂且按着我想的方式发展，希望最终没事。以及虽然这个实验的经费最终是要走报销渠道，但是毕竟现在暂且是从我手上出钱，或多或少还是有点心疼的。过了一段时间，我观察了一下那个脚本的运作情况，果然有一次检查到了死机子，并且很成功地重启了这台机子，也就是说目前为止理论上应该能支撑到这个实验跑完了。</p>
-<h1 id="section-7">2024.03.04</h1>
-<p>今天主要还是折腾了一下 TON 实验的事情，因为我发现过了一晚上运行进度只有 5%，按这个估算，需要十天才能跑完，这完全不能容忍。和贾老师一波讨论之后决定降低参数采样率，减小遍历空间来控制实验时间，这样操作之后目前预计明天就能拿到第一波试验结果。</p>
-<p>晚上和 mfy 讨论了一下软工的课前准备，目前也已经有了基本的 timeline，希望一切正常推进吧。</p>
-<p>然而最让人烦心的事情就是，大四的那个实习写的小程序，因为里面有些静态图片我挂在了腾讯云上，而这个存储桶似乎因为欠费已经释放掉了，导致现在小程序已经几乎没法使用。但是，我对这个实习实在是有点厌恶，真的很毁坏我现在 under control 的心情。</p>
-<h1 id="section-8">2024.03.05</h1>
-<p>昨晚睡得超级晚，到了快六点钟才上床，于是早上九点半赶去上课的时候人已经完全不是人样了。软工课这波改革之后，前三周的课程变成了助教讲解技术细节，然后学生课上实操，其余助教答疑。不得不说，这个模式其实我还挺支持的，但是对助教的要求也就随之高了起来，辛苦今天已经不成人样的我坚守完了第一次答疑。</p>
-<p>然后，实习那边找到了问题原因是 CDN 欠费，也就是说实际上和我没有关系，那真是可喜可贺。</p>
-<p>下午按照计划出勤，很快就解决了标准 8bit，但是毕竟只睡了三四个小时，下午出勤的时候还是很不在状态，完全打不出来什么有意义的分数，于是早早回来把事情清理了一下，包括布置了软工预习作业，把最近实验结果总结了一下之类的。</p>
-<p>最近打算做 maimai 的分表了，然后也打算好好坐工位了，希望能够有所收获吧。</p>
-<h1 id="section-9">2024.03.06</h1>
-<p>今天大量的事情都动了起来，收到了腾讯的 offer，贾老师那边第一阶段的数据处理完毕进入下一阶段，课内任务逐渐加重，实习那边催我重设背景图，软工文档需要修改，甚至我还花了点时间屏蔽了一下阿里云的推销短信和电话。果然啊，进入了事情开始堆积我开始雄心壮志的阶段，但我这次希望能够把这个状态持续久一些，不要像之前一样事情做到一半去摆烂了。</p>
-<p>结果今天下午大概是学了一整个下午的近世代数，写完了作业。晚饭和迅哥哥聊了一下把 Saiblo 引入 DRL 课程的一些事，然而目前来看还是空中楼阁，所以这个话题进行了一半就回到了吐槽日常生活。</p>
-<p>晚上工位坐牢，今天还有不少事情要去处理，希望能够尽快解决吧。</p>
-<h1 id="section-10">2024.03.07</h1>
-<p>昨晚睡得很晚，因为没忍住开始做 maimai 分表了，这次学习了如何用 PPT 做视频，意外地还挺好用，效果也不错。唯一的坏处是，七点钟才爬上床。</p>
-<p>下午的组会说实话没啥好汇报的，总觉得自己很忙但是没啥好说的，只说了一句“在帮贾老师跑实验”似乎就没了，果然还是得在自己手上的项目上再下一些功夫，不然实在显得有点没有成果。</p>
-<p>今天整体来说还算干了不少事情的，主要的一件事还是和吴老师那边对了一下腾讯的工作。目前来看大方向需要做一些调整，先前我们一直希望聚焦于，或者至少侧重于将帧从解码器送往显示器的控制算法，然而这一部分面临两个问题，一个是优化空间实在太小，二个是评测指标很难完全规避 QoE 建模以及繁杂的用户实验。最终考虑下来，还是希望把 story 讲成比较全流程的送显优化，侧重于如何提高出解码器时间戳的预测准确度。这样的话，我目前要做的，就是多做点 WebRTC 等相关技术的调研工作了。</p>
-<p>晚上把 maimai 分表做了，然后还需要搞软工的事情以及 TON 的事情，希望能够尽快解决吧。</p>
-<h1 id="section-11">2024.03.08</h1>
-<p>今天是软工试讲，本来以为是随便搞搞的事情，但没有想到的是裴老师提出了很多很多的意见，甚至建议把授课结构都重组一下。虽然说哪怕没有裴老师的意见我也得重新洗一遍 PPT，只不过有了这个意见之后工作量肉眼可见地高了。</p>
-<p>讲完软工忍不住了，去出勤了，但是好久没有出勤手感冰凉，几乎什么都打不上，最后也只能遗憾退勤。</p>
-<p>实习那边似乎还是得我来处理静态资源的事情，TON 实验那边也开始回收实验结果，总之慢慢事情又堆起来了。</p>
-<h1 id="section-12">2024.03.09</h1>
-<p>周六，例行堵门出勤，本来打算解决雷切，结果今天打得头昏脑胀还没解决。</p>
-<p>工作稍微推进了一点吧，把小作业的 code base 搞好了，总之接下来的周日，又是辛苦的一天。</p>
-<h1 id="section-13">2024.03.10</h1>
-<p>现在有些不太好的征兆，就是渐渐地我开始拖延了，必须要想办法遏制住这一点。简单来说现在要干的事情也不少，但是似乎开始逐渐有了一些畏难情绪，不是很想把手放下来，这不行。</p>
-<p>今天在宿舍做了一天软工的 PPT，整体问题不大，但确实是花费了太多时间，晚上又是靠近五点多才睡觉。</p>
-<h1 id="section-14">2024.03.11</h1>
-<p>最近被雷切搞得心烦意乱，又没忍住决定出勤了，然而今天即使状态不错，雷切还是一直没能出分，现在 pc 数已经破百，我又开始质疑自己能否完成这一任务了。我一直都是把 maimai 当成自己发泄情绪的地方，用简单的身体运动和放空的大脑来休息，然而现在面临的问题就是似乎如果我 maimai 进度卡住，就会连带着一些负面情绪，反倒影响了自己的工作。</p>
-<p>想到这里，决定还是重整一下心情，迅速把手头一些简单的工作做掉，然后继续堆尸雷切。我自己毫不在意通过无数若干次的糊和抽奖来获得成绩，毕竟我的本质目的是放松心情而已。</p>
-<p>手上把实习的事情先解决掉吧，不算什么大事，但是不能一直烦我。</p>
-<hr />
-<p>不知不觉紫雷切的 pc 数来到了 146，说实话，在我推的时候已经隐隐约约有先前焦虑症复发的感觉了，直到店员闭店把电拔了才如梦初醒。</p>
-<p>似乎真的，最近 maimai 先放一放吧，至少这一周就先到此为止了，下一周把事情搞得七七八八再来摸索。</p>
-<h1 id="section-15">2024.03.12</h1>
-<p>今天早上去软工课上讲课，除了时间没有控制得很好之外，似乎其他的部分都很顺利。大家也都跟下来了七七八八，课后也有不少来问问题的小朋友，至少让我觉得我的努力没有白费。</p>
-<p>下午开始基本上就是娱乐了，中午和 wyx 见面吃了顿饭聊了不少天，下午则去上地陪空调出勤。这次出勤 End Time 和雷切都没有解决，不过现在也已经看开了，随便吧，什么时候解决，都是解决。现在 maimai 决定换个策略，就是按照查分器拟合定数倒序推 14.6+ 的鸟加，和之前打 14.2+ 的鸟加如出一辙。不过 14.6+ 难度还是很高，也不知道能不能顺利搞下来。</p>
-<p>回来之后已经累的七荤八素了，决定今天先摸鱼，明天做认真学习的好孩子。</p>
-<h1 id="section-16">2024.03.13</h1>
-<p>上课，然后出勤，然后鸟加雷切，然后回到宿舍补作业。</p>
-<p>说实话，现在越来越不是很清楚读博到底该干什么了，除了把贾老师的任务做掉，似乎真的没有什么一定要做的事情，这让我很迷茫，每天几乎都是在摸鱼度日。我在思考着到底要不要和老师还是谁简单聊聊现在的情况，然而和一些学长交流后，似乎这样的样态才更为常见。</p>
-<p>或许去读读 paper 积攒一些 idea 才是正确的路径，现在开始或许还不晚吧。</p>
-<p>后天还要早起去入职，今晚大概把事情清理一下，组会被训也拉倒了。</p>
-<h1 id="section-17">2024.03.14</h1>
-<p>组会并没有发生什么可以说的事情，基本上就是非常平淡地混了过去，组会后稍微折腾了一点事情之后还是选择了前往上地。不过这次组会还是确定了不少之后的路线的，比如说至少 NSDI 的论文得好好看了，然后和吴老师那边的项目也得好好推进了。</p>
-<p>出勤也并没有发生什么可以说的事情，因为解决了雷切，现在又回到了 14.6 不知道打什么的状态，目前可能还是先解决江江吧。</p>
-<p>明天得早期入职，希望不会有什么差错。</p>
-<h1 id="section-18">2024.03.15</h1>
-<p>早期前往腾讯办理入职，入职比我想象的要简单太多了，基本就是到地方之后领取一下东西就行。吴老师已经帮我申请了工位和办公电脑，早上基本上就是装好电脑之后，和吴老师简单聊了一下现在的工作情况，对接了一下两边的理解。</p>
-<p>目前来看，送显控制那篇论文比较麻烦，因为说实话想要在那么小的动作空间里面做出来可观的多目标优化还是很困难。现在是计划把 story 讲成队列优化，把撕裂这一项融入到帧率里面去（相当于搞成有效帧率），然后变成调节队列时有效帧率与延迟的 trade-off。把撕裂这么处理，主要是原先认为上半部分的撕裂可以忽略，在这个假设下撕裂里面能榨取出来的优化空间就很大，然而现在发现这个假设不成立，撕裂几乎是不可忍受的，也就是说，撕裂里面能够榨取的优化空间不多，不如合并到帧率里面。</p>
-<p>然后第二篇文章是画质感知流控，和黄老师 QARC 类似，但是要求更严格，因为云游戏场景下不能提前获取下一帧的内容，也不能使用 RL 模型来做画质评估。现在想做的就是从 decoder 里面拿到比较有用的消息去做画质感知，然后主动调整码率。然而这个工作，现在连数据集都没开始准备，所以还是得想想办法。</p>
-<p>今天坐班一天实在是太累了，不过想到以后还是能有点产出还是比较有期待感的。</p>
-<h1 id="section-19">2024.03.16</h1>
-<p>睡到了下午三四点钟才爬起来，下午非常平常地解决掉了软工的一些破事，然后晚上和 wyx 聊了很多。</p>
-<p>现在突然有感觉有点 out of control 了，必须赶快投入到工作中去，不能再摸鱼了。</p>
-<h1 id="section-20">2024.03.17</h1>
-<p>今天下午没有做什么特别的事情，也就是把软工的杂事清理了个七七八八。本来打算继续整理 TON 的实验，但是似乎因为畏难情绪和怕麻烦的心理没能做出多少进展，遂出勤。出勤倒是迅速解决了 Titania，然后把涡状银河研究了个七七八八。</p>
-<p>晚上回来折腾 TON 的实验，但是看起来还是有一些比较麻烦的点没能弄清楚，折腾来折腾去倒也就四点多了，明天还得去上班，不得不睡觉了。</p>
-<p>虽说今天实际上没什么有意义的成果，但总之我工作的动力还是在逐渐恢复的。现在看来，我工作的动力还真的就和 maimai 高度相关，之前卡雷切的时候工作也做不下去，现在 14.6 一帆风顺工作动力就一直存在。这种正相关性我也无法解释，虽说有点害怕这样的奇妙联系多半会让我工作很不顺畅，但是至少现在没啥大问题，不如就这样吧。</p>
-<h1 id="section-21">2024.03.18</h1>
-<p>早上去上班，今天大概就是把代码框架调了个七七八八，然后和吴老师讨论了一下怎么把撕裂融入到当前的框架中去，这个实验应该最近会很快赶出来。晚上顺手把 TON 的实验搞上了服务器，之后便吃了个饭就回来了。</p>
-<p>晚上按照惯例下班出勤，本来想的是随便打打，但是没有想到涡状银河很快就解决掉了。现在 14.6 大概剩下的都是一些不研究也没法打的东西，目前的计划是先从歌比较好听的 yorugao 入手，希望最近能打得下来吧。</p>
-<p>最近还有件事情就是 lcr 分手了，这件事情从头到尾都有一种我无法言说的不可理喻的感觉，我想去尝试理解，但是仔细想想还是算了，感情的事情终究还是交给他们自己消化吧。</p>
-<h1 id="section-22">2024.03.19</h1>
-<p>周二上班，今天主要还是把思路理清了一下，跑了一下原先说的撕裂融入到有效帧率之中的代码，也算是验证了撕裂这一侧几乎没有太大的调整空间这件事。目前详细 log 应该都打出来了，周五要和组长和老师讨论，目前应该是有能够汇报的东西，但是还需要一些整理和分析。</p>
-<p>晚上继续出勤，但是新奥的国服 maimai 真的是人太多了，一台机子 10 个人排卡，我本来下班也就只有三个小时出勤时间，这么搞的话我完全打不了什么东西。但是今天收获还是有的，就是提亚马特感觉快要开悟了，最近可以慢慢打提亚马特，然后其他时间打 yorugao。此外，在排队的间隙我去打了两三把中二，还是收获了不少 AJ 的，可能以后打打也不错。</p>
-<h1 id="section-23">2024.03.20</h1>
-<p>今天上课，没去上班。虽说晚上还是去出勤打了一晚上提亚马特，但是今天工作真的也不少，整理了组会汇报的论文，做了一下课内的作业，其他的一些事也七七八八做了点。</p>
-<p>说实话，由于事情还是比较杂，所以晚上通宵到了早八点，正巧赶上日本那边更新了 buddies plus，蹲了一小段时间 ysk 直播就睡了。buddies plus 我以为会有什么很大的更新，但是这次看下来还是小修小补，不知道下一个版本会有什么样的动作。</p>
-<p>今天除了做事就是打提亚马特，明天再来折腾 TON 实验、周五要讲的数据分析啥的吧。</p>
-<h1 id="section-24">2024.03.21</h1>
-<p>周四说实话还是混组会为主，不过还好，这周的组会简单讲了一下 AUGUR 的论文也就过去了，另外就是贾老师催了一下 TON，不过我还是把明天混过去再来考虑这些吧。</p>
-<p>晚上把实验挂上去之后就出勤打提亚马特，不太顺利地鸟加了之后很快退勤回去和学长去开会了。今天也大概是没有什么其他要说的工作进展的。</p>
-<h1 id="section-25">2024.03.22</h1>
-<p>今天比较低气压，原因很简单，被学长小训了一顿，虽然也算是意料之中。大概就是我在这个项目里面表现得兴趣平平，没有什么主观能动性。其实这个我算是早就有预备了，因为这个项目确实我一直没有能够找到什么头绪，然后想要去分析一点东西也不知道从哪里下手，加上我卡住的时候就会想出勤释放自己。不过被训了也算是好事，至少这些东西摊开来说了之后，也就没什么大不了的，不过之后得好好强迫自己动脑子思考了。</p>
-<p>项目具体来说的话今天还是弄明白了不少东西的，首先就是撕裂上几乎不太可能能压榨出什么有用的东西。中部撕裂不能允许，顶部撕裂即使全都解放了也很难在里面压榨出帧率和延迟优化。后续做了点 log 分析，帧率优化不动倒是有一些依据，毕竟 buffer 上限不动的话很难让有效帧数提升，但是延迟优化不动是有一些其他原因的。大概可以理解为如果说出现了状态切换导致队列积累，很有可能会在明明可以释放掉队列的地方持续导致延迟，所以说应当加入一些主动丢帧的策略来找延迟的低点。</p>
-<p>总之周末现在得去整理结果和尝试做一下主动丢帧模拟，还是强迫自己工作比较好。</p>
-<h1 id="section-26">2024.03.23</h1>
-<p>今天周六，例行的摸鱼日子，出了一天勤，拿下了 Yorugao，练习了一下鬼叫，手感不错，回来就早睡了。</p>
-<p>摸鱼的日子，还是比较舒服的。</p>
-<p>但是随着春天来到，最近心里那种莫名的忧郁感又开始浮现了，今天听了一整天的《下弦之月》，又开始怀念起一年前的五月，乃至不堪回首的两年前、三年前的五月。cmh 似乎计划五一前往日本，其实我也挺想去的，但我也只是想去而已，说白了目的地并不重要，我只是很想做点什么和当下无关的事情，有种想要挣脱一些束缚的冲动。当然，另一件让我很尴尬，或者更确切地称之为 awkward 的事情是，我并不是很想一个人去，但是我却始终不知道邀请谁，打 mai 的朋友固然关系很好，但是我一直不想和他们叙述心底这些奇了八怪的想法，东方群友？迅哥哥？Idol9？都不太适合，或许这些情感就该让我自己在漫天飞舞的花瓣中自己消化吧。</p>
-<p>なあ、今年もさ、桜が散ってしまうんだ。夢みたいに踊る桃色に騙されてしまいそうだ。</p>
-<p>《坠入地狱》也已经听了快两三年了，每到春天的时候，这句话，还是很戳我，然后，就开始莫名其妙地，郁闷。</p>
-<h1 id="section-27">2024.03.24</h1>
-<p>周日，做了一整天的工作，整理了一下数据和思路，结果发现完全没能找到什么有用的结果。</p>
-<p>最近心情一直比较低谷，也不知道什么时候才能重拾工作热情。</p>
-<h1 id="section-28">2024.03.25</h1>
-<p>周一去坐班，上午先和组长开会讨论了一些实现细节，下午本来想速战速决某些实验的，但实际是下午开始严重坐骨酸痛，最终只是把一些杂事处理了一下，然后就去出勤了。</p>
-<p>晚上实在是乏善可陈，只能说还是得赶快赶上工作。</p>
-<h1 id="section-29">2024.03.26</h1>
-<p>今天决定翘班，但说是翘班，只不过是打算今天不上班明天补上而已。上午的软工线下辅导，说实话实在是有点不对味，相比较于之前能有一个完整的教室和时间段，在课上嘈杂的环境中尝试教学，说实话真的收效甚微，最后我也算是放弃了，混过去之后就开始做一些自己的事情。</p>
-<p>下午出勤，速速解决掉削除鬼叫之后随手开了 End Time，本来只是想试试内屏会怎么样，结果直接飞上 100.48，后面又打了几把却一直没能复现当时完美的尾杀发挥。之后大概练了练图灵和 AMABIE 也就退勤了，14.6 剩下的果然一点都不好惹。</p>
-<p>晚上回来就是做事了，现在就是希望在 maimai 能稳步推进的时候工作也能有条不紊的进行。</p>
-<h1 id="section-30">2024.03.27</h1>
-<p>上班，然后做事，然后下班，然后出勤。之后就发现今天交的近世代数作业没做完，赶快回来补上。</p>
-<p>很郁闷，因为工作我一直不知道做的算好还是坏，也不知道未来到底是个什么样，这个博士读得一点没有底气。不过感觉，之前本科第一年的时候我也差不多是这么个样子，完全不知道自己应该去做些什么，然而当时大一的暑假还算是勇敢地拓宽了一下自己，但是博一目前来看好像还没有这样的契机。</p>
-<p>明天组会取消了，正好去打理一下自己吧。</p>
-]]></content>
-      <categories>
-        <category>【生活记录】日记</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>安卓前端开发杂谈</title>
-    <url>/2021/09/01/android-dev-exp-1/</url>
-    <content><![CDATA[<p>安卓的移动端开发，属实让我血压高了一小段时间。毕竟已经接触过类似于 React Native 那种基于 TypeScript 语言的、优秀的跨平台移动端框架，再去尝试用繁琐的 Java 语言写安卓前端自然是不适应且感到烦躁。</p>
-<p>但是毕竟是 Java 程序设计训练课程，安卓前端开发作为其最大的特色，不得不消受。</p>
-<span id="more"></span>
-<h1 id="关于数据绑定">关于数据绑定</h1>
-<p>如果要我说最大的不适应的地方，首先就是数据和图形界面的完全分离。在 React Native 框架之中，数据和图形界面的管理大概是这样的：</p>
-<figure class="highlight typescript"><figcaption><span>TypeScript</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> App = <span class="function">(<span class="params">props: AppProps</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// Set states &amp; initialize</span></span><br><span class="line">    <span class="keyword">const</span> [bar, setBar] = useState&lt;<span class="built_in">number</span>&gt;(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Some functions to update or rewrite data</span></span><br><span class="line">    <span class="keyword">const</span> update = <span class="function">() =&gt;</span> setBar(<span class="function">(<span class="params">o</span>) =&gt;</span> o + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Write UI with TSX, use data freely</span></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="xml"><span class="tag">&lt;<span class="name">View</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Text</span>&gt;</span> Hello world! <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;`The val of bar is $&#123;bar&#125;`&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;`Property foo is $&#123;props.foo&#125;`&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Button</span> <span class="attr">onClick</span>=<span class="string">&#123;update&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>但是在安卓之中，图形界面完全定义在 <code>.xml</code> 文件之中，而且一定程度上其定义各个组件摆放方式的语法细节的繁杂程度不低于 HTML。而如果需要将数据载入图形界面，则首先要根据组件的 ID 获取组件，之后才能调用各种方法设定具体属性。</p>
-<figure class="highlight java"><figcaption><span>Java</span></figcaption><table><tr><td class="code"><pre><span class="line">((TextView) view.findViewById(R.id.entity_name)).setText(data.name);</span><br></pre></td></tr></table></figure>
-<p>这里出现的 <code>R</code> 类据说是相当厉害的。但是我第一次接触安卓的时候，这个符号给我带来的感觉就是不安，因为我再也不能像写 React Native 一样至少自认为自己掌握了程序之中的数据流。换一种说法，即使 React Native 可能做了很多背后工作，但它至少做到了让开发者在很多时候能直观引导数据流。</p>
-<p>对于按钮等组件，React Native 框架下可以直接传入回调函数。而众所周知 Java 是纯净的面向对象语言，怎么会有 lambda 这种异端呢（新版本的 Java 已经离经叛道了！）。</p>
-<p>所以你需要写监听器对象，重写其中的方法等等。</p>
-<hr />
-<p>并不是说这样不好，我还记得之前大一小学期的时候写 Qt 很多时候就是各种指针到处乱飞然后到处乱 <code>set</code> 这个那个的，最后一个 <code>draw</code> 函数里面上百行的，成块的各种格式设定、字体设定、内容设定、排列设定，然后这次写安卓让我回忆起了那一段黑暗时光。</p>
-<h1 id="并不适应的适配器模式">并不适应的适配器模式</h1>
-<p>如果只是想给一个 <code>TextView</code> 载入文字，直接几个 <code>set</code> 函数就结束了。但是给一个格式复杂的列表载入数据，则相当繁琐。比如说现在主流的 <code>RecyclerView</code>，其载入数据，就需要你自己编写一个数据适配器。</p>
-<p>我首先是上网找轮子，随后想了一下，干脆自己包装了个简单的 <code>RecyclerViewAdapter</code> 先勉强用用。</p>
-<p>将数据塞到图形界面上，最重要的三个东西是上下文、使用什么 <code>layout</code> 和数据本身，那么适配器的构造函数就需要接受这三项。然后就是平凡地重写 <code>RecyclerView.Adapter</code> 所要求的三个函数。不过这里我在重写 <code>onBindViewHolder</code> 的时候留了空，因为这里就是定义适配器最重要部分——数据如何映射到 UI 的函数。我将这一个函数设为虚函数，让子类继承重写就可以实现各种映射方式。最后的成果大致这样：</p>
-<figure class="highlight java"><figcaption><span>Java</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">RecyclerViewAdapter</span>&lt;<span class="title">T</span>&gt; <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">Adapter</span>&lt;<span class="title">RecyclerViewAdapter</span>.<span class="title">ViewHolder</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> Context mContext;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">int</span> mLayoutId;</span><br><span class="line">    <span class="keyword">protected</span> List&lt;T&gt; mData;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RecyclerViewAdapter</span><span class="params">(Context context, <span class="keyword">int</span> layoutId, List&lt;T&gt; data)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.mContext = context;</span><br><span class="line">        <span class="keyword">this</span>.mLayoutId = layoutId;</span><br><span class="line">        <span class="keyword">this</span>.mData = data;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="meta">@NonNull</span> <span class="function">ViewHolder <span class="title">onCreateViewHolder</span><span class="params">(<span class="meta">@NonNull</span> ViewGroup parent, <span class="keyword">int</span> viewType)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ViewHolder(</span><br><span class="line">                LayoutInflater.from(mContext).inflate(mLayoutId, parent, <span class="keyword">false</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBindViewHolder</span><span class="params">(<span class="meta">@NonNull</span> ViewHolder holder, <span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// <span class="doctag">TODO:</span> What is this?</span></span><br><span class="line">        <span class="comment">// holder.updatePosition(position);</span></span><br><span class="line">        <span class="keyword">this</span>.convert(holder, mData.get(position));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">convert</span><span class="params">(ViewHolder holder, T data)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getItemCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> mData.size();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ViewHolder</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">ViewHolder</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">private</span> View mConvertView;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">ViewHolder</span><span class="params">(View itemView)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>(itemView);</span><br><span class="line">            <span class="keyword">this</span>.mConvertView = itemView;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> &lt;K extends View&gt; <span class="function">K <span class="title">getViewById</span><span class="params">(<span class="keyword">int</span> viewId)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> (K) mConvertView.findViewById(viewId);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>用起来也简单，传入三个要素，之后重写 <code>convert</code> 方法定义一下数据到 UI 的映射就好了：</p>
-<figure class="highlight java"><figcaption><span>Java</span></figcaption><table><tr><td class="code"><pre><span class="line">binding.entityList.setAdapter(<span class="keyword">new</span> RecyclerViewAdapter&lt;Entity&gt;(</span><br><span class="line">    HomeFragment.<span class="keyword">this</span>.getActivity(), R.layout.home_entity_item, baseEntities</span><br><span class="line">) &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">convert</span><span class="params">(RecyclerViewAdapter.ViewHolder holder, Entity data)</span> </span>&#123;</span><br><span class="line">        ((TextView) holder.getViewById(R.id.entity_name)).setText(data.getLabel());</span><br><span class="line">        ((TextView) holder.getViewById(R.id.entity_category)).setText(data.getCategory());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>你会发现，这比 React Native 要写的东西多太多了。上面这么多需要折腾的，React Native 只需要这样写：</p>
-<figure class="highlight typescript"><figcaption><span>TypeScript</span></figcaption><table><tr><td class="code"><pre><span class="line">&lt;View&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        baseEntities.map(<span class="function">(<span class="params">val, ind</span>) =&gt;</span> (</span><br><span class="line">            <span class="xml"><span class="tag">&lt;<span class="name">View</span> <span class="attr">key</span>=<span class="string">&#123;ind&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;val.name&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;val.category&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span></span><br><span class="line">        ))</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/View&gt;</span><br></pre></td></tr></table></figure>
-<p>就可以实现一个列表了。</p>
-<p>Java 我写了一整个类，光数据转成 UI 也写了好几行长代码，这还没有算 <code>.xml</code> 文件。</p>
-]]></content>
-      <categories>
-        <category>【杂谈】开发</category>
-      </categories>
-  </entry>
-  <entry>
     <title>古日语语法笔记</title>
     <url>/2023/05/26/ancient-ja/</url>
     <content><![CDATA[<p>本章主要介绍古代日语的基本语法，并据此分析现代日语中的古日语语法残余。</p>
@@ -2810,6 +2628,159 @@
       </categories>
   </entry>
   <entry>
+    <title>2024 春季学期记录</title>
+    <url>/2024/02/26/2024-spring-record/</url>
+    <content><![CDATA[<p>虽然有预感这一学期可能和之前一样每天都是无聊的重复，但是还是开个日记，以免真的有什么想要记录的时候却苦恼于没有地方写。</p>
+<span id="more"></span>
+<h1 id="section">2024.02.26</h1>
+<p>这一学期的第一天，然而今天就要处理掉不少工作：</p>
+<ul>
+<li>THUInfo 一些信息需要提交掉</li>
+<li>软工那边需要拉一些人</li>
+<li>TON 实验的打表还没做</li>
+</ul>
+<p>虽然都是一些很零碎的小工作，可能一个下午也就做完了，但不知道为什么最近我的拖延症越来越明显，以往是有那么点拖延但也不至于现在这样。</p>
+<hr />
+<p>忙活了一整天，软工那边似乎暂且不需要我参与什么，THUInfo 那边迅哥哥也暂且不急，所以今天就几乎全用来跑 TON 的实验，然后因为接到了第二天有腾讯 HR 面试的通知，还稍微做了点准备。</p>
+<p>TON 这边实验的想法很简单，因为学长想要收集一些真实网络拥塞控制的情况来做 RL 训练，然而 RL 训练时现跑网络发包会导致训练大幅度延迟，所以不得不去思考怎么缩时间。那么，有个想法就是打表，针对所有可能的参数把 baseline CC 的 performance 都打表打出来，训练的时候直接读取就行。</p>
+<p>然而参数空间不得不说还是挺大的，所以可能需要多机打表，目前讨论确定使用 50 台机子打表，那么就需要一个中心机来 assign task，而这就是我需要做的。</p>
+<p>最初我觉得直接在 SSH 后面附上命令就可以了，然而如果直接使用 <code>os.system("ssh [name]@[ip] '[cmd]')</code> 的方式，就和串行没有什么区别了，而且这一方法需要保持 SSH 连接，以我现在的知识来说，我还真不知道如何让中心机和其他 50 台机子同时保持 SSH 连接。</p>
+<p>所以最终采用的方式是让中心机发指令给边缘机，令其开一个 tmux 后台运行，之后就可以直接断开 SSH 了。</p>
+<p>不过说起来简单，操作的时候事情还不少。首先边缘机上没装 tmux，需要手动装，然而要装就需要 sudo，sudo 又需要手动输密码，怎么在代码里面模拟终端交互行为当时卡了有段时间。不过最后还是找到了 paramiko 这个库，其 <code>invoke_shell</code> 方法可以模拟终端，大概类似于：</p>
+<figure class="highlight python"><figcaption><span>Python</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># Connect to remote server</span></span><br><span class="line">client = paramiko.SSHClient()</span><br><span class="line">client.set_missing_host_key_policy(paramiko.AutoAddPolicy())</span><br><span class="line">client.connect(ip, username=<span class="string">&quot;[name]&quot;</span>, password=<span class="string">&quot;[password]&quot;</span>, port=<span class="number">22</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Run script</span></span><br><span class="line">channel = client.invoke_shell()</span><br><span class="line">channel.send(<span class="string">&quot;cd ~/pantheon &amp;&amp; tmux new-session -d -s ton &#x27;[command]&#x27;\n&quot;</span>)</span><br><span class="line">output = channel.recv(<span class="number">65535</span>).decode(<span class="string">&quot;utf-8&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>整体用起来还是比较舒服的。</p>
+<p>然而就在我以为一切都已经解决了的时候，我发现 loss rate 一直为零，这意味着我有参数没有设置正确。这个时候，我得知了一个令我震惊的东西：<strong>Python2 的除法对整数是向下取整的</strong>。写惯了 Python3 里面默认返回浮点数的除法，这个 bug 我完全没有注意到，找了大概有一整个晚上才发现。</p>
+<p>不过就算这样还是有无法理解的地方，那就是现在依然存在有的时候程序随机爆炸，打表打到一半突然死亡，这个更是我不知道原因到底在哪里，明天和贾老师联系一下再来思考。</p>
+<h1 id="section-1">2024.02.27</h1>
+<p>今天是约定了的腾讯那边 HR 面试的日子，本来以为这个面试应该多正式，结果就是线上和 HR 聊了一些我也不知道有关还是无关的问题也就结束了，晚上上传了一下身份信息之后似乎就只要等 offer 就可以了。</p>
+<p>昨天出勤的时候无意中把鸢尾花打到了 100.45，今天自然就没有忍住出勤去了，手感确实不算差，大概三把左右就把鸢尾花鸟加拿下。</p>
+<p>晚上回来主要是因为要给 fyk 他们简单讲一节日语课，九点钟讲到十二点左右，本来想着赶快开始把贾老师和腾讯那边工作启动的，还是因为太累了，就先睡了。</p>
+<p>目前看来生活还是比较 under control 的，希望这种势头能够保持下去吧。</p>
+<h1 id="section-2">2024.02.28</h1>
+<p>下午有导师的课程，但是十一点就已经从床上爬起来了。爬起来之后简单折腾了一下腾讯那边的工作，把 code base 基本修好了之后就算是启动工作了，忙完这些清理了一下宿舍垃圾就去上课了。</p>
+<p>课程本身是没啥意思的，不过有意思的事情是明明这是计算机系的专业课程，却莫名其妙吸引了不少来自美院、教育学院的文科同学来上课，我对这一现象暂且找不到合理的解释。</p>
+<p>上完课就去工位坐牢，腾讯那边的工作启动起来了之后目前来看还都是比较顺畅的，新的 baseline algorithm 已经跑起来了，确实比之前有相当大的提升。现在的核心任务就是统计 1% low FPS 这个指标，然后针对这个指标做一些简单的文献调研。除此以外，大概就是得花时间手搓一下 QoE，看一眼离线最优算法能够搞出来什么东西，远期的话 code base 应该需要对窗口延迟等指标做一些调整，但是这些已经是后话了。</p>
+<p>另外就是 TON 实验现在完全没有动，感觉还是得找个时间去工位好好坐牢一下。</p>
+<h1 id="section-3">2024.02.29</h1>
+<p>今天主要就用来出勤了，不过出勤也是收获颇丰，把风神和白香水都鸟加了，于是顺利取得 14.5 全鸟加的成绩。大概，3 月更新之后把那几首歌打完，b15 侧地板也就差不多来到 14.3，这样的话就可以简单做个分表了。后续一方面吃下位 14+ 的分，一方面打算打 14.3 的全鸟加。</p>
+<p>工作上的话，THUInfo 那边因为拖延惹得迅哥哥有点生气，所以赶快把信息交掉了。腾讯那边 1% low FPS 的数字有点奇异难看，可能还是得对着 log 再去想想有没有什么地方出现问题，因为最多延迟两帧，再怎么说也不太可能出现那么大的帧持续时间，除非就是送显时间戳本身距离就很离谱。TON 那边还在尝试 debug，也不知道什么时候能够搞出来，暂且先搞着吧。</p>
+<h1 id="section-4">2024.03.01</h1>
+<p>今天早上看了一眼服务器，大概挂掉了 5 台，感觉还是可以控制的。然而我现在最懊悔的事情是我居然在程序里面没有存储中间结果，这导致我要是挂程序了就必须从头开始。现在决定就是，递进式地更换程序，哪台服务器挂了我就把哪台的换成能保存中间结果的，没挂的就最好。然后我还得写一个监控程序观察哪台服务器挂了，这就得去找找阿里云相关的 API 了。</p>
+<p>下午混掉组会，简单思考了一下那个脚本的写法，发觉需要研究阿里云 API，然而一顿折腾我发现阿里云的 API 实在是难以使用，所以只能搁置。晚上吃了顿饭心灰意冷决定摸鱼，打了一晚上麻将和舍友刚教我的湖南跑胡子，然后顺利发现服务器欠费停机，所有的实验结果全都没保存下来。</p>
+<p>至此，我只能说，我又一次被这玩意打败了，反正已经这样了，不如赶快睡觉保命。</p>
+<h1 id="section-5">2024.03.02</h1>
+<p>今天的任务只有一个，就是出勤，迅速解决掉本次更新里面的两个 14，电光石火以及华为。然而今天实在是有点诸事不顺，早上堵门来到上地的时候人数就已经逼近 10 人，蹭了一下非律的华为迅速解决掉之后，来了个来上地团建的小团体，人数直接突破 20，这完全没法打了，而且这个时候我电光石火甚至还没鸟，手感爆炸烂。退勤之后越想越气，于是立刻转战天通苑机厅，结果人也完全说不上少。然而还好在场的人还都比较友善地让我反复刷电光石火，最终终于在快闭店的时候，鏖战 30 把拿下电光石火。</p>
+<p>晚上回去的时候精神状态实际上就已经很不好了，主要是太疲劳，前一天晚上没睡多长时间今天又奋战了一整天，于是只能赶快计划着回去睡大头觉。</p>
+<h1 id="section-6">2024.03.03</h1>
+<p>睡得很晚才起，大概到了晚上四五点钟才从床上下来，今天得立刻前往工位开始赶事情。周一约了 mfy 把软工课上的事情准备好，那今天已经得尽力拿下手上的工作。</p>
+<p>现在 TON 的实验暂且写了一个每隔 15 分钟监控一下并且看情况重启的版本，现在也不是很清楚是不是能用的下去，至少目前为止所有事情都暂且按着我想的方式发展，希望最终没事。以及虽然这个实验的经费最终是要走报销渠道，但是毕竟现在暂且是从我手上出钱，或多或少还是有点心疼的。过了一段时间，我观察了一下那个脚本的运作情况，果然有一次检查到了死机子，并且很成功地重启了这台机子，也就是说目前为止理论上应该能支撑到这个实验跑完了。</p>
+<h1 id="section-7">2024.03.04</h1>
+<p>今天主要还是折腾了一下 TON 实验的事情，因为我发现过了一晚上运行进度只有 5%，按这个估算，需要十天才能跑完，这完全不能容忍。和贾老师一波讨论之后决定降低参数采样率，减小遍历空间来控制实验时间，这样操作之后目前预计明天就能拿到第一波试验结果。</p>
+<p>晚上和 mfy 讨论了一下软工的课前准备，目前也已经有了基本的 timeline，希望一切正常推进吧。</p>
+<p>然而最让人烦心的事情就是，大四的那个实习写的小程序，因为里面有些静态图片我挂在了腾讯云上，而这个存储桶似乎因为欠费已经释放掉了，导致现在小程序已经几乎没法使用。但是，我对这个实习实在是有点厌恶，真的很毁坏我现在 under control 的心情。</p>
+<h1 id="section-8">2024.03.05</h1>
+<p>昨晚睡得超级晚，到了快六点钟才上床，于是早上九点半赶去上课的时候人已经完全不是人样了。软工课这波改革之后，前三周的课程变成了助教讲解技术细节，然后学生课上实操，其余助教答疑。不得不说，这个模式其实我还挺支持的，但是对助教的要求也就随之高了起来，辛苦今天已经不成人样的我坚守完了第一次答疑。</p>
+<p>然后，实习那边找到了问题原因是 CDN 欠费，也就是说实际上和我没有关系，那真是可喜可贺。</p>
+<p>下午按照计划出勤，很快就解决了标准 8bit，但是毕竟只睡了三四个小时，下午出勤的时候还是很不在状态，完全打不出来什么有意义的分数，于是早早回来把事情清理了一下，包括布置了软工预习作业，把最近实验结果总结了一下之类的。</p>
+<p>最近打算做 maimai 的分表了，然后也打算好好坐工位了，希望能够有所收获吧。</p>
+<h1 id="section-9">2024.03.06</h1>
+<p>今天大量的事情都动了起来，收到了腾讯的 offer，贾老师那边第一阶段的数据处理完毕进入下一阶段，课内任务逐渐加重，实习那边催我重设背景图，软工文档需要修改，甚至我还花了点时间屏蔽了一下阿里云的推销短信和电话。果然啊，进入了事情开始堆积我开始雄心壮志的阶段，但我这次希望能够把这个状态持续久一些，不要像之前一样事情做到一半去摆烂了。</p>
+<p>结果今天下午大概是学了一整个下午的近世代数，写完了作业。晚饭和迅哥哥聊了一下把 Saiblo 引入 DRL 课程的一些事，然而目前来看还是空中楼阁，所以这个话题进行了一半就回到了吐槽日常生活。</p>
+<p>晚上工位坐牢，今天还有不少事情要去处理，希望能够尽快解决吧。</p>
+<h1 id="section-10">2024.03.07</h1>
+<p>昨晚睡得很晚，因为没忍住开始做 maimai 分表了，这次学习了如何用 PPT 做视频，意外地还挺好用，效果也不错。唯一的坏处是，七点钟才爬上床。</p>
+<p>下午的组会说实话没啥好汇报的，总觉得自己很忙但是没啥好说的，只说了一句“在帮贾老师跑实验”似乎就没了，果然还是得在自己手上的项目上再下一些功夫，不然实在显得有点没有成果。</p>
+<p>今天整体来说还算干了不少事情的，主要的一件事还是和吴老师那边对了一下腾讯的工作。目前来看大方向需要做一些调整，先前我们一直希望聚焦于，或者至少侧重于将帧从解码器送往显示器的控制算法，然而这一部分面临两个问题，一个是优化空间实在太小，二个是评测指标很难完全规避 QoE 建模以及繁杂的用户实验。最终考虑下来，还是希望把 story 讲成比较全流程的送显优化，侧重于如何提高出解码器时间戳的预测准确度。这样的话，我目前要做的，就是多做点 WebRTC 等相关技术的调研工作了。</p>
+<p>晚上把 maimai 分表做了，然后还需要搞软工的事情以及 TON 的事情，希望能够尽快解决吧。</p>
+<h1 id="section-11">2024.03.08</h1>
+<p>今天是软工试讲，本来以为是随便搞搞的事情，但没有想到的是裴老师提出了很多很多的意见，甚至建议把授课结构都重组一下。虽然说哪怕没有裴老师的意见我也得重新洗一遍 PPT，只不过有了这个意见之后工作量肉眼可见地高了。</p>
+<p>讲完软工忍不住了，去出勤了，但是好久没有出勤手感冰凉，几乎什么都打不上，最后也只能遗憾退勤。</p>
+<p>实习那边似乎还是得我来处理静态资源的事情，TON 实验那边也开始回收实验结果，总之慢慢事情又堆起来了。</p>
+<h1 id="section-12">2024.03.09</h1>
+<p>周六，例行堵门出勤，本来打算解决雷切，结果今天打得头昏脑胀还没解决。</p>
+<p>工作稍微推进了一点吧，把小作业的 code base 搞好了，总之接下来的周日，又是辛苦的一天。</p>
+<h1 id="section-13">2024.03.10</h1>
+<p>现在有些不太好的征兆，就是渐渐地我开始拖延了，必须要想办法遏制住这一点。简单来说现在要干的事情也不少，但是似乎开始逐渐有了一些畏难情绪，不是很想把手放下来，这不行。</p>
+<p>今天在宿舍做了一天软工的 PPT，整体问题不大，但确实是花费了太多时间，晚上又是靠近五点多才睡觉。</p>
+<h1 id="section-14">2024.03.11</h1>
+<p>最近被雷切搞得心烦意乱，又没忍住决定出勤了，然而今天即使状态不错，雷切还是一直没能出分，现在 pc 数已经破百，我又开始质疑自己能否完成这一任务了。我一直都是把 maimai 当成自己发泄情绪的地方，用简单的身体运动和放空的大脑来休息，然而现在面临的问题就是似乎如果我 maimai 进度卡住，就会连带着一些负面情绪，反倒影响了自己的工作。</p>
+<p>想到这里，决定还是重整一下心情，迅速把手头一些简单的工作做掉，然后继续堆尸雷切。我自己毫不在意通过无数若干次的糊和抽奖来获得成绩，毕竟我的本质目的是放松心情而已。</p>
+<p>手上把实习的事情先解决掉吧，不算什么大事，但是不能一直烦我。</p>
+<hr />
+<p>不知不觉紫雷切的 pc 数来到了 146，说实话，在我推的时候已经隐隐约约有先前焦虑症复发的感觉了，直到店员闭店把电拔了才如梦初醒。</p>
+<p>似乎真的，最近 maimai 先放一放吧，至少这一周就先到此为止了，下一周把事情搞得七七八八再来摸索。</p>
+<h1 id="section-15">2024.03.12</h1>
+<p>今天早上去软工课上讲课，除了时间没有控制得很好之外，似乎其他的部分都很顺利。大家也都跟下来了七七八八，课后也有不少来问问题的小朋友，至少让我觉得我的努力没有白费。</p>
+<p>下午开始基本上就是娱乐了，中午和 wyx 见面吃了顿饭聊了不少天，下午则去上地陪空调出勤。这次出勤 End Time 和雷切都没有解决，不过现在也已经看开了，随便吧，什么时候解决，都是解决。现在 maimai 决定换个策略，就是按照查分器拟合定数倒序推 14.6+ 的鸟加，和之前打 14.2+ 的鸟加如出一辙。不过 14.6+ 难度还是很高，也不知道能不能顺利搞下来。</p>
+<p>回来之后已经累的七荤八素了，决定今天先摸鱼，明天做认真学习的好孩子。</p>
+<h1 id="section-16">2024.03.13</h1>
+<p>上课，然后出勤，然后鸟加雷切，然后回到宿舍补作业。</p>
+<p>说实话，现在越来越不是很清楚读博到底该干什么了，除了把贾老师的任务做掉，似乎真的没有什么一定要做的事情，这让我很迷茫，每天几乎都是在摸鱼度日。我在思考着到底要不要和老师还是谁简单聊聊现在的情况，然而和一些学长交流后，似乎这样的样态才更为常见。</p>
+<p>或许去读读 paper 积攒一些 idea 才是正确的路径，现在开始或许还不晚吧。</p>
+<p>后天还要早起去入职，今晚大概把事情清理一下，组会被训也拉倒了。</p>
+<h1 id="section-17">2024.03.14</h1>
+<p>组会并没有发生什么可以说的事情，基本上就是非常平淡地混了过去，组会后稍微折腾了一点事情之后还是选择了前往上地。不过这次组会还是确定了不少之后的路线的，比如说至少 NSDI 的论文得好好看了，然后和吴老师那边的项目也得好好推进了。</p>
+<p>出勤也并没有发生什么可以说的事情，因为解决了雷切，现在又回到了 14.6 不知道打什么的状态，目前可能还是先解决江江吧。</p>
+<p>明天得早期入职，希望不会有什么差错。</p>
+<h1 id="section-18">2024.03.15</h1>
+<p>早期前往腾讯办理入职，入职比我想象的要简单太多了，基本就是到地方之后领取一下东西就行。吴老师已经帮我申请了工位和办公电脑，早上基本上就是装好电脑之后，和吴老师简单聊了一下现在的工作情况，对接了一下两边的理解。</p>
+<p>目前来看，送显控制那篇论文比较麻烦，因为说实话想要在那么小的动作空间里面做出来可观的多目标优化还是很困难。现在是计划把 story 讲成队列优化，把撕裂这一项融入到帧率里面去（相当于搞成有效帧率），然后变成调节队列时有效帧率与延迟的 trade-off。把撕裂这么处理，主要是原先认为上半部分的撕裂可以忽略，在这个假设下撕裂里面能榨取出来的优化空间就很大，然而现在发现这个假设不成立，撕裂几乎是不可忍受的，也就是说，撕裂里面能够榨取的优化空间不多，不如合并到帧率里面。</p>
+<p>然后第二篇文章是画质感知流控，和黄老师 QARC 类似，但是要求更严格，因为云游戏场景下不能提前获取下一帧的内容，也不能使用 RL 模型来做画质评估。现在想做的就是从 decoder 里面拿到比较有用的消息去做画质感知，然后主动调整码率。然而这个工作，现在连数据集都没开始准备，所以还是得想想办法。</p>
+<p>今天坐班一天实在是太累了，不过想到以后还是能有点产出还是比较有期待感的。</p>
+<h1 id="section-19">2024.03.16</h1>
+<p>睡到了下午三四点钟才爬起来，下午非常平常地解决掉了软工的一些破事，然后晚上和 wyx 聊了很多。</p>
+<p>现在突然有感觉有点 out of control 了，必须赶快投入到工作中去，不能再摸鱼了。</p>
+<h1 id="section-20">2024.03.17</h1>
+<p>今天下午没有做什么特别的事情，也就是把软工的杂事清理了个七七八八。本来打算继续整理 TON 的实验，但是似乎因为畏难情绪和怕麻烦的心理没能做出多少进展，遂出勤。出勤倒是迅速解决了 Titania，然后把涡状银河研究了个七七八八。</p>
+<p>晚上回来折腾 TON 的实验，但是看起来还是有一些比较麻烦的点没能弄清楚，折腾来折腾去倒也就四点多了，明天还得去上班，不得不睡觉了。</p>
+<p>虽说今天实际上没什么有意义的成果，但总之我工作的动力还是在逐渐恢复的。现在看来，我工作的动力还真的就和 maimai 高度相关，之前卡雷切的时候工作也做不下去，现在 14.6 一帆风顺工作动力就一直存在。这种正相关性我也无法解释，虽说有点害怕这样的奇妙联系多半会让我工作很不顺畅，但是至少现在没啥大问题，不如就这样吧。</p>
+<h1 id="section-21">2024.03.18</h1>
+<p>早上去上班，今天大概就是把代码框架调了个七七八八，然后和吴老师讨论了一下怎么把撕裂融入到当前的框架中去，这个实验应该最近会很快赶出来。晚上顺手把 TON 的实验搞上了服务器，之后便吃了个饭就回来了。</p>
+<p>晚上按照惯例下班出勤，本来想的是随便打打，但是没有想到涡状银河很快就解决掉了。现在 14.6 大概剩下的都是一些不研究也没法打的东西，目前的计划是先从歌比较好听的 yorugao 入手，希望最近能打得下来吧。</p>
+<p>最近还有件事情就是 lcr 分手了，这件事情从头到尾都有一种我无法言说的不可理喻的感觉，我想去尝试理解，但是仔细想想还是算了，感情的事情终究还是交给他们自己消化吧。</p>
+<h1 id="section-22">2024.03.19</h1>
+<p>周二上班，今天主要还是把思路理清了一下，跑了一下原先说的撕裂融入到有效帧率之中的代码，也算是验证了撕裂这一侧几乎没有太大的调整空间这件事。目前详细 log 应该都打出来了，周五要和组长和老师讨论，目前应该是有能够汇报的东西，但是还需要一些整理和分析。</p>
+<p>晚上继续出勤，但是新奥的国服 maimai 真的是人太多了，一台机子 10 个人排卡，我本来下班也就只有三个小时出勤时间，这么搞的话我完全打不了什么东西。但是今天收获还是有的，就是提亚马特感觉快要开悟了，最近可以慢慢打提亚马特，然后其他时间打 yorugao。此外，在排队的间隙我去打了两三把中二，还是收获了不少 AJ 的，可能以后打打也不错。</p>
+<h1 id="section-23">2024.03.20</h1>
+<p>今天上课，没去上班。虽说晚上还是去出勤打了一晚上提亚马特，但是今天工作真的也不少，整理了组会汇报的论文，做了一下课内的作业，其他的一些事也七七八八做了点。</p>
+<p>说实话，由于事情还是比较杂，所以晚上通宵到了早八点，正巧赶上日本那边更新了 buddies plus，蹲了一小段时间 ysk 直播就睡了。buddies plus 我以为会有什么很大的更新，但是这次看下来还是小修小补，不知道下一个版本会有什么样的动作。</p>
+<p>今天除了做事就是打提亚马特，明天再来折腾 TON 实验、周五要讲的数据分析啥的吧。</p>
+<h1 id="section-24">2024.03.21</h1>
+<p>周四说实话还是混组会为主，不过还好，这周的组会简单讲了一下 AUGUR 的论文也就过去了，另外就是贾老师催了一下 TON，不过我还是把明天混过去再来考虑这些吧。</p>
+<p>晚上把实验挂上去之后就出勤打提亚马特，不太顺利地鸟加了之后很快退勤回去和学长去开会了。今天也大概是没有什么其他要说的工作进展的。</p>
+<h1 id="section-25">2024.03.22</h1>
+<p>今天比较低气压，原因很简单，被学长小训了一顿，虽然也算是意料之中。大概就是我在这个项目里面表现得兴趣平平，没有什么主观能动性。其实这个我算是早就有预备了，因为这个项目确实我一直没有能够找到什么头绪，然后想要去分析一点东西也不知道从哪里下手，加上我卡住的时候就会想出勤释放自己。不过被训了也算是好事，至少这些东西摊开来说了之后，也就没什么大不了的，不过之后得好好强迫自己动脑子思考了。</p>
+<p>项目具体来说的话今天还是弄明白了不少东西的，首先就是撕裂上几乎不太可能能压榨出什么有用的东西。中部撕裂不能允许，顶部撕裂即使全都解放了也很难在里面压榨出帧率和延迟优化。后续做了点 log 分析，帧率优化不动倒是有一些依据，毕竟 buffer 上限不动的话很难让有效帧数提升，但是延迟优化不动是有一些其他原因的。大概可以理解为如果说出现了状态切换导致队列积累，很有可能会在明明可以释放掉队列的地方持续导致延迟，所以说应当加入一些主动丢帧的策略来找延迟的低点。</p>
+<p>总之周末现在得去整理结果和尝试做一下主动丢帧模拟，还是强迫自己工作比较好。</p>
+<h1 id="section-26">2024.03.23</h1>
+<p>今天周六，例行的摸鱼日子，出了一天勤，拿下了 Yorugao，练习了一下鬼叫，手感不错，回来就早睡了。</p>
+<p>摸鱼的日子，还是比较舒服的。</p>
+<p>但是随着春天来到，最近心里那种莫名的忧郁感又开始浮现了，今天听了一整天的《下弦之月》，又开始怀念起一年前的五月，乃至不堪回首的两年前、三年前的五月。cmh 似乎计划五一前往日本，其实我也挺想去的，但我也只是想去而已，说白了目的地并不重要，我只是很想做点什么和当下无关的事情，有种想要挣脱一些束缚的冲动。当然，另一件让我很尴尬，或者更确切地称之为 awkward 的事情是，我并不是很想一个人去，但是我却始终不知道邀请谁，打 mai 的朋友固然关系很好，但是我一直不想和他们叙述心底这些奇了八怪的想法，东方群友？迅哥哥？Idol9？都不太适合，或许这些情感就该让我自己在漫天飞舞的花瓣中自己消化吧。</p>
+<p>なあ、今年もさ、桜が散ってしまうんだ。夢みたいに踊る桃色に騙されてしまいそうだ。</p>
+<p>《坠入地狱》也已经听了快两三年了，每到春天的时候，这句话，还是很戳我，然后，就开始莫名其妙地，郁闷。</p>
+<h1 id="section-27">2024.03.24</h1>
+<p>周日，做了一整天的工作，整理了一下数据和思路，结果发现完全没能找到什么有用的结果。</p>
+<p>最近心情一直比较低谷，也不知道什么时候才能重拾工作热情。</p>
+<h1 id="section-28">2024.03.25</h1>
+<p>周一去坐班，上午先和组长开会讨论了一些实现细节，下午本来想速战速决某些实验的，但实际是下午开始严重坐骨酸痛，最终只是把一些杂事处理了一下，然后就去出勤了。</p>
+<p>晚上实在是乏善可陈，只能说还是得赶快赶上工作。</p>
+<h1 id="section-29">2024.03.26</h1>
+<p>今天决定翘班，但说是翘班，只不过是打算今天不上班明天补上而已。上午的软工线下辅导，说实话实在是有点不对味，相比较于之前能有一个完整的教室和时间段，在课上嘈杂的环境中尝试教学，说实话真的收效甚微，最后我也算是放弃了，混过去之后就开始做一些自己的事情。</p>
+<p>下午出勤，速速解决掉削除鬼叫之后随手开了 End Time，本来只是想试试内屏会怎么样，结果直接飞上 100.48，后面又打了几把却一直没能复现当时完美的尾杀发挥。之后大概练了练图灵和 AMABIE 也就退勤了，14.6 剩下的果然一点都不好惹。</p>
+<p>晚上回来就是做事了，现在就是希望在 maimai 能稳步推进的时候工作也能有条不紊的进行。</p>
+<h1 id="section-30">2024.03.27</h1>
+<p>上班，然后做事，然后下班，然后出勤。之后就发现今天交的近世代数作业没做完，赶快回来补上。</p>
+<p>很郁闷，因为工作我一直不知道做的算好还是坏，也不知道未来到底是个什么样，这个博士读得一点没有底气。不过感觉，之前本科第一年的时候我也差不多是这么个样子，完全不知道自己应该去做些什么，然而当时大一的暑假还算是勇敢地拓宽了一下自己，但是博一目前来看好像还没有这样的契机。</p>
+<p>明天组会取消了，正好去打理一下自己吧。</p>
+<h1 id="section-31">2024.03.28</h1>
+<p>今天起来之后折腾了一下胡子和头发，洗了一波衣服之后就去出勤了，今天虽然最初是打皇冠，但是最终还是没能够拿下，最后就变成了几个人在打水神 2 接力。</p>
+<p>说实话，最近总有一种游离在失控边缘的感觉，总觉得应该去做些什么，但是只是止步于内耗，一直迈不出去任何有意义的一步。完全不知道怎么办，要不和学长在聊聊吧。</p>
+]]></content>
+      <categories>
+        <category>【生活记录】日记</category>
+      </categories>
+  </entry>
+  <entry>
     <title>JS 文件本地化</title>
     <url>/2022/08/20/blog-js-localize/</url>
     <content><![CDATA[<p>自从 JSDelivr 半挂了之后就一直在为这些事情苦恼。</p>
@@ -2819,6 +2790,38 @@
 <p>本来想尝试一下换其他的 CDN，但是怎么试都不算快。</p>
 <p>还是暴力解决方法比较好，我直接把 jQuery 等一系列常用的东西的 min JS 打包放在了自己博客文件夹内，每次请求只不过是访问本地文件，太完美了。</p>
 <p>虽然问题暂且是解决了，但是我还是觉得，为啥这些 CDN 会受限呢，真的和什么敏感领域有关吗。</p>
+]]></content>
+      <categories>
+        <category>【杂谈】开发</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>安卓前端开发杂谈</title>
+    <url>/2021/09/01/android-dev-exp-1/</url>
+    <content><![CDATA[<p>安卓的移动端开发，属实让我血压高了一小段时间。毕竟已经接触过类似于 React Native 那种基于 TypeScript 语言的、优秀的跨平台移动端框架，再去尝试用繁琐的 Java 语言写安卓前端自然是不适应且感到烦躁。</p>
+<p>但是毕竟是 Java 程序设计训练课程，安卓前端开发作为其最大的特色，不得不消受。</p>
+<span id="more"></span>
+<h1 id="关于数据绑定">关于数据绑定</h1>
+<p>如果要我说最大的不适应的地方，首先就是数据和图形界面的完全分离。在 React Native 框架之中，数据和图形界面的管理大概是这样的：</p>
+<figure class="highlight typescript"><figcaption><span>TypeScript</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> App = <span class="function">(<span class="params">props: AppProps</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// Set states &amp; initialize</span></span><br><span class="line">    <span class="keyword">const</span> [bar, setBar] = useState&lt;<span class="built_in">number</span>&gt;(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Some functions to update or rewrite data</span></span><br><span class="line">    <span class="keyword">const</span> update = <span class="function">() =&gt;</span> setBar(<span class="function">(<span class="params">o</span>) =&gt;</span> o + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Write UI with TSX, use data freely</span></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="xml"><span class="tag">&lt;<span class="name">View</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Text</span>&gt;</span> Hello world! <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;`The val of bar is $&#123;bar&#125;`&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;`Property foo is $&#123;props.foo&#125;`&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Button</span> <span class="attr">onClick</span>=<span class="string">&#123;update&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但是在安卓之中，图形界面完全定义在 <code>.xml</code> 文件之中，而且一定程度上其定义各个组件摆放方式的语法细节的繁杂程度不低于 HTML。而如果需要将数据载入图形界面，则首先要根据组件的 ID 获取组件，之后才能调用各种方法设定具体属性。</p>
+<figure class="highlight java"><figcaption><span>Java</span></figcaption><table><tr><td class="code"><pre><span class="line">((TextView) view.findViewById(R.id.entity_name)).setText(data.name);</span><br></pre></td></tr></table></figure>
+<p>这里出现的 <code>R</code> 类据说是相当厉害的。但是我第一次接触安卓的时候，这个符号给我带来的感觉就是不安，因为我再也不能像写 React Native 一样至少自认为自己掌握了程序之中的数据流。换一种说法，即使 React Native 可能做了很多背后工作，但它至少做到了让开发者在很多时候能直观引导数据流。</p>
+<p>对于按钮等组件，React Native 框架下可以直接传入回调函数。而众所周知 Java 是纯净的面向对象语言，怎么会有 lambda 这种异端呢（新版本的 Java 已经离经叛道了！）。</p>
+<p>所以你需要写监听器对象，重写其中的方法等等。</p>
+<hr />
+<p>并不是说这样不好，我还记得之前大一小学期的时候写 Qt 很多时候就是各种指针到处乱飞然后到处乱 <code>set</code> 这个那个的，最后一个 <code>draw</code> 函数里面上百行的，成块的各种格式设定、字体设定、内容设定、排列设定，然后这次写安卓让我回忆起了那一段黑暗时光。</p>
+<h1 id="并不适应的适配器模式">并不适应的适配器模式</h1>
+<p>如果只是想给一个 <code>TextView</code> 载入文字，直接几个 <code>set</code> 函数就结束了。但是给一个格式复杂的列表载入数据，则相当繁琐。比如说现在主流的 <code>RecyclerView</code>，其载入数据，就需要你自己编写一个数据适配器。</p>
+<p>我首先是上网找轮子，随后想了一下，干脆自己包装了个简单的 <code>RecyclerViewAdapter</code> 先勉强用用。</p>
+<p>将数据塞到图形界面上，最重要的三个东西是上下文、使用什么 <code>layout</code> 和数据本身，那么适配器的构造函数就需要接受这三项。然后就是平凡地重写 <code>RecyclerView.Adapter</code> 所要求的三个函数。不过这里我在重写 <code>onBindViewHolder</code> 的时候留了空，因为这里就是定义适配器最重要部分——数据如何映射到 UI 的函数。我将这一个函数设为虚函数，让子类继承重写就可以实现各种映射方式。最后的成果大致这样：</p>
+<figure class="highlight java"><figcaption><span>Java</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">RecyclerViewAdapter</span>&lt;<span class="title">T</span>&gt; <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">Adapter</span>&lt;<span class="title">RecyclerViewAdapter</span>.<span class="title">ViewHolder</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> Context mContext;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">int</span> mLayoutId;</span><br><span class="line">    <span class="keyword">protected</span> List&lt;T&gt; mData;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RecyclerViewAdapter</span><span class="params">(Context context, <span class="keyword">int</span> layoutId, List&lt;T&gt; data)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.mContext = context;</span><br><span class="line">        <span class="keyword">this</span>.mLayoutId = layoutId;</span><br><span class="line">        <span class="keyword">this</span>.mData = data;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="meta">@NonNull</span> <span class="function">ViewHolder <span class="title">onCreateViewHolder</span><span class="params">(<span class="meta">@NonNull</span> ViewGroup parent, <span class="keyword">int</span> viewType)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ViewHolder(</span><br><span class="line">                LayoutInflater.from(mContext).inflate(mLayoutId, parent, <span class="keyword">false</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBindViewHolder</span><span class="params">(<span class="meta">@NonNull</span> ViewHolder holder, <span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// <span class="doctag">TODO:</span> What is this?</span></span><br><span class="line">        <span class="comment">// holder.updatePosition(position);</span></span><br><span class="line">        <span class="keyword">this</span>.convert(holder, mData.get(position));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">convert</span><span class="params">(ViewHolder holder, T data)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getItemCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> mData.size();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ViewHolder</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">ViewHolder</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">private</span> View mConvertView;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">ViewHolder</span><span class="params">(View itemView)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>(itemView);</span><br><span class="line">            <span class="keyword">this</span>.mConvertView = itemView;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> &lt;K extends View&gt; <span class="function">K <span class="title">getViewById</span><span class="params">(<span class="keyword">int</span> viewId)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> (K) mConvertView.findViewById(viewId);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>用起来也简单，传入三个要素，之后重写 <code>convert</code> 方法定义一下数据到 UI 的映射就好了：</p>
+<figure class="highlight java"><figcaption><span>Java</span></figcaption><table><tr><td class="code"><pre><span class="line">binding.entityList.setAdapter(<span class="keyword">new</span> RecyclerViewAdapter&lt;Entity&gt;(</span><br><span class="line">    HomeFragment.<span class="keyword">this</span>.getActivity(), R.layout.home_entity_item, baseEntities</span><br><span class="line">) &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">convert</span><span class="params">(RecyclerViewAdapter.ViewHolder holder, Entity data)</span> </span>&#123;</span><br><span class="line">        ((TextView) holder.getViewById(R.id.entity_name)).setText(data.getLabel());</span><br><span class="line">        ((TextView) holder.getViewById(R.id.entity_category)).setText(data.getCategory());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>你会发现，这比 React Native 要写的东西多太多了。上面这么多需要折腾的，React Native 只需要这样写：</p>
+<figure class="highlight typescript"><figcaption><span>TypeScript</span></figcaption><table><tr><td class="code"><pre><span class="line">&lt;View&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        baseEntities.map(<span class="function">(<span class="params">val, ind</span>) =&gt;</span> (</span><br><span class="line">            <span class="xml"><span class="tag">&lt;<span class="name">View</span> <span class="attr">key</span>=<span class="string">&#123;ind&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;val.name&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;<span class="name">Text</span>&gt;</span> &#123;val.category&#125; <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span></span><br><span class="line">        ))</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/View&gt;</span><br></pre></td></tr></table></figure>
+<p>就可以实现一个列表了。</p>
+<p>Java 我写了一整个类，光数据转成 UI 也写了好几行长代码，这还没有算 <code>.xml</code> 文件。</p>
 ]]></content>
       <categories>
         <category>【杂谈】开发</category>
@@ -2870,64 +2873,6 @@ AK^2 = AO^2 - OK^2 + 2(KR^2 - RA^2)
 ]]></content>
       <categories>
         <category>【杂谈】数学</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>大二春季学期学期总结</title>
-    <url>/2021/06/19/grade-2-spring-conclusion/</url>
-    <content><![CDATA[<p>魔幻的大二春季学期最终还是随着自动机考试的结束而落幕了，随意写一点东西来总结一下吧。</p>
-<span id="more"></span>
-<p>虽然还没有出分，但我能够预料到这一学期如果按照绩点来评判，可以说过得十分坎坷。但是，这一学期还有更多的比绩点更值得重视的一些东西。</p>
-<h2 id="课内学习">课内学习</h2>
-<p>课内总体而言过得很不平凡，即使这一学期只有 24 学分的课程。与一年前那种 OOP 作业一发下来就赶快刷榜完成，高代选讲还愿意在课外学习很多内容的热情相比，我这一学期对课内显然是淡薄了很多。标志性的事件可以罗列出来：</p>
-<ul>
-<li><p>人智导 PA2 是在黄浦江上遥控卫爷写的，PA3 是在上海桌游店里打山屋惊魂的间隙交的</p></li>
-<li><p>在各种情况下写过数电实验报告，包括在人大门口醉酒的时候、在去上海的火车上、在轰趴的自动麻将机上（除了考试，我每一次实验的代码都是抄的）</p></li>
-<li><p>一个学期没有见过数电、自动机、人智导的老师，这三门课均让我在考试周通了宵（一个大二学生用 24 小时创造一个奇迹）</p></li>
-<li><p>软件工程大作业不到最后一周都没有认真写 UI</p></li>
-<li><p>高性能一气之下决定退课，虽然从未后悔过这个决定</p></li>
-<li><p>英语课一个学期就做了一份作业，占比最大的 Task C（团队 pre）只花了三四天准备</p></li>
-<li><p>物理实验报告分数为 9, 8.5, 8.7, 8, 8.7，上学期则是 9, 9, 9, 9.3, 9</p></li>
-</ul>
-<p>总之就是这学期浪了一些，或许是认清楚你清贵系的教学水平甚至还不如高中之后的一些合理举动。如果要我来评价大二下学期这些课程的话，我只能说除了《不朽的艺术》这一门课，其他的课程我丝毫没有觉得学习到了什么有用的东西。再加上期末四门专业课考试两门可以说出事故的情况，我更是愿意给这一学期以低评价。</p>
-<p>我大概算了一下，反正现在绩点的浮动不会多大，还不如抓紧时间，做一些我觉得有意义的事情。</p>
-<h2 id="thuinfo">THUInfo</h2>
-<p>我也说过，这是我唯一拿得出来的作品。虽然之前有写过一些小型项目，它们虽然也是我探索的足迹，但总体没有 THUInfo 给我带来的成就感大。</p>
-<p>但比较愧疚的是这一学期没有给 THUInfo 作出很大的贡献。寒假的时候翻新了“计划”功能，修了几个小 bug 之后，学期中除了加了比如说“今日高亮”这种小功能之外，我也就没有作出什么贡献了。</p>
-<p>但是，暑假确实是想要做很大的事情的。一方面是和校内 iOS Club 搭上了关系，对方也恰好想要找到一个重点支持的项目，双方互相需要，何乐而不为呢。通过它我们找到了美工，目前也有了一个较为简单的 UI 效果图（不得不说，做设计的就是做设计的）。另外一方面是<a href="https://www.zhihu.com/question/63407413">栋栋</a>加入了团队，总之多一个技能熟练的人手是很不错的。</p>
-<p>敬请期待暑假过后的 THUInfo 3 系列版本。</p>
-<h2 id="社工">社工</h2>
-<p>大一下学期一番折腾之后，一个学期没有加入任何学生组织。但是一个转变的契机就是 xge 和我说他和栋栋准备开发日麻，随后将我纳入了 308（科协 &amp; 算协活动室）常驻人员之中。在 308 蹲守的过程中，我也认识了科协的许多同学（再次点名“表扬”大恶人安頔）。最后决定加入科协，大概是那天去出去散心醉酒，隔天回校的时候恰好赶上 C 楼门口的智能体嘉年华。本来是不打算去的，想着去看看也没啥问题，就突然发现科协办的东西还挺有意思。随后又去蹭了智能体决赛，还坑了 Omega Fantasy 一顿饭。</p>
-<p>随后大约是某晚和安頔夜谈，经过一番交流，决定去混一个科协副主席。</p>
-<p>怎么说呢，或许真的是如同之前一些人的评价——“你大一下学期的那种情况实属罕见，哪有人开局社工就是王炸的”一般，社工并不是我想的那么不堪。现在大概是发现，有一群志同道合的人一起做事情是多么愉悦。</p>
-<h2 id="sakana">Sakana</h2>
-<p>这一段没有什么特别想说的，总之揭开了一些过往，给一些问题作出了解答，这应该也是这个学期我应该可以说最为重视的一件事。虽然有很多的小细节，有很多的瞬间，但还是就留下我之前发在空间里的一段话吧：</p>
-<blockquote class="blockquote-center">
-<p>虽然我真的不会挑时间，不会好好规划安排行程，或许会因为冲动把事情做得很离谱。 但真的感谢包容我的愚拙。</p>
-
-</blockquote>
-<h2 id="一些总结与闲话">一些总结与闲话</h2>
-<p>这一学期的 Holder 发生了相当大的改变，应该是真的去思考过我的大学应该如何度过这个问题了。之后就确立了“<strong>我要帮助后辈们尽可能少走弯路</strong>”这样的一个简单的目标，于是和改制的科协网络部不谋而合，于是和高中班主任谈好了回高中给学弟学妹讲数学竞赛。在确立好自己的真正想做的事情之后，便是卸下一些伪装。先前的我大概因为完全不能找到我自己的目标，而将自己浸没在无意义的内卷之中，也不敢面对自己的一些感情。这一切的一切，都在稍微通透之后被瓦解了。</p>
-<p>当然我感觉需要警惕的，就是我暂且需要约束一下自己无限膨胀的野心，不能给自己捞太多的锅，接太多的任务，应该让自己慢慢达到一种平衡。</p>
-<p>不如现在，来说说之后想要做的事情吧：</p>
-<ul>
-<li><p>接着跟进在刘知远实验室的任务，努力发篇文章，发完就撤退</p></li>
-<li><p>翻新 THUInfo 的 UI，开发一些新功能</p></li>
-<li><p>在科协把“技能引导文档”这件事做好，做到宣讲会上的“为了创建一个 user-friendly 的计算机系而奋斗”</p></li>
-<li><p>好好地生活，让自己的大学不仅仅是绩点和社工</p></li>
-</ul>
-<p>还有就是一些暑假要做的事情，比如说 GRE，比如说科目二，比如说回高中讲竞赛，比如尝试一下图形学。</p>
-<p>写这篇潦草的总结的时候，我应该还因为昨晚通宵复习自动机而头晕目眩，但是我的神志却异常清醒，因为我的大学似乎是真的开始了。</p>
-<p>我有分享歌词的习惯，这里也来一句吧。但不同于之前我喜欢分享那种长长的，哲学家写散文式的歌词，这个歌词很朴素：</p>
-<blockquote class="blockquote-center">
-<p>ケーキも大好き，君も大好き。</p>
-<p>——「とある一家の御茶会議」</p>
-
-</blockquote>
-<p>祝愿我余下的一半本科时光，能过得有意义。这里是 Holder，我们一起接着走下去吧。</p>
-]]></content>
-      <categories>
-        <category>【生活记录】学期总结</category>
       </categories>
   </entry>
   <entry>
@@ -3691,121 +3636,6 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 ]]></content>
       <categories>
         <category>【杂谈】数学</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>大三秋季学期学期总结</title>
-    <url>/2022/01/05/grade-3-autumn-conclusion/</url>
-    <content><![CDATA[<p>今天考完了最后一门《编译原理》，随后参加了年级会。这样看来，我的大三上学期，这个被学长们称为渡劫的学期，就这样平平无奇结束了。</p>
-<span id="more"></span>
-<h2 id="对自己的质疑">对自己的质疑</h2>
-<p>这学期之所以被称为渡劫，是因为按照教学计划计算机系的最核心的四大原理课是在这学期修读。这四大原理是《计算机组成原理》《计算机网络原理》《编译原理》《信号处理原理》。而我所说的对自己的质疑，就是我发现我完全对这四门课里的大部分提不起任何兴趣。</p>
-<p>在成为大三学生之前，我从未质疑过我为什么要来这个专业，甚至一定程度上庆幸虽然选择计算机是随大流，但自己却也莫名其妙混得不算差。大一和大二修读的课程，我大多都能学得比较明白，再不济也能做到考前 overfit 一波混个考试分数。得益于此，我大三之前的 GPA 可以说还挺不错的。</p>
-<p>但是进入大三之后，我明显感受到力不从心。比如说造计算机，其实我早就在《数字电路实验》这门大二下学期的入门课里面认识到了我似乎对硬件设计一窍不通，或者说完全没有一种愿意学习这类知识的冲动。另外比如说计算机网络相关，我对网络只是单纯知道一些简单的概念，深入了解却让我相当抗拒，我不是抗拒特定的课程，我是对整个计算机网络这个领域感到深刻的无力，甚至是生理性不适。</p>
-<p>所以我有意无意地拖延了造机，不到最后一周没有真正开工。我有意无意地只用一下午复习网原，有意无意地没有去任何一堂除了体育之外的课。</p>
-<p>因为我抗拒，我理解不了这些知识背后的逻辑，支撑着我学习新的领域的动力不能直接迁移到计组和网原这些课程上。</p>
-<p>与此对应的，我课余在尝试着学习一些数学，研究生方向也想尽量往数学相关方向贴近一下。在学习《信号组成原理》的时候，常常痛斥其数学基础不牢靠（毕竟是工科面向应用的学问，其宁愿牺牲严谨性也要保证易用性），也曾钻牛角尖一样地和别人争执过信号这门课里的数学体系是不是矛盾的。</p>
-<p>我发现我对知识有一点奇妙的偏执，我希望我学习的东西是体系的、有逻辑的，或者说我希望学习一个由人类<strong>发现</strong>的学科，而非由人类<strong>发明</strong>的学科。比如说网络协议往往充满了历史包袱、前人的失败经历、欠考虑的机制和随后而来的零碎补丁，它不是一个等待人类来发掘的逻辑体系，它本身就是人类在实践中堆叠的经验谈。与此类似的，还有我拒绝研究 CSS 的那一堆难以理解的属性，不想深究 Web 混沌初开时的前端技术。</p>
-<p>所以我开始反思，我或许真的应该当时听从一些劝诫去学习数学什么的，但实际上我也知道这不过是虚无的懊悔，不过是这山望着那山高般的幻觉。但基于这样的自我认识，我尝试着去选择和数学关系较大的计算机领域作为研究生方向，比如说渲染。</p>
-<h2 id="课内学习">课内学习</h2>
-<p>和之前说的一样，这学期六门课，四大原理加两门限选。网原和网安都是网络方向的课程，考试几乎全都是背诵就行，但悲哀的是我厌恶计算机网络，连课件都懒得打开看两眼。不过还好网安不难，但是网原我估计差不多就是 B+ / B / B- 里面随机给分了，自我认为 3.3 绝对不亏，3.6 绝对血赚。</p>
-<p>计组确实硬核，而且我也不喜欢写硬件语言，因为它思维逻辑和我常用的软件语言相当不同，所以造机大实验着实让我一个星期没睡好觉。但是计组和网原最大的不同是，计组学不好我认为原因是客观上我能力不行，网络学不好我认为原因是主观上我厌恶。所以即使计组不简单，考试也不简单，但我依然很努力地去学了三四天，虽然感觉也没考多好。</p>
-<p>编原今年史诗级削弱，取消实验考试改为期末周后的附加实验，删减考纲，降低试题难度，提升平时作业占比。就说最明显的，今天在考场上看到 SLR(1) 文法的题选的语言竟然是 <span class="math inline">\(\{a^n: n \geq 1\}\)</span> 的时候，我已经真的深刻领悟到，什么是把分送到你手上。</p>
-<p>信号原理自己学得挺开心，毕竟自己也喜欢有事没事钻一钻所谓事物本质的东西。比如说当我期末复习的时候，把数字滤波器、传递函数、 Z 变换、收敛域与系统性质那一套在课间上混乱不堪的概念理清楚的时候，自己真的有一种豁然开朗而想继续深入学习的感觉。</p>
-<hr />
-<p>要说总体的话，就是这学期估计 GPA 还得继续往下掉，但我也只能说 Who cares。大一大二到大三，自己也经历了微积分不考 4.0 就是挂科，数据结构 3.6 就是胜利到网原 3.3 也不算亏这一路的心态变化。</p>
-<p>但似乎 Holder 还是没有摆脱那一种奇妙的思维惯性，peer pressure 还是在隐隐约约给我带来一些不愉悦。</p>
-<h2 id="科协">科协</h2>
-<p>上学期奇妙地成为了副主席，那这学期就应该做点事情了。</p>
-<p>在还没有开始造机、造路由器之前，由于课业压力暂且还不大，我便抽了一点空余时间把技能引导文档搭建起来了，并且写了一些东西进去。</p>
-<p>技能引导文档大约是一种课程前置知识的补全，因为我确实见过不少同学都已经开始上课了，却连前置技术栈都不了解，最后只能网上随便找点资料混过去。秉持着能做点什么都是好的的想法，索性借着科协这个平台，搭建起了这样的一个文档共享的网站。</p>
-<p>但是随着造机、造路由器和期末周，文档维护也就暂且搁置。现在考试完了，寒假是一大波开工的好时机。</p>
-<hr />
-<p>说到科协就必须要提到安老板，就要提到我最终估计就会采纳安老板的提议，去媒体所混日子了。</p>
-<p>现在还在绝赞学习《GAMES101》，感觉自己摸鱼摸得太过了其实。</p>
-<h2 id="摸鱼摸鱼摸">摸鱼摸鱼摸</h2>
-<p>这个学期虽然很辛苦，但依然可以忙里偷闲摸不少鱼。小学期莫名其妙搞到了一个日区 App store 账号，于是又可以开始玩 Project Sekai 了。这种又有音游难度，又能抽抽卡养养妹子看看剧情的小游戏我确实喜欢，所以这个学期也基本一直都在玩，Phigros 基本都荒废了。</p>
-<p>要说还有什么的话，就是打牌，无穷无尽的打牌。毕竟打牌确实没那么多限制，特别是打网络麻将，随时随地就开一把打着玩就行。所以 Holder 倒也经常在学累了的时候开一把，消遣消遣倒也不错。考试周其实打了不少牌，基本上一天打五六把还是有可能的。可能也是频率上来了，这学期也总算把四人麻将打上玉之间了。</p>
-<p>除了网络麻将就是宿舍里搓牌，本学期最大的进展就是大约通过次世代认识了一些八字班学长一起打牌，不过确实也算是见识到了我这类图乐子打牌和认真打牌人的水平差距。</p>
-<hr />
-<p>另外可能就是通过 V+ 吹水群认识了另外一些人，平常也是交流交流 Vocaloid 相关，吹水聊天。可能偶尔会在周末的时候组织去国贸唱 K，自己也去过两三回了，确实是放松的好机会。</p>
-<p>不过也因此渐渐喜欢上了学习的时候唱歌，虽然之前也偶尔会这样，但是真正感觉有意识地哼唱一些歌还是这个学期的事情。</p>
-<h2 id="一些碎片">一些碎片</h2>
-<h3 id="小学期的精神问题">小学期的精神问题</h3>
-<p>暑假的时候我处于一种神经敏感的状态，整个人还在五月份那一次大崩溃的余震之中喜怒无常。而八月中旬的小学期，由于众所周知的屑课《Java 语言程序设计》，以及当时一些早已遗忘的情感问题的引子，Holder 又成功经历了一次情绪崩盘。</p>
-<p>大约，那某一个夜晚，在工物馆和美院停车场之间小路上，漫无目的地晃荡着和 Sakana 哭诉着的场景，是我小学期记忆最深刻的事情。</p>
-<h3 id="无界美术馆">无界美术馆</h3>
-<p>上海的一个美术馆，在一个周末 Holder 偷偷跑去和 Sakana 到那里参观去了。</p>
-<p>Holder 向来是不太解风情的，对这个美术馆里展出的那些灯光艺术、雕塑、投影交互等等作品，我只能说“好闪”“好亮”“好鲜艳”这些明显语言贫瘠的评价。所以说 Holder 还只能读死书，或者有事没事和舍友抬抬杠，精神世界倒也是一片荒芜。</p>
-<h3 id="造机的三星期">造机的三星期</h3>
-<p>其实我也说了，虽然造机确实给了三星期，但实际上我只在最后一个星期加紧做了不少事情。当时最喜欢的工作模式就是在 308 一个人坐着，手机挑一部没有很烧脑剧情的日常番，边看番边等 Vivado 编译或者看波形图。就这样半悠闲半紧张地工作着，倒也几天内写掉了不少东西。但平心而论，我依然没能从硬件设计中获取多少快乐，虽然最终看着自己写的 CPU 上能运行自己写的贪吃蛇游戏，但要让我回到那三星期，我说还不如打两三把牌。</p>
-<h2 id="所以呢">所以呢？</h2>
-<p>所以说大三上学期也就这样结束了，课业成绩并不理想，人也过得疲惫不堪，其中一大半责任是网原。但是换一种角度，我认识了新的一起打牌的朋友，认识了能和我一起唱 V 曲的同学，Project Sekai 时不时能抽出好看的角色，打牌虽然会恶调但确实缓解了一些紧张情绪。自己也逐步和自己和解，不再纠结于一些得失，自己也在尝试着尽力做一些帮助他人的事。</p>
-<p>所以其实我也不知道我这个学期究竟是什么样的，这篇总结我也写得磕磕绊绊不知道什么是这学期的主线。传统意义上四大原理的主线在我这里断裂了，因为我精力分配中它们并不优先。</p>
-<p>但总归是看到了本科生活的尽头，自己也已经有了意向性的导师，也对自己究竟想学什么、想做些什么有了模糊的应答。虽然还是时不时感叹我真的不适合计算机系，感叹自己怎么过得这么惨，时不时在空间或者朋友圈发一些意味不明的文字，但总体上 Holder 还是履行了上个学期的诺言，尽力地享受着自己的本科生活。</p>
-<p>寒假的话，可能要做不少事了。</p>
-<ul>
-<li><p>技能引导文档寒假宣传</p></li>
-<li><p>THUInfo 翻新</p></li>
-<li><p>实验室科研的一些事务</p></li>
-<li><p>自学一些数学以及日语</p></li>
-</ul>
-<p>下学期也选了若干看起来还挺有意思的课程，希望下学期能过得更快乐一些。</p>
-<blockquote class="blockquote-center">
-<p>失うことに慣れてく中で失くさずにいた大事な思いを、</p>
-<p>抱きしめたら不意に涙が落ちたのは、</p>
-<p>この街でまだ生きていたいと思うから。</p>
-<p>——「幽霊東京」</p>
-
-</blockquote>
-]]></content>
-      <categories>
-        <category>【生活记录】学期总结</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>大三秋季学期前的一些碎话</title>
-    <url>/2021/09/12/grade-3-autumn-preview/</url>
-    <content><![CDATA[<p>自己似乎就这样莫名其妙成为了一个大三学生，其实还隐隐约约记得一年前刚进实验室的时候刘知远的一句“没想到这么快八字班也要造机了啊”。现在想来，九字班这个词语从原先的代指新生，渐渐地变成了代指一群大三老油条，而自己的一字班学弟也正在憧憬着四年的本科时光，一时间竟觉得大学原来也快结束了。</p>
-<p>今夜突然接到 Sakana 的一句“我还是好焦虑”，唐突地自己也开始陷入了一种窘迫的心理。自己，真的准备好去迎接之后的生活了么。</p>
-<span id="more"></span>
-<h1 id="学业和大三的渡劫">学业和大三的渡劫</h1>
-<p>清华大学的计算机系向来会把大三上学期称为渡劫，原因是计算机核心专业课四大原理一大工程（计算机组成原理、计算机网络原理、编译原理、信号处理原理、软件工程）将会在一个学期内学习完成。虽然自己已经提前把软件工程这门课草草了结，但是作为一个对硬件和计算机系统没有感觉的人，四大原理就足以让我恐惧。已经能够预见到，将来的 Holder 或许会被造计算机、造路由器、造编译器、写 Matlab 处理信号等各种困难的作业包围，然后还要抽出时间应付掉 VLSI 和网安两门限选课的平时学习。</p>
-<p>其实也正如一些人对我的评价所说，我不是一个害怕困难或者折磨的人，但是我在受折磨的时候会习惯性一个人顶着。我只是默默地担心着自己的心理健康情况，自己这近几个月来时不时的情绪崩溃足以让我感到害怕。</p>
-<p>但实际上，我还是在安慰着自己没有问题，劝慰着自己造机造路由器会顺利，或许还会有点乐趣。也或许会安慰自己，信号处理原理全是微积分，自己微积分学得挺明白不用担心。然而即便如此，还是抵挡不住现在的焦虑和不安。</p>
-<h1 id="科研的不顺和前途的迷茫">科研的不顺和前途的迷茫</h1>
-<p>我大一就跑到组里去了，是一个进组挺早的人，家里人一直比较关心我这么早进组会怎么样，当时还不以为意，但现在看来还是有点不大行。过早的进组让我缺少时间去打基础而过快地投入到实际工作之中，我对人工智能的理解本身就是几乎为零，和同组的那些曾经 C++ 手搓神经网络的大神相比自然不可相提并论。想到自己每周二的组会都会想尽办法编造一个自己没认真做完事情的理由的时候，那种窘迫和尴尬又涌了上来。</p>
-<p>至今还记忆犹新的一个场景就是，中期汇报的时候刘知远老师在场，到我上去汇报的时候，应该是说出了大量幼稚或者说根本不合理的想法。那个时候刘知远说了这样一句：“现在 Holder 这个样子，我们需要反思一下我们的指导方式”。</p>
-<p>这种看似自责的说法实则，看得出来他们的意见。</p>
-<p>或许从那以后，我投入了大量的精力弥补我的基础，我开始看人工智能相关网课，从全联接层开始看到 CNN / RNN，再到 Encoder-decoder 或者 Transformer，然后开始使用 HuggingFace 的 BERT 和 T5 轮子，钻研 API 设计和源码。这一定程度上牵扯了我大量本应该用于课内的时间，但收获也是不错的，我 finetune 的 BERT 模型做出了被学长们称为“promising”的成果。</p>
-<p>但是后续是无休无止的挫败，我 T5 相关的工作至今都处于停滞状态。在那段时间，我经历了第一次情绪崩溃，一时间万念俱灰，每天醒来只有想睡回去的想法。那段时间，身体也一直不是很好，时不时就会有心脏疼的感觉。这种情况下的我，选择了实质上的彻底放弃，虽然一直没有和带我的学长提出我要退出。</p>
-<p>现在我也不想继续学习人工智能了，每每看到那些曾经熟悉且能熟练运用的数学公式、轮子、模型，只会让我想起那段折磨至极的时光。但大三上学期的我，早就已经浪费了一年的时光，现在的 Holder 的后路究竟如何，完全还是未知的，我该如何面临毕业，也还是未知的。</p>
-<h1 id="或许还是有些好消息的">或许还是有些好消息的</h1>
-<p>稍微能够宽慰我的，就是我现在过得还不错。至少我身边的一切，我的学业成绩、我的感情、我的朋友们、我的家人们都处于稳定的状态上，除了我自己的出路，其余暂且不需要我过多担心。</p>
-<p>这已经足够了，如果不去太担忧未来的不确定，活在当下自然是自由而快乐的。中厅的麻将还能用，新笔记本上还有若干没有玩的游戏，Sakana 还在身边，我还是有一群能聊得来的朋友，这一切的一切，暂且能够让我不再过分担忧今后。</p>
-<h1 id="holder-的一些自述">Holder 的一些自述</h1>
-<p>在别人眼中，特别是我高中的老师眼中，我是一个特别会规划的人。然而实际上，Holder 永远是一个走到哪里算哪里的人，只不过总是喜欢回忆，总是喜欢和过去的自己斤斤计较，懊恼于一时的失误。</p>
-<p>Holder 是一个喜欢沉浸在回忆中的人，我对过去的记忆可能过于清晰。我的一个习惯性动作是，无聊的时候将记忆中的场景构建出来，比如说尝试构建出：</p>
-<blockquote class="blockquote-center">
-<p>2018 年的 8 月份，在高中的三层小楼中，Holder 和同学们正在为升入高三做准备。除去我们升高三的理科实验班同学，其他人早已放假。那座小楼已经老旧不堪，空调毫无用处，电风扇没有力气。外面是炽热的阳光和扭曲的蝉鸣。</p>
-<p>Holder 趁着下课偷偷跑出小楼，听着下课铃在早已空荡的学校中回响。</p>
-
-</blockquote>
-<p>我或许会把这个场景构建得和刚经历差不多，然后自己沉浸在这个场景里回忆当时自己的所思所想。这个习惯来源于初中睡午觉，当时为了让自己快速入睡，就会使用这种方法——在脑海中完全重建回忆的场景，这种方法消耗脑力很多，有的时候没有构建完成就慢慢睡着了。</p>
-<p>这个习惯一般会让我很难忘记一些事情，但是坏处就是：</p>
-<blockquote class="blockquote-center">
-<p>我忘不掉一些应该忘却的事情。</p>
-
-</blockquote>
-<p>所以至今我的思维包袱是很重的，回忆构建的数据库足够庞大，能够支撑我思维的快速切换跳转和联想。但是一旦联想到一些本应该忘却的场景，比如说曾经的尴尬场面、自己伤害别人的行为，那 Holder 可能就会沉溺在这里，然后一遍一遍鞭尸自己。</p>
-<p>这还是挺折磨的，这让我很难聚焦于当下应该做的事。</p>
-<h1 id="所以说">所以说？</h1>
-<p>这些文字其实没有任何意义，可能明天起来就会觉得幼稚和不成熟，但是确实是现在困困的 Holder 想要记录下来的。</p>
-<p>Holder 就要成为大三的学生了，在此之前，12 号先要去北大吃一顿烤串，这足以让我暂且安静地睡去。</p>
-<p>晚安。</p>
-]]></content>
-      <categories>
-        <category>【生活记录】学期总结</category>
       </categories>
   </entry>
   <entry>
@@ -4622,6 +4452,179 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
       </categories>
   </entry>
   <entry>
+    <title>大二春季学期学期总结</title>
+    <url>/2021/06/19/grade-2-spring-conclusion/</url>
+    <content><![CDATA[<p>魔幻的大二春季学期最终还是随着自动机考试的结束而落幕了，随意写一点东西来总结一下吧。</p>
+<span id="more"></span>
+<p>虽然还没有出分，但我能够预料到这一学期如果按照绩点来评判，可以说过得十分坎坷。但是，这一学期还有更多的比绩点更值得重视的一些东西。</p>
+<h2 id="课内学习">课内学习</h2>
+<p>课内总体而言过得很不平凡，即使这一学期只有 24 学分的课程。与一年前那种 OOP 作业一发下来就赶快刷榜完成，高代选讲还愿意在课外学习很多内容的热情相比，我这一学期对课内显然是淡薄了很多。标志性的事件可以罗列出来：</p>
+<ul>
+<li><p>人智导 PA2 是在黄浦江上遥控卫爷写的，PA3 是在上海桌游店里打山屋惊魂的间隙交的</p></li>
+<li><p>在各种情况下写过数电实验报告，包括在人大门口醉酒的时候、在去上海的火车上、在轰趴的自动麻将机上（除了考试，我每一次实验的代码都是抄的）</p></li>
+<li><p>一个学期没有见过数电、自动机、人智导的老师，这三门课均让我在考试周通了宵（一个大二学生用 24 小时创造一个奇迹）</p></li>
+<li><p>软件工程大作业不到最后一周都没有认真写 UI</p></li>
+<li><p>高性能一气之下决定退课，虽然从未后悔过这个决定</p></li>
+<li><p>英语课一个学期就做了一份作业，占比最大的 Task C（团队 pre）只花了三四天准备</p></li>
+<li><p>物理实验报告分数为 9, 8.5, 8.7, 8, 8.7，上学期则是 9, 9, 9, 9.3, 9</p></li>
+</ul>
+<p>总之就是这学期浪了一些，或许是认清楚你清贵系的教学水平甚至还不如高中之后的一些合理举动。如果要我来评价大二下学期这些课程的话，我只能说除了《不朽的艺术》这一门课，其他的课程我丝毫没有觉得学习到了什么有用的东西。再加上期末四门专业课考试两门可以说出事故的情况，我更是愿意给这一学期以低评价。</p>
+<p>我大概算了一下，反正现在绩点的浮动不会多大，还不如抓紧时间，做一些我觉得有意义的事情。</p>
+<h2 id="thuinfo">THUInfo</h2>
+<p>我也说过，这是我唯一拿得出来的作品。虽然之前有写过一些小型项目，它们虽然也是我探索的足迹，但总体没有 THUInfo 给我带来的成就感大。</p>
+<p>但比较愧疚的是这一学期没有给 THUInfo 作出很大的贡献。寒假的时候翻新了“计划”功能，修了几个小 bug 之后，学期中除了加了比如说“今日高亮”这种小功能之外，我也就没有作出什么贡献了。</p>
+<p>但是，暑假确实是想要做很大的事情的。一方面是和校内 iOS Club 搭上了关系，对方也恰好想要找到一个重点支持的项目，双方互相需要，何乐而不为呢。通过它我们找到了美工，目前也有了一个较为简单的 UI 效果图（不得不说，做设计的就是做设计的）。另外一方面是<a href="https://www.zhihu.com/question/63407413">栋栋</a>加入了团队，总之多一个技能熟练的人手是很不错的。</p>
+<p>敬请期待暑假过后的 THUInfo 3 系列版本。</p>
+<h2 id="社工">社工</h2>
+<p>大一下学期一番折腾之后，一个学期没有加入任何学生组织。但是一个转变的契机就是 xge 和我说他和栋栋准备开发日麻，随后将我纳入了 308（科协 &amp; 算协活动室）常驻人员之中。在 308 蹲守的过程中，我也认识了科协的许多同学（再次点名“表扬”大恶人安頔）。最后决定加入科协，大概是那天去出去散心醉酒，隔天回校的时候恰好赶上 C 楼门口的智能体嘉年华。本来是不打算去的，想着去看看也没啥问题，就突然发现科协办的东西还挺有意思。随后又去蹭了智能体决赛，还坑了 Omega Fantasy 一顿饭。</p>
+<p>随后大约是某晚和安頔夜谈，经过一番交流，决定去混一个科协副主席。</p>
+<p>怎么说呢，或许真的是如同之前一些人的评价——“你大一下学期的那种情况实属罕见，哪有人开局社工就是王炸的”一般，社工并不是我想的那么不堪。现在大概是发现，有一群志同道合的人一起做事情是多么愉悦。</p>
+<h2 id="sakana">Sakana</h2>
+<p>这一段没有什么特别想说的，总之揭开了一些过往，给一些问题作出了解答，这应该也是这个学期我应该可以说最为重视的一件事。虽然有很多的小细节，有很多的瞬间，但还是就留下我之前发在空间里的一段话吧：</p>
+<blockquote class="blockquote-center">
+<p>虽然我真的不会挑时间，不会好好规划安排行程，或许会因为冲动把事情做得很离谱。 但真的感谢包容我的愚拙。</p>
+
+</blockquote>
+<h2 id="一些总结与闲话">一些总结与闲话</h2>
+<p>这一学期的 Holder 发生了相当大的改变，应该是真的去思考过我的大学应该如何度过这个问题了。之后就确立了“<strong>我要帮助后辈们尽可能少走弯路</strong>”这样的一个简单的目标，于是和改制的科协网络部不谋而合，于是和高中班主任谈好了回高中给学弟学妹讲数学竞赛。在确立好自己的真正想做的事情之后，便是卸下一些伪装。先前的我大概因为完全不能找到我自己的目标，而将自己浸没在无意义的内卷之中，也不敢面对自己的一些感情。这一切的一切，都在稍微通透之后被瓦解了。</p>
+<p>当然我感觉需要警惕的，就是我暂且需要约束一下自己无限膨胀的野心，不能给自己捞太多的锅，接太多的任务，应该让自己慢慢达到一种平衡。</p>
+<p>不如现在，来说说之后想要做的事情吧：</p>
+<ul>
+<li><p>接着跟进在刘知远实验室的任务，努力发篇文章，发完就撤退</p></li>
+<li><p>翻新 THUInfo 的 UI，开发一些新功能</p></li>
+<li><p>在科协把“技能引导文档”这件事做好，做到宣讲会上的“为了创建一个 user-friendly 的计算机系而奋斗”</p></li>
+<li><p>好好地生活，让自己的大学不仅仅是绩点和社工</p></li>
+</ul>
+<p>还有就是一些暑假要做的事情，比如说 GRE，比如说科目二，比如说回高中讲竞赛，比如尝试一下图形学。</p>
+<p>写这篇潦草的总结的时候，我应该还因为昨晚通宵复习自动机而头晕目眩，但是我的神志却异常清醒，因为我的大学似乎是真的开始了。</p>
+<p>我有分享歌词的习惯，这里也来一句吧。但不同于之前我喜欢分享那种长长的，哲学家写散文式的歌词，这个歌词很朴素：</p>
+<blockquote class="blockquote-center">
+<p>ケーキも大好き，君も大好き。</p>
+<p>——「とある一家の御茶会議」</p>
+
+</blockquote>
+<p>祝愿我余下的一半本科时光，能过得有意义。这里是 Holder，我们一起接着走下去吧。</p>
+]]></content>
+      <categories>
+        <category>【生活记录】学期总结</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>大三秋季学期学期总结</title>
+    <url>/2022/01/05/grade-3-autumn-conclusion/</url>
+    <content><![CDATA[<p>今天考完了最后一门《编译原理》，随后参加了年级会。这样看来，我的大三上学期，这个被学长们称为渡劫的学期，就这样平平无奇结束了。</p>
+<span id="more"></span>
+<h2 id="对自己的质疑">对自己的质疑</h2>
+<p>这学期之所以被称为渡劫，是因为按照教学计划计算机系的最核心的四大原理课是在这学期修读。这四大原理是《计算机组成原理》《计算机网络原理》《编译原理》《信号处理原理》。而我所说的对自己的质疑，就是我发现我完全对这四门课里的大部分提不起任何兴趣。</p>
+<p>在成为大三学生之前，我从未质疑过我为什么要来这个专业，甚至一定程度上庆幸虽然选择计算机是随大流，但自己却也莫名其妙混得不算差。大一和大二修读的课程，我大多都能学得比较明白，再不济也能做到考前 overfit 一波混个考试分数。得益于此，我大三之前的 GPA 可以说还挺不错的。</p>
+<p>但是进入大三之后，我明显感受到力不从心。比如说造计算机，其实我早就在《数字电路实验》这门大二下学期的入门课里面认识到了我似乎对硬件设计一窍不通，或者说完全没有一种愿意学习这类知识的冲动。另外比如说计算机网络相关，我对网络只是单纯知道一些简单的概念，深入了解却让我相当抗拒，我不是抗拒特定的课程，我是对整个计算机网络这个领域感到深刻的无力，甚至是生理性不适。</p>
+<p>所以我有意无意地拖延了造机，不到最后一周没有真正开工。我有意无意地只用一下午复习网原，有意无意地没有去任何一堂除了体育之外的课。</p>
+<p>因为我抗拒，我理解不了这些知识背后的逻辑，支撑着我学习新的领域的动力不能直接迁移到计组和网原这些课程上。</p>
+<p>与此对应的，我课余在尝试着学习一些数学，研究生方向也想尽量往数学相关方向贴近一下。在学习《信号组成原理》的时候，常常痛斥其数学基础不牢靠（毕竟是工科面向应用的学问，其宁愿牺牲严谨性也要保证易用性），也曾钻牛角尖一样地和别人争执过信号这门课里的数学体系是不是矛盾的。</p>
+<p>我发现我对知识有一点奇妙的偏执，我希望我学习的东西是体系的、有逻辑的，或者说我希望学习一个由人类<strong>发现</strong>的学科，而非由人类<strong>发明</strong>的学科。比如说网络协议往往充满了历史包袱、前人的失败经历、欠考虑的机制和随后而来的零碎补丁，它不是一个等待人类来发掘的逻辑体系，它本身就是人类在实践中堆叠的经验谈。与此类似的，还有我拒绝研究 CSS 的那一堆难以理解的属性，不想深究 Web 混沌初开时的前端技术。</p>
+<p>所以我开始反思，我或许真的应该当时听从一些劝诫去学习数学什么的，但实际上我也知道这不过是虚无的懊悔，不过是这山望着那山高般的幻觉。但基于这样的自我认识，我尝试着去选择和数学关系较大的计算机领域作为研究生方向，比如说渲染。</p>
+<h2 id="课内学习">课内学习</h2>
+<p>和之前说的一样，这学期六门课，四大原理加两门限选。网原和网安都是网络方向的课程，考试几乎全都是背诵就行，但悲哀的是我厌恶计算机网络，连课件都懒得打开看两眼。不过还好网安不难，但是网原我估计差不多就是 B+ / B / B- 里面随机给分了，自我认为 3.3 绝对不亏，3.6 绝对血赚。</p>
+<p>计组确实硬核，而且我也不喜欢写硬件语言，因为它思维逻辑和我常用的软件语言相当不同，所以造机大实验着实让我一个星期没睡好觉。但是计组和网原最大的不同是，计组学不好我认为原因是客观上我能力不行，网络学不好我认为原因是主观上我厌恶。所以即使计组不简单，考试也不简单，但我依然很努力地去学了三四天，虽然感觉也没考多好。</p>
+<p>编原今年史诗级削弱，取消实验考试改为期末周后的附加实验，删减考纲，降低试题难度，提升平时作业占比。就说最明显的，今天在考场上看到 SLR(1) 文法的题选的语言竟然是 <span class="math inline">\(\{a^n: n \geq 1\}\)</span> 的时候，我已经真的深刻领悟到，什么是把分送到你手上。</p>
+<p>信号原理自己学得挺开心，毕竟自己也喜欢有事没事钻一钻所谓事物本质的东西。比如说当我期末复习的时候，把数字滤波器、传递函数、 Z 变换、收敛域与系统性质那一套在课间上混乱不堪的概念理清楚的时候，自己真的有一种豁然开朗而想继续深入学习的感觉。</p>
+<hr />
+<p>要说总体的话，就是这学期估计 GPA 还得继续往下掉，但我也只能说 Who cares。大一大二到大三，自己也经历了微积分不考 4.0 就是挂科，数据结构 3.6 就是胜利到网原 3.3 也不算亏这一路的心态变化。</p>
+<p>但似乎 Holder 还是没有摆脱那一种奇妙的思维惯性，peer pressure 还是在隐隐约约给我带来一些不愉悦。</p>
+<h2 id="科协">科协</h2>
+<p>上学期奇妙地成为了副主席，那这学期就应该做点事情了。</p>
+<p>在还没有开始造机、造路由器之前，由于课业压力暂且还不大，我便抽了一点空余时间把技能引导文档搭建起来了，并且写了一些东西进去。</p>
+<p>技能引导文档大约是一种课程前置知识的补全，因为我确实见过不少同学都已经开始上课了，却连前置技术栈都不了解，最后只能网上随便找点资料混过去。秉持着能做点什么都是好的的想法，索性借着科协这个平台，搭建起了这样的一个文档共享的网站。</p>
+<p>但是随着造机、造路由器和期末周，文档维护也就暂且搁置。现在考试完了，寒假是一大波开工的好时机。</p>
+<hr />
+<p>说到科协就必须要提到安老板，就要提到我最终估计就会采纳安老板的提议，去媒体所混日子了。</p>
+<p>现在还在绝赞学习《GAMES101》，感觉自己摸鱼摸得太过了其实。</p>
+<h2 id="摸鱼摸鱼摸">摸鱼摸鱼摸</h2>
+<p>这个学期虽然很辛苦，但依然可以忙里偷闲摸不少鱼。小学期莫名其妙搞到了一个日区 App store 账号，于是又可以开始玩 Project Sekai 了。这种又有音游难度，又能抽抽卡养养妹子看看剧情的小游戏我确实喜欢，所以这个学期也基本一直都在玩，Phigros 基本都荒废了。</p>
+<p>要说还有什么的话，就是打牌，无穷无尽的打牌。毕竟打牌确实没那么多限制，特别是打网络麻将，随时随地就开一把打着玩就行。所以 Holder 倒也经常在学累了的时候开一把，消遣消遣倒也不错。考试周其实打了不少牌，基本上一天打五六把还是有可能的。可能也是频率上来了，这学期也总算把四人麻将打上玉之间了。</p>
+<p>除了网络麻将就是宿舍里搓牌，本学期最大的进展就是大约通过次世代认识了一些八字班学长一起打牌，不过确实也算是见识到了我这类图乐子打牌和认真打牌人的水平差距。</p>
+<hr />
+<p>另外可能就是通过 V+ 吹水群认识了另外一些人，平常也是交流交流 Vocaloid 相关，吹水聊天。可能偶尔会在周末的时候组织去国贸唱 K，自己也去过两三回了，确实是放松的好机会。</p>
+<p>不过也因此渐渐喜欢上了学习的时候唱歌，虽然之前也偶尔会这样，但是真正感觉有意识地哼唱一些歌还是这个学期的事情。</p>
+<h2 id="一些碎片">一些碎片</h2>
+<h3 id="小学期的精神问题">小学期的精神问题</h3>
+<p>暑假的时候我处于一种神经敏感的状态，整个人还在五月份那一次大崩溃的余震之中喜怒无常。而八月中旬的小学期，由于众所周知的屑课《Java 语言程序设计》，以及当时一些早已遗忘的情感问题的引子，Holder 又成功经历了一次情绪崩盘。</p>
+<p>大约，那某一个夜晚，在工物馆和美院停车场之间小路上，漫无目的地晃荡着和 Sakana 哭诉着的场景，是我小学期记忆最深刻的事情。</p>
+<h3 id="无界美术馆">无界美术馆</h3>
+<p>上海的一个美术馆，在一个周末 Holder 偷偷跑去和 Sakana 到那里参观去了。</p>
+<p>Holder 向来是不太解风情的，对这个美术馆里展出的那些灯光艺术、雕塑、投影交互等等作品，我只能说“好闪”“好亮”“好鲜艳”这些明显语言贫瘠的评价。所以说 Holder 还只能读死书，或者有事没事和舍友抬抬杠，精神世界倒也是一片荒芜。</p>
+<h3 id="造机的三星期">造机的三星期</h3>
+<p>其实我也说了，虽然造机确实给了三星期，但实际上我只在最后一个星期加紧做了不少事情。当时最喜欢的工作模式就是在 308 一个人坐着，手机挑一部没有很烧脑剧情的日常番，边看番边等 Vivado 编译或者看波形图。就这样半悠闲半紧张地工作着，倒也几天内写掉了不少东西。但平心而论，我依然没能从硬件设计中获取多少快乐，虽然最终看着自己写的 CPU 上能运行自己写的贪吃蛇游戏，但要让我回到那三星期，我说还不如打两三把牌。</p>
+<h2 id="所以呢">所以呢？</h2>
+<p>所以说大三上学期也就这样结束了，课业成绩并不理想，人也过得疲惫不堪，其中一大半责任是网原。但是换一种角度，我认识了新的一起打牌的朋友，认识了能和我一起唱 V 曲的同学，Project Sekai 时不时能抽出好看的角色，打牌虽然会恶调但确实缓解了一些紧张情绪。自己也逐步和自己和解，不再纠结于一些得失，自己也在尝试着尽力做一些帮助他人的事。</p>
+<p>所以其实我也不知道我这个学期究竟是什么样的，这篇总结我也写得磕磕绊绊不知道什么是这学期的主线。传统意义上四大原理的主线在我这里断裂了，因为我精力分配中它们并不优先。</p>
+<p>但总归是看到了本科生活的尽头，自己也已经有了意向性的导师，也对自己究竟想学什么、想做些什么有了模糊的应答。虽然还是时不时感叹我真的不适合计算机系，感叹自己怎么过得这么惨，时不时在空间或者朋友圈发一些意味不明的文字，但总体上 Holder 还是履行了上个学期的诺言，尽力地享受着自己的本科生活。</p>
+<p>寒假的话，可能要做不少事了。</p>
+<ul>
+<li><p>技能引导文档寒假宣传</p></li>
+<li><p>THUInfo 翻新</p></li>
+<li><p>实验室科研的一些事务</p></li>
+<li><p>自学一些数学以及日语</p></li>
+</ul>
+<p>下学期也选了若干看起来还挺有意思的课程，希望下学期能过得更快乐一些。</p>
+<blockquote class="blockquote-center">
+<p>失うことに慣れてく中で失くさずにいた大事な思いを、</p>
+<p>抱きしめたら不意に涙が落ちたのは、</p>
+<p>この街でまだ生きていたいと思うから。</p>
+<p>——「幽霊東京」</p>
+
+</blockquote>
+]]></content>
+      <categories>
+        <category>【生活记录】学期总结</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>大三秋季学期前的一些碎话</title>
+    <url>/2021/09/12/grade-3-autumn-preview/</url>
+    <content><![CDATA[<p>自己似乎就这样莫名其妙成为了一个大三学生，其实还隐隐约约记得一年前刚进实验室的时候刘知远的一句“没想到这么快八字班也要造机了啊”。现在想来，九字班这个词语从原先的代指新生，渐渐地变成了代指一群大三老油条，而自己的一字班学弟也正在憧憬着四年的本科时光，一时间竟觉得大学原来也快结束了。</p>
+<p>今夜突然接到 Sakana 的一句“我还是好焦虑”，唐突地自己也开始陷入了一种窘迫的心理。自己，真的准备好去迎接之后的生活了么。</p>
+<span id="more"></span>
+<h1 id="学业和大三的渡劫">学业和大三的渡劫</h1>
+<p>清华大学的计算机系向来会把大三上学期称为渡劫，原因是计算机核心专业课四大原理一大工程（计算机组成原理、计算机网络原理、编译原理、信号处理原理、软件工程）将会在一个学期内学习完成。虽然自己已经提前把软件工程这门课草草了结，但是作为一个对硬件和计算机系统没有感觉的人，四大原理就足以让我恐惧。已经能够预见到，将来的 Holder 或许会被造计算机、造路由器、造编译器、写 Matlab 处理信号等各种困难的作业包围，然后还要抽出时间应付掉 VLSI 和网安两门限选课的平时学习。</p>
+<p>其实也正如一些人对我的评价所说，我不是一个害怕困难或者折磨的人，但是我在受折磨的时候会习惯性一个人顶着。我只是默默地担心着自己的心理健康情况，自己这近几个月来时不时的情绪崩溃足以让我感到害怕。</p>
+<p>但实际上，我还是在安慰着自己没有问题，劝慰着自己造机造路由器会顺利，或许还会有点乐趣。也或许会安慰自己，信号处理原理全是微积分，自己微积分学得挺明白不用担心。然而即便如此，还是抵挡不住现在的焦虑和不安。</p>
+<h1 id="科研的不顺和前途的迷茫">科研的不顺和前途的迷茫</h1>
+<p>我大一就跑到组里去了，是一个进组挺早的人，家里人一直比较关心我这么早进组会怎么样，当时还不以为意，但现在看来还是有点不大行。过早的进组让我缺少时间去打基础而过快地投入到实际工作之中，我对人工智能的理解本身就是几乎为零，和同组的那些曾经 C++ 手搓神经网络的大神相比自然不可相提并论。想到自己每周二的组会都会想尽办法编造一个自己没认真做完事情的理由的时候，那种窘迫和尴尬又涌了上来。</p>
+<p>至今还记忆犹新的一个场景就是，中期汇报的时候刘知远老师在场，到我上去汇报的时候，应该是说出了大量幼稚或者说根本不合理的想法。那个时候刘知远说了这样一句：“现在 Holder 这个样子，我们需要反思一下我们的指导方式”。</p>
+<p>这种看似自责的说法实则，看得出来他们的意见。</p>
+<p>或许从那以后，我投入了大量的精力弥补我的基础，我开始看人工智能相关网课，从全联接层开始看到 CNN / RNN，再到 Encoder-decoder 或者 Transformer，然后开始使用 HuggingFace 的 BERT 和 T5 轮子，钻研 API 设计和源码。这一定程度上牵扯了我大量本应该用于课内的时间，但收获也是不错的，我 finetune 的 BERT 模型做出了被学长们称为“promising”的成果。</p>
+<p>但是后续是无休无止的挫败，我 T5 相关的工作至今都处于停滞状态。在那段时间，我经历了第一次情绪崩溃，一时间万念俱灰，每天醒来只有想睡回去的想法。那段时间，身体也一直不是很好，时不时就会有心脏疼的感觉。这种情况下的我，选择了实质上的彻底放弃，虽然一直没有和带我的学长提出我要退出。</p>
+<p>现在我也不想继续学习人工智能了，每每看到那些曾经熟悉且能熟练运用的数学公式、轮子、模型，只会让我想起那段折磨至极的时光。但大三上学期的我，早就已经浪费了一年的时光，现在的 Holder 的后路究竟如何，完全还是未知的，我该如何面临毕业，也还是未知的。</p>
+<h1 id="或许还是有些好消息的">或许还是有些好消息的</h1>
+<p>稍微能够宽慰我的，就是我现在过得还不错。至少我身边的一切，我的学业成绩、我的感情、我的朋友们、我的家人们都处于稳定的状态上，除了我自己的出路，其余暂且不需要我过多担心。</p>
+<p>这已经足够了，如果不去太担忧未来的不确定，活在当下自然是自由而快乐的。中厅的麻将还能用，新笔记本上还有若干没有玩的游戏，Sakana 还在身边，我还是有一群能聊得来的朋友，这一切的一切，暂且能够让我不再过分担忧今后。</p>
+<h1 id="holder-的一些自述">Holder 的一些自述</h1>
+<p>在别人眼中，特别是我高中的老师眼中，我是一个特别会规划的人。然而实际上，Holder 永远是一个走到哪里算哪里的人，只不过总是喜欢回忆，总是喜欢和过去的自己斤斤计较，懊恼于一时的失误。</p>
+<p>Holder 是一个喜欢沉浸在回忆中的人，我对过去的记忆可能过于清晰。我的一个习惯性动作是，无聊的时候将记忆中的场景构建出来，比如说尝试构建出：</p>
+<blockquote class="blockquote-center">
+<p>2018 年的 8 月份，在高中的三层小楼中，Holder 和同学们正在为升入高三做准备。除去我们升高三的理科实验班同学，其他人早已放假。那座小楼已经老旧不堪，空调毫无用处，电风扇没有力气。外面是炽热的阳光和扭曲的蝉鸣。</p>
+<p>Holder 趁着下课偷偷跑出小楼，听着下课铃在早已空荡的学校中回响。</p>
+
+</blockquote>
+<p>我或许会把这个场景构建得和刚经历差不多，然后自己沉浸在这个场景里回忆当时自己的所思所想。这个习惯来源于初中睡午觉，当时为了让自己快速入睡，就会使用这种方法——在脑海中完全重建回忆的场景，这种方法消耗脑力很多，有的时候没有构建完成就慢慢睡着了。</p>
+<p>这个习惯一般会让我很难忘记一些事情，但是坏处就是：</p>
+<blockquote class="blockquote-center">
+<p>我忘不掉一些应该忘却的事情。</p>
+
+</blockquote>
+<p>所以至今我的思维包袱是很重的，回忆构建的数据库足够庞大，能够支撑我思维的快速切换跳转和联想。但是一旦联想到一些本应该忘却的场景，比如说曾经的尴尬场面、自己伤害别人的行为，那 Holder 可能就会沉溺在这里，然后一遍一遍鞭尸自己。</p>
+<p>这还是挺折磨的，这让我很难聚焦于当下应该做的事。</p>
+<h1 id="所以说">所以说？</h1>
+<p>这些文字其实没有任何意义，可能明天起来就会觉得幼稚和不成熟，但是确实是现在困困的 Holder 想要记录下来的。</p>
+<p>Holder 就要成为大三的学生了，在此之前，12 号先要去北大吃一顿烤串，这足以让我暂且安静地睡去。</p>
+<p>晚安。</p>
+]]></content>
+      <categories>
+        <category>【生活记录】学期总结</category>
+      </categories>
+  </entry>
+  <entry>
     <title>大三春季学期学期总结</title>
     <url>/2022/07/07/grade-3-spring-conclusion/</url>
     <content><![CDATA[<p>这个学期说实话比较不太平凡。</p>
@@ -4851,41 +4854,6 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 ]]></content>
       <categories>
         <category>【导航】</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>摸索 NexT 注入实录与实现振假名渲染</title>
-    <url>/2022/08/20/inject-ruby/</url>
-    <content><![CDATA[<p>由于日语文本中经常出现振假名（可以理解为国内小学课本上汉字上的拼音），但是 Markdown 并没有方便的振假名语法，所以只能摸索了。</p>
-<span id="more"></span>
-<p>首先是我们注意到 HTML 是有振假名相关的标签的，但是实在是太长了：</p>
-<figure class="highlight html"><figcaption><span>HTML</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ruby</span>&gt;</span> WRITTEN <span class="tag">&lt;<span class="name">rp</span>&gt;</span>(<span class="tag">&lt;/<span class="name">rp</span>&gt;</span><span class="tag">&lt;<span class="name">rt</span>&gt;</span> READ <span class="tag">&lt;/<span class="name">rt</span>&gt;</span><span class="tag">&lt;<span class="name">rp</span>&gt;</span>)<span class="tag">&lt;/<span class="name">rp</span>&gt;</span><span class="tag">&lt;/<span class="name">ruby</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>那么为了解决这个问题，有两种选择：</p>
-<ul>
-<li>定义一种新的 Markdown 语法，在将 Raw Markdown 传入解释器之前先做一步正则替换，将自定义的语法替换为 HTML 标签</li>
-<li>在渲染后的 HTML 标签中找到所有打过标记的节点，将其替换为 <code>&lt;ruby&gt;</code> 标签</li>
-</ul>
-<p>我一开始是摸索第一种解决方式的，然后遍历了一波 Hexo 的 Markdown Parser 的文档，没有找到如何解决这个问题。</p>
-<p>我之所以想到这个解决方案，是因为之前有一个 VSCode 的 Markdown 插件提供了一个 <code>onWillParseMarkdown</code> 的函数，用户可以通过其参数获得 Raw Markdown，然后自行处理后返回交给解释器。</p>
-<p>但是 Hexo 似乎并没有给我开这个后门。</p>
-<hr />
-<p>于是只能思考第二种解决方案，这个时候我想到了 NexT 注入。</p>
-<p>因为先前编写过 Twikoo Recent Comments，就是现在我的网站侧边栏上展现的最近评论，其就是在 <code>sidebar.njk</code> 内注入一个指定 <code>class</code> 的容器，然后在 <code>head.njk</code> 内部利用 jQuery 首先拉取最近评论然后再处理为列表项塞到指定容器中的。</p>
-<p>那么我们考虑到，Markdown 的代码块会被渲染为 <code>&lt;code&gt;</code> 标签，我们完全可以利用此特性。而我们为这些需要替换的标签打的标记就是其以 <code>@</code> 开头并且用空格分为三块，我们识别到这个标记就进行替换。</p>
-<p>我们只需要注入这样一段代码：</p>
-<figure class="highlight javascript"><figcaption><span>JavaScript</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">replaceRuby</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    $(<span class="string">&#x27;code&#x27;</span>)</span><br><span class="line">        .filter(<span class="function">(<span class="params">_, node</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">var</span> list = $(node).text().split(<span class="string">&#x27; &#x27;</span>);</span><br><span class="line">            <span class="keyword">return</span> list.length === <span class="number">3</span> &amp;&amp; list[<span class="number">0</span>] === <span class="string">&quot;@&quot;</span>;</span><br><span class="line">        &#125;)</span><br><span class="line">        .replaceWith(<span class="function">(<span class="params">_, text</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">var</span> list = text.split(<span class="string">&#x27; &#x27;</span>);</span><br><span class="line">            <span class="keyword">var</span> written = list[<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">var</span> read = list[<span class="number">2</span>];</span><br><span class="line">            <span class="keyword">return</span> $(<span class="string">`&lt;ruby&gt;<span class="subst">$&#123;written&#125;</span>&lt;rp&gt;(&lt;/rp&gt;&lt;rt&gt;<span class="subst">$&#123;read&#125;</span>&lt;/rt&gt;&lt;rp&gt;)&lt;/rp&gt;&lt;/ruby&gt;`</span>);</span><br><span class="line">        &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这样我们就可以用类似：</p>
-<figure class="highlight markdown"><figcaption><span>Markdown</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="code">`@ WRITTEN READ`</span></span><br></pre></td></tr></table></figure>
-<p>的语法书写振假名。</p>
-<p>效果的话可以看下述歌词的渲染效果：</p>
-<div class="note info no-icon"><p><code>@ 言葉 ことば</code>より<code>@ 単純 たんじゅん</code>な<code>@ 方法 ほうほう</code>で、いますぐ<code>@ 地獄 じごく</code>に<code>@ 落 お</code>としてくれよ。さよならはあんたも<code>@ 知 し</code>っている、<code>@ 笑 わら</code>ってくれよ、<code>@ 笑 わら</code>ってくれよ、いますぐに。</p>
-</div>
-<p>总之，这样就可以很方便地写振假名了，之后应该会逐步在涉及到日语的地方把之前的旧写法更换成新写法。</p>
-<hr />
-<p>另外还有一个小细节，似乎部署后访问字体会出现 403，根据 <a href="https://github.com/theme-next/hexo-theme-next/issues/613">相关 Issue 的提示</a>，应该是 Referrer 的问题。</p>
-]]></content>
-      <categories>
-        <category>【杂谈】开发</category>
       </categories>
   </entry>
   <entry>
@@ -5145,6 +5113,41 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
       </categories>
   </entry>
   <entry>
+    <title>摸索 NexT 注入实录与实现振假名渲染</title>
+    <url>/2022/08/20/inject-ruby/</url>
+    <content><![CDATA[<p>由于日语文本中经常出现振假名（可以理解为国内小学课本上汉字上的拼音），但是 Markdown 并没有方便的振假名语法，所以只能摸索了。</p>
+<span id="more"></span>
+<p>首先是我们注意到 HTML 是有振假名相关的标签的，但是实在是太长了：</p>
+<figure class="highlight html"><figcaption><span>HTML</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ruby</span>&gt;</span> WRITTEN <span class="tag">&lt;<span class="name">rp</span>&gt;</span>(<span class="tag">&lt;/<span class="name">rp</span>&gt;</span><span class="tag">&lt;<span class="name">rt</span>&gt;</span> READ <span class="tag">&lt;/<span class="name">rt</span>&gt;</span><span class="tag">&lt;<span class="name">rp</span>&gt;</span>)<span class="tag">&lt;/<span class="name">rp</span>&gt;</span><span class="tag">&lt;/<span class="name">ruby</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>那么为了解决这个问题，有两种选择：</p>
+<ul>
+<li>定义一种新的 Markdown 语法，在将 Raw Markdown 传入解释器之前先做一步正则替换，将自定义的语法替换为 HTML 标签</li>
+<li>在渲染后的 HTML 标签中找到所有打过标记的节点，将其替换为 <code>&lt;ruby&gt;</code> 标签</li>
+</ul>
+<p>我一开始是摸索第一种解决方式的，然后遍历了一波 Hexo 的 Markdown Parser 的文档，没有找到如何解决这个问题。</p>
+<p>我之所以想到这个解决方案，是因为之前有一个 VSCode 的 Markdown 插件提供了一个 <code>onWillParseMarkdown</code> 的函数，用户可以通过其参数获得 Raw Markdown，然后自行处理后返回交给解释器。</p>
+<p>但是 Hexo 似乎并没有给我开这个后门。</p>
+<hr />
+<p>于是只能思考第二种解决方案，这个时候我想到了 NexT 注入。</p>
+<p>因为先前编写过 Twikoo Recent Comments，就是现在我的网站侧边栏上展现的最近评论，其就是在 <code>sidebar.njk</code> 内注入一个指定 <code>class</code> 的容器，然后在 <code>head.njk</code> 内部利用 jQuery 首先拉取最近评论然后再处理为列表项塞到指定容器中的。</p>
+<p>那么我们考虑到，Markdown 的代码块会被渲染为 <code>&lt;code&gt;</code> 标签，我们完全可以利用此特性。而我们为这些需要替换的标签打的标记就是其以 <code>@</code> 开头并且用空格分为三块，我们识别到这个标记就进行替换。</p>
+<p>我们只需要注入这样一段代码：</p>
+<figure class="highlight javascript"><figcaption><span>JavaScript</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">replaceRuby</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    $(<span class="string">&#x27;code&#x27;</span>)</span><br><span class="line">        .filter(<span class="function">(<span class="params">_, node</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">var</span> list = $(node).text().split(<span class="string">&#x27; &#x27;</span>);</span><br><span class="line">            <span class="keyword">return</span> list.length === <span class="number">3</span> &amp;&amp; list[<span class="number">0</span>] === <span class="string">&quot;@&quot;</span>;</span><br><span class="line">        &#125;)</span><br><span class="line">        .replaceWith(<span class="function">(<span class="params">_, text</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">var</span> list = text.split(<span class="string">&#x27; &#x27;</span>);</span><br><span class="line">            <span class="keyword">var</span> written = list[<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">var</span> read = list[<span class="number">2</span>];</span><br><span class="line">            <span class="keyword">return</span> $(<span class="string">`&lt;ruby&gt;<span class="subst">$&#123;written&#125;</span>&lt;rp&gt;(&lt;/rp&gt;&lt;rt&gt;<span class="subst">$&#123;read&#125;</span>&lt;/rt&gt;&lt;rp&gt;)&lt;/rp&gt;&lt;/ruby&gt;`</span>);</span><br><span class="line">        &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样我们就可以用类似：</p>
+<figure class="highlight markdown"><figcaption><span>Markdown</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="code">`@ WRITTEN READ`</span></span><br></pre></td></tr></table></figure>
+<p>的语法书写振假名。</p>
+<p>效果的话可以看下述歌词的渲染效果：</p>
+<div class="note info no-icon"><p><code>@ 言葉 ことば</code>より<code>@ 単純 たんじゅん</code>な<code>@ 方法 ほうほう</code>で、いますぐ<code>@ 地獄 じごく</code>に<code>@ 落 お</code>としてくれよ。さよならはあんたも<code>@ 知 し</code>っている、<code>@ 笑 わら</code>ってくれよ、<code>@ 笑 わら</code>ってくれよ、いますぐに。</p>
+</div>
+<p>总之，这样就可以很方便地写振假名了，之后应该会逐步在涉及到日语的地方把之前的旧写法更换成新写法。</p>
+<hr />
+<p>另外还有一个小细节，似乎部署后访问字体会出现 403，根据 <a href="https://github.com/theme-next/hexo-theme-next/issues/613">相关 Issue 的提示</a>，应该是 Referrer 的问题。</p>
+]]></content>
+      <categories>
+        <category>【杂谈】开发</category>
+      </categories>
+  </entry>
+  <entry>
     <title>简明日语自学手册 Chapter 9 句式与常用固定表达</title>
     <url>/2022/08/22/ja-tutorial-ch9/</url>
     <content><![CDATA[<p>本文将在基本了解日语语句构成的条件下总结各类常见的日语语句表达方式，基于此，读者应当可以自行书写符合语法且自然的日语语句。</p>
@@ -5198,6 +5201,52 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
       </categories>
   </entry>
   <entry>
+    <title>一些散落的古日语语法——以ク语法为例</title>
+    <url>/2022/12/05/ku-grammar/</url>
+    <content><![CDATA[<p>发现这个东西实际上是在一句歌词，即「願わくば、忘れてと」。这句歌词里面显然出现了一个相当奇怪的构词法，即「願わくば」。之后我又想起了一些和这个类似的常用词，如「恐らく、いわく」。</p>
+<p>随后查找了一下词典，发现是一种已经散失很久的古日语语法——ク语法。</p>
+<span id="more"></span>
+<p>我们一般而言的古日语，也就是日本中学中教学的古日语，是中古日语。而在中古日语之前的上古日语则是一种更为古老的日语，ク语法是上古日语中的语法。</p>
+<p>ク语法就形式上而言（下述使用中古日语名词和历史假名遣）：</p>
+<ul>
+<li>四段动词未然形接续「く」。如「いふ」变为「いはく」</li>
+<li>其余动词终止形接续「らく」。如「す」变为「すらく」</li>
+<li>形容词词尾「し」变为「けく」。如「やすし」变为「やすけく」</li>
+<li>助动词「ず」变为「なく」
+<ul>
+<li>这个变形的逻辑解释为「ず」的原始形式为「にす」，这里「に」是助动词「ぬ」的连用形而「す」是サ变动词，从而ク语法自然是「ぬ」的未然形「な」接续「く」</li>
+</ul></li>
+<li>助动词「き」变为「しく」。如「申しき」变为「申ししく」</li>
+</ul>
+<p>其起源似乎是用言连用形接续名词性成分「あく」，但具体我也无法深究。</p>
+<p>这个语法几乎可以和现代语的连体形接续「こと」等同，但是ク语法生命力已经几乎完全丧失，仅留下部分习惯用法，而且基本是副词用法：</p>
+<ul>
+<li>曰く ＝ 言うこと</li>
+<li>恐らく ＝ 恐ること</li>
+<li>思惑 ＝ 思うこと</li>
+<li>願わくば ＝ 願うことは</li>
+<li>望むらくは ＝ 望むことは</li>
+<li><code>@ 須 すべか</code>らく ＝ すべきこと</li>
+</ul>
+<p>可以注意到上述ク语法的例子也并不是完全符合之前提到的规则，这是因为ク语法在中古日语时期就已经很少使用，造成很多人错误使用该语法。最典型的就是四段动词也开始直接使用终止形接续「らく」，这就说明现代日语中的副词「望むらくは」实际上应当是「望まくは」。</p>
+<p>此外，助词「は」的浊化也是一种错误用法，「願わくば」就是这个原理。</p>
+<p>再者，「思う」的ク语法「思わく」甚至具有了假借字「思惑」。</p>
+<p>有一种观点认为ク语法是部分词语的来源。比如说现代副词「暫く」就是动词「縛る」的ク语法，表示时间有限，而后衍生出表示“暂时”的用法。</p>
+<hr />
+<p>ク语法的缘由可以认为是用言活用接续「<code>@ 如 し</code>く」后「し」脱落，而这种观点也给部分动词和形容词的对应带来了支持：</p>
+<ul>
+<li>痛む ＋ しく ＝ 痛ましく → 痛まし → 痛ましい</li>
+<li>潤ふ ＋ しく ＝ 潤はしく → <code>@ 麗 うるは</code>し → <code>@ 麗 うるわ</code>しい</li>
+</ul>
+<p>而由于ク语法本身用于名词化，所以中古形容词「痛まし」的名词形式就是「痛ましく」，而这正是其连用形。这也给为何现代形容词「近い・遠い・多い」的名词化是其连用形「近く・遠く・多く」带来了解释，因为这些名词化的形式可以认为是ク语法的一种外拓。</p>
+<hr />
+<p>总之这已经完全就是一个早就没有任何生命，没有拓展能力的语法了，但这个语法遗留下来的各种约定俗成用法却还在困扰着我这种摸索日语的学习者。</p>
+]]></content>
+      <categories>
+        <category>【杂谈】日语</category>
+      </categories>
+  </entry>
+  <entry>
     <title>《铃芽户缔》的不恰当译名与日译中问题</title>
     <url>/2022/11/04/jc-translation/</url>
     <content><![CDATA[<p>今天偶然刷到新海诚的动画电影新作《すずめの戸締り》的中文译名从《铃芽户缔》换为了《铃芽小姐来锁门》的新闻，于是产生了一些奇妙的感叹，慨叹翻译真的是一门艺术。这里也就随便写写，反正也就是 Holder 自己的一些想法罢了，没有严谨性，不具有参考价值。</p>
@@ -5239,52 +5288,6 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <p>事实上随着信息交换的速度加快，认真翻译一个外来概念已经越来越困难，这在网络热词上更为明显。比如说日文中的接尾词「がち」，用于表达“往往”的含义。这个词在日本 Vtuber 圈内火了一圈之后传入中国，在中文互联网上则直接写为 gachi，直接音译，甚至连汉字都没用。当然这也有身份认可的作用在里面，理解 gachi 含义的人，显然比知道这个词应该翻译为“往往”的人更容易被这个团体接受。</p>
 <p>毕竟网络热词这种东西转瞬即逝，你认真为某个热词设计了很贴切的翻译，随后这个词早就没有人用了。</p>
 <p>或许这也是不愿意好好翻译电影名称的原因吧，虽然现在能引入国内院线的外国电影也是越来越少就是了。</p>
-]]></content>
-      <categories>
-        <category>【杂谈】日语</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>一些散落的古日语语法——以ク语法为例</title>
-    <url>/2022/12/05/ku-grammar/</url>
-    <content><![CDATA[<p>发现这个东西实际上是在一句歌词，即「願わくば、忘れてと」。这句歌词里面显然出现了一个相当奇怪的构词法，即「願わくば」。之后我又想起了一些和这个类似的常用词，如「恐らく、いわく」。</p>
-<p>随后查找了一下词典，发现是一种已经散失很久的古日语语法——ク语法。</p>
-<span id="more"></span>
-<p>我们一般而言的古日语，也就是日本中学中教学的古日语，是中古日语。而在中古日语之前的上古日语则是一种更为古老的日语，ク语法是上古日语中的语法。</p>
-<p>ク语法就形式上而言（下述使用中古日语名词和历史假名遣）：</p>
-<ul>
-<li>四段动词未然形接续「く」。如「いふ」变为「いはく」</li>
-<li>其余动词终止形接续「らく」。如「す」变为「すらく」</li>
-<li>形容词词尾「し」变为「けく」。如「やすし」变为「やすけく」</li>
-<li>助动词「ず」变为「なく」
-<ul>
-<li>这个变形的逻辑解释为「ず」的原始形式为「にす」，这里「に」是助动词「ぬ」的连用形而「す」是サ变动词，从而ク语法自然是「ぬ」的未然形「な」接续「く」</li>
-</ul></li>
-<li>助动词「き」变为「しく」。如「申しき」变为「申ししく」</li>
-</ul>
-<p>其起源似乎是用言连用形接续名词性成分「あく」，但具体我也无法深究。</p>
-<p>这个语法几乎可以和现代语的连体形接续「こと」等同，但是ク语法生命力已经几乎完全丧失，仅留下部分习惯用法，而且基本是副词用法：</p>
-<ul>
-<li>曰く ＝ 言うこと</li>
-<li>恐らく ＝ 恐ること</li>
-<li>思惑 ＝ 思うこと</li>
-<li>願わくば ＝ 願うことは</li>
-<li>望むらくは ＝ 望むことは</li>
-<li><code>@ 須 すべか</code>らく ＝ すべきこと</li>
-</ul>
-<p>可以注意到上述ク语法的例子也并不是完全符合之前提到的规则，这是因为ク语法在中古日语时期就已经很少使用，造成很多人错误使用该语法。最典型的就是四段动词也开始直接使用终止形接续「らく」，这就说明现代日语中的副词「望むらくは」实际上应当是「望まくは」。</p>
-<p>此外，助词「は」的浊化也是一种错误用法，「願わくば」就是这个原理。</p>
-<p>再者，「思う」的ク语法「思わく」甚至具有了假借字「思惑」。</p>
-<p>有一种观点认为ク语法是部分词语的来源。比如说现代副词「暫く」就是动词「縛る」的ク语法，表示时间有限，而后衍生出表示“暂时”的用法。</p>
-<hr />
-<p>ク语法的缘由可以认为是用言活用接续「<code>@ 如 し</code>く」后「し」脱落，而这种观点也给部分动词和形容词的对应带来了支持：</p>
-<ul>
-<li>痛む ＋ しく ＝ 痛ましく → 痛まし → 痛ましい</li>
-<li>潤ふ ＋ しく ＝ 潤はしく → <code>@ 麗 うるは</code>し → <code>@ 麗 うるわ</code>しい</li>
-</ul>
-<p>而由于ク语法本身用于名词化，所以中古形容词「痛まし」的名词形式就是「痛ましく」，而这正是其连用形。这也给为何现代形容词「近い・遠い・多い」的名词化是其连用形「近く・遠く・多く」带来了解释，因为这些名词化的形式可以认为是ク语法的一种外拓。</p>
-<hr />
-<p>总之这已经完全就是一个早就没有任何生命，没有拓展能力的语法了，但这个语法遗留下来的各种约定俗成用法却还在困扰着我这种摸索日语的学习者。</p>
 ]]></content>
       <categories>
         <category>【杂谈】日语</category>
@@ -5368,6 +5371,64 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 <p>今天看到一篇分析克苏鲁神话恐惧感来源的文章，大体就是又强调了一遍恐惧来源于未知。</p>
 <p>高中的纯粹保护了这脆弱的平衡，在我们求知欲最旺盛的时段，构造了最精致的闭合结构，让我们误以为我们无所不知无所不晓，从而战无不胜。</p>
 <p>果然，我至今也不过是那些大人口中，未经风霜的温室花朵而已。今天凌晨的这些，也不过只是无用的叹息，为赋新词强说愁罢了。</p>
+]]></content>
+      <categories>
+        <category>【杂谈】碎碎念</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>早安、可能是午安、或者是晚安</title>
+    <url>/2021/09/17/navigation/</url>
+    <content><![CDATA[<p>关于我更多的信息，请见 <a href="/about">关于页</a>。</p>
+<p>这里主要是一些杂谈，正经内容主要是课程笔记、论文笔记和日语笔记。</p>
+<p>查看最近的文章可以直接向下滑动找到对应的文章，需要查看较远的文章可以通过网页上方栏目的分类页或者归档页寻找。</p>
+<p>考虑到分类页只展示分类却不展示分类内的文章列表，这里有一个简单的文章分类列表：</p>
+<ul>
+<li>学习笔记
+<ul>
+<li>大二春季学期《人工智能导论》</li>
+<li>大二夏季学期《汇编语言程序设计》</li>
+<li>大三秋季学期《信号处理原理》《计算机网络原理》</li>
+<li>大四春季学期《深度强化学习》</li>
+<li>博一春季学期《应用近世代数》</li>
+</ul></li>
+<li>各月论文笔记合集（已经停更，目前使用 Zotero 管理笔记）</li>
+<li>简明日语自学手册（正在迁移至其他页面，目前持续更新）</li>
+<li>一些生活记录和总结
+<ul>
+<li>大二春季学期、大三秋季学期、大三春季学期总结</li>
+<li>大三寒假总结</li>
+<li>大二暑假、大三暑假、大四春季学期、博一秋春季学期生活记录</li>
+<li>大三秋季学期、大四秋季学期前期感想</li>
+</ul></li>
+<li>杂七杂八
+<ul>
+<li>2022 年新高考 I 卷（江苏）数学答案</li>
+<li>一些原创数学题</li>
+<li>乱七八糟的开发感想</li>
+<li>还有一些混乱感想、游戏笔记、歌词记录本</li>
+</ul></li>
+</ul>
+<p>总之，不如自己来翻翻这里有些什么，在评论区留下足迹，个人网站不就是这个用处么。</p>
+]]></content>
+      <categories>
+        <category>【导航】</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>小学期深夜的废话</title>
+    <url>/2021/08/17/nonsense-at-night/</url>
+    <content><![CDATA[<p>突然有点想随便写点东西说点感受而已，写完就该睡大觉了。</p>
+<span id="more"></span>
+<p>现在是 2021 年 8 月 17 日的深夜 03:44，这个叫 Holder 的大二学生还没有睡。</p>
+<p>小学期选了整整 8 学分的课，从第二周开始每周周一到周五都是全天满课。汇编每周有作业，还有一个大作业和考试。Java 每堂课有一个小作业，还有一个看起来不是很小的大作业。量子计算作为一门新课，上来就是全英文 PPT，讲着虚张声势的线性代数，倒也真的把 Holder 愉悦送走了。</p>
+<p>但值得庆幸的是，只要不去听老师上课，自己在空调房里和 Sakana 连着麦看 PPT / CSAPP / 各路文档自学，累了就开瓶快乐水刷两眼手机或者打一小会 Project Sekai，然后慢慢写自己学习的时候的笔记和一时的感悟，这种体验简直不要太好。就是那种感觉，那种感受到了学习愉悦之处的感觉。</p>
+<p>我也不知道什么时候我变成了厌恶上课的一个人，烦躁于古板沉闷的 PPT reader 式的课堂。我宁愿自己一个人琢磨，不懂的时候就去各种翻资料或者问问同学，然后在个人网站上写下万字之多的笔记。特别是一时间想通一个很困难的问题的时候，我习惯把当时所有的思路都复盘下来写下来。</p>
+<p>这个小学期，我突然觉得自己找到了一种玄妙的乐趣，那种像想要抓住什么的一样的冲动。虽然每天都累得不成样子，到处抱怨，但是内心是充实的。</p>
+<p>虽然不知道学的东西会不会派上用场，但是就是享受到了学习这一过程之中的乐趣。</p>
+<hr />
+<p>也不知道这种斗志昂扬的状态会持续到什么时候，也不知道 Holder 未来会不会又一次陷入像今年 5 月那样沉闷的时光，但无论如何，现在的 Holder 是快乐的。</p>
+<p>Holder 或许得睡大觉了，虽然现在才睡，翘汇编是不可避免的了。</p>
 ]]></content>
       <categories>
         <category>【杂谈】碎碎念</category>
@@ -5709,64 +5770,6 @@ g(e^{x_0}) = e^{x_0} - \ln e^{x_0} = e^{x_0} - x_0 = f(x_0) = b \\
 </div>
 <p>《坠入地狱》大约是我目前可以称得上最喜欢的曲子之一，赶上北京短暂的春天，这首歌就显得尤为切合时宜。</p>
 <p>这首歌歌词充满力量，而且 KAFU 调得确实相当扎实。副歌段的抒情很强烈，这段简单的写景又是柔和，只能说黑柿子确实把一个失魂落魄而又在漫天飞舞的樱花中重拾理想的人描写出来了。</p>
-]]></content>
-      <categories>
-        <category>【杂谈】碎碎念</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>早安、可能是午安、或者是晚安</title>
-    <url>/2021/09/17/navigation/</url>
-    <content><![CDATA[<p>关于我更多的信息，请见 <a href="/about">关于页</a>。</p>
-<p>这里主要是一些杂谈，正经内容主要是课程笔记、论文笔记和日语笔记。</p>
-<p>查看最近的文章可以直接向下滑动找到对应的文章，需要查看较远的文章可以通过网页上方栏目的分类页或者归档页寻找。</p>
-<p>考虑到分类页只展示分类却不展示分类内的文章列表，这里有一个简单的文章分类列表：</p>
-<ul>
-<li>学习笔记
-<ul>
-<li>大二春季学期《人工智能导论》</li>
-<li>大二夏季学期《汇编语言程序设计》</li>
-<li>大三秋季学期《信号处理原理》《计算机网络原理》</li>
-<li>大四春季学期《深度强化学习》</li>
-<li>博一春季学期《应用近世代数》</li>
-</ul></li>
-<li>各月论文笔记合集（已经停更，目前使用 Zotero 管理笔记）</li>
-<li>简明日语自学手册（正在迁移至其他页面，目前持续更新）</li>
-<li>一些生活记录和总结
-<ul>
-<li>大二春季学期、大三秋季学期、大三春季学期总结</li>
-<li>大三寒假总结</li>
-<li>大二暑假、大三暑假、大四春季学期、博一秋春季学期生活记录</li>
-<li>大三秋季学期、大四秋季学期前期感想</li>
-</ul></li>
-<li>杂七杂八
-<ul>
-<li>2022 年新高考 I 卷（江苏）数学答案</li>
-<li>一些原创数学题</li>
-<li>乱七八糟的开发感想</li>
-<li>还有一些混乱感想、游戏笔记、歌词记录本</li>
-</ul></li>
-</ul>
-<p>总之，不如自己来翻翻这里有些什么，在评论区留下足迹，个人网站不就是这个用处么。</p>
-]]></content>
-      <categories>
-        <category>【导航】</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>小学期深夜的废话</title>
-    <url>/2021/08/17/nonsense-at-night/</url>
-    <content><![CDATA[<p>突然有点想随便写点东西说点感受而已，写完就该睡大觉了。</p>
-<span id="more"></span>
-<p>现在是 2021 年 8 月 17 日的深夜 03:44，这个叫 Holder 的大二学生还没有睡。</p>
-<p>小学期选了整整 8 学分的课，从第二周开始每周周一到周五都是全天满课。汇编每周有作业，还有一个大作业和考试。Java 每堂课有一个小作业，还有一个看起来不是很小的大作业。量子计算作为一门新课，上来就是全英文 PPT，讲着虚张声势的线性代数，倒也真的把 Holder 愉悦送走了。</p>
-<p>但值得庆幸的是，只要不去听老师上课，自己在空调房里和 Sakana 连着麦看 PPT / CSAPP / 各路文档自学，累了就开瓶快乐水刷两眼手机或者打一小会 Project Sekai，然后慢慢写自己学习的时候的笔记和一时的感悟，这种体验简直不要太好。就是那种感觉，那种感受到了学习愉悦之处的感觉。</p>
-<p>我也不知道什么时候我变成了厌恶上课的一个人，烦躁于古板沉闷的 PPT reader 式的课堂。我宁愿自己一个人琢磨，不懂的时候就去各种翻资料或者问问同学，然后在个人网站上写下万字之多的笔记。特别是一时间想通一个很困难的问题的时候，我习惯把当时所有的思路都复盘下来写下来。</p>
-<p>这个小学期，我突然觉得自己找到了一种玄妙的乐趣，那种像想要抓住什么的一样的冲动。虽然每天都累得不成样子，到处抱怨，但是内心是充实的。</p>
-<p>虽然不知道学的东西会不会派上用场，但是就是享受到了学习这一过程之中的乐趣。</p>
-<hr />
-<p>也不知道这种斗志昂扬的状态会持续到什么时候，也不知道 Holder 未来会不会又一次陷入像今年 5 月那样沉闷的时光，但无论如何，现在的 Holder 是快乐的。</p>
-<p>Holder 或许得睡大觉了，虽然现在才睡，翘汇编是不可避免的了。</p>
 ]]></content>
       <categories>
         <category>【杂谈】碎碎念</category>
@@ -7964,6 +7967,80 @@ t_k = t_0 + \frac{(T_k - T_0) - \Delta_k}{s_k}
       </categories>
   </entry>
   <entry>
+    <title>Next.js 框架摸索实录</title>
+    <url>/2022/11/24/note-of-next/</url>
+    <content><![CDATA[<p>在出软工小作业的时候遇到了 React Router 配置和跨域问题，虽然这两个都不是什么大问题，我也不是不会解决，但是要是出到作业里面，势必会导致我要写好多文档还要写很多讲解。这个时候 yfgg 告诉我 Next.js 框架好之又好，昨天稍微试了一下感觉确实不错，所以就吃了安利迁移到了 Next.js 框架。但是今天接着写的时候，还是发现不少细节是需要注意的，这里就当备忘了。</p>
+<span id="more"></span>
+<h1 id="初始配置">初始配置</h1>
+<p>由于 Next.js 自己带了不少初始配置，所以加东西的时候不一定每个都需要自己从头再来，完全可以用官方模板。</p>
+<p>我出的小作业采用 Next.js + TypeScript + ESLint + Jest，这一整套模板也正在编写，到时候可以开放给同学们直接下载。</p>
+<h1 id="csr-还是-ssr">CSR 还是 SSR</h1>
+<p>Next.js 框架的一大优势就在 SSR。然而说实话我自己也没有特别明白 SSR 之类的概念，所以昨晚花了点时间学了一下。</p>
+<p>最早期的前后端耦合应用实际上就采用 SSR，即 <strong>S</strong>erver <strong>S</strong>ide <strong>R</strong>ender，服务端渲染。当时严格而言就没有前端这个概念，服务器直接将渲染好的 HTML 扔给浏览器就结束了。</p>
+<p>而随着前后端分离开发概念的出现，Vue、React 等框架逐渐采用 CSR，即 <strong>C</strong>lient <strong>S</strong>ide <strong>R</strong>ender，客户端渲染。CSR 中，数据交互大致可以描述为：</p>
+<ul>
+<li>浏览器向前端服务器请求模板 HTML（或者说空缺关键数据的 HTML），这些 HTML 中携带获取关键数据的脚本</li>
+<li>浏览器渲染模板 HTML，执行获取数据的脚本，向后端服务器请求关键数据</li>
+<li>浏览器获得关键数据后，调整 DOM 展示最终页面</li>
+</ul>
+<p>CSR 比较大的问题有两点：</p>
+<ul>
+<li>如果后端服务器响应慢或者数据量大，模板 HTML 在页面上留存时间长，表现为 Loading 界面或者白屏，严重削弱用户体验</li>
+<li>爬虫难以处理这类网页，对搜索引擎的优化（<strong>S</strong>earch <strong>E</strong>ngine <strong>O</strong>pimization，简称 SEO）困难，导致网页宣传效果不佳</li>
+</ul>
+<p>但就开发环节而言，开发需要不断处理白屏问题，不断在组件中设置 <code>refreshing</code> 状态实际上比较浪费开发时间。</p>
+<p>而现代优化过的 SSR 则相应做出了部分解决，其基本思路为：</p>
+<ul>
+<li>浏览器向前端服务器请求页面</li>
+<li>前端服务器向后端服务器请求关键数据，获取数据后根据自己已有的模板 HTML 渲染出完整 HTML 发回浏览器</li>
+<li>浏览器直接渲染出完整页面</li>
+</ul>
+<p>首先，浏览器不会收到缺失数据的 HTML，这样就从根源上解决白屏问题。进一步，由于服务端的算力和内网传输速度一般高于客户端算力和外网传输速度，所以渲染出最终 HTML 的时间相应缩短。另外，由于客户端能够直接得到完整 HTML，所以 SEO 也是简单的。</p>
+<p>然而 SSR 显然也是有问题的：</p>
+<ul>
+<li>服务器端压力极大，对于多并发情况处理无力</li>
+<li>针对每个用户都需要重新渲染完整 HTML，重复计算问题严重</li>
+</ul>
+<p>其中第二个问题实际上比较重要，如果某个网页和客户端具体信息无关，也就是说任何客户端都收到相同内容，那么这种 SSR 实际上不如 CSR。CSR 可以通过 CDN 缓存模板 HTML，而 SSR 此时对每个用户的请求，每次都需要完整渲染 HTML。</p>
+<p>所以这也是 SSG，<strong>S</strong>erver <strong>S</strong>ide <strong>G</strong>eneration，服务端生成提出的契机。针对与客户端无关的、更新速度慢的页面，SSG 会在构建时直接生成页面并缓存在前端服务器，浏览器发出请求后会直接返回缓存页面，从而解决上述问题。</p>
+<p>显然，CSR、SSR、SSG 各有利弊。就目前你清的教学、科协各个成员的掌握情况看，CSR 系列的开发明显占优势。另外考虑到软工课程不少类似于后台管理页面等更重视数据时效性、用户交互体验的应用，CSR 更应当重点讲解。</p>
+<p>然而 SSR 不能因此完全废弃不讲，因为其针对用户无关页面的白屏加载问题绝对是重要的一种解决方案。SSR 依然是企业官网、个人博客等网页的首选。</p>
+<p>所以目前依然是将传统的 CSR 布置为作业，然后让他们强制将 API 睡眠，体验白屏问题后让他们叙述 SSR 的好处，用此作为思考题。</p>
+<h1 id="useeffect-重复调用问题"><code>useEffect</code> 重复调用问题</h1>
+<p>这是一个老问题，说实话也和 Next.js 没有多少关系。如果在 React 中写下述代码：</p>
+<figure class="highlight typescript"><figcaption><span>TypeScript</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> App = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    useEffect(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;useEffect called!&quot;</span>);</span><br><span class="line">    &#125;, []);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span> Test page. <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>会发现控制台里出现了两次 <code>useEffect called!</code> 的输出。</p>
+<p>虽然严格而言不会出现很大的问题，然而由于这种 <code>useEffect</code> 常常用于获取页面的初始数据（CSR 常用手法），这个问题可能导致重复请求后端数据，对于用户鉴权等需求甚至可能是危险的，后端如果不去做相应处理甚至可能打穿后端（我软工还真的差点出锅，然而当时也没在意）。</p>
+<p>然后我搜索引擎大作业里面采用了非常丑陋的写法解决了：</p>
+<p><img src="/uploads/note-of-next/1.jpeg" /></p>
+<p>今天才知道这个是 React 的严格模式的锅。严格模式下，在 dev 条件下 React 会有意重复调用这些钩子来提示可能的危险。</p>
+<p>也就是说打穿后端实际上就是 React 告诉你，你这有可能出锅，你自己不处理好不怪我。</p>
+<p>当然，release 之后 React 就不会有意重复调用了。</p>
+<p>所以解决方式就两种：</p>
+<ul>
+<li>好好写能够处理并发的代码，React 都告诉你会出事了</li>
+<li>关掉严格模式，让 React 闭嘴</li>
+</ul>
+<p>我选择了后者。</p>
+<p>参考：<a href="https://juejin.cn/post/7105652180501135367" class="uri">https://juejin.cn/post/7105652180501135367</a>。</p>
+<h1 id="useroute-与注水"><code>useRoute</code> 与注水</h1>
+<p>使用动态路由的时候，我按照 React 的开发习惯写了下述代码：</p>
+<figure class="highlight typescript"><figcaption><span>TypeScript</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> route = useRouter();</span><br><span class="line"></span><br><span class="line">useEffect(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(route.query.id);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Use route.query.id to fetch data</span></span><br><span class="line">&#125;, []);</span><br></pre></td></tr></table></figure>
+<p>令人惊讶的是，这里输出了 <code>undefined</code>。</p>
+<p>事实上这是 Next.js 预渲染的锅，原文是这样的：</p>
+<div class="note info no-icon"><p>Pages that are statically optimized by <strong>Automatic Static Optimization</strong> will be hydrated without their route parameters provided, i.e <code>query</code> will be an empty object (<code>{}</code>).</p>
+<p>After hydration, Next.js will trigger an update to your application to provide the route parameters in the <code>query</code> object.</p>
+</div>
+<p>简而言之，ASO 是一种预渲染优化，在不获取路由信息的条件下先弄出来一个页面给浏览器，然后再注水（即向 <code>query</code> 注入路由信息）并触发组件更新，也就是说页面获取到路由信息并不是一开始，从而 <code>useEffect(*, [])</code> 是拿不到路由信息的。</p>
+<p>了解这一点后，代码就应该写为：</p>
+<figure class="highlight typescript"><figcaption><span>TypeScript</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> route = useRouter();</span><br><span class="line"><span class="keyword">const</span> query = route.query;</span><br><span class="line"></span><br><span class="line">useEffect(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!route.isReady) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(route.query.id);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Use route.query.id to fetch data</span></span><br><span class="line">&#125;, [route, query]);</span><br></pre></td></tr></table></figure>
+<p>应该让 <code>useEffect</code> 检测 <code>route</code> 和 <code>query</code> 的变动，在注水完成后才能触发数据获取。</p>
+]]></content>
+      <categories>
+        <category>【杂谈】开发</category>
+      </categories>
+  </entry>
+  <entry>
     <title>《计算机网络原理》学习笔记</title>
     <url>/2021/09/13/note-of-net/</url>
     <content><![CDATA[<p>网原总之是一个没打算认真学的专业课，因为真的对网络没有很大的兴趣。再加上上学期曾经看着迅哥哥他们被网原折磨，自己也没什么信心能学好这门专业课。</p>
@@ -9844,77 +9921,182 @@ H(z) = \frac{Y(z)}{X(z)} = \frac{\sum_{r = 0}^M a_rz^{-r}}{\sum_{k = 0}^N b_kz^{
       </categories>
   </entry>
   <entry>
-    <title>Next.js 框架摸索实录</title>
-    <url>/2022/11/24/note-of-next/</url>
-    <content><![CDATA[<p>在出软工小作业的时候遇到了 React Router 配置和跨域问题，虽然这两个都不是什么大问题，我也不是不会解决，但是要是出到作业里面，势必会导致我要写好多文档还要写很多讲解。这个时候 yfgg 告诉我 Next.js 框架好之又好，昨天稍微试了一下感觉确实不错，所以就吃了安利迁移到了 Next.js 框架。但是今天接着写的时候，还是发现不少细节是需要注意的，这里就当备忘了。</p>
+    <title>2022 年 2 月论文笔记</title>
+    <url>/2022/01/18/paper-2022-02/</url>
+    <content><![CDATA[<p>2022 年 2 月，主要工作为可微渲染相关方向。</p>
 <span id="more"></span>
-<h1 id="初始配置">初始配置</h1>
-<p>由于 Next.js 自己带了不少初始配置，所以加东西的时候不一定每个都需要自己从头再来，完全可以用官方模板。</p>
-<p>我出的小作业采用 Next.js + TypeScript + ESLint + Jest，这一整套模板也正在编写，到时候可以开放给同学们直接下载。</p>
-<h1 id="csr-还是-ssr">CSR 还是 SSR</h1>
-<p>Next.js 框架的一大优势就在 SSR。然而说实话我自己也没有特别明白 SSR 之类的概念，所以昨晚花了点时间学了一下。</p>
-<p>最早期的前后端耦合应用实际上就采用 SSR，即 <strong>S</strong>erver <strong>S</strong>ide <strong>R</strong>ender，服务端渲染。当时严格而言就没有前端这个概念，服务器直接将渲染好的 HTML 扔给浏览器就结束了。</p>
-<p>而随着前后端分离开发概念的出现，Vue、React 等框架逐渐采用 CSR，即 <strong>C</strong>lient <strong>S</strong>ide <strong>R</strong>ender，客户端渲染。CSR 中，数据交互大致可以描述为：</p>
+<h1 id="soft-rasterizer---a-differentiable-renderer-for-image-based-3d-reasoning">Soft Rasterizer - A Differentiable Renderer for Image-based 3D Reasoning</h1>
+<h2 id="工作概述">工作概述</h2>
+<p>主要思想还是想把逆向渲染管线（通过二维图像推理三维模型的参数）和神经网络结合，但是最大的问题是管线中的光栅化是离散化操作，可能导致不可微。一些其他的工作在尝试<strong>近似估算</strong>梯度，但是这个工作提出了一种真正可微的框架，能做到：</p>
 <ul>
-<li>浏览器向前端服务器请求模板 HTML（或者说空缺关键数据的 HTML），这些 HTML 中携带获取关键数据的脚本</li>
-<li>浏览器渲染模板 HTML，执行获取数据的脚本，向后端服务器请求关键数据</li>
-<li>浏览器获得关键数据后，调整 DOM 展示最终页面</li>
+<li>直接用可微函数渲染染色的网格</li>
+<li>能从轮廓、阴影等各种二维图像信息有效反向传递为网格顶点参数</li>
 </ul>
-<p>CSR 比较大的问题有两点：</p>
-<ul>
-<li>如果后端服务器响应慢或者数据量大，模板 HTML 在页面上留存时间长，表现为 Loading 界面或者白屏，严重削弱用户体验</li>
-<li>爬虫难以处理这类网页，对搜索引擎的优化（<strong>S</strong>earch <strong>E</strong>ngine <strong>O</strong>pimization，简称 SEO）困难，导致网页宣传效果不佳</li>
-</ul>
-<p>但就开发环节而言，开发需要不断处理白屏问题，不断在组件中设置 <code>refreshing</code> 状态实际上比较浪费开发时间。</p>
-<p>而现代优化过的 SSR 则相应做出了部分解决，其基本思路为：</p>
-<ul>
-<li>浏览器向前端服务器请求页面</li>
-<li>前端服务器向后端服务器请求关键数据，获取数据后根据自己已有的模板 HTML 渲染出完整 HTML 发回浏览器</li>
-<li>浏览器直接渲染出完整页面</li>
-</ul>
-<p>首先，浏览器不会收到缺失数据的 HTML，这样就从根源上解决白屏问题。进一步，由于服务端的算力和内网传输速度一般高于客户端算力和外网传输速度，所以渲染出最终 HTML 的时间相应缩短。另外，由于客户端能够直接得到完整 HTML，所以 SEO 也是简单的。</p>
-<p>然而 SSR 显然也是有问题的：</p>
-<ul>
-<li>服务器端压力极大，对于多并发情况处理无力</li>
-<li>针对每个用户都需要重新渲染完整 HTML，重复计算问题严重</li>
-</ul>
-<p>其中第二个问题实际上比较重要，如果某个网页和客户端具体信息无关，也就是说任何客户端都收到相同内容，那么这种 SSR 实际上不如 CSR。CSR 可以通过 CDN 缓存模板 HTML，而 SSR 此时对每个用户的请求，每次都需要完整渲染 HTML。</p>
-<p>所以这也是 SSG，<strong>S</strong>erver <strong>S</strong>ide <strong>G</strong>eneration，服务端生成提出的契机。针对与客户端无关的、更新速度慢的页面，SSG 会在构建时直接生成页面并缓存在前端服务器，浏览器发出请求后会直接返回缓存页面，从而解决上述问题。</p>
-<p>显然，CSR、SSR、SSG 各有利弊。就目前你清的教学、科协各个成员的掌握情况看，CSR 系列的开发明显占优势。另外考虑到软工课程不少类似于后台管理页面等更重视数据时效性、用户交互体验的应用，CSR 更应当重点讲解。</p>
-<p>然而 SSR 不能因此完全废弃不讲，因为其针对用户无关页面的白屏加载问题绝对是重要的一种解决方案。SSR 依然是企业官网、个人博客等网页的首选。</p>
-<p>所以目前依然是将传统的 CSR 布置为作业，然后让他们强制将 API 睡眠，体验白屏问题后让他们叙述 SSR 的好处，用此作为思考题。</p>
-<h1 id="useeffect-重复调用问题"><code>useEffect</code> 重复调用问题</h1>
-<p>这是一个老问题，说实话也和 Next.js 没有多少关系。如果在 React 中写下述代码：</p>
-<figure class="highlight typescript"><figcaption><span>TypeScript</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> App = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    useEffect(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;useEffect called!&quot;</span>);</span><br><span class="line">    &#125;, []);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span> Test page. <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>会发现控制台里出现了两次 <code>useEffect called!</code> 的输出。</p>
-<p>虽然严格而言不会出现很大的问题，然而由于这种 <code>useEffect</code> 常常用于获取页面的初始数据（CSR 常用手法），这个问题可能导致重复请求后端数据，对于用户鉴权等需求甚至可能是危险的，后端如果不去做相应处理甚至可能打穿后端（我软工还真的差点出锅，然而当时也没在意）。</p>
-<p>然后我搜索引擎大作业里面采用了非常丑陋的写法解决了：</p>
-<p><img src="/uploads/note-of-next/1.jpeg" /></p>
-<p>今天才知道这个是 React 的严格模式的锅。严格模式下，在 dev 条件下 React 会有意重复调用这些钩子来提示可能的危险。</p>
-<p>也就是说打穿后端实际上就是 React 告诉你，你这有可能出锅，你自己不处理好不怪我。</p>
-<p>当然，release 之后 React 就不会有意重复调用了。</p>
-<p>所以解决方式就两种：</p>
-<ul>
-<li>好好写能够处理并发的代码，React 都告诉你会出事了</li>
-<li>关掉严格模式，让 React 闭嘴</li>
-</ul>
-<p>我选择了后者。</p>
-<p>参考：<a href="https://juejin.cn/post/7105652180501135367" class="uri">https://juejin.cn/post/7105652180501135367</a>。</p>
-<h1 id="useroute-与注水"><code>useRoute</code> 与注水</h1>
-<p>使用动态路由的时候，我按照 React 的开发习惯写了下述代码：</p>
-<figure class="highlight typescript"><figcaption><span>TypeScript</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> route = useRouter();</span><br><span class="line"></span><br><span class="line">useEffect(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(route.query.id);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Use route.query.id to fetch data</span></span><br><span class="line">&#125;, []);</span><br></pre></td></tr></table></figure>
-<p>令人惊讶的是，这里输出了 <code>undefined</code>。</p>
-<p>事实上这是 Next.js 预渲染的锅，原文是这样的：</p>
-<div class="note info no-icon"><p>Pages that are statically optimized by <strong>Automatic Static Optimization</strong> will be hydrated without their route parameters provided, i.e <code>query</code> will be an empty object (<code>{}</code>).</p>
-<p>After hydration, Next.js will trigger an update to your application to provide the route parameters in the <code>query</code> object.</p>
+<p>这个工作的重点是把渲染过程的部分看作<strong>聚合函数（Aggregation function）</strong>，该函数联系了三维模型的网格三角形的概率分布以及其渲染出来的像素。</p>
+<div class="note info no-icon"><p>看起来标题中的 Soft 的含义就是使用概率分布的方式来把离散的光栅化变成可微的，最初始的光栅化一般会涉及到离散采样（即确定每一个离散的像素是否要显示网格上的某一个三角形），这也是不可微性的来源。</p>
 </div>
-<p>简而言之，ASO 是一种预渲染优化，在不获取路由信息的条件下先弄出来一个页面给浏览器，然后再注水（即向 <code>query</code> 注入路由信息）并触发组件更新，也就是说页面获取到路由信息并不是一开始，从而 <code>useEffect(*, [])</code> 是拿不到路由信息的。</p>
-<p>了解这一点后，代码就应该写为：</p>
-<figure class="highlight typescript"><figcaption><span>TypeScript</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> route = useRouter();</span><br><span class="line"><span class="keyword">const</span> query = route.query;</span><br><span class="line"></span><br><span class="line">useEffect(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!route.isReady) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(route.query.id);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Use route.query.id to fetch data</span></span><br><span class="line">&#125;, [route, query]);</span><br></pre></td></tr></table></figure>
-<p>应该让 <code>useEffect</code> 检测 <code>route</code> 和 <code>query</code> 的变动，在注水完成后才能触发数据获取。</p>
+<p>本论文主要讲述了如何通过 Soft rasterization 框架实现可微的光栅化以保证渲染管线的可微性，基于此，该渲染框架即可方便地接入神经网络以将二维图像信息反向传播到三维模型。同时，本论文也会指出近期的近似估算梯度的方式（使用 hand-crafted 的函数近似表示梯度）并不具有泛用性，且可能会降低三维模型信息更新的效率。</p>
+<h3 id="softras-与传统光栅化">SoftRas 与传统光栅化</h3>
+<p>SoftRas 在将模型投影到平面上的时候，会将模型转换为投影平面上的概率分布。而传统光栅化则是转化为具体某个像素是否染色。</p>
+<p>另外，似乎 SoftRas 对遮挡的处理也和传统渲染管线的 z-buffer 不一样。传统光栅化会使用 onehot 的方式处理遮挡（应该指的是处理为完全遮挡），而 SoftRas 也会基于概率分布做出不同处理。</p>
+<h2 id="相关工作">相关工作</h2>
+<h3 id="可微渲染">可微渲染</h3>
+<p>主要关注如何描述二维图像变化和三维模型操作的关系，主要解决如何从二维图像重建三维场景。考虑给定的二维图片 <span class="math inline">\(A\)</span>，首先粗略初始化一个三维场景 <span class="math inline">\(B&#39;\)</span>，然后通过渲染管线渲染得到二维图片 <span class="math inline">\(B\)</span>。计算 <span class="math inline">\(A\)</span> 和 <span class="math inline">\(B\)</span> 的 loss，将其梯度反向传播给三维场景 <span class="math inline">\(B&#39;\)</span> 的参数，更新之。这里反向传播就是可微渲染最重要的步骤，即如何计算梯度，因为三维场景参数更新量取决于 loss 对参数的偏导数。</p>
+<p>先前提到，这里获取梯度有困难。有些工作使用估计梯度的方式进行，有些工作可以精确计算梯度但是不具有泛用性。</p>
+<h3 id="基于图像的三维推理">基于图像的三维推理</h3>
+<p>依然考虑从二维图像重建三维场景。传统方法往往要求获得从多个角度观察得到的二维图像，而由于数据集的扩大，基于学习的重建方法可以使用一张或少量二维图像来重建场景。部分工作会将重建三维场景拆分为首先重建 2.5 维的表示（深度表等）。</p>
+<p>另外，姿态估计也是三位推理的一个重要的子任务。通过深度学习的方法，预测刚体姿态是较为简单的，而预测人体这类非刚体的姿态则较为困难。</p>
+<h2 id="softras-基本原理">SoftRas 基本原理</h2>
+<p>大约是这样的一个流程：</p>
+<p><img src="/uploads/paper-2022-02/1.png" /></p>
+<p>这里外部因素包含相机参数 <span class="math inline">\(\boldsymbol{P}\)</span> 和环境光照 <span class="math inline">\(\boldsymbol{L}\)</span>，内部因素包括网格信息 <span class="math inline">\(\boldsymbol{M}\)</span> 以及各个顶点的信息（如颜色、材质）<span class="math inline">\(\boldsymbol{A}\)</span>。</p>
+<p>这里第一步要做的是获取三个中间信息，即网格法向量 <span class="math inline">\(\boldsymbol{N}\)</span>、视图空间（投影后的空间）各点坐标 <span class="math inline">\(\boldsymbol{U}\)</span> 以及 View dependent depths <span class="math inline">\(\boldsymbol{Z}\)</span>。这三个量只需要使用相机参数和网格信息即可得到。</p>
+<p>之后可以使用例如 Phong 模型等着色模型计算出颜色 <span class="math inline">\(\boldsymbol{C}\)</span>。</p>
+<p>进行到这一步，上述这些操作都是可微的。但是如果按照传统的渲染管线，下一步应该分别确定每一个网格三角形与每一个像素的对应（即光栅化），之后还要用 z-buffer 处理遮挡，这两步都因为离散采样从而是不可微的。</p>
+<p>SoftRas 软化光栅化和 z-buffer 的方式是引入 probability maps <span class="math inline">\(\{\mathcal{D}_j\}\)</span> 和聚合函数 <span class="math inline">\(\mathcal{A}(\cdot)\)</span> 分别代替光栅化和 z-buffer。这里 <span class="math inline">\(\mathcal{D}_j\)</span> 表示的是每一个像素在网格三角形 <span class="math inline">\(f_j\)</span> 内部的概率在平面上的分布。而聚合函数 <span class="math inline">\(\mathcal{A}(\cdot)\)</span> 联系起了 probability maps 以及深度信息，作为整个后续渲染流程的代表。</p>
+<h3 id="probability-maps-计算">probability maps 计算</h3>
+<p>考虑网格三角形在屏幕上的投影 <span class="math inline">\(f_j\)</span> 和屏幕上的像素 <span class="math inline">\(p_i\)</span>，记在屏幕上 <span class="math inline">\(p_i\)</span> 到 <span class="math inline">\(f_j\)</span> 的边最近距离为 <span class="math inline">\(d(i, j)\)</span>。显然，这个距离越小的像素点，出现在内部的概率越大。由于其可以反映三角形对屏幕的影响，并且其可微，所以可以用此作为 probability maps 的代表。随后通过添加控制常数、符号标记并归一化到 <span class="math inline">\((0, 1)\)</span> 内之后，我们得到了 probability maps 的公式：</p>
+<p><span class="math display">\[
+\mathcal{D}_{i, j} = \mathrm{sigmoid}\left(\delta_{i, j}\cdot\frac{d^2(i, j)}{\sigma}\right)
+\]</span></p>
+<p>这里 <span class="math inline">\(\sigma\)</span> 是一个正常数，一般默认为 <span class="math inline">\(1\times 10^{-4}\)</span>。而 <span class="math inline">\(\delta_{i, j}\)</span> 标记了 <span class="math inline">\(p_i\)</span> 是否在 <span class="math inline">\(f_j\)</span> 之中。若在，则 <span class="math inline">\(\delta_{i, j} = 1\)</span>，否则 <span class="math inline">\(\delta_{i, j} = -1\)</span>。</p>
+<p>下图展示了 <span class="math inline">\(d(i, j)\)</span> 的定义以及 <span class="math inline">\(\sigma\)</span> 常数对概率分布的影响：</p>
+<p><img src="/uploads/paper-2022-02/2.png" /></p>
+<p>显然看出 <span class="math inline">\(\sigma\)</span> 越大，概率分布就越模糊。</p>
+<p>另外一个显然的点是 <span class="math inline">\(\sigma \to 0\)</span> 的时候概率分布中三角形外的点概率密度为 <span class="math inline">\(0\)</span>，而三角形内的点为 <span class="math inline">\(1\)</span>。此时 SoftRas 退化为一般的光栅化。</p>
+<h3 id="聚合函数">聚合函数</h3>
+<p>我们考虑最后一个阶段，这里我们需要根据深度信息、 probability maps 以及颜色信息计算出最后的渲染结果。</p>
+<p>最后渲染结果中，像素 <span class="math inline">\(p_i\)</span> 的渲染结果用聚合函数表示，定义为：</p>
+<p><span class="math display">\[
+I_i = \mathcal{A}_S(\{C_j\}) := \sum_j w_{i, j}C_{i, j} + w_{i, b}C_b
+\]</span></p>
+<p>这里渲染结果定义为一系列颜色信息的加权求和，颜色构成的集合为 <span class="math inline">\(\{C_j\}\)</span>，符号 <span class="math inline">\(C_{i, j}\)</span> 表示三角形 <span class="math inline">\(f_j\)</span> 在像素 <span class="math inline">\(p_i\)</span> 处的颜色。而 <span class="math inline">\(C_b\)</span> 表示背景颜色。</p>
+<p>权重 <span class="math inline">\(w_{i, j}\)</span> 至少满足归一化条件：</p>
+<p><span class="math display">\[
+w_{i, b} + \sum_j w_{i, j} = 1
+\]</span></p>
+<p>而权重的具体值取决于先前得到的 probability maps 以及深度信息。我们将三角形 <span class="math inline">\(f_j\)</span> 中投影到 <span class="math inline">\(p_i\)</span> 像素的点的逆深度记为 <span class="math inline">\(z_{i, j}\)</span>。概率分布沿用先前的符号。定义：</p>
+<p><span class="math display">\[
+w_{i, j} := \frac{\mathcal{D}_{i, j}\exp(z_{i, j} / \gamma)}{\sum_k \mathcal{D}_{i, k}\exp(z_{i, k} / \gamma) + \exp(\varepsilon / \gamma)}
+\]</span></p>
+<p>依据归一化条件就有：</p>
+<p><span class="math display">\[
+w_{i, b} := \frac{\exp(\varepsilon / \gamma)}{\sum_k \mathcal{D}_{i, k}\exp(z_{i, k} / \gamma) + \exp(\varepsilon / \gamma)}
+\]</span></p>
+<div class="note info no-icon"><p>可以看出权重的计算公式其实是类似 Softmax 函数：</p>
+<p><span class="math display">\[
+{\rm softmax}(z_1, z_2, \cdots, z_n)_j = \frac{e^{z_j}}{\sum_i e^{z_i}}
+\]</span></p>
+</div>
+<p>这里可以看出 <span class="math inline">\(\varepsilon\)</span> 是一个小正常数，其作用是将背景颜色纳入计算。<span class="math inline">\(\gamma\)</span> 是一个调节清晰度的正常数，与计算 probability maps 的 <span class="math inline">\(\sigma\)</span> 类似，默认值一般是 <span class="math inline">\(1 \times 10^{-4}\)</span>。</p>
+<p>可以看出，具有更大概率密度的，且离投影平面更近的（即具有更大逆深度的）三角形会获得更大的权重，这符合直觉。</p>
+<hr />
+<p>现在考虑退化。针对像素 <span class="math inline">\(p_i\)</span>，假设 <span class="math inline">\(z_{i, 1} &lt; z_{i, 2} &lt; \cdots &lt; z_{i, N}\)</span>，考虑 <span class="math inline">\(\gamma\to 0\)</span>。首先考察 <span class="math inline">\(j = N\)</span>：</p>
+<p><span class="math display">\[
+\begin{aligned}
+w_{i, N} &amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}\exp(z_{i, N} / \gamma)}{\sum_k \mathcal{D}_{i, k}\exp(z_{i, k} / \gamma) + \exp(\varepsilon / \gamma)} \\
+&amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}}{\sum_k \mathcal{D}_{i, k}\exp((z_{i, k} - z_{i, N}) / \gamma) + \exp((\varepsilon - z_{i, N}) / \gamma)} \\
+&amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}}{\sum_{k = 1}^{N - 1} \mathcal{D}_{i, k}\exp((z_{i, k} - z_{i, N}) / \gamma) + \mathcal{D}_{i, N} + \exp((\varepsilon - z_{i, N}) / \gamma)} \\
+&amp;= 1
+\end{aligned}
+\]</span></p>
+<p>最后一步注意到 <span class="math inline">\(z_{i, N}\)</span> 大于任何 <span class="math inline">\(z_{i, k}(k &lt; N)\)</span>，故有这样的结果。而对于 <span class="math inline">\(j &lt; N\)</span>：</p>
+<p><span class="math display">\[
+\begin{aligned}
+w_{i, j} &amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, j}\exp(z_{i, j} / \gamma)}{\sum_k \mathcal{D}_{i, k}\exp(z_{i, k} / \gamma) + \exp(\varepsilon / \gamma)} \\
+&amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}}{\sum_k \mathcal{D}_{i, k}\exp((z_{i, k} - z_{i, j}) / \gamma) + \exp((\varepsilon - z_{i, j}) / \gamma)} \\
+&amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}}{\left(\sum_{k = 1}^{j - 1} + \sum_{k = j + 1}^{N}\right) \mathcal{D}_{i, k}\exp((z_{i, k} - z_{i, N}) / \gamma) + \mathcal{D}_{i, N} + \exp((\varepsilon - z_{i, N}) / \gamma)} \\
+&amp;= 0
+\end{aligned}
+\]</span></p>
+<p>这里要注意到分母上 <span class="math inline">\(\sum_{k = j + 1}^{N}\)</span> 的部分最终会趋向于正无穷，整体极限为 <span class="math inline">\(0\)</span>。最后根据归一化条件也有 <span class="math inline">\(w_{i, b} = 0\)</span>。</p>
+<p>结合这样的推理，可以看出：</p>
+<p><span class="math display">\[
+I_i = \mathcal{A}_S(\{C_j\}) = C_{i, N}
+\]</span></p>
+<p>也就是说最后渲染的结果只考虑了最近的网格三角形，这也就是 z-buffer 方法。</p>
+<hr />
+<p>似乎还有一个和轮廓相关的聚合函数：</p>
+<p><span class="math display">\[
+I_{i, S} = \mathcal{A}_O(\{\mathcal{D}_j\}) := 1 - \prod_j (1 - \mathcal{D}_{i, j})
+\]</span></p>
+<p>这里没有出现颜色项，这是因为轮廓的颜色一般设定为常数。这里聚合函数形式上实际上就是计算出了像素 <span class="math inline">\(p_i\)</span> 被至少一个三角形覆盖的概率。</p>
+<h2 id="实验内容">实验内容</h2>
+<h3 id="single-view-mesh-reconstruction">Single-View Mesh Reconstruction</h3>
+<p>使用这样的结构：</p>
+<p><img src="/uploads/paper-2022-02/3.png" /></p>
+<p>这里固定了渲染管线中的外部变量，即固定了相机位置和环境光照。每一个输入图片都会进入 color generator 和 shape generator 生成三维模型参数 <span class="math inline">\(\boldsymbol{C}\)</span> 和 <span class="math inline">\(\boldsymbol{M}\)</span>。随后后续接入 SoftRas，渲染得到带颜色的图像 <span class="math inline">\(I_C\)</span> 和轮廓 <span class="math inline">\(I_S\)</span>，最后和原先图像比较计算 loss。</p>
+<p>最后定义的 loss 分为三部分。在叙述定义之前，我们将原始图像的颜色和轮廓定义为 <span class="math inline">\(\hat I_C\)</span> 以及 <span class="math inline">\(\hat I_S\)</span>：</p>
+<ul>
+<li>color loss。定义为颜色之差的 1- 范数：</li>
+</ul>
+<p><span class="math display">\[
+\mathcal{L}_C := \|I_C - \hat I_C\|_1
+\]</span></p>
+<ul>
+<li>silhouette loss。定义为，这里使用 <span class="math inline">\(\otimes\)</span> 表示逐元素求积，<span class="math inline">\(\oplus\)</span> 表示逐元素求和：</li>
+</ul>
+<p><span class="math display">\[
+\mathcal{L}_S := 1 - \frac{\|I_S \otimes \hat I_S\|_1}{\|I_S \oplus \hat I_S - I_S \otimes \hat I_S\|_1}
+\]</span></p>
+<ul>
+<li>geometry loss。作用是对 loss 进行 L1 正则化。</li>
+</ul>
+<p>最后定义的 loss 是这三部分的加权求和：</p>
+<p><span class="math display">\[
+\mathcal{L} := \mathcal{L}_S + \lambda\mathcal{L}_C + \mu\mathcal{L}_G
+\]</span></p>
+<p>这里论文主要提了一下 color generator 的结构：</p>
+<p><img src="/uploads/paper-2022-02/4.png" /></p>
+<p>似乎是提出了一种新结构，让颜色重建变为一个多分类问题，进而降低了时间复杂度。但是论文的描述中有若干的暂且不太清楚的名词，暂且把原文贴在这里以后再来看：</p>
+<div class="note info no-icon"><p>Instead of directly regressing the color value, our color generator formulates color reconstruction as a classification problem that learns to reuse the pixel colors in the input image for each sampling point. Let <span class="math inline">\(N_c\)</span> denote the number of sampling points on <span class="math inline">\(\boldsymbol{M}\)</span> and <span class="math inline">\(H, W\)</span> be the height and width of the input image respectively. However, the computational cost of a naive color selection approach is prohibitive, i.e. <span class="math inline">\(O(HWN_c)\)</span>. To address this challenge, we propose a novel approach to colorize mesh using a color palette, as shown in Figure 7. Specifically, after passing input image to a neural network, the extracted features are fed into (1) a sampling network that samples the representative colors for building the palette; and (2) a selection network that combines colors from the palette for texturing the sampling points. The color prediction is obtained by multiplying the color selections with the learned color palette. Our approach reduces the computation complexity to <span class="math inline">\(O(N_d(HW + N_c))\)</span>, where <span class="math inline">\(N_p\)</span> is the size of color palette. With a proper setting of <span class="math inline">\(N_p\)</span>, one can significantly reduce the computational cost while achieving sharp and accurate color recovery.</p>
+</div>
+<h3 id="image-based-shape-fitting">Image-based Shape Fitting</h3>
+<p>似乎依然是从图像重建模型，但是这个重建任务似乎和姿态预测有较为紧密的联系。</p>
+<p>传统方法面临的问题依然是梯度不精确的问题，这样就导致反向传播较为困难。另外，传统方法也面临这样的问题：</p>
+<ul>
+<li><p>遮挡问题。传统方法中，被遮挡的三角形无法调整参数，而 SoftRas 允许被遮挡的三角形参与到运算中，所以这个问题可以解决。</p></li>
+<li><p>局部最小值问题。我们希望误差反向传播可以传播到较大范围，即希望一次三维模型参数调整不局限于较小的局部，否则可能会导致模型收敛到局部最小值而非更优的结果。而 SoftRas 使用的概率分布算法允许全局的像素参与到运算中，所以理论上误差可以传播到较大范围，这个问题可以解决。</p></li>
+</ul>
+<p>所以最后就直接使用这样的方式训练就行了：</p>
+<p><span class="math display">\[
+\{\rho, \theta, t\} = \mathop{\mathrm{argmin}}_{\rho, \theta, t}\|R(M(\rho, \theta, t)) - I_t\|_2
+\]</span></p>
+<p>这里 <span class="math inline">\(\rho, \theta, t\)</span> 是三维模型的参数，分别是非刚体形变参数、姿态角度、转换参数（或许就是视图转换的参数），<span class="math inline">\(M(\cdot)\)</span> 将这些参数转换为网格，<span class="math inline">\(R(\cdot)\)</span> 是渲染函数，<span class="math inline">\(I_t\)</span> 则是目标图像。这个训练方式也就是机器学习的通式。</p>
+<h2 id="实验结果">实验结果</h2>
+<h3 id="single-view-mesh-reconstruction-1">Single-View Mesh Reconstruction</h3>
+<p>实验结果看确实挺好的，下面展示的是不带颜色的网格重建：</p>
+<p><img src="/uploads/paper-2022-02/5.png" /></p>
+<p>颜色似乎也重建得挺好：</p>
+<p><img src="/uploads/paper-2022-02/6.png" height="50%" width="50%" /></p>
+<p>使用的评价方法是 3D IoU，即 3D Intersection over Union。这是一种物体检测领域的评价函数。二维情况下的 IoU 定义如下图所示。这里的矩形均指代物体的包围盒，分别为实际的包围盒和模型预测的包围盒：</p>
+<p><img src="/uploads/paper-2022-02/7.png" height="50%" width="50%" /></p>
+<p>SoftRas 的平均 3D IoU 超出了 state-of-art 的 NMR 的 3D IoU 约 4.5 点，从而说明在网格重建任务上 SoftRas 的表现超出了传统方法。</p>
+<p>另外似乎还有一项称为 Ablation Study 的后续实验，这里省略。</p>
+<h3 id="image-based-shape-fitting-1">Image-based Shape Fitting</h3>
+<p>首先实验刚体结构预测，这里采用六面着不同色的正方体。给定渲染后图像，要求给出正方体应当旋转的角度。SoftRas 和 NMR 的实验结果如下：</p>
+<p><img src="/uploads/paper-2022-02/8.png" /></p>
+<p>可以发现 SoftRas 成功获得了最后的结果，而 NMR 则收敛到了一个局部最小值无法得到正确结果。</p>
+<p>论文认为 NMR 失败的原因正是因为六个面的相互遮挡，这导致了 NMR 无法越过局部最小值。</p>
+<p>另外其也做了大量实验，表明 SoftRas 预测的旋转角度误差严格优于 NMR，在不优化的情况下，SoftRas 的角度误差平均比 NMR 低 <span class="math inline">\(10.60^\circ\)</span>。</p>
+<p>这里似乎涉及到 <span class="math inline">\({\rm SO}(3)\)</span> 旋转群的一些东西，后面再来研究吧。</p>
+<hr />
+<p>非刚体结构预测则选用了人体结构预测，这里初始化时人的右手位于背后，而目标图像中右手已经移动到前面，实验目标是将手移出来。显然 NMR 依然因为无法处理遮挡，最后没有能够完成任务。而 SoftRas 完成了：</p>
+<p><img src="/uploads/paper-2022-02/9.png" /></p>
+<h2 id="附录梯度计算">附录：梯度计算</h2>
+<p>我们现在研究一下 SoftRas 渲染出来的图像 <span class="math inline">\(\boldsymbol{I}\)</span> 对网格参数 <span class="math inline">\(\boldsymbol{M}\)</span> 的梯度，这个梯度也就是在反向传播的时候要计算的值。首先显然有：</p>
+<p><span class="math display">\[
+\frac{\partial\boldsymbol{I}}{\partial\boldsymbol{M}} = \frac{\partial\boldsymbol{I}}{\partial\boldsymbol{U}}\frac{\partial\boldsymbol{U}}{\partial\boldsymbol{M}} + \frac{\partial\boldsymbol{I}}{\partial\boldsymbol{Z}}\frac{\partial\boldsymbol{Z}}{\partial\boldsymbol{M}} + \frac{\partial\boldsymbol{I}}{\partial\boldsymbol{N}}\frac{\partial\boldsymbol{N}}{\partial\boldsymbol{M}}
+\]</span></p>
+<p>这里显然可以看出 <span class="math inline">\(\dfrac{\partial\boldsymbol{U}}{\partial\boldsymbol{M}}, \dfrac{\partial\boldsymbol{Z}}{\partial\boldsymbol{M}}, \dfrac{\partial\boldsymbol{N}}{\partial\boldsymbol{M}}\)</span> 是可以简单计算的，因为 <span class="math inline">\(\boldsymbol{U}, \boldsymbol{Z}, \boldsymbol{N}\)</span> 都可以由 <span class="math inline">\(\boldsymbol{M}\)</span> 通过简单的视图变换得到，由变换矩阵即可推算偏导数。</p>
+<p>而根据着色模型，<span class="math inline">\(\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{N}}\)</span> 也是可以计算的。</p>
+<p>剩余的两个梯度中，<span class="math inline">\(\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{Z}}\)</span> 直接和聚合函数相关，而 <span class="math inline">\(\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{U}}\)</span> 经过了两层，分别是概率分布计算和聚合函数，所以我们需要拆解：</p>
+<p><span class="math display">\[
+\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{U}} = \dfrac{\partial\boldsymbol{I}}{\partial\mathcal{D}}\dfrac{\partial\mathcal{D}}{\partial\boldsymbol{U}}
+\]</span></p>
 ]]></content>
       <categories>
-        <category>【杂谈】开发</category>
+        <category>【论文笔记】计算机</category>
       </categories>
   </entry>
   <entry>
@@ -11064,185 +11246,6 @@ f(4k + 3) &amp;= (4k + 3) \oplus (4k + 3) = 0 \\
       </categories>
   </entry>
   <entry>
-    <title>2022 年 2 月论文笔记</title>
-    <url>/2022/01/18/paper-2022-02/</url>
-    <content><![CDATA[<p>2022 年 2 月，主要工作为可微渲染相关方向。</p>
-<span id="more"></span>
-<h1 id="soft-rasterizer---a-differentiable-renderer-for-image-based-3d-reasoning">Soft Rasterizer - A Differentiable Renderer for Image-based 3D Reasoning</h1>
-<h2 id="工作概述">工作概述</h2>
-<p>主要思想还是想把逆向渲染管线（通过二维图像推理三维模型的参数）和神经网络结合，但是最大的问题是管线中的光栅化是离散化操作，可能导致不可微。一些其他的工作在尝试<strong>近似估算</strong>梯度，但是这个工作提出了一种真正可微的框架，能做到：</p>
-<ul>
-<li>直接用可微函数渲染染色的网格</li>
-<li>能从轮廓、阴影等各种二维图像信息有效反向传递为网格顶点参数</li>
-</ul>
-<p>这个工作的重点是把渲染过程的部分看作<strong>聚合函数（Aggregation function）</strong>，该函数联系了三维模型的网格三角形的概率分布以及其渲染出来的像素。</p>
-<div class="note info no-icon"><p>看起来标题中的 Soft 的含义就是使用概率分布的方式来把离散的光栅化变成可微的，最初始的光栅化一般会涉及到离散采样（即确定每一个离散的像素是否要显示网格上的某一个三角形），这也是不可微性的来源。</p>
-</div>
-<p>本论文主要讲述了如何通过 Soft rasterization 框架实现可微的光栅化以保证渲染管线的可微性，基于此，该渲染框架即可方便地接入神经网络以将二维图像信息反向传播到三维模型。同时，本论文也会指出近期的近似估算梯度的方式（使用 hand-crafted 的函数近似表示梯度）并不具有泛用性，且可能会降低三维模型信息更新的效率。</p>
-<h3 id="softras-与传统光栅化">SoftRas 与传统光栅化</h3>
-<p>SoftRas 在将模型投影到平面上的时候，会将模型转换为投影平面上的概率分布。而传统光栅化则是转化为具体某个像素是否染色。</p>
-<p>另外，似乎 SoftRas 对遮挡的处理也和传统渲染管线的 z-buffer 不一样。传统光栅化会使用 onehot 的方式处理遮挡（应该指的是处理为完全遮挡），而 SoftRas 也会基于概率分布做出不同处理。</p>
-<h2 id="相关工作">相关工作</h2>
-<h3 id="可微渲染">可微渲染</h3>
-<p>主要关注如何描述二维图像变化和三维模型操作的关系，主要解决如何从二维图像重建三维场景。考虑给定的二维图片 <span class="math inline">\(A\)</span>，首先粗略初始化一个三维场景 <span class="math inline">\(B&#39;\)</span>，然后通过渲染管线渲染得到二维图片 <span class="math inline">\(B\)</span>。计算 <span class="math inline">\(A\)</span> 和 <span class="math inline">\(B\)</span> 的 loss，将其梯度反向传播给三维场景 <span class="math inline">\(B&#39;\)</span> 的参数，更新之。这里反向传播就是可微渲染最重要的步骤，即如何计算梯度，因为三维场景参数更新量取决于 loss 对参数的偏导数。</p>
-<p>先前提到，这里获取梯度有困难。有些工作使用估计梯度的方式进行，有些工作可以精确计算梯度但是不具有泛用性。</p>
-<h3 id="基于图像的三维推理">基于图像的三维推理</h3>
-<p>依然考虑从二维图像重建三维场景。传统方法往往要求获得从多个角度观察得到的二维图像，而由于数据集的扩大，基于学习的重建方法可以使用一张或少量二维图像来重建场景。部分工作会将重建三维场景拆分为首先重建 2.5 维的表示（深度表等）。</p>
-<p>另外，姿态估计也是三位推理的一个重要的子任务。通过深度学习的方法，预测刚体姿态是较为简单的，而预测人体这类非刚体的姿态则较为困难。</p>
-<h2 id="softras-基本原理">SoftRas 基本原理</h2>
-<p>大约是这样的一个流程：</p>
-<p><img src="/uploads/paper-2022-02/1.png" /></p>
-<p>这里外部因素包含相机参数 <span class="math inline">\(\boldsymbol{P}\)</span> 和环境光照 <span class="math inline">\(\boldsymbol{L}\)</span>，内部因素包括网格信息 <span class="math inline">\(\boldsymbol{M}\)</span> 以及各个顶点的信息（如颜色、材质）<span class="math inline">\(\boldsymbol{A}\)</span>。</p>
-<p>这里第一步要做的是获取三个中间信息，即网格法向量 <span class="math inline">\(\boldsymbol{N}\)</span>、视图空间（投影后的空间）各点坐标 <span class="math inline">\(\boldsymbol{U}\)</span> 以及 View dependent depths <span class="math inline">\(\boldsymbol{Z}\)</span>。这三个量只需要使用相机参数和网格信息即可得到。</p>
-<p>之后可以使用例如 Phong 模型等着色模型计算出颜色 <span class="math inline">\(\boldsymbol{C}\)</span>。</p>
-<p>进行到这一步，上述这些操作都是可微的。但是如果按照传统的渲染管线，下一步应该分别确定每一个网格三角形与每一个像素的对应（即光栅化），之后还要用 z-buffer 处理遮挡，这两步都因为离散采样从而是不可微的。</p>
-<p>SoftRas 软化光栅化和 z-buffer 的方式是引入 probability maps <span class="math inline">\(\{\mathcal{D}_j\}\)</span> 和聚合函数 <span class="math inline">\(\mathcal{A}(\cdot)\)</span> 分别代替光栅化和 z-buffer。这里 <span class="math inline">\(\mathcal{D}_j\)</span> 表示的是每一个像素在网格三角形 <span class="math inline">\(f_j\)</span> 内部的概率在平面上的分布。而聚合函数 <span class="math inline">\(\mathcal{A}(\cdot)\)</span> 联系起了 probability maps 以及深度信息，作为整个后续渲染流程的代表。</p>
-<h3 id="probability-maps-计算">probability maps 计算</h3>
-<p>考虑网格三角形在屏幕上的投影 <span class="math inline">\(f_j\)</span> 和屏幕上的像素 <span class="math inline">\(p_i\)</span>，记在屏幕上 <span class="math inline">\(p_i\)</span> 到 <span class="math inline">\(f_j\)</span> 的边最近距离为 <span class="math inline">\(d(i, j)\)</span>。显然，这个距离越小的像素点，出现在内部的概率越大。由于其可以反映三角形对屏幕的影响，并且其可微，所以可以用此作为 probability maps 的代表。随后通过添加控制常数、符号标记并归一化到 <span class="math inline">\((0, 1)\)</span> 内之后，我们得到了 probability maps 的公式：</p>
-<p><span class="math display">\[
-\mathcal{D}_{i, j} = \mathrm{sigmoid}\left(\delta_{i, j}\cdot\frac{d^2(i, j)}{\sigma}\right)
-\]</span></p>
-<p>这里 <span class="math inline">\(\sigma\)</span> 是一个正常数，一般默认为 <span class="math inline">\(1\times 10^{-4}\)</span>。而 <span class="math inline">\(\delta_{i, j}\)</span> 标记了 <span class="math inline">\(p_i\)</span> 是否在 <span class="math inline">\(f_j\)</span> 之中。若在，则 <span class="math inline">\(\delta_{i, j} = 1\)</span>，否则 <span class="math inline">\(\delta_{i, j} = -1\)</span>。</p>
-<p>下图展示了 <span class="math inline">\(d(i, j)\)</span> 的定义以及 <span class="math inline">\(\sigma\)</span> 常数对概率分布的影响：</p>
-<p><img src="/uploads/paper-2022-02/2.png" /></p>
-<p>显然看出 <span class="math inline">\(\sigma\)</span> 越大，概率分布就越模糊。</p>
-<p>另外一个显然的点是 <span class="math inline">\(\sigma \to 0\)</span> 的时候概率分布中三角形外的点概率密度为 <span class="math inline">\(0\)</span>，而三角形内的点为 <span class="math inline">\(1\)</span>。此时 SoftRas 退化为一般的光栅化。</p>
-<h3 id="聚合函数">聚合函数</h3>
-<p>我们考虑最后一个阶段，这里我们需要根据深度信息、 probability maps 以及颜色信息计算出最后的渲染结果。</p>
-<p>最后渲染结果中，像素 <span class="math inline">\(p_i\)</span> 的渲染结果用聚合函数表示，定义为：</p>
-<p><span class="math display">\[
-I_i = \mathcal{A}_S(\{C_j\}) := \sum_j w_{i, j}C_{i, j} + w_{i, b}C_b
-\]</span></p>
-<p>这里渲染结果定义为一系列颜色信息的加权求和，颜色构成的集合为 <span class="math inline">\(\{C_j\}\)</span>，符号 <span class="math inline">\(C_{i, j}\)</span> 表示三角形 <span class="math inline">\(f_j\)</span> 在像素 <span class="math inline">\(p_i\)</span> 处的颜色。而 <span class="math inline">\(C_b\)</span> 表示背景颜色。</p>
-<p>权重 <span class="math inline">\(w_{i, j}\)</span> 至少满足归一化条件：</p>
-<p><span class="math display">\[
-w_{i, b} + \sum_j w_{i, j} = 1
-\]</span></p>
-<p>而权重的具体值取决于先前得到的 probability maps 以及深度信息。我们将三角形 <span class="math inline">\(f_j\)</span> 中投影到 <span class="math inline">\(p_i\)</span> 像素的点的逆深度记为 <span class="math inline">\(z_{i, j}\)</span>。概率分布沿用先前的符号。定义：</p>
-<p><span class="math display">\[
-w_{i, j} := \frac{\mathcal{D}_{i, j}\exp(z_{i, j} / \gamma)}{\sum_k \mathcal{D}_{i, k}\exp(z_{i, k} / \gamma) + \exp(\varepsilon / \gamma)}
-\]</span></p>
-<p>依据归一化条件就有：</p>
-<p><span class="math display">\[
-w_{i, b} := \frac{\exp(\varepsilon / \gamma)}{\sum_k \mathcal{D}_{i, k}\exp(z_{i, k} / \gamma) + \exp(\varepsilon / \gamma)}
-\]</span></p>
-<div class="note info no-icon"><p>可以看出权重的计算公式其实是类似 Softmax 函数：</p>
-<p><span class="math display">\[
-{\rm softmax}(z_1, z_2, \cdots, z_n)_j = \frac{e^{z_j}}{\sum_i e^{z_i}}
-\]</span></p>
-</div>
-<p>这里可以看出 <span class="math inline">\(\varepsilon\)</span> 是一个小正常数，其作用是将背景颜色纳入计算。<span class="math inline">\(\gamma\)</span> 是一个调节清晰度的正常数，与计算 probability maps 的 <span class="math inline">\(\sigma\)</span> 类似，默认值一般是 <span class="math inline">\(1 \times 10^{-4}\)</span>。</p>
-<p>可以看出，具有更大概率密度的，且离投影平面更近的（即具有更大逆深度的）三角形会获得更大的权重，这符合直觉。</p>
-<hr />
-<p>现在考虑退化。针对像素 <span class="math inline">\(p_i\)</span>，假设 <span class="math inline">\(z_{i, 1} &lt; z_{i, 2} &lt; \cdots &lt; z_{i, N}\)</span>，考虑 <span class="math inline">\(\gamma\to 0\)</span>。首先考察 <span class="math inline">\(j = N\)</span>：</p>
-<p><span class="math display">\[
-\begin{aligned}
-w_{i, N} &amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}\exp(z_{i, N} / \gamma)}{\sum_k \mathcal{D}_{i, k}\exp(z_{i, k} / \gamma) + \exp(\varepsilon / \gamma)} \\
-&amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}}{\sum_k \mathcal{D}_{i, k}\exp((z_{i, k} - z_{i, N}) / \gamma) + \exp((\varepsilon - z_{i, N}) / \gamma)} \\
-&amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}}{\sum_{k = 1}^{N - 1} \mathcal{D}_{i, k}\exp((z_{i, k} - z_{i, N}) / \gamma) + \mathcal{D}_{i, N} + \exp((\varepsilon - z_{i, N}) / \gamma)} \\
-&amp;= 1
-\end{aligned}
-\]</span></p>
-<p>最后一步注意到 <span class="math inline">\(z_{i, N}\)</span> 大于任何 <span class="math inline">\(z_{i, k}(k &lt; N)\)</span>，故有这样的结果。而对于 <span class="math inline">\(j &lt; N\)</span>：</p>
-<p><span class="math display">\[
-\begin{aligned}
-w_{i, j} &amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, j}\exp(z_{i, j} / \gamma)}{\sum_k \mathcal{D}_{i, k}\exp(z_{i, k} / \gamma) + \exp(\varepsilon / \gamma)} \\
-&amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}}{\sum_k \mathcal{D}_{i, k}\exp((z_{i, k} - z_{i, j}) / \gamma) + \exp((\varepsilon - z_{i, j}) / \gamma)} \\
-&amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}}{\left(\sum_{k = 1}^{j - 1} + \sum_{k = j + 1}^{N}\right) \mathcal{D}_{i, k}\exp((z_{i, k} - z_{i, N}) / \gamma) + \mathcal{D}_{i, N} + \exp((\varepsilon - z_{i, N}) / \gamma)} \\
-&amp;= 0
-\end{aligned}
-\]</span></p>
-<p>这里要注意到分母上 <span class="math inline">\(\sum_{k = j + 1}^{N}\)</span> 的部分最终会趋向于正无穷，整体极限为 <span class="math inline">\(0\)</span>。最后根据归一化条件也有 <span class="math inline">\(w_{i, b} = 0\)</span>。</p>
-<p>结合这样的推理，可以看出：</p>
-<p><span class="math display">\[
-I_i = \mathcal{A}_S(\{C_j\}) = C_{i, N}
-\]</span></p>
-<p>也就是说最后渲染的结果只考虑了最近的网格三角形，这也就是 z-buffer 方法。</p>
-<hr />
-<p>似乎还有一个和轮廓相关的聚合函数：</p>
-<p><span class="math display">\[
-I_{i, S} = \mathcal{A}_O(\{\mathcal{D}_j\}) := 1 - \prod_j (1 - \mathcal{D}_{i, j})
-\]</span></p>
-<p>这里没有出现颜色项，这是因为轮廓的颜色一般设定为常数。这里聚合函数形式上实际上就是计算出了像素 <span class="math inline">\(p_i\)</span> 被至少一个三角形覆盖的概率。</p>
-<h2 id="实验内容">实验内容</h2>
-<h3 id="single-view-mesh-reconstruction">Single-View Mesh Reconstruction</h3>
-<p>使用这样的结构：</p>
-<p><img src="/uploads/paper-2022-02/3.png" /></p>
-<p>这里固定了渲染管线中的外部变量，即固定了相机位置和环境光照。每一个输入图片都会进入 color generator 和 shape generator 生成三维模型参数 <span class="math inline">\(\boldsymbol{C}\)</span> 和 <span class="math inline">\(\boldsymbol{M}\)</span>。随后后续接入 SoftRas，渲染得到带颜色的图像 <span class="math inline">\(I_C\)</span> 和轮廓 <span class="math inline">\(I_S\)</span>，最后和原先图像比较计算 loss。</p>
-<p>最后定义的 loss 分为三部分。在叙述定义之前，我们将原始图像的颜色和轮廓定义为 <span class="math inline">\(\hat I_C\)</span> 以及 <span class="math inline">\(\hat I_S\)</span>：</p>
-<ul>
-<li>color loss。定义为颜色之差的 1- 范数：</li>
-</ul>
-<p><span class="math display">\[
-\mathcal{L}_C := \|I_C - \hat I_C\|_1
-\]</span></p>
-<ul>
-<li>silhouette loss。定义为，这里使用 <span class="math inline">\(\otimes\)</span> 表示逐元素求积，<span class="math inline">\(\oplus\)</span> 表示逐元素求和：</li>
-</ul>
-<p><span class="math display">\[
-\mathcal{L}_S := 1 - \frac{\|I_S \otimes \hat I_S\|_1}{\|I_S \oplus \hat I_S - I_S \otimes \hat I_S\|_1}
-\]</span></p>
-<ul>
-<li>geometry loss。作用是对 loss 进行 L1 正则化。</li>
-</ul>
-<p>最后定义的 loss 是这三部分的加权求和：</p>
-<p><span class="math display">\[
-\mathcal{L} := \mathcal{L}_S + \lambda\mathcal{L}_C + \mu\mathcal{L}_G
-\]</span></p>
-<p>这里论文主要提了一下 color generator 的结构：</p>
-<p><img src="/uploads/paper-2022-02/4.png" /></p>
-<p>似乎是提出了一种新结构，让颜色重建变为一个多分类问题，进而降低了时间复杂度。但是论文的描述中有若干的暂且不太清楚的名词，暂且把原文贴在这里以后再来看：</p>
-<div class="note info no-icon"><p>Instead of directly regressing the color value, our color generator formulates color reconstruction as a classification problem that learns to reuse the pixel colors in the input image for each sampling point. Let <span class="math inline">\(N_c\)</span> denote the number of sampling points on <span class="math inline">\(\boldsymbol{M}\)</span> and <span class="math inline">\(H, W\)</span> be the height and width of the input image respectively. However, the computational cost of a naive color selection approach is prohibitive, i.e. <span class="math inline">\(O(HWN_c)\)</span>. To address this challenge, we propose a novel approach to colorize mesh using a color palette, as shown in Figure 7. Specifically, after passing input image to a neural network, the extracted features are fed into (1) a sampling network that samples the representative colors for building the palette; and (2) a selection network that combines colors from the palette for texturing the sampling points. The color prediction is obtained by multiplying the color selections with the learned color palette. Our approach reduces the computation complexity to <span class="math inline">\(O(N_d(HW + N_c))\)</span>, where <span class="math inline">\(N_p\)</span> is the size of color palette. With a proper setting of <span class="math inline">\(N_p\)</span>, one can significantly reduce the computational cost while achieving sharp and accurate color recovery.</p>
-</div>
-<h3 id="image-based-shape-fitting">Image-based Shape Fitting</h3>
-<p>似乎依然是从图像重建模型，但是这个重建任务似乎和姿态预测有较为紧密的联系。</p>
-<p>传统方法面临的问题依然是梯度不精确的问题，这样就导致反向传播较为困难。另外，传统方法也面临这样的问题：</p>
-<ul>
-<li><p>遮挡问题。传统方法中，被遮挡的三角形无法调整参数，而 SoftRas 允许被遮挡的三角形参与到运算中，所以这个问题可以解决。</p></li>
-<li><p>局部最小值问题。我们希望误差反向传播可以传播到较大范围，即希望一次三维模型参数调整不局限于较小的局部，否则可能会导致模型收敛到局部最小值而非更优的结果。而 SoftRas 使用的概率分布算法允许全局的像素参与到运算中，所以理论上误差可以传播到较大范围，这个问题可以解决。</p></li>
-</ul>
-<p>所以最后就直接使用这样的方式训练就行了：</p>
-<p><span class="math display">\[
-\{\rho, \theta, t\} = \mathop{\mathrm{argmin}}_{\rho, \theta, t}\|R(M(\rho, \theta, t)) - I_t\|_2
-\]</span></p>
-<p>这里 <span class="math inline">\(\rho, \theta, t\)</span> 是三维模型的参数，分别是非刚体形变参数、姿态角度、转换参数（或许就是视图转换的参数），<span class="math inline">\(M(\cdot)\)</span> 将这些参数转换为网格，<span class="math inline">\(R(\cdot)\)</span> 是渲染函数，<span class="math inline">\(I_t\)</span> 则是目标图像。这个训练方式也就是机器学习的通式。</p>
-<h2 id="实验结果">实验结果</h2>
-<h3 id="single-view-mesh-reconstruction-1">Single-View Mesh Reconstruction</h3>
-<p>实验结果看确实挺好的，下面展示的是不带颜色的网格重建：</p>
-<p><img src="/uploads/paper-2022-02/5.png" /></p>
-<p>颜色似乎也重建得挺好：</p>
-<p><img src="/uploads/paper-2022-02/6.png" height="50%" width="50%" /></p>
-<p>使用的评价方法是 3D IoU，即 3D Intersection over Union。这是一种物体检测领域的评价函数。二维情况下的 IoU 定义如下图所示。这里的矩形均指代物体的包围盒，分别为实际的包围盒和模型预测的包围盒：</p>
-<p><img src="/uploads/paper-2022-02/7.png" height="50%" width="50%" /></p>
-<p>SoftRas 的平均 3D IoU 超出了 state-of-art 的 NMR 的 3D IoU 约 4.5 点，从而说明在网格重建任务上 SoftRas 的表现超出了传统方法。</p>
-<p>另外似乎还有一项称为 Ablation Study 的后续实验，这里省略。</p>
-<h3 id="image-based-shape-fitting-1">Image-based Shape Fitting</h3>
-<p>首先实验刚体结构预测，这里采用六面着不同色的正方体。给定渲染后图像，要求给出正方体应当旋转的角度。SoftRas 和 NMR 的实验结果如下：</p>
-<p><img src="/uploads/paper-2022-02/8.png" /></p>
-<p>可以发现 SoftRas 成功获得了最后的结果，而 NMR 则收敛到了一个局部最小值无法得到正确结果。</p>
-<p>论文认为 NMR 失败的原因正是因为六个面的相互遮挡，这导致了 NMR 无法越过局部最小值。</p>
-<p>另外其也做了大量实验，表明 SoftRas 预测的旋转角度误差严格优于 NMR，在不优化的情况下，SoftRas 的角度误差平均比 NMR 低 <span class="math inline">\(10.60^\circ\)</span>。</p>
-<p>这里似乎涉及到 <span class="math inline">\({\rm SO}(3)\)</span> 旋转群的一些东西，后面再来研究吧。</p>
-<hr />
-<p>非刚体结构预测则选用了人体结构预测，这里初始化时人的右手位于背后，而目标图像中右手已经移动到前面，实验目标是将手移出来。显然 NMR 依然因为无法处理遮挡，最后没有能够完成任务。而 SoftRas 完成了：</p>
-<p><img src="/uploads/paper-2022-02/9.png" /></p>
-<h2 id="附录梯度计算">附录：梯度计算</h2>
-<p>我们现在研究一下 SoftRas 渲染出来的图像 <span class="math inline">\(\boldsymbol{I}\)</span> 对网格参数 <span class="math inline">\(\boldsymbol{M}\)</span> 的梯度，这个梯度也就是在反向传播的时候要计算的值。首先显然有：</p>
-<p><span class="math display">\[
-\frac{\partial\boldsymbol{I}}{\partial\boldsymbol{M}} = \frac{\partial\boldsymbol{I}}{\partial\boldsymbol{U}}\frac{\partial\boldsymbol{U}}{\partial\boldsymbol{M}} + \frac{\partial\boldsymbol{I}}{\partial\boldsymbol{Z}}\frac{\partial\boldsymbol{Z}}{\partial\boldsymbol{M}} + \frac{\partial\boldsymbol{I}}{\partial\boldsymbol{N}}\frac{\partial\boldsymbol{N}}{\partial\boldsymbol{M}}
-\]</span></p>
-<p>这里显然可以看出 <span class="math inline">\(\dfrac{\partial\boldsymbol{U}}{\partial\boldsymbol{M}}, \dfrac{\partial\boldsymbol{Z}}{\partial\boldsymbol{M}}, \dfrac{\partial\boldsymbol{N}}{\partial\boldsymbol{M}}\)</span> 是可以简单计算的，因为 <span class="math inline">\(\boldsymbol{U}, \boldsymbol{Z}, \boldsymbol{N}\)</span> 都可以由 <span class="math inline">\(\boldsymbol{M}\)</span> 通过简单的视图变换得到，由变换矩阵即可推算偏导数。</p>
-<p>而根据着色模型，<span class="math inline">\(\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{N}}\)</span> 也是可以计算的。</p>
-<p>剩余的两个梯度中，<span class="math inline">\(\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{Z}}\)</span> 直接和聚合函数相关，而 <span class="math inline">\(\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{U}}\)</span> 经过了两层，分别是概率分布计算和聚合函数，所以我们需要拆解：</p>
-<p><span class="math display">\[
-\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{U}} = \dfrac{\partial\boldsymbol{I}}{\partial\mathcal{D}}\dfrac{\partial\mathcal{D}}{\partial\boldsymbol{U}}
-\]</span></p>
-]]></content>
-      <categories>
-        <category>【论文笔记】计算机</category>
-      </categories>
-  </entry>
-  <entry>
     <title>2022 年 8 月论文笔记</title>
     <url>/2022/06/10/paper-2022-08/</url>
     <content><![CDATA[<p>这个月主要是刚刚进入流媒体相关的方向，需要阅读一些论文来了解目前的发展。</p>
@@ -12251,19 +12254,6 @@ c_a = \frac{\sigma_a}{\mu_a}, c_s = \frac{\sigma_s}{\mu_s}, \rho = \frac{\mu_a}{
       </categories>
   </entry>
   <entry>
-    <title>直博招生专业面试的一些</title>
-    <url>/2022/09/14/phd-interview/</url>
-    <content><![CDATA[<p>2022 年 9 月 14 日，是清华大学计算机科学与技术系 2023 级免试攻读博士生招生专业面试。Holder 参加了这一场面试，然后人炸了。</p>
-<span id="more"></span>
-<p>今天面试本来就有点不安，最大的问题就是唯一能吹的一份挂了名的 SIGGRAPH 的文章实际上自己并没有参与特别核心的工作，而且做到一半就被拒了，所以实际上最后那段时间就在摆烂，组会吹水也不去了。</p>
-<p>然而，今天就是这么时运不济，面试的评委里同时有徐昆老师和胡事民老师。没听过组会吹水不敢乱说，但胡老师就喜欢捉着这些问。他要是具体问如何实现了我负责的代码部分，我倒是可以说不少，但是问我一些 Overview，说实话倒还真的不会。</p>
-<p>Holder 的科研真的毫无意义，毕竟自己就是如丧家之犬一般到处跑路。或许 Holder 真的就不应该硬头皮读这个博士，或许就该进厂上班了。</p>
-]]></content>
-      <categories>
-        <category>【杂谈】碎碎念</category>
-      </categories>
-  </entry>
-  <entry>
     <title>2023 年 10 月论文笔记</title>
     <url>/2023/10/08/paper-2023-10/</url>
     <content><![CDATA[<p>说是加入腾讯做云游戏，但是似乎一个月过去了暂且都没有等来信息，果然还是继续积累吧。</p>
@@ -12470,6 +12460,19 @@ P[t] &amp; P[t] = \max_{|j| &lt; \delta}P[t + j] &gt; 0, \max_{|j| &lt; \delta}P
 ]]></content>
       <categories>
         <category>【论文笔记】计算机</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>直博招生专业面试的一些</title>
+    <url>/2022/09/14/phd-interview/</url>
+    <content><![CDATA[<p>2022 年 9 月 14 日，是清华大学计算机科学与技术系 2023 级免试攻读博士生招生专业面试。Holder 参加了这一场面试，然后人炸了。</p>
+<span id="more"></span>
+<p>今天面试本来就有点不安，最大的问题就是唯一能吹的一份挂了名的 SIGGRAPH 的文章实际上自己并没有参与特别核心的工作，而且做到一半就被拒了，所以实际上最后那段时间就在摆烂，组会吹水也不去了。</p>
+<p>然而，今天就是这么时运不济，面试的评委里同时有徐昆老师和胡事民老师。没听过组会吹水不敢乱说，但胡老师就喜欢捉着这些问。他要是具体问如何实现了我负责的代码部分，我倒是可以说不少，但是问我一些 Overview，说实话倒还真的不会。</p>
+<p>Holder 的科研真的毫无意义，毕竟自己就是如丧家之犬一般到处跑路。或许 Holder 真的就不应该硬头皮读这个博士，或许就该进厂上班了。</p>
+]]></content>
+      <categories>
+        <category>【杂谈】碎碎念</category>
       </categories>
   </entry>
   <entry>
