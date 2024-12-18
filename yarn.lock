@@ -578,10 +578,10 @@ hexo-log@^2.0.0:
   dependencies:
     chalk "^4.0.0"
 
-hexo-next-twikoo@1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/hexo-next-twikoo/-/hexo-next-twikoo-1.0.1.tgz#bf2366777ddebdcde13be79c06004d44c603622b"
-  integrity sha512-JTK9MH5vQFCsShtHJgDsIKzcQM5ZPE76/zpCAecr7kscQ8g+gEuIp7rEQT78iPq3x8f5tS7D6tq2Spia+Ldmfg==
+hexo-next-twikoo@1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/hexo-next-twikoo/-/hexo-next-twikoo-1.0.3.tgz#f5c0d32342e41fd49903f06a39fba9fbe8f46262"
+  integrity sha512-pYiFmHkIVZevyfko1sHRxrYmXoyhVWmYwD8pKpltqRjKCJVAG68dba0khxaK7I6C6Oac9FwdFSdg2GLs5j23vg==
   dependencies:
     "@next-theme/utils" "^1.1.0"
 
