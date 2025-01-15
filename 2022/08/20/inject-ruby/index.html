@@ -166,7 +166,7 @@ $(function () {
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">12</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">50</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">51</span></a></li>
         <li class="menu-item menu-item-skill-docs"><a href="https://sast-skill-docers.github.io/sast-skill-docs/" rel="noopener" target="_blank"><i class="fa fa-book fa-fw"></i>技能引导文档</a></li>
         <li class="menu-item menu-item-thuinfo"><a href="https://www.thuinfo.net/" rel="noopener" target="_blank"><i class="fa fa-sitemap fa-fw"></i>THUInfo</a></li>
         <li class="menu-item menu-item-se-index"><a href="https://thuse-course.github.io/course-index/" rel="noopener" target="_blank"><i class="fa fa-calendar fa-fw"></i>软工课程主页</a></li>
@@ -242,7 +242,7 @@ $(function () {
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">50</span>
+          <span class="site-state-item-count">51</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -419,22 +419,36 @@ $(function () {
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>由于日语文本中经常出现振假名（可以理解为国内小学课本上汉字上的拼音），但是 Markdown 并没有方便的振假名语法，所以只能摸索了。</p>
+        <p>由于日语文本中经常出现振假名（可以理解为国内小学课本上汉字上的拼音），但是
+Markdown 并没有方便的振假名语法，所以只能摸索了。</p>
 <span id="more"></span>
 <p>首先是我们注意到 HTML 是有振假名相关的标签的，但是实在是太长了：</p>
 <figure class="highlight html"><figcaption><span>HTML</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ruby</span>&gt;</span> WRITTEN <span class="tag">&lt;<span class="name">rp</span>&gt;</span>(<span class="tag">&lt;/<span class="name">rp</span>&gt;</span><span class="tag">&lt;<span class="name">rt</span>&gt;</span> READ <span class="tag">&lt;/<span class="name">rt</span>&gt;</span><span class="tag">&lt;<span class="name">rp</span>&gt;</span>)<span class="tag">&lt;/<span class="name">rp</span>&gt;</span><span class="tag">&lt;/<span class="name">ruby</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>那么为了解决这个问题，有两种选择：</p>
 <ul>
-<li>定义一种新的 Markdown 语法，在将 Raw Markdown 传入解释器之前先做一步正则替换，将自定义的语法替换为 HTML 标签</li>
-<li>在渲染后的 HTML 标签中找到所有打过标记的节点，将其替换为 <code>&lt;ruby&gt;</code> 标签</li>
+<li>定义一种新的 Markdown 语法，在将 Raw Markdown
+传入解释器之前先做一步正则替换，将自定义的语法替换为 HTML 标签</li>
+<li>在渲染后的 HTML 标签中找到所有打过标记的节点，将其替换为
+<code>&lt;ruby&gt;</code> 标签</li>
 </ul>
-<p>我一开始是摸索第一种解决方式的，然后遍历了一波 Hexo 的 Markdown Parser 的文档，没有找到如何解决这个问题。</p>
-<p>我之所以想到这个解决方案，是因为之前有一个 VSCode 的 Markdown 插件提供了一个 <code>onWillParseMarkdown</code> 的函数，用户可以通过其参数获得 Raw Markdown，然后自行处理后返回交给解释器。</p>
+<p>我一开始是摸索第一种解决方式的，然后遍历了一波 Hexo 的 Markdown
+Parser 的文档，没有找到如何解决这个问题。</p>
+<p>我之所以想到这个解决方案，是因为之前有一个 VSCode 的 Markdown
+插件提供了一个 <code>onWillParseMarkdown</code>
+的函数，用户可以通过其参数获得 Raw
+Markdown，然后自行处理后返回交给解释器。</p>
 <p>但是 Hexo 似乎并没有给我开这个后门。</p>
 <hr />
 <p>于是只能思考第二种解决方案，这个时候我想到了 NexT 注入。</p>
-<p>因为先前编写过 Twikoo Recent Comments，就是现在我的网站侧边栏上展现的最近评论，其就是在 <code>sidebar.njk</code> 内注入一个指定 <code>class</code> 的容器，然后在 <code>head.njk</code> 内部利用 jQuery 首先拉取最近评论然后再处理为列表项塞到指定容器中的。</p>
-<p>那么我们考虑到，Markdown 的代码块会被渲染为 <code>&lt;code&gt;</code> 标签，我们完全可以利用此特性。而我们为这些需要替换的标签打的标记就是其以 <code>@</code> 开头并且用空格分为三块，我们识别到这个标记就进行替换。</p>
+<p>因为先前编写过 Twikoo Recent
+Comments，就是现在我的网站侧边栏上展现的最近评论，其就是在
+<code>sidebar.njk</code> 内注入一个指定 <code>class</code>
+的容器，然后在 <code>head.njk</code> 内部利用 jQuery
+首先拉取最近评论然后再处理为列表项塞到指定容器中的。</p>
+<p>那么我们考虑到，Markdown 的代码块会被渲染为 <code>&lt;code&gt;</code>
+标签，我们完全可以利用此特性。而我们为这些需要替换的标签打的标记就是其以
+<code>@</code>
+开头并且用空格分为三块，我们识别到这个标记就进行替换。</p>
 <p>我们只需要注入这样一段代码：</p>
 <figure class="highlight javascript"><figcaption><span>JavaScript</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">replaceRuby</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    $(<span class="string">&#x27;code&#x27;</span>)</span><br><span class="line">        .filter(<span class="function">(<span class="params">_, node</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">var</span> list = $(node).text().split(<span class="string">&#x27; &#x27;</span>);</span><br><span class="line">            <span class="keyword">return</span> list.length === <span class="number">3</span> &amp;&amp; list[<span class="number">0</span>] === <span class="string">&quot;@&quot;</span>;</span><br><span class="line">        &#125;)</span><br><span class="line">        .replaceWith(<span class="function">(<span class="params">_, text</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">var</span> list = text.split(<span class="string">&#x27; &#x27;</span>);</span><br><span class="line">            <span class="keyword">var</span> written = list[<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">var</span> read = list[<span class="number">2</span>];</span><br><span class="line">            <span class="keyword">return</span> $(<span class="string">`&lt;ruby&gt;<span class="subst">$&#123;written&#125;</span>&lt;rp&gt;(&lt;/rp&gt;&lt;rt&gt;<span class="subst">$&#123;read&#125;</span>&lt;/rt&gt;&lt;rp&gt;)&lt;/rp&gt;&lt;/ruby&gt;`</span>);</span><br><span class="line">        &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这样我们就可以用类似：</p>
@@ -445,7 +459,9 @@ $(function () {
 </div>
 <p>总之，这样就可以很方便地写振假名了，之后应该会逐步在涉及到日语的地方把之前的旧写法更换成新写法。</p>
 <hr />
-<p>另外还有一个小细节，似乎部署后访问字体会出现 403，根据 <a target="_blank" rel="noopener" href="https://github.com/theme-next/hexo-theme-next/issues/613">相关 Issue 的提示</a>，应该是 Referrer 的问题。</p>
+<p>另外还有一个小细节，似乎部署后访问字体会出现 403，根据 <a
+target="_blank" rel="noopener" href="https://github.com/theme-next/hexo-theme-next/issues/613">相关
+Issue 的提示</a>，应该是 Referrer 的问题。</p>
 
     </div>
 
@@ -488,7 +504,7 @@ $(function () {
 
 <div class="copyright">
   &copy; 2021 – 
-  <span itemprop="copyrightYear">2024</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -499,13 +515,13 @@ $(function () {
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">453k</span>
+    <span title="站点总字数">456k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">6:52</span>
+    <span title="站点阅读时长">6:54</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动

@@ -176,7 +176,7 @@ $(function () {
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">12</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">50</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">51</span></a></li>
         <li class="menu-item menu-item-skill-docs"><a href="https://sast-skill-docers.github.io/sast-skill-docs/" rel="noopener" target="_blank"><i class="fa fa-book fa-fw"></i>技能引导文档</a></li>
         <li class="menu-item menu-item-thuinfo"><a href="https://www.thuinfo.net/" rel="noopener" target="_blank"><i class="fa fa-sitemap fa-fw"></i>THUInfo</a></li>
         <li class="menu-item menu-item-se-index"><a href="https://thuse-course.github.io/course-index/" rel="noopener" target="_blank"><i class="fa fa-calendar fa-fw"></i>软工课程主页</a></li>
@@ -236,7 +236,10 @@ $(function () {
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#soft-rasterizer---a-differentiable-renderer-for-image-based-3d-reasoning"><span class="nav-number">1.</span> <span class="nav-text">Soft Rasterizer - A Differentiable Renderer for Image-based 3D Reasoning</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E6%A6%82%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">工作概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#softras-%E4%B8%8E%E4%BC%A0%E7%BB%9F%E5%85%89%E6%A0%85%E5%8C%96"><span class="nav-number">1.1.1.</span> <span class="nav-text">SoftRas 与传统光栅化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E5%B7%A5%E4%BD%9C"><span class="nav-number">1.2.</span> <span class="nav-text">相关工作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E5%BE%AE%E6%B8%B2%E6%9F%93"><span class="nav-number">1.2.1.</span> <span class="nav-text">可微渲染</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E5%9B%BE%E5%83%8F%E7%9A%84%E4%B8%89%E7%BB%B4%E6%8E%A8%E7%90%86"><span class="nav-number">1.2.2.</span> <span class="nav-text">基于图像的三维推理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#softras-%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="nav-number">1.3.</span> <span class="nav-text">SoftRas 基本原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#probability-maps-%E8%AE%A1%E7%AE%97"><span class="nav-number">1.3.1.</span> <span class="nav-text">probability maps 计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%81%9A%E5%90%88%E5%87%BD%E6%95%B0"><span class="nav-number">1.3.2.</span> <span class="nav-text">聚合函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E5%86%85%E5%AE%B9"><span class="nav-number">1.4.</span> <span class="nav-text">实验内容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#single-view-mesh-reconstruction"><span class="nav-number">1.4.1.</span> <span class="nav-text">Single-View Mesh Reconstruction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#image-based-shape-fitting"><span class="nav-number">1.4.2.</span> <span class="nav-text">Image-based Shape Fitting</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C"><span class="nav-number">1.5.</span> <span class="nav-text">实验结果</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#single-view-mesh-reconstruction-1"><span class="nav-number">1.5.1.</span> <span class="nav-text">Single-View Mesh Reconstruction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#image-based-shape-fitting-1"><span class="nav-number">1.5.2.</span> <span class="nav-text">Image-based Shape Fitting</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%99%84%E5%BD%95%E6%A2%AF%E5%BA%A6%E8%AE%A1%E7%AE%97"><span class="nav-number">1.6.</span> <span class="nav-text">附录：梯度计算</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#soft-rasterizer---a-differentiable-renderer-for-image-based-3d-reasoning"><span class="nav-number">1.</span> <span class="nav-text">Soft
+Rasterizer - A Differentiable Renderer for Image-based 3D Reasoning</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E6%A6%82%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">工作概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#softras-%E4%B8%8E%E4%BC%A0%E7%BB%9F%E5%85%89%E6%A0%85%E5%8C%96"><span class="nav-number">1.1.1.</span> <span class="nav-text">SoftRas 与传统光栅化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E5%B7%A5%E4%BD%9C"><span class="nav-number">1.2.</span> <span class="nav-text">相关工作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E5%BE%AE%E6%B8%B2%E6%9F%93"><span class="nav-number">1.2.1.</span> <span class="nav-text">可微渲染</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E5%9B%BE%E5%83%8F%E7%9A%84%E4%B8%89%E7%BB%B4%E6%8E%A8%E7%90%86"><span class="nav-number">1.2.2.</span> <span class="nav-text">基于图像的三维推理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#softras-%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="nav-number">1.3.</span> <span class="nav-text">SoftRas 基本原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#probability-maps-%E8%AE%A1%E7%AE%97"><span class="nav-number">1.3.1.</span> <span class="nav-text">probability maps 计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%81%9A%E5%90%88%E5%87%BD%E6%95%B0"><span class="nav-number">1.3.2.</span> <span class="nav-text">聚合函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E5%86%85%E5%AE%B9"><span class="nav-number">1.4.</span> <span class="nav-text">实验内容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#single-view-mesh-reconstruction"><span class="nav-number">1.4.1.</span> <span class="nav-text">Single-View Mesh
+Reconstruction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#image-based-shape-fitting"><span class="nav-number">1.4.2.</span> <span class="nav-text">Image-based Shape Fitting</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C"><span class="nav-number">1.5.</span> <span class="nav-text">实验结果</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#single-view-mesh-reconstruction-1"><span class="nav-number">1.5.1.</span> <span class="nav-text">Single-View Mesh
+Reconstruction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#image-based-shape-fitting-1"><span class="nav-number">1.5.2.</span> <span class="nav-text">Image-based Shape Fitting</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%99%84%E5%BD%95%E6%A2%AF%E5%BA%A6%E8%AE%A1%E7%AE%97"><span class="nav-number">1.6.</span> <span class="nav-text">附录：梯度计算</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -253,7 +256,7 @@ $(function () {
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">50</span>
+          <span class="site-state-item-count">51</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -432,108 +435,221 @@ $(function () {
     <div class="post-body" itemprop="articleBody">
         <p>2022 年 2 月，主要工作为可微渲染相关方向。</p>
 <span id="more"></span>
-<h1 id="soft-rasterizer---a-differentiable-renderer-for-image-based-3d-reasoning">Soft Rasterizer - A Differentiable Renderer for Image-based 3D Reasoning</h1>
+<h1
+id="soft-rasterizer---a-differentiable-renderer-for-image-based-3d-reasoning">Soft
+Rasterizer - A Differentiable Renderer for Image-based 3D Reasoning</h1>
 <h2 id="工作概述">工作概述</h2>
 <p>主要思想还是想把逆向渲染管线（通过二维图像推理三维模型的参数）和神经网络结合，但是最大的问题是管线中的光栅化是离散化操作，可能导致不可微。一些其他的工作在尝试<strong>近似估算</strong>梯度，但是这个工作提出了一种真正可微的框架，能做到：</p>
 <ul>
 <li>直接用可微函数渲染染色的网格</li>
 <li>能从轮廓、阴影等各种二维图像信息有效反向传递为网格顶点参数</li>
 </ul>
-<p>这个工作的重点是把渲染过程的部分看作<strong>聚合函数（Aggregation function）</strong>，该函数联系了三维模型的网格三角形的概率分布以及其渲染出来的像素。</p>
-<div class="note info no-icon"><p>看起来标题中的 Soft 的含义就是使用概率分布的方式来把离散的光栅化变成可微的，最初始的光栅化一般会涉及到离散采样（即确定每一个离散的像素是否要显示网格上的某一个三角形），这也是不可微性的来源。</p>
+<p>这个工作的重点是把渲染过程的部分看作<strong>聚合函数（Aggregation
+function）</strong>，该函数联系了三维模型的网格三角形的概率分布以及其渲染出来的像素。</p>
+<div class="note info no-icon"><p>看起来标题中的 Soft
+的含义就是使用概率分布的方式来把离散的光栅化变成可微的，最初始的光栅化一般会涉及到离散采样（即确定每一个离散的像素是否要显示网格上的某一个三角形），这也是不可微性的来源。</p>
 </div>
-<p>本论文主要讲述了如何通过 Soft rasterization 框架实现可微的光栅化以保证渲染管线的可微性，基于此，该渲染框架即可方便地接入神经网络以将二维图像信息反向传播到三维模型。同时，本论文也会指出近期的近似估算梯度的方式（使用 hand-crafted 的函数近似表示梯度）并不具有泛用性，且可能会降低三维模型信息更新的效率。</p>
+<p>本论文主要讲述了如何通过 Soft rasterization
+框架实现可微的光栅化以保证渲染管线的可微性，基于此，该渲染框架即可方便地接入神经网络以将二维图像信息反向传播到三维模型。同时，本论文也会指出近期的近似估算梯度的方式（使用
+hand-crafted
+的函数近似表示梯度）并不具有泛用性，且可能会降低三维模型信息更新的效率。</p>
 <h3 id="softras-与传统光栅化">SoftRas 与传统光栅化</h3>
-<p>SoftRas 在将模型投影到平面上的时候，会将模型转换为投影平面上的概率分布。而传统光栅化则是转化为具体某个像素是否染色。</p>
-<p>另外，似乎 SoftRas 对遮挡的处理也和传统渲染管线的 z-buffer 不一样。传统光栅化会使用 onehot 的方式处理遮挡（应该指的是处理为完全遮挡），而 SoftRas 也会基于概率分布做出不同处理。</p>
+<p>SoftRas
+在将模型投影到平面上的时候，会将模型转换为投影平面上的概率分布。而传统光栅化则是转化为具体某个像素是否染色。</p>
+<p>另外，似乎 SoftRas 对遮挡的处理也和传统渲染管线的 z-buffer
+不一样。传统光栅化会使用 onehot
+的方式处理遮挡（应该指的是处理为完全遮挡），而 SoftRas
+也会基于概率分布做出不同处理。</p>
 <h2 id="相关工作">相关工作</h2>
 <h3 id="可微渲染">可微渲染</h3>
-<p>主要关注如何描述二维图像变化和三维模型操作的关系，主要解决如何从二维图像重建三维场景。考虑给定的二维图片 <span class="math inline">\(A\)</span>，首先粗略初始化一个三维场景 <span class="math inline">\(B&#39;\)</span>，然后通过渲染管线渲染得到二维图片 <span class="math inline">\(B\)</span>。计算 <span class="math inline">\(A\)</span> 和 <span class="math inline">\(B\)</span> 的 loss，将其梯度反向传播给三维场景 <span class="math inline">\(B&#39;\)</span> 的参数，更新之。这里反向传播就是可微渲染最重要的步骤，即如何计算梯度，因为三维场景参数更新量取决于 loss 对参数的偏导数。</p>
+<p>主要关注如何描述二维图像变化和三维模型操作的关系，主要解决如何从二维图像重建三维场景。考虑给定的二维图片
+<span class="math inline">\(A\)</span>，首先粗略初始化一个三维场景 <span
+class="math inline">\(B&#39;\)</span>，然后通过渲染管线渲染得到二维图片
+<span class="math inline">\(B\)</span>。计算 <span
+class="math inline">\(A\)</span> 和 <span
+class="math inline">\(B\)</span> 的 loss，将其梯度反向传播给三维场景
+<span class="math inline">\(B&#39;\)</span>
+的参数，更新之。这里反向传播就是可微渲染最重要的步骤，即如何计算梯度，因为三维场景参数更新量取决于
+loss 对参数的偏导数。</p>
 <p>先前提到，这里获取梯度有困难。有些工作使用估计梯度的方式进行，有些工作可以精确计算梯度但是不具有泛用性。</p>
 <h3 id="基于图像的三维推理">基于图像的三维推理</h3>
-<p>依然考虑从二维图像重建三维场景。传统方法往往要求获得从多个角度观察得到的二维图像，而由于数据集的扩大，基于学习的重建方法可以使用一张或少量二维图像来重建场景。部分工作会将重建三维场景拆分为首先重建 2.5 维的表示（深度表等）。</p>
+<p>依然考虑从二维图像重建三维场景。传统方法往往要求获得从多个角度观察得到的二维图像，而由于数据集的扩大，基于学习的重建方法可以使用一张或少量二维图像来重建场景。部分工作会将重建三维场景拆分为首先重建
+2.5 维的表示（深度表等）。</p>
 <p>另外，姿态估计也是三位推理的一个重要的子任务。通过深度学习的方法，预测刚体姿态是较为简单的，而预测人体这类非刚体的姿态则较为困难。</p>
 <h2 id="softras-基本原理">SoftRas 基本原理</h2>
 <p>大约是这样的一个流程：</p>
 <p><img src="/uploads/paper-2022-02/1.png" /></p>
-<p>这里外部因素包含相机参数 <span class="math inline">\(\boldsymbol{P}\)</span> 和环境光照 <span class="math inline">\(\boldsymbol{L}\)</span>，内部因素包括网格信息 <span class="math inline">\(\boldsymbol{M}\)</span> 以及各个顶点的信息（如颜色、材质）<span class="math inline">\(\boldsymbol{A}\)</span>。</p>
-<p>这里第一步要做的是获取三个中间信息，即网格法向量 <span class="math inline">\(\boldsymbol{N}\)</span>、视图空间（投影后的空间）各点坐标 <span class="math inline">\(\boldsymbol{U}\)</span> 以及 View dependent depths <span class="math inline">\(\boldsymbol{Z}\)</span>。这三个量只需要使用相机参数和网格信息即可得到。</p>
-<p>之后可以使用例如 Phong 模型等着色模型计算出颜色 <span class="math inline">\(\boldsymbol{C}\)</span>。</p>
-<p>进行到这一步，上述这些操作都是可微的。但是如果按照传统的渲染管线，下一步应该分别确定每一个网格三角形与每一个像素的对应（即光栅化），之后还要用 z-buffer 处理遮挡，这两步都因为离散采样从而是不可微的。</p>
-<p>SoftRas 软化光栅化和 z-buffer 的方式是引入 probability maps <span class="math inline">\(\{\mathcal{D}_j\}\)</span> 和聚合函数 <span class="math inline">\(\mathcal{A}(\cdot)\)</span> 分别代替光栅化和 z-buffer。这里 <span class="math inline">\(\mathcal{D}_j\)</span> 表示的是每一个像素在网格三角形 <span class="math inline">\(f_j\)</span> 内部的概率在平面上的分布。而聚合函数 <span class="math inline">\(\mathcal{A}(\cdot)\)</span> 联系起了 probability maps 以及深度信息，作为整个后续渲染流程的代表。</p>
+<p>这里外部因素包含相机参数 <span
+class="math inline">\(\boldsymbol{P}\)</span> 和环境光照 <span
+class="math inline">\(\boldsymbol{L}\)</span>，内部因素包括网格信息
+<span class="math inline">\(\boldsymbol{M}\)</span>
+以及各个顶点的信息（如颜色、材质）<span
+class="math inline">\(\boldsymbol{A}\)</span>。</p>
+<p>这里第一步要做的是获取三个中间信息，即网格法向量 <span
+class="math inline">\(\boldsymbol{N}\)</span>、视图空间（投影后的空间）各点坐标
+<span class="math inline">\(\boldsymbol{U}\)</span> 以及 View dependent
+depths <span
+class="math inline">\(\boldsymbol{Z}\)</span>。这三个量只需要使用相机参数和网格信息即可得到。</p>
+<p>之后可以使用例如 Phong 模型等着色模型计算出颜色 <span
+class="math inline">\(\boldsymbol{C}\)</span>。</p>
+<p>进行到这一步，上述这些操作都是可微的。但是如果按照传统的渲染管线，下一步应该分别确定每一个网格三角形与每一个像素的对应（即光栅化），之后还要用
+z-buffer 处理遮挡，这两步都因为离散采样从而是不可微的。</p>
+<p>SoftRas 软化光栅化和 z-buffer 的方式是引入 probability maps <span
+class="math inline">\(\{\mathcal{D}_j\}\)</span> 和聚合函数 <span
+class="math inline">\(\mathcal{A}(\cdot)\)</span> 分别代替光栅化和
+z-buffer。这里 <span class="math inline">\(\mathcal{D}_j\)</span>
+表示的是每一个像素在网格三角形 <span class="math inline">\(f_j\)</span>
+内部的概率在平面上的分布。而聚合函数 <span
+class="math inline">\(\mathcal{A}(\cdot)\)</span> 联系起了 probability
+maps 以及深度信息，作为整个后续渲染流程的代表。</p>
 <h3 id="probability-maps-计算">probability maps 计算</h3>
-<p>考虑网格三角形在屏幕上的投影 <span class="math inline">\(f_j\)</span> 和屏幕上的像素 <span class="math inline">\(p_i\)</span>，记在屏幕上 <span class="math inline">\(p_i\)</span> 到 <span class="math inline">\(f_j\)</span> 的边最近距离为 <span class="math inline">\(d(i, j)\)</span>。显然，这个距离越小的像素点，出现在内部的概率越大。由于其可以反映三角形对屏幕的影响，并且其可微，所以可以用此作为 probability maps 的代表。随后通过添加控制常数、符号标记并归一化到 <span class="math inline">\((0, 1)\)</span> 内之后，我们得到了 probability maps 的公式：</p>
+<p>考虑网格三角形在屏幕上的投影 <span class="math inline">\(f_j\)</span>
+和屏幕上的像素 <span class="math inline">\(p_i\)</span>，记在屏幕上
+<span class="math inline">\(p_i\)</span> 到 <span
+class="math inline">\(f_j\)</span> 的边最近距离为 <span
+class="math inline">\(d(i,
+j)\)</span>。显然，这个距离越小的像素点，出现在内部的概率越大。由于其可以反映三角形对屏幕的影响，并且其可微，所以可以用此作为
+probability maps 的代表。随后通过添加控制常数、符号标记并归一化到 <span
+class="math inline">\((0, 1)\)</span> 内之后，我们得到了 probability
+maps 的公式：</p>
 <p><span class="math display">\[
-\mathcal{D}_{i, j} = \mathrm{sigmoid}\left(\delta_{i, j}\cdot\frac{d^2(i, j)}{\sigma}\right)
+\mathcal{D}_{i, j} = \mathrm{sigmoid}\left(\delta_{i,
+j}\cdot\frac{d^2(i, j)}{\sigma}\right)
 \]</span></p>
-<p>这里 <span class="math inline">\(\sigma\)</span> 是一个正常数，一般默认为 <span class="math inline">\(1\times 10^{-4}\)</span>。而 <span class="math inline">\(\delta_{i, j}\)</span> 标记了 <span class="math inline">\(p_i\)</span> 是否在 <span class="math inline">\(f_j\)</span> 之中。若在，则 <span class="math inline">\(\delta_{i, j} = 1\)</span>，否则 <span class="math inline">\(\delta_{i, j} = -1\)</span>。</p>
-<p>下图展示了 <span class="math inline">\(d(i, j)\)</span> 的定义以及 <span class="math inline">\(\sigma\)</span> 常数对概率分布的影响：</p>
+<p>这里 <span class="math inline">\(\sigma\)</span>
+是一个正常数，一般默认为 <span class="math inline">\(1\times
+10^{-4}\)</span>。而 <span class="math inline">\(\delta_{i, j}\)</span>
+标记了 <span class="math inline">\(p_i\)</span> 是否在 <span
+class="math inline">\(f_j\)</span> 之中。若在，则 <span
+class="math inline">\(\delta_{i, j} = 1\)</span>，否则 <span
+class="math inline">\(\delta_{i, j} = -1\)</span>。</p>
+<p>下图展示了 <span class="math inline">\(d(i, j)\)</span> 的定义以及
+<span class="math inline">\(\sigma\)</span> 常数对概率分布的影响：</p>
 <p><img src="/uploads/paper-2022-02/2.png" /></p>
-<p>显然看出 <span class="math inline">\(\sigma\)</span> 越大，概率分布就越模糊。</p>
-<p>另外一个显然的点是 <span class="math inline">\(\sigma \to 0\)</span> 的时候概率分布中三角形外的点概率密度为 <span class="math inline">\(0\)</span>，而三角形内的点为 <span class="math inline">\(1\)</span>。此时 SoftRas 退化为一般的光栅化。</p>
+<p>显然看出 <span class="math inline">\(\sigma\)</span>
+越大，概率分布就越模糊。</p>
+<p>另外一个显然的点是 <span class="math inline">\(\sigma \to 0\)</span>
+的时候概率分布中三角形外的点概率密度为 <span
+class="math inline">\(0\)</span>，而三角形内的点为 <span
+class="math inline">\(1\)</span>。此时 SoftRas 退化为一般的光栅化。</p>
 <h3 id="聚合函数">聚合函数</h3>
-<p>我们考虑最后一个阶段，这里我们需要根据深度信息、 probability maps 以及颜色信息计算出最后的渲染结果。</p>
-<p>最后渲染结果中，像素 <span class="math inline">\(p_i\)</span> 的渲染结果用聚合函数表示，定义为：</p>
+<p>我们考虑最后一个阶段，这里我们需要根据深度信息、 probability maps
+以及颜色信息计算出最后的渲染结果。</p>
+<p>最后渲染结果中，像素 <span class="math inline">\(p_i\)</span>
+的渲染结果用聚合函数表示，定义为：</p>
 <p><span class="math display">\[
 I_i = \mathcal{A}_S(\{C_j\}) := \sum_j w_{i, j}C_{i, j} + w_{i, b}C_b
 \]</span></p>
-<p>这里渲染结果定义为一系列颜色信息的加权求和，颜色构成的集合为 <span class="math inline">\(\{C_j\}\)</span>，符号 <span class="math inline">\(C_{i, j}\)</span> 表示三角形 <span class="math inline">\(f_j\)</span> 在像素 <span class="math inline">\(p_i\)</span> 处的颜色。而 <span class="math inline">\(C_b\)</span> 表示背景颜色。</p>
-<p>权重 <span class="math inline">\(w_{i, j}\)</span> 至少满足归一化条件：</p>
+<p>这里渲染结果定义为一系列颜色信息的加权求和，颜色构成的集合为 <span
+class="math inline">\(\{C_j\}\)</span>，符号 <span
+class="math inline">\(C_{i, j}\)</span> 表示三角形 <span
+class="math inline">\(f_j\)</span> 在像素 <span
+class="math inline">\(p_i\)</span> 处的颜色。而 <span
+class="math inline">\(C_b\)</span> 表示背景颜色。</p>
+<p>权重 <span class="math inline">\(w_{i, j}\)</span>
+至少满足归一化条件：</p>
 <p><span class="math display">\[
 w_{i, b} + \sum_j w_{i, j} = 1
 \]</span></p>
-<p>而权重的具体值取决于先前得到的 probability maps 以及深度信息。我们将三角形 <span class="math inline">\(f_j\)</span> 中投影到 <span class="math inline">\(p_i\)</span> 像素的点的逆深度记为 <span class="math inline">\(z_{i, j}\)</span>。概率分布沿用先前的符号。定义：</p>
+<p>而权重的具体值取决于先前得到的 probability maps
+以及深度信息。我们将三角形 <span class="math inline">\(f_j\)</span>
+中投影到 <span class="math inline">\(p_i\)</span> 像素的点的逆深度记为
+<span class="math inline">\(z_{i,
+j}\)</span>。概率分布沿用先前的符号。定义：</p>
 <p><span class="math display">\[
-w_{i, j} := \frac{\mathcal{D}_{i, j}\exp(z_{i, j} / \gamma)}{\sum_k \mathcal{D}_{i, k}\exp(z_{i, k} / \gamma) + \exp(\varepsilon / \gamma)}
+w_{i, j} := \frac{\mathcal{D}_{i, j}\exp(z_{i, j} / \gamma)}{\sum_k
+\mathcal{D}_{i, k}\exp(z_{i, k} / \gamma) + \exp(\varepsilon / \gamma)}
 \]</span></p>
 <p>依据归一化条件就有：</p>
 <p><span class="math display">\[
-w_{i, b} := \frac{\exp(\varepsilon / \gamma)}{\sum_k \mathcal{D}_{i, k}\exp(z_{i, k} / \gamma) + \exp(\varepsilon / \gamma)}
+w_{i, b} := \frac{\exp(\varepsilon / \gamma)}{\sum_k \mathcal{D}_{i,
+k}\exp(z_{i, k} / \gamma) + \exp(\varepsilon / \gamma)}
 \]</span></p>
 <div class="note info no-icon"><p>可以看出权重的计算公式其实是类似 Softmax 函数：</p>
 <p><span class="math display">\[
 {\rm softmax}(z_1, z_2, \cdots, z_n)_j = \frac{e^{z_j}}{\sum_i e^{z_i}}
 \]</span></p>
 </div>
-<p>这里可以看出 <span class="math inline">\(\varepsilon\)</span> 是一个小正常数，其作用是将背景颜色纳入计算。<span class="math inline">\(\gamma\)</span> 是一个调节清晰度的正常数，与计算 probability maps 的 <span class="math inline">\(\sigma\)</span> 类似，默认值一般是 <span class="math inline">\(1 \times 10^{-4}\)</span>。</p>
+<p>这里可以看出 <span class="math inline">\(\varepsilon\)</span>
+是一个小正常数，其作用是将背景颜色纳入计算。<span
+class="math inline">\(\gamma\)</span> 是一个调节清晰度的正常数，与计算
+probability maps 的 <span class="math inline">\(\sigma\)</span>
+类似，默认值一般是 <span class="math inline">\(1 \times
+10^{-4}\)</span>。</p>
 <p>可以看出，具有更大概率密度的，且离投影平面更近的（即具有更大逆深度的）三角形会获得更大的权重，这符合直觉。</p>
 <hr />
-<p>现在考虑退化。针对像素 <span class="math inline">\(p_i\)</span>，假设 <span class="math inline">\(z_{i, 1} &lt; z_{i, 2} &lt; \cdots &lt; z_{i, N}\)</span>，考虑 <span class="math inline">\(\gamma\to 0\)</span>。首先考察 <span class="math inline">\(j = N\)</span>：</p>
+<p>现在考虑退化。针对像素 <span class="math inline">\(p_i\)</span>，假设
+<span class="math inline">\(z_{i, 1} &lt; z_{i, 2} &lt; \cdots &lt;
+z_{i, N}\)</span>，考虑 <span class="math inline">\(\gamma\to
+0\)</span>。首先考察 <span class="math inline">\(j = N\)</span>：</p>
 <p><span class="math display">\[
 \begin{aligned}
-w_{i, N} &amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}\exp(z_{i, N} / \gamma)}{\sum_k \mathcal{D}_{i, k}\exp(z_{i, k} / \gamma) + \exp(\varepsilon / \gamma)} \\
-&amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}}{\sum_k \mathcal{D}_{i, k}\exp((z_{i, k} - z_{i, N}) / \gamma) + \exp((\varepsilon - z_{i, N}) / \gamma)} \\
-&amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}}{\sum_{k = 1}^{N - 1} \mathcal{D}_{i, k}\exp((z_{i, k} - z_{i, N}) / \gamma) + \mathcal{D}_{i, N} + \exp((\varepsilon - z_{i, N}) / \gamma)} \\
+w_{i, N} &amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}\exp(z_{i, N}
+/ \gamma)}{\sum_k \mathcal{D}_{i, k}\exp(z_{i, k} / \gamma) +
+\exp(\varepsilon / \gamma)} \\
+&amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}}{\sum_k
+\mathcal{D}_{i, k}\exp((z_{i, k} - z_{i, N}) / \gamma) +
+\exp((\varepsilon - z_{i, N}) / \gamma)} \\
+&amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}}{\sum_{k = 1}^{N - 1}
+\mathcal{D}_{i, k}\exp((z_{i, k} - z_{i, N}) / \gamma) + \mathcal{D}_{i,
+N} + \exp((\varepsilon - z_{i, N}) / \gamma)} \\
 &amp;= 1
 \end{aligned}
 \]</span></p>
-<p>最后一步注意到 <span class="math inline">\(z_{i, N}\)</span> 大于任何 <span class="math inline">\(z_{i, k}(k &lt; N)\)</span>，故有这样的结果。而对于 <span class="math inline">\(j &lt; N\)</span>：</p>
+<p>最后一步注意到 <span class="math inline">\(z_{i, N}\)</span> 大于任何
+<span class="math inline">\(z_{i, k}(k &lt;
+N)\)</span>，故有这样的结果。而对于 <span class="math inline">\(j &lt;
+N\)</span>：</p>
 <p><span class="math display">\[
 \begin{aligned}
-w_{i, j} &amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, j}\exp(z_{i, j} / \gamma)}{\sum_k \mathcal{D}_{i, k}\exp(z_{i, k} / \gamma) + \exp(\varepsilon / \gamma)} \\
-&amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}}{\sum_k \mathcal{D}_{i, k}\exp((z_{i, k} - z_{i, j}) / \gamma) + \exp((\varepsilon - z_{i, j}) / \gamma)} \\
-&amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}}{\left(\sum_{k = 1}^{j - 1} + \sum_{k = j + 1}^{N}\right) \mathcal{D}_{i, k}\exp((z_{i, k} - z_{i, N}) / \gamma) + \mathcal{D}_{i, N} + \exp((\varepsilon - z_{i, N}) / \gamma)} \\
+w_{i, j} &amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, j}\exp(z_{i, j}
+/ \gamma)}{\sum_k \mathcal{D}_{i, k}\exp(z_{i, k} / \gamma) +
+\exp(\varepsilon / \gamma)} \\
+&amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}}{\sum_k
+\mathcal{D}_{i, k}\exp((z_{i, k} - z_{i, j}) / \gamma) +
+\exp((\varepsilon - z_{i, j}) / \gamma)} \\
+&amp;= \lim_{\gamma\to 0}\frac{\mathcal{D}_{i, N}}{\left(\sum_{k = 1}^{j
+- 1} + \sum_{k = j + 1}^{N}\right) \mathcal{D}_{i, k}\exp((z_{i, k} -
+z_{i, N}) / \gamma) + \mathcal{D}_{i, N} + \exp((\varepsilon - z_{i, N})
+/ \gamma)} \\
 &amp;= 0
 \end{aligned}
 \]</span></p>
-<p>这里要注意到分母上 <span class="math inline">\(\sum_{k = j + 1}^{N}\)</span> 的部分最终会趋向于正无穷，整体极限为 <span class="math inline">\(0\)</span>。最后根据归一化条件也有 <span class="math inline">\(w_{i, b} = 0\)</span>。</p>
+<p>这里要注意到分母上 <span class="math inline">\(\sum_{k = j +
+1}^{N}\)</span> 的部分最终会趋向于正无穷，整体极限为 <span
+class="math inline">\(0\)</span>。最后根据归一化条件也有 <span
+class="math inline">\(w_{i, b} = 0\)</span>。</p>
 <p>结合这样的推理，可以看出：</p>
 <p><span class="math display">\[
 I_i = \mathcal{A}_S(\{C_j\}) = C_{i, N}
 \]</span></p>
-<p>也就是说最后渲染的结果只考虑了最近的网格三角形，这也就是 z-buffer 方法。</p>
+<p>也就是说最后渲染的结果只考虑了最近的网格三角形，这也就是 z-buffer
+方法。</p>
 <hr />
 <p>似乎还有一个和轮廓相关的聚合函数：</p>
 <p><span class="math display">\[
-I_{i, S} = \mathcal{A}_O(\{\mathcal{D}_j\}) := 1 - \prod_j (1 - \mathcal{D}_{i, j})
+I_{i, S} = \mathcal{A}_O(\{\mathcal{D}_j\}) := 1 - \prod_j (1 -
+\mathcal{D}_{i, j})
 \]</span></p>
-<p>这里没有出现颜色项，这是因为轮廓的颜色一般设定为常数。这里聚合函数形式上实际上就是计算出了像素 <span class="math inline">\(p_i\)</span> 被至少一个三角形覆盖的概率。</p>
+<p>这里没有出现颜色项，这是因为轮廓的颜色一般设定为常数。这里聚合函数形式上实际上就是计算出了像素
+<span class="math inline">\(p_i\)</span>
+被至少一个三角形覆盖的概率。</p>
 <h2 id="实验内容">实验内容</h2>
-<h3 id="single-view-mesh-reconstruction">Single-View Mesh Reconstruction</h3>
+<h3 id="single-view-mesh-reconstruction">Single-View Mesh
+Reconstruction</h3>
 <p>使用这样的结构：</p>
 <p><img src="/uploads/paper-2022-02/3.png" /></p>
-<p>这里固定了渲染管线中的外部变量，即固定了相机位置和环境光照。每一个输入图片都会进入 color generator 和 shape generator 生成三维模型参数 <span class="math inline">\(\boldsymbol{C}\)</span> 和 <span class="math inline">\(\boldsymbol{M}\)</span>。随后后续接入 SoftRas，渲染得到带颜色的图像 <span class="math inline">\(I_C\)</span> 和轮廓 <span class="math inline">\(I_S\)</span>，最后和原先图像比较计算 loss。</p>
-<p>最后定义的 loss 分为三部分。在叙述定义之前，我们将原始图像的颜色和轮廓定义为 <span class="math inline">\(\hat I_C\)</span> 以及 <span class="math inline">\(\hat I_S\)</span>：</p>
+<p>这里固定了渲染管线中的外部变量，即固定了相机位置和环境光照。每一个输入图片都会进入
+color generator 和 shape generator 生成三维模型参数 <span
+class="math inline">\(\boldsymbol{C}\)</span> 和 <span
+class="math inline">\(\boldsymbol{M}\)</span>。随后后续接入
+SoftRas，渲染得到带颜色的图像 <span class="math inline">\(I_C\)</span>
+和轮廓 <span class="math inline">\(I_S\)</span>，最后和原先图像比较计算
+loss。</p>
+<p>最后定义的 loss
+分为三部分。在叙述定义之前，我们将原始图像的颜色和轮廓定义为 <span
+class="math inline">\(\hat I_C\)</span> 以及 <span
+class="math inline">\(\hat I_S\)</span>：</p>
 <ul>
 <li>color loss。定义为颜色之差的 1- 范数：</li>
 </ul>
@@ -541,10 +657,13 @@ I_{i, S} = \mathcal{A}_O(\{\mathcal{D}_j\}) := 1 - \prod_j (1 - \mathcal{D}_{i, 
 \mathcal{L}_C := \|I_C - \hat I_C\|_1
 \]</span></p>
 <ul>
-<li>silhouette loss。定义为，这里使用 <span class="math inline">\(\otimes\)</span> 表示逐元素求积，<span class="math inline">\(\oplus\)</span> 表示逐元素求和：</li>
+<li>silhouette loss。定义为，这里使用 <span
+class="math inline">\(\otimes\)</span> 表示逐元素求积，<span
+class="math inline">\(\oplus\)</span> 表示逐元素求和：</li>
 </ul>
 <p><span class="math display">\[
-\mathcal{L}_S := 1 - \frac{\|I_S \otimes \hat I_S\|_1}{\|I_S \oplus \hat I_S - I_S \otimes \hat I_S\|_1}
+\mathcal{L}_S := 1 - \frac{\|I_S \otimes \hat I_S\|_1}{\|I_S \oplus \hat
+I_S - I_S \otimes \hat I_S\|_1}
 \]</span></p>
 <ul>
 <li>geometry loss。作用是对 loss 进行 L1 正则化。</li>
@@ -556,50 +675,113 @@ I_{i, S} = \mathcal{A}_O(\{\mathcal{D}_j\}) := 1 - \prod_j (1 - \mathcal{D}_{i, 
 <p>这里论文主要提了一下 color generator 的结构：</p>
 <p><img src="/uploads/paper-2022-02/4.png" /></p>
 <p>似乎是提出了一种新结构，让颜色重建变为一个多分类问题，进而降低了时间复杂度。但是论文的描述中有若干的暂且不太清楚的名词，暂且把原文贴在这里以后再来看：</p>
-<div class="note info no-icon"><p>Instead of directly regressing the color value, our color generator formulates color reconstruction as a classification problem that learns to reuse the pixel colors in the input image for each sampling point. Let <span class="math inline">\(N_c\)</span> denote the number of sampling points on <span class="math inline">\(\boldsymbol{M}\)</span> and <span class="math inline">\(H, W\)</span> be the height and width of the input image respectively. However, the computational cost of a naive color selection approach is prohibitive, i.e. <span class="math inline">\(O(HWN_c)\)</span>. To address this challenge, we propose a novel approach to colorize mesh using a color palette, as shown in Figure 7. Specifically, after passing input image to a neural network, the extracted features are fed into (1) a sampling network that samples the representative colors for building the palette; and (2) a selection network that combines colors from the palette for texturing the sampling points. The color prediction is obtained by multiplying the color selections with the learned color palette. Our approach reduces the computation complexity to <span class="math inline">\(O(N_d(HW + N_c))\)</span>, where <span class="math inline">\(N_p\)</span> is the size of color palette. With a proper setting of <span class="math inline">\(N_p\)</span>, one can significantly reduce the computational cost while achieving sharp and accurate color recovery.</p>
+<div class="note info no-icon"><p>Instead of directly regressing the color value, our color generator
+formulates color reconstruction as a classification problem that learns
+to reuse the pixel colors in the input image for each sampling point.
+Let <span class="math inline">\(N_c\)</span> denote the number of
+sampling points on <span class="math inline">\(\boldsymbol{M}\)</span>
+and <span class="math inline">\(H, W\)</span> be the height and width of
+the input image respectively. However, the computational cost of a naive
+color selection approach is prohibitive, i.e. <span
+class="math inline">\(O(HWN_c)\)</span>. To address this challenge, we
+propose a novel approach to colorize mesh using a color palette, as
+shown in Figure 7. Specifically, after passing input image to a neural
+network, the extracted features are fed into (1) a sampling network that
+samples the representative colors for building the palette; and (2) a
+selection network that combines colors from the palette for texturing
+the sampling points. The color prediction is obtained by multiplying the
+color selections with the learned color palette. Our approach reduces
+the computation complexity to <span class="math inline">\(O(N_d(HW +
+N_c))\)</span>, where <span class="math inline">\(N_p\)</span> is the
+size of color palette. With a proper setting of <span
+class="math inline">\(N_p\)</span>, one can significantly reduce the
+computational cost while achieving sharp and accurate color
+recovery.</p>
 </div>
 <h3 id="image-based-shape-fitting">Image-based Shape Fitting</h3>
 <p>似乎依然是从图像重建模型，但是这个重建任务似乎和姿态预测有较为紧密的联系。</p>
 <p>传统方法面临的问题依然是梯度不精确的问题，这样就导致反向传播较为困难。另外，传统方法也面临这样的问题：</p>
 <ul>
-<li><p>遮挡问题。传统方法中，被遮挡的三角形无法调整参数，而 SoftRas 允许被遮挡的三角形参与到运算中，所以这个问题可以解决。</p></li>
-<li><p>局部最小值问题。我们希望误差反向传播可以传播到较大范围，即希望一次三维模型参数调整不局限于较小的局部，否则可能会导致模型收敛到局部最小值而非更优的结果。而 SoftRas 使用的概率分布算法允许全局的像素参与到运算中，所以理论上误差可以传播到较大范围，这个问题可以解决。</p></li>
+<li><p>遮挡问题。传统方法中，被遮挡的三角形无法调整参数，而 SoftRas
+允许被遮挡的三角形参与到运算中，所以这个问题可以解决。</p></li>
+<li><p>局部最小值问题。我们希望误差反向传播可以传播到较大范围，即希望一次三维模型参数调整不局限于较小的局部，否则可能会导致模型收敛到局部最小值而非更优的结果。而
+SoftRas
+使用的概率分布算法允许全局的像素参与到运算中，所以理论上误差可以传播到较大范围，这个问题可以解决。</p></li>
 </ul>
 <p>所以最后就直接使用这样的方式训练就行了：</p>
 <p><span class="math display">\[
-\{\rho, \theta, t\} = \mathop{\mathrm{argmin}}_{\rho, \theta, t}\|R(M(\rho, \theta, t)) - I_t\|_2
+\{\rho, \theta, t\} = \mathop{\mathrm{argmin}}_{\rho, \theta,
+t}\|R(M(\rho, \theta, t)) - I_t\|_2
 \]</span></p>
-<p>这里 <span class="math inline">\(\rho, \theta, t\)</span> 是三维模型的参数，分别是非刚体形变参数、姿态角度、转换参数（或许就是视图转换的参数），<span class="math inline">\(M(\cdot)\)</span> 将这些参数转换为网格，<span class="math inline">\(R(\cdot)\)</span> 是渲染函数，<span class="math inline">\(I_t\)</span> 则是目标图像。这个训练方式也就是机器学习的通式。</p>
+<p>这里 <span class="math inline">\(\rho, \theta, t\)</span>
+是三维模型的参数，分别是非刚体形变参数、姿态角度、转换参数（或许就是视图转换的参数），<span
+class="math inline">\(M(\cdot)\)</span> 将这些参数转换为网格，<span
+class="math inline">\(R(\cdot)\)</span> 是渲染函数，<span
+class="math inline">\(I_t\)</span>
+则是目标图像。这个训练方式也就是机器学习的通式。</p>
 <h2 id="实验结果">实验结果</h2>
-<h3 id="single-view-mesh-reconstruction-1">Single-View Mesh Reconstruction</h3>
+<h3 id="single-view-mesh-reconstruction-1">Single-View Mesh
+Reconstruction</h3>
 <p>实验结果看确实挺好的，下面展示的是不带颜色的网格重建：</p>
 <p><img src="/uploads/paper-2022-02/5.png" /></p>
 <p>颜色似乎也重建得挺好：</p>
 <p><img src="/uploads/paper-2022-02/6.png" height="50%" width="50%" /></p>
-<p>使用的评价方法是 3D IoU，即 3D Intersection over Union。这是一种物体检测领域的评价函数。二维情况下的 IoU 定义如下图所示。这里的矩形均指代物体的包围盒，分别为实际的包围盒和模型预测的包围盒：</p>
+<p>使用的评价方法是 3D IoU，即 3D Intersection over
+Union。这是一种物体检测领域的评价函数。二维情况下的 IoU
+定义如下图所示。这里的矩形均指代物体的包围盒，分别为实际的包围盒和模型预测的包围盒：</p>
 <p><img src="/uploads/paper-2022-02/7.png" height="50%" width="50%" /></p>
-<p>SoftRas 的平均 3D IoU 超出了 state-of-art 的 NMR 的 3D IoU 约 4.5 点，从而说明在网格重建任务上 SoftRas 的表现超出了传统方法。</p>
+<p>SoftRas 的平均 3D IoU 超出了 state-of-art 的 NMR 的 3D IoU 约 4.5
+点，从而说明在网格重建任务上 SoftRas 的表现超出了传统方法。</p>
 <p>另外似乎还有一项称为 Ablation Study 的后续实验，这里省略。</p>
 <h3 id="image-based-shape-fitting-1">Image-based Shape Fitting</h3>
-<p>首先实验刚体结构预测，这里采用六面着不同色的正方体。给定渲染后图像，要求给出正方体应当旋转的角度。SoftRas 和 NMR 的实验结果如下：</p>
+<p>首先实验刚体结构预测，这里采用六面着不同色的正方体。给定渲染后图像，要求给出正方体应当旋转的角度。SoftRas
+和 NMR 的实验结果如下：</p>
 <p><img src="/uploads/paper-2022-02/8.png" /></p>
-<p>可以发现 SoftRas 成功获得了最后的结果，而 NMR 则收敛到了一个局部最小值无法得到正确结果。</p>
-<p>论文认为 NMR 失败的原因正是因为六个面的相互遮挡，这导致了 NMR 无法越过局部最小值。</p>
-<p>另外其也做了大量实验，表明 SoftRas 预测的旋转角度误差严格优于 NMR，在不优化的情况下，SoftRas 的角度误差平均比 NMR 低 <span class="math inline">\(10.60^\circ\)</span>。</p>
-<p>这里似乎涉及到 <span class="math inline">\({\rm SO}(3)\)</span> 旋转群的一些东西，后面再来研究吧。</p>
+<p>可以发现 SoftRas 成功获得了最后的结果，而 NMR
+则收敛到了一个局部最小值无法得到正确结果。</p>
+<p>论文认为 NMR 失败的原因正是因为六个面的相互遮挡，这导致了 NMR
+无法越过局部最小值。</p>
+<p>另外其也做了大量实验，表明 SoftRas 预测的旋转角度误差严格优于
+NMR，在不优化的情况下，SoftRas 的角度误差平均比 NMR 低 <span
+class="math inline">\(10.60^\circ\)</span>。</p>
+<p>这里似乎涉及到 <span class="math inline">\({\rm SO}(3)\)</span>
+旋转群的一些东西，后面再来研究吧。</p>
 <hr />
-<p>非刚体结构预测则选用了人体结构预测，这里初始化时人的右手位于背后，而目标图像中右手已经移动到前面，实验目标是将手移出来。显然 NMR 依然因为无法处理遮挡，最后没有能够完成任务。而 SoftRas 完成了：</p>
+<p>非刚体结构预测则选用了人体结构预测，这里初始化时人的右手位于背后，而目标图像中右手已经移动到前面，实验目标是将手移出来。显然
+NMR 依然因为无法处理遮挡，最后没有能够完成任务。而 SoftRas 完成了：</p>
 <p><img src="/uploads/paper-2022-02/9.png" /></p>
 <h2 id="附录梯度计算">附录：梯度计算</h2>
-<p>我们现在研究一下 SoftRas 渲染出来的图像 <span class="math inline">\(\boldsymbol{I}\)</span> 对网格参数 <span class="math inline">\(\boldsymbol{M}\)</span> 的梯度，这个梯度也就是在反向传播的时候要计算的值。首先显然有：</p>
+<p>我们现在研究一下 SoftRas 渲染出来的图像 <span
+class="math inline">\(\boldsymbol{I}\)</span> 对网格参数 <span
+class="math inline">\(\boldsymbol{M}\)</span>
+的梯度，这个梯度也就是在反向传播的时候要计算的值。首先显然有：</p>
 <p><span class="math display">\[
-\frac{\partial\boldsymbol{I}}{\partial\boldsymbol{M}} = \frac{\partial\boldsymbol{I}}{\partial\boldsymbol{U}}\frac{\partial\boldsymbol{U}}{\partial\boldsymbol{M}} + \frac{\partial\boldsymbol{I}}{\partial\boldsymbol{Z}}\frac{\partial\boldsymbol{Z}}{\partial\boldsymbol{M}} + \frac{\partial\boldsymbol{I}}{\partial\boldsymbol{N}}\frac{\partial\boldsymbol{N}}{\partial\boldsymbol{M}}
+\frac{\partial\boldsymbol{I}}{\partial\boldsymbol{M}} =
+\frac{\partial\boldsymbol{I}}{\partial\boldsymbol{U}}\frac{\partial\boldsymbol{U}}{\partial\boldsymbol{M}}
++
+\frac{\partial\boldsymbol{I}}{\partial\boldsymbol{Z}}\frac{\partial\boldsymbol{Z}}{\partial\boldsymbol{M}}
++
+\frac{\partial\boldsymbol{I}}{\partial\boldsymbol{N}}\frac{\partial\boldsymbol{N}}{\partial\boldsymbol{M}}
 \]</span></p>
-<p>这里显然可以看出 <span class="math inline">\(\dfrac{\partial\boldsymbol{U}}{\partial\boldsymbol{M}}, \dfrac{\partial\boldsymbol{Z}}{\partial\boldsymbol{M}}, \dfrac{\partial\boldsymbol{N}}{\partial\boldsymbol{M}}\)</span> 是可以简单计算的，因为 <span class="math inline">\(\boldsymbol{U}, \boldsymbol{Z}, \boldsymbol{N}\)</span> 都可以由 <span class="math inline">\(\boldsymbol{M}\)</span> 通过简单的视图变换得到，由变换矩阵即可推算偏导数。</p>
-<p>而根据着色模型，<span class="math inline">\(\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{N}}\)</span> 也是可以计算的。</p>
-<p>剩余的两个梯度中，<span class="math inline">\(\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{Z}}\)</span> 直接和聚合函数相关，而 <span class="math inline">\(\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{U}}\)</span> 经过了两层，分别是概率分布计算和聚合函数，所以我们需要拆解：</p>
+<p>这里显然可以看出 <span
+class="math inline">\(\dfrac{\partial\boldsymbol{U}}{\partial\boldsymbol{M}},
+\dfrac{\partial\boldsymbol{Z}}{\partial\boldsymbol{M}},
+\dfrac{\partial\boldsymbol{N}}{\partial\boldsymbol{M}}\)</span>
+是可以简单计算的，因为 <span class="math inline">\(\boldsymbol{U},
+\boldsymbol{Z}, \boldsymbol{N}\)</span> 都可以由 <span
+class="math inline">\(\boldsymbol{M}\)</span>
+通过简单的视图变换得到，由变换矩阵即可推算偏导数。</p>
+<p>而根据着色模型，<span
+class="math inline">\(\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{N}}\)</span>
+也是可以计算的。</p>
+<p>剩余的两个梯度中，<span
+class="math inline">\(\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{Z}}\)</span>
+直接和聚合函数相关，而 <span
+class="math inline">\(\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{U}}\)</span>
+经过了两层，分别是概率分布计算和聚合函数，所以我们需要拆解：</p>
 <p><span class="math display">\[
-\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{U}} = \dfrac{\partial\boldsymbol{I}}{\partial\mathcal{D}}\dfrac{\partial\mathcal{D}}{\partial\boldsymbol{U}}
+\dfrac{\partial\boldsymbol{I}}{\partial\boldsymbol{U}} =
+\dfrac{\partial\boldsymbol{I}}{\partial\mathcal{D}}\dfrac{\partial\mathcal{D}}{\partial\boldsymbol{U}}
 \]</span></p>
 
     </div>
@@ -643,7 +825,7 @@ I_{i, S} = \mathcal{A}_O(\{\mathcal{D}_j\}) := 1 - \prod_j (1 - \mathcal{D}_{i, 
 
 <div class="copyright">
   &copy; 2021 – 
-  <span itemprop="copyrightYear">2024</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -654,13 +836,13 @@ I_{i, S} = \mathcal{A}_O(\{\mathcal{D}_j\}) := 1 - \prod_j (1 - \mathcal{D}_{i, 
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">453k</span>
+    <span title="站点总字数">456k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">6:52</span>
+    <span title="站点阅读时长">6:54</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动

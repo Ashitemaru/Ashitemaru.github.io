@@ -170,7 +170,7 @@ $(function () {
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">12</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">50</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">51</span></a></li>
         <li class="menu-item menu-item-skill-docs"><a href="https://sast-skill-docers.github.io/sast-skill-docs/" rel="noopener" target="_blank"><i class="fa fa-book fa-fw"></i>技能引导文档</a></li>
         <li class="menu-item menu-item-thuinfo"><a href="https://www.thuinfo.net/" rel="noopener" target="_blank"><i class="fa fa-sitemap fa-fw"></i>THUInfo</a></li>
         <li class="menu-item menu-item-se-index"><a href="https://thuse-course.github.io/course-index/" rel="noopener" target="_blank"><i class="fa fa-calendar fa-fw"></i>软工课程主页</a></li>
@@ -230,7 +230,8 @@ $(function () {
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9E%82%E7%9B%B4%E5%90%8C%E6%AD%A5%E4%B8%8E-g-sync"><span class="nav-number">1.</span> <span class="nav-text">垂直同步与 G-sync</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9E%82%E7%9B%B4%E5%90%8C%E6%AD%A5"><span class="nav-number">1.1.</span> <span class="nav-text">垂直同步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E9%87%8D%E7%BC%93%E5%86%B2"><span class="nav-number">1.2.</span> <span class="nav-text">三重缓冲</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#g-sync-%E4%B8%8E-freesync"><span class="nav-number">1.3.</span> <span class="nav-text">G-sync 与 Freesync</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#webrtc-kalman-filter-render-time-estimation"><span class="nav-number">2.</span> <span class="nav-text">WebRTC Kalman filter render time estimation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BD%A2%E6%88%90%E5%B8%A7%E7%9A%84%E8%BF%87%E7%A8%8B%E4%B8%AD%E6%92%AD%E6%94%BE%E5%BB%B6%E8%BF%9F%E7%9A%84%E4%BC%A0%E9%80%92"><span class="nav-number">2.1.</span> <span class="nav-text">形成帧的过程中播放延迟的传递</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%A7%E6%8F%92%E5%85%A5%E8%BF%87%E7%A8%8B%E4%B8%AD%E5%BB%B6%E8%BF%9F%E7%9A%84%E4%BC%B0%E8%AE%A1"><span class="nav-number">2.2.</span> <span class="nav-text">帧插入过程中延迟的估计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kalman-filter"><span class="nav-number">2.3.</span> <span class="nav-text">Kalman filter</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9E%82%E7%9B%B4%E5%90%8C%E6%AD%A5%E4%B8%8E-g-sync"><span class="nav-number">1.</span> <span class="nav-text">垂直同步与 G-sync</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9E%82%E7%9B%B4%E5%90%8C%E6%AD%A5"><span class="nav-number">1.1.</span> <span class="nav-text">垂直同步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E9%87%8D%E7%BC%93%E5%86%B2"><span class="nav-number">1.2.</span> <span class="nav-text">三重缓冲</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#g-sync-%E4%B8%8E-freesync"><span class="nav-number">1.3.</span> <span class="nav-text">G-sync 与 Freesync</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#webrtc-kalman-filter-render-time-estimation"><span class="nav-number">2.</span> <span class="nav-text">WebRTC Kalman
+filter render time estimation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BD%A2%E6%88%90%E5%B8%A7%E7%9A%84%E8%BF%87%E7%A8%8B%E4%B8%AD%E6%92%AD%E6%94%BE%E5%BB%B6%E8%BF%9F%E7%9A%84%E4%BC%A0%E9%80%92"><span class="nav-number">2.1.</span> <span class="nav-text">形成帧的过程中播放延迟的传递</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%A7%E6%8F%92%E5%85%A5%E8%BF%87%E7%A8%8B%E4%B8%AD%E5%BB%B6%E8%BF%9F%E7%9A%84%E4%BC%B0%E8%AE%A1"><span class="nav-number">2.2.</span> <span class="nav-text">帧插入过程中延迟的估计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kalman-filter"><span class="nav-number">2.3.</span> <span class="nav-text">Kalman filter</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -247,7 +248,7 @@ $(function () {
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">50</span>
+          <span class="site-state-item-count">51</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -424,99 +425,210 @@ $(function () {
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>在正式加入云游戏相关项目之前，学长还是扔了一些学习材料过来让我补一下基础，这里就正常开一个笔记来记录一下学习过程了。大概先从显示器的一些工作原理和 WebRTC 相关知识开始吧。</p>
+        <p>在正式加入云游戏相关项目之前，学长还是扔了一些学习材料过来让我补一下基础，这里就正常开一个笔记来记录一下学习过程了。大概先从显示器的一些工作原理和
+WebRTC 相关知识开始吧。</p>
 <span id="more"></span>
 <h1 id="垂直同步与-g-sync">垂直同步与 G-sync</h1>
 <p>https://www.youtube.com/watch?v=dnsPyyaNCWc&amp;list=PL7mmImi_1wpMVhVpBWr3Bob7kdchdDEoX&amp;index=23</p>
 <p>主要分析了游戏之中画面撕裂的问题成因和相关的解决方案，这里也就主要关注显卡和显示器的配合问题。</p>
-<p>首先需要明确的是，在游戏过程中，每一帧都是显卡负责绘制的，而显卡每秒绘制出的帧的数目就是<strong>帧率</strong>，简称 <strong>FPS</strong>。而显示器在接收到显卡所提供的帧的时候，需要在屏幕上绘制帧。当前所有的显示器采用的绘制方法都是<strong>逐行扫描</strong>，即光标从屏幕左上角开始向右向下逐个扫过像素点绘制帧，在扫描到右下角的时候，一帧绘制完成。绘制完一帧之后，显示器将光标从右下角重置到左上角的过程称为 <strong>VBlank</strong>。此外，显示器一秒内能够在屏幕上逐行扫描出的帧的数量称为<strong>刷新率</strong>。</p>
+<p>首先需要明确的是，在游戏过程中，每一帧都是显卡负责绘制的，而显卡每秒绘制出的帧的数目就是<strong>帧率</strong>，简称
+<strong>FPS</strong>。而显示器在接收到显卡所提供的帧的时候，需要在屏幕上绘制帧。当前所有的显示器采用的绘制方法都是<strong>逐行扫描</strong>，即光标从屏幕左上角开始向右向下逐个扫过像素点绘制帧，在扫描到右下角的时候，一帧绘制完成。绘制完一帧之后，显示器将光标从右下角重置到左上角的过程称为
+<strong>VBlank</strong>。此外，显示器一秒内能够在屏幕上逐行扫描出的帧的数量称为<strong>刷新率</strong>。</p>
 <p>这里有两个比较重要的概念，就是帧率和刷新率。需要注意的是，帧率描述显卡绘制帧的性能，刷新率描述显示器扫描帧的性能。</p>
 <p>在真实的游戏场景中，由于游戏场景的复杂性不同，显卡所承受的渲染负载不同，显卡的帧率常常会波动。然而相对应地，显示器的刷新率一般是不波动的。这意味着，我们需要某种机制平衡波动的帧率和固定的刷新率。一般而言，常见的系统会采用<strong>帧缓冲</strong>机制来完成这一任务。</p>
 <p>帧缓冲机制中一般会设置一个前缓冲区和一个后缓冲区，显示器仅仅会读取前缓冲区之中存放的帧，显卡只会修改后缓冲区中的帧。在这个机制之下，将后缓冲区中的帧传递到前缓冲区的操作称为<strong>帧传递</strong>。显然，何时进行帧传递就构成了这个系统的核心机制。</p>
-<p>如果刷新率和帧率一致，那么我们只需要在显卡绘制完毕之后进行帧传递即可，此时显示器也应当恰好刷新完毕进入 VBlank，恰好准备绘制新帧。然而如果秉持着显卡绘制完毕即帧传递的策略，在帧率比刷新率更高的时候，后缓冲区中已经形成新的帧的时候显示器还没有进入 VBlank，此时将新帧传递入前缓冲区，显示器上则会出现上半为旧帧而下半为新帧的情况，即所谓的画面撕裂。另外，帧率低于刷新率的时候，显示器已经进入 VBlank 的时候后缓冲区依然没有触发帧传递，所以显示器只能重新绘制先前帧，此时新帧由显卡绘制完毕，帧传递后会出现显示器上上半为旧帧而下半为新帧的情况，同样也是画面撕裂。</p>
+<p>如果刷新率和帧率一致，那么我们只需要在显卡绘制完毕之后进行帧传递即可，此时显示器也应当恰好刷新完毕进入
+VBlank，恰好准备绘制新帧。然而如果秉持着显卡绘制完毕即帧传递的策略，在帧率比刷新率更高的时候，后缓冲区中已经形成新的帧的时候显示器还没有进入
+VBlank，此时将新帧传递入前缓冲区，显示器上则会出现上半为旧帧而下半为新帧的情况，即所谓的画面撕裂。另外，帧率低于刷新率的时候，显示器已经进入
+VBlank
+的时候后缓冲区依然没有触发帧传递，所以显示器只能重新绘制先前帧，此时新帧由显卡绘制完毕，帧传递后会出现显示器上上半为旧帧而下半为新帧的情况，同样也是画面撕裂。</p>
 <p>总之，在这一策略之下，只要刷新率不等于帧率就会出现画面撕裂问题：</p>
 <p><img src="/uploads/note-of-media/1.png" /></p>
-<p>这里显示的是显示器角度的时间轴，A 到 F 各个色块则显示各个帧在前缓冲区中存续的时间。可以看到，无论是帧率高于刷新率还是低于刷新率，显示器所显示的画面都会有撕裂现象。</p>
+<p>这里显示的是显示器角度的时间轴，A 到 F
+各个色块则显示各个帧在前缓冲区中存续的时间。可以看到，无论是帧率高于刷新率还是低于刷新率，显示器所显示的画面都会有撕裂现象。</p>
 <h2 id="垂直同步">垂直同步</h2>
-<p>所谓的垂直同步策略，是在帧率高于刷新率的时候，强制令显卡空转等待 VBlank 到来后才触发帧交换。简而言之，就是强制令显卡等待显示器：</p>
+<p>所谓的垂直同步策略，是在帧率高于刷新率的时候，强制令显卡空转等待
+VBlank 到来后才触发帧交换。简而言之，就是强制令显卡等待显示器：</p>
 <p><img src="/uploads/note-of-media/2.png" /></p>
 <p>这里 G 区域就是强制令显卡等待的时间块。</p>
-<p>而在帧率低于刷新率的时候，则强制令显示器再显示一次旧帧，若显示完显卡依然没有绘制完毕则一直显示，直到某一次显示的时候显卡绘制完了。此时显卡空转等待 VBlank 触发帧交换。简而言之，就是等效降低显示器刷新率，将问题化归为帧率高于刷新率的问题，再强制令显卡等待显示器：</p>
+<p>而在帧率低于刷新率的时候，则强制令显示器再显示一次旧帧，若显示完显卡依然没有绘制完毕则一直显示，直到某一次显示的时候显卡绘制完了。此时显卡空转等待
+VBlank
+触发帧交换。简而言之，就是等效降低显示器刷新率，将问题化归为帧率高于刷新率的问题，再强制令显卡等待显示器：</p>
 <p><img src="/uploads/note-of-media/3.png" /></p>
 <p>这里 G 区域就是强制令显卡等待的时间块。</p>
 <p>然而垂直同步的弊端也是显而易见的，即实际帧率一定会被锁定在显示器刷新率以下，事实上是一种卡死显卡性能换画面完整的交易。</p>
-<p>在这个基础上，Nvidia 推出了<strong>自适应垂直同步</strong>方案，事实上就是在垂直同步系统之前加一个是否开启垂直同步的判断器。当显卡帧率高于刷新率的时候，该系统打开垂直同步令显卡空转等待显示器，而显卡帧率低于刷新率的时候，则关闭垂直同步，立即触发帧传递而不让显示器重复绘制先前帧。</p>
-<p>但是无论如何改进，依然无法改变垂直同步具有延迟的缺陷，即 MTP latency 过高。简而言之，当场景变化较大的时候，即使显卡已经快速绘制出来还是有可能因为垂直同步被迫稍晚传递给显示器，导致用户操作和屏幕反应之间存在较大延迟。这对实时性高的游戏（如 FPS、Moba）是致命的。</p>
+<p>在这个基础上，Nvidia
+推出了<strong>自适应垂直同步</strong>方案，事实上就是在垂直同步系统之前加一个是否开启垂直同步的判断器。当显卡帧率高于刷新率的时候，该系统打开垂直同步令显卡空转等待显示器，而显卡帧率低于刷新率的时候，则关闭垂直同步，立即触发帧传递而不让显示器重复绘制先前帧。</p>
+<p>但是无论如何改进，依然无法改变垂直同步具有延迟的缺陷，即 MTP latency
+过高。简而言之，当场景变化较大的时候，即使显卡已经快速绘制出来还是有可能因为垂直同步被迫稍晚传递给显示器，导致用户操作和屏幕反应之间存在较大延迟。这对实时性高的游戏（如
+FPS、Moba）是致命的。</p>
 <h2 id="三重缓冲">三重缓冲</h2>
 <p>为了解决垂直同步的延迟问题，有一种方式是将一般的前缓冲区和后缓冲区设计中加入新的中缓冲区构成三重缓冲。简单而言就是再设置一个缓冲区来存放显卡提前绘制好的帧，可以一定程度缓解显卡帧率突涨的问题。然而这是治标不治本的，也就是说当显卡性能保持在高位过长时间后，后缓冲区和中缓冲区都已经满了，此时显卡依然不得不空转等待显示器。</p>
-<p>Nvidia 为了解决三重缓冲这种治标不治本的问题，提出了<strong>快速垂直同步（无阻塞垂直同步）</strong>方案，即允许中缓冲区和后缓冲区交换，当中后缓冲区全满的时候再次交换中后缓冲区，显卡用新的帧覆盖掉本应该交给显示器绘制的帧。此时中缓冲区始终有一个可以交给前缓冲区，即显示器绘制的帧，而显卡也始终没有等待显示器。</p>
+<p>Nvidia
+为了解决三重缓冲这种治标不治本的问题，提出了<strong>快速垂直同步（无阻塞垂直同步）</strong>方案，即允许中缓冲区和后缓冲区交换，当中后缓冲区全满的时候再次交换中后缓冲区，显卡用新的帧覆盖掉本应该交给显示器绘制的帧。此时中缓冲区始终有一个可以交给前缓冲区，即显示器绘制的帧，而显卡也始终没有等待显示器。</p>
 <p>无阻塞垂直同步虽然做到了显示器和显卡都处于满负荷状态，但是两者之间不同步的差距则代偿给了帧丢失，也就是先前说的，如果中后缓冲区都满了，就会用新帧覆盖掉原本交给显示器的帧，从而导致实际的丢帧。</p>
 <h2 id="g-sync-与-freesync">G-sync 与 Freesync</h2>
-<p>实际上上述所有方案都有治标不治本的问题。为了从根源上解决画面撕裂又不产生过分的延迟，Nvidia 直接从显示器一侧尝试解决问题，即 G-sync 方案（该方案核心为<strong>自适应显示器刷新率</strong>，即 VRR，所以有时也称为 VRR 方案）。该方案的核心是令显示器可以调节 VBlank 时长，从而在显卡帧率较低的时候通过长 VBlank 时间来让“显示器等显卡”。</p>
-<p>也就是说，垂直同步核心是显卡空转等显示器，而 G-sync 则是显示器空转等显卡。</p>
-<p>然而在实际情况下，即使通过 VRR 也不可能让刷新率超越额定刷新率，所以当显卡帧率高于刷新率的时候依然会出现画面撕裂（也就是所说的 VRR 只能解决显卡帧率低于刷新率的情况）。所以厂家会推荐打开 G-sync 的时候同时打开垂直同步。</p>
-<p>另外一个角度，过长时间的 VBlank 有时也不现实，因为显示器主板也有最低刷新率要求。这意味着如果帧率显著低于刷新率，打开 G-sync 甚至可能因刷新率锚定帧率导致更严重的后果。这个时候只能打开<strong>低帧补偿（Low Frame Compensation / LFC）</strong>，即通过多次扫描显示一帧，等效倍增显示器刷新率。然而 LFC 需要预测显卡的性能，因为毕竟需要提前决定到底下一帧需要几次扫描，一旦预测失误，依然会遇到问题。</p>
-<p>所以 VRR 技术即使可以做到在一定范围内让刷新率锚定帧率，但是这依然需要帧率相对稳定。这时候就有个有趣的矛盾，既然能做到帧率相对稳定，那么即使画面撕裂也都会出现在屏幕上下方贴近边框的地方，那我为什么不能直接接受垂直同步之类的方案呢？</p>
-<p>所以现今的解决方案中就是不能在低延迟、无撕裂上面做到兼顾，G-sync 也只是众多权衡中的一种。</p>
-<p>最后，说明一下 Freesync。事实上 G-sync 是 Nvidia 授权部分显示器型号内置 Nvidia 芯片来达成的技术，是一种需要 Nvidia 官方认证才能采用的技术。而 Freesync 是开源的技术标准，所有显示器均可以使用，目前由 AMD 主要采用。而两者的技术框架几乎一致，仅仅在细节上有一定差别。</p>
-<h1 id="webrtc-kalman-filter-render-time-estimation">WebRTC Kalman filter render time estimation</h1>
+<p>实际上上述所有方案都有治标不治本的问题。为了从根源上解决画面撕裂又不产生过分的延迟，Nvidia
+直接从显示器一侧尝试解决问题，即 G-sync
+方案（该方案核心为<strong>自适应显示器刷新率</strong>，即
+VRR，所以有时也称为 VRR 方案）。该方案的核心是令显示器可以调节 VBlank
+时长，从而在显卡帧率较低的时候通过长 VBlank 时间来让“显示器等显卡”。</p>
+<p>也就是说，垂直同步核心是显卡空转等显示器，而 G-sync
+则是显示器空转等显卡。</p>
+<p>然而在实际情况下，即使通过 VRR
+也不可能让刷新率超越额定刷新率，所以当显卡帧率高于刷新率的时候依然会出现画面撕裂（也就是所说的
+VRR 只能解决显卡帧率低于刷新率的情况）。所以厂家会推荐打开 G-sync
+的时候同时打开垂直同步。</p>
+<p>另外一个角度，过长时间的 VBlank
+有时也不现实，因为显示器主板也有最低刷新率要求。这意味着如果帧率显著低于刷新率，打开
+G-sync
+甚至可能因刷新率锚定帧率导致更严重的后果。这个时候只能打开<strong>低帧补偿（Low
+Frame Compensation /
+LFC）</strong>，即通过多次扫描显示一帧，等效倍增显示器刷新率。然而 LFC
+需要预测显卡的性能，因为毕竟需要提前决定到底下一帧需要几次扫描，一旦预测失误，依然会遇到问题。</p>
+<p>所以 VRR
+技术即使可以做到在一定范围内让刷新率锚定帧率，但是这依然需要帧率相对稳定。这时候就有个有趣的矛盾，既然能做到帧率相对稳定，那么即使画面撕裂也都会出现在屏幕上下方贴近边框的地方，那我为什么不能直接接受垂直同步之类的方案呢？</p>
+<p>所以现今的解决方案中就是不能在低延迟、无撕裂上面做到兼顾，G-sync
+也只是众多权衡中的一种。</p>
+<p>最后，说明一下 Freesync。事实上 G-sync 是 Nvidia
+授权部分显示器型号内置 Nvidia 芯片来达成的技术，是一种需要 Nvidia
+官方认证才能采用的技术。而 Freesync
+是开源的技术标准，所有显示器均可以使用，目前由 AMD
+主要采用。而两者的技术框架几乎一致，仅仅在细节上有一定差别。</p>
+<h1 id="webrtc-kalman-filter-render-time-estimation">WebRTC Kalman
+filter render time estimation</h1>
 <p>参考文章：https://www.jianshu.com/p/0bc6a4998b32</p>
-<p>由于这篇文章已经是 2020 年的文章了，感觉 WebRTC 源码也已经做了很大的更新，所以还是以 2023.09 的最新源码为准，文章终究是参考。</p>
+<p>由于这篇文章已经是 2020 年的文章了，感觉 WebRTC
+源码也已经做了很大的更新，所以还是以 2023.09
+的最新源码为准，文章终究是参考。</p>
 <h2 id="形成帧的过程中播放延迟的传递">形成帧的过程中播放延迟的传递</h2>
-<p>这篇文章主要介绍的是 WebRTC playout delay 的计算原理。WebRTC 源码之中 playout delay 表示为两个 <code>double</code> 浮点数构成的元组，分别表示最小播放延迟和最大播放延迟。一般而言，playout delay 会携带在 RTC 扩展头之中，如果没有携带，则使用默认初始化。</p>
+<p>这篇文章主要介绍的是 WebRTC playout delay 的计算原理。WebRTC 源码之中
+playout delay 表示为两个 <code>double</code>
+浮点数构成的元组，分别表示最小播放延迟和最大播放延迟。一般而言，playout
+delay 会携带在 RTC 扩展头之中，如果没有携带，则使用默认初始化。</p>
 <p>源码上的体现是：</p>
 <figure class="highlight c++"><figcaption><span>C++</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// video_timing.h</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RTC_EXPORT</span> <span class="title">VideoPlayoutDelay</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// Maximum supported value for the delay limit.</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">constexpr</span> TimeDelta kMax = TimeDelta::<span class="built_in">Millis</span>(<span class="number">10</span>) * <span class="number">0xFFF</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    TimeDelta min_ = TimeDelta::<span class="built_in">Zero</span>();</span><br><span class="line">    TimeDelta max_ = kMax;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// rtp_video_header.h</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">RTPVideoHeader</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    absl::optional&lt;VideoPlayoutDelay&gt; playout_delay;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// encoded_image.h</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RTC_EXPORT</span> <span class="title">EncodedImage</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    absl::optional&lt;VideoPlayoutDelay&gt; playout_delay_;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">RtpFrameObject::<span class="built_in">RtpFrameObject</span>(<span class="comment">/* ... */</span>)</span><br><span class="line">    : <span class="built_in">first_seq_num_</span>(first_seq_num),</span><br><span class="line">      <span class="built_in">last_seq_num_</span>(last_seq_num),</span><br><span class="line">      <span class="built_in">last_packet_receive_time_</span>(last_packet_receive_time),</span><br><span class="line">      <span class="built_in">times_nacked_</span>(times_nacked) &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="built_in">SetPlayoutDelay</span>(rtp_video_header_.playout_delay);</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这里主要观察最后一个构造函数的逻辑，在 <code>PacketBuffer</code> 模块将数据包排列组合出一帧的最后会创建一个 <code>RtpFrameObject</code> 实例来管理这一帧，此时会使用 <code>SetPlayoutDelay</code> 函数设定播放延迟。同时可以注意到，<code>RTPVideoHeader</code> 结构体中如果没有设定播放延迟，则默认为 <code>&#123;0, +Infinity&#125;</code>，也就是说创建帧对象的时候如果没有设定播放延迟则默认设定为 <code>&#123;0, +Infinity&#125;</code>。</p>
-<p>在帧构建完成之后会调用 <code>VideoReceiveStream2::OnCompleteFrame</code> 函数将新帧插入帧队列：</p>
+<p>这里主要观察最后一个构造函数的逻辑，在 <code>PacketBuffer</code>
+模块将数据包排列组合出一帧的最后会创建一个 <code>RtpFrameObject</code>
+实例来管理这一帧，此时会使用 <code>SetPlayoutDelay</code>
+函数设定播放延迟。同时可以注意到，<code>RTPVideoHeader</code>
+结构体中如果没有设定播放延迟，则默认为
+<code>&#123;0, +Infinity&#125;</code>，也就是说创建帧对象的时候如果没有设定播放延迟则默认设定为
+<code>&#123;0, +Infinity&#125;</code>。</p>
+<p>在帧构建完成之后会调用
+<code>VideoReceiveStream2::OnCompleteFrame</code>
+函数将新帧插入帧队列：</p>
 <figure class="highlight c++"><figcaption><span>C++</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">VideoReceiveStream2::OnCompleteFrame</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">    std::unique_ptr&lt;video_encoding::EncodedFrame&gt; frame,</span></span></span><br><span class="line"><span class="params"><span class="function">)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (absl::optional&lt;VideoPlayoutDelay&gt; playout_delay =</span><br><span class="line">        frame-&gt;<span class="built_in">EncodedImage</span>().<span class="built_in">PlayoutDelay</span>()) &#123;</span><br><span class="line">        frame_minimum_playout_delay_ = playout_delay-&gt;<span class="built_in">min</span>();</span><br><span class="line">        frame_maximum_playout_delay_ = playout_delay-&gt;<span class="built_in">max</span>();</span><br><span class="line">        <span class="built_in">UpdatePlayoutDelays</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这里涉及到了 <code>absl::optional</code> 的隐式类型转换，观察一下库函数就有：</p>
+<p>这里涉及到了 <code>absl::optional</code>
+的隐式类型转换，观察一下库函数就有：</p>
 <figure class="highlight c++"><figcaption><span>C++</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// optional::operator bool()</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// Returns false if and only if the `optional` is empty.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//   if (opt) &#123;</span></span><br><span class="line"><span class="comment">//      // do something with *opt or opt-&gt;;</span></span><br><span class="line"><span class="comment">//   &#125; else &#123;</span></span><br><span class="line"><span class="comment">//      // opt is empty.</span></span><br><span class="line"><span class="comment">//   &#125;</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="function"><span class="keyword">constexpr</span> <span class="keyword">explicit</span> <span class="keyword">operator</span> <span class="title">bool</span><span class="params">()</span> <span class="keyword">const</span> <span class="keyword">noexcept</span> </span>&#123; <span class="keyword">return</span> <span class="keyword">this</span>-&gt;engaged_; &#125;</span><br></pre></td></tr></table></figure>
-<p>也就是说只有这个 <code>absl::optional</code> 容器内部没有存放任何值的时候才会返回 <code>false</code>，这也就对应着播放延迟没有在 RTC 扩展头之中携带。</p>
-<p>这里可以注意当 <code>playout_delay_</code> 是非默认值的时候会做两件事：</p>
+<p>也就是说只有这个 <code>absl::optional</code>
+容器内部没有存放任何值的时候才会返回
+<code>false</code>，这也就对应着播放延迟没有在 RTC 扩展头之中携带。</p>
+<p>这里可以注意当 <code>playout_delay_</code>
+是非默认值的时候会做两件事：</p>
 <ul>
-<li>更新 <code>VideoReceiveStream2</code> 之中的 <code>frame_minimum_playout_delay_ms_</code> 等成员变量</li>
-<li>调用 <code>UpdatePlayoutDelays</code> 函数更新 <code>VCMTiming</code> 类中的数据</li>
+<li>更新 <code>VideoReceiveStream2</code> 之中的
+<code>frame_minimum_playout_delay_ms_</code> 等成员变量</li>
+<li>调用 <code>UpdatePlayoutDelays</code> 函数更新
+<code>VCMTiming</code> 类中的数据</li>
 </ul>
 <p>具体的源码为：</p>
 <figure class="highlight c++"><figcaption><span>C++</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">VideoReceiveStream2::UpdatePlayoutDelays</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123;</span><br><span class="line">    <span class="built_in">RTC_DCHECK_RUN_ON</span>(&amp;worker_sequence_checker_);</span><br><span class="line">    <span class="keyword">const</span> std::initializer_list&lt;absl::optional&lt;TimeDelta&gt;&gt; min_delays = &#123;</span><br><span class="line">        frame_minimum_playout_delay_,</span><br><span class="line">        base_minimum_playout_delay_,</span><br><span class="line">        syncable_minimum_playout_delay_&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Since nullopt &lt; anything, this will return the largest of the minumum</span></span><br><span class="line">    <span class="comment">// delays, or nullopt if all are nullopt.</span></span><br><span class="line">    absl::optional&lt;TimeDelta&gt; minimum_delay = std::<span class="built_in">max</span>(min_delays);</span><br><span class="line">    <span class="keyword">if</span> (minimum_delay) &#123;</span><br><span class="line">        <span class="keyword">auto</span> num_playout_delays_set =</span><br><span class="line">            absl::<span class="built_in">c_count_if</span>(min_delays, [](<span class="keyword">auto</span> opt) &#123; <span class="keyword">return</span> opt.<span class="built_in">has_value</span>(); &#125;);</span><br><span class="line">        <span class="keyword">if</span> (num_playout_delays_set &gt; <span class="number">1</span> &amp;&amp;</span><br><span class="line">            timing_-&gt;<span class="built_in">min_playout_delay</span>() != minimum_delay) &#123;</span><br><span class="line">            <span class="built_in">RTC_LOG</span>(LS_WARNING)</span><br><span class="line">                &lt;&lt; <span class="string">&quot;Multiple playout delays set. Actual delay value set to &quot;</span></span><br><span class="line">                &lt;&lt; *minimum_delay &lt;&lt; <span class="string">&quot; frame min delay=&quot;</span></span><br><span class="line">                &lt;&lt; <span class="built_in">OptionalDelayToLogString</span>(frame_minimum_playout_delay_)</span><br><span class="line">                &lt;&lt; <span class="string">&quot; base min delay=&quot;</span></span><br><span class="line">                &lt;&lt; <span class="built_in">OptionalDelayToLogString</span>(base_minimum_playout_delay_)</span><br><span class="line">                &lt;&lt; <span class="string">&quot; sync min delay=&quot;</span></span><br><span class="line">                &lt;&lt; <span class="built_in">OptionalDelayToLogString</span>(syncable_minimum_playout_delay_);</span><br><span class="line">        &#125;</span><br><span class="line">        timing_-&gt;<span class="built_in">set_min_playout_delay</span>(*minimum_delay);</span><br><span class="line">        <span class="keyword">if</span> (frame_minimum_playout_delay_ == TimeDelta::<span class="built_in">Zero</span>() &amp;&amp;</span><br><span class="line">            frame_maximum_playout_delay_ &gt; TimeDelta::<span class="built_in">Zero</span>()) &#123;</span><br><span class="line">            <span class="comment">// TODO(kron): Estimate frame rate from video stream.</span></span><br><span class="line">            <span class="keyword">constexpr</span> Frequency kFrameRate = Frequency::<span class="built_in">Hertz</span>(<span class="number">60</span>);</span><br><span class="line">            <span class="comment">// Convert playout delay in ms to number of frames.</span></span><br><span class="line">            <span class="keyword">int</span> max_composition_delay_in_frames =</span><br><span class="line">                std::<span class="built_in">lrint</span>(*frame_maximum_playout_delay_ * kFrameRate);</span><br><span class="line">            <span class="comment">// Subtract frames in buffer.</span></span><br><span class="line">            max_composition_delay_in_frames =</span><br><span class="line">                std::<span class="built_in">max</span>(max_composition_delay_in_frames - buffer_-&gt;<span class="built_in">Size</span>(), <span class="number">0</span>);</span><br><span class="line">            timing_-&gt;<span class="built_in">SetMaxCompositionDelayInFrames</span>(max_composition_delay_in_frames);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (frame_maximum_playout_delay_) &#123;</span><br><span class="line">        timing_-&gt;<span class="built_in">set_max_playout_delay</span>(*frame_maximum_playout_delay_);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这一段看起来有一个前提，就是 <code>min_delays</code> 列表之中最多有一个有效值，而这个有效值将会被处理为真实的播放延迟。可以看到，在第 25 行，这里调用了 <code>timimg_-&gt;set_min_playout_delay</code> 函数，而这个函数的作用就是将播放延迟设定到 <code>VCMTiming</code> 类之中。这里 <code>timing_</code> 的类型为 <code>std::unique_ptr&lt;VCMTiming&gt;</code>。</p>
+<p>这一段看起来有一个前提，就是 <code>min_delays</code>
+列表之中最多有一个有效值，而这个有效值将会被处理为真实的播放延迟。可以看到，在第
+25 行，这里调用了 <code>timimg_-&gt;set_min_playout_delay</code>
+函数，而这个函数的作用就是将播放延迟设定到 <code>VCMTiming</code>
+类之中。这里 <code>timing_</code> 的类型为
+<code>std::unique_ptr&lt;VCMTiming&gt;</code>。</p>
 <p>再具体展开：</p>
 <figure class="highlight c++"><figcaption><span>C++</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">VCMTiming::set_min_playout_delay</span><span class="params">(TimeDelta min_playout_delay)</span> </span>&#123;</span><br><span class="line">    <span class="function">MutexLock <span class="title">lock</span><span class="params">(&amp;mutex_)</span></span>;</span><br><span class="line">    <span class="keyword">if</span> (min_playout_delay_ != min_playout_delay) &#123;</span><br><span class="line">        <span class="built_in">CheckDelaysValid</span>(min_playout_delay, max_playout_delay_);</span><br><span class="line">        min_playout_delay_ = min_playout_delay;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">VCMTiming::set_max_playout_delay</span><span class="params">(TimeDelta max_playout_delay)</span> </span>&#123;</span><br><span class="line">    <span class="function">MutexLock <span class="title">lock</span><span class="params">(&amp;mutex_)</span></span>;</span><br><span class="line">    <span class="keyword">if</span> (max_playout_delay_ != max_playout_delay) &#123;</span><br><span class="line">        <span class="built_in">CheckDelaysValid</span>(min_playout_delay_, max_playout_delay);</span><br><span class="line">        max_playout_delay_ = max_playout_delay;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>至少这里看起来是相当普通的一个 setter 代码。按这里的代码的话，<code>VCMTiming</code> 的作用在于维护帧级别的播放延迟，并作为最终存放点用于后续的延迟估计工作。</p>
+<p>至少这里看起来是相当普通的一个 setter
+代码。按这里的代码的话，<code>VCMTiming</code>
+的作用在于维护帧级别的播放延迟，并作为最终存放点用于后续的延迟估计工作。</p>
 <h2 id="帧插入过程中延迟的估计">帧插入过程中延迟的估计</h2>
-<p>在形成新的一帧之后，需要通过帧插入操作将新的帧加入到帧缓冲区之中供后续解码。承接上述说明，在 <code>VideoReceiveStream2::OnCompleteFrame</code> 函数之后，会通过 <code>VideoStreamBufferController::InsertFrame</code> 函数将新帧压入缓冲区，而这个函数则进一步调用了 <code>FrameBuffer::InsertFrame</code> 函数：</p>
+<p>在形成新的一帧之后，需要通过帧插入操作将新的帧加入到帧缓冲区之中供后续解码。承接上述说明，在
+<code>VideoReceiveStream2::OnCompleteFrame</code> 函数之后，会通过
+<code>VideoStreamBufferController::InsertFrame</code>
+函数将新帧压入缓冲区，而这个函数则进一步调用了
+<code>FrameBuffer::InsertFrame</code> 函数：</p>
 <figure class="highlight c++"><figcaption><span>C++</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">absl::optional&lt;<span class="keyword">int64_t</span>&gt; <span class="title">VideoStreamBufferController::InsertFrame</span><span class="params">(std::unique_ptr&lt;EncodedFrame&gt; frame)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">RTC_DCHECK_RUN_ON</span>(&amp;worker_sequence_checker_);</span><br><span class="line">    <span class="function">FrameMetadata <span class="title">metadata</span><span class="params">(*frame)</span></span>;</span><br><span class="line">    <span class="keyword">int</span> complete_units = buffer_-&gt;<span class="built_in">GetTotalNumberOfContinuousTemporalUnits</span>();</span><br><span class="line">    <span class="keyword">if</span> (buffer_-&gt;<span class="built_in">InsertFrame</span>(std::<span class="built_in">move</span>(frame))) &#123;</span><br><span class="line">        <span class="built_in">RTC_DCHECK</span>(metadata.receive_time) &lt;&lt; <span class="string">&quot;Frame receive time must be set!&quot;</span>;</span><br><span class="line">        <span class="keyword">if</span> (!metadata.delayed_by_retransmission &amp;&amp; metadata.receive_time &amp;&amp;</span><br><span class="line">            (field_trials_.<span class="built_in">IsDisabled</span>(<span class="string">&quot;WebRTC-IncomingTimestampOnMarkerBitOnly&quot;</span>) ||</span><br><span class="line">            metadata.is_last_spatial_layer)) &#123;</span><br><span class="line">            timing_-&gt;<span class="built_in">IncomingTimestamp</span>(metadata.rtp_timestamp, *metadata.receive_time);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (complete_units &lt; buffer_-&gt;<span class="built_in">GetTotalNumberOfContinuousTemporalUnits</span>()) &#123;</span><br><span class="line">            stats_proxy_-&gt;<span class="built_in">OnCompleteFrame</span>(metadata.is_keyframe, metadata.size, metadata.contentType);</span><br><span class="line">            <span class="built_in">MaybeScheduleFrameForRelease</span>();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> buffer_-&gt;<span class="built_in">LastContinuousFrameId</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这里 <code>FrameBuffer::InsertFrame</code> 函数具体细节不再阐述，基本上就是管理缓冲区的一些操作，我们主要看后续有关延迟的计算方式。首先，第 7 行的判定表示，如果该帧不是重传帧则进入分支内部。在此基础上，该函数会调用 <code>VCMTiming::IncomingTimestamp</code> 并立刻跳转到 <code>TimestampExtrapolator::Update</code>。在这个函数内部，框架将会根据当前帧的 RTP 时间戳估计当前帧的期望接收时间，并对 Kalman gain 进行校准（内心 OS：这一句话真的是没看懂啊，不过参考文献说后面会具体说明这个函数的目的，这里就先不深究了吧）。</p>
+<p>这里 <code>FrameBuffer::InsertFrame</code>
+函数具体细节不再阐述，基本上就是管理缓冲区的一些操作，我们主要看后续有关延迟的计算方式。首先，第
+7
+行的判定表示，如果该帧不是重传帧则进入分支内部。在此基础上，该函数会调用
+<code>VCMTiming::IncomingTimestamp</code> 并立刻跳转到
+<code>TimestampExtrapolator::Update</code>。在这个函数内部，框架将会根据当前帧的
+RTP 时间戳估计当前帧的期望接收时间，并对 Kalman gain 进行校准（内心
+OS：这一句话真的是没看懂啊，不过参考文献说后面会具体说明这个函数的目的，这里就先不深究了吧）。</p>
 <hr />
 <p>首先说明一帧从完整构成到显示到屏幕上所需要经历的阶段。在帧组装完毕之后，首先会送往解码器解码，解码完毕之后则送给渲染器渲染。</p>
-<p>这里我们关注一个函数，即 <code>VCMTiming::MaxWaitingTime</code>。这个函数的作用是给出帧组装所能容忍的最大时长，也就是说如果在给定的阈值内没有能够从网络上获取足够的数据包将这一帧组装完毕，则这一帧大概率来不及走完解码、渲染的流程并显示在屏幕上。事实上这个函数是一个预测性质的函数，用来预测当前条件下我们能等待网络延迟多长时间：</p>
+<p>这里我们关注一个函数，即
+<code>VCMTiming::MaxWaitingTime</code>。这个函数的作用是给出帧组装所能容忍的最大时长，也就是说如果在给定的阈值内没有能够从网络上获取足够的数据包将这一帧组装完毕，则这一帧大概率来不及走完解码、渲染的流程并显示在屏幕上。事实上这个函数是一个预测性质的函数，用来预测当前条件下我们能等待网络延迟多长时间：</p>
 <figure class="highlight c++"><figcaption><span>C++</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">TimeDelta <span class="title">VCMTiming::MaxWaitingTime</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">    Timestamp render_time,</span></span></span><br><span class="line"><span class="params"><span class="function">    Timestamp now,</span></span></span><br><span class="line"><span class="params"><span class="function">    <span class="keyword">bool</span> too_many_frames_queued</span></span></span><br><span class="line"><span class="params"><span class="function">)</span> <span class="keyword">const</span> </span>&#123;</span><br><span class="line">    <span class="function">MutexLock <span class="title">lock</span><span class="params">(&amp;mutex_)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (</span><br><span class="line">        render_time.<span class="built_in">IsZero</span>() &amp;&amp;</span><br><span class="line">        zero_playout_delay_min_pacing_-&gt;<span class="built_in">us</span>() &gt; <span class="number">0</span> &amp;&amp;</span><br><span class="line">        min_playout_delay_.<span class="built_in">IsZero</span>() &amp;&amp;</span><br><span class="line">        max_playout_delay_ &gt; TimeDelta::<span class="built_in">Zero</span>()</span><br><span class="line">    ) &#123;</span><br><span class="line">        <span class="comment">// `render_time` == 0 indicates that the frame should be decoded and</span></span><br><span class="line">        <span class="comment">// rendered as soon as possible. However, the decoder can be choked if too</span></span><br><span class="line">        <span class="comment">// many frames are sent at once. Therefore, limit the interframe delay to</span></span><br><span class="line">        <span class="comment">// |zero_playout_delay_min_pacing_| unless too many frames are queued in</span></span><br><span class="line">        <span class="comment">// which case the frames are sent to the decoder at once.</span></span><br><span class="line">        <span class="keyword">if</span> (too_many_frames_queued) &#123;</span><br><span class="line">            <span class="keyword">return</span> TimeDelta::<span class="built_in">Zero</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        Timestamp earliest_next_decode_start_time =</span><br><span class="line">            last_decode_scheduled_ + zero_playout_delay_min_pacing_;</span><br><span class="line">        TimeDelta max_wait_time =</span><br><span class="line">            now &gt;= earliest_next_decode_start_time</span><br><span class="line">                ? TimeDelta::<span class="built_in">Zero</span>()</span><br><span class="line">                : earliest_next_decode_start_time - now;</span><br><span class="line">        <span class="keyword">return</span> max_wait_time;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> render_time - now - <span class="built_in">EstimatedMaxDecodeTime</span>() - render_delay_;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这个函数中 <code>render_time == 0</code> 表示这一帧需要尽快显示，这里忽略这一分支。该函数接受的参数分别为：</p>
+<p>这个函数中 <code>render_time == 0</code>
+表示这一帧需要尽快显示，这里忽略这一分支。该函数接受的参数分别为：</p>
 <ul>
-<li>要求渲染完成的时间戳 <code>render_time</code>，即我们的目标是在 <code>render_time</code> 之前渲染完毕这一帧</li>
+<li>要求渲染完成的时间戳 <code>render_time</code>，即我们的目标是在
+<code>render_time</code> 之前渲染完毕这一帧</li>
 <li>当前的时间戳 <code>now</code></li>
 </ul>
-<p>而返回值可以看到，首先我们用 <code>render_timer - now</code> 得到我们总共的容忍时长，之后减去预估的解码延迟 <code>EstimatedMaxDecodeTime()</code>，再减去预估的渲染延迟 <code>render_delay_</code>，即得到了剩余可以用来等待网络的时长。</p>
+<p>而返回值可以看到，首先我们用 <code>render_timer - now</code>
+得到我们总共的容忍时长，之后减去预估的解码延迟
+<code>EstimatedMaxDecodeTime()</code>，再减去预估的渲染延迟
+<code>render_delay_</code>，即得到了剩余可以用来等待网络的时长。</p>
 <hr />
-<p>这里我们看另外一个函数，即 <code>VCMTiming::RenderTimeInternal</code>：</p>
+<p>这里我们看另外一个函数，即
+<code>VCMTiming::RenderTimeInternal</code>：</p>
 <figure class="highlight c++"><figcaption><span>C++</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Timestamp <span class="title">VCMTiming::RenderTimeInternal</span><span class="params">(<span class="keyword">uint32_t</span> frame_timestamp, Timestamp now)</span> <span class="keyword">const</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">UseLowLatencyRendering</span>()) &#123;</span><br><span class="line">        <span class="comment">// Render as soon as possible or with low-latency renderer algorithm.</span></span><br><span class="line">        <span class="keyword">return</span> Timestamp::<span class="built_in">Zero</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// Note that TimestampExtrapolator::ExtrapolateLocalTime is not a const</span></span><br><span class="line">    <span class="comment">// method; it mutates the object&#x27;s wraparound state.</span></span><br><span class="line">    Timestamp estimated_complete_time =</span><br><span class="line">        ts_extrapolator_-&gt;<span class="built_in">ExtrapolateLocalTime</span>(frame_timestamp).<span class="built_in">value_or</span>(now);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Make sure the actual delay stays in the range of `min_playout_delay_`</span></span><br><span class="line">    <span class="comment">// and `max_playout_delay_`.</span></span><br><span class="line">    TimeDelta actual_delay =</span><br><span class="line">        current_delay_.<span class="built_in">Clamped</span>(min_playout_delay_, max_playout_delay_);</span><br><span class="line">    <span class="keyword">return</span> estimated_complete_time + actual_delay;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这里主要在预测某一帧何时应该被渲染完毕，事实上返回的就是上一个函数中的 <code>render_time</code> 时间戳参数。首先，判断是否是低延迟渲染模式，如果采用了低延迟模式，则直接返回零表示要求立刻渲染。</p>
-<p>在此之后，首先会通过 <code>TimestampExtrapolator::ExtrapolateLocalTime</code> 函数，利用 Kalman filter 估计应当何时将这一帧送入渲染器队列。之后将 <code>current_delay_</code> 通过上下界 <code>[min_playout_delay_, max_playout_delay_]</code> 截断生成渲染过程耗时的估计，而这里的上下界则是上一阶段之中所获得的。<code>current_delay_</code> 本身的计算方式则在后面给出说明。</p>
+<p>这里主要在预测某一帧何时应该被渲染完毕，事实上返回的就是上一个函数中的
+<code>render_time</code>
+时间戳参数。首先，判断是否是低延迟渲染模式，如果采用了低延迟模式，则直接返回零表示要求立刻渲染。</p>
+<p>在此之后，首先会通过
+<code>TimestampExtrapolator::ExtrapolateLocalTime</code> 函数，利用
+Kalman filter 估计应当何时将这一帧送入渲染器队列。之后将
+<code>current_delay_</code> 通过上下界
+<code>[min_playout_delay_, max_playout_delay_]</code>
+截断生成渲染过程耗时的估计，而这里的上下界则是上一阶段之中所获得的。<code>current_delay_</code>
+本身的计算方式则在后面给出说明。</p>
 <hr />
 <p>由于最新代码框架已经和参考文章中的框架大为不同，这里重新叙述一下一个帧构建完毕后的函数调用链：</p>
 <ul>
 <li>构建帧的时候将播放延迟设置到 <code>VCMTiming</code> 类之中</li>
-<li>帧构建完成后触发 <code>VideoReceiveStream2::OnCompleteFrame</code> 回调函数</li>
-<li>上述回调函数之中触发 <code>VideoStreamBufferController::InsertFrame</code> 函数将帧插入帧缓冲区</li>
-<li>帧插入操作通过 controller 最终交给 <code>FrameBuffer::InsertFrame</code> 实际完成</li>
-<li>正常插入完毕后，非重传帧通过 <code>VCMTiming::IncomingTimestamp</code> 函数进入 Kalman filter 流程</li>
-<li>正常插入完毕后，帧缓冲通过 <code>VideoStreamBufferController::MaybeScheduleFrameForRelease</code> 函数对后续帧作预测和规划</li>
-<li>预测未来帧的时候调用 <code>FrameDecodeTiming::OnFrameBufferUpdated</code> 回调</li>
-<li>该回调中通过 <code>VCMTiming::RenderTime</code> 预测渲染完毕时间戳，在此之后通过 <code>VCMTiming::MaxWaitingTime</code> 获取最大容忍等待时间</li>
+<li>帧构建完成后触发 <code>VideoReceiveStream2::OnCompleteFrame</code>
+回调函数</li>
+<li>上述回调函数之中触发
+<code>VideoStreamBufferController::InsertFrame</code>
+函数将帧插入帧缓冲区</li>
+<li>帧插入操作通过 controller 最终交给
+<code>FrameBuffer::InsertFrame</code> 实际完成</li>
+<li>正常插入完毕后，非重传帧通过
+<code>VCMTiming::IncomingTimestamp</code> 函数进入 Kalman filter
+流程</li>
+<li>正常插入完毕后，帧缓冲通过
+<code>VideoStreamBufferController::MaybeScheduleFrameForRelease</code>
+函数对后续帧作预测和规划</li>
+<li>预测未来帧的时候调用
+<code>FrameDecodeTiming::OnFrameBufferUpdated</code> 回调</li>
+<li>该回调中通过 <code>VCMTiming::RenderTime</code>
+预测渲染完毕时间戳，在此之后通过 <code>VCMTiming::MaxWaitingTime</code>
+获取最大容忍等待时间</li>
 </ul>
 <h2 id="kalman-filter">Kalman filter</h2>
-<p>首先，WebRTC 之中的 RTP 时间戳并非是 Unix 时间戳，而是按照 90kHz 的采样率计算采样次数。在 90kHz 之下每秒采样 90000 次，所以如果帧率为 60FPS，则每一帧之间相距 1/60 秒，即 1500 个采样点，也就是说 60FPS 之下相邻两帧之间的 RTP 时间戳相差值为 1500。</p>
-<p>Kalman filter 的目标是，在已知起始帧到达时间 <span class="math inline">\(t_0\)</span> 的基础上预测第 <span class="math inline">\(k\)</span> 帧的到达时间 <span class="math inline">\(t_k\)</span>。如果将第 <span class="math inline">\(k\)</span> 帧的 RTP 时间戳记为 <span class="math inline">\(T_k\)</span>，从起始帧到第 <span class="math inline">\(k\)</span> 帧间因网络发生的 RTP 时间戳抖动记为 <span class="math inline">\(\Delta_k\)</span>，第 <span class="math inline">\(k\)</span> 帧的采样率记为 <span class="math inline">\(s_k\)</span>，那么：</p>
+<p>首先，WebRTC 之中的 RTP 时间戳并非是 Unix 时间戳，而是按照 90kHz
+的采样率计算采样次数。在 90kHz 之下每秒采样 90000 次，所以如果帧率为
+60FPS，则每一帧之间相距 1/60 秒，即 1500 个采样点，也就是说 60FPS
+之下相邻两帧之间的 RTP 时间戳相差值为 1500。</p>
+<p>Kalman filter 的目标是，在已知起始帧到达时间 <span
+class="math inline">\(t_0\)</span> 的基础上预测第 <span
+class="math inline">\(k\)</span> 帧的到达时间 <span
+class="math inline">\(t_k\)</span>。如果将第 <span
+class="math inline">\(k\)</span> 帧的 RTP 时间戳记为 <span
+class="math inline">\(T_k\)</span>，从起始帧到第 <span
+class="math inline">\(k\)</span> 帧间因网络发生的 RTP 时间戳抖动记为
+<span class="math inline">\(\Delta_k\)</span>，第 <span
+class="math inline">\(k\)</span> 帧的采样率记为 <span
+class="math inline">\(s_k\)</span>，那么：</p>
 <p><span class="math display">\[
 t_k = t_0 + \frac{(T_k - T_0) - \Delta_k}{s_k}
 \]</span></p>
@@ -562,7 +674,7 @@ t_k = t_0 + \frac{(T_k - T_0) - \Delta_k}{s_k}
 
 <div class="copyright">
   &copy; 2021 – 
-  <span itemprop="copyrightYear">2024</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -573,13 +685,13 @@ t_k = t_0 + \frac{(T_k - T_0) - \Delta_k}{s_k}
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">453k</span>
+    <span title="站点总字数">456k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">6:52</span>
+    <span title="站点阅读时长">6:54</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动

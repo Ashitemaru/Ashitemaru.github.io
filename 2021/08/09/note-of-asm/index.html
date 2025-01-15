@@ -166,7 +166,7 @@ $(function () {
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">12</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">50</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">51</span></a></li>
         <li class="menu-item menu-item-skill-docs"><a href="https://sast-skill-docers.github.io/sast-skill-docs/" rel="noopener" target="_blank"><i class="fa fa-book fa-fw"></i>技能引导文档</a></li>
         <li class="menu-item menu-item-thuinfo"><a href="https://www.thuinfo.net/" rel="noopener" target="_blank"><i class="fa fa-sitemap fa-fw"></i>THUInfo</a></li>
         <li class="menu-item menu-item-se-index"><a href="https://thuse-course.github.io/course-index/" rel="noopener" target="_blank"><i class="fa fa-calendar fa-fw"></i>软工课程主页</a></li>
@@ -243,7 +243,7 @@ $(function () {
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">50</span>
+          <span class="site-state-item-count">51</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -420,17 +420,21 @@ $(function () {
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>这门课是 2021 年暑期学期开设的计算机系专业课，应该也算是为下学期的《计算机组成原理》课程做预备，所以还打算好好学一下。</p>
+        <p>这门课是 2021
+年暑期学期开设的计算机系专业课，应该也算是为下学期的《计算机组成原理》课程做预备，所以还打算好好学一下。</p>
 <span id="more"></span>
 <h1 id="课程基本介绍">课程基本介绍</h1>
 <h2 id="汇编语言介绍">汇编语言介绍</h2>
 <p>汇编语言可以认为是机器指令的一种表记方式，其表述了计算机硬件系统对外开放的主要接口和规格，是计算机系统之中的软硬件的分界。所以说要了解汇编语言，就首先需要了解机器指令。</p>
 <p>机器指令系统一般分为两类：</p>
 <ul>
-<li><p>CLSC，即<strong>复杂指令系统</strong>。一般而言具有多种指令，寻址方式复杂，单条指令的功能较为复杂。较为经典的代表是 X86。</p></li>
-<li><p>RISC，即<strong>精简指令系统</strong>。考虑到实际使用的指令大多都是简要指令，故该系统只具有常用的精简指令。在这样的条件下，该指令系统依赖于编译器产生高效的代码（依赖编译器优化）。较为经典的代表为 MIPS。</p></li>
+<li><p>CLSC，即<strong>复杂指令系统</strong>。一般而言具有多种指令，寻址方式复杂，单条指令的功能较为复杂。较为经典的代表是
+X86。</p></li>
+<li><p>RISC，即<strong>精简指令系统</strong>。考虑到实际使用的指令大多都是简要指令，故该系统只具有常用的精简指令。在这样的条件下，该指令系统依赖于编译器产生高效的代码（依赖编译器优化）。较为经典的代表为
+MIPS。</p></li>
 </ul>
-<p>目前，CLSC 和 RISC 之间的差别渐渐缩小。但是还是具有明显的区分方式的，即：</p>
+<p>目前，CLSC 和 RISC
+之间的差别渐渐缩小。但是还是具有明显的区分方式的，即：</p>
 <div class="note info no-icon"><p>It loads / stores [with / without] other operations.</p>
 </div>
 <p>借助于连接软硬件的机器指令集，计算机系统实现了软硬件解耦合。这样软硬件可以独立编写，从而促进了计算机的发展。</p>
@@ -439,11 +443,18 @@ $(function () {
 <p>X86 指令集具有以下的基本特征：</p>
 <ul>
 <li><p>向下兼容、变长指令、多种寻址方式</p></li>
-<li><p>通用寄存器个数有限（X86-32 具有 8 个通用寄存器，X86-64 具有 16 个通用寄存器）</p></li>
+<li><p>通用寄存器个数有限（X86-32 具有 8 个通用寄存器，X86-64 具有 16
+个通用寄存器）</p></li>
 <li><p>至多允许一个操作数在内存中，另外一个操作数需要在寄存器中或者是立即数</p></li>
 </ul>
 <div class="note info no-icon"><p>这里提到了寄存器。X86 之中的寄存器命名为：</p>
 <table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: center;">寄存器名称【 X86-64 名称】</th>
@@ -504,28 +515,48 @@ $(function () {
 </tbody>
 </table>
 </div>
-<p>由于 X86 重视向下兼容，所以其指令集越来越趋向于庞杂，所以其一个缺点就是资源利用率低。</p>
+<p>由于 X86
+重视向下兼容，所以其指令集越来越趋向于庞杂，所以其一个缺点就是资源利用率低。</p>
 <h2 id="mips-指令集介绍">MIPS 指令集介绍</h2>
-<p>MIPS 的设计思想是充分利用处理器的流水线结构，目标是让流水线各段负载均匀，这样可以让处理器频率得到提高。其特征包括：</p>
+<p>MIPS
+的设计思想是充分利用处理器的流水线结构，目标是让流水线各段负载均匀，这样可以让处理器频率得到提高。其特征包括：</p>
 <ul>
 <li><p>以寄存器为中心，只有 Load 以及 Store 命令可以访问内存</p></li>
-<li><p>所有计算操作均是从寄存器堆之中读取数据并将结果保存到寄存器堆，一共具有 32 个通用寄存器</p></li>
-<li><p>指令格式规整、定长，且操作码位置固定，指令类型少（MIPS32 的指令只有 register / immediate / jump 三类）</p></li>
+<li><p>所有计算操作均是从寄存器堆之中读取数据并将结果保存到寄存器堆，一共具有
+32 个通用寄存器</p></li>
+<li><p>指令格式规整、定长，且操作码位置固定，指令类型少（MIPS32
+的指令只有 register / immediate / jump 三类）</p></li>
 <li><p>寻址方式简单，每一条指令的操作过程简单</p></li>
 </ul>
 <p>当然，MIPS 也具有一些被扩展过的扩展指令集，如 MIPS16e 等等。</p>
-<p>此外，RISC-V 也是一种常用指令集。但其几乎和 MIPS 同源，故这里不作详细介绍。</p>
+<p>此外，RISC-V 也是一种常用指令集。但其几乎和 MIPS
+同源，故这里不作详细介绍。</p>
 <h1 id="整数的表示与计算">整数的表示与计算</h1>
-<p>首先我们介绍一些简要表记，即 K / M / G / T / P / E。符号 K 表示 <span class="math inline">\(2^{10}\)</span>，之后有 <span class="math inline">\({\rm M} = 2^{10} \cdot {\rm K}\)</span> 以及 <span class="math inline">\({\rm G} = 2^{10} \cdot {\rm M}\)</span>，依此类推。</p>
-<p>同时我们将一个二进制位称为<strong>比特（bit）</strong>，将八个比特称为<strong>字节（byte）</strong>。在 X86 架构下，两个字节称为一个<strong>字（word）</strong>，而在 MIPS 架构下则是四个字节。</p>
+<p>首先我们介绍一些简要表记，即 K / M / G / T / P / E。符号 K 表示 <span
+class="math inline">\(2^{10}\)</span>，之后有 <span
+class="math inline">\({\rm M} = 2^{10} \cdot {\rm K}\)</span> 以及 <span
+class="math inline">\({\rm G} = 2^{10} \cdot {\rm
+M}\)</span>，依此类推。</p>
+<p>同时我们将一个二进制位称为<strong>比特（bit）</strong>，将八个比特称为<strong>字节（byte）</strong>。在
+X86 架构下，两个字节称为一个<strong>字（word）</strong>，而在 MIPS
+架构下则是四个字节。</p>
 <p>对于数的进制、二进制数的逻辑运算，这里不进行介绍。</p>
 <h2 id="机器字和字节序">机器字和字节序</h2>
-<p>首先引入<strong>机器字</strong>的概念，机器字指的是计算机进行一次整数运算所能处理的二进制数据组，也可以是一个数据地址。相应的，<strong>机器字长</strong>指的就是一个机器字的位数。对于 32 位字长的计算机，其地址能够表示的空间大小为 4GB 左右。机器字长越大的计算机，其地址的表示空间就越大。</p>
-<p>机器字的定位为这个机器字第一个字节的地址，所以说相邻机器字的地址之差在 32 位系统之中为 4，而在 64 位系统之中为 8。</p>
-<p><strong>字节序</strong>指的就是一个机器字所包含的字节在机器字之中的排列的顺序，分为<strong>大端序（Big endian）</strong>以及<strong>小端序（Little endian）</strong>。大端序指的是低位字节占据高地址，小端序则相反。</p>
-<p>比如说十六进制数据 <code>0x01234567</code>，如果这个机器字地址为 <code>0x100</code>。那么在大端序之下，<code>0x100, 0x101, 0x102, 0x103</code> 的字节内容分别为 <code>01, 23, 45, 67</code>。而在小端序下则是 <code>67, 45, 23, 01</code>。</p>
+<p>首先引入<strong>机器字</strong>的概念，机器字指的是计算机进行一次整数运算所能处理的二进制数据组，也可以是一个数据地址。相应的，<strong>机器字长</strong>指的就是一个机器字的位数。对于
+32 位字长的计算机，其地址能够表示的空间大小为 4GB
+左右。机器字长越大的计算机，其地址的表示空间就越大。</p>
+<p>机器字的定位为这个机器字第一个字节的地址，所以说相邻机器字的地址之差在
+32 位系统之中为 4，而在 64 位系统之中为 8。</p>
+<p><strong>字节序</strong>指的就是一个机器字所包含的字节在机器字之中的排列的顺序，分为<strong>大端序（Big
+endian）</strong>以及<strong>小端序（Little
+endian）</strong>。大端序指的是低位字节占据高地址，小端序则相反。</p>
+<p>比如说十六进制数据 <code>0x01234567</code>，如果这个机器字地址为
+<code>0x100</code>。那么在大端序之下，<code>0x100, 0x101, 0x102, 0x103</code>
+的字节内容分别为 <code>01, 23, 45, 67</code>。而在小端序下则是
+<code>67, 45, 23, 01</code>。</p>
 <h2 id="整数的二进制编码">整数的二进制编码</h2>
-<p>我们首先复习一下 C 语言之中各个数据类型的大小，这里以字节作为单位：</p>
+<p>我们首先复习一下 C
+语言之中各个数据类型的大小，这里以字节作为单位：</p>
 <table>
 <thead>
 <tr class="header">
@@ -592,18 +623,40 @@ $(function () {
 </tr>
 </tbody>
 </table>
-<p>这里我们为了简便，使用 16 位系统来演示整数的编码方式，也就是说机器字长为 16 位，一个整数使用 2 个字节表示。</p>
+<p>这里我们为了简便，使用 16
+位系统来演示整数的编码方式，也就是说机器字长为 16 位，一个整数使用 2
+个字节表示。</p>
 <h3 id="有符号数的编码">有符号数的编码</h3>
-<p>对于非负的整数，显然可以直接使用其二进制表示作为其编码。比如说十进制数 <code>12345</code>，其二进制表示为 <code>00110000 00111001</code>，那么其编码就是 <code>00110000 00111001</code>。</p>
-<p>对于负数，一种解决方式是使用最高位表记符号，最高位为 <code>1</code> 的数为负数，为 <code>0</code> 的数为非负数。然而这样会导致加法器在运算的时候需要首先验证符号位，计算出结果后还需要计算符号为，比较繁杂。所以说这里引入了<strong>补码（two's complement）</strong>，用补码表示的整数可以简化有符号整数的计算。</p>
+<p>对于非负的整数，显然可以直接使用其二进制表示作为其编码。比如说十进制数
+<code>12345</code>，其二进制表示为
+<code>00110000 00111001</code>，那么其编码就是
+<code>00110000 00111001</code>。</p>
+<p>对于负数，一种解决方式是使用最高位表记符号，最高位为 <code>1</code>
+的数为负数，为 <code>0</code>
+的数为非负数。然而这样会导致加法器在运算的时候需要首先验证符号位，计算出结果后还需要计算符号为，比较繁杂。所以说这里引入了<strong>补码（two's
+complement）</strong>，用补码表示的整数可以简化有符号整数的计算。</p>
 <p>非负数的补码就是其二进制表示，负数的补码是其绝对值的二进制表示按位取反之后加一。</p>
-<p>比如说十进制数 <code>-12345</code>，由于 <code>12345</code> 的二进制表示为 <code>00110000 00111001</code>，首先按位取反得到 <code>11001111 11000110</code>，最后加一得到其补码为 <code>11001111 11000111</code>。</p>
-<p>这个时候符号位依然存在，也就是说补码表示下负数最高位为 <code>1</code>，非负数最高位为 <code>0</code>。</p>
-<div class="note info no-icon"><p>补码的优越性在于简化了有符号整数的加法计算。如果我们使用 <span class="math inline">\({\rm TC}_w(x)\)</span> 表示字长为 <span class="math inline">\(w\)</span> 的系统下整数 <span class="math inline">\(x\)</span> 的补码（比如 <code>-12345</code> 的补码为 <code>11001111 11000111</code>，后者直接转换为十进制表示的是 <code>53191</code>，那么定义 <span class="math inline">\({\rm TC}_w(-12345) = 53191\)</span>）。实际上可以发现对于非负数 <span class="math inline">\({\rm TC}_w(x)=x\)</span>，而对于负数：</p>
+<p>比如说十进制数 <code>-12345</code>，由于 <code>12345</code>
+的二进制表示为 <code>00110000 00111001</code>，首先按位取反得到
+<code>11001111 11000110</code>，最后加一得到其补码为
+<code>11001111 11000111</code>。</p>
+<p>这个时候符号位依然存在，也就是说补码表示下负数最高位为
+<code>1</code>，非负数最高位为 <code>0</code>。</p>
+<div class="note info no-icon"><p>补码的优越性在于简化了有符号整数的加法计算。如果我们使用 <span
+class="math inline">\({\rm TC}_w(x)\)</span> 表示字长为 <span
+class="math inline">\(w\)</span> 的系统下整数 <span
+class="math inline">\(x\)</span> 的补码（比如 <code>-12345</code>
+的补码为 <code>11001111 11000111</code>，后者直接转换为十进制表示的是
+<code>53191</code>，那么定义 <span class="math inline">\({\rm
+TC}_w(-12345) = 53191\)</span>）。实际上可以发现对于非负数 <span
+class="math inline">\({\rm TC}_w(x)=x\)</span>，而对于负数：</p>
 <p><span class="math display">\[
 {\rm TC}_w(x) = 1 + \mathop{\sim}(-x)
 \]</span></p>
-<p>而对于字长为 <span class="math inline">\(w\)</span> 的系统，<span class="math inline">\(x + (\mathop{\sim}x) = 2^w - 1\)</span>，所以说对于负数 <span class="math inline">\(x\)</span> 有：</p>
+<p>而对于字长为 <span class="math inline">\(w\)</span> 的系统，<span
+class="math inline">\(x + (\mathop{\sim}x) = 2^w -
+1\)</span>，所以说对于负数 <span class="math inline">\(x\)</span>
+有：</p>
 <p><span class="math display">\[
 {\rm TC}_w(x) = 1 + 2^w - 1 - (-x) = 2^w + x
 \]</span></p>
@@ -611,25 +664,48 @@ $(function () {
 <p><span class="math display">\[
 {\rm TC}_w(x) \equiv x\ ({\rm mod}\ 2^w)
 \]</span></p>
-<p>在这样的条件下做加法是简单的，因为一个整数和其补码在模 <span class="math inline">\(2^w\)</span> 意义下等价。后面讨论补码条件下的加法的时候，即使出现截断，由于所截断的 <code>1</code> 必然位于不低于 <span class="math inline">\(2^w\)</span> 的位上，所以截断还是不会影响模的结果。</p>
+<p>在这样的条件下做加法是简单的，因为一个整数和其补码在模 <span
+class="math inline">\(2^w\)</span>
+意义下等价。后面讨论补码条件下的加法的时候，即使出现截断，由于所截断的
+<code>1</code> 必然位于不低于 <span class="math inline">\(2^w\)</span>
+的位上，所以截断还是不会影响模的结果。</p>
 </div>
-<p>对于字长为 <span class="math inline">\(w\)</span> 的系统，按照补码表示的有符号数系统之中，最大的数为 <span class="math inline">\(2^{w - 1} - 1\)</span>，而最小的数为 <span class="math inline">\(-2^{w - 1}\)</span>。</p>
+<p>对于字长为 <span class="math inline">\(w\)</span>
+的系统，按照补码表示的有符号数系统之中，最大的数为 <span
+class="math inline">\(2^{w - 1} - 1\)</span>，而最小的数为 <span
+class="math inline">\(-2^{w - 1}\)</span>。</p>
 <h3 id="无符号数的编码">无符号数的编码</h3>
 <p>无符号数的编码是简单的，因为其只需要考虑非负数，所以直接使用二进制表示作为编码就可以了。</p>
-<p>这种系统之下，最大的数为 <span class="math inline">\(2^w - 1\)</span>，而最小的数为 <span class="math inline">\(0\)</span>。</p>
-<h3 id="有符号数和无符号数的关系和转换">有符号数和无符号数的关系和转换</h3>
-<p>现在我们已经给出了有符号和无符号整数的表示方式了。现在考虑将一个有符号整数强制类型转换为无符号整数，比如说在机器字长为 4 的时候，<code>-4</code> 的补码为 <code>1010</code>，而强转为无符号整数的时候，<code>1010</code> 则表示 <code>12</code>。其实不难证明对于字长为 <span class="math inline">\(w\)</span> 的系统，有这样的关系：</p>
+<p>这种系统之下，最大的数为 <span class="math inline">\(2^w -
+1\)</span>，而最小的数为 <span class="math inline">\(0\)</span>。</p>
+<h3
+id="有符号数和无符号数的关系和转换">有符号数和无符号数的关系和转换</h3>
+<p>现在我们已经给出了有符号和无符号整数的表示方式了。现在考虑将一个有符号整数强制类型转换为无符号整数，比如说在机器字长为
+4 的时候，<code>-4</code> 的补码为
+<code>1010</code>，而强转为无符号整数的时候，<code>1010</code> 则表示
+<code>12</code>。其实不难证明对于字长为 <span
+class="math inline">\(w\)</span> 的系统，有这样的关系：</p>
 <p><span class="math display">\[
 (\text{unsigned})x = \begin{cases}
 x &amp; x \geq 0 \\
 x + 2^w &amp; x &lt; 0
 \end{cases}
 \]</span></p>
-<p>这里提一下，在 C 语言的比较运算之中如果同时出现有符号数和无符号数，则会将有符号数强制转换为无符号数。当然，如果两边都是有符号数，则按照有符号数的比较规则进行。</p>
+<p>这里提一下，在 C
+语言的比较运算之中如果同时出现有符号数和无符号数，则会将有符号数强制转换为无符号数。当然，如果两边都是有符号数，则按照有符号数的比较规则进行。</p>
 <p>事实上，由于这样的隐式转换，如果我们给声明为无符号整数的变量赋予一个负数值，就有可能被强制转换为一个大整数，从而导致违反直觉的结果，甚至导致错误。所以说我们应当谨慎使用无符号整数，一般而言，只有涉及到<strong>模运算</strong>或者单纯使用<strong>位运算</strong>的时候无符号整数比较适合。</p>
 <h2 id="整数的计算">整数的计算</h2>
 <h3 id="无符号整数的加法">无符号整数的加法</h3>
-<p>对于字长为 <span class="math inline">\(w\)</span> 的系统，两个整数的加法可能会需要 <span class="math inline">\(w + 1\)</span> 位才能表示，这个时候就会发生<strong>溢出</strong>。计算机的一般处理方式是舍去最高位，强制仅用 <span class="math inline">\(w\)</span> 位表达计算结果，其实相当于对 <span class="math inline">\(2^w\)</span> 取了模。也就是说，字长为 <span class="math inline">\(w\)</span> 的、带有截断的无符号整数加法为（这里，符号 <span class="math inline">\(+^{\text u}_w\)</span> 表示的是字长为 <span class="math inline">\(w\)</span> 的系统下无符号整数的加法）：</p>
+<p>对于字长为 <span class="math inline">\(w\)</span>
+的系统，两个整数的加法可能会需要 <span class="math inline">\(w +
+1\)</span>
+位才能表示，这个时候就会发生<strong>溢出</strong>。计算机的一般处理方式是舍去最高位，强制仅用
+<span class="math inline">\(w\)</span> 位表达计算结果，其实相当于对
+<span class="math inline">\(2^w\)</span> 取了模。也就是说，字长为 <span
+class="math inline">\(w\)</span>
+的、带有截断的无符号整数加法为（这里，符号 <span
+class="math inline">\(+^{\text u}_w\)</span> 表示的是字长为 <span
+class="math inline">\(w\)</span> 的系统下无符号整数的加法）：</p>
 <p><span class="math display">\[
 x +^{\text{u}}_w y =\begin{cases}
 x + y &amp; x + y &lt; 2^w \\
@@ -637,15 +713,40 @@ x + y - 2^w &amp; x + y \geq 2^w
 \end{cases}
 \]</span></p>
 <h3 id="有符号整数的加法">有符号整数的加法</h3>
-<p>在字长为 <span class="math inline">\(w\)</span> 的、使用补码的系统下，对于有符号整数 <span class="math inline">\(x, y\)</span>，其加法是有可能溢出的。</p>
-<p>一种是两个大正数相加，超越了补码能表示的最大整数。此时补码的符号位承接了较低位溢出的 <code>1</code>，也就是说补码之和实际上代表一个负数。由于负数 <span class="math inline">\(u\)</span> 的补码 <span class="math inline">\({\rm TC}_w(u) = u + 2^w\)</span>，这个负数实际上就是 <span class="math inline">\(x + y - 2^w\)</span>。这种情况被称为<strong>正溢出</strong>。</p>
-<p>另外一种是两个绝对值很大的负数相加，超越了补码能表示的最小整数。此时补码符号位两个 <code>1</code> 相加得到 <code>10</code>，溢出为 <span class="math inline">\(w + 1\)</span> 位数，但是最高位的 <code>1</code> 被截断。另外，较低的 <span class="math inline">\(w - 1\)</span> 位不会向上进位（绝对值很大的负数的补码较低位所表示的数实际上会很小）。此时结果的补码符号位为 <code>0</code>，代表一个正数。由于负数 <span class="math inline">\(u\)</span> 的补码 <span class="math inline">\({\rm TC}_w(u) = u + 2^w\)</span>，考虑到截断了一个 <code>1</code>，所以该正数为：</p>
+<p>在字长为 <span class="math inline">\(w\)</span>
+的、使用补码的系统下，对于有符号整数 <span class="math inline">\(x,
+y\)</span>，其加法是有可能溢出的。</p>
+<p>一种是两个大正数相加，超越了补码能表示的最大整数。此时补码的符号位承接了较低位溢出的
+<code>1</code>，也就是说补码之和实际上代表一个负数。由于负数 <span
+class="math inline">\(u\)</span> 的补码 <span class="math inline">\({\rm
+TC}_w(u) = u + 2^w\)</span>，这个负数实际上就是 <span
+class="math inline">\(x + y -
+2^w\)</span>。这种情况被称为<strong>正溢出</strong>。</p>
+<p>另外一种是两个绝对值很大的负数相加，超越了补码能表示的最小整数。此时补码符号位两个
+<code>1</code> 相加得到 <code>10</code>，溢出为 <span
+class="math inline">\(w + 1\)</span> 位数，但是最高位的 <code>1</code>
+被截断。另外，较低的 <span class="math inline">\(w - 1\)</span>
+位不会向上进位（绝对值很大的负数的补码较低位所表示的数实际上会很小）。此时结果的补码符号位为
+<code>0</code>，代表一个正数。由于负数 <span
+class="math inline">\(u\)</span> 的补码 <span class="math inline">\({\rm
+TC}_w(u) = u + 2^w\)</span>，考虑到截断了一个
+<code>1</code>，所以该正数为：</p>
 <p><span class="math display">\[
 (x + 2^w) + (y + 2^w) - 2^w = x + y + 2^w
 \]</span></p>
 <p>这种情况被称为<strong>负溢出</strong>。</p>
-<p>对于求和结果在表示范围内的，补码的和（截断为 <span class="math inline">\(w\)</span> 位后）就是和的补码。这是因为 <span class="math inline">\(x, y\)</span> 的补码相加后截断，所代表的数与 <span class="math inline">\(x + y\)</span> 模 <span class="math inline">\(2^w\)</span> 同余，而 <span class="math inline">\(x + y\)</span> 位于补码能表示的范围内，所以 <span class="math inline">\(x, y\)</span> 的补码相加后截断得到的就是 <span class="math inline">\(x + y\)</span> 的补码。</p>
-<p>总而言之，字长为 <span class="math inline">\(w\)</span> 的、带有截断的有符号整数加法为（这里，符号 <span class="math inline">\(+^{\text t}_w\)</span> 表示的是字长为 <span class="math inline">\(w\)</span> 的系统下无符号整数的加法）：</p>
+<p>对于求和结果在表示范围内的，补码的和（截断为 <span
+class="math inline">\(w\)</span> 位后）就是和的补码。这是因为 <span
+class="math inline">\(x, y\)</span> 的补码相加后截断，所代表的数与 <span
+class="math inline">\(x + y\)</span> 模 <span
+class="math inline">\(2^w\)</span> 同余，而 <span
+class="math inline">\(x + y\)</span> 位于补码能表示的范围内，所以 <span
+class="math inline">\(x, y\)</span> 的补码相加后截断得到的就是 <span
+class="math inline">\(x + y\)</span> 的补码。</p>
+<p>总而言之，字长为 <span class="math inline">\(w\)</span>
+的、带有截断的有符号整数加法为（这里，符号 <span
+class="math inline">\(+^{\text t}_w\)</span> 表示的是字长为 <span
+class="math inline">\(w\)</span> 的系统下无符号整数的加法）：</p>
 <p><span class="math display">\[
 x +^{\text{t}}_w y = \begin{cases}
 x + y - 2^w &amp; x + y \geq 2^{w - 1} \\
@@ -654,52 +755,103 @@ x + y + 2^w &amp; x + y &lt; -2^{w - 1}
 \end{cases}
 \]</span></p>
 <h3 id="无符号整数除以-2-的幂">无符号整数除以 2 的幂</h3>
-<p>一般而言在计算机中，除法计算消耗的时间是相当长的。但是对于除数是 2 的幂的情况，我们可以使用移位的方式简化计算。</p>
-<p>左移是很好理解的，溢出的部分会被截断，低位会用 <code>0</code> 补齐。但是右移的时候，低位截断是自然的，但是高位如何补齐则有两种方式。如果高位用 <code>0</code> 补齐，这种移位称为<strong>逻辑右移</strong>。如果用原数的最高位补齐（这里的最高位可以是 <code>0</code>，比如 16 位系统之中的 <code>00000000 00000001</code> 的最高位为 <code>0</code>），这种移位称为<strong>算术右移</strong>。</p>
-<p>在字长为 <span class="math inline">\(w\)</span> 的系统下，我们将无符号的逻辑右移标记为 <span class="math inline">\(&gt;^{\text{ul}}_w\)</span>，无符号的算术右移则标记为 <span class="math inline">\(&gt;^{\text{um}}_w\)</span>。</p>
-<p><strong>注解：</strong>有符号的右移则将上标的 <span class="math inline">\(\text{u}\)</span> 替换为 <span class="math inline">\(\text{t}\)</span>。</p>
-<p>其实对于无符号整数 <span class="math inline">\(x\)</span> 不难得到：</p>
+<p>一般而言在计算机中，除法计算消耗的时间是相当长的。但是对于除数是 2
+的幂的情况，我们可以使用移位的方式简化计算。</p>
+<p>左移是很好理解的，溢出的部分会被截断，低位会用 <code>0</code>
+补齐。但是右移的时候，低位截断是自然的，但是高位如何补齐则有两种方式。如果高位用
+<code>0</code>
+补齐，这种移位称为<strong>逻辑右移</strong>。如果用原数的最高位补齐（这里的最高位可以是
+<code>0</code>，比如 16 位系统之中的 <code>00000000 00000001</code>
+的最高位为 <code>0</code>），这种移位称为<strong>算术右移</strong>。</p>
+<p>在字长为 <span class="math inline">\(w\)</span>
+的系统下，我们将无符号的逻辑右移标记为 <span
+class="math inline">\(&gt;^{\text{ul}}_w\)</span>，无符号的算术右移则标记为
+<span class="math inline">\(&gt;^{\text{um}}_w\)</span>。</p>
+<p><strong>注解：</strong>有符号的右移则将上标的 <span
+class="math inline">\(\text{u}\)</span> 替换为 <span
+class="math inline">\(\text{t}\)</span>。</p>
+<p>其实对于无符号整数 <span class="math inline">\(x\)</span>
+不难得到：</p>
 <p><span class="math display">\[
 x &gt;^{\text{ul}}_w k = \left\lfloor \frac{x}{2^k} \right\rfloor
 \]</span></p>
 <h3 id="有符号整数除以-2-的幂">有符号整数除以 2 的幂</h3>
-<p>首先说明，我们希望除法的结果<strong>向 0 舍入</strong>，也就是说 <code>23.6</code> 舍为 <code>23</code>，<code>-24.6</code> 舍为 <code>-24</code>。</p>
-<p>这里我们依然使用右移来简化除法计算。但是我们注意到负数除以 2 的幂之后必然还是负数，所以不能使用逻辑右移，只能使用算数右移。这个时候，对于有符号整数 <span class="math inline">\(x\)</span> 我们可以简单地使用 <span class="math inline">\(x &gt;^{\text{tm}}_w k\)</span> 来计算 <span class="math inline">\(x / 2^k\)</span>。</p>
-<p>对于正数，这样的计算显然是正确的。但是对于负数，比如说 <code>-15213</code>，其补码为 <code>11000100 10010011</code>。我们计算其除以 <code>256</code> 的商，按照上面的计算方式即将其补码算术右移 <code>8</code> 位，得到 <code>11111111 11000100</code>，结果为 <code>-60</code>。然而我们知道实际的结果应当为 <code>-59.43</code>，按照舍入应当保留为 <code>-59</code>。</p>
+<p>首先说明，我们希望除法的结果<strong>向 0 舍入</strong>，也就是说
+<code>23.6</code> 舍为 <code>23</code>，<code>-24.6</code> 舍为
+<code>-24</code>。</p>
+<p>这里我们依然使用右移来简化除法计算。但是我们注意到负数除以 2
+的幂之后必然还是负数，所以不能使用逻辑右移，只能使用算数右移。这个时候，对于有符号整数
+<span class="math inline">\(x\)</span> 我们可以简单地使用 <span
+class="math inline">\(x &gt;^{\text{tm}}_w k\)</span> 来计算 <span
+class="math inline">\(x / 2^k\)</span>。</p>
+<p>对于正数，这样的计算显然是正确的。但是对于负数，比如说
+<code>-15213</code>，其补码为
+<code>11000100 10010011</code>。我们计算其除以 <code>256</code>
+的商，按照上面的计算方式即将其补码算术右移 <code>8</code> 位，得到
+<code>11111111 11000100</code>，结果为
+<code>-60</code>。然而我们知道实际的结果应当为
+<code>-59.43</code>，按照舍入应当保留为 <code>-59</code>。</p>
 <div class="note info no-icon"><p>事实上我们可以说明：</p>
 <p><span class="math display">\[
 x &gt;^{\text{tm}}_w k = \left\lfloor \frac{x}{2^k} \right\rfloor
 \]</span></p>
-<p>也就是说<strong>使用算术右移计算有符号整数的时候永远得到向下舍入的结果</strong>。我们只要说明负数的情况即可，对于负数 <span class="math inline">\(x\)</span> 的补码 <span class="math inline">\(x_{w - 1}x_{w - 2} \cdots x_0\)</span>，我们设二进制数 <span class="math inline">\(x_{w - 1}x_{w - 2} \cdots x_k\)</span> 表示数 <span class="math inline">\(x&#39;\)</span>，二进制数 <span class="math inline">\(x_{k - 1}x_{k - 2} \cdots x_0\)</span> 表示数 <span class="math inline">\(x&#39;&#39; &lt; 2^k\)</span>。显然：</p>
+<p>也就是说<strong>使用算术右移计算有符号整数的时候永远得到向下舍入的结果</strong>。我们只要说明负数的情况即可，对于负数
+<span class="math inline">\(x\)</span> 的补码 <span
+class="math inline">\(x_{w - 1}x_{w - 2} \cdots
+x_0\)</span>，我们设二进制数 <span class="math inline">\(x_{w - 1}x_{w -
+2} \cdots x_k\)</span> 表示数 <span
+class="math inline">\(x&#39;\)</span>，二进制数 <span
+class="math inline">\(x_{k - 1}x_{k - 2} \cdots x_0\)</span> 表示数
+<span class="math inline">\(x&#39;&#39; &lt; 2^k\)</span>。显然：</p>
 <p><span class="math display">\[
 2^k x&#39; + x&#39;&#39; = {\rm TC}_w(x) = 2^w + x
 \]</span></p>
-<p>而 <span class="math inline">\(x &gt;^{\text{tm}}_w k\)</span> 得到的是 <span class="math inline">\(x_{w - 1}x_{w - 1} \cdots x_{w - 1}x_{w - 2} \cdots x_k\)</span>，其表示数：</p>
+<p>而 <span class="math inline">\(x &gt;^{\text{tm}}_w k\)</span>
+得到的是 <span class="math inline">\(x_{w - 1}x_{w - 1} \cdots x_{w -
+1}x_{w - 2} \cdots x_k\)</span>，其表示数：</p>
 <p><span class="math display">\[
 x&#39; + \sum_{i = w - k}^{w - 1} 2^i = x&#39; + 2^{w - k}(2^k - 1)
 \]</span></p>
-<p>按照补码去解读这个二进制串的话，其结果为 <span class="math inline">\(x&#39; + 2^{w - k}(2^k - 1) - 2^w = x&#39; - 2^{w - k}\)</span>。也就能够计算得到：</p>
+<p>按照补码去解读这个二进制串的话，其结果为 <span
+class="math inline">\(x&#39; + 2^{w - k}(2^k - 1) - 2^w = x&#39; - 2^{w
+- k}\)</span>。也就能够计算得到：</p>
 <p><span class="math display">\[
-\left\lfloor \frac{x}{2^k} \right\rfloor = \left\lfloor \frac{2^k x&#39; + x&#39;&#39; - 2^w}{2^k} \right\rfloor = \left\lfloor x&#39; - 2^{w - k} + \frac{x&#39;&#39;}{2^k} \right\rfloor = x&#39; - 2^{w - k} = x &gt;^{\text{tm}}_w k
+\left\lfloor \frac{x}{2^k} \right\rfloor = \left\lfloor \frac{2^k x&#39;
++ x&#39;&#39; - 2^w}{2^k} \right\rfloor = \left\lfloor x&#39; - 2^{w -
+k} + \frac{x&#39;&#39;}{2^k} \right\rfloor = x&#39; - 2^{w - k} = x
+&gt;^{\text{tm}}_w k
 \]</span></p>
 </div>
 <p>为了修正这个舍入问题，我们可以尝试使用这样的一个性质：</p>
 <p><span class="math display">\[
-\left\lceil \frac{x}{y} \right\rceil = \left\lfloor \frac{x + y - 1}{y} \right\rfloor\ (y &gt; 0)
+\left\lceil \frac{x}{y} \right\rceil = \left\lfloor \frac{x + y - 1}{y}
+\right\rfloor\ (y &gt; 0)
 \]</span></p>
-<p>也就是说我们只要在计算负数 <span class="math inline">\(x\)</span> 的时候改变为：</p>
+<p>也就是说我们只要在计算负数 <span class="math inline">\(x\)</span>
+的时候改变为：</p>
 <p><span class="math display">\[
-\left\lfloor \frac{x + 2^k - 1}{2^k} \right\rfloor = [x +^{\text{t}}_w (2^k - 1)] &gt;^{\text{tm}}_w k
+\left\lfloor \frac{x + 2^k - 1}{2^k} \right\rfloor = [x +^{\text{t}}_w
+(2^k - 1)] &gt;^{\text{tm}}_w k
 \]</span></p>
 <p>即可。</p>
 <h1 id="小数的表示">小数的表示</h1>
 <h2 id="ieee-浮点数标准">IEEE 浮点数标准</h2>
-<p>对于一个有小数部分的数 <span class="math inline">\(B\)</span>，我们总是能找到唯一的 <span class="math inline">\(s \in \{0, 1\}\)</span> 以及实数 <span class="math inline">\(M \in [1, 2)\)</span> 和整数 <span class="math inline">\(E\)</span> 满足：</p>
+<p>对于一个有小数部分的数 <span
+class="math inline">\(B\)</span>，我们总是能找到唯一的 <span
+class="math inline">\(s \in \{0, 1\}\)</span> 以及实数 <span
+class="math inline">\(M \in [1, 2)\)</span> 和整数 <span
+class="math inline">\(E\)</span> 满足：</p>
 <p><span class="math display">\[
 B = (-1)^s M \cdot 2^E
 \]</span></p>
-<p>这里 <span class="math inline">\(s, E, M\)</span> 分别称为<strong>符号</strong>、<strong>阶码</strong>和<strong>尾数</strong>。</p>
-<p>基于这样的性质，我们可以给出小数的表示方式。将一片数据区域的最高位用于放置符号位 <span class="math inline">\(s\)</span>，然后后面分割为两部分，即 <strong>exp 域</strong>和 <strong>frac 域</strong>，分别放置 <span class="math inline">\(E\)</span> 以及 <span class="math inline">\(M\)</span>。exp 域和 frac 域的具体大小有两种常见的制式（即<strong>单精度浮点</strong>和<strong>双精度浮点</strong>）。当然还有一些不太常用的分区方式，具体见表：</p>
+<p>这里 <span class="math inline">\(s, E, M\)</span>
+分别称为<strong>符号</strong>、<strong>阶码</strong>和<strong>尾数</strong>。</p>
+<p>基于这样的性质，我们可以给出小数的表示方式。将一片数据区域的最高位用于放置符号位
+<span class="math inline">\(s\)</span>，然后后面分割为两部分，即
+<strong>exp 域</strong>和 <strong>frac 域</strong>，分别放置 <span
+class="math inline">\(E\)</span> 以及 <span
+class="math inline">\(M\)</span>。exp 域和 frac
+域的具体大小有两种常见的制式（即<strong>单精度浮点</strong>和<strong>双精度浮点</strong>）。当然还有一些不太常用的分区方式，具体见表：</p>
 <table>
 <thead>
 <tr class="header">
@@ -741,21 +893,57 @@ B = (-1)^s M \cdot 2^E
 </tr>
 </tbody>
 </table>
-<p>在具体存储的时候，尾数由于整数部分必然为 <code>1</code>，所以只需要将小数部分按顺序存储即可，而阶码使用无符号整数方法存储。</p>
-<p>这里注意，阶码理应是有可能为负数的，但一般存储的时候会将阶码加上一个固定的偏置变成正数之后存储。如果阶码长度为 <span class="math inline">\(e\)</span>，那么这个偏置就是 <span class="math inline">\(b = 2^{e - 1} - 1\)</span>。</p>
-<p>比如说按照单精度浮点的方式存储数 <code>15213.0</code>，其二进制表示为 <span class="math inline">\(1.1101101101101 \times 2^{13}\)</span>。所以符号位为 <code>0</code>，尾数取小数部分前 23 位，即 <code>1101101 10110100 00000000</code>。阶码为 <code>13</code>，加上偏置 <span class="math inline">\(2^{7} - 1 = 127\)</span> 得到 <code>140</code>，即 <code>10001100</code>。所以最后的存储方式为：</p>
+<p>在具体存储的时候，尾数由于整数部分必然为
+<code>1</code>，所以只需要将小数部分按顺序存储即可，而阶码使用无符号整数方法存储。</p>
+<p>这里注意，阶码理应是有可能为负数的，但一般存储的时候会将阶码加上一个固定的偏置变成正数之后存储。如果阶码长度为
+<span class="math inline">\(e\)</span>，那么这个偏置就是 <span
+class="math inline">\(b = 2^{e - 1} - 1\)</span>。</p>
+<p>比如说按照单精度浮点的方式存储数 <code>15213.0</code>，其二进制表示为
+<span class="math inline">\(1.1101101101101 \times
+2^{13}\)</span>。所以符号位为 <code>0</code>，尾数取小数部分前 23 位，即
+<code>1101101 10110100 00000000</code>。阶码为 <code>13</code>，加上偏置
+<span class="math inline">\(2^{7} - 1 = 127\)</span> 得到
+<code>140</code>，即 <code>10001100</code>。所以最后的存储方式为：</p>
 <figure class="highlight plaintext"><figcaption><span>Bits</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">01000110 01101101 10110100 00000000</span><br></pre></td></tr></table></figure>
 <h2 id="浮点数的非规格化">浮点数的非规格化</h2>
-<p>事实上，浮点数标准保留一部分阶码用于表示特殊的数字。一般而言，阶码全 <code>1</code> 和全 <code>0</code> 是被保留的。具体而言，阶码全 <code>1</code> 和全 <code>0</code> 的、表述特殊数字的浮点数被称为<strong>非规格化浮点数（denormalized float point）</strong>，其余的被称为<strong>规格化浮点数（normalized float point）</strong>。</p>
-<p>全 <code>0</code> 的阶码如果按照上述的标准解读的话，表示的是相当接近于零的小数。但是由于默认了尾数的整数部分为 <code>1</code>，所以说还按照原有解读方式的话，浮点数无法表示 <code>0</code>。这个时候作出规定，就是<strong>阶码全 <code>0</code> 的时候，尾数的整数部分变为 <code>0</code></strong>。相应的，为了配合尾数解读方式的调整，<strong>阶码的偏置减去一</strong>。</p>
-<p>假设某浮点数标准之中阶码长为 <span class="math inline">\(e\)</span>，尾数长为 <span class="math inline">\(m\)</span>。那么规格化的条件下最小的正浮点数应当是阶码为 <code>00...01</code>，尾数全 <code>0</code>。此时表示的数为 <span class="math inline">\(2^{1 - (2^{e - 1} - 1)} = 2^{2 - 2^{e - 1}}\)</span>。在非规格化条件下，如果将尾数按照无符号整数解析得到的非负整数标记为 <span class="math inline">\(n\)</span>，那么该浮点数应该为 <span class="math inline">\(2^{2 - 2^{e - 1}} \cdot 2^{-m}n\)</span>。这里非负整数 <span class="math inline">\(n\)</span> 取值范围为 <span class="math inline">\(0\)</span> 到 <span class="math inline">\(2^m - 1\)</span>。</p>
+<p>事实上，浮点数标准保留一部分阶码用于表示特殊的数字。一般而言，阶码全
+<code>1</code> 和全 <code>0</code> 是被保留的。具体而言，阶码全
+<code>1</code> 和全 <code>0</code>
+的、表述特殊数字的浮点数被称为<strong>非规格化浮点数（denormalized float
+point）</strong>，其余的被称为<strong>规格化浮点数（normalized float
+point）</strong>。</p>
+<p>全 <code>0</code>
+的阶码如果按照上述的标准解读的话，表示的是相当接近于零的小数。但是由于默认了尾数的整数部分为
+<code>1</code>，所以说还按照原有解读方式的话，浮点数无法表示
+<code>0</code>。这个时候作出规定，就是<strong>阶码全 <code>0</code>
+的时候，尾数的整数部分变为
+<code>0</code></strong>。相应的，为了配合尾数解读方式的调整，<strong>阶码的偏置减去一</strong>。</p>
+<p>假设某浮点数标准之中阶码长为 <span
+class="math inline">\(e\)</span>，尾数长为 <span
+class="math inline">\(m\)</span>。那么规格化的条件下最小的正浮点数应当是阶码为
+<code>00...01</code>，尾数全 <code>0</code>。此时表示的数为 <span
+class="math inline">\(2^{1 - (2^{e - 1} - 1)} = 2^{2 - 2^{e -
+1}}\)</span>。在非规格化条件下，如果将尾数按照无符号整数解析得到的非负整数标记为
+<span class="math inline">\(n\)</span>，那么该浮点数应该为 <span
+class="math inline">\(2^{2 - 2^{e - 1}} \cdot
+2^{-m}n\)</span>。这里非负整数 <span class="math inline">\(n\)</span>
+取值范围为 <span class="math inline">\(0\)</span> 到 <span
+class="math inline">\(2^m - 1\)</span>。</p>
 <p>所以说非规格化的浮点数所能表述的非负数序列为：</p>
 <p><span class="math display">\[
-0, \ 2^{2 - 2^{e - 1}} \cdot 2^{-m} \cdot 1, \ \cdots, \ 2^{2 - 2^{e - 1}} \cdot 2^{-m}(2^m - 1)
+0, \ 2^{2 - 2^{e - 1}} \cdot 2^{-m} \cdot 1, \ \cdots, \ 2^{2 - 2^{e -
+1}} \cdot 2^{-m}(2^m - 1)
 \]</span></p>
-<p>这是一个公差为 <span class="math inline">\(2^{2 - 2^{e - 1}} \cdot 2^{-m}\)</span> 的等差数列，而且最后正好可以和规格化浮点数所表述的最小正数 <span class="math inline">\(2^{2 - 2^{e - 1}}\)</span> “无缝衔接”。所以说非规格化浮点数是一个合理的拓展。</p>
-<p>但是，注意非规格化浮点数之中有 <code>+0</code> 和 <code>-0</code> 的区别。</p>
-<p>全 <code>1</code> 的阶码用于表示很大的浮点数。一般而言尾数全 <code>0</code> 的时候该浮点数被保留用于表示无穷。而尾数有非 <code>0</code> 位的时候，该浮点数被保留用于表示 <code>NaN</code>。</p>
+<p>这是一个公差为 <span class="math inline">\(2^{2 - 2^{e - 1}} \cdot
+2^{-m}\)</span>
+的等差数列，而且最后正好可以和规格化浮点数所表述的最小正数 <span
+class="math inline">\(2^{2 - 2^{e - 1}}\)</span>
+“无缝衔接”。所以说非规格化浮点数是一个合理的拓展。</p>
+<p>但是，注意非规格化浮点数之中有 <code>+0</code> 和 <code>-0</code>
+的区别。</p>
+<p>全 <code>1</code> 的阶码用于表示很大的浮点数。一般而言尾数全
+<code>0</code> 的时候该浮点数被保留用于表示无穷。而尾数有非
+<code>0</code> 位的时候，该浮点数被保留用于表示 <code>NaN</code>。</p>
 <hr />
 <p>现在补全了非规格化浮点数之后，可以发现浮点数的大小比较实际上几乎可以按照无符号整数从高位直接比较到低位的逻辑进行。因为阶码大的数一定大，阶码一样的时候尾数大的数一定大，包括无穷大也可以纳入进来。但是要考虑这样的例外：</p>
 <ul>
@@ -773,7 +961,11 @@ B = (-1)^s M \cdot 2^E
 &amp; 12.335000 \Rightarrow 12.34 \\
 \end{aligned}
 \]</span></p>
-<p>回到二进制上的话，由于十进制的 <code>0.5</code> 相当于二进制的 <code>0.1</code>。也就是说如果二进制小数之中后面需要舍去的部分大于 <code>100...</code> 则向上舍入，小于 <code>100...</code> 则向下舍入，恰好是 <code>100...</code> 则向偶数舍入（舍入完毕后尾数为 <code>0</code>）。</p>
+<p>回到二进制上的话，由于十进制的 <code>0.5</code> 相当于二进制的
+<code>0.1</code>。也就是说如果二进制小数之中后面需要舍去的部分大于
+<code>100...</code> 则向上舍入，小于 <code>100...</code>
+则向下舍入，恰好是 <code>100...</code> 则向偶数舍入（舍入完毕后尾数为
+<code>0</code>）。</p>
 <p>这里要注意一点，舍入是有可能导致溢出。</p>
 <hr />
 <p>至此，小数的计算机编码方式基本就介绍完毕了。其具体过程为：</p>
@@ -783,20 +975,49 @@ B = (-1)^s M \cdot 2^E
 <li><p>对尾数进行舍入后转化为二进制表示</p></li>
 </ul>
 <h2 id="c-语言的浮点数">C 语言的浮点数</h2>
-<p>C 语言之中，<code>int</code> 类型以及 <code>float</code> 类型是 4 字节的，<code>double</code> 则是 8 字节。它们之间的互相转换满足这样的规则：</p>
+<p>C 语言之中，<code>int</code> 类型以及 <code>float</code> 类型是 4
+字节的，<code>double</code> 则是 8
+字节。它们之间的互相转换满足这样的规则：</p>
 <ul>
 <li><p><code>int</code> 可以精确转换为 <code>double</code> 类型</p></li>
-<li><p><code>int</code> 转换为 <code>float</code> 类型不会溢出，但有可能被舍入</p></li>
-<li><p><code>float</code> 以及 <code>double</code> 转换为 <code>int</code> 时尾数截断，如果发生溢出则产生 UB</p></li>
+<li><p><code>int</code> 转换为 <code>float</code>
+类型不会溢出，但有可能被舍入</p></li>
+<li><p><code>float</code> 以及 <code>double</code> 转换为
+<code>int</code> 时尾数截断，如果发生溢出则产生 UB</p></li>
 </ul>
 <h1 id="汇编语言基本知识">汇编语言基本知识</h1>
-<p>在这一部分，我们使用<strong>指令集架构（Instruction Set Architecture, ISA）</strong>来定义机器级程序的行为。在这个架构之中，CPU 内有一个记录下一条指令在主存储器之中位置的<strong>指令寄存器（Program Counter, PC）</strong>，这个寄存器在 X86 体系中被命名为 <code>%rip</code>。CPU 之中同时还具有若干个<strong>寄存器</strong>，以及一个用于存储最近执行指令的结果状态信息的<strong>条件码寄存器</strong>。除去 CPU 外，这个架构之中还有<strong>主存储器</strong>，其可以认为是以字节为单元的一片连续的地址空间。</p>
+<p>在这一部分，我们使用<strong>指令集架构（Instruction Set Architecture,
+ISA）</strong>来定义机器级程序的行为。在这个架构之中，CPU
+内有一个记录下一条指令在主存储器之中位置的<strong>指令寄存器（Program
+Counter, PC）</strong>，这个寄存器在 X86 体系中被命名为
+<code>%rip</code>。CPU
+之中同时还具有若干个<strong>寄存器</strong>，以及一个用于存储最近执行指令的结果状态信息的<strong>条件码寄存器</strong>。除去
+CPU
+外，这个架构之中还有<strong>主存储器</strong>，其可以认为是以字节为单元的一片连续的地址空间。</p>
 <h2 id="汇编语言的数据类型">汇编语言的数据类型</h2>
-<p>和 C 语言不同，汇编语言不区分具体的数据类别，其不关心某一组二进制数据具体代表什么类型的数据。其不区分有符号和无符号的整数，甚至不区分指针和整数。其一般只区分数据的长度为字节、字、双字、四字。在处理这四种长度的数据的时候，指令的后缀分别为 <code>b, w, l, q</code>。比如说传送数据的命令为 <code>mov</code>，在传送字节的时候该命令写为 <code>movb</code>，在传送单字的时候该命令写为 <code>movw</code> 等等。</p>
+<p>和 C
+语言不同，汇编语言不区分具体的数据类别，其不关心某一组二进制数据具体代表什么类型的数据。其不区分有符号和无符号的整数，甚至不区分指针和整数。其一般只区分数据的长度为字节、字、双字、四字。在处理这四种长度的数据的时候，指令的后缀分别为
+<code>b, w, l, q</code>。比如说传送数据的命令为
+<code>mov</code>，在传送字节的时候该命令写为
+<code>movb</code>，在传送单字的时候该命令写为 <code>movw</code>
+等等。</p>
 <h2 id="汇编语言的数据操作">汇编语言的数据操作</h2>
 <p>汇编语言的基本操作只包括对寄存器或主存数据进行运算、在寄存器和主存内部或者之间传递数据、转移程序执行位置这三种。</p>
-<div class="note info no-icon"><p>在 X86-64 系统之下，寄存器是四字长的、通过名称访问的一片空间。但实际上有的时候指令可以不用访问整个四字长的寄存器空间，其可以通过 32 位操作访问四个字之中较低位的两个字，通过 16 位操作访问四个字中最低位的字，也可以通过字节操作访问最低位的字节。相应的，指代这一片寄存器空间的名称有所改变：</p>
+<div class="note info no-icon"><p>在 X86-64
+系统之下，寄存器是四字长的、通过名称访问的一片空间。但实际上有的时候指令可以不用访问整个四字长的寄存器空间，其可以通过
+32 位操作访问四个字之中较低位的两个字，通过 16
+位操作访问四个字中最低位的字，也可以通过字节操作访问最低位的字节。相应的，指代这一片寄存器空间的名称有所改变：</p>
 <table>
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: center;">64 位操作</th>
@@ -892,39 +1113,66 @@ B = (-1)^s M \cdot 2^E
 </tr>
 </tbody>
 </table>
-<p>实际上，有的时候我们还可以用字节操作访问 <code>%rax, %rbx, %rcx, %rdx</code> 这四个寄存器的倒数第二低位的字节，指代这一部分空间的名称则为 <code>%ah, %bh, %ch, %dh</code>。</p>
+<p>实际上，有的时候我们还可以用字节操作访问
+<code>%rax, %rbx, %rcx, %rdx</code>
+这四个寄存器的倒数第二低位的字节，指代这一部分空间的名称则为
+<code>%ah, %bh, %ch, %dh</code>。</p>
 </div>
 <p>在具体进行操作的时候，一个机器指令往往需要跟随若干的操作数具体规定操作方法（如传送数据的时候，需要通过操作数指定传送的起始位置和终止位置）。操作数有三种表述方式：</p>
 <ul>
-<li><p><strong>立即数</strong>。其是一个整型的常数，写法为 <code>$</code> 后接上一个 C 风格的数字表示这个立即数的值。比如说 <code>$-521</code> 以及 <code>$0x4FD</code>。</p></li>
-<li><p><strong>寄存器数值</strong>。直接使用寄存器的名称访问，如 <code>%rbp</code> 就代表这个寄存器之中的数据。但是注意，寄存器 <code>%rsp</code> 一般而言是被保留的。</p></li>
-<li><p><strong>主存数值</strong>。使用地址访问，其地址由某一个寄存器之中的数据指定，写法为寄存器名称加括号。比如说要访问某一个主存数值，其地址存储在寄存器 <code>%rax</code> 之中，那么其写法为 <code>(%rax)</code>。</p></li>
+<li><p><strong>立即数</strong>。其是一个整型的常数，写法为
+<code>$</code> 后接上一个 C 风格的数字表示这个立即数的值。比如说
+<code>$-521</code> 以及 <code>$0x4FD</code>。</p></li>
+<li><p><strong>寄存器数值</strong>。直接使用寄存器的名称访问，如
+<code>%rbp</code> 就代表这个寄存器之中的数据。但是注意，寄存器
+<code>%rsp</code> 一般而言是被保留的。</p></li>
+<li><p><strong>主存数值</strong>。使用地址访问，其地址由某一个寄存器之中的数据指定，写法为寄存器名称加括号。比如说要访问某一个主存数值，其地址存储在寄存器
+<code>%rax</code> 之中，那么其写法为 <code>(%rax)</code>。</p></li>
 </ul>
 <h2 id="汇编语言的寻址方式">汇编语言的寻址方式</h2>
 <h3 id="x86-系统的变址寻址方式">X86 系统的变址寻址方式</h3>
-<p>但实际上，在 X86 系统中访问主存数值的方式（这也被称为<strong>寻址方式</strong>）并不是单一的。除去直接使用寄存器之中的数据作为地址去访问，X86 系统提供了包含变址、立即数偏移的寻址模式，其表记一般为 <code>IMM(a, b, s)</code>。这里 <code>IMM</code> 为一个立即数，称为<strong>立即数偏移</strong>，<code>a, b</code> 为两个寄存器名，分别称为<strong>定址寄存器</strong>和<strong>变址寄存器</strong>，<code>s</code> 为 <code>1, 2, 4, 8</code> 之中的一个数，称为<strong>比例因子</strong>。这个记号所代表的地址为：</p>
+<p>但实际上，在 X86
+系统中访问主存数值的方式（这也被称为<strong>寻址方式</strong>）并不是单一的。除去直接使用寄存器之中的数据作为地址去访问，X86
+系统提供了包含变址、立即数偏移的寻址模式，其表记一般为
+<code>IMM(a, b, s)</code>。这里 <code>IMM</code>
+为一个立即数，称为<strong>立即数偏移</strong>，<code>a, b</code>
+为两个寄存器名，分别称为<strong>定址寄存器</strong>和<strong>变址寄存器</strong>，<code>s</code>
+为 <code>1, 2, 4, 8</code>
+之中的一个数，称为<strong>比例因子</strong>。这个记号所代表的地址为：</p>
 <p><span class="math display">\[
-{\rm IMM} + {\rm R}(a) + {\rm R}(b) \cdot s 
+{\rm IMM} + {\rm R}(a) + {\rm R}(b) \cdot s
 \]</span></p>
-<p>这里符号 <span class="math inline">\({\rm R}(a)\)</span> 表示寄存器 <code>a</code> 之中的数据。</p>
+<p>这里符号 <span class="math inline">\({\rm R}(a)\)</span> 表示寄存器
+<code>a</code> 之中的数据。</p>
 <p>这个表记存在一系列简写：</p>
 <ul>
-<li><p>当不存在定址和变址寄存器的时候，简写为 <code>IMM</code>。这个时候相当于不经过寄存器直接指定主存中的某一个地址，称为<strong>绝对寻址</strong>。</p></li>
-<li><p>当 <code>IMM</code> 为 <code>0</code>，不存在变址寄存器的时候，简写为 <code>(a)</code>。这也就是最简单的寻址方式，即直接将寄存器数值作为地址解读，称为<strong>间接寻址</strong>。</p></li>
-<li><p>当存在变址寄存器但 <code>s</code> 为 <code>1</code> 的时候，简写为 <code>IMM(a, b)</code>。</p></li>
+<li><p>当不存在定址和变址寄存器的时候，简写为
+<code>IMM</code>。这个时候相当于不经过寄存器直接指定主存中的某一个地址，称为<strong>绝对寻址</strong>。</p></li>
+<li><p>当 <code>IMM</code> 为
+<code>0</code>，不存在变址寄存器的时候，简写为
+<code>(a)</code>。这也就是最简单的寻址方式，即直接将寄存器数值作为地址解读，称为<strong>间接寻址</strong>。</p></li>
+<li><p>当存在变址寄存器但 <code>s</code> 为 <code>1</code>
+的时候，简写为 <code>IMM(a, b)</code>。</p></li>
 </ul>
 <hr />
 <p>现在我们就可以尝试解读一些汇编代码了，比如：</p>
 <figure class="highlight plaintext"><figcaption><span>X86-64 Assembly</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">movq $-147, (%rax)</span><br></pre></td></tr></table></figure>
-<p>这个指令的意思是按照四字数据转移的方式，将立即数 <code>-147</code> 写入主存，写入地址为寄存器 <code>%rax</code> 的数值。</p>
+<p>这个指令的意思是按照四字数据转移的方式，将立即数 <code>-147</code>
+写入主存，写入地址为寄存器 <code>%rax</code> 的数值。</p>
 <h3 id="利用寻址进行整数计算">利用寻址进行整数计算</h3>
-<p>地址实际上也可以被解读为整数，而机器进行寻址的时候实际上就在完成整数计算。根据上面给出的变址寻址方式，我们可以利用寻址命令来计算类似 <span class="math inline">\(x + ky\)</span> 的整数算式。</p>
+<p>地址实际上也可以被解读为整数，而机器进行寻址的时候实际上就在完成整数计算。根据上面给出的变址寻址方式，我们可以利用寻址命令来计算类似
+<span class="math inline">\(x + ky\)</span> 的整数算式。</p>
 <p>首先需要知道指令：</p>
 <figure class="highlight plaintext"><figcaption><span>X86-64 Assembly</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">leaq [SRC], [DEST]</span><br></pre></td></tr></table></figure>
-<p>这里 <code>[SRC]</code> 是一个寻址表达式，其计算出来的结果将赋给 <code>[DEST]</code>。比如 <code>leaq (%rdi, %rdi, 2), %rax</code> 会将前面寻址计算出来的地址赋予寄存器 <code>%rax</code>。</p>
-<p>实际上在编译器优化之中，部分整数运算都会被优化为地址计算。比如说 <code>x * 12</code> 这个代码有可能会被转化为如下的汇编代码：</p>
+<p>这里 <code>[SRC]</code> 是一个寻址表达式，其计算出来的结果将赋给
+<code>[DEST]</code>。比如 <code>leaq (%rdi, %rdi, 2), %rax</code>
+会将前面寻址计算出来的地址赋予寄存器 <code>%rax</code>。</p>
+<p>实际上在编译器优化之中，部分整数运算都会被优化为地址计算。比如说
+<code>x * 12</code> 这个代码有可能会被转化为如下的汇编代码：</p>
 <figure class="highlight plaintext"><figcaption><span>X86-64 Assembly</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">leaq (%rdi, %rdi, 2), %rax</span><br><span class="line">salq $2, %rax</span><br></pre></td></tr></table></figure>
-<p>第一步使用地址计算实际上计算了 <code>x + x * 2</code>，即三倍的 <code>x</code>。第二步命令为左移，左移两位即再次乘以 <code>4</code> 得到最后结果。</p>
+<p>第一步使用地址计算实际上计算了 <code>x + x * 2</code>，即三倍的
+<code>x</code>。第二步命令为左移，左移两位即再次乘以 <code>4</code>
+得到最后结果。</p>
 <h2 id="汇编语言常用的整数计算命令">汇编语言常用的整数计算命令</h2>
 <p>汇编语言计算整数运算的时候，会有如下表所列出的常用命令。</p>
 <table>
@@ -953,17 +1201,20 @@ B = (-1)^s M \cdot 2^E
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>salq [SRC], [DEST]</code></td>
-<td style="text-align: center;"><code>DEST = DEST &lt;&lt; SRC</code></td>
+<td
+style="text-align: center;"><code>DEST = DEST &lt;&lt; SRC</code></td>
 <td style="text-align: center;">与逻辑左移 <code>shll</code> 等价</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>sarq [SRC], [DEST]</code></td>
-<td style="text-align: center;"><code>DEST = DEST &gt;&gt; SRC</code></td>
+<td
+style="text-align: center;"><code>DEST = DEST &gt;&gt; SRC</code></td>
 <td style="text-align: center;">算术右移</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>shrq [SRC], [DEST]</code></td>
-<td style="text-align: center;"><code>DEST = DEST &gt;&gt; SRC</code></td>
+<td
+style="text-align: center;"><code>DEST = DEST &gt;&gt; SRC</code></td>
 <td style="text-align: center;">逻辑右移</td>
 </tr>
 <tr class="odd">
@@ -1004,7 +1255,11 @@ B = (-1)^s M \cdot 2^E
 </tbody>
 </table>
 <h1 id="条件码与其应用">条件码与其应用</h1>
-<p>当程序运行的时候，部分和当前程序运行状态相关的数据将会被 CPU 保存。我们已经介绍过指向下一条指令的程序计数器 <code>%rip</code>，存储临时数据的寄存器堆。另外我们要提到的是被保留的寄存器 <code>%rsp</code> 其用于存储<strong>栈顶地址</strong>。另外提一下条件码，条件码一般分为四个：</p>
+<p>当程序运行的时候，部分和当前程序运行状态相关的数据将会被 CPU
+保存。我们已经介绍过指向下一条指令的程序计数器
+<code>%rip</code>，存储临时数据的寄存器堆。另外我们要提到的是被保留的寄存器
+<code>%rsp</code>
+其用于存储<strong>栈顶地址</strong>。另外提一下条件码，条件码一般分为四个：</p>
 <table>
 <thead>
 <tr class="header">
@@ -1036,191 +1291,370 @@ B = (-1)^s M \cdot 2^E
 </tr>
 </tbody>
 </table>
-<p>条件码一般是由算术指令运算过程中隐含地设定的，具体如何设定条件码需要查看具体的命令运行方式。这里额外指出，<strong><code>leaq</code> 指令计算的时候不设置条件码</strong>。</p>
+<p>条件码一般是由算术指令运算过程中隐含地设定的，具体如何设定条件码需要查看具体的命令运行方式。这里额外指出，<strong><code>leaq</code>
+指令计算的时候不设置条件码</strong>。</p>
 <h2 id="推知操作数关系">推知操作数关系</h2>
-<p>若干以 <code>set</code> 为前缀的命令可以读取条件码的内容并存入某寄存器的最低位字节（使用字节操作）。比如说 <code>setle</code> 命令实际上会读取 <code>SF, OF, ZF</code> 三个条件码，将 <code>(SF ^ OF) | ZF</code> 的计算结果存入指定字节。</p>
-<p>这个计算结果其实就代表了两个操作数之间的一个关系。比如说 <code>cmpq [SRC], [DEST]</code> 指令在 <code>SRC == DEST</code> 的时候会将 <code>ZF</code> 置真，在 <code>DEST - SRC &lt; 0</code> 的时候将 <code>SF</code> 置真，在运算溢出的时候将 <code>OF</code> 置真。那么 <code>setle</code> 所计算的结果为真实际上就代表 <code>DEST &lt;= SRC</code>。</p>
+<p>若干以 <code>set</code>
+为前缀的命令可以读取条件码的内容并存入某寄存器的最低位字节（使用字节操作）。比如说
+<code>setle</code> 命令实际上会读取 <code>SF, OF, ZF</code>
+三个条件码，将 <code>(SF ^ OF) | ZF</code> 的计算结果存入指定字节。</p>
+<p>这个计算结果其实就代表了两个操作数之间的一个关系。比如说
+<code>cmpq [SRC], [DEST]</code> 指令在 <code>SRC == DEST</code>
+的时候会将 <code>ZF</code> 置真，在 <code>DEST - SRC &lt; 0</code>
+的时候将 <code>SF</code> 置真，在运算溢出的时候将 <code>OF</code>
+置真。那么 <code>setle</code> 所计算的结果为真实际上就代表
+<code>DEST &lt;= SRC</code>。</p>
 <p>这里给出具体示例，比如以下 C 语言代码：</p>
 <figure class="highlight cpp"><figcaption><span>C++</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gt</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123; <span class="keyword">return</span> x &gt; y; &#125;</span><br></pre></td></tr></table></figure>
 <p>会被汇编为：</p>
 <figure class="highlight plaintext"><figcaption><span>X86-64 Assembly</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cmpq   %rsi, %rdi</span><br><span class="line">setg   %al</span><br><span class="line">movzbl %al, %eax</span><br><span class="line">ret</span><br></pre></td></tr></table></figure>
-<p>其含义为首先使用 <code>cmpq</code> 命令更新条件码，然后使用 <code>setg</code> 命令读取条件码，最后使用 <code>movzbl</code> 将计算结果移动到表示函数返回值的寄存器。</p>
+<p>其含义为首先使用 <code>cmpq</code> 命令更新条件码，然后使用
+<code>setg</code> 命令读取条件码，最后使用 <code>movzbl</code>
+将计算结果移动到表示函数返回值的寄存器。</p>
 <h2 id="实现程序跳转">实现程序跳转</h2>
-<p>对于 C 语言之中的 <code>if, goto</code> 等涉及到程序跳转的语句，汇编之中也应当有相应的可以跳转执行的命令，而条件码及其相关运算结果会控制程序是否跳转。与 <code>set</code> 系列命令一致，汇编之中还有 <code>j</code> 系列命令，如 <code>je</code>。其会读取条件码并计算，结果为真则会触发程序跳转。</p>
+<p>对于 C 语言之中的 <code>if, goto</code>
+等涉及到程序跳转的语句，汇编之中也应当有相应的可以跳转执行的命令，而条件码及其相关运算结果会控制程序是否跳转。与
+<code>set</code> 系列命令一致，汇编之中还有 <code>j</code> 系列命令，如
+<code>je</code>。其会读取条件码并计算，结果为真则会触发程序跳转。</p>
 <p>比如这样的 C 代码：</p>
 <figure class="highlight cpp"><figcaption><span>C++</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">long</span> <span class="title">absdiff</span><span class="params">(<span class="keyword">long</span> x, <span class="keyword">long</span> y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">long</span> result;</span><br><span class="line">    <span class="keyword">if</span> (x &gt; y) result = x - y;</span><br><span class="line">    <span class="keyword">else</span> result = y - x;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
 <p>会被汇编为：</p>
 <figure class="highlight plaintext"><figcaption><span>X86-64 Assembly</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">absdiff:</span><br><span class="line">    cmpq %rsi, %rdi</span><br><span class="line">    jle  .L4</span><br><span class="line">    movq %rdi, %rax</span><br><span class="line">    subq %rsi, %rax</span><br><span class="line">    ret</span><br><span class="line">.L4:</span><br><span class="line">    movq %rsi, %rax</span><br><span class="line">    subq %rdi, %rax</span><br><span class="line">    ret</span><br></pre></td></tr></table></figure>
-<p>这里第三行就会读取 <code>cmpq</code> 命令设置的条件码，如果满足了跳转条件，就会跳转到 <code>.L4</code> 标记处继续执行，否则向下继续执行。</p>
-<p>实际上，汇编代码的跳转基本和 C 语言之中的 <code>goto</code> 类似，所以我们可以将 <code>if</code> 转为等价的 <code>goto</code> 表达式，这样的话就可以得到和汇编代码形式类似的 C 代码。对于以下的 C 代码：</p>
+<p>这里第三行就会读取 <code>cmpq</code>
+命令设置的条件码，如果满足了跳转条件，就会跳转到 <code>.L4</code>
+标记处继续执行，否则向下继续执行。</p>
+<p>实际上，汇编代码的跳转基本和 C 语言之中的 <code>goto</code>
+类似，所以我们可以将 <code>if</code> 转为等价的 <code>goto</code>
+表达式，这样的话就可以得到和汇编代码形式类似的 C 代码。对于以下的 C
+代码：</p>
 <figure class="highlight cpp"><figcaption><span>C++</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (CASE) &#123; <span class="comment">/* IF BLOCK */</span> &#125;</span><br><span class="line"><span class="keyword">else</span> &#123; <span class="comment">/* ELSE BLOCK */</span> &#125;</span><br></pre></td></tr></table></figure>
 <p>实际上等价于以下 C 代码：</p>
 <figure class="highlight cpp"><figcaption><span>C++</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!CASE) <span class="keyword">goto</span> Else;</span><br><span class="line">    <span class="comment">/* IF BLOCK */</span></span><br><span class="line">    <span class="keyword">goto</span> Done;</span><br><span class="line">Else:</span><br><span class="line">    <span class="comment">/* ELSE BLOCK*/</span></span><br><span class="line">Done:</span><br></pre></td></tr></table></figure>
 <div class="note info no-icon"><p>使用条件码实现程序跳转的方式称为<strong>条件跳转</strong>。但实际上，条件跳转一般会拖慢整个系统的速度。这是因为现代的流水线式处理器一般要求系统能够基本精确得知接下来应当运行的指令是什么，这样才能保证并发执行，获得高效率。</p>
 <p>为了解决这个问题，一种方法是提高处理器对下面具体运行哪一个分支的预测准确率，一种方法是使用<strong>条件转移</strong>。</p>
-<p>条件转移指的是将两个分支的结果都计算出来，最后再根据条件码决定取用哪一个。比如说上面的 <code>absdiff</code> 函数，现代编译器一般会把 <code>x - y</code> 和 <code>y - x</code> 都计算出来，最后根据条件码取其中一个放到返回值寄存器上。</p>
+<p>条件转移指的是将两个分支的结果都计算出来，最后再根据条件码决定取用哪一个。比如说上面的
+<code>absdiff</code> 函数，现代编译器一般会把 <code>x - y</code> 和
+<code>y - x</code>
+都计算出来，最后根据条件码取其中一个放到返回值寄存器上。</p>
 <p>但是条件转移的使用是有局限性的，比如说下面两种情况就并不适合：</p>
 <ul>
 <li><p>某一个分支有副作用，比如说修改了某些其他数据</p></li>
 <li><p>某一个分支的计算量过于庞大</p></li>
 </ul>
 </div>
-<p>除去 <code>if</code>，C 语言中还可以使用 <code>switch</code> 语句实现程序跳转。<code>switch</code> 语句可以翻译为若干的 <code>if-else</code> 组，但是更常见的解读方式是<strong>构建跳转表</strong>。</p>
+<p>除去 <code>if</code>，C 语言中还可以使用 <code>switch</code>
+语句实现程序跳转。<code>switch</code> 语句可以翻译为若干的
+<code>if-else</code>
+组，但是更常见的解读方式是<strong>构建跳转表</strong>。</p>
 <p><code>TODO</code></p>
 <h2 id="实现程序循环">实现程序循环</h2>
-<p>C 语言之中使用关键字 <code>do, while, for</code> 可以实现程序循环，同样我们可以使用条件码和 <code>j</code> 系列命令完成等价汇编代码编写，实际上我们只需要改写为等价的 <code>goto</code> 表达的 C 代码就可以。</p>
+<p>C 语言之中使用关键字 <code>do, while, for</code>
+可以实现程序循环，同样我们可以使用条件码和 <code>j</code>
+系列命令完成等价汇编代码编写，实际上我们只需要改写为等价的
+<code>goto</code> 表达的 C 代码就可以。</p>
 <p>对于 <code>do ... while</code> 循环，等价改写为：</p>
 <figure class="highlight cpp"><figcaption><span>C++</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* do ... while */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">do</span> &#123; <span class="comment">/* CONTENT */</span> &#125; <span class="keyword">while</span> (CASE)</span><br><span class="line"></span><br><span class="line"><span class="comment">/* goto */</span></span><br><span class="line"></span><br><span class="line">Loop:</span><br><span class="line">    <span class="comment">/* CONTENT */</span></span><br><span class="line"><span class="keyword">if</span> (CASE) <span class="keyword">goto</span> Loop;</span><br></pre></td></tr></table></figure>
 <p>对于 <code>while</code> 循环，等价改写为：</p>
 <figure class="highlight cpp"><figcaption><span>C++</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* while */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (CASE) &#123; <span class="comment">/* CONTENT */</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* goto v1 */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">goto</span> Test;</span><br><span class="line">Loop:</span><br><span class="line">    <span class="comment">/* CONTENT */</span></span><br><span class="line">Test:</span><br><span class="line">    <span class="keyword">if</span> (CASE) <span class="keyword">goto</span> Loop;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* goto v2 */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (!CASE) <span class="keyword">goto</span> Done;</span><br><span class="line">Loop:</span><br><span class="line">    <span class="comment">/* CONTENT */</span></span><br><span class="line"><span class="keyword">if</span> (CASE) <span class="keyword">goto</span> Loop;</span><br><span class="line">Done:</span><br></pre></td></tr></table></figure>
-<p>而 <code>for</code> 循环一般是改写为等价的 <code>while</code> 循环后再改写为 <code>goto</code> 版本：</p>
+<p>而 <code>for</code> 循环一般是改写为等价的 <code>while</code>
+循环后再改写为 <code>goto</code> 版本：</p>
 <figure class="highlight cpp"><figcaption><span>C++</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* for */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="comment">/* INIT */</span>; CASE; <span class="comment">/* UPDATE */</span>) &#123; <span class="comment">/* CONTENT */</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* while */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* INIT */</span></span><br><span class="line"><span class="keyword">while</span> (CASE) &#123;</span><br><span class="line">    <span class="comment">/* CONTENT */</span></span><br><span class="line">    <span class="comment">/* UPDATE */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="函数调用与程序栈">函数调用与程序栈</h1>
 <h2 id="程序栈和相关指令">程序栈和相关指令</h2>
-<p>X86 系统中，将一片内存区域按照栈的方式管理，其中<strong>高地址为栈底</strong>，这片内存区域就被称为<strong>程序栈</strong>，其栈顶地址由寄存器 <code>%rsp</code> 管理。</p>
-<p>对程序栈有两种最为基本的操作，即压栈和出栈。压栈操作命令为 <code>pushq [SRC]</code>，含义是将 <code>[SRC]</code> 写入程序栈，寄存器 <code>%rsp</code> 减小一个字节（即减去 <code>8</code>）。而出栈命令为 <code>popq [DEST]</code>，含义是将程序栈栈顶字节写入 <code>[DEST]</code>，寄存器 <code>%rsp</code> 增加一个字节（即加上 <code>8</code>）。</p>
+<p>X86
+系统中，将一片内存区域按照栈的方式管理，其中<strong>高地址为栈底</strong>，这片内存区域就被称为<strong>程序栈</strong>，其栈顶地址由寄存器
+<code>%rsp</code> 管理。</p>
+<p>对程序栈有两种最为基本的操作，即压栈和出栈。压栈操作命令为
+<code>pushq [SRC]</code>，含义是将 <code>[SRC]</code> 写入程序栈，寄存器
+<code>%rsp</code> 减小一个字节（即减去 <code>8</code>）。而出栈命令为
+<code>popq [DEST]</code>，含义是将程序栈栈顶字节写入
+<code>[DEST]</code>，寄存器 <code>%rsp</code> 增加一个字节（即加上
+<code>8</code>）。</p>
 <h2 id="函数调用">函数调用</h2>
-<p>有关函数调用的两个命令为 <code>call</code> 和 <code>ret</code>，两者分别代指调用某一个函数和某一个函数返回。</p>
+<p>有关函数调用的两个命令为 <code>call</code> 和
+<code>ret</code>，两者分别代指调用某一个函数和某一个函数返回。</p>
 <p><strong>注解：</strong>似乎在汇编之中，更习惯把函数调用说成过程调用，我们之后也使用这样的名称。</p>
-<p><code>call</code> 的命令格式为 <code>callq 40050 &lt;mul&gt;</code>。两个参数分别为需要调用的过程的机器码在主存里的位置，系统根据这个参数令程序指针 <code>%rip</code> 跳转。第二个参数则是调用的过程的名称。</p>
-<p><code>call</code> 命令一共会完成两个任务。第一个任务是将<strong>返回地址</strong>（返回地址指的是 <code>call</code> 指令<strong>下一条</strong>指令的地址）压入程序栈，这一步是为了在调用的过程终结返回的时候能够返回到正确的位置继续执行。第二个任务是将 <code>%rip</code> 设置为要跳转的过程在主存之中的地址，实现真正的跳转。</p>
-<p>而 <code>ret</code> 命令所完成的就是将程序栈的栈顶写入 <code>%rip</code>，让系统回到原先位置继续执行。其不需要接受参数，一般只需要命令本身即可。</p>
+<p><code>call</code> 的命令格式为
+<code>callq 40050 &lt;mul&gt;</code>。两个参数分别为需要调用的过程的机器码在主存里的位置，系统根据这个参数令程序指针
+<code>%rip</code> 跳转。第二个参数则是调用的过程的名称。</p>
+<p><code>call</code>
+命令一共会完成两个任务。第一个任务是将<strong>返回地址</strong>（返回地址指的是
+<code>call</code>
+指令<strong>下一条</strong>指令的地址）压入程序栈，这一步是为了在调用的过程终结返回的时候能够返回到正确的位置继续执行。第二个任务是将
+<code>%rip</code>
+设置为要跳转的过程在主存之中的地址，实现真正的跳转。</p>
+<p>而 <code>ret</code> 命令所完成的就是将程序栈的栈顶写入
+<code>%rip</code>，让系统回到原先位置继续执行。其不需要接受参数，一般只需要命令本身即可。</p>
 <hr />
-<p>有的时候调用过程需要传递参数。在 X86 架构之下，如果传递参数不多于 6 个，则使用 <code>%rdi, %rsi, %rdx, %rcx, %r8, %r9</code> 一共 6 个寄存器进行传递。如果参数多余 6 个，则使用程序栈传递，序号越大的参数越在栈底。而函数返回值默认存放在 <code>%rax</code> 之中。</p>
+<p>有的时候调用过程需要传递参数。在 X86 架构之下，如果传递参数不多于 6
+个，则使用 <code>%rdi, %rsi, %rdx, %rcx, %r8, %r9</code> 一共 6
+个寄存器进行传递。如果参数多余 6
+个，则使用程序栈传递，序号越大的参数越在栈底。而函数返回值默认存放在
+<code>%rax</code> 之中。</p>
 <h2 id="栈帧">栈帧</h2>
-<p>类似 C 之类的语言，会支持函数的递归调用，这就说明了这些语言的代码支持<strong>重入（Reentrant）</strong>，即允许多个实例同时运行同一块代码。基于这样的要求，我们不仅需要在程序栈之中记录返回地址，我们还需要记录是哪一个实例调用了过程。而每一次过程调用就会在程序栈之中生成一片用于记录这次调用的数据（包括这一次调用的临时变量、返回地址、寄存器副本等），这就是一个<strong>栈帧（Stack frame）</strong>。</p>
-<p>栈帧的管理也是简单的，在过程被调用的时候分配空间、创建栈帧，在过程返回之后，该栈帧被释放。由于栈帧一般多于一个字节，所以除去栈顶指针 <code>%rsp</code> 外，还设定了栈帧指针 <code>%rbp</code> 标记栈帧的起始地址，所以 <code>%rbp</code> 和 <code>%rsp</code> 之间的程序栈指代栈顶的栈帧。</p>
+<p>类似 C
+之类的语言，会支持函数的递归调用，这就说明了这些语言的代码支持<strong>重入（Reentrant）</strong>，即允许多个实例同时运行同一块代码。基于这样的要求，我们不仅需要在程序栈之中记录返回地址，我们还需要记录是哪一个实例调用了过程。而每一次过程调用就会在程序栈之中生成一片用于记录这次调用的数据（包括这一次调用的临时变量、返回地址、寄存器副本等），这就是一个<strong>栈帧（Stack
+frame）</strong>。</p>
+<p>栈帧的管理也是简单的，在过程被调用的时候分配空间、创建栈帧，在过程返回之后，该栈帧被释放。由于栈帧一般多于一个字节，所以除去栈顶指针
+<code>%rsp</code> 外，还设定了栈帧指针 <code>%rbp</code>
+标记栈帧的起始地址，所以 <code>%rbp</code> 和 <code>%rsp</code>
+之间的程序栈指代栈顶的栈帧。</p>
 <hr />
-<p>另外我们也需要指出，有的时候系统会做出一些“明明没有分配栈帧（<code>%rsp</code> 没有动）但相当于创建了临时栈帧”的行为。一种可能是使用栈空间进行数据传递，这个时候栈就类似于寄存器。比如说系统可以在不动 <code>%rsp</code> 的条件下将数据通过比 <code>%rsp</code> 低一个字节的位置传递一定的数据。但栈空间的也是有限制的，比 <code>%rsp</code> 低多于 128 字节的栈空间一般是被保留的，不能直接使用。</p>
+<p>另外我们也需要指出，有的时候系统会做出一些“明明没有分配栈帧（<code>%rsp</code>
+没有动）但相当于创建了临时栈帧”的行为。一种可能是使用栈空间进行数据传递，这个时候栈就类似于寄存器。比如说系统可以在不动
+<code>%rsp</code> 的条件下将数据通过比 <code>%rsp</code>
+低一个字节的位置传递一定的数据。但栈空间的也是有限制的，比
+<code>%rsp</code> 低多于 128
+字节的栈空间一般是被保留的，不能直接使用。</p>
 <h2 id="寄存器使用惯例">寄存器使用惯例</h2>
-<p>在一个过程调用另外一个过程的时候，往往会出现寄存器冲突，比如说两者都需要使用 <code>%rdi</code> 存放参数。这个时候一般需要将寄存器数据复制到栈帧之中暂且保存，将寄存器空出给另外一方使用。</p>
-<p>而到底由调用者还是被调用者的栈帧暂存寄存器，则一般遵循一些惯例。在 X86 架构下寄存器 <code>%rbx, %rbp, %r12, %r13, %r14, %r15</code> 称为<strong>被调用者保存（Callee saved）</strong>寄存器，即被调用者的栈帧保存这些寄存器的数据，在<strong>过程返回之前将栈帧数据复原</strong>。寄存器 <code>%r10, %r11</code> 和所有的传递参数的寄存器称为<strong>调用者保存（Caller saved）</strong>寄存器，即调用者的栈帧保存寄存器的数据，在<strong>调用结束后将栈帧数据复原</strong>。</p>
+<p>在一个过程调用另外一个过程的时候，往往会出现寄存器冲突，比如说两者都需要使用
+<code>%rdi</code>
+存放参数。这个时候一般需要将寄存器数据复制到栈帧之中暂且保存，将寄存器空出给另外一方使用。</p>
+<p>而到底由调用者还是被调用者的栈帧暂存寄存器，则一般遵循一些惯例。在
+X86 架构下寄存器 <code>%rbx, %rbp, %r12, %r13, %r14, %r15</code>
+称为<strong>被调用者保存（Callee
+saved）</strong>寄存器，即被调用者的栈帧保存这些寄存器的数据，在<strong>过程返回之前将栈帧数据复原</strong>。寄存器
+<code>%r10, %r11</code>
+和所有的传递参数的寄存器称为<strong>调用者保存（Caller
+saved）</strong>寄存器，即调用者的栈帧保存寄存器的数据，在<strong>调用结束后将栈帧数据复原</strong>。</p>
 <h1 id="数组及结构的存储表示">数组及结构的存储表示</h1>
 <h2 id="数组的存储">数组的存储</h2>
-<p>数组 <code>T a[N]</code> 在主存之中存储的基本原则为连续存储，也就是将连续 <code>N * sizeof(T)</code> 字节的空间用于存储这个数组。</p>
-<p>而对于二维数组，我们还是会使用连续的存储空间进行存储，而且一般遵循<strong>行优先</strong>原则。对于 <code>int a[3][5]</code>，其在主存之中的存储顺序为 <code>a[0][0], a[0][1], ..., a[0][4], a[1][0], ..., a[2][4]</code>。这种存储方式称为<strong>嵌套数组（Nested array）</strong>。</p>
-<p>除了嵌套数组，还有一种存储方式是<strong>多级指针数组（Multi-level pointer array）</strong>。其基本想法为在根数组上存若干指针，这些指针指向下一级数组的起始地址。这样的存储方式方便进行多级扩展，但相应的由于内存空间不连续，而且读取指针并定位需要多次寻址，一定程度上降低了效率。</p>
+<p>数组 <code>T a[N]</code>
+在主存之中存储的基本原则为连续存储，也就是将连续
+<code>N * sizeof(T)</code> 字节的空间用于存储这个数组。</p>
+<p>而对于二维数组，我们还是会使用连续的存储空间进行存储，而且一般遵循<strong>行优先</strong>原则。对于
+<code>int a[3][5]</code>，其在主存之中的存储顺序为
+<code>a[0][0], a[0][1], ..., a[0][4], a[1][0], ..., a[2][4]</code>。这种存储方式称为<strong>嵌套数组（Nested
+array）</strong>。</p>
+<p>除了嵌套数组，还有一种存储方式是<strong>多级指针数组（Multi-level
+pointer
+array）</strong>。其基本想法为在根数组上存若干指针，这些指针指向下一级数组的起始地址。这样的存储方式方便进行多级扩展，但相应的由于内存空间不连续，而且读取指针并定位需要多次寻址，一定程度上降低了效率。</p>
 <h2 id="结构的存储">结构的存储</h2>
 <p>一个结构体的数据是将其成员按照声明顺序，在一片连续的空间内存储的。比如说：</p>
 <figure class="highlight cpp"><figcaption><span>C++</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span>[<span class="number">4</span>] val;</span><br><span class="line">    <span class="keyword">size_t</span> i;</span><br><span class="line">    node* next;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>其将会在连续的 32 个字节中存储这个结构体，其中低地址的 16 字节存放 <code>val</code>，中间的 8 字节存放 <code>i</code>，高地址的 8 字节存放 <code>next</code>。</p>
+<p>其将会在连续的 32 个字节中存储这个结构体，其中低地址的 16 字节存放
+<code>val</code>，中间的 8 字节存放 <code>i</code>，高地址的 8 字节存放
+<code>next</code>。</p>
 <p>而在实际存储的时候是需要考虑<strong>对齐</strong>问题的：</p>
 <figure class="highlight cpp"><figcaption><span>C++</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">align</span> &#123;</span></span><br><span class="line">    <span class="keyword">char</span> val;</span><br><span class="line">    align* next;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>如果按照正常思维推测，一个字符和一个指针应该只需要 9 字节，但在 X86-64 架构下，实际上会占用 16 字节，其中低地址的 8 字节仅有最低一个字节存储了 <code>val</code>，而剩余的为占位符。</p>
-<p>原因是简单的，现代的 CPU 在从主存之中读取数据的时候是同时读取多个，比如说一次性读取 8 个字节。实际上这种读取方式就将每 8 个字节的存储空间划分为了一个机器字（机器字的定义见 <a href="#机器字和字节序">绪论</a>），如果数据在同一个机器字之中，那么一次读取就可以将所有数据读出来。但如果数据跨越了两个机器字，那么就需要两次读取。</p>
+<p>如果按照正常思维推测，一个字符和一个指针应该只需要 9 字节，但在
+X86-64 架构下，实际上会占用 16 字节，其中低地址的 8
+字节仅有最低一个字节存储了 <code>val</code>，而剩余的为占位符。</p>
+<p>原因是简单的，现代的 CPU
+在从主存之中读取数据的时候是同时读取多个，比如说一次性读取 8
+个字节。实际上这种读取方式就将每 8
+个字节的存储空间划分为了一个机器字（机器字的定义见 <a
+href="#机器字和字节序">绪论</a>），如果数据在同一个机器字之中，那么一次读取就可以将所有数据读出来。但如果数据跨越了两个机器字，那么就需要两次读取。</p>
 <p>所以说编译器会故意在存储结构的空间内部塞入若干的空白空间让每一个成员的数据不跨越机器字以保证读取效率。</p>
 <p>另外我们也注意到，变量的声明顺序实际上会影响具体的空间分配。比如说：</p>
 <figure class="highlight cpp"><figcaption><span>C++</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">S1</span> &#123;</span></span><br><span class="line">    <span class="keyword">char</span> a;</span><br><span class="line">    S1* next;</span><br><span class="line">    <span class="keyword">char</span> b;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">S2</span> &#123;</span></span><br><span class="line">    <span class="keyword">char</span> a;</span><br><span class="line">    <span class="keyword">char</span> b;</span><br><span class="line">    S2* next;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>这里，结构 <code>S1</code> 占用 24 字节，而结构 <code>S2</code> 占用 16 字节。这是因为 <code>S1</code> 在存放 <code>a</code> 后不得不空出 7 字节，否则 <code>next</code> 就会跨机器字。而 <code>S2</code> 中可以先把 <code>a, b</code> 都放置好之后，只需要空出 6 字节就可以让 <code>next</code> 不跨机器字。</p>
+<p>这里，结构 <code>S1</code> 占用 24 字节，而结构 <code>S2</code> 占用
+16 字节。这是因为 <code>S1</code> 在存放 <code>a</code> 后不得不空出 7
+字节，否则 <code>next</code> 就会跨机器字。而 <code>S2</code> 中可以先把
+<code>a, b</code> 都放置好之后，只需要空出 6 字节就可以让
+<code>next</code> 不跨机器字。</p>
 <h2 id="联合数据的存储">联合数据的存储</h2>
 <p>联合数据类型可以定义多个成员，但是一个联合数据类型的变量在任何时候只能指代某一个成员。这些成员享有同一片存储空间，而联合所占据的空间即其中最大成员占据的空间。比如说：</p>
 <figure class="highlight cpp"><figcaption><span>C++</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">union</span> <span class="title">U1</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span>[<span class="number">2</span>] i;</span><br><span class="line">    <span class="keyword">char</span> c;</span><br><span class="line">    <span class="keyword">double</span> v;</span><br><span class="line">&#125; *p;</span><br></pre></td></tr></table></figure>
-<p>这里联合的三个成员分别应该占用 1 字节、 8 字节、 8 字节，所以最后联合占据 8 字节。</p>
+<p>这里联合的三个成员分别应该占用 1 字节、 8 字节、 8
+字节，所以最后联合占据 8 字节。</p>
 <h1 id="程序的链接">程序的链接</h1>
 <h2 id="链接的基本概念">链接的基本概念</h2>
 <p>多个源代码文件编译成为可执行文件的时候需要经过一个重要过程，即<strong>链接（Linking）</strong>，含义就是将各个独立的文件链接为单一的最终文件。这样做的好处是，某一个文件发生修改，只需要对这个文件编译并重新链接即可，不需要再次编译其他文件。同时，一些常用函数可以事先编译为一个库，需要使用的时候再将其链接进入最后的可执行文件即可。</p>
-<p>链接之前，编译器首先会将每一个源代码文件之中每一个符号存储起来，存储的内容包括符号名称、其占据的内存大小和其在主存之中的地址，这就构成了<strong>符号表（Symbol table）</strong>。随后链接器将所有源代码文件综合为单个文件后，会将符号表之中的地址更新为绝对地址。</p>
+<p>链接之前，编译器首先会将每一个源代码文件之中每一个符号存储起来，存储的内容包括符号名称、其占据的内存大小和其在主存之中的地址，这就构成了<strong>符号表（Symbol
+table）</strong>。随后链接器将所有源代码文件综合为单个文件后，会将符号表之中的地址更新为绝对地址。</p>
 <h2 id="elf-格式和符号分析">ELF 格式和符号分析</h2>
-<p>可以被链接的文件一般有<strong>可重定向对象文件</strong>和<strong>共享对象文件</strong>，前者扩展名通常为 <code>.o</code>，后者则多为 <code>.dll / .so</code>。后者是特殊类型的重定向对象文件，可以被装载入内存后进行动态链接，其链接可以在装载时或者运行时完成。上述两种文件以及可执行文件，这三种二进制文件都必须要符合 <strong>ELF（Executable &amp; Linkable Format）</strong>格式。</p>
+<p>可以被链接的文件一般有<strong>可重定向对象文件</strong>和<strong>共享对象文件</strong>，前者扩展名通常为
+<code>.o</code>，后者则多为
+<code>.dll / .so</code>。后者是特殊类型的重定向对象文件，可以被装载入内存后进行动态链接，其链接可以在装载时或者运行时完成。上述两种文件以及可执行文件，这三种二进制文件都必须要符合
+<strong>ELF（Executable &amp; Linkable Format）</strong>格式。</p>
 <p>ELF 格式的文件依次具有以下的部分：</p>
 <ul>
-<li><p>ELF header 部分。这一部分会存储与这个文件相关的基本信息。</p></li>
-<li><p>Segment header table。这一部分只有可执行文件具有，会存储一些和可执行相关的内容。</p></li>
+<li><p>ELF header
+部分。这一部分会存储与这个文件相关的基本信息。</p></li>
+<li><p>Segment header
+table。这一部分只有可执行文件具有，会存储一些和可执行相关的内容。</p></li>
 <li><p><code>.text</code> 部分。这一部分存储代码。</p></li>
-<li><p><code>.rodata</code> 部分。这一部分存储只读数据，比如说跳转表。</p></li>
-<li><p><code>.data</code> 部分。这一部分存储初始化过的全局变量。</p></li>
+<li><p><code>.rodata</code>
+部分。这一部分存储只读数据，比如说跳转表。</p></li>
+<li><p><code>.data</code>
+部分。这一部分存储初始化过的全局变量。</p></li>
 <li><p><code>.bss</code> 部分。这一部分存储未初始化的全局变量。</p></li>
 <li><p><code>.symtab</code> 部分。这一部分存储符号表。</p></li>
-<li><p><code>.rel.text</code> 部分。这一部分是 <code>.text</code> 部分的重定向信息。</p></li>
-<li><p><code>.rel.data</code> 部分。这一部分是 <code>.data</code> 部分的重定向信息。</p></li>
+<li><p><code>.rel.text</code> 部分。这一部分是 <code>.text</code>
+部分的重定向信息。</p></li>
+<li><p><code>.rel.data</code> 部分。这一部分是 <code>.data</code>
+部分的重定向信息。</p></li>
 </ul>
 <p>后续还有一些部分，这里暂且不用讨论。</p>
-<p>这里可以提一下 <code>.bss</code> 区设立的原因。<code>.bss</code> 区域的数据不会存储数据类型，并且会默认将这一部分数据的每一个字节全部置 <code>0x00</code>，作为系统默认的初始化。这样做显然要比既要存储数据类型，又要存储数据初始值的 <code>.data</code> 区高效。而能够这样粗暴解决问题的原因是系统约定了非静态全局变量的默认初始化方式为全 <code>0</code>，以及汇编并不区分各种不同的数据类型。</p>
+<p>这里可以提一下 <code>.bss</code> 区设立的原因。<code>.bss</code>
+区域的数据不会存储数据类型，并且会默认将这一部分数据的每一个字节全部置
+<code>0x00</code>，作为系统默认的初始化。这样做显然要比既要存储数据类型，又要存储数据初始值的
+<code>.data</code>
+区高效。而能够这样粗暴解决问题的原因是系统约定了非静态全局变量的默认初始化方式为全
+<code>0</code>，以及汇编并不区分各种不同的数据类型。</p>
 <hr />
 <p>在叙述链接过程之前，我们首先要叙述符号的概念。一个程序之中的符号分为三类，即<strong>全局符号</strong>、<strong>局部符号</strong>和<strong>外部符号</strong>。注意，这里全局符号和局部符号的区别不是全局变量和局部变量的区别。局部符号指的是在该模块定义且只可以让该模块引用的符号，包括静态和非静态的局部变量、静态函数和静态全局变量。而全局符号则是可以供给其他模块使用的符号，包括非静态的全局变量和函数。</p>
-<p>首先说外部符号，其含义很简单，就是引用的其他模块的符号。包括其他模块开放的非静态全局变量和函数。可以用 <code>extern</code> 关键字声明外部符号，即声明该符号将会在链接的时候再具体给出定义，本文件只是做一个引用。</p>
+<p>首先说外部符号，其含义很简单，就是引用的其他模块的符号。包括其他模块开放的非静态全局变量和函数。可以用
+<code>extern</code>
+关键字声明外部符号，即声明该符号将会在链接的时候再具体给出定义，本文件只是做一个引用。</p>
 <p>程序中定义的非静态局部变量，链接器并不会分析。非静态局部变量将会在运行的时候被存储在程序栈之中，使用完立刻释放。</p>
-<p>而静态局部变量会被存放在可重定向文件之中的 <code>.data</code> 或者 <code>.bss</code> 部分。对于命名冲突的静态局部变量，编译的时候会给他们赋予后缀以示区分。</p>
-<p>对于静态的全局变量和函数，其实际上是局部符号（<code>static</code> 关键字限制了这些变量和函数只能在本模块之中使用），所以其存放在可重定向文件之中的 <code>.data, .bss, .text</code> 部分。其中函数存放在 <code>.data</code> 部分。而如果多个文件中声明了同名的静态全局变量和函数，并不会冲突。</p>
-<p>非静态的全局变量和函数一般也是存放在 <code>.data, .bss, .text</code> 部分。这个时候也有可能出现命名冲突，但此时必须作出区分。此时需要引入<strong>强符号（Strong symbol）</strong>和<strong>弱符号（Weak symbol）</strong>的定义。这个定义只对非静态的全局变量和函数成立，其中未被初始化的非静态全局变量被称为弱符号，否则是强符号。</p>
+<p>而静态局部变量会被存放在可重定向文件之中的 <code>.data</code> 或者
+<code>.bss</code>
+部分。对于命名冲突的静态局部变量，编译的时候会给他们赋予后缀以示区分。</p>
+<p>对于静态的全局变量和函数，其实际上是局部符号（<code>static</code>
+关键字限制了这些变量和函数只能在本模块之中使用），所以其存放在可重定向文件之中的
+<code>.data, .bss, .text</code> 部分。其中函数存放在 <code>.data</code>
+部分。而如果多个文件中声明了同名的静态全局变量和函数，并不会冲突。</p>
+<p>非静态的全局变量和函数一般也是存放在 <code>.data, .bss, .text</code>
+部分。这个时候也有可能出现命名冲突，但此时必须作出区分。此时需要引入<strong>强符号（Strong
+symbol）</strong>和<strong>弱符号（Weak
+symbol）</strong>的定义。这个定义只对非静态的全局变量和函数成立，其中未被初始化的非静态全局变量被称为弱符号，否则是强符号。</p>
 <p>链接器的原则是：</p>
 <ul>
 <li><p>不允许出现强符号命名冲突，否则链接失败。</p></li>
 <li><p>有强符号和弱符号的命名冲突则将弱符号的指代指向强符号（强制覆盖弱符号）。</p></li>
 <li><p>弱符号之间的命名冲突，则任取其中之一作为代表，其余弱符号指向被选中的弱符号。</p></li>
 </ul>
-<p>由于存在强制覆盖，我们应当减少全局变量的使用，或者使用静态的全局变量。如果需要使用，尽量将其初始化变为强符号。并且在使用其他模块的全局变量的时候，尽量先使用 <code>extern</code> 关键字声明这个变量。</p>
+<p>由于存在强制覆盖，我们应当减少全局变量的使用，或者使用静态的全局变量。如果需要使用，尽量将其初始化变为强符号。并且在使用其他模块的全局变量的时候，尽量先使用
+<code>extern</code> 关键字声明这个变量。</p>
 <h2 id="代码和数据重定向">代码和数据重定向</h2>
-<p>在处理完毕符号后，就可以开始链接了。现在有若干的可重定向对象文件，其中 <code>.text</code> 部分存储着代码，<code>.data</code> 部分存储着变量数据。这些文件的代码之中可能包含着函数调用，而我们知道函数调用需要知道函数在内存之中的位置。编译器在编译生成可重定向对象文件的时候有两个重要信息是不了解的：</p>
+<p>在处理完毕符号后，就可以开始链接了。现在有若干的可重定向对象文件，其中
+<code>.text</code> 部分存储着代码，<code>.data</code>
+部分存储着变量数据。这些文件的代码之中可能包含着函数调用，而我们知道函数调用需要知道函数在内存之中的位置。编译器在编译生成可重定向对象文件的时候有两个重要信息是不了解的：</p>
 <ul>
 <li><p>这个模块之中的函数最终会被存放在内存的什么地方。</p></li>
 <li><p>这个模块所引用的其他模块的函数的地址是什么。</p></li>
 </ul>
-<p>针对第一个问题，编译器会存放<strong>相对地址</strong>，也就是这个模块之中的所有函数的地址都是相对于这个模块而言的，而不能表示最后的绝对地址。针对第二个问题，编译器可能会选择将地址留空，比如使用 <code>0x00</code> 留空，之后会在 <code>.rel.data</code> 或者 <code>.rel.text</code> 部分留下信息告诉链接器要补全这里的地址。</p>
+<p>针对第一个问题，编译器会存放<strong>相对地址</strong>，也就是这个模块之中的所有函数的地址都是相对于这个模块而言的，而不能表示最后的绝对地址。针对第二个问题，编译器可能会选择将地址留空，比如使用
+<code>0x00</code> 留空，之后会在 <code>.rel.data</code> 或者
+<code>.rel.text</code> 部分留下信息告诉链接器要补全这里的地址。</p>
 <p>到这里，编译器的任务就完成了，接下来链接器会修正相对地址并填充留空地址。</p>
-<p>首先链接器会将所有可重定向对象文件的 <code>.data</code> 部分拼接为可执行文件的 <code>.data</code> 部分，<code>.text</code> 部分也如此。拼接完成后，所有函数和全局变量的绝对地址就确定了，链接器会将所有需要调整的相对地址调整为目前的绝对地址，并填充留空地址。</p>
+<p>首先链接器会将所有可重定向对象文件的 <code>.data</code>
+部分拼接为可执行文件的 <code>.data</code> 部分，<code>.text</code>
+部分也如此。拼接完成后，所有函数和全局变量的绝对地址就确定了，链接器会将所有需要调整的相对地址调整为目前的绝对地址，并填充留空地址。</p>
 <h2 id="库链接">库链接</h2>
-<p>我们提到过，一些常用函数会被事先编译为可重定向对象文件，在使用的时候再链接进入程序。但是一般而言这样的函数库是很大的，如果完全链接进入，则相当消耗时间空间。所以有另外一个解决方案，就是将每一个函数都打包为可重定向对象文件，然后把这些可重定向对象文件打包为<strong>静态库文件</strong>，也称<strong>归档文件（Archive file）</strong>。归档文件的扩展名常常为 <code>.a</code>。</p>
+<p>我们提到过，一些常用函数会被事先编译为可重定向对象文件，在使用的时候再链接进入程序。但是一般而言这样的函数库是很大的，如果完全链接进入，则相当消耗时间空间。所以有另外一个解决方案，就是将每一个函数都打包为可重定向对象文件，然后把这些可重定向对象文件打包为<strong>静态库文件</strong>，也称<strong>归档文件（Archive
+file）</strong>。归档文件的扩展名常常为 <code>.a</code>。</p>
 <p>归档文件之中每一个可重定向对象文件是具有索引的，基于此，我们让链接器能够在用户编写的代码之中解析外部符号，并且能够在静态库之中寻找出相应的可重定向对象文件进行链接。</p>
 <p>现代的静态库一般允许增量更新。</p>
-<p>静态库的缺点在于可执行文件以及运行时内存之中会重复包含库文件函数和数据，同时如果库文件发生变动，则所有的相关文件都需要重新链接。目前已有的解决方式是使用<strong>共享库文件</strong>，其特征在 <a href="#elf-格式和符号分析">ELF 格式和符号分析</a> 部分已经说明。</p>
+<p>静态库的缺点在于可执行文件以及运行时内存之中会重复包含库文件函数和数据，同时如果库文件发生变动，则所有的相关文件都需要重新链接。目前已有的解决方式是使用<strong>共享库文件</strong>，其特征在
+<a href="#elf-格式和符号分析">ELF 格式和符号分析</a> 部分已经说明。</p>
 <h1 id="内存布局与缓冲区">内存布局与缓冲区</h1>
-<p>在 X86-64 架构下，主存的最高地址部分是程序栈，其栈顶由 <code>%rsp</code> 管理，且栈空间向低地址增长。程序栈一般具有 8MB 的空间限制。程序栈用于存放局部变量等数据。</p>
+<p>在 X86-64 架构下，主存的最高地址部分是程序栈，其栈顶由
+<code>%rsp</code> 管理，且栈空间向低地址增长。程序栈一般具有 8MB
+的空间限制。程序栈用于存放局部变量等数据。</p>
 <p>之后就是分配给每一个任务的存储空间，每一个任务都会在主存之中占用一片空间，这片空间从高地址到低地址的分配为：</p>
 <ul>
-<li><p>堆。堆空间可以根据程序需要动态分配，如 C 语言的 <code>malloc</code> 函数。堆空间向高地址增长。</p></li>
-<li><p>静态数据。这一部分数据会在将可执行文件加载到主存的时候写入内容，写入的内容就是可执行文件的 <code>.data</code> 部分，称为<strong>数据段</strong>。</p></li>
-<li><p>机器代码。这一部分就是可执行文件的 <code>.text</code> 部分，称为<strong>代码段</strong>。</p></li>
+<li><p>堆。堆空间可以根据程序需要动态分配，如 C 语言的
+<code>malloc</code> 函数。堆空间向高地址增长。</p></li>
+<li><p>静态数据。这一部分数据会在将可执行文件加载到主存的时候写入内容，写入的内容就是可执行文件的
+<code>.data</code> 部分，称为<strong>数据段</strong>。</p></li>
+<li><p>机器代码。这一部分就是可执行文件的 <code>.text</code>
+部分，称为<strong>代码段</strong>。</p></li>
 </ul>
-<p>而程序栈的构成，先前已经叙述过。即分为若干的栈帧，其中栈帧高地址的 8 字节存放这个栈帧的返回地址，剩余的部分存放临时变量等数据。</p>
+<p>而程序栈的构成，先前已经叙述过。即分为若干的栈帧，其中栈帧高地址的 8
+字节存放这个栈帧的返回地址，剩余的部分存放临时变量等数据。</p>
 <hr />
-<p>这个时候就可以引入缓冲区溢出攻击了。这个攻击利用的是类似 <code>gets()</code> 等不限制读入长度的函数，可能会越过预留空间对程序栈进行非法写入的漏洞。</p>
+<p>这个时候就可以引入缓冲区溢出攻击了。这个攻击利用的是类似
+<code>gets()</code>
+等不限制读入长度的函数，可能会越过预留空间对程序栈进行非法写入的漏洞。</p>
 <p>比如说函数 <code>foo()</code> 之中调用了 <code>gets()</code>：</p>
 <figure class="highlight cpp"><figcaption><span>C++</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span> buf[<span class="number">4</span>];</span><br><span class="line">    <span class="built_in">gets</span>(buf);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>而函数 <code>foo()</code> 执行的时候是会分配一个栈帧给这个函数存放 <code>buf</code> 这个临时变量的。但是由于 <code>gets()</code> 不限制读入长度，所以我们可以输入相当长的字符串，这样的话就会一直向栈帧的高地址写入，从而会覆写掉返回地址，甚至是上一个函数的栈帧。这样，在 <code>foo()</code> 结束进行返回的时候，就可以控制其跳转到指定的位置执行我们注入的程序。</p>
-<p>防御这种攻击的方法也很多。一种是使用可以限制读入长度的函数，如 <code>fgets()</code>。一种是给栈内部加入随机长度的无意义数据，让攻击方无法准确预测 PC 应当跳转到何处。还有比如说可以限制执行权限，让这一片区域的内存不能作为机器指令执行。此外还可以让函数在返回之前检查栈帧是否被修改等等。</p>
+<p>而函数 <code>foo()</code> 执行的时候是会分配一个栈帧给这个函数存放
+<code>buf</code> 这个临时变量的。但是由于 <code>gets()</code>
+不限制读入长度，所以我们可以输入相当长的字符串，这样的话就会一直向栈帧的高地址写入，从而会覆写掉返回地址，甚至是上一个函数的栈帧。这样，在
+<code>foo()</code>
+结束进行返回的时候，就可以控制其跳转到指定的位置执行我们注入的程序。</p>
+<p>防御这种攻击的方法也很多。一种是使用可以限制读入长度的函数，如
+<code>fgets()</code>。一种是给栈内部加入随机长度的无意义数据，让攻击方无法准确预测
+PC
+应当跳转到何处。还有比如说可以限制执行权限，让这一片区域的内存不能作为机器指令执行。此外还可以让函数在返回之前检查栈帧是否被修改等等。</p>
 <h1 id="x86-汇编编程基础">X86 汇编编程基础</h1>
 <p><code>TODO</code></p>
 <h1 id="异常">异常</h1>
 <h2 id="基本原理">基本原理</h2>
 <p><strong>异常（Exception）</strong>指的是会阻止程序正常执行，并且会引起状态切换（比如从用户态切换到内核态）的事件。异常分为同步异常和异步异常。</p>
-<p>同步异常一般有三种，即 <strong>Trap</strong>、<strong>Fault</strong> 以及 <strong>Abort</strong>。其中，Trap 一般是由程序主动触发的，比如说产生了系统调用 syscall，或者是触发了断点或者是使用了 Trap 命令，其恢复之后会跳转到原命令的下一条继续执行。Fault 往往是由程序出现的一些问题触发的，一般这种问题都是可以恢复的，恢复之后会重新执行原命令。Abort 则是由不可恢复的问题触发的异常，会引起程序退出。</p>
-<p>异步异常则一般由外部事件触发，比如说 IO 设备中断，发生系统重置等等。一般而言，在 MIPS 架构下，如果发生的时候命令已经执行完毕 MEM 阶段，系统会保证这条命令的流水线执行完毕。否则这条流水线会被废弃。这里有关 MIPS 流水线的叙述可以查看下面的 MIPS32 基础。</p>
+<p>同步异常一般有三种，即 <strong>Trap</strong>、<strong>Fault</strong>
+以及 <strong>Abort</strong>。其中，Trap
+一般是由程序主动触发的，比如说产生了系统调用
+syscall，或者是触发了断点或者是使用了 Trap
+命令，其恢复之后会跳转到原命令的下一条继续执行。Fault
+往往是由程序出现的一些问题触发的，一般这种问题都是可以恢复的，恢复之后会重新执行原命令。Abort
+则是由不可恢复的问题触发的异常，会引起程序退出。</p>
+<p>异步异常则一般由外部事件触发，比如说 IO
+设备中断，发生系统重置等等。一般而言，在 MIPS
+架构下，如果发生的时候命令已经执行完毕 MEM
+阶段，系统会保证这条命令的流水线执行完毕。否则这条流水线会被废弃。这里有关
+MIPS 流水线的叙述可以查看下面的 MIPS32 基础。</p>
 <h1 id="虚拟内存">虚拟内存</h1>
 <h2 id="基本原理-1">基本原理</h2>
-<p>我们先前提到过，每一个进程都会分配到一片内存空间，用于存放数据段、代码段并且分配堆空间。但是我们也会注意到，有的进程用不到如此大的内存空间，很容易出现分配了空间但几乎不可能使用的现象。这个问题的一个解决方案是<strong>虚拟内存（Virtual memory）</strong>，其相当类似于懒分配，即真正使用到某一块内存的时候再进行分配。</p>
-<p>虚拟内存的工作原理大致为，对于每一个新进程，会分配连续的虚拟内存空间。进程使用到某一个存储地址的时候，处理器会去虚存地址和物理内存地址对照表（这个表一般称为<strong>页表（Page table）</strong>，并且每个进程都会有自己的页表）之中寻找这个虚拟内存地址所对应的真实地址，如果发现还没有给这个虚存地址分配物理内存空间，则会分配并建立两者之间的映射。</p>
-<p>虚拟内存地址通常简称为<strong>虚址（Virtual address）</strong>。上述过程中负责将虚址转换为物理地址的单元称为<strong>内存管理单元（MMU）</strong>。</p>
+<p>我们先前提到过，每一个进程都会分配到一片内存空间，用于存放数据段、代码段并且分配堆空间。但是我们也会注意到，有的进程用不到如此大的内存空间，很容易出现分配了空间但几乎不可能使用的现象。这个问题的一个解决方案是<strong>虚拟内存（Virtual
+memory）</strong>，其相当类似于懒分配，即真正使用到某一块内存的时候再进行分配。</p>
+<p>虚拟内存的工作原理大致为，对于每一个新进程，会分配连续的虚拟内存空间。进程使用到某一个存储地址的时候，处理器会去虚存地址和物理内存地址对照表（这个表一般称为<strong>页表（Page
+table）</strong>，并且每个进程都会有自己的页表）之中寻找这个虚拟内存地址所对应的真实地址，如果发现还没有给这个虚存地址分配物理内存空间，则会分配并建立两者之间的映射。</p>
+<p>虚拟内存地址通常简称为<strong>虚址（Virtual
+address）</strong>。上述过程中负责将虚址转换为物理地址的单元称为<strong>内存管理单元（MMU）</strong>。</p>
 <h2 id="页和页缺失">页和页缺失</h2>
-<p>一般而言，我们会将一片固定大小的连续虚存集合起来成为一个<strong>页（Page）</strong>，而每一个虚存的页映射到物理地址空间也是一片连续的空间，这被称为<strong>页帧（Page frame）</strong>。相对应的页和页帧具有相同的大小。MMU 进行地址映射的时候都是以页为单位的。</p>
-<p>基于页的结构，处理器实际上传输给 MMU 进行转换的虚地址可以分为两个部分。前半部分为<strong>虚页码（Virtual page number / VPN）</strong>，后半部分是<strong>页内偏置（Page offset）</strong>。虚页码指明了虚存之中我需要映射的字节位于具体哪一页，而页内偏置则表明了我需要映射的字节在页内是第几个字节。</p>
-<p>MMU 所进行的页码映射就是将虚页码根据页表映射为<strong>物理页码（Physical page number / PPN）</strong>，之后根据页内偏置获取最后实际的数据。</p>
-<p>如果某次映射之中，某个页没有找到对应的页帧，就会触发<strong>页缺失（Page fault）</strong>。页缺失产生后，系统会转入内核态，调用异常处理代码将所需要的数据从外部存储读入内存以解决异常。</p>
+<p>一般而言，我们会将一片固定大小的连续虚存集合起来成为一个<strong>页（Page）</strong>，而每一个虚存的页映射到物理地址空间也是一片连续的空间，这被称为<strong>页帧（Page
+frame）</strong>。相对应的页和页帧具有相同的大小。MMU
+进行地址映射的时候都是以页为单位的。</p>
+<p>基于页的结构，处理器实际上传输给 MMU
+进行转换的虚地址可以分为两个部分。前半部分为<strong>虚页码（Virtual page
+number / VPN）</strong>，后半部分是<strong>页内偏置（Page
+offset）</strong>。虚页码指明了虚存之中我需要映射的字节位于具体哪一页，而页内偏置则表明了我需要映射的字节在页内是第几个字节。</p>
+<p>MMU
+所进行的页码映射就是将虚页码根据页表映射为<strong>物理页码（Physical
+page number / PPN）</strong>，之后根据页内偏置获取最后实际的数据。</p>
+<p>如果某次映射之中，某个页没有找到对应的页帧，就会触发<strong>页缺失（Page
+fault）</strong>。页缺失产生后，系统会转入内核态，调用异常处理代码将所需要的数据从外部存储读入内存以解决异常。</p>
 <h2 id="页表项的附加标记">页表项的附加标记</h2>
 <p>采用虚存机制还有一种好处，就是可以通过页表实现权限管理。页表之中的每一项除去记录页和页帧的映射之外，还可以记录这个进程对物理内存的访问权限，权限控制的具体实现则由硬件完成。</p>
-<p>另外，页表项还可以记录目前这个映射是否成立，这一位也常常被称为 valid 位。其为 <code>1</code> 则说明对应的页帧已经被加载到物理内存之中，否则代表对应的页帧还需要从外部存储之中获取。页缺失就会在 valid 位为 <code>0</code> 的时候发生。</p>
+<p>另外，页表项还可以记录目前这个映射是否成立，这一位也常常被称为 valid
+位。其为 <code>1</code>
+则说明对应的页帧已经被加载到物理内存之中，否则代表对应的页帧还需要从外部存储之中获取。页缺失就会在
+valid 位为 <code>0</code> 的时候发生。</p>
 <h2 id="快表机制">快表机制</h2>
 <p>记住这一句话就可以了：</p>
 <div class="note info no-icon"><p>快表（TLB）和页表的关系，就是缓存（Cache）和内存的关系。</p>
 </div>
-<p>TLB 相当于页表的一个高速缓存，其出现的原因是处理器所请求的内存地址往往是聚集的，也就是说某一小部分地址占据了处理器的大部分请求。所以这个时候我们可以将常用地址缓存到 TLB 之中，请求内存的时候首先查询 TLB 有无相关映射，命中则直接使用。否则再去页表之中查找，命中则直接使用，同时将这个映射缓存到 TLB 之中。TLB 满了之后会触发淘汰机制，删去使用较少的映射项。</p>
-<p>之所以提到缓存，因为内存之中的常使用部分会被加载到 cache 之中。而系统从 MMU 获取物理地址之后也会先去 cache 之中查找，找不到才会去内存之中查找。这个过程和 TLB 机制几乎一致。</p>
+<p>TLB
+相当于页表的一个高速缓存，其出现的原因是处理器所请求的内存地址往往是聚集的，也就是说某一小部分地址占据了处理器的大部分请求。所以这个时候我们可以将常用地址缓存到
+TLB 之中，请求内存的时候首先查询 TLB
+有无相关映射，命中则直接使用。否则再去页表之中查找，命中则直接使用，同时将这个映射缓存到
+TLB 之中。TLB 满了之后会触发淘汰机制，删去使用较少的映射项。</p>
+<p>之所以提到缓存，因为内存之中的常使用部分会被加载到 cache
+之中。而系统从 MMU 获取物理地址之后也会先去 cache
+之中查找，找不到才会去内存之中查找。这个过程和 TLB 机制几乎一致。</p>
 <h2 id="内存映射">内存映射</h2>
 <p><code>TODO: We may learn it later from OS class.</code></p>
 <h1 id="mips32-基础">MIPS32 基础</h1>
 <p>MIPS 架构的特征可以查看本文最开头的部分，有较为详细的介绍。</p>
-<p>这里补充一些其他的 MIPS 基础知识。这些知识并不是重点，但是会影响对 MIPS 架构细节的理解，故不单独开一个二级标题但还是需要分点一条条列出：</p>
+<p>这里补充一些其他的 MIPS 基础知识。这些知识并不是重点，但是会影响对
+MIPS
+架构细节的理解，故不单独开一个二级标题但还是需要分点一条条列出：</p>
 <ul>
 <li><p>MIPS 架构之中，一个字等于四个字节</p></li>
-<li><p>MIPS 架构下返回地址不保存在栈上，而是保存在 31 号寄存器之中</p></li>
+<li><p>MIPS 架构下返回地址不保存在栈上，而是保存在 31
+号寄存器之中</p></li>
 <li><p>MIPS 架构下 0 号寄存器永远存储常数 <code>0</code></p></li>
 <li><p>MIPS 架构不具有条件码，条件的表示全部使用寄存器</p></li>
-<li><p>MIPS32 架构除去 32 个通用寄存器，还有高位寄存器 <code>%hi</code> 以及低位寄存器 <code>%lo</code>。这两者都是 32 位寄存器，其出现的原因是需要处理整数的乘除法。另外需要注意，MIPS32 架构的立即数通常只允许 16 位，而寄存器是 32 位的，所以通常会使用这两个寄存器将 32 位数拆开表示。记号上，<code>%hi($1)</code> 这种写法代表 1 号寄存器的 16 位高位</p></li>
-<li><p>MIPS 架构下有四个传参寄存器，即 4 到 7 号寄存器。多余的参数使用栈传递</p></li>
-<li><p>MIPS 架构的命令后缀 <code>i</code> 表示立即数，<code>u</code> 表示不启用溢出检测。比如说 <code>addiu</code> 命令表示将某一个寄存器加上一个立即数，溢出的话取模放入结果寄存器</p></li>
+<li><p>MIPS32 架构除去 32 个通用寄存器，还有高位寄存器 <code>%hi</code>
+以及低位寄存器 <code>%lo</code>。这两者都是 32
+位寄存器，其出现的原因是需要处理整数的乘除法。另外需要注意，MIPS32
+架构的立即数通常只允许 16 位，而寄存器是 32
+位的，所以通常会使用这两个寄存器将 32
+位数拆开表示。记号上，<code>%hi($1)</code> 这种写法代表 1 号寄存器的 16
+位高位</p></li>
+<li><p>MIPS 架构下有四个传参寄存器，即 4 到 7
+号寄存器。多余的参数使用栈传递</p></li>
+<li><p>MIPS 架构的命令后缀 <code>i</code> 表示立即数，<code>u</code>
+表示不启用溢出检测。比如说 <code>addiu</code>
+命令表示将某一个寄存器加上一个立即数，溢出的话取模放入结果寄存器</p></li>
 </ul>
 <h2 id="流水线结构与延迟槽">流水线结构与延迟槽</h2>
-<p>在 MIPS 架构之中，任何指令的执行都会分为五个步骤，这五个步骤由不同的硬件完成。这些步骤分别是：</p>
+<p>在 MIPS
+架构之中，任何指令的执行都会分为五个步骤，这五个步骤由不同的硬件完成。这些步骤分别是：</p>
 <ul>
 <li><p>读取指令（IF）</p></li>
 <li><p>读取寄存器（RD）</p></li>
@@ -1228,23 +1662,54 @@ B = (-1)^s M \cdot 2^E
 <li><p>访问内存（MEM）</p></li>
 <li><p>回写（WB）</p></li>
 </ul>
-<p>一个指令的五个执行步骤构成一条<strong>流水线</strong>，而不同指令的流水线是可以并发执行的，只要保证它们不会同时调用某一个硬件资源（比如说两条指令不可以同时在 IF 过程中）。</p>
-<p>而这种并行的流水线架构的优越之处就是可以最大程度利用硬件资源。比如说考虑这样的 MIPS 汇编代码：</p>
+<p>一个指令的五个执行步骤构成一条<strong>流水线</strong>，而不同指令的流水线是可以并发执行的，只要保证它们不会同时调用某一个硬件资源（比如说两条指令不可以同时在
+IF 过程中）。</p>
+<p>而这种并行的流水线架构的优越之处就是可以最大程度利用硬件资源。比如说考虑这样的
+MIPS 汇编代码：</p>
 <figure class="highlight plaintext"><figcaption><span>MIPS32 Assembly</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jal  printf</span><br><span class="line">move $4, $6</span><br><span class="line">op</span><br></pre></td></tr></table></figure>
-<p>这里 <code>jal</code> 类似于 X86 的 <code>call</code> 命令，用于调用过程。但是，与这条指令间隔一条的 <code>op</code> 指令才是 <code>printf</code> 返回后调用的指令（返回地址）。</p>
-<p>原因是 <code>jal</code> 指令流水线执行到 ALU 阶段的时候才会发生实质跳转，从 <code>jal</code> 的 IF 阶段结束到实质跳转这段时间 IF 硬件是空闲的，这段时间就被称为<strong>延迟槽（Delay slot）</strong>。但是我们可以让 IF 硬件立刻执行 <code>move $4, $6</code> 的 IF 阶段，这样在实质跳转发生前的这段延迟槽就被利用了。</p>
-<p>能这样做的原因是 <code>move</code> 指令在 RD 阶段结束后就执行完毕了，后续的阶段可以忽略或者说当成不存在。如果说 <code>jal</code> 命令之后跟随了一些需要实质 ALU 的命令，则可能会因为和 <code>jal</code> 或者所调用的过程发生硬件冲突而导致异常。所以有的时候我们可以填入 <code>nop</code> 回避掉可能的问题。</p>
+<p>这里 <code>jal</code> 类似于 X86 的 <code>call</code>
+命令，用于调用过程。但是，与这条指令间隔一条的 <code>op</code> 指令才是
+<code>printf</code> 返回后调用的指令（返回地址）。</p>
+<p>原因是 <code>jal</code> 指令流水线执行到 ALU
+阶段的时候才会发生实质跳转，从 <code>jal</code> 的 IF
+阶段结束到实质跳转这段时间 IF
+硬件是空闲的，这段时间就被称为<strong>延迟槽（Delay
+slot）</strong>。但是我们可以让 IF 硬件立刻执行 <code>move $4, $6</code>
+的 IF 阶段，这样在实质跳转发生前的这段延迟槽就被利用了。</p>
+<p>能这样做的原因是 <code>move</code> 指令在 RD
+阶段结束后就执行完毕了，后续的阶段可以忽略或者说当成不存在。如果说
+<code>jal</code> 命令之后跟随了一些需要实质 ALU 的命令，则可能会因为和
+<code>jal</code>
+或者所调用的过程发生硬件冲突而导致异常。所以有的时候我们可以填入
+<code>nop</code> 回避掉可能的问题。</p>
 <h2 id="多线程操作">多线程操作</h2>
-<p>在多线程编程之中，我们往往会涉及到多个线程对共享资源的读写操作。在 MIPS 架构中，针对这个场景，有 <code>ll</code> 和 <code>sc</code> 两个命令。</p>
-<p><code>ll</code> 全称为<strong>链接加载（Load linked）</strong>，在使用这个命令从内存之中加载数据之后，处理器会记住这一次操作，这一次操作访问的地址也会被暂时保存。</p>
-<p><code>sc</code> 全称为<strong>条件存储（Store conditional）</strong>，使用这个命令将寄存器 <code>v</code> 之中的数据存储到内存的时候，处理器会首先检查上一次 <code>ll</code> 命令操作的内存区域有没有被改动。如果没有被改动过，则存储成功，<code>v</code> 之中的值也会被写为 <code>1</code> 表示操作成功。反之，写入失败，内存不会被修改，<code>v</code> 之中的值也会被写为 <code>0</code> 表示操作失败。</p>
+<p>在多线程编程之中，我们往往会涉及到多个线程对共享资源的读写操作。在
+MIPS 架构中，针对这个场景，有 <code>ll</code> 和 <code>sc</code>
+两个命令。</p>
+<p><code>ll</code> 全称为<strong>链接加载（Load
+linked）</strong>，在使用这个命令从内存之中加载数据之后，处理器会记住这一次操作，这一次操作访问的地址也会被暂时保存。</p>
+<p><code>sc</code> 全称为<strong>条件存储（Store
+conditional）</strong>，使用这个命令将寄存器 <code>v</code>
+之中的数据存储到内存的时候，处理器会首先检查上一次 <code>ll</code>
+命令操作的内存区域有没有被改动。如果没有被改动过，则存储成功，<code>v</code>
+之中的值也会被写为 <code>1</code>
+表示操作成功。反之，写入失败，内存不会被修改，<code>v</code>
+之中的值也会被写为 <code>0</code> 表示操作失败。</p>
 <h2 id="协处理器与异常处理">协处理器与异常处理</h2>
-<p>协处理器是用于协助处理器处理类似内存管理、内存映射、异常等工作的硬件，其在可以被认为是一系列拓展寄存器。这里我们主要关注 MIPS 架构下协处理器之中的 Cause 和 Status 寄存器。</p>
-<p>MIPS 系统的一个优点就是支持精确异常处理，也就是说保证发生异常的命令之前的所有命令都可以被执行完毕，之后的命令不进行处理。而为了实现这一点，就需要精确记录异常位置，并且处理好延迟槽机制带来的问题。</p>
+<p>协处理器是用于协助处理器处理类似内存管理、内存映射、异常等工作的硬件，其在可以被认为是一系列拓展寄存器。这里我们主要关注
+MIPS 架构下协处理器之中的 Cause 和 Status 寄存器。</p>
+<p>MIPS
+系统的一个优点就是支持精确异常处理，也就是说保证发生异常的命令之前的所有命令都可以被执行完毕，之后的命令不进行处理。而为了实现这一点，就需要精确记录异常位置，并且处理好延迟槽机制带来的问题。</p>
 <p>借助协处理器，MIPS 系统处理异常的步骤大致为：</p>
 <ul>
-<li><p>保存异常现场信息。协处理器利用<strong>异常程序计数器（Exception program counter / EPC）</strong>记录异常命令的位置，Cause 寄存器会记录异常原因，且其 BD 位会记录延迟槽信息，Status 寄存器的<strong>异常标志位（EXL）</strong>被置 <code>1</code>。另外，一些相关寄存器的值也会被保存，另外 26 和 27 号寄存器会被留给异常处理。</p></li>
-<li><p>根据具体类型判定处理异常的方式。这里会使用 Cause 寄存器获取异常类型。</p></li>
+<li><p>保存异常现场信息。协处理器利用<strong>异常程序计数器（Exception
+program counter / EPC）</strong>记录异常命令的位置，Cause
+寄存器会记录异常原因，且其 BD 位会记录延迟槽信息，Status
+寄存器的<strong>异常标志位（EXL）</strong>被置
+<code>1</code>。另外，一些相关寄存器的值也会被保存，另外 26 和 27
+号寄存器会被留给异常处理。</p></li>
+<li><p>根据具体类型判定处理异常的方式。这里会使用 Cause
+寄存器获取异常类型。</p></li>
 <li><p>开辟异常处理内存空间。系统会开辟出空间并且保留一部分通用寄存器用于异常处理。</p></li>
 <li><p>处理完毕后返回。此时协处理器清空相关寄存器，跳转到原有命令继续执行。</p></li>
 </ul>
@@ -1252,15 +1717,35 @@ B = (-1)^s M \cdot 2^E
 <h2 id="mips-内存管理">MIPS 内存管理</h2>
 <p>MIPS 使用虚存机制，其虚址一般按照下述方式分配：</p>
 <ul>
-<li><p>高于 <code>0xC0000000</code> 的虚址为 kseg2 空间，其仅可以由核心态使用，使用的时候需要经过 MMU 转换，也就是说这一部分是 Mapped memory。</p></li>
-<li><p>介于 <code>0xA0000000</code> 和 <code>0xC0000000</code> 之间的虚址是 kseg1 空间，其不可以在用户态下使用，使用的时候不需要经过 MMU 转换（其虚址最高三位清零就是物理地址）。另外，这一部分不会被缓存，也就是说这一部分是 Unmapped uncached memory。</p></li>
-<li><p>介于 <code>0x80000000</code> 和 <code>0xA0000000</code> 之间的虚址是 kseg0 空间，其不可以在用户态下使用，使用的时候不需要经过 MMU 转换（其虚址最高一位清零就是物理地址）。另外，这一部分可以被缓存，也就是说这一部分是 Unmapped cached memory。</p></li>
-<li><p>低于 <code>0x80000000</code> 的虚址为 kuseg 空间，是用户态空间，使用的时候需要经过 MMU 转换，也就是说这一部分是 Mapped memory。</p></li>
+<li><p>高于 <code>0xC0000000</code> 的虚址为 kseg2
+空间，其仅可以由核心态使用，使用的时候需要经过 MMU
+转换，也就是说这一部分是 Mapped memory。</p></li>
+<li><p>介于 <code>0xA0000000</code> 和 <code>0xC0000000</code>
+之间的虚址是 kseg1 空间，其不可以在用户态下使用，使用的时候不需要经过
+MMU
+转换（其虚址最高三位清零就是物理地址）。另外，这一部分不会被缓存，也就是说这一部分是
+Unmapped uncached memory。</p></li>
+<li><p>介于 <code>0x80000000</code> 和 <code>0xA0000000</code>
+之间的虚址是 kseg0 空间，其不可以在用户态下使用，使用的时候不需要经过
+MMU
+转换（其虚址最高一位清零就是物理地址）。另外，这一部分可以被缓存，也就是说这一部分是
+Unmapped cached memory。</p></li>
+<li><p>低于 <code>0x80000000</code> 的虚址为 kuseg
+空间，是用户态空间，使用的时候需要经过 MMU 转换，也就是说这一部分是
+Mapped memory。</p></li>
 </ul>
-<p>这样划分的意图就是区分内核态和用户态对内存的访问。另外，上述划分之中有 unmapped 的内存空间，这一部分设置的缘由是系统刚启动的时候 TLB 并未初始化，不可以进行正常的地址转换，故使用 unmapped 的空间进行操作。</p>
-<p>另外，为了区分某虚拟地址属于哪一个进程，MIPS 会给虚拟地址附上 ASID 进程标识符。</p>
+<p>这样划分的意图就是区分内核态和用户态对内存的访问。另外，上述划分之中有
+unmapped 的内存空间，这一部分设置的缘由是系统刚启动的时候 TLB
+并未初始化，不可以进行正常的地址转换，故使用 unmapped
+的空间进行操作。</p>
+<p>另外，为了区分某虚拟地址属于哪一个进程，MIPS 会给虚拟地址附上 ASID
+进程标识符。</p>
 <hr />
-<p>MIPS 架构支持一种特殊的快表，即 JTLB。其内部记录的是<strong>虚页码除以 2</strong> 之后的结果和<strong>两个</strong>物理页码之间的关系，两个映射项都标注了是否 valid 以及是否允许写入（一般称为是否 dirty，如果一个页面不是 dirty 的，则会禁止写入）。</p>
+<p>MIPS 架构支持一种特殊的快表，即
+JTLB。其内部记录的是<strong>虚页码除以 2</strong>
+之后的结果和<strong>两个</strong>物理页码之间的关系，两个映射项都标注了是否
+valid 以及是否允许写入（一般称为是否 dirty，如果一个页面不是 dirty
+的，则会禁止写入）。</p>
 <p>这个时候的转换需要将虚页码先去掉末位进行查表，最后如果命中，则需要根据虚页码末位选取最终的映射项。</p>
 
     </div>
@@ -1304,7 +1789,7 @@ B = (-1)^s M \cdot 2^E
 
 <div class="copyright">
   &copy; 2021 – 
-  <span itemprop="copyrightYear">2024</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -1315,13 +1800,13 @@ B = (-1)^s M \cdot 2^E
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">453k</span>
+    <span title="站点总字数">456k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">6:52</span>
+    <span title="站点阅读时长">6:54</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动

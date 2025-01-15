@@ -166,7 +166,7 @@ $(function () {
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">12</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">50</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">51</span></a></li>
         <li class="menu-item menu-item-skill-docs"><a href="https://sast-skill-docers.github.io/sast-skill-docs/" rel="noopener" target="_blank"><i class="fa fa-book fa-fw"></i>技能引导文档</a></li>
         <li class="menu-item menu-item-thuinfo"><a href="https://www.thuinfo.net/" rel="noopener" target="_blank"><i class="fa fa-sitemap fa-fw"></i>THUInfo</a></li>
         <li class="menu-item menu-item-se-index"><a href="https://thuse-course.github.io/course-index/" rel="noopener" target="_blank"><i class="fa fa-calendar fa-fw"></i>软工课程主页</a></li>
@@ -243,7 +243,7 @@ $(function () {
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">50</span>
+          <span class="site-state-item-count">51</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -423,42 +423,107 @@ $(function () {
         <p>本来应该干活的，结果发现 CMO 题出来了，无聊就来做了一下。</p>
 <span id="more"></span>
 <h1 id="problem">Problem</h1>
-<p>已知锐角三角形 <span class="math inline">\(\triangle ABC\)</span>，在 <span class="math inline">\(BC\)</span> 延长线上有点 <span class="math inline">\(K\)</span>，过 <span class="math inline">\(K\)</span> 分别作 <span class="math inline">\(AB, AC\)</span> 的平行线 <span class="math inline">\(KP, KQ\)</span> 令 <span class="math inline">\(BK = BP, CK = CQ\)</span>。<span class="math inline">\(\triangle KPQ\)</span> 的外接圆与 <span class="math inline">\(AK\)</span> 相较于点 <span class="math inline">\(T\)</span>。证明：</p>
+<p>已知锐角三角形 <span class="math inline">\(\triangle ABC\)</span>，在
+<span class="math inline">\(BC\)</span> 延长线上有点 <span
+class="math inline">\(K\)</span>，过 <span
+class="math inline">\(K\)</span> 分别作 <span class="math inline">\(AB,
+AC\)</span> 的平行线 <span class="math inline">\(KP, KQ\)</span> 令
+<span class="math inline">\(BK = BP, CK = CQ\)</span>。<span
+class="math inline">\(\triangle KPQ\)</span> 的外接圆与 <span
+class="math inline">\(AK\)</span> 相较于点 <span
+class="math inline">\(T\)</span>。证明：</p>
 <ol type="1">
-<li><span class="math inline">\(\angle BTC + \angle APB = \angle CQA\)</span></li>
-<li><span class="math inline">\(AP\cdot BT\cdot CQ = AQ\cdot CT\cdot BP\)</span></li>
+<li><span class="math inline">\(\angle BTC + \angle APB = \angle
+CQA\)</span></li>
+<li><span class="math inline">\(AP\cdot BT\cdot CQ = AQ\cdot CT\cdot
+BP\)</span></li>
 </ol>
 <h1 id="analysis-solution">Analysis &amp; Solution</h1>
 <p>总之先画图：</p>
 <p><image src="/uploads/cmo-geo/1.png" style="zoom:50%;" /></p>
-<p>总之立刻从 <span class="math inline">\(P, Q\)</span> 是对应点发现，第一个要证明的角度关系应该改写为 <span class="math inline">\(\angle BTC = \angle CQA - \angle APB\)</span>。之后，很显然就要去想如何去转化 <span class="math inline">\(\angle CQA\)</span>。这里有个初中数学就知道的东西，等腰三角形 <span class="math inline">\(CQK\)</span>，然后还有 <span class="math inline">\(CA \parallel QK\)</span>，很快就有 <span class="math inline">\(CA\)</span> 平分 <span class="math inline">\(\angle BCQ\)</span>。这个平分有个相当大的作用，就是我可以把 <span class="math inline">\(Q\)</span> 给对称下来了，同理 <span class="math inline">\(P\)</span> 也可以：</p>
+<p>总之立刻从 <span class="math inline">\(P, Q\)</span>
+是对应点发现，第一个要证明的角度关系应该改写为 <span
+class="math inline">\(\angle BTC = \angle CQA - \angle
+APB\)</span>。之后，很显然就要去想如何去转化 <span
+class="math inline">\(\angle
+CQA\)</span>。这里有个初中数学就知道的东西，等腰三角形 <span
+class="math inline">\(CQK\)</span>，然后还有 <span
+class="math inline">\(CA \parallel QK\)</span>，很快就有 <span
+class="math inline">\(CA\)</span> 平分 <span
+class="math inline">\(\angle
+BCQ\)</span>。这个平分有个相当大的作用，就是我可以把 <span
+class="math inline">\(Q\)</span> 给对称下来了，同理 <span
+class="math inline">\(P\)</span> 也可以：</p>
 <p><image src="/uploads/cmo-geo/2.png" style="zoom:50%;" /></p>
-<p>然后这里就得到了 <span class="math inline">\(\angle CQA - \angle APB = \angle CDA - \angle AEB = \angle DAE\)</span>，我们要证明的关系就从三个角变成了两个角。再来考虑 <span class="math inline">\(D, E\)</span> 的特点，不难根据刚刚的相等发现 <span class="math inline">\(B\)</span> 是 <span class="math inline">\(KE\)</span> 的中点，<span class="math inline">\(C\)</span> 是 <span class="math inline">\(KD\)</span> 的中点，那么这么多中点其实就给了我们把 <span class="math inline">\(\angle DAE\)</span> “拉到”图形里面的一个思路。找 <span class="math inline">\(KA\)</span> 的中点 <span class="math inline">\(M\)</span>，立刻就有 <span class="math inline">\(\angle DAE = \angle BMC\)</span>。这个时候我们要证明的，其实就是 <span class="math inline">\(B, C, T, M\)</span> 四点共圆：</p>
+<p>然后这里就得到了 <span class="math inline">\(\angle CQA - \angle APB
+= \angle CDA - \angle AEB = \angle
+DAE\)</span>，我们要证明的关系就从三个角变成了两个角。再来考虑 <span
+class="math inline">\(D, E\)</span> 的特点，不难根据刚刚的相等发现 <span
+class="math inline">\(B\)</span> 是 <span
+class="math inline">\(KE\)</span> 的中点，<span
+class="math inline">\(C\)</span> 是 <span
+class="math inline">\(KD\)</span> 的中点，那么这么多中点其实就给了我们把
+<span class="math inline">\(\angle DAE\)</span>
+“拉到”图形里面的一个思路。找 <span class="math inline">\(KA\)</span>
+的中点 <span class="math inline">\(M\)</span>，立刻就有 <span
+class="math inline">\(\angle DAE = \angle
+BMC\)</span>。这个时候我们要证明的，其实就是 <span
+class="math inline">\(B, C, T, M\)</span> 四点共圆：</p>
 <p><image src="/uploads/cmo-geo/3.png" style="zoom:60%;" /></p>
-<p>到这一步，找这个共圆就几乎不能走角度的路线了，因为好用的好描述的角基本都用完了，所以该去找线段关系了，显然我们要用圆幂定理，不难发现我们应该尝试去证明 <span class="math inline">\(KM\cdot KT = KB\cdot KC\)</span>，也就是 <span class="math inline">\(KA\cdot KT = 2KB\cdot KC\)</span>。比较麻烦的是 <span class="math inline">\(KT\)</span>，因为这条线段最难描述。然而思考 <span class="math inline">\(T\)</span> 的成因，不难发现 <span class="math inline">\(AK\)</span> 是 <span class="math inline">\(\triangle KPQ\)</span> 的外接圆的截线，其实可以先在 <span class="math inline">\(\triangle KPQ\)</span> 的外接圆上搞一步圆幂去把 <span class="math inline">\(T\)</span> 消掉。</p>
-<p>要去思考 <span class="math inline">\(A\)</span> 对 <span class="math inline">\(\triangle KPQ\)</span> 的外接圆的幂，其实最直接的想法就是去找 <span class="math inline">\(\triangle KPQ\)</span> 的外心，然而不难发现这个外心真的是位置太好了，这玩意就是 <span class="math inline">\(A\)</span> 关于 <span class="math inline">\(\triangle ABC\)</span> 外心的对称点。</p>
+<p>到这一步，找这个共圆就几乎不能走角度的路线了，因为好用的好描述的角基本都用完了，所以该去找线段关系了，显然我们要用圆幂定理，不难发现我们应该尝试去证明
+<span class="math inline">\(KM\cdot KT = KB\cdot KC\)</span>，也就是
+<span class="math inline">\(KA\cdot KT = 2KB\cdot
+KC\)</span>。比较麻烦的是 <span
+class="math inline">\(KT\)</span>，因为这条线段最难描述。然而思考 <span
+class="math inline">\(T\)</span> 的成因，不难发现 <span
+class="math inline">\(AK\)</span> 是 <span
+class="math inline">\(\triangle KPQ\)</span>
+的外接圆的截线，其实可以先在 <span class="math inline">\(\triangle
+KPQ\)</span> 的外接圆上搞一步圆幂去把 <span
+class="math inline">\(T\)</span> 消掉。</p>
+<p>要去思考 <span class="math inline">\(A\)</span> 对 <span
+class="math inline">\(\triangle KPQ\)</span>
+的外接圆的幂，其实最直接的想法就是去找 <span
+class="math inline">\(\triangle KPQ\)</span>
+的外心，然而不难发现这个外心真的是位置太好了，这玩意就是 <span
+class="math inline">\(A\)</span> 关于 <span
+class="math inline">\(\triangle ABC\)</span> 外心的对称点。</p>
 <p><image src="/uploads/cmo-geo/4.png" style="zoom:60%;" /></p>
-<p>那么很快啊，我们就能写出来 <span class="math inline">\(AT\cdot AK = AO^2 - OK^2\)</span>。要证明 <span class="math inline">\(KA\cdot KT = 2KB\cdot KC\)</span>，我们只要证明两个式子加起来是成立的，就是只要证明 <span class="math inline">\(AT\cdot AK + KA\cdot KT = AO^2 - OK^2 + 2KB\cdot KC\)</span>，即：</p>
+<p>那么很快啊，我们就能写出来 <span class="math inline">\(AT\cdot AK =
+AO^2 - OK^2\)</span>。要证明 <span class="math inline">\(KA\cdot KT =
+2KB\cdot KC\)</span>，我们只要证明两个式子加起来是成立的，就是只要证明
+<span class="math inline">\(AT\cdot AK + KA\cdot KT = AO^2 - OK^2 +
+2KB\cdot KC\)</span>，即：</p>
 <p><span class="math display">\[
 AK^2 = AO^2 - OK^2 + 2KB\cdot KC
 \]</span></p>
-<p>进一步发现 <span class="math inline">\(KB\cdot KC\)</span> 是 <span class="math inline">\(K\)</span> 对 <span class="math inline">\(\triangle ABC\)</span> 的外接圆的幂，就是 <span class="math inline">\(KR^2 - RA^2\)</span>，所以我们只要证明：</p>
+<p>进一步发现 <span class="math inline">\(KB\cdot KC\)</span> 是 <span
+class="math inline">\(K\)</span> 对 <span
+class="math inline">\(\triangle ABC\)</span> 的外接圆的幂，就是 <span
+class="math inline">\(KR^2 - RA^2\)</span>，所以我们只要证明：</p>
 <p><span class="math display">\[
 AK^2 = AO^2 - OK^2 + 2(KR^2 - RA^2)
 \]</span></p>
-<p>而上式在 <span class="math inline">\(\triangle AOK\)</span> 中利用中线长公式显然成立，从而第一问证明完毕。</p>
+<p>而上式在 <span class="math inline">\(\triangle AOK\)</span>
+中利用中线长公式显然成立，从而第一问证明完毕。</p>
 <hr />
-<p>第二问实际上在第一问基础上已经没东西了，我们直接考虑刚刚的四点共圆，这至少暗示了两对三角形相似，也就是 <span class="math inline">\(\triangle CKT \sim \triangle MKB\)</span> 以及 <span class="math inline">\(\triangle MKC \sim \triangle BKT\)</span>。这表明：</p>
+<p>第二问实际上在第一问基础上已经没东西了，我们直接考虑刚刚的四点共圆，这至少暗示了两对三角形相似，也就是
+<span class="math inline">\(\triangle CKT \sim \triangle MKB\)</span>
+以及 <span class="math inline">\(\triangle MKC \sim \triangle
+BKT\)</span>。这表明：</p>
 <p><span class="math display">\[
 \frac{CT}{CK} = \frac{BM}{MK}, \frac{BT}{BK} = \frac{CM}{MK}
 \]</span></p>
 <p>两个式子除一下：</p>
 <p><span class="math display">\[
-\frac{CT}{BT}\cdot\frac{BP}{CQ} = \frac{CT}{BT}\cdot\frac{BK}{CK} = \frac{BM}{CM} = \frac{AE}{AD} = \frac{AP}{AQ}
+\frac{CT}{BT}\cdot\frac{BP}{CQ} = \frac{CT}{BT}\cdot\frac{BK}{CK} =
+\frac{BM}{CM} = \frac{AE}{AD} = \frac{AP}{AQ}
 \]</span></p>
 <p>这就证明完毕了。</p>
 <h1 id="comment">Comment</h1>
-<p>感觉，不难，除了找 <span class="math inline">\(M\)</span> 这个中间点把 <span class="math inline">\(\angle EAD\)</span> 搞进去这一步想了一段时间之外就没怎么卡过。而且看到有两问的题目我直接先把第一问中间结论不证明，拿过来证明第二问，发现是平凡的之后这道题就索然无味了。</p>
+<p>感觉，不难，除了找 <span class="math inline">\(M\)</span>
+这个中间点把 <span class="math inline">\(\angle EAD\)</span>
+搞进去这一步想了一段时间之外就没怎么卡过。而且看到有两问的题目我直接先把第一问中间结论不证明，拿过来证明第二问，发现是平凡的之后这道题就索然无味了。</p>
 <p>没用到什么复数、三角、反演等 fancy 的东西，感觉不如，联赛二试。</p>
 
     </div>
@@ -502,7 +567,7 @@ AK^2 = AO^2 - OK^2 + 2(KR^2 - RA^2)
 
 <div class="copyright">
   &copy; 2021 – 
-  <span itemprop="copyrightYear">2024</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -513,13 +578,13 @@ AK^2 = AO^2 - OK^2 + 2(KR^2 - RA^2)
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">453k</span>
+    <span title="站点总字数">456k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">6:52</span>
+    <span title="站点阅读时长">6:54</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
