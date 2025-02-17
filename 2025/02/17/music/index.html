@@ -226,7 +226,7 @@ $(function () {
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%81%E4%BA%8C%E5%B9%B3%E5%9D%87%E5%BE%8B"><span class="nav-number">1.</span> <span class="nav-text">十二平均律</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BE%8B%E5%BC%8F%E4%B8%8E%E5%8D%81%E4%BA%8C%E5%B9%B3%E5%9D%87%E5%BE%8B"><span class="nav-number">1.</span> <span class="nav-text">律式与十二平均律</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9F%B3%E9%98%B6"><span class="nav-number">2.</span> <span class="nav-text">音阶</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -402,14 +402,14 @@ $(function () {
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>438</span>
+      <span>2.2k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
+      <span>2 分钟</span>
     </span>
 </div>
 
@@ -423,12 +423,189 @@ $(function () {
         <p>小时候学习钢琴的时候，老师和我说理论上是要给你们讲乐理以及练听音之类的，但是现在考级也不会很认真考这些，所以就无所谓吧。现在打音游之后，时不时会遇到一些乐理名词，于是求知欲莫名其妙被勾起来了，所以现在来学习一些。</p>
 <p>音乐理论似乎和自然语言语法一样，是一个混杂有大量经验规则的所谓“理论”，不遵从并不会带来什么问题，无非是大家是否接受。然而鉴于当下大部分音乐都基于音乐理论构建，那还是稍微学习一点至少能和大家使用同一套名词系统交流而不至于存在过高门槛。</p>
 <span id="more"></span>
-<h1 id="十二平均律">十二平均律</h1>
+<h1 id="律式与十二平均律">律式与十二平均律</h1>
 <p>人耳可以感知的声音频谱是连续的，而实际上的音乐创作也不太可能基于连续的频谱，现实中我们往往会挑选出若干特定频率的声音供创作者选择，而这种选择的方式就称为律式。十二平均律则是当下最主流的<strong>律式</strong>。</p>
-<p>十二平均律从标准音 A4 开始，定义 A4 的频率为 440
-赫兹。定义频率翻倍为<strong>升高一个八度</strong>，频率减半为<strong>降低一个八度</strong>。在一个八度区间内，则将频谱按照等比数列的方式划分为
-12 个<strong>半音</strong>，每两个相邻半音的频率之比为 <span
-class="math inline">\(\sqrt[12]{2}\)</span>。</p>
+<p>十二平均律从标准音开始，定义标准音的频率为 440
+赫兹。定义升高<strong>八度（Octave）</strong>为频率翻倍，降低<strong>八度</strong>为频率减半，这样整个频谱就以标准音为基准，划分为了若干个<strong>八度区间</strong>。在一个八度区间内，则将频谱进一步按照等比数列的方式划分为
+12 个<strong>半音（Half-step）</strong>，每两个相邻半音的频率之比为
+<span
+class="math inline">\(\sqrt[12]{2}\)</span>。这些半音，就是十二平均律下选定的特定频率。</p>
+<p>为了后续讨论方便，这些半音都有各自的<strong>音名</strong>，音名与声音的频率有严格的对应关系。本文中，将十二平均律的标准音（440
+赫兹）记为
+<strong>A4</strong>，音名结尾的数字表示所属的八度区间编号，也就是说标准音升高八度（880
+赫兹）为 A5，降低八度（220 赫兹）为
+A3。以后如果不涉及到需要指明八度区间编号的，则可以省略音名结尾的数字。</p>
+<p>一个八度区间内各个半音的音名则遵守惯例，自 A 起，使用 BCDEFG
+共计七个字母自低到高标记十二个半音中所选定的七个特殊半音。这七个半音并非均匀排列，其中
+BC 与 EF
+相差一个半音，而其他则相差两个半音（也称为一个<strong>全音（Whole-step）</strong>）：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">音名</th>
+<th style="text-align: center;">频率</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">A</td>
+<td style="text-align: center;"><span
+class="math inline">\(f\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">B</td>
+<td style="text-align: center;"><span
+class="math inline">\(2^{\frac{2}{12}}f\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">C</td>
+<td style="text-align: center;"><span
+class="math inline">\(2^{\frac{3}{12}}f\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">D</td>
+<td style="text-align: center;"><span
+class="math inline">\(2^{\frac{5}{12}}f\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">E</td>
+<td style="text-align: center;"><span
+class="math inline">\(2^{\frac{7}{12}}f\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">F</td>
+<td style="text-align: center;"><span
+class="math inline">\(2^{\frac{8}{12}}f\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">G</td>
+<td style="text-align: center;"><span
+class="math inline">\(2^{\frac{10}{12}}f\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>其他的半音，则通过这七个特殊半音通过升降记号给出。升号为
+#（Sharp），表示升高一个半音，降号为 b（Flat），表示降低一个半音。以 A3
+到 A4 的八度区间为例，其中的十二个半音分别记为：</p>
+<blockquote>
+<p>A3 - A3#/B3b - B3 - B3#/C3 - C3#/D3b - D3 - D3#/E3b - E3 - E3#/F3 -
+F3#/G3b - G3 - G3#/A4b - A4</p>
+</blockquote>
+<p>可以注意到某些半音可以用多种记号表示。</p>
+<p>在一般的 88 键钢琴上，最低音为 A0，最高音为
+C8，每一个琴键代表一个半音，所有的白键都（可以）不带升降号表出，所有的黑键则都需要用升降号表出。钢琴中的<strong>中央
+C（Middle C）</strong>一般指 C3，从而其频率为 <span
+class="math inline">\(440 \times 2^{-\frac{9}{12}} = 261.626 {\rm
+Hz}\)</span>。</p>
+<div class="note info no-icon"><p>从历史上说，十二平均律实际上出现得较晚，这是因为该律式中频率比例为无理数，古代无论是东方还是西方都难以据此准确加工管弦乐器（即确定管长或者弦长）。因此在十二平均律前，古代往往依赖已经成熟的等分管长或者弦长的技术构造律式，其中的代表就是五度相生律。五度相生律实际上是十二平均律的前驱，后者的很多惯例均来自于前者：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">音名</th>
+<th style="text-align: center;">频率</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">C</td>
+<td style="text-align: center;"><span
+class="math inline">\(f\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">D</td>
+<td style="text-align: center;"><span
+class="math inline">\(\dfrac{9}{8}f\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">E</td>
+<td style="text-align: center;"><span
+class="math inline">\(\dfrac{81}{64}f\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">F</td>
+<td style="text-align: center;"><span
+class="math inline">\(\dfrac{4}{3}f\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">G</td>
+<td style="text-align: center;"><span
+class="math inline">\(\dfrac{3}{2}f\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">A</td>
+<td style="text-align: center;"><span
+class="math inline">\(\dfrac{27}{16}f\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">B</td>
+<td style="text-align: center;"><span
+class="math inline">\(\dfrac{243}{128}f\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>在五度相生律中，BC 与 EF 之间的频率比值为 <span
+class="math inline">\(\dfrac{256}{243}\)</span>，而其他相邻音之间的频率比值为
+<span class="math inline">\(\dfrac{9}{8}\)</span>，由于 <span
+class="math inline">\(\dfrac{256}{243}\approx\sqrt[12]{2}\)</span>，并且
+<span
+class="math inline">\(\dfrac{9}{8}\approx\sqrt[6]{2}\)</span>，这就表明了五度相生律中的七个音实际上与十二平均律中的七个特殊半音能够大致对应，而这也是十二平均律中选取这七个半音的理由。</p>
+<p>此外我们大致有 <span
+class="math inline">\(\left(\dfrac{256}{243}\right)^2\approx\dfrac{9}{8}\)</span>，也就是说五度相生律上也已经定义出了全音和半音的概念，也就是
+BC 与 EF
+相差一个半音，其余相差一个全音，一个全音<strong>大致</strong>是两个半音。全音与半音的不完全精确对应就是五度相生律的缺陷之一，这导致如果需要在
+BC 之间再插入一个半音会出现两种选择，势必导致 B# 与 Cb 不同。</p>
+<p>除了五度相生律，由于人们也发现频率比值的分子分母如果能较小（如 <span
+class="math inline">\(\dfrac32,
+\dfrac43\)</span>），那么这两个音同时演奏就相对和谐。这个发现推动了纯律的出现，其把五度相生律中分子分母较大的音改制为接近的小分子分母数：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">音名</th>
+<th style="text-align: center;">频率</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">C</td>
+<td style="text-align: center;"><span
+class="math inline">\(f\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">D</td>
+<td style="text-align: center;"><span
+class="math inline">\(\dfrac{9}{8}f\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">E</td>
+<td style="text-align: center;"><span
+class="math inline">\(\dfrac{5}{4}f\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">F</td>
+<td style="text-align: center;"><span
+class="math inline">\(\dfrac{4}{3}f\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">G</td>
+<td style="text-align: center;"><span
+class="math inline">\(\dfrac{3}{2}f\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">A</td>
+<td style="text-align: center;"><span
+class="math inline">\(\dfrac{5}{3}f\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">B</td>
+<td style="text-align: center;"><span
+class="math inline">\(\dfrac{15}{8}f\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>然而纯律虽然满足了和谐的优点，但是纯律下的全音就有了大小之分（CD 与
+DE 的频率比值不同），从而使得编曲更为困难，因此纯律也逐步被淘汰了。</p>
+</div>
+<h1 id="音阶">音阶</h1>
 
     </div>
 
@@ -479,13 +656,13 @@ class="math inline">\(\sqrt[12]{2}\)</span>。</p>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">453k</span>
+    <span title="站点总字数">455k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">6:52</span>
+    <span title="站点阅读时长">6:54</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
