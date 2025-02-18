@@ -402,7 +402,7 @@ $(function () {
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>6.1k</span>
+      <span>6.7k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -968,23 +968,55 @@ C 大调音阶与 a
 小调音阶。这种对应关系称为<strong>关系大（小）调</strong>，小调主音总在大调主音下方一个小三度。</p>
 <p>当然除此外还有其他的音阶形式，例如旋律大小调和和声大小调，这里暂且不介绍。</p>
 <h1 id="和弦">和弦</h1>
-<p>我们讨论了两个半音构成的音程，现在我们讨论在音阶的基础上由多个音符构成的<strong>和弦（Chord）</strong>。特别地，由三个音符构成的和弦为<strong>三和弦（Triads）</strong>。</p>
-<p>三和弦一般是从某个音阶中某个音作为<strong>根音（Root）</strong>开始，向上一个三度找到<strong>三音（Third）</strong>，再以根音向上一个五度找到<strong>五音（Fifth）</strong>。根音、三音、五音即构成该音阶下的一个三和弦。根据和弦中三度与五度的类别则可以得到三和弦的分类（下述和弦的例子均以
-C 大调为例）：</p>
+<p><strong>和弦（Chord）</strong>指的是多个音叠加形成的复合音。在传统定义中，一个和弦中相邻的音之间的音程均是三度（多为大小三度），然而现在以非三度形式堆叠的和弦也不少见。在以三度堆叠的和弦中，自最低音开始，各个音分别称为<strong>根音（Root）</strong>、<strong>三音（Third）</strong>、<strong>五音（Fifth）</strong>、<strong>七音（Seventh）</strong>等，而堆叠数目为三、四、五的和弦分别称为<strong>三和弦（Triads）</strong>、<strong>七和弦（Sevenths）</strong>、<strong>九和弦（Ninths）</strong>。</p>
+<p>如果一个和弦所堆叠的几个音能同时属于某一个音阶，则称这个和弦符合这个音阶代表的调性。</p>
+<p>和弦一般根据相邻音之间的三度的类别作更细的分类。例如三和弦可以分为（以
+C 大调三和弦为例）：</p>
 <ul>
-<li>大三和弦（Major triads）：大三度 + 纯五度（CEG、FAC、GBD）</li>
-<li>小三和弦（Minor triads）：小三度 + 纯五度（DFA、EGA、ACE）</li>
-<li>增三和弦（Augmented triads）：大三度 + 增五度（大调中无该例子）</li>
-<li>减三和弦（Diminished triads）：小三度 + 减五度（BDF）</li>
+<li>大三和弦（Major triads）：大三度 + 小三度（CEG、FAC、GBD）</li>
+<li>小三和弦（Minor triads）：小三度 + 大三度（DFA、EGA、ACE）</li>
+<li>增三和弦（Augmented triads）：大三度 + 大三度（大调中无该例子）</li>
+<li>减三和弦（Diminished triads）：小三度 + 小三度（BDF）</li>
 </ul>
-<p>在任意给定的大调音阶上，只要指明根音是循环节的第几个，即可判定该三和弦的类别。一般而言：</p>
+<p>和弦的记号一般是首先注明根音，然后再用后缀注明和弦类别，后缀的写法不唯一，下述是常见的几种写法：</p>
+<ul>
+<li>大三和弦：maj，M</li>
+<li>小三和弦：min，m，-</li>
+<li>增三和弦：aug，+</li>
+<li>减三和弦：dim，o</li>
+</ul>
+<p>例如 C3 maj 就代表以中央 C 为根音的大三和弦。</p>
+<p>对三和弦而言，如果该和弦符合大调调性，则实际上我们只要注明根音在音阶中的位置即可确认其类别：</p>
 <ul>
 <li>根音为第一、四、五音：大三和弦（I maj、IV maj、V maj）</li>
 <li>根音为第二、三、六音：小三和弦（II min、III min、VI min）</li>
 <li>根音为第七音：减三和弦（VII dim）</li>
 </ul>
-<p>如果没有指定大调音阶，我们可以将上述标记中的罗马数字序号替换为具体的音名，也可以表明和弦。例如
-C3 maj 就代表以中央 C 为根音的大三和弦。</p>
+<p>自七和弦开始，和弦种类会变得相对复杂，所以这里开始我们仅仅探讨会在大调中出现的和弦：</p>
+<ul>
+<li>大七和弦（Major sevenths）：大三度 + 小三度 + 大三度（大三和弦 +
+大三度）</li>
+<li>小七和弦（Minor sevenths）：小三度 + 大三度 + 小三度（小三和弦 +
+小三度）</li>
+<li>属七和弦（Dominant sevenths）：大三度 + 小三度 + 小三度（大三和弦 +
+小三度）</li>
+<li>半减七和弦（Half-diminished sevenths）：小三度 + 小三度 +
+大三度（减三和弦 + 大三度）</li>
+</ul>
+<p>这些和弦的后缀常见为：</p>
+<ul>
+<li>大七和弦：maj7，M7，MM7</li>
+<li>小七和弦：min7，m7，mm7，-7</li>
+<li>属七和弦：7，Mm7</li>
+<li>半减七和弦：-7(b5)，m7(b5)</li>
+</ul>
+<p>大调上的七和弦可以归类为：</p>
+<ul>
+<li>根音为第一、四音：大七和弦（I maj7、IV maj7）</li>
+<li>根音为第二、三、六音：小七和弦（II-7、III-7、VI-7）</li>
+<li>根音为第五音：属七和弦（V7）</li>
+<li>根音为第七音：半减七和弦（VII-7(b5)）</li>
+</ul>
 
     </div>
 
@@ -1041,7 +1073,7 @@ C3 maj 就代表以中央 C 为根音的大三和弦。</p>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">6:57</span>
+    <span title="站点阅读时长">6:58</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
