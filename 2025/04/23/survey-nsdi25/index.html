@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,300italic,400,400italic,700,700italic%7CNoto+Serif+KR:300,300italic,400,400italic,700,700italic%7CMS+PMincho:300,300italic,400,400italic,700,700italic%7CFira+Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext" referrerpolicy="no-referrer">
+
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;ashitemaru.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Muse&quot;,&quot;version&quot;:&quot;8.5.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;width&quot;:320,&quot;display&quot;:&quot;always&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:&quot;disqusjs&quot;,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;},&quot;path&quot;:&quot;&#x2F;search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;manual&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="总之来看看最近的一些 streaming 相关的工作，看看大家都在干什么。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NSDI&#39;25 传输相关领域调研">
+<meta property="og:url" content="https://ashitemaru.github.io/2025/04/23/survey-nsdi25/index.html">
+<meta property="og:site_name" content="Ashitemaru">
+<meta property="og:description" content="总之来看看最近的一些 streaming 相关的工作，看看大家都在干什么。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ashitemaru.github.io/uploads/survey-nsdi25/1.png">
+<meta property="og:image" content="https://ashitemaru.github.io/uploads/survey-nsdi25/2.png">
+<meta property="og:image" content="https://ashitemaru.github.io/uploads/survey-nsdi25/3.png">
+<meta property="og:image" content="https://ashitemaru.github.io/uploads/survey-nsdi25/4.png">
+<meta property="og:image" content="https://ashitemaru.github.io/uploads/survey-nsdi25/5.png">
+<meta property="og:image" content="https://ashitemaru.github.io/uploads/survey-nsdi25/6.png">
+<meta property="og:image" content="https://ashitemaru.github.io/uploads/survey-nsdi25/7.png">
+<meta property="og:image" content="https://ashitemaru.github.io/uploads/survey-nsdi25/8.png">
+<meta property="og:image" content="https://ashitemaru.github.io/uploads/survey-nsdi25/9.png">
+<meta property="og:image" content="https://ashitemaru.github.io/uploads/survey-nsdi25/10.png">
+<meta property="og:image" content="https://ashitemaru.github.io/uploads/survey-nsdi25/11.png">
+<meta property="og:image" content="https://ashitemaru.github.io/uploads/survey-nsdi25/12.png">
+<meta property="og:image" content="https://ashitemaru.github.io/uploads/survey-nsdi25/13.png">
+<meta property="og:image" content="https://ashitemaru.github.io/uploads/survey-nsdi25/14.png">
+<meta property="og:image" content="https://ashitemaru.github.io/uploads/survey-nsdi25/15.png">
+<meta property="og:image" content="https://ashitemaru.github.io/uploads/survey-nsdi25/16.png">
+<meta property="og:image" content="https://ashitemaru.github.io/uploads/survey-nsdi25/17.png">
+<meta property="og:image" content="https://ashitemaru.github.io/uploads/survey-nsdi25/18.png">
+<meta property="og:image" content="https://ashitemaru.github.io/uploads/survey-nsdi25/19.png">
+<meta property="og:image" content="https://ashitemaru.github.io/uploads/survey-nsdi25/20.png">
+<meta property="og:image" content="https://ashitemaru.github.io/uploads/survey-nsdi25/21.png">
+<meta property="og:image" content="https://ashitemaru.github.io/uploads/survey-nsdi25/22.png">
+<meta property="og:image" content="https://ashitemaru.github.io/uploads/survey-nsdi25/23.png">
+<meta property="og:image" content="https://ashitemaru.github.io/uploads/survey-nsdi25/24.png">
+<meta property="article:published_time" content="2025-04-23T16:34:42.000Z">
+<meta property="article:modified_time" content="2025-04-23T16:34:42.000Z">
+<meta property="article:author" content="Ashitemaru">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ashitemaru.github.io/uploads/survey-nsdi25/1.png">
+
+
+<link rel="canonical" href="https://ashitemaru.github.io/2025/04/23/survey-nsdi25/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;ashitemaru.github.io&#x2F;2025&#x2F;04&#x2F;23&#x2F;survey-nsdi25&#x2F;&quot;,&quot;path&quot;:&quot;2025&#x2F;04&#x2F;23&#x2F;survey-nsdi25&#x2F;&quot;,&quot;title&quot;:&quot;NSDI&#39;25 传输相关领域调研&quot;}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
+<title>NSDI'25 传输相关领域调研 | Ashitemaru</title>
+  
+
+
+
+<link rel="stylesheet" href="https://www.unpkg.com/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<script defer src="https://www.unpkg.com/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+<script defer src="https://www.unpkg.com/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+<script src="https://www.unpkg.com/twikoo@1.4.1/dist/twikoo.all.min.js"></script>
+<script src="/js/jquery.min.js"></script>
+<script>
+function getURL(e) {
+    var http = e.slice(0, 4)
+    var https = e.slice(0, 5)
+    if (http == "http" || https == "https") {
+        return e
+    } else if (e == "" || e == null || e == undefined) {
+        return e
+    } else {
+        e = 'http://' + e
+        return e
+    }
+}
+
+function newComment() {
+    twikoo.getRecentComments({
+        envId: 'https://vercel-deploy-two.vercel.app',
+        pageSize: 10,
+        includeReply: false
+    }).then(function (res) {
+        var hotComments = $("#hot-comments");
+        for (var i = 0; i < res.length; i++) {
+            var nick = res[i].nick;
+            var content = res[i].commentText;
+            var newcontent = content.substring(0, 50);
+            var url = res[i].url;
+            var avatar = res[i].avatar;
+            var link = getURL(res[i].link);
+            var updatedAt = res[i].relativeTime;
+            var commentId = '#' + res[i].id;
+            hotComments.append(
+                `<li class="px1 pb2 flex items-center">
+                    <img style="width:40px;height:40px" class="circle mx1 listavatar" src="${avatar}">
+                    <div style="display:flex;flex-direction:column;width:100%;">
+                        <div style="display:flex;justify-content:space-between;flex-direction:row;align-items:center;">
+                            <div class="h5 listauthor overflow-hidden" title="${nick}">
+                                <a target="_blank" rel="noopener external nofollow noreferrer" href="${link}">${nick}</a>
+                            </div>
+                            <div class="h6 mr1 listdate wenzi hang1" style="color:#777777;">${updatedAt}</div>
+                        </div>
+                        <div style="display:flex;flex-direction:row;width:100%;">
+                            <a class="h5 list-comcontent" style="overflow:hidden;display:flex;border-bottom:0px;text-overflow:ellipsis;line-height:1.5;text-align:left" href="${url}${commentId}">${newcontent}</a>
+                        </div>
+                    </div>
+                </li>`
+            );
+        }
+    }).catch(function (err) {
+        console.error(err);
+    });
+}
+
+function replaceRuby() {
+    $('code')
+        .filter((_, node) => {
+            var list = $(node).text().split(' ');
+            return list.length === 3 && list[0] === "@";
+        })
+        .replaceWith((_, text) => {
+            var list = text.split(' ');
+            var written = list[1];
+            var read = list[2];
+            return $(`<ruby>${written}<rp>(</rp><rt>${read}</rt><rp>)</rp></ruby>`);
+        });
+}
+
+$(function () {
+    newComment();
+    replaceRuby();
+});
+</script>
+
+<!-- CSS -->
+<link href="/css/app.min.css" rel="stylesheet">
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Ashitemaru</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">13</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">55</span></a></li>
+        <li class="menu-item menu-item-skill-docs"><a href="https://sast-skill-docers.github.io/sast-skill-docs/" rel="noopener" target="_blank"><i class="fa fa-book fa-fw"></i>技能引导文档</a></li>
+        <li class="menu-item menu-item-thuinfo"><a href="https://www.thuinfo.net/" rel="noopener" target="_blank"><i class="fa fa-sitemap fa-fw"></i>THUInfo</a></li>
+        <li class="menu-item menu-item-se-index"><a href="https://thuse-course.github.io/course-index/" rel="noopener" target="_blank"><i class="fa fa-calendar fa-fw"></i>软工课程主页</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#mowgli---passively-learned-rate-control-for-real-time-video"><span class="nav-number">1.</span> <span class="nav-text">Mowgli
+- Passively Learned Rate Control for Real-Time Video</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#motivation"><span class="nav-number">1.1.</span> <span class="nav-text">Motivation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#methodology"><span class="nav-number">1.2.</span> <span class="nav-text">Methodology</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#evaluation"><span class="nav-number">1.3.</span> <span class="nav-text">Evaluation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#comment"><span class="nav-number">1.4.</span> <span class="nav-text">Comment</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dissecting-and-streamlining-the-interactive-loop-of-mobile-cloud-gaming"><span class="nav-number">2.</span> <span class="nav-text">Dissecting
+and Streamlining the Interactive Loop of Mobile Cloud Gaming</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#measurement"><span class="nav-number">2.1.</span> <span class="nav-text">Measurement</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#design"><span class="nav-number">2.2.</span> <span class="nav-text">Design</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#evaluation-1"><span class="nav-number">2.3.</span> <span class="nav-text">Evaluation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#comment-1"><span class="nav-number">2.4.</span> <span class="nav-text">Comment</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mutant---learning-congestion-control-from-existing-protocols-via-online-reinforcement-learning"><span class="nav-number">3.</span> <span class="nav-text">Mutant
+- Learning Congestion Control from Existing Protocols via Online
+Reinforcement Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#motivation-1"><span class="nav-number">3.1.</span> <span class="nav-text">Motivation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#design-1"><span class="nav-number">3.2.</span> <span class="nav-text">Design</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#evaluation-2"><span class="nav-number">3.3.</span> <span class="nav-text">Evaluation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#comment-2"><span class="nav-number">3.4.</span> <span class="nav-text">Comment</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#checkpoint"><span class="nav-number">4.</span> <span class="nav-text">Checkpoint</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#holmes---localizing-irregularities-in-llm-training-with-mega-scale-gpu-clusters"><span class="nav-number">5.</span> <span class="nav-text">Holmes
+- Localizing Irregularities in LLM Training with Mega-scale GPU
+Clusters</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#measurement-1"><span class="nav-number">5.1.</span> <span class="nav-text">Measurement</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#design-2"><span class="nav-number">5.2.</span> <span class="nav-text">Design</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#iteration-monitor-operator-detector"><span class="nav-number">5.2.1.</span> <span class="nav-text">Iteration monitor &amp;
+operator detector</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#root-localizer"><span class="nav-number">5.2.2.</span> <span class="nav-text">Root localizer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#device-analytics"><span class="nav-number">5.2.3.</span> <span class="nav-text">Device analytics</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#evaluation-3"><span class="nav-number">5.3.</span> <span class="nav-text">Evaluation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#conclusion"><span class="nav-number">5.4.</span> <span class="nav-text">Conclusion</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mtp---transport-for-in-network-computing"><span class="nav-number">6.</span> <span class="nav-text">MTP - Transport for
+In-Network Computing</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#motivation-2"><span class="nav-number">6.1.</span> <span class="nav-text">Motivation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#design-3"><span class="nav-number">6.2.</span> <span class="nav-text">Design</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#pathlet"><span class="nav-number">6.2.1.</span> <span class="nav-text">Pathlet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#components"><span class="nav-number">6.2.2.</span> <span class="nav-text">Components</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#workflow"><span class="nav-number">6.2.3.</span> <span class="nav-text">Workflow</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Ashitemaru"
+      src="/uploads/avatar.png">
+  <p class="site-author-name" itemprop="name">Ashitemaru</p>
+  <div class="site-description" itemprop="description">Trying to be an observer of this world.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Ashitemaru" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Ashitemaru" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:qhd19@mails.tsinghua.edu.cn" title="E-Mail → mailto:qhd19@mails.tsinghua.edu.cn" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/Ashitemaru" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;Ashitemaru" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Friends
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.unidy.cn/" title="https:&#x2F;&#x2F;www.unidy.cn" rel="noopener" target="_blank">UNIDY</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.dilant.cn/" title="https:&#x2F;&#x2F;www.dilant.cn" rel="noopener" target="_blank">Dilant</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://zcy.moe/" title="https:&#x2F;&#x2F;zcy.moe" rel="noopener" target="_blank">猫猫</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://c7w.tech/" title="https:&#x2F;&#x2F;c7w.tech" rel="noopener" target="_blank">c7w</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.leenldk.top/" title="http:&#x2F;&#x2F;www.leenldk.top&#x2F;" rel="noopener" target="_blank">leenldk (20)</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://sun80449.github.io/" title="https:&#x2F;&#x2F;sun80449.github.io" rel="noopener" target="_blank">lcr</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://pwe.cat/" title="https:&#x2F;&#x2F;pwe.cat" rel="noopener" target="_blank">索尔</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://kokic.github.io/" title="https:&#x2F;&#x2F;kokic.github.io&#x2F;" rel="noopener" target="_blank">kokic</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://sjfh.top/" title="https:&#x2F;&#x2F;sjfh.top" rel="noopener" target="_blank">sjfh</a>
+        </li>
+    </ul>
+  </div>
+<div class="sidebar-1 mybox relative">
+    <div class="p2">
+        <i class="fab fa-facebook-messenger mr1"></i>
+        Latest Comments
+    </div>
+    <div id="hot-comments"></div>
+</div>
+          </div>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/Ashitemaru" class="github-corner" title="Come here for fun." aria-label="Come here for fun." rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ashitemaru.github.io/2025/04/23/survey-nsdi25/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="Ashitemaru">
+      <meta itemprop="description" content="Trying to be an observer of this world.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ashitemaru">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          NSDI'25 传输相关领域调研
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-04-23 16:34:42" itemprop="dateCreated datePublished" datetime="2025-04-23T16:34:42+00:00">2025-04-23</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2025-04-23 16:34:42" itemprop="dateModified" datetime="2025-04-23T16:34:42+00:00">2025-04-23</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E3%80%90%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">【论文笔记】计算机</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2025/04/23/survey-nsdi25/" class="post-meta-item twikoo_visitors" data-flag-title="NSDI'25 传输相关领域调研" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="twikoo_visitors"></span>
+    </span>
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>8.1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>7 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>总之来看看最近的一些 streaming 相关的工作，看看大家都在干什么。</p>
+<span id="more"></span>
+<h1
+id="mowgli---passively-learned-rate-control-for-real-time-video">Mowgli
+- Passively Learned Rate Control for Real-Time Video</h1>
+<h2 id="motivation">Motivation</h2>
+<p>场景是在线会议的码率控制。</p>
+<ul>
+<li>基于规则的算法表现很差（GCC 如图 1，大量反例），所以使用 data-driven
+<ul>
+<li>启发式算法的简单结构限制了其能力上限</li>
+</ul></li>
+<li>在线会议对卡顿极其敏感，这意味着不能 online 训练（online
+训练导致的质量下降如图 2，训练时导致的震荡如图 3），所以要 offline
+训练</li>
+<li>然而 offline
+训练很容易遇到线上线下数据分布不一致的问题，模拟器也很难完整复现网络的多变性
+<ul>
+<li>线上 finetune
+方案也被很多次证明不可行，因为这种数据差异很有可能需要完全重构算法而非简单调整</li>
+</ul></li>
+</ul>
+<p><img src="/uploads/survey-nsdi25/1.png" /></p>
+<p><img src="/uploads/survey-nsdi25/2.png" /></p>
+<p><img src="/uploads/survey-nsdi25/3.png" /></p>
+<h2 id="methodology">Methodology</h2>
+<p>避免将不成熟的模型部署到线上，所以完全离线，数据全部由 GCC
+等算法线上采集回传到服务器。这样做能够收集到大量的与当前环境相关的数据。那么难点就是：</p>
+<ul>
+<li>日志数据分布单一（一般都是通过单一算法生成）
+<ul>
+<li>最终决策会偏离已有日志，没有 ground truth，外推误差会累积</li>
+</ul></li>
+<li>日志噪声大，其数据不仅仅和算法有关，和外部环境也有很大关系</li>
+</ul>
+<p>这也就是这篇论文想要提出的核心创新点，即<strong>如何稳定地超越朴素的模仿学习获得更优算法</strong>。</p>
+<blockquote>
+<p>这就是，异轨蒙特卡洛控制。</p>
+</blockquote>
+<p>针对此的 methodology：</p>
+<ul>
+<li>保守
+reward，线上遇到没有学习到的模式的时候，只有有显著收益才冒险</li>
+<li>学习数据的分布而非单纯的期望，扩大算法的理解能力</li>
+</ul>
+<p>具体设计采用 SAC 算法。为了保证保守 reward，在 critic loss
+上增添下述惩罚项：</p>
+<p><span class="math display">\[
+\alpha\mathbb{E}_{s\sim D}\left[\mathbb{E}_{a\sim\pi} Q(s, a) -
+\mathbb{E}_{a\sim D} Q(s, a)\right]
+\]</span></p>
+<p>实际上就是估计了 <span class="math inline">\(\pi\)</span> 与数据集
+<span class="math inline">\(D\)</span>
+的距离（称为<strong>决策信心</strong>），越远则 reward 越低。</p>
+<blockquote>
+<p>其实相关保守决策 RL 已经有人在做了，基本来源于 2020 提出的
+conservative Q-learning。相关应用也不少，比如机器人领域 2024 有 CASOG:
+Conservative Actor–Critic With SmOoth Gradient for Skill Learning in
+Robot-Assisted Intervention</p>
+</blockquote>
+<p>所谓的学习分布则是直接将 critic 的输出改成一个分布，loss 函数使用
+Huber 函数表示分布之间的距离。</p>
+<h2 id="evaluation">Evaluation</h2>
+<p><img src="/uploads/survey-nsdi25/4.png" /></p>
+<p>evaluation 没什么好说的，基本就是 overall
+加上特定场景比较，最后补一些消融。</p>
+<h2 id="comment">Comment</h2>
+<p>核心就是一个保守化的 ABR
+训练策略，但是说实话，有一个大坑没填上，那就是用 GCC 的 trace
+到底怎么训练出来超越 GCC
+这么多的算法的，也就是说，究竟怎么超越模仿学习的。</p>
+<p>conservative training 只能解决 data shift
+导致的一个子问题，也就是外推误差累积，而且这种解决也不完善。</p>
+<h1
+id="dissecting-and-streamlining-the-interactive-loop-of-mobile-cloud-gaming">Dissecting
+and Streamlining the Interactive Loop of Mobile Cloud Gaming</h1>
+<p>主旨是优化安卓平台下的云游戏延迟，他们认为最主要的因素是 5
+次串行执行的垂直同步事件。</p>
+<p><img src="/uploads/survey-nsdi25/5.png" /></p>
+<h2 id="measurement">Measurement</h2>
+<p>测量的 setup
+是使用高速摄像机拍摄，计算触控笔按下和按钮高亮之间的延迟，测量考虑了网络高峰平峰时段以及网络种类等信息。</p>
+<p><img src="/uploads/survey-nsdi25/6.png" /></p>
+<p>结论是：</p>
+<ul>
+<li>移动端云游戏延迟显著高于 PC 端云游戏，这是因为移动端云游戏可能需要
+OS 虚拟化等等</li>
+<li>网络延迟并非是延迟的最主要组成部分</li>
+<li>交互延迟与网络高峰平峰没有太大关系，显示出大部分系统的弹性</li>
+</ul>
+<p>更具体的测量表明，安卓云游戏延迟中最主要的部分是占比 36%
+的安卓内核垂直同步，而这个垂直同步是默认开启的。同时，由于垂直同步，小幅度的抖动可能导致帧播放错过
+deadline，制造高达 13 毫秒的延迟，从而放大抖动的影响。</p>
+<p>接下来是安卓云游戏的垂直同步拆解：</p>
+<ul>
+<li>VSync1：游戏进程等待固定帧率的时钟（无法撤销或者绕过，该同步用于恒定帧率）</li>
+<li>VSync2：SurfaceFlinger 等待前序处理以合成画面</li>
+<li>VSync3：HWcomposer 等待显示器刷新完毕</li>
+<li>VSync4：客户端与服务端同步</li>
+<li>VSync5：客户端 SurfaceFlinger 送显</li>
+</ul>
+<p>解决的方式则是剪切和协调。例如第 2 和第 3
+次垂直同步可以通过工程的方式绕过，第 4
+次可以用算法协调，其余两次则基本无法绕过。这也分别带来了来自工程和算法上的两方面挑战。</p>
+<h2 id="design">Design</h2>
+<p>工程上绕过两次垂直同步的思路是，考虑到图层合成仅仅是增添了 UI
+边框等东西，则可以通过拦截渲染的方式获取原始帧，然后手动合成贴图。这里细节较多，不展开。</p>
+<p>协调则主要通过预测的方式完成。使用回归树，利用下述特征对下述更细致的拆解延迟做预测：</p>
+<ul>
+<li>历史延迟数据</li>
+<li>编码帧大小</li>
+<li>丢包率与带宽估计</li>
+</ul>
+<p>采样间隔为 1 帧，利用历史 4 秒信息预测未来 1 秒。</p>
+<p><img src="/uploads/survey-nsdi25/7.png" /></p>
+<p>在得到未来一段时间的预测之后，做下述数学建模，目的是获得令延迟最小的
+<span class="math inline">\(o\)</span>：</p>
+<p><img src="/uploads/survey-nsdi25/8.png" /></p>
+<h2 id="evaluation-1">Evaluation</h2>
+<p><img src="/uploads/survey-nsdi25/9.png" /></p>
+<p>基本就是说明了该方法能非常有效地降低延迟。</p>
+<h2 id="comment-1">Comment</h2>
+<p>由于这篇和 START 第二篇工作内容太相近了所以其实可以点评的还不少。</p>
+<p>整体的 motivation 比较相似，解决方案上的话工程上绕过 VSync
+的方式不谈，算法上其实有个比较大的问题就是回归树预测肯定是不准确的，但他有个比较
+trick
+的地方就是，如果假定你给的网络带宽估计是准确的，那其实预测一个网络延迟是很简单的，而渲染、编解码延迟相对而言比较稳定（相对于网络）。然而问题就在于，网络带宽很难预测准，这说白了有点像用前
+10 天的股价预测第 11 天的股价。</p>
+<p>预测窗口是 5 秒也比较值得推敲，云游戏下 5 秒是能发生很多事情的。不过
+5
+秒的好处就是计算最优延迟绰绰有余，这里可以回避掉优化算法时间开销的问题。</p>
+<p>整体而言事实上是个偏工程的工作，但是毕竟还是和第二篇工作内容太近了。</p>
+<h1
+id="mutant---learning-congestion-control-from-existing-protocols-via-online-reinforcement-learning">Mutant
+- Learning Congestion Control from Existing Protocols via Online
+Reinforcement Learning</h1>
+<p>和 Bridging the Gap between QoE and QoS in Congestion Control: A
+Large-scale Mobile Web Service Perspective
+有点像，都是如何充分利用已有的 CC 算法。</p>
+<h2 id="motivation-1">Motivation</h2>
+<p>核心的 motivation 来源于不存在一个 CC
+算法能应对所有网络情况。例如，Cubic
+在稳定环境下表现良好，但难以适应带宽波动，BBR2
+虽擅长处理突变带宽，却在低容量网络中表现欠佳。</p>
+<p><img src="/uploads/survey-nsdi25/10.png" /></p>
+<p>另外，为了适应不同的网络情况，各种 data-driven CC
+也应运而生。然而这些 CC 一般限于下述两点：</p>
+<ul>
+<li>仅依赖于历史拥塞窗口情况学习，泛化性差</li>
+<li>泛化性好的方案一般都有相当长的 offline 训练流程</li>
+</ul>
+<p>从而一种可行的解决方案则是，我们不主动推导拥塞窗口，而是选择合适的已有
+CC 来应对当前情况。</p>
+<h2 id="design-1">Design</h2>
+<p>Mutant 通过 Top-k 的方式选择初始协议，并在初始协议的基础上通过 online
+RL 来优化 CC 性能。</p>
+<p>协议接口通过统一函数指针封装，首先明确协议切换时需要做的事情：</p>
+<ul>
+<li>冻结上一个协议的所有状态变量（支持恢复）</li>
+<li>切换协议时保持拥塞窗口不变，保证 CC 连续性</li>
+</ul>
+<p>online RL 选择了 contextual
+MBA（在给定上下文状态空间编码的条件下的多臂老虎机），策略则是线性上置信界（Linear
+UCB）。</p>
+<p>状态则是从内核探测，一共有 55
+个字段，时间窗口分为长中短三个阶段，对应 10/200/1000
+次采样，最后通过一个编码器降维压缩到 16 维。</p>
+<p>reward 定义为：</p>
+<p><span class="math display">\[
+R_t = \dfrac{({\rm thr}_t - \zeta l_t)^\kappa}{d_t}
+\]</span></p>
+<p>分子上是发送速率和丢包率，分母是延迟。</p>
+<hr />
+<p>在训练的时候，不断使用 MPTS 算法选出最有可能竞争的 <span
+class="math inline">\(k\)</span> 个 CC
+算法组成算法池，在当前阶段则不断使用 contextual MBA
+算法选择实际执行的算法。该阶段结束后，更新各个算法的 reward。</p>
+<h2 id="evaluation-2">Evaluation</h2>
+<p><img src="/uploads/survey-nsdi25/11.png" /></p>
+<h2 id="comment-2">Comment</h2>
+<p>该方法尝试去利用了当前已有的 CC 算法，尽力做到物尽其用。</p>
+<p>本篇与之前 Zili Meng 的那篇 CC selector
+比较，一个核心的竞争力在于本篇的 selector
+是可以线上学习的，是可以根据不同的网络情况生成不同的 Top-k
+然后物尽其用的。而这种线上学习也就意味着难以用神经网络构建
+selector，所以本文打开了这个 selector
+的黑盒，采用了更类似于启发式的算法（不可否认还是使用了 embedding
+之类的策略）。</p>
+<h1 id="checkpoint">Checkpoint</h1>
+<p>大体而言今年 NSDI 的 streaming 部分这三篇挺有代表性的：</p>
+<ul>
+<li>新问题（云游戏中的垂直同步）</li>
+<li>新方法应用到老问题，难点在讲好故事，为什么新方法可行</li>
+<li>老方法聚合（包括 Zili Meng 的 CC selector）</li>
+</ul>
+<p>云游戏总之还算是一种前沿，还是能提出一些视频相关的新问题（但是能不能解决不清楚，目前显得有点要么太容易解决，要么无解）。码率控制、CC
+之类的相对传统的方向，总之有一种需要拼凑才能做出东西的感觉。</p>
+<p>是否可以从一个相对系统的角度去思考问题，而非优化单一的算法（CC、ABR），从流媒体系统架构的角度去做（垂直同步那一篇）？</p>
+<blockquote>
+<p>完全不知道自己在说什么。</p>
+</blockquote>
+<h1
+id="holmes---localizing-irregularities-in-llm-training-with-mega-scale-gpu-clusters">Holmes
+- Localizing Irregularities in LLM Training with Mega-scale GPU
+Clusters</h1>
+<p>LLM
+的训练需要极其大量的硬件成本，所以需要尽可能提高训练过程对硬件的利用率。一般大家都认为训练的
+failure 会导致巨大的硬件资源浪费，本文发现另外一个导致资源浪费的原因，即
+irregularity，指的是明显耗时过长的 iteration。</p>
+<p>irregularity
+不会中断训练，所以难以定位，但是依然会导致资源浪费。irregularity
+的特征是会传染，因为其不会导致中断，所以其他 GPU
+会被动等待导致传染。这使得 irregularity 甚至比 failure 更严重。</p>
+<p>challenge 可以归纳为：</p>
+<ul>
+<li>irregularity 不会导致中断，所以难以定位</li>
+<li>另一方面，定位还必须要精准，因为错误定位的恢复比 irregularity
+本身的损失还要高</li>
+<li>而 irregularity 的传染性让定位更加困难</li>
+</ul>
+<p>算子分为计算算子和通信算子，顾名思义计算算子只要单 GPU
+执行即可，通信算子则需要多 GPU
+之间同步。通信算子进一步分为集群通信算子（涉及大范围的
+GPU）和点对点通信算子。</p>
+<h2 id="measurement-1">Measurement</h2>
+<p>定义 <span class="math inline">\(\delta\)</span>-irregularity (<span
+class="math inline">\(\delta &gt; 1\)</span>，一般设定为 <span
+class="math inline">\(1.1\)</span>)
+表示出现了某一个没有中断训练，但是耗时是指定窗口内平均时长的 <span
+class="math inline">\(\delta\)</span> 倍的 iteration。</p>
+<p><img src="/uploads/survey-nsdi25/12.png" /></p>
+<p>上述可见：</p>
+<ul>
+<li>irregularity 出现的机率比 failure 高出若干数量级</li>
+<li>irregularity 出现的机率随着 GPU 数量增多而增大</li>
+</ul>
+<p><img src="/uploads/survey-nsdi25/13.png" /></p>
+<p>上述可见：</p>
+<ul>
+<li>irregularity 导致的时间浪费与 failure 接近</li>
+<li>irregularity 所需要的诊断分析实践也高于 failure
+<ul>
+<li>这是由于 failure 处理已经相当标准化了</li>
+</ul></li>
+</ul>
+<p>总之就是验证了 irregularity 的特质，也说明了全文的 motivation。</p>
+<h2 id="design-2">Design</h2>
+<p>irregularity 分为三类，即 abnormal spikes、performance
+fluctuation、persistent degradation。</p>
+<p>abnormal spikes 指的是某些 iteration 出现了尖峰长耗时，这种
+irregularity
+有较为严重的影响。经过训练归因，本文确认了这类问题主要的两个原因是 GPU
+运算卡顿和网络卡顿是主要原因。</p>
+<p><img src="/uploads/survey-nsdi25/14.png" /></p>
+<p>performance fluctuation
+指的是周期性的波动，虽然它们也呈现出尖峰长耗时，但是相对于 abnormal
+spikes 温和，并且呈现一定规律，然而正是由于规律性，performance
+fluctuation 的影响比 abnormal spikes
+大。经过训练归因，本文确认了主要原因是网络相关的显式拥塞通知（ECN）和优先流量控制帧（PFC）。</p>
+<p><img src="/uploads/survey-nsdi25/15.png" /></p>
+<p>persistent degradation
+指的是长期视角下的训练效率下降，但这类问题归因简单，基本都是 GPU
+过热或者 CPU 异常高占用率。</p>
+<p><img src="/uploads/survey-nsdi25/16.png" /></p>
+<p>最终设计如下：</p>
+<p><img src="/uploads/survey-nsdi25/17.png" /></p>
+<p>工作流为：</p>
+<ul>
+<li>iteration monitor 实时追踪 GPU 日志</li>
+<li>检测到异常的时候，operator detector
+检查具体是什么算子导致了问题</li>
+<li>root localizer 通过算子图确认需要检查的 GPU</li>
+<li>device analytics 计算 Top-k 故障 GPU，提交给值班检修</li>
+</ul>
+<h3 id="iteration-monitor-operator-detector">Iteration monitor &amp;
+operator detector</h3>
+<p>首先，必然不可能什么东西都打日志，考虑到通信算子的状况既可以监测网络链路又可以一定程度代表其上游的计算算子，所以可以只打印通信算子的情况.</p>
+<p><img src="/uploads/survey-nsdi25/18.png" /></p>
+<p>在检测到异常的迭代时长的时候，需要去溯源日志去看哪个算子出问题了。这里为了管理算子的
+performance，本文使用了随机森林，算子日志的每条记录都是随机森林的样本。同时，引入迭代时间、算子运行时间窗口均值等特征增强。</p>
+<p>简而言之就是对每一个算子建立一个决策树确定其是否是异常算子。但是由于
+persistent degradation 存在，所以算子的特征分布必然会
+shift，所以需要设计相关的补充措施。</p>
+<p>本文的决策树时，每个节点的所采用的特征都是明确的，所以当某一个统计量出现
+shift 的时候，只需要直接调整相应节点上的阈值：</p>
+<p><img src="/uploads/survey-nsdi25/19.png" /></p>
+<h3 id="root-localizer">Root localizer</h3>
+<p>为了具体定位是哪一个 GPU 出了问题导致某个算子异常值（注意
+irregularity 是有传播性的），可以建构一个图来表示 GPU
+之间的依赖关系，这就是所谓的 COG。</p>
+<p>定义 COG <span class="math inline">\(G = (O, D, E)\)</span>，其中
+<span class="math inline">\(o \in O\)</span> 是通信算子，<span
+class="math inline">\(d\in D\)</span> 是设备，如果 <span
+class="math inline">\(d\)</span> 需要执行 <span
+class="math inline">\(o\)</span>，则连边 <span class="math inline">\((o,
+d)\in E\)</span>。</p>
+<p>为了减缩图的复杂度，可以对 COG 分组。对某一个算子 <span
+class="math inline">\(o\)</span>，列出所以与其连边的 <span
+class="math inline">\(d\)</span>，这些 <span
+class="math inline">\(d\)</span> 构成一个 cluster <span
+class="math inline">\(c\in C\)</span>，我们用 <span
+class="math inline">\(C\)</span> 代替 <span
+class="math inline">\(D\)</span>，这样我们可以注意到最终的 COG
+中每一个算子 <span class="math inline">\(o\in O\)</span>
+只会有一条边，存储图的内存就可以节省。同时 <span
+class="math inline">\(C\)</span> 的 size 一般也是可控的。</p>
+<hr />
+<p>如果现在异常的是集合通信算子 <span
+class="math inline">\(o\)</span>，检测其所属 cluster <span
+class="math inline">\(c\)</span>，对 <span
+class="math inline">\(c\)</span> 其余的所有算子作分析。</p>
+<ul>
+<li>若这些算子全都异常，则说明 <span class="math inline">\(o\)</span>
+本身就是问题，终止分析</li>
+<li>若存在正常算子 <span
+class="math inline">\(n\)</span>，则说明其他算子是因为等待 <span
+class="math inline">\(n\)</span> 而异常，此时回溯 <span
+class="math inline">\(n\)</span> 的前序
+<ul>
+<li>如果没有异常算子，则说明 <span class="math inline">\(n\)</span>
+运算超时</li>
+<li>如果有异常算子，重复上述过程</li>
+</ul></li>
+</ul>
+<p><img src="/uploads/survey-nsdi25/20.png" /></p>
+<p>如果现在异常的是点对点通信算子 <span
+class="math inline">\(p\)</span>，检测其配对的算子。</p>
+<ul>
+<li>若均异常，则说明通信存在问题</li>
+<li>若对方正常，则回溯对方（同上）</li>
+</ul>
+<h3 id="device-analytics">Device analytics</h3>
+<p>简单来说就是现在查出来根源了，怎么分锅。首先计算这个 irregularity
+和上次 iteration 超时之间的 Pearson
+关系系数作为惩罚项，然后如果定位为计算超时则直接惩罚到 GPU
+上，如果是网络超时则惩罚到相关 GPU 和这些 GPU 之间的交换机等设备上。</p>
+<h2 id="evaluation-3">Evaluation</h2>
+<p>各组件的性能以及端到端与 baseline 的对比：</p>
+<p><img src="/uploads/survey-nsdi25/21.png" /></p>
+<p>时间开销：</p>
+<p><img src="/uploads/survey-nsdi25/22.png" /></p>
+<p>主要优势在于这个方法不需要检测所有 GPU。</p>
+<blockquote>
+<p>但说实话你构建 COG 的时候，简单加一个分组是不是也可以避免 all
+fetch？这个对比是不是有点不公平？</p>
+</blockquote>
+<h2 id="conclusion">Conclusion</h2>
+<p>很像工程技术报告的文章，写得很简单直白但是做了一件挖得很深很全面的事情。</p>
+<h1 id="mtp---transport-for-in-network-computing">MTP - Transport for
+In-Network Computing</h1>
+<p>是一个协议相关的工作，设计了一个原生支持网内计算的协议。网内计算就是将应用层的计算任务下沉到网络设备上进行的方案。</p>
+<p>网内计算协议必须满足下述约束：</p>
+<ul>
+<li>在应用层卸载的计算任务可能对应用消息进行修改、拦截、重排序和任意延迟的情况下，仍能保证可靠性拥塞控制等基本功能</li>
+<li>不额外增加 INC 硬件的传输相关资源需求（如大量缓冲或状态维护）</li>
+</ul>
+<p>现在常用的协议是 TCP 变种或者
+RDMA，而这些协议多少都会违反上述约束。</p>
+<h2 id="motivation-2">Motivation</h2>
+<p>INC
+允许在网卡或者交换机上做键值缓存、机器学习内网聚合等应用层任务，但这些操作可能和下层传输协议有所冲突。</p>
+<p>首先，卸载单元（指网卡、交换机等）可能需要修改 payload，例如注入
+cookies 或者梯度聚合后替换计算结果，这会影响消息长度与分包数量。</p>
+<p>之后，卸载单元可能会拦截消息并丢弃，例如部分负载均衡任务会丢弃不符合要求的请求。</p>
+<p>然后，卸载单元可能会重排序信息。</p>
+<p>最后，卸载后的延迟可能难以预测，例如 FPGA
+的入侵检测的延迟长尾现象很严重，部分聚合需要等待所有节点导致实际耗时无法预测。</p>
+<p>现今的协议主要有三个，TCP 变种（例如 QUIC）、RDMA、Homa。</p>
+<ul>
+<li>TCP、RDMA
+完全无法处理消息修改、拦截、重排序，因为其传输有效性完全依赖连续的字节空间与序号，修改和拦截会导致收发两端不一致，发送端无法确认是否需要重传。重排序则会被理解为丢包导致重传和拥塞窗口缩小</li>
+<li>Homa
+协议（不太懂）无法处理消息修改（依赖字节范围判定），兼容拦截和重排序（采用消息级独立传输），随机延迟会导致其拥塞控制失败</li>
+</ul>
+<p>另外一方面，由于协议不够理想，INC
+任务往往也会加入约束来适配协议。</p>
+<ul>
+<li>卸载节点同时运行收发两端的协议栈，这会导致大量的资源浪费，部分交换机也不支持</li>
+<li>约束 RPC
+长度、约束修改不能改变消息长度、选择性支持（例如不支持拦截消息）等</li>
+</ul>
+<p>因此，本文的设计目标为：</p>
+<ul>
+<li>完整支持消息修改、拦截、重排序</li>
+<li>在各种延迟的情况下都能保证控制有效</li>
+<li>不依赖于特定的硬件设计</li>
+</ul>
+<h2 id="design-3">Design</h2>
+<h3 id="pathlet">Pathlet</h3>
+<p>消息传输过程中，可能会经过多个执行不同计算的卸载单元，这些卸载单元称为一个
+pathlet。pathlet 中的各个节点可以共用地址也可以不共用而分布式。</p>
+<p><img src="/uploads/survey-nsdi25/23.png" /></p>
+<p>在这个基础上，我们需要实现匹配当前任务 pathlet
+的发现和路由。另外，本文优先实现全缓冲模式（节点缓存全部信息后处理），这是因为当今大部分上层应用和下层硬件都支持单包/巨型帧。</p>
+<h3 id="components">Components</h3>
+<p>两大核心组件。</p>
+<ul>
+<li>面向消息的可靠性协议
+<ul>
+<li>原生支持消息修改、拦截和重排序</li>
+<li>采用基于消息的重传超时（RTO）机制：接收端在收到完整消息后发送端到端（E2E）ACK
+以取消定时器，否则触发整条消息重传</li>
+</ul></li>
+<li>多 pathlet 拥塞控制框架
+<ul>
+<li>pathlet 级早期拥塞反馈：pathlet 可将其拥塞状态及链路拥塞信号（如
+ECN）直接反馈给发送端</li>
+<li>消息级 pathlet 选择：当存在多个同类型 pathlet
+时，每条消息可动态选择不同实例以规避拥塞点</li>
+</ul></li>
+</ul>
+<p>优势在于无需 pathlet 维护额外传输状态。</p>
+<h3 id="workflow">Workflow</h3>
+<p><img src="/uploads/survey-nsdi25/24.png" /></p>
+<ul>
+<li>连接建立
+<ul>
+<li>采用类 TCP 三次握手</li>
+<li>发送方通过服务发现协议获取 pathlet 信息，拥塞控制模块缓存可用
+pathlet</li>
+</ul></li>
+<li>消息发送
+<ul>
+<li>应用提交消息描述符（含消息体元数据）</li>
+<li>MTP 栈分配递增的消息编号，拥塞控制选择 pathlet 地址并写入描述符</li>
+<li>消息体按 MSS（本例为 4096 字节）分片，每片携带唯一分段号</li>
+<li>封装 pathlet 地址和分段数据后发送</li>
+</ul></li>
+<li>pathlet 处理
+<ul>
+<li>pathlet A 收到分段后立即生成拥塞反馈包（含自身及链路拥塞信号）</li>
+<li>执行消息修改（本例使消息增大 8 字节，导致分段数变化）</li>
+</ul></li>
+<li>消息接收
+<ul>
+<li>接收方根据首个到达分段创建消息描述符，用位图记录已收分段</li>
+<li>当所有分段到达后发送 E2E ACK</li>
+<li>接收方被动
+<ul>
+<li>仅对完整消息发送ACK</li>
+<li>不检查消息编号连续性或分段顺序</li>
+<li>支持因细粒度负载均衡导致的乱序到达</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>设计特性：</p>
+<ul>
+<li>不保证消息顺序交付：避免队头阻塞（HOL
+blocking）影响时延敏感应用</li>
+<li>pathlet
+行为约束：每条输入消息最多产生一条输出消息、拦截消息需模拟接收端发送 E2E
+ACK、新增负载必须通过消息修改实现</li>
+<li>扩展性：多播 pathlet 支持留作未来工作</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/04/17/survey-llm-network/" rel="prev" title="LLM 训练策略与网络通信交叉领域调研">
+                  <i class="fa fa-chevron-left"></i> LLM 训练策略与网络通信交叉领域调研
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments"><div id="twikoo-comments"></div></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2021 – 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ashitemaru</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">483k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">7:20</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{&quot;enable&quot;:true,&quot;theme&quot;:&quot;default&quot;,&quot;js&quot;:{&quot;url&quot;:&quot;https:&#x2F;&#x2F;unpkg.com&#x2F;mermaid@8.9.3&#x2F;dist&#x2F;mermaid.min.js&quot;,&quot;integrity&quot;:&quot;sha256-OyJHvRcZHaRR6Ig73ppxF4QXk8HzvfgTprRWkulCkfY&#x3D;&quot;}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;tags&quot;:&quot;none&quot;,&quot;js&quot;:{&quot;url&quot;:&quot;https:&#x2F;&#x2F;unpkg.com&#x2F;mathjax@3.1.4&#x2F;es5&#x2F;tex-mml-chtml.js&quot;,&quot;integrity&quot;:&quot;sha256-ncNI9OXOS5Ek4tzVYiOMmN&#x2F;KKCPZ6V0Cpv2P&#x2F;zHntiA&#x3D;&quot;}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="twikoo" type="application/json">{&quot;enable&quot;:true,&quot;visitor&quot;:true,&quot;envId&quot;:&quot;https:&#x2F;&#x2F;vercel-deploy-two.vercel.app&quot;,&quot;el&quot;:&quot;#twikoo-comments&quot;}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.twikoo.el)
+    .then(() => NexT.utils.getScript(
+      'https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js',
+      { condition: window.twikoo }
+    ))
+    .then(() => {
+      twikoo.init(CONFIG.twikoo);
+    });
+});
+</script>
+
+</body>
+</html>
