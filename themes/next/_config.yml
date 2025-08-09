@@ -145,10 +145,10 @@ site_state: true
 # Value before `||` delimiter is the target permalink, value after `||` delimiter is the name of Font Awesome icon.
 social:
   GitHub: https://github.com/Ashitemaru || fab fa-github
-  E-Mail: mailto:qhd19@mails.tsinghua.edu.cn || fa fa-envelope
+  E-Mail: mailto:ashitemaru.holder@gmail.com || fa fa-envelope
   #Weibo: https://weibo.com/yourname || fab fa-weibo
   #Google: https://plus.google.com/yourname || fab fa-google
-  Twitter: https://twitter.com/Ashitemaru || fab fa-twitter
+  Twitter: https://twitter.com/Holder_ASTMR || fab fa-twitter
   #FB Page: https://www.facebook.com/yourname || fab fa-facebook
   #StackOverflow: https://stackoverflow.com/yourname || fab fa-stack-overflow
   #YouTube: https://youtube.com/yourname || fab fa-youtube
@@ -367,7 +367,7 @@ codeblock:
   # All available themes: https://theme-next.js.org/highlight/
   theme:
     light: default
-    dark: tomorrow-night
+    dark: base16/tomorrow-night
   prism:
     light: prism
     dark: prism-dark
