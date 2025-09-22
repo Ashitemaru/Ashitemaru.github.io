@@ -57,17 +57,25 @@ JR 东日本在首都圈内在尽可能将可直通运营的系统整合成更�
 
 本文介绍运营系统的时候，按照首先介绍系统本体，然后介绍其他子系统或者延长线、支线的顺序进行。
 
-位于 JR 管内的部分，都会以表格形式列举车站名，可能会省略部分小站。列举车站名时，会在表格内标注各个区间实际上行驶的土建线路。对于每一个车站，会标注在该站与当前系统联动的 **JR 管内（不含新干线）**运营系统，包括换乘（乗り換え，表内不写出）、系统内直通（内部直通）、系统间直通（直通）、共线（同一路線）。如果所联动的是有系统缩写名的系统的本体部分，那么将直接标注所联动系统上该车站的编号。
+位于 JR 管内的部分，都会以表格形式列举车站名，可能会省略部分小站。列举车站名时，会在表格内标注各个区间实际上行驶的土建线路。对于每一个车站，会标注在该站与当前系统联动的 **JR 管内（不含新干线）**运营系统，包括换乘（乗り換え，表内默认为换乘）、系统内直通（内部直通）、系统间直通（直通）、共线（同一路線）。如果所联动的是有系统缩写名的系统的本体部分，那么将直接标注所联动系统上该车站的编号。
 
 不属于 JR 管内的部分，则不使用表格形式，采用简述的模式介绍。
 
-JR 与其他会社的直通与共线一般会被纳入子系统或者作为独立的运营系统介绍。而 JR 与其他会社以及新干线的换乘，则在本文最后按照车站列举。
+JR 与其他会社以及新干线的换乘、直通或者共线，如果被 JR 东日本认定为独立系统或被纳入 JR 系统，则同上文规范介绍，否则在本文最后按照车站列举。
 
-# 简单运营系统
+# 重要单一性运营系统
+
+## ⑨<font color="#9acd32">JY（山手線）</font>
+
+| 駅名 | 正式線路 | 接続系統 |
+| :-: | :-: | :-: |
+| 東京<font color="#9acd32">（JY01）</font> | 中央本線・東北本線並走区間 | <font color="#fe5a22">中央快速線（JC01）</font><br /><font color="#c9252f">京葉線（JE01）</font><br /><font color="#00b261">上野東京ライン（常磐快速延伸線）</font><br /><font color="#00b2e5">京浜東北線（JK26）</font><br /><font color="#f15a22">武蔵野線（京葉線直通）</font><br /><font color="#0067c0">横須賀・総武快速線（JO19）</font><br /><font color="f68b1e">上野東京ライン（JT01・JU01）</font> |
+| 神田<font color="#9acd32">（JY02）</font> | 中央本線・東北本線並走区間<br />東北本線 | <font color="#fe5a22">中央快速線（JC02）</font><br /><font color="#00b2e5">京浜東北線（JK27）</font> |
+| 秋葉原<font color="#9acd32">（JY03）</font> | ｜ | <font color="#ffd400">中央・総武緩行線（JB19）</font><br /><font color="#00b2e5">京浜東北線（JK28）</font> |
+| 御徒町<font color="#9acd32">（JY04）</font> | ｜ | <font color="#00b2e5">京浜東北線（JK29）</font> |
+| 上野<font color="#9acd32">（JY05）</font> | ｜ | <font color="#00b261">上野東京ライン（JJ01）</font><br /><font color="f68b1e">上野東京ライン（JU02）</font><br /><font color="#00b2e5">京浜東北線（JK29）</font> |
 
 ## ⑲<font color="#2e8b57">JA（埼京線）</font>
-
-### 本線
 
 | 駅名 | 正式線路 | 接続系統 |
 | :-: | :-: | :-: |
@@ -118,8 +126,6 @@ JR 与其他会社的直通与共线一般会被纳入子系统或者作为独�
 
 ## ⑫<font color="#ffd400">JB（中央・総武緩行線）</font>
 
-### 本線
-
 | 駅名 | 正式線路 | 接続系統 |
 | :-: | :-: | :-: |
 | 三鷹<font color="#ffd400">（JB01）</font> | 中央本線 | <font color="fe5a22">中央快速線（JC12）</font><br />**（同一路線）**<br /><font color="#009bbf">地下鉄東西線（中央・総武線直通）</font> |
@@ -144,7 +150,7 @@ JR 与其他会社的直通与共线一般会被纳入子系统或者作为独�
 | ｜ | ｜ | ― |
 | 市川<font color="#ffd400">（JB27）</font> | ｜ | <font color="#0067c0">横須賀・総武快速線（JO24）</font> |
 | ｜ | ｜ | ― |
-| 西船橋<font color="#ffd400">（JB30）</font> | ｜ | <font color="#f15a22">武蔵野線（JM10）</font><br /><font color="#f15a22">武蔵野線（京葉支線直通）</font><br />**（同一路線）**<br /><font color="#009bbf">地下鉄東西線（中央・総武線直通）</font> |
+| 西船橋<font color="#ffd400">（JB30）</font> | ｜ | <font color="#f15a22">武蔵野線（JM10）</font><br /><font color="#f15a22">武蔵野線（京葉線直通）</font><br />**（同一路線）**<br /><font color="#009bbf">地下鉄東西線（中央・総武線直通）</font> |
 | 船橋<font color="#ffd400">（JB31）</font> | ｜ | <font color="#0067c0">横須賀・総武快速線（JO25）</font><br />**（同一路線）**<br /><font color="#009bbf">地下鉄東西線（中央・総武線直通）</font> |
 | 東船橋<font color="#ffd400">（JB32）</font> | ｜ | **（同一路線）**<br /><font color="#009bbf">地下鉄東西線（中央・総武線直通）</font> |
 | 津田沼<font color="#ffd400">（JB33）</font> | ｜ | <font color="#0067c0">横須賀・総武快速線（JO26）</font><br />**（同一路線）**<br /><font color="#009bbf">地下鉄東西線（中央・総武線直通）</font> |
@@ -153,17 +159,11 @@ JR 与其他会社的直通与共线一般会被纳入子系统或者作为独�
 | ｜ | ｜ | ― |
 | 千葉<font color="#ffd400">（JB39）</font> | 総武本線 | <font color="#0067c0">横須賀・総武快速線（JO28）</font><br /><font color="#00b2e5">内房線</font><br /><font color="#db4028">外房線</font><br /><font color="#00b261">成田線</font><br /><font color="#ffc20d">総武本線</font> |
 
-## ⑬<font color="#009bbf">地下鉄東西線（中央・総武線直通）</font>
-
-本系统完全依附于 JB 中央总武缓行线系统，详见上文介绍。
-
 ## ⑪<font color="fe5a22">JC（中央快速線）</font>
-
-### 本線
 
 | 駅名 | 正式線路 | 接続系統 |
 | :-: | :-: | :-: |
-| 東京<font color="#fe5a22">（JC01）</font> | 中央本線・東北本線並走区間 | <font color="#c9252f">京葉線（JE01）</font><br /><font color="#00b261">上野東京ライン（常磐快速線）延伸線</font><br /><font color="#00b2e5">京浜東北線（JK26）</font><br /><font color="#f15a22">武蔵野線（京葉支線直通）</font><br /><font color="#0067c0">横須賀・総武快速線（JO19）</font><br /><font color="f68b1e">上野東京ライン（JT01・JU01）</font><br /><font color="#9acd32">山手線（JY01）</font> |
+| 東京<font color="#fe5a22">（JC01）</font> | 中央本線・東北本線並走区間 | <font color="#c9252f">京葉線（JE01）</font><br /><font color="#00b261">上野東京ライン（常磐快速延伸線）</font><br /><font color="#00b2e5">京浜東北線（JK26）</font><br /><font color="#f15a22">武蔵野線（京葉線直通）</font><br /><font color="#0067c0">横須賀・総武快速線（JO19）</font><br /><font color="f68b1e">上野東京ライン（JT01・JU01）</font><br /><font color="#9acd32">山手線（JY01）</font> |
 | 神田<font color="#fe5a22">（JC02）</font> | 中央本線・東北本線並走区間<br />中央本線 | <font color="#00b2e5">京浜東北線（JK27）</font><br /><font color="#9acd32">山手線（JY02）</font> |
 | 御茶ノ水<font color="fe5a22">（JC03）</font> | ｜ | <font color="#ffd400">中央・総武緩行線（JB18）</font> |
 | 四ツ谷<font color="fe5a22">（JC04）</font> | ｜ | <font color="#ffd400">中央・総武緩行線（JB14）</font> |
@@ -179,13 +179,117 @@ JR 与其他会社的直通与共线一般会被纳入子系统或者作为独�
 | ｜ | ｜ | ― |
 | 西国分寺<font color="#fe5a22">（JC17）</font> | ｜ | <font color="#f15a22">武蔵野線（JM33）</font> |
 | ｜ | ｜ | ― |
-| 立川<font color="#fe5a22">（JC19）</font> | ｜ | ― |
+| 立川<font color="#fe5a22">（JC19）</font> | ｜ | <font color="#ffd400">南武線（JN26）</font><br />**（直通）**<br /><font color="#fe5a22">青梅線（JC19）</font> |
+| ｜ | ｜ | ― |
+| 八王子<font color="#fe5a22">（JC22）</font> | ｜ | <font color="#80c342">横浜線（JH32）</font><br /><font color="#b4aa96">八高線</font> |
+| ｜ | ｜ | ― |
+| 大月<font color="#fe5a22">（JC32）</font> | 中央本線 | ― |
 
-# JR 东日本主要站点新干线及会社间换乘
+## ⑭<font color="fe5a22">JC（青梅線）</font>
 
-优先列举山手线系统上各站，之后按照上文出现顺序列举。
+本系统与中央快速线系统共享系统缩写名 JC 以及车站编号。
 
-## 東京（<font color="#fe5a22">JC01</font>・<font color="#c9252f">JE01</font>・<font color="#00b2e5">JK26</font>・<font color="#0067c0">JO19</font>・<font color="f68b1e">JT01</font>・<font color="f68b1e">JU01</font>・<font color="#9acd32">JY01</font>・<font color="#00b261">上野東京ライン（常磐快速線）延伸線</font>・<font color="#f15a22">武蔵野線（京葉支線直通）</font>）
+| 駅名 | 正式線路 | 接続系統 |
+| :-: | :-: | :-: |
+| 立川<font color="#fe5a22">（JC19）</font> | 青梅線 | <font color="#ffd400">南武線（JN26）</font><br />**（直通）**<br /><font color="#fe5a22">中央快速線（JC19）</font> |
+| 西立川<font color="#fe5a22">（JC51）</font> | ｜ | ― |
+| ｜ | ｜ | ― |
+| 拝島<font color="#fe5a22">（JC55）</font> | ｜ | <font color="#b4aa96">八高線</font><br />**（直通）**<br /><font color="#fe5a22">五日市線（JC55）</font> |
+| ｜ | ｜ | ― |
+| 奥多摩<font color="#fe5a22">（JC74）</font> | 青梅線 | ― |
+
+## ⑭<font color="fe5a22">JC（五日市線）</font>
+
+本系统与中央快速线系统共享系统缩写名 JC 以及车站编号。
+
+| 駅名 | 正式線路 | 接続系統 |
+| :-: | :-: | :-: |
+| 拝島<font color="#fe5a22">（JC55）</font> | 五日市線 | <font color="#b4aa96">八高線</font><br />**（直通）**<br /><font color="#fe5a22">青梅線（JC55）</font> |
+| 熊川<font color="#fe5a22">（JC81）</font> | ｜ | ― |
+| ｜ | ｜ | ― |
+| 武蔵五日市<font color="#fe5a22">（JC86）</font> | 五日市線 | ― |
+
+## ㉙<font color="c9252f">JE（京葉線）</font>
+
+| 駅名 | 正式線路 | 接続系統 |
+| :-: | :-: | :-: |
+| 東京<font color="#c9252f">（JE01）</font> | 京葉線 | <font color="#fe5a22">中央快速線（JC01）</font><br /><font color="#00b261">上野東京ライン（常磐快速延伸線）</font><br /><font color="#00b2e5">京浜東北線（JK26）</font><br /><font color="#0067c0">横須賀・総武快速線（JO19）</font><br /><font color="f68b1e">上野東京ライン（JT01・JU01）</font><br /><font color="#9acd32">山手線（JY01）</font><br />**（同一路線）**<br /><font color="#f15a22">武蔵野線（京葉線直通）</font> |
+| 八丁堀<font color="#c9252f">（JE02）</font> | ｜ | **（同一路線）**<br /><font color="#f15a22">武蔵野線（京葉線直通）</font> |
+| 越中島<font color="#c9252f">（JE03）</font> | ｜ | **（同一路線）**<br /><font color="#f15a22">武蔵野線（京葉線直通）</font> |
+| 潮見<font color="#c9252f">（JE04）</font> | ｜ | **（同一路線）**<br /><font color="#f15a22">武蔵野線（京葉線直通）</font> |
+| 新木場<font color="#c9252f">（JE05）</font> | ｜ | **（同一路線）**<br /><font color="#f15a22">武蔵野線（京葉線直通）</font> |
+| 葛西臨海公園<font color="#c9252f">（JE06）</font> | ｜ | **（同一路線）**<br /><font color="#f15a22">武蔵野線（京葉線直通）</font> |
+| 舞浜<font color="#c9252f">（JE07）</font> | ｜ | **（同一路線）**<br /><font color="#f15a22">武蔵野線（京葉線直通）</font> |
+| 新浦安<font color="#c9252f">（JE08）</font> | ｜ | **（同一路線）**<br /><font color="#f15a22">武蔵野線（京葉線直通）</font> |
+| 市川塩浜<font color="#c9252f">（JE09）</font> | ｜ | **（同一路線）**<br /><font color="#f15a22">武蔵野線（京葉線直通）</font> |
+| 二俣新町<font color="#c9252f">（JE10）</font> | ｜ | ― |
+| 南船橋<font color="#c9252f">（JE11）</font> | ｜ | **（同一路線）**<br /><font color="#f15a22">武蔵野線（京葉線直通）</font> |
+| 新習志野<font color="#c9252f">（JE12）</font> | ｜ | **（同一路線）**<br /><font color="#f15a22">武蔵野線（京葉線直通）</font> |
+| 幕張豊砂<font color="#c9252f">（JE13）</font> | ｜ | **（同一路線）**<br /><font color="#f15a22">武蔵野線（京葉線直通）</font> |
+| 海浜幕張<font color="#c9252f">（JE14）</font> | ｜ | **（同一路線）**<br /><font color="#f15a22">武蔵野線（京葉線直通）</font> |
+| ｜ | ｜ | ― |
+| 千葉みなと<font color="#c9252f">（JE17）</font> | ｜ | ― |
+| 蘇我 | 京葉線 | **（直通）**<br /><font color="#00b2e5">内房線</font><br /><font color="#db4028">外房線</font> |
+
+## ⑧<font color="ffd400">JI（鶴見線）</font>
+
+| 駅名 | 正式線路 | 接続系統 |
+| :-: | :-: | :-: |
+| 鶴見<font color="#ffd400">（JI01）</font> | 鶴見線 | <font color="#00b2e5">京浜東北線（JK15）</font> |
+| ｜ | ｜ | ― |
+| 浅野<font color="#ffd400">（JI05）</font> | ｜ | <font color="#ffd400">鶴見線（海芝浦支線）</font> |
+| 安善<font color="#ffd400">（JI06）</font> | ｜ | <font color="#ffd400">鶴見線（大川支線）</font> |
+| ｜ | ｜ | ― |
+| 浜川崎<font color="#ffd400">（JI06）</font> | ｜ | <font color="#ffd400">南武線（支線）（JN54）</font> |
+| ｜ | ｜ | ― |
+| 扇町<font color="#ffd400">（JI10）</font> | 鶴見線 | ― |
+
+### <font color="ffd400">鶴見線（海芝浦支線）</font>
+
+| 駅名 | 正式線路 | 接続系統 |
+| :-: | :-: | :-: |
+| 浅野<font color="#ffd400">（JI05）</font> | 鶴見線（海芝浦支線） | <font color="#ffd400">鶴見線（JI05）</font> |
+| 新芝浦<font color="#ffd400">（JI51）</font> | ｜ | ― |
+| 海芝浦<font color="#ffd400">（JI52）</font> | 鶴見線（海芝浦支線） | ― |
+
+### <font color="ffd400">鶴見線（大川支線）</font>
+
+| 駅名 | 正式線路 | 接続系統 |
+| :-: | :-: | :-: |
+| 浜川崎<font color="#ffd400">（JI06）</font> | 鶴見線（大川支線） | <font color="#ffd400">鶴見線（JI06）</font> |
+| 大川<font color="#ffd400">（JI61）</font> | 鶴見線（大川支線） | ― |
+
+## ④<font color="00b2e5">JK（京浜東北線）</font>
+
+| 駅名 | 正式線路 | 接続系統 |
+| :-: | :-: | :-: |
+| 大船<font color="#00b2e5">（JK01）</font> | 根岸線 | <font color="f68b1e">上野東京ライン（JT07）</font><br /><font color="#0067c0">横須賀・総武快速線（JO09）</font><br /><font color="#e31f26">湘南新宿ライン（JS09）</font><br />**（同一路線）**<br /><font color="#80c342">横浜線（根岸線直通）</font> |
+| 本郷台<font color="#00b2e5">（JK02）</font> | ｜ | **（同一路線）**<br /><font color="#80c342">横浜線（根岸線直通）</font> |
+| 港南台<font color="#00b2e5">（JK03）</font> | ｜ | **（同一路線）**<br /><font color="#80c342">横浜線（根岸線直通）</font> |
+| 洋光台<font color="#00b2e5">（JK04）</font> | ｜ | **（同一路線）**<br /><font color="#80c342">横浜線（根岸線直通）</font> |
+| 新杉田<font color="#00b2e5">（JK05）</font> | ｜ | **（同一路線）**<br /><font color="#80c342">横浜線（根岸線直通）</font> |
+| 磯子<font color="#00b2e5">（JK06）</font> | ｜ | **（同一路線）**<br /><font color="#80c342">横浜線（根岸線直通）</font> |
+| 根岸<font color="#00b2e5">（JK07）</font> | ｜ | **（同一路線）**<br /><font color="#80c342">横浜線（根岸線直通）</font> |
+| 山手<font color="#00b2e5">（JK08）</font> | ｜ | **（同一路線）**<br /><font color="#80c342">横浜線（根岸線直通）</font> |
+| 石川町<font color="#00b2e5">（JK09）</font> | ｜ | **（同一路線）**<br /><font color="#80c342">横浜線（根岸線直通）</font> |
+| 関内<font color="#00b2e5">（JK10）</font> | ｜ | **（同一路線）**<br /><font color="#80c342">横浜線（根岸線直通）</font> |
+| 桜木町<font color="#00b2e5">（JK11）</font> | ｜ | **（同一路線）**<br /><font color="#80c342">横浜線（根岸線直通）</font> |
+| 横浜<font color="#00b2e5">（JK12）</font> | 根岸線<br />東海道本線 | <font color="#80c342">横浜線（根岸線直通）</font><br /><font color="f68b1e">上野東京ライン（JT05）</font><br /><font color="#0067c0">横須賀・総武快速線（JO13）</font><br /><font color="#e31f26">湘南新宿ライン（JS13）</font> |
+| 大宮<font color="#00b2e5">（JK47）</font> | 東北本線 | <font color="#2e8b57">埼京線（JA21）</font><br /><font color="#2e8b57">埼京線（川越線直通）</font><br /><font color="f68b1e">上野東京ライン（JU07）</font><br /><font color="#e31f26">湘南新宿ライン（JS24）</font><br /> |
+
+# 附属性系统
+
+## ⑬<font color="#009bbf">地下鉄東西線（中央・総武線直通）</font>
+
+本系统完全与 JB 中央总武缓行线系统共线，详见上文介绍。
+
+# JR 东日本主要站点内与新干线及会社间换乘与直通
+
+按运营系统列举，若某站已经列举，后文不再重复列举。
+
+## 山手线系统
+
+### 東京（<font color="#fe5a22">JC01</font>・<font color="#c9252f">JE01</font>・<font color="#00b2e5">JK26</font>・<font color="#0067c0">JO19</font>・<font color="f68b1e">JT01</font>・<font color="f68b1e">JU01</font>・<font color="#9acd32">JY01</font>・<font color="#00b261">上野東京ライン（常磐快速延伸線）</font>・<font color="#f15a22">武蔵野線（京葉線直通）</font>）
 
 - 新幹線
     - 東北新幹線・山形新幹線・秋田新幹線・北海道新幹線・上越新幹線・北陸新幹線
@@ -193,12 +297,12 @@ JR 与其他会社的直通与共线一般会被纳入子系统或者作为独�
 - 東京地下鉄
     - <font color="#f62e36">丸ノ内線（M17）</font>
 
-## 神田（<font color="#fe5a22">JC02</font>・<font color="#00b2e5">JK27</font>・<font color="#9acd32">JY02</font>）
+### 神田（<font color="#fe5a22">JC02</font>・<font color="#00b2e5">JK27</font>・<font color="#9acd32">JY02</font>）
 
 - 東京地下鉄
     - <font color="#ff9500">銀座線（G13）</font>
 
-## 秋葉原（<font color="#ffd400">JB19</font>・<font color="#00b2e5">JK28</font>・<font color="#9acd32">JY03</font>）
+### 秋葉原（<font color="#ffd400">JB19</font>・<font color="#00b2e5">JK28</font>・<font color="#9acd32">JY03</font>）
 
 - 東京地下鉄
     - <font color="#b5b5ac">日比谷線（H16）</font>
@@ -208,7 +312,13 @@ JR 与其他会社的直通与共线一般会被纳入子系统或者作为独�
     - 都営地下鉄
         - <font color="#b0bf1e">新宿線（S08）</font>
 
-## 池袋（<font color="#2e8b57">JA12</font>・<font color="#e31f26">JS21</font>・<font color="#9acd32">JY13</font>）
+### 御徒町（<font color="#00b2e5">JK29</font>・<font color="#9acd32">JY04</font>）
+
+- → 上野御徒町
+    - 都営地下鉄
+        - <font color="#ce045b">大江戸線（E09）</font>
+
+### 池袋（<font color="#2e8b57">JA12</font>・<font color="#e31f26">JS21</font>・<font color="#9acd32">JY13</font>）
 
 - 東武鉄道
     - <font color="#004098">東上線（TJ01）</font>
@@ -219,7 +329,7 @@ JR 与其他会社的直通与共线一般会被纳入子系统或者作为独�
     - <font color="#c1a470">有楽町線（Y09）</font>
     - <font color="#9c5e31">副都心線（F09）</font>
 
-## 新宿（<font color="#2e8b57">JA11</font>・<font color="#ffd400">JB10</font>・<font color="fe5a22">JC05</font>・<font color="#e31f26">JS20</font>・<font color="#9acd32">JY17</font>）
+### 新宿（<font color="#2e8b57">JA11</font>・<font color="#ffd400">JB10</font>・<font color="fe5a22">JC05</font>・<font color="#e31f26">JS20</font>・<font color="#9acd32">JY17</font>）
 
 - 京王電鉄
     - <font color="#dd0077">京王線・京王新線（KO01）</font>
@@ -230,21 +340,21 @@ JR 与其他会社的直通与共线一般会被纳入子系统或者作为独�
 - 都営地下鉄
     - <font color="#b0bf1e">新宿線（S01）</font>
     - <font color="#ce045b">大江戸線（E27）</font>
-- → 新宿西口駅
+- → 新宿西口
     - 都営地下鉄
         - <font color="#ce045b">大江戸線（E01）</font>
-- → 西武新宿駅
+- → 西武新宿
     - 西武鉄道
         - <font color="#0099cc">新宿線（SS01）</font>
 
-## 代々木（<font color="#ffd400">JB11</font>・<font color="#9acd32">JY18</font>）
+### 代々木（<font color="#ffd400">JB11</font>・<font color="#9acd32">JY18</font>）
 
 - 都営地下鉄
     - <font color="#ce045b">大江戸線（E26）</font>
 
-## 渋谷（<font color="#2e8b57">JA10</font>・<font color="#e31f26">JS19</font>・<font color="#9acd32">JY20</font>）
+### 渋谷（<font color="#2e8b57">JA10</font>・<font color="#e31f26">JS19</font>・<font color="#9acd32">JY20</font>）
 
-- 京急電鉄
+- 東急電鉄
     - <font color="#da0442">東横線（TY01）</font>
     - <font color="#20a288">田園都市線（DT01）</font>
 - 京王電鉄
@@ -254,23 +364,25 @@ JR 与其他会社的直通与共线一般会被纳入子系统或者作为独�
     - <font color="#8f76d6">半蔵門線（Z01）</font>
     - <font color="#9c5e31">副都心線（F16）</font>
 
-## 恵比寿（<font color="#2e8b57">JA09</font>・<font color="#e31f26">JS18</font>・<font color="#9acd32">JY21</font>）
+### 恵比寿（<font color="#2e8b57">JA09</font>・<font color="#e31f26">JS18</font>・<font color="#9acd32">JY21</font>）
 
 - 東京地下鉄
     - <font color="#b5b5ac">日比谷線（H02）</font>
 
-## 大崎（<font color="#2e8b57">JA08</font>・<font color="#e31f26">JS17</font>・<font color="#9acd32">JY24</font>・<font color="#2e8b57">埼京線（りんかい線直通）</font>・<font color="#2e8b57">埼京線（相鉄線直通）</font>）
+### 大崎（<font color="#2e8b57">JA08</font>・<font color="#e31f26">JS17</font>・<font color="#9acd32">JY24</font>・<font color="#2e8b57">埼京線（りんかい線直通）</font>・<font color="#2e8b57">埼京線（相鉄線直通）</font>）
 
 - 東京臨海高速鉄道
-    - りんかい線（R08）
+    - （直通）りんかい線（R08）
 
-## 板橋（<font color="#2e8b57">JA13</font>）
+## 埼京线系统
 
-- → 新板橋駅
+### 板橋（<font color="#2e8b57">JA13</font>）
+
+- → 新板橋
     - 都営地下鉄
         - <font color="#006ab8">三田線（I17）</font>
 
-## 大宮（<font color="#2e8b57">JA21</font>・<font color="#00b2e5">JK47</font>・<font color="#e31f26">JS24</font>・<font color="#f68b1e">JU07</font>・<font color="#2e8b57">埼京線（川越線直通）</font>）
+### 大宮（<font color="#2e8b57">JA21</font>・<font color="#00b2e5">JK47</font>・<font color="#e31f26">JS24</font>・<font color="#f68b1e">JU07</font>・<font color="#2e8b57">埼京線（川越線直通）</font>）
 
 - 新幹線
     - 東北新幹線・山形新幹線・秋田新幹線・北海道新幹線・上越新幹線・北陸新幹線
@@ -279,52 +391,54 @@ JR 与其他会社的直通与共线一般会被纳入子系统或者作为独�
 - 埼玉新都市交通
     - <font color="yellow">伊奈線（NS01）</font>
 
-## 川越（<font color="#2e8b57">埼京線（川越線直通）</font>・<font color="#a8a39d">川越線</font>）
+### 川越（<font color="#2e8b57">埼京線（川越線直通）</font>・<font color="#a8a39d">川越線</font>）
 
 - 東武鉄道
     - <font color="#004098">東上線（TJ21）</font>
-- → 本川越駅
+- → 本川越
     - 西武鉄道
         - <font color="#0099cc">新宿線（SS29）</font>
 
-## 武蔵小杉（<font color="#ffd400">JN17</font>・<font color="#0067c0">JO15</font>・<font color="#e31f26">JS15</font>）
+### 武蔵小杉（<font color="#ffd400">JN17</font>・<font color="#0067c0">JO15</font>・<font color="#e31f26">JS15</font>・<font color="#2e8b57">埼京線（相鉄線直通）</font>）
 
 - 東急電鉄
     - <font color="#da0442">東横線（TY11）</font>
     - <font color="#009cd2">目黒線（MG11）</font>
 
-## 羽沢横浜国大（<font color="#2e8b57">埼京線（相鉄線直通）</font>）
+### 羽沢横浜国大（<font color="#2e8b57">埼京線（相鉄線直通）</font>）
 
 - 相模鉄道
-    - <font color="#041452">相鉄線新横浜線（SO51）</font>
+    - （直通）<font color="#041452">相鉄線新横浜線（SO51）</font>
 
-## 吉祥寺（<font color="#ffd400">JB02</font>・<font color="fe5a22">JC11</font>）
+## 中央总武缓行线系统
+
+### 吉祥寺（<font color="#ffd400">JB02</font>・<font color="fe5a22">JC11</font>・<font color="#009bbf">地下鉄東西線（中央・総武線直通）</font>）
 
 - 京王電鉄
     - <font color="#000088">井の頭線（IN17）</font>
 
-## 荻窪（<font color="#ffd400">JB04</font>・<font color="fe5a22">JC09</font>）
+### 荻窪（<font color="#ffd400">JB04</font>・<font color="fe5a22">JC09</font>・<font color="#009bbf">地下鉄東西線（中央・総武線直通）</font>）
 
 - 東京地下鉄
     - <font color="#f62e36">丸ノ内線（M01）</font>
 
-## 中野（<font color="#ffd400">JB07</font>・<font color="fe5a22">JC06</font>）
+### 中野（<font color="#ffd400">JB07</font>・<font color="fe5a22">JC06</font>・<font color="#009bbf">地下鉄東西線（中央・総武線直通）</font>）
 
 - 東京地下鉄
     - <font color="#009bbf">東西線（T01）</font>
 
-## 東中野（<font color="#ffd400">JB08</font>）
+### 東中野（<font color="#ffd400">JB08</font>）
 
 - 都営地下鉄
     - <font color="#ce045b">大江戸線（E31）</font>
 
-## 四ツ谷（<font color="#ffd400">JB14</font>・<font color="fe5a22">JC04</font>）
+### 四ツ谷（<font color="#ffd400">JB14</font>・<font color="fe5a22">JC04</font>）
 
 - 東京地下鉄
     - <font color="#f62e36">丸ノ内線（M12）</font>
     - <font color="#00ac9b">南北線（N08）</font>
 
-## 市ヶ谷（<font color="#ffd400">JB15</font>）
+### 市ヶ谷（<font color="#ffd400">JB15</font>）
 
 - 東京地下鉄
     - <font color="#c1a470">有楽町線（Y14）</font>
@@ -332,7 +446,7 @@ JR 与其他会社的直通与共线一般会被纳入子系统或者作为独�
 - 都営地下鉄
     - <font color="#b0bf1e">新宿線（S04）</font>
 
-## 飯田橋（<font color="#ffd400">JB16</font>）
+### 飯田橋（<font color="#ffd400">JB16</font>）
 
 - 東京地下鉄
     - <font color="#c1a470">有楽町線（Y13）</font>
@@ -341,12 +455,12 @@ JR 与其他会社的直通与共线一般会被纳入子系统或者作为独�
 - 都営地下鉄
     - <font color="#ce045b">大江戸線（E06）</font>
 
-## 水道橋（<font color="#ffd400">JB17</font>）
+### 水道橋（<font color="#ffd400">JB17</font>）
 
 - 都営地下鉄
     - <font color="#006ab8">三田線（I11）</font>
 
-## 御茶ノ水（<font color="#ffd400">JB18</font>・<font color="fe5a22">JC03</font>）
+### 御茶ノ水（<font color="#ffd400">JB18</font>・<font color="fe5a22">JC03</font>）
 
 - 東京地下鉄
     - <font color="#f62e36">丸ノ内線（M20）</font>
@@ -354,39 +468,39 @@ JR 与其他会社的直通与共线一般会被纳入子系统或者作为独�
     - 東京地下鉄
         - <font color="#00bb85">千代田線（C12）</font>
 
-## 浅草橋（<font color="#ffd400">JB20</font>）
+### 浅草橋（<font color="#ffd400">JB20</font>）
 
 - 都営地下鉄
     - <font color="#ec6e65">浅草線（A16）</font>
 
-## 両国（<font color="#ffd400">JB21</font>）
+### 両国（<font color="#ffd400">JB21</font>）
 
 - 都営地下鉄
     - <font color="#ce045b">大江戸線（E12）</font>
 
-## 錦糸町（<font color="#ffd400">JB22</font>・<font color="#0067c0">JO22</font>）
+### 錦糸町（<font color="#ffd400">JB22</font>・<font color="#0067c0">JO22</font>）
 
 - 東京地下鉄
     - <font color="#8f76d6">半蔵門線（Z13）</font>
 
-## 亀戸（<font color="#ffd400">JB23</font>）
+### 亀戸（<font color="#ffd400">JB23</font>）
 
 - 東武鉄道
     - <font color="#0067c0">亀戸線（TS44）</font>
 
-## 本八幡（<font color="#ffd400">JB28</font>）
+### 本八幡（<font color="#ffd400">JB28</font>）
 
 - 都営地下鉄
     - <font color="#b0bf1e">新宿線（S21）</font>
 
-## 西船橋（<font color="#ffd400">JB30</font>・<font color="#f15a22">JM10</font>・<font color="#f15a22">武蔵野線（京葉支線直通）</font>）
+### 西船橋（<font color="#ffd400">JB30</font>・<font color="#f15a22">JM10</font>・<font color="#f15a22">武蔵野線（京葉線直通）</font>・<font color="#009bbf">地下鉄東西線（中央・総武線直通）</font>）
 
 - 東京地下鉄
     - <font color="#009bbf">東西線（T23）</font>
 - 京葉高速鉄道
     - 京葉高速線（TR01）
 
-## 船橋（<font color="#ffd400">JB31</font>・<font color="#0067c0">JO25</font>）
+### 船橋（<font color="#ffd400">JB31</font>・<font color="#0067c0">JO25</font>・<font color="#009bbf">地下鉄東西線（中央・総武線直通）</font>）
 
 - 東武鉄道
     - <font color="#00bfff">野田線（TD35）</font>
@@ -394,19 +508,19 @@ JR 与其他会社的直通与共线一般会被纳入子系统或者作为独�
     - 京成電鉄
         - <font color="#0060b0">京成本線（KS22）</font>
 
-## 津田沼（<font color="#ffd400">JB33</font>・<font color="#0067c0">JO26</font>）
+### 津田沼（<font color="#ffd400">JB33</font>・<font color="#0067c0">JO26</font>・<font color="#009bbf">地下鉄東西線（中央・総武線直通）</font>）
 
 - → 新津田沼
     - 京成電鉄
         - <font color="#a97344">松戸線（KS66）</font>
 
-## 幕張本郷（<font color="#ffd400">JB34</font>）
+### 幕張本郷（<font color="#ffd400">JB34</font>）
 
 - → 京成幕張本郷
     - 京成電鉄
         - <font color="#ff1e56">千葉線（KS52）</font>
 
-## 千葉（<font color="#ffd400">JB39</font>・<font color="#0067c0">JO28</font>・<font color="#00b2e5">内房線</font>・<font color="#db4028">外房線</font>・<font color="#00b261">成田線</font>・<font color="#ffc20d">総武本線</font>）
+### 千葉（<font color="#ffd400">JB39</font>・<font color="#0067c0">JO28</font>・<font color="#00b2e5">内房線</font>・<font color="#db4028">外房線</font>・<font color="#00b261">成田線</font>・<font color="#ffc20d">総武本線</font>）
 
 - 千葉都市モノレール
     - <font color="#2843ba">1号線（CM03）</font>
@@ -415,13 +529,119 @@ JR 与其他会社的直通与共线一般会被纳入子系统或者作为独�
     - 京成電鉄
         - <font color="#ff1e56">千葉線（KS59）</font>
 
-## 武蔵境（<font color="fe5a22">JC13</font>）
+## 中央快速线、青梅线、五日市线系统
+
+### 武蔵境（<font color="fe5a22">JC13</font>）
 
 - 西武鉄道
     - <font color="#ff6600">多摩川線（SW01）</font>
 
-## 国分寺（<font color="fe5a22">JC16</font>）
+### 国分寺（<font color="fe5a22">JC16</font>）
 
 - 西武鉄道
     - <font color="#ffcc33">多摩湖線（ST01）</font>
     - <font color="#33cc66">国分寺線（SK01）</font>
+
+### 立川（<font color="#fe5a22">JC19</font>・<font color="#ffd400">JN26</font>）
+
+- → 立川北
+    - 多摩都市モノレール
+        - <font color="#ff6633">多摩都市モノレール線（TT12）</font>
+- → 立川南
+    - 多摩都市モノレール
+        - <font color="#ff6633">多摩都市モノレール線（TT11）</font>
+
+### 八王子（<font color="#fe5a22">JC22</font>・<font color="#80c342">JH32</font>・<font color="#b4aa96">八高線</font>）
+
+- → 京王八王子
+    - 京王電鉄
+        - <font color="#dd0077">京王線（KO34）</font>
+
+### 高尾（<font color="#fe5a22">JC24</font>）
+
+- → 京王八王子
+    - 京王電鉄
+        - <font color="#dd0077">高尾線（KO52）</font>
+
+### 大月（<font color="#fe5a22">JC32</font>）
+
+- 富士山麓電気鉄道
+    - （直通）富士急行線（FJ01）
+
+### 拝島（<font color="#fe5a22">JC55</font>・<font color="#b4aa96">八高線</font>）
+
+- 西武鉄道
+    - <font color="#0099cc">拝島線（SS36）</font>
+
+## 京叶线系统
+
+### 八丁堀（<font color="#c9252f">JE02</font>・<font color="#f15a22">武蔵野線（京葉線直通）</font>）
+
+- 東京地下鉄
+    - <font color="#b5b5ac">日比谷線（H12）</font>
+
+### 新木場（<font color="#c9252f">JE05</font>・<font color="#f15a22">武蔵野線（京葉線直通）</font>）
+
+- 東京臨海高速鉄道
+    - りんかい線（R01）
+- 東京地下鉄
+    - <font color="#c1a470">有楽町線（Y24）</font>
+
+### 舞浜（<font color="#c9252f">JE07</font>・<font color="#f15a22">武蔵野線（京葉線直通）</font>）
+
+- → リゾートゲートウェイ・ステーション
+    - 舞浜リゾートライン
+        - ディズニーランドライン
+
+### 千葉みなと（<font color="#c9252f">JE17</font>）
+
+- 千葉都市モノレール
+    - <font color="#2843ba">1号線（CM01）</font>
+
+## 鹤见线系统
+
+### 鶴見（<font color="#ffd400">JI01</font>・<font color="#00b2e5">JK15</font>）
+
+- → 京急鶴見
+    - 京浜急行電鉄
+        - <font color="#33c2e4">京急本線（KK29）</font>
+
+## 京滨东北线系统
+
+### 大船（<font color="#00b2e5">JK01</font>・<font color="#0067c0">JO09</font>・<font color="#e31f26">JS09</font>・<font color="f68b1e">JT07</font>・<font color="#80c342">横浜線（根岸線直通）</font>）
+
+- 湘南モノレール
+    - <font color="red">江ノ島線（SMR1）</font>
+
+### 新杉田（<font color="#00b2e5">JK05</font>・<font color="#80c342">横浜線（根岸線直通）</font>）
+
+- 横浜シーサイドライン
+    - <font color="#f68b1e">金沢シーサイドライン（1）</font>
+- → 杉田
+    - 京浜急行電鉄
+        - <font color="#33c2e4">京急本線（KK46）</font>
+
+### 関内（<font color="#00b2e5">JK10</font>・<font color="#80c342">横浜線（根岸線直通）</font>）
+
+- 横浜市営地下鉄
+    - <font color="#093f86">ブルーライン（1号線・3号線）（B17）</font>
+
+### 桜木町（<font color="#00b2e5">JK11</font>・<font color="#80c342">横浜線（根岸線直通）</font>）
+
+- 横浜市営地下鉄
+    - <font color="#093f86">ブルーライン（3号線）（B18）</font>
+- 泉陽興業
+    - YOKOHAMA AIR CABIN
+
+### 横浜（<font color="#00b2e5">JK12</font>・<font color="f68b1e">JT05</font>・<font color="#0067c0">JO13</font>・<font color="#e31f26">JS13</font>・<font color="#80c342">横浜線（根岸線直通）</font>）
+
+- 東急電鉄
+    - <font color="#da0442">東横線（TY21）</font>
+- 京浜急行電鉄
+    - <font color="#33c2e4">京急本線（KK37）</font>
+- 相模鉄道
+    - <font color="#041452">相鉄本線（SO01）</font>
+- 横浜市営地下鉄
+    - <font color="#093f86">ブルーライン（3号線）（B20）</font>
+- 横浜高速鉄道
+    - <font color="#09357f">みなとみらい線（MM01）</font>
